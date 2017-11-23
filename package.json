@@ -1,0 +1,20 @@
+{
+  "name": "charta",
+  "version": "0.0.0",
+  "description": "New & improved smart contracts for Dharma protocol",
+  "main": "index.js",
+  "scripts": {
+    "transpile": "rm -rf ./transpiled; copyfiles ./build/**/* ./transpiled; tsc",
+    "lint": "tslint migrations/*.ts test/**/*.ts",
+    "compile": "rm -rf build/contracts; truffle compile",
+    "migrate": "npm run transpile; truffle migrate",
+    "testrpc": "testrpc --networkId 50"
+  },
+  "repository": "git@github.com:dharmaprotocol/charta.git",
+  "author": "Nadav Hollander <nadav@dharma.io>",
+  "license": "ISC",
+  "dependencies": {
+    "tslint": "^5.8.0",
+    "typescript": "^2.6.1"
+  }
+}
