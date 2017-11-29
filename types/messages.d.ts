@@ -2,7 +2,7 @@ import {
     Address,
     UInt,
     ECDSASignature
-} from 'types/global';
+} from './global';
 
 export interface DebtIssuanceCommitment {
     version: Address;

@@ -18,7 +18,44 @@
 
 pragma solidity 0.4.18;
 
+import "../libraries/PermissionsLib.sol";
+
 
 contract DummyContract {
-    address public stub;
+    using PermissionsLib for PermissionsLib.Permissions;
+
+    PermissionsLib.Permissions internal firstPermissionSet;
+    PermissionsLib.Permissions internal secondPermissionSet;
+
+    function authorizeInFirstSet(address agent) public {
+        firstPermissionSet.authorize(agent);
+    }
+
+    function authorizeInSecondSet(address agent) public {
+        secondPermissionSet.authorize(agent);
+    }
+
+    function revokeInFirstSet(address agent) public {
+        firstPermissionSet.revokeAuthorization(agent);
+    }
+
+    function revokeInSecondSet(address agent) public {
+        secondPermissionSet.revokeAuthorization(agent);
+    }
+
+    function isAuthorizedInFirstSet(address agent) public constant returns (bool) {
+        return firstPermissionSet.isAuthorized(agent);
+    }
+
+    function isAuthorizedInSecondSet(address agent) public constant returns (bool) {
+        return secondPermissionSet.isAuthorized(agent);
+    }
+
+    function getFirstSetAuthorizedAgents() public constant returns (address[]) {
+        return firstPermissionSet.getAuthorizedAgents();
+    }
+
+    function getSecondSetAuthorizedAgents() public constant returns (address[]) {
+        return secondPermissionSet.getAuthorizedAgents();
+    }
 }

@@ -1,3 +1,4 @@
+/* tslint:disable */
 declare module 'chai-bignumber';
 
 /**
@@ -16,3 +17,4 @@ declare namespace Chai {
         bignumber: Assertion;
     }
 }
+/* tslint:enable */

@@ -1,10 +1,10 @@
-const Permissions = artifacts.require("Permissions");
+const PermissionsLib = artifacts.require("PermissionsLib");
 const DummyContract = artifacts.require("DummyContract");
 const DebtRegistry = artifacts.require("DebtRegistry");
 
 module.exports = (deployer: any) => {
   deployer.deploy(DebtRegistry);
-  deployer.deploy(Permissions);
-  deployer.link(Permissions, DummyContract);
+  deployer.deploy(PermissionsLib);
+  deployer.link(PermissionsLib, DummyContract);
   deployer.deploy(DummyContract);
 };

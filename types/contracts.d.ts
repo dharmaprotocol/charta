@@ -1,9 +1,10 @@
-import * as Web3 from "web3";
 import * as BigNumber from "bignumber.js";
+import * as Web3 from "web3";
 import {
     Address,
-    UInt
-} from 'types/global';
+    Bytes32,
+    UInt,
+} from "./global";
 
 type TransactionOptions = Partial<Transaction>;
 type PayableTransactionOptions = Partial<PayableTransaction>;
@@ -38,31 +39,34 @@ interface Contract<T> {
 
 export interface Artifacts {
     require(name: "Migrations"): Contract<MigrationsContractInstance>;
-    require(name: "Permissions"): Contract<PermissionsLibraryContractInstance>;
+    require(name: "PermissionsLib"): Contract<PermissionsLibraryContractInstance>;
     require(name: "DummyContract"): Contract<DummyContractInstance>;
     require(name: "DebtRegistry"): Contract<DebtRegistryContractInstance>;
 }
 
 export interface MigrationsContractInstance extends ContractInstance {
     setCompleted(completed: UInt, options?: Transaction): Promise<void>;
-    upgrade(new_address: Address): Promise<void>;
+    upgrade(newAddress: Address): Promise<void>;
 }
 
 export interface PermissionsLibraryContractInstance extends ContractInstance {
-    authorize(agent: Address, options?: TransactionOptions): Promise<void>;
-    isAuthorized(agent: Address, options?: TransactionOptions): Promise<Boolean>;
-    getAuthorizedAgents(options?: TransactionOptions): Promise<Address[]>;
+    authorize(permissions: Bytes32, agent: Address, options?: TransactionOptions): Promise<void>;
+    revokeAuthorization(permissions: Bytes32, agent: Address, options?: TransactionOptions): Promise<void>;
+    isAuthorized(permissions: Bytes32, agent: Address, options?: TransactionOptions): Promise<boolean>;
+    getAuthorizedAgents(permissions: Bytes32, options?: TransactionOptions): Promise<Address[]>;
 }
 
 export interface DummyContractInstance extends ContractInstance {
-    authorizeFirstPermissionSet(agent: Address): Promise<void>;
-    authorizeSecondPermissionSet(agent: Address): Promise<void>;
-    isAuthorizedInFirstPermissionSet(agent: Address): Promise<Boolean>;
-    isAuthorizedInSecondPermissionSet(agent: Address): Promise<Boolean>;
-    getFirstPermissionSetAuthorizedAgents(): Promise<Address[]>;
-    getSecondPermissionSetAuthorizedAgents(): Promise<Address[]>;
+    authorizeInFirstSet(agent: Address): Promise<void>;
+    authorizeInSecondSet(agent: Address): Promise<void>;
+    revokeInFirstSet(agent: Address): Promise<void>;
+    revokeInSecondSet(agent: Address): Promise<void>;
+    isAuthorizedInFirstSet(agent: Address): Promise<boolean>;
+    isAuthorizedInSecondSet(agent: Address): Promise<boolean>;
+    getFirstSetAuthorizedAgents(): Promise<Address[]>;
+    getSecondSetAuthorizedAgents(): Promise<Address[]>;
 }
 
 export interface DebtRegistryContractInstance extends ContractInstance {
-
+    address: string;
 }
