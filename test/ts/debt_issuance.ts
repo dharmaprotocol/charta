@@ -8,7 +8,7 @@ const expect = chai.expect;
 
 const testContract = artifacts.require("TestContract");
 
-contract("TestContract", (accounts) => {
+contract("Debt Issuance", (accounts) => {
     let contract: TestContractInstance;
 
     before(async () => {

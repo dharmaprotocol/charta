@@ -36,7 +36,7 @@ interface Contract<T> {
 
 export interface Artifacts {
     require(name: "Migrations"): Contract<MigrationsContractInstance>;
-    require(name: "TestContract"): Contract<TestContractInstance>;
+    require(name: "DebtKernel"): Contract<DebtKernelContractInstance>;
 }
 
 export interface MigrationsContractInstance extends ContractInstance {
@@ -44,7 +44,7 @@ export interface MigrationsContractInstance extends ContractInstance {
     upgrade(new_address: Address): Promise<void>;
 }
 
-export interface TestContractInstance extends ContractInstance {
+export interface DebtKernelContractInstance extends ContractInstance {
     count: UInt;
     someValue: Boolean;
     counterWithOffset(
