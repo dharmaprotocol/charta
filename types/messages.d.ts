@@ -1,6 +1,8 @@
-type Address = string;
-type UInt = number | BigNumber.BigNumber;
-type ECDSASignature = [UInt, string, string];
+import {
+    Address,
+    UInt,
+    ECDSASignature
+} from 'types/global';
 
 export interface DebtIssuanceCommitment {
     version: Address;
