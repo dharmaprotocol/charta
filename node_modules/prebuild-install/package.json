@@ -1,0 +1,64 @@
+{
+  "name": "prebuild-install",
+  "version": "2.3.0",
+  "description": "A command line tool for easily install prebuilds for multiple version of node/iojs on a specific platform",
+  "scripts": {
+    "test": "tape test/*-test.js && npm run audit && npm run lint",
+    "audit": "nsp check",
+    "lint": "standard"
+  },
+  "keywords": [
+    "prebuilt",
+    "binaries",
+    "native",
+    "addon",
+    "module",
+    "c",
+    "c++",
+    "bindings",
+    "devops"
+  ],
+  "dependencies": {
+    "expand-template": "^1.0.2",
+    "github-from-package": "0.0.0",
+    "minimist": "^1.2.0",
+    "mkdirp": "^0.5.1",
+    "node-abi": "^2.1.1",
+    "noop-logger": "^0.1.1",
+    "npmlog": "^4.0.1",
+    "os-homedir": "^1.0.1",
+    "pump": "^1.0.1",
+    "rc": "^1.1.6",
+    "simple-get": "^1.4.2",
+    "tar-fs": "^1.13.0",
+    "tunnel-agent": "^0.6.0",
+    "xtend": "4.0.1"
+  },
+  "devDependencies": {
+    "a-native-module": "^1.0.0",
+    "nsp": "^2.3.0",
+    "rimraf": "^2.5.2",
+    "standard": "^8.6.0",
+    "tape": "^4.5.1"
+  },
+  "bin": "./bin.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mafintosh/prebuild-install.git"
+  },
+  "author": "Mathias Buus (@mafintosh)",
+  "contributors": [
+    "Julian Gruber <julian@juliangruber.com> (https://github.com/juliangruber)",
+    "Brett Lawson <brett19@gmail.com> (https://github.com/brett19)",
+    "Pieter Hintjens <ph@imatix.com> (https://github.com/hintjens)",
+    "Lars-Magnus Skog <ralphtheninja@riseup.net> (https://github.com/ralphtheninja)",
+    "Jesús Leganés Combarro <piranna@gmail.com> (https://github.com/piranna)",
+    "Mathias Küsel <mathiask@hotmail.de> (https://github.com/mathiask88)",
+    "Lukas Geiger <lukas.geiger94@gmail.com> (https://github.com/lgeiger)"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mafintosh/prebuild-install/issues"
+  },
+  "homepage": "https://github.com/mafintosh/prebuild-install"
+}

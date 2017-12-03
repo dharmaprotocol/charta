@@ -1,0 +1,21 @@
+{
+    "name": "@types/json-stable-stringify",
+    "version": "1.0.32",
+    "description": "TypeScript definitions for json-stable-stringify",
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "Matt Frantz",
+            "url": "https://github.com/mhfrantz"
+        }
+    ],
+    "main": "",
+    "repository": {
+        "type": "git",
+        "url": "https://www.github.com/DefinitelyTyped/DefinitelyTyped.git"
+    },
+    "scripts": {},
+    "dependencies": {},
+    "typesPublisherContentHash": "efe50198ab5fd6ae636ae6beca8bc95a92c7ca7d68665bb1b4bef58f2ad00037",
+    "typeScriptVersion": "2.0"
+}

@@ -1,5 +1,7 @@
 /* tslint:disable */
 declare module 'chai-bignumber';
+declare module 'ethereumjs-abi';
+declare module 'solidity-sha3';
 
 /**
  * HACK: Merge Chai typings with bignumber assertion added by
@@ -15,6 +17,7 @@ declare namespace Chai {
     }
     interface Assertion {
         bignumber: Assertion;
+        solidityLogs: Assertion;
     }
 }
 /* tslint:enable */

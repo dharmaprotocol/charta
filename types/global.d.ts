@@ -1,10 +1,6 @@
 import * as Web3 from "web3";
 import {Artifacts} from "./contracts";
-
-declare type Address = string;
-declare type Bytes32 = string | BigNumber.BigNumber;
-declare type UInt = number | BigNumber.BigNumber;
-declare type ECDSASignature = [UInt, string, string];
+import {Address, UInt} from "./common";
 
 declare type ContractTest = (accounts: Address[]) => void;
 declare type ExecutionBlock = () => void;

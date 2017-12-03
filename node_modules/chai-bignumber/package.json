@@ -1,0 +1,38 @@
+{
+  "name": "chai-bignumber",
+  "version": "2.0.2",
+  "description": "Chai assertions for comparing arbitrary-precision decimals using the bignumber.js library",
+  "main": "chai-bignumber.js",
+  "scripts": {
+    "lint": "jshint *.js",
+    "test": "mocha test/*.js"
+  },
+  "devDependencies": {
+    "bignumber.js": "^4.0.2",
+    "chai": "^3.5.0",
+    "jshint": "^2.9.2",
+    "mocha": "^2.5.3"
+  },
+  "author": "António Marques <me@antoniomarques.eu>",
+  "license": "MIT",
+  "homepage": "https://github.com/asmarques/chai-bignumber",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/asmarques/chai-bignumber"
+  },
+  "keywords": [
+    "chai",
+    "chai-plugin",
+    "math",
+    "browser",
+    "test",
+    "arbitrary",
+    "precision",
+    "arithmetic",
+    "big",
+    "number",
+    "decimal",
+    "float",
+    "bignumber"
+  ]
+}

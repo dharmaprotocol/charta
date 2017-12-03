@@ -2,8 +2,8 @@ import * as BigNumber from "bignumber.js";
 import * as chai from "chai";
 import {DummyContractInstance,
     PermissionsLibraryContractInstance} from "../../types/contracts";
-import {chaiSetup} from "./utils/chai_setup.js";
-import {INVALID_OPCODE} from "./utils/constants.js";
+import {chaiSetup} from "./test_utils/chai_setup.js";
+import {INVALID_OPCODE} from "./test_utils/constants.js";
 
 chaiSetup.configure();
 const expect = chai.expect;

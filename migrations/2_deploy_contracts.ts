@@ -7,4 +7,6 @@ module.exports = (deployer: any) => {
   deployer.deploy(PermissionsLib);
   deployer.link(PermissionsLib, DummyContract);
   deployer.deploy(DummyContract);
+  deployer.link(PermissionsLib, DebtRegistry);
+  deployer.deploy(DebtRegistry);
 };

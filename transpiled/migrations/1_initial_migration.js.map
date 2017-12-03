@@ -1,0 +1,1 @@
+{"version":3,"file":"1_initial_migration.js","sourceRoot":"","sources":["../../migrations/1_initial_migration.ts"],"names":[],"mappings":"AAAA,MAAM,UAAU,GAAG,SAAS,CAAC,OAAO,CAAC,YAAY,CAAC,CAAC;AAEnD,MAAM,CAAC,OAAO,GAAG,CAAC,QAAa,EAAE,EAAE;IACjC,QAAQ,CAAC,MAAM,CAAC,UAAU,CAAC,CAAC;AAC9B,CAAC,CAAC"}

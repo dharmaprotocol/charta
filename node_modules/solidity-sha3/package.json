@@ -1,0 +1,41 @@
+{
+  "name": "solidity-sha3",
+  "version": "0.4.1",
+  "description": "Solidity sha3 in Javascript",
+  "license": "ISC",
+  "repository": "https://github.com/raineorshine/solidity-sha3",
+  "author": {
+    "name": "Raine Revere",
+    "email": "raineorshine@gmail.com",
+    "url": "https://github.com/raineorshine"
+  },
+  "engines": {
+    "node": ">=0.12.0"
+  },
+  "main": "dist",
+  "scripts": {
+    "test": "mocha --compilers js:babel-register",
+    "build": "babel -d dist src",
+    "postinstall": "npm run build",
+    "watch": "nodemon -w src -w test -x \"npm test\""
+  },
+  "keywords": [
+    "ethereum",
+    "solidity",
+    "sha",
+    "sha3",
+    "keccak"
+  ],
+  "devDependencies": {
+    "bignumber.js": "^2.4.0",
+    "chai": "*",
+    "mocha": "*"
+  },
+  "dependencies": {
+    "babel-cli": "*",
+    "babel-preset-es2015": "*",
+    "babel-register": "*",
+    "left-pad": "^1.1.1",
+    "web3": "^0.16.0"
+  }
+}
