@@ -1,5 +1,0 @@
-{
-  "extends": [
-    "tslint-config-0xproject"
-  ]
-}
