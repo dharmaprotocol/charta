@@ -444,6 +444,5 @@ contract("Debt Registry", (ACCOUNTS) => {
             });
         });
     });
-    
     // TODO: Add escape hatch tests
 });

@@ -34,12 +34,8 @@ npm test
 
 
 ### Contract Architecture
----------------
-
-1. [DebtRegistry.sol](https://github.com/dharmaprotocol/contracts/blob/master/contracts/LoanLib.sol)
-
-The "Debt Registry" is 
+A specification of the contracts comprising Dharma protocol's logic
+can be found in the [Dharma wiki]().
 
 
-
-Boilerplate migration code used by the truffle framework.
+### Contributing (TODO)
