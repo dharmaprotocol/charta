@@ -71,6 +71,7 @@ export interface Artifacts {
     require(name: "PermissionsLib"): Contract<PermissionsLibraryContractInstance>;
     require(name: "DummyContract"): Contract<DummyContractInstance>;
     require(name: "DebtRegistry"): Contract<DebtRegistryContractInstance>;
+    require(name: "DebtToken"): Contract<DebtTokenContractInstance>;
 }
 
 export interface MigrationsContractInstance extends ContractInstance {
@@ -142,4 +143,25 @@ export interface DebtRegistryContractInstance extends OwnableContractInstance {
     getAuthorizedInsertAgents(): Promise<Address[]>;
     getAuthorizedEditAgents(): Promise<Address[]>;
     get(entryHash: Bytes32, options?: TransactionOptions): Promise<any>;
+}
+
+export interface NonFungibleTokenContractInstance extends ContractInstance {
+    name(): Promise<string>;
+    symbol(): Promise<string>;
+    totalSupply(): Promise<UInt>;
+    balanceOf(owner: Address): Promise<UInt>;
+    ownerOf(tokenId: UInt): Promise<Address>;
+    isERC721(): Promise<boolean>;
+    approve(to: Address, tokenId: UInt, options?: TransactionOptions):
+        Promise<TransactionReturnPayload>;
+    transfer(to: Address, tokenId: UInt, options?: TransactionOptions):
+        Promise<TransactionReturnPayload>;
+    transferFrom(from: Address, to: Address, tokenId: UInt, options?: TransactionOptions):
+        Promise<TransactionReturnPayload>;
+    tokenOfOwnerByIndex(owner: Address, index: UInt): Promise<UInt>;
+    tokenMetadata(tokenId: UInt): Promise<string>;
+}
+
+export interface DebtTokenContractInstance extends NonFungibleTokenContractInstance {
+    getTermsContract(): Promise<Address>;
 }
