@@ -1,6 +1,6 @@
 import * as Web3 from "web3";
-import {Artifacts} from "./contracts";
 import {Address, UInt} from "./common";
+import {Artifacts} from "./contracts";
 
 declare type ContractTest = (accounts: Address[]) => void;
 declare type ExecutionBlock = () => void;

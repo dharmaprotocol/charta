@@ -35,7 +35,4 @@ npm test
 
 ### Contract Architecture
 A specification of the contracts comprising Dharma protocol's logic
-can be found in the [Dharma wiki]().
-
-
-### Contributing (TODO)
+can be found in the [Dharma wiki](https://github.com/dharmaprotocol/charta/wiki).
