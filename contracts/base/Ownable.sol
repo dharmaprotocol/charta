@@ -10,6 +10,9 @@ pragma solidity 0.4.18;
 contract Ownable {
     address public owner;
 
+    // transfer ownership event
+    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+
     function Ownable() public {
         owner = msg.sender;
     }
@@ -20,8 +23,8 @@ contract Ownable {
     }
 
     function transferOwnership(address newOwner) public onlyOwner {
-        if (newOwner != address(0)) {
-            owner = newOwner;
-        }
+        require(newOwner != address(0));
+        OwnershipTransferred(owner, newOwner);
+        owner = newOwner;
     }
 }
