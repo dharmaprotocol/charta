@@ -18,8 +18,9 @@
 
 pragma solidity 0.4.18;
 
-import "./DebtToken.sol";
+import "./ERC20Token.sol";
 import "./DebtRegistry.sol";
+import "./TermsContract.sol";
 
 contract RepaymentRouter {
 
@@ -37,9 +38,7 @@ contract RepaymentRouter {
     debtRegistry = DebtRegistry(_debtRegistry);
   }
 
-  function repay(bytes32 entryHash, uint amount, address token)
-    public
-  {
+  function repay(bytes32 entryHash, uint amount, address token) public {
     require(token != address(0));
     require(amount > 0);
 
@@ -48,12 +47,12 @@ contract RepaymentRouter {
     require(creditor != address(0));
 
     // Transfer amount to creditor
-    DebtToken debtToken = DebtToken(token);
-    debtToken.transferFrom(msg.sender, creditor, amount);
+    ERC20Token tokenInstance = ERC20Token(token);
+    require(tokenInstance.transferFrom(msg.sender, creditor, amount));
 
     // Notify terms contract
-    // TermsContract termsContract = TermsContract(termsContract);
-    // termsContract.registerRepayment(msg.sender, termsContractParameters, amount, token);
+    TermsContract termsContractInstance = TermsContract(termsContract);
+    termsContractInstance.registerRepayment(msg.sender, termsContractParameters, amount, token);
 
     // Log event for repayment
     LogRepayment(entryHash, msg.sender, creditor, amount, token);
