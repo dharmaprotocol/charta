@@ -56,8 +56,8 @@ contract RepaymentRouter {
     require(creditor != address(0));
 
     // check if terms contract param is same as registry record
-    bytes32 params = debtRegistry.getTermsContractParametersHash(entryHash);
-    require(params == keccak256(termsContractParameters));
+    bytes32 paramsHash = debtRegistry.getTermsContractParametersHash(entryHash);
+    require(paramsHash == keccak256(termsContractParameters));
 
     // Transfer amount to creditor
     ERC20Token tokenInstance = ERC20Token(token);
@@ -79,8 +79,8 @@ contract RepaymentRouter {
     require(creditor != address(0));
 
     // check if terms contract param is same as registry record
-    bytes32 params = debtRegistry.getTermsContractParametersHash(entryHash);
-    require(params == keccak256(termsContractParameters));
+    bytes32 paramsHash = debtRegistry.getTermsContractParametersHash(entryHash);
+    require(paramsHash == keccak256(termsContractParameters));
 
     // Transfer NFT to creditor
     NonFungibleToken tokenInstance = NonFungibleToken(token);
