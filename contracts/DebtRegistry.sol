@@ -186,6 +186,14 @@ contract DebtRegistry is Ownable {
         return entryEditPermissions.getAuthorizedAgents();
     }
 
+    function getTermsContractParametersHash(bytes32 entryHash)
+        public
+        constant
+        returns(bytes32)
+    {
+        return keccak256(registry[entryHash].termsContractParameters);
+    }
+
     function getEntryHash(Entry _entry, uint _salt)
         internal
         pure

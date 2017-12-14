@@ -20,11 +20,11 @@ pragma solidity 0.4.18;
 
 
 interface NonFungibleToken {
-    function name() public constant returns (string name);
-    function symbol() public constant returns (string symbol);
-    function totalSupply() public constant returns (uint totalSupply);
-    function balanceOf() public constant returns (uint balance);
-    function ownerOf(uint tokenId) public constant returns (address owner);
+    function name() public constant returns (string _name);
+    function symbol() public constant returns (string _symbol);
+    function totalSupply() public constant returns (uint _totalSupply);
+    function balanceOf() public constant returns (uint _balance);
+    function ownerOf(uint tokenId) public constant returns (address _owner);
     function approve(address to, uint tokenId) public;
     function transferFrom(address from, address to, uint tokenId) public;
     function transfer(address to, uint tokenId) public;

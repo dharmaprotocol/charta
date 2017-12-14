@@ -33,6 +33,10 @@ class DebtRegistryEntry {
     getTermsContractParameters() {
         return this.params.termsContractParameters;
     }
+    getTermsContractParametersHash() {
+        const termsContractParametersHash = solidity.SHA3([this.params.termsContractParameters]);
+        return ethUtil.bufferToHex(termsContractParametersHash);
+    }
     getSalt() {
         return this.salt;
     }

@@ -49,6 +49,11 @@ export class DebtRegistryEntry {
         return this.params.termsContractParameters;
     }
 
+    public getTermsContractParametersHash(): string {
+        const termsContractParametersHash =  solidity.SHA3([this.params.termsContractParameters]);
+        return ethUtil.bufferToHex(termsContractParametersHash);
+    }
+
     public getSalt(): UInt {
         return this.salt;
     }

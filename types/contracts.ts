@@ -142,7 +142,8 @@ export interface DebtRegistryContractInstance extends OwnableContractInstance {
         Promise<TransactionReturnPayload>;
     getAuthorizedInsertAgents(): Promise<Address[]>;
     getAuthorizedEditAgents(): Promise<Address[]>;
-    get(entryHash: Bytes32, options?: TransactionOptions): Promise<any>;
+    get(entryHash: Bytes32): Promise<any>;
+    getTermsContractParametersHash(entryHash: Bytes32): Promise<Bytes32>;
 }
 
 export interface NonFungibleTokenContractInstance extends ContractInstance {

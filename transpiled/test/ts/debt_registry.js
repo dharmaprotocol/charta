@@ -126,6 +126,10 @@ contract("Debt Registry", (ACCOUNTS) => {
                     entry.getTermsContractParameters(),
                 ]);
             }));
+            it("should return the correctly hashed terms contract parameters", () => __awaiter(this, void 0, void 0, function* () {
+                yield expect(registry.getTermsContractParametersHash(entry.getEntryHash()))
+                    .to.eventually.equal(entry.getTermsContractParametersHash());
+            }));
             it("should throw when first agent tries editing entry", () => __awaiter(this, void 0, void 0, function* () {
                 yield expect(modifyEntryCreditorFn(entry, AGENT_1, { from: AGENT_1 }))
                     .to.eventually.be.rejectedWith(constants_1.REVERT_ERROR);
