@@ -182,6 +182,11 @@ contract("Debt Registry", (ACCOUNTS) => {
                 ]);
             });
 
+            it("should return the correctly hashed terms contract parameters", async () => {
+                await expect(registry.getTermsContractParametersHash(entry.getEntryHash()))
+                    .to.eventually.equal(entry.getTermsContractParametersHash());
+            });
+
             it("should throw when first agent tries editing entry", async () => {
                 await expect(modifyEntryCreditorFn(entry, AGENT_1, { from: AGENT_1 }))
                     .to.eventually.be.rejectedWith(REVERT_ERROR);

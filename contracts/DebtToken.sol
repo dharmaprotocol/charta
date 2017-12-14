@@ -22,16 +22,18 @@ import "./base/NonFungibleToken.sol";
 
 
 contract DebtToken is NonFungibleToken {
-    string public constant NAME = "DebtToken";
+    string public constant NAME  = "DebtToken";
     string public constant SYMBOL = "DDT";
+
+    uint public totalSupply;
 
     function name() public constant returns (string _name);
     function symbol() public constant returns (string _symbol);
     function totalSupply() public constant returns (uint _totalSupply);
-    function balanceOf() public constant returns (uint balance);
-    function ownerOf(uint tokenId) public constant returns (address owner);
+    function balanceOf() public constant returns (uint _balance);
+    function ownerOf(uint tokenId) public constant returns (address _owner);
     function approve(address to, uint tokenId) public;
     function transferFrom(address from, address to, uint tokenId) public;
     function transfer(address to, uint tokenId) public;
-    function tokenOfOwnerByIndex(address owner, uint index) public constant returns (uint tokenId);
+    function tokenOfOwnerByIndex(address owner, uint index) public constant returns (uint _tokenId);
 }
