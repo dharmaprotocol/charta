@@ -23,74 +23,75 @@ import "./base/NonFungibleToken.sol";
 import "./DebtRegistry.sol";
 import "./TermsContract.sol";
 
+
 contract RepaymentRouter {
+    DebtRegistry public debtRegistry;
 
-  DebtRegistry public debtRegistry;
+    event LogRepayment(
+        bytes32 indexed entryHash,
+        address indexed from,
+        address indexed creditor,
+        uint amount,
+        address token
+    );
 
-  event LogRepayment(
-    bytes32 indexed entryHash,
-    address indexed from,
-    address indexed creditor,
-    uint amount,
-    address token
-  );
+    event LogNFTRepayment(
+        bytes32 indexed entryHash,
+        address indexed from,
+        address indexed creditor,
+        uint tokenId,
+        address token
+    );
 
-  event LogNFTRepayment(
-    bytes32 indexed entryHash,
-    address indexed from,
-    address indexed creditor,
-    uint tokenId,
-    address token
-  );
+    function RepaymentRouter (address _debtRegistry) public {
+        debtRegistry = DebtRegistry(_debtRegistry);
+    }
 
-  function RepaymentRouter (address _debtRegistry) public {
-    debtRegistry = DebtRegistry(_debtRegistry);
-  }
+    function repay(bytes32 entryHash, string termsContractParameters, uint256 amount, address token) public {
+        require(token != address(0));
+        require(amount > 0);
 
-  function repay(bytes32 entryHash, string termsContractParameters, uint256 amount, address token) public {
-    require(token != address(0));
-    require(amount > 0);
+        // Get registry entry and check if entry is valid
+        var (, creditor, termsContract,) = debtRegistry.get(entryHash);
+        require(creditor != address(0));
 
-    // Get registry entry and check if entry is valid
-    var (, creditor, termsContract,) = debtRegistry.get(entryHash);
-    require(creditor != address(0));
+        // check if terms contract param is same as registry record
+        bytes32 paramsHash = debtRegistry.getTermsContractParametersHash(entryHash);
+        require(paramsHash == keccak256(termsContractParameters));
 
-    // check if terms contract param is same as registry record
-    bytes32 paramsHash = debtRegistry.getTermsContractParametersHash(entryHash);
-    require(paramsHash == keccak256(termsContractParameters));
+        // Transfer amount to creditor
+        ERC20Token tokenInstance = ERC20Token(token);
+        require(tokenInstance.transferFrom(msg.sender, creditor, amount));
 
-    // Transfer amount to creditor
-    ERC20Token tokenInstance = ERC20Token(token);
-    require(tokenInstance.transferFrom(msg.sender, creditor, amount));
+        // Notify to terms contract
+        TermsContract termsContractInstance = TermsContract(termsContract);
+        termsContractInstance.registerRepayment(msg.sender, termsContractParameters, amount, token);
 
-    // Notify to terms contract
-    TermsContract termsContractInstance = TermsContract(termsContract);
-    termsContractInstance.registerRepayment(msg.sender, termsContractParameters, amount, token);
+        // Log event for repayment
+        LogRepayment(entryHash, msg.sender, creditor, amount, token);
+    }
 
-    // Log event for repayment
-    LogRepayment(entryHash, msg.sender, creditor, amount, token);
-  }
+    function repayNFT(bytes32 entryHash, string termsContractParameters, uint256 tokenId, address token) public {
+        require(token != address(0));
 
-  function repayNFT(bytes32 entryHash, string termsContractParameters, uint256 tokenId, address token) public {
-    require(token != address(0));
+        // Get registry entry and check if entry is valid
+        var (, creditor, termsContract,) = debtRegistry.get(entryHash);
+        require(creditor != address(0));
 
-    // Get registry entry and check if entry is valid
-    var (, creditor, termsContract,) = debtRegistry.get(entryHash);
-    require(creditor != address(0));
+        // check if terms contract param is same as registry record
+        bytes32 paramsHash = debtRegistry.getTermsContractParametersHash(entryHash);
+        require(paramsHash == keccak256(termsContractParameters));
 
-    // check if terms contract param is same as registry record
-    bytes32 paramsHash = debtRegistry.getTermsContractParametersHash(entryHash);
-    require(paramsHash == keccak256(termsContractParameters));
+        // Transfer NFT to creditor
+        NonFungibleToken tokenInstance = NonFungibleToken(token);
+        require(tokenInstance.implementsERC721());
+        tokenInstance.transferFrom(msg.sender, creditor, tokenId);
 
-    // Transfer NFT to creditor
-    NonFungibleToken tokenInstance = NonFungibleToken(token);
-    tokenInstance.transferFrom(msg.sender, creditor, tokenId);
+        // Notify to terms contract
+        TermsContract termsContractInstance = TermsContract(termsContract);
+        termsContractInstance.registerNFTRepayment(msg.sender, termsContractParameters, tokenId, token);
 
-    // Notify to terms contract
-    TermsContract termsContractInstance = TermsContract(termsContract);
-    termsContractInstance.registerNFTRepayment(msg.sender, termsContractParameters, tokenId, token);
-
-    // Log event for repayment
-    LogNFTRepayment(entryHash, msg.sender, creditor, tokenId, token);
-  }
+        // Log event for repayment
+        LogNFTRepayment(entryHash, msg.sender, creditor, tokenId, token);
+    }
 }

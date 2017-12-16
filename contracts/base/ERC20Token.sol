@@ -1,5 +1,6 @@
 pragma solidity ^0.4.18;
 
+
 /// @title ERC20 Token contract - Functions to be implemented by token contracts.
 contract ERC20Token {
     /*
