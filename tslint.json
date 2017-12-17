@@ -1,8 +1,6 @@
 {
-    "extends": [
-        "tslint:latest"
-    ],
-    "rules": {
-        "interface-name": false
-    }
+  "extends": ["tslint:latest"],
+  "rules": {
+    "interface-name": false
+  }
 }

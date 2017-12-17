@@ -29,4 +29,5 @@ interface NonFungibleToken {
     function transferFrom(address from, address to, uint tokenId) public;
     function transfer(address to, uint tokenId) public;
     function tokenOfOwnerByIndex(address owner, uint index) public constant returns (uint tokenId);
+    function implementsERC721() public constant returns (bool);
 }
