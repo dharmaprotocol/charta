@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "lib": [ "es2015" ],
     "outDir": "./transpiled/",
     "sourceMap": true,
     "noImplicitAny": true,
@@ -12,8 +13,8 @@
     "node_modules/web3-typescript-typings/index.d.ts",
     "node_modules/types-ethereumjs-util/index.d.ts",
     "node_modules/types-bn/index.d.ts",
-    "types/*.d.ts",
-    "types/**/*.d.ts",
+    "types/*.ts",
+    "types/**/*.ts",
     "test/**/*.ts",
     "migrations/*.ts"
   ]

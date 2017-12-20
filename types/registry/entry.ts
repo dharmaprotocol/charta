@@ -1,4 +1,5 @@
 import BigNumber from "bignumber.js";
+import * as ABIDecoder from "abi-decoder";
 import * as crypto from "crypto";
 import ethUtil = require("ethereumjs-util");
 import * as _ from "lodash";
@@ -7,16 +8,16 @@ import {
     Address,
     Bytes32,
     Log,
-    UInt,
+    UInt
 } from "../common";
 import {LogInsertEntry} from "./logs";
 import {RegistryEntryParameters, SemanticVersion} from "./schema";
 
 export class DebtRegistryEntry {
     private params: RegistryEntryParameters;
-    private salt: UInt;
+    private salt: BigNumber;
 
-    public constructor(params: RegistryEntryParameters, salt?: UInt) {
+    public constructor(params: RegistryEntryParameters, salt?: BigNumber) {
         this.params = params;
         this.salt = salt || this.generateSalt();
     }
@@ -37,7 +38,7 @@ export class DebtRegistryEntry {
         return this.params.creditor;
     }
 
-    public getVersion(): SemanticVersion {
+    public getVersion(): Address {
         return this.params.version;
     }
 
@@ -54,12 +55,13 @@ export class DebtRegistryEntry {
         return ethUtil.bufferToHex(termsContractParametersHash);
     }
 
-    public getSalt(): UInt {
+    public getSalt(): BigNumber {
         return this.salt;
     }
 
-    public getLogInsertEntry(): Log {
+    public getLogInsertEntry(contractAddress: Address): ABIDecoder.DecodedLog {
         return LogInsertEntry(
+            contractAddress,
             this.getEntryHash(),
             this.getCreditor(),
             this.getTermsContract(),
@@ -67,7 +69,7 @@ export class DebtRegistryEntry {
         );
     }
 
-    private generateSalt(): UInt {
+    private generateSalt(): BigNumber {
         const saltBuffer = crypto.randomBytes(32);
         const saltBufferHex = ethUtil.bufferToHex(saltBuffer);
         return new BigNumber(saltBufferHex);

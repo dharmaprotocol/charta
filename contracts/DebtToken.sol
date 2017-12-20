@@ -18,22 +18,28 @@
 
 pragma solidity 0.4.18;
 
-import "./base/NonFungibleToken.sol";
+import "./DebtRegistry.sol";
+import "./base/Ownable.sol";
+import "NonFungibleToken/contracts/NonFungibleToken.sol";
 
 
-contract DebtToken is NonFungibleToken {
-    string public constant NAME  = "DebtToken";
-    string public constant SYMBOL = "DDT";
+contract DebtToken is NonFungibleToken, Ownable {
+    string public name  = "DebtToken";
+    string public symbol = "DDT";
 
-    uint public totalSupply;
+    DebtRegistry public registry;
 
-    function name() public constant returns (string _name);
-    function symbol() public constant returns (string _symbol);
-    function totalSupply() public constant returns (uint _totalSupply);
-    function balanceOf() public constant returns (uint _balance);
-    function ownerOf(uint tokenId) public constant returns (address _owner);
-    function approve(address to, uint tokenId) public;
-    function transferFrom(address from, address to, uint tokenId) public;
-    function transfer(address to, uint tokenId) public;
-    function tokenOfOwnerByIndex(address owner, uint index) public constant returns (uint _tokenId);
+    function DebtToken(address _registry)
+        public
+    {
+        registry = DebtRegistry(_registry);
+    }
+
+    function totalSupply()
+        public
+        view
+        returns (uint _totalSupply)
+    {
+        return registry.numEntries();
+    }
 }

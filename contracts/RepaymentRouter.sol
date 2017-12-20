@@ -18,10 +18,10 @@
 
 pragma solidity 0.4.18;
 
-import "./base/ERC20Token.sol";
-import "./base/NonFungibleToken.sol";
 import "./DebtRegistry.sol";
 import "./TermsContract.sol";
+import "zeppelin-solidity/contracts/token/ERC20.sol";
+import "NonFungibleToken/contracts/ERC721.sol";
 
 
 contract RepaymentRouter {
@@ -60,7 +60,7 @@ contract RepaymentRouter {
         require(paramsHash == keccak256(termsContractParameters));
 
         // Transfer amount to creditor
-        ERC20Token tokenInstance = ERC20Token(token);
+        ERC20 tokenInstance = ERC20(token);
         require(tokenInstance.transferFrom(msg.sender, creditor, amount));
 
         // Notify to terms contract
@@ -83,7 +83,7 @@ contract RepaymentRouter {
         require(paramsHash == keccak256(termsContractParameters));
 
         // Transfer NFT to creditor
-        NonFungibleToken tokenInstance = NonFungibleToken(token);
+        ERC721 tokenInstance = ERC721(token);
         require(tokenInstance.implementsERC721());
         tokenInstance.transferFrom(msg.sender, creditor, tokenId);
 

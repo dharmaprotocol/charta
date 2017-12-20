@@ -1,11 +1,16 @@
 import * as BigNumber from "bignumber.js";
 import * as chai from "chai";
-import {Address, Log} from "../../types/common";
+import * as Web3 from "web3";
+import * as ABIDecoder from "abi-decoder";
+
 import {
-    DebtRegistryContractInstance,
-    TransactionOptions,
-    TransactionReturnPayload,
-} from "../../types/contracts";
+    Address,
+    UInt,
+    Bytes32,
+    TxData,
+    TxDataPayable,
+} from "../../types/common";
+import {DebtRegistryContract} from "../../types/debt_registry";
 import {DebtRegistryEntry} from "../../types/registry/entry";
 import {
     LogAddAuthorizedEditAgent,
@@ -14,15 +19,24 @@ import {
     LogRevokeEditAgentAuthorization,
     LogRevokeInsertAgentAuthorization,
 } from "../../types/registry/logs";
-import {chaiSetup} from "./test_utils/chai_setup.js";
+import {BigNumberSetup} from "./test_utils/bignumber_setup";
+import {chaiSetup} from "./test_utils/chai_setup";
 import {INVALID_OPCODE, REVERT_ERROR} from "./test_utils/constants";
 
+// Set up Chai
 chaiSetup.configure();
 const expect = chai.expect;
 
+// Configure BigNumber exponentiation
+BigNumberSetup.configure();
+
+const repaymentRouterContract = artifacts.require("RepaymentRouter");
 const debtRegistryContract = artifacts.require("DebtRegistry");
 
-contract("Debt Registry", (ACCOUNTS) => {
+// Initialize ABI Decoder for deciphering log receipts
+ABIDecoder.addABI(debtRegistryContract.abi);
+
+contract("Debt Registry", async (ACCOUNTS) => {
     const CONTRACT_OWNER = ACCOUNTS[0];
 
     // We choose arbitrary addresses to represent data fields in the registry
@@ -42,26 +56,42 @@ contract("Debt Registry", (ACCOUNTS) => {
     const ATTACKER = ACCOUNTS[8];
     const NEW_CONTRACT_OWNER = ACCOUNTS[9];
 
-    let registry: DebtRegistryContractInstance;
+    let registry: DebtRegistryContract;
     let termsContractAddress: Address;
 
     // We define utility funcitons for the primary state-changing
     // operations permitted on the registry.
     let generateEntryFn: () => DebtRegistryEntry;
     let insertEntryFn: (entry: DebtRegistryEntry,
-                        options?: TransactionOptions)
-        => Promise<TransactionReturnPayload>;
+                        options?: TxDataPayable)
+        => Promise<string>;
     let modifyEntryCreditorFn: (entry: DebtRegistryEntry,
                                 newOwner: Address,
-                                options?: TransactionOptions)
-        => Promise<TransactionReturnPayload>;
+                                options?: TxDataPayable)
+        => Promise<string>;
 
     const ARBITRARY_TERMS_CONTRACT_PARAMS
         = "arbitrary terms contract param string";
+    const NULL_ADDRESS = "0x0000000000000000000000000000000000000000";
+    const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
 
     before(async () => {
-        registry = await debtRegistryContract.deployed();
-        termsContractAddress = registry.address;
+        const truffleContract = await debtRegistryContract.deployed();
+
+        // The typings we use ingest vanilla Web3 contracts, so we convert the
+        // contract instance deployed by truffle into a Web3 contract instance
+        const registryWeb3Contract = web3.eth
+            .contract(debtRegistryContract.abi).at(truffleContract.address);
+
+        registry = new DebtRegistryContract(registryWeb3Contract, TX_DEFAULTS);
+
+        // TODO: Replace with example terms contract
+        termsContractAddress = NULL_ADDRESS;
+
+        // The version of an entry is mapped to the address of
+        // the current RepaymentRouter used in the debt agreement
+        const repaymentRouter = await repaymentRouterContract.deployed();
+        const VERSION = repaymentRouter.address;
 
         // DebtRegistryEntries are given a random salt on construction --
         // we use the following function to generate arbitrary
@@ -71,13 +101,13 @@ contract("Debt Registry", (ACCOUNTS) => {
                 creditor: CREDITOR_1,
                 termsContract: TERMS_CONTRACT_ADDRESS,
                 termsContractParameters: "arbitrary terms contract param string",
-                version: "0.1.0",
+                version: VERSION,
             });
         };
 
         insertEntryFn = async (entry: DebtRegistryEntry,
-                               options?: TransactionOptions) => {
-            return registry.insert(
+                               options?: TxDataPayable) => {
+            return registry.insert.sendTransactionAsync(
                 entry.getVersion(),
                 entry.getCreditor(),
                 entry.getTermsContract(),
@@ -89,8 +119,8 @@ contract("Debt Registry", (ACCOUNTS) => {
 
         modifyEntryCreditorFn = async (entry: DebtRegistryEntry,
                                        newCreditor: Address,
-                                       options?: TransactionOptions) => {
-            return registry.modifyCreditor(
+                                       options?: TxDataPayable) => {
+            return registry.modifyCreditor.sendTransactionAsync(
                 entry.getEntryHash(),
                 newCreditor,
                 options,
@@ -112,41 +142,45 @@ contract("Debt Registry", (ACCOUNTS) => {
 
     describe("owner authorizes agent(s) for inserting entries", () => {
         describe("first agent", () => {
-            let res: TransactionReturnPayload;
+            let res: Web3.TransactionReceipt;
 
             before(async () => {
-                res = await registry.addAuthorizedInsertAgent(AGENT_1);
+                const txHash = await registry.addAuthorizedInsertAgent
+                    .sendTransactionAsync(AGENT_1);
+                res = await web3.eth.getTransactionReceipt(txHash);
             });
 
             it("should emit log saying first agent authorized", async () => {
-                const logReturned = res.logs[0] as Log;
-                const logExpected = LogAddAuthorizedInsertAgent(AGENT_1) as Log;
+                const [logReturned] = ABIDecoder.decodeLogs(res.logs);
+                const logExpected = LogAddAuthorizedInsertAgent(registry.address, AGENT_1);
 
-                expect(logReturned).to.solidityLogs.equal(logExpected);
+                expect(logReturned).to.deep.equal(logExpected);
             });
 
             it("should return first agent as authorized", async () => {
-                await expect(registry.getAuthorizedInsertAgents())
+                await expect(registry.getAuthorizedInsertAgents.callAsync())
                     .to.eventually.deep.equal([AGENT_1]);
             });
         });
 
         describe("second agent", () => {
-            let res: TransactionReturnPayload;
+            let res: Web3.TransactionReceipt;
 
             before(async () => {
-                res = await registry.addAuthorizedInsertAgent(AGENT_2);
+                const txHash = await registry.addAuthorizedInsertAgent
+                    .sendTransactionAsync(AGENT_2);
+                res = await web3.eth.getTransactionReceipt(txHash);
             });
 
             it("should emit log saying second agent authorized", async () => {
-                const logReturned = res.logs[0] as Log;
-                const logExpected = LogAddAuthorizedInsertAgent(AGENT_2) as Log;
+                const [logReturned] = ABIDecoder.decodeLogs(res.logs);
+                const logExpected = LogAddAuthorizedInsertAgent(registry.address, AGENT_2);
 
-                expect(logReturned).to.solidityLogs.equal(logExpected);
+                expect(logReturned).to.deep.equal(logExpected);
             });
 
             it("should return both first and second agents authorized", async () => {
-                await expect(registry.getAuthorizedInsertAgents())
+                await expect(registry.getAuthorizedInsertAgents.callAsync())
                     .to.eventually.deep.equal([AGENT_1, AGENT_2]);
             });
         });
@@ -157,23 +191,24 @@ contract("Debt Registry", (ACCOUNTS) => {
         });
 
         describe("first agent inserts new entry into registry", () => {
-            let res: TransactionReturnPayload;
+            let res: Web3.TransactionReceipt;
             let entry: DebtRegistryEntry;
 
             before(async () => {
                 entry = generateEntryFn();
-                res = await insertEntryFn(entry, { from: AGENT_1 });
+                const txHash = await insertEntryFn(entry, { from: AGENT_1 });
+                res = await web3.eth.getTransactionReceipt(txHash);
             });
 
             it("should emit a log saying the debt is inserted", async () => {
-                const logReturned = res.logs[0] as Log;
-                const logExpected = entry.getLogInsertEntry() as Log;
+                const [logReturned] = ABIDecoder.decodeLogs(res.logs);
+                const logExpected = entry.getLogInsertEntry(registry.address);
 
-                expect(logReturned).to.solidityLogs.equal(logExpected);
+                expect(logReturned).to.deep.equal(logExpected);
             });
 
             it("should make entry retrievable by its hash", async () => {
-                await expect(registry.get(entry.getEntryHash()))
+                await expect(registry.get.callAsync(entry.getEntryHash()))
                     .to.eventually.deep.equal([
                         entry.getVersion(),
                         entry.getCreditor(),
@@ -183,7 +218,7 @@ contract("Debt Registry", (ACCOUNTS) => {
             });
 
             it("should return the correctly hashed terms contract parameters", async () => {
-                await expect(registry.getTermsContractParametersHash(entry.getEntryHash()))
+                await expect(registry.getTermsContractParametersHash.callAsync(entry.getEntryHash()))
                     .to.eventually.equal(entry.getTermsContractParametersHash());
             });
 
@@ -194,23 +229,24 @@ contract("Debt Registry", (ACCOUNTS) => {
         });
 
         describe("second agent inserts new entry into registry", () => {
-            let res: TransactionReturnPayload;
+            let res: Web3.TransactionReceipt;
             let entry: DebtRegistryEntry;
 
             before(async () => {
                 entry = generateEntryFn();
-                res = await insertEntryFn(entry, { from: AGENT_2 });
+                const txHash = await insertEntryFn(entry, { from: AGENT_2 });
+                res = await web3.eth.getTransactionReceipt(txHash);
             });
 
             it("should emit a log saying the debt is inserted", async () => {
-                const logReturned = res.logs[0] as Log;
-                const logExpected = entry.getLogInsertEntry() as Log;
+                const [logReturned] = ABIDecoder.decodeLogs(res.logs);
+                const logExpected = entry.getLogInsertEntry(registry.address);
 
-                expect(logReturned).to.solidityLogs.equal(logExpected);
+                expect(logReturned).to.deep.equal(logExpected);
             });
 
             it("should make entry retrievable by its hash", async () => {
-                await expect(registry.get(entry.getEntryHash()))
+                await expect(registry.get.callAsync(entry.getEntryHash()))
                     .to.eventually.deep.equal([
                         entry.getVersion(),
                         entry.getCreditor(),
@@ -227,41 +263,43 @@ contract("Debt Registry", (ACCOUNTS) => {
 
         describe("owner authorizes agent(s) for editing entries", () => {
             describe("third agent", () => {
-                let res: TransactionReturnPayload;
+                let res: Web3.TransactionReceipt;
 
                 before(async () => {
-                    res = await registry.addAuthorizedEditAgent(AGENT_3);
+                    const txHash = await registry.addAuthorizedEditAgent.sendTransactionAsync(AGENT_3);
+                    res = await web3.eth.getTransactionReceipt(txHash);
                 });
 
                 it("should emit log saying third agent authorized", async () => {
-                    const logReturned = res.logs[0] as Log;
-                    const logExpected = LogAddAuthorizedEditAgent(AGENT_3) as Log;
+                    const [logReturned] = ABIDecoder.decodeLogs(res.logs);
+                    const logExpected = LogAddAuthorizedEditAgent(registry.address, AGENT_3);
 
-                    expect(logReturned).to.solidityLogs.equal(logExpected);
+                    expect(logReturned).to.deep.equal(logExpected);
                 });
 
                 it("should return first agent as authorized", async () => {
-                    await expect(registry.getAuthorizedEditAgents())
+                    await expect(registry.getAuthorizedEditAgents.callAsync())
                         .to.eventually.deep.equal([AGENT_3]);
                 });
             });
 
             describe("fourth agent", () => {
-                let res: TransactionReturnPayload;
+                let res: Web3.TransactionReceipt;
 
                 before(async () => {
-                    res = await registry.addAuthorizedEditAgent(AGENT_4);
+                    const txHash = await registry.addAuthorizedEditAgent.sendTransactionAsync(AGENT_4);
+                    res = await web3.eth.getTransactionReceipt(txHash);
                 });
 
                 it("should emit log saying third agent authorized", async () => {
-                    const logReturned = res.logs[0] as Log;
-                    const logExpected = LogAddAuthorizedEditAgent(AGENT_4) as Log;
+                    const [logReturned] = ABIDecoder.decodeLogs(res.logs);
+                    const logExpected = LogAddAuthorizedEditAgent(registry.address, AGENT_4);
 
-                    expect(logReturned).to.solidityLogs.equal(logExpected);
+                    expect(logReturned).to.deep.equal(logExpected);
                 });
 
                 it("should return first agent as authorized", async () => {
-                    await expect(registry.getAuthorizedEditAgents())
+                    await expect(registry.getAuthorizedEditAgents.callAsync())
                         .to.eventually.deep.equal([AGENT_3, AGENT_4]);
                 });
             });
@@ -274,60 +312,64 @@ contract("Debt Registry", (ACCOUNTS) => {
             });
 
             describe("third agent edits existing entry in registry", () => {
-                let res: TransactionReturnPayload;
+                let res: Web3.TransactionReceipt;
                 let entry: DebtRegistryEntry;
 
                 before(async () => {
                     entry = generateEntryFn();
                     await insertEntryFn(entry, { from: AGENT_1 });
-                    res = await modifyEntryCreditorFn(entry,
+                    const txHash = await modifyEntryCreditorFn(entry,
                         CREDITOR_2, { from: AGENT_3 });
+                    res = await web3.eth.getTransactionReceipt(txHash);
                 });
 
                 it("should emit a log saying the debt is edited", () => {
-                    const logReturned = res.logs[0] as Log;
+                    const [logReturned] = ABIDecoder.decodeLogs(res.logs);
                     const logExpected = LogModifyEntryCreditor(
+                        registry.address,
                         entry.getEntryHash(),
                         entry.getCreditor(),
                         CREDITOR_2,
-                    ) as Log;
+                    );
 
-                    expect(logReturned).to.solidityLogs.equal(logExpected);
+                    expect(logReturned).to.deep.equal(logExpected);
                 });
 
                 it("should reflect changes in stored entry", async () => {
                     const returnedEntry =
-                        await registry.get(entry.getEntryHash());
+                        await registry.get.callAsync(entry.getEntryHash());
                     const creditor = returnedEntry[1];
                     expect(creditor).to.equal(CREDITOR_2);
                 });
             });
 
             describe("fourth agent edits existing entry in registry", () => {
-                let res: TransactionReturnPayload;
+                let res: Web3.TransactionReceipt;
                 let entry: DebtRegistryEntry;
 
                 before(async () => {
                     entry = generateEntryFn();
                     await insertEntryFn(entry, { from: AGENT_1 });
-                    res = await modifyEntryCreditorFn(entry,
+                    const txHash = await modifyEntryCreditorFn(entry,
                         CREDITOR_2, { from: AGENT_4 });
+                    res = await web3.eth.getTransactionReceipt(txHash);
                 });
 
                 it("should emit a log saying the debt is edited", () => {
-                    const logReturned = res.logs[0] as Log;
+                    const [logReturned] = ABIDecoder.decodeLogs(res.logs);
                     const logExpected = LogModifyEntryCreditor(
+                        registry.address,
                         entry.getEntryHash(),
                         entry.getCreditor(),
                         CREDITOR_2,
-                    ) as Log;
+                    );
 
-                    expect(logReturned).to.solidityLogs.equal(logExpected);
+                    expect(logReturned).to.deep.equal(logExpected);
                 });
 
                 it("should reflect changes in stored entry", async () => {
                     const returnedEntry =
-                        await registry.get(entry.getEntryHash());
+                        await registry.get.callAsync(entry.getEntryHash());
                     const creditor = returnedEntry[1];
                     expect(creditor).to.equal(CREDITOR_2);
                 });
@@ -345,23 +387,24 @@ contract("Debt Registry", (ACCOUNTS) => {
         });
 
         describe("owner revokes second agent from inserting entries", () => {
-            let res: TransactionReturnPayload;
+            let res: Web3.TransactionReceipt;
 
             before(async () => {
-                res = await registry.revokeInsertAgentAuthorization(AGENT_2,
+                const txHash = await registry.revokeInsertAgentAuthorization.sendTransactionAsync(AGENT_2,
                     { from: CONTRACT_OWNER});
+                res = await web3.eth.getTransactionReceipt(txHash);
             });
 
             it("should emit log saying agent authorization revoked", async () => {
-                const logReturned = res.logs[0] as Log;
+                const [logReturned] = ABIDecoder.decodeLogs(res.logs);
                 const logExpected =
-                    LogRevokeInsertAgentAuthorization(AGENT_2) as Log;
+                    LogRevokeInsertAgentAuthorization(registry.address, AGENT_2);
 
-                expect(logReturned).to.solidityLogs.equal(logExpected);
+                expect(logReturned).to.deep.equal(logExpected);
             });
 
             it("should return second agent as unauthorized", async () => {
-                await expect(registry.getAuthorizedInsertAgents())
+                await expect(registry.getAuthorizedInsertAgents.callAsync())
                     .to.eventually.deep.equal([AGENT_1]);
             });
 
@@ -372,23 +415,24 @@ contract("Debt Registry", (ACCOUNTS) => {
         });
 
         describe("owner revokes third agent from editing entries", () => {
-            let res: TransactionReturnPayload;
+            let res: Web3.TransactionReceipt;
 
             before(async () => {
-                res = await registry.revokeEditAgentAuthorization(AGENT_3,
+                const txHash = await registry.revokeEditAgentAuthorization.sendTransactionAsync(AGENT_3,
                     { from: CONTRACT_OWNER});
+                res = await web3.eth.getTransactionReceipt(txHash);
             });
 
             it("should emit log saying agent authorization revoked", async () => {
-                const logReturned = res.logs[0] as Log;
+                const [logReturned] = ABIDecoder.decodeLogs(res.logs);
                 const logExpected =
-                    LogRevokeEditAgentAuthorization(AGENT_3) as Log;
+                    LogRevokeEditAgentAuthorization(registry.address, AGENT_3);
 
-                expect(logReturned).to.solidityLogs.equal(logExpected);
+                expect(logReturned).to.deep.equal(logExpected);
             });
 
             it("should return third agent as unauthorized", async () => {
-                await expect(registry.getAuthorizedEditAgents())
+                await expect(registry.getAuthorizedEditAgents.callAsync())
                     .to.eventually.deep.equal([AGENT_4]);
             });
 
@@ -419,31 +463,31 @@ contract("Debt Registry", (ACCOUNTS) => {
 
             describe("Only owner can authorize and revoke agents", () => {
                 it("should throw if non-owner authorizes agent", async () => {
-                    await expect(registry.addAuthorizedInsertAgent(ATTACKER,
+                    await expect(registry.addAuthorizedInsertAgent.sendTransactionAsync(ATTACKER,
                         { from: ATTACKER })).to.eventually.be.rejectedWith(REVERT_ERROR);
-                    await expect(registry.addAuthorizedEditAgent(ATTACKER,
+                    await expect(registry.addAuthorizedEditAgent.sendTransactionAsync(ATTACKER,
                         { from: ATTACKER })).to.eventually.be.rejectedWith(REVERT_ERROR);
                 });
 
                 it("should throw if non-owner revokes agent", async () => {
-                    await expect(registry.revokeInsertAgentAuthorization(ATTACKER,
+                    await expect(registry.revokeInsertAgentAuthorization.sendTransactionAsync(ATTACKER,
                         { from: ATTACKER })).to.eventually.be.rejectedWith(REVERT_ERROR);
-                    await expect(registry.revokeEditAgentAuthorization(ATTACKER,
+                    await expect(registry.revokeEditAgentAuthorization.sendTransactionAsync(ATTACKER,
                         { from: ATTACKER })).to.eventually.be.rejectedWith(REVERT_ERROR);
                 });
             });
 
             describe("Only owner can transfer ownership", () => {
                 it("should throw if non-owner transfers ownership", async () => {
-                    await expect(registry.transferOwnership(ATTACKER,
+                    await expect(registry.transferOwnership.sendTransactionAsync(ATTACKER,
                         { from: ATTACKER })).to.eventually.be
                         .rejectedWith(REVERT_ERROR);
                 });
 
                 it("should let owner transfer ownership", async () => {
-                    await registry.transferOwnership(NEW_CONTRACT_OWNER,
+                    await registry.transferOwnership.sendTransactionAsync(NEW_CONTRACT_OWNER,
                         { from: CONTRACT_OWNER });
-                    await expect(registry.owner()).to.eventually
+                    await expect(registry.owner.callAsync()).to.eventually
                         .equal(NEW_CONTRACT_OWNER);
                 });
             });

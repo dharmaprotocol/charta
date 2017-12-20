@@ -20,19 +20,35 @@ pragma solidity 0.4.18;
 
 import "./base/Ownable.sol";
 import "./libraries/PermissionsLib.sol";
+import "zeppelin-solidity/contracts/math/SafeMath.sol";
 
 
 contract DebtRegistry is Ownable {
+    using SafeMath for uint;
     using PermissionsLib for PermissionsLib.Permissions;
 
     struct Entry {
-        string version;
+        address version;
         address creditor;
         address termsContract;
         string termsContractParameters;
     }
 
-    mapping (bytes32 => Entry) public registry;
+    // Primary registry mapping entry hashes to their corresponding entries
+    mapping (bytes32 => Entry) internal registry;
+
+    // Mapping to keep track of which entries (identfied by hashes) are
+    // owned by a creditor
+    mapping (address => bytes32[]) internal creditorEntries;
+
+    // Mapping to keep track of, for any given entry (identified by hashes),
+    //  what index its position is in the creditor's entry array.  This
+    //  is included in order to prevent DoS attacks that force
+    //  insert and modifyCreditor methods to look for an existing entry to remove.
+    mapping (bytes32 => uint) internal indexInCreditorsEntries;
+
+    uint public numEntries = 0;
+
     PermissionsLib.Permissions internal entryInsertPermissions;
     PermissionsLib.Permissions internal entryEditPermissions;
 
@@ -81,7 +97,7 @@ contract DebtRegistry is Ownable {
     }
 
     function insert(
-        string _version,
+        address _version,
         address _creditor,
         address _termsContract,
         string _termsContractParameters,
@@ -97,11 +113,15 @@ contract DebtRegistry is Ownable {
             _termsContractParameters
         );
 
-        bytes32 entryHash = getEntryHash(entry, _salt);
+        bytes32 entryHash = _getEntryHash(entry, _salt);
 
         require(registry[entryHash].creditor == address(0));
 
         registry[entryHash] = entry;
+
+        _addToCreditorEntries(entry.creditor, entryHash);
+
+        numEntries++;
 
         LogInsertEntry(
             entryHash,
@@ -116,13 +136,17 @@ contract DebtRegistry is Ownable {
         onlyAuthorizedToEdit
         onlyExtantEntry(entryHash)
     {
+        address previousCreditor = registry[entryHash].creditor;
+
+        _removeFromCreditorEntries(previousCreditor, entryHash);
+        registry[entryHash].creditor = newCreditor;
+        _addToCreditorEntries(newCreditor, entryHash);
+
         LogModifyEntryCreditor(
             entryHash,
-            registry[entryHash].creditor,
+            previousCreditor,
             newCreditor
         );
-
-        registry[entryHash].creditor = newCreditor;
     }
 
     function addAuthorizedInsertAgent(address agent)
@@ -160,7 +184,7 @@ contract DebtRegistry is Ownable {
     function get(bytes32 entryHash)
         public
         constant
-        returns(string, address, address, string)
+        returns(address, address, address, string)
     {
         return (
             registry[entryHash].version,
@@ -194,7 +218,7 @@ contract DebtRegistry is Ownable {
         return keccak256(registry[entryHash].termsContractParameters);
     }
 
-    function getEntryHash(Entry _entry, uint _salt)
+    function _getEntryHash(Entry _entry, uint _salt)
         internal
         pure
         returns(bytes32)
@@ -206,5 +230,27 @@ contract DebtRegistry is Ownable {
             _entry.termsContractParameters,
             _salt
         );
+    }
+
+    function _addToCreditorEntries(address _creditor, bytes32 _entryHash)
+        internal
+    {
+        creditorEntries[_creditor].push(_entryHash);
+        indexInCreditorsEntries[_entryHash] =
+            creditorEntries[_creditor].length.sub(1);
+    }
+
+    function _removeFromCreditorEntries(address _creditor, bytes32 _entryHash)
+        internal
+    {
+        uint length = creditorEntries[_creditor].length;
+        uint index = indexInCreditorsEntries[_entryHash];
+        bytes32 swappedEntry = creditorEntries[_creditor][length.sub(1)];
+
+        creditorEntries[_creditor][index] = swappedEntry;
+        indexInCreditorsEntries[swappedEntry] = index;
+
+        delete creditorEntries[_creditor][length.sub(1)];
+        creditorEntries[_creditor].length.sub(1);
     }
 }
