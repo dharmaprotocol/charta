@@ -218,6 +218,22 @@ contract DebtRegistry is Ownable {
         return keccak256(registry[entryHash].termsContractParameters);
     }
 
+    function getNumCreditorEntries(address creditor)
+        public
+        view
+        returns(uint)
+    {
+        return creditorEntries[creditor].length;
+    }
+
+    function entryOfCreditorByIndex(address creditor, uint index)
+        public
+        view
+        returns(bytes32)
+    {
+        return creditorEntries[creditor][index];
+    }
+
     function _getEntryHash(Entry _entry, uint _salt)
         internal
         pure

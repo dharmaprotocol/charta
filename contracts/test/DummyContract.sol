@@ -51,11 +51,11 @@ contract DummyContract {
         return secondPermissionSet.isAuthorized(agent);
     }
 
-    function getFirstSetAuthorizedAgents() public constant returns (address[]) {
+    function getFirstSetAuthorizedAgents() public view returns (address[]) {
         return firstPermissionSet.getAuthorizedAgents();
     }
 
-    function getSecondSetAuthorizedAgents() public constant returns (address[]) {
+    function getSecondSetAuthorizedAgents() public view returns (address[]) {
         return secondPermissionSet.getAuthorizedAgents();
     }
 }

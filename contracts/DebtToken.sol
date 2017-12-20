@@ -42,4 +42,20 @@ contract DebtToken is NonFungibleToken, Ownable {
     {
         return registry.numEntries();
     }
+
+    function balanceOf(address _owner)
+        public
+        view
+        returns (uint _balance)
+    {
+        return registry.getNumCreditorEntries(_owner);
+    }
+
+    function tokenOfOwnerByIndex(address _owner, uint _index)
+        public
+        view
+        returns (uint _tokenId)
+    {
+        return uint(registry.entryOfCreditorByIndex(_owner, _index));
+    }
 }

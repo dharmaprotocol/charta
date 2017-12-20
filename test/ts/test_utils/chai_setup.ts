@@ -7,6 +7,5 @@ export const chaiSetup = {
         chai.config.includeStack = true;
         chai.use(ChaiBigNumber());
         chai.use(ChaiAsPromised);
-        chai.should();
     },
 };

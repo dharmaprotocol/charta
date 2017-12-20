@@ -168,6 +168,25 @@ export class DebtRegistryContract extends BaseContract {
             return abiEncodedTransactionData;
         },
     };
+    public entryOfCreditorByIndex = {
+        async callAsync(
+            creditor: string,
+            index: BigNumber,
+            defaultBlock?: Web3.BlockParam,
+        ): Promise<string
+    > {
+            const self = this as DebtRegistryContract;
+            const result = await promisify<string
+    >(
+                self.web3ContractInstance.entryOfCreditorByIndex.call,
+                self.web3ContractInstance,
+            )(
+                creditor,
+                index,
+            );
+            return result;
+        },
+    };
     public insert = {
         async sendTransactionAsync(
             _version: string,
@@ -282,6 +301,23 @@ export class DebtRegistryContract extends BaseContract {
             const self = this as DebtRegistryContract;
             const abiEncodedTransactionData = self.web3ContractInstance.addAuthorizedInsertAgent.getData();
             return abiEncodedTransactionData;
+        },
+    };
+    public getNumCreditorEntries = {
+        async callAsync(
+            creditor: string,
+            defaultBlock?: Web3.BlockParam,
+        ): Promise<BigNumber
+    > {
+            const self = this as DebtRegistryContract;
+            const result = await promisify<BigNumber
+    >(
+                self.web3ContractInstance.getNumCreditorEntries.call,
+                self.web3ContractInstance,
+            )(
+                creditor,
+            );
+            return result;
         },
     };
     public revokeInsertAgentAuthorization = {
