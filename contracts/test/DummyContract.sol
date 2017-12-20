@@ -24,8 +24,8 @@ import "../libraries/PermissionsLib.sol";
 contract DummyContract {
     using PermissionsLib for PermissionsLib.Permissions;
 
-    PermissionsLib.Permissions internal firstPermissionSet;
-    PermissionsLib.Permissions internal secondPermissionSet;
+    PermissionsLib.Permissions private firstPermissionSet;
+    PermissionsLib.Permissions private secondPermissionSet;
 
     function authorizeInFirstSet(address agent) public {
         firstPermissionSet.authorize(agent);

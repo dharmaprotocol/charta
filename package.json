@@ -52,7 +52,7 @@
     "@types/es6-promise": "^0.0.33",
     "@types/node": "^8.5.1",
     "es6-promise": "^4.1.1",
-    "truffle": "^4.0.3",
+    "truffle": "4.0.1",
     "types-bn": "^0.0.1",
     "types-ethereumjs-util": "^0.0.5"
   }
