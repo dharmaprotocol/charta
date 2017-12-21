@@ -1,10 +1,10 @@
 import * as BigNumber from "bignumber.js";
 import * as chai from "chai";
 import * as Web3 from "web3";
-import {chaiSetup} from "./test_utils/chai_setup.js";
+import ChaiSetup from "./test_utils/chai_setup";
 import {INVALID_OPCODE} from "./test_utils/constants.js";
 
-chaiSetup.configure();
+ChaiSetup.configure();
 const expect = chai.expect;
 
 const permissionsLibraryContract = artifacts.require("PermissionsLib");

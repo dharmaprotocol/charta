@@ -18,4 +18,6 @@ declare global {
 
   var artifacts: Artifacts;
   var web3: Web3;
+
+  var chaiIsConfigured: boolean;
 }

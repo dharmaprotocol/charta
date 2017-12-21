@@ -12,7 +12,7 @@ import {
 import {LogApproval, LogMint, LogTransfer} from "./logs/debt_token";
 import {LogInsertEntry, LogModifyEntryCreditor} from "./logs/debt_registry";
 import {BigNumberSetup} from "./test_utils/bignumber_setup";
-import {chaiSetup} from "./test_utils/chai_setup.js";
+import ChaiSetup from "./test_utils/chai_setup";
 import {INVALID_OPCODE, REVERT_ERROR} from "./test_utils/constants";
 import {DebtRegistryEntry} from "../../types/registry/entry";
 
@@ -20,7 +20,7 @@ import {DebtRegistryEntry} from "../../types/registry/entry";
 BigNumberSetup.configure();
 
 // Set up Chai
-chaiSetup.configure();
+ChaiSetup.configure();
 const expect = chai.expect;
 
 const debtRegistryContract = artifacts.require("DebtRegistry");
@@ -343,13 +343,20 @@ contract("Debt Token", (ACCOUNTS) => {
         before(resetAndInitState);
 
         it("should return 1 for each owner's balance", async () => {
-            const ownerOneBalance = await debtToken.balanceOf.callAsync(TOKEN_OWNER_1);
-            const ownerTwoBalance = await debtToken.balanceOf.callAsync(TOKEN_OWNER_2);
-            const ownerThreeBalance = await debtToken.balanceOf.callAsync(TOKEN_OWNER_3);
+            // const ownerOneBalance = await debtToken.balanceOf.callAsync(TOKEN_OWNER_1);
+            // const ownerTwoBalance = await debtToken.balanceOf.callAsync(TOKEN_OWNER_2);
+            // const ownerThreeBalance = await debtToken.balanceOf.callAsync(TOKEN_OWNER_3);
+            //
+            // expect(ownerOneBalance).to.bignumber.equal(1);
+            // expect(ownerTwoBalance).to.bignumber.equal(1);
+            // expect(ownerThreeBalance).to.bignumber.equal(1);
 
-            expect(ownerOneBalance).to.bignumber.equal(1);
-            expect(ownerTwoBalance).to.bignumber.equal(1);
-            expect(ownerThreeBalance).to.bignumber.equal(1);
+            await expect(debtToken.balanceOf.callAsync(TOKEN_OWNER_1))
+                .to.eventually.bignumber.equal(1);
+            await expect(debtToken.balanceOf.callAsync(TOKEN_OWNER_2))
+                .to.eventually.bignumber.equal(1);
+            await expect(debtToken.balanceOf.callAsync(TOKEN_OWNER_3))
+                .to.eventually.bignumber.equal(1);
         });
     });
 
@@ -357,16 +364,16 @@ contract("Debt Token", (ACCOUNTS) => {
         before(resetAndInitState);
 
         it("should return current token at index 0 for each user", async () => {
-            const ownerOneFirstToken =
-                await debtToken.tokenOfOwnerByIndex.callAsync(TOKEN_OWNER_1, INDEX_0);
-            const ownerTwoFirstToken =
-                await debtToken.tokenOfOwnerByIndex.callAsync(TOKEN_OWNER_2, INDEX_0);
-            const ownerThreeFirstToken =
-                await debtToken.tokenOfOwnerByIndex.callAsync(TOKEN_OWNER_3, INDEX_0);
+            await expect(debtToken.tokenOfOwnerByIndex.callAsync(TOKEN_OWNER_1, INDEX_0))
+                .to.eventually.bignumber.equal(debtEntries[0].getTokenId());
+            await expect(debtToken.tokenOfOwnerByIndex.callAsync(TOKEN_OWNER_2, INDEX_0))
+                .to.eventually.bignumber.equal(debtEntries[1].getTokenId());
+            await expect(debtToken.tokenOfOwnerByIndex.callAsync(TOKEN_OWNER_3, INDEX_0))
+                .to.eventually.bignumber.equal(debtEntries[2].getTokenId());
 
-            expect(ownerOneFirstToken).to.bignumber.equal(debtEntries[0].getTokenId());
-            expect(ownerTwoFirstToken).to.bignumber.equal(debtEntries[1].getTokenId());
-            expect(ownerThreeFirstToken).to.bignumber.equal(debtEntries[2].getTokenId());
+            // expect(ownerOneFirstToken).to.bignumber.equal(debtEntries[0].getTokenId());
+            // expect(ownerTwoFirstToken).to.bignumber.equal(debtEntries[1].getTokenId());
+            // expect(ownerThreeFirstToken).to.bignumber.equal(debtEntries[2].getTokenId());
         });
 
         it("should throw if called at index > balanceOf.callAsync(owner)", async () => {

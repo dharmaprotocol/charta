@@ -11,7 +11,7 @@
     "compile": "rm -rf build/contracts; truffle compile",
     "soltsice": "soltsice",
     "migrate": "npm run transpile; truffle migrate",
-    "test": "npm run compile; npm run generate-typings; npm run transpile; truffle test transpiled/test/ts/debt_token.js",
+    "test": "npm run compile; npm run generate-typings; npm run transpile; truffle test",
     "testrpc": "ganache-cli --networkId 50",
     "validate": "npm ls"
   },

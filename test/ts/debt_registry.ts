@@ -21,11 +21,11 @@ import {
     LogRevokeInsertAgentAuthorization,
 } from "./logs/debt_registry";
 import {BigNumberSetup} from "./test_utils/bignumber_setup";
-import {chaiSetup} from "./test_utils/chai_setup";
+import ChaiSetup from "./test_utils/chai_setup";
 import {INVALID_OPCODE, REVERT_ERROR} from "./test_utils/constants";
 
 // Set up Chai
-chaiSetup.configure();
+ChaiSetup.configure();
 const expect = chai.expect;
 
 // Configure BigNumber exponentiation
