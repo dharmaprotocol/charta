@@ -56,7 +56,7 @@
 
 "NonFungibleToken@https://github.com/dharmaprotocol/NonFungibleToken.git":
   version "0.0.1"
-  resolved "https://github.com/dharmaprotocol/NonFungibleToken.git#f64ff8508cc16d1c25028514ab211b787202deb3"
+  resolved "https://github.com/dharmaprotocol/NonFungibleToken.git#3079955ef23c317d78933e7221ddc70c11a20324"
   dependencies:
     abi-decoder "^1.0.9"
     zeppelin-solidity "^1.4.0"

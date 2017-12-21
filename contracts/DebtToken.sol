@@ -77,10 +77,19 @@ contract DebtToken is MintableNonFungibleToken, Ownable {
         return tokenCreationPermissions.getAuthorizedAgents();
     }
 
-    function _clearApprovalAndTransfer(address _from, address _to, uint _tokenId)
+    function _setTokenOwner(uint _tokenId, address _to)
         internal
     {
-        _clearTokenApproval(_tokenId);
-        registry.modifyCreditor(bytes32(_tokenId), _to);
+        if (registry.getCreditor(bytes32(_tokenId)) != _to) {
+            registry.modifyCreditor(bytes32(_tokenId), _to);
+        }
+    }
+
+    function _ownerOf(uint _tokenId)
+        internal
+        view
+        returns (address _owner)
+    {
+        return registry.getCreditor(bytes32(_tokenId));
     }
 }

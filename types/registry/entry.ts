@@ -13,8 +13,8 @@ import {
 import {RegistryEntryParameters, SemanticVersion} from "./schema";
 
 export class DebtRegistryEntry {
-    private params: RegistryEntryParameters;
-    private salt: BigNumber;
+    public params: RegistryEntryParameters;
+    public salt: BigNumber;
 
     public constructor(params: RegistryEntryParameters, salt?: BigNumber) {
         this.params = params;
