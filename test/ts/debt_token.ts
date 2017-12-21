@@ -4,8 +4,8 @@ import * as _ from "lodash";
 import * as ABIDecoder from "abi-decoder";
 import * as Web3 from "web3";
 
-import {DebtRegistryContract} from "../../types/debt_registry";
-import {DebtTokenContract} from "../../types/debt_token";
+import {DebtRegistryContract} from "../../types/generated/debt_registry";
+import {DebtTokenContract} from "../../types/generated/debt_token";
 import {
     Address,
 } from "../../types/common";

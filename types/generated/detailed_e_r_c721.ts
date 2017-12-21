@@ -3,43 +3,26 @@
  * Templates can be found at https://github.com/0xProject/0x.js/tree/development/packages/abi-gen-templates.
  */
 // tslint:disable-next-line:no-unused-variable
-import {TxData, TxDataPayable} from './common';
+import {TxData, TxDataPayable} from '../common';
 import {promisify} from '@0xproject/utils';
-import {classUtils} from './common';
+import {classUtils} from '../common';
 import {BigNumber} from 'bignumber.js';
 import * as Web3 from 'web3';
 
-import {BaseContract} from './base_contract';
+import {BaseContract} from '../base_contract';
 
-export class MintableNonFungibleTokenContract extends BaseContract {
+export class DetailedERC721Contract extends BaseContract {
     public name = {
         async callAsync(
             defaultBlock?: Web3.BlockParam,
         ): Promise<string
     > {
-            const self = this as MintableNonFungibleTokenContract;
+            const self = this as DetailedERC721Contract;
             const result = await promisify<string
     >(
                 self.web3ContractInstance.name.call,
                 self.web3ContractInstance,
             )(
-            );
-            return result;
-        },
-    };
-    public getApproved = {
-        async callAsync(
-            _tokenId: BigNumber,
-            defaultBlock?: Web3.BlockParam,
-        ): Promise<string
-    > {
-            const self = this as MintableNonFungibleTokenContract;
-            const result = await promisify<string
-    >(
-                self.web3ContractInstance.getApproved.call,
-                self.web3ContractInstance,
-            )(
-                _tokenId,
             );
             return result;
         },
@@ -50,7 +33,7 @@ export class MintableNonFungibleTokenContract extends BaseContract {
             _tokenId: BigNumber,
             txData: TxData = {},
         ): Promise<string> {
-            const self = this as MintableNonFungibleTokenContract;
+            const self = this as DetailedERC721Contract;
             const txDataWithDefaults = await self.applyDefaultsToTxDataAsync(
                 txData,
                 self.approve.estimateGasAsync.bind(
@@ -73,7 +56,7 @@ export class MintableNonFungibleTokenContract extends BaseContract {
             _tokenId: BigNumber,
             txData: TxData = {},
         ): Promise<number> {
-            const self = this as MintableNonFungibleTokenContract;
+            const self = this as DetailedERC721Contract;
             const txDataWithDefaults = await self.applyDefaultsToTxDataAsync(
                 txData,
             );
@@ -91,7 +74,7 @@ export class MintableNonFungibleTokenContract extends BaseContract {
             _tokenId: BigNumber,
             txData: TxData = {},
         ): string {
-            const self = this as MintableNonFungibleTokenContract;
+            const self = this as DetailedERC721Contract;
             const abiEncodedTransactionData = self.web3ContractInstance.approve.getData();
             return abiEncodedTransactionData;
         },
@@ -101,7 +84,7 @@ export class MintableNonFungibleTokenContract extends BaseContract {
             defaultBlock?: Web3.BlockParam,
         ): Promise<boolean
     > {
-            const self = this as MintableNonFungibleTokenContract;
+            const self = this as DetailedERC721Contract;
             const result = await promisify<boolean
     >(
                 self.web3ContractInstance.implementsERC721.call,
@@ -116,7 +99,7 @@ export class MintableNonFungibleTokenContract extends BaseContract {
             defaultBlock?: Web3.BlockParam,
         ): Promise<BigNumber
     > {
-            const self = this as MintableNonFungibleTokenContract;
+            const self = this as DetailedERC721Contract;
             const result = await promisify<BigNumber
     >(
                 self.web3ContractInstance.totalSupply.call,
@@ -133,7 +116,7 @@ export class MintableNonFungibleTokenContract extends BaseContract {
             _tokenId: BigNumber,
             txData: TxData = {},
         ): Promise<string> {
-            const self = this as MintableNonFungibleTokenContract;
+            const self = this as DetailedERC721Contract;
             const txDataWithDefaults = await self.applyDefaultsToTxDataAsync(
                 txData,
                 self.transferFrom.estimateGasAsync.bind(
@@ -159,7 +142,7 @@ export class MintableNonFungibleTokenContract extends BaseContract {
             _tokenId: BigNumber,
             txData: TxData = {},
         ): Promise<number> {
-            const self = this as MintableNonFungibleTokenContract;
+            const self = this as DetailedERC721Contract;
             const txDataWithDefaults = await self.applyDefaultsToTxDataAsync(
                 txData,
             );
@@ -179,7 +162,7 @@ export class MintableNonFungibleTokenContract extends BaseContract {
             _tokenId: BigNumber,
             txData: TxData = {},
         ): string {
-            const self = this as MintableNonFungibleTokenContract;
+            const self = this as DetailedERC721Contract;
             const abiEncodedTransactionData = self.web3ContractInstance.transferFrom.getData();
             return abiEncodedTransactionData;
         },
@@ -191,7 +174,7 @@ export class MintableNonFungibleTokenContract extends BaseContract {
             defaultBlock?: Web3.BlockParam,
         ): Promise<BigNumber
     > {
-            const self = this as MintableNonFungibleTokenContract;
+            const self = this as DetailedERC721Contract;
             const result = await promisify<BigNumber
     >(
                 self.web3ContractInstance.tokenOfOwnerByIndex.call,
@@ -209,7 +192,7 @@ export class MintableNonFungibleTokenContract extends BaseContract {
             defaultBlock?: Web3.BlockParam,
         ): Promise<string
     > {
-            const self = this as MintableNonFungibleTokenContract;
+            const self = this as DetailedERC721Contract;
             const result = await promisify<string
     >(
                 self.web3ContractInstance.ownerOf.call,
@@ -226,7 +209,7 @@ export class MintableNonFungibleTokenContract extends BaseContract {
             defaultBlock?: Web3.BlockParam,
         ): Promise<string
     > {
-            const self = this as MintableNonFungibleTokenContract;
+            const self = this as DetailedERC721Contract;
             const result = await promisify<string
     >(
                 self.web3ContractInstance.tokenMetadata.call,
@@ -243,7 +226,7 @@ export class MintableNonFungibleTokenContract extends BaseContract {
             defaultBlock?: Web3.BlockParam,
         ): Promise<BigNumber
     > {
-            const self = this as MintableNonFungibleTokenContract;
+            const self = this as DetailedERC721Contract;
             const result = await promisify<BigNumber
     >(
                 self.web3ContractInstance.balanceOf.call,
@@ -259,7 +242,7 @@ export class MintableNonFungibleTokenContract extends BaseContract {
             defaultBlock?: Web3.BlockParam,
         ): Promise<string
     > {
-            const self = this as MintableNonFungibleTokenContract;
+            const self = this as DetailedERC721Contract;
             const result = await promisify<string
     >(
                 self.web3ContractInstance.symbol.call,
@@ -275,7 +258,7 @@ export class MintableNonFungibleTokenContract extends BaseContract {
             _tokenId: BigNumber,
             txData: TxData = {},
         ): Promise<string> {
-            const self = this as MintableNonFungibleTokenContract;
+            const self = this as DetailedERC721Contract;
             const txDataWithDefaults = await self.applyDefaultsToTxDataAsync(
                 txData,
                 self.transfer.estimateGasAsync.bind(
@@ -298,7 +281,7 @@ export class MintableNonFungibleTokenContract extends BaseContract {
             _tokenId: BigNumber,
             txData: TxData = {},
         ): Promise<number> {
-            const self = this as MintableNonFungibleTokenContract;
+            const self = this as DetailedERC721Contract;
             const txDataWithDefaults = await self.applyDefaultsToTxDataAsync(
                 txData,
             );
@@ -316,99 +299,9 @@ export class MintableNonFungibleTokenContract extends BaseContract {
             _tokenId: BigNumber,
             txData: TxData = {},
         ): string {
-            const self = this as MintableNonFungibleTokenContract;
+            const self = this as DetailedERC721Contract;
             const abiEncodedTransactionData = self.web3ContractInstance.transfer.getData();
             return abiEncodedTransactionData;
-        },
-    };
-    public numTokensTotal = {
-        async callAsync(
-            defaultBlock?: Web3.BlockParam,
-        ): Promise<BigNumber
-    > {
-            const self = this as MintableNonFungibleTokenContract;
-            const result = await promisify<BigNumber
-    >(
-                self.web3ContractInstance.numTokensTotal.call,
-                self.web3ContractInstance,
-            )(
-            );
-            return result;
-        },
-    };
-    public mint = {
-        async sendTransactionAsync(
-            _owner: string,
-            _tokenId: BigNumber,
-            _metadata: string,
-            txData: TxData = {},
-        ): Promise<string> {
-            const self = this as MintableNonFungibleTokenContract;
-            const txDataWithDefaults = await self.applyDefaultsToTxDataAsync(
-                txData,
-                self.mint.estimateGasAsync.bind(
-                    self,
-                    _owner,
-                    _tokenId,
-                    _metadata,
-                ),
-            );
-            const txHash = await promisify<string>(
-                self.web3ContractInstance.mint, self.web3ContractInstance,
-            )(
-                _owner,
-                _tokenId,
-                _metadata,
-                txDataWithDefaults,
-            );
-            return txHash;
-        },
-        async estimateGasAsync(
-            _owner: string,
-            _tokenId: BigNumber,
-            _metadata: string,
-            txData: TxData = {},
-        ): Promise<number> {
-            const self = this as MintableNonFungibleTokenContract;
-            const txDataWithDefaults = await self.applyDefaultsToTxDataAsync(
-                txData,
-            );
-            const gas = await promisify<number>(
-                self.web3ContractInstance.mint.estimateGas, self.web3ContractInstance,
-            )(
-                _owner,
-                _tokenId,
-                _metadata,
-                txDataWithDefaults,
-            );
-            return gas;
-        },
-        getABIEncodedTransactionData(
-            _owner: string,
-            _tokenId: BigNumber,
-            _metadata: string,
-            txData: TxData = {},
-        ): string {
-            const self = this as MintableNonFungibleTokenContract;
-            const abiEncodedTransactionData = self.web3ContractInstance.mint.getData();
-            return abiEncodedTransactionData;
-        },
-    };
-    public getOwnerTokens = {
-        async callAsync(
-            _owner: string,
-            defaultBlock?: Web3.BlockParam,
-        ): Promise<BigNumber[]
-    > {
-            const self = this as MintableNonFungibleTokenContract;
-            const result = await promisify<BigNumber[]
-    >(
-                self.web3ContractInstance.getOwnerTokens.call,
-                self.web3ContractInstance,
-            )(
-                _owner,
-            );
-            return result;
         },
     };
     constructor(web3ContractInstance: Web3.ContractInstance, defaults: Partial<TxData>) {

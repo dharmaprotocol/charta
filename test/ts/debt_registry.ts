@@ -10,7 +10,7 @@ import {
     TxData,
     TxDataPayable,
 } from "../../types/common";
-import {DebtRegistryContract} from "../../types/debt_registry";
+import {DebtRegistryContract} from "../../types/generated/debt_registry";
 import {DebtRegistryEntry} from "../../types/registry/entry";
 import {
     LogAddAuthorizedEditAgent,
