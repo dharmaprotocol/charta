@@ -12,6 +12,23 @@ import * as Web3 from 'web3';
 import {BaseContract} from './base_contract';
 
 export class DebtRegistryContract extends BaseContract {
+    public getCreditor = {
+        async callAsync(
+            entryHash: string,
+            defaultBlock?: Web3.BlockParam,
+        ): Promise<string
+    > {
+            const self = this as DebtRegistryContract;
+            const result = await promisify<string
+    >(
+                self.web3ContractInstance.getCreditor.call,
+                self.web3ContractInstance,
+            )(
+                entryHash,
+            );
+            return result;
+        },
+    };
     public getTermsContractParametersHash = {
         async callAsync(
             entryHash: string,
@@ -168,25 +185,6 @@ export class DebtRegistryContract extends BaseContract {
             return abiEncodedTransactionData;
         },
     };
-    public entryOfCreditorByIndex = {
-        async callAsync(
-            creditor: string,
-            index: BigNumber,
-            defaultBlock?: Web3.BlockParam,
-        ): Promise<string
-    > {
-            const self = this as DebtRegistryContract;
-            const result = await promisify<string
-    >(
-                self.web3ContractInstance.entryOfCreditorByIndex.call,
-                self.web3ContractInstance,
-            )(
-                creditor,
-                index,
-            );
-            return result;
-        },
-    };
     public insert = {
         async sendTransactionAsync(
             _version: string,
@@ -303,23 +301,6 @@ export class DebtRegistryContract extends BaseContract {
             return abiEncodedTransactionData;
         },
     };
-    public getNumCreditorEntries = {
-        async callAsync(
-            creditor: string,
-            defaultBlock?: Web3.BlockParam,
-        ): Promise<BigNumber
-    > {
-            const self = this as DebtRegistryContract;
-            const result = await promisify<BigNumber
-    >(
-                self.web3ContractInstance.getNumCreditorEntries.call,
-                self.web3ContractInstance,
-            )(
-                creditor,
-            );
-            return result;
-        },
-    };
     public revokeInsertAgentAuthorization = {
         async sendTransactionAsync(
             agent: string,
@@ -364,21 +345,6 @@ export class DebtRegistryContract extends BaseContract {
             const self = this as DebtRegistryContract;
             const abiEncodedTransactionData = self.web3ContractInstance.revokeInsertAgentAuthorization.getData();
             return abiEncodedTransactionData;
-        },
-    };
-    public numEntries = {
-        async callAsync(
-            defaultBlock?: Web3.BlockParam,
-        ): Promise<BigNumber
-    > {
-            const self = this as DebtRegistryContract;
-            const result = await promisify<BigNumber
-    >(
-                self.web3ContractInstance.numEntries.call,
-                self.web3ContractInstance,
-            )(
-            );
-            return result;
         },
     };
     public modifyCreditor = {

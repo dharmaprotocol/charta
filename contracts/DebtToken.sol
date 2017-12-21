@@ -19,15 +19,19 @@
 pragma solidity 0.4.18;
 
 import "./DebtRegistry.sol";
-import "./base/Ownable.sol";
-import "NonFungibleToken/contracts/NonFungibleToken.sol";
+import "NonFungibleToken/contracts/MintableNonFungibleToken.sol";
+import "zeppelin-solidity/contracts/ownership/Ownable.sol";
 
 
-contract DebtToken is NonFungibleToken, Ownable {
+contract DebtToken is MintableNonFungibleToken, Ownable {
+    using PermissionsLib for PermissionsLib.Permissions;
+
     string public name  = "DebtToken";
     string public symbol = "DDT";
 
     DebtRegistry public registry;
+
+    PermissionsLib.Permissions internal tokenCreationPermissions;
 
     function DebtToken(address _registry)
         public
@@ -35,27 +39,48 @@ contract DebtToken is NonFungibleToken, Ownable {
         registry = DebtRegistry(_registry);
     }
 
-    function totalSupply()
+    function create(
+        address _version,
+        address _creditor,
+        address _termsContract,
+        string _termsContractParameters,
+        uint _salt,
+        string _tokenMetadata
+    )
         public
-        view
-        returns (uint _totalSupply)
     {
-        return registry.numEntries();
+        require(tokenCreationPermissions.isAuthorized(msg.sender));
+
+        bytes32 entryHash = registry.insert(
+            _version,
+            _creditor,
+            _termsContract,
+            _termsContractParameters,
+            _salt
+        );
+
+        mint(_creditor, uint(entryHash), _tokenMetadata);
     }
 
-    function balanceOf(address _owner)
+    function addAuthorizedMintAgent(address _agent)
         public
-        view
-        returns (uint _balance)
+        onlyOwner
     {
-        return registry.getNumCreditorEntries(_owner);
+        tokenCreationPermissions.authorize(_agent);
     }
 
-    function tokenOfOwnerByIndex(address _owner, uint _index)
+    function getAuthorizedMintAgents()
         public
         view
-        returns (uint _tokenId)
+        returns (address[] _agents)
     {
-        return uint(registry.entryOfCreditorByIndex(_owner, _index));
+        return tokenCreationPermissions.getAuthorizedAgents();
+    }
+
+    function _clearApprovalAndTransfer(address _from, address _to, uint _tokenId)
+        internal
+    {
+        _clearTokenApproval(_tokenId);
+        registry.modifyCreditor(bytes32(_tokenId), _to);
     }
 }

@@ -15,10 +15,11 @@ import {DebtRegistryEntry} from "../../types/registry/entry";
 import {
     LogAddAuthorizedEditAgent,
     LogAddAuthorizedInsertAgent,
+    LogInsertEntry,
     LogModifyEntryCreditor,
     LogRevokeEditAgentAuthorization,
     LogRevokeInsertAgentAuthorization,
-} from "../../types/registry/logs";
+} from "./logs/debt_registry";
 import {BigNumberSetup} from "./test_utils/bignumber_setup";
 import {chaiSetup} from "./test_utils/chai_setup";
 import {INVALID_OPCODE, REVERT_ERROR} from "./test_utils/constants";
@@ -202,7 +203,7 @@ contract("Debt Registry", async (ACCOUNTS) => {
 
             it("should emit a log saying the debt is inserted", async () => {
                 const [logReturned] = ABIDecoder.decodeLogs(res.logs);
-                const logExpected = entry.getLogInsertEntry(registry.address);
+                const logExpected = LogInsertEntry(registry.address, entry);
 
                 expect(logReturned).to.deep.equal(logExpected);
             });
@@ -240,7 +241,7 @@ contract("Debt Registry", async (ACCOUNTS) => {
 
             it("should emit a log saying the debt is inserted", async () => {
                 const [logReturned] = ABIDecoder.decodeLogs(res.logs);
-                const logExpected = entry.getLogInsertEntry(registry.address);
+                const logExpected = LogInsertEntry(registry.address, entry);
 
                 expect(logReturned).to.deep.equal(logExpected);
             });

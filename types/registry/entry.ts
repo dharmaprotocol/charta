@@ -10,7 +10,6 @@ import {
     Log,
     UInt
 } from "../common";
-import {LogInsertEntry} from "./logs";
 import {RegistryEntryParameters, SemanticVersion} from "./schema";
 
 export class DebtRegistryEntry {
@@ -57,16 +56,6 @@ export class DebtRegistryEntry {
 
     public getSalt(): BigNumber {
         return this.salt;
-    }
-
-    public getLogInsertEntry(contractAddress: Address): ABIDecoder.DecodedLog {
-        return LogInsertEntry(
-            contractAddress,
-            this.getEntryHash(),
-            this.getCreditor(),
-            this.getTermsContract(),
-            this.getTermsContractParameters(),
-        );
     }
 
     public getTokenId(): BigNumber {
