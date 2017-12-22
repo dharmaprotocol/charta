@@ -1,6 +1,7 @@
 /* tslint:disable */
 declare module 'chai-bignumber';
 declare module 'ethereumjs-abi';
+declare module 'child-process-promise';
 
 /**
  * HACK: Merge Chai typings with bignumber assertion added by
