@@ -6,6 +6,10 @@ import * as Web3 from "web3";
 
 import {DebtRegistryContract} from "../../types/generated/debt_registry";
 import {DebtTokenContract} from "../../types/generated/debt_token";
+import {ZeroX_ExchangeContract} from "../../types/generated/zerox_exchange";
+import {ZeroX_TokenRegistryContract} from "../../types/generated/zerox_tokenregistry";
+import {ZeroX_TokenTransferProxyContract} from "../../types/generated/zerox_tokentransferproxy";
+
 import {
     Address,
 } from "../../types/common";
@@ -15,6 +19,7 @@ import {BigNumberSetup} from "./test_utils/bignumber_setup";
 import ChaiSetup from "./test_utils/chai_setup";
 import {INVALID_OPCODE, REVERT_ERROR} from "./test_utils/constants";
 import {DebtRegistryEntry} from "../../types/registry/entry";
+import {ZeroEx} from '0x.js';
 
 // Configure BigNumber exponentiation
 BigNumberSetup.configure();
@@ -297,6 +302,76 @@ contract("Debt Token", (ACCOUNTS) => {
                     ARBITRARY_TOKEN_METADATA[0],
                     { from: AUTHORIZED_MINT_AGENT }
                 )).to.eventually.be.rejectedWith(REVERT_ERROR);
+            });
+        });
+
+        describe("Minting and Immediately Swapping", () => {
+            let zeroEx: ZeroEx;
+            before(async () => {
+                const zrxExchangeContract = await ZeroX_ExchangeContract.deployed(web3, TX_DEFAULTS);
+                const zrxTokenRegistryContract = await ZeroX_TokenRegistryContract.deployed(web3, TX_DEFAULTS);
+                const zrxTokenTransferProxyContract = await ZeroX_TokenRegistryContract.deployed(web3, TX_DEFAULTS);
+
+                zeroEx = new ZeroEx(web3.currentProvider, {
+                	exchangeContractAddress: zrxExchangeContract.address,
+                	networkId: 70,
+                	tokenRegistryContractAddress: zrxTokenRegistryContract.address,
+                	tokenTransferProxyContractAddress: zrxTokenTransferProxyContract.address,
+                });
+            });
+
+            describe("unauthorized agent mints new debt token and approves for ZRX exchange", () => {
+                it("should throw", async () => {
+                    await expect(debtToken.createAndApproveExchange.sendTransactionAsync(
+                        debtEntries[2].getVersion(),
+                        debtEntries[2].getCreditor(),
+                        debtEntries[2].getTermsContract(),
+                        debtEntries[2].getTermsContractParameters(),
+                        debtEntries[2].getSalt(),
+                        ARBITRARY_TOKEN_METADATA[2],
+                        zeroEx.proxy.getContractAddress(),
+                        { from: AUTHORIZED_MINT_AGENT }
+                    )).to.eventually.be.rejectedWith(REVERT_ERROR);
+                });
+            });
+
+            describe("authorized agent mints new debt token and approves for ZRX exchange", () => {
+                let res: Web3.TransactionReceipt;
+
+                before(async () => {
+                    const txHash = await debtToken.createAndApproveExchange.sendTransactionAsync(
+                        debtEntries[2].getVersion(),
+                        debtEntries[2].getCreditor(),
+                        debtEntries[2].getTermsContract(),
+                        debtEntries[2].getTermsContractParameters(),
+                        debtEntries[2].getSalt(),
+                        ARBITRARY_TOKEN_METADATA[2],
+                        zeroEx.proxy.getContractAddress(),
+                        { from: AUTHORIZED_MINT_AGENT }
+                    );
+
+                    res = await web3.eth.getTransactionReceipt(txHash);
+                });
+
+                it("should emit minting log event", () => {
+                    const [insertRegistryLog, mintLog] = ABIDecoder.decodeLogs(res.logs);
+                    const logExpected = LogMint(
+                        debtToken.address,
+                        debtEntries[2].getCreditor(),
+                        debtEntries[2].getTokenId(),
+                    );
+
+                    expect(mintLog).to.deep.equal(logExpected);
+                });
+
+                it("should approve the ZRX contract for transferring the new token", async () => {
+                    expect(debtToken.getApproved.callAsync(debtEntries[2].getTokenId()))
+                        .to.eventually.equal(zeroEx.proxy.getContractAddress());
+                })
+                //
+                // describe("the ZRX contracts execute a trade w/ the new token", () => {
+                //     before()
+                // });
             });
         });
     });

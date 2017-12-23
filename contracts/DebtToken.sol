@@ -48,6 +48,7 @@ contract DebtToken is MintableNonFungibleToken, Ownable {
         string _tokenMetadata
     )
         public
+        returns (uint _tokenId)
     {
         require(tokenCreationPermissions.isAuthorized(msg.sender));
 
@@ -60,6 +61,33 @@ contract DebtToken is MintableNonFungibleToken, Ownable {
         );
 
         mint(_creditor, uint(entryHash), _tokenMetadata);
+
+        return uint(entryHash);
+    }
+
+    function createAndApproveExchange(
+        address _version,
+        address _creditor,
+        address _termsContract,
+        string _termsContractParameters,
+        uint _salt,
+        string _tokenMetadata,
+        address _zrxExchange
+    )
+        public
+    {
+        require(tokenCreationPermissions.isAuthorized(msg.sender));
+
+        uint tokenId = create(
+            _version,
+            _creditor,
+            _termsContract,
+            _termsContractParameters,
+            _salt,
+            _tokenMetadata
+        );
+
+        _approve(_zrxExchange, tokenId);
     }
 
     function addAuthorizedMintAgent(address _agent)

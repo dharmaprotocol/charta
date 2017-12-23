@@ -7,6 +7,7 @@ import {TxData, TxDataPayable} from '../common';
 import {promisify} from '@0xproject/utils';
 import {classUtils} from '../common';
 import {BigNumber} from 'bignumber.js';
+import * as fs from "fs-extra";
 import * as Web3 from 'web3';
 
 import {BaseContract} from '../base_contract';
@@ -20,6 +21,18 @@ export class {{contractName}}Contract extends BaseContract {
     {{> tx contractName=../contractName}}
     {{/this.constant}}
 {{/each}}
+    static async deployed(web3: Web3, defaults: Partial<TxData>): Promise<{{contractName}}Contract> {
+        try {
+            const currentNetwork = web3.version.network;
+            const artifact = await fs.readFile("build/contracts/{{contractName}}.json", "utf8");
+            const { abi, networks } = JSON.parse(artifact);
+            const web3ContractInstance = web3.eth.contract(abi).at(networks[currentNetwork].address);
+
+            return new {{contractName}}Contract(web3ContractInstance, defaults);
+        } catch (e) {
+            console.error("Artifacts malformed or nonexistent: " + e.toString());
+        }
+    }
     constructor(web3ContractInstance: Web3.ContractInstance, defaults: Partial<TxData>) {
         super(web3ContractInstance, defaults);
         classUtils.bindAll(this, ['web3ContractInstance', 'defaults']);

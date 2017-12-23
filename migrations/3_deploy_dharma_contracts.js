@@ -4,7 +4,7 @@ const DebtRegistry = artifacts.require("DebtRegistry");
 const DebtToken = artifacts.require("DebtToken");
 const RepaymentRouter = artifacts.require("RepaymentRouter");
 
-module.exports = (deployer: any) => {
+module.exports = (deployer) => {
   deployer.deploy(DebtRegistry);
   deployer.deploy(PermissionsLib);
   deployer.link(PermissionsLib, DummyContract);
