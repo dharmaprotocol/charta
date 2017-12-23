@@ -6,8 +6,6 @@ import * as Web3 from "web3";
 
 import {DebtRegistryContract} from "../../types/generated/debt_registry";
 import {DebtTokenContract} from "../../types/generated/debt_token";
-import {ZeroX_ExchangeContract} from "../../types/generated/zerox_exchange";
-import {ZeroX_TokenRegistryContract} from "../../types/generated/zerox_tokenregistry";
 import {ZeroX_TokenTransferProxyContract} from "../../types/generated/zerox_tokentransferproxy";
 
 import {
@@ -58,6 +56,8 @@ contract("Debt Token", (ACCOUNTS) => {
         TOKEN_OWNER_2,
         TOKEN_OWNER_3
     ]
+
+    const DEBT_PURCHASER = ACCOUNTS[7];
 
     const INDEX_0 = new BigNumber(0);
     const INDEX_1 = new BigNumber(1);
@@ -306,18 +306,10 @@ contract("Debt Token", (ACCOUNTS) => {
         });
 
         describe("Minting and Immediately Swapping", () => {
-            let zeroEx: ZeroEx;
-            before(async () => {
-                const zrxExchangeContract = await ZeroX_ExchangeContract.deployed(web3, TX_DEFAULTS);
-                const zrxTokenRegistryContract = await ZeroX_TokenRegistryContract.deployed(web3, TX_DEFAULTS);
-                const zrxTokenTransferProxyContract = await ZeroX_TokenRegistryContract.deployed(web3, TX_DEFAULTS);
+            let zrxTokenTransferProxyContract: ZeroX_TokenTransferProxyContract;
 
-                zeroEx = new ZeroEx(web3.currentProvider, {
-                	exchangeContractAddress: zrxExchangeContract.address,
-                	networkId: 70,
-                	tokenRegistryContractAddress: zrxTokenRegistryContract.address,
-                	tokenTransferProxyContractAddress: zrxTokenTransferProxyContract.address,
-                });
+            before(async () => {
+                zrxTokenTransferProxyContract = await ZeroX_TokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
             });
 
             describe("unauthorized agent mints new debt token and approves for ZRX exchange", () => {
@@ -329,7 +321,7 @@ contract("Debt Token", (ACCOUNTS) => {
                         debtEntries[2].getTermsContractParameters(),
                         debtEntries[2].getSalt(),
                         ARBITRARY_TOKEN_METADATA[2],
-                        zeroEx.proxy.getContractAddress(),
+                        zrxTokenTransferProxyContract.address,
                         { from: UNAUTHORIZED_MINT_AGENT }
                     )).to.eventually.be.rejectedWith(REVERT_ERROR);
                 });
@@ -346,7 +338,7 @@ contract("Debt Token", (ACCOUNTS) => {
                         debtEntries[2].getTermsContractParameters(),
                         debtEntries[2].getSalt(),
                         ARBITRARY_TOKEN_METADATA[2],
-                        zeroEx.proxy.getContractAddress(),
+                        zrxTokenTransferProxyContract.address,
                         { from: AUTHORIZED_MINT_AGENT }
                     );
 
@@ -366,12 +358,8 @@ contract("Debt Token", (ACCOUNTS) => {
 
                 it("should approve the ZRX contract for transferring the new token", async () => {
                     expect(debtToken.getApproved.callAsync(debtEntries[2].getTokenId()))
-                        .to.eventually.equal(zeroEx.proxy.getContractAddress());
-                })
-                //
-                // describe("the ZRX contracts execute a trade w/ the new token", () => {
-                //     before()
-                // });
+                        .to.eventually.equal(zrxTokenTransferProxyContract.address);
+                });
             });
         });
     });
