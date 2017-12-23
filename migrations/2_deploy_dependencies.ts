@@ -26,6 +26,6 @@ const migrateDependencies = async () => {
     await spawnProcess;
 }
 
-module.exports = (deployer) => {
+module.exports = (deployer: any) => {
     deployer.then(migrateDependencies);
 };

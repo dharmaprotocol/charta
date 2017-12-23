@@ -330,7 +330,7 @@ contract("Debt Token", (ACCOUNTS) => {
                         debtEntries[2].getSalt(),
                         ARBITRARY_TOKEN_METADATA[2],
                         zeroEx.proxy.getContractAddress(),
-                        { from: AUTHORIZED_MINT_AGENT }
+                        { from: UNAUTHORIZED_MINT_AGENT }
                     )).to.eventually.be.rejectedWith(REVERT_ERROR);
                 });
             });

@@ -1544,6 +1544,10 @@ dot-prop@^4.1.0:
   dependencies:
     is-obj "^1.0.0"
 
+dotenv@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-4.0.0.tgz#864ef1379aced55ce6f95debecdce179f7a0cd1d"
+
 drbg.js@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/drbg.js/-/drbg.js-1.0.1.tgz#3e36b6c42b37043823cdbc332d58f31e2445480b"
@@ -4364,8 +4368,8 @@ tsutils@^1.1.0:
   resolved "https://registry.yarnpkg.com/tsutils/-/tsutils-1.9.1.tgz#b9f9ab44e55af9681831d5f28d0aeeaf5c750cb0"
 
 tsutils@^2.12.1, tsutils@^2.8.0:
-  version "2.13.1"
-  resolved "https://registry.yarnpkg.com/tsutils/-/tsutils-2.13.1.tgz#d6d1cc0f7c04cf9fb3b28a292973cffb9cfbe09a"
+  version "2.14.0"
+  resolved "https://registry.yarnpkg.com/tsutils/-/tsutils-2.14.0.tgz#bc5291622aa2448c1baffc544bcc14ecfa528fb7"
   dependencies:
     tslib "^1.8.0"
 
@@ -4871,5 +4875,7 @@ yargs@~3.10.0:
     window-size "0.1.0"
 
 zeppelin-solidity@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/zeppelin-solidity/-/zeppelin-solidity-1.4.0.tgz#0b8e0ef219897431a5be47004f78b20e0a2ee34a"
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/zeppelin-solidity/-/zeppelin-solidity-1.5.0.tgz#ddb6db9a37ac13d730358a74cf0bd94faaf5eb5f"
+  dependencies:
+    dotenv "^4.0.0"
