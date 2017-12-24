@@ -12,7 +12,6 @@
     "node_modules/types-ethereumjs-util/index.d.ts",
     "node_modules/types-bn/index.d.ts",
     "types/*.ts",
-    "types/**/*.ts",
     "test/**/*.ts",
     "utils/solidity.ts",
     "migrations/*.ts"

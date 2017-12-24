@@ -11,14 +11,15 @@
     "compile": "truffle compile",
     "soltsice": "soltsice",
     "migrate": "npm run transpile; truffle migrate",
-    "test": "npm run generate-typings; npm run transpile; truffle test",
-    "testrpc": "ganache-cli --networkId 70",
+    "test": "npm run compile; npm run generate-typings; npm run migrate; truffle test transpiled/test/ts/debt_kernel.js",
+    "chain": "bash ./scripts/init_chain.sh",
     "validate": "npm ls"
   },
   "repository": "git@github.com:dharmaprotocol/charta.git",
   "author": "Nadav Hollander <nadav@dharma.io>",
   "license": "ISC",
   "dependencies": {
+    "0x.js": "^0.28.0",
     "@0xproject/utils": "^0.1.0",
     "@types/bignumber.js": "^4.0.3",
     "@types/chai": "^4.0.5",
@@ -49,8 +50,8 @@
   ],
   "devDependencies": {
     "0x-smart-contracts": "https://github.com/0xProject/contracts.git",
-    "0x.js": "^0.28.0",
-    "@0xproject/abi-gen": "^0.0.2",
+    "@0xproject/abi-gen": "file:../0x.js/packages/abi-gen",
+    "@0xproject/types": "^0.1.1",
     "@types/es6-promise": "^0.0.33",
     "@types/fs-extra": "^5.0.0",
     "@types/node": "^8.5.1",

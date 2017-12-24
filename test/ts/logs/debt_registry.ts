@@ -1,6 +1,6 @@
-import * as _ from "lodash";
 import * as ABIDecoder from "abi-decoder";
 import * as BigNumber from "bignumber.js";
+import * as _ from "lodash";
 import * as LogUtils from "./log_utils";
 
 import {
@@ -18,8 +18,10 @@ export function LogInsertEntry(
         events: LogUtils.getParams([
             ["entryHash", entry.getEntryHash()],
             ["creditor", entry.getCreditor()],
+            ["underwriter", entry.getUnderwriter()],
+            ["underwriterRiskRating", entry.getUnderwriterRiskRating()],
             ["termsContract", entry.getTermsContract()],
-            ["termsContractParameters", entry.getTermsContractParameters()]
+            ["termsContractParameters", entry.getTermsContractParameters()],
         ]),
         name: "LogInsertEntry",
     };
@@ -44,12 +46,12 @@ export function LogModifyEntryCreditor(
 
 export function LogAddAuthorizedInsertAgent(
     contract: Address,
-    agent: Address
+    agent: Address,
 ): ABIDecoder.DecodedLog {
     return {
         address: contract,
         events: LogUtils.getParams([
-            ["agent", agent]
+            ["agent", agent],
         ]),
         name: "LogAddAuthorizedInsertAgent",
     };
@@ -57,12 +59,12 @@ export function LogAddAuthorizedInsertAgent(
 
 export function LogAddAuthorizedEditAgent(
     contract: Address,
-    agent: Address
+    agent: Address,
 ): ABIDecoder.DecodedLog {
     return {
         address: contract,
         events: LogUtils.getParams([
-            ["agent", agent]
+            ["agent", agent],
         ]),
         name: "LogAddAuthorizedEditAgent",
     };
@@ -70,12 +72,12 @@ export function LogAddAuthorizedEditAgent(
 
 export function LogRevokeInsertAgentAuthorization(
     contract: Address,
-    agent: Address
+    agent: Address,
 ): ABIDecoder.DecodedLog {
     return {
         address: contract,
         events: LogUtils.getParams([
-            ["agent", agent]
+            ["agent", agent],
         ]),
         name: "LogRevokeInsertAgentAuthorization",
     };
@@ -83,12 +85,12 @@ export function LogRevokeInsertAgentAuthorization(
 
 export function LogRevokeEditAgentAuthorization(
     contract: Address,
-    agent: Address
+    agent: Address,
 ): ABIDecoder.DecodedLog {
     return {
         address: contract,
         events: LogUtils.getParams([
-            ["agent", agent]
+            ["agent", agent],
         ]),
         name: "LogRevokeEditAgentAuthorization",
     };

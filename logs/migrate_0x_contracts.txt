@@ -1,0 +1,168 @@
+[0;36mInstalling 0x contract deployment dependencies...[0m
+npm WARN ajv-keywords@2.1.0 requires a peer of ajv@>=5.0.0 but none is installed. You must install peer dependencies yourself.
+
+up to date in 2.815s
+
+
+[0;36mCompiling 0x smart contracts...[0m
+
+> 0x-smart-contracts@1.0.0 compile /Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts
+> rm -rf build/contracts; truffle compile
+
+Compiling ./contracts/Exchange.sol...
+Compiling ./contracts/Migrations.sol...
+Compiling ./contracts/MultiSigWalletWithTimeLock.sol...
+Compiling ./contracts/MultiSigWalletWithTimeLockExceptRemoveAuthorizedAddress.sol...
+Compiling ./contracts/TokenRegistry.sol...
+Compiling ./contracts/TokenTransferProxy.sol...
+Compiling ./contracts/base/MultiSigWallet.sol...
+Compiling ./contracts/base/Ownable.sol...
+Compiling ./contracts/base/SafeMath.sol...
+Compiling ./contracts/base/StandardToken.sol...
+Compiling ./contracts/base/Token.sol...
+Compiling ./contracts/test/DummyToken.sol...
+Compiling ./contracts/test/MaliciousToken.sol...
+Compiling ./contracts/test/Mintable.sol...
+Compiling ./contracts/tokens/EtherToken.sol...
+Compiling ./contracts/tokens/UnlimitedAllowanceToken.sol...
+Compiling ./contracts/tokens/ZRXToken.sol...
+
+Compilation warnings encountered:
+
+/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/Token.sol:6:46: : Unused local variable
+    function totalSupply() constant returns (uint supply) {}
+                                             ^---------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/Token.sol:10:24: : Unused local variable
+    function balanceOf(address _owner) constant returns (uint balance) {}
+                       ^------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/Token.sol:10:58: : Unused local variable
+    function balanceOf(address _owner) constant returns (uint balance) {}
+                                                         ^----------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/Token.sol:16:23: : Unused local variable
+    function transfer(address _to, uint _value) returns (bool success) {}
+                      ^---------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/Token.sol:16:36: : Unused local variable
+    function transfer(address _to, uint _value) returns (bool success) {}
+                                   ^---------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/Token.sol:16:58: : Unused local variable
+    function transfer(address _to, uint _value) returns (bool success) {}
+                                                         ^----------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/Token.sol:23:27: : Unused local variable
+    function transferFrom(address _from, address _to, uint _value) returns (bool success) {}
+                          ^-----------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/Token.sol:23:42: : Unused local variable
+    function transferFrom(address _from, address _to, uint _value) returns (bool success) {}
+                                         ^---------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/Token.sol:23:55: : Unused local variable
+    function transferFrom(address _from, address _to, uint _value) returns (bool success) {}
+                                                      ^---------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/Token.sol:23:77: : Unused local variable
+    function transferFrom(address _from, address _to, uint _value) returns (bool success) {}
+                                                                            ^----------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/Token.sol:29:22: : Unused local variable
+    function approve(address _spender, uint _value) returns (bool success) {}
+                     ^--------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/Token.sol:29:40: : Unused local variable
+    function approve(address _spender, uint _value) returns (bool success) {}
+                                       ^---------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/Token.sol:29:62: : Unused local variable
+    function approve(address _spender, uint _value) returns (bool success) {}
+                                                             ^----------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/Token.sol:34:24: : Unused local variable
+    function allowance(address _owner, address _spender) constant returns (uint remaining) {}
+                       ^------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/Token.sol:34:40: : Unused local variable
+    function allowance(address _owner, address _spender) constant returns (uint remaining) {}
+                                       ^--------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/Token.sol:34:76: : Unused local variable
+    function allowance(address _owner, address _spender) constant returns (uint remaining) {}
+                                                                           ^------------^
+
+Writing artifacts to ./build/contracts
+
+
+
+[0;36mRunning 0x smart contract migrations...[0m
+
+> 0x-smart-contracts@1.0.0 migrate /Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts
+> npm run transpile; truffle migrate
+
+
+> 0x-smart-contracts@1.0.0 transpile /Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts
+> rm -rf ./transpiled; copyfiles ./build/**/* ./transpiled; tsc
+
+node_modules/chai-as-promised-typescript-typings/index.d.ts(9,14): error TS2300: Duplicate identifier 'chaiAsPromised'.
+node_modules/chai-typescript-typings/index.d.ts(39,17): error TS2300: Duplicate identifier 'Operator'.
+node_modules/chai-typescript-typings/index.d.ts(41,17): error TS2300: Duplicate identifier 'OperatorComparable'.
+node_modules/chai-typescript-typings/index.d.ts(1242,18): error TS2300: Duplicate identifier 'AssertionError'.
+node_modules/chai-typescript-typings/index.d.ts(1251,15): error TS2451: Cannot redeclare block-scoped variable 'chai'.
+node_modules/chai-typescript-typings/index.d.ts(1254,14): error TS2300: Duplicate identifier 'chai'.
+node_modules/typescript/lib/lib.es6.d.ts(1292,11): error TS2300: Duplicate identifier 'Promise'.
+node_modules/typescript/lib/lib.es6.d.ts(4938,11): error TS2300: Duplicate identifier 'Promise'.
+node_modules/typescript/lib/lib.es6.d.ts(5427,13): error TS2300: Duplicate identifier 'Promise'.
+node_modules/typescript/lib/lib.es6.d.ts(5654,11): error TS2300: Duplicate identifier 'Promise'.
+util/rpc.ts(2,30): error TS7016: Could not find a declaration file for module '../truffle.js'. '/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/truffle.js' implicitly has an 'any' type.
+  Try `npm install @types/../truffle.js` if it exists or add a new declaration (.d.ts) file containing `declare module '../truffle.js';`
+../@types/chai-as-promised/index.d.ts(21,14): error TS2300: Duplicate identifier 'chaiAsPromised'.
+../@types/chai-as-promised/index.d.ts(31,9): error TS2403: Subsequent variable declarations must have the same type.  Variable 'rejected' must be of type '() => PromisedAssertion', but here has type 'PromisedAssertion'.
+../@types/chai-as-promised/index.d.ts(32,9): error TS2403: Subsequent variable declarations must have the same type.  Variable 'rejectedWith' must be of type 'PromisedAssertion', but here has type 'PromisedThrow'.
+../@types/chai-as-promised/index.d.ts(41,9): error TS2403: Subsequent variable declarations must have the same type.  Variable 'rejected' must be of type '() => PromisedAssertion', but here has type 'PromisedAssertion'.
+../@types/chai-as-promised/index.d.ts(42,9): error TS2403: Subsequent variable declarations must have the same type.  Variable 'rejectedWith' must be of type 'PromisedAssertion', but here has type 'PromisedThrow'.
+../@types/chai-as-promised/index.d.ts(57,9): error TS2403: Subsequent variable declarations must have the same type.  Variable 'true' must be of type '() => PromisedAssertion', but here has type 'PromisedAssertion'.
+../@types/chai-as-promised/index.d.ts(58,9): error TS2403: Subsequent variable declarations must have the same type.  Variable 'false' must be of type '() => PromisedAssertion', but here has type 'PromisedAssertion'.
+../@types/chai-as-promised/index.d.ts(78,9): error TS2403: Subsequent variable declarations must have the same type.  Variable 'match' must be of type 'PromisedAssertion', but here has type 'PromisedMatch'.
+../@types/chai-as-promised/index.d.ts(86,9): error TS2403: Subsequent variable declarations must have the same type.  Variable 'respondTo' must be of type 'PromisedAssertion', but here has type 'PromisedRespondTo'.
+../@types/chai-as-promised/index.d.ts(89,9): error TS2403: Subsequent variable declarations must have the same type.  Variable 'satisfy' must be of type 'PromisedAssertion', but here has type 'PromisedSatisfy'.
+../@types/chai-as-promised/index.d.ts(91,9): error TS2403: Subsequent variable declarations must have the same type.  Variable 'closeTo' must be of type 'PromisedAssertion', but here has type 'PromisedCloseTo'.
+../@types/chai/index.d.ts(40,17): error TS2300: Duplicate identifier 'Operator'.
+../@types/chai/index.d.ts(42,17): error TS2300: Duplicate identifier 'OperatorComparable'.
+../@types/chai/index.d.ts(75,9): error TS2403: Subsequent variable declarations must have the same type.  Variable 'true' must be of type '() => Assertion', but here has type 'Assertion'.
+../@types/chai/index.d.ts(76,9): error TS2403: Subsequent variable declarations must have the same type.  Variable 'false' must be of type '() => Assertion', but here has type 'Assertion'.
+../@types/chai/index.d.ts(77,9): error TS2403: Subsequent variable declarations must have the same type.  Variable 'null' must be of type '() => Assertion', but here has type 'Assertion'.
+../@types/chai/index.d.ts(78,9): error TS2403: Subsequent variable declarations must have the same type.  Variable 'undefined' must be of type '() => Assertion', but here has type 'Assertion'.
+../@types/chai/index.d.ts(101,9): error TS2403: Subsequent variable declarations must have the same type.  Variable 'throw' must be of type '() => Assertion', but here has type 'Throw'.
+../@types/chai/index.d.ts(1607,18): error TS2300: Duplicate identifier 'AssertionError'.
+../@types/chai/index.d.ts(1616,15): error TS2451: Cannot redeclare block-scoped variable 'chai'.
+../@types/chai/index.d.ts(1619,14): error TS2300: Duplicate identifier 'chai'.
+../@types/es6-promise/index.d.ts(11,15): error TS2300: Duplicate identifier 'Promise'.
+../@types/es6-promise/index.d.ts(42,19): error TS2300: Duplicate identifier 'Promise'.
+npm ERR! code ELIFECYCLE
+npm ERR! errno 2
+npm ERR! 0x-smart-contracts@1.0.0 transpile: `rm -rf ./transpiled; copyfiles ./build/**/* ./transpiled; tsc`
+npm ERR! Exit status 2
+npm ERR! 
+npm ERR! Failed at the 0x-smart-contracts@1.0.0 transpile script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /Users/nadavhollander/.npm/_logs/2017-12-24T04_10_22_413Z-debug.log
+Using network 'development'.
+
+Running migration: 1_initial_migration.js
+  Deploying Migrations...
+  Migrations: 0x5f6b5c8d7eecb05b795d6b0cd8a11bb2f3a8edd3
+Saving artifacts...
+Running migration: 2_deploy_independent_contracts.js
+  Deploying MultiSigWalletWithTimeLock...
+  MultiSigWalletWithTimeLock: 0xd03695de6970ae2b90e43ef2667039c2b6ef8019
+  Deploying TokenTransferProxy...
+  TokenTransferProxy: 0x26a1b474b10f4e65552bc0e4fa0a116d7cee3bc9
+  Deploying TokenRegistry...
+  TokenRegistry: 0x6bd855b391e8d803d1a3f7439d4ece7af29c3474
+  Deploying EtherToken...
+  EtherToken: 0xc1547fa60977ecf4592bf9ee8cc3143eaf260dc9
+Saving artifacts...
+Running migration: 3_register_tokens.js
+  Running step...
+Saving artifacts...
+Running migration: 4_configure_proxy.js
+  Running step...
+  Deploying Exchange...
+  Exchange: 0x75850737afc6cc1490c07d205a2dc9f66de720fe
+Saving artifacts...
+Running migration: 5_transfer_ownership.js
+Saving artifacts...
+
+
+[0;36mCopying 0x smart contract artifacts to local build folder...[0m
+[0;36mRenaming contract artifacts to separate them from the Dharma smart contracts...[0m

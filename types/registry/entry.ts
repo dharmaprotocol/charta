@@ -1,5 +1,5 @@
-import BigNumber from "bignumber.js";
 import * as ABIDecoder from "abi-decoder";
+import BigNumber from "bignumber.js";
 import * as crypto from "crypto";
 import ethUtil = require("ethereumjs-util");
 import * as _ from "lodash";
@@ -8,7 +8,7 @@ import {
     Address,
     Bytes32,
     Log,
-    UInt
+    UInt,
 } from "../common";
 import {RegistryEntryParameters, SemanticVersion} from "./schema";
 
@@ -25,6 +25,8 @@ export class DebtRegistryEntry {
         const entryHash = solidity.SHA3([
             this.params.version,
             this.params.creditor,
+            this.params.underwriter,
+            this.params.underwriterRiskRating,
             this.params.termsContract,
             this.params.termsContractParameters,
             this.salt,
@@ -41,17 +43,20 @@ export class DebtRegistryEntry {
         return this.params.version;
     }
 
+    public getUnderwriter(): Address {
+        return this.params.underwriter;
+    }
+
+    public getUnderwriterRiskRating(): BigNumber {
+        return this.params.underwriterRiskRating;
+    }
+
     public getTermsContract(): Address  {
         return this.params.termsContract;
     }
 
-    public getTermsContractParameters(): string {
+    public getTermsContractParameters(): Bytes32 {
         return this.params.termsContractParameters;
-    }
-
-    public getTermsContractParametersHash(): string {
-        const termsContractParametersHash =  solidity.SHA3([this.params.termsContractParameters]);
-        return ethUtil.bufferToHex(termsContractParametersHash);
     }
 
     public getSalt(): BigNumber {

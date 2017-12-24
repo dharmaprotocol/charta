@@ -30,8 +30,10 @@ contract DebtRegistry is Ownable {
     struct Entry {
         address version;
         address creditor;
+        address underwriter;
+        uint underwriterRiskRating;
         address termsContract;
-        string termsContractParameters;
+        bytes32 termsContractParameters;
     }
 
     // Primary registry mapping entry hashes to their corresponding entries
@@ -43,8 +45,10 @@ contract DebtRegistry is Ownable {
     event LogInsertEntry(
         bytes32 indexed entryHash,
         address indexed creditor,
-        address indexed termsContract,
-        string termsContractParameters
+        address indexed underwriter,
+        uint underwriterRiskRating,
+        address termsContract,
+        bytes32 termsContractParameters
     );
 
     event LogModifyEntryCreditor(
@@ -87,8 +91,10 @@ contract DebtRegistry is Ownable {
     function insert(
         address _version,
         address _creditor,
+        address _underwriter,
+        uint _underwriterRiskRating,
         address _termsContract,
-        string _termsContractParameters,
+        bytes32 _termsContractParameters,
         uint _salt
     )
         public
@@ -98,6 +104,8 @@ contract DebtRegistry is Ownable {
         Entry memory entry = Entry(
             _version,
             _creditor,
+            _underwriter,
+            _underwriterRiskRating,
             _termsContract,
             _termsContractParameters
         );
@@ -111,6 +119,8 @@ contract DebtRegistry is Ownable {
         LogInsertEntry(
             entryHash,
             entry.creditor,
+            entry.underwriter,
+            entry.underwriterRiskRating,
             entry.termsContract,
             entry.termsContractParameters
         );
@@ -169,11 +179,13 @@ contract DebtRegistry is Ownable {
     function get(bytes32 entryHash)
         public
         view
-        returns(address, address, address, string)
+        returns(address, address, address, uint, address, bytes32)
     {
         return (
             registry[entryHash].version,
             registry[entryHash].creditor,
+            registry[entryHash].underwriter,
+            registry[entryHash].underwriterRiskRating,
             registry[entryHash].termsContract,
             registry[entryHash].termsContractParameters
         );
@@ -203,14 +215,6 @@ contract DebtRegistry is Ownable {
         return entryEditPermissions.getAuthorizedAgents();
     }
 
-    function getTermsContractParametersHash(bytes32 entryHash)
-        public
-        constant
-        returns(bytes32)
-    {
-        return keccak256(registry[entryHash].termsContractParameters);
-    }
-
     function _getEntryHash(Entry _entry, uint _salt)
         internal
         pure
@@ -219,6 +223,8 @@ contract DebtRegistry is Ownable {
         return keccak256(
             _entry.version,
             _entry.creditor,
+            _entry.underwriter,
+            _entry.underwriterRiskRating,
             _entry.termsContract,
             _entry.termsContractParameters,
             _salt

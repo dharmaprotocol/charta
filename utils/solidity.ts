@@ -32,7 +32,11 @@ export function SHA3(args: any[]): Buffer {
         } else if (ethUtil.isValidAddress(arg)) {
             argTypes.push('address');
         } else if (_.isString(arg)) {
-            argTypes.push('string');
+            if (arg.length >= 2 && arg.substr(0,2) == "0x") {
+                argTypes.push('bytes32');
+            } else {
+                argTypes.push('string');
+            }
         } else if  (_.isBoolean(arg)) {
             argTypes.push('bool');
         } else {

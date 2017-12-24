@@ -42,10 +42,11 @@ contract DebtToken is MintableNonFungibleToken, Ownable {
     function create(
         address _version,
         address _creditor,
+        address _underwriter,
+        uint _underwriterRiskRating,
         address _termsContract,
-        string _termsContractParameters,
-        uint _salt,
-        string _tokenMetadata
+        bytes32 _termsContractParameters,
+        uint _salt
     )
         public
         returns (uint _tokenId)
@@ -55,12 +56,14 @@ contract DebtToken is MintableNonFungibleToken, Ownable {
         bytes32 entryHash = registry.insert(
             _version,
             _creditor,
+            _underwriter,
+            _underwriterRiskRating,
             _termsContract,
             _termsContractParameters,
             _salt
         );
 
-        mint(_creditor, uint(entryHash), _tokenMetadata);
+        mint(_creditor, uint(entryHash));
 
         return uint(entryHash);
     }
@@ -68,10 +71,11 @@ contract DebtToken is MintableNonFungibleToken, Ownable {
     function createAndApproveExchange(
         address _version,
         address _creditor,
+        address _underwriter,
+        uint _underwriterRiskRating,
         address _termsContract,
-        string _termsContractParameters,
+        bytes32 _termsContractParameters,
         uint _salt,
-        string _tokenMetadata,
         address _zrxExchange
     )
         public
@@ -81,10 +85,11 @@ contract DebtToken is MintableNonFungibleToken, Ownable {
         uint tokenId = create(
             _version,
             _creditor,
+            _underwriter,
+            _underwriterRiskRating,
             _termsContract,
             _termsContractParameters,
-            _salt,
-            _tokenMetadata
+            _salt
         );
 
         _approve(_zrxExchange, tokenId);

@@ -1,14 +1,17 @@
+import * as ABIDecoder from "abi-decoder";
 import * as BigNumber from "bignumber.js";
 import * as chai from "chai";
+import * as _ from "lodash";
 import * as Web3 from "web3";
-import * as ABIDecoder from "abi-decoder";
+import * as Units from "./test_utils/units";
+import * as utils from "./test_utils/utils";
 
 import {
     Address,
-    UInt,
     Bytes32,
     TxData,
     TxDataPayable,
+    UInt,
 } from "../../types/common";
 import {DebtRegistryContract} from "../../types/generated/debt_registry";
 import {DebtRegistryEntry} from "../../types/registry/entry";
@@ -44,18 +47,18 @@ contract("Debt Registry", async (ACCOUNTS) => {
     // entries.
     const CREDITOR_1 = ACCOUNTS[1];
     const CREDITOR_2 = ACCOUNTS[2];
-
-    const TERMS_CONTRACT_ADDRESS = ACCOUNTS[3];
+    const UNDERWRITER = ACCOUNTS[3];
+    const TERMS_CONTRACT_ADDRESS = ACCOUNTS[4];
 
     // We choose arbitrary addresses to represent the various contracts
     // that have / lack permission to make changes to the registry.
-    const AGENT_1 = ACCOUNTS[4];
-    const AGENT_2 = ACCOUNTS[5];
-    const AGENT_3 = ACCOUNTS[6];
-    const AGENT_4 = ACCOUNTS[7];
+    const AGENT_1 = ACCOUNTS[5];
+    const AGENT_2 = ACCOUNTS[6];
+    const AGENT_3 = ACCOUNTS[7];
+    const AGENT_4 = ACCOUNTS[8];
 
-    const ATTACKER = ACCOUNTS[8];
-    const NEW_CONTRACT_OWNER = ACCOUNTS[9];
+    const ATTACKER = ACCOUNTS[9];
+    const NEW_CONTRACT_OWNER = ACCOUNTS[10];
 
     let registry: DebtRegistryContract;
     let termsContractAddress: Address;
@@ -72,7 +75,7 @@ contract("Debt Registry", async (ACCOUNTS) => {
         => Promise<string>;
 
     const ARBITRARY_TERMS_CONTRACT_PARAMS
-        = "arbitrary terms contract param string";
+        = web3.sha3("arbitrary terms contract param string");
     const NULL_ADDRESS = "0x0000000000000000000000000000000000000000";
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
 
@@ -101,7 +104,9 @@ contract("Debt Registry", async (ACCOUNTS) => {
             return new DebtRegistryEntry({
                 creditor: CREDITOR_1,
                 termsContract: TERMS_CONTRACT_ADDRESS,
-                termsContractParameters: "arbitrary terms contract param string",
+                termsContractParameters: ARBITRARY_TERMS_CONTRACT_PARAMS,
+                underwriter: UNDERWRITER,
+                underwriterRiskRating: Units.percent(5),
                 version: VERSION,
             });
         };
@@ -111,6 +116,8 @@ contract("Debt Registry", async (ACCOUNTS) => {
             return registry.insert.sendTransactionAsync(
                 entry.getVersion(),
                 entry.getCreditor(),
+                entry.getUnderwriter(),
+                entry.getUnderwriterRiskRating(),
                 entry.getTermsContract(),
                 entry.getTermsContractParameters(),
                 entry.getSalt(),
@@ -209,18 +216,23 @@ contract("Debt Registry", async (ACCOUNTS) => {
             });
 
             it("should make entry retrievable by its hash", async () => {
-                await expect(registry.get.callAsync(entry.getEntryHash()))
-                    .to.eventually.deep.equal([
+                const retrievedEntry = await registry.get.callAsync(entry.getEntryHash());
+                const expectedEntry = [
                         entry.getVersion(),
                         entry.getCreditor(),
+                        entry.getUnderwriter(),
+                        entry.getUnderwriterRiskRating(),
                         entry.getTermsContract(),
                         entry.getTermsContractParameters(),
-                ]);
-            });
+                ];
 
-            it("should return the correctly hashed terms contract parameters", async () => {
-                await expect(registry.getTermsContractParametersHash.callAsync(entry.getEntryHash()))
-                    .to.eventually.equal(entry.getTermsContractParametersHash());
+                _.forEach(retrievedEntry, (value: any, i: number) => {
+                    if (utils.isBigNumber(value)) {
+                        expect(value).to.bignumber.deep.equal(expectedEntry[i]);
+                    } else {
+                        expect(value).to.equal(expectedEntry[i]);
+                    }
+                });
             });
 
             it("should throw when first agent tries editing entry", async () => {
@@ -247,13 +259,23 @@ contract("Debt Registry", async (ACCOUNTS) => {
             });
 
             it("should make entry retrievable by its hash", async () => {
-                await expect(registry.get.callAsync(entry.getEntryHash()))
-                    .to.eventually.deep.equal([
+                const retrievedEntry = await registry.get.callAsync(entry.getEntryHash());
+                const expectedEntry = [
                         entry.getVersion(),
                         entry.getCreditor(),
+                        entry.getUnderwriter(),
+                        entry.getUnderwriterRiskRating(),
                         entry.getTermsContract(),
                         entry.getTermsContractParameters(),
-                ]);
+                ];
+
+                _.forEach(retrievedEntry, (value: any, i: number) => {
+                    if (utils.isBigNumber(value)) {
+                        expect(value).to.bignumber.deep.equal(expectedEntry[i]);
+                    } else {
+                        expect(value).to.equal(expectedEntry[i]);
+                    }
+                });
             });
 
             it("should throw when second agent tries editing entry", async () => {
