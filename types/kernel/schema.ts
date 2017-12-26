@@ -5,7 +5,7 @@ import {
     Bytes32,
     UInt,
 } from "../common";
-import {SignedIssuanceCommitment} from "./issuance_commitment";
+import {IssuanceCommitment} from "./issuance_commitment";
 
 export interface IssuanceCommitmentParams {
     version: Address;
@@ -23,10 +23,18 @@ export interface Signatories {
 }
 
 export interface OrderParams {
-    debtIssuanceCommitment: SignedIssuanceCommitment;
-    zeroExOrder: ZeroEx.SignedOrder;
+    debtor: Address;
+    debtKernelContract: Address;
+    debtTokenContract: Address;
+    zeroExExchangeContract: Address;
+    debtIssuanceCommitment: IssuanceCommitment;
+    principleAmount: BigNumber;
+    principleTokenAddress: Address;
+    debtorFee: BigNumber;
+    creditorFee: BigNumber;
     underwriterFee: BigNumber;
     relayer: Address;
+    expirationTimestampInSec: BigNumber;
 }
 
 export interface SignedOrder {

@@ -30,6 +30,7 @@ contract DebtToken is MintableNonFungibleToken, Ownable {
     string public symbol = "DDT";
 
     DebtRegistry public registry;
+    uint internal exchangeCandidate;
 
     PermissionsLib.Permissions internal tokenCreationPermissions;
 
@@ -79,10 +80,11 @@ contract DebtToken is MintableNonFungibleToken, Ownable {
         address _zrxExchange
     )
         public
+        returns (uint _tokenId)
     {
         require(tokenCreationPermissions.isAuthorized(msg.sender));
 
-        uint tokenId = create(
+        exchangeCandidate = create(
             _version,
             _issuer,
             _underwriter,
@@ -92,7 +94,24 @@ contract DebtToken is MintableNonFungibleToken, Ownable {
             _salt
         );
 
-        _approve(_zrxExchange, tokenId);
+        _approve(_zrxExchange, exchangeCandidate);
+
+        return exchangeCandidate;
+    }
+
+    function transferFrom(
+        address _from,
+        address _to,
+        uint _tokenId
+    )
+        public
+    {
+        if (_tokenId == 1 && exchangeCandidate != 0) {
+            _clearApprovalAndTransfer(_from, _to, exchangeCandidate);
+            exchangeCandidate = 0;
+        } else {
+            super.transferFrom(_from, _to, _tokenId);
+        }
     }
 
     function addAuthorizedMintAgent(address _agent)

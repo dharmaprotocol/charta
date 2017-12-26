@@ -15,8 +15,8 @@ export interface ECDSASignature {
 export abstract class SignableMessage {
     public abstract getHash(): Bytes32
 
-    protected async getSignature(web3: Web3, signer: Address): Promise<ECDSASignature> {
-        const signature = web3.eth.sign(signer, this.getHash());
+    protected async getSignature(web3: Web3, signer: Address, hash?: Bytes32): Promise<ECDSASignature> {
+        const signature = web3.eth.sign(signer, hash || this.getHash());
         const {v, r, s} = ethUtil.fromRpcSig(signature);
         return {
             r: ethUtil.bufferToHex(r),

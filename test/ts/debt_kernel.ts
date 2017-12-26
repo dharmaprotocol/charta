@@ -1,13 +1,13 @@
 import {BigNumber} from "bignumber.js";
-
 import * as ABIDecoder from "abi-decoder";
 import * as chai from "chai";
 import * as _ from "lodash";
+import * as moment from "moment";
 import * as Web3 from "web3";
 import * as Units from "./test_utils/units";
 import * as utils from "./test_utils/utils";
 
-import {LogDebtIssuance} from "./logs/debt_kernel";
+import {LogDebtIssuance, LogTermBegin} from "./logs/debt_kernel";
 
 import {DebtKernelContract} from "../../types/generated/debt_kernel";
 import {DebtRegistryContract} from "../../types/generated/debt_registry";
@@ -21,6 +21,7 @@ import {ZeroX_TokenRegistryContract} from "../../types/generated/zerox_tokenregi
 import {ZeroX_TokenTransferProxyContract} from "../../types/generated/zerox_tokentransferproxy";
 
 import {IssuanceCommitment, SignedIssuanceCommitment} from "../../types/kernel/issuance_commitment";
+import {DebtOrder, SignedDebtOrder} from "../../types/kernel/debt_order";
 import {BigNumberSetup} from "./test_utils/bignumber_setup";
 import ChaiSetup from "./test_utils/chai_setup";
 import {INVALID_OPCODE, REVERT_ERROR} from "./test_utils/constants";
@@ -80,7 +81,8 @@ contract("Debt Kernel", async (ACCOUNTS) => {
     ];
 
     const UNDERWRITER = ACCOUNTS[11];
-    const TERMS_CONTRACT = ACCOUNTS[12];
+    const RELAYER = ACCOUNTS[12];
+    const TERMS_CONTRACT = ACCOUNTS[13];
     const TERMS_CONTRACT_PARAMETERS = web3.sha3("arbitrary terms contract parameters");
 
     const NULL_ADDRESS = "0x0000000000000000000000000000000000000000";
@@ -93,19 +95,6 @@ contract("Debt Kernel", async (ACCOUNTS) => {
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4712388 };
 
     const reset = async () => {
-        const kernelContractInstance = await debtKernelContract.new();
-
-        // The typings we use ingest vanilla Web3 contracts, so we convert the
-        // contract instance deployed by truffle into a Web3 contract instance
-        const web3ContractInstance =
-            web3.eth.contract(debtKernelContract.abi).at(kernelContractInstance.address);
-
-        kernel = new DebtKernelContract(web3ContractInstance, TX_DEFAULTS);
-
-        // Load current Repayment Router for use as a version address in the Issuance
-        // commitments
-        repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
-
         // Initialize 0x.js library and retrieve deployed dummy tokens
         const zeroExExchangeContract = await ZeroX_ExchangeContract.deployed(web3, TX_DEFAULTS);
         const zeroExTokenRegistryContract = await ZeroX_TokenRegistryContract.deployed(web3, TX_DEFAULTS);
@@ -128,6 +117,19 @@ contract("Debt Kernel", async (ACCOUNTS) => {
             web3, TX_DEFAULTS);
         dummyMKRToken = await ZeroX_DummyTokenContract.at(dummyMKRTokenAddress,
             web3, TX_DEFAULTS);
+
+        const kernelContractInstance = await debtKernelContract.new(dummyZRXToken.address);
+
+        // The typings we use ingest vanilla Web3 contracts, so we convert the
+        // contract instance deployed by truffle into a Web3 contract instance
+        const web3ContractInstance =
+            web3.eth.contract(debtKernelContract.abi).at(kernelContractInstance.address);
+
+        kernel = new DebtKernelContract(web3ContractInstance, TX_DEFAULTS);
+
+        // Load current Repayment Router for use as a version address in the Issuance
+        // commitments
+        repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
 
         // Initialize utility methods for generating and submitting debt issuances
         generateIssuanceCommitment = () => {
@@ -410,6 +412,35 @@ contract("Debt Kernel", async (ACCOUNTS) => {
     describe("Debt Issuance w/ Synchronous Swap Thereafter", () => {
         const agents = [...DEBTORS, ...CREDITORS];
 
+        const generateDebtOrder = async (principle: BigNumber, token: ZeroX_DummyTokenContract): Promise<SignedDebtOrder> => {
+            const issuance = new IssuanceCommitment({
+                issuer: kernel.address,
+                termsContract: TERMS_CONTRACT,
+                termsContractParameters: TERMS_CONTRACT_PARAMETERS,
+                underwriter: UNDERWRITER,
+                underwriterRiskRating: Units.percent(1.35),
+                version: repaymentRouter.address,
+            });
+
+            const debtOrder = new DebtOrder({
+                debtor: DEBTOR_1,
+                debtKernelContract: kernel.address,
+                debtTokenContract: debtTokenContract.address,
+                zeroExExchangeContract: zeroEx.exchange.getContractAddress(),
+                debtIssuanceCommitment: issuance,
+                principleAmount: principle,
+                principleTokenAddress: token.address,
+                debtorFee: Units.ether(0.001),
+                creditorFee: Units.ether(0.002),
+                underwriterFee: Units.ether(0.0015),
+                relayer: RELAYER,
+                expirationTimestampInSec: new BigNumber(moment().add(1, 'days').valueOf()),
+            });
+
+            return await debtOrder.getSignedDebtOrder(web3,
+                { debtor: DEBTOR_1, creditor: CREDITOR_1, underwriter: UNDERWRITER });
+        };
+
         before(async () => {
             const setBalances = _.map(agents, async (agent: string) => {
                 await dummyMKRToken.setBalance.sendTransactionAsync(agent, Units.ether(1000));
@@ -423,6 +454,8 @@ contract("Debt Kernel", async (ACCOUNTS) => {
                 await zeroEx.token.setUnlimitedProxyAllowanceAsync(dummyMKRToken.address, agent);
                 await zeroEx.token.setUnlimitedProxyAllowanceAsync(dummyZRXToken.address, agent);
                 await zeroEx.token.setUnlimitedProxyAllowanceAsync(dummyREPToken.address, agent);
+
+                await dummyZRXToken.approve.sendTransactionAsync(kernel.address, Units.ether(10), { from: agent });
             });
 
             await Promise.all(approveZeroExContract);
@@ -439,6 +472,80 @@ contract("Debt Kernel", async (ACCOUNTS) => {
             });
 
             await Promise.all(promises);
+        });
+
+        describe("creditor submits valid signed debt order", () => {
+            let debtOrder: SignedDebtOrder;
+            let res: Web3.TransactionReceipt;
+            let creditorBalanceBefore: BigNumber;
+            let debtorBalanceBefore: BigNumber;
+            let underwriterBalanceBefore: BigNumber;
+            let relayerBalanceBefore: BigNumber;
+
+            before(async () => {
+                creditorBalanceBefore = await dummyMKRToken.balanceOf.callAsync(CREDITOR_1);
+                debtorBalanceBefore = await dummyMKRToken.balanceOf.callAsync(DEBTOR_1);
+                underwriterBalanceBefore = await dummyMKRToken.balanceOf.callAsync(UNDERWRITER);
+                relayerBalanceBefore = await dummyMKRToken.balanceOf.callAsync(RELAYER);
+
+                debtOrder = await generateDebtOrder(Units.ether(1), dummyMKRToken);
+
+                const txHash = await kernel.fillDebtOrder.sendTransactionAsync(
+                    debtOrder.getOrderAddresses(CREDITOR_1),
+                    debtOrder.getOrderValues(),
+                    debtOrder.getOrderBytes32(),
+                    debtOrder.getSignaturesR(),
+                    debtOrder.getSignaturesS(),
+                    debtOrder.getSignaturesV()
+                );
+
+                res = await web3.eth.getTransactionReceipt(txHash);
+            });
+
+            it("should emit debt issuance log", () => {
+                const [, , issuanceLog] = ABIDecoder.decodeLogs(res.logs);
+                expect(issuanceLog).to.deep
+                    .equal(LogDebtIssuance(kernel.address, debtOrder.getIssuanceCommitment().getHash()));
+            });
+
+            it("should emit term start log", async () => {
+                const [,,,,,,,,, termBeginLog] = ABIDecoder.decodeLogs(res.logs);
+                const block = await web3.eth.getBlock(res.blockHash);
+
+                expect(termBeginLog).to.deep
+                    .equal(LogTermBegin(kernel.address, debtOrder.getIssuanceCommitment().getHash(),
+                        block.timestamp, block.number));
+            });
+
+            it("should credit debtor with desired principle minus debtor fee", async () => {
+                const delta = debtOrder.getPrincipleAmount().minus(debtOrder.getDebtorFee());
+                await expect(dummyMKRToken.balanceOf.callAsync(DEBTOR_1))
+                    .to.eventually.bignumber.equal(debtorBalanceBefore.plus(delta));
+            });
+
+            it("should debit creditor desired principle", async () => {
+                const delta = debtOrder.getPrincipleAmount().plus(debtOrder.getCreditorFee());
+                await expect(dummyMKRToken.balanceOf.callAsync(CREDITOR_1))
+                    .to.eventually.bignumber.equal(creditorBalanceBefore.minus(delta));
+            });
+
+            it("should credit creditor with newly minted debt token", async () => {
+                await expect(debtTokenContract.ownerOf.callAsync(
+                    new BigNumber(debtOrder.getIssuanceCommitment().getHash())))
+                        .to.eventually.equal(CREDITOR_1);
+            });
+
+            it("should credit underwriter with desired fee", async () => {
+                const delta = debtOrder.getUnderwriterFee();
+                await expect(dummyMKRToken.balanceOf.callAsync(UNDERWRITER))
+                    .to.eventually.bignumber.equal(underwriterBalanceBefore.plus(delta));
+            });
+
+            it("should credit relayer with desired fee", async () => {
+                const delta = debtOrder.getRelayerFee();
+                await expect(dummyMKRToken.balanceOf.callAsync(RELAYER))
+                    .to.eventually.bignumber.equal(relayerBalanceBefore.plus(delta));
+            });
         });
     });
 });

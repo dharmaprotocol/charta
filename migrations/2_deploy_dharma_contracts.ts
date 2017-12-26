@@ -1,3 +1,5 @@
+import {ZeroX_TokenRegistryContract} from "../types/generated/zerox_tokenregistry";
+
 const PermissionsLib = artifacts.require("PermissionsLib");
 const DummyContract = artifacts.require("DummyContract");
 const DebtRegistry = artifacts.require("DebtRegistry");
@@ -14,6 +16,10 @@ module.exports = (deployer: any) => {
   deployer.deploy(DebtRegistry).then(() => {
     return deployer.deploy(DebtToken, DebtRegistry.address);
   });
-  deployer.deploy(DebtKernel);
   deployer.deploy(RepaymentRouter);
+  deployer.then(async () => {
+      const zeroExTokenRegistryContract = await ZeroX_TokenRegistryContract.deployed(web3, {});
+      const zrxTokenAddress = await zeroExTokenRegistryContract.getTokenAddressBySymbol.callAsync("ZRX");
+      return deployer.deploy(DebtKernel, zrxTokenAddress);
+  });
 };
