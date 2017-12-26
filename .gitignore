@@ -1,5 +1,5 @@
-node_modules
-transpiled
-logs/
-types/generated/
-build
+/node_modules
+/transpiled
+/logs/
+/types/generated/
+/build
