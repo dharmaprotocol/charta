@@ -5,16 +5,11 @@ import {
     Bytes32,
     UInt,
 } from "../common";
-
-export interface ECDSASignature {
-    r: string;
-    s: string;
-    v: number;
-}
+import {SignedIssuanceCommitment} from "./issuance_commitment";
 
 export interface IssuanceCommitmentParams {
     version: Address;
-    debtor: Address;
+    issuer: Address;
     underwriter: Address;
     underwriterRiskRating: BigNumber;
     termsContract: Address;
@@ -22,16 +17,21 @@ export interface IssuanceCommitmentParams {
     salt?: BigNumber;
 }
 
-export interface Order {
-    debtIssuanceCommitment: IssuanceCommitmentParams;
+export interface Signatories {
+    underwriter?: Address;
+    debtor?: Address;
+}
+
+export interface OrderParams {
+    debtIssuanceCommitment: SignedIssuanceCommitment;
     zeroExOrder: ZeroEx.SignedOrder;
+    underwriterFee: BigNumber;
     relayer: Address;
-    relayerFee: UInt;
 }
 
 export interface SignedOrder {
     debtIssuanceCommitment: IssuanceCommitmentParams;
     zeroExOrder: ZeroEx.SignedOrder;
     relayer: Address;
-    relayerFee: UInt;
+    relayerFee: BigNumber;
 }

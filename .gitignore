@@ -1,4 +1,5 @@
 node_modules
 transpiled
+logs/
 types/generated/
 build

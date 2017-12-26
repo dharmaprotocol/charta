@@ -11,17 +11,19 @@ import {
     UInt,
 } from "../common";
 import {
-    ECDSASignature,
     IssuanceCommitmentParams,
+    Signatories,
 } from "./schema";
+import {ECDSASignature, SignableMessage} from "./signable_message";
 
 const NULL_ADDRESS = "0x0000000000000000000000000000000000000000";
 const NULL_SIGNATURE = { r: "0x0", s: "0x0", v: 0 };
 
-export class IssuanceCommitment {
+export class IssuanceCommitment extends SignableMessage {
     public params: IssuanceCommitmentParams;
 
     constructor(params: IssuanceCommitmentParams, salt?: BigNumber) {
+        super();
         this.params = params;
         this.params.salt = salt || this.generateSalt();
     }
@@ -30,8 +32,8 @@ export class IssuanceCommitment {
         return this.params.version;
     }
 
-    public getDebtor(): Address {
-        return this.params.debtor;
+    public getIssuer(): Address {
+        return this.params.issuer;
     }
 
     public getUnderwriter(): Address {
@@ -54,24 +56,15 @@ export class IssuanceCommitment {
         return this.params.salt;
     }
 
-    public async getDebtorSignature(web3: Web3, signer?: Address): Promise<ECDSASignature> {
-        signer = signer || this.getDebtor();
-        return this.getSignature(web3, signer);
-    }
-
-    public async getUnderwriterSignature(web3: Web3, signer?: Address): Promise<ECDSASignature> {
-        signer = signer || this.getUnderwriter();
-        return this.getSignature(web3, signer);
-    }
-
     public async getSignedIssuanceCommitment(
         web3: Web3,
-        debtor?: Address,
-        underwriter?: Address,
+        signatories: Signatories = {},
     ): Promise<SignedIssuanceCommitment> {
-        const debtorSignature = await this.getDebtorSignature(web3, debtor);
-        const underwriterSignature = this.getUnderwriter() !== NULL_ADDRESS ?
-            await this.getUnderwriterSignature(web3, underwriter) : NULL_SIGNATURE;
+        const debtorSignature = signatories.debtor ?
+            await this.getSignature(web3, signatories.debtor) : NULL_SIGNATURE;
+
+        const underwriterSignature = signatories.underwriter ?
+            await this.getSignature(web3, signatories.underwriter) : NULL_SIGNATURE;
 
         return new SignedIssuanceCommitment(
             this,
@@ -83,7 +76,7 @@ export class IssuanceCommitment {
     public getHash(): string {
         const hash = solidity.SHA3([
             this.getVersion(),
-            this.getDebtor(),
+            this.getIssuer(),
             this.getUnderwriter(),
             this.getUnderwriterRiskRating(),
             this.getTermsContract(),
@@ -100,37 +93,27 @@ export class IssuanceCommitment {
         const saltBufferHex = ethUtil.bufferToHex(saltBuffer);
         return new BigNumber(saltBufferHex);
     }
-
-    private async getSignature(web3: Web3, signer: Address): Promise<ECDSASignature> {
-        const signature = web3.eth.sign(signer, this.getHash());
-        const {v, r, s} = ethUtil.fromRpcSig(signature);
-        return {
-            r: ethUtil.bufferToHex(r),
-            s: ethUtil.bufferToHex(s),
-            v,
-        };
-    }
 }
 
 export class SignedIssuanceCommitment extends IssuanceCommitment {
-    public debtorSignature: ECDSASignature;
+    public issuerSignature: ECDSASignature;
     public underwriterSignature?: ECDSASignature;
 
     constructor(
         issuanceCommitment: IssuanceCommitment,
-        debtorSignature: ECDSASignature,
+        issuerSignature: ECDSASignature,
         underwriterSignature?: ECDSASignature,
     ) {
         super(issuanceCommitment.params, issuanceCommitment.getSalt());
 
-        this.debtorSignature = debtorSignature;
+        this.issuerSignature = issuerSignature;
         this.underwriterSignature = underwriterSignature;
     }
 
     public getIssuanceAddresses(): Address[] {
         return [
             this.getVersion(),
-            this.getDebtor(),
+            this.getIssuer(),
             this.getUnderwriter(),
             this.getTermsContract(),
         ];
@@ -143,23 +126,20 @@ export class SignedIssuanceCommitment extends IssuanceCommitment {
         ];
     }
 
-    public getSignaturesR(): Bytes32[] {
-        return [
-            this.debtorSignature.r,
-            this.underwriterSignature.r,
-        ];
+    public getUnderwriterSignature(): ECDSASignature {
+        return this.underwriterSignature;
     }
 
     public getSignaturesS(): Bytes32[] {
         return [
-            this.debtorSignature.s,
+            this.issuerSignature.s,
             this.underwriterSignature.s,
         ];
     }
 
     public getSignaturesV(): number[] {
         return [
-            this.debtorSignature.v,
+            this.issuerSignature.v,
             this.underwriterSignature.v,
         ];
     }

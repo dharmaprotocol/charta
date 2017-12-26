@@ -31,7 +31,7 @@ contract DebtKernel is Ownable {
 
     struct Issuance {
         address version;
-        address debtor;
+        address issuer;
         address underwriter;
         uint underwriterRiskRating;
         address termsContract;
@@ -50,16 +50,16 @@ contract DebtKernel is Ownable {
         address[4] issuanceAddresses,
         uint[2] issuanceValues,
         bytes32 termsContractParameters,
-        bytes32[2] signaturesR,
-        bytes32[2] signaturesS,
-        uint8[2] signaturesV
+        bytes32 underwriterSignatureR,
+        bytes32 underwriterSignatureS,
+        uint8 underwriterSignatureV
     )
         public
         returns (bytes32 _issuanceHash)
     {
         Issuance memory issuance = Issuance({
             version: issuanceAddresses[0],
-            debtor: issuanceAddresses[1],
+            issuer: issuanceAddresses[1],
             underwriter: issuanceAddresses[2],
             underwriterRiskRating: issuanceValues[0],
             termsContract: issuanceAddresses[3],
@@ -67,16 +67,9 @@ contract DebtKernel is Ownable {
             salt: issuanceValues[1]
         });
 
-        bytes32 issuanceHash = getIssuanceHash(issuanceAddresses, issuanceValues, termsContractParameters);
+        require(issuance.issuer == msg.sender);
 
-        // Validate debtor's signature
-        require(isValidSignature(
-            issuance.debtor,
-            issuanceHash,
-            signaturesV[0],
-            signaturesR[0],
-            signaturesS[0]
-        ));
+        bytes32 issuanceHash = getIssuanceHash(issuanceAddresses, issuanceValues, termsContractParameters);
 
         // Validate underwriter's signature if an underwriter's
         // address is present
@@ -84,9 +77,9 @@ contract DebtKernel is Ownable {
             require(isValidSignature(
                 issuance.underwriter,
                 issuanceHash,
-                signaturesV[1],
-                signaturesR[1],
-                signaturesS[1]
+                underwriterSignatureV,
+                underwriterSignatureR,
+                underwriterSignatureS
             ));
         } else {
             require(issuance.underwriterRiskRating == 0);
@@ -95,7 +88,7 @@ contract DebtKernel is Ownable {
         // Mint debt token and finalize debt agreement
         uint tokenId = debtToken.create(
             issuance.version,
-            issuance.debtor,
+            issuance.issuer,
             issuance.underwriter,
             issuance.underwriterRiskRating,
             issuance.termsContract,

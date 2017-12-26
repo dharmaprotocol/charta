@@ -2,8 +2,8 @@ import * as ABIDecoder from "abi-decoder";
 import {BigNumber} from "bignumber.js";
 import * as chai from "chai";
 import * as _ from "lodash";
-import * as Units from "./test_utils/units";
 import * as Web3 from "web3";
+import * as Units from "./test_utils/units";
 
 import {DebtRegistryContract} from "../../types/generated/debt_registry";
 import {DebtTokenContract} from "../../types/generated/debt_token";

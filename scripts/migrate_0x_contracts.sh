@@ -26,7 +26,7 @@ echo -e "\n"
 cd build/contracts/
 
 echo -e "${CYAN}Copying 0x smart contract artifacts to local build folder...${NO_COLOR}"
-for f in "Exchange.json" "TokenTransferProxy.json" "TokenRegistry.json"; do cp -- "$f" "$CHARTA_REPO/build/contracts/ZeroX_$f"; done
+for f in "Exchange.json" "TokenTransferProxy.json" "TokenRegistry.json" "DummyToken.json"; do cp -- "$f" "$CHARTA_REPO/build/contracts/ZeroX_$f"; done
 
 echo -e "${CYAN}Renaming contract artifacts to separate them from the Dharma smart contracts...${NO_COLOR}"
 sed -i '' 's/"contract_name": "/"contract_name": "ZeroX_/g' $CHARTA_REPO/build/contracts/ZeroX_*

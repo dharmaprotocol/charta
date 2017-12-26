@@ -52,7 +52,8 @@ contract RepaymentRouter {
         require(amount > 0);
 
         // Get registry entry and check if entry is valid
-        var (, creditor, termsContract,) = debtRegistry.get(entryHash);
+        // solhint-disable-next-line space-after-comma
+        var (, creditor, , , termsContract,) = debtRegistry.get(entryHash);
         require(creditor != address(0));
 
         // Transfer amount to creditor
@@ -71,7 +72,8 @@ contract RepaymentRouter {
         require(token != address(0));
 
         // Get registry entry and check if entry is valid
-        var (, creditor, termsContract,) = debtRegistry.get(entryHash);
+        // solhint-disable-next-line space-after-comma
+        var (, creditor, , , termsContract,) = debtRegistry.get(entryHash);
         require(creditor != address(0));
 
         // Transfer NFT to creditor

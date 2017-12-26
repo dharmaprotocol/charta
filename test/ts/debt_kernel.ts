@@ -14,10 +14,18 @@ import {DebtRegistryContract} from "../../types/generated/debt_registry";
 import {DebtTokenContract} from "../../types/generated/debt_token";
 import {RepaymentRouterContract} from "../../types/generated/repayment_router";
 
+import {ZeroEx} from "0x.js";
+import {ZeroX_DummyTokenContract} from "../../types/generated/zerox_dummytoken";
+import {ZeroX_ExchangeContract} from "../../types/generated/zerox_exchange";
+import {ZeroX_TokenRegistryContract} from "../../types/generated/zerox_tokenregistry";
+import {ZeroX_TokenTransferProxyContract} from "../../types/generated/zerox_tokentransferproxy";
+
 import {IssuanceCommitment, SignedIssuanceCommitment} from "../../types/kernel/issuance_commitment";
 import {BigNumberSetup} from "./test_utils/bignumber_setup";
 import ChaiSetup from "./test_utils/chai_setup";
 import {INVALID_OPCODE, REVERT_ERROR} from "./test_utils/constants";
+
+import {TxDataPayable} from "../../types/common";
 
 // Configure BigNumber exponentiation
 BigNumberSetup.configure();
@@ -36,18 +44,50 @@ contract("Debt Kernel", async (ACCOUNTS) => {
     let debtTokenContract: DebtTokenContract;
     let debtRegistryContract: DebtRegistryContract;
 
+    let zeroEx: ZeroEx;
+    let dummyREPToken: ZeroX_DummyTokenContract;
+    let dummyZRXToken: ZeroX_DummyTokenContract;
+    let dummyMKRToken: ZeroX_DummyTokenContract;
+
     const CONTRACT_OWNER = ACCOUNTS[0];
     const ATTACKER = ACCOUNTS[1];
 
-    const DEBTOR = ACCOUNTS[2];
-    const UNDERWRITER = ACCOUNTS[3];
-    const TERMS_CONTRACT = ACCOUNTS[4];
+    const ISSUER_1 = ACCOUNTS[2];
+    const ISSUER_2 = ACCOUNTS[3];
+    const ISSUER_3 = ACCOUNTS[4];
+    const ISSUERS = [
+        ISSUER_1,
+        ISSUER_2,
+        ISSUER_3,
+    ];
+
+    const DEBTOR_1 = ACCOUNTS[5];
+    const DEBTOR_2 = ACCOUNTS[6];
+    const DEBTOR_3 = ACCOUNTS[7];
+    const DEBTORS = [
+        DEBTOR_1,
+        DEBTOR_2,
+        DEBTOR_3,
+    ];
+
+    const CREDITOR_1 = ACCOUNTS[8];
+    const CREDITOR_2 = ACCOUNTS[9];
+    const CREDITOR_3 = ACCOUNTS[10];
+    const CREDITORS = [
+        CREDITOR_1,
+        CREDITOR_2,
+        CREDITOR_3,
+    ];
+
+    const UNDERWRITER = ACCOUNTS[11];
+    const TERMS_CONTRACT = ACCOUNTS[12];
     const TERMS_CONTRACT_PARAMETERS = web3.sha3("arbitrary terms contract parameters");
 
     const NULL_ADDRESS = "0x0000000000000000000000000000000000000000";
 
     let generateIssuanceCommitment: () => IssuanceCommitment;
-    let issueDebtAgreement: (signedIssuance: SignedIssuanceCommitment)
+    let issueDebtAgreement: (signedIssuance: SignedIssuanceCommitment,
+                             options?: TxDataPayable)
         => Promise<string>;
 
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4712388 };
@@ -63,12 +103,36 @@ contract("Debt Kernel", async (ACCOUNTS) => {
         kernel = new DebtKernelContract(web3ContractInstance, TX_DEFAULTS);
 
         // Load current Repayment Router for use as a version address in the Issuance
-        // commitmentsr
+        // commitments
         repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
 
+        // Initialize 0x.js library and retrieve deployed dummy tokens
+        const zeroExExchangeContract = await ZeroX_ExchangeContract.deployed(web3, TX_DEFAULTS);
+        const zeroExTokenRegistryContract = await ZeroX_TokenRegistryContract.deployed(web3, TX_DEFAULTS);
+        const zeroExTokenTransferProxyContract = await ZeroX_TokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
+
+        zeroEx = new ZeroEx(web3.currentProvider, {
+            exchangeContractAddress: zeroExExchangeContract.address,
+            networkId: parseInt(web3.version.network, 10),
+            tokenRegistryContractAddress: zeroExTokenRegistryContract.address,
+            tokenTransferProxyContractAddress: zeroExTokenTransferProxyContract.address,
+        });
+
+        const dummyREPTokenAddress = await zeroEx.tokenRegistry.getTokenAddressBySymbolIfExistsAsync("REP");
+        const dummyZRXTokenAddress = await zeroEx.tokenRegistry.getTokenAddressBySymbolIfExistsAsync("ZRX");
+        const dummyMKRTokenAddress = await zeroEx.tokenRegistry.getTokenAddressBySymbolIfExistsAsync("MKR");
+
+        dummyREPToken = await ZeroX_DummyTokenContract.at(dummyREPTokenAddress,
+            web3, TX_DEFAULTS);
+        dummyZRXToken = await ZeroX_DummyTokenContract.at(dummyZRXTokenAddress,
+            web3, TX_DEFAULTS);
+        dummyMKRToken = await ZeroX_DummyTokenContract.at(dummyMKRTokenAddress,
+            web3, TX_DEFAULTS);
+
+        // Initialize utility methods for generating and submitting debt issuances
         generateIssuanceCommitment = () => {
             return new IssuanceCommitment({
-                debtor: DEBTOR,
+                issuer: ISSUER_1,
                 termsContract: TERMS_CONTRACT,
                 termsContractParameters: TERMS_CONTRACT_PARAMETERS,
                 underwriter: UNDERWRITER,
@@ -77,14 +141,15 @@ contract("Debt Kernel", async (ACCOUNTS) => {
             });
         };
 
-        issueDebtAgreement = async (signedIssuance: SignedIssuanceCommitment) => {
+        issueDebtAgreement = async (signedIssuance: SignedIssuanceCommitment, options?: TxDataPayable) => {
             return kernel.issueDebtAgreement.sendTransactionAsync(
                 signedIssuance.getIssuanceAddresses(),
                 signedIssuance.getIssuanceValues(),
                 signedIssuance.getTermsContractParameters(),
-                signedIssuance.getSignaturesR(),
-                signedIssuance.getSignaturesS(),
-                signedIssuance.getSignaturesV(),
+                signedIssuance.getUnderwriterSignature().r,
+                signedIssuance.getUnderwriterSignature().s,
+                signedIssuance.getUnderwriterSignature().v,
+                options || TX_DEFAULTS,
             );
         };
     };
@@ -140,31 +205,19 @@ contract("Debt Kernel", async (ACCOUNTS) => {
 
         before(resetAndInit);
 
-        describe("user issues debt agreement...", () => {
+        describe("issuer submits debt issuance...", () => {
             before(() => {
                 issuance = generateIssuanceCommitment();
-            });
-
-            describe("...with a malformed debtor signature", () => {
-                before(async () => {
-                    signedIssuance = await issuance.getSignedIssuanceCommitment(web3,
-                            ATTACKER, issuance.getUnderwriter());
-                });
-
-                it("should throw", async () => {
-                    await expect(issueDebtAgreement(signedIssuance))
-                        .to.eventually.be.rejectedWith(REVERT_ERROR);
-                });
             });
 
             describe("...with a malformed underwriter signature", () => {
                 before(async () => {
                     signedIssuance = await issuance.getSignedIssuanceCommitment(web3,
-                            issuance.getDebtor(), ATTACKER);
+                            { underwriter: ATTACKER });
                 });
 
                 it("should throw", async () => {
-                    await expect(issueDebtAgreement(signedIssuance))
+                    await expect(issueDebtAgreement(signedIssuance, { from: ISSUER_1 }))
                         .to.eventually.be.rejectedWith(REVERT_ERROR);
                 });
             });
@@ -174,8 +227,8 @@ contract("Debt Kernel", async (ACCOUNTS) => {
 
                 before(async () => {
                     signedIssuance = await issuance.getSignedIssuanceCommitment(web3,
-                        issuance.getDebtor(), issuance.getUnderwriter());
-                    const txHash = await issueDebtAgreement(signedIssuance);
+                        { underwriter: issuance.getUnderwriter() });
+                    const txHash = await issueDebtAgreement(signedIssuance, { from: ISSUER_1 });
                     res = await web3.eth.getTransactionReceipt(txHash);
                 });
 
@@ -187,7 +240,7 @@ contract("Debt Kernel", async (ACCOUNTS) => {
                 });
 
                 it("should mint debt token to debtor", async () => {
-                    await expect(debtTokenContract.tokenOfOwnerByIndex.callAsync(DEBTOR, new BigNumber(0)))
+                    await expect(debtTokenContract.tokenOfOwnerByIndex.callAsync(ISSUER_1, new BigNumber(0)))
                         .to.eventually.bignumber.equal(issuance.getHash());
                 });
 
@@ -195,7 +248,7 @@ contract("Debt Kernel", async (ACCOUNTS) => {
                     const retrievedEntry = await debtRegistryContract.get.callAsync(issuance.getHash());
                     const expectedEntry = [
                             issuance.getVersion(),
-                            issuance.getDebtor(),
+                            issuance.getIssuer(),
                             issuance.getUnderwriter(),
                             issuance.getUnderwriterRiskRating(),
                             issuance.getTermsContract(),
@@ -213,22 +266,22 @@ contract("Debt Kernel", async (ACCOUNTS) => {
             });
         });
 
-        describe("user issues duplicate debt agreement", () => {
+        describe("issuer submits duplicate debt issuance", () => {
             it("should throw", async () => {
-                await expect(issueDebtAgreement(signedIssuance))
+                await expect(issueDebtAgreement(signedIssuance, { from: ISSUER_1 }))
                     .to.eventually.be.rejectedWith(REVERT_ERROR);
             });
         });
 
-        describe("user issues duplicate debt agreement with new salt", () => {
+        describe("issuer submits duplicate debt issuance with new salt", () => {
             let res: Web3.TransactionReceipt;
 
             before(async () => {
                 // Re-initialize debt issuance commitment with new salt
                 issuance = new IssuanceCommitment(issuance.params, issuance.generateSalt());
                 signedIssuance = await issuance.getSignedIssuanceCommitment(web3,
-                    issuance.getDebtor(), issuance.getUnderwriter());
-                const txHash = await issueDebtAgreement(signedIssuance);
+                    { underwriter: issuance.getUnderwriter() });
+                const txHash = await issueDebtAgreement(signedIssuance, { from: ISSUER_1 });
                 res = await web3.eth.getTransactionReceipt(txHash);
             });
 
@@ -240,7 +293,7 @@ contract("Debt Kernel", async (ACCOUNTS) => {
             });
 
             it("should mint debt token to debtor", async () => {
-                await expect(debtTokenContract.tokenOfOwnerByIndex.callAsync(DEBTOR, new BigNumber(1)))
+                await expect(debtTokenContract.tokenOfOwnerByIndex.callAsync(ISSUER_1, new BigNumber(1)))
                     .to.eventually.bignumber.equal(issuance.getHash());
             });
 
@@ -248,7 +301,7 @@ contract("Debt Kernel", async (ACCOUNTS) => {
                 const retrievedEntry = await debtRegistryContract.get.callAsync(issuance.getHash());
                 const expectedEntry = [
                         issuance.getVersion(),
-                        issuance.getDebtor(),
+                        issuance.getIssuer(),
                         issuance.getUnderwriter(),
                         issuance.getUnderwriterRiskRating(),
                         issuance.getTermsContract(),
@@ -265,23 +318,22 @@ contract("Debt Kernel", async (ACCOUNTS) => {
             });
         });
 
-        describe("user issues debt agreement with no underwriter", () => {
+        describe("issuer submits debt issuance with no underwriter", () => {
             let res: Web3.TransactionReceipt;
 
             before(async () => {
                 // Re-initialize debt issuance commitment with no underwriter or underwriterRiskRating
                 issuance = new IssuanceCommitment({
-                    debtor: DEBTOR,
+                    issuer: ISSUER_2,
                     termsContract: TERMS_CONTRACT,
                     termsContractParameters: TERMS_CONTRACT_PARAMETERS,
                     underwriter: NULL_ADDRESS,
-                    underwriterRiskRating: new BigNumber(0),
+                    underwriterRiskRating: Units.percent(0),
                     version: repaymentRouter.address,
                 });
 
-                signedIssuance = await issuance.getSignedIssuanceCommitment(web3,
-                    issuance.getDebtor(), issuance.getUnderwriter());
-                const txHash = await issueDebtAgreement(signedIssuance);
+                signedIssuance = await issuance.getSignedIssuanceCommitment(web3);
+                const txHash = await issueDebtAgreement(signedIssuance, { from: ISSUER_2 });
                 res = await web3.eth.getTransactionReceipt(txHash);
             });
 
@@ -293,7 +345,7 @@ contract("Debt Kernel", async (ACCOUNTS) => {
             });
 
             it("should mint debt token to debtor", async () => {
-                await expect(debtTokenContract.tokenOfOwnerByIndex.callAsync(DEBTOR, new BigNumber(2)))
+                await expect(debtTokenContract.tokenOfOwnerByIndex.callAsync(ISSUER_2, new BigNumber(0)))
                     .to.eventually.bignumber.equal(issuance.getHash());
             });
 
@@ -301,7 +353,7 @@ contract("Debt Kernel", async (ACCOUNTS) => {
                 const retrievedEntry = await debtRegistryContract.get.callAsync(issuance.getHash());
                 const expectedEntry = [
                         issuance.getVersion(),
-                        issuance.getDebtor(),
+                        issuance.getIssuer(),
                         issuance.getUnderwriter(),
                         issuance.getUnderwriterRiskRating(),
                         issuance.getTermsContract(),
@@ -318,11 +370,11 @@ contract("Debt Kernel", async (ACCOUNTS) => {
             });
         });
 
-        describe("user issues debt agreement with no underwriter and nonzero risk rating", () => {
+        describe("issuer submits debt issuance with no underwriter and nonzero risk rating", () => {
             it("should throw", async () => {
                 // Re-initialize debt issuance commitment with no underwriter or nonzero riskRating
                 issuance = new IssuanceCommitment({
-                    debtor: DEBTOR,
+                    issuer: ISSUER_3,
                     termsContract: TERMS_CONTRACT,
                     termsContractParameters: TERMS_CONTRACT_PARAMETERS,
                     underwriter: NULL_ADDRESS,
@@ -330,11 +382,63 @@ contract("Debt Kernel", async (ACCOUNTS) => {
                     version: repaymentRouter.address,
                 });
 
-                signedIssuance = await issuance.getSignedIssuanceCommitment(web3,
-                    issuance.getDebtor(), issuance.getUnderwriter());
-                await expect(issueDebtAgreement(signedIssuance))
+                signedIssuance = await issuance.getSignedIssuanceCommitment(web3);
+                await expect(issueDebtAgreement(signedIssuance, { from: ISSUER_3 }))
                     .to.eventually.be.rejectedWith(REVERT_ERROR);
             });
+        });
+
+        describe("user submits debt agreement for issuer who is a different address", () => {
+            it("should throw", async () => {
+                // Re-initialize debt issuance commitment with no underwriter or nonzero riskRating
+                issuance = new IssuanceCommitment({
+                    issuer: ISSUER_3,
+                    termsContract: TERMS_CONTRACT,
+                    termsContractParameters: TERMS_CONTRACT_PARAMETERS,
+                    underwriter: NULL_ADDRESS,
+                    underwriterRiskRating: Units.percent(0.001),
+                    version: repaymentRouter.address,
+                });
+
+                signedIssuance = await issuance.getSignedIssuanceCommitment(web3);
+                await expect(issueDebtAgreement(signedIssuance, { from: ATTACKER }))
+                    .to.eventually.be.rejectedWith(REVERT_ERROR);
+            });
+        });
+    });
+
+    describe("Debt Issuance w/ Synchronous Swap Thereafter", () => {
+        const agents = [...DEBTORS, ...CREDITORS];
+
+        before(async () => {
+            const setBalances = _.map(agents, async (agent: string) => {
+                await dummyMKRToken.setBalance.sendTransactionAsync(agent, Units.ether(1000));
+                await dummyZRXToken.setBalance.sendTransactionAsync(agent, Units.ether(1000));
+                await dummyREPToken.setBalance.sendTransactionAsync(agent, Units.ether(1000));
+            });
+
+            await Promise.all(setBalances);
+
+            const approveZeroExContract = _.map(agents, async (agent: string) => {
+                await zeroEx.token.setUnlimitedProxyAllowanceAsync(dummyMKRToken.address, agent);
+                await zeroEx.token.setUnlimitedProxyAllowanceAsync(dummyZRXToken.address, agent);
+                await zeroEx.token.setUnlimitedProxyAllowanceAsync(dummyREPToken.address, agent);
+            });
+
+            await Promise.all(approveZeroExContract);
+        });
+
+        it("should initialize balances correctly", async () => {
+            const promises = _.map(agents, async (agent: string) => {
+                await expect(dummyMKRToken.balanceOf.callAsync(agent))
+                    .to.eventually.bignumber.equal(Units.ether(1000));
+                await expect(dummyZRXToken.balanceOf.callAsync(agent))
+                    .to.eventually.bignumber.equal(Units.ether(1000));
+                await expect(dummyREPToken.balanceOf.callAsync(agent))
+                    .to.eventually.bignumber.equal(Units.ether(1000));
+            });
+
+            await Promise.all(promises);
         });
     });
 });

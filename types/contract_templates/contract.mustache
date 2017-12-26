@@ -44,6 +44,12 @@ export class {{contractName}}Contract extends BaseContract {
 
         return new {{contractName}}Contract(web3ContractInstance, defaults);
     }
+    static async at(address: string, web3: Web3, defaults: Partial<TxData>): Promise<{{contractName}}Contract> {
+        const { abi } = await this.getArtifactsData(web3);
+        const web3ContractInstance = web3.eth.contract(abi).at(address);
+
+        return new {{contractName}}Contract(web3ContractInstance, defaults);
+    }
     private static async getArtifactsData(web3: Web3):
         Promise<any>
     {

@@ -41,7 +41,7 @@ contract DebtToken is MintableNonFungibleToken, Ownable {
 
     function create(
         address _version,
-        address _creditor,
+        address _issuer,
         address _underwriter,
         uint _underwriterRiskRating,
         address _termsContract,
@@ -55,7 +55,7 @@ contract DebtToken is MintableNonFungibleToken, Ownable {
 
         bytes32 entryHash = registry.insert(
             _version,
-            _creditor,
+            _issuer,
             _underwriter,
             _underwriterRiskRating,
             _termsContract,
@@ -63,14 +63,14 @@ contract DebtToken is MintableNonFungibleToken, Ownable {
             _salt
         );
 
-        mint(_creditor, uint(entryHash));
+        mint(_issuer, uint(entryHash));
 
         return uint(entryHash);
     }
 
     function createAndApproveExchange(
         address _version,
-        address _creditor,
+        address _issuer,
         address _underwriter,
         uint _underwriterRiskRating,
         address _termsContract,
@@ -84,7 +84,7 @@ contract DebtToken is MintableNonFungibleToken, Ownable {
 
         uint tokenId = create(
             _version,
-            _creditor,
+            _issuer,
             _underwriter,
             _underwriterRiskRating,
             _termsContract,
