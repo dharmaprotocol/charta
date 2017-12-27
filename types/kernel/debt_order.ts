@@ -182,7 +182,7 @@ export class SignedDebtOrder extends DebtOrder {
         return this.underwriterSignature;
     }
 
-    public getOrderAddresses(creditor: Address): Address[] {
+    public getOrderAddresses(): Address[] {
         return [
             this.getDebtor(),
             this.getIssuanceCommitment().getVersion(),

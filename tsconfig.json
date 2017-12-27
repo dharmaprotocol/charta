@@ -5,7 +5,8 @@
     "noImplicitAny": true,
     "module": "commonjs",
     "baseUrl": ".",
-    "allowJs": true
+    "allowJs": true,
+    "target": "es6"
   },
   "include": [
     "node_modules/web3-typescript-typings/index.d.ts",

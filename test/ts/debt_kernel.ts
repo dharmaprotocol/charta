@@ -412,34 +412,45 @@ contract("Debt Kernel", async (ACCOUNTS) => {
     describe("Debt Issuance w/ Synchronous Swap Thereafter", () => {
         const agents = [...DEBTORS, ...CREDITORS];
 
-        const generateDebtOrder = async (principle: BigNumber, token: ZeroX_DummyTokenContract): Promise<SignedDebtOrder> => {
+        let DEFAULT_PARAMS: { [key: string]: any };
+
+        const generateDebtOrder = async (parameters = {}): Promise<SignedDebtOrder> => {
+            const params = Object.assign(DEFAULT_PARAMS, parameters);
+
             const issuance = new IssuanceCommitment({
-                issuer: kernel.address,
-                termsContract: TERMS_CONTRACT,
-                termsContractParameters: TERMS_CONTRACT_PARAMETERS,
-                underwriter: UNDERWRITER,
-                underwriterRiskRating: Units.percent(1.35),
-                version: repaymentRouter.address,
+                issuer: params.issuer,
+                termsContract: params.termsContract,
+                termsContractParameters: params.termsContractParameters,
+                underwriter: params.underwriter,
+                underwriterRiskRating: params.underwriterRiskRating,
+                version: params.issuanceVersion,
             });
 
             const debtOrder = new DebtOrder({
-                debtor: DEBTOR_1,
-                debtKernelContract: kernel.address,
-                debtTokenContract: debtTokenContract.address,
-                zeroExExchangeContract: zeroEx.exchange.getContractAddress(),
+                debtor: params.debtor,
+                debtKernelContract: params.debtKernelContract,
+                debtTokenContract: params.debtTokenContract,
+                zeroExExchangeContract: params.zeroExExchangeContract,
                 debtIssuanceCommitment: issuance,
-                principleAmount: principle,
-                principleTokenAddress: token.address,
-                debtorFee: Units.ether(0.001),
-                creditorFee: Units.ether(0.002),
-                underwriterFee: Units.ether(0.0015),
-                relayer: RELAYER,
-                expirationTimestampInSec: new BigNumber(moment().add(1, 'days').valueOf()),
+                principleAmount: params.principleAmount,
+                principleTokenAddress: params.principleTokenAddress,
+                debtorFee: params.debtorFee,
+                creditorFee: params.creditorFee,
+                underwriterFee: params.underwriterFee,
+                relayer: params.relayer,
+                expirationTimestampInSec: params.expirationTimestampInSec,
             });
 
-            return await debtOrder.getSignedDebtOrder(web3,
-                { debtor: DEBTOR_1, creditor: CREDITOR_1, underwriter: UNDERWRITER });
+            return await debtOrder.getSignedDebtOrder(web3, params.orderSignatories);
         };
+
+        const getTokenBalances = async (agents: string[], token: ZeroX_DummyTokenContract) => {
+            const promises = _.map(agents, (agent: string) => {
+                return token.balanceOf.callAsync(agent);
+            });
+
+            return Promise.all(promises);
+        }
 
         before(async () => {
             const setBalances = _.map(agents, async (agent: string) => {
@@ -459,39 +470,47 @@ contract("Debt Kernel", async (ACCOUNTS) => {
             });
 
             await Promise.all(approveZeroExContract);
-        });
 
-        it("should initialize balances correctly", async () => {
-            const promises = _.map(agents, async (agent: string) => {
-                await expect(dummyMKRToken.balanceOf.callAsync(agent))
-                    .to.eventually.bignumber.equal(Units.ether(1000));
-                await expect(dummyZRXToken.balanceOf.callAsync(agent))
-                    .to.eventually.bignumber.equal(Units.ether(1000));
-                await expect(dummyREPToken.balanceOf.callAsync(agent))
-                    .to.eventually.bignumber.equal(Units.ether(1000));
-            });
-
-            await Promise.all(promises);
+            DEFAULT_PARAMS = {
+                issuer: kernel.address,
+                termsContract: TERMS_CONTRACT,
+                termsContractParameters: TERMS_CONTRACT_PARAMETERS,
+                underwriter: UNDERWRITER,
+                underwriterRiskRating: Units.percent(1.35),
+                issuanceVersion: repaymentRouter.address,
+                debtor: DEBTOR_1,
+                debtKernelContract: kernel.address,
+                debtTokenContract: debtTokenContract.address,
+                zeroExExchangeContract: zeroEx.exchange.getContractAddress(),
+                principleAmount: Units.ether(1),
+                principleTokenAddress: dummyMKRToken.address,
+                debtorFee: Units.ether(0.001),
+                creditorFee: Units.ether(0.002),
+                underwriterFee: Units.ether(0.0015),
+                relayer: RELAYER,
+                expirationTimestampInSec: new BigNumber(moment().add(1, 'days').valueOf()),
+                orderSignatories: { debtor: DEBTOR_1, creditor: CREDITOR_1, underwriter: UNDERWRITER }
+            }
         });
 
         describe("creditor submits valid signed debt order", () => {
             let debtOrder: SignedDebtOrder;
             let res: Web3.TransactionReceipt;
+
             let creditorBalanceBefore: BigNumber;
             let debtorBalanceBefore: BigNumber;
             let underwriterBalanceBefore: BigNumber;
             let relayerBalanceBefore: BigNumber;
 
             before(async () => {
-                creditorBalanceBefore = await dummyMKRToken.balanceOf.callAsync(CREDITOR_1);
-                debtorBalanceBefore = await dummyMKRToken.balanceOf.callAsync(DEBTOR_1);
-                underwriterBalanceBefore = await dummyMKRToken.balanceOf.callAsync(UNDERWRITER);
-                relayerBalanceBefore = await dummyMKRToken.balanceOf.callAsync(RELAYER);
+                [creditorBalanceBefore, debtorBalanceBefore,
+                    underwriterBalanceBefore, relayerBalanceBefore] =
+                        await getTokenBalances([CREDITOR_1, DEBTOR_1, UNDERWRITER, RELAYER], dummyMKRToken);
 
-                debtOrder = await generateDebtOrder(Units.ether(1), dummyMKRToken);
+                debtOrder = await generateDebtOrder();
 
                 const txHash = await kernel.fillDebtOrder.sendTransactionAsync(
-                    debtOrder.getOrderAddresses(CREDITOR_1),
+                    debtOrder.getOrderAddresses(),
                     debtOrder.getOrderValues(),
                     debtOrder.getOrderBytes32(),
                     debtOrder.getSignaturesR(),
