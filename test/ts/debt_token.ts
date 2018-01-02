@@ -66,6 +66,8 @@ contract("Debt Token", (ACCOUNTS) => {
         UNDERWRITER_3,
     ];
 
+    const BROKER = ACCOUNTS[10];
+
     const INDEX_0 = new BigNumber(0);
     const INDEX_1 = new BigNumber(1);
     const INDEX_2 = new BigNumber(2);
@@ -324,9 +326,10 @@ contract("Debt Token", (ACCOUNTS) => {
 
             describe("unauthorized agent mints new debt token and approves for ZRX exchange", () => {
                 it("should throw", async () => {
-                    await expect(debtToken.createAndApproveExchange.sendTransactionAsync(
+                    await expect(debtToken.createAndApproveBrokerage.sendTransactionAsync(
                         debtEntries[2].getVersion(),
                         debtEntries[2].getCreditor(),
+                        BROKER,
                         debtEntries[2].getUnderwriter(),
                         debtEntries[2].getUnderwriterRiskRating(),
                         debtEntries[2].getTermsContract(),
@@ -342,9 +345,10 @@ contract("Debt Token", (ACCOUNTS) => {
                 let res: Web3.TransactionReceipt;
 
                 before(async () => {
-                    const txHash = await debtToken.createAndApproveExchange.sendTransactionAsync(
+                    const txHash = await debtToken.createAndApproveBrokerage.sendTransactionAsync(
                         debtEntries[2].getVersion(),
                         debtEntries[2].getCreditor(),
+                        BROKER,
                         debtEntries[2].getUnderwriter(),
                         debtEntries[2].getUnderwriterRiskRating(),
                         debtEntries[2].getTermsContract(),
@@ -366,6 +370,16 @@ contract("Debt Token", (ACCOUNTS) => {
                     );
 
                     expect(mintLog).to.deep.equal(logExpected);
+                });
+
+                it("should immediately transfer token to broker", async () => {
+                    await expect(debtToken.ownerOf.callAsync(debtEntries[2].getTokenId()))
+                        .to.eventually.equal(BROKER);
+                });
+
+                it("should set token as current brokerage candidate", async () => {
+                    await expect(debtToken.getCurrentBrokerageCandidate.callAsync())
+                        .to.eventually.bignumber.equal(debtEntries[2].getTokenId());
                 });
 
                 it("should approve the ZRX contract for transferring the new token", async () => {

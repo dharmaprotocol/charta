@@ -30,7 +30,7 @@ contract DebtToken is MintableNonFungibleToken, Ownable {
     string public symbol = "DDT";
 
     DebtRegistry public registry;
-    uint internal exchangeCandidate;
+    uint internal brokerageCandidate;
 
     PermissionsLib.Permissions internal tokenCreationPermissions;
 
@@ -69,9 +69,10 @@ contract DebtToken is MintableNonFungibleToken, Ownable {
         return uint(entryHash);
     }
 
-    function createAndApproveExchange(
+    function createAndApproveBrokerage(
         address _version,
         address _issuer,
+        address _broker,
         address _underwriter,
         uint _underwriterRiskRating,
         address _termsContract,
@@ -84,7 +85,7 @@ contract DebtToken is MintableNonFungibleToken, Ownable {
     {
         require(tokenCreationPermissions.isAuthorized(msg.sender));
 
-        exchangeCandidate = create(
+        brokerageCandidate = create(
             _version,
             _issuer,
             _underwriter,
@@ -94,9 +95,11 @@ contract DebtToken is MintableNonFungibleToken, Ownable {
             _salt
         );
 
-        _approve(_zrxExchange, exchangeCandidate);
+        _clearApprovalAndTransfer(_issuer, _broker, brokerageCandidate);
 
-        return exchangeCandidate;
+        _approve(_zrxExchange, brokerageCandidate);
+
+        return brokerageCandidate;
     }
 
     function transferFrom(
@@ -106,9 +109,9 @@ contract DebtToken is MintableNonFungibleToken, Ownable {
     )
         public
     {
-        if (_tokenId == 1 && exchangeCandidate != 0) {
-            _clearApprovalAndTransfer(_from, _to, exchangeCandidate);
-            exchangeCandidate = 0;
+        if (_tokenId == 1 && brokerageCandidate != 0) {
+            _clearApprovalAndTransfer(_from, _to, brokerageCandidate);
+            brokerageCandidate = 0;
         } else {
             super.transferFrom(_from, _to, _tokenId);
         }
@@ -127,6 +130,14 @@ contract DebtToken is MintableNonFungibleToken, Ownable {
         returns (address[] _agents)
     {
         return tokenCreationPermissions.getAuthorizedAgents();
+    }
+
+    function getCurrentBrokerageCandidate()
+        public
+        view
+        returns (uint _brokerageCandidate)
+    {
+        return brokerageCandidate;
     }
 
     function _setTokenOwner(uint _tokenId, address _to)

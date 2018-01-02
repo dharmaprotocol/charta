@@ -199,6 +199,17 @@ contract DebtRegistry is Ownable {
         return registry[entryHash].creditor;
     }
 
+    function getTerms(bytes32 entryHash)
+        public
+        view
+        returns(address, bytes32)
+    {
+        return (
+            registry[entryHash].termsContract,
+            registry[entryHash].termsContractParameters
+        );
+    }
+
     function getAuthorizedInsertAgents()
         public
         constant

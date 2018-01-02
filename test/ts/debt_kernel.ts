@@ -412,6 +412,13 @@ contract("Debt Kernel", async (ACCOUNTS) => {
     describe("Debt Issuance w/ Synchronous Swap Thereafter", () => {
         const agents = [...DEBTORS, ...CREDITORS];
 
+        let debtOrder: SignedDebtOrder;
+
+        let creditorBalanceBefore: BigNumber;
+        let debtorBalanceBefore: BigNumber;
+        let underwriterBalanceBefore: BigNumber;
+        let relayerBalanceBefore: BigNumber;
+
         let DEFAULT_PARAMS: { [key: string]: any };
 
         const generateDebtOrder = async (parameters = {}): Promise<SignedDebtOrder> => {
@@ -472,7 +479,7 @@ contract("Debt Kernel", async (ACCOUNTS) => {
             await Promise.all(approveZeroExContract);
 
             DEFAULT_PARAMS = {
-                issuer: kernel.address,
+                issuer: DEBTOR_1,
                 termsContract: TERMS_CONTRACT,
                 termsContractParameters: TERMS_CONTRACT_PARAMETERS,
                 underwriter: UNDERWRITER,
@@ -494,13 +501,7 @@ contract("Debt Kernel", async (ACCOUNTS) => {
         });
 
         describe("creditor submits valid signed debt order", () => {
-            let debtOrder: SignedDebtOrder;
             let res: Web3.TransactionReceipt;
-
-            let creditorBalanceBefore: BigNumber;
-            let debtorBalanceBefore: BigNumber;
-            let underwriterBalanceBefore: BigNumber;
-            let relayerBalanceBefore: BigNumber;
 
             before(async () => {
                 [creditorBalanceBefore, debtorBalanceBefore,
@@ -564,6 +565,345 @@ contract("Debt Kernel", async (ACCOUNTS) => {
                 const delta = debtOrder.getRelayerFee();
                 await expect(dummyMKRToken.balanceOf.callAsync(RELAYER))
                     .to.eventually.bignumber.equal(relayerBalanceBefore.plus(delta));
+            });
+        });
+
+        describe("creditor resubmits same valid signed debt order", () => {
+            it("should throw", async () => {
+                await expect(kernel.fillDebtOrder.sendTransactionAsync(
+                    debtOrder.getOrderAddresses(),
+                    debtOrder.getOrderValues(),
+                    debtOrder.getOrderBytes32(),
+                    debtOrder.getSignaturesR(),
+                    debtOrder.getSignaturesS(),
+                    debtOrder.getSignaturesV()
+                )).to.eventually.be.rejectedWith(REVERT_ERROR);
+            });
+        });
+
+        describe("creditor submits valid debt order with no creditor / debtor fees", () => {
+            let res: Web3.TransactionReceipt;
+
+            before(async () => {
+                [creditorBalanceBefore, debtorBalanceBefore,
+                    underwriterBalanceBefore, relayerBalanceBefore] =
+                        await getTokenBalances([CREDITOR_2, DEBTOR_2, UNDERWRITER, RELAYER], dummyREPToken);
+
+                debtOrder = await generateDebtOrder({
+                    creditorFee: new BigNumber(0),
+                    debtorFee: new BigNumber(0),
+                    underwriterFee: new BigNumber(0),
+                    relayer: NULL_ADDRESS,
+                });
+
+                const txHash = await kernel.fillDebtOrder.sendTransactionAsync(
+                    debtOrder.getOrderAddresses(),
+                    debtOrder.getOrderValues(),
+                    debtOrder.getOrderBytes32(),
+                    debtOrder.getSignaturesR(),
+                    debtOrder.getSignaturesS(),
+                    debtOrder.getSignaturesV()
+                );
+
+                res = await web3.eth.getTransactionReceipt(txHash);
+            });
+
+            it("should emit debt issuance log", () => {
+                const [, , issuanceLog] = ABIDecoder.decodeLogs(res.logs);
+                expect(issuanceLog).to.deep
+                    .equal(LogDebtIssuance(kernel.address, debtOrder.getIssuanceCommitment().getHash()));
+            });
+
+            it("should emit term start log", async () => {
+                const [,,,,,,,,, termBeginLog] = ABIDecoder.decodeLogs(res.logs);
+                const block = await web3.eth.getBlock(res.blockHash);
+
+                expect(termBeginLog).to.deep
+                    .equal(LogTermBegin(kernel.address, debtOrder.getIssuanceCommitment().getHash(),
+                        block.timestamp, block.number));
+            });
+
+            it("should credit debtor with desired principle", async () => {
+                const delta = debtOrder.getPrincipleAmount().minus(debtOrder.getDebtorFee());
+                await expect(dummyREPToken.balanceOf.callAsync(DEBTOR_2))
+                    .to.eventually.bignumber.equal(debtorBalanceBefore.plus(delta));
+            });
+
+            it("should debit creditor desired principle", async () => {
+                const delta = debtOrder.getPrincipleAmount().plus(debtOrder.getCreditorFee());
+                await expect(dummyREPToken.balanceOf.callAsync(CREDITOR_2))
+                    .to.eventually.bignumber.equal(creditorBalanceBefore.minus(delta));
+            });
+
+            it("should credit creditor with newly minted debt token", async () => {
+                await expect(debtTokenContract.ownerOf.callAsync(
+                    new BigNumber(debtOrder.getIssuanceCommitment().getHash())))
+                        .to.eventually.equal(CREDITOR_2);
+            });
+
+            it("should not credit underwriter with fee", async () => {
+                await expect(dummyREPToken.balanceOf.callAsync(UNDERWRITER))
+                    .to.eventually.bignumber.equal(underwriterBalanceBefore);
+            });
+
+            it("should not credit relayer with desired fee", async () => {
+                await expect(dummyREPToken.balanceOf.callAsync(RELAYER))
+                    .to.eventually.bignumber.equal(relayerBalanceBefore);
+            });
+        });
+
+        describe("creditor submits valid debt order with relayer but no underwriter", () => {
+            describe("...with nonzero risk rating", () => {
+                it("should throw", async () => {
+                    debtOrder = await generateDebtOrder({
+                        underwriter: NULL_ADDRESS,
+                        underwriterFee: new BigNumber(0),
+                        underwriterRiskRating: Units.percent(3),
+                    });
+
+                    await expect(kernel.fillDebtOrder.sendTransactionAsync(
+                        debtOrder.getOrderAddresses(),
+                        debtOrder.getOrderValues(),
+                        debtOrder.getOrderBytes32(),
+                        debtOrder.getSignaturesR(),
+                        debtOrder.getSignaturesS(),
+                        debtOrder.getSignaturesV()
+                    )).to.eventually.be.rejectedWith(REVERT_ERROR);
+                });
+            });
+
+            describe("...with nonzero underwriter fee", () => {
+                it("should throw", async () => {
+                    debtOrder = await generateDebtOrder({
+                        underwriter: NULL_ADDRESS,
+                        underwriterFee: Units.ether(0.001),
+                        underwriterRiskRating: new BigNumber(0),
+                    });
+
+                    await expect(kernel.fillDebtOrder.sendTransactionAsync(
+                        debtOrder.getOrderAddresses(),
+                        debtOrder.getOrderValues(),
+                        debtOrder.getOrderBytes32(),
+                        debtOrder.getSignaturesR(),
+                        debtOrder.getSignaturesS(),
+                        debtOrder.getSignaturesV()
+                    )).to.eventually.be.rejectedWith(REVERT_ERROR);
+                });
+            });
+
+            describe("with zeroed risk rating / underwriting fee", () => {
+                let res: Web3.TransactionReceipt;
+
+                before(async () => {
+                    [creditorBalanceBefore, debtorBalanceBefore,
+                        underwriterBalanceBefore, relayerBalanceBefore] =
+                            await getTokenBalances([CREDITOR_3, DEBTOR_3, RELAYER], dummyZRXToken);
+
+                    debtOrder = await generateDebtOrder({
+                        underwriter: NULL_ADDRESS,
+                        underwriterFee: new BigNumber(0),
+                        underwriterRiskRating: new BigNumber(0),
+                    });
+
+                    const txHash = await kernel.fillDebtOrder.sendTransactionAsync(
+                        debtOrder.getOrderAddresses(),
+                        debtOrder.getOrderValues(),
+                        debtOrder.getOrderBytes32(),
+                        debtOrder.getSignaturesR(),
+                        debtOrder.getSignaturesS(),
+                        debtOrder.getSignaturesV()
+                    );
+
+                    res = await web3.eth.getTransactionReceipt(txHash);
+                });
+
+                it("should emit debt issuance log", () => {
+                    const [, , issuanceLog] = ABIDecoder.decodeLogs(res.logs);
+                    expect(issuanceLog).to.deep
+                        .equal(LogDebtIssuance(kernel.address, debtOrder.getIssuanceCommitment().getHash()));
+                });
+
+                it("should emit term start log", async () => {
+                    const [,,,,,,,,, termBeginLog] = ABIDecoder.decodeLogs(res.logs);
+                    const block = await web3.eth.getBlock(res.blockHash);
+
+                    expect(termBeginLog).to.deep
+                        .equal(LogTermBegin(kernel.address, debtOrder.getIssuanceCommitment().getHash(),
+                            block.timestamp, block.number));
+                });
+
+                it("should credit debtor with desired principle", async () => {
+                    const delta = debtOrder.getPrincipleAmount().minus(debtOrder.getDebtorFee());
+                    await expect(dummyZRXToken.balanceOf.callAsync(DEBTOR_3))
+                        .to.eventually.bignumber.equal(debtorBalanceBefore.plus(delta));
+                });
+
+                it("should debit creditor desired principle", async () => {
+                    const delta = debtOrder.getPrincipleAmount().plus(debtOrder.getCreditorFee());
+                    await expect(dummyZRXToken.balanceOf.callAsync(CREDITOR_3))
+                        .to.eventually.bignumber.equal(creditorBalanceBefore.minus(delta));
+                });
+
+                it("should credit creditor with newly minted debt token", async () => {
+                    await expect(debtTokenContract.ownerOf.callAsync(
+                        new BigNumber(debtOrder.getIssuanceCommitment().getHash())))
+                            .to.eventually.equal(CREDITOR_3);
+                });
+
+                it("should credit relayer with desired fee", async () => {
+                    const delta = debtOrder.getRelayerFee();
+                    await expect(dummyZRXToken.balanceOf.callAsync(RELAYER))
+                        .to.eventually.bignumber.equal(relayerBalanceBefore.plus(delta));
+                });
+            });
+        });
+
+        describe("creditor submits valid debt order with underwriter but no relayer", () => {
+            let res: Web3.TransactionReceipt;
+
+            before(async () => {
+                [creditorBalanceBefore, debtorBalanceBefore,
+                    underwriterBalanceBefore, relayerBalanceBefore] =
+                        await getTokenBalances([CREDITOR_1, DEBTOR_1, UNDERWRITER], dummyZRXToken);
+
+                debtOrder = await generateDebtOrder({
+                    relayer: NULL_ADDRESS,
+                });
+
+                const txHash = await kernel.fillDebtOrder.sendTransactionAsync(
+                    debtOrder.getOrderAddresses(),
+                    debtOrder.getOrderValues(),
+                    debtOrder.getOrderBytes32(),
+                    debtOrder.getSignaturesR(),
+                    debtOrder.getSignaturesS(),
+                    debtOrder.getSignaturesV()
+                );
+
+                res = await web3.eth.getTransactionReceipt(txHash);
+            });
+
+            it("should emit debt issuance log", () => {
+                const [, , issuanceLog] = ABIDecoder.decodeLogs(res.logs);
+                expect(issuanceLog).to.deep
+                    .equal(LogDebtIssuance(kernel.address, debtOrder.getIssuanceCommitment().getHash()));
+            });
+
+            it("should emit term start log", async () => {
+                const [,,,,,,,,, termBeginLog] = ABIDecoder.decodeLogs(res.logs);
+                const block = await web3.eth.getBlock(res.blockHash);
+
+                expect(termBeginLog).to.deep
+                    .equal(LogTermBegin(kernel.address, debtOrder.getIssuanceCommitment().getHash(),
+                        block.timestamp, block.number));
+            });
+
+            it("should credit debtor with desired principle", async () => {
+                const delta = debtOrder.getPrincipleAmount().minus(debtOrder.getDebtorFee());
+                await expect(dummyZRXToken.balanceOf.callAsync(DEBTOR_1))
+                    .to.eventually.bignumber.equal(debtorBalanceBefore.plus(delta));
+            });
+
+            it("should debit creditor desired principle", async () => {
+                const delta = debtOrder.getPrincipleAmount().plus(debtOrder.getCreditorFee());
+                await expect(dummyZRXToken.balanceOf.callAsync(CREDITOR_1))
+                    .to.eventually.bignumber.equal(creditorBalanceBefore.minus(delta));
+            });
+
+            it("should credit creditor with newly minted debt token", async () => {
+                await expect(debtTokenContract.ownerOf.callAsync(
+                    new BigNumber(debtOrder.getIssuanceCommitment().getHash())))
+                        .to.eventually.equal(CREDITOR_1);
+            });
+
+            it("should credit underwriter with desired fee", async () => {
+                const delta = debtOrder.getUnderwriterFee();
+                await expect(dummyZRXToken.balanceOf.callAsync(UNDERWRITER))
+                    .to.eventually.bignumber.equal(relayerBalanceBefore.plus(delta));
+            });
+        });
+
+        describe("creditor submits valid debt order with no underwriter / no relayer", () => {
+            describe("...with nonzero creditor / debtor fees", () => {
+                it("should throw", async () => {
+                    debtOrder = await generateDebtOrder({
+                        underwriter: NULL_ADDRESS,
+                        relayer: NULL_ADDRESS,
+                        underwriterFee: new BigNumber(0),
+                        debtorFee: Units.ether(0.001),
+                        creditorFee: Units.ether(0.002)
+                    });
+
+                    await expect(kernel.fillDebtOrder.sendTransactionAsync(
+                        debtOrder.getOrderAddresses(),
+                        debtOrder.getOrderValues(),
+                        debtOrder.getOrderBytes32(),
+                        debtOrder.getSignaturesR(),
+                        debtOrder.getSignaturesS(),
+                        debtOrder.getSignaturesV()
+                    )).to.eventually.be.rejectedWith(REVERT_ERROR);
+                });
+            });
+
+            describe("...with zero creditor / debtor fees", () => {
+                let res: Web3.TransactionReceipt;
+
+                before(async () => {
+                    [creditorBalanceBefore, debtorBalanceBefore,
+                        underwriterBalanceBefore, relayerBalanceBefore] =
+                            await getTokenBalances([CREDITOR_1, DEBTOR_1, UNDERWRITER], dummyMKRToken);
+
+                    debtOrder = await generateDebtOrder({
+                        underwriter: NULL_ADDRESS,
+                        relayer: NULL_ADDRESS,
+                        underwriterFee: new BigNumber(0),
+                        debtorFee: new BigNumber(0),
+                        creditorFee: new BigNumber(0)
+                    });
+
+                    const txHash = await kernel.fillDebtOrder.sendTransactionAsync(
+                        debtOrder.getOrderAddresses(),
+                        debtOrder.getOrderValues(),
+                        debtOrder.getOrderBytes32(),
+                        debtOrder.getSignaturesR(),
+                        debtOrder.getSignaturesS(),
+                        debtOrder.getSignaturesV()
+                    );
+
+                    res = await web3.eth.getTransactionReceipt(txHash);
+                });
+
+                it("should emit debt issuance log", () => {
+                    const [, , issuanceLog] = ABIDecoder.decodeLogs(res.logs);
+                    expect(issuanceLog).to.deep
+                        .equal(LogDebtIssuance(kernel.address, debtOrder.getIssuanceCommitment().getHash()));
+                });
+
+                it("should emit term start log", async () => {
+                    const [,,,,,,,,, termBeginLog] = ABIDecoder.decodeLogs(res.logs);
+                    const block = await web3.eth.getBlock(res.blockHash);
+
+                    expect(termBeginLog).to.deep
+                        .equal(LogTermBegin(kernel.address, debtOrder.getIssuanceCommitment().getHash(),
+                            block.timestamp, block.number));
+                });
+
+                it("should credit debtor with desired principle", async () => {
+                    const delta = debtOrder.getPrincipleAmount().minus(debtOrder.getDebtorFee());
+                    await expect(dummyMKRToken.balanceOf.callAsync(DEBTOR_1))
+                        .to.eventually.bignumber.equal(debtorBalanceBefore.plus(delta));
+                });
+
+                it("should debit creditor desired principle", async () => {
+                    const delta = debtOrder.getPrincipleAmount().plus(debtOrder.getCreditorFee());
+                    await expect(dummyMKRToken.balanceOf.callAsync(CREDITOR_1))
+                        .to.eventually.bignumber.equal(creditorBalanceBefore.minus(delta));
+                });
+
+                it("should credit creditor with newly minted debt token", async () => {
+                    await expect(debtTokenContract.ownerOf.callAsync(
+                        new BigNumber(debtOrder.getIssuanceCommitment().getHash())))
+                            .to.eventually.equal(CREDITOR_1);
+                });
             });
         });
     });

@@ -183,9 +183,10 @@ contract DebtKernel is Ownable {
         validateDebtOrderSignatures(debtOrder, signaturesV, signaturesR, signaturesS);
 
         // Mint debt token and finalize debt agreement
-        uint tokenId = debtToken.createAndApproveExchange(
+        uint tokenId = debtToken.createAndApproveBrokerage(
             issuance.version,
             issuance.issuer,
+            this,
             issuance.underwriter,
             issuance.underwriterRiskRating,
             issuance.termsContract,
@@ -291,8 +292,8 @@ contract DebtKernel is Ownable {
     {
         Issuance memory issuance = Issuance({
             // Order Addresses
+            issuer: orderAddresses[0],
             version: orderAddresses[1],
-            issuer: this,
             underwriter: orderAddresses[2],
             termsContract: orderAddresses[3],
             // Order Values
