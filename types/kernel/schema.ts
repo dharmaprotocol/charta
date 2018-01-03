@@ -28,8 +28,8 @@ export interface OrderParams {
     debtTokenContract: Address;
     zeroExExchangeContract: Address;
     debtIssuanceCommitment: IssuanceCommitment;
-    principleAmount: BigNumber;
-    principleTokenAddress: Address;
+    principalAmount: BigNumber;
+    principalTokenAddress: Address;
     debtorFee: BigNumber;
     creditorFee: BigNumber;
     underwriterFee: BigNumber;

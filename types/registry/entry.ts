@@ -21,22 +21,26 @@ export class DebtRegistryEntry {
         this.salt = salt || this.generateSalt();
     }
 
-    public getEntryHash(): Bytes32 {
-        const entryHash = solidity.SHA3([
+    public getIssuanceHash(): Bytes32 {
+        const issuanceHash = solidity.SHA3([
             this.params.version,
-            this.params.creditor,
+            this.params.debtor,
             this.params.underwriter,
             this.params.underwriterRiskRating,
             this.params.termsContract,
             this.params.termsContractParameters,
             this.salt,
         ]);
-        const entryHashHex = ethUtil.bufferToHex(entryHash);
-        return entryHashHex;
+        const issuanceHashHex = ethUtil.bufferToHex(issuanceHash);
+        return issuanceHashHex;
     }
 
-    public getCreditor(): Address {
-        return this.params.creditor;
+    public getDebtor(): Address {
+        return this.params.debtor;
+    }
+
+    public getBeneficiary(): Address {
+        return this.params.beneficiary;
     }
 
     public getVersion(): Address {
@@ -64,7 +68,7 @@ export class DebtRegistryEntry {
     }
 
     public getTokenId(): BigNumber {
-        return new BigNumber(this.getEntryHash());
+        return new BigNumber(this.getIssuanceHash());
     }
 
     private generateSalt(): BigNumber {

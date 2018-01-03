@@ -27,34 +27,44 @@ contract DebtRegistry is Ownable {
     using SafeMath for uint;
     using PermissionsLib for PermissionsLib.Permissions;
 
+    struct Issuance {
+        address version;
+        address debtor;
+        address underwriter;
+        uint underwriterRiskRating;
+        address termsContract;
+        bytes32 termsContractParameters;
+        uint salt;
+    }
+
     struct Entry {
         address version;
-        address creditor;
+        address beneficiary;
         address underwriter;
         uint underwriterRiskRating;
         address termsContract;
         bytes32 termsContractParameters;
     }
 
-    // Primary registry mapping entry hashes to their corresponding entries
+    // Primary registry mapping issuance hashes to their corresponding entries
     mapping (bytes32 => Entry) internal registry;
 
     PermissionsLib.Permissions internal entryInsertPermissions;
     PermissionsLib.Permissions internal entryEditPermissions;
 
     event LogInsertEntry(
-        bytes32 indexed entryHash,
-        address indexed creditor,
+        bytes32 indexed issuanceHash,
+        address indexed beneficiary,
         address indexed underwriter,
         uint underwriterRiskRating,
         address termsContract,
         bytes32 termsContractParameters
     );
 
-    event LogModifyEntryCreditor(
-        bytes32 indexed entryHash,
-        address indexed previousCreditor,
-        address indexed newCreditor
+    event LogModifyEntryBeneficiary(
+        bytes32 indexed issuanceHash,
+        address indexed previousBeneficiary,
+        address indexed newBeneficiary
     );
 
     event LogAddAuthorizedInsertAgent(
@@ -83,14 +93,15 @@ contract DebtRegistry is Ownable {
         _;
     }
 
-    modifier onlyExtantEntry(bytes32 entryHash) {
-        require(registry[entryHash].creditor != address(0));
+    modifier onlyExtantEntry(bytes32 issuanceHash) {
+        require(registry[issuanceHash].beneficiary != address(0));
         _;
     }
 
     function insert(
         address _version,
-        address _creditor,
+        address _beneficiary,
+        address _debtor,
         address _underwriter,
         uint _underwriterRiskRating,
         address _termsContract,
@@ -99,48 +110,48 @@ contract DebtRegistry is Ownable {
     )
         public
         onlyAuthorizedToInsert
-        returns (bytes32 _entryHash)
+        returns (bytes32 _issuanceHash)
     {
         Entry memory entry = Entry(
             _version,
-            _creditor,
+            _beneficiary,
             _underwriter,
             _underwriterRiskRating,
             _termsContract,
             _termsContractParameters
         );
 
-        bytes32 entryHash = _getEntryHash(entry, _salt);
+        bytes32 issuanceHash = _getIssuanceHash(entry, _debtor, _salt);
 
-        require(registry[entryHash].creditor == address(0));
+        require(registry[issuanceHash].beneficiary == address(0));
 
-        registry[entryHash] = entry;
+        registry[issuanceHash] = entry;
 
         LogInsertEntry(
-            entryHash,
-            entry.creditor,
+            issuanceHash,
+            entry.beneficiary,
             entry.underwriter,
             entry.underwriterRiskRating,
             entry.termsContract,
             entry.termsContractParameters
         );
 
-        return entryHash;
+        return issuanceHash;
     }
 
-    function modifyCreditor(bytes32 entryHash, address newCreditor)
+    function modifyBeneficiary(bytes32 issuanceHash, address newBeneficiary)
         public
         onlyAuthorizedToEdit
-        onlyExtantEntry(entryHash)
+        onlyExtantEntry(issuanceHash)
     {
-        address previousCreditor = registry[entryHash].creditor;
+        address previousBeneficiary = registry[issuanceHash].beneficiary;
 
-        registry[entryHash].creditor = newCreditor;
+        registry[issuanceHash].beneficiary = newBeneficiary;
 
-        LogModifyEntryCreditor(
-            entryHash,
-            previousCreditor,
-            newCreditor
+        LogModifyEntryBeneficiary(
+            issuanceHash,
+            previousBeneficiary,
+            newBeneficiary
         );
     }
 
@@ -176,37 +187,37 @@ contract DebtRegistry is Ownable {
         LogRevokeEditAgentAuthorization(agent);
     }
 
-    function get(bytes32 entryHash)
+    function get(bytes32 issuanceHash)
         public
         view
         returns(address, address, address, uint, address, bytes32)
     {
         return (
-            registry[entryHash].version,
-            registry[entryHash].creditor,
-            registry[entryHash].underwriter,
-            registry[entryHash].underwriterRiskRating,
-            registry[entryHash].termsContract,
-            registry[entryHash].termsContractParameters
+            registry[issuanceHash].version,
+            registry[issuanceHash].beneficiary,
+            registry[issuanceHash].underwriter,
+            registry[issuanceHash].underwriterRiskRating,
+            registry[issuanceHash].termsContract,
+            registry[issuanceHash].termsContractParameters
         );
     }
 
-    function getCreditor(bytes32 entryHash)
+    function getBeneficiary(bytes32 issuanceHash)
         public
         view
         returns(address)
     {
-        return registry[entryHash].creditor;
+        return registry[issuanceHash].beneficiary;
     }
 
-    function getTerms(bytes32 entryHash)
+    function getTerms(bytes32 issuanceHash)
         public
         view
         returns(address, bytes32)
     {
         return (
-            registry[entryHash].termsContract,
-            registry[entryHash].termsContractParameters
+            registry[issuanceHash].termsContract,
+            registry[issuanceHash].termsContractParameters
         );
     }
 
@@ -226,14 +237,14 @@ contract DebtRegistry is Ownable {
         return entryEditPermissions.getAuthorizedAgents();
     }
 
-    function _getEntryHash(Entry _entry, uint _salt)
+    function _getIssuanceHash(Entry _entry, address _debtor, uint _salt)
         internal
         pure
         returns(bytes32)
     {
         return keccak256(
             _entry.version,
-            _entry.creditor,
+            _debtor,
             _entry.underwriter,
             _entry.underwriterRiskRating,
             _entry.termsContract,

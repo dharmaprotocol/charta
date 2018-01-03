@@ -13,7 +13,7 @@ import {
     Address,
 } from "../../types/common";
 import {DebtRegistryEntry} from "../../types/registry/entry";
-import {LogInsertEntry, LogModifyEntryCreditor} from "./logs/debt_registry";
+import {LogInsertEntry, LogModifyEntryBeneficiary} from "./logs/debt_registry";
 import {LogApproval, LogMint, LogTransfer} from "./logs/debt_token";
 import {BigNumberSetup} from "./test_utils/bignumber_setup";
 import ChaiSetup from "./test_utils/chai_setup";
@@ -67,6 +67,7 @@ contract("Debt Token", (ACCOUNTS) => {
     ];
 
     const BROKER = ACCOUNTS[10];
+    const DEBTOR = ACCOUNTS[11];
 
     const INDEX_0 = new BigNumber(0);
     const INDEX_1 = new BigNumber(1);
@@ -111,7 +112,8 @@ contract("Debt Token", (ACCOUNTS) => {
         debtEntries = _.map(TOKEN_OWNERS,
             (tokenOwner: Address, i: number) => {
                 return new DebtRegistryEntry({
-                    creditor: tokenOwner,
+                    beneficiary: tokenOwner,
+                    debtor: DEBTOR,
                     termsContract: debtRegistry.address,
                     termsContractParameters: ARBITRARY_TERMS_CONTRACT_PARAMS[i],
                     underwriter: UNDERWRITERS[i],
@@ -129,7 +131,8 @@ contract("Debt Token", (ACCOUNTS) => {
             (entry: DebtRegistryEntry, i: number) => {
                 return debtToken.create.sendTransactionAsync(
                     entry.getVersion(),
-                    entry.getCreditor(),
+                    entry.getBeneficiary(),
+                    entry.getDebtor(),
                     entry.getUnderwriter(),
                     entry.getUnderwriterRiskRating(),
                     entry.getTermsContract(),
@@ -181,7 +184,8 @@ contract("Debt Token", (ACCOUNTS) => {
             it("should throw", async () => {
                 await expect(debtToken.create.sendTransactionAsync(
                     debtEntries[0].getVersion(),
-                    debtEntries[0].getCreditor(),
+                    debtEntries[0].getBeneficiary(),
+                    debtEntries[0].getDebtor(),
                     debtEntries[0].getUnderwriter(),
                     debtEntries[0].getUnderwriterRiskRating(),
                     debtEntries[0].getTermsContract(),
@@ -198,7 +202,8 @@ contract("Debt Token", (ACCOUNTS) => {
             before(async () => {
                 const txHash = await debtToken.create.sendTransactionAsync(
                     debtEntries[0].getVersion(),
-                    debtEntries[0].getCreditor(),
+                    debtEntries[0].getBeneficiary(),
+                    debtEntries[0].getDebtor(),
                     debtEntries[0].getUnderwriter(),
                     debtEntries[0].getUnderwriterRiskRating(),
                     debtEntries[0].getTermsContract(),
@@ -219,7 +224,7 @@ contract("Debt Token", (ACCOUNTS) => {
             it("should emit minting log event", () => {
                 const logExpected = LogMint(
                     debtToken.address,
-                    debtEntries[0].getCreditor(),
+                    debtEntries[0].getBeneficiary(),
                     debtEntries[0].getTokenId(),
                 );
 
@@ -233,13 +238,13 @@ contract("Debt Token", (ACCOUNTS) => {
 
             it("should assign new token to creditor", async () => {
                 await expect(debtToken.ownerOf.callAsync(debtEntries[0].getTokenId()))
-                    .to.eventually.bignumber.equal(debtEntries[0].getCreditor());
+                    .to.eventually.bignumber.equal(debtEntries[0].getBeneficiary());
             });
 
             it("should update owner's token list", async () => {
-                await expect(debtToken.tokenOfOwnerByIndex.callAsync(debtEntries[0].getCreditor(), INDEX_0))
+                await expect(debtToken.tokenOfOwnerByIndex.callAsync(debtEntries[0].getBeneficiary(), INDEX_0))
                     .to.eventually.bignumber.equal(debtEntries[0].getTokenId());
-                await expect(debtToken.tokenOfOwnerByIndex.callAsync(debtEntries[0].getCreditor(), INDEX_1))
+                await expect(debtToken.tokenOfOwnerByIndex.callAsync(debtEntries[0].getBeneficiary(), INDEX_1))
                     .to.eventually.be.rejectedWith(INVALID_OPCODE);
             });
         });
@@ -249,7 +254,8 @@ contract("Debt Token", (ACCOUNTS) => {
 
             before(async () => {
                 secondDebt = new DebtRegistryEntry({
-                    creditor: debtEntries[0].getCreditor(),
+                    beneficiary: debtEntries[0].getBeneficiary(),
+                    debtor: DEBTOR,
                     termsContract: debtEntries[1].getTermsContract(),
                     termsContractParameters: debtEntries[1].getTermsContractParameters(),
                     underwriter: debtEntries[1].getUnderwriter(),
@@ -259,7 +265,8 @@ contract("Debt Token", (ACCOUNTS) => {
 
                 const txHash = await debtToken.create.sendTransactionAsync(
                     secondDebt.getVersion(),
-                    secondDebt.getCreditor(),
+                    secondDebt.getBeneficiary(),
+                    secondDebt.getDebtor(),
                     secondDebt.getUnderwriter(),
                     secondDebt.getUnderwriterRiskRating(),
                     secondDebt.getTermsContract(),
@@ -275,7 +282,7 @@ contract("Debt Token", (ACCOUNTS) => {
                 const [insertRegistryLog, mintLog] = ABIDecoder.decodeLogs(res.logs);
                 const logExpected = LogMint(
                     debtToken.address,
-                    secondDebt.getCreditor(),
+                    secondDebt.getBeneficiary(),
                     secondDebt.getTokenId(),
                 );
 
@@ -289,15 +296,15 @@ contract("Debt Token", (ACCOUNTS) => {
 
             it("should assign new token to creditor", async () => {
                 await expect(debtToken.ownerOf.callAsync(secondDebt.getTokenId()))
-                    .to.eventually.bignumber.equal(secondDebt.getCreditor());
+                    .to.eventually.bignumber.equal(secondDebt.getBeneficiary());
             });
 
             it("should update owner's token list", async () => {
-                await expect(debtToken.tokenOfOwnerByIndex.callAsync(secondDebt.getCreditor(), INDEX_0))
+                await expect(debtToken.tokenOfOwnerByIndex.callAsync(secondDebt.getBeneficiary(), INDEX_0))
                     .to.eventually.bignumber.equal(debtEntries[0].getTokenId());
-                await expect(debtToken.tokenOfOwnerByIndex.callAsync(secondDebt.getCreditor(), INDEX_1))
+                await expect(debtToken.tokenOfOwnerByIndex.callAsync(secondDebt.getBeneficiary(), INDEX_1))
                     .to.eventually.bignumber.equal(secondDebt.getTokenId());
-                await expect(debtToken.tokenOfOwnerByIndex.callAsync(secondDebt.getCreditor(), INDEX_2))
+                await expect(debtToken.tokenOfOwnerByIndex.callAsync(secondDebt.getBeneficiary(), INDEX_2))
                     .to.eventually.be.rejectedWith(INVALID_OPCODE);
             });
         });
@@ -306,7 +313,8 @@ contract("Debt Token", (ACCOUNTS) => {
             it("should throw", async () => {
                 await expect(debtToken.create.sendTransactionAsync(
                     debtEntries[0].getVersion(),
-                    debtEntries[0].getCreditor(),
+                    debtEntries[0].getBeneficiary(),
+                    debtEntries[0].getDebtor(),
                     debtEntries[0].getUnderwriter(),
                     debtEntries[0].getUnderwriterRiskRating(),
                     debtEntries[0].getTermsContract(),
@@ -314,78 +322,6 @@ contract("Debt Token", (ACCOUNTS) => {
                     debtEntries[0].getSalt(),
                     { from: AUTHORIZED_MINT_AGENT },
                 )).to.eventually.be.rejectedWith(REVERT_ERROR);
-            });
-        });
-
-        describe("Minting and Immediately Swapping", () => {
-            let zrxTokenTransferProxyContract: ZeroX_TokenTransferProxyContract;
-
-            before(async () => {
-                zrxTokenTransferProxyContract = await ZeroX_TokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
-            });
-
-            describe("unauthorized agent mints new debt token and approves for ZRX exchange", () => {
-                it("should throw", async () => {
-                    await expect(debtToken.createAndApproveBrokerage.sendTransactionAsync(
-                        debtEntries[2].getVersion(),
-                        debtEntries[2].getCreditor(),
-                        BROKER,
-                        debtEntries[2].getUnderwriter(),
-                        debtEntries[2].getUnderwriterRiskRating(),
-                        debtEntries[2].getTermsContract(),
-                        debtEntries[2].getTermsContractParameters(),
-                        debtEntries[2].getSalt(),
-                        zrxTokenTransferProxyContract.address,
-                        { from: UNAUTHORIZED_MINT_AGENT },
-                    )).to.eventually.be.rejectedWith(REVERT_ERROR);
-                });
-            });
-
-            describe("authorized agent mints new debt token and approves for ZRX exchange", () => {
-                let res: Web3.TransactionReceipt;
-
-                before(async () => {
-                    const txHash = await debtToken.createAndApproveBrokerage.sendTransactionAsync(
-                        debtEntries[2].getVersion(),
-                        debtEntries[2].getCreditor(),
-                        BROKER,
-                        debtEntries[2].getUnderwriter(),
-                        debtEntries[2].getUnderwriterRiskRating(),
-                        debtEntries[2].getTermsContract(),
-                        debtEntries[2].getTermsContractParameters(),
-                        debtEntries[2].getSalt(),
-                        zrxTokenTransferProxyContract.address,
-                        { from: AUTHORIZED_MINT_AGENT },
-                    );
-
-                    res = await web3.eth.getTransactionReceipt(txHash);
-                });
-
-                it("should emit minting log event", () => {
-                    const [insertRegistryLog, mintLog] = ABIDecoder.decodeLogs(res.logs);
-                    const logExpected = LogMint(
-                        debtToken.address,
-                        debtEntries[2].getCreditor(),
-                        debtEntries[2].getTokenId(),
-                    );
-
-                    expect(mintLog).to.deep.equal(logExpected);
-                });
-
-                it("should immediately transfer token to broker", async () => {
-                    await expect(debtToken.ownerOf.callAsync(debtEntries[2].getTokenId()))
-                        .to.eventually.equal(BROKER);
-                });
-
-                it("should set token as current brokerage candidate", async () => {
-                    await expect(debtToken.getCurrentBrokerageCandidate.callAsync())
-                        .to.eventually.bignumber.equal(debtEntries[2].getTokenId());
-                });
-
-                it("should approve the ZRX contract for transferring the new token", async () => {
-                    expect(debtToken.getApproved.callAsync(debtEntries[2].getTokenId()))
-                        .to.eventually.equal(zrxTokenTransferProxyContract.address);
-                });
             });
         });
     });
@@ -472,7 +408,7 @@ contract("Debt Token", (ACCOUNTS) => {
         });
 
         describe("user transfers token he owns", async () => {
-            let modifyCreditorLog: ABIDecoder.DecodedLog;
+            let modifyBeneficiaryLog: ABIDecoder.DecodedLog;
             let transferLog: ABIDecoder.DecodedLog;
 
             before(async () => {
@@ -480,18 +416,18 @@ contract("Debt Token", (ACCOUNTS) => {
                     .sendTransactionAsync(TOKEN_OWNER_2, debtEntries[0].getTokenId(),
                         { from: TOKEN_OWNER_1 });
                 const res = await web3.eth.getTransactionReceipt(txHash);
-                [modifyCreditorLog, , transferLog] = ABIDecoder.decodeLogs(res.logs);
+                [modifyBeneficiaryLog, , transferLog] = ABIDecoder.decodeLogs(res.logs);
             });
 
             it("should emit registry modification log", async () => {
-                const logExpected = LogModifyEntryCreditor(
+                const logExpected = LogModifyEntryBeneficiary(
                     debtRegistry.address,
-                    debtEntries[0].getEntryHash(),
+                    debtEntries[0].getIssuanceHash(),
                     TOKEN_OWNER_1,
                     TOKEN_OWNER_2,
                 );
 
-                expect(modifyCreditorLog).to.deep.equal(logExpected);
+                expect(modifyBeneficiaryLog).to.deep.equal(logExpected);
             });
 
             it("should emit transfer log", async () => {
@@ -620,7 +556,7 @@ contract("Debt Token", (ACCOUNTS) => {
         });
 
         describe("user transfers token with outstanding approval", () => {
-            let modifyCreditorLog: ABIDecoder.DecodedLog;
+            let modifyBeneficiaryLog: ABIDecoder.DecodedLog;
             let approvalLog: ABIDecoder.DecodedLog;
             let transferLog: ABIDecoder.DecodedLog;
 
@@ -632,19 +568,19 @@ contract("Debt Token", (ACCOUNTS) => {
                         { from: TOKEN_OWNER_3 });
                 const res = await web3.eth.getTransactionReceipt(txHash);
 
-                [modifyCreditorLog, approvalLog, transferLog] = ABIDecoder.decodeLogs(res.logs);
+                [modifyBeneficiaryLog, approvalLog, transferLog] = ABIDecoder.decodeLogs(res.logs);
             });
 
             it("should emit registry modification log", () => {
                 const logExpected =
-                    LogModifyEntryCreditor(
+                    LogModifyEntryBeneficiary(
                         debtRegistry.address,
-                        debtEntries[2].getEntryHash(),
+                        debtEntries[2].getIssuanceHash(),
                         TOKEN_OWNER_3,
                         TOKEN_OWNER_1,
                     );
 
-                expect(modifyCreditorLog).to.deep.equal(logExpected);
+                expect(modifyBeneficiaryLog).to.deep.equal(logExpected);
             });
 
             it("should emit approval clear log", () => {
@@ -890,26 +826,26 @@ contract("Debt Token", (ACCOUNTS) => {
                 let res: Web3.TransactionReceipt;
                 let approvalLog: ABIDecoder.DecodedLog;
                 let transferLog: ABIDecoder.DecodedLog;
-                let modifyCreditorLog: ABIDecoder.DecodedLog;
+                let modifyBeneficiaryLog: ABIDecoder.DecodedLog;
 
                 before(async () => {
                     const txHash = await debtToken.transferFrom.sendTransactionAsync(TOKEN_OWNER_1, TOKEN_OWNER_3,
                         debtEntries[0].getTokenId(), { from: TOKEN_OWNER_2 });
                     res = await web3.eth.getTransactionReceipt(txHash);
 
-                    [modifyCreditorLog, approvalLog, transferLog] = ABIDecoder.decodeLogs(res.logs);
+                    [modifyBeneficiaryLog, approvalLog, transferLog] = ABIDecoder.decodeLogs(res.logs);
                 });
 
                 it("should emit registry modification log", async () => {
                     const logExpected =
-                        LogModifyEntryCreditor(
+                        LogModifyEntryBeneficiary(
                             debtRegistry.address,
-                            debtEntries[0].getEntryHash(),
+                            debtEntries[0].getIssuanceHash(),
                             TOKEN_OWNER_1,
                             TOKEN_OWNER_3,
                         );
 
-                    expect(modifyCreditorLog).to.deep.equal(logExpected);
+                    expect(modifyBeneficiaryLog).to.deep.equal(logExpected);
                 });
 
                 it("should emit approval clear log", () => {

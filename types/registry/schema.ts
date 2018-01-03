@@ -5,7 +5,8 @@ export type SemanticVersion = string;
 
 export interface RegistryEntryParameters {
     version: SemanticVersion;
-    creditor: Address;
+    beneficiary: Address;
+    debtor: Address;
     underwriter: Address;
     underwriterRiskRating: BigNumber;
     termsContract: Address;

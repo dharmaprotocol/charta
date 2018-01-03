@@ -11,7 +11,7 @@
     "compile": "truffle compile",
     "soltsice": "soltsice",
     "migrate": "npm run transpile; truffle migrate",
-    "test": "npm run compile; npm run generate-typings; npm run migrate; truffle test",
+    "test": "npm run compile; npm run generate-typings; npm run migrate; truffle test transpiled/test/ts/debt_kernel.js",
     "chain": "bash ./scripts/init_chain.sh",
     "validate": "npm ls"
   },
@@ -35,7 +35,7 @@
     "copyfiles": "^1.2.0",
     "ethereumjs-abi": "^0.6.4",
     "ethereumjs-util": "^5.1.2",
-    "ganache-cli": "^6.0.3",
+    "ganache-cli": "https://github.com/nadavhollander/ganache-cli.git#06f96cdf17ced77c73cebf695448ff11bfecd04d",
     "json-stable-stringify": "^1.0.1",
     "lodash": "^4.17.4",
     "moment": "^2.20.1",

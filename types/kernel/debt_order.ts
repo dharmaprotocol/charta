@@ -48,12 +48,12 @@ export class DebtOrder extends SignableMessage {
         return this.params.debtTokenContract;
     }
 
-    public getPrincipleAmount(): BigNumber {
-        return this.params.principleAmount;
+    public getPrincipalAmount(): BigNumber {
+        return this.params.principalAmount;
     }
 
-    public getPrincipleTokenAddress(): Address {
-        return this.params.principleTokenAddress;
+    public getPrincipalTokenAddress(): Address {
+        return this.params.principalTokenAddress;
     }
 
     public getRelayer(): Address {
@@ -85,8 +85,8 @@ export class DebtOrder extends SignableMessage {
             this.getIssuanceCommitment().getHash(),
             this.getUnderwriterFee(),
             this.getZeroExExchangeContract(),
-            this.getPrincipleAmount(),
-            this.getPrincipleTokenAddress(),
+            this.getPrincipalAmount(),
+            this.getPrincipalTokenAddress(),
             this.getDebtorFee(),
             this.getCreditorFee(),
             this.getRelayer(),
@@ -101,8 +101,8 @@ export class DebtOrder extends SignableMessage {
         const hash = solidity.SHA3([
             this.getIssuanceCommitment().getHash(),
             this.getUnderwriterFee(),
-            this.getPrincipleAmount(),
-            this.getPrincipleTokenAddress(),
+            this.getPrincipalAmount(),
+            this.getPrincipalTokenAddress(),
         ]);
 
         const hashHex = ethUtil.bufferToHex(hash);
@@ -116,8 +116,8 @@ export class DebtOrder extends SignableMessage {
         	feeRecipient: NULL_ADDRESS,
         	maker: creditor,
         	makerFee: new BigNumber(0),
-        	makerTokenAddress: this.getPrincipleTokenAddress(),
-        	makerTokenAmount: this.getPrincipleAmount().plus(this.getCreditorFee()),
+        	makerTokenAddress: this.getPrincipalTokenAddress(),
+        	makerTokenAmount: this.getPrincipalAmount().plus(this.getCreditorFee()),
         	salt: new BigNumber(this.getIssuanceCommitment().getHash()),
         	taker: NULL_ADDRESS,
         	takerFee: new BigNumber(0),
@@ -189,8 +189,7 @@ export class SignedDebtOrder extends DebtOrder {
             this.getIssuanceCommitment().getUnderwriter(),
             this.getIssuanceCommitment().getTermsContract(),
             this.getZeroExExchangeContract(),
-            this.getCreditor(),
-            this.getPrincipleTokenAddress(),
+            this.getPrincipalTokenAddress(),
             this.getRelayer(),
         ];
     }
@@ -200,7 +199,7 @@ export class SignedDebtOrder extends DebtOrder {
             this.getIssuanceCommitment().getUnderwriterRiskRating(),
             this.getIssuanceCommitment().getSalt(),
             this.getUnderwriterFee(),
-            this.getPrincipleAmount(),
+            this.getPrincipalAmount(),
             this.getCreditorFee(),
             this.getDebtorFee(),
             this.getExpiration(),

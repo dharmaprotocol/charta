@@ -19,7 +19,7 @@ import {
     LogAddAuthorizedEditAgent,
     LogAddAuthorizedInsertAgent,
     LogInsertEntry,
-    LogModifyEntryCreditor,
+    LogModifyEntryBeneficiary,
     LogRevokeEditAgentAuthorization,
     LogRevokeInsertAgentAuthorization,
 } from "./logs/debt_registry";
@@ -45,20 +45,21 @@ contract("Debt Registry", async (ACCOUNTS) => {
 
     // We choose arbitrary addresses to represent data fields in the registry
     // entries.
-    const CREDITOR_1 = ACCOUNTS[1];
-    const CREDITOR_2 = ACCOUNTS[2];
-    const UNDERWRITER = ACCOUNTS[3];
-    const TERMS_CONTRACT_ADDRESS = ACCOUNTS[4];
+    const BENEFICIARY_1 = ACCOUNTS[1];
+    const BENEFICIARY_2 = ACCOUNTS[2];
+    const DEBTOR = ACCOUNTS[3];
+    const UNDERWRITER = ACCOUNTS[4];
+    const TERMS_CONTRACT_ADDRESS = ACCOUNTS[5];
 
     // We choose arbitrary addresses to represent the various contracts
     // that have / lack permission to make changes to the registry.
-    const AGENT_1 = ACCOUNTS[5];
-    const AGENT_2 = ACCOUNTS[6];
-    const AGENT_3 = ACCOUNTS[7];
-    const AGENT_4 = ACCOUNTS[8];
+    const AGENT_1 = ACCOUNTS[6];
+    const AGENT_2 = ACCOUNTS[7];
+    const AGENT_3 = ACCOUNTS[8];
+    const AGENT_4 = ACCOUNTS[9];
 
-    const ATTACKER = ACCOUNTS[9];
-    const NEW_CONTRACT_OWNER = ACCOUNTS[10];
+    const ATTACKER = ACCOUNTS[10];
+    const NEW_CONTRACT_OWNER = ACCOUNTS[11];
 
     let registry: DebtRegistryContract;
     let termsContractAddress: Address;
@@ -69,7 +70,7 @@ contract("Debt Registry", async (ACCOUNTS) => {
     let insertEntryFn: (entry: DebtRegistryEntry,
                         options?: TxDataPayable)
         => Promise<string>;
-    let modifyEntryCreditorFn: (entry: DebtRegistryEntry,
+    let modifyEntryBeneficiaryFn: (entry: DebtRegistryEntry,
                                 newOwner: Address,
                                 options?: TxDataPayable)
         => Promise<string>;
@@ -102,7 +103,8 @@ contract("Debt Registry", async (ACCOUNTS) => {
         // DebtRegistryEntries without hash collisions.
         generateEntryFn = () => {
             return new DebtRegistryEntry({
-                creditor: CREDITOR_1,
+                beneficiary: BENEFICIARY_1,
+                debtor: DEBTOR,
                 termsContract: TERMS_CONTRACT_ADDRESS,
                 termsContractParameters: ARBITRARY_TERMS_CONTRACT_PARAMS,
                 underwriter: UNDERWRITER,
@@ -115,7 +117,8 @@ contract("Debt Registry", async (ACCOUNTS) => {
                                options?: TxDataPayable) => {
             return registry.insert.sendTransactionAsync(
                 entry.getVersion(),
-                entry.getCreditor(),
+                entry.getBeneficiary(),
+                entry.getDebtor(),
                 entry.getUnderwriter(),
                 entry.getUnderwriterRiskRating(),
                 entry.getTermsContract(),
@@ -125,12 +128,12 @@ contract("Debt Registry", async (ACCOUNTS) => {
             );
         };
 
-        modifyEntryCreditorFn = async (entry: DebtRegistryEntry,
-                                       newCreditor: Address,
+        modifyEntryBeneficiaryFn = async (entry: DebtRegistryEntry,
+                                       newBeneficiary: Address,
                                        options?: TxDataPayable) => {
-            return registry.modifyCreditor.sendTransactionAsync(
-                entry.getEntryHash(),
-                newCreditor,
+            return registry.modifyBeneficiary.sendTransactionAsync(
+                entry.getIssuanceHash(),
+                newBeneficiary,
                 options,
             );
         };
@@ -143,7 +146,7 @@ contract("Debt Registry", async (ACCOUNTS) => {
         });
 
         it("should throw if any user tries to edit entry", async () => {
-            await expect(modifyEntryCreditorFn(generateEntryFn(), AGENT_1))
+            await expect(modifyEntryBeneficiaryFn(generateEntryFn(), AGENT_1))
                 .to.eventually.be.rejectedWith(REVERT_ERROR);
         });
     });
@@ -216,10 +219,10 @@ contract("Debt Registry", async (ACCOUNTS) => {
             });
 
             it("should make entry retrievable by its hash", async () => {
-                const retrievedEntry = await registry.get.callAsync(entry.getEntryHash());
+                const retrievedEntry = await registry.get.callAsync(entry.getIssuanceHash());
                 const expectedEntry = [
                         entry.getVersion(),
-                        entry.getCreditor(),
+                        entry.getBeneficiary(),
                         entry.getUnderwriter(),
                         entry.getUnderwriterRiskRating(),
                         entry.getTermsContract(),
@@ -236,7 +239,7 @@ contract("Debt Registry", async (ACCOUNTS) => {
             });
 
             it("should throw when first agent tries editing entry", async () => {
-                await expect(modifyEntryCreditorFn(entry, AGENT_1, { from: AGENT_1 }))
+                await expect(modifyEntryBeneficiaryFn(entry, AGENT_1, { from: AGENT_1 }))
                     .to.eventually.be.rejectedWith(REVERT_ERROR);
             });
         });
@@ -259,10 +262,10 @@ contract("Debt Registry", async (ACCOUNTS) => {
             });
 
             it("should make entry retrievable by its hash", async () => {
-                const retrievedEntry = await registry.get.callAsync(entry.getEntryHash());
+                const retrievedEntry = await registry.get.callAsync(entry.getIssuanceHash());
                 const expectedEntry = [
                         entry.getVersion(),
-                        entry.getCreditor(),
+                        entry.getBeneficiary(),
                         entry.getUnderwriter(),
                         entry.getUnderwriterRiskRating(),
                         entry.getTermsContract(),
@@ -279,7 +282,7 @@ contract("Debt Registry", async (ACCOUNTS) => {
             });
 
             it("should throw when second agent tries editing entry", async () => {
-                await expect(modifyEntryCreditorFn(entry, AGENT_2, { from: AGENT_2 }))
+                await expect(modifyEntryBeneficiaryFn(entry, AGENT_2, { from: AGENT_2 }))
                     .to.eventually.be.rejectedWith(REVERT_ERROR);
             });
         });
@@ -330,7 +333,7 @@ contract("Debt Registry", async (ACCOUNTS) => {
             it("should throw when unauthorized attacker edits entry", async () => {
                 const entry = generateEntryFn();
                 await insertEntryFn(entry, { from: AGENT_1 });
-                await expect(modifyEntryCreditorFn(generateEntryFn(), AGENT_2,
+                await expect(modifyEntryBeneficiaryFn(generateEntryFn(), AGENT_2,
                     { from: AGENT_2 })).to.eventually.be.rejectedWith(REVERT_ERROR);
             });
 
@@ -341,18 +344,18 @@ contract("Debt Registry", async (ACCOUNTS) => {
                 before(async () => {
                     entry = generateEntryFn();
                     await insertEntryFn(entry, { from: AGENT_1 });
-                    const txHash = await modifyEntryCreditorFn(entry,
-                        CREDITOR_2, { from: AGENT_3 });
+                    const txHash = await modifyEntryBeneficiaryFn(entry,
+                        BENEFICIARY_2, { from: AGENT_3 });
                     res = await web3.eth.getTransactionReceipt(txHash);
                 });
 
                 it("should emit a log saying the debt is edited", () => {
                     const [logReturned] = ABIDecoder.decodeLogs(res.logs);
-                    const logExpected = LogModifyEntryCreditor(
+                    const logExpected = LogModifyEntryBeneficiary(
                         registry.address,
-                        entry.getEntryHash(),
-                        entry.getCreditor(),
-                        CREDITOR_2,
+                        entry.getIssuanceHash(),
+                        entry.getBeneficiary(),
+                        BENEFICIARY_2,
                     );
 
                     expect(logReturned).to.deep.equal(logExpected);
@@ -360,9 +363,9 @@ contract("Debt Registry", async (ACCOUNTS) => {
 
                 it("should reflect changes in stored entry", async () => {
                     const returnedEntry =
-                        await registry.get.callAsync(entry.getEntryHash());
-                    const creditor = returnedEntry[1];
-                    expect(creditor).to.equal(CREDITOR_2);
+                        await registry.get.callAsync(entry.getIssuanceHash());
+                    const beneficiary = returnedEntry[1];
+                    expect(beneficiary).to.equal(BENEFICIARY_2);
                 });
             });
 
@@ -373,18 +376,18 @@ contract("Debt Registry", async (ACCOUNTS) => {
                 before(async () => {
                     entry = generateEntryFn();
                     await insertEntryFn(entry, { from: AGENT_1 });
-                    const txHash = await modifyEntryCreditorFn(entry,
-                        CREDITOR_2, { from: AGENT_4 });
+                    const txHash = await modifyEntryBeneficiaryFn(entry,
+                        BENEFICIARY_2, { from: AGENT_4 });
                     res = await web3.eth.getTransactionReceipt(txHash);
                 });
 
                 it("should emit a log saying the debt is edited", () => {
                     const [logReturned] = ABIDecoder.decodeLogs(res.logs);
-                    const logExpected = LogModifyEntryCreditor(
+                    const logExpected = LogModifyEntryBeneficiary(
                         registry.address,
-                        entry.getEntryHash(),
-                        entry.getCreditor(),
-                        CREDITOR_2,
+                        entry.getIssuanceHash(),
+                        entry.getBeneficiary(),
+                        BENEFICIARY_2,
                     );
 
                     expect(logReturned).to.deep.equal(logExpected);
@@ -392,9 +395,9 @@ contract("Debt Registry", async (ACCOUNTS) => {
 
                 it("should reflect changes in stored entry", async () => {
                     const returnedEntry =
-                        await registry.get.callAsync(entry.getEntryHash());
-                    const creditor = returnedEntry[1];
-                    expect(creditor).to.equal(CREDITOR_2);
+                        await registry.get.callAsync(entry.getIssuanceHash());
+                    const beneficiary = returnedEntry[1];
+                    expect(beneficiary).to.equal(BENEFICIARY_2);
                 });
             });
 
@@ -461,7 +464,7 @@ contract("Debt Registry", async (ACCOUNTS) => {
 
             it("should throw when third agent edits entry", async () => {
                 await insertEntryFn(generateEntryFn(), { from: AGENT_1 });
-                await expect(modifyEntryCreditorFn(generateEntryFn(), CREDITOR_2,
+                await expect(modifyEntryBeneficiaryFn(generateEntryFn(), BENEFICIARY_2,
                     { from: AGENT_3 })).to.eventually.be.rejectedWith(REVERT_ERROR);
             });
         });
@@ -479,7 +482,7 @@ contract("Debt Registry", async (ACCOUNTS) => {
             describe("No edits on non-existent entries", () => {
                 it("should throw on non-existent entry edit", async () => {
                     const entry = generateEntryFn();
-                    await expect(modifyEntryCreditorFn(entry, CREDITOR_2,
+                    await expect(modifyEntryBeneficiaryFn(entry, BENEFICIARY_2,
                         { from: AGENT_4 })).to.eventually.be.rejectedWith(REVERT_ERROR);
                 });
             });

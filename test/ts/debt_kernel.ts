@@ -170,6 +170,10 @@ contract("Debt Kernel", async (ACCOUNTS) => {
 
         await debtTokenContract.addAuthorizedMintAgent
             .sendTransactionAsync(kernel.address, { from: CONTRACT_OWNER });
+
+        // Temporary until brokered order is live
+        await debtTokenContract.addAuthorizedBrokerageAgent
+            .sendTransactionAsync(kernel.address, { from: CONTRACT_OWNER });
     };
 
     const resetAndInit = async () => {
@@ -421,11 +425,13 @@ contract("Debt Kernel", async (ACCOUNTS) => {
 
         let DEFAULT_PARAMS: { [key: string]: any };
 
-        const generateDebtOrder = async (parameters = {}): Promise<SignedDebtOrder> => {
-            const params = Object.assign(DEFAULT_PARAMS, parameters);
+        const generateDebtOrder = async (modifications = {}): Promise<SignedDebtOrder> => {
+            const params = _.clone(DEFAULT_PARAMS);
+
+            Object.assign(params, modifications);
 
             const issuance = new IssuanceCommitment({
-                issuer: params.issuer,
+                issuer: params.debtor,
                 termsContract: params.termsContract,
                 termsContractParameters: params.termsContractParameters,
                 underwriter: params.underwriter,
@@ -439,8 +445,8 @@ contract("Debt Kernel", async (ACCOUNTS) => {
                 debtTokenContract: params.debtTokenContract,
                 zeroExExchangeContract: params.zeroExExchangeContract,
                 debtIssuanceCommitment: issuance,
-                principleAmount: params.principleAmount,
-                principleTokenAddress: params.principleTokenAddress,
+                principalAmount: params.principalAmount,
+                principalTokenAddress: params.principalTokenAddress,
                 debtorFee: params.debtorFee,
                 creditorFee: params.creditorFee,
                 underwriterFee: params.underwriterFee,
@@ -479,7 +485,6 @@ contract("Debt Kernel", async (ACCOUNTS) => {
             await Promise.all(approveZeroExContract);
 
             DEFAULT_PARAMS = {
-                issuer: DEBTOR_1,
                 termsContract: TERMS_CONTRACT,
                 termsContractParameters: TERMS_CONTRACT_PARAMETERS,
                 underwriter: UNDERWRITER,
@@ -489,8 +494,8 @@ contract("Debt Kernel", async (ACCOUNTS) => {
                 debtKernelContract: kernel.address,
                 debtTokenContract: debtTokenContract.address,
                 zeroExExchangeContract: zeroEx.exchange.getContractAddress(),
-                principleAmount: Units.ether(1),
-                principleTokenAddress: dummyMKRToken.address,
+                principalAmount: Units.ether(1),
+                principalTokenAddress: dummyMKRToken.address,
                 debtorFee: Units.ether(0.001),
                 creditorFee: Units.ether(0.002),
                 underwriterFee: Units.ether(0.0015),
@@ -502,6 +507,8 @@ contract("Debt Kernel", async (ACCOUNTS) => {
 
         describe("creditor submits valid signed debt order", () => {
             let res: Web3.TransactionReceipt;
+            let issuanceLog: ABIDecoder.DecodedLog;
+            let termBeginLog: ABIDecoder.DecodedLog;
 
             before(async () => {
                 [creditorBalanceBefore, debtorBalanceBefore,
@@ -511,6 +518,7 @@ contract("Debt Kernel", async (ACCOUNTS) => {
                 debtOrder = await generateDebtOrder();
 
                 const txHash = await kernel.fillDebtOrder.sendTransactionAsync(
+                    debtOrder.getCreditor(),
                     debtOrder.getOrderAddresses(),
                     debtOrder.getOrderValues(),
                     debtOrder.getOrderBytes32(),
@@ -520,16 +528,15 @@ contract("Debt Kernel", async (ACCOUNTS) => {
                 );
 
                 res = await web3.eth.getTransactionReceipt(txHash);
+                [issuanceLog, termBeginLog] = _.compact(ABIDecoder.decodeLogs(res.logs));
             });
 
             it("should emit debt issuance log", () => {
-                const [, , issuanceLog] = ABIDecoder.decodeLogs(res.logs);
                 expect(issuanceLog).to.deep
                     .equal(LogDebtIssuance(kernel.address, debtOrder.getIssuanceCommitment().getHash()));
             });
 
             it("should emit term start log", async () => {
-                const [,,,,,,,,, termBeginLog] = ABIDecoder.decodeLogs(res.logs);
                 const block = await web3.eth.getBlock(res.blockHash);
 
                 expect(termBeginLog).to.deep
@@ -538,13 +545,13 @@ contract("Debt Kernel", async (ACCOUNTS) => {
             });
 
             it("should credit debtor with desired principle minus debtor fee", async () => {
-                const delta = debtOrder.getPrincipleAmount().minus(debtOrder.getDebtorFee());
+                const delta = debtOrder.getPrincipalAmount().minus(debtOrder.getDebtorFee());
                 await expect(dummyMKRToken.balanceOf.callAsync(DEBTOR_1))
                     .to.eventually.bignumber.equal(debtorBalanceBefore.plus(delta));
             });
 
             it("should debit creditor desired principle", async () => {
-                const delta = debtOrder.getPrincipleAmount().plus(debtOrder.getCreditorFee());
+                const delta = debtOrder.getPrincipalAmount().plus(debtOrder.getCreditorFee());
                 await expect(dummyMKRToken.balanceOf.callAsync(CREDITOR_1))
                     .to.eventually.bignumber.equal(creditorBalanceBefore.minus(delta));
             });
@@ -571,6 +578,7 @@ contract("Debt Kernel", async (ACCOUNTS) => {
         describe("creditor resubmits same valid signed debt order", () => {
             it("should throw", async () => {
                 await expect(kernel.fillDebtOrder.sendTransactionAsync(
+                    debtOrder.getCreditor(),
                     debtOrder.getOrderAddresses(),
                     debtOrder.getOrderValues(),
                     debtOrder.getOrderBytes32(),
@@ -583,6 +591,9 @@ contract("Debt Kernel", async (ACCOUNTS) => {
 
         describe("creditor submits valid debt order with no creditor / debtor fees", () => {
             let res: Web3.TransactionReceipt;
+            let issuanceLog: ABIDecoder.DecodedLog;
+            let termBeginLog: ABIDecoder.DecodedLog;
+
 
             before(async () => {
                 [creditorBalanceBefore, debtorBalanceBefore,
@@ -590,6 +601,14 @@ contract("Debt Kernel", async (ACCOUNTS) => {
                         await getTokenBalances([CREDITOR_2, DEBTOR_2, UNDERWRITER, RELAYER], dummyREPToken);
 
                 debtOrder = await generateDebtOrder({
+                    creditor: CREDITOR_2,
+                    debtor: DEBTOR_2,
+                    orderSignatories: {
+                        debtor: DEBTOR_2,
+                        creditor: CREDITOR_2,
+                        underwriter: UNDERWRITER,
+                    },
+                    principalTokenAddress: dummyREPToken.address,
                     creditorFee: new BigNumber(0),
                     debtorFee: new BigNumber(0),
                     underwriterFee: new BigNumber(0),
@@ -597,6 +616,7 @@ contract("Debt Kernel", async (ACCOUNTS) => {
                 });
 
                 const txHash = await kernel.fillDebtOrder.sendTransactionAsync(
+                    debtOrder.getCreditor(),
                     debtOrder.getOrderAddresses(),
                     debtOrder.getOrderValues(),
                     debtOrder.getOrderBytes32(),
@@ -606,16 +626,16 @@ contract("Debt Kernel", async (ACCOUNTS) => {
                 );
 
                 res = await web3.eth.getTransactionReceipt(txHash);
+                [issuanceLog, termBeginLog] = _.compact(ABIDecoder.decodeLogs(res.logs));
+
             });
 
             it("should emit debt issuance log", () => {
-                const [, , issuanceLog] = ABIDecoder.decodeLogs(res.logs);
                 expect(issuanceLog).to.deep
                     .equal(LogDebtIssuance(kernel.address, debtOrder.getIssuanceCommitment().getHash()));
             });
 
             it("should emit term start log", async () => {
-                const [,,,,,,,,, termBeginLog] = ABIDecoder.decodeLogs(res.logs);
                 const block = await web3.eth.getBlock(res.blockHash);
 
                 expect(termBeginLog).to.deep
@@ -624,13 +644,13 @@ contract("Debt Kernel", async (ACCOUNTS) => {
             });
 
             it("should credit debtor with desired principle", async () => {
-                const delta = debtOrder.getPrincipleAmount().minus(debtOrder.getDebtorFee());
+                const delta = debtOrder.getPrincipalAmount();
                 await expect(dummyREPToken.balanceOf.callAsync(DEBTOR_2))
                     .to.eventually.bignumber.equal(debtorBalanceBefore.plus(delta));
             });
 
             it("should debit creditor desired principle", async () => {
-                const delta = debtOrder.getPrincipleAmount().plus(debtOrder.getCreditorFee());
+                const delta = debtOrder.getPrincipalAmount();
                 await expect(dummyREPToken.balanceOf.callAsync(CREDITOR_2))
                     .to.eventually.bignumber.equal(creditorBalanceBefore.minus(delta));
             });
@@ -656,12 +676,20 @@ contract("Debt Kernel", async (ACCOUNTS) => {
             describe("...with nonzero risk rating", () => {
                 it("should throw", async () => {
                     debtOrder = await generateDebtOrder({
+                        creditor: CREDITOR_3,
+                        debtor: DEBTOR_3,
+                        orderSignatories: {
+                            debtor: DEBTOR_3,
+                            creditor: CREDITOR_3,
+                        },
+                        principalTokenAddress: dummyZRXToken.address,
                         underwriter: NULL_ADDRESS,
                         underwriterFee: new BigNumber(0),
                         underwriterRiskRating: Units.percent(3),
                     });
 
                     await expect(kernel.fillDebtOrder.sendTransactionAsync(
+                        debtOrder.getCreditor(),
                         debtOrder.getOrderAddresses(),
                         debtOrder.getOrderValues(),
                         debtOrder.getOrderBytes32(),
@@ -675,12 +703,20 @@ contract("Debt Kernel", async (ACCOUNTS) => {
             describe("...with nonzero underwriter fee", () => {
                 it("should throw", async () => {
                     debtOrder = await generateDebtOrder({
+                        creditor: CREDITOR_3,
+                        debtor: DEBTOR_3,
+                        orderSignatories: {
+                            debtor: DEBTOR_3,
+                            creditor: CREDITOR_3,
+                        },
+                        principalTokenAddress: dummyZRXToken.address,
                         underwriter: NULL_ADDRESS,
                         underwriterFee: Units.ether(0.001),
                         underwriterRiskRating: new BigNumber(0),
                     });
 
                     await expect(kernel.fillDebtOrder.sendTransactionAsync(
+                        debtOrder.getCreditor(),
                         debtOrder.getOrderAddresses(),
                         debtOrder.getOrderValues(),
                         debtOrder.getOrderBytes32(),
@@ -693,19 +729,28 @@ contract("Debt Kernel", async (ACCOUNTS) => {
 
             describe("with zeroed risk rating / underwriting fee", () => {
                 let res: Web3.TransactionReceipt;
+                let issuanceLog: ABIDecoder.DecodedLog;
+                let termBeginLog: ABIDecoder.DecodedLog;
 
                 before(async () => {
-                    [creditorBalanceBefore, debtorBalanceBefore,
-                        underwriterBalanceBefore, relayerBalanceBefore] =
+                    [creditorBalanceBefore, debtorBalanceBefore, relayerBalanceBefore] =
                             await getTokenBalances([CREDITOR_3, DEBTOR_3, RELAYER], dummyZRXToken);
 
                     debtOrder = await generateDebtOrder({
+                        creditor: CREDITOR_3,
+                        debtor: DEBTOR_3,
+                        orderSignatories: {
+                            debtor: DEBTOR_3,
+                            creditor: CREDITOR_3,
+                        },
+                        principalTokenAddress: dummyZRXToken.address,
                         underwriter: NULL_ADDRESS,
                         underwriterFee: new BigNumber(0),
                         underwriterRiskRating: new BigNumber(0),
                     });
 
                     const txHash = await kernel.fillDebtOrder.sendTransactionAsync(
+                        debtOrder.getCreditor(),
                         debtOrder.getOrderAddresses(),
                         debtOrder.getOrderValues(),
                         debtOrder.getOrderBytes32(),
@@ -715,16 +760,15 @@ contract("Debt Kernel", async (ACCOUNTS) => {
                     );
 
                     res = await web3.eth.getTransactionReceipt(txHash);
+                    [issuanceLog, termBeginLog] = _.compact(ABIDecoder.decodeLogs(res.logs));
                 });
 
                 it("should emit debt issuance log", () => {
-                    const [, , issuanceLog] = ABIDecoder.decodeLogs(res.logs);
                     expect(issuanceLog).to.deep
                         .equal(LogDebtIssuance(kernel.address, debtOrder.getIssuanceCommitment().getHash()));
                 });
 
                 it("should emit term start log", async () => {
-                    const [,,,,,,,,, termBeginLog] = ABIDecoder.decodeLogs(res.logs);
                     const block = await web3.eth.getBlock(res.blockHash);
 
                     expect(termBeginLog).to.deep
@@ -733,13 +777,13 @@ contract("Debt Kernel", async (ACCOUNTS) => {
                 });
 
                 it("should credit debtor with desired principle", async () => {
-                    const delta = debtOrder.getPrincipleAmount().minus(debtOrder.getDebtorFee());
+                    const delta = debtOrder.getPrincipalAmount().minus(debtOrder.getDebtorFee());
                     await expect(dummyZRXToken.balanceOf.callAsync(DEBTOR_3))
                         .to.eventually.bignumber.equal(debtorBalanceBefore.plus(delta));
                 });
 
                 it("should debit creditor desired principle", async () => {
-                    const delta = debtOrder.getPrincipleAmount().plus(debtOrder.getCreditorFee());
+                    const delta = debtOrder.getPrincipalAmount().plus(debtOrder.getCreditorFee());
                     await expect(dummyZRXToken.balanceOf.callAsync(CREDITOR_3))
                         .to.eventually.bignumber.equal(creditorBalanceBefore.minus(delta));
                 });
@@ -760,6 +804,8 @@ contract("Debt Kernel", async (ACCOUNTS) => {
 
         describe("creditor submits valid debt order with underwriter but no relayer", () => {
             let res: Web3.TransactionReceipt;
+            let issuanceLog: ABIDecoder.DecodedLog;
+            let termBeginLog: ABIDecoder.DecodedLog;
 
             before(async () => {
                 [creditorBalanceBefore, debtorBalanceBefore,
@@ -768,9 +814,12 @@ contract("Debt Kernel", async (ACCOUNTS) => {
 
                 debtOrder = await generateDebtOrder({
                     relayer: NULL_ADDRESS,
+                    underwriterFee: DEFAULT_PARAMS.debtorFee.plus(DEFAULT_PARAMS.creditorFee),
+                    principalTokenAddress: dummyZRXToken.address,
                 });
 
                 const txHash = await kernel.fillDebtOrder.sendTransactionAsync(
+                    debtOrder.getCreditor(),
                     debtOrder.getOrderAddresses(),
                     debtOrder.getOrderValues(),
                     debtOrder.getOrderBytes32(),
@@ -780,16 +829,15 @@ contract("Debt Kernel", async (ACCOUNTS) => {
                 );
 
                 res = await web3.eth.getTransactionReceipt(txHash);
+                [issuanceLog, termBeginLog] = _.compact(ABIDecoder.decodeLogs(res.logs));
             });
 
             it("should emit debt issuance log", () => {
-                const [, , issuanceLog] = ABIDecoder.decodeLogs(res.logs);
                 expect(issuanceLog).to.deep
                     .equal(LogDebtIssuance(kernel.address, debtOrder.getIssuanceCommitment().getHash()));
             });
 
             it("should emit term start log", async () => {
-                const [,,,,,,,,, termBeginLog] = ABIDecoder.decodeLogs(res.logs);
                 const block = await web3.eth.getBlock(res.blockHash);
 
                 expect(termBeginLog).to.deep
@@ -798,13 +846,15 @@ contract("Debt Kernel", async (ACCOUNTS) => {
             });
 
             it("should credit debtor with desired principle", async () => {
-                const delta = debtOrder.getPrincipleAmount().minus(debtOrder.getDebtorFee());
+                const delta = debtOrder.getPrincipalAmount().minus(debtOrder.getDebtorFee());
+                const currentBalance = await dummyZRXToken.balanceOf.callAsync(DEBTOR_1);
+
                 await expect(dummyZRXToken.balanceOf.callAsync(DEBTOR_1))
                     .to.eventually.bignumber.equal(debtorBalanceBefore.plus(delta));
             });
 
             it("should debit creditor desired principle", async () => {
-                const delta = debtOrder.getPrincipleAmount().plus(debtOrder.getCreditorFee());
+                const delta = debtOrder.getPrincipalAmount().plus(debtOrder.getCreditorFee());
                 await expect(dummyZRXToken.balanceOf.callAsync(CREDITOR_1))
                     .to.eventually.bignumber.equal(creditorBalanceBefore.minus(delta));
             });
@@ -818,7 +868,7 @@ contract("Debt Kernel", async (ACCOUNTS) => {
             it("should credit underwriter with desired fee", async () => {
                 const delta = debtOrder.getUnderwriterFee();
                 await expect(dummyZRXToken.balanceOf.callAsync(UNDERWRITER))
-                    .to.eventually.bignumber.equal(relayerBalanceBefore.plus(delta));
+                    .to.eventually.bignumber.equal(underwriterBalanceBefore.plus(delta));
             });
         });
 
@@ -828,12 +878,14 @@ contract("Debt Kernel", async (ACCOUNTS) => {
                     debtOrder = await generateDebtOrder({
                         underwriter: NULL_ADDRESS,
                         relayer: NULL_ADDRESS,
+                        underwriterRiskRating: new BigNumber(0),
                         underwriterFee: new BigNumber(0),
                         debtorFee: Units.ether(0.001),
                         creditorFee: Units.ether(0.002)
                     });
 
                     await expect(kernel.fillDebtOrder.sendTransactionAsync(
+                        debtOrder.getCreditor(),
                         debtOrder.getOrderAddresses(),
                         debtOrder.getOrderValues(),
                         debtOrder.getOrderBytes32(),
@@ -846,6 +898,8 @@ contract("Debt Kernel", async (ACCOUNTS) => {
 
             describe("...with zero creditor / debtor fees", () => {
                 let res: Web3.TransactionReceipt;
+                let issuanceLog: ABIDecoder.DecodedLog;
+                let termBeginLog: ABIDecoder.DecodedLog;
 
                 before(async () => {
                     [creditorBalanceBefore, debtorBalanceBefore,
@@ -855,12 +909,18 @@ contract("Debt Kernel", async (ACCOUNTS) => {
                     debtOrder = await generateDebtOrder({
                         underwriter: NULL_ADDRESS,
                         relayer: NULL_ADDRESS,
+                        underwriterRiskRating: new BigNumber(0),
                         underwriterFee: new BigNumber(0),
                         debtorFee: new BigNumber(0),
-                        creditorFee: new BigNumber(0)
+                        creditorFee: new BigNumber(0),
+                        orderSignatories: {
+                            debtor: DEBTOR_1,
+                            creditor: CREDITOR_1
+                        }
                     });
 
                     const txHash = await kernel.fillDebtOrder.sendTransactionAsync(
+                        debtOrder.getCreditor(),
                         debtOrder.getOrderAddresses(),
                         debtOrder.getOrderValues(),
                         debtOrder.getOrderBytes32(),
@@ -870,16 +930,15 @@ contract("Debt Kernel", async (ACCOUNTS) => {
                     );
 
                     res = await web3.eth.getTransactionReceipt(txHash);
+                    [issuanceLog, termBeginLog] = _.compact(ABIDecoder.decodeLogs(res.logs));
                 });
 
                 it("should emit debt issuance log", () => {
-                    const [, , issuanceLog] = ABIDecoder.decodeLogs(res.logs);
                     expect(issuanceLog).to.deep
                         .equal(LogDebtIssuance(kernel.address, debtOrder.getIssuanceCommitment().getHash()));
                 });
 
                 it("should emit term start log", async () => {
-                    const [,,,,,,,,, termBeginLog] = ABIDecoder.decodeLogs(res.logs);
                     const block = await web3.eth.getBlock(res.blockHash);
 
                     expect(termBeginLog).to.deep
@@ -888,13 +947,13 @@ contract("Debt Kernel", async (ACCOUNTS) => {
                 });
 
                 it("should credit debtor with desired principle", async () => {
-                    const delta = debtOrder.getPrincipleAmount().minus(debtOrder.getDebtorFee());
+                    const delta = debtOrder.getPrincipalAmount().minus(debtOrder.getDebtorFee());
                     await expect(dummyMKRToken.balanceOf.callAsync(DEBTOR_1))
                         .to.eventually.bignumber.equal(debtorBalanceBefore.plus(delta));
                 });
 
                 it("should debit creditor desired principle", async () => {
-                    const delta = debtOrder.getPrincipleAmount().plus(debtOrder.getCreditorFee());
+                    const delta = debtOrder.getPrincipalAmount().plus(debtOrder.getCreditorFee());
                     await expect(dummyMKRToken.balanceOf.callAsync(CREDITOR_1))
                         .to.eventually.bignumber.equal(creditorBalanceBefore.minus(delta));
                 });

@@ -16,8 +16,8 @@ export function LogInsertEntry(
     return {
         address: contract,
         events: LogUtils.getParams([
-            ["entryHash", entry.getEntryHash()],
-            ["creditor", entry.getCreditor()],
+            ["issuanceHash", entry.getIssuanceHash()],
+            ["beneficiary", entry.getBeneficiary()],
             ["underwriter", entry.getUnderwriter()],
             ["underwriterRiskRating", entry.getUnderwriterRiskRating()],
             ["termsContract", entry.getTermsContract()],
@@ -27,20 +27,20 @@ export function LogInsertEntry(
     };
 }
 
-export function LogModifyEntryCreditor(
+export function LogModifyEntryBeneficiary(
     contract: Address,
-    entryHash: Bytes32,
-    previousCreditor: Address,
-    newCreditor: Address,
+    issuanceHash: Bytes32,
+    previousBeneficiary: Address,
+    newBeneficiary: Address,
 ): ABIDecoder.DecodedLog {
     return {
         address: contract,
         events: LogUtils.getParams([
-            ["entryHash", entryHash],
-            ["previousCreditor", previousCreditor],
-            ["newCreditor", newCreditor],
+            ["issuanceHash", issuanceHash],
+            ["previousBeneficiary", previousBeneficiary],
+            ["newBeneficiary", newBeneficiary],
         ]),
-        name: "LogModifyEntryCreditor",
+        name: "LogModifyEntryBeneficiary",
     };
 }
 
