@@ -30,10 +30,6 @@ const debtRegistryContract = artifacts.require("DebtRegistry");
 const debtTokenContract = artifacts.require("DebtToken");
 const repaymentRouterContract = artifacts.require("RepaymentRouter");
 
-// Initialize ABI Decoder for deciphering log receipts
-ABIDecoder.addABI(debtRegistryContract.abi);
-ABIDecoder.addABI(debtTokenContract.abi);
-
 contract("Debt Token", (ACCOUNTS) => {
     let debtRegistry: DebtRegistryContract;
     let debtToken: DebtTokenContract;
@@ -121,6 +117,11 @@ contract("Debt Token", (ACCOUNTS) => {
                     version: repaymentRouterContractInstance.address,
                 });
             });
+
+
+        // Initialize ABI Decoders for deciphering log receipts
+        ABIDecoder.addABI(debtRegistryContract.abi);
+        ABIDecoder.addABI(debtTokenContract.abi);
     };
 
     const initState = async () => {
@@ -151,6 +152,12 @@ contract("Debt Token", (ACCOUNTS) => {
     };
 
     before(resetContracts);
+
+    after(() => {
+        // Tear down ABIDecoder before next set of tests
+        ABIDecoder.removeABI(debtRegistryContract.abi);
+        ABIDecoder.removeABI(debtTokenContract.abi);
+    });
 
     describe("Permissions", () => {
         it("should initialize with no mint authorizations", async () => {

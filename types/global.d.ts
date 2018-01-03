@@ -11,6 +11,7 @@ interface Artifacts {
 
 declare global {
   function contract(name: string, test: ContractTest): void;
+  function after(executionBlock: ExecutionBlock | AsyncExecutionBlock | Promise<void>): void;
   function before(executionBlock: ExecutionBlock | AsyncExecutionBlock | Promise<void>): void;
   function beforeEach(executionBlock: ExecutionBlock | Promise<void>): void;
   function describe(name: string, executionBlock: ExecutionBlock | Promise<void>): void;

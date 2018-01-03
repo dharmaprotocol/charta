@@ -37,9 +37,6 @@ BigNumberSetup.configure();
 const repaymentRouterContract = artifacts.require("RepaymentRouter");
 const debtRegistryContract = artifacts.require("DebtRegistry");
 
-// Initialize ABI Decoder for deciphering log receipts
-ABIDecoder.addABI(debtRegistryContract.abi);
-
 contract("Debt Registry", async (ACCOUNTS) => {
     const CONTRACT_OWNER = ACCOUNTS[0];
 
@@ -137,6 +134,14 @@ contract("Debt Registry", async (ACCOUNTS) => {
                 options,
             );
         };
+
+        // Initialize ABI Decoder for deciphering log receipts
+        ABIDecoder.addABI(debtRegistryContract.abi);
+    });
+
+    after(() => {
+        // Tear down ABIDecoder before next set of tests
+        ABIDecoder.removeABI(debtRegistryContract.abi);
     });
 
     describe("before owner authorizes agents for editing registry", () => {

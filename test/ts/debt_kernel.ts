@@ -1,4 +1,5 @@
 import {BigNumber} from "bignumber.js";
+
 import * as ABIDecoder from "abi-decoder";
 import * as chai from "chai";
 import * as _ from "lodash";
@@ -36,8 +37,6 @@ ChaiSetup.configure();
 const expect = chai.expect;
 
 const debtKernelContract = artifacts.require("DebtKernel");
-
-ABIDecoder.addABI(debtKernelContract.abi);
 
 contract("Debt Kernel", async (ACCOUNTS) => {
     let kernel: DebtKernelContract;
@@ -154,6 +153,9 @@ contract("Debt Kernel", async (ACCOUNTS) => {
                 options || TX_DEFAULTS,
             );
         };
+
+        // Setup ABI decoder in order to decode logs
+        ABIDecoder.addABI(debtKernelContract.abi);
     };
 
     const initialize = async () => {
@@ -182,6 +184,11 @@ contract("Debt Kernel", async (ACCOUNTS) => {
     };
 
     before(reset);
+
+    after(() => {
+        // Tear down ABIDecoder before next set of tests
+        ABIDecoder.removeABI(debtKernelContract.abi);
+    })
 
     describe("Initialization & Upgrades", async () => {
         describe("non-owner sets debt token contract pointer", () => {
