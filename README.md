@@ -23,9 +23,9 @@ npm install
 
 ##### Testing
 
-Start `testrpc`:
+Start `testrpc` and initialize dependency contracts:
 ```
-npm run testrpc
+npm run chain
 ```
 Run `truffle` tests:
 ```
