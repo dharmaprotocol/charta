@@ -5,29 +5,29 @@ import * as chai from "chai";
 import * as _ from "lodash";
 import * as moment from "moment";
 import * as Web3 from "web3";
-import * as Units from "./test_utils/units";
-import * as utils from "./test_utils/utils";
+import * as Units from "../test_utils/units";
+import * as utils from "../test_utils/utils";
 
-import {LogDebtIssuance, LogTermBegin} from "./logs/debt_kernel";
+import {LogDebtIssuance, LogTermBegin} from "../logs/debt_kernel";
 
-import {DebtKernelContract} from "../../types/generated/debt_kernel";
-import {DebtRegistryContract} from "../../types/generated/debt_registry";
-import {DebtTokenContract} from "../../types/generated/debt_token";
-import {RepaymentRouterContract} from "../../types/generated/repayment_router";
+import {DebtKernelContract} from "../../../types/generated/debt_kernel";
+import {DebtRegistryContract} from "../../../types/generated/debt_registry";
+import {DebtTokenContract} from "../../../types/generated/debt_token";
+import {RepaymentRouterContract} from "../../../types/generated/repayment_router";
 
 import {ZeroEx} from "0x.js";
-import {ZeroX_DummyTokenContract} from "../../types/generated/zerox_dummytoken";
-import {ZeroX_ExchangeContract} from "../../types/generated/zerox_exchange";
-import {ZeroX_TokenRegistryContract} from "../../types/generated/zerox_tokenregistry";
-import {ZeroX_TokenTransferProxyContract} from "../../types/generated/zerox_tokentransferproxy";
+import {ZeroX_DummyTokenContract} from "../../../types/generated/zerox_dummytoken";
+import {ZeroX_ExchangeContract} from "../../../types/generated/zerox_exchange";
+import {ZeroX_TokenRegistryContract} from "../../../types/generated/zerox_tokenregistry";
+import {ZeroX_TokenTransferProxyContract} from "../../../types/generated/zerox_tokentransferproxy";
 
-import {IssuanceCommitment, SignedIssuanceCommitment} from "../../types/kernel/issuance_commitment";
-import {DebtOrder, SignedDebtOrder} from "../../types/kernel/debt_order";
-import {BigNumberSetup} from "./test_utils/bignumber_setup";
-import ChaiSetup from "./test_utils/chai_setup";
-import {INVALID_OPCODE, REVERT_ERROR} from "./test_utils/constants";
+import {IssuanceCommitment, SignedIssuanceCommitment} from "../../../types/kernel/issuance_commitment";
+import {DebtOrder, SignedDebtOrder} from "../../../types/kernel/debt_order";
+import {BigNumberSetup} from "../test_utils/bignumber_setup";
+import ChaiSetup from "../test_utils/chai_setup";
+import {INVALID_OPCODE, REVERT_ERROR} from "../test_utils/constants";
 
-import {TxDataPayable} from "../../types/common";
+import {TxDataPayable} from "types/common";
 
 // Configure BigNumber exponentiation
 BigNumberSetup.configure();
@@ -82,6 +82,9 @@ contract("Debt Kernel", async (ACCOUNTS) => {
     const UNDERWRITER = ACCOUNTS[11];
     const RELAYER = ACCOUNTS[12];
     const TERMS_CONTRACT = ACCOUNTS[13];
+    const MALICIOUS_TERMS_CONTRACTS = ACCOUNTS[14];
+    const MALICIOUS_EXCHANGE_CONTRACT = ACCOUNTS[15];
+
     const TERMS_CONTRACT_PARAMETERS = web3.sha3("arbitrary terms contract parameters");
 
     const NULL_ADDRESS = "0x0000000000000000000000000000000000000000";
@@ -472,6 +475,8 @@ contract("Debt Kernel", async (ACCOUNTS) => {
             return Promise.all(promises);
         }
 
+        let fillDebtOrder: (debtOrder: SignedDebtOrder) => Promise<string>;
+
         before(async () => {
             const setBalances = _.map(agents, async (agent: string) => {
                 await dummyMKRToken.setBalance.sendTransactionAsync(agent, Units.ether(1000));
@@ -510,6 +515,18 @@ contract("Debt Kernel", async (ACCOUNTS) => {
                 expirationTimestampInSec: new BigNumber(moment().add(1, 'days').valueOf()),
                 orderSignatories: { debtor: DEBTOR_1, creditor: CREDITOR_1, underwriter: UNDERWRITER }
             }
+
+            fillDebtOrder = async (debtOrder: SignedDebtOrder) => {
+                return kernel.fillDebtOrder.sendTransactionAsync(
+                    debtOrder.getCreditor(),
+                    debtOrder.getOrderAddresses(),
+                    debtOrder.getOrderValues(),
+                    debtOrder.getOrderBytes32(),
+                    debtOrder.getSignaturesR(),
+                    debtOrder.getSignaturesS(),
+                    debtOrder.getSignaturesV()
+                );
+            }
         });
 
         describe("creditor submits valid signed debt order", () => {
@@ -524,15 +541,7 @@ contract("Debt Kernel", async (ACCOUNTS) => {
 
                 debtOrder = await generateDebtOrder();
 
-                const txHash = await kernel.fillDebtOrder.sendTransactionAsync(
-                    debtOrder.getCreditor(),
-                    debtOrder.getOrderAddresses(),
-                    debtOrder.getOrderValues(),
-                    debtOrder.getOrderBytes32(),
-                    debtOrder.getSignaturesR(),
-                    debtOrder.getSignaturesS(),
-                    debtOrder.getSignaturesV()
-                );
+                const txHash = await fillDebtOrder(debtOrder);
 
                 res = await web3.eth.getTransactionReceipt(txHash);
                 [issuanceLog, termBeginLog] = _.compact(ABIDecoder.decodeLogs(res.logs));
@@ -584,15 +593,8 @@ contract("Debt Kernel", async (ACCOUNTS) => {
 
         describe("creditor resubmits same valid signed debt order", () => {
             it("should throw", async () => {
-                await expect(kernel.fillDebtOrder.sendTransactionAsync(
-                    debtOrder.getCreditor(),
-                    debtOrder.getOrderAddresses(),
-                    debtOrder.getOrderValues(),
-                    debtOrder.getOrderBytes32(),
-                    debtOrder.getSignaturesR(),
-                    debtOrder.getSignaturesS(),
-                    debtOrder.getSignaturesV()
-                )).to.eventually.be.rejectedWith(REVERT_ERROR);
+                await expect(fillDebtOrder(debtOrder))
+                    .to.eventually.be.rejectedWith(REVERT_ERROR);
             });
         });
 
@@ -622,15 +624,7 @@ contract("Debt Kernel", async (ACCOUNTS) => {
                     relayer: NULL_ADDRESS,
                 });
 
-                const txHash = await kernel.fillDebtOrder.sendTransactionAsync(
-                    debtOrder.getCreditor(),
-                    debtOrder.getOrderAddresses(),
-                    debtOrder.getOrderValues(),
-                    debtOrder.getOrderBytes32(),
-                    debtOrder.getSignaturesR(),
-                    debtOrder.getSignaturesS(),
-                    debtOrder.getSignaturesV()
-                );
+                const txHash = await fillDebtOrder(debtOrder);
 
                 res = await web3.eth.getTransactionReceipt(txHash);
                 [issuanceLog, termBeginLog] = _.compact(ABIDecoder.decodeLogs(res.logs));
@@ -695,15 +689,7 @@ contract("Debt Kernel", async (ACCOUNTS) => {
                         underwriterRiskRating: Units.percent(3),
                     });
 
-                    await expect(kernel.fillDebtOrder.sendTransactionAsync(
-                        debtOrder.getCreditor(),
-                        debtOrder.getOrderAddresses(),
-                        debtOrder.getOrderValues(),
-                        debtOrder.getOrderBytes32(),
-                        debtOrder.getSignaturesR(),
-                        debtOrder.getSignaturesS(),
-                        debtOrder.getSignaturesV()
-                    )).to.eventually.be.rejectedWith(REVERT_ERROR);
+                    await expect(fillDebtOrder(debtOrder)).to.eventually.be.rejectedWith(REVERT_ERROR);
                 });
             });
 
@@ -722,15 +708,7 @@ contract("Debt Kernel", async (ACCOUNTS) => {
                         underwriterRiskRating: new BigNumber(0),
                     });
 
-                    await expect(kernel.fillDebtOrder.sendTransactionAsync(
-                        debtOrder.getCreditor(),
-                        debtOrder.getOrderAddresses(),
-                        debtOrder.getOrderValues(),
-                        debtOrder.getOrderBytes32(),
-                        debtOrder.getSignaturesR(),
-                        debtOrder.getSignaturesS(),
-                        debtOrder.getSignaturesV()
-                    )).to.eventually.be.rejectedWith(REVERT_ERROR);
+                    await expect(fillDebtOrder(debtOrder)).to.eventually.be.rejectedWith(REVERT_ERROR);
                 });
             });
 
@@ -756,15 +734,7 @@ contract("Debt Kernel", async (ACCOUNTS) => {
                         underwriterRiskRating: new BigNumber(0),
                     });
 
-                    const txHash = await kernel.fillDebtOrder.sendTransactionAsync(
-                        debtOrder.getCreditor(),
-                        debtOrder.getOrderAddresses(),
-                        debtOrder.getOrderValues(),
-                        debtOrder.getOrderBytes32(),
-                        debtOrder.getSignaturesR(),
-                        debtOrder.getSignaturesS(),
-                        debtOrder.getSignaturesV()
-                    );
+                    const txHash = await fillDebtOrder(debtOrder);
 
                     res = await web3.eth.getTransactionReceipt(txHash);
                     [issuanceLog, termBeginLog] = _.compact(ABIDecoder.decodeLogs(res.logs));
@@ -825,15 +795,7 @@ contract("Debt Kernel", async (ACCOUNTS) => {
                     principalTokenAddress: dummyZRXToken.address,
                 });
 
-                const txHash = await kernel.fillDebtOrder.sendTransactionAsync(
-                    debtOrder.getCreditor(),
-                    debtOrder.getOrderAddresses(),
-                    debtOrder.getOrderValues(),
-                    debtOrder.getOrderBytes32(),
-                    debtOrder.getSignaturesR(),
-                    debtOrder.getSignaturesS(),
-                    debtOrder.getSignaturesV()
-                );
+                const txHash = await fillDebtOrder(debtOrder);
 
                 res = await web3.eth.getTransactionReceipt(txHash);
                 [issuanceLog, termBeginLog] = _.compact(ABIDecoder.decodeLogs(res.logs));
@@ -891,15 +853,7 @@ contract("Debt Kernel", async (ACCOUNTS) => {
                         creditorFee: Units.ether(0.002)
                     });
 
-                    await expect(kernel.fillDebtOrder.sendTransactionAsync(
-                        debtOrder.getCreditor(),
-                        debtOrder.getOrderAddresses(),
-                        debtOrder.getOrderValues(),
-                        debtOrder.getOrderBytes32(),
-                        debtOrder.getSignaturesR(),
-                        debtOrder.getSignaturesS(),
-                        debtOrder.getSignaturesV()
-                    )).to.eventually.be.rejectedWith(REVERT_ERROR);
+                    await expect(fillDebtOrder(debtOrder)).to.eventually.be.rejectedWith(REVERT_ERROR);
                 });
             });
 
@@ -926,15 +880,7 @@ contract("Debt Kernel", async (ACCOUNTS) => {
                         }
                     });
 
-                    const txHash = await kernel.fillDebtOrder.sendTransactionAsync(
-                        debtOrder.getCreditor(),
-                        debtOrder.getOrderAddresses(),
-                        debtOrder.getOrderValues(),
-                        debtOrder.getOrderBytes32(),
-                        debtOrder.getSignaturesR(),
-                        debtOrder.getSignaturesS(),
-                        debtOrder.getSignaturesV()
-                    );
+                    const txHash = await fillDebtOrder(debtOrder);
 
                     res = await web3.eth.getTransactionReceipt(txHash);
                     [issuanceLog, termBeginLog] = _.compact(ABIDecoder.decodeLogs(res.logs));
@@ -969,6 +915,318 @@ contract("Debt Kernel", async (ACCOUNTS) => {
                     await expect(debtTokenContract.ownerOf.callAsync(
                         new BigNumber(debtOrder.getIssuanceCommitment().getHash())))
                             .to.eventually.equal(CREDITOR_1);
+                });
+            });
+        });
+
+        describe("Consensuality Invariant: creditor's debt order submission matches entirely with debtor's", () => {
+            let debtorsOrder: SignedDebtOrder;
+
+            const fillMismatchedDebtOrder = async (
+                debtorsDebtOrder: SignedDebtOrder,
+                creditorsDebtOrder: SignedDebtOrder
+            ) => {
+                const signaturesR = [
+                    ...debtorsDebtOrder.getSignaturesR().slice(0, 2),
+                    creditorsDebtOrder.getSignaturesR()[2]
+                ];
+
+                const signaturesS = [
+                    ...debtorsDebtOrder.getSignaturesS().slice(0, 2),
+                    creditorsDebtOrder.getSignaturesS()[2]
+                ];
+
+                const signaturesV = [
+                    ...debtorsDebtOrder.getSignaturesV().slice(0, 2),
+                    creditorsDebtOrder.getSignaturesV()[2]
+                ];
+
+                return kernel.fillDebtOrder.sendTransactionAsync(
+                    debtorsDebtOrder.getCreditor(),
+                    debtorsDebtOrder.getOrderAddresses(),
+                    debtorsDebtOrder.getOrderValues(),
+                    debtorsDebtOrder.getOrderBytes32(),
+                    signaturesR,
+                    signaturesS,
+                    signaturesV
+                );
+            }
+
+            before(async () => {
+                debtorsOrder = await generateDebtOrder();
+            });
+
+            describe("Control: creditor's signature commits to debt order specified by debtor", async () => {
+                it("should not throw", async () => {
+                    await expect(fillDebtOrder(debtorsOrder))
+                        .to.eventually.not.be.rejectedWith(REVERT_ERROR);
+                });
+            });
+
+            describe("order submitted with mismatched issuance parameters", () => {
+                let creditorsOrder: SignedDebtOrder;
+
+                before(async () => {
+                    creditorsOrder = await generateDebtOrder({
+                        termsContract: MALICIOUS_TERMS_CONTRACTS
+                    });
+                });
+
+                describe("creditor's signature commits to issuance parameters =/= order's", async () => {
+                    it("should throw", async () => {
+                        await expect(fillMismatchedDebtOrder(debtorsOrder, creditorsOrder))
+                            .to.eventually.be.rejectedWith(REVERT_ERROR);
+                    });
+                });
+
+                describe("debtor's signature commits to issuance parameters =/= order's", async () => {
+                    it("should throw", async () => {
+                        await expect(fillMismatchedDebtOrder(creditorsOrder, debtorsOrder))
+                            .to.eventually.be.rejectedWith(REVERT_ERROR);
+                    });
+                });
+            });
+
+            describe("order submitted with mismatched underwriter fee", () => {
+                let creditorsOrder: SignedDebtOrder;
+
+                before(async () => {
+                    creditorsOrder = await generateDebtOrder({
+                        underwriterFee: Units.ether(0.001)
+                    });
+                });
+
+                describe("creditor's signature commits to underwriter fee =/= order's", async () => {
+                    it("should throw", async () => {
+                        await expect(fillMismatchedDebtOrder(debtorsOrder, creditorsOrder))
+                            .to.eventually.be.rejectedWith(REVERT_ERROR);
+                    });
+                });
+
+                describe("debtor's signature commits to underwriter fee =/= order's", async () => {
+                    it("should throw", async () => {
+                        await expect(fillMismatchedDebtOrder(creditorsOrder, debtorsOrder))
+                            .to.eventually.be.rejectedWith(REVERT_ERROR);
+                    });
+                });
+            });
+
+            describe("order submitted with mismatched 0x exchange contract", () => {
+                let creditorsOrder: SignedDebtOrder;
+
+                before(async () => {
+                    creditorsOrder = await generateDebtOrder({
+                        zeroExExchangeContract: MALICIOUS_EXCHANGE_CONTRACT
+                    });
+                });
+
+                describe("creditor's signature commits to 0x exchange contract =/= order's", async () => {
+                    it("should throw", async () => {
+                        await expect(fillMismatchedDebtOrder(debtorsOrder, creditorsOrder))
+                            .to.eventually.be.rejectedWith(REVERT_ERROR);
+                    });
+                });
+
+                describe("debtor's signature commits to 0x exchange contract =/= order's", async () => {
+                    it("should throw", async () => {
+                        await expect(fillMismatchedDebtOrder(creditorsOrder, debtorsOrder))
+                            .to.eventually.be.rejectedWith(REVERT_ERROR);
+                    });
+                });
+            });
+
+            describe("order submitted with mismatched underwriter", () => {
+                let creditorsOrder: SignedDebtOrder;
+
+                before(async () => {
+                    creditorsOrder = await generateDebtOrder({
+                        underwriter: ATTACKER
+                    });
+                });
+
+                describe("creditor's signature commits to underwriter =/= order's", async () => {
+                    it("should throw", async () => {
+                        await expect(fillMismatchedDebtOrder(debtorsOrder, creditorsOrder))
+                            .to.eventually.be.rejectedWith(REVERT_ERROR);
+                    });
+                });
+
+                describe("debtor's signature commits to underwriter =/= order's", async () => {
+                    it("should throw", async () => {
+                        await expect(fillMismatchedDebtOrder(creditorsOrder, debtorsOrder))
+                            .to.eventually.be.rejectedWith(REVERT_ERROR);
+                    });
+                });
+            });
+
+            describe("order submitted with mismatched principal amount", () => {
+                let creditorsOrder: SignedDebtOrder;
+
+                before(async () => {
+                    creditorsOrder = await generateDebtOrder({
+                        principalAmount: Units.ether(0.001)
+                    });
+                });
+
+                describe("creditor's signature commits to principal amount =/= order's", async () => {
+                    it("should throw", async () => {
+                        await expect(fillMismatchedDebtOrder(debtorsOrder, creditorsOrder))
+                            .to.eventually.be.rejectedWith(REVERT_ERROR);
+                    });
+                });
+
+                describe("debtor's signature commits to principal amount =/= order's", async () => {
+                    it("should throw", async () => {
+                        await expect(fillMismatchedDebtOrder(creditorsOrder, debtorsOrder))
+                            .to.eventually.be.rejectedWith(REVERT_ERROR);
+                    });
+                });
+            });
+
+            describe("order submitted with mismatched principal token", () => {
+                let creditorsOrder: SignedDebtOrder;
+
+                before(async () => {
+                    creditorsOrder = await generateDebtOrder({
+                        principalTokenAddress: dummyZRXToken.address
+                    });
+                });
+
+                describe("creditor's signature commits to principal token =/= order's", async () => {
+                    it("should throw", async () => {
+                        await expect(fillMismatchedDebtOrder(debtorsOrder, creditorsOrder))
+                            .to.eventually.be.rejectedWith(REVERT_ERROR);
+                    });
+                });
+
+                describe("debtor's signature commits to principal token =/= order's", async () => {
+                    it("should throw", async () => {
+                        await expect(fillMismatchedDebtOrder(creditorsOrder, debtorsOrder))
+                            .to.eventually.be.rejectedWith(REVERT_ERROR);
+                    });
+                });
+            });
+
+            describe("order submitted with mismatched debtor fee", () => {
+                let creditorsOrder: SignedDebtOrder;
+
+                before(async () => {
+                    creditorsOrder = await generateDebtOrder({
+                        debtorFee: DEFAULT_PARAMS.debtorFee.plus(Units.ether(0.001))
+                    });
+                });
+
+                describe("creditor's signature commits to debtor fee =/= order's", async () => {
+                    it("should throw", async () => {
+                        await expect(fillMismatchedDebtOrder(debtorsOrder, creditorsOrder))
+                            .to.eventually.be.rejectedWith(REVERT_ERROR);
+                    });
+                });
+
+                describe("debtor's signature commits to debtor fee =/= order's", async () => {
+                    it("should throw", async () => {
+                        await expect(fillMismatchedDebtOrder(creditorsOrder, debtorsOrder))
+                            .to.eventually.be.rejectedWith(REVERT_ERROR);
+                    });
+                });
+            });
+
+            describe("order submitted with mismatched debtor fee", () => {
+                let creditorsOrder: SignedDebtOrder;
+
+                before(async () => {
+                    creditorsOrder = await generateDebtOrder({
+                        creditorFee: DEFAULT_PARAMS.creditorFee.plus(Units.ether(0.001))
+                    });
+                });
+
+                describe("creditor's signature commits to creditor fee =/= order's", async () => {
+                    it("should throw", async () => {
+                        await expect(fillMismatchedDebtOrder(debtorsOrder, creditorsOrder))
+                            .to.eventually.be.rejectedWith(REVERT_ERROR);
+                    });
+                });
+
+                describe("debtor's signature commits to creditor fee =/= order's", async () => {
+                    it("should throw", async () => {
+                        await expect(fillMismatchedDebtOrder(creditorsOrder, debtorsOrder))
+                            .to.eventually.be.rejectedWith(REVERT_ERROR);
+                    });
+                });
+            });
+
+            describe("order submitted with mismatched relayer", () => {
+                let creditorsOrder: SignedDebtOrder;
+
+                before(async () => {
+                    creditorsOrder = await generateDebtOrder({
+                        relayer: NULL_ADDRESS
+                    });
+                });
+
+                describe("creditor's signature commits to relayer =/= order's", async () => {
+                    it("should throw", async () => {
+                        await expect(fillMismatchedDebtOrder(debtorsOrder, creditorsOrder))
+                            .to.eventually.be.rejectedWith(REVERT_ERROR);
+                    });
+                });
+
+                describe("debtor's signature commits to relayer =/= order's", async () => {
+                    it("should throw", async () => {
+                        await expect(fillMismatchedDebtOrder(creditorsOrder, debtorsOrder))
+                            .to.eventually.be.rejectedWith(REVERT_ERROR);
+                    });
+                });
+            });
+
+            describe("order submitted with mismatched relayer fee", () => {
+                let creditorsOrder: SignedDebtOrder;
+
+                before(async () => {
+                    // Relayer fee is implicitly defined as the total fees
+                    // paid by both debtors and creditors minus the underwriter's fee
+                    // We adjust relayer fee by decreasing the underwriter's fee.
+                    creditorsOrder = await generateDebtOrder({
+                        underwriterFee: DEFAULT_PARAMS.underwriterFee.minus(Units.ether(0.001))
+                    });
+                });
+
+                describe("creditor's signature commits to relayer fee =/= order's", async () => {
+                    it("should throw", async () => {
+                        await expect(fillMismatchedDebtOrder(debtorsOrder, creditorsOrder))
+                            .to.eventually.be.rejectedWith(REVERT_ERROR);
+                    });
+                });
+
+                describe("debtor's signature commits to relayer fee =/= order's", async () => {
+                    it("should throw", async () => {
+                        await expect(fillMismatchedDebtOrder(creditorsOrder, debtorsOrder))
+                            .to.eventually.be.rejectedWith(REVERT_ERROR);
+                    });
+                });
+            });
+
+            describe("order submitted with mismatched debtor fee", () => {
+                let creditorsOrder: SignedDebtOrder;
+
+                before(async () => {
+                    creditorsOrder = await generateDebtOrder({
+                        debtorFee: DEFAULT_PARAMS.debtorFee.plus(Units.ether(0.001))
+                    });
+                });
+
+                describe("creditor's signature commits to debtor fee =/= order's", async () => {
+                    it("should throw", async () => {
+                        await expect(fillMismatchedDebtOrder(debtorsOrder, creditorsOrder))
+                            .to.eventually.be.rejectedWith(REVERT_ERROR);
+                    });
+                });
+
+                describe("debtor's signature commits to debtor fee =/= order's", async () => {
+                    it("should throw", async () => {
+                        await expect(fillMismatchedDebtOrder(creditorsOrder, debtorsOrder))
+                            .to.eventually.be.rejectedWith(REVERT_ERROR);
+                    });
                 });
             });
         });

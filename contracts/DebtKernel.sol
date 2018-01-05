@@ -148,7 +148,7 @@ contract DebtKernel is Ownable {
         // Relayer fees are implicitly specified as such:
         //      relayerFees = totalFees - debtOrder.underwriterFee
         // We assert that there are enough fees to cover underwriter + relayer fees, i.e.
-        //      totalFees >= debtorder.underwriterFee 
+        //      totalFees >= debtorder.underwriterFee
         require(totalFees >= debtOrder.underwriterFee);
 
         // Invariant: if no underwriter is specified, underwriter fees must be 0
@@ -163,12 +163,14 @@ contract DebtKernel is Ownable {
             require(totalFees == debtOrder.underwriterFee);
         }
 
-        validateDebtOrderSignatures(debtOrder, signaturesV, signaturesR, signaturesS);
+        bytes32 debtorMessageHash =
+            validateDebtOrderSignatures(debtOrder, signaturesV, signaturesR, signaturesS);
 
         // Mint debt token and finalize debt agreement
         _issueDebtAgreement(this, debtOrder.issuance);
 
-        var (zeroExOrderAddresses, zeroExOrderValues) = getZeroExOrderParameters(debtOrder, creditor);
+        var (zeroExOrderAddresses, zeroExOrderValues) =
+            getZeroExOrderParameters(debtOrder, debtorMessageHash, creditor);
 
         debtToken.brokerZeroExOrder(
             uint(debtOrder.issuance.issuanceHash),
@@ -241,7 +243,10 @@ contract DebtKernel is Ownable {
     )
         internal
         pure
+        returns (bytes32 _debtorMessageHash)
     {
+        bytes32 debtorMessageHash = getDebtorMessageHash(debtOrder);
+
         if (debtOrder.issuance.underwriter != address(0)) {
             require(isValidSignature(
                 debtOrder.issuance.underwriter,
@@ -254,11 +259,13 @@ contract DebtKernel is Ownable {
 
         require(isValidSignature(
             debtOrder.issuance.debtor,
-            getDebtorMessageHash(debtOrder),
+            debtorMessageHash,
             signaturesV[1],
             signaturesR[1],
             signaturesS[1]
         ));
+
+        return debtorMessageHash;
     }
 
     function getIssuance(address[7] orderAddresses, uint[7] orderValues, bytes32[1] orderBytes32)
@@ -285,7 +292,11 @@ contract DebtKernel is Ownable {
         return issuance;
     }
 
-    function getZeroExOrderParameters(DebtOrder debtOrder, address creditor)
+    function getZeroExOrderParameters(
+        DebtOrder debtOrder,
+        bytes32 debtOrderMessageHash,
+        address creditor
+    )
         internal
         view
         returns (address[5] _zeroExOrderAddresses, uint[6] _zeroExOrderValues)
@@ -304,7 +315,7 @@ contract DebtKernel is Ownable {
                 0, // makerFee
                 0, // takerFee
                 debtOrder.expirationTimestampInSec, // expirationTimestampInSec
-                uint(debtOrder.issuance.issuanceHash) // salt
+                uint(debtOrderMessageHash) // salt
             ]
         );
     }

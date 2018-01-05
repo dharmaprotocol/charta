@@ -3,21 +3,21 @@ import {BigNumber} from "bignumber.js";
 import * as chai from "chai";
 import * as _ from "lodash";
 import * as Web3 from "web3";
-import * as Units from "./test_utils/units";
+import * as Units from "../test_utils/units";
 
-import {DebtRegistryContract} from "../../types/generated/debt_registry";
-import {DebtTokenContract} from "../../types/generated/debt_token";
-import {ZeroX_TokenTransferProxyContract} from "../../types/generated/zerox_tokentransferproxy";
+import {DebtRegistryContract} from "../../../types/generated/debt_registry";
+import {DebtTokenContract} from "../../../types/generated/debt_token";
+import {ZeroX_TokenTransferProxyContract} from "../../../types/generated/zerox_tokentransferproxy";
 
 import {
     Address,
-} from "../../types/common";
-import {DebtRegistryEntry} from "../../types/registry/entry";
-import {LogInsertEntry, LogModifyEntryBeneficiary} from "./logs/debt_registry";
-import {LogApproval, LogMint, LogTransfer} from "./logs/debt_token";
-import {BigNumberSetup} from "./test_utils/bignumber_setup";
-import ChaiSetup from "./test_utils/chai_setup";
-import {INVALID_OPCODE, REVERT_ERROR} from "./test_utils/constants";
+} from "../../../types/common";
+import {DebtRegistryEntry} from "../../../types/registry/entry";
+import {LogInsertEntry, LogModifyEntryBeneficiary} from "../logs/debt_registry";
+import {LogApproval, LogMint, LogTransfer} from "../logs/debt_token";
+import {BigNumberSetup} from "../test_utils/bignumber_setup";
+import ChaiSetup from "../test_utils/chai_setup";
+import {INVALID_OPCODE, REVERT_ERROR} from "../test_utils/constants";
 
 // Configure BigNumber exponentiation
 BigNumberSetup.configure();

@@ -118,7 +118,7 @@ export class DebtOrder extends SignableMessage {
         	makerFee: new BigNumber(0),
         	makerTokenAddress: this.getPrincipalTokenAddress(),
         	makerTokenAmount: this.getPrincipalAmount().plus(this.getCreditorFee()),
-        	salt: new BigNumber(this.getIssuanceCommitment().getHash()),
+        	salt: new BigNumber(this.getDebtorSignatureHash()),
         	taker: NULL_ADDRESS,
         	takerFee: new BigNumber(0),
         	takerTokenAddress: this.getDebtTokenContract(),
