@@ -119,27 +119,24 @@ contract("Debt Token", (ACCOUNTS) => {
         await debtToken.addAuthorizedMintAgent.sendTransactionAsync(AUTHORIZED_MINT_AGENT,
             { from: CONTRACT_OWNER });
 
-        const registryInsertPromises = _.map(debtEntries,
-            (entry: DebtRegistryEntry, i: number) => {
-                return async () => {
-                    await mockRegistry.mockInsertReturnValue
-                        .sendTransactionAsync(entry.getIssuanceHash());
 
-                    await debtToken.create.sendTransactionAsync(
-                        entry.getVersion(),
-                        entry.getBeneficiary(),
-                        entry.getDebtor(),
-                        entry.getUnderwriter(),
-                        entry.getUnderwriterRiskRating(),
-                        entry.getTermsContract(),
-                        entry.getTermsContractParameters(),
-                        entry.getSalt(),
-                        { from: AUTHORIZED_MINT_AGENT },
-                    );
-                }
-            });
+        for (let i = 0; i < debtEntries.length; i++) {
+            const entry = debtEntries[i];
+            await mockRegistry.mockInsertReturnValue
+                .sendTransactionAsync(entry.getIssuanceHash());
 
-        await Promise.all(registryInsertPromises);
+            await debtToken.create.sendTransactionAsync(
+                entry.getVersion(),
+                entry.getBeneficiary(),
+                entry.getDebtor(),
+                entry.getUnderwriter(),
+                entry.getUnderwriterRiskRating(),
+                entry.getTermsContract(),
+                entry.getTermsContractParameters(),
+                entry.getSalt(),
+                { from: AUTHORIZED_MINT_AGENT },
+            );
+        }
     };
 
     const resetAndInitState = async () => {
@@ -389,17 +386,17 @@ contract("Debt Token", (ACCOUNTS) => {
         });
     });
 
-    // describe("#transfer()", async () => {
-    //     before(resetAndInitState);
-    //
-    //     describe("user transfers token he doesn't own", async () => {
-    //         it("should throw", async () => {
-    //             await expect(debtToken.transfer
-    //                 .sendTransactionAsync(TOKEN_OWNER_1, debtEntries[1].getTokenId(),
-    //                     { from: TOKEN_OWNER_1 }))
-    //                     .to.eventually.be.rejectedWith(REVERT_ERROR);
-    //         });
-    //     });
+    describe("#transfer()", async () => {
+        before(resetAndInitState);
+
+        describe("user transfers token he doesn't own", async () => {
+            it("should throw", async () => {
+                await expect(debtToken.transfer
+                    .sendTransactionAsync(TOKEN_OWNER_1, debtEntries[1].getTokenId(),
+                        { from: TOKEN_OWNER_1 }))
+                        .to.eventually.be.rejectedWith(REVERT_ERROR);
+            });
+        });
     //
     //     describe("user transfers token that doesn't exist", async () => {
     //         it("should throw", async () => {
