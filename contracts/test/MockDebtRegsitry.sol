@@ -72,6 +72,23 @@ contract MockDebtRegistry is MockContract {
         ]);
     }
 
+    function getBeneficiary(bytes32 issuanceHash)
+        public
+        returns (address _mockBeneficiary)
+    {
+        return address(getMockReturnValue("getBeneficiary"));
+    }
+
+    function mockInsertReturnValue(bytes32 issuanceHash) public {
+        mockReturnValue("insert", issuanceHash);
+    }
+
+    function mockGetBeneficiaryReturnValue(address beneficiary)
+        public
+    {
+        mockReturnValue("getBeneficiary", bytes32(beneficiary));
+    }
+
     function wasInsertCalledWith(
         address _version,
         address _beneficiary,
