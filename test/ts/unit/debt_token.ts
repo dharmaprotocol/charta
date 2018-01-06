@@ -390,6 +390,11 @@ contract("Debt Token", (ACCOUNTS) => {
         before(resetAndInitState);
 
         describe("user transfers token he doesn't own", async () => {
+            before(async () => {
+                await mockRegistry.mockGetBeneficiaryReturnValue
+                    .sendTransactionAsync(TOKEN_OWNER_2);
+            });
+
             it("should throw", async () => {
                 await expect(debtToken.transfer
                     .sendTransactionAsync(TOKEN_OWNER_1, debtEntries[1].getTokenId(),
@@ -397,16 +402,22 @@ contract("Debt Token", (ACCOUNTS) => {
                         .to.eventually.be.rejectedWith(REVERT_ERROR);
             });
         });
-    //
-    //     describe("user transfers token that doesn't exist", async () => {
-    //         it("should throw", async () => {
-    //             await expect(debtToken.transfer
-    //                 .sendTransactionAsync(TOKEN_OWNER_1, NONEXISTENT_TOKEN_ID,
-    //                     { from: TOKEN_OWNER_1 }))
-    //                     .to.eventually.be.rejectedWith(REVERT_ERROR);
-    //         });
-    //     });
-    //
+
+        describe("user transfers token that doesn't exist", async () => {
+            before(async () => {
+                await mockRegistry.mockGetBeneficiaryReturnValue
+                    .sendTransactionAsync(NULL_ADDRESS);
+            });
+
+            it("should throw", async () => {
+                await expect(debtToken.transfer
+                    .sendTransactionAsync(TOKEN_OWNER_1, NONEXISTENT_TOKEN_ID,
+                        { from: TOKEN_OWNER_1 }))
+                        .to.eventually.be.rejectedWith(REVERT_ERROR);
+            });
+        });
+    });
+
     //     describe("user transfers token he owns", async () => {
     //         let modifyBeneficiaryLog: ABIDecoder.DecodedLog;
     //         let transferLog: ABIDecoder.DecodedLog;
