@@ -22,8 +22,6 @@ import "./MockContract.sol";
 
 
 contract MockDebtRegistry is MockContract {
-    string[] public functionList = ["insert", "modifyBeneficiary"];
-
     function insert(
         address _version,
         address _beneficiary,
@@ -37,56 +35,51 @@ contract MockDebtRegistry is MockContract {
         public
         returns (bytes32 _issuanceHash)
     {
-        bytes32[10] memory args = [
-            bytes32(_version),
-            bytes32(_beneficiary),
-            bytes32(_debtor),
-            bytes32(_underwriter),
-            bytes32(_underwriterRiskRating),
-            bytes32(_termsContract),
+        bytes32 argsSignature = keccak256(
+            _version,
+            _beneficiary,
+            _debtor,
+            _underwriter,
+            _underwriterRiskRating,
+            _termsContract,
             _termsContractParameters,
-            bytes32(_salt),
-            bytes32(0),
-            bytes32(0)
-        ];
+            _salt
+        );
 
-        functionCalledWithArgs("insert", args);
+        functionCalledWithArgs("insert", argsSignature);
 
-        return getMockReturnValue("insert");
+        bytes32 issuanceHash = getMockReturnValue("insert", DEFAULT_SIGNATURE_ARGS);
+
+        mockGetBeneficiaryReturnValueFor(issuanceHash, _beneficiary);
+
+        return issuanceHash;
     }
 
     function modifyBeneficiary(bytes32 issuanceHash, address newBeneficiary)
         public
     {
-        functionCalledWithArgs("modifyBeneficiary", [
-            issuanceHash,
-            bytes32(newBeneficiary),
-            bytes32(0),
-            bytes32(0),
-            bytes32(0),
-            bytes32(0),
-            bytes32(0),
-            bytes32(0),
-            bytes32(0),
-            bytes32(0)
-        ]);
+        functionCalledWithArgs("modifyBeneficiary",
+            keccak256(issuanceHash, newBeneficiary));
+
+        mockGetBeneficiaryReturnValueFor(issuanceHash, newBeneficiary);
     }
 
     function getBeneficiary(bytes32 issuanceHash)
         public
+        view
         returns (address _mockBeneficiary)
     {
-        return address(getMockReturnValue("getBeneficiary"));
+        return address(getMockReturnValue("getBeneficiary", issuanceHash));
     }
 
     function mockInsertReturnValue(bytes32 issuanceHash) public {
-        mockReturnValue("insert", issuanceHash);
+        mockReturnValue("insert", DEFAULT_SIGNATURE_ARGS, issuanceHash);
     }
 
-    function mockGetBeneficiaryReturnValue(address beneficiary)
+    function mockGetBeneficiaryReturnValueFor(bytes32 issuanceHash, address beneficiary)
         public
     {
-        mockReturnValue("getBeneficiary", bytes32(beneficiary));
+        mockReturnValue("getBeneficiary", issuanceHash, bytes32(beneficiary));
     }
 
     function wasInsertCalledWith(
@@ -103,20 +96,16 @@ contract MockDebtRegistry is MockContract {
         view
         returns (bool _wasCalled)
     {
-        return wasFunctionCalledWithArgs("insert",
-            [
-                bytes32(_version),
-                bytes32(_beneficiary),
-                bytes32(_debtor),
-                bytes32(_underwriter),
-                bytes32(_underwriterRiskRating),
-                bytes32(_termsContract),
-                _termsContractParameters,
-                bytes32(_salt),
-                bytes32(0),
-                bytes32(0)
-            ]
-        );
+        return wasFunctionCalledWithArgs("insert", keccak256(
+            _version,
+            _beneficiary,
+            _debtor,
+            _underwriter,
+            _underwriterRiskRating,
+            _termsContract,
+            _termsContractParameters,
+            _salt
+        ));
     }
 
     function wasModifyBeneficiaryCalledWith(bytes32 issuanceHash, address newBeneficiary)
@@ -125,18 +114,13 @@ contract MockDebtRegistry is MockContract {
         returns (bool _wasCalled)
     {
         return wasFunctionCalledWithArgs("modifyBeneficiary",
-            [
-                issuanceHash,
-                bytes32(newBeneficiary),
-                bytes32(0),
-                bytes32(0),
-                bytes32(0),
-                bytes32(0),
-                bytes32(0),
-                bytes32(0),
-                bytes32(0),
-                bytes32(0)
-            ]
-        );
+            keccak256(issuanceHash, newBeneficiary));
+    }
+
+    function getFunctionList()
+        internal
+        returns (string[10] functionNames)
+    {
+        return ["insert", "modifyBeneficiary", "getBeneficiary", "", "", "", "", "", "", ""];
     }
 }

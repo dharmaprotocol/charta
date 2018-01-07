@@ -90,8 +90,10 @@ contract DebtToken is MintableNonFungibleToken, Ownable {
      * The brokeredTokenId is reset after it is transferred, and brokered
      * trades can only be initiated by their tokens' owners.
      *
-     * TODO: Wrap in more thorough test suite, for now only allow
-     * contracts approved to create tokens to use this feature
+     * NOTE: This is a temporary feature that will no longer be necessary
+     *  once the 0x protocol supports NFT order -- as such, we limit it
+     *  to only authorized parties (namely, the DebtKernel contract) in
+     *  order to reduce its attack surface.
      */
     function brokerZeroExOrder(
         uint _tokenId,
@@ -109,8 +111,6 @@ contract DebtToken is MintableNonFungibleToken, Ownable {
         require(msg.sender == ownerOf(_tokenId));
         require(brokeredTokenId == 0);
 
-        _clearApprovalAndTransfer(ownerOf(_tokenId), this, _tokenId);
-
         brokeredTokenId = _tokenId;
 
         var (makerToken, makerTokenAmount) = fillZeroExOrder(
@@ -122,9 +122,9 @@ contract DebtToken is MintableNonFungibleToken, Ownable {
             _s
         );
 
-        ERC20(makerToken).transfer(msg.sender, makerTokenAmount);
-
         assert(brokeredTokenId == 0);
+
+        ERC20(makerToken).transfer(msg.sender, makerTokenAmount);
     }
 
     function transferFrom(
@@ -135,7 +135,7 @@ contract DebtToken is MintableNonFungibleToken, Ownable {
         public
     {
         if (_tokenId == 1 && brokeredTokenId != 0) {
-            _clearApprovalAndTransfer(_from, _to, brokeredTokenId);
+            _clearApprovalAndTransfer(ownerOf(brokeredTokenId), _to, brokeredTokenId);
             brokeredTokenId = 0;
         } else {
             super.transferFrom(_from, _to, _tokenId);

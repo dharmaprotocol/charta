@@ -20,55 +20,60 @@ pragma solidity 0.4.18;
 
 
 contract MockContract {
-    string[] public functionList;
+    bytes32 internal constant DEFAULT_SIGNATURE_ARGS = bytes32(0);
 
     // We use bytes32 as our generic base type from and to which we cast all other types
-    mapping (string => bytes32) internal mockedReturnValue;
-    mapping (string => bytes32[10]) internal mostRecentFunctionCallArgs;
+    mapping (string => bytes32[]) internal functionCallSignatures;
+    mapping (string => mapping (bytes32 => bytes32)) internal mockedReturnValue;
+    mapping (string => mapping (bytes32 => bool)) internal functionCalls;
 
     function mockReturnValue(
         string functionName,
+        bytes32 argsSignature,
         bytes32 returnValue
     ) public {
-        mockedReturnValue[functionName] = returnValue;
+        functionCallSignatures[functionName].push(argsSignature);
+        mockedReturnValue[functionName][argsSignature] = returnValue;
     }
 
-    function getMockReturnValue(string functionName)
+    function getMockReturnValue(string functionName, bytes32 argsSignature)
         public
         view
         returns (bytes32 _mockReturnValue)
     {
-        return mockedReturnValue[functionName];
+        return mockedReturnValue[functionName][argsSignature];
     }
 
     function reset() public {
-        for (uint i = 0; i < functionList.length; i++) {
-            delete mockedReturnValue[functionList[i]];
-            delete mostRecentFunctionCallArgs[functionList[i]];
+        for (uint i = 0; i < 10; i++) {
+            string memory functionName = getFunctionList()[i];
+
+            if (bytes(functionName).length != 0) {
+                for (uint j = 0; j < functionCallSignatures[functionName].length; j++) {
+                    bytes32 callSignature = functionCallSignatures[functionName][j];
+                    delete functionCalls[functionName][callSignature];
+                    delete mockedReturnValue[functionName][callSignature];
+                }
+
+                delete functionCallSignatures[functionName];
+            }
         }
     }
 
-    function functionCalledWithArgs(string functionName, bytes32[10] args)
+    function functionCalledWithArgs(string functionName, bytes32 args)
         internal
     {
-        mostRecentFunctionCallArgs[functionName] = args;
+        functionCalls[functionName][args] = true;
+        functionCallSignatures[functionName].push(args);
     }
 
-    function wasFunctionCalledWithArgs(string functionName, bytes32[10] args)
+    function wasFunctionCalledWithArgs(string functionName, bytes32 args)
         internal
         view
         returns (bool wasCalled)
     {
-        if (args.length != mostRecentFunctionCallArgs[functionName].length) {
-            return false;
-        }
-
-        for (uint i = 0; i < args.length; i++) {
-            if (args[i] != mostRecentFunctionCallArgs[functionName][i]) {
-                return false;
-            }
-        }
-
-        return true;
+        return functionCalls[functionName][args];
     }
+
+    function getFunctionList() internal returns (string[10] functionNames);
 }
