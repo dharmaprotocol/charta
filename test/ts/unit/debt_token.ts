@@ -986,7 +986,7 @@ contract("Debt Token", (ACCOUNTS) => {
                 takerTokenAddress: debtToken.address,
                 feeRecipient: NULL_ADDRESS,
                 makerTokenAmount: Units.ether(1),
-                takerTokenAmount: new BigNumber(1),
+                takerTokenAmount: new BigNumber(1) ,
                 makerFee: Units.ether(0.001),
                 takerFee: Units.ether(0.001),
                 expirationUnixTimestampSec: new BigNumber(Date.now()),

@@ -905,6 +905,4 @@ contract("Debt Token", (ACCOUNTS) => {
             });
         });
     });
-
-    // TODO: Add tests for getOwnerTokens
 });
