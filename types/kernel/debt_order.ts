@@ -77,7 +77,7 @@ export class DebtOrder extends SignableMessage {
     }
 
     public getRelayerFee(): BigNumber {
-        return this.getDebtorFee().plus(this.getCreditorFee()).minus(this.getUnderwriterFee());
+        return this.params.relayerFee;
     }
 
     public getDebtorSignatureHash(): Bytes32 {
@@ -178,6 +178,10 @@ export class SignedDebtOrder extends DebtOrder {
         return this.debtorSignature;
     }
 
+    public getCreditorSignature(): ECDSASignature {
+        return this.creditorSignature;
+    }
+
     public getUnderwriterSignature(): ECDSASignature {
         return this.underwriterSignature;
     }
@@ -199,6 +203,7 @@ export class SignedDebtOrder extends DebtOrder {
             this.getIssuanceCommitment().getUnderwriterRiskRating(),
             this.getIssuanceCommitment().getSalt(),
             this.getUnderwriterFee(),
+            this.getRelayerFee(),
             this.getPrincipalAmount(),
             this.getCreditorFee(),
             this.getDebtorFee(),

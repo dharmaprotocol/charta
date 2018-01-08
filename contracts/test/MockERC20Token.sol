@@ -23,16 +23,22 @@ import "zeppelin-solidity/contracts/token/ERC20.sol";
 
 
 contract MockERC20Token is MockContract {
+    event LogNumber(uint number);
+    event LogAddress(address blurb);
+
     function transfer(
         address _to,
         uint _amount
     )
         public
+        returns (bool _success)
     {
         functionCalledWithArgs("transfer", getTransferArgsSignature(
             _to,
             _amount
         ));
+
+        return true;
     }
 
     function wasTransferCalledWith(
@@ -55,12 +61,15 @@ contract MockERC20Token is MockContract {
         uint _amount
     )
         public
+        returns (bool _success)
     {
         functionCalledWithArgs("transferFrom", getTransferFromArgsSignature(
             _from,
             _to,
             _amount
         ));
+
+        return true;
     }
 
     function wasTransferFromCalledWith(
@@ -77,6 +86,22 @@ contract MockERC20Token is MockContract {
             _to,
             _amount
         ));
+    }
+
+    function balanceOf(address _owner) public view returns(uint _balance) {
+        return uint(getMockReturnValue("balanceOf", keccak256(_owner)));
+    }
+
+    function mockBalanceOfFor(address _owner, uint _balance) public {
+        mockReturnValue("balanceOf", keccak256(_owner), bytes32(_balance));
+    }
+
+    function allowance(address _owner, address _to) public view returns(uint _allowance) {
+        return uint(getMockReturnValue("allowance", keccak256(_owner, _to)));
+    }
+
+    function mockAllowanceFor(address _owner, address _to, uint _allowance) public {
+        mockReturnValue("allowance", keccak256(_owner, _to), bytes32(_allowance));
     }
 
     function getTransferArgsSignature(
@@ -111,6 +136,6 @@ contract MockERC20Token is MockContract {
         internal
         returns (string[10] functionNames)
     {
-        return ["transfer", "transferFrom", "", "", "", "", "", "", "", ""];
+        return ["transfer", "transferFrom", "allowance", "balanceOf", "", "", "", "", "", ""];
     }
 }

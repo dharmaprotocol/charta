@@ -1,15 +1,17 @@
 const PermissionsLib = artifacts.require("PermissionsLib");
 const DummyContract = artifacts.require("DummyContract");
-const MockDebtRegistry = artifacts.require("MockDebtRegistry")
-const MockZeroExExchange = artifacts.require("MockZeroExExchange")
+const MockDebtRegistry = artifacts.require("MockDebtRegistry");
+const MockZeroExExchange = artifacts.require("MockZeroExExchange");
 const MockERC20Token = artifacts.require("MockERC20Token");
+const MockDebtToken = artifacts.require("MockDebtToken");
 
 module.exports = (deployer: any, network: string) => {
-    if (network != "live") {
+    if (network !== "live") {
         deployer.link(PermissionsLib, DummyContract);
         deployer.deploy(DummyContract);
         deployer.deploy(MockDebtRegistry);
         deployer.deploy(MockZeroExExchange);
         deployer.deploy(MockERC20Token);
+        deployer.deploy(MockDebtToken);
     }
 };

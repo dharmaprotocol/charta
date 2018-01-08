@@ -105,6 +105,7 @@ contract DebtToken is MintableNonFungibleToken, Ownable {
         bytes32 _s
     )
         public
+        returns (bool _success)
     {
         require(tokenBrokeragePermissions.isAuthorized(msg.sender));
 
@@ -124,7 +125,7 @@ contract DebtToken is MintableNonFungibleToken, Ownable {
 
         assert(brokeredTokenId == 0);
 
-        ERC20(makerToken).transfer(msg.sender, makerTokenAmount);
+        return ERC20(makerToken).transfer(msg.sender, makerTokenAmount);
     }
 
     function transferFrom(

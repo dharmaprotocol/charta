@@ -1,16 +1,15 @@
+import * as ZeroEx from "0x.js";
 import * as ABIDecoder from "abi-decoder";
 import {BigNumber} from "bignumber.js";
 import * as chai from "chai";
 import * as _ from "lodash";
 import * as Web3 from "web3";
 import * as Units from "../test_utils/units";
-import * as ZeroEx from "0x.js";
-
-import {MockDebtRegistryContract} from "../../../types/generated/mock_debt_registry";
-import {MockZeroExExchangeContract} from "../../../types/generated/mock_zero_ex_exchange";
-import {MockERC20TokenContract} from "../../../types/generated/mock_e_r_c20_token";
 
 import {DebtTokenContract} from "../../../types/generated/debt_token";
+import {MockDebtRegistryContract} from "../../../types/generated/mock_debt_registry";
+import {MockERC20TokenContract} from "../../../types/generated/mock_e_r_c20_token";
+import {MockZeroExExchangeContract} from "../../../types/generated/mock_zero_ex_exchange";
 import {ZeroX_TokenTransferProxyContract} from "../../../types/generated/zerox_tokentransferproxy";
 
 import {
@@ -123,7 +122,6 @@ contract("Debt Token", (ACCOUNTS) => {
                 });
             });
 
-
         // Initialize ABI Decoders for deciphering log receipts
         ABIDecoder.addABI(debtTokenContract.abi);
     };
@@ -134,8 +132,7 @@ contract("Debt Token", (ACCOUNTS) => {
         await debtToken.addAuthorizedBrokerageAgent.sendTransactionAsync(AUTHORIZED_BROKERAGE_AGENT,
             { from: CONTRACT_OWNER });
 
-        for (let i = 0; i < debtEntries.length; i++) {
-            const entry = debtEntries[i];
+        for (const entry of debtEntries) {
             await mockRegistry.mockInsertReturnValue
                 .sendTransactionAsync(entry.getIssuanceHash());
 
@@ -487,7 +484,7 @@ contract("Debt Token", (ACCOUNTS) => {
                 await expect(mockRegistry.wasModifyBeneficiaryCalledWith
                     .callAsync(debtEntries[0].getIssuanceHash(), TOKEN_OWNER_2))
                     .to.eventually.be.true;
-            })
+            });
 
             it("should emit transfer log", async () => {
                 const logExpected =
@@ -637,7 +634,7 @@ contract("Debt Token", (ACCOUNTS) => {
                 await expect(mockRegistry.wasModifyBeneficiaryCalledWith
                     .callAsync(debtEntries[2].getIssuanceHash(), TOKEN_OWNER_1))
                     .to.eventually.be.true;
-            })
+            });
 
             it("should emit approval clear log", () => {
                 const logExpected =
@@ -877,7 +874,6 @@ contract("Debt Token", (ACCOUNTS) => {
                 let res: Web3.TransactionReceipt;
                 let approvalLog: ABIDecoder.DecodedLog;
                 let transferLog: ABIDecoder.DecodedLog;
-                let modifyBeneficiaryLog: ABIDecoder.DecodedLog;
 
                 before(async () => {
                     const txHash = await debtToken.transferFrom.sendTransactionAsync(TOKEN_OWNER_1, TOKEN_OWNER_2,
@@ -964,39 +960,39 @@ contract("Debt Token", (ACCOUNTS) => {
                 order.ecSignature.v,
                 order.ecSignature.r,
                 order.ecSignature.s,
-                options
+                options,
             );
-        }
+        };
 
         before(async () => {
-            await resetAndInitState()
+            await resetAndInitState();
 
             // We construct an arbitrary zero ex order, given that we are in a unit
             // test conditions and are dealing with a mocked zero ex contract.
             // The only fields whose values triggers some sort of logic in the unit
             // tests are commented with context below
             zeroExOrder = {
+                ecSignature: {
+                   r: NULL_ADDRESS,
+                   s: NULL_ADDRESS,
+                   v: 27,
+                },
                 // Used to vary which mock exchange contract we use
                 exchangeContractAddress: mockExchange.address,
+                expirationUnixTimestampSec: new BigNumber(Date.now()),
+                feeRecipient: NULL_ADDRESS,
                 maker: TOKEN_OWNER_1,
-                taker: NULL_ADDRESS,
+                makerFee: Units.ether(0.001),
                 // Used to vary which mock ERC20 token contract we use
                 makerTokenAddress: mockToken.address,
+                makerTokenAmount: Units.ether(1),
+                salt: new BigNumber(0),
+                taker: NULL_ADDRESS,
+                takerFee: Units.ether(0.001),
                 // Used to vary whether order correctly calls transferFrom on brokered token
                 takerTokenAddress: debtToken.address,
-                feeRecipient: NULL_ADDRESS,
-                makerTokenAmount: Units.ether(1),
-                takerTokenAmount: new BigNumber(1) ,
-                makerFee: Units.ether(0.001),
-                takerFee: Units.ether(0.001),
-                expirationUnixTimestampSec: new BigNumber(Date.now()),
-                salt: new BigNumber(0),
-                ecSignature: {
-                    v: 27,
-                    r: NULL_ADDRESS,
-                    s: NULL_ADDRESS
-                }
-            }
+                takerTokenAmount: new BigNumber(1),
+            };
         });
 
         describe("user calls brokerZeroExOrder for token he doesn't own", () => {
@@ -1018,7 +1014,7 @@ contract("Debt Token", (ACCOUNTS) => {
                 await expect(brokerZeroExOrder(debtEntries[0].getTokenId(), zeroExOrder,
                     { from: AUTHORIZED_BROKERAGE_AGENT }))
                     .to.eventually.be.rejectedWith(REVERT_ERROR);
-            })
+            });
         });
 
         describe("user calls brokerZeroExOrder for token he owns", () => {
@@ -1068,7 +1064,7 @@ contract("Debt Token", (ACCOUNTS) => {
                             true,
                             zeroExOrder.ecSignature.v,
                             zeroExOrder.ecSignature.r,
-                            zeroExOrder.ecSignature.s
+                            zeroExOrder.ecSignature.s,
                         )).to.eventually.be.true;
                     });
 
@@ -1104,5 +1100,5 @@ contract("Debt Token", (ACCOUNTS) => {
                 });
             });
         });
-    })
+    });
 });

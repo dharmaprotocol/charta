@@ -32,8 +32,8 @@ export class IssuanceCommitment extends SignableMessage {
         return this.params.version;
     }
 
-    public getIssuer(): Address {
-        return this.params.issuer;
+    public getDebtor(): Address {
+        return this.params.debtor;
     }
 
     public getUnderwriter(): Address {
@@ -76,7 +76,7 @@ export class IssuanceCommitment extends SignableMessage {
     public getHash(): string {
         const hash = solidity.SHA3([
             this.getVersion(),
-            this.getIssuer(),
+            this.getDebtor(),
             this.getUnderwriter(),
             this.getUnderwriterRiskRating(),
             this.getTermsContract(),
@@ -113,7 +113,7 @@ export class SignedIssuanceCommitment extends IssuanceCommitment {
     public getIssuanceAddresses(): Address[] {
         return [
             this.getVersion(),
-            this.getIssuer(),
+            this.getDebtor(),
             this.getUnderwriter(),
             this.getTermsContract(),
         ];

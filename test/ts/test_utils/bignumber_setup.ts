@@ -7,5 +7,5 @@ export const BigNumberSetup = {
         BigNumber.config({
             EXPONENTIAL_AT: 1000,
         });
-    }
-}
+    },
+};

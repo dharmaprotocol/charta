@@ -118,7 +118,6 @@ contract("Debt Token", (ACCOUNTS) => {
                 });
             });
 
-
         // Initialize ABI Decoders for deciphering log receipts
         ABIDecoder.addABI(debtRegistryContract.abi);
         ABIDecoder.addABI(debtTokenContract.abi);

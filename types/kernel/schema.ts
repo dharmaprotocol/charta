@@ -9,7 +9,7 @@ import {IssuanceCommitment} from "./issuance_commitment";
 
 export interface IssuanceCommitmentParams {
     version: Address;
-    issuer: Address;
+    debtor: Address;
     underwriter: Address;
     underwriterRiskRating: BigNumber;
     termsContract: Address;
@@ -33,6 +33,7 @@ export interface OrderParams {
     debtorFee: BigNumber;
     creditorFee: BigNumber;
     underwriterFee: BigNumber;
+    relayerFee: BigNumber;
     relayer: Address;
     expirationTimestampInSec: BigNumber;
 }
