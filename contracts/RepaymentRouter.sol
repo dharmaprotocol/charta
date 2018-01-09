@@ -47,7 +47,7 @@ contract RepaymentRouter {
         debtRegistry = DebtRegistry(_debtRegistry);
     }
 
-    function repay(bytes32 entryHash, string termsContractParameters, uint256 amount, address token) public {
+    function repay(bytes32 issuanceHash, bytes32 termsContractParameters, uint256 amount, address token) public {
         require(token != address(0));
         require(amount > 0);
 
