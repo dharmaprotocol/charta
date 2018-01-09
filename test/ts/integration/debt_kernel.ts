@@ -35,6 +35,7 @@ import {IssuanceCommitment, SignedIssuanceCommitment} from "../../../types/kerne
 import {DebtRegistryEntry} from "../../../types/registry/entry";
 
 import {TxDataPayable} from "../../../types/common";
+import {DebtKernelErrorCodes} from "../../../types/errors";
 
 // Configure BigNumber exponentiation
 BigNumberSetup.configure();
@@ -600,6 +601,185 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                     underwriterRiskRating: new BigNumber(0),
                 });
             }));
+        });
+
+        describe("User fills invalid debt order", () => {
+            describe("...where there is no underwriter, but underwriter fee is nonzero", () => {
+                before(async () => {
+                    debtOrder = await orderFactory.generateDebtOrder({
+                        underwriter: NULL_ADDRESS,
+                        underwriterFee: Units.ether(0.001),
+                        underwriterRiskRating: new BigNumber(0),
+                    });
+                    await setupBalancesAndAllowances();
+                });
+
+                it("should return UNSPECIFIED_FEE_RECIPIENT error", async () => {
+                    await testShouldReturnError(debtOrder,
+                        DebtKernelErrorCodes.ORDER_INVALID_UNSPECIFIED_FEE_RECIPIENT);
+                });
+            });
+
+            describe("...where there is no relayer, but relayer fee is nonzero", () => {
+                before(async () => {
+                    debtOrder = await orderFactory.generateDebtOrder({
+                        relayer: NULL_ADDRESS,
+                        relayerFee: Units.ether(0.003),
+                        underwriterFee: new BigNumber(0),
+                    });
+                    await setupBalancesAndAllowances();
+                });
+
+                it("should return UNSPECIFIED_FEE_RECIPIENT error", async () => {
+                    await testShouldReturnError(debtOrder,
+                        DebtKernelErrorCodes.ORDER_INVALID_UNSPECIFIED_FEE_RECIPIENT);
+                });
+            });
+
+            describe("...when creditor + debtor fees < underwriter + relayer fees", () => {
+                before(async () => {
+                    debtOrder = await orderFactory.generateDebtOrder({
+                        creditorFee: Units.ether(0.001),
+                        debtorFee: Units.ether(0.001),
+                        relayerFee: Units.ether(0.0025),
+                        underwriterFee: Units.ether(0.0025),
+                    });
+                    await setupBalancesAndAllowances();
+                });
+
+                it("should return INSUFFICIENT_FEES error", async () => {
+                    await testShouldReturnError(debtOrder,
+                        DebtKernelErrorCodes.ORDER_INVALID_INSUFFICIENT_FEES);
+                });
+            });
+
+            describe("...when creditorFee + principal > 0, but 0x proxy does not have sufficient allowance", () => {
+                before(async () => {
+                    debtOrder = await orderFactory.generateDebtOrder();
+                    await setupBalancesAndAllowances();
+
+                    const token = await ZeroX_DummyTokenContract.at(debtOrder.getPrincipalTokenAddress(),
+                        web3, TX_DEFAULTS);
+                    await token.approve.sendTransactionAsync(zeroEx.proxy.getContractAddress(),
+                        debtOrder.getPrincipalAmount().plus(debtOrder.getCreditorFee().minus(1)),
+                        { from: debtOrder.getCreditor() });
+                });
+
+                it("should return CREDITOR_BALANCE_OR_ALLOWANCE_INSUFFICIENT error", async () => {
+                    await testShouldReturnError(debtOrder,
+                        DebtKernelErrorCodes.CREDITOR_BALANCE_OR_ALLOWANCE_INSUFFICIENT);
+                });
+            });
+
+            describe("...when creditorFee + principal > 0, but creditor does not have sufficient balance", () => {
+                before(async () => {
+                    debtOrder = await orderFactory.generateDebtOrder();
+
+                    const token = await ZeroX_DummyTokenContract.at(debtOrder.getPrincipalTokenAddress(),
+                        web3, TX_DEFAULTS);
+                    await token.setBalance.sendTransactionAsync(debtOrder.getCreditor(),
+                        debtOrder.getPrincipalAmount().plus(debtOrder.getCreditorFee().minus(1)),
+                        { from: CONTRACT_OWNER });
+                });
+
+                it("should return CREDITOR_BALANCE_OR_ALLOWANCE_INSUFFICIENT error", async () => {
+                    await testShouldReturnError(debtOrder,
+                        DebtKernelErrorCodes.CREDITOR_BALANCE_OR_ALLOWANCE_INSUFFICIENT);
+                });
+            });
+
+            describe("...when debtorFee > principal", () => {
+                before(async () => {
+                    debtOrder = await orderFactory.generateDebtOrder({
+                        debtorFee: Units.ether(1.1),
+                        principalAmount: Units.ether(1),
+                    });
+                    await setupBalancesAndAllowances();
+                });
+
+                it("should return INSUFFICIENT_PRINCIPAL error", async () => {
+                    await testShouldReturnError(debtOrder,
+                        DebtKernelErrorCodes.ORDER_INVALID_INSUFFICIENT_PRINCIPAL);
+                });
+            });
+
+            describe("...when order has expired", () => {
+                before(async () => {
+                    debtOrder = await orderFactory.generateDebtOrder({
+                        expirationTimestampInSec: new BigNumber(moment().subtract(1, "days").unix()),
+                    });
+                    await setupBalancesAndAllowances();
+                });
+
+                it("should return EXPIRED error", async () => {
+                    await testShouldReturnError(debtOrder,
+                        DebtKernelErrorCodes.ORDER_INVALID_EXPIRED);
+                });
+            });
+
+            describe("...when debt order has already been filled", () => {
+                before(async () => {
+                    debtOrder = await orderFactory.generateDebtOrder();
+                    await setupBalancesAndAllowances();
+
+                    await kernel.fillDebtOrder.sendTransactionAsync(
+                        debtOrder.getCreditor(),
+                        debtOrder.getOrderAddresses(),
+                        debtOrder.getOrderValues(),
+                        debtOrder.getOrderBytes32(),
+                        debtOrder.getSignaturesR(),
+                        debtOrder.getSignaturesS(),
+                        debtOrder.getSignaturesV(),
+                    );
+                });
+
+                it("should return DEBT_ISSUED error", async () => {
+                    await testShouldReturnError(debtOrder,
+                        DebtKernelErrorCodes.DEBT_ISSUED);
+                });
+            });
+
+            describe("...when issuance has been cancelled", () => {
+                before(async () => {
+                    debtOrder = await orderFactory.generateDebtOrder();
+                    await setupBalancesAndAllowances();
+
+                    await kernel.cancelIssuance.sendTransactionAsync(
+                        debtOrder.getIssuanceCommitment().getVersion(),
+                        debtOrder.getIssuanceCommitment().getDebtor(),
+                        debtOrder.getIssuanceCommitment().getTermsContract(),
+                        debtOrder.getIssuanceCommitment().getTermsContractParameters(),
+                        debtOrder.getIssuanceCommitment().getUnderwriter(),
+                        debtOrder.getIssuanceCommitment().getUnderwriterRiskRating(),
+                        debtOrder.getIssuanceCommitment().getSalt(),
+                        { from: debtOrder.getIssuanceCommitment().getUnderwriter() },
+                    );
+                });
+
+                it("should return ISSUANCE_CANCELLED error", async () => {
+                    await testShouldReturnError(debtOrder,
+                        DebtKernelErrorCodes.ISSUANCE_CANCELLED);
+                });
+            });
+
+            describe("...when debt order has been cancelled", () => {
+                before(async () => {
+                    debtOrder = await orderFactory.generateDebtOrder();
+                    await setupBalancesAndAllowances();
+
+                    await kernel.cancelDebtOrder.sendTransactionAsync(
+                        debtOrder.getOrderAddresses(),
+                        debtOrder.getOrderValues(),
+                        debtOrder.getOrderBytes32(),
+                        { from: debtOrder.getDebtor() },
+                    );
+                });
+
+                it("should return ORDER_INVALID_CANCELLED error", async () => {
+                    await testShouldReturnError(debtOrder,
+                        DebtKernelErrorCodes.ORDER_INVALID_CANCELLED);
+                });
+            });
         });
     });
 
