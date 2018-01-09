@@ -169,11 +169,17 @@ contract DebtKernel is Ownable {
     {
         DebtOrder memory debtOrder = getDebtOrder(orderAddresses, orderValues, orderBytes32);
 
-        var (zeroExOrderAddresses, zeroExOrderValues) =
+        var (zeroExOrderAddresses, zeroExOrderValues, zeroExOrderHash) =
             getZeroExOrderParameters(debtOrder, creditor);
 
         if (!assertDebtOrderValidityInvariants(debtOrder) ||
-            !assertDebtOrderConsensualityInvariants(debtOrder, signaturesV, signaturesR, signaturesS) ||
+            !assertDebtOrderConsensualityInvariants(
+                debtOrder,
+                creditor,
+                zeroExOrderHash,
+                signaturesV,
+                signaturesR,
+                signaturesS) ||
             !assertZeroExOrderValidityInvariants(zeroExOrderAddresses, zeroExOrderValues)) {
             return NULL_ISSUANCE_HASH;
         }
@@ -292,6 +298,8 @@ contract DebtKernel is Ownable {
 
     function assertDebtOrderConsensualityInvariants(
         DebtOrder debtOrder,
+        address creditor,
+        bytes32 zeroExOrderHash,
         uint8[3] signaturesV,
         bytes32[3] signaturesR,
         bytes32[3] signaturesS
@@ -305,6 +313,17 @@ contract DebtKernel is Ownable {
             signaturesV[1],
             signaturesR[1],
             signaturesS[1]
+        )) {
+            LogError(uint8(Errors.ORDER_INVALID_NON_CONSENSUAL), debtOrder.debtOrderHash);
+            return false;
+        }
+
+        if (!isValidSignature(
+            creditor,
+            zeroExOrderHash,
+            signaturesV[2],
+            signaturesR[2],
+            signaturesS[2]
         )) {
             LogError(uint8(Errors.ORDER_INVALID_NON_CONSENSUAL), debtOrder.debtOrderHash);
             return false;
@@ -469,24 +488,55 @@ contract DebtKernel is Ownable {
     )
         internal
         view
-        returns (address[5] _zeroExOrderAddresses, uint[6] _zeroExOrderValues)
+        returns (address[5] _zeroExOrderAddresses, uint[6] _zeroExOrderValues, bytes32 _zeroExOrderHash)
     {
+
+        address[5] memory zeroExOrderAddresses = [
+            creditor, // maker
+            address(0), // taker
+            debtOrder.principalToken, // makerToken
+            debtToken, // takerToken
+            address(0) // feeRecipient
+        ];
+
+        uint[6] memory zeroExOrderValues = [
+            debtOrder.principalAmount.add(debtOrder.creditorFee), // makerTokenAmount
+            1, // takerTokenAmount
+            0, // makerFee
+            0, // takerFee
+            debtOrder.expirationTimestampInSec, // expirationTimestampInSec
+            uint(debtOrder.debtOrderHash) // salt
+        ];
+
         return (
-            [
-                creditor, // maker
-                address(0), // taker
-                debtOrder.principalToken, // makerToken
-                debtToken, // takerToken
-                address(0) // feeRecipient
-            ],
-            [
-                debtOrder.principalAmount.add(debtOrder.creditorFee), // makerTokenAmount
-                1, // takerTokenAmount
-                0, // makerFee
-                0, // takerFee
-                debtOrder.expirationTimestampInSec, // expirationTimestampInSec
-                uint(debtOrder.debtOrderHash) // salt
-            ]
+            zeroExOrderAddresses,
+            zeroExOrderValues,
+            getZeroExOrderHash(debtOrder.zeroExExchangeContract, zeroExOrderAddresses, zeroExOrderValues)
+        );
+    }
+
+    function getZeroExOrderHash(
+        address zeroExExchangeContract,
+        address[5] zeroExOrderAddresses,
+        uint[6] zeroExOrderValues
+    )
+        internal
+        pure
+        returns (bytes32 _zeroExOrderHash)
+    {
+        return keccak256(
+            zeroExExchangeContract,
+            zeroExOrderAddresses[0], // maker
+            zeroExOrderAddresses[1], // taker
+            zeroExOrderAddresses[2], // makerToken
+            zeroExOrderAddresses[3], // takerToken
+            zeroExOrderAddresses[4], // feeRecipient
+            zeroExOrderValues[0],    // makerTokenAmount
+            zeroExOrderValues[1],    // takerTokenAmount
+            zeroExOrderValues[2],    // makerFee
+            zeroExOrderValues[3],    // takerFee
+            zeroExOrderValues[4],    // expirationTimestampInSec
+            zeroExOrderValues[5]     // salt
         );
     }
 
@@ -515,7 +565,8 @@ contract DebtKernel is Ownable {
             debtOrder.issuance.issuanceHash,
             debtOrder.underwriterFee,
             debtOrder.principalAmount,
-            debtOrder.principalToken
+            debtOrder.principalToken,
+            debtOrder.expirationTimestampInSec
         );
     }
 
@@ -533,6 +584,7 @@ contract DebtKernel is Ownable {
             debtOrder.debtorFee,
             debtOrder.creditorFee,
             debtOrder.relayer,
+            debtOrder.relayerFee,
             debtOrder.expirationTimestampInSec
         );
     }

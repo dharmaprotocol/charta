@@ -21,7 +21,7 @@ export class DebtOrderFactory {
             underwriter: params.underwriter,
             underwriterRiskRating: params.underwriterRiskRating,
             version: params.issuanceVersion,
-        });
+        }, params.salt);
 
         const debtOrder = new DebtOrder({
             creditorFee: params.creditorFee,

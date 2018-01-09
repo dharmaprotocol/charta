@@ -11,7 +11,7 @@
     "compile": "truffle compile",
     "soltsice": "soltsice",
     "migrate": "npm run transpile; truffle migrate",
-    "test": "npm run compile; npm run generate-typings; npm run migrate; truffle test transpiled/test/ts/unit/debt_kernel.js",
+    "test": "npm run compile; npm run generate-typings; npm run migrate; truffle test",
     "chain": "bash ./scripts/init_chain.sh",
     "validate": "npm ls"
   },

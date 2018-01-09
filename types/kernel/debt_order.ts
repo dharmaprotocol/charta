@@ -90,6 +90,7 @@ export class DebtOrder extends SignableMessage {
             this.getDebtorFee(),
             this.getCreditorFee(),
             this.getRelayer(),
+            this.getRelayerFee(),
             this.getExpiration(),
         ]);
 
@@ -103,6 +104,7 @@ export class DebtOrder extends SignableMessage {
             this.getUnderwriterFee(),
             this.getPrincipalAmount(),
             this.getPrincipalTokenAddress(),
+            this.getExpiration(),
         ]);
 
         const hashHex = ethUtil.bufferToHex(hash);

@@ -156,150 +156,234 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
 
     describe("#fillDebtOrder", () => {
         let debtOrder: SignedDebtOrder;
-        let testOrderFill: (description: string, debtOrder: SignedDebtOrder) => Promise<void>;
 
-        before(() => {
-            testOrderFill = async (description: string, order: SignedDebtOrder) => {
-                describe(description, () => {
-                    let orderFilledLog: ABIDecoder.DecodedLog;
+        const testShouldReturnError = async (
+            order: SignedDebtOrder,
+            errorCode: number,
+            signaturesR?: string[],
+            signaturesS?: string[],
+            signaturesV?: number[],
+        ) => {
+            const txHash = await kernel.fillDebtOrder.sendTransactionAsync(
+                order.getCreditor(),
+                order.getOrderAddresses(),
+                order.getOrderValues(),
+                order.getOrderBytes32(),
+                signaturesR || order.getSignaturesR(),
+                signaturesS || order.getSignaturesS(),
+                signaturesV || order.getSignaturesV(),
+            );
 
-                    before(async () => {
-                        await mockDebtToken.reset.sendTransactionAsync();
-                        await mockDebtToken.mockCreateReturnValue.sendTransactionAsync(
-                                new BigNumber(order.getIssuanceCommitment().getHash()));
+            const receipt = await web3.eth.getTransactionReceipt(txHash);
+            const [errorLog] = _.compact(ABIDecoder.decodeLogs(receipt.logs));
 
-                        await mockPrincipalToken.reset.sendTransactionAsync();
-                        await mockPrincipalToken.mockBalanceOfFor.sendTransactionAsync(
-                            order.getCreditor(),
-                            order.getPrincipalAmount().plus(order.getCreditorFee(),
-                        ));
-                        await mockPrincipalToken.mockAllowanceFor.sendTransactionAsync(
-                            order.getCreditor(),
-                            zeroExTokenTransferProxy.address,
-                            order.getPrincipalAmount().plus(order.getCreditorFee(),
-                        ));
+            expect(errorLog).to.deep.equal(LogError(
+                kernel.address,
+                errorCode,
+                order.getDebtorSignatureHash(),
+            ));
+        };
 
-                        const txHash = await kernel.fillDebtOrder.sendTransactionAsync(
-                            order.getCreditor(),
-                            order.getOrderAddresses(),
-                            order.getOrderValues(),
-                            order.getOrderBytes32(),
-                            order.getSignaturesR(),
-                            order.getSignaturesS(),
-                            order.getSignaturesV(),
-                        );
+        const resetMocks = async () => {
+            await mockDebtToken.reset.sendTransactionAsync();
+            await mockExchange.reset.sendTransactionAsync();
+            await mockPrincipalToken.reset.sendTransactionAsync();
+        };
 
-                        const receipt = await web3.eth.getTransactionReceipt(txHash);
-                        [orderFilledLog] = _.compact(ABIDecoder.decodeLogs(receipt.logs));
-                    });
+        const testOrderFill = (setupDebtOrder: () => Promise<void>) => {
+            return () => {
+                let orderFilledLog: ABIDecoder.DecodedLog;
 
-                    it("should create debt token with issuance parameters", async () => {
-                        await expect(mockDebtToken.wasCreateCalledWith.callAsync(
-                            order.getIssuanceCommitment().getVersion(),
-                            kernel.address,
-                            order.getDebtor(),
-                            order.getIssuanceCommitment().getUnderwriter(),
-                            order.getIssuanceCommitment().getUnderwriterRiskRating(),
-                            order.getIssuanceCommitment().getTermsContract(),
-                            order.getIssuanceCommitment().getTermsContractParameters(),
-                            order.getIssuanceCommitment().getSalt(),
-                        )).to.eventually.be.true;
-                    });
+                before(async () => {
+                    await setupDebtOrder();
 
-                    it("should fill 0x order to swap debt token for principal + creditor fee amount", async () => {
-                        await expect(mockDebtToken.wasBrokerZeroExOrderCalledWith.callAsync(
-                            new BigNumber(order.getIssuanceCommitment().getHash()),
-                            mockExchange.address,
-                            [
-                                order.getCreditor(), // maker
-                                NULL_ADDRESS, // taker
-                                mockPrincipalToken.address, // makerToken
-                                mockDebtToken.address, // takerToken
-                                NULL_ADDRESS, // feeRecipient
-                            ],
-                            [
-                                order.getPrincipalAmount().plus(order.getCreditorFee()), // makerTokenAmount
-                                new BigNumber(1), // takerTokenAmount
-                                new BigNumber(0), // makerFee
-                                new BigNumber(0), // takerFee
-                                order.getExpiration(), // expirationTimestampInSec
-                                new BigNumber(order.getDebtorSignatureHash()), // salt
-                            ],
-                            order.getCreditorSignature().v,
-                            order.getCreditorSignature().r,
-                            order.getCreditorSignature().s,
-                        )).to.eventually.be.true;
-                    });
+                    await mockDebtToken.reset.sendTransactionAsync();
+                    await mockDebtToken.mockCreateReturnValue.sendTransactionAsync(
+                            new BigNumber(debtOrder.getIssuanceCommitment().getHash()));
 
-                    if (order.getIssuanceCommitment().getUnderwriter() !== NULL_ADDRESS) {
-                        it("should transfer underwriter fee to underwriter", async () => {
-                            await expect(mockPrincipalToken.wasTransferCalledWith
-                                .callAsync(order.getIssuanceCommitment().getUnderwriter(),
-                                    order.getUnderwriterFee())).to.eventually.be.true;
-                        });
-                    }
+                    await mockPrincipalToken.reset.sendTransactionAsync();
+                    await mockPrincipalToken.mockBalanceOfFor.sendTransactionAsync(
+                        debtOrder.getCreditor(),
+                        debtOrder.getPrincipalAmount().plus(debtOrder.getCreditorFee(),
+                    ));
+                    await mockPrincipalToken.mockAllowanceFor.sendTransactionAsync(
+                        debtOrder.getCreditor(),
+                        zeroExTokenTransferProxy.address,
+                        debtOrder.getPrincipalAmount().plus(debtOrder.getCreditorFee(),
+                    ));
 
-                    if (order.getRelayer() !== NULL_ADDRESS) {
-                        it("should transfer relayer fee to relayer", async () => {
-                            await expect(mockPrincipalToken.wasTransferCalledWith
-                                .callAsync(order.getRelayer(),
-                                    order.getRelayerFee())).to.eventually.be.true;
-                        });
-                    }
+                    const txHash = await kernel.fillDebtOrder.sendTransactionAsync(
+                        debtOrder.getCreditor(),
+                        debtOrder.getOrderAddresses(),
+                        debtOrder.getOrderValues(),
+                        debtOrder.getOrderBytes32(),
+                        debtOrder.getSignaturesR(),
+                        debtOrder.getSignaturesS(),
+                        debtOrder.getSignaturesV(),
+                    );
 
-                    if (order.getPrincipalAmount().greaterThan(0)) {
-                        it("should transfer principal minus debtorFee to debtor", async () => {
-                            await expect(mockPrincipalToken.wasTransferCalledWith
-                                .callAsync(order.getDebtor(),
-                                    order.getPrincipalAmount().minus(order.getDebtorFee())))
-                                    .to.eventually.be.true;
-                        });
-                    }
-
-                    it("should emit order filled log", () => {
-                        expect(orderFilledLog).to.deep.equal(LogDebtOrderFilled(
-                            kernel.address,
-                            order.getIssuanceCommitment().getHash(),
-                            order.getPrincipalAmount(),
-                            order.getPrincipalTokenAddress(),
-                            order.getIssuanceCommitment().getUnderwriter(),
-                            order.getUnderwriterFee(),
-                            order.getRelayer(),
-                            order.getRelayerFee(),
-                        ));
-                    });
+                    const receipt = await web3.eth.getTransactionReceipt(txHash);
+                    [orderFilledLog] = _.compact(ABIDecoder.decodeLogs(receipt.logs));
                 });
-            };
+
+                it("should create debt token with issuance parameters", async () => {
+                    await expect(mockDebtToken.wasCreateCalledWith.callAsync(
+                        debtOrder.getIssuanceCommitment().getVersion(),
+                        kernel.address,
+                        debtOrder.getDebtor(),
+                        debtOrder.getIssuanceCommitment().getUnderwriter(),
+                        debtOrder.getIssuanceCommitment().getUnderwriterRiskRating(),
+                        debtOrder.getIssuanceCommitment().getTermsContract(),
+                        debtOrder.getIssuanceCommitment().getTermsContractParameters(),
+                        debtOrder.getIssuanceCommitment().getSalt(),
+                    )).to.eventually.be.true;
+                });
+
+                it("should fill 0x order to swap debt token for principal + creditor fee amount", async () => {
+                    await expect(mockDebtToken.wasBrokerZeroExOrderCalledWith.callAsync(
+                        new BigNumber(debtOrder.getIssuanceCommitment().getHash()),
+                        mockExchange.address,
+                        [
+                            debtOrder.getCreditor(), // maker
+                            NULL_ADDRESS, // taker
+                            mockPrincipalToken.address, // makerToken
+                            mockDebtToken.address, // takerToken
+                            NULL_ADDRESS, // feeRecipient
+                        ],
+                        [
+                            debtOrder.getPrincipalAmount().plus(debtOrder.getCreditorFee()), // makerTokenAmount
+                            new BigNumber(1), // takerTokenAmount
+                            new BigNumber(0), // makerFee
+                            new BigNumber(0), // takerFee
+                            debtOrder.getExpiration(), // expirationTimestampInSec
+                            new BigNumber(debtOrder.getDebtorSignatureHash()), // salt
+                        ],
+                        debtOrder.getCreditorSignature().v,
+                        debtOrder.getCreditorSignature().r,
+                        debtOrder.getCreditorSignature().s,
+                    )).to.eventually.be.true;
+                });
+
+                it("should transfer underwriter fee to underwriter", async () => {
+                    if (debtOrder.getIssuanceCommitment().getUnderwriter() !== NULL_ADDRESS) {
+                        await expect(mockPrincipalToken.wasTransferCalledWith
+                            .callAsync(debtOrder.getIssuanceCommitment().getUnderwriter(),
+                                debtOrder.getUnderwriterFee())).to.eventually.be.true;
+                    }
+                });
+
+                it("should transfer relayer fee to relayer", async () => {
+                    if (debtOrder.getRelayer() !== NULL_ADDRESS) {
+                        await expect(mockPrincipalToken.wasTransferCalledWith
+                            .callAsync(debtOrder.getRelayer(),
+                                debtOrder.getRelayerFee())).to.eventually.be.true;
+                    }
+                });
+
+                it("should transfer principal minus debtorFee to debtor", async () => {
+                    if (debtOrder.getPrincipalAmount().greaterThan(0)) {
+                        await expect(mockPrincipalToken.wasTransferCalledWith
+                            .callAsync(debtOrder.getDebtor(),
+                                debtOrder.getPrincipalAmount().minus(debtOrder.getDebtorFee())))
+                                .to.eventually.be.true;
+                    }
+                });
+
+                it("should emit order filled log", () => {
+                    expect(orderFilledLog).to.deep.equal(LogDebtOrderFilled(
+                        kernel.address,
+                        debtOrder.getIssuanceCommitment().getHash(),
+                        debtOrder.getPrincipalAmount(),
+                        debtOrder.getPrincipalTokenAddress(),
+                        debtOrder.getIssuanceCommitment().getUnderwriter(),
+                        debtOrder.getUnderwriterFee(),
+                        debtOrder.getRelayer(),
+                        debtOrder.getRelayerFee(),
+                    ));
+                });
+            }
+        };
+
+        describe("User fills valid, consensual debt order", () => {
+            describe("...with underwriter and relayer", testOrderFill(async () => {
+                debtOrder = await orderFactory.generateDebtOrder();
+            }));
+
+            describe("...with neither underwriter nor relayer", testOrderFill(async () => {
+                debtOrder = await orderFactory.generateDebtOrder({
+                    creditorFee: new BigNumber(0),
+                    debtorFee: new BigNumber(0),
+                    relayer: NULL_ADDRESS,
+                    relayerFee: new BigNumber(0),
+                    underwriter: NULL_ADDRESS,
+                    underwriterFee: new BigNumber(0),
+                    underwriterRiskRating: new BigNumber(0),
+                });
+            }));
+
+            describe("...with relayer but no underwriter", testOrderFill(async () => {
+                debtOrder = await orderFactory.generateDebtOrder({
+                    underwriter: NULL_ADDRESS,
+                    underwriterFee: new BigNumber(0),
+                    underwriterRiskRating: new BigNumber(0),
+                });
+            }));
+
+            describe("...with underwriter but no relayer", testOrderFill(async () => {
+                debtOrder = await orderFactory.generateDebtOrder({
+                    relayer: NULL_ADDRESS,
+                    relayerFee: new BigNumber(0),
+                    underwriterFee: defaultOrderParams.creditorFee
+                        .plus(defaultOrderParams.debtorFee),
+                });
+            }));
+
+            describe("...with no principal and no creditor / debtor fees", testOrderFill(async () => {
+                debtOrder = await orderFactory.generateDebtOrder({
+                    creditorFee: new BigNumber(0),
+                    debtorFee: new BigNumber(0),
+                    principalAmount: new BigNumber(0),
+                    relayer: NULL_ADDRESS,
+                    relayerFee: new BigNumber(0),
+                    underwriter: NULL_ADDRESS,
+                    underwriterFee: new BigNumber(0),
+                    underwriterRiskRating: new BigNumber(0),
+                });
+            }));
+
+            describe("...with no principal and nonzero creditor fee", testOrderFill(async () => {
+                debtOrder = await orderFactory.generateDebtOrder({
+                    creditorFee: Units.ether(0.002),
+                    debtorFee: new BigNumber(0),
+                    principalAmount: new BigNumber(0),
+                    relayer: NULL_ADDRESS,
+                    relayerFee: new BigNumber(0),
+                    underwriter: UNDERWRITER,
+                    underwriterFee: Units.ether(0.002),
+                });
+            }));
+
+            describe("...when creditor and debtor are same address", testOrderFill(async () => {
+                debtOrder = await orderFactory.generateDebtOrder({
+                    creditor: CREDITOR_1,
+                    creditorFee: new BigNumber(0),
+                    debtor: CREDITOR_1,
+                    debtorFee: new BigNumber(0),
+                    orderSignatories: {
+                        creditor: CREDITOR_1,
+                        debtor: CREDITOR_1,
+                    },
+                    principalAmount: new BigNumber(0),
+                    relayer: NULL_ADDRESS,
+                    relayerFee: new BigNumber(0),
+                    underwriter: NULL_ADDRESS,
+                    underwriterFee: new BigNumber(0),
+                    underwriterRiskRating: new BigNumber(0),
+                });
+            }));
         });
 
         describe("User fills invalid debt order", () => {
-            const resetMocks = async () => {
-                await mockDebtToken.reset.sendTransactionAsync();
-                await mockExchange.reset.sendTransactionAsync();
-                await mockPrincipalToken.reset.sendTransactionAsync();
-            };
-
-            const testShouldReturnError = async (order: SignedDebtOrder, errorCode: number) => {
-                const txHash = await kernel.fillDebtOrder.sendTransactionAsync(
-                    order.getCreditor(),
-                    order.getOrderAddresses(),
-                    order.getOrderValues(),
-                    order.getOrderBytes32(),
-                    order.getSignaturesR(),
-                    order.getSignaturesS(),
-                    order.getSignaturesV(),
-                );
-
-                const receipt = await web3.eth.getTransactionReceipt(txHash);
-                const [errorLog] = _.compact(ABIDecoder.decodeLogs(receipt.logs));
-
-                expect(errorLog).to.deep.equal(LogError(
-                    kernel.address,
-                    errorCode,
-                    order.getDebtorSignatureHash(),
-                ));
-            };
-
             describe("...where there is no underwriter, but underwriter fee is nonzero", () => {
                 before(async () => {
                     await resetMocks();
@@ -481,81 +565,625 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
             });
         });
 
-        describe("User fills valid, consensual debt order", () => {
+        describe("User fills valid, nonconsensual debt order", () => {
+            let order: SignedDebtOrder;
+            let mismatchedOrder: SignedDebtOrder;
+
+            const getMismatchedSignatures = async (
+                debtorsDebtOrder: SignedDebtOrder,
+                creditorsDebtOrder: SignedDebtOrder,
+                underwritersDebtOrder: SignedDebtOrder,
+            ): Promise<any[]> => {
+                const signaturesR = [
+                    underwritersDebtOrder.getUnderwriterSignature().r,
+                    debtorsDebtOrder.getDebtorSignature().r,
+                    creditorsDebtOrder.getCreditorSignature().r,
+                ];
+
+                const signaturesS = [
+                    underwritersDebtOrder.getUnderwriterSignature().s,
+                    debtorsDebtOrder.getDebtorSignature().s,
+                    creditorsDebtOrder.getCreditorSignature().s,
+                ];
+
+                const signaturesV = [
+                    underwritersDebtOrder.getUnderwriterSignature().v,
+                    debtorsDebtOrder.getDebtorSignature().v,
+                    creditorsDebtOrder.getCreditorSignature().v,
+                ];
+
+                return [signaturesR, signaturesS, signaturesV];
+            };
+
             before(async () => {
-                debtOrder = await orderFactory.generateDebtOrder();
-                await testOrderFill("...with underwriter and relayer", debtOrder);
+                await resetMocks();
 
-                debtOrder = await orderFactory.generateDebtOrder({
-                    creditorFee: new BigNumber(0),
-                    debtorFee: new BigNumber(0),
-                    relayer: NULL_ADDRESS,
-                    relayerFee: new BigNumber(0),
-                    underwriter: NULL_ADDRESS,
-                    underwriterFee: new BigNumber(0),
-                    underwriterRiskRating: new BigNumber(0),
-                });
-                await testOrderFill("...with neither underwriter nor relayer", debtOrder);
+                order = await orderFactory.generateDebtOrder();
 
-                debtOrder = await orderFactory.generateDebtOrder({
-                    underwriter: NULL_ADDRESS,
-                    underwriterFee: new BigNumber(0),
-                    underwriterRiskRating: new BigNumber(0),
-                });
-                await testOrderFill("...with relayer but no underwriter", debtOrder);
+                await mockDebtToken.mockCreateReturnValue.sendTransactionAsync(
+                        new BigNumber(order.getIssuanceCommitment().getHash()));
 
-                debtOrder = await orderFactory.generateDebtOrder({
-                    relayer: NULL_ADDRESS,
-                    relayerFee: new BigNumber(0),
-                    underwriterFee: defaultOrderParams.creditorFee
-                        .plus(defaultOrderParams.debtorFee),
-                });
-                await testOrderFill("...with underwriter but no relayer", debtOrder);
-
-                debtOrder = await orderFactory.generateDebtOrder({
-                    creditorFee: new BigNumber(0),
-                    debtorFee: new BigNumber(0),
-                    principalAmount: new BigNumber(0),
-                    relayer: NULL_ADDRESS,
-                    relayerFee: new BigNumber(0),
-                    underwriter: NULL_ADDRESS,
-                    underwriterFee: new BigNumber(0),
-                    underwriterRiskRating: new BigNumber(0),
-                });
-                await testOrderFill("...with no principal and no creditor / debtor fees", debtOrder);
-
-                debtOrder = await orderFactory.generateDebtOrder({
-                    creditorFee: Units.ether(0.002),
-                    debtorFee: new BigNumber(0),
-                    principalAmount: new BigNumber(0),
-                    relayer: NULL_ADDRESS,
-                    relayerFee: new BigNumber(0),
-                    underwriter: UNDERWRITER,
-                    underwriterFee: Units.ether(0.002),
-                });
-                await testOrderFill("...with no principal and nonzero creditor fee", debtOrder);
-
-                debtOrder = await orderFactory.generateDebtOrder({
-                    creditor: CREDITOR_1,
-                    creditorFee: new BigNumber(0),
-                    debtor: CREDITOR_1,
-                    debtorFee: new BigNumber(0),
-                    orderSignatories: {
-                        creditor: CREDITOR_1,
-                        debtor: CREDITOR_1,
-                    },
-                    principalAmount: new BigNumber(0),
-                    relayer: NULL_ADDRESS,
-                    relayerFee: new BigNumber(0),
-                    underwriter: NULL_ADDRESS,
-                    underwriterFee: new BigNumber(0),
-                    underwriterRiskRating: new BigNumber(0),
-                });
-                await testOrderFill("...when creditor and debtor are same address", debtOrder);
+                await mockPrincipalToken.mockBalanceOfFor.sendTransactionAsync(order.getCreditor(),
+                    order.getPrincipalAmount().plus(order.getCreditorFee()));
+                await mockPrincipalToken.mockAllowanceFor.sendTransactionAsync(
+                    order.getCreditor(),
+                    zeroExTokenTransferProxy.address,
+                    order.getPrincipalAmount().plus(order.getCreditorFee()));
             });
 
-            it("[required placeholder for mocha to allow dynamically defined tests]", () => {
-                // No-op
+            describe("...with mismatched issuance parameters", () => {
+                before(async () => {
+                    mismatchedOrder = await orderFactory.generateDebtOrder({
+                        salt: order.getIssuanceCommitment().getSalt(),
+                        termsContract: MALICIOUS_TERMS_CONTRACTS,
+                    });
+                });
+
+                describe("creditor's signature commits to issuance parameters =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            order,
+                            mismatchedOrder,
+                            order,
+                        );
+                        await testShouldReturnError(
+                            order,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+
+                describe("debtor's signature commits to issuance parameters =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            mismatchedOrder,
+                            order,
+                            order,
+                        );
+                        await testShouldReturnError(
+                            order,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+
+                describe("underwriter's signature commits to issuance parameters =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            order,
+                            order,
+                            mismatchedOrder,
+                        );
+                        await testShouldReturnError(
+                            order,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+            });
+
+            describe("...with mismatched underwriter fee", () => {
+                before(async () => {
+                    mismatchedOrder = await orderFactory.generateDebtOrder({
+                        salt: order.getIssuanceCommitment().getSalt(),
+                        underwriterFee: Units.ether(0.001),
+                    });
+                });
+
+                describe("creditor's signature commits to underwriter fee =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            order,
+                            mismatchedOrder,
+                            order,
+                        );
+                        await testShouldReturnError(
+                            order,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+
+                describe("debtor's signature commits to underwriter fee =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            mismatchedOrder,
+                            order,
+                            order,
+                        );
+                        await testShouldReturnError(
+                            order,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+
+                describe("underwriter's signature commits to underwriter fee =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            order,
+                            order,
+                            mismatchedOrder,
+                        );
+                        await testShouldReturnError(
+                            order,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+            });
+
+            describe("...with mismatched 0x exchange contract", () => {
+                before(async () => {
+                    mismatchedOrder = await orderFactory.generateDebtOrder({
+                        salt: order.getIssuanceCommitment().getSalt(),
+                        zeroExExchangeContract: MALICIOUS_EXCHANGE_CONTRACT,
+                    });
+                });
+
+                describe("creditor's signature commits to 0x exchange contract =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            order,
+                            mismatchedOrder,
+                            order,
+                        );
+                        await testShouldReturnError(
+                            order,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+
+                describe("debtor's signature commits to 0x exchange contract =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            mismatchedOrder,
+                            order,
+                            order,
+                        );
+                        await testShouldReturnError(
+                            order,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+            });
+
+            describe("...with mismatched underwriter", () => {
+                before(async () => {
+                    mismatchedOrder = await orderFactory.generateDebtOrder({
+                        underwriter: ATTACKER,
+                        salt: order.getIssuanceCommitment().getSalt(),
+                    });
+                });
+
+                describe("creditor's signature commits to underwriter =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            order,
+                            mismatchedOrder,
+                            order,
+                        );
+                        await testShouldReturnError(
+                            order,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+
+                describe("debtor's signature commits to underwriter =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            mismatchedOrder,
+                            order,
+                            order,
+                        );
+                        await testShouldReturnError(
+                            order,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+
+                describe("underwriter's signature commits to underwriter =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            order,
+                            order,
+                            mismatchedOrder,
+                        );
+                        await testShouldReturnError(
+                            order,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+            });
+
+            describe("...with mismatched principal amount", () => {
+                before(async () => {
+                    mismatchedOrder = await orderFactory.generateDebtOrder({
+                        principalAmount: Units.ether(1.1),
+                        salt: order.getIssuanceCommitment().getSalt(),
+                    });
+                });
+
+                describe("creditor's signature commits to principal amount =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            order,
+                            mismatchedOrder,
+                            order,
+                        );
+                        await testShouldReturnError(
+                            order,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+
+                describe("debtor's signature commits to principal amount =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            mismatchedOrder,
+                            order,
+                            order,
+                        );
+                        await testShouldReturnError(
+                            order,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+
+                describe("underwriter's signature commits to principal amount =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            order,
+                            order,
+                            mismatchedOrder,
+                        );
+                        await testShouldReturnError(
+                            order,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+            });
+
+            describe("...with mismatched principal token", () => {
+                before(async () => {
+                    mismatchedOrder = await orderFactory.generateDebtOrder({
+                        principalTokenAddress: NULL_ADDRESS,
+                        salt: order.getIssuanceCommitment().getSalt(),
+                    });
+                });
+
+                describe("creditor's signature commits to principal token =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            order,
+                            mismatchedOrder,
+                            order,
+                        );
+                        await testShouldReturnError(
+                            order,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+
+                describe("debtor's signature commits to principal token =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            mismatchedOrder,
+                            order,
+                            order,
+                        );
+                        await testShouldReturnError(
+                            order,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+
+                describe("underwriter's signature commits to principal token =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            order,
+                            order,
+                            mismatchedOrder,
+                        );
+                        await testShouldReturnError(
+                            order,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+            });
+
+            describe("...with mismatched debtor fee", () => {
+                before(async () => {
+                    mismatchedOrder = await orderFactory.generateDebtOrder({
+                        debtorFee: Units.ether(0.0004),
+                        salt: order.getIssuanceCommitment().getSalt(),
+                    });
+                });
+
+                describe("creditor's signature commits to debtor fee =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            order,
+                            mismatchedOrder,
+                            order,
+                        );
+                        await testShouldReturnError(
+                            order,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+
+                describe("debtor's signature commits to debtor fee =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            mismatchedOrder,
+                            order,
+                            order,
+                        );
+                        await testShouldReturnError(
+                            order,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+            });
+
+            describe("...with mismatched creditor fee", () => {
+                before(async () => {
+                    mismatchedOrder = await orderFactory.generateDebtOrder({
+                        creditorFee: Units.ether(0.0004),
+                        salt: order.getIssuanceCommitment().getSalt(),
+                    });
+                });
+
+                describe("creditor's signature commits to creditor fee =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            order,
+                            mismatchedOrder,
+                            order,
+                        );
+                        await testShouldReturnError(
+                            order,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+
+                describe("debtor's signature commits to creditor fee =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            mismatchedOrder,
+                            order,
+                            order,
+                        );
+                        await testShouldReturnError(
+                            order,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+            });
+
+            describe("...with mismatched relayer", () => {
+                before(async () => {
+                    mismatchedOrder = await orderFactory.generateDebtOrder({
+                        relayer: NULL_ADDRESS,
+                        salt: order.getIssuanceCommitment().getSalt(),
+                    });
+                });
+
+                describe("creditor's signature commits to relayer =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            order,
+                            mismatchedOrder,
+                            order,
+                        );
+                        await testShouldReturnError(
+                            order,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+
+                describe("debtor's signature commits to relayer =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            mismatchedOrder,
+                            order,
+                            order,
+                        );
+                        await testShouldReturnError(
+                            order,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+            });
+
+            describe("...with mismatched relayer fee", () => {
+                before(async () => {
+                    mismatchedOrder = await orderFactory.generateDebtOrder({
+                        relayerFee: new BigNumber(0),
+                        salt: order.getIssuanceCommitment().getSalt(),
+                    });
+                });
+
+                describe("creditor's signature commits to relayer fee =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            order,
+                            mismatchedOrder,
+                            order,
+                        );
+                        await testShouldReturnError(
+                            order,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+
+                describe("debtor's signature commits to relayer fee =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            mismatchedOrder,
+                            order,
+                            order,
+                        );
+                        await testShouldReturnError(
+                            order,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+            });
+
+            describe("...with mismatched expiration", () => {
+                before(async () => {
+                    mismatchedOrder = await orderFactory.generateDebtOrder({
+                        expirationTimestampInSec: new BigNumber(moment().add(2, "days").unix()),
+                        salt: order.getIssuanceCommitment().getSalt(),
+                    });
+                });
+
+                describe("creditor's signature commits to expiration =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            order,
+                            mismatchedOrder,
+                            order,
+                        );
+                        await testShouldReturnError(
+                            order,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+
+                describe("debtor's signature commits to expiration =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            mismatchedOrder,
+                            order,
+                            order,
+                        );
+                        await testShouldReturnError(
+                            order,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+
+                describe("underwriter's signature commits to expiration =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            order,
+                            order,
+                            mismatchedOrder,
+                        );
+                        await testShouldReturnError(
+                            order,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
             });
         });
     });
