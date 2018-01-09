@@ -781,6 +781,616 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                 });
             });
         });
+
+        describe("User fills valid, nonconsensual debt order", () => {
+            let mismatchedOrder: SignedDebtOrder;
+
+            const getMismatchedSignatures = async (
+                debtorsDebtOrder: SignedDebtOrder,
+                creditorsDebtOrder: SignedDebtOrder,
+                underwritersDebtOrder: SignedDebtOrder,
+            ): Promise<any[]> => {
+                const signaturesR = [
+                    underwritersDebtOrder.getUnderwriterSignature().r,
+                    debtorsDebtOrder.getDebtorSignature().r,
+                    creditorsDebtOrder.getCreditorSignature().r,
+                ];
+
+                const signaturesS = [
+                    underwritersDebtOrder.getUnderwriterSignature().s,
+                    debtorsDebtOrder.getDebtorSignature().s,
+                    creditorsDebtOrder.getCreditorSignature().s,
+                ];
+
+                const signaturesV = [
+                    underwritersDebtOrder.getUnderwriterSignature().v,
+                    debtorsDebtOrder.getDebtorSignature().v,
+                    creditorsDebtOrder.getCreditorSignature().v,
+                ];
+
+                return [signaturesR, signaturesS, signaturesV];
+            };
+
+            before(async () => {
+                debtOrder = await orderFactory.generateDebtOrder();
+                await setupBalancesAndAllowances();
+            });
+
+            describe("...with mismatched issuance parameters", () => {
+                before(async () => {
+                    mismatchedOrder = await orderFactory.generateDebtOrder({
+                        salt: debtOrder.getIssuanceCommitment().getSalt(),
+                        termsContract: MALICIOUS_TERMS_CONTRACTS,
+                    });
+                });
+
+                describe("creditor's signature commits to issuance parameters =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            debtOrder,
+                            mismatchedOrder,
+                            debtOrder,
+                        );
+                        await testShouldReturnError(
+                            debtOrder,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+
+                describe("debtor's signature commits to issuance parameters =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            mismatchedOrder,
+                            debtOrder,
+                            debtOrder,
+                        );
+                        await testShouldReturnError(
+                            debtOrder,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+
+                describe("underwriter's signature commits to issuance parameters =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            debtOrder,
+                            debtOrder,
+                            mismatchedOrder,
+                        );
+                        await testShouldReturnError(
+                            debtOrder,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+            });
+
+            describe("...with mismatched underwriter fee", () => {
+                before(async () => {
+                    mismatchedOrder = await orderFactory.generateDebtOrder({
+                        salt: debtOrder.getIssuanceCommitment().getSalt(),
+                        underwriterFee: Units.ether(0.001),
+                    });
+                });
+
+                describe("creditor's signature commits to underwriter fee =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            debtOrder,
+                            mismatchedOrder,
+                            debtOrder,
+                        );
+                        await testShouldReturnError(
+                            debtOrder,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+
+                describe("debtor's signature commits to underwriter fee =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            mismatchedOrder,
+                            debtOrder,
+                            debtOrder,
+                        );
+                        await testShouldReturnError(
+                            debtOrder,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+
+                describe("underwriter's signature commits to underwriter fee =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            debtOrder,
+                            debtOrder,
+                            mismatchedOrder,
+                        );
+                        await testShouldReturnError(
+                            debtOrder,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+            });
+
+            describe("...with mismatched 0x exchange contract", () => {
+                before(async () => {
+                    mismatchedOrder = await orderFactory.generateDebtOrder({
+                        salt: debtOrder.getIssuanceCommitment().getSalt(),
+                        zeroExExchangeContract: MALICIOUS_EXCHANGE_CONTRACT,
+                    });
+                });
+
+                describe("creditor's signature commits to 0x exchange contract =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            debtOrder,
+                            mismatchedOrder,
+                            debtOrder,
+                        );
+                        await testShouldReturnError(
+                            debtOrder,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+
+                describe("debtor's signature commits to 0x exchange contract =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            mismatchedOrder,
+                            debtOrder,
+                            debtOrder,
+                        );
+                        await testShouldReturnError(
+                            debtOrder,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+            });
+
+            describe("...with mismatched underwriter", () => {
+                before(async () => {
+                    mismatchedOrder = await orderFactory.generateDebtOrder({
+                        salt: debtOrder.getIssuanceCommitment().getSalt(),
+                        underwriter: ATTACKER,
+                    });
+                });
+
+                describe("creditor's signature commits to underwriter =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            debtOrder,
+                            mismatchedOrder,
+                            debtOrder,
+                        );
+                        await testShouldReturnError(
+                            debtOrder,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+
+                describe("debtor's signature commits to underwriter =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            mismatchedOrder,
+                            debtOrder,
+                            debtOrder,
+                        );
+                        await testShouldReturnError(
+                            debtOrder,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+
+                describe("underwriter's signature commits to underwriter =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            debtOrder,
+                            debtOrder,
+                            mismatchedOrder,
+                        );
+                        await testShouldReturnError(
+                            debtOrder,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+            });
+
+            describe("...with mismatched principal amount", () => {
+                before(async () => {
+                    mismatchedOrder = await orderFactory.generateDebtOrder({
+                        principalAmount: Units.ether(1.1),
+                        salt: debtOrder.getIssuanceCommitment().getSalt(),
+                    });
+                });
+
+                describe("creditor's signature commits to principal amount =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            debtOrder,
+                            mismatchedOrder,
+                            debtOrder,
+                        );
+                        await testShouldReturnError(
+                            debtOrder,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+
+                describe("debtor's signature commits to principal amount =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            mismatchedOrder,
+                            debtOrder,
+                            debtOrder,
+                        );
+                        await testShouldReturnError(
+                            debtOrder,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+
+                describe("underwriter's signature commits to principal amount =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            debtOrder,
+                            debtOrder,
+                            mismatchedOrder,
+                        );
+                        await testShouldReturnError(
+                            debtOrder,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+            });
+
+            describe("...with mismatched principal token", () => {
+                before(async () => {
+                    mismatchedOrder = await orderFactory.generateDebtOrder({
+                        principalTokenAddress: NULL_ADDRESS,
+                        salt: debtOrder.getIssuanceCommitment().getSalt(),
+                    });
+                });
+
+                describe("creditor's signature commits to principal token =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            debtOrder,
+                            mismatchedOrder,
+                            debtOrder,
+                        );
+                        await testShouldReturnError(
+                            debtOrder,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+
+                describe("debtor's signature commits to principal token =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            mismatchedOrder,
+                            debtOrder,
+                            debtOrder,
+                        );
+                        await testShouldReturnError(
+                            debtOrder,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+
+                describe("underwriter's signature commits to principal token =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            debtOrder,
+                            debtOrder,
+                            mismatchedOrder,
+                        );
+                        await testShouldReturnError(
+                            debtOrder,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+            });
+
+            describe("...with mismatched debtor fee", () => {
+                before(async () => {
+                    mismatchedOrder = await orderFactory.generateDebtOrder({
+                        debtorFee: Units.ether(0.0004),
+                        salt: debtOrder.getIssuanceCommitment().getSalt(),
+                    });
+                });
+
+                describe("creditor's signature commits to debtor fee =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            debtOrder,
+                            mismatchedOrder,
+                            debtOrder,
+                        );
+                        await testShouldReturnError(
+                            debtOrder,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+
+                describe("debtor's signature commits to debtor fee =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            mismatchedOrder,
+                            debtOrder,
+                            debtOrder,
+                        );
+                        await testShouldReturnError(
+                            debtOrder,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+            });
+
+            describe("...with mismatched creditor fee", () => {
+                before(async () => {
+                    mismatchedOrder = await orderFactory.generateDebtOrder({
+                        creditorFee: Units.ether(0.0004),
+                        salt: debtOrder.getIssuanceCommitment().getSalt(),
+                    });
+                });
+
+                describe("creditor's signature commits to creditor fee =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            debtOrder,
+                            mismatchedOrder,
+                            debtOrder,
+                        );
+                        await testShouldReturnError(
+                            debtOrder,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+
+                describe("debtor's signature commits to creditor fee =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            mismatchedOrder,
+                            debtOrder,
+                            debtOrder,
+                        );
+                        await testShouldReturnError(
+                            debtOrder,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+            });
+
+            describe("...with mismatched relayer", () => {
+                before(async () => {
+                    mismatchedOrder = await orderFactory.generateDebtOrder({
+                        relayer: NULL_ADDRESS,
+                        salt: debtOrder.getIssuanceCommitment().getSalt(),
+                    });
+                });
+
+                describe("creditor's signature commits to relayer =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            debtOrder,
+                            mismatchedOrder,
+                            debtOrder,
+                        );
+                        await testShouldReturnError(
+                            debtOrder,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+
+                describe("debtor's signature commits to relayer =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            mismatchedOrder,
+                            debtOrder,
+                            debtOrder,
+                        );
+                        await testShouldReturnError(
+                            debtOrder,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+            });
+
+            describe("...with mismatched relayer fee", () => {
+                before(async () => {
+                    mismatchedOrder = await orderFactory.generateDebtOrder({
+                        relayerFee: new BigNumber(0),
+                        salt: debtOrder.getIssuanceCommitment().getSalt(),
+                    });
+                });
+
+                describe("creditor's signature commits to relayer fee =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            debtOrder,
+                            mismatchedOrder,
+                            debtOrder,
+                        );
+                        await testShouldReturnError(
+                            debtOrder,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+
+                describe("debtor's signature commits to relayer fee =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            mismatchedOrder,
+                            debtOrder,
+                            debtOrder,
+                        );
+                        await testShouldReturnError(
+                            debtOrder,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+            });
+
+            describe("...with mismatched expiration", () => {
+                before(async () => {
+                    mismatchedOrder = await orderFactory.generateDebtOrder({
+                        expirationTimestampInSec: new BigNumber(moment().add(2, "days").unix()),
+                        salt: debtOrder.getIssuanceCommitment().getSalt(),
+                    });
+                });
+
+                describe("creditor's signature commits to expiration =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            debtOrder,
+                            mismatchedOrder,
+                            debtOrder,
+                        );
+                        await testShouldReturnError(
+                            debtOrder,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+
+                describe("debtor's signature commits to expiration =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            mismatchedOrder,
+                            debtOrder,
+                            debtOrder,
+                        );
+                        await testShouldReturnError(
+                            debtOrder,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+
+                describe("underwriter's signature commits to expiration =/= order's", async () => {
+                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
+                        const [signaturesR, signaturesS, signaturesV] = await getMismatchedSignatures(
+                            debtOrder,
+                            debtOrder,
+                            mismatchedOrder,
+                        );
+                        await testShouldReturnError(
+                            debtOrder,
+                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
+                            signaturesR,
+                            signaturesS,
+                            signaturesV,
+                        );
+                    });
+                });
+            });
+        });
     });
 
     // describe("Debt Issuance w/ Synchronous Swap Thereafter", () => {
