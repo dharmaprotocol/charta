@@ -19,20 +19,19 @@
 pragma solidity 0.4.18;
 
 import "./MockContract.sol";
-import "zeppelin-solidity/contracts/token/ERC20.sol";
 
 
-contract MockERC20Token is MockContract {
+contract MockERC721Token is MockContract {
     function transfer(
         address _to,
-        uint _amount
+        uint _tokenId
     )
         public
         returns (bool _success)
     {
         functionCalledWithArgs("transfer", getTransferArgsSignature(
             _to,
-            _amount
+            _tokenId
         ));
 
         return true;
@@ -40,7 +39,7 @@ contract MockERC20Token is MockContract {
 
     function wasTransferCalledWith(
         address _to,
-        uint _amount
+        uint _tokenId
     )
         public
         view
@@ -48,14 +47,14 @@ contract MockERC20Token is MockContract {
     {
         return wasFunctionCalledWithArgs("transfer", getTransferArgsSignature(
             _to,
-            _amount
+            _tokenId
         ));
     }
 
     function transferFrom(
         address _from,
         address _to,
-        uint _amount
+        uint _tokenId
     )
         public
         returns (bool _success)
@@ -63,7 +62,7 @@ contract MockERC20Token is MockContract {
         functionCalledWithArgs("transferFrom", getTransferFromArgsSignature(
             _from,
             _to,
-            _amount
+            _tokenId
         ));
 
         return true;
@@ -72,7 +71,7 @@ contract MockERC20Token is MockContract {
     function wasTransferFromCalledWith(
         address _from,
         address _to,
-        uint _amount
+        uint _tokenId
     )
         public
         view
@@ -81,11 +80,11 @@ contract MockERC20Token is MockContract {
         return wasFunctionCalledWithArgs("transferFrom", getTransferFromArgsSignature(
             _from,
             _to,
-            _amount
+            _tokenId
         ));
     }
 
-    function balanceOf(address _owner) public view returns(uint _balance) {
+    function balanceOf(address _owner) public view returns (uint _balance) {
         return uint(getMockReturnValue("balanceOf", keccak256(_owner)));
     }
 
@@ -93,17 +92,29 @@ contract MockERC20Token is MockContract {
         mockReturnValue("balanceOf", keccak256(_owner), bytes32(_balance));
     }
 
-    function allowance(address _owner, address _to) public view returns(uint _allowance) {
-        return uint(getMockReturnValue("allowance", keccak256(_owner, _to)));
+    function ownerOf(uint _tokenId) public view returns (address _owner) {
+        return address(getMockReturnValue("ownerOf", keccak256(_tokenId)));
     }
 
-    function mockAllowanceFor(address _owner, address _to, uint _allowance) public {
-        mockReturnValue("allowance", keccak256(_owner, _to), bytes32(_allowance));
+    function mockOwnerOfFor(uint _tokenId, address _owner) public {
+        mockReturnValue("ownerOf", keccak256(_tokenId), bytes32(_owner));
+    }
+
+    function getApproved(uint _tokenId) public view returns (address _approved) {
+        return address(getMockReturnValue("getApproved", keccak256(_tokenId)));
+    }
+
+    function mockGetApprovedFor(uint _tokenId, address _approved) public {
+        mockReturnValue("getApproved", keccak256(_tokenId), bytes32(_approved));
+    }
+
+    function implementsERC721() public pure returns (bool _implementsERC721) {
+        return true;
     }
 
     function getTransferArgsSignature(
         address _to,
-        uint _amount
+        uint _tokenId
     )
         internal
         pure
@@ -111,14 +122,14 @@ contract MockERC20Token is MockContract {
     {
         return keccak256(
             _to,
-            _amount
+            _tokenId
         );
     }
 
     function getTransferFromArgsSignature(
         address _from,
         address _to,
-        uint _amount
+        uint _tokenId
     )
         internal
         pure
@@ -127,7 +138,7 @@ contract MockERC20Token is MockContract {
         return keccak256(
             _from,
             _to,
-            _amount
+            _tokenId
         );
     }
 
@@ -135,6 +146,6 @@ contract MockERC20Token is MockContract {
         internal
         returns (string[10] functionNames)
     {
-        return ["transfer", "transferFrom", "allowance", "balanceOf", "", "", "", "", "", ""];
+        return ["transfer", "transferFrom", "ownerOf", "balanceOf", "getApproved", "", "", "", "", ""];
     }
 }
