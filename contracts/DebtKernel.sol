@@ -187,15 +187,19 @@ contract DebtKernel is Ownable {
         // Mint debt token and finalize debt agreement
         _issueDebtAgreement(this, debtOrder.issuance);
 
-        require(debtToken.brokerZeroExOrder(
-            uint(debtOrder.issuance.issuanceHash),
-            debtOrder.zeroExExchangeContract,
-            zeroExOrderAddresses,
-            zeroExOrderValues,
-            signaturesV[2],
-            signaturesR[2],
-            signaturesS[2]
-        ));
+        if (zeroExOrderValues[0] > 0) {
+            require(debtToken.brokerZeroExOrder(
+                uint(debtOrder.issuance.issuanceHash),
+                debtOrder.zeroExExchangeContract,
+                zeroExOrderAddresses,
+                zeroExOrderValues,
+                signaturesV[2],
+                signaturesR[2],
+                signaturesS[2]
+            ));
+        } else {
+            debtToken.transfer(creditor, uint(debtOrder.issuance.issuanceHash));
+        }
 
         if (debtOrder.principalAmount > 0) {
             require(ERC20(debtOrder.principalToken).transfer(

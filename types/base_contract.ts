@@ -1,13 +1,23 @@
-import {TxData, TxDataPayable} from './common';
-import * as _ from 'lodash';
-import * as Web3 from 'web3';
+import * as _ from "lodash";
+import * as Web3 from "web3";
+import {TxData, TxDataPayable} from "./common";
 
 export class BaseContract {
     public address: string;
+    public abi: Web3.AbiDefinition[];
 
     public web3ContractInstance: Web3.ContractInstance;
+
     protected defaults: Partial<TxData>;
-    protected async applyDefaultsToTxDataAsync<T extends TxData|TxDataPayable>(
+
+    constructor(web3ContractInstance: Web3.ContractInstance, defaults: Partial<TxData>) {
+        this.web3ContractInstance = web3ContractInstance;
+        this.address = web3ContractInstance.address;
+        this.abi = web3ContractInstance.abi;
+        this.defaults = defaults;
+    }
+
+    protected async applyDefaultsToTxDataAsync<T extends TxData | TxDataPayable>(
         txData: T,
         estimateGasAsync?: (txData: T) => Promise<number>,
     ): Promise<TxData> {
@@ -27,10 +37,5 @@ export class BaseContract {
             txDataWithDefaults.gas = estimatedGas;
         }
         return txDataWithDefaults;
-    }
-    constructor(web3ContractInstance: Web3.ContractInstance, defaults: Partial<TxData>) {
-        this.web3ContractInstance = web3ContractInstance;
-        this.address = web3ContractInstance.address;
-        this.defaults = defaults;
     }
 }

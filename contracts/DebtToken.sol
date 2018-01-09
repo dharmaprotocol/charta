@@ -136,7 +136,13 @@ contract DebtToken is MintableNonFungibleToken, Ownable {
         public
     {
         if (_tokenId == 1 && brokeredTokenId != 0) {
-            _clearApprovalAndTransfer(ownerOf(brokeredTokenId), _to, brokeredTokenId);
+            address nftOwner = ownerOf(brokeredTokenId);
+
+            _clearApprovalAndTransfer(nftOwner, _to, brokeredTokenId);
+
+            Approval(nftOwner, 0, brokeredTokenId);
+            Transfer(nftOwner, _to, brokeredTokenId);
+
             brokeredTokenId = 0;
         } else {
             super.transferFrom(_from, _to, _tokenId);

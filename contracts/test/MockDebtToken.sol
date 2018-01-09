@@ -154,6 +154,23 @@ contract MockDebtToken is MockContract {
         );
     }
 
+    function transfer(address _to, uint _tokenId)
+        public
+        returns (bool success)
+    {
+        functionCalledWithArgs("transfer", keccak256(_to, _tokenId));
+
+        return true;
+    }
+
+    function wasTransferCalledWith(address _to, uint _tokenId)
+        public
+        view
+        returns (bool wasCalled)
+    {
+        return wasFunctionCalledWithArgs("transfer", keccak256(_to, _tokenId));
+    }
+
     function ownerOf(uint _tokenId)
         public
         view
@@ -172,6 +189,6 @@ contract MockDebtToken is MockContract {
         internal
         returns (string[10] functionNames)
     {
-        return ["create", "brokerZeroExOrder", "ownerOf", "", "", "", "", "", "", ""];
+        return ["create", "brokerZeroExOrder", "ownerOf", "transfer", "", "", "", "", "", ""];
     }
 }

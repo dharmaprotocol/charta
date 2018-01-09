@@ -68,8 +68,8 @@ contract("Debt Registry (Unit Test)", async (ACCOUNTS) => {
                         options?: TxDataPayable)
         => Promise<string>;
     let modifyEntryBeneficiaryFn: (entry: DebtRegistryEntry,
-                                newOwner: Address,
-                                options?: TxDataPayable)
+                                   newOwner: Address,
+                                   options?: TxDataPayable)
         => Promise<string>;
 
     const ARBITRARY_TERMS_CONTRACT_PARAMS
@@ -126,8 +126,8 @@ contract("Debt Registry (Unit Test)", async (ACCOUNTS) => {
         };
 
         modifyEntryBeneficiaryFn = async (entry: DebtRegistryEntry,
-                                       newBeneficiary: Address,
-                                       options?: TxDataPayable) => {
+                                          newBeneficiary: Address,
+                                          options?: TxDataPayable) => {
             return registry.modifyBeneficiary.sendTransactionAsync(
                 entry.getIssuanceHash(),
                 newBeneficiary,
@@ -232,6 +232,7 @@ contract("Debt Registry (Unit Test)", async (ACCOUNTS) => {
                         entry.getUnderwriterRiskRating(),
                         entry.getTermsContract(),
                         entry.getTermsContractParameters(),
+                        res.blockNumber,
                 ];
 
                 _.forEach(retrievedEntry, (value: any, i: number) => {
@@ -275,6 +276,7 @@ contract("Debt Registry (Unit Test)", async (ACCOUNTS) => {
                         entry.getUnderwriterRiskRating(),
                         entry.getTermsContract(),
                         entry.getTermsContractParameters(),
+                        res.blockNumber,
                 ];
 
                 _.forEach(retrievedEntry, (value: any, i: number) => {

@@ -239,29 +239,40 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
                     )).to.eventually.be.true;
                 });
 
-                it("should fill 0x order to swap debt token for principal + creditor fee amount", async () => {
-                    await expect(mockDebtToken.wasBrokerZeroExOrderCalledWith.callAsync(
-                        new BigNumber(debtOrder.getIssuanceCommitment().getHash()),
-                        mockExchange.address,
-                        [
-                            debtOrder.getCreditor(), // maker
-                            NULL_ADDRESS, // taker
-                            mockPrincipalToken.address, // makerToken
-                            mockDebtToken.address, // takerToken
-                            NULL_ADDRESS, // feeRecipient
-                        ],
-                        [
-                            debtOrder.getPrincipalAmount().plus(debtOrder.getCreditorFee()), // makerTokenAmount
-                            new BigNumber(1), // takerTokenAmount
-                            new BigNumber(0), // makerFee
-                            new BigNumber(0), // takerFee
-                            debtOrder.getExpiration(), // expirationTimestampInSec
-                            new BigNumber(debtOrder.getDebtorSignatureHash()), // salt
-                        ],
-                        debtOrder.getCreditorSignature().v,
-                        debtOrder.getCreditorSignature().r,
-                        debtOrder.getCreditorSignature().s,
-                    )).to.eventually.be.true;
+                it("fills 0x order to swap debt token for principal + creditor fee amount (if priced)", async () => {
+                    if (debtOrder.getPrincipalAmount().plus(debtOrder.getCreditorFee()).gt(0)) {
+                        await expect(mockDebtToken.wasBrokerZeroExOrderCalledWith.callAsync(
+                            new BigNumber(debtOrder.getIssuanceCommitment().getHash()),
+                            mockExchange.address,
+                            [
+                                debtOrder.getCreditor(), // maker
+                                NULL_ADDRESS, // taker
+                                mockPrincipalToken.address, // makerToken
+                                mockDebtToken.address, // takerToken
+                                NULL_ADDRESS, // feeRecipient
+                            ],
+                            [
+                                debtOrder.getPrincipalAmount().plus(debtOrder.getCreditorFee()), // makerTokenAmount
+                                new BigNumber(1), // takerTokenAmount
+                                new BigNumber(0), // makerFee
+                                new BigNumber(0), // takerFee
+                                debtOrder.getExpiration(), // expirationTimestampInSec
+                                new BigNumber(debtOrder.getDebtorSignatureHash()), // salt
+                            ],
+                            debtOrder.getCreditorSignature().v,
+                            debtOrder.getCreditorSignature().r,
+                            debtOrder.getCreditorSignature().s,
+                        )).to.eventually.be.true;
+                    }
+                });
+
+                it("transfers newly minted debt token to creditor (if unpriced)", async () => {
+                    if (debtOrder.getPrincipalAmount().plus(debtOrder.getCreditorFee()).equals(0)) {
+                        await expect(mockDebtToken.wasTransferCalledWith.callAsync(
+                            debtOrder.getCreditor(),
+                            new BigNumber(debtOrder.getIssuanceCommitment().getHash()),
+                        )).to.eventually.be.true;
+                    }
                 });
 
                 it("should transfer underwriter fee to underwriter", async () => {
@@ -301,7 +312,7 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
                         debtOrder.getRelayerFee(),
                     ));
                 });
-            }
+            };
         };
 
         describe("User fills valid, consensual debt order", () => {
@@ -777,8 +788,8 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
             describe("...with mismatched underwriter", () => {
                 before(async () => {
                     mismatchedOrder = await orderFactory.generateDebtOrder({
-                        underwriter: ATTACKER,
                         salt: order.getIssuanceCommitment().getSalt(),
+                        underwriter: ATTACKER,
                     });
                 });
 

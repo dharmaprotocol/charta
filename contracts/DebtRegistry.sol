@@ -44,6 +44,7 @@ contract DebtRegistry is Ownable {
         uint underwriterRiskRating;
         address termsContract;
         bytes32 termsContractParameters;
+        uint issuanceBlockNumber;
     }
 
     // Primary registry mapping issuance hashes to their corresponding entries
@@ -118,7 +119,8 @@ contract DebtRegistry is Ownable {
             _underwriter,
             _underwriterRiskRating,
             _termsContract,
-            _termsContractParameters
+            _termsContractParameters,
+            block.number
         );
 
         bytes32 issuanceHash = _getIssuanceHash(entry, _debtor, _salt);
@@ -190,7 +192,7 @@ contract DebtRegistry is Ownable {
     function get(bytes32 issuanceHash)
         public
         view
-        returns(address, address, address, uint, address, bytes32)
+        returns(address, address, address, uint, address, bytes32, uint)
     {
         return (
             registry[issuanceHash].version,
@@ -198,7 +200,8 @@ contract DebtRegistry is Ownable {
             registry[issuanceHash].underwriter,
             registry[issuanceHash].underwriterRiskRating,
             registry[issuanceHash].termsContract,
-            registry[issuanceHash].termsContractParameters
+            registry[issuanceHash].termsContractParameters,
+            registry[issuanceHash].issuanceBlockNumber
         );
     }
 
@@ -219,6 +222,14 @@ contract DebtRegistry is Ownable {
             registry[issuanceHash].termsContract,
             registry[issuanceHash].termsContractParameters
         );
+    }
+
+    function getIssuanceBlockNumber(bytes32 issuanceHash)
+        public
+        view
+        returns (uint)
+    {
+        return registry[issuanceHash].issuanceBlockNumber;
     }
 
     function getAuthorizedInsertAgents()
