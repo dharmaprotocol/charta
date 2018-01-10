@@ -6,6 +6,7 @@ const MockERC20Token = artifacts.require("MockERC20Token");
 const MockERC721Token = artifacts.require("MockERC721Token");
 const MockDebtToken = artifacts.require("MockDebtToken");
 const MockTermsContract = artifacts.require("MockTermsContract");
+const MintableNonFungibleToken = artifacts.require("MintableNonFungibleToken");
 
 module.exports = (deployer: any, network: string) => {
     if (network !== "live") {
@@ -17,5 +18,6 @@ module.exports = (deployer: any, network: string) => {
         deployer.deploy(MockERC721Token);
         deployer.deploy(MockDebtToken);
         deployer.deploy(MockTermsContract);
+        deployer.deploy(MintableNonFungibleToken);
     }
 };

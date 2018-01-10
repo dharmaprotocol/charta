@@ -14,8 +14,9 @@ module.exports = (deployer: any, network: string, accounts: string[]) => {
         await registry.addAuthorizedInsertAgent.sendTransactionAsync(token.address);
         await registry.addAuthorizedEditAgent.sendTransactionAsync(token.address);
 
-        // Authorize kernel contract to mint debt tokens
+        // Authorize kernel contract to mint and broker debt tokens
         await token.addAuthorizedMintAgent.sendTransactionAsync(kernel.address);
+        await token.addAuthorizedBrokerageAgent.sendTransactionAsync(kernel.address);
 
         // Set kernel to point at current debt token contract
         await kernel.setDebtToken.sendTransactionAsync(token.address);
