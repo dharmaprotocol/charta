@@ -224,6 +224,22 @@ contract("Repayment Router (Integration Test)", async (ACCOUNTS) => {
                 );
             });
 
+            describe("...when repayment router is paused", () => {
+                before(async () => {
+                    await router.pause.sendTransactionAsync({ from: CONTRACT_OWNER });
+                });
+
+                after(async () => {
+                    await router.unpause.sendTransactionAsync({ from: CONTRACT_OWNER });
+                });
+
+                it("should throw", async () => {
+                    await expect(router.repay.sendTransactionAsync(agreementId,
+                        Units.ether(1.1), principalToken.address, { from: PAYER }))
+                        .to.eventually.be.rejectedWith(REVERT_ERROR);
+                });
+            });
+
             describe("...with insufficient balance for payment", () => {
                 before(async () => {
                     payerBalanceBefore = await principalToken.balanceOf.callAsync(PAYER);
@@ -430,6 +446,23 @@ contract("Repayment Router (Integration Test)", async (ACCOUNTS) => {
 
                 await debtToken.transfer.sendTransactionAsync(BENEFICIARY_2,
                     new BigNumber(agreementId), { from: BENEFICIARY_1 });
+            });
+
+            describe("...when repayment router is paused", () => {
+                before(async () => {
+                    await router.pause.sendTransactionAsync({ from: CONTRACT_OWNER });
+                });
+
+                after(async () => {
+                    await router.unpause.sendTransactionAsync({ from: CONTRACT_OWNER });
+                });
+
+                it("should throw", async () => {
+                    await expect(router.repayNFT.sendTransactionAsync(
+                        agreementId, EXAMPLE_NFT_ID, principalNFT.address,
+                        { from: PAYER }))
+                        .to.eventually.be.rejectedWith(REVERT_ERROR);
+                });
             });
 
             describe("...with token that payer doesn't own", () => {

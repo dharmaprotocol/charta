@@ -20,12 +20,12 @@ pragma solidity 0.4.18;
 
 import "./DebtToken.sol";
 import "./interfaces/ZeroExExchange.sol";
-import "zeppelin-solidity/contracts/ownership/Ownable.sol";
+import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
 import "zeppelin-solidity/contracts/token/ERC20.sol";
 
 
-contract DebtKernel is Ownable {
+contract DebtKernel is Pausable {
     using SafeMath for uint;
 
     enum Errors {
@@ -114,47 +114,6 @@ contract DebtKernel is Ownable {
         debtToken = DebtToken(_debtTokenAddress);
     }
 
-    function issueDebtAgreement(
-        address[4] issuanceAddresses,
-        uint[2] issuanceValues,
-        bytes32 termsContractParameters,
-        bytes32 underwriterSignatureR,
-        bytes32 underwriterSignatureS,
-        uint8 underwriterSignatureV
-    )
-        public
-        returns (bytes32 _issuanceHash)
-    {
-        Issuance memory issuance = Issuance({
-            version: issuanceAddresses[0],
-            debtor: issuanceAddresses[1],
-            underwriter: issuanceAddresses[2],
-            underwriterRiskRating: issuanceValues[0],
-            termsContract: issuanceAddresses[3],
-            termsContractParameters: termsContractParameters,
-            salt: issuanceValues[1],
-            issuanceHash: bytes32(0)
-        });
-
-        require(issuance.debtor == msg.sender);
-
-        issuance.issuanceHash = getIssuanceHash(issuance);
-
-        // Validate underwriter's signature if an underwriter's
-        // address is present
-        if (issuance.underwriter != address(0)) {
-            require(isValidSignature(
-                issuance.underwriter,
-                issuance.issuanceHash,
-                underwriterSignatureV,
-                underwriterSignatureR,
-                underwriterSignatureS
-            ));
-        }
-
-        return _issueDebtAgreement(issuance.debtor, issuance);
-    }
-
     function fillDebtOrder(
         address creditor,
         address[7] orderAddresses,
@@ -165,6 +124,7 @@ contract DebtKernel is Ownable {
         uint8[3] signaturesV
     )
         public
+        whenNotPaused
         returns (bytes32 _issuanceHash)
     {
         DebtOrder memory debtOrder = getDebtOrder(orderAddresses, orderValues, orderBytes32);
@@ -235,6 +195,7 @@ contract DebtKernel is Ownable {
         return debtOrder.issuance.issuanceHash;
     }
 
+    // TODO: add tests for cancellations
     function cancelIssuance(
         address version,
         address debtor,
@@ -245,6 +206,7 @@ contract DebtKernel is Ownable {
         uint salt
     )
         public
+        whenNotPaused
     {
         require(msg.sender == debtor || msg.sender == underwriter);
 
@@ -267,6 +229,7 @@ contract DebtKernel is Ownable {
         bytes32[1] orderBytes32
     )
         public
+        whenNotPaused
     {
         DebtOrder memory debtOrder = getDebtOrder(orderAddresses, orderValues, orderBytes32);
 

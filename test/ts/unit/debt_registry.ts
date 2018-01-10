@@ -14,6 +14,7 @@ import {
     UInt,
 } from "../../../types/common";
 import {DebtRegistryContract} from "../../../types/generated/debt_registry";
+import {SimpleInterestTermsContractContract} from "../../../types/generated/simple_interest_terms_contract";
 import {DebtRegistryEntry} from "../../../types/registry/entry";
 import {
     LogAddAuthorizedEditAgent,
@@ -36,6 +37,7 @@ BigNumberSetup.configure();
 
 const repaymentRouterContract = artifacts.require("RepaymentRouter");
 const debtRegistryContract = artifacts.require("DebtRegistry");
+const termsContract = artifacts.require("SimpleInterestTermsContract");
 
 contract("Debt Registry (Unit Test)", async (ACCOUNTS) => {
     const CONTRACT_OWNER = ACCOUNTS[0];
@@ -59,7 +61,6 @@ contract("Debt Registry (Unit Test)", async (ACCOUNTS) => {
     const NEW_CONTRACT_OWNER = ACCOUNTS[11];
 
     let registry: DebtRegistryContract;
-    let termsContractAddress: Address;
 
     // We define utility funcitons for the primary state-changing
     // operations permitted on the registry.
@@ -78,17 +79,14 @@ contract("Debt Registry (Unit Test)", async (ACCOUNTS) => {
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
 
     before(async () => {
-        const truffleContract = await debtRegistryContract.deployed();
+        const registryTruffleContract = await debtRegistryContract.deployed();
 
         // The typings we use ingest vanilla Web3 contracts, so we convert the
         // contract instance deployed by truffle into a Web3 contract instance
         const registryWeb3Contract = web3.eth
-            .contract(debtRegistryContract.abi).at(truffleContract.address);
+            .contract(debtRegistryContract.abi).at(registryTruffleContract.address);
 
         registry = new DebtRegistryContract(registryWeb3Contract, TX_DEFAULTS);
-
-        // TODO: Replace with example terms contract
-        termsContractAddress = NULL_ADDRESS;
 
         // The version of an entry is mapped to the address of
         // the current RepaymentRouter used in the debt agreement
@@ -494,6 +492,42 @@ contract("Debt Registry (Unit Test)", async (ACCOUNTS) => {
                 });
             });
 
+            describe("No inserts when debt registry is paused", () => {
+                before(async () => {
+                    await registry.pause.sendTransactionAsync({ from: CONTRACT_OWNER });
+                });
+
+                after(async () => {
+                    await registry.unpause.sendTransactionAsync({ from: CONTRACT_OWNER });
+                });
+
+                it("should throw", async () => {
+                    const entry = generateEntryFn();
+                    await expect(insertEntryFn(entry))
+                        .to.eventually.be.rejectedWith(REVERT_ERROR);
+                });
+            });
+
+            describe("No edits when debt registry is paused", () => {
+                let entry: DebtRegistryEntry;
+
+                before(async () => {
+                    entry = generateEntryFn();
+                    await insertEntryFn(entry, { from: AGENT_1 });
+
+                    await registry.pause.sendTransactionAsync({ from: CONTRACT_OWNER });
+                });
+
+                after(async () => {
+                    await registry.unpause.sendTransactionAsync({ from: CONTRACT_OWNER });
+                });
+
+                it("should throw", async () => {
+                    await expect(modifyEntryBeneficiaryFn(entry, BENEFICIARY_2,
+                        { from: AGENT_1 })).to.eventually.be.rejectedWith(REVERT_ERROR);
+                });
+            });
+
             describe("Only owner can authorize and revoke agents", () => {
                 it("should throw if non-owner authorizes agent", async () => {
                     await expect(registry.addAuthorizedInsertAgent.sendTransactionAsync(ATTACKER,
@@ -526,5 +560,4 @@ contract("Debt Registry (Unit Test)", async (ACCOUNTS) => {
             });
         });
     });
-    // TODO: Add escape hatch tests
 });

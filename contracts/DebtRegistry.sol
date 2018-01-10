@@ -20,10 +20,10 @@ pragma solidity 0.4.18;
 
 import "./libraries/PermissionsLib.sol";
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
-import "zeppelin-solidity/contracts/ownership/Ownable.sol";
+import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
 
 
-contract DebtRegistry is Ownable {
+contract DebtRegistry is Pausable {
     using SafeMath for uint;
     using PermissionsLib for PermissionsLib.Permissions;
 
@@ -111,6 +111,7 @@ contract DebtRegistry is Ownable {
     )
         public
         onlyAuthorizedToInsert
+        whenNotPaused
         returns (bytes32 _issuanceHash)
     {
         Entry memory entry = Entry(
@@ -144,6 +145,7 @@ contract DebtRegistry is Ownable {
     function modifyBeneficiary(bytes32 issuanceHash, address newBeneficiary)
         public
         onlyAuthorizedToEdit
+        whenNotPaused
         onlyExtantEntry(issuanceHash)
     {
         address previousBeneficiary = registry[issuanceHash].beneficiary;
@@ -159,6 +161,7 @@ contract DebtRegistry is Ownable {
 
     function addAuthorizedInsertAgent(address agent)
         public
+        whenNotPaused
         onlyOwner
     {
         entryInsertPermissions.authorize(agent);

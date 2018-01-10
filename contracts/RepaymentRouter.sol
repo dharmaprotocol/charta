@@ -21,10 +21,11 @@ pragma solidity 0.4.18;
 import "./DebtRegistry.sol";
 import "./TermsContract.sol";
 import "zeppelin-solidity/contracts/token/ERC20.sol";
+import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
 import "NonFungibleToken/contracts/ERC721.sol";
 
 
-contract RepaymentRouter {
+contract RepaymentRouter is Pausable {
     DebtRegistry public debtRegistry;
 
     enum Errors {
@@ -62,6 +63,7 @@ contract RepaymentRouter {
         address tokenAddress
     )
         public
+        whenNotPaused
         returns (uint _amountRepaid)
     {
         require(tokenAddress != address(0));
@@ -109,6 +111,7 @@ contract RepaymentRouter {
         address tokenAddress
     )
         public
+        whenNotPaused
         returns (uint _tokenId)
     {
         require(tokenAddress != address(0));

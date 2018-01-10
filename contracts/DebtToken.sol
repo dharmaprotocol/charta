@@ -20,12 +20,12 @@ pragma solidity 0.4.18;
 
 import "./DebtRegistry.sol";
 import "NonFungibleToken/contracts/MintableNonFungibleToken.sol";
-import "zeppelin-solidity/contracts/ownership/Ownable.sol";
+import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
 import "zeppelin-solidity/contracts/token/ERC20.sol";
 import "./interfaces/ZeroExExchange.sol";
 
 
-contract DebtToken is MintableNonFungibleToken, Ownable {
+contract DebtToken is MintableNonFungibleToken, Pausable {
     using PermissionsLib for PermissionsLib.Permissions;
 
     string public name  = "DebtToken";
@@ -54,6 +54,7 @@ contract DebtToken is MintableNonFungibleToken, Ownable {
         uint _salt
     )
         public
+        whenNotPaused
         returns (uint _tokenId)
     {
         require(tokenCreationPermissions.isAuthorized(msg.sender));
@@ -105,6 +106,7 @@ contract DebtToken is MintableNonFungibleToken, Ownable {
         bytes32 _s
     )
         public
+        whenNotPaused
         returns (bool _success)
     {
         require(tokenBrokeragePermissions.isAuthorized(msg.sender));
@@ -134,6 +136,7 @@ contract DebtToken is MintableNonFungibleToken, Ownable {
         uint _tokenId
     )
         public
+
     {
         if (_tokenId == 1 && brokeredTokenId != 0) {
             address nftOwner = ownerOf(brokeredTokenId);
@@ -177,6 +180,17 @@ contract DebtToken is MintableNonFungibleToken, Ownable {
         returns (address[] _agents)
     {
         return tokenBrokeragePermissions.getAuthorizedAgents();
+    }
+
+    function _clearApprovalAndTransfer(
+        address _from,
+        address _to,
+        uint _tokenId
+    )
+        internal
+        whenNotPaused
+    {
+        super._clearApprovalAndTransfer(_from, _to, _tokenId);
     }
 
     function _setTokenOwner(uint _tokenId, address _to)

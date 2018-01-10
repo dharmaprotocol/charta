@@ -524,11 +524,35 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
         before(resetAndInit);
 
         describe("User fills valid, consensual debt order", () => {
+            describe("...and debt kernel is paused by owner", async () => {
+                before(async () => {
+                    debtOrder = await orderFactory.generateDebtOrder();
+                    await kernel.pause.sendTransactionAsync({ from: CONTRACT_OWNER });
+                });
+
+                after(async () => {
+                    await kernel.unpause.sendTransactionAsync({ from: CONTRACT_OWNER });
+                });
+
+                it("should throw", async () => {
+                    await expect(kernel.fillDebtOrder.sendTransactionAsync(
+                        debtOrder.getCreditor(),
+                        debtOrder.getOrderAddresses(),
+                        debtOrder.getOrderValues(),
+                        debtOrder.getOrderBytes32(),
+                        debtOrder.getSignaturesR(),
+                        debtOrder.getSignaturesS(),
+                        debtOrder.getSignaturesV(),
+                    )).to.eventually.be.rejectedWith(REVERT_ERROR);
+                });
+            });
+
             describe("...with underwriter and relayer", testOrderFill(async () => {
                 debtOrder = await orderFactory.generateDebtOrder({
                     principalTokenAddress: dummyMKRToken.address,
                 });
             }));
+
             describe("...with neither underwriter nor relayer", testOrderFill(async () => {
                 debtOrder = await orderFactory.generateDebtOrder({
                     creditorFee: new BigNumber(0),
