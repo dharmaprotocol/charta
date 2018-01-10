@@ -25,6 +25,15 @@ import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
 import "NonFungibleToken/contracts/ERC721.sol";
 
 
+/**
+ * The RepaymentRouter routes allowers payers to make repayments on any
+ * given debt agreement in any given token by routing the payments to
+ * the debt agreement's beneficiary.  Additionally, the router acts
+ * as a trusted oracle to the debt agreement's terms contract, informing
+ * it of exactly what payments have been made in what quantity and in what token.
+ *
+ * Authors: Jaynti Kanani -- Github: jdkanani, Nadav Hollander -- Github: nadavhollander
+ */
 contract RepaymentRouter is Pausable {
     DebtRegistry public debtRegistry;
 
@@ -53,10 +62,18 @@ contract RepaymentRouter is Pausable {
 
     event LogError(uint8 indexed _errorId, bytes32 indexed _agreementId);
 
+    /**
+     * Constructor points the repayment router at the deployed registry contract.
+     */
     function RepaymentRouter (address _debtRegistry) public {
         debtRegistry = DebtRegistry(_debtRegistry);
     }
 
+    /**
+     * Given an agreement id (synonymous to 'issuanceHash' in the debt registry), routes a repayment
+     * of a given ERC20 token  to the debt's current beneficiary, and reports the repayment
+     * to the debt's associated terms contract.
+     */
     function repay(
         bytes32 agreementId,
         uint256 amount,
@@ -105,6 +122,11 @@ contract RepaymentRouter is Pausable {
         return amount;
     }
 
+    /**
+     * Given an agreement id (synonymous to 'issuanceHash' in the debt registry), routes a repayment
+     * of a given ERC721 token  to the debt's current beneficiary and reports the repayment
+     * to the debt's associated terms contract.
+     */
     function repayNFT(
         bytes32 agreementId,
         uint tokenId,
