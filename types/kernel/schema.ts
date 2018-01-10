@@ -23,6 +23,7 @@ export interface Signatories {
 }
 
 export interface OrderParams {
+    version: Address;
     debtor: Address;
     debtKernelContract: Address;
     debtTokenContract: Address;

@@ -419,7 +419,7 @@ contract DebtKernel is Pausable {
 
     function getDebtOrder(address[7] orderAddresses, uint[8] orderValues, bytes32[1] orderBytes32)
         internal
-        pure
+        view
         returns (DebtOrder _debtOrder)
     {
         DebtOrder memory debtOrder = DebtOrder({
@@ -539,10 +539,11 @@ contract DebtKernel is Pausable {
 
     function getDebtOrderHash(DebtOrder debtOrder)
         internal
-        pure
+        view
         returns (bytes32 _debtorMessageHash)
     {
         return keccak256(
+            address(this),
             debtOrder.issuance.issuanceHash,
             debtOrder.underwriterFee,
             debtOrder.zeroExExchangeContract,

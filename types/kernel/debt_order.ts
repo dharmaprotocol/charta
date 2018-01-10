@@ -1,15 +1,18 @@
+import {Order, ZeroEx} from "0x.js";
 import {BigNumber} from "bignumber.js";
+import ethUtil = require("ethereumjs-util");
 import * as Web3 from "web3";
-import {ZeroEx, Order} from "0x.js";
-import {OrderParams} from "./schema";
+
 import {IssuanceCommitment} from "./issuance_commitment";
+import {OrderParams} from "./schema";
+import {ECDSASignature, SignableMessage} from "./signable_message";
+
 import {
     Address,
     Bytes32,
 } from "../common";
-import {ECDSASignature, SignableMessage} from "./signable_message";
+
 import * as solidity from "../../utils/solidity";
-import ethUtil = require("ethereumjs-util");
 
 const NULL_ADDRESS = "0x0000000000000000000000000000000000000000";
 const NULL_SIGNATURE = { r: "0x0", s: "0x0", v: 0 };
@@ -26,6 +29,10 @@ export class DebtOrder extends SignableMessage {
     constructor(params: OrderParams) {
         super();
         this.params = params;
+    }
+
+    public getVersion(): Address {
+        return this.params.version;
     }
 
     public getIssuanceCommitment(): IssuanceCommitment {
@@ -82,6 +89,7 @@ export class DebtOrder extends SignableMessage {
 
     public getDebtorSignatureHash(): Bytes32 {
         const hash = solidity.SHA3([
+            this.getVersion(),
             this.getIssuanceCommitment().getHash(),
             this.getUnderwriterFee(),
             this.getZeroExExchangeContract(),

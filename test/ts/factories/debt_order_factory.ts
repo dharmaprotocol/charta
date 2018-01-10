@@ -36,6 +36,7 @@ export class DebtOrderFactory {
             relayer: params.relayer,
             relayerFee: params.relayerFee,
             underwriterFee: params.underwriterFee,
+            version: params.debtOrderVersion,
             zeroExExchangeContract: params.zeroExExchangeContract,
         });
 

@@ -139,6 +139,7 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
         const defaultOrderParams = {
             creditorFee: Units.ether(0.002),
             debtKernelContract: kernel.address,
+            debtOrderVersion: kernel.address,
             debtTokenContract: debtToken.address,
             debtor: DEBTOR,
             debtorFee: Units.ether(0.001),

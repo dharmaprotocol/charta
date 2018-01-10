@@ -146,6 +146,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
         defaultOrderParams = {
             creditorFee: Units.ether(0.002),
             debtKernelContract: kernel.address,
+            debtOrderVersion: kernel.address,
             debtTokenContract: debtTokenContract.address,
             debtor: DEBTOR_1,
             debtorFee: Units.ether(0.001),
