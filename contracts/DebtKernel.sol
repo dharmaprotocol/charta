@@ -25,6 +25,15 @@ import "zeppelin-solidity/contracts/math/SafeMath.sol";
 import "zeppelin-solidity/contracts/token/ERC20.sol";
 
 
+/**
+ * The DebtKernel is the hub of all business logic governing how and when
+ * debt orders can be filled and cancelled.  All logic that determines
+ * whether a debt order is valid & consensual is contained herein,
+ * as well as the mechanisms that transfer fees to keepers and
+ * principal payments to debtors.
+ *
+ * Author: Nadav Hollander -- Github: nadavhollander
+ */
 contract DebtKernel is Pausable {
     using SafeMath for uint;
 
@@ -111,19 +120,34 @@ contract DebtKernel is Pausable {
         bytes32 debtOrderHash;
     }
 
+    ////////////////////////
+    // EXTERNAL FUNCTIONS //
+    ////////////////////////
+
+    /**
+     * Constructor for kernel.
+     */
     function DebtKernel(address zeroExTokenTransferProxyContract)
         public
     {
         ZEROEX_TOKEN_TRANSFER_PROXY_ADDRESS = zeroExTokenTransferProxyContract;
     }
 
-    function setDebtToken(address _debtTokenAddress)
+    /**
+     * Allows contract owner to set the currently used debt token contract.
+     * Function exists to maximize upgradeability of individual modules
+     * in the entire system.
+     */
+    function setDebtToken(address debtTokenAddress)
         public
         onlyOwner
     {
-        debtToken = DebtToken(_debtTokenAddress);
+        debtToken = DebtToken(debtTokenAddress);
     }
 
+    /**
+     * Fills a given debt order if it is valid and consensual.
+     */
     function fillDebtOrder(
         address creditor,
         address[7] orderAddresses,
@@ -142,6 +166,7 @@ contract DebtKernel is Pausable {
         var (zeroExOrderAddresses, zeroExOrderValues, zeroExOrderHash) =
             getZeroExOrderParameters(debtOrder, creditor);
 
+        // Assert order's validity & consensuality
         if (!assertDebtOrderValidityInvariants(debtOrder) ||
             !assertDebtOrderConsensualityInvariants(
                 debtOrder,
@@ -155,8 +180,11 @@ contract DebtKernel is Pausable {
         }
 
         // Mint debt token and finalize debt agreement
-        _issueDebtAgreement(this, debtOrder.issuance);
+        issueDebtAgreement(this, debtOrder.issuance);
 
+        // If the order is "priced" -- i.e. creditor has to exchange tokens for
+        // the issued debt, we fill a 0x order.  If not, we simply transfer
+        // the debtor the new debt token.
         if (zeroExOrderValues[0] > 0) {
             require(debtToken.brokerZeroExOrder(
                 uint(debtOrder.issuance.issuanceHash),
@@ -171,6 +199,7 @@ contract DebtKernel is Pausable {
             debtToken.transfer(creditor, uint(debtOrder.issuance.issuanceHash));
         }
 
+        // Transfer principal to debtor
         if (debtOrder.principalAmount > 0) {
             require(ERC20(debtOrder.principalToken).transfer(
                 debtOrder.issuance.debtor,
@@ -178,6 +207,7 @@ contract DebtKernel is Pausable {
             ));
         }
 
+        // Transfer underwriter fee to underwriter
         if (debtOrder.underwriterFee > 0) {
             require(ERC20(debtOrder.principalToken).transfer(
                 debtOrder.issuance.underwriter,
@@ -185,6 +215,7 @@ contract DebtKernel is Pausable {
             ));
         }
 
+        // Transfer relayer fee to relayer
         if (debtOrder.relayerFee > 0) {
             require(ERC20(debtOrder.principalToken).transfer(
                 debtOrder.relayer,
@@ -205,7 +236,11 @@ contract DebtKernel is Pausable {
         return debtOrder.issuance.issuanceHash;
     }
 
-    // TODO: add tests for cancellations
+    /**
+     * Allows both underwriters and debtors to prevent a debt
+     * issuance in which they're involved from being used in
+     * a future debt order.
+     */
     function cancelIssuance(
         address version,
         address debtor,
@@ -235,6 +270,10 @@ contract DebtKernel is Pausable {
         LogIssuanceCancelled(issuance.issuanceHash, msg.sender);
     }
 
+    /**
+     * Allows a debtor to cancel a debt order before it's been filled
+     * -- preventing any counterparty from filling it in the future.
+     */
     function cancelDebtOrder(
         address[7] orderAddresses,
         uint[8] orderValues,
@@ -252,14 +291,18 @@ contract DebtKernel is Pausable {
         LogDebtOrderCancelled(debtOrder.debtOrderHash, msg.sender);
     }
 
-    function _issueDebtAgreement(address beneficiary, Issuance issuance)
+    ////////////////////////
+    // INTERNAL FUNCTIONS //
+    ////////////////////////
+
+    /**
+     * Helper function that mints debt token associated with the
+     * given issuance and grants it to the beneficiary.
+     */
+    function issueDebtAgreement(address beneficiary, Issuance issuance)
         internal
         returns (bytes32 _issuanceHash)
     {
-        // If issuance has no underwriter and a non-zero risk rating, throw.
-        require(issuance.underwriter != address(0) ||
-            issuance.underwriterRiskRating == 0);
-
         // Mint debt token and finalize debt agreement
         uint tokenId = debtToken.create(
             issuance.version,
@@ -277,6 +320,10 @@ contract DebtKernel is Pausable {
         return issuance.issuanceHash;
     }
 
+    /**
+     * Asserts that a debt order meets all consensuality requirements
+     * described in the DebtKernel specification document.
+     */
     function assertDebtOrderConsensualityInvariants(
         DebtOrder debtOrder,
         address creditor,
@@ -288,6 +335,7 @@ contract DebtKernel is Pausable {
         internal
         returns (bool _orderIsConsensual)
     {
+        // Invariant: debtor's signature must be valid
         if (!isValidSignature(
             debtOrder.issuance.debtor,
             debtOrder.debtOrderHash,
@@ -299,6 +347,7 @@ contract DebtKernel is Pausable {
             return false;
         }
 
+        // Invariant: creditor's signature must be valid
         if (!isValidSignature(
             creditor,
             zeroExOrderHash,
@@ -310,6 +359,7 @@ contract DebtKernel is Pausable {
             return false;
         }
 
+        // Invariant: underwriter's signature must be valid (if present)
         if (debtOrder.issuance.underwriter != address(0)) {
             if (!isValidSignature(
                 debtOrder.issuance.underwriter,
@@ -326,7 +376,10 @@ contract DebtKernel is Pausable {
         return true;
     }
 
-    // solhint-disable-next-line code-complexity
+    /**
+     * Asserts that debt order meets all validity requirements described in
+     * the DebtKernel specification document.
+     */
     function assertDebtOrderValidityInvariants(DebtOrder debtOrder)
         internal
         returns (bool _orderIsValid)
@@ -386,7 +439,15 @@ contract DebtKernel is Pausable {
         return true;
     }
 
-    function assertZeroExOrderValidityInvariants(address[5] zeroExOrderAddresses, uint[6] zeroExOrderValues)
+    /**
+     * Assert that the creditor has a sufficient token balance and has
+     * granted the 0x contracts sufficient allowance to suffice for the principal
+     * and creditor fee.
+     */
+    function assertZeroExOrderValidityInvariants(
+        address[5] zeroExOrderAddresses,
+        uint[6] zeroExOrderValues
+    )
         internal
         returns (bool _isZeroExOrderValid)
     {
@@ -399,6 +460,10 @@ contract DebtKernel is Pausable {
         return true;
     }
 
+    /**
+     * Helper function that constructs a hashed issuance structs from the given
+     * parameters.
+     */
     function getIssuance(
         address debtor,
         address version,
@@ -431,6 +496,10 @@ contract DebtKernel is Pausable {
         return issuance;
     }
 
+    /**
+     * Helper function that constructs a hashed debt order struct given the raw parameters
+     * of a debt order.
+     */
     function getDebtOrder(address[7] orderAddresses, uint[8] orderValues, bytes32[1] orderBytes32)
         internal
         view
@@ -463,6 +532,10 @@ contract DebtKernel is Pausable {
         return debtOrder;
     }
 
+    /**
+     * Helper function that, given a creditor's address and a debt order,
+     * constructs the 0x order that the creditor is *supposed* to have signed.
+     */
     function getZeroExOrderParameters(
         DebtOrder debtOrder,
         address creditor
@@ -496,6 +569,10 @@ contract DebtKernel is Pausable {
         );
     }
 
+    /**
+     * Helper function that returns the hash of a given 0x order, as
+     * would be done in the signing process of the 0x order.
+     */
     function getZeroExOrderHash(
         address zeroExExchangeContract,
         address[5] zeroExOrderAddresses,
@@ -521,6 +598,9 @@ contract DebtKernel is Pausable {
         );
     }
 
+    /**
+     * Helper function that returns an issuance's hash
+     */
     function getIssuanceHash(Issuance issuance)
         internal
         pure
@@ -537,6 +617,9 @@ contract DebtKernel is Pausable {
         );
     }
 
+    /**
+     * Returns the hash of the parameters which an underwriter is supposed to sign
+     */
     function getUnderwriterMessageHash(DebtOrder debtOrder)
         internal
         pure
@@ -551,6 +634,9 @@ contract DebtKernel is Pausable {
         );
     }
 
+    /**
+     * Returns the hash of the debt order.
+     */
     function getDebtOrderHash(DebtOrder debtOrder)
         internal
         view
@@ -571,6 +657,10 @@ contract DebtKernel is Pausable {
         );
     }
 
+    /**
+     * Given a hashed message, a signer's address, and a signature, returns
+     * whether the signature is valid.
+     */
     function isValidSignature(
         address signer,
         bytes32 hash,
@@ -590,6 +680,9 @@ contract DebtKernel is Pausable {
         );
     }
 
+    /**
+     * Helper function for querying an address' balance on a given token.
+     */
     function getBalance(
         address token,
         address owner
@@ -601,6 +694,9 @@ contract DebtKernel is Pausable {
         return ERC20(token).balanceOf.gas(EXTERNAL_QUERY_GAS_LIMIT)(owner);
     }
 
+    /**
+     * Helper function for querying an address' allowance to the 0x transfer proxy.
+     */
     function getAllowance(
         address token,
         address owner
