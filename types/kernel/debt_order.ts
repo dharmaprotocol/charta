@@ -108,6 +108,7 @@ export class DebtOrder extends SignableMessage {
 
     public getUnderwriterSignatureHash(): Bytes32 {
         const hash = solidity.SHA3([
+            this.getVersion(),
             this.getIssuanceCommitment().getHash(),
             this.getUnderwriterFee(),
             this.getPrincipalAmount(),

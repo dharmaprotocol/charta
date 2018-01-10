@@ -622,10 +622,11 @@ contract DebtKernel is Pausable {
      */
     function getUnderwriterMessageHash(DebtOrder debtOrder)
         internal
-        pure
+        view
         returns (bytes32 _underwriterMessageHash)
     {
         return keccak256(
+            address(this),
             debtOrder.issuance.issuanceHash,
             debtOrder.underwriterFee,
             debtOrder.principalAmount,
