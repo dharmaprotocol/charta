@@ -8,7 +8,8 @@ import * as Web3 from "web3";
 import * as Units from "../test_utils/units";
 import * as utils from "../test_utils/utils";
 
-import {LogDebtOrderFilled, LogError} from "../logs/debt_kernel";
+import {LogDebtOrderCancelled, LogDebtOrderFilled,
+            LogError, LogIssuanceCancelled} from "../logs/debt_kernel";
 
 import {DebtKernelContract} from "../../../types/generated/debt_kernel";
 import {MockDebtTokenContract} from "../../../types/generated/mock_debt_token";
@@ -1196,6 +1197,155 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
                         );
                     });
                 });
+            });
+        });
+    });
+
+    describe("#cancelIssuance", () => {
+        let order: SignedDebtOrder;
+
+        describe("user who is neither debtor nor underwriter cancels order", () => {
+            before(async () => {
+                order = await orderFactory.generateDebtOrder();
+            });
+
+            it("should throw", async () => {
+                await expect(kernel.cancelIssuance.sendTransactionAsync(
+                    order.getIssuanceCommitment().getVersion(),
+                    order.getIssuanceCommitment().getDebtor(),
+                    order.getIssuanceCommitment().getTermsContract(),
+                    order.getIssuanceCommitment().getTermsContractParameters(),
+                    order.getIssuanceCommitment().getUnderwriter(),
+                    order.getIssuanceCommitment().getUnderwriterRiskRating(),
+                    order.getIssuanceCommitment().getSalt(),
+                    { from: ATTACKER },
+                )).to.eventually.be.rejectedWith(REVERT_ERROR);
+            });
+        });
+
+        describe("debtor cancels issuance", () => {
+            let issuanceCancelledLog: ABIDecoder.DecodedLog;
+
+            before(async () => {
+                order = await orderFactory.generateDebtOrder();
+
+                const txHash = await kernel.cancelIssuance.sendTransactionAsync(
+                    order.getIssuanceCommitment().getVersion(),
+                    order.getIssuanceCommitment().getDebtor(),
+                    order.getIssuanceCommitment().getTermsContract(),
+                    order.getIssuanceCommitment().getTermsContractParameters(),
+                    order.getIssuanceCommitment().getUnderwriter(),
+                    order.getIssuanceCommitment().getUnderwriterRiskRating(),
+                    order.getIssuanceCommitment().getSalt(),
+                    { from: order.getIssuanceCommitment().getDebtor() },
+                );
+
+                const receipt = await web3.eth.getTransactionReceipt(txHash);
+
+                [issuanceCancelledLog] = _.compact(ABIDecoder.decodeLogs(receipt.logs));
+            });
+
+            it("should emit issuance cancellation log", () => {
+                expect(issuanceCancelledLog).to.deep.equal(LogIssuanceCancelled(
+                    kernel.address,
+                    order.getIssuanceCommitment().getHash(),
+                    order.getIssuanceCommitment().getDebtor(),
+                ));
+            });
+
+            it("should return issuance as cancelled", async () => {
+                await expect(kernel.issuanceCancelled
+                    .callAsync(order.getIssuanceCommitment().getHash()))
+                    .to.eventually.be.true;
+            });
+        });
+
+        describe("underwriter cancels issuance", () => {
+            let issuanceCancelledLog: ABIDecoder.DecodedLog;
+
+            before(async () => {
+                order = await orderFactory.generateDebtOrder();
+
+                const txHash = await kernel.cancelIssuance.sendTransactionAsync(
+                    order.getIssuanceCommitment().getVersion(),
+                    order.getIssuanceCommitment().getDebtor(),
+                    order.getIssuanceCommitment().getTermsContract(),
+                    order.getIssuanceCommitment().getTermsContractParameters(),
+                    order.getIssuanceCommitment().getUnderwriter(),
+                    order.getIssuanceCommitment().getUnderwriterRiskRating(),
+                    order.getIssuanceCommitment().getSalt(),
+                    { from: order.getIssuanceCommitment().getUnderwriter() },
+                );
+
+                const receipt = await web3.eth.getTransactionReceipt(txHash);
+
+                [issuanceCancelledLog] = _.compact(ABIDecoder.decodeLogs(receipt.logs));
+            });
+
+            it("should emit issuance cancellation log", () => {
+                expect(issuanceCancelledLog).to.deep.equal(LogIssuanceCancelled(
+                    kernel.address,
+                    order.getIssuanceCommitment().getHash(),
+                    order.getIssuanceCommitment().getUnderwriter(),
+                ));
+            });
+
+            it("should return issuance as cancelled", async () => {
+                await expect(kernel.issuanceCancelled
+                    .callAsync(order.getIssuanceCommitment().getHash()))
+                    .to.eventually.be.true;
+            });
+        });
+    });
+
+    describe("#cancelDebtOrder", () => {
+        let order: SignedDebtOrder;
+
+        describe("user who is not debtor cancels order", () => {
+            before(async () => {
+                order = await orderFactory.generateDebtOrder();
+            });
+
+            it("should throw", async () => {
+                await expect(kernel.cancelDebtOrder.sendTransactionAsync(
+                    order.getOrderAddresses(),
+                    order.getOrderValues(),
+                    order.getOrderBytes32(),
+                    { from: ATTACKER },
+                )).to.eventually.be.rejectedWith(REVERT_ERROR);
+            });
+        });
+
+        describe("debtor cancels debtor", () => {
+            let debtOrderCancelledLog: ABIDecoder.DecodedLog;
+
+            before(async () => {
+                order = await orderFactory.generateDebtOrder();
+
+                const txHash = await kernel.cancelDebtOrder.sendTransactionAsync(
+                    order.getOrderAddresses(),
+                    order.getOrderValues(),
+                    order.getOrderBytes32(),
+                    { from: order.getIssuanceCommitment().getDebtor() },
+                );
+
+                const receipt = await web3.eth.getTransactionReceipt(txHash);
+
+                [debtOrderCancelledLog] = _.compact(ABIDecoder.decodeLogs(receipt.logs));
+            });
+
+            it("should emit debt order cancellation log", () => {
+                expect(debtOrderCancelledLog).to.deep.equal(LogDebtOrderCancelled(
+                    kernel.address,
+                    order.getDebtorSignatureHash(),
+                    order.getIssuanceCommitment().getDebtor(),
+                ));
+            });
+
+            it("should return debt order as cancelled", async () => {
+                await expect(kernel.debtOrderCancelled
+                    .callAsync(order.getDebtorSignatureHash()))
+                    .to.eventually.be.true;
             });
         });
     });

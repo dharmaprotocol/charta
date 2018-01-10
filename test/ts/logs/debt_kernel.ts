@@ -61,6 +61,36 @@ export function LogDebtOrderFilled(
     };
 }
 
+export function LogIssuanceCancelled(
+    contract: Address,
+    issuanceHash: Bytes32,
+    cancelledBy: Address,
+): ABIDecoder.DecodedLog {
+    return {
+        address: contract,
+        events: LogUtils.getParams([
+            ["_issuanceHash", issuanceHash],
+            ["_cancelledBy", cancelledBy],
+        ]),
+        name: "LogIssuanceCancelled",
+    };
+}
+
+export function LogDebtOrderCancelled(
+    contract: Address,
+    debtOrderHash: Bytes32,
+    cancelledBy: Address,
+): ABIDecoder.DecodedLog {
+    return {
+        address: contract,
+        events: LogUtils.getParams([
+            ["_debtOrderHash", debtOrderHash],
+            ["_cancelledBy", cancelledBy],
+        ]),
+        name: "LogDebtOrderCancelled",
+    };
+}
+
 export function LogError(
     contract: Address,
     errorId: UInt,

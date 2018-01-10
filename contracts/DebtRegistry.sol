@@ -161,7 +161,6 @@ contract DebtRegistry is Pausable {
 
     function addAuthorizedInsertAgent(address agent)
         public
-        whenNotPaused
         onlyOwner
     {
         entryInsertPermissions.authorize(agent);
@@ -178,6 +177,7 @@ contract DebtRegistry is Pausable {
 
     function revokeInsertAgentAuthorization(address agent)
         public
+        whenNotPaused
         onlyOwner
     {
         entryInsertPermissions.revokeAuthorization(agent);

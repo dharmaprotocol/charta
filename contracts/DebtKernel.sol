@@ -71,6 +71,16 @@ contract DebtKernel is Pausable {
         uint _relayerFee
     );
 
+    event LogIssuanceCancelled(
+        bytes32 indexed _issuanceHash,
+        address indexed _cancelledBy
+    );
+
+    event LogDebtOrderCancelled(
+        bytes32 indexed _debtOrderHash,
+        address indexed _cancelledBy
+    );
+
     event LogError(
         uint8 indexed _errorId,
         bytes32 indexed _orderHash
@@ -221,6 +231,8 @@ contract DebtKernel is Pausable {
         );
 
         issuanceCancelled[issuance.issuanceHash] = true;
+
+        LogIssuanceCancelled(issuance.issuanceHash, msg.sender);
     }
 
     function cancelDebtOrder(
@@ -236,6 +248,8 @@ contract DebtKernel is Pausable {
         require(msg.sender == debtOrder.issuance.debtor);
 
         debtOrderCancelled[debtOrder.debtOrderHash] = true;
+
+        LogDebtOrderCancelled(debtOrder.debtOrderHash, msg.sender);
     }
 
     function _issueDebtAgreement(address beneficiary, Issuance issuance)
