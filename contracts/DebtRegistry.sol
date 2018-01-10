@@ -23,6 +23,14 @@ import "zeppelin-solidity/contracts/math/SafeMath.sol";
 import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
 
 
+/**
+ * The DebtRegistry stores the parameters and beneficiaries of all debt agreements in
+ * Dharma protocol.  It authorizes a limited number of agents to
+ * perform mutations on it -- those agents can be changed at any
+ * time by the contract's owner.
+ *
+ * Author: Nadav Hollander -- Github: nadavhollander
+ */
 contract DebtRegistry is Pausable {
     using SafeMath for uint;
     using PermissionsLib for PermissionsLib.Permissions;
@@ -99,6 +107,10 @@ contract DebtRegistry is Pausable {
         _;
     }
 
+    /**
+     * Inserts a new entry into the registry, if the entry is valid and sender is
+     * authorized to make 'insert' mutations to the registry.
+     */
     function insert(
         address _version,
         address _beneficiary,
@@ -142,6 +154,11 @@ contract DebtRegistry is Pausable {
         return issuanceHash;
     }
 
+    /**
+     * Modifies the beneficiary of a debt issuance, if the sender
+     * is authorized to make 'modifyBeneficiary' mutations to
+     * the registry.
+     */
     function modifyBeneficiary(bytes32 issuanceHash, address newBeneficiary)
         public
         onlyAuthorizedToEdit
@@ -159,6 +176,10 @@ contract DebtRegistry is Pausable {
         );
     }
 
+    /**
+     * Adds an address to the list of agents authorized
+     * to make 'insert' mutations to the registry.
+     */
     function addAuthorizedInsertAgent(address agent)
         public
         onlyOwner
@@ -167,6 +188,10 @@ contract DebtRegistry is Pausable {
         LogAddAuthorizedInsertAgent(agent);
     }
 
+    /**
+     * Adds an address to the list of agents authorized
+     * to make 'modifyBeneficiary' mutations to the registry.
+     */
     function addAuthorizedEditAgent(address agent)
         public
         onlyOwner
@@ -175,6 +200,10 @@ contract DebtRegistry is Pausable {
         LogAddAuthorizedEditAgent(agent);
     }
 
+    /**
+     * Removes an address from the list of agents authorized
+     * to make 'insert' mutations to the registry.
+     */
     function revokeInsertAgentAuthorization(address agent)
         public
         whenNotPaused
@@ -184,6 +213,10 @@ contract DebtRegistry is Pausable {
         LogRevokeInsertAgentAuthorization(agent);
     }
 
+    /**
+     * Removes an address from the list of agents authorized
+     * to make 'modifyBeneficiary' mutations to the registry.
+     */
     function revokeEditAgentAuthorization(address agent)
         public
         onlyOwner
@@ -192,6 +225,9 @@ contract DebtRegistry is Pausable {
         LogRevokeEditAgentAuthorization(agent);
     }
 
+    /**
+     * Returns the parameters of a debt issuance in the registry
+     */
     function get(bytes32 issuanceHash)
         public
         view
@@ -208,6 +244,9 @@ contract DebtRegistry is Pausable {
         );
     }
 
+    /**
+     * Returns the beneficiary of a given issuance
+     */
     function getBeneficiary(bytes32 issuanceHash)
         public
         view
@@ -216,6 +255,9 @@ contract DebtRegistry is Pausable {
         return registry[issuanceHash].beneficiary;
     }
 
+    /**
+     * Returns the terms contract address of a given issuance
+     */
     function getTermsContract(bytes32 issuanceHash)
         public
         view
@@ -224,6 +266,9 @@ contract DebtRegistry is Pausable {
         return registry[issuanceHash].termsContract;
     }
 
+    /**
+     * Returns the terms contract parameters of a given issuance
+     */
     function getTermsContractParameters(bytes32 issuanceHash)
         public
         view
@@ -232,6 +277,10 @@ contract DebtRegistry is Pausable {
         return registry[issuanceHash].termsContractParameters;
     }
 
+    /**
+     * Returns a tuple of the terms contract and its associated parameters
+     * for a given issuance
+     */
     function getTerms(bytes32 issuanceHash)
         public
         view
@@ -243,6 +292,9 @@ contract DebtRegistry is Pausable {
         );
     }
 
+    /**
+     * Returns the block number at which a debt agreement was issued
+     */
     function getIssuanceBlockNumber(bytes32 issuanceHash)
         public
         view
@@ -251,22 +303,32 @@ contract DebtRegistry is Pausable {
         return registry[issuanceHash].issuanceBlockNumber;
     }
 
+    /**
+     * Returns the list of agents authorized to make 'insert' mutations
+     */
     function getAuthorizedInsertAgents()
         public
-        constant
+        view
         returns(address[])
     {
         return entryInsertPermissions.getAuthorizedAgents();
     }
 
+    /**
+     * Returns the list of agents authorized to make 'modifyBeneficiary' mutations
+     */
     function getAuthorizedEditAgents()
         public
-        constant
+        view
         returns(address[])
     {
         return entryEditPermissions.getAuthorizedAgents();
     }
 
+
+    /**
+     * Helper function for computing the hash of a given issuance.
+     */
     function _getIssuanceHash(Entry _entry, address _debtor, uint _salt)
         internal
         pure

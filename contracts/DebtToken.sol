@@ -25,6 +25,14 @@ import "zeppelin-solidity/contracts/token/ERC20.sol";
 import "./interfaces/ZeroExExchange.sol";
 
 
+/**
+ * The DebtToken contract governs all business logic for making a debt agreement
+ * transferable as an ERC721 non-fungible token.  Additionally, the contract
+ * allows authorized contracts to trigger the minting of a debt agreement token
+ * and, in turn, the insertion of a debt issuance into the DebtRegsitry.
+ *
+ * Author: Nadav Hollander -- Github: nadavhollander
+ */
 contract DebtToken is MintableNonFungibleToken, Pausable {
     using PermissionsLib for PermissionsLib.Permissions;
 
@@ -38,12 +46,19 @@ contract DebtToken is MintableNonFungibleToken, Pausable {
     PermissionsLib.Permissions internal tokenBrokeragePermissions;
     PermissionsLib.Permissions internal tokenExchangePermissions;
 
+    /**
+     * Constructor that sets the address of the debt registry.
+     */
     function DebtToken(address _registry)
         public
     {
         registry = DebtRegistry(_registry);
     }
 
+    /**
+     * Mints a unique debt token and inserts the associated issuance into
+     * the debt registry, if the calling address is authorized to do so.
+     */
     function create(
         address _version,
         address _beneficiary,
@@ -93,7 +108,7 @@ contract DebtToken is MintableNonFungibleToken, Pausable {
      * trades can only be initiated by their tokens' owners.
      *
      * NOTE: This is a temporary feature that will no longer be necessary
-     *  once the 0x protocol supports NFT order -- as such, we limit it
+     *  once the 0x protocol supports NFT orders -- as such, we limit it
      *  to only authorized parties (namely, the DebtKernel contract) in
      *  order to reduce its attack surface.
      */
@@ -132,6 +147,10 @@ contract DebtToken is MintableNonFungibleToken, Pausable {
         return ERC20(makerToken).transfer(msg.sender, makerTokenAmount);
     }
 
+    /**
+     * We override the NFT transferFrom method in order to enable brokered 0x trades
+     * for non-fungible tokens.
+     */
     function transferFrom(
         address _from,
         address _to,
@@ -154,6 +173,9 @@ contract DebtToken is MintableNonFungibleToken, Pausable {
         }
     }
 
+    /**
+     * Adds an address to the list of agents authorized to mint debt tokens.
+     */
     function addAuthorizedMintAgent(address _agent)
         public
         onlyOwner
@@ -161,6 +183,9 @@ contract DebtToken is MintableNonFungibleToken, Pausable {
         tokenCreationPermissions.authorize(_agent);
     }
 
+    /**
+     * Removes an address from the list of agents authorized to mint debt tokens
+     */
     function revokeMintAgentAuthorization(address _agent)
         public
         onlyOwner
@@ -168,6 +193,9 @@ contract DebtToken is MintableNonFungibleToken, Pausable {
         tokenCreationPermissions.revokeAuthorization(_agent);
     }
 
+    /**
+     * Returns the list of agents authorized to mint debt tokens
+     */
     function getAuthorizedMintAgents()
         public
         view
@@ -176,6 +204,9 @@ contract DebtToken is MintableNonFungibleToken, Pausable {
         return tokenCreationPermissions.getAuthorizedAgents();
     }
 
+    /**
+     * Adds an address to the list of agents authorized to broker 0x trades
+     */
     function addAuthorizedBrokerageAgent(address _agent)
         public
         onlyOwner
@@ -183,6 +214,9 @@ contract DebtToken is MintableNonFungibleToken, Pausable {
         tokenBrokeragePermissions.authorize(_agent);
     }
 
+    /**
+     * Removes an address from the list of agents authorized to broker 0x trades
+     */
     function revokeBrokerageAgentAuthorization(address _agent)
         public
         onlyOwner
@@ -190,6 +224,9 @@ contract DebtToken is MintableNonFungibleToken, Pausable {
         tokenBrokeragePermissions.revokeAuthorization(_agent);
     }
 
+    /**
+     * Returns the list of agents authorized to broker 0x trades
+     */
     function getAuthorizedBrokerageAgents()
         public
         view
@@ -198,6 +235,9 @@ contract DebtToken is MintableNonFungibleToken, Pausable {
         return tokenBrokeragePermissions.getAuthorizedAgents();
     }
 
+    /**
+     * Adds an address to the list of contracts authorized to act as a 0x exchange
+     */
     function addAuthorizedExchangeAgent(address _agent)
         public
         onlyOwner
@@ -205,6 +245,9 @@ contract DebtToken is MintableNonFungibleToken, Pausable {
         tokenExchangePermissions.authorize(_agent);
     }
 
+    /**
+     * Removes an address to the list of contracts authorized to act as a 0x exchange
+     */
     function revokeExchangeAgentAuthorization(address _agent)
         public
         onlyOwner
@@ -212,6 +255,9 @@ contract DebtToken is MintableNonFungibleToken, Pausable {
         tokenExchangePermissions.revokeAuthorization(_agent);
     }
 
+    /**
+     * Retruns the list of authorized 0x exchange contracts (at the time of writing, only one)
+     */
     function getAuthorizedExchangeAgents()
         public
         view
@@ -220,6 +266,11 @@ contract DebtToken is MintableNonFungibleToken, Pausable {
         return tokenExchangePermissions.getAuthorizedAgents();
     }
 
+
+    /**
+     * We override the core transfer method of the parent non-fungible token
+     * contract to allow its functionality to be frozen in the case of an emergency
+     */
     function _clearApprovalAndTransfer(
         address _from,
         address _to,
@@ -231,6 +282,10 @@ contract DebtToken is MintableNonFungibleToken, Pausable {
         super._clearApprovalAndTransfer(_from, _to, _tokenId);
     }
 
+    /**
+     * We oveerride the core ownership transfer method of the parent non-fungible token
+     * contract so that it mutates the debt registry every time a token is transferred
+     */
     function _setTokenOwner(uint _tokenId, address _to)
         internal
     {
@@ -239,6 +294,10 @@ contract DebtToken is MintableNonFungibleToken, Pausable {
         }
     }
 
+    /**
+     * We oveerride the core ownership getter of the parent non-fungible token
+     * contract so that it retrieves the debt's current beneficiary from the debt registry
+     */
     function _ownerOf(uint _tokenId)
         internal
         view
@@ -247,6 +306,9 @@ contract DebtToken is MintableNonFungibleToken, Pausable {
         return registry.getBeneficiary(bytes32(_tokenId));
     }
 
+    /**
+     * Helper function that executes a given 0x order
+     */
     function fillZeroExOrder(
         address zeroExExchangeContract,
         address[5] orderAddresses,
