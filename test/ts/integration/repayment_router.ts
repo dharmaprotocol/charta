@@ -45,7 +45,7 @@ const simpleInterestTermsContract = artifacts.require("SimpleInterestTermsContra
 const nftTermsContract = artifacts.require("NFTTermsContract");
 const repaymentRouterContract = artifacts.require("RepaymentRouter");
 
-contract("Repayment Router (Integration Test)", async (ACCOUNTS) => {
+contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
     let router: RepaymentRouterContract;
     let kernel: DebtKernelContract;
     let debtToken: DebtTokenContract;

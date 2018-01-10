@@ -39,7 +39,7 @@ const repaymentRouterContract = artifacts.require("RepaymentRouter");
 const debtRegistryContract = artifacts.require("DebtRegistry");
 const termsContract = artifacts.require("SimpleInterestTermsContract");
 
-contract("Debt Registry (Unit Test)", async (ACCOUNTS) => {
+contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
     const CONTRACT_OWNER = ACCOUNTS[0];
 
     // We choose arbitrary addresses to represent data fields in the registry

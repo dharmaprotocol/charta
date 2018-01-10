@@ -30,7 +30,7 @@ const debtRegistryContract = artifacts.require("DebtRegistry");
 const debtTokenContract = artifacts.require("DebtToken");
 const repaymentRouterContract = artifacts.require("RepaymentRouter");
 
-contract("Debt Token", (ACCOUNTS) => {
+contract("Debt Token (Integration Tests)", (ACCOUNTS) => {
     let debtRegistry: DebtRegistryContract;
     let debtToken: DebtTokenContract;
 

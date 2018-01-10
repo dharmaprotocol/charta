@@ -36,6 +36,7 @@ contract DebtToken is MintableNonFungibleToken, Pausable {
 
     PermissionsLib.Permissions internal tokenCreationPermissions;
     PermissionsLib.Permissions internal tokenBrokeragePermissions;
+    PermissionsLib.Permissions internal tokenExchangePermissions;
 
     function DebtToken(address _registry)
         public
@@ -110,6 +111,7 @@ contract DebtToken is MintableNonFungibleToken, Pausable {
         returns (bool _success)
     {
         require(tokenBrokeragePermissions.isAuthorized(msg.sender));
+        require(tokenExchangePermissions.isAuthorized(_zeroExExchangeContract));
 
         require(msg.sender == ownerOf(_tokenId));
         require(brokeredTokenId == 0);
@@ -159,6 +161,13 @@ contract DebtToken is MintableNonFungibleToken, Pausable {
         tokenCreationPermissions.authorize(_agent);
     }
 
+    function revokeMintAgentAuthorization(address _agent)
+        public
+        onlyOwner
+    {
+        tokenCreationPermissions.revokeAuthorization(_agent);
+    }
+
     function getAuthorizedMintAgents()
         public
         view
@@ -174,12 +183,41 @@ contract DebtToken is MintableNonFungibleToken, Pausable {
         tokenBrokeragePermissions.authorize(_agent);
     }
 
+    function revokeBrokerageAgentAuthorization(address _agent)
+        public
+        onlyOwner
+    {
+        tokenBrokeragePermissions.revokeAuthorization(_agent);
+    }
+
     function getAuthorizedBrokerageAgents()
         public
         view
         returns (address[] _agents)
     {
         return tokenBrokeragePermissions.getAuthorizedAgents();
+    }
+
+    function addAuthorizedExchangeAgent(address _agent)
+        public
+        onlyOwner
+    {
+        tokenExchangePermissions.authorize(_agent);
+    }
+
+    function revokeExchangeAgentAuthorization(address _agent)
+        public
+        onlyOwner
+    {
+        tokenExchangePermissions.revokeAuthorization(_agent);
+    }
+
+    function getAuthorizedExchangeAgents()
+        public
+        view
+        returns (address[] _agents)
+    {
+        return tokenExchangePermissions.getAuthorizedAgents();
     }
 
     function _clearApprovalAndTransfer(
