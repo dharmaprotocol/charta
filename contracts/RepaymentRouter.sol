@@ -30,7 +30,8 @@ contract RepaymentRouter {
     enum Errors {
         DEBT_AGREEMENT_NONEXISTENT,
         PAYER_BALANCE_OR_ALLOWANCE_INSUFFICIENT,
-        PAYER_OWNERSHIP_OR_ROUTER_APPROVAL_MISSING
+        PAYER_OWNERSHIP_OR_ROUTER_APPROVAL_MISSING,
+        ROUTER_UNAUTHORIZED_TO_REPORT_REPAYMENT
     }
 
     event LogRepayment(
@@ -80,18 +81,21 @@ contract RepaymentRouter {
             return 0;
         }
 
-        // Transfer amount to creditor
-        require(ERC20(tokenAddress).transferFrom(msg.sender, beneficiary, amount));
-
         // Notify terms contract
-        var (termsContract, termsContractParameters) = debtRegistry.getTerms(agreementId);
-        TermsContract(termsContract).registerRepayment(
+        address termsContract = debtRegistry.getTermsContract(agreementId);
+        if (!TermsContract(termsContract).registerRepayment(
+            agreementId,
             msg.sender,
             beneficiary,
-            termsContractParameters,
             amount,
             tokenAddress
-        );
+        )) {
+            LogError(uint8(Errors.ROUTER_UNAUTHORIZED_TO_REPORT_REPAYMENT), agreementId);
+            return 0;
+        }
+
+        // Transfer amount to creditor
+        require(ERC20(tokenAddress).transferFrom(msg.sender, beneficiary, amount));
 
         // Log event for repayment
         LogRepayment(agreementId, msg.sender, beneficiary, amount, tokenAddress);
@@ -126,17 +130,20 @@ contract RepaymentRouter {
             return 0;
         }
 
-        nonFungibleToken.transferFrom(msg.sender, beneficiary, tokenId);
-
         // Notify terms contract
-        var (termsContract, termsContractParameters) = debtRegistry.getTerms(agreementId);
-        TermsContract(termsContract).registerNFTRepayment(
+        address termsContract = debtRegistry.getTermsContract(agreementId);
+        if (!TermsContract(termsContract).registerNFTRepayment(
+            agreementId,
             msg.sender,
             beneficiary,
-            termsContractParameters,
             tokenId,
             tokenAddress
-        );
+        )) {
+            LogError(uint8(Errors.ROUTER_UNAUTHORIZED_TO_REPORT_REPAYMENT), agreementId);
+            return 0;
+        }
+
+        nonFungibleToken.transferFrom(msg.sender, beneficiary, tokenId);
 
         // Log event for repayment
         LogNFTRepayment(agreementId, msg.sender, beneficiary, tokenId, tokenAddress);

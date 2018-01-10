@@ -213,6 +213,22 @@ contract DebtRegistry is Ownable {
         return registry[issuanceHash].beneficiary;
     }
 
+    function getTermsContract(bytes32 issuanceHash)
+        public
+        view
+        returns (address)
+    {
+        return registry[issuanceHash].termsContract;
+    }
+
+    function getTermsContractParameters(bytes32 issuanceHash)
+        public
+        view
+        returns (bytes32)
+    {
+        return registry[issuanceHash].termsContractParameters;
+    }
+
     function getTerms(bytes32 issuanceHash)
         public
         view

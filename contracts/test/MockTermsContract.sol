@@ -23,27 +23,36 @@ import "./MockContract.sol";
 
 contract MockTermsContract is MockContract {
     function registerRepayment(
+        bytes32 agreementId,
         address payer,
         address beneficiary,
-        bytes32 parameters,
         uint unitsOfRepayment,
         address tokenAddress
     )
         public
+        returns (bool _success)
     {
         functionCalledWithArgs("registerRepayment", keccak256(
+            agreementId,
             payer,
             beneficiary,
-            parameters,
             unitsOfRepayment,
             tokenAddress
         ));
+
+        return getMockReturnValue("registerRepayment", DEFAULT_SIGNATURE_ARGS) == bytes32(1);
+    }
+
+    function mockRegisterRepaymentReturnValue(bool success)
+        public
+    {
+        mockReturnValue("registerRepayment", DEFAULT_SIGNATURE_ARGS, success ? bytes32(1) : bytes32(0));
     }
 
     function wasRegisterRepaymentCalledWith(
+        bytes32 agreementId,
         address payer,
         address beneficiary,
-        bytes32 parameters,
         uint unitsOfRepayment,
         address tokenAddress
     )
@@ -52,36 +61,45 @@ contract MockTermsContract is MockContract {
         returns (bool wasCalled)
     {
         return wasFunctionCalledWithArgs("registerRepayment", keccak256(
+            agreementId,
             payer,
             beneficiary,
-            parameters,
             unitsOfRepayment,
             tokenAddress
         ));
     }
 
     function registerNFTRepayment(
+        bytes32 agreementId,
         address payer,
         address beneficiary,
-        bytes32 parameters,
         uint tokenId,
         address tokenAddress
     )
         public
+        returns (bool _success)
     {
         functionCalledWithArgs("registerNFTRepayment", keccak256(
+            agreementId,
             payer,
             beneficiary,
-            parameters,
             tokenId,
             tokenAddress
         ));
+
+        return getMockReturnValue("registerNFTRepayment", DEFAULT_SIGNATURE_ARGS) == bytes32(1);
+    }
+
+    function mockRegisterNFTRepaymentReturnValue(bool success)
+        public
+    {
+        mockReturnValue("registerNFTRepayment", DEFAULT_SIGNATURE_ARGS, success ? bytes32(1) : bytes32(0));
     }
 
     function wasRegisterNFTRepaymentCalledWith(
+        bytes32 agreementId,
         address payer,
         address beneficiary,
-        bytes32 parameters,
         uint tokenId,
         address tokenAddress
     )
@@ -90,9 +108,9 @@ contract MockTermsContract is MockContract {
         returns (bool wasCalled)
     {
         return wasFunctionCalledWithArgs("registerNFTRepayment", keccak256(
+            agreementId,
             payer,
             beneficiary,
-            parameters,
             tokenId,
             tokenAddress
         ));

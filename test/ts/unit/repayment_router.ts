@@ -109,9 +109,9 @@ contract("Repayment Router (Unit Test)", async (ACCOUNTS) => {
 
             it("should not register repayment with terms contract", async () => {
                 await expect(mockTermsContract.wasRegisterRepaymentCalledWith.callAsync(
+                    ARBITRARY_AGREEMENT_ID,
                     NULL_ADDRESS,
                     NULL_ADDRESS,
-                    TERMS_CONTRACT_PARAMETERS,
                     Units.ether(1),
                     mockToken.address,
                 )).to.eventually.be.false;
@@ -129,6 +129,11 @@ contract("Repayment Router (Unit Test)", async (ACCOUNTS) => {
                     ARBITRARY_AGREEMENT_ID,
                     mockTermsContract.address,
                     TERMS_CONTRACT_PARAMETERS,
+                );
+
+                await mockRegistry.mockGetTermsContractReturnValueFor.sendTransactionAsync(
+                    ARBITRARY_AGREEMENT_ID,
+                    mockTermsContract.address,
                 );
             });
 
@@ -169,9 +174,9 @@ contract("Repayment Router (Unit Test)", async (ACCOUNTS) => {
 
                 it("should not register repayment with terms contract", async () => {
                     await expect(mockTermsContract.wasRegisterRepaymentCalledWith.callAsync(
+                        ARBITRARY_AGREEMENT_ID,
                         PAYER,
                         BENEFICIARY,
-                        TERMS_CONTRACT_PARAMETERS,
                         Units.ether(1),
                         mockToken.address,
                     )).to.eventually.be.false;
@@ -215,11 +220,49 @@ contract("Repayment Router (Unit Test)", async (ACCOUNTS) => {
 
                 it("should not register repayment with terms contract", async () => {
                     await expect(mockTermsContract.wasRegisterRepaymentCalledWith.callAsync(
+                        ARBITRARY_AGREEMENT_ID,
                         PAYER,
                         BENEFICIARY,
-                        TERMS_CONTRACT_PARAMETERS,
                         Units.ether(1),
                         mockToken.address,
+                    )).to.eventually.be.false;
+                });
+            });
+
+            describe("...with terms contract that does not register reports from router", () => {
+                let errorLog: ABIDecoder.DecodedLog;
+
+                before(async () => {
+                    await mockToken.mockBalanceOfFor.sendTransactionAsync(
+                        PAYER, Units.ether(1),
+                    );
+
+                    await mockToken.mockAllowanceFor.sendTransactionAsync(
+                        PAYER, router.address, Units.ether(1),
+                    );
+
+                    await mockTermsContract.mockRegisterRepaymentReturnValue.sendTransactionAsync(false);
+
+                    const txHash = await router.repay.sendTransactionAsync(ARBITRARY_AGREEMENT_ID,
+                        Units.ether(1), mockToken.address, { from: PAYER });
+                    const receipt = await web3.eth.getTransactionReceipt(txHash);
+
+                    [errorLog] = _.compact(ABIDecoder.decodeLogs(receipt.logs));
+                });
+
+                it("should return ROUTER_UNAUTHORIZED_TO_REPORT_REPAYMENT error", () => {
+                    expect(errorLog).to.deep.equal(LogError(
+                        router.address,
+                        RepaymentRouterErrorCodes.ROUTER_UNAUTHORIZED_TO_REPORT_REPAYMENT,
+                        ARBITRARY_AGREEMENT_ID,
+                    ));
+                });
+
+                it("should not transfer tokens from payer", async () => {
+                    await expect(mockToken.wasTransferFromCalledWith.callAsync(
+                        PAYER,
+                        BENEFICIARY,
+                        Units.ether(1),
                     )).to.eventually.be.false;
                 });
             });
@@ -235,6 +278,8 @@ contract("Repayment Router (Unit Test)", async (ACCOUNTS) => {
                     await mockToken.mockAllowanceFor.sendTransactionAsync(
                         PAYER, router.address, Units.ether(1),
                     );
+
+                    await mockTermsContract.mockRegisterRepaymentReturnValue.sendTransactionAsync(true);
 
                     const txHash = await router.repay.sendTransactionAsync(ARBITRARY_AGREEMENT_ID,
                         Units.ether(1), mockToken.address, { from: PAYER });
@@ -253,9 +298,9 @@ contract("Repayment Router (Unit Test)", async (ACCOUNTS) => {
 
                 it("should register repayment with terms contract", async () => {
                     await expect(mockTermsContract.wasRegisterRepaymentCalledWith.callAsync(
+                        ARBITRARY_AGREEMENT_ID,
                         PAYER,
                         BENEFICIARY,
-                        TERMS_CONTRACT_PARAMETERS,
                         Units.ether(1),
                         mockToken.address,
                     )).to.eventually.be.true;
@@ -328,9 +373,9 @@ contract("Repayment Router (Unit Test)", async (ACCOUNTS) => {
 
             it("should not register repayment with terms contract", async () => {
                 await expect(mockTermsContract.wasRegisterNFTRepaymentCalledWith.callAsync(
+                    ARBITRARY_AGREEMENT_ID,
                     NULL_ADDRESS,
                     NULL_ADDRESS,
-                    TERMS_CONTRACT_PARAMETERS,
                     NON_FUNGIBLE_TOKEN_ID,
                     mockNonFungibleToken.address,
                 )).to.eventually.be.false;
@@ -348,6 +393,11 @@ contract("Repayment Router (Unit Test)", async (ACCOUNTS) => {
                     ARBITRARY_AGREEMENT_ID,
                     mockTermsContract.address,
                     TERMS_CONTRACT_PARAMETERS,
+                );
+
+                await mockRegistry.mockGetTermsContractReturnValueFor.sendTransactionAsync(
+                    ARBITRARY_AGREEMENT_ID,
+                    mockTermsContract.address,
                 );
             });
 
@@ -385,9 +435,9 @@ contract("Repayment Router (Unit Test)", async (ACCOUNTS) => {
 
                 it("should not register repayment with terms contract", async () => {
                     await expect(mockTermsContract.wasRegisterNFTRepaymentCalledWith.callAsync(
+                        ARBITRARY_AGREEMENT_ID,
                         PAYER,
                         BENEFICIARY,
-                        TERMS_CONTRACT_PARAMETERS,
                         NON_FUNGIBLE_TOKEN_ID,
                         mockNonFungibleToken.address,
                     )).to.eventually.be.false;
@@ -431,11 +481,49 @@ contract("Repayment Router (Unit Test)", async (ACCOUNTS) => {
 
                 it("should not register repayment with terms contract", async () => {
                     await expect(mockTermsContract.wasRegisterNFTRepaymentCalledWith.callAsync(
+                        ARBITRARY_AGREEMENT_ID,
                         PAYER,
                         BENEFICIARY,
-                        TERMS_CONTRACT_PARAMETERS,
                         NON_FUNGIBLE_TOKEN_ID,
                         mockNonFungibleToken.address,
+                    )).to.eventually.be.false;
+                });
+            });
+
+            describe("...with terms contract that does not register reports from router", () => {
+                let errorLog: ABIDecoder.DecodedLog;
+
+                before(async () => {
+                    await mockNonFungibleToken.mockOwnerOfFor.sendTransactionAsync(
+                        NON_FUNGIBLE_TOKEN_ID, PAYER,
+                    );
+                    await mockNonFungibleToken.mockGetApprovedFor.sendTransactionAsync(
+                        NON_FUNGIBLE_TOKEN_ID, router.address,
+                    );
+
+                    await mockTermsContract.mockRegisterNFTRepaymentReturnValue.sendTransactionAsync(false);
+
+                    const txHash = await router.repayNFT.sendTransactionAsync(ARBITRARY_AGREEMENT_ID,
+                        NON_FUNGIBLE_TOKEN_ID, mockNonFungibleToken.address,
+                        { from: PAYER });
+                    const receipt = await web3.eth.getTransactionReceipt(txHash);
+
+                    [errorLog] = _.compact(ABIDecoder.decodeLogs(receipt.logs));
+                });
+
+                it("should return ROUTER_UNAUTHORIZED_TO_REPORT_REPAYMENT error", () => {
+                    expect(errorLog).to.deep.equal(LogError(
+                        router.address,
+                        RepaymentRouterErrorCodes.ROUTER_UNAUTHORIZED_TO_REPORT_REPAYMENT,
+                        ARBITRARY_AGREEMENT_ID,
+                    ));
+                });
+
+                it("should not transfer token from payer", async () => {
+                    await expect(mockNonFungibleToken.wasTransferFromCalledWith.callAsync(
+                        PAYER,
+                        BENEFICIARY,
+                        NON_FUNGIBLE_TOKEN_ID,
                     )).to.eventually.be.false;
                 });
             });
@@ -450,6 +538,8 @@ contract("Repayment Router (Unit Test)", async (ACCOUNTS) => {
                     await mockNonFungibleToken.mockGetApprovedFor.sendTransactionAsync(
                         NON_FUNGIBLE_TOKEN_ID, router.address,
                     );
+
+                    await mockTermsContract.mockRegisterNFTRepaymentReturnValue.sendTransactionAsync(true);
 
                     const txHash = await router.repayNFT.sendTransactionAsync(ARBITRARY_AGREEMENT_ID,
                         NON_FUNGIBLE_TOKEN_ID, mockNonFungibleToken.address,
@@ -469,9 +559,9 @@ contract("Repayment Router (Unit Test)", async (ACCOUNTS) => {
 
                 it("should register repayment with terms contract", async () => {
                     await expect(mockTermsContract.wasRegisterNFTRepaymentCalledWith.callAsync(
+                        ARBITRARY_AGREEMENT_ID,
                         PAYER,
                         BENEFICIARY,
-                        TERMS_CONTRACT_PARAMETERS,
                         NON_FUNGIBLE_TOKEN_ID,
                         mockNonFungibleToken.address,
                     )).to.eventually.be.true;

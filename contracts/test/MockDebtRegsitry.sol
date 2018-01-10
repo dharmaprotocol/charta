@@ -104,6 +104,23 @@ contract MockDebtRegistry is MockContract {
         mockReturnValue("getTerms_termsContractParameters", issuanceHash, termsContractParameters);
     }
 
+    function getTermsContract(bytes32 issuanceHash)
+        public
+        view
+        returns (address _termsContract)
+    {
+        return address(getMockReturnValue("getTermsContract", issuanceHash));
+    }
+
+    function mockGetTermsContractReturnValueFor(
+        bytes32 issuanceHash,
+        address termsContract
+    )
+        public
+    {
+        mockReturnValue("getTermsContract", issuanceHash, bytes32(termsContract));
+    }
+
     function wasInsertCalledWith(
         address _version,
         address _beneficiary,
@@ -144,6 +161,6 @@ contract MockDebtRegistry is MockContract {
         returns (string[10] functionNames)
     {
         return ["insert", "modifyBeneficiary", "getBeneficiary", "getTerms_termsContract",
-            "getTerms_termsContractParameters", "", "", "", "", ""];
+            "getTerms_termsContractParameters", "getTermsContract", "getTermsContractParameters", "", "", ""];
     }
 }
