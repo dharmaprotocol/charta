@@ -6,6 +6,7 @@ const MockERC20Token = artifacts.require("MockERC20Token");
 const MockERC721Token = artifacts.require("MockERC721Token");
 const MockDebtToken = artifacts.require("MockDebtToken");
 const MockTermsContract = artifacts.require("MockTermsContract");
+const MockTokenTransferProxyContract = artifacts.require("MockTokenTransferProxy");
 const MintableNonFungibleToken = artifacts.require("MintableNonFungibleToken");
 
 module.exports = (deployer: any, network: string) => {
@@ -18,6 +19,7 @@ module.exports = (deployer: any, network: string) => {
         deployer.deploy(MockERC721Token);
         deployer.deploy(MockDebtToken);
         deployer.deploy(MockTermsContract);
+        deployer.deploy(MockTokenTransferProxyContract);
         deployer.deploy(MintableNonFungibleToken);
     }
 };

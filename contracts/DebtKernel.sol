@@ -19,7 +19,7 @@
 pragma solidity 0.4.18;
 
 import "./DebtToken.sol";
-import "./interfaces/ZeroExExchange.sol";
+import "./TokenTransferProxy.sol";
 import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
 import "zeppelin-solidity/contracts/token/ERC20.sol";
@@ -46,9 +46,9 @@ contract DebtKernel is Pausable {
         ISSUANCE_CANCELLED,
         // Order has been cancelled
         ORDER_CANCELLED,
-        // Order parameters specify insufficient debtor/creditor fees
-        // to meet underwriter/relayer fees
-        ORDER_INVALID_INSUFFICIENT_FEES,
+        // Order parameters specify amount of creditor / debtor fees
+        // that is not equivalent to the amount of underwriter / relayer fees
+        ORDER_INVALID_INSUFFICIENT_OR_EXCESSIVE_FEES,
         // Order parameters specify insufficient principal amount for
         // debtor to at least be able to meet his fees
         ORDER_INVALID_INSUFFICIENT_PRINCIPAL,
@@ -63,7 +63,7 @@ contract DebtKernel is Pausable {
     DebtToken public debtToken;
 
     // solhint-disable-next-line var-name-mixedcase
-    address public ZEROEX_TOKEN_TRANSFER_PROXY_ADDRESS;
+    address public TOKEN_TRANSFER_PROXY;
     bytes32 constant public NULL_ISSUANCE_HASH = bytes32(0);
     uint16 constant public EXTERNAL_QUERY_GAS_LIMIT = 4999;    // Changes to state require at least 5000 gas
 
@@ -108,7 +108,6 @@ contract DebtKernel is Pausable {
 
     struct DebtOrder {
         Issuance issuance;
-        address zeroExExchangeContract;
         uint underwriterFee;
         uint relayerFee;
         uint principalAmount;
@@ -120,18 +119,15 @@ contract DebtKernel is Pausable {
         bytes32 debtOrderHash;
     }
 
+    function DebtKernel(address tokenTransferProxyAddress)
+        public
+    {
+        TOKEN_TRANSFER_PROXY = tokenTransferProxyAddress;
+    }
+
     ////////////////////////
     // EXTERNAL FUNCTIONS //
     ////////////////////////
-
-    /**
-     * Constructor for kernel.
-     */
-    function DebtKernel(address zeroExTokenTransferProxyContract)
-        public
-    {
-        ZEROEX_TOKEN_TRANSFER_PROXY_ADDRESS = zeroExTokenTransferProxyContract;
-    }
 
     /**
      * Allows contract owner to set the currently used debt token contract.
@@ -150,12 +146,12 @@ contract DebtKernel is Pausable {
      */
     function fillDebtOrder(
         address creditor,
-        address[7] orderAddresses,
+        address[6] orderAddresses,
         uint[8] orderValues,
         bytes32[1] orderBytes32,
+        uint8[3] signaturesV,
         bytes32[3] signaturesR,
-        bytes32[3] signaturesS,
-        uint8[3] signaturesV
+        bytes32[3] signaturesS
     )
         public
         whenNotPaused
@@ -163,45 +159,26 @@ contract DebtKernel is Pausable {
     {
         DebtOrder memory debtOrder = getDebtOrder(orderAddresses, orderValues, orderBytes32);
 
-        var (zeroExOrderAddresses, zeroExOrderValues, zeroExOrderHash) =
-            getZeroExOrderParameters(debtOrder, creditor);
-
         // Assert order's validity & consensuality
         if (!assertDebtOrderValidityInvariants(debtOrder) ||
             !assertDebtOrderConsensualityInvariants(
                 debtOrder,
                 creditor,
-                zeroExOrderHash,
                 signaturesV,
                 signaturesR,
                 signaturesS) ||
-            !assertZeroExOrderValidityInvariants(zeroExOrderAddresses, zeroExOrderValues)) {
+            !assertExternalBalanceAndAllowanceInvariants(creditor, debtOrder)) {
             return NULL_ISSUANCE_HASH;
         }
 
         // Mint debt token and finalize debt agreement
-        issueDebtAgreement(this, debtOrder.issuance);
-
-        // If the order is "priced" -- i.e. creditor has to exchange tokens for
-        // the issued debt, we fill a 0x order.  If not, we simply transfer
-        // the debtor the new debt token.
-        if (zeroExOrderValues[0] > 0) {
-            require(debtToken.brokerZeroExOrder(
-                uint(debtOrder.issuance.issuanceHash),
-                debtOrder.zeroExExchangeContract,
-                zeroExOrderAddresses,
-                zeroExOrderValues,
-                signaturesV[2],
-                signaturesR[2],
-                signaturesS[2]
-            ));
-        } else {
-            debtToken.transfer(creditor, uint(debtOrder.issuance.issuanceHash));
-        }
+        issueDebtAgreement(creditor, debtOrder.issuance);
 
         // Transfer principal to debtor
         if (debtOrder.principalAmount > 0) {
-            require(ERC20(debtOrder.principalToken).transfer(
+            require(transferTokensFrom(
+                debtOrder.principalToken,
+                creditor,
                 debtOrder.issuance.debtor,
                 debtOrder.principalAmount.sub(debtOrder.debtorFee)
             ));
@@ -209,7 +186,9 @@ contract DebtKernel is Pausable {
 
         // Transfer underwriter fee to underwriter
         if (debtOrder.underwriterFee > 0) {
-            require(ERC20(debtOrder.principalToken).transfer(
+            require(transferTokensFrom(
+                debtOrder.principalToken,
+                creditor,
                 debtOrder.issuance.underwriter,
                 debtOrder.underwriterFee
             ));
@@ -217,7 +196,9 @@ contract DebtKernel is Pausable {
 
         // Transfer relayer fee to relayer
         if (debtOrder.relayerFee > 0) {
-            require(ERC20(debtOrder.principalToken).transfer(
+            require(transferTokensFrom(
+                debtOrder.principalToken,
+                creditor,
                 debtOrder.relayer,
                 debtOrder.relayerFee
             ));
@@ -256,8 +237,8 @@ contract DebtKernel is Pausable {
         require(msg.sender == debtor || msg.sender == underwriter);
 
         Issuance memory issuance = getIssuance(
-            debtor,
             version,
+            debtor,
             underwriter,
             termsContract,
             underwriterRiskRating,
@@ -275,7 +256,7 @@ contract DebtKernel is Pausable {
      * -- preventing any counterparty from filling it in the future.
      */
     function cancelDebtOrder(
-        address[7] orderAddresses,
+        address[6] orderAddresses,
         uint[8] orderValues,
         bytes32[1] orderBytes32
     )
@@ -327,7 +308,6 @@ contract DebtKernel is Pausable {
     function assertDebtOrderConsensualityInvariants(
         DebtOrder debtOrder,
         address creditor,
-        bytes32 zeroExOrderHash,
         uint8[3] signaturesV,
         bytes32[3] signaturesR,
         bytes32[3] signaturesS
@@ -335,38 +315,44 @@ contract DebtKernel is Pausable {
         internal
         returns (bool _orderIsConsensual)
     {
-        // Invariant: debtor's signature must be valid
-        if (!isValidSignature(
-            debtOrder.issuance.debtor,
-            debtOrder.debtOrderHash,
-            signaturesV[1],
-            signaturesR[1],
-            signaturesS[1]
-        )) {
-            LogError(uint8(Errors.ORDER_INVALID_NON_CONSENSUAL), debtOrder.debtOrderHash);
-            return false;
-        }
-
-        // Invariant: creditor's signature must be valid
-        if (!isValidSignature(
-            creditor,
-            zeroExOrderHash,
-            signaturesV[2],
-            signaturesR[2],
-            signaturesS[2]
-        )) {
-            LogError(uint8(Errors.ORDER_INVALID_NON_CONSENSUAL), debtOrder.debtOrderHash);
-            return false;
-        }
-
-        // Invariant: underwriter's signature must be valid (if present)
-        if (debtOrder.issuance.underwriter != address(0)) {
+        // Invariant: debtor's signature must be valid, unless debtor is submitting order
+        if (msg.sender != debtOrder.issuance.debtor) {
             if (!isValidSignature(
-                debtOrder.issuance.underwriter,
-                getUnderwriterMessageHash(debtOrder),
+                debtOrder.issuance.debtor,
+                debtOrder.debtOrderHash,
                 signaturesV[0],
                 signaturesR[0],
                 signaturesS[0]
+            )) {
+                LogError(uint8(Errors.ORDER_INVALID_NON_CONSENSUAL), debtOrder.debtOrderHash);
+                return false;
+            }
+        }
+
+        // Invariant: creditor's signature must be valid, unless creditor is submitting order
+        if (msg.sender != creditor) {
+            if (!isValidSignature(
+                creditor,
+                debtOrder.debtOrderHash,
+                signaturesV[1],
+                signaturesR[1],
+                signaturesS[1]
+            )) {
+                LogError(uint8(Errors.ORDER_INVALID_NON_CONSENSUAL), debtOrder.debtOrderHash);
+                return false;
+            }
+        }
+
+
+        // Invariant: underwriter's signature must be valid (if present)
+        if (debtOrder.issuance.underwriter != address(0) &&
+            msg.sender != debtOrder.issuance.underwriter) {
+            if (!isValidSignature(
+                debtOrder.issuance.underwriter,
+                getUnderwriterMessageHash(debtOrder),
+                signaturesV[2],
+                signaturesR[2],
+                signaturesS[2]
             )) {
                 LogError(uint8(Errors.ORDER_INVALID_NON_CONSENSUAL), debtOrder.debtOrderHash);
                 return false;
@@ -386,12 +372,10 @@ contract DebtKernel is Pausable {
     {
         uint totalFees = debtOrder.creditorFee.add(debtOrder.debtorFee);
 
-        // Relayer fees are implicitly specified as such:
-        //      relayerFees = totalFees - debtOrder.underwriterFee
-        // Invariant: there are enough fees to cover underwriter + relayer fees, i.e.
-        //      totalFees >= debtorder.underwriterFee
-        if (totalFees < debtOrder.underwriterFee) {
-            LogError(uint8(Errors.ORDER_INVALID_INSUFFICIENT_FEES), debtOrder.debtOrderHash);
+        // Invariant: the total value of fees contributed by debtors and creditors
+        //  must be equivalent to that paid out to underwriters and relayers.
+        if (totalFees != debtOrder.relayerFee.add(debtOrder.underwriterFee)) {
+            LogError(uint8(Errors.ORDER_INVALID_INSUFFICIENT_OR_EXCESSIVE_FEES), debtOrder.debtOrderHash);
             return false;
         }
 
@@ -441,19 +425,21 @@ contract DebtKernel is Pausable {
 
     /**
      * Assert that the creditor has a sufficient token balance and has
-     * granted the 0x contracts sufficient allowance to suffice for the principal
+     * granted the token transfer proxy contract sufficient allowance to suffice for the principal
      * and creditor fee.
      */
-    function assertZeroExOrderValidityInvariants(
-        address[5] zeroExOrderAddresses,
-        uint[6] zeroExOrderValues
+    function assertExternalBalanceAndAllowanceInvariants(
+        address creditor,
+        DebtOrder debtOrder
     )
         internal
-        returns (bool _isZeroExOrderValid)
+        returns (bool _isBalanceAndAllowanceSufficient)
     {
-        if (getBalance(zeroExOrderAddresses[2], zeroExOrderAddresses[0]) < zeroExOrderValues[0] ||
-            getAllowance(zeroExOrderAddresses[2], zeroExOrderAddresses[0]) < zeroExOrderValues[0]) {
-            LogError(uint8(Errors.CREDITOR_BALANCE_OR_ALLOWANCE_INSUFFICIENT), bytes32(zeroExOrderValues[5]));
+        uint totalCreditorPayment = debtOrder.principalAmount.add(debtOrder.creditorFee);
+
+        if (getBalance(debtOrder.principalToken, creditor) < totalCreditorPayment ||
+            getAllowance(debtOrder.principalToken, creditor) < totalCreditorPayment) {
+            LogError(uint8(Errors.CREDITOR_BALANCE_OR_ALLOWANCE_INSUFFICIENT), debtOrder.debtOrderHash);
             return false;
         }
 
@@ -461,12 +447,33 @@ contract DebtKernel is Pausable {
     }
 
     /**
+     * Helper function transfers a specified amount of tokens between two parties
+     * using the token transfer proxy contract.
+     */
+    function transferTokensFrom(
+        address token,
+        address from,
+        address to,
+        uint amount
+    )
+        internal
+        returns (bool success)
+    {
+        return TokenTransferProxy(TOKEN_TRANSFER_PROXY).transferFrom(
+            token,
+            from,
+            to,
+            amount
+        );
+    }
+
+    /**
      * Helper function that constructs a hashed issuance structs from the given
      * parameters.
      */
     function getIssuance(
-        address debtor,
         address version,
+        address debtor,
         address underwriter,
         address termsContract,
         uint underwriterRiskRating,
@@ -478,20 +485,23 @@ contract DebtKernel is Pausable {
         returns (Issuance _issuance)
     {
         Issuance memory issuance = Issuance({
-            // Order Addresses
-            debtor: debtor,
             version: version,
+            debtor: debtor,
             underwriter: underwriter,
             termsContract: termsContract,
-            // Order Values
             underwriterRiskRating: underwriterRiskRating,
             salt: salt,
-            // Order Bytes32
             termsContractParameters: termsContractParameters,
-            issuanceHash: bytes32(0)
+            issuanceHash: getIssuanceHash(
+                version,
+                debtor,
+                underwriter,
+                termsContract,
+                underwriterRiskRating,
+                salt,
+                termsContractParameters
+            )
         });
-
-        issuance.issuanceHash = getIssuanceHash(issuance);
 
         return issuance;
     }
@@ -500,7 +510,7 @@ contract DebtKernel is Pausable {
      * Helper function that constructs a hashed debt order struct given the raw parameters
      * of a debt order.
      */
-    function getDebtOrder(address[7] orderAddresses, uint[8] orderValues, bytes32[1] orderBytes32)
+    function getDebtOrder(address[6] orderAddresses, uint[8] orderValues, bytes32[1] orderBytes32)
         internal
         view
         returns (DebtOrder _debtOrder)
@@ -515,14 +525,13 @@ contract DebtKernel is Pausable {
                 orderValues[1],
                 orderBytes32[0]
             ),
-            underwriterFee: orderValues[2],
-            relayerFee: orderValues[3],
-            principalAmount: orderValues[4],
-            principalToken: orderAddresses[5],
+            principalToken: orderAddresses[4],
+            relayer: orderAddresses[5],
+            principalAmount: orderValues[2],
+            underwriterFee: orderValues[3],
+            relayerFee: orderValues[4],
             creditorFee: orderValues[5],
             debtorFee: orderValues[6],
-            relayer: orderAddresses[6],
-            zeroExExchangeContract: orderAddresses[4],
             expirationTimestampInSec: orderValues[7],
             debtOrderHash: bytes32(0)
         });
@@ -533,87 +542,29 @@ contract DebtKernel is Pausable {
     }
 
     /**
-     * Helper function that, given a creditor's address and a debt order,
-     * constructs the 0x order that the creditor is *supposed* to have signed.
-     */
-    function getZeroExOrderParameters(
-        DebtOrder debtOrder,
-        address creditor
-    )
-        internal
-        view
-        returns (address[5] _zeroExOrderAddresses, uint[6] _zeroExOrderValues, bytes32 _zeroExOrderHash)
-    {
-
-        address[5] memory zeroExOrderAddresses = [
-            creditor, // maker
-            address(0), // taker
-            debtOrder.principalToken, // makerToken
-            debtToken, // takerToken
-            address(0) // feeRecipient
-        ];
-
-        uint[6] memory zeroExOrderValues = [
-            debtOrder.principalAmount.add(debtOrder.creditorFee), // makerTokenAmount
-            1, // takerTokenAmount
-            0, // makerFee
-            0, // takerFee
-            debtOrder.expirationTimestampInSec, // expirationTimestampInSec
-            uint(debtOrder.debtOrderHash) // salt
-        ];
-
-        return (
-            zeroExOrderAddresses,
-            zeroExOrderValues,
-            getZeroExOrderHash(debtOrder.zeroExExchangeContract, zeroExOrderAddresses, zeroExOrderValues)
-        );
-    }
-
-    /**
-     * Helper function that returns the hash of a given 0x order, as
-     * would be done in the signing process of the 0x order.
-     */
-    function getZeroExOrderHash(
-        address zeroExExchangeContract,
-        address[5] zeroExOrderAddresses,
-        uint[6] zeroExOrderValues
-    )
-        internal
-        pure
-        returns (bytes32 _zeroExOrderHash)
-    {
-        return keccak256(
-            zeroExExchangeContract,
-            zeroExOrderAddresses[0], // maker
-            zeroExOrderAddresses[1], // taker
-            zeroExOrderAddresses[2], // makerToken
-            zeroExOrderAddresses[3], // takerToken
-            zeroExOrderAddresses[4], // feeRecipient
-            zeroExOrderValues[0],    // makerTokenAmount
-            zeroExOrderValues[1],    // takerTokenAmount
-            zeroExOrderValues[2],    // makerFee
-            zeroExOrderValues[3],    // takerFee
-            zeroExOrderValues[4],    // expirationTimestampInSec
-            zeroExOrderValues[5]     // salt
-        );
-    }
-
-    /**
      * Helper function that returns an issuance's hash
      */
-    function getIssuanceHash(Issuance issuance)
+    function getIssuanceHash(
+        address version,
+        address debtor,
+        address underwriter,
+        address termsContract,
+        uint underwriterRiskRating,
+        uint salt,
+        bytes32 termsContractParameters
+    )
         internal
         pure
         returns (bytes32 _issuanceHash)
     {
         return keccak256(
-            issuance.version,
-            issuance.debtor,
-            issuance.underwriter,
-            issuance.underwriterRiskRating,
-            issuance.termsContract,
-            issuance.termsContractParameters,
-            issuance.salt
+            version,
+            debtor,
+            underwriter,
+            underwriterRiskRating,
+            termsContract,
+            termsContractParameters,
+            salt
         );
     }
 
@@ -647,7 +598,6 @@ contract DebtKernel is Pausable {
             address(this),
             debtOrder.issuance.issuanceHash,
             debtOrder.underwriterFee,
-            debtOrder.zeroExExchangeContract,
             debtOrder.principalAmount,
             debtOrder.principalToken,
             debtOrder.debtorFee,
@@ -706,6 +656,6 @@ contract DebtKernel is Pausable {
         returns (uint _allowance)
     {
         // Limit gas to prevent reentrancy
-        return ERC20(token).allowance.gas(EXTERNAL_QUERY_GAS_LIMIT)(owner, ZEROEX_TOKEN_TRANSFER_PROXY_ADDRESS);
+        return ERC20(token).allowance(owner, TOKEN_TRANSFER_PROXY);
     }
 }

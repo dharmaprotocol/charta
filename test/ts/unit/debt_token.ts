@@ -131,10 +131,6 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
     const initState = async () => {
         await debtToken.addAuthorizedMintAgent.sendTransactionAsync(AUTHORIZED_MINT_AGENT,
             { from: CONTRACT_OWNER });
-        await debtToken.addAuthorizedBrokerageAgent.sendTransactionAsync(AUTHORIZED_BROKERAGE_AGENT,
-            { from: CONTRACT_OWNER });
-        await debtToken.addAuthorizedExchangeAgent.sendTransactionAsync(mockExchange.address,
-            { from: CONTRACT_OWNER });
 
         for (const entry of debtEntries) {
             await mockRegistry.mockInsertReturnValue
@@ -170,22 +166,12 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
         it("should initialize with no authorizations", async () => {
             await expect(debtToken.getAuthorizedMintAgents.callAsync())
                 .to.eventually.deep.equal([]);
-            await expect(debtToken.getAuthorizedBrokerageAgents.callAsync())
-                .to.eventually.deep.equal([]);
         });
 
         describe("non-owner adds mint authorization", () => {
             it("should throw", async () => {
                 await expect(debtToken.addAuthorizedMintAgent
                     .sendTransactionAsync(UNAUTHORIZED_MINT_AGENT, { from: NON_CONTRACT_OWNER }))
-                    .to.eventually.be.rejectedWith(REVERT_ERROR);
-            });
-        });
-
-        describe("non-owner adds brokerage authorization", () => {
-            it("should throw", async () => {
-                await expect(debtToken.addAuthorizedBrokerageAgent
-                    .sendTransactionAsync(UNAUTHORIZED_BROKERAGE_AGENT, { from: NON_CONTRACT_OWNER }))
                     .to.eventually.be.rejectedWith(REVERT_ERROR);
             });
         });
@@ -199,18 +185,6 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
             it("should return agent as authorized", async () => {
                 await expect(debtToken.getAuthorizedMintAgents.callAsync())
                     .to.eventually.deep.equal([AUTHORIZED_MINT_AGENT]);
-            });
-        });
-
-        describe("owner adds brokerage authorization", () => {
-            before(async () => {
-                await debtToken.addAuthorizedBrokerageAgent
-                    .sendTransactionAsync(AUTHORIZED_BROKERAGE_AGENT, { from: CONTRACT_OWNER });
-            });
-
-            it("should return agent as authorized", async () => {
-                await expect(debtToken.getAuthorizedBrokerageAgents.callAsync())
-                    .to.eventually.deep.equal([AUTHORIZED_BROKERAGE_AGENT]);
             });
         });
     });
@@ -934,180 +908,6 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
                         .to.eventually.bignumber.equal(debtEntries[2].getTokenId());
                     await expect(debtToken.tokenOfOwnerByIndex.callAsync(TOKEN_OWNER_3, INDEX_1))
                         .to.eventually.be.rejectedWith(INVALID_OPCODE);
-                });
-            });
-        });
-    });
-
-    describe("#brokerZeroExOrder", () => {
-        let zeroExOrder: ZeroEx.SignedOrder;
-
-        const brokerZeroExOrder = (tokenId: BigNumber, order: ZeroEx.SignedOrder,
-                                   exchangeContract: Address, options: TxData) => {
-            return debtToken.brokerZeroExOrder.sendTransactionAsync(
-                tokenId,
-                exchangeContract,
-                [
-                    order.maker,
-                    order.taker,
-                    order.makerTokenAddress,
-                    order.takerTokenAddress,
-                    order.feeRecipient,
-                ],
-                [
-                    order.makerTokenAmount,
-                    order.takerTokenAmount,
-                    order.makerFee,
-                    order.takerFee,
-                    order.expirationUnixTimestampSec,
-                    order.salt,
-                ],
-                order.ecSignature.v,
-                order.ecSignature.r,
-                order.ecSignature.s,
-                options,
-            );
-        };
-
-        before(async () => {
-            await resetAndInitState();
-
-            // We construct an arbitrary zero ex order, given that we are in a unit
-            // test conditions and are dealing with a mocked zero ex contract.
-            // The only fields whose values triggers some sort of logic in the unit
-            // tests are commented with context below
-            zeroExOrder = {
-                ecSignature: {
-                   r: NULL_ADDRESS,
-                   s: NULL_ADDRESS,
-                   v: 27,
-                },
-                // Used to vary which mock exchange contract we use
-                exchangeContractAddress: mockExchange.address,
-                expirationUnixTimestampSec: new BigNumber(Date.now()),
-                feeRecipient: NULL_ADDRESS,
-                maker: TOKEN_OWNER_1,
-                makerFee: Units.ether(0.001),
-                // Used to vary which mock ERC20 token contract we use
-                makerTokenAddress: mockToken.address,
-                makerTokenAmount: Units.ether(1),
-                salt: new BigNumber(0),
-                taker: NULL_ADDRESS,
-                takerFee: Units.ether(0.001),
-                // Used to vary whether order correctly calls transferFrom on brokered token
-                takerTokenAddress: debtToken.address,
-                takerTokenAmount: new BigNumber(1),
-            };
-        });
-
-        describe("user calls brokerZeroExOrder for token he doesn't own", () => {
-            it("should throw", async () => {
-                await expect(brokerZeroExOrder(debtEntries[0].getTokenId(), zeroExOrder,
-                    zeroExOrder.exchangeContractAddress, { from: AUTHORIZED_BROKERAGE_AGENT }))
-                    .to.eventually.be.rejectedWith(REVERT_ERROR);
-            });
-        });
-
-        describe("user calls brokerZeroExOrder for token he is approved for", () => {
-            before(async () => {
-                await debtToken.approve.sendTransactionAsync(
-                    AUTHORIZED_BROKERAGE_AGENT, debtEntries[0].getTokenId(),
-                    { from: TOKEN_OWNER_1 });
-            });
-
-            it("should throw", async () => {
-                await expect(brokerZeroExOrder(debtEntries[0].getTokenId(), zeroExOrder,
-                    zeroExOrder.exchangeContractAddress, { from: AUTHORIZED_BROKERAGE_AGENT }))
-                    .to.eventually.be.rejectedWith(REVERT_ERROR);
-            });
-        });
-
-        describe("user calls brokerZeroExOrder for token he owns", () => {
-            describe("...when user is not authorized token broker", () => {
-                before(async () => {
-                    await debtToken.transfer.sendTransactionAsync(UNAUTHORIZED_BROKERAGE_AGENT,
-                        debtEntries[0].getTokenId(), { from: TOKEN_OWNER_1 });
-                });
-
-                it("should throw", async () => {
-                    await expect(brokerZeroExOrder(debtEntries[0].getTokenId(), zeroExOrder,
-                        zeroExOrder.exchangeContractAddress, { from: AUTHORIZED_BROKERAGE_AGENT }))
-                        .to.eventually.be.rejectedWith(REVERT_ERROR);
-                });
-            });
-
-            describe("...when user is authorized token broker", () => {
-                before(async () => {
-                    await debtToken.transfer.sendTransactionAsync(AUTHORIZED_BROKERAGE_AGENT,
-                        debtEntries[0].getTokenId(), { from: UNAUTHORIZED_BROKERAGE_AGENT });
-                });
-
-                describe("and no token is already being brokered", () => {
-                    before(async () => {
-                        await brokerZeroExOrder(debtEntries[0].getTokenId(), zeroExOrder,
-                            zeroExOrder.exchangeContractAddress, { from: AUTHORIZED_BROKERAGE_AGENT });
-                    });
-
-                    it("should call fillOrder on the 0x contract with supplied order", async () => {
-                        await expect(mockExchange.wasFillOrderCalledWith.callAsync(
-                            [
-                                zeroExOrder.maker,
-                                zeroExOrder.taker,
-                                zeroExOrder.makerTokenAddress,
-                                zeroExOrder.takerTokenAddress,
-                                zeroExOrder.feeRecipient,
-                            ],
-                            [
-                                zeroExOrder.makerTokenAmount,
-                                zeroExOrder.takerTokenAmount,
-                                zeroExOrder.makerFee,
-                                zeroExOrder.takerFee,
-                                zeroExOrder.expirationUnixTimestampSec,
-                                zeroExOrder.salt,
-                            ],
-                            new BigNumber(1),
-                            true,
-                            zeroExOrder.ecSignature.v,
-                            zeroExOrder.ecSignature.r,
-                            zeroExOrder.ecSignature.s,
-                        )).to.eventually.be.true;
-                    });
-
-                    it("should modify beneficiary on registry to order maker", async () => {
-                        await expect(mockRegistry.wasModifyBeneficiaryCalledWith
-                            .callAsync(debtEntries[0].getIssuanceHash(), zeroExOrder.maker))
-                            .to.eventually.be.true;
-                    });
-
-                    it("should call 'transfer' on maker token for specified amount to message sender", async () => {
-                        await expect(mockToken.wasTransferCalledWith
-                            .callAsync(AUTHORIZED_BROKERAGE_AGENT, zeroExOrder.makerTokenAmount))
-                            .to.eventually.be.true;
-                    });
-
-                    describe("...and brokered token is never transfered away by 0x exchange contract", () => {
-                        before(async () => {
-                            await debtToken.transfer.sendTransactionAsync(AUTHORIZED_BROKERAGE_AGENT,
-                                debtEntries[1].getTokenId(), { from: TOKEN_OWNER_2 });
-                        });
-
-                        it("should throw", async () => {
-                            const maliciousZeroExOrder = _.clone(zeroExOrder);
-                            maliciousZeroExOrder.takerTokenAddress = mockToken.address;
-
-                            await expect(brokerZeroExOrder(debtEntries[1].getTokenId(), maliciousZeroExOrder,
-                                zeroExOrder.exchangeContractAddress, { from: AUTHORIZED_BROKERAGE_AGENT }))
-                                .to.eventually.be.rejectedWith(INVALID_OPCODE);
-                        });
-                    });
-
-                    describe("...and 0x order points to an unauthorized exchange contract", () => {
-                        it("should throw", async () => {
-                            await expect(brokerZeroExOrder(debtEntries[1].getTokenId(), zeroExOrder,
-                                MALICIOUS_EXCHANGE_CONTRACT, { from: AUTHORIZED_BROKERAGE_AGENT }))
-                                .to.eventually.be.rejectedWith(REVERT_ERROR);
-                        });
-                    });
                 });
             });
         });

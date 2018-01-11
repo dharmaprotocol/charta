@@ -20,6 +20,7 @@ pragma solidity 0.4.18;
 
 import "./DebtRegistry.sol";
 import "./TermsContract.sol";
+import "./TokenTransferProxy.sol";
 import "zeppelin-solidity/contracts/token/ERC20.sol";
 import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
 import "NonFungibleToken/contracts/ERC721.sol";
@@ -36,6 +37,7 @@ import "NonFungibleToken/contracts/ERC721.sol";
  */
 contract RepaymentRouter is Pausable {
     DebtRegistry public debtRegistry;
+    TokenTransferProxy public tokenTransferProxy;
 
     enum Errors {
         DEBT_AGREEMENT_NONEXISTENT,
@@ -65,8 +67,9 @@ contract RepaymentRouter is Pausable {
     /**
      * Constructor points the repayment router at the deployed registry contract.
      */
-    function RepaymentRouter (address _debtRegistry) public {
+    function RepaymentRouter (address _debtRegistry, address _tokenTransferProxy) public {
         debtRegistry = DebtRegistry(_debtRegistry);
+        tokenTransferProxy = TokenTransferProxy(_tokenTransferProxy);
     }
 
     /**
@@ -95,7 +98,7 @@ contract RepaymentRouter is Pausable {
 
         // Check payer has sufficient balance and has granted router sufficient allowance
         if (ERC20(tokenAddress).balanceOf(msg.sender) < amount ||
-            ERC20(tokenAddress).allowance(msg.sender, this) < amount) {
+            ERC20(tokenAddress).allowance(msg.sender, tokenTransferProxy) < amount) {
             LogError(uint8(Errors.PAYER_BALANCE_OR_ALLOWANCE_INSUFFICIENT), agreementId);
             return 0;
         }
@@ -114,7 +117,12 @@ contract RepaymentRouter is Pausable {
         }
 
         // Transfer amount to creditor
-        require(ERC20(tokenAddress).transferFrom(msg.sender, beneficiary, amount));
+        require(tokenTransferProxy.transferFrom(
+            tokenAddress,
+            msg.sender,
+            beneficiary,
+            amount
+        ));
 
         // Log event for repayment
         LogRepayment(agreementId, msg.sender, beneficiary, amount, tokenAddress);
@@ -150,7 +158,7 @@ contract RepaymentRouter is Pausable {
 
         // Check payer owns token and has granted router approval to transfer it
         if (nonFungibleToken.ownerOf(tokenId) != msg.sender ||
-            nonFungibleToken.getApproved(tokenId) != address(this)) {
+            nonFungibleToken.getApproved(tokenId) != address(tokenTransferProxy)) {
             LogError(uint8(Errors.PAYER_OWNERSHIP_OR_ROUTER_APPROVAL_MISSING), agreementId);
             return 0;
         }
@@ -168,7 +176,12 @@ contract RepaymentRouter is Pausable {
             return 0;
         }
 
-        nonFungibleToken.transferFrom(msg.sender, beneficiary, tokenId);
+        tokenTransferProxy.transferFrom(
+            tokenAddress,
+            msg.sender,
+            beneficiary,
+            tokenId
+        );
 
         // Log event for repayment
         LogNFTRepayment(agreementId, msg.sender, beneficiary, tokenId, tokenAddress);

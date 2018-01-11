@@ -39,10 +39,6 @@ export class DebtOrder extends SignableMessage {
         return this.params.debtIssuanceCommitment;
     }
 
-    public getZeroExExchangeContract(): Address {
-        return this.params.zeroExExchangeContract;
-    }
-
     public getDebtor(): Address {
         return this.params.debtor;
     }
@@ -87,12 +83,11 @@ export class DebtOrder extends SignableMessage {
         return this.params.relayerFee;
     }
 
-    public getDebtorSignatureHash(): Bytes32 {
+    public getDebtOrderHash(): Bytes32 {
         const hash = solidity.SHA3([
             this.getVersion(),
             this.getIssuanceCommitment().getHash(),
             this.getUnderwriterFee(),
-            this.getZeroExExchangeContract(),
             this.getPrincipalAmount(),
             this.getPrincipalTokenAddress(),
             this.getDebtorFee(),
@@ -106,7 +101,7 @@ export class DebtOrder extends SignableMessage {
         return hashHex;
     }
 
-    public getUnderwriterSignatureHash(): Bytes32 {
+    public getUnderwriterCommitmentHash(): Bytes32 {
         const hash = solidity.SHA3([
             this.getVersion(),
             this.getIssuanceCommitment().getHash(),
@@ -120,42 +115,27 @@ export class DebtOrder extends SignableMessage {
         return hashHex;
     }
 
-    public getCreditorSignatureHash(creditor: Address, zeroExOrder?: Order): Bytes32 {
-        zeroExOrder = zeroExOrder || {
-            exchangeContractAddress: this.getZeroExExchangeContract(),
-        	expirationUnixTimestampSec: this.getExpiration(),
-        	feeRecipient: NULL_ADDRESS,
-        	maker: creditor,
-        	makerFee: new BigNumber(0),
-        	makerTokenAddress: this.getPrincipalTokenAddress(),
-        	makerTokenAmount: this.getPrincipalAmount().plus(this.getCreditorFee()),
-        	salt: new BigNumber(this.getDebtorSignatureHash()),
-        	taker: NULL_ADDRESS,
-        	takerFee: new BigNumber(0),
-        	takerTokenAddress: this.getDebtTokenContract(),
-        	takerTokenAmount: new BigNumber(1),
-        }
-
-        return ZeroEx.getOrderHashHex(zeroExOrder);
-    }
-
     public getHash(): Bytes32 {
-        return this.getDebtorSignatureHash();
+        return this.getDebtOrderHash();
     }
 
-    public async getSignedDebtOrder(web3: Web3, signatories: DebtOrderSignatories): Promise<SignedDebtOrder> {
+    public async getSignedDebtOrder(
+        web3: Web3,
+        creditor: Address,
+        signatories: DebtOrderSignatories,
+    ): Promise<SignedDebtOrder> {
         const creditorSignature = signatories.creditor ?
             await this.getSignature(web3, signatories.creditor,
-                this.getCreditorSignatureHash(signatories.creditor)) : NULL_SIGNATURE;
+                this.getDebtOrderHash()) : NULL_SIGNATURE;
 
         const debtorSignature = signatories.debtor ?
-            await this.getSignature(web3, signatories.debtor, this.getDebtorSignatureHash()) : NULL_SIGNATURE;
+            await this.getSignature(web3, signatories.debtor, this.getDebtOrderHash()) : NULL_SIGNATURE;
 
         const underwriterSignature = signatories.underwriter ?
             await this.getSignature(web3, signatories.underwriter,
-                this.getUnderwriterSignatureHash()) : NULL_SIGNATURE;
+                this.getUnderwriterCommitmentHash()) : NULL_SIGNATURE;
 
-        return new SignedDebtOrder(this, signatories.creditor,
+        return new SignedDebtOrder(this, creditor,
             creditorSignature, debtorSignature, underwriterSignature);
     }
 }
@@ -199,11 +179,10 @@ export class SignedDebtOrder extends DebtOrder {
 
     public getOrderAddresses(): Address[] {
         return [
-            this.getDebtor(),
             this.getIssuanceCommitment().getVersion(),
+            this.getDebtor(),
             this.getIssuanceCommitment().getUnderwriter(),
             this.getIssuanceCommitment().getTermsContract(),
-            this.getZeroExExchangeContract(),
             this.getPrincipalTokenAddress(),
             this.getRelayer(),
         ];
@@ -213,9 +192,9 @@ export class SignedDebtOrder extends DebtOrder {
         return [
             this.getIssuanceCommitment().getUnderwriterRiskRating(),
             this.getIssuanceCommitment().getSalt(),
+            this.getPrincipalAmount(),
             this.getUnderwriterFee(),
             this.getRelayerFee(),
-            this.getPrincipalAmount(),
             this.getCreditorFee(),
             this.getDebtorFee(),
             this.getExpiration(),
@@ -230,25 +209,25 @@ export class SignedDebtOrder extends DebtOrder {
 
     public getSignaturesR(): Bytes32[] {
         return [
-            this.underwriterSignature.r,
             this.debtorSignature.r,
             this.creditorSignature.r,
+            this.underwriterSignature.r,
         ];
     }
 
     public getSignaturesS(): Bytes32[] {
         return [
-            this.underwriterSignature.s,
             this.debtorSignature.s,
             this.creditorSignature.s,
+            this.underwriterSignature.s,
         ];
     }
 
     public getSignaturesV(): number[] {
         return [
-            this.underwriterSignature.v,
             this.debtorSignature.v,
             this.creditorSignature.v,
+            this.underwriterSignature.v,
         ];
     }
 }

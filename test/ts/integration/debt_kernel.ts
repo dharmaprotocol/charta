@@ -16,6 +16,7 @@ import {DebtKernelContract} from "../../../types/generated/debt_kernel";
 import {DebtRegistryContract} from "../../../types/generated/debt_registry";
 import {DebtTokenContract} from "../../../types/generated/debt_token";
 import {RepaymentRouterContract} from "../../../types/generated/repayment_router";
+import {TokenTransferProxyContract} from "../../../types/generated/token_transfer_proxy";
 
 import {ZeroEx} from "0x.js";
 import {ZeroX_DummyTokenContract} from "../../../types/generated/zerox_dummytoken";
@@ -49,6 +50,7 @@ const debtKernelContract = artifacts.require("DebtKernel");
 contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
     let kernel: DebtKernelContract;
     let repaymentRouter: RepaymentRouterContract;
+    let tokenTransferProxy: TokenTransferProxyContract;
     let debtTokenContract: DebtTokenContract;
     let debtRegistryContract: DebtRegistryContract;
 
@@ -128,9 +130,10 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
 
         debtTokenContract = await DebtTokenContract.deployed(web3, TX_DEFAULTS);
         debtRegistryContract = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
+        tokenTransferProxy = await TokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
 
         const kernelContractInstance =
-            await debtKernelContract.new(zeroExTokenTransferProxyContract.address);
+            await debtKernelContract.new(tokenTransferProxy.address);
 
         // The typings we use ingest vanilla Web3 contracts, so we convert the
         // contract instance deployed by truffle into a Web3 contract instance
@@ -144,6 +147,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
         repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
 
         defaultOrderParams = {
+            creditor: CREDITOR_1,
             creditorFee: Units.ether(0.002),
             debtKernelContract: kernel.address,
             debtOrderVersion: kernel.address,
@@ -185,7 +189,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
         await debtTokenContract.addAuthorizedMintAgent
             .sendTransactionAsync(kernel.address, { from: CONTRACT_OWNER });
 
-        await debtTokenContract.addAuthorizedBrokerageAgent
+        await tokenTransferProxy.addAuthorizedTransferAgent
             .sendTransactionAsync(kernel.address, { from: CONTRACT_OWNER });
     };
 
@@ -238,9 +242,9 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                 order.getOrderAddresses(),
                 order.getOrderValues(),
                 order.getOrderBytes32(),
+                signaturesV || order.getSignaturesV(),
                 signaturesR || order.getSignaturesR(),
                 signaturesS || order.getSignaturesS(),
-                signaturesV || order.getSignaturesV(),
             );
 
             const receipt = await web3.eth.getTransactionReceipt(txHash);
@@ -249,7 +253,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
             expect(errorLog).to.deep.equal(LogError(
                 kernel.address,
                 errorCode,
-                order.getDebtorSignatureHash(),
+                order.getDebtOrderHash(),
             ));
         };
 
@@ -262,7 +266,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
 
             await token.setBalance.sendTransactionAsync(debtor, new BigNumber(0),
                 { from: CONTRACT_OWNER });
-            await token.approve.sendTransactionAsync(zeroEx.proxy.getContractAddress(), new BigNumber(0),
+            await token.approve.sendTransactionAsync(tokenTransferProxy.address, new BigNumber(0),
                 { from: debtor });
 
             const creditorBalanceAndAllowance =
@@ -270,7 +274,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
 
             await token.setBalance.sendTransactionAsync(creditor, creditorBalanceAndAllowance,
                 { from: CONTRACT_OWNER });
-            await token.approve.sendTransactionAsync(zeroEx.proxy.getContractAddress(), creditorBalanceAndAllowance,
+            await token.approve.sendTransactionAsync(tokenTransferProxy.address, creditorBalanceAndAllowance,
                 { from: creditor });
 
             return [new BigNumber(0), creditorBalanceAndAllowance];
@@ -287,7 +291,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
             return [debtorBalance, creditorBalance, underwriterBalance, relayerBalance];
         };
 
-        const testOrderFill = (setupDebtOrder: () => Promise<void>) => {
+        const testOrderFill = (filler: string, setupDebtOrder: () => Promise<void>) => {
             return () => {
                 let principalToken: ZeroX_DummyTokenContract;
 
@@ -315,9 +319,10 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                         debtOrder.getOrderAddresses(),
                         debtOrder.getOrderValues(),
                         debtOrder.getOrderBytes32(),
+                        debtOrder.getSignaturesV(),
                         debtOrder.getSignaturesR(),
                         debtOrder.getSignaturesS(),
-                        debtOrder.getSignaturesV(),
+                        { from: filler },
                     );
 
                     receipt = await web3.eth.getTransactionReceipt(txHash);
@@ -386,7 +391,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                     it("should emit registry insert log", async () => {
                         await expect(logs.shift()).to.deep.equal(LogInsertEntry(
                             debtRegistryContract.address, new DebtRegistryEntry({
-                                beneficiary: kernel.address,
+                                beneficiary: debtOrder.getCreditor(),
                                 debtor: debtOrder.getDebtor(),
                                 termsContract: debtOrder.getIssuanceCommitment().getTermsContract(),
                                 termsContractParameters:
@@ -402,93 +407,27 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                     it("should emit debt token mint log", async () => {
                         await expect(logs.shift()).to.deep.equal(LogMint(
                             debtTokenContract.address,
-                            kernel.address,
+                            debtOrder.getCreditor(),
                             new BigNumber(debtOrder.getIssuanceCommitment().getHash()),
                         ));
                     });
 
-                    it("should emit transfer logs triggered by 0x order fill (if priced issuance)", async () => {
-                        if (debtOrder.getPrincipalAmount().plus(debtOrder.getCreditorFee())
-                                .greaterThan(0)) {
-                            await expect(logs.shift()).to.deep.equal(LogTransfer(
-                                debtOrder.getPrincipalTokenAddress(),
-                                debtOrder.getCreditor(),
-                                debtTokenContract.address,
-                                debtOrder.getPrincipalAmount().plus(debtOrder.getCreditorFee()),
-                            ));
-
-                            await expect(logs.shift()).to.deep.equal(LogModifyEntryBeneficiary(
-                                debtRegistryContract.address,
-                                debtOrder.getIssuanceCommitment().getHash(),
-                                kernel.address,
-                                debtOrder.getCreditor(),
-                            ));
-
-                            await expect(logs.shift()).to.deep.equal(LogApproval(
-                                debtTokenContract.address,
-                                kernel.address,
-                                NULL_ADDRESS,
-                                new BigNumber(debtOrder.getIssuanceCommitment().getHash()),
-                            ));
-
-                            await expect(logs.shift()).to.deep.equal(LogTransfer(
-                                debtTokenContract.address,
-                                kernel.address,
-                                debtOrder.getCreditor(),
-                                new BigNumber(debtOrder.getIssuanceCommitment().getHash()),
-                            ));
-
-                            await expect(logs.shift()).to.deep.equal(LogTransfer(
-                                debtOrder.getPrincipalTokenAddress(),
-                                debtTokenContract.address,
-                                kernel.address,
-                                debtOrder.getPrincipalAmount().plus(debtOrder.getCreditorFee()),
-                            ));
-                        }
-                    });
-
-                    it("should emit transfer logs for debt token to creditor (if unpriced issuance)", async () => {
-                        if (debtOrder.getPrincipalAmount().plus(debtOrder.getCreditorFee())
-                                .equals(0)) {
-                            await expect(logs.shift()).to.deep.equal(LogModifyEntryBeneficiary(
-                                debtRegistryContract.address,
-                                debtOrder.getIssuanceCommitment().getHash(),
-                                kernel.address,
-                                debtOrder.getCreditor(),
-                            ));
-
-                            await expect(logs.shift()).to.deep.equal(LogApproval(
-                                debtTokenContract.address,
-                                kernel.address,
-                                NULL_ADDRESS,
-                                new BigNumber(debtOrder.getIssuanceCommitment().getHash()),
-                            ));
-
-                            await expect(logs.shift()).to.deep.equal(LogTransfer(
-                                debtTokenContract.address,
-                                kernel.address,
-                                debtOrder.getCreditor(),
-                                new BigNumber(debtOrder.getIssuanceCommitment().getHash()),
-                            ));
-                        }
-                    });
-
-                    it("should emit transfer log from kernel to debtor (if principal - debtor fee > 0)", async () => {
+                    it("should emit transfer log from creditor to debtor (if principal - debtor fee > 0)", async () => {
                         if (debtOrder.getPrincipalAmount().minus(debtOrder.getDebtorFee()).gt(0)) {
                             await expect(logs.shift()).to.deep.equal(LogTransfer(
                                 debtOrder.getPrincipalTokenAddress(),
-                                kernel.address,
+                                debtOrder.getCreditor(),
                                 debtOrder.getDebtor(),
                                 debtOrder.getPrincipalAmount().minus(debtOrder.getDebtorFee()),
                             ));
                         }
                     });
 
-                    it("should emit transfer log from kernel to underwriter (if present)", async () => {
+                    it("should emit transfer log from creditor to underwriter (if present)", async () => {
                         if (debtOrder.getIssuanceCommitment().getUnderwriter() !== NULL_ADDRESS) {
                             await expect(logs.shift()).to.deep.equal(LogTransfer(
                                 debtOrder.getPrincipalTokenAddress(),
-                                kernel.address,
+                                debtOrder.getCreditor(),
                                 debtOrder.getIssuanceCommitment().getUnderwriter(),
                                 debtOrder.getUnderwriterFee(),
                             ));
@@ -499,7 +438,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                         if (debtOrder.getRelayer() !== NULL_ADDRESS) {
                             await expect(logs.shift()).to.deep.equal(LogTransfer(
                                 debtOrder.getPrincipalTokenAddress(),
-                                kernel.address,
+                                debtOrder.getCreditor(),
                                 debtOrder.getRelayer(),
                                 debtOrder.getRelayerFee(),
                             ));
@@ -541,20 +480,20 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                         debtOrder.getOrderAddresses(),
                         debtOrder.getOrderValues(),
                         debtOrder.getOrderBytes32(),
+                        debtOrder.getSignaturesV(),
                         debtOrder.getSignaturesR(),
                         debtOrder.getSignaturesS(),
-                        debtOrder.getSignaturesV(),
                     )).to.eventually.be.rejectedWith(REVERT_ERROR);
                 });
             });
 
-            describe("...with underwriter and relayer", testOrderFill(async () => {
+            describe("...with underwriter and relayer", testOrderFill(CONTRACT_OWNER, async () => {
                 debtOrder = await orderFactory.generateDebtOrder({
                     principalTokenAddress: dummyMKRToken.address,
                 });
             }));
 
-            describe("...with neither underwriter nor relayer", testOrderFill(async () => {
+            describe("...with neither underwriter nor relayer", testOrderFill(CONTRACT_OWNER, async () => {
                 debtOrder = await orderFactory.generateDebtOrder({
                     creditorFee: new BigNumber(0),
                     debtorFee: new BigNumber(0),
@@ -566,15 +505,16 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                 });
             }));
 
-            describe("...with relayer but no underwriter", testOrderFill(async () => {
+            describe("...with relayer but no underwriter", testOrderFill(CONTRACT_OWNER, async () => {
                 debtOrder = await orderFactory.generateDebtOrder({
+                    creditorFee: defaultOrderParams.relayerFee.minus(defaultOrderParams.debtorFee),
                     underwriter: NULL_ADDRESS,
                     underwriterFee: new BigNumber(0),
                     underwriterRiskRating: new BigNumber(0),
                 });
             }));
 
-            describe("...with underwriter but no relayer", testOrderFill(async () => {
+            describe("...with underwriter but no relayer", testOrderFill(CONTRACT_OWNER, async () => {
                 debtOrder = await orderFactory.generateDebtOrder({
                     relayer: NULL_ADDRESS,
                     relayerFee: new BigNumber(0),
@@ -583,7 +523,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                 });
             }));
 
-            describe("...with no principal and no creditor / debtor fees", testOrderFill(async () => {
+            describe("...with no principal and no creditor / debtor fees", testOrderFill(CONTRACT_OWNER, async () => {
                 debtOrder = await orderFactory.generateDebtOrder({
                     creditorFee: new BigNumber(0),
                     debtorFee: new BigNumber(0),
@@ -596,7 +536,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                 });
             }));
 
-            describe("...with no principal and nonzero creditor fee", testOrderFill(async () => {
+            describe("...with no principal and nonzero creditor fee", testOrderFill(CONTRACT_OWNER, async () => {
                 debtOrder = await orderFactory.generateDebtOrder({
                     creditorFee: Units.ether(0.002),
                     debtorFee: new BigNumber(0),
@@ -608,7 +548,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                 });
             }));
 
-            describe("...when creditor and debtor are same address", testOrderFill(async () => {
+            describe("...when creditor and debtor are same address", testOrderFill(CONTRACT_OWNER, async () => {
                 debtOrder = await orderFactory.generateDebtOrder({
                     creditor: CREDITOR_1,
                     creditorFee: new BigNumber(0),
@@ -626,12 +566,47 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                     underwriterRiskRating: new BigNumber(0),
                 });
             }));
+
+            describe("...when submitted by creditor *without* creditor signature attached",
+                testOrderFill(CREDITOR_1, async () => {
+                debtOrder = await orderFactory.generateDebtOrder({
+                    creditor: CREDITOR_1,
+                    orderSignatories: {
+                        debtor: DEBTOR_1,
+                        underwriter: UNDERWRITER,
+                    },
+                });
+            }));
+
+            describe("...when submitted by debtor *without* debtor signature attached",
+                testOrderFill(DEBTOR_1, async () => {
+                debtOrder = await orderFactory.generateDebtOrder({
+                    debtor: DEBTOR_1,
+                    orderSignatories: {
+                        creditor: CREDITOR_1,
+                        underwriter: UNDERWRITER,
+                    },
+                });
+            }));
+
+            describe("...when submitted by underwriter *without* underwriter signature attached",
+                testOrderFill(UNDERWRITER, async () => {
+                debtOrder = await orderFactory.generateDebtOrder({
+                    orderSignatories: {
+                        creditor: CREDITOR_1,
+                        debtor: DEBTOR_1,
+                    },
+                    underwriter: UNDERWRITER,
+                });
+            }));
         });
 
         describe("User fills invalid debt order", () => {
             describe("...where there is no underwriter, but underwriter fee is nonzero", () => {
                 before(async () => {
                     debtOrder = await orderFactory.generateDebtOrder({
+                        creditorFee: defaultOrderParams.relayerFee.plus(Units.ether(0.001)).dividedBy(2),
+                        debtorFee: defaultOrderParams.relayerFee.plus(Units.ether(0.001)).dividedBy(2),
                         underwriter: NULL_ADDRESS,
                         underwriterFee: Units.ether(0.001),
                         underwriterRiskRating: new BigNumber(0),
@@ -672,20 +647,38 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                     await setupBalancesAndAllowances();
                 });
 
-                it("should return INSUFFICIENT_FEES error", async () => {
+                it("should return INSUFFICIENT_OR_EXCESSIVE_FEES error", async () => {
                     await testShouldReturnError(debtOrder,
-                        DebtKernelErrorCodes.ORDER_INVALID_INSUFFICIENT_FEES);
+                        DebtKernelErrorCodes.ORDER_INVALID_INSUFFICIENT_OR_EXCESSIVE_FEES);
                 });
             });
 
-            describe("...when creditorFee + principal > 0, but 0x proxy does not have sufficient allowance", () => {
+            describe("...when creditor + debtor fees > underwriter + relayer fees", () => {
+                before(async () => {
+                    debtOrder = await orderFactory.generateDebtOrder({
+                        creditorFee: Units.ether(0.006),
+                        debtorFee: Units.ether(0.001),
+                        relayerFee: Units.ether(0.0025),
+                        underwriterFee: Units.ether(0.0025),
+                    });
+                    await setupBalancesAndAllowances();
+                });
+
+                it("should return INSUFFICIENT_OR_EXCESSIVE_FEES error", async () => {
+                    await testShouldReturnError(debtOrder,
+                        DebtKernelErrorCodes.ORDER_INVALID_INSUFFICIENT_OR_EXCESSIVE_FEES);
+                });
+            });
+
+            describe("...when creditorFee + principal > 0, token transfer proxy does not have sufficient allowance",
+                () => {
                 before(async () => {
                     debtOrder = await orderFactory.generateDebtOrder();
                     await setupBalancesAndAllowances();
 
                     const token = await ZeroX_DummyTokenContract.at(debtOrder.getPrincipalTokenAddress(),
                         web3, TX_DEFAULTS);
-                    await token.approve.sendTransactionAsync(zeroEx.proxy.getContractAddress(),
+                    await token.approve.sendTransactionAsync(tokenTransferProxy.address,
                         debtOrder.getPrincipalAmount().plus(debtOrder.getCreditorFee().minus(1)),
                         { from: debtOrder.getCreditor() });
                 });
@@ -716,8 +709,11 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
             describe("...when debtorFee > principal", () => {
                 before(async () => {
                     debtOrder = await orderFactory.generateDebtOrder({
+                        creditorFee: Units.ether(0),
                         debtorFee: Units.ether(1.1),
                         principalAmount: Units.ether(1),
+                        relayerFee: Units.ether(0.55),
+                        underwriterFee: Units.ether(0.55),
                     });
                     await setupBalancesAndAllowances();
                 });
@@ -752,9 +748,9 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                         debtOrder.getOrderAddresses(),
                         debtOrder.getOrderValues(),
                         debtOrder.getOrderBytes32(),
+                        debtOrder.getSignaturesV(),
                         debtOrder.getSignaturesR(),
                         debtOrder.getSignaturesS(),
-                        debtOrder.getSignaturesV(),
                     );
                 });
 

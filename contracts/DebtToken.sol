@@ -22,7 +22,6 @@ import "./DebtRegistry.sol";
 import "NonFungibleToken/contracts/MintableNonFungibleToken.sol";
 import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
 import "zeppelin-solidity/contracts/token/ERC20.sol";
-import "./interfaces/ZeroExExchange.sol";
 
 
 /**
@@ -92,88 +91,6 @@ contract DebtToken is MintableNonFungibleToken, Pausable {
     }
 
     /**
-     * HACK: Since 0x protocol does not support ERC721 trades yet,
-     * we somewhat abuse the 0x protocol by creating the notion of "brokered"
-     * trades.  A "brokered" trade involves the DebtToken contract account
-     * taking ownership of an NFT with id _tokenId, executing a
-     * 0x order for swapping the NFT for ERC20 tokens, and then
-     * transfering the swapped ERC20 tokens to the transaction sender.
-     *
-     * The 0x order executes successfully because it is executed immediately
-     * after we set _tokenId as the current "brokeredTokenId" -- a variable
-     * that captures the exact NFT that we are looking to trade in this
-     * particular synchronous set of instructions.
-     *
-     * The brokeredTokenId is reset after it is transferred, and brokered
-     * trades can only be initiated by their tokens' owners.
-     *
-     * NOTE: This is a temporary feature that will no longer be necessary
-     *  once the 0x protocol supports NFT orders -- as such, we limit it
-     *  to only authorized parties (namely, the DebtKernel contract) in
-     *  order to reduce its attack surface.
-     */
-    function brokerZeroExOrder(
-        uint _tokenId,
-        address _zeroExExchangeContract,
-        address[5] _zeroExOrderAddresses,
-        uint[6] _zeroExOrderValues,
-        uint8 _v,
-        bytes32 _r,
-        bytes32 _s
-    )
-        public
-        whenNotPaused
-        returns (bool _success)
-    {
-        require(tokenBrokeragePermissions.isAuthorized(msg.sender));
-        require(tokenExchangePermissions.isAuthorized(_zeroExExchangeContract));
-
-        require(msg.sender == ownerOf(_tokenId));
-        require(brokeredTokenId == 0);
-
-        brokeredTokenId = _tokenId;
-
-        var (makerToken, makerTokenAmount) = fillZeroExOrder(
-            _zeroExExchangeContract,
-            _zeroExOrderAddresses,
-            _zeroExOrderValues,
-            _v,
-            _r,
-            _s
-        );
-
-        assert(brokeredTokenId == 0);
-
-        return ERC20(makerToken).transfer(msg.sender, makerTokenAmount);
-    }
-
-    /**
-     * We override the NFT transferFrom method in order to enable brokered 0x trades
-     * for non-fungible tokens.
-     */
-    function transferFrom(
-        address _from,
-        address _to,
-        uint _tokenId
-    )
-        public
-
-    {
-        if (_tokenId == 1 && brokeredTokenId != 0) {
-            address nftOwner = ownerOf(brokeredTokenId);
-
-            _clearApprovalAndTransfer(nftOwner, _to, brokeredTokenId);
-
-            Approval(nftOwner, 0, brokeredTokenId);
-            Transfer(nftOwner, _to, brokeredTokenId);
-
-            brokeredTokenId = 0;
-        } else {
-            super.transferFrom(_from, _to, _tokenId);
-        }
-    }
-
-    /**
      * Adds an address to the list of agents authorized to mint debt tokens.
      */
     function addAuthorizedMintAgent(address _agent)
@@ -203,69 +120,6 @@ contract DebtToken is MintableNonFungibleToken, Pausable {
     {
         return tokenCreationPermissions.getAuthorizedAgents();
     }
-
-    /**
-     * Adds an address to the list of agents authorized to broker 0x trades
-     */
-    function addAuthorizedBrokerageAgent(address _agent)
-        public
-        onlyOwner
-    {
-        tokenBrokeragePermissions.authorize(_agent);
-    }
-
-    /**
-     * Removes an address from the list of agents authorized to broker 0x trades
-     */
-    function revokeBrokerageAgentAuthorization(address _agent)
-        public
-        onlyOwner
-    {
-        tokenBrokeragePermissions.revokeAuthorization(_agent);
-    }
-
-    /**
-     * Returns the list of agents authorized to broker 0x trades
-     */
-    function getAuthorizedBrokerageAgents()
-        public
-        view
-        returns (address[] _agents)
-    {
-        return tokenBrokeragePermissions.getAuthorizedAgents();
-    }
-
-    /**
-     * Adds an address to the list of contracts authorized to act as a 0x exchange
-     */
-    function addAuthorizedExchangeAgent(address _agent)
-        public
-        onlyOwner
-    {
-        tokenExchangePermissions.authorize(_agent);
-    }
-
-    /**
-     * Removes an address to the list of contracts authorized to act as a 0x exchange
-     */
-    function revokeExchangeAgentAuthorization(address _agent)
-        public
-        onlyOwner
-    {
-        tokenExchangePermissions.revokeAuthorization(_agent);
-    }
-
-    /**
-     * Retruns the list of authorized 0x exchange contracts (at the time of writing, only one)
-     */
-    function getAuthorizedExchangeAgents()
-        public
-        view
-        returns (address[] _agents)
-    {
-        return tokenExchangePermissions.getAuthorizedAgents();
-    }
-
 
     /**
      * We override the core transfer method of the parent non-fungible token
@@ -304,32 +158,5 @@ contract DebtToken is MintableNonFungibleToken, Pausable {
         returns (address _owner)
     {
         return registry.getBeneficiary(bytes32(_tokenId));
-    }
-
-    /**
-     * Helper function that executes a given 0x order
-     */
-    function fillZeroExOrder(
-        address zeroExExchangeContract,
-        address[5] orderAddresses,
-        uint[6] orderValues,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    )
-        internal
-        returns (address _makerToken, uint _makerTokenAmount)
-    {
-        ZeroExExchange(zeroExExchangeContract).fillOrder(
-            orderAddresses,
-            orderValues,
-            1,
-            true,
-            v,
-            r,
-            s
-        );
-
-        return (orderAddresses[2], orderValues[0]);
     }
 }

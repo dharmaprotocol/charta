@@ -37,9 +37,8 @@ export class DebtOrderFactory {
             relayerFee: params.relayerFee,
             underwriterFee: params.underwriterFee,
             version: params.debtOrderVersion,
-            zeroExExchangeContract: params.zeroExExchangeContract,
         });
 
-        return debtOrder.getSignedDebtOrder(web3, params.orderSignatories);
+        return debtOrder.getSignedDebtOrder(web3, params.creditor, params.orderSignatories);
     }
 }

@@ -11,6 +11,7 @@ import {MockDebtRegistryContract} from "../../../types/generated/mock_debt_regis
 import {MockERC20TokenContract} from "../../../types/generated/mock_e_r_c20_token";
 import {MockERC721TokenContract} from "../../../types/generated/mock_e_r_c721_token";
 import {MockTermsContractContract} from "../../../types/generated/mock_terms_contract";
+import {MockTokenTransferProxyContract} from "../../../types/generated/mock_token_transfer_proxy";
 
 import {RepaymentRouterErrorCodes} from "../../../types/errors";
 
@@ -36,6 +37,7 @@ contract("Repayment Router (Unit Tests)", async (ACCOUNTS) => {
     let mockNonFungibleToken: MockERC721TokenContract;
     let mockRegistry: MockDebtRegistryContract;
     let mockTermsContract: MockTermsContractContract;
+    let mockTokenTransferProxy: MockTokenTransferProxyContract;
 
     const CONTRACT_OWNER = ACCOUNTS[0];
     const PAYER = ACCOUNTS[1];
@@ -57,8 +59,10 @@ contract("Repayment Router (Unit Tests)", async (ACCOUNTS) => {
         mockToken = await MockERC20TokenContract.deployed(web3, TX_DEFAULTS);
         mockNonFungibleToken = await MockERC721TokenContract.deployed(web3, TX_DEFAULTS);
         mockTermsContract = await MockTermsContractContract.deployed(web3, TX_DEFAULTS);
+        mockTokenTransferProxy = await MockTokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
 
-        const repaymentRouterTruffle = await repaymentRouterContract.new(mockRegistry.address);
+        const repaymentRouterTruffle =
+            await repaymentRouterContract.new(mockRegistry.address, mockTokenTransferProxy.address);
 
         // The typings we use ingest vanilla Web3 contracts, so we convert the
         // contract instance deployed by truffle into a Web3 contract instance
@@ -165,7 +169,8 @@ contract("Repayment Router (Unit Tests)", async (ACCOUNTS) => {
                 });
 
                 it("should not transfer tokens from payer", async () => {
-                    await expect(mockToken.wasTransferFromCalledWith.callAsync(
+                    await expect(mockTokenTransferProxy.wasTransferFromCalledWith.callAsync(
+                        mockToken.address,
                         PAYER,
                         BENEFICIARY,
                         Units.ether(1),
@@ -192,7 +197,7 @@ contract("Repayment Router (Unit Tests)", async (ACCOUNTS) => {
                     );
 
                     await mockToken.mockAllowanceFor.sendTransactionAsync(
-                        PAYER, router.address, Units.ether(1).minus(1),
+                        PAYER, mockTokenTransferProxy.address, Units.ether(1).minus(1),
                     );
 
                     const txHash = await router.repay.sendTransactionAsync(ARBITRARY_AGREEMENT_ID,
@@ -211,7 +216,8 @@ contract("Repayment Router (Unit Tests)", async (ACCOUNTS) => {
                 });
 
                 it("should not transfer tokens from payer", async () => {
-                    await expect(mockToken.wasTransferFromCalledWith.callAsync(
+                    await expect(mockTokenTransferProxy.wasTransferFromCalledWith.callAsync(
+                        mockToken.address,
                         PAYER,
                         BENEFICIARY,
                         Units.ether(1),
@@ -238,7 +244,7 @@ contract("Repayment Router (Unit Tests)", async (ACCOUNTS) => {
                     );
 
                     await mockToken.mockAllowanceFor.sendTransactionAsync(
-                        PAYER, router.address, Units.ether(1),
+                        PAYER, mockTokenTransferProxy.address, Units.ether(1),
                     );
 
                     await mockTermsContract.mockRegisterRepaymentReturnValue.sendTransactionAsync(false);
@@ -259,7 +265,8 @@ contract("Repayment Router (Unit Tests)", async (ACCOUNTS) => {
                 });
 
                 it("should not transfer tokens from payer", async () => {
-                    await expect(mockToken.wasTransferFromCalledWith.callAsync(
+                    await expect(mockTokenTransferProxy.wasTransferFromCalledWith.callAsync(
+                        mockToken.address,
                         PAYER,
                         BENEFICIARY,
                         Units.ether(1),
@@ -276,7 +283,7 @@ contract("Repayment Router (Unit Tests)", async (ACCOUNTS) => {
                     );
 
                     await mockToken.mockAllowanceFor.sendTransactionAsync(
-                        PAYER, router.address, Units.ether(1),
+                        PAYER, mockTokenTransferProxy.address, Units.ether(1),
                     );
 
                     await mockTermsContract.mockRegisterRepaymentReturnValue.sendTransactionAsync(true);
@@ -289,7 +296,8 @@ contract("Repayment Router (Unit Tests)", async (ACCOUNTS) => {
                 });
 
                 it("should transfer tokens of specified amount from payer", async () => {
-                    await expect(mockToken.wasTransferFromCalledWith.callAsync(
+                    await expect(mockTokenTransferProxy.wasTransferFromCalledWith.callAsync(
+                        mockToken.address,
                         PAYER,
                         BENEFICIARY,
                         Units.ether(1),
@@ -364,7 +372,8 @@ contract("Repayment Router (Unit Tests)", async (ACCOUNTS) => {
             });
 
             it("should not transfer token from payer", async () => {
-                await expect(mockNonFungibleToken.wasTransferFromCalledWith.callAsync(
+                await expect(mockTokenTransferProxy.wasTransferFromCalledWith.callAsync(
+                    mockNonFungibleToken.address,
                     NULL_ADDRESS,
                     NULL_ADDRESS,
                     NON_FUNGIBLE_TOKEN_ID,
@@ -426,7 +435,8 @@ contract("Repayment Router (Unit Tests)", async (ACCOUNTS) => {
                 });
 
                 it("should not transfer token from payer", async () => {
-                    await expect(mockNonFungibleToken.wasTransferFromCalledWith.callAsync(
+                    await expect(mockTokenTransferProxy.wasTransferFromCalledWith.callAsync(
+                        mockNonFungibleToken.address,
                         PAYER,
                         BENEFICIARY,
                         NON_FUNGIBLE_TOKEN_ID,
@@ -472,7 +482,8 @@ contract("Repayment Router (Unit Tests)", async (ACCOUNTS) => {
                 });
 
                 it("should not transfer token from payer", async () => {
-                    await expect(mockNonFungibleToken.wasTransferFromCalledWith.callAsync(
+                    await expect(mockTokenTransferProxy.wasTransferFromCalledWith.callAsync(
+                        mockNonFungibleToken.address,
                         PAYER,
                         BENEFICIARY,
                         NON_FUNGIBLE_TOKEN_ID,
@@ -498,7 +509,7 @@ contract("Repayment Router (Unit Tests)", async (ACCOUNTS) => {
                         NON_FUNGIBLE_TOKEN_ID, PAYER,
                     );
                     await mockNonFungibleToken.mockGetApprovedFor.sendTransactionAsync(
-                        NON_FUNGIBLE_TOKEN_ID, router.address,
+                        NON_FUNGIBLE_TOKEN_ID, mockTokenTransferProxy.address,
                     );
 
                     await mockTermsContract.mockRegisterNFTRepaymentReturnValue.sendTransactionAsync(false);
@@ -520,7 +531,8 @@ contract("Repayment Router (Unit Tests)", async (ACCOUNTS) => {
                 });
 
                 it("should not transfer token from payer", async () => {
-                    await expect(mockNonFungibleToken.wasTransferFromCalledWith.callAsync(
+                    await expect(mockTokenTransferProxy.wasTransferFromCalledWith.callAsync(
+                        mockNonFungibleToken.address,
                         PAYER,
                         BENEFICIARY,
                         NON_FUNGIBLE_TOKEN_ID,
@@ -536,7 +548,7 @@ contract("Repayment Router (Unit Tests)", async (ACCOUNTS) => {
                         NON_FUNGIBLE_TOKEN_ID, PAYER,
                     );
                     await mockNonFungibleToken.mockGetApprovedFor.sendTransactionAsync(
-                        NON_FUNGIBLE_TOKEN_ID, router.address,
+                        NON_FUNGIBLE_TOKEN_ID, mockTokenTransferProxy.address,
                     );
 
                     await mockTermsContract.mockRegisterNFTRepaymentReturnValue.sendTransactionAsync(true);
@@ -550,7 +562,8 @@ contract("Repayment Router (Unit Tests)", async (ACCOUNTS) => {
                 });
 
                 it("should transfer token from payer to beneficiary", async () => {
-                    await expect(mockNonFungibleToken.wasTransferFromCalledWith.callAsync(
+                    await expect(mockTokenTransferProxy.wasTransferFromCalledWith.callAsync(
+                        mockNonFungibleToken.address,
                         PAYER,
                         BENEFICIARY,
                         NON_FUNGIBLE_TOKEN_ID,

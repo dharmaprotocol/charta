@@ -14,6 +14,7 @@ import {MintableNonFungibleTokenContract} from "../../../types/generated/mintabl
 import {NFTTermsContractContract} from "../../../types/generated/n_f_t_terms_contract";
 import {RepaymentRouterContract} from "../../../types/generated/repayment_router";
 import {SimpleInterestTermsContractContract} from "../../../types/generated/simple_interest_terms_contract";
+import {TokenTransferProxyContract} from "../../../types/generated/token_transfer_proxy";
 
 import {ZeroEx} from "0x.js";
 import {ZeroX_DummyTokenContract} from "../../../types/generated/zerox_dummytoken";
@@ -53,6 +54,7 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
     let principalNFT: MintableNonFungibleTokenContract;
     let termsContract: SimpleInterestTermsContractContract;
     let termsContractNFT: NFTTermsContractContract;
+    let tokenTransferProxy: TokenTransferProxyContract;
 
     let zeroEx: ZeroEx;
 
@@ -92,18 +94,20 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
         principalToken = await ZeroX_DummyTokenContract.at(dummyREPTokenAddress, web3, TX_DEFAULTS);
         principalNFT = await MintableNonFungibleTokenContract.deployed(web3, TX_DEFAULTS);
 
-        await principalToken.setBalance.sendTransactionAsync(BENEFICIARY_1, Units.ether(100));
-        await principalToken.setBalance.sendTransactionAsync(BENEFICIARY_2, Units.ether(100));
-        await principalToken.approve.sendTransactionAsync(zeroExTokenTransferProxyContract.address,
-            Units.ether(100), { from: BENEFICIARY_1 });
-        await principalToken.approve.sendTransactionAsync(zeroExTokenTransferProxyContract.address,
-            Units.ether(100), { from: BENEFICIARY_2 });
-
         kernel = await DebtKernelContract.deployed(web3, TX_DEFAULTS);
         debtToken = await DebtTokenContract.deployed(web3, TX_DEFAULTS);
+        tokenTransferProxy = await TokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
+
+        await principalToken.setBalance.sendTransactionAsync(BENEFICIARY_1, Units.ether(100));
+        await principalToken.setBalance.sendTransactionAsync(BENEFICIARY_2, Units.ether(100));
+        await principalToken.approve.sendTransactionAsync(tokenTransferProxy.address,
+            Units.ether(100), { from: BENEFICIARY_1 });
+        await principalToken.approve.sendTransactionAsync(tokenTransferProxy.address,
+            Units.ether(100), { from: BENEFICIARY_2 });
 
         const debtRegistry = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
-        const repaymentRouterTruffle = await repaymentRouterContract.new(debtRegistry.address);
+        const repaymentRouterTruffle = await repaymentRouterContract.new(debtRegistry.address,
+            tokenTransferProxy.address);
         const termsContractTruffle = await simpleInterestTermsContract.new(
             debtRegistry.address,
             principalToken.address,
@@ -127,6 +131,8 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
         router = new RepaymentRouterContract(repaymentRouterWeb3Contract, TX_DEFAULTS);
         termsContract = new SimpleInterestTermsContractContract(termsContractWeb3Contract, TX_DEFAULTS);
         termsContractNFT = new NFTTermsContractContract(termsContractNftWeb3Contract, TX_DEFAULTS);
+
+        await tokenTransferProxy.addAuthorizedTransferAgent.sendTransactionAsync(router.address);
 
         const termLengthInBlocks = 43200;
         const principalPlusInterest = Units.ether(1.1);
@@ -155,7 +161,6 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
             underwriter: UNDERWRITER,
             underwriterFee: Units.ether(0.0015),
             underwriterRiskRating: Units.percent(1.35),
-            zeroExExchangeContract: zeroExExchangeContract.address,
         };
 
         orderFactory = new DebtOrderFactory(defaultOrderParams);
@@ -219,9 +224,9 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
                     order.getOrderAddresses(),
                     order.getOrderValues(),
                     order.getOrderBytes32(),
+                    order.getSignaturesV(),
                     order.getSignaturesR(),
                     order.getSignaturesS(),
-                    order.getSignaturesV(),
                 );
             });
 
@@ -282,7 +287,7 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
                         PAYER, Units.ether(1.1), { from: CONTRACT_OWNER },
                     );
                     await principalToken.approve.sendTransactionAsync(
-                        router.address, Units.ether(1), { from: PAYER },
+                        tokenTransferProxy.address, Units.ether(1), { from: PAYER },
                     );
 
                     payerBalanceBefore = await principalToken.balanceOf.callAsync(PAYER);
@@ -326,7 +331,7 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
                         PAYER, Units.ether(1.1), { from: CONTRACT_OWNER },
                     );
                     await principalToken.approve.sendTransactionAsync(
-                        router.address, Units.ether(1.1), { from: PAYER },
+                        tokenTransferProxy.address, Units.ether(1.1), { from: PAYER },
                     );
 
                     payerBalanceBefore = await principalToken.balanceOf.callAsync(PAYER);
@@ -440,9 +445,9 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
                     order.getOrderAddresses(),
                     order.getOrderValues(),
                     order.getOrderBytes32(),
+                    order.getSignaturesV(),
                     order.getSignaturesR(),
                     order.getSignaturesS(),
-                    order.getSignaturesV(),
                 );
 
                 await debtToken.transfer.sendTransactionAsync(BENEFICIARY_2,
@@ -500,7 +505,7 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
 
             describe("...with token that router has not been approved to transfer", () => {
                 before(async () => {
-                    principalNFT.transfer.sendTransactionAsync(PAYER, EXAMPLE_NFT_ID,
+                    await principalNFT.transfer.sendTransactionAsync(PAYER, EXAMPLE_NFT_ID,
                         { from: CONTRACT_OWNER });
 
                     const txHash = await router.repayNFT.sendTransactionAsync(
@@ -533,7 +538,7 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
 
             describe("...with token that payer owns and has approved router to transfer", () => {
                 before(async () => {
-                    principalNFT.approve.sendTransactionAsync(router.address, EXAMPLE_NFT_ID,
+                    await principalNFT.approve.sendTransactionAsync(tokenTransferProxy.address, EXAMPLE_NFT_ID,
                         { from: PAYER });
 
                     const txHash = await router.repayNFT.sendTransactionAsync(agreementId,

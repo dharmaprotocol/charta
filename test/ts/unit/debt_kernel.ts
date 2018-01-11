@@ -14,9 +14,9 @@ import {LogDebtOrderCancelled, LogDebtOrderFilled,
 import {DebtKernelContract} from "../../../types/generated/debt_kernel";
 import {MockDebtTokenContract} from "../../../types/generated/mock_debt_token";
 import {MockERC20TokenContract} from "../../../types/generated/mock_e_r_c20_token";
+import {MockTokenTransferProxyContract} from "../../../types/generated/mock_token_transfer_proxy";
 import {MockZeroExExchangeContract} from "../../../types/generated/mock_zero_ex_exchange";
 import {RepaymentRouterContract} from "../../../types/generated/repayment_router";
-import {ZeroX_TokenTransferProxyContract} from "../../../types/generated/zerox_tokentransferproxy";
 
 import {DebtKernelErrorCodes} from "../../../types/errors";
 import {DebtOrder, SignedDebtOrder} from "../../../types/kernel/debt_order";
@@ -43,10 +43,9 @@ const mockDebtTokenContract = artifacts.require("MockDebtToken");
 contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
     let kernel: DebtKernelContract;
     let repaymentRouter: RepaymentRouterContract;
-    let zeroExTokenTransferProxy: ZeroX_TokenTransferProxyContract;
     let mockDebtToken: MockDebtTokenContract;
-    let mockExchange: MockZeroExExchangeContract;
     let mockPrincipalToken: MockERC20TokenContract;
+    let mockTokenTransferProxy: MockTokenTransferProxyContract;
 
     let orderFactory: DebtOrderFactory;
     let defaultOrderParams: { [key: string]: any };
@@ -85,9 +84,9 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4712388 };
 
     const reset = async () => {
-        zeroExTokenTransferProxy = await ZeroX_TokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
+        mockTokenTransferProxy = await MockTokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
 
-        const kernelContractInstance = await debtKernelContract.new(zeroExTokenTransferProxy.address);
+        const kernelContractInstance = await debtKernelContract.new(mockTokenTransferProxy.address);
 
         // The typings we use ingest vanilla Web3 contracts, so we convert the
         // contract instance deployed by truffle into a Web3 contract instance
@@ -101,10 +100,10 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
         repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
 
         mockDebtToken = await MockDebtTokenContract.deployed(web3, TX_DEFAULTS);
-        mockExchange = await MockZeroExExchangeContract.deployed(web3, TX_DEFAULTS);
         mockPrincipalToken = await MockERC20TokenContract.deployed(web3, TX_DEFAULTS);
 
         defaultOrderParams = {
+            creditor: CREDITOR_1,
             creditorFee: Units.ether(0.002),
             debtKernelContract: kernel.address,
             debtOrderVersion: kernel.address,
@@ -123,7 +122,6 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
             underwriter: UNDERWRITER,
             underwriterFee: Units.ether(0.0015),
             underwriterRiskRating: Units.percent(1.35),
-            zeroExExchangeContract: mockExchange.address,
         };
 
         orderFactory = new DebtOrderFactory(defaultOrderParams);
@@ -171,9 +169,9 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
                 order.getOrderAddresses(),
                 order.getOrderValues(),
                 order.getOrderBytes32(),
+                signaturesV || order.getSignaturesV(),
                 signaturesR || order.getSignaturesR(),
                 signaturesS || order.getSignaturesS(),
-                signaturesV || order.getSignaturesV(),
             );
 
             const receipt = await web3.eth.getTransactionReceipt(txHash);
@@ -182,17 +180,17 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
             expect(errorLog).to.deep.equal(LogError(
                 kernel.address,
                 errorCode,
-                order.getDebtorSignatureHash(),
+                order.getDebtOrderHash(),
             ));
         };
 
         const resetMocks = async () => {
             await mockDebtToken.reset.sendTransactionAsync();
-            await mockExchange.reset.sendTransactionAsync();
+            await mockTokenTransferProxy.reset.sendTransactionAsync();
             await mockPrincipalToken.reset.sendTransactionAsync();
         };
 
-        const testOrderFill = (setupDebtOrder: () => Promise<void>) => {
+        const testOrderFill = (filler: string, setupDebtOrder: () => Promise<void>) => {
             return () => {
                 let orderFilledLog: ABIDecoder.DecodedLog;
 
@@ -210,7 +208,7 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
                     ));
                     await mockPrincipalToken.mockAllowanceFor.sendTransactionAsync(
                         debtOrder.getCreditor(),
-                        zeroExTokenTransferProxy.address,
+                        mockTokenTransferProxy.address,
                         debtOrder.getPrincipalAmount().plus(debtOrder.getCreditorFee(),
                     ));
 
@@ -219,19 +217,20 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
                         debtOrder.getOrderAddresses(),
                         debtOrder.getOrderValues(),
                         debtOrder.getOrderBytes32(),
+                        debtOrder.getSignaturesV(),
                         debtOrder.getSignaturesR(),
                         debtOrder.getSignaturesS(),
-                        debtOrder.getSignaturesV(),
+                        { from: filler },
                     );
 
                     const receipt = await web3.eth.getTransactionReceipt(txHash);
                     [orderFilledLog] = _.compact(ABIDecoder.decodeLogs(receipt.logs));
                 });
 
-                it("should create debt token with issuance parameters", async () => {
+                it("should mint debt token to creditor with issuance parameters", async () => {
                     await expect(mockDebtToken.wasCreateCalledWith.callAsync(
                         debtOrder.getIssuanceCommitment().getVersion(),
-                        kernel.address,
+                        debtOrder.getCreditor(),
                         debtOrder.getDebtor(),
                         debtOrder.getIssuanceCommitment().getUnderwriter(),
                         debtOrder.getIssuanceCommitment().getUnderwriterRiskRating(),
@@ -241,62 +240,32 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
                     )).to.eventually.be.true;
                 });
 
-                it("fills 0x order to swap debt token for principal + creditor fee amount (if priced)", async () => {
-                    if (debtOrder.getPrincipalAmount().plus(debtOrder.getCreditorFee()).gt(0)) {
-                        await expect(mockDebtToken.wasBrokerZeroExOrderCalledWith.callAsync(
-                            new BigNumber(debtOrder.getIssuanceCommitment().getHash()),
-                            mockExchange.address,
-                            [
-                                debtOrder.getCreditor(), // maker
-                                NULL_ADDRESS, // taker
-                                mockPrincipalToken.address, // makerToken
-                                mockDebtToken.address, // takerToken
-                                NULL_ADDRESS, // feeRecipient
-                            ],
-                            [
-                                debtOrder.getPrincipalAmount().plus(debtOrder.getCreditorFee()), // makerTokenAmount
-                                new BigNumber(1), // takerTokenAmount
-                                new BigNumber(0), // makerFee
-                                new BigNumber(0), // takerFee
-                                debtOrder.getExpiration(), // expirationTimestampInSec
-                                new BigNumber(debtOrder.getDebtorSignatureHash()), // salt
-                            ],
-                            debtOrder.getCreditorSignature().v,
-                            debtOrder.getCreditorSignature().r,
-                            debtOrder.getCreditorSignature().s,
-                        )).to.eventually.be.true;
-                    }
-                });
-
-                it("transfers newly minted debt token to creditor (if unpriced)", async () => {
-                    if (debtOrder.getPrincipalAmount().plus(debtOrder.getCreditorFee()).equals(0)) {
-                        await expect(mockDebtToken.wasTransferCalledWith.callAsync(
-                            debtOrder.getCreditor(),
-                            new BigNumber(debtOrder.getIssuanceCommitment().getHash()),
-                        )).to.eventually.be.true;
-                    }
-                });
-
                 it("should transfer underwriter fee to underwriter", async () => {
                     if (debtOrder.getIssuanceCommitment().getUnderwriter() !== NULL_ADDRESS) {
-                        await expect(mockPrincipalToken.wasTransferCalledWith
-                            .callAsync(debtOrder.getIssuanceCommitment().getUnderwriter(),
+                        await expect(mockTokenTransferProxy.wasTransferFromCalledWith.callAsync(
+                                mockPrincipalToken.address,
+                                debtOrder.getCreditor(),
+                                debtOrder.getIssuanceCommitment().getUnderwriter(),
                                 debtOrder.getUnderwriterFee())).to.eventually.be.true;
                     }
                 });
 
                 it("should transfer relayer fee to relayer", async () => {
                     if (debtOrder.getRelayer() !== NULL_ADDRESS) {
-                        await expect(mockPrincipalToken.wasTransferCalledWith
-                            .callAsync(debtOrder.getRelayer(),
+                        await expect(mockTokenTransferProxy.wasTransferFromCalledWith.callAsync(
+                                mockPrincipalToken.address,
+                                debtOrder.getCreditor(),
+                                debtOrder.getRelayer(),
                                 debtOrder.getRelayerFee())).to.eventually.be.true;
                     }
                 });
 
                 it("should transfer principal minus debtorFee to debtor", async () => {
                     if (debtOrder.getPrincipalAmount().greaterThan(0)) {
-                        await expect(mockPrincipalToken.wasTransferCalledWith
-                            .callAsync(debtOrder.getDebtor(),
+                        await expect(mockTokenTransferProxy.wasTransferFromCalledWith.callAsync(
+                                mockPrincipalToken.address,
+                                debtOrder.getCreditor(),
+                                debtOrder.getDebtor(),
                                 debtOrder.getPrincipalAmount().minus(debtOrder.getDebtorFee())))
                                 .to.eventually.be.true;
                     }
@@ -318,11 +287,11 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
         };
 
         describe("User fills valid, consensual debt order", () => {
-            describe("...with underwriter and relayer", testOrderFill(async () => {
+            describe("...with underwriter and relayer", testOrderFill(CONTRACT_OWNER, async () => {
                 debtOrder = await orderFactory.generateDebtOrder();
             }));
 
-            describe("...with neither underwriter nor relayer", testOrderFill(async () => {
+            describe("...with neither underwriter nor relayer", testOrderFill(CONTRACT_OWNER, async () => {
                 debtOrder = await orderFactory.generateDebtOrder({
                     creditorFee: new BigNumber(0),
                     debtorFee: new BigNumber(0),
@@ -334,15 +303,17 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
                 });
             }));
 
-            describe("...with relayer but no underwriter", testOrderFill(async () => {
+            describe("...with relayer but no underwriter", testOrderFill(CONTRACT_OWNER, async () => {
                 debtOrder = await orderFactory.generateDebtOrder({
+                    creditorFee: defaultOrderParams.relayerFee.dividedBy(2),
+                    debtorFee: defaultOrderParams.relayerFee.dividedBy(2),
                     underwriter: NULL_ADDRESS,
                     underwriterFee: new BigNumber(0),
                     underwriterRiskRating: new BigNumber(0),
                 });
             }));
 
-            describe("...with underwriter but no relayer", testOrderFill(async () => {
+            describe("...with underwriter but no relayer", testOrderFill(CONTRACT_OWNER, async () => {
                 debtOrder = await orderFactory.generateDebtOrder({
                     relayer: NULL_ADDRESS,
                     relayerFee: new BigNumber(0),
@@ -351,7 +322,7 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
                 });
             }));
 
-            describe("...with no principal and no creditor / debtor fees", testOrderFill(async () => {
+            describe("...with no principal and no creditor / debtor fees", testOrderFill(CONTRACT_OWNER, async () => {
                 debtOrder = await orderFactory.generateDebtOrder({
                     creditorFee: new BigNumber(0),
                     debtorFee: new BigNumber(0),
@@ -364,7 +335,7 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
                 });
             }));
 
-            describe("...with no principal and nonzero creditor fee", testOrderFill(async () => {
+            describe("...with no principal and nonzero creditor fee", testOrderFill(CONTRACT_OWNER, async () => {
                 debtOrder = await orderFactory.generateDebtOrder({
                     creditorFee: Units.ether(0.002),
                     debtorFee: new BigNumber(0),
@@ -376,7 +347,7 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
                 });
             }));
 
-            describe("...when creditor and debtor are same address", testOrderFill(async () => {
+            describe("...when creditor and debtor are same address", testOrderFill(CONTRACT_OWNER, async () => {
                 debtOrder = await orderFactory.generateDebtOrder({
                     creditor: CREDITOR_1,
                     creditorFee: new BigNumber(0),
@@ -394,6 +365,39 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
                     underwriterRiskRating: new BigNumber(0),
                 });
             }));
+
+            describe("...when submitted by creditor *without* creditor signature attached",
+                testOrderFill(CREDITOR_1, async () => {
+                debtOrder = await orderFactory.generateDebtOrder({
+                    creditor: CREDITOR_1,
+                    orderSignatories: {
+                        debtor: DEBTOR_1,
+                        underwriter: UNDERWRITER,
+                    },
+                });
+            }));
+
+            describe("...when submitted by debtor *without* debtor signature attached",
+                testOrderFill(DEBTOR_1, async () => {
+                debtOrder = await orderFactory.generateDebtOrder({
+                    debtor: DEBTOR_1,
+                    orderSignatories: {
+                        creditor: CREDITOR_1,
+                        underwriter: UNDERWRITER,
+                    },
+                });
+            }));
+
+            describe("...when submitted by underwriter *without* underwriter signature attached",
+                testOrderFill(UNDERWRITER, async () => {
+                debtOrder = await orderFactory.generateDebtOrder({
+                    orderSignatories: {
+                        creditor: CREDITOR_1,
+                        debtor: DEBTOR_1,
+                    },
+                    underwriter: UNDERWRITER,
+                });
+            }));
         });
 
         describe("User fills invalid debt order", () => {
@@ -401,6 +405,8 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
                 before(async () => {
                     await resetMocks();
                     debtOrder = await orderFactory.generateDebtOrder({
+                        creditorFee: defaultOrderParams.relayerFee.plus(Units.ether(0.001)).dividedBy(2),
+                        debtorFee: defaultOrderParams.relayerFee.plus(Units.ether(0.001)).dividedBy(2),
                         underwriter: NULL_ADDRESS,
                         underwriterFee: Units.ether(0.001),
                         underwriterRiskRating: new BigNumber(0),
@@ -440,21 +446,38 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
                     });
                 });
 
-                it("should return INSUFFICIENT_FEES error", async () => {
+                it("should return INSUFFICIENT_OR_EXCESSIVE_FEES error", async () => {
                     await testShouldReturnError(debtOrder,
-                        DebtKernelErrorCodes.ORDER_INVALID_INSUFFICIENT_FEES);
+                        DebtKernelErrorCodes.ORDER_INVALID_INSUFFICIENT_OR_EXCESSIVE_FEES);
                 });
             });
 
-            describe("...when creditorFee + principal > 0, but 0x proxy does not have sufficient allowance", () => {
+            describe("...when creditor + debtor fees > underwriter + relayer fees", () => {
+                before(async () => {
+                    await resetMocks();
+                    debtOrder = await orderFactory.generateDebtOrder({
+                        creditorFee: Units.ether(0.006),
+                        debtorFee: Units.ether(0.001),
+                        relayerFee: Units.ether(0.0025),
+                        underwriterFee: Units.ether(0.0025),
+                    });
+                });
+
+                it("should return INSUFFICIENT_OR_EXCESSIVE_FEES error", async () => {
+                    await testShouldReturnError(debtOrder,
+                        DebtKernelErrorCodes.ORDER_INVALID_INSUFFICIENT_OR_EXCESSIVE_FEES);
+                });
+            });
+
+            describe("...when creditorFee + principal > 0, but transfer proxy has insufficient allowance", () => {
                 before(async () => {
                     await resetMocks();
                     await mockPrincipalToken.mockBalanceOfFor.sendTransactionAsync(debtOrder.getCreditor(),
                         debtOrder.getPrincipalAmount().plus(debtOrder.getCreditorFee()));
                     await mockPrincipalToken.mockAllowanceFor.sendTransactionAsync(
                         debtOrder.getCreditor(),
-                        zeroExTokenTransferProxy.address,
-                        debtOrder.getPrincipalAmount().plus(debtOrder.getCreditorFee()).minus(1),
+                        mockTokenTransferProxy.address,
+                        debtOrder.getPrincipalAmount().plus(debtOrder.getCreditorFee()).minus(Units.ether(0.5)),
                     );
 
                     debtOrder = await orderFactory.generateDebtOrder();
@@ -473,7 +496,7 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
                         debtOrder.getPrincipalAmount().plus(debtOrder.getCreditorFee()).minus(1));
                     await mockPrincipalToken.mockAllowanceFor.sendTransactionAsync(
                         debtOrder.getCreditor(),
-                        zeroExTokenTransferProxy.address,
+                        mockTokenTransferProxy.address,
                         debtOrder.getPrincipalAmount().plus(debtOrder.getCreditorFee()),
                     );
 
@@ -490,8 +513,11 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
                 before(async () => {
                     await resetMocks();
                     debtOrder = await orderFactory.generateDebtOrder({
+                        creditorFee: new BigNumber(0),
                         debtorFee: Units.ether(1.1),
                         principalAmount: Units.ether(1),
+                        relayerFee: Units.ether(0.55),
+                        underwriterFee: Units.ether(0.55),
                     });
                 });
 
@@ -620,7 +646,7 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
                     order.getPrincipalAmount().plus(order.getCreditorFee()));
                 await mockPrincipalToken.mockAllowanceFor.sendTransactionAsync(
                     order.getCreditor(),
-                    zeroExTokenTransferProxy.address,
+                    mockTokenTransferProxy.address,
                     order.getPrincipalAmount().plus(order.getCreditorFee()));
             });
 
@@ -1337,14 +1363,14 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
             it("should emit debt order cancellation log", () => {
                 expect(debtOrderCancelledLog).to.deep.equal(LogDebtOrderCancelled(
                     kernel.address,
-                    order.getDebtorSignatureHash(),
+                    order.getDebtOrderHash(),
                     order.getIssuanceCommitment().getDebtor(),
                 ));
             });
 
             it("should return debt order as cancelled", async () => {
                 await expect(kernel.debtOrderCancelled
-                    .callAsync(order.getDebtorSignatureHash()))
+                    .callAsync(order.getDebtOrderHash()))
                     .to.eventually.be.true;
             });
         });

@@ -27,7 +27,6 @@ export interface OrderParams {
     debtor: Address;
     debtKernelContract: Address;
     debtTokenContract: Address;
-    zeroExExchangeContract: Address;
     debtIssuanceCommitment: IssuanceCommitment;
     principalAmount: BigNumber;
     principalTokenAddress: Address;
