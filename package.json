@@ -52,7 +52,7 @@
   ],
   "devDependencies": {
     "0x-smart-contracts": "https://github.com/0xProject/contracts.git",
-    "@0xproject/abi-gen": "file:../0x.js/packages/abi-gen",
+    "@0xproject/abi-gen": "^0.1.1",
     "@0xproject/types": "^0.1.1",
     "@types/fs-extra": "^5.0.0",
     "@types/node": "^8.5.1",

@@ -18,18 +18,18 @@ We use truffle for deployment, testing, and development, and use [Typescript](ht
 
 Install dependencies:
 ```
-npm install
+yarn install
 ```
 
 ##### Testing
 
 Start `testrpc` and initialize dependency contracts:
 ```
-npm run chain
+yarn chain
 ```
 Run `truffle` tests:
 ```
-npm test
+yarn test
 ```
 
 
