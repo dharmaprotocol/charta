@@ -5,7 +5,6 @@ const DummyContract = artifacts.require("DummyContract");
 const DummyToken = artifacts.require("DummyToken");
 const DummyTokenRegistry = artifacts.require("DummyTokenRegistry");
 const MockDebtRegistry = artifacts.require("MockDebtRegistry");
-const MockZeroExExchange = artifacts.require("MockZeroExExchange");
 const MockERC20Token = artifacts.require("MockERC20Token");
 const MockERC721Token = artifacts.require("MockERC721Token");
 const MockDebtToken = artifacts.require("MockDebtToken");
@@ -23,7 +22,6 @@ module.exports = (deployer: any, network: string, accounts: string[]) => {
         deployer.link(PermissionsLib, DummyContract);
         deployer.deploy(DummyContract);
         deployer.deploy(MockDebtRegistry);
-        deployer.deploy(MockZeroExExchange);
         deployer.deploy(MockERC20Token);
         deployer.deploy(MockERC721Token);
         deployer.deploy(MockDebtToken);
