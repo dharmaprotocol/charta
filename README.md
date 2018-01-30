@@ -23,7 +23,7 @@ yarn install
 
 ##### Testing
 
-Start `testrpc` and initialize dependency contracts:
+Start `testrpc`:
 ```
 yarn chain
 ```
