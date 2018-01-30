@@ -7,7 +7,6 @@ import * as Units from "../test_utils/units";
 
 import {DebtRegistryContract} from "../../../types/generated/debt_registry";
 import {DebtTokenContract} from "../../../types/generated/debt_token";
-import {ZeroX_TokenTransferProxyContract} from "../../../types/generated/zerox_tokentransferproxy";
 
 import {
     Address,

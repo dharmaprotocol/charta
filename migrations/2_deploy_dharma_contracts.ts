@@ -1,5 +1,3 @@
-import {ZeroX_TokenTransferProxyContract} from "../types/generated/zerox_tokentransferproxy";
-
 const PermissionsLib = artifacts.require("PermissionsLib");
 const DummyContract = artifacts.require("DummyContract");
 const DebtRegistry = artifacts.require("DebtRegistry");

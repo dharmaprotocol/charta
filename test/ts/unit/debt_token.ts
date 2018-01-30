@@ -9,8 +9,6 @@ import * as Units from "../test_utils/units";
 import {DebtTokenContract} from "../../../types/generated/debt_token";
 import {MockDebtRegistryContract} from "../../../types/generated/mock_debt_registry";
 import {MockERC20TokenContract} from "../../../types/generated/mock_e_r_c20_token";
-import {MockZeroExExchangeContract} from "../../../types/generated/mock_zero_ex_exchange";
-import {ZeroX_TokenTransferProxyContract} from "../../../types/generated/zerox_tokentransferproxy";
 
 import {
     Address,
@@ -36,7 +34,6 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
     let debtToken: DebtTokenContract;
 
     let mockRegistry: MockDebtRegistryContract;
-    let mockExchange: MockZeroExExchangeContract;
     let mockToken: MockERC20TokenContract;
 
     let debtEntries: DebtRegistryEntry[];
@@ -94,7 +91,6 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
         mockRegistry = await MockDebtRegistryContract.deployed(web3, TX_DEFAULTS);
         await mockRegistry.reset.sendTransactionAsync();
 
-        mockExchange = await MockZeroExExchangeContract.deployed(web3, TX_DEFAULTS);
         mockToken = await MockERC20TokenContract.deployed(web3, TX_DEFAULTS);
 
         const debtTokenTruffle = await debtTokenContract.new(mockRegistry.address,
