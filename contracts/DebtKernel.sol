@@ -22,7 +22,7 @@ import "./DebtToken.sol";
 import "./TokenTransferProxy.sol";
 import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
-import "zeppelin-solidity/contracts/token/ERC20.sol";
+import "zeppelin-solidity/contracts/token/ERC20/ERC20.sol";
 
 
 /**

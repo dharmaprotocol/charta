@@ -12,7 +12,7 @@
     "soltsice": "soltsice",
     "migrate": "npm run transpile; truffle migrate",
     "test": "npm run compile; npm run generate-typings; npm run migrate; truffle test",
-    "chain": "bash ./scripts/init_chain.sh",
+    "chain": "ganache-cli --networkId 70 --accounts 20",
     "validate": "npm ls"
   },
   "repository": "git@github.com:dharmaprotocol/charta.git",
@@ -35,7 +35,7 @@
     "copyfiles": "^1.2.0",
     "ethereumjs-abi": "^0.6.4",
     "ethereumjs-util": "^5.1.2",
-    "ganache-cli": "^6.0.3",
+    "ganache-cli": "beta",
     "json-stable-stringify": "^1.0.1",
     "left-pad": "^1.2.0",
     "lodash": "^4.17.4",
@@ -45,13 +45,13 @@
     "tslint": "^5.8.0",
     "typescript": "^2.6.1",
     "web3": "0.19.0",
-    "web3-typescript-typings": "^0.7.2"
+    "web3-typescript-typings": "^0.7.2",
+    "zeppelin-solidity": "^1.6.0"
   },
   "pre-commit": [
     "lint"
   ],
   "devDependencies": {
-    "0x-smart-contracts": "https://github.com/0xProject/contracts.git",
     "@0xproject/abi-gen": "^0.1.1",
     "@0xproject/types": "^0.1.1",
     "@types/fs-extra": "^5.0.0",

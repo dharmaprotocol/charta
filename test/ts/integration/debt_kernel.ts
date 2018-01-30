@@ -15,14 +15,10 @@ import {LogApproval, LogMint, LogTransfer} from "../logs/debt_token";
 import {DebtKernelContract} from "../../../types/generated/debt_kernel";
 import {DebtRegistryContract} from "../../../types/generated/debt_registry";
 import {DebtTokenContract} from "../../../types/generated/debt_token";
+import {DummyTokenContract} from "../../../types/generated/dummy_token";
+import {DummyTokenRegistryContract} from "../../../types/generated/dummy_token_registry";
 import {RepaymentRouterContract} from "../../../types/generated/repayment_router";
 import {TokenTransferProxyContract} from "../../../types/generated/token_transfer_proxy";
-
-import {ZeroEx} from "0x.js";
-import {ZeroX_DummyTokenContract} from "../../../types/generated/zerox_dummytoken";
-import {ZeroX_ExchangeContract} from "../../../types/generated/zerox_exchange";
-import {ZeroX_TokenRegistryContract} from "../../../types/generated/zerox_tokenregistry";
-import {ZeroX_TokenTransferProxyContract} from "../../../types/generated/zerox_tokentransferproxy";
 
 import {BigNumberSetup} from "../test_utils/bignumber_setup";
 import ChaiSetup from "../test_utils/chai_setup";
@@ -54,10 +50,9 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
     let debtTokenContract: DebtTokenContract;
     let debtRegistryContract: DebtRegistryContract;
 
-    let zeroEx: ZeroEx;
-    let dummyREPToken: ZeroX_DummyTokenContract;
-    let dummyZRXToken: ZeroX_DummyTokenContract;
-    let dummyMKRToken: ZeroX_DummyTokenContract;
+    let dummyREPToken: DummyTokenContract;
+    let dummyZRXToken: DummyTokenContract;
+    let dummyMKRToken: DummyTokenContract;
 
     let defaultOrderParams: { [key: string]: any };
     let orderFactory: DebtOrderFactory;
@@ -105,27 +100,17 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4712388 };
 
     const reset = async () => {
-        // Initialize 0x.js library and retrieve deployed dummy tokens
-        const zeroExExchangeContract = await ZeroX_ExchangeContract.deployed(web3, TX_DEFAULTS);
-        const zeroExTokenRegistryContract = await ZeroX_TokenRegistryContract.deployed(web3, TX_DEFAULTS);
-        const zeroExTokenTransferProxyContract = await ZeroX_TokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
+        const dummyTokenRegistryContract = await DummyTokenRegistryContract.deployed(web3, TX_DEFAULTS);
 
-        zeroEx = new ZeroEx(web3.currentProvider, {
-            exchangeContractAddress: zeroExExchangeContract.address,
-            networkId: parseInt(web3.version.network, 10),
-            tokenRegistryContractAddress: zeroExTokenRegistryContract.address,
-            tokenTransferProxyContractAddress: zeroExTokenTransferProxyContract.address,
-        });
+        const dummyREPTokenAddress = await dummyTokenRegistryContract.getTokenAddress.callAsync("REP");
+        const dummyZRXTokenAddress = await dummyTokenRegistryContract.getTokenAddress.callAsync("ZRX");
+        const dummyMKRTokenAddress = await dummyTokenRegistryContract.getTokenAddress.callAsync("MKR");
 
-        const dummyREPTokenAddress = await zeroEx.tokenRegistry.getTokenAddressBySymbolIfExistsAsync("REP");
-        const dummyZRXTokenAddress = await zeroEx.tokenRegistry.getTokenAddressBySymbolIfExistsAsync("ZRX");
-        const dummyMKRTokenAddress = await zeroEx.tokenRegistry.getTokenAddressBySymbolIfExistsAsync("MKR");
-
-        dummyREPToken = await ZeroX_DummyTokenContract.at(dummyREPTokenAddress,
+        dummyREPToken = await DummyTokenContract.at(dummyREPTokenAddress,
             web3, TX_DEFAULTS);
-        dummyZRXToken = await ZeroX_DummyTokenContract.at(dummyZRXTokenAddress,
+        dummyZRXToken = await DummyTokenContract.at(dummyZRXTokenAddress,
             web3, TX_DEFAULTS);
-        dummyMKRToken = await ZeroX_DummyTokenContract.at(dummyMKRTokenAddress,
+        dummyMKRToken = await DummyTokenContract.at(dummyMKRTokenAddress,
             web3, TX_DEFAULTS);
 
         debtTokenContract = await DebtTokenContract.deployed(web3, TX_DEFAULTS);
@@ -166,7 +151,6 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
             underwriter: UNDERWRITER,
             underwriterFee: Units.ether(0.0015),
             underwriterRiskRating: Units.percent(1.35),
-            zeroExExchangeContract: zeroExExchangeContract.address,
         };
 
         orderFactory = new DebtOrderFactory(defaultOrderParams);
@@ -259,7 +243,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
 
         const setupBalancesAndAllowances = async (): Promise<[BigNumber, BigNumber]> => {
             const token =
-                await ZeroX_DummyTokenContract.at(debtOrder.getPrincipalTokenAddress(), web3, TX_DEFAULTS);
+                await DummyTokenContract.at(debtOrder.getPrincipalTokenAddress(), web3, TX_DEFAULTS);
 
             const debtor = debtOrder.getDebtor();
             const creditor = debtOrder.getCreditor();
@@ -280,7 +264,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
             return [new BigNumber(0), creditorBalanceAndAllowance];
         };
 
-        const getAgentBalances = async (principalToken: ZeroX_DummyTokenContract) => {
+        const getAgentBalances = async (principalToken: DummyTokenContract) => {
             const debtorBalance = await principalToken.balanceOf.callAsync(debtOrder.getDebtor());
             const creditorBalance = await principalToken.balanceOf.callAsync(debtOrder.getCreditor());
             const underwriterBalance = await principalToken.balanceOf
@@ -293,7 +277,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
 
         const testOrderFill = (filler: string, setupDebtOrder: () => Promise<void>) => {
             return () => {
-                let principalToken: ZeroX_DummyTokenContract;
+                let principalToken: DummyTokenContract;
 
                 let debtorBalanceBefore: BigNumber;
                 let creditorBalanceBefore: BigNumber;
@@ -308,7 +292,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                     await setupDebtOrder();
                     await setupBalancesAndAllowances();
 
-                    principalToken = await ZeroX_DummyTokenContract.at(debtOrder.getPrincipalTokenAddress(),
+                    principalToken = await DummyTokenContract.at(debtOrder.getPrincipalTokenAddress(),
                         web3, TX_DEFAULTS);
 
                     [debtorBalanceBefore, creditorBalanceBefore,
@@ -676,7 +660,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                     debtOrder = await orderFactory.generateDebtOrder();
                     await setupBalancesAndAllowances();
 
-                    const token = await ZeroX_DummyTokenContract.at(debtOrder.getPrincipalTokenAddress(),
+                    const token = await DummyTokenContract.at(debtOrder.getPrincipalTokenAddress(),
                         web3, TX_DEFAULTS);
                     await token.approve.sendTransactionAsync(tokenTransferProxy.address,
                         debtOrder.getPrincipalAmount().plus(debtOrder.getCreditorFee().minus(1)),
@@ -693,7 +677,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                 before(async () => {
                     debtOrder = await orderFactory.generateDebtOrder();
 
-                    const token = await ZeroX_DummyTokenContract.at(debtOrder.getPrincipalTokenAddress(),
+                    const token = await DummyTokenContract.at(debtOrder.getPrincipalTokenAddress(),
                         web3, TX_DEFAULTS);
                     await token.setBalance.sendTransactionAsync(debtOrder.getCreditor(),
                         debtOrder.getPrincipalAmount().plus(debtOrder.getCreditorFee().minus(1)),

@@ -1,0 +1,563 @@
+
+> 0x-smart-contracts@1.0.0 migrate /Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts
+> npm run transpile; truffle migrate
+
+
+> 0x-smart-contracts@1.0.0 transpile /Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts
+> rm -rf ./transpiled; copyfiles ./build/**/* ./transpiled; tsc
+
+migrations/3_register_tokens.ts(2,27): error TS7016: Could not find a declaration file for module 'bluebird'. '/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/bluebird/js/release/bluebird.js' implicitly has an 'any' type.
+  Try `npm install @types/bluebird` if it exists or add a new declaration (.d.ts) file containing `declare module 'bluebird';`
+node_modules/0x.js/lib/src/contract_wrappers/contract_wrapper.d.ts(1,23): error TS7016: Could not find a declaration file for module 'web3'. '/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/node_modules/web3/index.js' implicitly has an 'any' type.
+  Try `npm install @types/web3` if it exists or add a new declaration (.d.ts) file containing `declare module 'web3';`
+node_modules/0x.js/lib/src/types.d.ts(2,23): error TS7016: Could not find a declaration file for module 'web3'. '/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/node_modules/web3/index.js' implicitly has an 'any' type.
+  Try `npm install @types/web3` if it exists or add a new declaration (.d.ts) file containing `declare module 'web3';`
+node_modules/0x.js/lib/src/web3_wrapper.d.ts(2,23): error TS7016: Could not find a declaration file for module 'web3'. '/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/node_modules/web3/index.js' implicitly has an 'any' type.
+  Try `npm install @types/web3` if it exists or add a new declaration (.d.ts) file containing `declare module 'web3';`
+test/ts/ether_token.ts(3,23): error TS7016: Could not find a declaration file for module 'web3'. '/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/node_modules/web3/index.js' implicitly has an 'any' type.
+  Try `npm install @types/web3` if it exists or add a new declaration (.d.ts) file containing `declare module 'web3';`
+test/ts/ether_token.ts(20,44): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/ether_token.ts(25,47): error TS2345: Argument of type '{ gasPrice: BigNumber; etherTokenContractAddress: string; }' is not assignable to parameter of type 'ZeroExConfig'.
+  Types of property 'gasPrice' are incompatible.
+    Type 'BigNumber' is not assignable to type 'BigNumber.BigNumber'.
+      Property 'isBigNumber' is missing in type 'BigNumber'.
+test/ts/ether_token.ts(34,21): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/ether_token.ts(51,28): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/ether_token.ts(56,52): error TS2339: Property 'gasUsed' does not exist on type 'TransactionReceiptWithDecodedLogs'.
+test/ts/ether_token.ts(70,53): error TS2345: Argument of type 'BigNumber' is not assignable to parameter of type 'BigNumber.BigNumber'.
+test/ts/ether_token.ts(79,60): error TS2345: Argument of type 'BigNumber' is not assignable to parameter of type 'BigNumber.BigNumber'.
+test/ts/ether_token.ts(82,52): error TS2339: Property 'gasUsed' does not exist on type 'TransactionReceiptWithDecodedLogs'.
+test/ts/ether_token.ts(96,52): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/ether_token.ts(107,52): error TS2339: Property 'gasUsed' does not exist on type 'TransactionReceiptWithDecodedLogs'.
+test/ts/exchange/core.ts(2,23): error TS7016: Could not find a declaration file for module 'web3'. '/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/node_modules/web3/index.js' implicitly has an 'any' type.
+  Try `npm install @types/web3` if it exists or add a new declaration (.d.ts) file containing `declare module 'web3';`
+test/ts/exchange/core.ts(3,26): error TS7016: Could not find a declaration file for module 'ethereumjs-util'. '/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/ethereumjs-util/index.js' implicitly has an 'any' type.
+  Try `npm install @types/ethereumjs-util` if it exists or add a new declaration (.d.ts) file containing `declare module 'ethereumjs-util';`
+test/ts/exchange/core.ts(36,51): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(37,53): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(75,49): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(76,49): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(77,41): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(78,41): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(106,7): error TS2554: Expected 1-2 arguments, but got 0.
+test/ts/exchange/core.ts(110,7): error TS2554: Expected 1-2 arguments, but got 0.
+test/ts/exchange/core.ts(114,7): error TS2554: Expected 1-2 arguments, but got 0.
+test/ts/exchange/core.ts(118,7): error TS2554: Expected 1-2 arguments, but got 0.
+test/ts/exchange/core.ts(130,27): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(131,27): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(137,37): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(143,37): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(152,51): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(153,51): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(192,51): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(193,51): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(232,51): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(233,51): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(273,51): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(274,51): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(379,32): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(380,32): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(400,51): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(401,51): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(409,51): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(419,27): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(427,27): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(436,83): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(444,51): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(456,51): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(467,51): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(479,51): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(529,31): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(533,19): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(546,27): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(547,19): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(557,31): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(561,19): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(574,27): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(575,19): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(597,35): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(607,35): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(638,27): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(646,27): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(655,87): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/core.ts(734,35): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/helpers.ts(4,26): error TS7016: Could not find a declaration file for module 'ethereumjs-util'. '/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/ethereumjs-util/index.js' implicitly has an 'any' type.
+  Try `npm install @types/ethereumjs-util` if it exists or add a new declaration (.d.ts) file containing `declare module 'ethereumjs-util';`
+test/ts/exchange/helpers.ts(43,49): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/helpers.ts(44,49): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/helpers.ts(45,41): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/helpers.ts(46,41): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/helpers.ts(70,7): error TS2554: Expected 1-2 arguments, but got 0.
+test/ts/exchange/helpers.ts(71,7): error TS2554: Expected 1-2 arguments, but got 0.
+test/ts/exchange/helpers.ts(78,7): error TS2554: Expected 1-2 arguments, but got 0.
+test/ts/exchange/helpers.ts(79,7): error TS2554: Expected 1-2 arguments, but got 0.
+test/ts/exchange/helpers.ts(85,25): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/helpers.ts(86,27): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/helpers.ts(87,22): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/helpers.ts(90,7): error TS2554: Expected 1-2 arguments, but got 0.
+test/ts/exchange/helpers.ts(94,25): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/helpers.ts(95,27): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/helpers.ts(96,22): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/helpers.ts(99,7): error TS2554: Expected 1-2 arguments, but got 0.
+test/ts/exchange/helpers.ts(103,25): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/helpers.ts(104,27): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/helpers.ts(105,22): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/helpers.ts(108,7): error TS2554: Expected 1-2 arguments, but got 0.
+test/ts/exchange/helpers.ts(112,25): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/helpers.ts(113,27): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/helpers.ts(114,22): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/helpers.ts(117,7): error TS2554: Expected 1-2 arguments, but got 0.
+test/ts/exchange/helpers.ts(121,25): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/helpers.ts(122,27): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/helpers.ts(123,22): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/helpers.ts(126,7): error TS2554: Expected 1-2 arguments, but got 0.
+test/ts/exchange/helpers.ts(131,25): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/helpers.ts(132,27): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/helpers.ts(133,22): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/helpers.ts(137,7): error TS2554: Expected 1-2 arguments, but got 0.
+test/ts/exchange/helpers.ts(143,25): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/helpers.ts(144,27): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/helpers.ts(145,22): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/helpers.ts(153,25): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/helpers.ts(154,27): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/helpers.ts(155,22): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/helpers.ts(163,25): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/helpers.ts(164,27): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/helpers.ts(165,22): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/wrapper.ts(29,44): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/wrapper.ts(30,46): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/wrapper.ts(62,49): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/wrapper.ts(63,49): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/wrapper.ts(64,41): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/wrapper.ts(65,41): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/wrapper.ts(98,51): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/wrapper.ts(99,51): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/wrapper.ts(131,35): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/wrapper.ts(267,62): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/exchange/wrapper.ts(299,79): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/multi_sig_with_time_lock.ts(5,23): error TS7016: Could not find a declaration file for module 'web3'. '/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/node_modules/web3/index.js' implicitly has an 'any' type.
+  Try `npm install @types/web3` if it exists or add a new declaration (.d.ts) file containing `declare module 'web3';`
+test/ts/multi_sig_with_time_lock.ts(67,25): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/multi_sig_with_time_lock.ts(68,38): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/multi_sig_with_time_lock.ts(79,33): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/multi_sig_with_time_lock.ts(105,33): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/multi_sig_with_time_lock_except_remove_auth_addr.ts(50,7): error TS2554: Expected 1-2 arguments, but got 0.
+test/ts/multi_sig_with_time_lock_except_remove_auth_addr.ts(79,7): error TS2554: Expected 1-2 arguments, but got 0.
+test/ts/multi_sig_with_time_lock_except_remove_auth_addr.ts(94,7): error TS2554: Expected 1-2 arguments, but got 0.
+test/ts/multi_sig_with_time_lock_except_remove_auth_addr.ts(109,7): error TS2554: Expected 1-2 arguments, but got 0.
+test/ts/multi_sig_with_time_lock_except_remove_auth_addr.ts(113,7): error TS2554: Expected 1-2 arguments, but got 0.
+test/ts/multi_sig_with_time_lock_except_remove_auth_addr.ts(126,7): error TS2554: Expected 1-2 arguments, but got 0.
+test/ts/multi_sig_with_time_lock_except_remove_auth_addr.ts(130,7): error TS2554: Expected 1-2 arguments, but got 0.
+test/ts/token_registry.ts(4,26): error TS7016: Could not find a declaration file for module 'ethereumjs-util'. '/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/ethereumjs-util/index.js' implicitly has an 'any' type.
+  Try `npm install @types/ethereumjs-util` if it exists or add a new declaration (.d.ts) file containing `declare module 'ethereumjs-util';`
+test/ts/token_transfer_proxy/auth.ts(33,7): error TS2554: Expected 1-2 arguments, but got 0.
+test/ts/token_transfer_proxy/auth.ts(54,7): error TS2554: Expected 1-2 arguments, but got 0.
+test/ts/unlimitedAllowanceToken.ts(3,23): error TS7016: Could not find a declaration file for module 'web3'. '/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/node_modules/web3/index.js' implicitly has an 'any' type.
+  Try `npm install @types/web3` if it exists or add a new declaration (.d.ts) file containing `declare module 'web3';`
+test/ts/unlimitedAllowanceToken.ts(19,26): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/unlimitedAllowanceToken.ts(33,32): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/unlimitedAllowanceToken.ts(46,7): error TS2554: Expected 1-2 arguments, but got 0.
+test/ts/unlimitedAllowanceToken.ts(56,7): error TS2554: Expected 1-2 arguments, but got 0.
+test/ts/unlimitedAllowanceToken.ts(65,7): error TS2554: Expected 1-2 arguments, but got 0.
+test/ts/unlimitedAllowanceToken.ts(68,7): error TS2554: Expected 1-2 arguments, but got 0.
+test/ts/unlimitedAllowanceToken.ts(74,7): error TS2554: Expected 1-2 arguments, but got 0.
+test/ts/zrxToken.ts(3,23): error TS7016: Could not find a declaration file for module 'web3'. '/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/node_modules/web3/index.js' implicitly has an 'any' type.
+  Try `npm install @types/web3` if it exists or add a new declaration (.d.ts) file containing `declare module 'web3';`
+test/ts/zrxToken.ts(35,24): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/zrxToken.ts(41,27): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/zrxToken.ts(62,27): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/zrxToken.ts(71,32): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/zrxToken.ts(85,7): error TS2554: Expected 1-2 arguments, but got 0.
+test/ts/zrxToken.ts(96,7): error TS2554: Expected 1-2 arguments, but got 0.
+test/ts/zrxToken.ts(98,81): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+test/ts/zrxToken.ts(108,7): error TS2554: Expected 1-2 arguments, but got 0.
+test/ts/zrxToken.ts(111,7): error TS2554: Expected 1-2 arguments, but got 0.
+test/ts/zrxToken.ts(117,7): error TS2554: Expected 1-2 arguments, but got 0.
+util/balances.ts(20,19): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+util/bignumber_config.ts(7,19): error TS2339: Property 'config' does not exist on type 'typeof "/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/bignumber.js/bignu...'.
+util/crypto.ts(3,26): error TS7016: Could not find a declaration file for module 'ethereumjs-util'. '/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/ethereumjs-util/index.js' implicitly has an 'any' type.
+  Try `npm install @types/ethereumjs-util` if it exists or add a new declaration (.d.ts) file containing `declare module 'ethereumjs-util';`
+util/crypto.ts(22,47): error TS2339: Property 'isBigNumber' does not exist on type 'BigNumber'.
+util/exchange_wrapper.ts(153,27): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+util/exchange_wrapper.ts(161,33): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+util/multi_sig_wrapper.ts(2,23): error TS7016: Could not find a declaration file for module 'web3'. '/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/node_modules/web3/index.js' implicitly has an 'any' type.
+  Try `npm install @types/web3` if it exists or add a new declaration (.d.ts) file containing `declare module 'web3';`
+util/multi_sig_wrapper.ts(4,26): error TS7016: Could not find a declaration file for module 'ethereumjs-util'. '/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/ethereumjs-util/index.js' implicitly has an 'any' type.
+  Try `npm install @types/ethereumjs-util` if it exists or add a new declaration (.d.ts) file containing `declare module 'ethereumjs-util';`
+util/multi_sig_wrapper.ts(24,58): error TS2339: Property 'type' does not exist on type '{}'.
+util/order.ts(2,26): error TS7016: Could not find a declaration file for module 'ethereumjs-util'. '/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/ethereumjs-util/index.js' implicitly has an 'any' type.
+  Try `npm install @types/ethereumjs-util` if it exists or add a new declaration (.d.ts) file containing `declare module 'ethereumjs-util';`
+util/order.ts(4,23): error TS7016: Could not find a declaration file for module 'web3'. '/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/node_modules/web3/index.js' implicitly has an 'any' type.
+  Try `npm install @types/web3` if it exists or add a new declaration (.d.ts) file containing `declare module 'web3';`
+util/order_factory.ts(13,30): error TS2351: Cannot use 'new' with an expression whose type lacks a call or construct signature.
+util/rpc.ts(2,30): error TS7016: Could not find a declaration file for module '../truffle.js'. '/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/truffle.js' implicitly has an 'any' type.
+  Try `npm install @types/../truffle.js` if it exists or add a new declaration (.d.ts) file containing `declare module '../truffle.js';`
+util/types.ts(2,23): error TS7016: Could not find a declaration file for module 'web3'. '/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/node_modules/web3/index.js' implicitly has an 'any' type.
+  Try `npm install @types/web3` if it exists or add a new declaration (.d.ts) file containing `declare module 'web3';`
+npm ERR! code ELIFECYCLE
+npm ERR! errno 2
+npm ERR! 0x-smart-contracts@1.0.0 transpile: `rm -rf ./transpiled; copyfiles ./build/**/* ./transpiled; tsc`
+npm ERR! Exit status 2
+npm ERR! 
+npm ERR! Failed at the 0x-smart-contracts@1.0.0 transpile script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /Users/nadavhollander/.npm/_logs/2018-01-30T07_10_58_136Z-debug.log
+Compiling ./contracts/Exchange.sol...
+Compiling ./contracts/Migrations.sol...
+Compiling ./contracts/MultiSigWalletWithTimeLock.sol...
+Compiling ./contracts/MultiSigWalletWithTimeLockExceptRemoveAuthorizedAddress.sol...
+Compiling ./contracts/TokenRegistry.sol...
+Compiling ./contracts/TokenTransferProxy.sol...
+Compiling ./contracts/base/MultiSigWallet.sol...
+Compiling ./contracts/base/Ownable.sol...
+Compiling ./contracts/base/SafeMath.sol...
+Compiling ./contracts/base/StandardToken.sol...
+Compiling ./contracts/base/Token.sol...
+Compiling ./contracts/test/DummyToken.sol...
+Compiling ./contracts/test/MaliciousToken.sol...
+Compiling ./contracts/test/Mintable.sol...
+Compiling ./contracts/tokens/EtherToken.sol...
+Compiling ./contracts/tokens/UnlimitedAllowanceToken.sol...
+Compiling ./contracts/tokens/ZRXToken.sol...
+
+Compilation warnings encountered:
+
+/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/Token.sol:6:5: Warning: No visibility specified. Defaulting to "public".
+    function totalSupply() constant returns (uint supply) {}
+    ^------------------------------------------------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/Token.sol:10:5: Warning: No visibility specified. Defaulting to "public".
+    function balanceOf(address _owner) constant returns (uint balance) {}
+    ^-------------------------------------------------------------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/Token.sol:16:5: Warning: No visibility specified. Defaulting to "public".
+    function transfer(address _to, uint _value) returns (bool success) {}
+    ^-------------------------------------------------------------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/Token.sol:23:5: Warning: No visibility specified. Defaulting to "public".
+    function transferFrom(address _from, address _to, uint _value) returns (bool success) {}
+    ^--------------------------------------------------------------------------------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/Token.sol:29:5: Warning: No visibility specified. Defaulting to "public".
+    function approve(address _spender, uint _value) returns (bool success) {}
+    ^-----------------------------------------------------------------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/Token.sol:34:5: Warning: No visibility specified. Defaulting to "public".
+    function allowance(address _owner, address _spender) constant returns (uint remaining) {}
+    ^---------------------------------------------------------------------------------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/Ownable.sol:13:5: Warning: No visibility specified. Defaulting to "public".
+    function Ownable() {
+    ^
+Spanning multiple lines.
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/Ownable.sol:22:5: Warning: No visibility specified. Defaulting to "public".
+    function transferOwnership(address newOwner) onlyOwner {
+    ^
+Spanning multiple lines.
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/Exchange.sol:88:5: Warning: No visibility specified. Defaulting to "public".
+    function Exchange(address _zrxToken, address _tokenTransferProxy) {
+    ^
+Spanning multiple lines.
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/Migrations.sol:11:5: Warning: No visibility specified. Defaulting to "public".
+    function Migrations() {
+    ^
+Spanning multiple lines.
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/Migrations.sol:15:5: Warning: No visibility specified. Defaulting to "public".
+    function setCompleted(uint completed) restricted {
+    ^
+Spanning multiple lines.
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/Migrations.sol:19:5: Warning: No visibility specified. Defaulting to "public".
+    function upgrade(address new_address) restricted {
+    ^
+Spanning multiple lines.
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/MultiSigWallet.sol:35:13: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+            throw;
+            ^---^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/MultiSigWallet.sol:41:13: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+            throw;
+            ^---^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/MultiSigWallet.sol:47:13: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+            throw;
+            ^---^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/MultiSigWallet.sol:53:13: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+            throw;
+            ^---^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/MultiSigWallet.sol:59:13: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+            throw;
+            ^---^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/MultiSigWallet.sol:65:13: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+            throw;
+            ^---^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/MultiSigWallet.sol:71:13: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+            throw;
+            ^---^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/MultiSigWallet.sol:77:13: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+            throw;
+            ^---^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/MultiSigWallet.sol:86:13: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+            throw;
+            ^---^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/MultiSigWallet.sol:91:5: Warning: No visibility specified. Defaulting to "public".
+    function()
+    ^
+Spanning multiple lines.
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/MultiSigWallet.sol:110:17: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+                throw;
+                ^---^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/TokenRegistry.sol:224:5: Warning: No visibility specified. Defaulting to "public".
+    function getTokenAddressBySymbol(string _symbol) constant returns (address) {
+    ^
+Spanning multiple lines.
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/TokenRegistry.sol:231:5: Warning: No visibility specified. Defaulting to "public".
+    function getTokenAddressByName(string _name) constant returns (address) {
+    ^
+Spanning multiple lines.
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/StandardToken.sol:7:5: Warning: No visibility specified. Defaulting to "public".
+    function transfer(address _to, uint _value) returns (bool) {
+    ^
+Spanning multiple lines.
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/StandardToken.sol:17:5: Warning: No visibility specified. Defaulting to "public".
+    function transferFrom(address _from, address _to, uint _value) returns (bool) {
+    ^
+Spanning multiple lines.
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/StandardToken.sol:27:5: Warning: No visibility specified. Defaulting to "public".
+    function balanceOf(address _owner) constant returns (uint) {
+    ^
+Spanning multiple lines.
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/StandardToken.sol:31:5: Warning: No visibility specified. Defaulting to "public".
+    function approve(address _spender, uint _value) returns (bool) {
+    ^
+Spanning multiple lines.
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/StandardToken.sol:37:5: Warning: No visibility specified. Defaulting to "public".
+    function allowance(address _owner, address _spender) constant returns (uint) {
+    ^
+Spanning multiple lines.
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/test/Mintable.sol:11:5: Warning: No visibility specified. Defaulting to "public".
+    function mint(uint _value) {
+    ^
+Spanning multiple lines.
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/test/DummyToken.sol:11:5: Warning: No visibility specified. Defaulting to "public".
+    function DummyToken(
+    ^
+Spanning multiple lines.
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/test/DummyToken.sol:24:5: Warning: No visibility specified. Defaulting to "public".
+    function setBalance(address _target, uint _value) onlyOwner {
+    ^
+Spanning multiple lines.
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/tokens/ZRXToken.sol:30:5: Warning: No visibility specified. Defaulting to "public".
+    function ZRXToken() {
+    ^
+Spanning multiple lines.
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/MultiSigWallet.sol:226:13: Warning: This declaration shadows a builtin symbol.
+            Transaction tx = transactions[transactionId];
+            ^------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/MultiSigWalletWithTimeLock.sol:111:9: Warning: This declaration shadows a builtin symbol.
+        Transaction storage tx = transactions[transactionId];
+        ^--------------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/MultiSigWalletWithTimeLockExceptRemoveAuthorizedAddress.sol:28:9: Warning: This declaration shadows a builtin symbol.
+        Transaction storage tx = transactions[transactionId];
+        ^--------------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/MultiSigWalletWithTimeLockExceptRemoveAuthorizedAddress.sol:58:9: Warning: This declaration shadows a builtin symbol.
+        Transaction storage tx = transactions[transactionId];
+        ^--------------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/MultiSigWallet.sol:226:13: Warning: Variable is declared as a storage pointer. Use an explicit "storage" keyword to silence this warning.
+            Transaction tx = transactions[transactionId];
+            ^------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/MultiSigWalletWithTimeLockExceptRemoveAuthorizedAddress.sol:76:58: Warning: "sha3" has been deprecated in favour of "keccak256"
+        bytes4 removeAuthorizedAddressSignature = bytes4(sha3("removeAuthorizedAddress(address)"));
+                                                         ^--------------------------------------^
+
+
+/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/Token.sol:1:1: SyntaxError: Source file requires different compiler version (current compiler is 0.4.18+commit.9cf6e910.Emscripten.clang - note that nightly builds are considered to be strictly less than the released version
+pragma solidity 0.4.11;
+^---------------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/Token.sol:6:5: Warning: No visibility specified. Defaulting to "public".
+    function totalSupply() constant returns (uint supply) {}
+    ^------------------------------------------------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/Token.sol:10:5: Warning: No visibility specified. Defaulting to "public".
+    function balanceOf(address _owner) constant returns (uint balance) {}
+    ^-------------------------------------------------------------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/Token.sol:16:5: Warning: No visibility specified. Defaulting to "public".
+    function transfer(address _to, uint _value) returns (bool success) {}
+    ^-------------------------------------------------------------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/Token.sol:23:5: Warning: No visibility specified. Defaulting to "public".
+    function transferFrom(address _from, address _to, uint _value) returns (bool success) {}
+    ^--------------------------------------------------------------------------------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/Token.sol:29:5: Warning: No visibility specified. Defaulting to "public".
+    function approve(address _spender, uint _value) returns (bool success) {}
+    ^-----------------------------------------------------------------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/Token.sol:34:5: Warning: No visibility specified. Defaulting to "public".
+    function allowance(address _owner, address _spender) constant returns (uint remaining) {}
+    ^---------------------------------------------------------------------------------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/Ownable.sol:1:1: SyntaxError: Source file requires different compiler version (current compiler is 0.4.18+commit.9cf6e910.Emscripten.clang - note that nightly builds are considered to be strictly less than the released version
+pragma solidity 0.4.11;
+^---------------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/Ownable.sol:13:5: Warning: No visibility specified. Defaulting to "public".
+    function Ownable() {
+    ^
+Spanning multiple lines.
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/Ownable.sol:22:5: Warning: No visibility specified. Defaulting to "public".
+    function transferOwnership(address newOwner) onlyOwner {
+    ^
+Spanning multiple lines.
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/TokenTransferProxy.sol:19:1: SyntaxError: Source file requires different compiler version (current compiler is 0.4.18+commit.9cf6e910.Emscripten.clang - note that nightly builds are considered to be strictly less than the released version
+pragma solidity 0.4.11;
+^---------------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/SafeMath.sol:1:1: SyntaxError: Source file requires different compiler version (current compiler is 0.4.18+commit.9cf6e910.Emscripten.clang - note that nightly builds are considered to be strictly less than the released version
+pragma solidity 0.4.11;
+^---------------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/Exchange.sol:19:1: SyntaxError: Source file requires different compiler version (current compiler is 0.4.18+commit.9cf6e910.Emscripten.clang - note that nightly builds are considered to be strictly less than the released version
+pragma solidity 0.4.11;
+^---------------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/Exchange.sol:88:5: Warning: No visibility specified. Defaulting to "public".
+    function Exchange(address _zrxToken, address _tokenTransferProxy) {
+    ^
+Spanning multiple lines.
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/Migrations.sol:11:5: Warning: No visibility specified. Defaulting to "public".
+    function Migrations() {
+    ^
+Spanning multiple lines.
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/Migrations.sol:15:5: Warning: No visibility specified. Defaulting to "public".
+    function setCompleted(uint completed) restricted {
+    ^
+Spanning multiple lines.
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/Migrations.sol:19:5: Warning: No visibility specified. Defaulting to "public".
+    function upgrade(address new_address) restricted {
+    ^
+Spanning multiple lines.
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/MultiSigWallet.sol:1:1: SyntaxError: Source file requires different compiler version (current compiler is 0.4.18+commit.9cf6e910.Emscripten.clang - note that nightly builds are considered to be strictly less than the released version
+pragma solidity 0.4.11;
+^---------------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/MultiSigWallet.sol:35:13: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+            throw;
+            ^---^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/MultiSigWallet.sol:41:13: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+            throw;
+            ^---^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/MultiSigWallet.sol:47:13: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+            throw;
+            ^---^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/MultiSigWallet.sol:53:13: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+            throw;
+            ^---^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/MultiSigWallet.sol:59:13: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+            throw;
+            ^---^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/MultiSigWallet.sol:65:13: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+            throw;
+            ^---^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/MultiSigWallet.sol:71:13: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+            throw;
+            ^---^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/MultiSigWallet.sol:77:13: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+            throw;
+            ^---^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/MultiSigWallet.sol:86:13: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+            throw;
+            ^---^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/MultiSigWallet.sol:91:5: Warning: No visibility specified. Defaulting to "public".
+    function()
+    ^
+Spanning multiple lines.
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/MultiSigWallet.sol:110:17: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+                throw;
+                ^---^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/MultiSigWalletWithTimeLock.sol:19:1: SyntaxError: Source file requires different compiler version (current compiler is 0.4.18+commit.9cf6e910.Emscripten.clang - note that nightly builds are considered to be strictly less than the released version
+pragma solidity 0.4.11;
+^---------------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/MultiSigWalletWithTimeLockExceptRemoveAuthorizedAddress.sol:19:1: SyntaxError: Source file requires different compiler version (current compiler is 0.4.18+commit.9cf6e910.Emscripten.clang - note that nightly builds are considered to be strictly less than the released version
+pragma solidity 0.4.11;
+^---------------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/TokenRegistry.sol:19:1: SyntaxError: Source file requires different compiler version (current compiler is 0.4.18+commit.9cf6e910.Emscripten.clang - note that nightly builds are considered to be strictly less than the released version
+pragma solidity 0.4.11;
+^---------------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/TokenRegistry.sol:224:5: Warning: No visibility specified. Defaulting to "public".
+    function getTokenAddressBySymbol(string _symbol) constant returns (address) {
+    ^
+Spanning multiple lines.
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/TokenRegistry.sol:231:5: Warning: No visibility specified. Defaulting to "public".
+    function getTokenAddressByName(string _name) constant returns (address) {
+    ^
+Spanning multiple lines.
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/StandardToken.sol:1:1: SyntaxError: Source file requires different compiler version (current compiler is 0.4.18+commit.9cf6e910.Emscripten.clang - note that nightly builds are considered to be strictly less than the released version
+pragma solidity 0.4.11;
+^---------------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/StandardToken.sol:7:5: Warning: No visibility specified. Defaulting to "public".
+    function transfer(address _to, uint _value) returns (bool) {
+    ^
+Spanning multiple lines.
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/StandardToken.sol:17:5: Warning: No visibility specified. Defaulting to "public".
+    function transferFrom(address _from, address _to, uint _value) returns (bool) {
+    ^
+Spanning multiple lines.
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/StandardToken.sol:27:5: Warning: No visibility specified. Defaulting to "public".
+    function balanceOf(address _owner) constant returns (uint) {
+    ^
+Spanning multiple lines.
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/StandardToken.sol:31:5: Warning: No visibility specified. Defaulting to "public".
+    function approve(address _spender, uint _value) returns (bool) {
+    ^
+Spanning multiple lines.
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/StandardToken.sol:37:5: Warning: No visibility specified. Defaulting to "public".
+    function allowance(address _owner, address _spender) constant returns (uint) {
+    ^
+Spanning multiple lines.
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/tokens/UnlimitedAllowanceToken.sol:19:1: SyntaxError: Source file requires different compiler version (current compiler is 0.4.18+commit.9cf6e910.Emscripten.clang - note that nightly builds are considered to be strictly less than the released version
+pragma solidity 0.4.11;
+^---------------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/test/Mintable.sol:1:1: SyntaxError: Source file requires different compiler version (current compiler is 0.4.18+commit.9cf6e910.Emscripten.clang - note that nightly builds are considered to be strictly less than the released version
+pragma solidity 0.4.11;
+^---------------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/test/Mintable.sol:11:5: Warning: No visibility specified. Defaulting to "public".
+    function mint(uint _value) {
+    ^
+Spanning multiple lines.
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/test/DummyToken.sol:1:1: SyntaxError: Source file requires different compiler version (current compiler is 0.4.18+commit.9cf6e910.Emscripten.clang - note that nightly builds are considered to be strictly less than the released version
+pragma solidity 0.4.11;
+^---------------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/test/DummyToken.sol:11:5: Warning: No visibility specified. Defaulting to "public".
+    function DummyToken(
+    ^
+Spanning multiple lines.
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/test/DummyToken.sol:24:5: Warning: No visibility specified. Defaulting to "public".
+    function setBalance(address _target, uint _value) onlyOwner {
+    ^
+Spanning multiple lines.
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/test/MaliciousToken.sol:1:1: SyntaxError: Source file requires different compiler version (current compiler is 0.4.18+commit.9cf6e910.Emscripten.clang - note that nightly builds are considered to be strictly less than the released version
+pragma solidity 0.4.11;
+^---------------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/tokens/EtherToken.sol:19:1: SyntaxError: Source file requires different compiler version (current compiler is 0.4.18+commit.9cf6e910.Emscripten.clang - note that nightly builds are considered to be strictly less than the released version
+pragma solidity 0.4.11;
+^---------------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/tokens/ZRXToken.sol:19:1: SyntaxError: Source file requires different compiler version (current compiler is 0.4.18+commit.9cf6e910.Emscripten.clang - note that nightly builds are considered to be strictly less than the released version
+pragma solidity 0.4.11;
+^---------------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/tokens/ZRXToken.sol:30:5: Warning: No visibility specified. Defaulting to "public".
+    function ZRXToken() {
+    ^
+Spanning multiple lines.
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/MultiSigWallet.sol:226:13: Warning: This declaration shadows a builtin symbol.
+            Transaction tx = transactions[transactionId];
+            ^------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/MultiSigWalletWithTimeLock.sol:111:9: Warning: This declaration shadows a builtin symbol.
+        Transaction storage tx = transactions[transactionId];
+        ^--------------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/MultiSigWalletWithTimeLockExceptRemoveAuthorizedAddress.sol:28:9: Warning: This declaration shadows a builtin symbol.
+        Transaction storage tx = transactions[transactionId];
+        ^--------------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/MultiSigWalletWithTimeLockExceptRemoveAuthorizedAddress.sol:58:9: Warning: This declaration shadows a builtin symbol.
+        Transaction storage tx = transactions[transactionId];
+        ^--------------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/base/MultiSigWallet.sol:226:13: Warning: Variable is declared as a storage pointer. Use an explicit "storage" keyword to silence this warning.
+            Transaction tx = transactions[transactionId];
+            ^------------^
+,/Users/nadavhollander/Documents/Dharma/Development/charta/node_modules/0x-smart-contracts/contracts/MultiSigWalletWithTimeLockExceptRemoveAuthorizedAddress.sol:76:58: Warning: "sha3" has been deprecated in favour of "keccak256"
+        bytes4 removeAuthorizedAddressSignature = bytes4(sha3("removeAuthorizedAddress(address)"));
+                                                         ^--------------------------------------^
+Compilation failed. See above.
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! 0x-smart-contracts@1.0.0 migrate: `npm run transpile; truffle migrate`
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the 0x-smart-contracts@1.0.0 migrate script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /Users/nadavhollander/.npm/_logs/2018-01-30T07_11_01_803Z-debug.log

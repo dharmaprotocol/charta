@@ -7,6 +7,5 @@ export function ether(amount: number): BigNumber {
 }
 
 export function percent(amount: number): BigNumber {
-    const weiString = web3.toWei(amount / 100, "ether");
-    return new BigNumber(weiString);
+    return new BigNumber(amount).div(100).times(10**9);
 }

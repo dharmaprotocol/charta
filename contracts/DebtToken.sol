@@ -21,7 +21,7 @@ pragma solidity 0.4.18;
 import "./DebtRegistry.sol";
 import "NonFungibleToken/contracts/MintableNonFungibleToken.sol";
 import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
-import "zeppelin-solidity/contracts/token/ERC20.sol";
+import "zeppelin-solidity/contracts/token/ERC20/ERC20.sol";
 
 
 /**
