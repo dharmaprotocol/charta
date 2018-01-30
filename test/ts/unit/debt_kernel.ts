@@ -15,7 +15,6 @@ import {DebtKernelContract} from "../../../types/generated/debt_kernel";
 import {MockDebtTokenContract} from "../../../types/generated/mock_debt_token";
 import {MockERC20TokenContract} from "../../../types/generated/mock_e_r_c20_token";
 import {MockTokenTransferProxyContract} from "../../../types/generated/mock_token_transfer_proxy";
-import {MockZeroExExchangeContract} from "../../../types/generated/mock_zero_ex_exchange";
 import {RepaymentRouterContract} from "../../../types/generated/repayment_router";
 
 import {DebtKernelErrorCodes} from "../../../types/errors";
