@@ -5,6 +5,7 @@
     "noImplicitAny": true,
     "module": "commonjs",
     "baseUrl": ".",
+    "rootDir": ".",
     "allowJs": true,
     "target": "es6"
   },

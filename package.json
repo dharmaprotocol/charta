@@ -26,6 +26,7 @@
     "@types/chai-as-promised": "^7.1.0",
     "@types/json-stable-stringify": "^1.0.32",
     "@types/lodash": "^4.14.86",
+    "@types/mocha": "^2.2.47",
     "NonFungibleToken": "https://github.com/dharmaprotocol/NonFungibleToken.git",
     "abi-decoder": "^1.0.9",
     "bignumber.js": "^4.1.0",
