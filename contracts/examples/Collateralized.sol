@@ -20,38 +20,44 @@ pragma solidity 0.4.18;
 
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
 import "zeppelin-solidity/contracts/token/ERC20/ERC20.sol";
+import "../DebtRegistry.sol";
 
 
 contract Collateralized {
     using SafeMath for uint;
 
     struct Collateral {
-        address user;
+        address collateralizer;
         address token;
         uint amount;
         uint lockupPeriod;
     }
 
-    address public beneficiary;
+    DebtRegistry public debtRegistry;
     mapping(bytes32 => Collateral) public collaterals;
 
-    event CollateralAdded(
+    event CollateralLocked(
         bytes32 indexed issuanceCommitmentHash,
-        address indexed sender
+        address token,
+        uint amount
     );
 
     event CollateralReturned(
         bytes32 indexed issuanceCommitmentHash,
-        address indexed to
+        address indexed collateralizer,
+        address token,
+        uint amount
     );
 
     event CollateralSeized(
         bytes32 indexed issuanceCommitmentHash,
-        address indexed to
+        address indexed beneficiary,
+        address token,
+        uint amount
     );
 
-    function Collateralized(address _beneficiary) public {
-        beneficiary = _beneficiary;
+    function Collateralized(address _debtRegistry) public {
+        debtRegistry = DebtRegistry(_debtRegistry);
     }
 
     function collateralize(
@@ -69,11 +75,15 @@ contract Collateralized {
         require(collaterals[issuanceCommitmentHash].lockupPeriod == 0);
 
         // take tokens as collateral
-        require(ERC20(token).transferFrom(msg.sender, address(this), amount));
+        require(ERC20(token).transferFrom(
+            collateral.collateralizer,
+            address(this),
+            amount
+        ));
 
         // create new collateral for given issuanceCommitmentHash
         Collateral memory collateral = Collateral({
-            user: msg.sender,
+            collateralizer: msg.sender,
             token: token,
             amount: amount,
             lockupPeriod: lockupPeriodEndBlockNumber
@@ -81,7 +91,7 @@ contract Collateralized {
         collaterals[issuanceCommitmentHash] = collateral;
 
         // add event for given issuanceCommitmentHash
-        CollateralAdded(issuanceCommitmentHash, msg.sender);
+        CollateralLocked(issuanceCommitmentHash, token, amount);
     }
 
     function returnCollateral(bytes32 issuanceCommitmentHash) internal {
@@ -95,13 +105,15 @@ contract Collateralized {
         require(block.number > collateral.lockupPeriod);
 
         // transfer collaterals back to sender
-        ERC20(collateral.token).transfer(
-            collateral.user,
-            collateral.amount
-        );
+        ERC20(collateral.token).transfer(collateral.collateralizer, collateral.amount);
 
         // log return event
-        CollateralReturned(issuanceCommitmentHash, collateral.user);
+        CollateralReturned(
+            issuanceCommitmentHash,
+            collateral.collateralizer,
+            collateral.token,
+            collateral.amount
+        );
     }
 
     function seizeCollateral(bytes32 issuanceCommitmentHash) internal {
@@ -114,6 +126,9 @@ contract Collateralized {
         // check if lockupPeriod is over
         require(block.number > collateral.lockupPeriod);
 
+        // get beneficiary from debt registry
+        address beneficiary = debtRegistry.getBeneficiary(issuanceCommitmentHash);
+
         // transfer(seize) collaterals back to beneficiary
         ERC20(collateral.token).transfer(
             beneficiary,
@@ -121,6 +136,11 @@ contract Collateralized {
         );
 
         // log seize event
-        CollateralSeized(issuanceCommitmentHash, beneficiary);
+        CollateralSeized(
+            issuanceCommitmentHash,
+            beneficiary,
+            collateral.token,
+            collateral.amount
+        );
     }
 }
