@@ -3,3 +3,5 @@
 /transpiled
 /types/generated/*
 /build
+yarn-error.log
+/logs
