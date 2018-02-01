@@ -20,10 +20,12 @@ pragma solidity 0.4.18;
 
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
 import "zeppelin-solidity/contracts/token/ERC20/ERC20.sol";
+
+import "../TermsContract.sol";
 import "../DebtRegistry.sol";
 
 
-contract Collateralized {
+contract Collateralized is TermsContract {
     using SafeMath for uint;
 
     struct Collateral {
@@ -31,6 +33,7 @@ contract Collateralized {
         address token;
         uint amount;
         uint lockupPeriod;
+        bool seized;
     }
 
     DebtRegistry public debtRegistry;
@@ -86,7 +89,8 @@ contract Collateralized {
             collateralizer: msg.sender,
             token: token,
             amount: amount,
-            lockupPeriod: lockupPeriodEndBlockNumber
+            lockupPeriod: lockupPeriodEndBlockNumber,
+            seized: false
         });
         collaterals[issuanceCommitmentHash] = collateral;
 
@@ -94,15 +98,21 @@ contract Collateralized {
         CollateralLocked(issuanceCommitmentHash, token, amount);
     }
 
-    function returnCollateral(bytes32 issuanceCommitmentHash) internal {
+    function returnCollateral(bytes32 issuanceCommitmentHash) public {
         // fetch collateral object
         Collateral memory collateral = collaterals[issuanceCommitmentHash];
 
         // check if collateral is not empty
         require(collateral.lockupPeriod > 0);
 
-        // check if lockupPeriod is over
-        require(block.number > collateral.lockupPeriod);
+        // check if lockupPeriod is over and it's not seized
+        require(block.number > collateral.lockupPeriod && !collateral.seized);
+
+        // check if expected value has been paid
+        require(
+            getExpectedRepaymentValue(issuanceCommitmentHash, block.number) <=
+            getValueRepaid(issuanceCommitmentHash, block.number)
+        );
 
         // transfer collaterals back to sender
         ERC20(collateral.token).transfer(collateral.collateralizer, collateral.amount);
@@ -116,15 +126,24 @@ contract Collateralized {
         );
     }
 
-    function seizeCollateral(bytes32 issuanceCommitmentHash) internal {
+    function seizeCollateral(bytes32 issuanceCommitmentHash) public {
         // fetch collateral object
         Collateral memory collateral = collaterals[issuanceCommitmentHash];
 
         // check if collateral is not empty
         require(collateral.lockupPeriod > 0);
 
-        // check if lockupPeriod is over
-        require(block.number > collateral.lockupPeriod);
+        // check if lockupPeriod is over and it's not seized yet
+        require(block.number > collateral.lockupPeriod && !collateral.seized);
+
+        // check if expected value hasn't been paid
+        require(
+            getExpectedRepaymentValue(issuanceCommitmentHash, block.number) >
+            getValueRepaid(issuanceCommitmentHash, block.number)
+        );
+
+        // seize collateral
+        collateral.seized = true;
 
         // get beneficiary from debt registry
         address beneficiary = debtRegistry.getBeneficiary(issuanceCommitmentHash);
