@@ -33,7 +33,7 @@ contract Collateralized is TermsContract {
         address token;
         uint amount;
         uint lockupPeriod;
-        bool seized;
+        bool withdrawn;
     }
 
     DebtRegistry public debtRegistry;
@@ -90,7 +90,7 @@ contract Collateralized is TermsContract {
             token: token,
             amount: amount,
             lockupPeriod: lockupPeriodEndBlockNumber,
-            seized: false
+            withdrawn: false
         });
         collaterals[issuanceCommitmentHash] = collateral;
 
@@ -102,17 +102,21 @@ contract Collateralized is TermsContract {
         // fetch collateral object
         Collateral memory collateral = collaterals[issuanceCommitmentHash];
 
-        // check if collateral is not empty
-        require(collateral.lockupPeriod > 0);
-
-        // check if lockupPeriod is over and it's not seized
-        require(block.number > collateral.lockupPeriod && !collateral.seized);
+        // check if collateral is not empty, lockupPeriod is over and not withdrawn
+        require(
+            collateral.lockupPeriod > 0 &&
+            block.number > collateral.lockupPeriod &&
+            !collateral.withdrawn
+        );
 
         // check if expected value has been paid
         require(
             getExpectedRepaymentValue(issuanceCommitmentHash, block.number) <=
             getValueRepaid(issuanceCommitmentHash, block.number)
         );
+
+        // withdrawn collateral
+        collateral.withdrawn = true;
 
         // transfer collaterals back to sender
         ERC20(collateral.token).transfer(collateral.collateralizer, collateral.amount);
@@ -130,11 +134,12 @@ contract Collateralized is TermsContract {
         // fetch collateral object
         Collateral memory collateral = collaterals[issuanceCommitmentHash];
 
-        // check if collateral is not empty
-        require(collateral.lockupPeriod > 0);
-
-        // check if lockupPeriod is over and it's not seized yet
-        require(block.number > collateral.lockupPeriod && !collateral.seized);
+        // check if collateral is not empty, lockupPeriod is over and not withdrawn
+        require(
+            collateral.lockupPeriod > 0 &&
+            block.number > collateral.lockupPeriod &&
+            !collateral.withdrawn
+        );
 
         // check if expected value hasn't been paid
         require(
@@ -143,7 +148,7 @@ contract Collateralized is TermsContract {
         );
 
         // seize collateral
-        collateral.seized = true;
+        collateral.withdrawn = true;
 
         // get beneficiary from debt registry
         address beneficiary = debtRegistry.getBeneficiary(issuanceCommitmentHash);
