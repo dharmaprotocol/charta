@@ -25,6 +25,14 @@ import "../DebtRegistry.sol";
 contract SimpleInterestTermsContract {
     using SafeMath for uint;
 
+    enum AmortizationUnitType { HOURS, DAYS, WEEKS, MONTHS, YEARS }
+
+    uint public constant HOUR_BLOCK_LENGTH = 257;
+    uint public constant DAY_BLOCK_LENGTH = 6171;
+    uint public constant WEEK_BLOCK_LENGTH = 43200;
+    uint public constant MONTH_BLOCK_LENGTH = 185142;
+    uint public constant YEAR_BLOCK_LENGTH = 185142;
+
     mapping (bytes32 => uint) valueRepaid;
 
     DebtRegistry debtRegistry;
@@ -70,9 +78,10 @@ contract SimpleInterestTermsContract {
 
         if (tokenAddress == repaymentToken) {
             valueRepaid[agreementId] = valueRepaid[agreementId].add(unitsOfRepayment);
+            return true;
         }
 
-        return true;
+        return false;
     }
 
      /// Returns the cumulative units-of-value expected to be repaid given a block's timestamp.
@@ -90,14 +99,15 @@ contract SimpleInterestTermsContract {
         returns (uint _expectedRepaymentValue)
     {
         bytes32 parameters = debtRegistry.getTermsContractParameters(agreementId);
+        uint issuanceBlockNumber = debtRegistry.getIssuanceBlockNumber(agreementId);
 
-        var (principalPlusInterest, termLengthInBlocks) = unpackParameters(parameters);
+        var (principalPlusInterest, amortizationUnitType, termLengthInAmortizationUnits) =
+            unpackParameters(parameters);
 
-        if (debtRegistry.getIssuanceBlockTimestamp(agreementId).add(termLengthInBlocks) < blockTimestamp) {
-            return principalPlusInterest;
-        } else {
-            return 0;
-        }
+        uint amortizationUnitLength = getAmortizationUnitLengthInBlocks(amortizationUnitType);
+        uint numRepaymentPeriods = blockNumber.sub(issuanceBlockNumber).div(amortizationUnitLength);
+
+        return numRepaymentPeriods.mul(principalPlusInterest).div(termLengthInAmortizationUnits);
     }
 
      /// Returns the cumulative units-of-value repaid by the point at which the timestamp of a given block has lapsed.
@@ -118,15 +128,44 @@ contract SimpleInterestTermsContract {
     function unpackParameters(bytes32 parameters)
         public
         pure
-        returns (uint128 _principalPlusInterest, uint128 _termLengthInBlocks)
+        returns (
+            uint128 _principalPlusInterest,
+            uint8 _amortizationUnitType,
+            uint120 _termLengthInAmortizationUnits
+        )
     {
-        bytes16[2] memory values = [bytes16(0), 0];
+        bytes16 principalPlusInterest;
+        bytes1 amortizationUnitType;
+        bytes15 termLengthInAmortizationUnits;
 
         assembly {
-            mstore(values, parameters)
-            mstore(add(values, 16), parameters)
+            principalPlusInterest := calldataload(4)
+            amortizationUnitType := calldataload(20)
+            termLengthInAmortizationUnits := calldataload(21)
         }
 
-        return ( uint128(values[0]), uint128(values[1]) );
+        return (
+            uint128(principalPlusInterest),
+            uint8(amortizationUnitType),
+            uint120(termLengthInAmortizationUnits)
+        );
+    }
+
+    function getAmortizationUnitLengthInBlocks(uint8 amortizationUnitType)
+        public
+        pure
+        returns (uint _amortizationUnitLengthInBlocks)
+    {
+        if (amortizationUnitType == uint8(AmortizationUnitType.HOURS)) {
+            return HOUR_BLOCK_LENGTH;
+        } else if (amortizationUnitType == uint8(AmortizationUnitType.DAYS)) {
+            return DAY_BLOCK_LENGTH;
+        } else if (amortizationUnitType == uint8(AmortizationUnitType.WEEKS)) {
+            return WEEK_BLOCK_LENGTH;
+        } else if (amortizationUnitType == uint8(AmortizationUnitType.MONTHS)) {
+            return MONTH_BLOCK_LENGTH;
+        } else if (amortizationUnitType == uint8(AmortizationUnitType.YEARS)) {
+            return YEAR_BLOCK_LENGTH;
+        }
     }
 }
