@@ -19,7 +19,7 @@ module.exports = (deployer: any, network: string, accounts: string[]) => {
             TX_DEFAULTS,
         );
 
-        const symbolToTermsContractAddress: { [symbol: string]: string } = {};
+        const addressToTermsContractAddress: { [address: string]: string } = {};
 
         if (network !== "live") {
             const dummyTokenRegistry = await DummyTokenRegistryContract.deployed(web3, TX_DEFAULTS);
@@ -46,17 +46,17 @@ module.exports = (deployer: any, network: string, accounts: string[]) => {
                 repaymentRouter.address,
             );
 
-            symbolToTermsContractAddress["REP"] = simpleInterestREPTermsContract.address;
-            symbolToTermsContractAddress["MKR"] = simpleInterestMKRTermsContract.address;
-            symbolToTermsContractAddress["ZRX"] = simpleInterestZRXTermsContract.address;
+            addressToTermsContractAddress[dummyREPTokenAddress] = simpleInterestREPTermsContract.address;
+            addressToTermsContractAddress[dummyMKRTokenAddress] = simpleInterestMKRTermsContract.address;
+            addressToTermsContractAddress[dummyZRXTokenAddress] = simpleInterestZRXTermsContract.address;
         } else {
             // TODO fill in mainnet implementation
         }
 
-        for (const symbol in symbolToTermsContractAddress) {
-            if (symbolToTermsContractAddress.hasOwnProperty(symbol)) {
+        for (const address in addressToTermsContractAddress) {
+            if (addressToTermsContractAddress.hasOwnProperty(address)) {
                 await termsContractRegistry.setSimpleInterestTermsContractAddress.sendTransactionAsync(
-                    symbol, symbolToTermsContractAddress[symbol],
+                    address, addressToTermsContractAddress[address],
                 );
             }
         }

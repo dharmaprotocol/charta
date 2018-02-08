@@ -20,7 +20,7 @@ module.exports = (deployer, network, accounts) => {
         const debtRegistry = yield debt_registry_1.DebtRegistryContract.deployed(web3, TX_DEFAULTS);
         const repaymentRouter = yield repayment_router_1.RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
         const termsContractRegistry = yield terms_contract_registry_1.TermsContractRegistryContract.at(TermsContractRegistry.address, web3, TX_DEFAULTS);
-        const symbolToTermsContractAddress = {};
+        const addressToTermsContractAddress = {};
         if (network !== "live") {
             const dummyTokenRegistry = yield dummy_token_registry_1.DummyTokenRegistryContract.deployed(web3, TX_DEFAULTS);
             const dummyREPTokenAddress = yield dummyTokenRegistry.getTokenAddress.callAsync("REP");
@@ -29,16 +29,16 @@ module.exports = (deployer, network, accounts) => {
             const simpleInterestREPTermsContract = yield SimpleInterestTermsContract.new(debtRegistry.address, dummyREPTokenAddress, repaymentRouter.address);
             const simpleInterestMKRTermsContract = yield SimpleInterestTermsContract.new(debtRegistry.address, dummyMKRTokenAddress, repaymentRouter.address);
             const simpleInterestZRXTermsContract = yield SimpleInterestTermsContract.new(debtRegistry.address, dummyZRXTokenAddress, repaymentRouter.address);
-            symbolToTermsContractAddress["REP"] = simpleInterestREPTermsContract.address;
-            symbolToTermsContractAddress["MKR"] = simpleInterestMKRTermsContract.address;
-            symbolToTermsContractAddress["ZRX"] = simpleInterestZRXTermsContract.address;
+            addressToTermsContractAddress[dummyREPTokenAddress] = simpleInterestREPTermsContract.address;
+            addressToTermsContractAddress[dummyMKRTokenAddress] = simpleInterestMKRTermsContract.address;
+            addressToTermsContractAddress[dummyZRXTokenAddress] = simpleInterestZRXTermsContract.address;
         }
         else {
             // TODO fill in mainnet implementation
         }
-        for (const symbol in symbolToTermsContractAddress) {
-            if (symbolToTermsContractAddress.hasOwnProperty(symbol)) {
-                yield termsContractRegistry.setSimpleInterestTermsContractAddress.sendTransactionAsync(symbol, symbolToTermsContractAddress[symbol]);
+        for (const address in addressToTermsContractAddress) {
+            if (addressToTermsContractAddress.hasOwnProperty(address)) {
+                yield termsContractRegistry.setSimpleInterestTermsContractAddress.sendTransactionAsync(address, addressToTermsContractAddress[address]);
             }
         }
     }));
