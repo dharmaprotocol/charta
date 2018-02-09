@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "New & improved smart contracts for Dharma protocol",
   "scripts": {
-    "generate-typings": "abi-gen --abiGlob './build/contracts/*.json' --templates ./types/contract_templates --output ./types/generated",
+    "generate-typings": "abi-gen --abis './build/contracts/*.json' --templates ./types/contract_templates --output ./types/generated",
     "transpile": "rm -rf ./transpiled; copyfiles ./build/**/* ./transpiled; tsc",
     "lint-ts": "tslint migrations/*.ts test/**/*.ts",
     "lint-sol": "solhint contracts/*.sol contracts/**/*.sol",
