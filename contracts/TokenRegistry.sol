@@ -1,10 +1,12 @@
 pragma solidity 0.4.18;
 
+import "zeppelin-solidity/contracts/ownership/Ownable.sol";
 
-contract DummyTokenRegistry {
+
+contract TokenRegistry is Ownable {
     mapping (bytes32 => address) public symbolToTokenAddress;
 
-    function setTokenAddress(string symbol, address token) public {
+    function setTokenAddress(string symbol, address token) public onlyOwner {
         symbolToTokenAddress[keccak256(symbol)] = token;
     }
 
