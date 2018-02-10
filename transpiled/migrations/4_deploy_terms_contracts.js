@@ -9,9 +9,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const debt_registry_1 = require("../types/generated/debt_registry");
-const dummy_token_registry_1 = require("../types/generated/dummy_token_registry");
 const repayment_router_1 = require("../types/generated/repayment_router");
 const terms_contract_registry_1 = require("../types/generated/terms_contract_registry");
+const token_registry_1 = require("../types/generated/token_registry");
 const SimpleInterestTermsContract = artifacts.require("SimpleInterestTermsContract");
 const TermsContractRegistry = artifacts.require("TermsContractRegistry");
 module.exports = (deployer, network, accounts) => {
@@ -22,10 +22,10 @@ module.exports = (deployer, network, accounts) => {
         const termsContractRegistry = yield terms_contract_registry_1.TermsContractRegistryContract.at(TermsContractRegistry.address, web3, TX_DEFAULTS);
         const addressToTermsContractAddress = {};
         if (network !== "live") {
-            const dummyTokenRegistry = yield dummy_token_registry_1.DummyTokenRegistryContract.deployed(web3, TX_DEFAULTS);
-            const dummyREPTokenAddress = yield dummyTokenRegistry.getTokenAddress.callAsync("REP");
-            const dummyMKRTokenAddress = yield dummyTokenRegistry.getTokenAddress.callAsync("MKR");
-            const dummyZRXTokenAddress = yield dummyTokenRegistry.getTokenAddress.callAsync("ZRX");
+            const tokenRegistry = yield token_registry_1.TokenRegistryContract.deployed(web3, TX_DEFAULTS);
+            const dummyREPTokenAddress = yield tokenRegistry.getTokenAddress.callAsync("REP");
+            const dummyMKRTokenAddress = yield tokenRegistry.getTokenAddress.callAsync("MKR");
+            const dummyZRXTokenAddress = yield tokenRegistry.getTokenAddress.callAsync("ZRX");
             const simpleInterestREPTermsContract = yield SimpleInterestTermsContract.new(debtRegistry.address, dummyREPTokenAddress, repaymentRouter.address);
             const simpleInterestMKRTermsContract = yield SimpleInterestTermsContract.new(debtRegistry.address, dummyMKRTokenAddress, repaymentRouter.address);
             const simpleInterestZRXTermsContract = yield SimpleInterestTermsContract.new(debtRegistry.address, dummyZRXTokenAddress, repaymentRouter.address);

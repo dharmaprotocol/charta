@@ -1,7 +1,7 @@
 import {DebtRegistryContract} from "../types/generated/debt_registry";
-import {DummyTokenRegistryContract} from "../types/generated/dummy_token_registry";
 import {RepaymentRouterContract} from "../types/generated/repayment_router";
 import {TermsContractRegistryContract} from "../types/generated/terms_contract_registry";
+import {TokenRegistryContract} from "../types/generated/token_registry";
 
 const SimpleInterestTermsContract = artifacts.require("SimpleInterestTermsContract");
 const TermsContractRegistry = artifacts.require("TermsContractRegistry");
@@ -22,11 +22,11 @@ module.exports = (deployer: any, network: string, accounts: string[]) => {
         const addressToTermsContractAddress: { [address: string]: string } = {};
 
         if (network !== "live") {
-            const dummyTokenRegistry = await DummyTokenRegistryContract.deployed(web3, TX_DEFAULTS);
+            const tokenRegistry = await TokenRegistryContract.deployed(web3, TX_DEFAULTS);
 
-            const dummyREPTokenAddress = await dummyTokenRegistry.getTokenAddress.callAsync("REP");
-            const dummyMKRTokenAddress = await dummyTokenRegistry.getTokenAddress.callAsync("MKR");
-            const dummyZRXTokenAddress = await dummyTokenRegistry.getTokenAddress.callAsync("ZRX");
+            const dummyREPTokenAddress = await tokenRegistry.getTokenAddress.callAsync("REP");
+            const dummyMKRTokenAddress = await tokenRegistry.getTokenAddress.callAsync("MKR");
+            const dummyZRXTokenAddress = await tokenRegistry.getTokenAddress.callAsync("ZRX");
 
             const simpleInterestREPTermsContract = await SimpleInterestTermsContract.new(
                 debtRegistry.address,
