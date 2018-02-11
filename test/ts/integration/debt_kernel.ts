@@ -285,6 +285,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                 let relayerBalanceBefore: BigNumber;
 
                 let receipt: Web3.TransactionReceipt;
+                let block: Web3.BlockWithoutTransactionData;
 
                 let logs: ABIDecoder.DecodedLog[];
 
@@ -310,6 +311,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                     );
 
                     receipt = await web3.eth.getTransactionReceipt(txHash);
+                    block = await web3.eth.getBlock(receipt.blockNumber);
 
                     logs = _.compact(ABIDecoder.decodeLogs(receipt.logs));
                 });
@@ -328,7 +330,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                         underwriterRiskRating,
                         termsContract,
                         termsContractParameters,
-                        issuanceBlockNumber,
+                        issuanceBlockTimestamp,
                     ] = await debtRegistryContract
                             .get.callAsync(debtOrder.getIssuanceCommitment().getHash());
                     expect(version).to.equal(debtOrder.getIssuanceCommitment().getVersion());
@@ -341,8 +343,8 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                         .equal(debtOrder.getIssuanceCommitment().getTermsContract());
                     expect(termsContractParameters).to
                         .equal(debtOrder.getIssuanceCommitment().getTermsContractParameters());
-                    expect(issuanceBlockNumber).to.bignumber
-                        .equal(receipt.blockNumber);
+                    expect(issuanceBlockTimestamp).to.bignumber
+                        .equal(block.timestamp);
                 });
 
                 it("should debit principal + creditor fee from creditor", async () => {

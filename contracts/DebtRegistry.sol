@@ -52,7 +52,7 @@ contract DebtRegistry is Pausable {
         uint underwriterRiskRating;
         address termsContract;
         bytes32 termsContractParameters;
-        uint issuanceBlockNumber;
+        uint issuanceBlockTimestamp;
     }
 
     // Primary registry mapping issuance hashes to their corresponding entries
@@ -133,7 +133,7 @@ contract DebtRegistry is Pausable {
             _underwriterRiskRating,
             _termsContract,
             _termsContractParameters,
-            block.number
+            block.timestamp
         );
 
         bytes32 issuanceHash = _getIssuanceHash(entry, _debtor, _salt);
@@ -240,7 +240,7 @@ contract DebtRegistry is Pausable {
             registry[issuanceHash].underwriterRiskRating,
             registry[issuanceHash].termsContract,
             registry[issuanceHash].termsContractParameters,
-            registry[issuanceHash].issuanceBlockNumber
+            registry[issuanceHash].issuanceBlockTimestamp
         );
     }
 
@@ -293,14 +293,14 @@ contract DebtRegistry is Pausable {
     }
 
     /**
-     * Returns the block number at which a debt agreement was issued
+     * Returns the timestamp of the block at which a debt agreement was issued.
      */
-    function getIssuanceBlockNumber(bytes32 issuanceHash)
+    function getIssuanceBlockTimestamp(bytes32 issuanceHash)
         public
         view
-        returns (uint)
+        returns (uint timestamp)
     {
-        return registry[issuanceHash].issuanceBlockNumber;
+        return registry[issuanceHash].issuanceBlockTimestamp;
     }
 
     /**

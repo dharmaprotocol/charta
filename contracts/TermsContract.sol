@@ -54,23 +54,23 @@ interface TermsContract {
         address tokenAddress
     ) public returns (bool _success);
 
-     /// Returns the cumulative units-of-value expected to be repaid by any given blockNumber.
+     /// Returns the cumulative units-of-value expected to be repaid by a given block timestamp.
      ///  Note this is not a constant function -- this value can vary on basis of any number of
      ///  conditions (e.g. interest rates can be renegotiated if repayments are delinquent).
      /// @param  agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.
-     /// @param  blockNumber uint. The block number for which repayment expectation is being queried.
-     /// @return uint256 The cumulative units-of-value expected to be repaid by the time the given blockNumber lapses.
+     /// @param  timestamp uint. The timestamp of the block for which repayment expectation is being queried.
+     /// @return uint256 The cumulative units-of-value expected to be repaid by the time the given timestamp lapses.
     function getExpectedRepaymentValue(
         bytes32 agreementId,
-        uint256 blockNumber
+        uint256 timestamp
     ) public view returns (uint256);
 
-     /// Returns the cumulative units-of-value repaid by the point at which a given blockNumber has lapsed.
+     /// Returns the cumulative units-of-value repaid by the point at which a given block timestamp has lapsed.
      /// @param  agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.
-     /// @param blockNumber uint. The block number for which repayment value is being queried.
-     /// @return uint256 The cumulative units-of-value repaid by the time the given blockNumber lapsed.
+     /// @param timestamp uint. The timestamp of the block for which repayment value is being queried.
+     /// @return uint256 The cumulative units-of-value repaid by the time the given timestamp lapsed.
     function getValueRepaid(
         bytes32 agreementId,
-        uint256 blockNumber
+        uint256 timestamp
     ) public view returns (uint256);
 }

@@ -75,15 +75,15 @@ contract SimpleInterestTermsContract {
         return true;
     }
 
-     /// Returns the cumulative units-of-value expected to be repaid by any given blockNumber.
+     /// Returns the cumulative units-of-value expected to be repaid given a block's timestamp.
      ///  Note this is not a constant function -- this value can vary on basis of any number of
      ///  conditions (e.g. interest rates can be renegotiated if repayments are delinquent).
      /// @param  agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.
-     /// @param  blockNumber uint. The block number for which repayment expectation is being queried.
-     /// @return uint256 The cumulative units-of-value expected to be repaid by the time the given blockNumber lapses.
+     /// @param  blockTimestamp uint. The timestamp of the block for which repayment expectation is being queried.
+     /// @return uint256 The cumulative units-of-value expected to be repaid given a block's timestamp.
     function getExpectedRepaymentValue(
         bytes32 agreementId,
-        uint256 blockNumber
+        uint256 blockTimestamp
     )
         public
         view
@@ -93,20 +93,20 @@ contract SimpleInterestTermsContract {
 
         var (principalPlusInterest, termLengthInBlocks) = unpackParameters(parameters);
 
-        if (debtRegistry.getIssuanceBlockNumber(agreementId).add(termLengthInBlocks) < blockNumber) {
+        if (debtRegistry.getIssuanceBlockTimestamp(agreementId).add(termLengthInBlocks) < blockTimestamp) {
             return principalPlusInterest;
         } else {
             return 0;
         }
     }
 
-     /// Returns the cumulative units-of-value repaid by the point at which a given blockNumber has lapsed.
-     /// @param  agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.
-     /// @param blockNumber uint. The block number for which repayment value is being queried.
-     /// @return uint256 The cumulative units-of-value repaid by the time the given blockNumber lapsed.
+     /// Returns the cumulative units-of-value repaid by the point at which the timestamp of a given block has lapsed.
+     /// @param agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.
+     /// @param blockTimestamp uint. The timestamp of the block for which repayment value is being queried.
+     /// @return uint256 The cumulative units-of-value repaid by the specified block timestamp.
     function getValueRepaid(
         bytes32 agreementId,
-        uint256 blockNumber
+        uint256 blockTimestamp
     )
         public
         view
