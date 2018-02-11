@@ -207,11 +207,13 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
         describe("first agent inserts new entry into registry", () => {
             let res: Web3.TransactionReceipt;
             let entry: DebtRegistryEntry;
+            let block: Web3.BlockWithoutTransactionData;
 
             before(async () => {
                 entry = generateEntryFn();
                 const txHash = await insertEntryFn(entry, { from: AGENT_1 });
                 res = await web3.eth.getTransactionReceipt(txHash);
+                block = await web3.eth.getBlock(res.blockNumber);
             });
 
             it("should emit a log saying the debt is inserted", async () => {
@@ -230,7 +232,7 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
                         entry.getUnderwriterRiskRating(),
                         entry.getTermsContract(),
                         entry.getTermsContractParameters(),
-                        res.blockNumber,
+                        block.timestamp,
                 ];
 
                 _.forEach(retrievedEntry, (value: any, i: number) => {
@@ -251,11 +253,13 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
         describe("second agent inserts new entry into registry", () => {
             let res: Web3.TransactionReceipt;
             let entry: DebtRegistryEntry;
+            let block: Web3.BlockWithoutTransactionData;
 
             before(async () => {
                 entry = generateEntryFn();
                 const txHash = await insertEntryFn(entry, { from: AGENT_2 });
                 res = await web3.eth.getTransactionReceipt(txHash);
+                block = await web3.eth.getBlock(res.blockNumber);
             });
 
             it("should emit a log saying the debt is inserted", async () => {
@@ -274,7 +278,7 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
                         entry.getUnderwriterRiskRating(),
                         entry.getTermsContract(),
                         entry.getTermsContractParameters(),
-                        res.blockNumber,
+                        block.timestamp,
                 ];
 
                 _.forEach(retrievedEntry, (value: any, i: number) => {
