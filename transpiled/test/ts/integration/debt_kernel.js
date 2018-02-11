@@ -21,7 +21,7 @@ const debt_kernel_2 = require("../../../types/generated/debt_kernel");
 const debt_registry_2 = require("../../../types/generated/debt_registry");
 const debt_token_2 = require("../../../types/generated/debt_token");
 const dummy_token_1 = require("../../../types/generated/dummy_token");
-const dummy_token_registry_1 = require("../../../types/generated/dummy_token_registry");
+const token_registry_1 = require("../../../types/generated/token_registry");
 const repayment_router_1 = require("../../../types/generated/repayment_router");
 const token_transfer_proxy_1 = require("../../../types/generated/token_transfer_proxy");
 const bignumber_setup_1 = require("../test_utils/bignumber_setup");
@@ -81,7 +81,7 @@ contract("Debt Kernel (Integration Tests)", (ACCOUNTS) => __awaiter(this, void 0
     const NULL_ADDRESS = "0x0000000000000000000000000000000000000000";
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4712388 };
     const reset = () => __awaiter(this, void 0, void 0, function* () {
-        const dummyTokenRegistryContract = yield dummy_token_registry_1.DummyTokenRegistryContract.deployed(web3, TX_DEFAULTS);
+        const dummyTokenRegistryContract = yield token_registry_1.TokenRegistryContract.deployed(web3, TX_DEFAULTS);
         const dummyREPTokenAddress = yield dummyTokenRegistryContract.getTokenAddress.callAsync("REP");
         const dummyZRXTokenAddress = yield dummyTokenRegistryContract.getTokenAddress.callAsync("ZRX");
         const dummyMKRTokenAddress = yield dummyTokenRegistryContract.getTokenAddress.callAsync("MKR");

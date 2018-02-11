@@ -1,4 +1,3 @@
-import * as ZeroEx from "0x.js";
 import {BigNumber} from "bignumber.js";
 import {
     Address,
@@ -36,11 +35,4 @@ export interface OrderParams {
     relayerFee: BigNumber;
     relayer: Address;
     expirationTimestampInSec: BigNumber;
-}
-
-export interface SignedOrder {
-    debtIssuanceCommitment: IssuanceCommitmentParams;
-    zeroExOrder: ZeroEx.SignedOrder;
-    relayer: Address;
-    relayerFee: BigNumber;
 }

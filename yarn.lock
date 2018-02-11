@@ -2,28 +2,7 @@
 # yarn lockfile v1
 
 
-"0x.js@^0.28.0":
-  version "0.28.0"
-  resolved "https://registry.yarnpkg.com/0x.js/-/0x.js-0.28.0.tgz#bac14a6ba0d4207dd2c7aa26fd651c014e6ca9d5"
-  dependencies:
-    "@0xproject/assert" "^0.0.8"
-    "@0xproject/json-schemas" "^0.7.0"
-    "@0xproject/utils" "^0.1.1"
-    "@0xproject/web3-wrapper" "^0.1.1"
-    bignumber.js "~4.1.0"
-    bintrees "^1.0.2"
-    bn.js "^4.11.8"
-    compare-versions "^3.0.1"
-    ethereumjs-abi "^0.6.4"
-    ethereumjs-blockstream "^2.0.6"
-    ethereumjs-util "^5.1.1"
-    find-versions "^2.0.0"
-    js-sha3 "^0.6.1"
-    lodash "^4.17.4"
-    uuid "^3.1.0"
-    web3 "^0.20.0"
-
-"@0xproject/abi-gen@^0.1.1":
+"@0xproject/abi-gen@0.1.1":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@0xproject/abi-gen/-/abi-gen-0.1.1.tgz#dfb41a7a1d663edd88f8436b492fc217008afbfb"
   dependencies:
@@ -37,23 +16,6 @@
     web3 "^0.20.0"
     yargs "^10.0.3"
 
-"@0xproject/assert@^0.0.8":
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/@0xproject/assert/-/assert-0.0.8.tgz#b78cfcffd092ff8eaa78706115240036f2878669"
-  dependencies:
-    "@0xproject/json-schemas" "^0.7.0"
-    "@0xproject/utils" "^0.1.1"
-    bignumber.js "~4.1.0"
-    lodash "^4.17.4"
-    valid-url "^1.0.9"
-
-"@0xproject/json-schemas@^0.7.0":
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/@0xproject/json-schemas/-/json-schemas-0.7.1.tgz#ef332e485c8dfe3325777606ab0804a523e3d113"
-  dependencies:
-    jsonschema "^1.2.0"
-    lodash.values "^4.3.0"
-
 "@0xproject/types@^0.1.1":
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/@0xproject/types/-/types-0.1.2.tgz#eff680479c5b0f212fd8a4d53b55e08f4fe59d99"
@@ -61,7 +23,7 @@
     bignumber.js "~4.1.0"
     web3 "^0.20.0"
 
-"@0xproject/utils@^0.1.0", "@0xproject/utils@^0.1.1", "@0xproject/utils@^0.1.2":
+"@0xproject/utils@^0.1.0":
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/@0xproject/utils/-/utils-0.1.2.tgz#450bbb4b831389ee54f07fb846c6bcfba7df29d9"
   dependencies:
@@ -76,15 +38,6 @@
     bignumber.js "~4.1.0"
     js-sha3 "^0.7.0"
     lodash "^4.17.4"
-
-"@0xproject/web3-wrapper@^0.1.1":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@0xproject/web3-wrapper/-/web3-wrapper-0.1.2.tgz#14576997b657a51504d3f20dd4d4f9546b8030ed"
-  dependencies:
-    "@0xproject/utils" "^0.1.2"
-    bignumber.js "~4.1.0"
-    lodash "^4.17.4"
-    web3 "^0.20.0"
 
 "@types/bignumber.js@^4.0.3":
   version "4.0.3"
@@ -280,7 +233,7 @@ array-union@^1.0.1:
   dependencies:
     array-uniq "^1.0.1"
 
-array-uniq@^1.0.0, array-uniq@^1.0.1:
+array-uniq@^1.0.1:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/array-uniq/-/array-uniq-1.0.3.tgz#af6ac877a25cc7f74e058894753858dfdb24fdb6"
 
@@ -830,10 +783,6 @@ bindings@^1.2.1:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/bindings/-/bindings-1.3.0.tgz#b346f6ecf6a95f5a815c5839fc7cdb22502f1ed7"
 
-bintrees@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/bintrees/-/bintrees-1.0.2.tgz#49f896d6e858a4a499df85c38fb399b9aff840f8"
-
 bip66@^1.1.3:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/bip66/-/bip66-1.1.5.tgz#01fa8748785ca70955d5011217d1b3139969ca22"
@@ -854,7 +803,7 @@ bn.js@4.11.7:
   version "4.11.7"
   resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.11.7.tgz#ddb048e50d9482790094c13eb3fcfc833ce7ab46"
 
-bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.1.1, bn.js@^4.10.0, bn.js@^4.11.3, bn.js@^4.11.7, bn.js@^4.11.8, bn.js@^4.4.0, bn.js@^4.8.0:
+bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.1.1, bn.js@^4.10.0, bn.js@^4.11.3, bn.js@^4.11.7, bn.js@^4.4.0, bn.js@^4.8.0:
   version "4.11.8"
   resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.11.8.tgz#2cde09eb5ee341f484746bb0309b3253b1b1442f"
 
@@ -1169,10 +1118,6 @@ commander@^2.11.0, commander@^2.9.0:
 commondir@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/commondir/-/commondir-1.0.1.tgz#ddd800da0c66127393cca5950ea968a3aaf1253b"
-
-compare-versions@^3.0.1:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/compare-versions/-/compare-versions-3.1.0.tgz#43310256a5c555aaed4193c04d8f154cf9c6efd5"
 
 concat-map@0.0.1:
   version "0.0.1"
@@ -1614,14 +1559,6 @@ ethereumjs-abi@^0.6.4:
     bn.js "^4.10.0"
     ethereumjs-util "^4.3.0"
 
-ethereumjs-blockstream@^2.0.6:
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/ethereumjs-blockstream/-/ethereumjs-blockstream-2.0.7.tgz#8e791d18d517f13e0ba928892dda545dc930936b"
-  dependencies:
-    immutable "3.8.1"
-    source-map-support "0.4.14"
-    uuid "3.0.1"
-
 ethereumjs-util@^4.3.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/ethereumjs-util/-/ethereumjs-util-4.5.0.tgz#3e9428b317eebda3d7260d854fddda954b1f1bc6"
@@ -1632,7 +1569,7 @@ ethereumjs-util@^4.3.0:
     rlp "^2.0.0"
     secp256k1 "^3.0.1"
 
-ethereumjs-util@^5.1.1, ethereumjs-util@^5.1.2:
+ethereumjs-util@^5.1.2:
   version "5.1.3"
   resolved "https://registry.yarnpkg.com/ethereumjs-util/-/ethereumjs-util-5.1.3.tgz#0c1f6efb1da9c5b6720a65697859fc0be6672df0"
   dependencies:
@@ -1786,13 +1723,6 @@ find-up@^2.0.0, find-up@^2.1.0:
   resolved "https://registry.yarnpkg.com/find-up/-/find-up-2.1.0.tgz#45d1b7e506c717ddd482775a2b77920a3c0c57a7"
   dependencies:
     locate-path "^2.0.0"
-
-find-versions@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/find-versions/-/find-versions-2.0.0.tgz#2ad90d490f6828c1aa40292cf709ac3318210c3c"
-  dependencies:
-    array-uniq "^1.0.0"
-    semver-regex "^1.0.0"
 
 flat-cache@^1.2.1:
   version "1.3.0"
@@ -2098,10 +2028,6 @@ ignore@^3.3.3:
   version "3.3.7"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-3.3.7.tgz#612289bfb3c220e186a58118618d5be8c1bab021"
 
-immutable@3.8.1:
-  version "3.8.1"
-  resolved "https://registry.yarnpkg.com/immutable/-/immutable-3.8.1.tgz#200807f11ab0f72710ea485542de088075f68cd2"
-
 imurmurhash@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/imurmurhash/-/imurmurhash-0.1.4.tgz#9218b9b2b928a238b13dc4fb6b6d576f231453ea"
@@ -2312,10 +2238,6 @@ js-sha3@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/js-sha3/-/js-sha3-0.3.1.tgz#86122802142f0828502a0d1dee1d95e253bb0243"
 
-js-sha3@^0.6.1:
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/js-sha3/-/js-sha3-0.6.1.tgz#5b89f77a7477679877f58c4a075240934b1f95c0"
-
 js-sha3@^0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/js-sha3/-/js-sha3-0.7.0.tgz#0a5c57b36f79882573b2d84051f8bb85dd1bd63a"
@@ -2388,10 +2310,6 @@ jsonfile@^4.0.0:
 jsonify@~0.0.0:
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/jsonify/-/jsonify-0.0.0.tgz#2c74b6ee41d93ca51b7b5aaee8f503631d252a73"
-
-jsonschema@^1.2.0:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/jsonschema/-/jsonschema-1.2.2.tgz#83ab9c63d65bf4d596f91d81195e78772f6452bc"
 
 jsprim@^1.2.2:
   version "1.4.1"
@@ -2554,10 +2472,6 @@ lodash.keys@^3.0.0:
     lodash._getnative "^3.0.0"
     lodash.isarguments "^3.0.0"
     lodash.isarray "^3.0.0"
-
-lodash.values@^4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/lodash.values/-/lodash.values-4.3.0.tgz#a3a6c2b0ebecc5c2cba1c17e6e620fe81b53d347"
 
 lodash@4.17.4, lodash@^4.14.0, lodash@^4.17.4, lodash@^4.3.0:
   version "4.17.4"
@@ -3380,10 +3294,6 @@ secp256k1@^3.0.1:
     nan "^2.2.1"
     safe-buffer "^5.1.0"
 
-semver-regex@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/semver-regex/-/semver-regex-1.0.0.tgz#92a4969065f9c70c694753d55248fc68f8f652c9"
-
 "semver@2 || 3 || 4 || 5", semver@^5.3.0:
   version "5.4.1"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.4.1.tgz#e059c09d8571f0540823733433505d3a2f00b18e"
@@ -3476,12 +3386,6 @@ solidity-sha3@^0.4.1:
 source-list-map@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/source-list-map/-/source-list-map-2.0.0.tgz#aaa47403f7b245a92fbc97ea08f250d6087ed085"
-
-source-map-support@0.4.14:
-  version "0.4.14"
-  resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.4.14.tgz#9d4463772598b86271b4f523f6c1f4e02a7d6aef"
-  dependencies:
-    source-map "^0.5.6"
 
 source-map-support@^0.4.15:
   version "0.4.18"
@@ -3742,7 +3646,7 @@ trim-right@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/trim-right/-/trim-right-1.0.1.tgz#cb2e1203067e0c8de1f614094b9fe45704ea6003"
 
-truffle@^4.0.1:
+truffle@4.0.4:
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/truffle/-/truffle-4.0.4.tgz#b447cb3b0469054413b5ff421f6e8baeefddb2be"
   dependencies:
@@ -3884,11 +3788,7 @@ util@0.10.3, util@^0.10.3:
   dependencies:
     inherits "2.0.1"
 
-uuid@3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.0.1.tgz#6544bba2dfda8c1cf17e629a3a305e2bb1fee6c1"
-
-uuid@^3.0.0, uuid@^3.1.0:
+uuid@^3.0.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.1.0.tgz#3dd3d3e790abc24d7b0d3a034ffababe28ebbc04"
 
@@ -3897,10 +3797,6 @@ v8flags@^2.1.1:
   resolved "https://registry.yarnpkg.com/v8flags/-/v8flags-2.1.1.tgz#aab1a1fa30d45f88dd321148875ac02c0b55e5b4"
   dependencies:
     user-home "^1.1.1"
-
-valid-url@^1.0.9:
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/valid-url/-/valid-url-1.0.9.tgz#1c14479b40f1397a75782f115e4086447433a200"
 
 validate-npm-package-license@^3.0.1:
   version "3.0.1"

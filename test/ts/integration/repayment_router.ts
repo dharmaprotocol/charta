@@ -11,7 +11,7 @@ import {DebtKernelContract} from "../../../types/generated/debt_kernel";
 import {DebtRegistryContract} from "../../../types/generated/debt_registry";
 import {DebtTokenContract} from "../../../types/generated/debt_token";
 import {DummyTokenContract} from "../../../types/generated/dummy_token";
-import {DummyTokenRegistryContract} from "../../../types/generated/dummy_token_registry";
+import {TokenRegistryContract} from "../../../types/generated/token_registry";
 import {MintableNonFungibleTokenContract} from "../../../types/generated/mintable_non_fungible_token";
 import {NFTTermsContractContract} from "../../../types/generated/n_f_t_terms_contract";
 import {RepaymentRouterContract} from "../../../types/generated/repayment_router";
@@ -70,7 +70,7 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
 
     before(async () => {
-        const dummyTokenRegistryContract = await DummyTokenRegistryContract.deployed(web3, TX_DEFAULTS);
+        const dummyTokenRegistryContract = await TokenRegistryContract.deployed(web3, TX_DEFAULTS);
         const dummyREPTokenAddress = await dummyTokenRegistryContract.getTokenAddress.callAsync("REP");
 
         principalToken = await DummyTokenContract.at(dummyREPTokenAddress, web3, TX_DEFAULTS);
