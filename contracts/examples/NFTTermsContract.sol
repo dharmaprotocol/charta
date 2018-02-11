@@ -71,13 +71,13 @@ contract NFTTermsContract {
 
     function getExpectedRepaymentValue(
         bytes32 agreementId,
-        uint256 blockNumber
+        uint256 blockTimestamp
     )
         public
         view
         returns (uint _expectedRepaymentValue)
     {
-        if (debtRegistry.getIssuanceBlockNumber(agreementId).add(SEVEN_DAYS_IN_BLOCKS) < blockNumber) {
+        if (debtRegistry.getIssuanceBlockTimestamp(agreementId).add(SEVEN_DAYS_IN_BLOCKS) < blockTimestamp) {
             return 1;
         } else {
             return 0;
@@ -86,7 +86,7 @@ contract NFTTermsContract {
 
     function getValueRepaid(
         bytes32 agreementId,
-        uint256 blockNumber
+        uint256 blockTimestamp
     )
         public
         view
