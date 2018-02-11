@@ -22,6 +22,7 @@ pragma solidity 0.4.18;
 library PermissionsLib {
     struct Permissions {
         mapping (address => bool) authorized;
+        mapping (address => uint) agentToIndex;
         address[] authorizedAgents;
     }
 
@@ -31,6 +32,7 @@ library PermissionsLib {
         if (!self.authorized[agent]) {
             self.authorized[agent] = true;
             self.authorizedAgents.push(agent);
+            self.agentToIndex[agent] = self.authorizedAgents.length;
         }
     }
 
@@ -38,14 +40,10 @@ library PermissionsLib {
         internal
     {
         delete self.authorized[agent];
-        for (uint i = 0; i < self.authorizedAgents.length; i++) {
-            if (self.authorizedAgents[i] == agent) {
-                self.authorizedAgents[i] =
-                    self.authorizedAgents[self.authorizedAgents.length - 1];
-                self.authorizedAgents.length -= 1;
-                break;
-            }
-        }
+        self.authorizedAgents[self.agentToIndex[agent]] =
+          self.authorizedAgents[self.authorizedAgents.length - 1];
+        self.authorizedAgents.length -= 1;
+        delete self.agentToIndex[agent];
     }
 
     function isAuthorized(Permissions storage self, address agent)
