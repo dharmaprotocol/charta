@@ -75,7 +75,7 @@ contract SimpleInterestTermsContract {
         return true;
     }
 
-     /// Returns the cumulative units-of-value expected to be repaid given a block'ss timestamp.
+     /// Returns the cumulative units-of-value expected to be repaid given a block's timestamp.
      ///  Note this is not a constant function -- this value can vary on basis of any number of
      ///  conditions (e.g. interest rates can be renegotiated if repayments are delinquent).
      /// @param  agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.
