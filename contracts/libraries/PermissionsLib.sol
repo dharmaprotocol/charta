@@ -29,16 +29,16 @@ library PermissionsLib {
     function authorize(Permissions storage self, address agent)
         internal
     {
-        if (!self.authorized[agent]) {
-            self.authorized[agent] = true;
-            self.authorizedAgents.push(agent);
-            self.agentToIndex[agent] = self.authorizedAgents.length;
-        }
+        require(isNotAuthorized(self, agent));
+        self.authorized[agent] = true;
+        self.authorizedAgents.push(agent);
+        self.agentToIndex[agent] = self.authorizedAgents.length;
     }
 
     function revokeAuthorization(Permissions storage self, address agent)
         internal
     {
+        require(isAuthorized(self, agent));
         delete self.authorized[agent];
         self.authorizedAgents[self.agentToIndex[agent]] =
           self.authorizedAgents[self.authorizedAgents.length - 1];
@@ -52,6 +52,14 @@ library PermissionsLib {
         returns (bool)
     {
         return self.authorized[agent];
+    }
+
+    function isNotAuthorized(Permissions storage self, address agent)
+        internal
+        view
+        returns (bool)
+    {
+        return !isAuthorized(self, agent);
     }
 
     function getAuthorizedAgents(Permissions storage self)
