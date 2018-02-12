@@ -27,11 +27,11 @@ contract SimpleInterestTermsContract {
 
     enum AmortizationUnitType { HOURS, DAYS, WEEKS, MONTHS, YEARS }
 
-    uint public constant HOUR_BLOCK_LENGTH = 257;
-    uint public constant DAY_BLOCK_LENGTH = 6171;
-    uint public constant WEEK_BLOCK_LENGTH = 43200;
-    uint public constant MONTH_BLOCK_LENGTH = 185142;
-    uint public constant YEAR_BLOCK_LENGTH = 185142;
+    uint public constant HOUR_LENGTH_IN_SECONDS = 60 * 60;
+    uint public constant DAY_LENGTH_IN_SECONDS = HOUR_LENGTH_IN_SECONDS * 24;
+    uint public constant WEEK_LENGTH_IN_SECONDS = DAY_LENGTH_IN_SECONDS * 7;
+    uint public constant MONTH_LENGTH_IN_SECONDS = DAY_LENGTH_IN_SECONDS * 30;
+    uint public constant YEAR_LENGTH_IN_SECONDS = DAY_LENGTH_IN_SECONDS * 365;
 
     mapping (bytes32 => uint) valueRepaid;
 
@@ -99,13 +99,13 @@ contract SimpleInterestTermsContract {
         returns (uint _expectedRepaymentValue)
     {
         bytes32 parameters = debtRegistry.getTermsContractParameters(agreementId);
-        uint issuanceBlockNumber = debtRegistry.getIssuanceBlockNumber(agreementId);
+        uint issuanceBlockTimestamp = debtRegistry.getIssuanceBlockTimestamp(agreementId);
 
         var (principalPlusInterest, amortizationUnitType, termLengthInAmortizationUnits) =
             unpackParameters(parameters);
 
-        uint amortizationUnitLength = getAmortizationUnitLengthInBlocks(amortizationUnitType);
-        uint numRepaymentPeriods = blockNumber.sub(issuanceBlockNumber).div(amortizationUnitLength);
+        uint amortizationUnitLength = getAmortizationUnitLengthInSeconds(amortizationUnitType);
+        uint numRepaymentPeriods = blockTimestamp.sub(issuanceBlockTimestamp).div(amortizationUnitLength);
 
         return numRepaymentPeriods.mul(principalPlusInterest).div(termLengthInAmortizationUnits);
     }
@@ -151,21 +151,21 @@ contract SimpleInterestTermsContract {
         );
     }
 
-    function getAmortizationUnitLengthInBlocks(uint8 amortizationUnitType)
+    function getAmortizationUnitLengthInSeconds(uint8 amortizationUnitType)
         public
         pure
         returns (uint _amortizationUnitLengthInBlocks)
     {
         if (amortizationUnitType == uint8(AmortizationUnitType.HOURS)) {
-            return HOUR_BLOCK_LENGTH;
+            return HOUR_LENGTH_IN_SECONDS;
         } else if (amortizationUnitType == uint8(AmortizationUnitType.DAYS)) {
-            return DAY_BLOCK_LENGTH;
+            return DAY_LENGTH_IN_SECONDS;
         } else if (amortizationUnitType == uint8(AmortizationUnitType.WEEKS)) {
-            return WEEK_BLOCK_LENGTH;
+            return WEEK_LENGTH_IN_SECONDS;
         } else if (amortizationUnitType == uint8(AmortizationUnitType.MONTHS)) {
-            return MONTH_BLOCK_LENGTH;
+            return MONTH_LENGTH_IN_SECONDS;
         } else if (amortizationUnitType == uint8(AmortizationUnitType.YEARS)) {
-            return YEAR_BLOCK_LENGTH;
+            return YEAR_LENGTH_IN_SECONDS;
         }
     }
 }
