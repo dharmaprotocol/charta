@@ -30,19 +30,29 @@ library PermissionsLib {
         internal
     {
         require(isNotAuthorized(self, agent));
+
         self.authorized[agent] = true;
         self.authorizedAgents.push(agent);
-        self.agentToIndex[agent] = self.authorizedAgents.length;
+        self.agentToIndex[agent] = self.authorizedAgents.length - 1;
     }
 
     function revokeAuthorization(Permissions storage self, address agent)
         internal
     {
+        /* We only want to do work in the case where the agent whose
+        authorization is being revoked had authorization permissions in the
+        first place */
         require(isAuthorized(self, agent));
+
+        uint indexOfAgentToRevoke = self.agentToIndex[agent];
+        uint indexOfAgentToMove = self.authorizedAgents.length - 1;
+        address agentToMove = self.authorizedAgents[indexOfAgentToMove];
+
         delete self.authorized[agent];
-        self.authorizedAgents[self.agentToIndex[agent]] =
-          self.authorizedAgents[self.authorizedAgents.length - 1];
+        self.authorizedAgents[indexOfAgentToRevoke] =
+            self.authorizedAgents[indexOfAgentToMove];
         self.authorizedAgents.length -= 1;
+        self.agentToIndex[agentToMove] = indexOfAgentToRevoke;
         delete self.agentToIndex[agent];
     }
 
