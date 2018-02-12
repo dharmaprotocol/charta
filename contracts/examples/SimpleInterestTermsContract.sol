@@ -88,11 +88,11 @@ contract SimpleInterestTermsContract {
      ///  Note this is not a constant function -- this value can vary on basis of any number of
      ///  conditions (e.g. interest rates can be renegotiated if repayments are delinquent).
      /// @param  agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.
-     /// @param  blockTimestamp uint. The timestamp of the block for which repayment expectation is being queried.
+     /// @param  timestamp uint. The timestamp for which repayment expectation is being queried.
      /// @return uint256 The cumulative units-of-value expected to be repaid given a block's timestamp.
     function getExpectedRepaymentValue(
         bytes32 agreementId,
-        uint256 blockTimestamp
+        uint256 timestamp
     )
         public
         view
@@ -105,9 +105,14 @@ contract SimpleInterestTermsContract {
             unpackParameters(parameters);
 
         uint amortizationUnitLength = getAmortizationUnitLengthInSeconds(amortizationUnitType);
-        uint numRepaymentPeriods = blockTimestamp.sub(issuanceBlockTimestamp).div(amortizationUnitLength);
 
-        return numRepaymentPeriods.mul(principalPlusInterest).div(termLengthInAmortizationUnits);
+        if (timestamp < issuanceBlockTimestamp) {
+            return 0;
+        } else {
+            uint numRepaymentPeriods = 10;
+
+            return 0;
+        }
     }
 
      /// Returns the cumulative units-of-value repaid by the point at which the timestamp of a given block has lapsed.

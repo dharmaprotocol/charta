@@ -143,10 +143,12 @@ contract("Debt Registry (Unit Tests)", (ACCOUNTS) => __awaiter(this, void 0, voi
         describe("first agent inserts new entry into registry", () => {
             let res;
             let entry;
+            let block;
             before(() => __awaiter(this, void 0, void 0, function* () {
                 entry = generateEntryFn();
                 const txHash = yield insertEntryFn(entry, { from: AGENT_1 });
                 res = yield web3.eth.getTransactionReceipt(txHash);
+                block = yield web3.eth.getBlock(res.blockNumber);
             }));
             it("should emit a log saying the debt is inserted", () => __awaiter(this, void 0, void 0, function* () {
                 const [logReturned] = ABIDecoder.decodeLogs(res.logs);
@@ -162,7 +164,7 @@ contract("Debt Registry (Unit Tests)", (ACCOUNTS) => __awaiter(this, void 0, voi
                     entry.getUnderwriterRiskRating(),
                     entry.getTermsContract(),
                     entry.getTermsContractParameters(),
-                    res.blockNumber,
+                    block.timestamp,
                 ];
                 _.forEach(retrievedEntry, (value, i) => {
                     if (utils.isBigNumber(value)) {
@@ -181,10 +183,12 @@ contract("Debt Registry (Unit Tests)", (ACCOUNTS) => __awaiter(this, void 0, voi
         describe("second agent inserts new entry into registry", () => {
             let res;
             let entry;
+            let block;
             before(() => __awaiter(this, void 0, void 0, function* () {
                 entry = generateEntryFn();
                 const txHash = yield insertEntryFn(entry, { from: AGENT_2 });
                 res = yield web3.eth.getTransactionReceipt(txHash);
+                block = yield web3.eth.getBlock(res.blockNumber);
             }));
             it("should emit a log saying the debt is inserted", () => __awaiter(this, void 0, void 0, function* () {
                 const [logReturned] = ABIDecoder.decodeLogs(res.logs);
@@ -200,7 +204,7 @@ contract("Debt Registry (Unit Tests)", (ACCOUNTS) => __awaiter(this, void 0, voi
                     entry.getUnderwriterRiskRating(),
                     entry.getTermsContract(),
                     entry.getTermsContractParameters(),
-                    res.blockNumber,
+                    block.timestamp,
                 ];
                 _.forEach(retrievedEntry, (value, i) => {
                     if (utils.isBigNumber(value)) {

@@ -79,7 +79,7 @@
           "type": "bytes32"
         },
         {
-          "name": "blockNumber",
+          "name": "timestamp",
           "type": "uint256"
         }
       ],
@@ -102,7 +102,7 @@
           "type": "bytes32"
         },
         {
-          "name": "blockNumber",
+          "name": "timestamp",
           "type": "uint256"
         }
       ],
@@ -122,14 +122,14 @@
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "/*\n\n  Copyright 2017 Dharma Labs Inc.\n\n  Licensed under the Apache License, Version 2.0 (the \"License\");\n  you may not use this file except in compliance with the License.\n  You may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\n  Unless required by applicable law or agreed to in writing, software\n  distributed under the License is distributed on an \"AS IS\" BASIS,\n  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n  See the License for the specific language governing permissions and\n  limitations under the License.\n\n*/\n\npragma solidity 0.4.18;\n\n\ninterface TermsContract {\n     /// When called, the registerRepayment function records the debtor's\n     ///  repayment, as well as any auxiliary metadata needed by the contract\n     ///  to determine ex post facto the value repaid (e.g. current USD\n     ///  exchange rate)\n     /// @param  agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.\n     /// @param  payer address. The address of the payer.\n     /// @param  beneficiary address. The address of the payment's beneficiary.\n     /// @param  unitsOfRepayment uint. The units-of-value repaid in the transaction.\n     /// @param  tokenAddress address. The address of the token with which the repayment transaction was executed.\n    function registerRepayment(\n        bytes32 agreementId,\n        address payer,\n        address beneficiary,\n        uint256 unitsOfRepayment,\n        address tokenAddress\n    ) public returns (bool _success);\n\n    /// A variant of the registerRepayment function that records the debtor's\n    /// repayment in non-fungible tokens (i.e. ERC721), as well as any auxiliary metadata needed by the contract\n    /// to determine ex post facto the value repaid (e.g. current USD\n    /// exchange rate)\n    /// @param  agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.\n    /// @param  payer address. The address of the payer.\n    /// @param  beneficiary address. The address of the payment's beneficiary.\n    /// @param  tokenId The tokenId of the NFT transferred in the repayment transaction\n    /// @param  tokenAddress The address of the token with which the repayment transaction was executed.\n    function registerNFTRepayment(\n        bytes32 agreementId,\n        address payer,\n        address beneficiary,\n        uint256 tokenId,\n        address tokenAddress\n    ) public returns (bool _success);\n\n     /// Returns the cumulative units-of-value expected to be repaid by any given blockNumber.\n     ///  Note this is not a constant function -- this value can vary on basis of any number of\n     ///  conditions (e.g. interest rates can be renegotiated if repayments are delinquent).\n     /// @param  agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.\n     /// @param  blockNumber uint. The block number for which repayment expectation is being queried.\n     /// @return uint256 The cumulative units-of-value expected to be repaid by the time the given blockNumber lapses.\n    function getExpectedRepaymentValue(\n        bytes32 agreementId,\n        uint256 blockNumber\n    ) public view returns (uint256);\n\n     /// Returns the cumulative units-of-value repaid by the point at which a given blockNumber has lapsed.\n     /// @param  agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.\n     /// @param blockNumber uint. The block number for which repayment value is being queried.\n     /// @return uint256 The cumulative units-of-value repaid by the time the given blockNumber lapsed.\n    function getValueRepaid(\n        bytes32 agreementId,\n        uint256 blockNumber\n    ) public view returns (uint256);\n}\n",
+  "source": "/*\n\n  Copyright 2017 Dharma Labs Inc.\n\n  Licensed under the Apache License, Version 2.0 (the \"License\");\n  you may not use this file except in compliance with the License.\n  You may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\n  Unless required by applicable law or agreed to in writing, software\n  distributed under the License is distributed on an \"AS IS\" BASIS,\n  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n  See the License for the specific language governing permissions and\n  limitations under the License.\n\n*/\n\npragma solidity 0.4.18;\n\n\ninterface TermsContract {\n     /// When called, the registerRepayment function records the debtor's\n     ///  repayment, as well as any auxiliary metadata needed by the contract\n     ///  to determine ex post facto the value repaid (e.g. current USD\n     ///  exchange rate)\n     /// @param  agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.\n     /// @param  payer address. The address of the payer.\n     /// @param  beneficiary address. The address of the payment's beneficiary.\n     /// @param  unitsOfRepayment uint. The units-of-value repaid in the transaction.\n     /// @param  tokenAddress address. The address of the token with which the repayment transaction was executed.\n    function registerRepayment(\n        bytes32 agreementId,\n        address payer,\n        address beneficiary,\n        uint256 unitsOfRepayment,\n        address tokenAddress\n    ) public returns (bool _success);\n\n    /// A variant of the registerRepayment function that records the debtor's\n    /// repayment in non-fungible tokens (i.e. ERC721), as well as any auxiliary metadata needed by the contract\n    /// to determine ex post facto the value repaid (e.g. current USD\n    /// exchange rate)\n    /// @param  agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.\n    /// @param  payer address. The address of the payer.\n    /// @param  beneficiary address. The address of the payment's beneficiary.\n    /// @param  tokenId The tokenId of the NFT transferred in the repayment transaction\n    /// @param  tokenAddress The address of the token with which the repayment transaction was executed.\n    function registerNFTRepayment(\n        bytes32 agreementId,\n        address payer,\n        address beneficiary,\n        uint256 tokenId,\n        address tokenAddress\n    ) public returns (bool _success);\n\n     /// Returns the cumulative units-of-value expected to be repaid by a given block timestamp.\n     ///  Note this is not a constant function -- this value can vary on basis of any number of\n     ///  conditions (e.g. interest rates can be renegotiated if repayments are delinquent).\n     /// @param  agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.\n     /// @param  timestamp uint. The timestamp of the block for which repayment expectation is being queried.\n     /// @return uint256 The cumulative units-of-value expected to be repaid by the time the given timestamp lapses.\n    function getExpectedRepaymentValue(\n        bytes32 agreementId,\n        uint256 timestamp\n    ) public view returns (uint256);\n\n     /// Returns the cumulative units-of-value repaid by the point at which a given block timestamp has lapsed.\n     /// @param  agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.\n     /// @param timestamp uint. The timestamp of the block for which repayment value is being queried.\n     /// @return uint256 The cumulative units-of-value repaid by the time the given timestamp lapsed.\n    function getValueRepaid(\n        bytes32 agreementId,\n        uint256 timestamp\n    ) public view returns (uint256);\n}\n",
   "sourcePath": "/Users/nadavhollander/Documents/Dharma/Development/charta/contracts/TermsContract.sol",
   "ast": {
     "attributes": {
       "absolutePath": "/Users/nadavhollander/Documents/Dharma/Development/charta/contracts/TermsContract.sol",
       "exportedSymbols": {
         "TermsContract": [
-          2257
+          541
         ]
       }
     },
@@ -142,9 +142,9 @@
             ".18"
           ]
         },
-        "id": 2208,
+        "id": 492,
         "name": "PragmaDirective",
-        "src": "584:23:5"
+        "src": "584:23:1"
       },
       {
         "attributes": {
@@ -158,10 +158,10 @@
           "documentation": null,
           "fullyImplemented": false,
           "linearizedBaseContracts": [
-            2257
+            541
           ],
           "name": "TermsContract",
-          "scope": 2258
+          "scope": 542
         },
         "children": [
           {
@@ -175,7 +175,7 @@
               ],
               "name": "registerRepayment",
               "payable": false,
-              "scope": 2257,
+              "scope": 541,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -187,7 +187,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 2223,
+                      "scope": 507,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -200,20 +200,20 @@
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 2209,
+                        "id": 493,
                         "name": "ElementaryTypeName",
-                        "src": "1381:7:5"
+                        "src": "1381:7:1"
                       }
                     ],
-                    "id": 2210,
+                    "id": 494,
                     "name": "VariableDeclaration",
-                    "src": "1381:19:5"
+                    "src": "1381:19:1"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "payer",
-                      "scope": 2223,
+                      "scope": 507,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -226,20 +226,20 @@
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2211,
+                        "id": 495,
                         "name": "ElementaryTypeName",
-                        "src": "1410:7:5"
+                        "src": "1410:7:1"
                       }
                     ],
-                    "id": 2212,
+                    "id": 496,
                     "name": "VariableDeclaration",
-                    "src": "1410:13:5"
+                    "src": "1410:13:1"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "beneficiary",
-                      "scope": 2223,
+                      "scope": 507,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -252,20 +252,20 @@
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2213,
+                        "id": 497,
                         "name": "ElementaryTypeName",
-                        "src": "1433:7:5"
+                        "src": "1433:7:1"
                       }
                     ],
-                    "id": 2214,
+                    "id": 498,
                     "name": "VariableDeclaration",
-                    "src": "1433:19:5"
+                    "src": "1433:19:1"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "unitsOfRepayment",
-                      "scope": 2223,
+                      "scope": 507,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -278,20 +278,20 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 2215,
+                        "id": 499,
                         "name": "ElementaryTypeName",
-                        "src": "1462:7:5"
+                        "src": "1462:7:1"
                       }
                     ],
-                    "id": 2216,
+                    "id": 500,
                     "name": "VariableDeclaration",
-                    "src": "1462:24:5"
+                    "src": "1462:24:1"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "tokenAddress",
-                      "scope": 2223,
+                      "scope": 507,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -304,19 +304,19 @@
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2217,
+                        "id": 501,
                         "name": "ElementaryTypeName",
-                        "src": "1496:7:5"
+                        "src": "1496:7:1"
                       }
                     ],
-                    "id": 2218,
+                    "id": 502,
                     "name": "VariableDeclaration",
-                    "src": "1496:20:5"
+                    "src": "1496:20:1"
                   }
                 ],
-                "id": 2219,
+                "id": 503,
                 "name": "ParameterList",
-                "src": "1371:151:5"
+                "src": "1371:151:1"
               },
               {
                 "children": [
@@ -324,7 +324,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_success",
-                      "scope": 2223,
+                      "scope": 507,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -337,24 +337,24 @@
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 2220,
+                        "id": 504,
                         "name": "ElementaryTypeName",
-                        "src": "1539:4:5"
+                        "src": "1539:4:1"
                       }
                     ],
-                    "id": 2221,
+                    "id": 505,
                     "name": "VariableDeclaration",
-                    "src": "1539:13:5"
+                    "src": "1539:13:1"
                   }
                 ],
-                "id": 2222,
+                "id": 506,
                 "name": "ParameterList",
-                "src": "1538:15:5"
+                "src": "1538:15:1"
               }
             ],
-            "id": 2223,
+            "id": 507,
             "name": "FunctionDefinition",
-            "src": "1345:209:5"
+            "src": "1345:209:1"
           },
           {
             "attributes": {
@@ -367,7 +367,7 @@
               ],
               "name": "registerNFTRepayment",
               "payable": false,
-              "scope": 2257,
+              "scope": 541,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -379,7 +379,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 2238,
+                      "scope": 522,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -392,20 +392,20 @@
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 2224,
+                        "id": 508,
                         "name": "ElementaryTypeName",
-                        "src": "2328:7:5"
+                        "src": "2328:7:1"
                       }
                     ],
-                    "id": 2225,
+                    "id": 509,
                     "name": "VariableDeclaration",
-                    "src": "2328:19:5"
+                    "src": "2328:19:1"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "payer",
-                      "scope": 2238,
+                      "scope": 522,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -418,20 +418,20 @@
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2226,
+                        "id": 510,
                         "name": "ElementaryTypeName",
-                        "src": "2357:7:5"
+                        "src": "2357:7:1"
                       }
                     ],
-                    "id": 2227,
+                    "id": 511,
                     "name": "VariableDeclaration",
-                    "src": "2357:13:5"
+                    "src": "2357:13:1"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "beneficiary",
-                      "scope": 2238,
+                      "scope": 522,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -444,20 +444,20 @@
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2228,
+                        "id": 512,
                         "name": "ElementaryTypeName",
-                        "src": "2380:7:5"
+                        "src": "2380:7:1"
                       }
                     ],
-                    "id": 2229,
+                    "id": 513,
                     "name": "VariableDeclaration",
-                    "src": "2380:19:5"
+                    "src": "2380:19:1"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "tokenId",
-                      "scope": 2238,
+                      "scope": 522,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -470,20 +470,20 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 2230,
+                        "id": 514,
                         "name": "ElementaryTypeName",
-                        "src": "2409:7:5"
+                        "src": "2409:7:1"
                       }
                     ],
-                    "id": 2231,
+                    "id": 515,
                     "name": "VariableDeclaration",
-                    "src": "2409:15:5"
+                    "src": "2409:15:1"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "tokenAddress",
-                      "scope": 2238,
+                      "scope": 522,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -496,19 +496,19 @@
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2232,
+                        "id": 516,
                         "name": "ElementaryTypeName",
-                        "src": "2434:7:5"
+                        "src": "2434:7:1"
                       }
                     ],
-                    "id": 2233,
+                    "id": 517,
                     "name": "VariableDeclaration",
-                    "src": "2434:20:5"
+                    "src": "2434:20:1"
                   }
                 ],
-                "id": 2234,
+                "id": 518,
                 "name": "ParameterList",
-                "src": "2318:142:5"
+                "src": "2318:142:1"
               },
               {
                 "children": [
@@ -516,7 +516,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_success",
-                      "scope": 2238,
+                      "scope": 522,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -529,24 +529,24 @@
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 2235,
+                        "id": 519,
                         "name": "ElementaryTypeName",
-                        "src": "2477:4:5"
+                        "src": "2477:4:1"
                       }
                     ],
-                    "id": 2236,
+                    "id": 520,
                     "name": "VariableDeclaration",
-                    "src": "2477:13:5"
+                    "src": "2477:13:1"
                   }
                 ],
-                "id": 2237,
+                "id": 521,
                 "name": "ParameterList",
-                "src": "2476:15:5"
+                "src": "2476:15:1"
               }
             ],
-            "id": 2238,
+            "id": 522,
             "name": "FunctionDefinition",
-            "src": "2289:203:5"
+            "src": "2289:203:1"
           },
           {
             "attributes": {
@@ -559,7 +559,7 @@
               ],
               "name": "getExpectedRepaymentValue",
               "payable": false,
-              "scope": 2257,
+              "scope": 541,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -571,7 +571,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 2247,
+                      "scope": 531,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -584,20 +584,20 @@
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 2239,
+                        "id": 523,
                         "name": "ElementaryTypeName",
-                        "src": "3164:7:5"
+                        "src": "3172:7:1"
                       }
                     ],
-                    "id": 2240,
+                    "id": 524,
                     "name": "VariableDeclaration",
-                    "src": "3164:19:5"
+                    "src": "3172:19:1"
                   },
                   {
                     "attributes": {
                       "constant": false,
-                      "name": "blockNumber",
-                      "scope": 2247,
+                      "name": "timestamp",
+                      "scope": 531,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -610,19 +610,19 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 2241,
+                        "id": 525,
                         "name": "ElementaryTypeName",
-                        "src": "3193:7:5"
+                        "src": "3201:7:1"
                       }
                     ],
-                    "id": 2242,
+                    "id": 526,
                     "name": "VariableDeclaration",
-                    "src": "3193:19:5"
+                    "src": "3201:17:1"
                   }
                 ],
-                "id": 2243,
+                "id": 527,
                 "name": "ParameterList",
-                "src": "3154:64:5"
+                "src": "3162:62:1"
               },
               {
                 "children": [
@@ -630,7 +630,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 2247,
+                      "scope": 531,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -643,24 +643,24 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 2244,
+                        "id": 528,
                         "name": "ElementaryTypeName",
-                        "src": "3240:7:5"
+                        "src": "3246:7:1"
                       }
                     ],
-                    "id": 2245,
+                    "id": 529,
                     "name": "VariableDeclaration",
-                    "src": "3240:7:5"
+                    "src": "3246:7:1"
                   }
                 ],
-                "id": 2246,
+                "id": 530,
                 "name": "ParameterList",
-                "src": "3239:9:5"
+                "src": "3245:9:1"
               }
             ],
-            "id": 2247,
+            "id": 531,
             "name": "FunctionDefinition",
-            "src": "3120:129:5"
+            "src": "3128:127:1"
           },
           {
             "attributes": {
@@ -673,7 +673,7 @@
               ],
               "name": "getValueRepaid",
               "payable": false,
-              "scope": 2257,
+              "scope": 541,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -685,7 +685,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 2256,
+                      "scope": 540,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -698,20 +698,20 @@
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 2248,
+                        "id": 532,
                         "name": "ElementaryTypeName",
-                        "src": "3712:7:5"
+                        "src": "3728:7:1"
                       }
                     ],
-                    "id": 2249,
+                    "id": 533,
                     "name": "VariableDeclaration",
-                    "src": "3712:19:5"
+                    "src": "3728:19:1"
                   },
                   {
                     "attributes": {
                       "constant": false,
-                      "name": "blockNumber",
-                      "scope": 2256,
+                      "name": "timestamp",
+                      "scope": 540,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -724,19 +724,19 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 2250,
+                        "id": 534,
                         "name": "ElementaryTypeName",
-                        "src": "3741:7:5"
+                        "src": "3757:7:1"
                       }
                     ],
-                    "id": 2251,
+                    "id": 535,
                     "name": "VariableDeclaration",
-                    "src": "3741:19:5"
+                    "src": "3757:17:1"
                   }
                 ],
-                "id": 2252,
+                "id": 536,
                 "name": "ParameterList",
-                "src": "3702:64:5"
+                "src": "3718:62:1"
               },
               {
                 "children": [
@@ -744,7 +744,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 2256,
+                      "scope": 540,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -757,34 +757,34 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 2253,
+                        "id": 537,
                         "name": "ElementaryTypeName",
-                        "src": "3788:7:5"
+                        "src": "3802:7:1"
                       }
                     ],
-                    "id": 2254,
+                    "id": 538,
                     "name": "VariableDeclaration",
-                    "src": "3788:7:5"
+                    "src": "3802:7:1"
                   }
                 ],
-                "id": 2255,
+                "id": 539,
                 "name": "ParameterList",
-                "src": "3787:9:5"
+                "src": "3801:9:1"
               }
             ],
-            "id": 2256,
+            "id": 540,
             "name": "FunctionDefinition",
-            "src": "3679:118:5"
+            "src": "3695:116:1"
           }
         ],
-        "id": 2257,
+        "id": 541,
         "name": "ContractDefinition",
-        "src": "610:3189:5"
+        "src": "610:3203:1"
       }
     ],
-    "id": 2258,
+    "id": 542,
     "name": "SourceUnit",
-    "src": "584:3216:5"
+    "src": "584:3230:1"
   },
   "compiler": {
     "name": "solc",
@@ -792,5 +792,5 @@
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-02-06T04:29:11.356Z"
+  "updatedAt": "2018-02-12T07:44:54.872Z"
 }

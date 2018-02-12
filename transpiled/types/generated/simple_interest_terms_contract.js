@@ -15,6 +15,15 @@ const base_contract_1 = require("../base_contract");
 class SimpleInterestTermsContractContract extends base_contract_1.BaseContract {
     constructor(web3ContractInstance, defaults) {
         super(web3ContractInstance, defaults);
+        this.DAY_LENGTH_IN_SECONDS = {
+            callAsync(defaultBlock) {
+                return __awaiter(this, void 0, void 0, function* () {
+                    const self = this;
+                    const result = yield utils_1.promisify(self.web3ContractInstance.DAY_LENGTH_IN_SECONDS.call, self.web3ContractInstance)();
+                    return result;
+                });
+            },
+        };
         this.unpackParameters = {
             callAsync(parameters, defaultBlock) {
                 return __awaiter(this, void 0, void 0, function* () {
@@ -24,20 +33,20 @@ class SimpleInterestTermsContractContract extends base_contract_1.BaseContract {
                 });
             },
         };
-        this.HOUR_BLOCK_LENGTH = {
+        this.MONTH_LENGTH_IN_SECONDS = {
             callAsync(defaultBlock) {
                 return __awaiter(this, void 0, void 0, function* () {
                     const self = this;
-                    const result = yield utils_1.promisify(self.web3ContractInstance.HOUR_BLOCK_LENGTH.call, self.web3ContractInstance)();
+                    const result = yield utils_1.promisify(self.web3ContractInstance.MONTH_LENGTH_IN_SECONDS.call, self.web3ContractInstance)();
                     return result;
                 });
             },
         };
-        this.getAmortizationUnitLengthInBlocks = {
-            callAsync(amortizationUnitType, defaultBlock) {
+        this.WEEK_LENGTH_IN_SECONDS = {
+            callAsync(defaultBlock) {
                 return __awaiter(this, void 0, void 0, function* () {
                     const self = this;
-                    const result = yield utils_1.promisify(self.web3ContractInstance.getAmortizationUnitLengthInBlocks.call, self.web3ContractInstance)(amortizationUnitType);
+                    const result = yield utils_1.promisify(self.web3ContractInstance.WEEK_LENGTH_IN_SECONDS.call, self.web3ContractInstance)();
                     return result;
                 });
             },
@@ -65,56 +74,47 @@ class SimpleInterestTermsContractContract extends base_contract_1.BaseContract {
                 return abiEncodedTransactionData;
             },
         };
+        this.getAmortizationUnitLengthInSeconds = {
+            callAsync(amortizationUnitType, defaultBlock) {
+                return __awaiter(this, void 0, void 0, function* () {
+                    const self = this;
+                    const result = yield utils_1.promisify(self.web3ContractInstance.getAmortizationUnitLengthInSeconds.call, self.web3ContractInstance)(amortizationUnitType);
+                    return result;
+                });
+            },
+        };
+        this.HOUR_LENGTH_IN_SECONDS = {
+            callAsync(defaultBlock) {
+                return __awaiter(this, void 0, void 0, function* () {
+                    const self = this;
+                    const result = yield utils_1.promisify(self.web3ContractInstance.HOUR_LENGTH_IN_SECONDS.call, self.web3ContractInstance)();
+                    return result;
+                });
+            },
+        };
         this.getExpectedRepaymentValue = {
-            callAsync(agreementId, blockNumber, defaultBlock) {
+            callAsync(agreementId, timestamp, defaultBlock) {
                 return __awaiter(this, void 0, void 0, function* () {
                     const self = this;
-                    const result = yield utils_1.promisify(self.web3ContractInstance.getExpectedRepaymentValue.call, self.web3ContractInstance)(agreementId, blockNumber);
-                    return result;
-                });
-            },
-        };
-        this.MONTH_BLOCK_LENGTH = {
-            callAsync(defaultBlock) {
-                return __awaiter(this, void 0, void 0, function* () {
-                    const self = this;
-                    const result = yield utils_1.promisify(self.web3ContractInstance.MONTH_BLOCK_LENGTH.call, self.web3ContractInstance)();
-                    return result;
-                });
-            },
-        };
-        this.YEAR_BLOCK_LENGTH = {
-            callAsync(defaultBlock) {
-                return __awaiter(this, void 0, void 0, function* () {
-                    const self = this;
-                    const result = yield utils_1.promisify(self.web3ContractInstance.YEAR_BLOCK_LENGTH.call, self.web3ContractInstance)();
-                    return result;
-                });
-            },
-        };
-        this.DAY_BLOCK_LENGTH = {
-            callAsync(defaultBlock) {
-                return __awaiter(this, void 0, void 0, function* () {
-                    const self = this;
-                    const result = yield utils_1.promisify(self.web3ContractInstance.DAY_BLOCK_LENGTH.call, self.web3ContractInstance)();
-                    return result;
-                });
-            },
-        };
-        this.WEEK_BLOCK_LENGTH = {
-            callAsync(defaultBlock) {
-                return __awaiter(this, void 0, void 0, function* () {
-                    const self = this;
-                    const result = yield utils_1.promisify(self.web3ContractInstance.WEEK_BLOCK_LENGTH.call, self.web3ContractInstance)();
+                    const result = yield utils_1.promisify(self.web3ContractInstance.getExpectedRepaymentValue.call, self.web3ContractInstance)(agreementId, timestamp);
                     return result;
                 });
             },
         };
         this.getValueRepaid = {
-            callAsync(agreementId, blockNumber, defaultBlock) {
+            callAsync(agreementId, blockTimestamp, defaultBlock) {
                 return __awaiter(this, void 0, void 0, function* () {
                     const self = this;
-                    const result = yield utils_1.promisify(self.web3ContractInstance.getValueRepaid.call, self.web3ContractInstance)(agreementId, blockNumber);
+                    const result = yield utils_1.promisify(self.web3ContractInstance.getValueRepaid.call, self.web3ContractInstance)(agreementId, blockTimestamp);
+                    return result;
+                });
+            },
+        };
+        this.YEAR_LENGTH_IN_SECONDS = {
+            callAsync(defaultBlock) {
+                return __awaiter(this, void 0, void 0, function* () {
+                    const self = this;
+                    const result = yield utils_1.promisify(self.web3ContractInstance.YEAR_LENGTH_IN_SECONDS.call, self.web3ContractInstance)();
                     return result;
                 });
             },

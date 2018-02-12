@@ -120,15 +120,6 @@ class DebtRegistryContract extends base_contract_1.BaseContract {
                 });
             },
         };
-        this.getIssuanceBlockNumber = {
-            callAsync(issuanceHash, defaultBlock) {
-                return __awaiter(this, void 0, void 0, function* () {
-                    const self = this;
-                    const result = yield utils_1.promisify(self.web3ContractInstance.getIssuanceBlockNumber.call, self.web3ContractInstance)(issuanceHash);
-                    return result;
-                });
-            },
-        };
         this.pause = {
             sendTransactionAsync(txData = {}) {
                 return __awaiter(this, void 0, void 0, function* () {
@@ -269,6 +260,15 @@ class DebtRegistryContract extends base_contract_1.BaseContract {
                 const self = this;
                 const abiEncodedTransactionData = self.web3ContractInstance.insert.getData();
                 return abiEncodedTransactionData;
+            },
+        };
+        this.getIssuanceBlockTimestamp = {
+            callAsync(issuanceHash, defaultBlock) {
+                return __awaiter(this, void 0, void 0, function* () {
+                    const self = this;
+                    const result = yield utils_1.promisify(self.web3ContractInstance.getIssuanceBlockTimestamp.call, self.web3ContractInstance)(issuanceHash);
+                    return result;
+                });
             },
         };
         this.transferOwnership = {

@@ -66,19 +66,19 @@ class NFTTermsContractContract extends base_contract_1.BaseContract {
             },
         };
         this.getExpectedRepaymentValue = {
-            callAsync(agreementId, blockNumber, defaultBlock) {
+            callAsync(agreementId, blockTimestamp, defaultBlock) {
                 return __awaiter(this, void 0, void 0, function* () {
                     const self = this;
-                    const result = yield utils_1.promisify(self.web3ContractInstance.getExpectedRepaymentValue.call, self.web3ContractInstance)(agreementId, blockNumber);
+                    const result = yield utils_1.promisify(self.web3ContractInstance.getExpectedRepaymentValue.call, self.web3ContractInstance)(agreementId, blockTimestamp);
                     return result;
                 });
             },
         };
         this.getValueRepaid = {
-            callAsync(agreementId, blockNumber, defaultBlock) {
+            callAsync(agreementId, blockTimestamp, defaultBlock) {
                 return __awaiter(this, void 0, void 0, function* () {
                     const self = this;
-                    const result = yield utils_1.promisify(self.web3ContractInstance.getValueRepaid.call, self.web3ContractInstance)(agreementId, blockNumber);
+                    const result = yield utils_1.promisify(self.web3ContractInstance.getValueRepaid.call, self.web3ContractInstance)(agreementId, blockTimestamp);
                     return result;
                 });
             },

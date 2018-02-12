@@ -202,6 +202,7 @@ contract("Debt Kernel (Integration Tests)", (ACCOUNTS) => __awaiter(this, void 0
                 let underwriterBalanceBefore;
                 let relayerBalanceBefore;
                 let receipt;
+                let block;
                 let logs;
                 before(() => __awaiter(this, void 0, void 0, function* () {
                     yield setupDebtOrder();
@@ -211,13 +212,14 @@ contract("Debt Kernel (Integration Tests)", (ACCOUNTS) => __awaiter(this, void 0
                         underwriterBalanceBefore, relayerBalanceBefore] = yield getAgentBalances(principalToken);
                     const txHash = yield kernel.fillDebtOrder.sendTransactionAsync(debtOrder.getCreditor(), debtOrder.getOrderAddresses(), debtOrder.getOrderValues(), debtOrder.getOrderBytes32(), debtOrder.getSignaturesV(), debtOrder.getSignaturesR(), debtOrder.getSignaturesS(), { from: filler });
                     receipt = yield web3.eth.getTransactionReceipt(txHash);
+                    block = yield web3.eth.getBlock(receipt.blockNumber);
                     logs = _.compact(ABIDecoder.decodeLogs(receipt.logs));
                 }));
                 it("should mint debt token to creditor", () => __awaiter(this, void 0, void 0, function* () {
                     yield expect(debtTokenContract.ownerOf.callAsync(new bignumber_js_1.BigNumber(debtOrder.getIssuanceCommitment().getHash()))).to.eventually.equal(debtOrder.getCreditor());
                 }));
                 it("should make issuance parameters retrievable from registry", () => __awaiter(this, void 0, void 0, function* () {
-                    const [version, beneficiary, underwriter, underwriterRiskRating, termsContract, termsContractParameters, issuanceBlockNumber,] = yield debtRegistryContract
+                    const [version, beneficiary, underwriter, underwriterRiskRating, termsContract, termsContractParameters, issuanceBlockTimestamp,] = yield debtRegistryContract
                         .get.callAsync(debtOrder.getIssuanceCommitment().getHash());
                     expect(version).to.equal(debtOrder.getIssuanceCommitment().getVersion());
                     expect(beneficiary).to.equal(debtOrder.getCreditor());
@@ -229,8 +231,8 @@ contract("Debt Kernel (Integration Tests)", (ACCOUNTS) => __awaiter(this, void 0
                         .equal(debtOrder.getIssuanceCommitment().getTermsContract());
                     expect(termsContractParameters).to
                         .equal(debtOrder.getIssuanceCommitment().getTermsContractParameters());
-                    expect(issuanceBlockNumber).to.bignumber
-                        .equal(receipt.blockNumber);
+                    expect(issuanceBlockTimestamp).to.bignumber
+                        .equal(block.timestamp);
                 }));
                 it("should debit principal + creditor fee from creditor", () => __awaiter(this, void 0, void 0, function* () {
                     const delta = debtOrder.getPrincipalAmount().plus(debtOrder.getCreditorFee());
