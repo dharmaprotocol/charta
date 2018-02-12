@@ -326,14 +326,14 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
                     res = await web3.eth.getTransactionReceipt(txHash);
                 });
 
-                it("should emit log saying third agent authorized", async () => {
+                it("should emit log saying fourth agent authorized", async () => {
                     const [logReturned] = ABIDecoder.decodeLogs(res.logs);
                     const logExpected = LogAddAuthorizedEditAgent(registry.address, AGENT_4);
 
                     expect(logReturned).to.deep.equal(logExpected);
                 });
 
-                it("should return first agent as authorized", async () => {
+                it("should return third and fourth agent as authorized", async () => {
                     await expect(registry.getAuthorizedEditAgents.callAsync())
                         .to.eventually.deep.equal([AGENT_3, AGENT_4]);
                 });
