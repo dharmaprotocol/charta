@@ -52,8 +52,7 @@ library PermissionsLib {
         delete self.authorized[agent];
 
         // Remove the agent from our collection of authorized agents.
-        self.authorizedAgents[indexOfAgentToRevoke] =
-            self.authorizedAgents[indexOfAgentToMove];
+        self.authorizedAgents[indexOfAgentToRevoke] = agentToMove;
 
         // Update our indices to reflect the above changes.
         self.agentToIndex[agentToMove] = indexOfAgentToRevoke;
