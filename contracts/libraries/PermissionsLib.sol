@@ -29,11 +29,11 @@ library PermissionsLib {
     function authorize(Permissions storage self, address agent)
         internal
     {
-        require(isNotAuthorized(self, agent));
-
-        self.authorized[agent] = true;
-        self.authorizedAgents.push(agent);
-        self.agentToIndex[agent] = self.authorizedAgents.length - 1;
+        if (isNotAuthorized(self, agent)) {
+            self.authorized[agent] = true;
+            self.authorizedAgents.push(agent);
+            self.agentToIndex[agent] = self.authorizedAgents.length - 1;
+        }
     }
 
     function revokeAuthorization(Permissions storage self, address agent)
@@ -41,19 +41,27 @@ library PermissionsLib {
     {
         /* We only want to do work in the case where the agent whose
         authorization is being revoked had authorization permissions in the
-        first place */
-        require(isAuthorized(self, agent));
+        first place. */
+        if (isAuthorized(self, agent)) {
+            uint indexOfAgentToRevoke = self.agentToIndex[agent];
+            uint indexOfAgentToMove = self.authorizedAgents.length - 1;
+            address agentToMove = self.authorizedAgents[indexOfAgentToMove];
 
-        uint indexOfAgentToRevoke = self.agentToIndex[agent];
-        uint indexOfAgentToMove = self.authorizedAgents.length - 1;
-        address agentToMove = self.authorizedAgents[indexOfAgentToMove];
+            // Revoke the agent's authorization.
+            delete self.authorized[agent];
 
-        delete self.authorized[agent];
-        self.authorizedAgents[indexOfAgentToRevoke] =
-            self.authorizedAgents[indexOfAgentToMove];
-        self.authorizedAgents.length -= 1;
-        self.agentToIndex[agentToMove] = indexOfAgentToRevoke;
-        delete self.agentToIndex[agent];
+            // Remove the agent from our collection of authorized agents.
+            self.authorizedAgents[indexOfAgentToRevoke] =
+                self.authorizedAgents[indexOfAgentToMove];
+
+            // Update our indices to reflect the above changes.
+            self.agentToIndex[agentToMove] = indexOfAgentToRevoke;
+            delete self.agentToIndex[agent];
+
+            // Clean up memory that's no longer being used.
+            delete self.authorizedAgents[indexOfAgentToMove];
+            self.authorizedAgents.length -= 1;
+        }
     }
 
     function isAuthorized(Permissions storage self, address agent)
