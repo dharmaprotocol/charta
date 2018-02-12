@@ -79,7 +79,7 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
 
     before(async () => {
-        const registryTruffleContract = await debtRegistryContract.deployed();
+        const registryTruffleContract = await debtRegistryContract.new();
 
         // The typings we use ingest vanilla Web3 contracts, so we convert the
         // contract instance deployed by truffle into a Web3 contract instance

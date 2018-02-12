@@ -165,11 +165,6 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
         await kernel.setDebtToken
             .sendTransactionAsync(debtTokenContract.address, { from: CONTRACT_OWNER });
 
-        await debtRegistryContract.addAuthorizedInsertAgent
-            .sendTransactionAsync(debtTokenContract.address, { from: CONTRACT_OWNER });
-        await debtRegistryContract.addAuthorizedEditAgent
-            .sendTransactionAsync(debtTokenContract.address, { from: CONTRACT_OWNER });
-
         await debtTokenContract.addAuthorizedMintAgent
             .sendTransactionAsync(kernel.address, { from: CONTRACT_OWNER });
 
