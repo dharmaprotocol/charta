@@ -22,7 +22,7 @@ pragma solidity 0.4.18;
 library PermissionsLib {
     struct Permissions {
         mapping (address => bool) authorized;
-        mapping (address => uint) agentToIndex;
+        mapping (address => uint) agentToIndex; // ensures O(1) look-up
         address[] authorizedAgents;
     }
 
@@ -41,19 +41,27 @@ library PermissionsLib {
     {
         /* We only want to do work in the case where the agent whose
         authorization is being revoked had authorization permissions in the
-        first place */
+        first place. */
         require(isAuthorized(self, agent));
 
         uint indexOfAgentToRevoke = self.agentToIndex[agent];
         uint indexOfAgentToMove = self.authorizedAgents.length - 1;
         address agentToMove = self.authorizedAgents[indexOfAgentToMove];
 
+        // Revoke the agent's authorization.
         delete self.authorized[agent];
+
+        // Remove the agent from our collection of authorized agents.
         self.authorizedAgents[indexOfAgentToRevoke] =
             self.authorizedAgents[indexOfAgentToMove];
-        self.authorizedAgents.length -= 1;
+
+        // Update our indices to reflect the above changes.
         self.agentToIndex[agentToMove] = indexOfAgentToRevoke;
         delete self.agentToIndex[agent];
+
+        // Clean up memory that's no longer being used.
+        delete self.authorizedAgents[indexOfAgentToMove];
+        self.authorizedAgents.length -= 1;
     }
 
     function isAuthorized(Permissions storage self, address agent)
