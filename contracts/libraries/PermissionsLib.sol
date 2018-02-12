@@ -22,30 +22,38 @@ pragma solidity 0.4.18;
 library PermissionsLib {
     struct Permissions {
         mapping (address => bool) authorized;
+        mapping (address => uint) agentToIndex;
         address[] authorizedAgents;
     }
 
     function authorize(Permissions storage self, address agent)
         internal
     {
-        if (!self.authorized[agent]) {
-            self.authorized[agent] = true;
-            self.authorizedAgents.push(agent);
-        }
+        require(isNotAuthorized(self, agent));
+
+        self.authorized[agent] = true;
+        self.authorizedAgents.push(agent);
+        self.agentToIndex[agent] = self.authorizedAgents.length - 1;
     }
 
     function revokeAuthorization(Permissions storage self, address agent)
         internal
     {
+        /* We only want to do work in the case where the agent whose
+        authorization is being revoked had authorization permissions in the
+        first place */
+        require(isAuthorized(self, agent));
+
+        uint indexOfAgentToRevoke = self.agentToIndex[agent];
+        uint indexOfAgentToMove = self.authorizedAgents.length - 1;
+        address agentToMove = self.authorizedAgents[indexOfAgentToMove];
+
         delete self.authorized[agent];
-        for (uint i = 0; i < self.authorizedAgents.length; i++) {
-            if (self.authorizedAgents[i] == agent) {
-                self.authorizedAgents[i] =
-                    self.authorizedAgents[self.authorizedAgents.length - 1];
-                self.authorizedAgents.length -= 1;
-                break;
-            }
-        }
+        self.authorizedAgents[indexOfAgentToRevoke] =
+            self.authorizedAgents[indexOfAgentToMove];
+        self.authorizedAgents.length -= 1;
+        self.agentToIndex[agentToMove] = indexOfAgentToRevoke;
+        delete self.agentToIndex[agent];
     }
 
     function isAuthorized(Permissions storage self, address agent)
@@ -54,6 +62,14 @@ library PermissionsLib {
         returns (bool)
     {
         return self.authorized[agent];
+    }
+
+    function isNotAuthorized(Permissions storage self, address agent)
+        internal
+        view
+        returns (bool)
+    {
+        return !isAuthorized(self, agent);
     }
 
     function getAuthorizedAgents(Permissions storage self)
