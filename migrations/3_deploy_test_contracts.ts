@@ -11,8 +11,6 @@ module.exports = (deployer: any, network: string, accounts: string[]) => {
     const MockTokenTransferProxyContract = artifacts.require("MockTokenTransferProxy");
     const MintableNonFungibleToken = artifacts.require("MintableNonFungibleToken");
 
-    const TX_DEFAULTS = { from: accounts[0], gas: 4000000 };
-
     const DUMMY_TOKEN_SUPPLY = 10 ** 27;
     const DUMMY_TOKEN_DECIMALS = 18;
 
