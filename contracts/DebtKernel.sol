@@ -66,9 +66,10 @@ contract DebtKernel is Pausable {
     address public TOKEN_TRANSFER_PROXY;
     bytes32 constant public NULL_ISSUANCE_HASH = bytes32(0);
 
-    /* TODO(kayvon): Remove the need to impose a gas limit once the `view`
-    keyword actually compiles down to a static call, thus preventing reentrancy
-    ipso facto. */
+    /* NOTE(kayvon): Currently, the `view` keyword does not actually enforce the
+    static nature of the method; this will change in the future, but for now, in
+    order to prevent reentrancy we'll need to arbitrarily set an upper bound on
+    the gas limit allotted for certain method calls. */
     uint16 constant public EXTERNAL_QUERY_GAS_LIMIT = 8000;
 
     mapping (bytes32 => bool) public issuanceCancelled;
