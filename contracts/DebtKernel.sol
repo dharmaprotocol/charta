@@ -639,6 +639,7 @@ contract DebtKernel is Pausable {
         address owner
     )
         internal
+        view
         returns (uint _balance)
     {
         // Limit gas to prevent reentrancy
@@ -653,6 +654,7 @@ contract DebtKernel is Pausable {
         address owner
     )
         internal
+        view
         returns (uint _allowance)
     {
         // Limit gas to prevent reentrancy
