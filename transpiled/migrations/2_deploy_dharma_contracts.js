@@ -6,21 +6,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const PermissionsLib = artifacts.require("PermissionsLib");
-const DummyContract = artifacts.require("DummyContract");
-const DebtRegistry = artifacts.require("DebtRegistry");
-const DebtToken = artifacts.require("DebtToken");
-const DebtKernel = artifacts.require("DebtKernel");
-const RepaymentRouter = artifacts.require("RepaymentRouter");
-const TokenTransferProxy = artifacts.require("TokenTransferProxy");
 module.exports = (deployer, network, accounts) => {
-    const TX_DEFAULTS = { from: accounts[0], gas: 4000000 };
-    deployer.deploy(DebtRegistry);
+    const PermissionsLib = artifacts.require("PermissionsLib");
+    const DummyContract = artifacts.require("DummyContract");
+    const DebtRegistry = artifacts.require("DebtRegistry");
+    const DebtToken = artifacts.require("DebtToken");
+    const DebtKernel = artifacts.require("DebtKernel");
+    const RepaymentRouter = artifacts.require("RepaymentRouter");
+    const TokenTransferProxy = artifacts.require("TokenTransferProxy");
     deployer.deploy(PermissionsLib);
     deployer.link(PermissionsLib, DummyContract);
     deployer.deploy(DummyContract);
     deployer.link(PermissionsLib, DebtRegistry);
-    deployer.deploy(DebtRegistry).then(() => __awaiter(this, void 0, void 0, function* () {
+    return deployer.deploy(DebtRegistry).then(() => __awaiter(this, void 0, void 0, function* () {
         yield deployer.deploy(DebtToken, DebtRegistry.address);
         yield deployer.deploy(TokenTransferProxy);
         yield deployer.deploy(RepaymentRouter, DebtRegistry.address, TokenTransferProxy.address);

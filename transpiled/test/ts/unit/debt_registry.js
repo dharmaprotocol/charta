@@ -54,7 +54,7 @@ contract("Debt Registry (Unit Tests)", (ACCOUNTS) => __awaiter(this, void 0, voi
     const NULL_ADDRESS = "0x0000000000000000000000000000000000000000";
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
     before(() => __awaiter(this, void 0, void 0, function* () {
-        const registryTruffleContract = yield debtRegistryContract.deployed();
+        const registryTruffleContract = yield debtRegistryContract.new();
         // The typings we use ingest vanilla Web3 contracts, so we convert the
         // contract instance deployed by truffle into a Web3 contract instance
         const registryWeb3Contract = web3.eth
@@ -243,12 +243,12 @@ contract("Debt Registry (Unit Tests)", (ACCOUNTS) => __awaiter(this, void 0, voi
                     const txHash = yield registry.addAuthorizedEditAgent.sendTransactionAsync(AGENT_4);
                     res = yield web3.eth.getTransactionReceipt(txHash);
                 }));
-                it("should emit log saying third agent authorized", () => __awaiter(this, void 0, void 0, function* () {
+                it("should emit log saying fourth agent authorized", () => __awaiter(this, void 0, void 0, function* () {
                     const [logReturned] = ABIDecoder.decodeLogs(res.logs);
                     const logExpected = debt_registry_2.LogAddAuthorizedEditAgent(registry.address, AGENT_4);
                     expect(logReturned).to.deep.equal(logExpected);
                 }));
-                it("should return first agent as authorized", () => __awaiter(this, void 0, void 0, function* () {
+                it("should return third and fourth agent as authorized", () => __awaiter(this, void 0, void 0, function* () {
                     yield expect(registry.getAuthorizedEditAgents.callAsync())
                         .to.eventually.deep.equal([AGENT_3, AGENT_4]);
                 }));

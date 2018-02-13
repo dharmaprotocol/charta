@@ -1,4 +1,3 @@
-"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -7,31 +6,30 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-const debt_kernel_1 = require("../types/generated/debt_kernel");
-const debt_registry_1 = require("../types/generated/debt_registry");
-const debt_token_1 = require("../types/generated/debt_token");
-const repayment_router_1 = require("../types/generated/repayment_router");
-const token_transfer_proxy_1 = require("../types/generated/token_transfer_proxy");
 module.exports = (deployer, network, accounts) => {
+    const DebtRegistry = artifacts.require("DebtRegistry");
+    const DebtToken = artifacts.require("DebtToken");
+    const DebtKernel = artifacts.require("DebtKernel");
+    const TokenTransferProxy = artifacts.require("TokenTransferProxy");
+    const RepaymentRouter = artifacts.require("RepaymentRouter");
     const TX_DEFAULTS = { from: accounts[0], gas: 4000000 };
-    deployer.then(() => __awaiter(this, void 0, void 0, function* () {
-        const registry = yield debt_registry_1.DebtRegistryContract.deployed(web3, TX_DEFAULTS);
-        const token = yield debt_token_1.DebtTokenContract.deployed(web3, TX_DEFAULTS);
-        const kernel = yield debt_kernel_1.DebtKernelContract.deployed(web3, TX_DEFAULTS);
-        const proxy = yield token_transfer_proxy_1.TokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
-        const router = yield repayment_router_1.RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
+    return deployer.then(() => __awaiter(this, void 0, void 0, function* () {
+        const registry = yield DebtRegistry.deployed();
+        const token = yield DebtToken.deployed();
+        const kernel = yield DebtKernel.deployed();
+        const proxy = yield TokenTransferProxy.deployed();
+        const router = yield RepaymentRouter.deployed();
         // Authorize token contract to make mutations to the registry
-        yield registry.addAuthorizedInsertAgent.sendTransactionAsync(token.address);
-        yield registry.addAuthorizedEditAgent.sendTransactionAsync(token.address);
+        yield registry.addAuthorizedInsertAgent(token.address);
+        yield registry.addAuthorizedEditAgent(token.address);
         // Authorize kernel contract to mint and broker debt tokens
-        yield token.addAuthorizedMintAgent.sendTransactionAsync(kernel.address);
+        yield token.addAuthorizedMintAgent(kernel.address);
         // Set kernel to point at current debt token contract
-        yield kernel.setDebtToken.sendTransactionAsync(token.address);
+        yield kernel.setDebtToken(token.address);
         // Authorize kernel to make `transferFrom` calls on the token transfer proxy
-        yield proxy.addAuthorizedTransferAgent.sendTransactionAsync(kernel.address);
+        yield proxy.addAuthorizedTransferAgent(kernel.address);
         // Authorize repayment router to make `transferFrom` calls on the token transfer proxy
-        yield proxy.addAuthorizedTransferAgent.sendTransactionAsync(router.address);
+        yield proxy.addAuthorizedTransferAgent(router.address);
     }));
 };
 //# sourceMappingURL=5_authorize_contract_interactions.js.map

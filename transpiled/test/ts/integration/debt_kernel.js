@@ -129,10 +129,6 @@ contract("Debt Kernel (Integration Tests)", (ACCOUNTS) => __awaiter(this, void 0
     const initialize = () => __awaiter(this, void 0, void 0, function* () {
         yield kernel.setDebtToken
             .sendTransactionAsync(debtTokenContract.address, { from: CONTRACT_OWNER });
-        yield debtRegistryContract.addAuthorizedInsertAgent
-            .sendTransactionAsync(debtTokenContract.address, { from: CONTRACT_OWNER });
-        yield debtRegistryContract.addAuthorizedEditAgent
-            .sendTransactionAsync(debtTokenContract.address, { from: CONTRACT_OWNER });
         yield debtTokenContract.addAuthorizedMintAgent
             .sendTransactionAsync(kernel.address, { from: CONTRACT_OWNER });
         yield tokenTransferProxy.addAuthorizedTransferAgent
