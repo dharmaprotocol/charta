@@ -65,7 +65,9 @@ contract DebtKernel is Pausable {
     // solhint-disable-next-line var-name-mixedcase
     address public TOKEN_TRANSFER_PROXY;
     bytes32 constant public NULL_ISSUANCE_HASH = bytes32(0);
-    uint16 constant public EXTERNAL_QUERY_GAS_LIMIT = 4999;    // Changes to state require at least 5000 gas
+
+    /* TODO(kayvon): we should rely on static call to prevent reentrancy and not this arbitrary gas limit. */
+    uint16 constant public EXTERNAL_QUERY_GAS_LIMIT = 8000;
 
     mapping (bytes32 => bool) public issuanceCancelled;
     mapping (bytes32 => bool) public debtOrderCancelled;
