@@ -64,7 +64,7 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
 
     // We define utility functions for the primary state-changing
     // operations permitted on the registry.
-    let generateEntryFn: () => DebtRegistryEntry;
+    let generateEntryFn: (beneficiary?: string) => DebtRegistryEntry;
     let insertEntryFn: (entry: DebtRegistryEntry,
                         options?: TxDataPayable)
         => Promise<string>;
@@ -96,9 +96,9 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
         // DebtRegistryEntries are given a random salt on construction --
         // we use the following function to generate arbitrary
         // DebtRegistryEntries without hash collisions.
-        generateEntryFn = () => {
+        generateEntryFn = (beneficiary: string = BENEFICIARY_1) => {
             return new DebtRegistryEntry({
-                beneficiary: BENEFICIARY_1,
+                beneficiary: beneficiary,
                 debtor: DEBTOR,
                 termsContract: TERMS_CONTRACT_ADDRESS,
                 termsContractParameters: ARBITRARY_TERMS_CONTRACT_PARAMS,
