@@ -644,7 +644,7 @@ contract DebtKernel is Pausable {
         view
         returns (uint _balance)
     {
-        // Limit gas to prevent reentrancy
+        // Limit gas to prevent reentrancy.
         return ERC20(token).balanceOf.gas(EXTERNAL_QUERY_GAS_LIMIT)(owner);
     }
 
