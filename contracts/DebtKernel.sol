@@ -65,7 +65,12 @@ contract DebtKernel is Pausable {
     // solhint-disable-next-line var-name-mixedcase
     address public TOKEN_TRANSFER_PROXY;
     bytes32 constant public NULL_ISSUANCE_HASH = bytes32(0);
-    uint16 constant public EXTERNAL_QUERY_GAS_LIMIT = 4999;    // Changes to state require at least 5000 gas
+
+    /* NOTE(kayvon): Currently, the `view` keyword does not actually enforce the
+    static nature of the method; this will change in the future, but for now, in
+    order to prevent reentrancy we'll need to arbitrarily set an upper bound on
+    the gas limit allotted for certain method calls. */
+    uint16 constant public EXTERNAL_QUERY_GAS_LIMIT = 8000;
 
     mapping (bytes32 => bool) public issuanceCancelled;
     mapping (bytes32 => bool) public debtOrderCancelled;
@@ -639,9 +644,10 @@ contract DebtKernel is Pausable {
         address owner
     )
         internal
+        view
         returns (uint _balance)
     {
-        // Limit gas to prevent reentrancy
+        // Limit gas to prevent reentrancy.
         return ERC20(token).balanceOf.gas(EXTERNAL_QUERY_GAS_LIMIT)(owner);
     }
 
@@ -653,9 +659,10 @@ contract DebtKernel is Pausable {
         address owner
     )
         internal
+        view
         returns (uint _allowance)
     {
-        // Limit gas to prevent reentrancy
-        return ERC20(token).allowance(owner, TOKEN_TRANSFER_PROXY);
+        // Limit gas to prevent reentrancy.
+        return ERC20(token).allowance.gas(EXTERNAL_QUERY_GAS_LIMIT)(owner, TOKEN_TRANSFER_PROXY);
     }
 }
