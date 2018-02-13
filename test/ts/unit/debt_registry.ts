@@ -62,7 +62,7 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
 
     let registry: DebtRegistryContract;
 
-    // We define utility funcitons for the primary state-changing
+    // We define utility functions for the primary state-changing
     // operations permitted on the registry.
     let generateEntryFn: () => DebtRegistryEntry;
     let insertEntryFn: (entry: DebtRegistryEntry,
