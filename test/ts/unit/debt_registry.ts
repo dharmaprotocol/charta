@@ -429,6 +429,16 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
                 await expect(insertEntryFn(generateEntryFn(),
                     { from: AGENT_4 })).to.eventually.be.rejectedWith(REVERT_ERROR);
             });
+
+            it("should throw when third agent specifies a null beneficiary when trying to modify an entry", async () => {
+              await expect(modifyEntryBeneficiaryFn(generateEntryFn(NULL_ADDRESS), AGENT_3))
+                  .to.eventually.be.rejectedWith(REVERT_ERROR);
+            });
+
+            it("should throw when fourth agent specifies a null beneficiary when trying to modify an entry", async () => {
+              await expect(modifyEntryBeneficiaryFn(generateEntryFn(NULL_ADDRESS), AGENT_4))
+                  .to.eventually.be.rejectedWith(REVERT_ERROR);
+            });
         });
 
         describe("owner revokes second agent from inserting entries", () => {
