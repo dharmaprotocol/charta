@@ -20,9 +20,10 @@ pragma solidity 0.4.18;
 
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
 import "../DebtRegistry.sol";
+import "../TermsContract.sol";
 
 
-contract SimpleInterestTermsContract {
+contract SimpleInterestTermsContract is TermsContract {
     using SafeMath for uint;
 
     mapping (bytes32 => uint) valueRepaid;
