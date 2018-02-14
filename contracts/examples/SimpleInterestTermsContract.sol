@@ -101,7 +101,11 @@ contract SimpleInterestTermsContract {
         bytes32 parameters = debtRegistry.getTermsContractParameters(agreementId);
         uint issuanceBlockTimestamp = debtRegistry.getIssuanceBlockTimestamp(agreementId);
 
-        var (principalPlusInterest, amortizationUnitType, termLengthInAmortizationUnits) =
+        uint128 principalPlusInterest;
+        uint8 amortizationUnitType;
+        uint120 termLengthInAmortizationUnits;
+
+        (principalPlusInterest, amortizationUnitType, termLengthInAmortizationUnits) =
             unpackParameters(parameters);
 
         uint amortizationUnitLength = getAmortizationUnitLengthInSeconds(amortizationUnitType);
