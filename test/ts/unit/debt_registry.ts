@@ -250,11 +250,6 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
             });
         });
 
-        it("should throw when first agent inserts a new entry with a null beneficiary", async () => {
-          await expect(insertEntryFn(generateEntryFn(NULL_ADDRESS), { from: AGENT_1 }))
-              .to.eventually.be.rejectedWith(REVERT_ERROR);
-        });
-
         describe("second agent inserts new entry into registry", () => {
             let res: Web3.TransactionReceipt;
             let entry: DebtRegistryEntry;
@@ -299,11 +294,6 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
                 await expect(modifyEntryBeneficiaryFn(entry, AGENT_2, { from: AGENT_2 }))
                     .to.eventually.be.rejectedWith(REVERT_ERROR);
             });
-        });
-
-        it("should throw when second agent inserts a new entry with a null beneficiary", async () => {
-          await expect(insertEntryFn(generateEntryFn(NULL_ADDRESS), { from: AGENT_2 }))
-              .to.eventually.be.rejectedWith(REVERT_ERROR);
         });
 
         describe("owner authorizes agent(s) for editing entries", () => {
@@ -430,15 +420,28 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
                     { from: AGENT_4 })).to.eventually.be.rejectedWith(REVERT_ERROR);
             });
 
-            it("should throw when third agent specifies a null beneficiary when trying to modify an entry", async () => {
-              await expect(modifyEntryBeneficiaryFn(generateEntryFn(NULL_ADDRESS), AGENT_3))
-                  .to.eventually.be.rejectedWith(REVERT_ERROR);
+            describe("the beneficiary specified is null", () => {
+                it("should throw when the second agent attempts to inserts a new entry", async () => {
+                  await expect(insertEntryFn(generateEntryFn(NULL_ADDRESS), { from: AGENT_2 }))
+                      .to.eventually.be.rejectedWith(REVERT_ERROR);
+                });
+
+                it("should throw when the first agent attempts to insert a new entry", async () => {
+                  await expect(insertEntryFn(generateEntryFn(NULL_ADDRESS), { from: AGENT_1 }))
+                      .to.eventually.be.rejectedWith(REVERT_ERROR);
+                });
+
+                it("should throw when third agent tries to modify an entry", async () => {
+                  await expect(modifyEntryBeneficiaryFn(generateEntryFn(NULL_ADDRESS), AGENT_3))
+                      .to.eventually.be.rejectedWith(REVERT_ERROR);
+                });
+
+                it("should throw when fourth agent tries to modify an entry", async () => {
+                  await expect(modifyEntryBeneficiaryFn(generateEntryFn(NULL_ADDRESS), AGENT_4))
+                      .to.eventually.be.rejectedWith(REVERT_ERROR);
+                });
             });
 
-            it("should throw when fourth agent specifies a null beneficiary when trying to modify an entry", async () => {
-              await expect(modifyEntryBeneficiaryFn(generateEntryFn(NULL_ADDRESS), AGENT_4))
-                  .to.eventually.be.rejectedWith(REVERT_ERROR);
-            });
         });
 
         describe("owner revokes second agent from inserting entries", () => {
