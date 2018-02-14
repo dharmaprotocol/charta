@@ -41,6 +41,11 @@ contract SimpleInterestTermsContract is TermsContract {
     address repaymentToken;
     address repaymentRouter;
 
+    modifier onlyRouter() {
+      require(msg.sender == repaymentRouter);
+      _;
+    }
+
     function SimpleInterestTermsContract(
         address _debtRegistry,
         address _repaymentToken,
@@ -71,12 +76,9 @@ contract SimpleInterestTermsContract is TermsContract {
         address tokenAddress
     )
         public
+        onlyRouter
         returns (bool _success)
     {
-        if (msg.sender != repaymentRouter) {
-            return false;
-        }
-
         if (tokenAddress == repaymentToken) {
             valueRepaid[agreementId] = valueRepaid[agreementId].add(unitsOfRepayment);
             return true;
