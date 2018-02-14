@@ -41,6 +41,7 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
     const CONTRACT_OWNER = ACCOUNTS[0];
     const PAYER = ACCOUNTS[1];
     const BENEFICIARY = ACCOUNTS[2];
+    const ATTACKER = ACCOUNTS[3];
 
     const TERMS_CONTRACT_PARAMETERS =
         web3.sha3("any 32 byte hex value can represent the terms contract's parameters");
