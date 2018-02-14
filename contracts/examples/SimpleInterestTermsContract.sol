@@ -109,7 +109,7 @@ contract SimpleInterestTermsContract {
             unpackParameters(parameters);
 
         uint amortizationUnitLength = getAmortizationUnitLengthInSeconds(amortizationUnitType);
-        uint numRepaymentPeriods = blockTimestamp.sub(issuanceBlockTimestamp).div(amortizationUnitLength);
+        uint numRepaymentPeriods = timestamp.sub(issuanceBlockTimestamp).div(amortizationUnitLength);
 
         return numRepaymentPeriods.mul(principalPlusInterest).div(termLengthInAmortizationUnits);
     }
