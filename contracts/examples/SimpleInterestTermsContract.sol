@@ -20,9 +20,10 @@ pragma solidity 0.4.18;
 
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
 import "../DebtRegistry.sol";
+import "../TermsContract.sol";
 
 
-contract SimpleInterestTermsContract {
+contract SimpleInterestTermsContract is TermsContract {
     using SafeMath for uint;
 
     mapping (bytes32 => uint) valueRepaid;
@@ -100,14 +101,10 @@ contract SimpleInterestTermsContract {
         }
     }
 
-     /// Returns the cumulative units-of-value repaid by the point at which the timestamp of a given block has lapsed.
+     /// Returns the cumulative units-of-value repaid to date.
      /// @param agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.
-     /// @param blockTimestamp uint. The timestamp of the block for which repayment value is being queried.
      /// @return uint256 The cumulative units-of-value repaid by the specified block timestamp.
-    function getValueRepaid(
-        bytes32 agreementId,
-        uint256 blockTimestamp
-    )
+    function getValueRepaidToDate(bytes32 agreementId)
         public
         view
         returns (uint _valueRepaid)

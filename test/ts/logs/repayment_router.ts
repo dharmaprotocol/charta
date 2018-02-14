@@ -27,27 +27,6 @@ export function LogRepayment(
     };
 }
 
-export function LogNFTRepayment(
-    contract: Address,
-    agreementId: Bytes32,
-    payer: Address,
-    beneficiary: Address,
-    tokenId: UInt,
-    token: Address,
-): ABIDecoder.DecodedLog {
-    return {
-        address: contract,
-        events: LogUtils.getParams([
-            ["_agreementId", agreementId],
-            ["_payer", payer],
-            ["_beneficiary", beneficiary],
-            ["_tokenId", tokenId],
-            ["_token", token],
-        ]),
-        name: "LogNFTRepayment",
-    };
-}
-
 export function LogError(
     contract: Address,
     errorId: UInt,
