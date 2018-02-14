@@ -35,16 +35,6 @@ contract DebtRegistry is Pausable {
     using SafeMath for uint;
     using PermissionsLib for PermissionsLib.Permissions;
 
-    struct Issuance {
-        address version;
-        address debtor;
-        address underwriter;
-        uint underwriterRiskRating;
-        address termsContract;
-        bytes32 termsContractParameters;
-        uint salt;
-    }
-
     struct Entry {
         address version;
         address beneficiary;
