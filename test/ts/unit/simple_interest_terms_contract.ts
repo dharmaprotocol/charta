@@ -75,6 +75,81 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
 
         router = new RepaymentRouterContract(repaymentRouterWeb3Contract, TX_DEFAULTS);
         termsContract = new SimpleInterestTermsContractContract(termsContractWeb3Contract, TX_DEFAULTS);
+
+        ABIDecoder.addABI(router.abi);
     });
 
+    after(() => {
+        ABIDecoder.removeABI(router.abi);
+    });
+
+    describe("Initialization", () => {
+        it("points to DebtRegistry passed in through the constructor");
+        it("points to RepaymentRouter passed in through the constructor");
+    });
+
+    describe("#registerRepayment", () => {
+        describe("agent who is not RepaymentRouter calls registerRepayment", () => {
+            it("should throw");
+        });
+
+        describe("RepaymentRouter calls registerRepayment", () => {
+            describe("...with a different `tokenAddress` than expected by the terms contract", () => {
+                // Not entirely sure if you can test this without creating some sort of mock
+                // contract to do this on your behalf -- to my knowledge, return values
+                // from solidity methods can only be accessed by contracts (and not just
+                // end users).  Double check this, though
+                it("should return false");
+                it("should not record the repayment in any capacity");
+            });
+
+            describe("...with terms contract's expected `tokenAddress`", () => {
+                it("should return true (indicating success)");
+
+                // Up to you whether we test for some sort of internal representation of this,
+                // or we just use the #getValueRepaid method to check this.
+                it("should record the repayment");
+            });
+        });
+    });
+
+    describe("#getValueRepaid", () => {
+        describe("nonexistent debt agreement", () => {
+            it("should throw");
+        });
+
+        describe("extant debt agreement", () => {
+            describe("at time 0", () => {
+                it("returns 0");
+            });
+
+            describe("at time N, when user has repaid X amount", () => {
+                it("returns X");
+            });
+
+            describe("at time Z > N, when user queries amount repaid at time N", () => {
+                it("returns X");
+            });
+
+            describe("at time Z, when user has repaid Y amount", () => {
+                it("returns Y");
+            });
+        });
+    });
+
+    describe("#getExpectedRepaymentValue", () => {
+        describe("when termsContractParameters associated w/ debt agreement malformed", () => {
+            // the only way this can happen is...
+            describe("amortizationUnitType is not one of the valid types", () => {
+                it("should throw");
+            });
+        });
+
+        describe("when termsContractParameters associated /w debt agreement well-formed", () => {
+            /**
+             * Test to see that math works out correctly given correctly formed
+             * parameters
+             */
+        });
+    });
   });
