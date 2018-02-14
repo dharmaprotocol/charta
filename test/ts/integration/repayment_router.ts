@@ -192,7 +192,7 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
             });
 
             it("should not register repayment with terms contract", async () => {
-                await expect(termsContract.getValueRepaid.callAsync(
+                await expect(termsContract.getValueRepaidToDate.callAsync(
                     agreementId,
                     new BigNumber(receipt.blockNumber),
                 )).to.eventually.bignumber.equal(0);
@@ -256,7 +256,7 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
                 });
 
                 it("should not register repayment with terms contract", async () => {
-                    await expect(termsContract.getValueRepaid.callAsync(
+                    await expect(termsContract.getValueRepaidToDate.callAsync(
                         agreementId,
                         new BigNumber(receipt.blockNumber),
                     )).to.eventually.bignumber.equal(0);
@@ -298,7 +298,7 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
                 });
 
                 it("should not register repayment with terms contract", async () => {
-                    await expect(termsContract.getValueRepaid.callAsync(
+                    await expect(termsContract.getValueRepaidToDate.callAsync(
                         agreementId,
                         new BigNumber(receipt.blockNumber),
                     )).to.eventually.bignumber.equal(0);
@@ -334,7 +334,7 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
                 });
 
                 it("should register repayment with terms contract", async () => {
-                    await expect(termsContract.getValueRepaid.callAsync(
+                    await expect(termsContract.getValueRepaidToDate.callAsync(
                         agreementId, new BigNumber(receipt.blockNumber)))
                         .to.eventually.bignumber.equal(Units.ether(1.1));
                 });
