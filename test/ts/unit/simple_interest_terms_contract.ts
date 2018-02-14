@@ -19,6 +19,8 @@ import {INVALID_OPCODE, REVERT_ERROR} from "../test_utils/constants";
 
 import {LogError, LogNFTRepayment, LogRepayment} from "../logs/repayment_router";
 
+import * as moment from "moment";
+
 // Set up Chai
 ChaiSetup.configure();
 const expect = chai.expect;
@@ -138,10 +140,30 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
     });
 
     describe("#getExpectedRepaymentValue", () => {
+        describe("when termsContract associated w/ debt agreement is not `this`", () => {
+            it("should throw");
+        });
+
         describe("when termsContractParameters associated w/ debt agreement malformed", () => {
             // the only way this can happen is...
             describe("amortizationUnitType is not one of the valid types", () => {
-                it("should throw");
+                const malformedTermsContractParameters =
+                    "0x00000000000000002ff62db077c0000010000000000000000000000000000007"
+
+                before(async () => {
+                    await mockRegistry.mockGetTermsReturnValueFor.sendTransactionAsync(
+                        ARBITRARY_AGREEMENT_ID,
+                        termsContract.address,
+                        malformedTermsContractParameters
+                    );
+                });
+
+                it("should throw", async () => {
+                    await expect(termsContract.getExpectedRepaymentValue.callAsync(
+                        ARBITRARY_AGREEMENT_ID,
+                        new BigNumber(moment().unix())
+                    )).to.eventually.be.rejectedWith(REVERT_ERROR);
+                });
             });
         });
 
