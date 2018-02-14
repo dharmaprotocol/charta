@@ -213,7 +213,6 @@ contract DebtRegistry is Pausable {
      */
     function revokeInsertAgentAuthorization(address agent)
         public
-        whenNotPaused
         onlyOwner
     {
         entryInsertPermissions.revokeAuthorization(agent);

@@ -137,6 +137,18 @@ contract DebtToken is MintableNonFungibleToken, Pausable {
     }
 
     /**
+     * We override the core approvals method of the parent non-fungible token
+     * contract to allow its functionality to be frozen in the case of an emergency
+     */
+    function _approve(address _to, uint _tokenId)
+        internal
+        whenNotPaused
+    {
+        super._approve(_to, _tokenId);
+    }
+
+
+    /**
      * We oveerride the core ownership transfer method of the parent non-fungible token
      * contract so that it mutates the debt registry every time a token is transferred
      */
