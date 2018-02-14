@@ -13,7 +13,7 @@ import {BigNumberSetup} from "../test_utils/bignumber_setup";
 import ChaiSetup from "../test_utils/chai_setup";
 import {INVALID_OPCODE, REVERT_ERROR} from "../test_utils/constants";
 
-import {LogError, LogNFTRepayment, LogRepayment} from "../logs/repayment_router";
+import {LogError, LogRepayment} from "../logs/repayment_router";
 
 // Set up Chai
 ChaiSetup.configure();
