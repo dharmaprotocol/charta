@@ -81,8 +81,15 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
     });
 
     describe("Initialization", () => {
-        it("points to DebtRegistry passed in through the constructor");
-        it("points to RepaymentRouter passed in through the constructor");
+        it("points to the DebtRegistry passed in through the constructor", async () => {
+            await expect(termsContract.debtRegistry.callAsync()).to.eventually.equal(mockRegistry.address);
+        });
+        it("points to the RepaymentRouter passed in through the constructor", async () => {
+          await expect(termsContract.repaymentRouter.callAsync()).to.eventually.equal(router.address);
+        });
+        it("points to the token contract passed in through the constructor", async () => {
+          await expect(termsContract.repaymentToken.callAsync()).to.eventually.equal(mockToken.address);
+        });
     });
 
     describe("#registerRepayment", () => {
