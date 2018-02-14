@@ -98,7 +98,7 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
         // DebtRegistryEntries without hash collisions.
         generateEntryFn = (beneficiary: string = BENEFICIARY_1) => {
             return new DebtRegistryEntry({
-                beneficiary: beneficiary,
+                beneficiary,
                 debtor: DEBTOR,
                 termsContract: TERMS_CONTRACT_ADDRESS,
                 termsContractParameters: ARBITRARY_TERMS_CONTRACT_PARAMS,
