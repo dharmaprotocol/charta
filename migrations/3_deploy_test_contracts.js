@@ -1,4 +1,4 @@
-module.exports = (deployer: any, network: string, accounts: string[]) => {
+module.exports = (deployer, network, accounts) => {
     const PermissionsLib = artifacts.require("PermissionsLib");
     const DummyContract = artifacts.require("DummyContract");
     const DummyToken = artifacts.require("DummyToken");
