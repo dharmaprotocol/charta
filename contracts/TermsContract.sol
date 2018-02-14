@@ -48,10 +48,10 @@ interface TermsContract {
         uint256 timestamp
     ) public view returns (uint256);
 
-     /// Returns the cumulative units-of-value repaid by the point at which this method is called
+     /// Returns the cumulative units-of-value repaid by the point at which this method is called.
      /// @param  agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.
      /// @return uint256 The cumulative units-of-value repaid up until now.
-    function getValueRepaid(
+    function getValueRepaidToDate(
         bytes32 agreementId
     ) public view returns (uint256);
 }

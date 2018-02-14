@@ -12,8 +12,6 @@ import {DebtRegistryContract} from "../../../types/generated/debt_registry";
 import {DebtTokenContract} from "../../../types/generated/debt_token";
 import {DummyTokenContract} from "../../../types/generated/dummy_token";
 import {DummyTokenRegistryContract} from "../../../types/generated/dummy_token_registry";
-import {MintableNonFungibleTokenContract} from "../../../types/generated/mintable_non_fungible_token";
-import {NFTTermsContractContract} from "../../../types/generated/n_f_t_terms_contract";
 import {RepaymentRouterContract} from "../../../types/generated/repayment_router";
 import {SimpleInterestTermsContractContract} from "../../../types/generated/simple_interest_terms_contract";
 import {TokenTransferProxyContract} from "../../../types/generated/token_transfer_proxy";
@@ -27,7 +25,7 @@ import {BigNumberSetup} from "../test_utils/bignumber_setup";
 import ChaiSetup from "../test_utils/chai_setup";
 import {INVALID_OPCODE, REVERT_ERROR} from "../test_utils/constants";
 
-import {LogError, LogNFTRepayment, LogRepayment} from "../logs/repayment_router";
+import {LogError, LogRepayment} from "../logs/repayment_router";
 
 import leftPad = require("left-pad");
 
@@ -39,7 +37,6 @@ const expect = chai.expect;
 BigNumberSetup.configure();
 
 const simpleInterestTermsContract = artifacts.require("SimpleInterestTermsContract");
-const nftTermsContract = artifacts.require("NFTTermsContract");
 const repaymentRouterContract = artifacts.require("RepaymentRouter");
 
 contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
@@ -47,9 +44,7 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
     let kernel: DebtKernelContract;
     let debtToken: DebtTokenContract;
     let principalToken: DummyTokenContract;
-    let principalNFT: MintableNonFungibleTokenContract;
     let termsContract: SimpleInterestTermsContractContract;
-    let termsContractNFT: NFTTermsContractContract;
     let tokenTransferProxy: TokenTransferProxyContract;
 
     let orderFactory: DebtOrderFactory;
@@ -64,7 +59,6 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
     const UNDERWRITER = ACCOUNTS[5];
     const RELAYER = ACCOUNTS[6];
 
-    const EXAMPLE_NFT_ID = new BigNumber(13);
     const NULL_ADDRESS = "0x0000000000000000000000000000000000000000";
 
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
@@ -74,7 +68,6 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
         const dummyREPTokenAddress = await dummyTokenRegistryContract.getTokenAddress.callAsync("REP");
 
         principalToken = await DummyTokenContract.at(dummyREPTokenAddress, web3, TX_DEFAULTS);
-        principalNFT = await MintableNonFungibleTokenContract.deployed(web3, TX_DEFAULTS);
 
         kernel = await DebtKernelContract.deployed(web3, TX_DEFAULTS);
         debtToken = await DebtTokenContract.deployed(web3, TX_DEFAULTS);
@@ -95,11 +88,6 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
             principalToken.address,
             repaymentRouterTruffle.address,
         );
-        const termsContractNftTruffle = await nftTermsContract.new(
-            debtRegistry.address,
-            principalNFT.address,
-            repaymentRouterTruffle.address,
-        );
 
         // The typings we use ingest vanilla Web3 contracts, so we convert the
         // contract instance deployed by truffle into a Web3 contract instance
@@ -107,12 +95,9 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
             web3.eth.contract(repaymentRouterTruffle.abi).at(repaymentRouterTruffle.address);
         const termsContractWeb3Contract =
             web3.eth.contract(simpleInterestTermsContract.abi).at(termsContractTruffle.address);
-        const termsContractNftWeb3Contract =
-            web3.eth.contract(nftTermsContract.abi).at(termsContractNftTruffle.address);
 
         router = new RepaymentRouterContract(repaymentRouterWeb3Contract, TX_DEFAULTS);
         termsContract = new SimpleInterestTermsContractContract(termsContractWeb3Contract, TX_DEFAULTS);
-        termsContractNFT = new NFTTermsContractContract(termsContractNftWeb3Contract, TX_DEFAULTS);
 
         await tokenTransferProxy.addAuthorizedTransferAgent.sendTransactionAsync(router.address);
 
@@ -192,9 +177,8 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
             });
 
             it("should not register repayment with terms contract", async () => {
-                await expect(termsContract.getValueRepaid.callAsync(
+                await expect(termsContract.getValueRepaidToDate.callAsync(
                     agreementId,
-                    new BigNumber(receipt.blockNumber),
                 )).to.eventually.bignumber.equal(0);
             });
         });
@@ -256,9 +240,8 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
                 });
 
                 it("should not register repayment with terms contract", async () => {
-                    await expect(termsContract.getValueRepaid.callAsync(
+                    await expect(termsContract.getValueRepaidToDate.callAsync(
                         agreementId,
-                        new BigNumber(receipt.blockNumber),
                     )).to.eventually.bignumber.equal(0);
                 });
             });
@@ -298,9 +281,8 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
                 });
 
                 it("should not register repayment with terms contract", async () => {
-                    await expect(termsContract.getValueRepaid.callAsync(
+                    await expect(termsContract.getValueRepaidToDate.callAsync(
                         agreementId,
-                        new BigNumber(receipt.blockNumber),
                     )).to.eventually.bignumber.equal(0);
                 });
             });
@@ -334,9 +316,8 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
                 });
 
                 it("should register repayment with terms contract", async () => {
-                    await expect(termsContract.getValueRepaid.callAsync(
-                        agreementId, new BigNumber(receipt.blockNumber)))
-                        .to.eventually.bignumber.equal(Units.ether(1.1));
+                    await expect(termsContract.getValueRepaidToDate.callAsync(
+                        agreementId)).to.eventually.bignumber.equal(Units.ether(1.1));
                 });
 
                 it("should emit repayment log", () => {

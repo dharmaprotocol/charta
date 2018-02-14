@@ -140,7 +140,7 @@ contract MockDebtToken is MockContract {
         bytes32 _s
     )
         public
-        view
+        pure
         returns (bytes32 callSig)
     {
         return keccak256(

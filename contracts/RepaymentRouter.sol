@@ -54,14 +54,6 @@ contract RepaymentRouter is Pausable {
         address _token
     );
 
-    event LogNFTRepayment(
-        bytes32 indexed _agreementId,
-        address indexed _payer,
-        address indexed _beneficiary,
-        uint _tokenId,
-        address _token
-    );
-
     event LogError(uint8 indexed _errorId, bytes32 indexed _agreementId);
 
     /**
