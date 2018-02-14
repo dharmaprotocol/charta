@@ -36,10 +36,10 @@ contract SimpleInterestTermsContract is TermsContract {
 
     mapping (bytes32 => uint) valueRepaid;
 
-    DebtRegistry debtRegistry;
+    DebtRegistry public debtRegistry;
 
-    address repaymentToken;
-    address repaymentRouter;
+    address public repaymentToken;
+    address public repaymentRouter;
 
     modifier onlyRouter() {
       require(msg.sender == repaymentRouter);
