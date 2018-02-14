@@ -78,12 +78,6 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
 
         router = new RepaymentRouterContract(repaymentRouterWeb3Contract, TX_DEFAULTS);
         termsContract = new SimpleInterestTermsContractContract(termsContractWeb3Contract, TX_DEFAULTS);
-
-        ABIDecoder.addABI(router.abi);
-    });
-
-    after(() => {
-        ABIDecoder.removeABI(router.abi);
     });
 
     describe("Initialization", () => {
