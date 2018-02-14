@@ -142,6 +142,12 @@ contract SimpleInterestTermsContract {
         bytes1 amortizationUnitType;
         bytes15 termLengthInAmortizationUnits;
 
+        // In Solidity, the only way by which we can granularly split a 32 byte
+        // field into its constituent components is via inline assembly.
+        // We split the first 16 bytes of the parameters into the hex
+        // encoded principal plus interest, the subsequent byte into
+        // the hex encoded amortization unit type code, and the remining
+        // 15 bytes into the hex encoded term length.
         assembly {
             principalPlusInterest := calldataload(4)
             amortizationUnitType := calldataload(20)
