@@ -87,7 +87,16 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
 
     describe("#registerRepayment", () => {
         describe("agent who is not RepaymentRouter calls registerRepayment", () => {
-            it("should throw");
+            it("should throw", async () => {
+              await expect(termsContract.registerRepayment.sendTransactionAsync(
+                ARBITRARY_AGREEMENT_ID,
+                PAYER,
+                BENEFICIARY,
+                Units.ether(1),
+                mockToken.address,
+                { from: ATTACKER }
+              )).to.eventually.be.rejectedWith(REVERT_ERROR);
+            });
         });
 
         describe("RepaymentRouter calls registerRepayment", () => {
