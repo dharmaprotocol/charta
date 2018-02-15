@@ -204,20 +204,62 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
         });
 
         describe("extant debt agreement", () => {
-            describe("at time 0", () => {
-                it("returns 0");
+
+          const EXTANT_AGREEMENT_ID = web3.sha3("this agreement id exists!");
+
+            before(async () => {
+                await mockRegistry.mockGetBeneficiaryReturnValueFor.sendTransactionAsync(
+                    EXTANT_AGREEMENT_ID,
+                    BENEFICIARY,
+                );
+
+                await mockRegistry.mockGetTermsReturnValueFor.sendTransactionAsync(
+                    EXTANT_AGREEMENT_ID,
+                    termsContract.address,
+                    TERMS_CONTRACT_PARAMETERS,
+                );
+
+                await mockRegistry.mockGetTermsContractReturnValueFor.sendTransactionAsync(
+                    EXTANT_AGREEMENT_ID,
+                    termsContract.address,
+                );
             });
 
-            describe("at time N, when user has repaid X amount", () => {
-                it("returns X");
+            describe("at time N, PAYER routes an initial payment of 1 ether", () => {
+
+                before(async () => {
+                    await router.repay.sendTransactionAsync(
+                        EXTANT_AGREEMENT_ID,
+                        Units.ether(1),
+                        mockToken.address,
+                        { from: PAYER }
+                    );
+                });
+
+                it("returns 1 ether", async () => {
+                  await expect(termsContract.getValueRepaidToDate.callAsync(
+                    EXTANT_AGREEMENT_ID
+                  )).to.eventually.bignumber.equal(Units.ether(1));
+                });
+
             });
 
-            describe("at time Z > N, when user queries amount repaid at time N", () => {
-                it("returns X");
-            });
+            describe("at time M, PAYER has made an additional payment of 1 ether", () => {
 
-            describe("at time Z, when user has repaid Y amount", () => {
-                it("returns Y");
+                before(async () => {
+                    await router.repay.sendTransactionAsync(
+                        EXTANT_AGREEMENT_ID,
+                        Units.ether(1),
+                        mockToken.address,
+                        { from: PAYER }
+                    );
+                });
+
+                it("returns 2 ether", async () => {
+                    await expect(termsContract.getValueRepaidToDate.callAsync(
+                      EXTANT_AGREEMENT_ID
+                    )).to.eventually.bignumber.equal(Units.ether(2));
+                });
             });
         });
     });
