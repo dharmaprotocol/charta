@@ -16,6 +16,5 @@
     "types/*.ts",
     "test/**/*.ts",
     "utils/solidity.ts",
-    "migrations/*.ts"
   ]
 }

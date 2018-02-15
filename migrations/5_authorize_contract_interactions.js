@@ -1,4 +1,4 @@
-module.exports = (deployer: any, network: string, accounts: string[]) => {
+module.exports = (deployer, network, accounts) => {
     const DebtRegistry = artifacts.require("DebtRegistry");
     const DebtToken = artifacts.require("DebtToken");
     const DebtKernel = artifacts.require("DebtKernel");

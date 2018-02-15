@@ -1,32 +1,26 @@
-import {DebtRegistryContract} from "../types/generated/debt_registry";
-import {RepaymentRouterContract} from "../types/generated/repayment_router";
-import {TermsContractRegistryContract} from "../types/generated/terms_contract_registry";
-import {TokenRegistryContract} from "../types/generated/token_registry";
+module.exports = (deployer, network, accounts) => {
+    const DebtRegistry = artifacts.require("DebtRegistry");
+    const RepaymentRouter = artifacts.require("RepaymentRouter");
+    const TermsContractRegistry = artifacts.require("TermsContractRegistry");
+    const TokenRegistry = artifacts.require("TokenRegistry");
+    const SimpleInterestTermsContract = artifacts.require("SimpleInterestTermsContract");
 
-const SimpleInterestTermsContract = artifacts.require("SimpleInterestTermsContract");
-const TermsContractRegistry = artifacts.require("TermsContractRegistry");
-
-module.exports = (deployer: any, network: string, accounts: string[]) => {
     const TX_DEFAULTS = { from: accounts[0], gas: 4000000 };
 
     deployer.deploy(TermsContractRegistry).then(async () => {
-        const debtRegistry = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
-        const repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
+        const debtRegistry = await DebtRegistry.deployed(web3);
+        const repaymentRouter = await RepaymentRouter.deployed(web3);
 
-        const termsContractRegistry = await TermsContractRegistryContract.at(
-            TermsContractRegistry.address,
-            web3,
-            TX_DEFAULTS,
-        );
+        const termsContractRegistry = await TermsContractRegistry.at(TermsContractRegistry.address);
 
-        const addressToTermsContractAddress: { [address: string]: string } = {};
+        let addressToTermsContractAddress = {};
 
         if (network !== "live") {
-            const tokenRegistry = await TokenRegistryContract.deployed(web3, TX_DEFAULTS);
+            const tokenRegistry = await TokenRegistry.deployed(web3);
 
-            const dummyREPTokenAddress = await tokenRegistry.getTokenAddress.callAsync("REP");
-            const dummyMKRTokenAddress = await tokenRegistry.getTokenAddress.callAsync("MKR");
-            const dummyZRXTokenAddress = await tokenRegistry.getTokenAddress.callAsync("ZRX");
+            const dummyREPTokenAddress = await tokenRegistry.getTokenAddress("REP");
+            const dummyMKRTokenAddress = await tokenRegistry.getTokenAddress("MKR");
+            const dummyZRXTokenAddress = await tokenRegistry.getTokenAddress("ZRX");
 
             const simpleInterestREPTermsContract = await SimpleInterestTermsContract.new(
                 debtRegistry.address,
@@ -55,7 +49,7 @@ module.exports = (deployer: any, network: string, accounts: string[]) => {
 
         for (const address in addressToTermsContractAddress) {
             if (addressToTermsContractAddress.hasOwnProperty(address)) {
-                await termsContractRegistry.setSimpleInterestTermsContractAddress.sendTransactionAsync(
+                await termsContractRegistry.setSimpleInterestTermsContractAddress(
                     address, addressToTermsContractAddress[address],
                 );
             }
