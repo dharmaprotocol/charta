@@ -2,7 +2,6 @@ module.exports = (deployer: any, network: string, accounts: string[]) => {
     const PermissionsLib = artifacts.require("PermissionsLib");
     const DummyContract = artifacts.require("DummyContract");
     const DummyToken = artifacts.require("DummyToken");
-    const DummyTokenRegistry = artifacts.require("DummyTokenRegistry");
     const MockDebtRegistry = artifacts.require("MockDebtRegistry");
     const MockERC20Token = artifacts.require("MockERC20Token");
     const MockERC721Token = artifacts.require("MockERC721Token");
@@ -10,6 +9,7 @@ module.exports = (deployer: any, network: string, accounts: string[]) => {
     const MockTermsContract = artifacts.require("MockTermsContract");
     const MockTokenTransferProxyContract = artifacts.require("MockTokenTransferProxy");
     const MintableNonFungibleToken = artifacts.require("MintableNonFungibleToken");
+    const TokenRegistry = artifacts.require("TokenRegistry");
 
     const DUMMY_TOKEN_SUPPLY = 10 ** 27;
     const DUMMY_TOKEN_DECIMALS = 18;
@@ -24,15 +24,17 @@ module.exports = (deployer: any, network: string, accounts: string[]) => {
         deployer.deploy(MockTermsContract);
         deployer.deploy(MockTokenTransferProxyContract);
         deployer.deploy(MintableNonFungibleToken);
-        deployer.deploy(DummyTokenRegistry).then(async () => {
-            const dummyTokenRegistry = await DummyTokenRegistry.deployed();
+        deployer.deploy(TokenRegistry).then(async () => {
+            const tokenRegistry = await TokenRegistry.deployed();
+
             const dummyREPToken = await DummyToken.new(
                 "Augur REP",
                 "REP",
                 DUMMY_TOKEN_DECIMALS,
                 DUMMY_TOKEN_SUPPLY,
             );
-            await dummyTokenRegistry.setTokenAddress("REP", dummyREPToken.address);
+            await tokenRegistry.setTokenAddress("REP", dummyREPToken.address,
+                { from: accounts[0] });
 
             const dummyMKRToken = await DummyToken.new(
                 "Maker DAO",
@@ -40,7 +42,8 @@ module.exports = (deployer: any, network: string, accounts: string[]) => {
                 DUMMY_TOKEN_DECIMALS,
                 DUMMY_TOKEN_SUPPLY,
             );
-            await dummyTokenRegistry.setTokenAddress("MKR", dummyMKRToken.address);
+            await tokenRegistry.setTokenAddress("MKR", dummyMKRToken.address,
+                { from: accounts[0] });
 
             const dummyZRXToken = await DummyToken.new(
                 "0x Token",
@@ -48,7 +51,8 @@ module.exports = (deployer: any, network: string, accounts: string[]) => {
                 DUMMY_TOKEN_DECIMALS,
                 DUMMY_TOKEN_SUPPLY,
             );
-            await dummyTokenRegistry.setTokenAddress("ZRX", dummyZRXToken.address);
+            await tokenRegistry.setTokenAddress("ZRX", dummyZRXToken.address,
+                { from: accounts[0] });
         });
-    }
+    } // TODO Add some sort of linking for live tokens to token registry
 };

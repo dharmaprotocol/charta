@@ -26,6 +26,14 @@ import "../TermsContract.sol";
 contract SimpleInterestTermsContract is TermsContract {
     using SafeMath for uint;
 
+    enum AmortizationUnitType { HOURS, DAYS, WEEKS, MONTHS, YEARS }
+
+    uint public constant HOUR_LENGTH_IN_SECONDS = 60 * 60;
+    uint public constant DAY_LENGTH_IN_SECONDS = HOUR_LENGTH_IN_SECONDS * 24;
+    uint public constant WEEK_LENGTH_IN_SECONDS = DAY_LENGTH_IN_SECONDS * 7;
+    uint public constant MONTH_LENGTH_IN_SECONDS = DAY_LENGTH_IN_SECONDS * 30;
+    uint public constant YEAR_LENGTH_IN_SECONDS = DAY_LENGTH_IN_SECONDS * 365;
+
     mapping (bytes32 => uint) valueRepaid;
 
     DebtRegistry debtRegistry;
@@ -71,34 +79,40 @@ contract SimpleInterestTermsContract is TermsContract {
 
         if (tokenAddress == repaymentToken) {
             valueRepaid[agreementId] = valueRepaid[agreementId].add(unitsOfRepayment);
+            return true;
         }
 
-        return true;
+        return false;
     }
 
      /// Returns the cumulative units-of-value expected to be repaid given a block's timestamp.
      ///  Note this is not a constant function -- this value can vary on basis of any number of
      ///  conditions (e.g. interest rates can be renegotiated if repayments are delinquent).
      /// @param  agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.
-     /// @param  blockTimestamp uint. The timestamp of the block for which repayment expectation is being queried.
+     /// @param  timestamp uint. The timestamp for which repayment expectation is being queried.
      /// @return uint256 The cumulative units-of-value expected to be repaid given a block's timestamp.
     function getExpectedRepaymentValue(
         bytes32 agreementId,
-        uint256 blockTimestamp
+        uint256 timestamp
     )
         public
         view
         returns (uint _expectedRepaymentValue)
     {
         bytes32 parameters = debtRegistry.getTermsContractParameters(agreementId);
+        uint issuanceBlockTimestamp = debtRegistry.getIssuanceBlockTimestamp(agreementId);
 
-        var (principalPlusInterest, termLengthInBlocks) = unpackParameters(parameters);
+        uint128 principalPlusInterest;
+        uint8 amortizationUnitType;
+        uint120 termLengthInAmortizationUnits;
 
-        if (debtRegistry.getIssuanceBlockTimestamp(agreementId).add(termLengthInBlocks) < blockTimestamp) {
-            return principalPlusInterest;
-        } else {
-            return 0;
-        }
+        (principalPlusInterest, amortizationUnitType, termLengthInAmortizationUnits) =
+            unpackParameters(parameters);
+
+        uint amortizationUnitLength = getAmortizationUnitLengthInSeconds(amortizationUnitType);
+        uint numRepaymentPeriods = timestamp.sub(issuanceBlockTimestamp).div(amortizationUnitLength);
+
+        return numRepaymentPeriods.mul(principalPlusInterest).div(termLengthInAmortizationUnits);
     }
 
      /// Returns the cumulative units-of-value repaid to date.
@@ -115,15 +129,50 @@ contract SimpleInterestTermsContract is TermsContract {
     function unpackParameters(bytes32 parameters)
         public
         pure
-        returns (uint128 _principalPlusInterest, uint128 _termLengthInBlocks)
+        returns (
+            uint128 _principalPlusInterest,
+            uint8 _amortizationUnitType,
+            uint120 _termLengthInAmortizationUnits
+        )
     {
-        bytes16[2] memory values = [bytes16(0), 0];
+        bytes16 principalPlusInterest;
+        bytes1 amortizationUnitType;
+        bytes15 termLengthInAmortizationUnits;
 
+        // In Solidity, the only way by which we can granularly split a 32 byte
+        // field into its constituent components is via inline assembly.
+        // We split the first 16 bytes of the parameters into the hex
+        // encoded principal plus interest, the subsequent byte into
+        // the hex encoded amortization unit type code, and the remining
+        // 15 bytes into the hex encoded term length.
         assembly {
-            mstore(values, parameters)
-            mstore(add(values, 16), parameters)
+            principalPlusInterest := calldataload(4)
+            amortizationUnitType := calldataload(20)
+            termLengthInAmortizationUnits := calldataload(21)
         }
 
-        return ( uint128(values[0]), uint128(values[1]) );
+        return (
+            uint128(principalPlusInterest),
+            uint8(amortizationUnitType),
+            uint120(termLengthInAmortizationUnits)
+        );
+    }
+
+    function getAmortizationUnitLengthInSeconds(uint8 amortizationUnitType)
+        public
+        pure
+        returns (uint _amortizationUnitLengthInBlocks)
+    {
+        if (amortizationUnitType == uint8(AmortizationUnitType.HOURS)) {
+            return HOUR_LENGTH_IN_SECONDS;
+        } else if (amortizationUnitType == uint8(AmortizationUnitType.DAYS)) {
+            return DAY_LENGTH_IN_SECONDS;
+        } else if (amortizationUnitType == uint8(AmortizationUnitType.WEEKS)) {
+            return WEEK_LENGTH_IN_SECONDS;
+        } else if (amortizationUnitType == uint8(AmortizationUnitType.MONTHS)) {
+            return MONTH_LENGTH_IN_SECONDS;
+        } else if (amortizationUnitType == uint8(AmortizationUnitType.YEARS)) {
+            return YEAR_LENGTH_IN_SECONDS;
+        }
     }
 }

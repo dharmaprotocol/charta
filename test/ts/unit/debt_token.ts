@@ -1,4 +1,3 @@
-import * as ZeroEx from "0x.js";
 import * as ABIDecoder from "abi-decoder";
 import {BigNumber} from "bignumber.js";
 import * as chai from "chai";

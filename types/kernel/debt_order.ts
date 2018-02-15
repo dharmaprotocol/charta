@@ -1,4 +1,3 @@
-import {Order, ZeroEx} from "0x.js";
 import {BigNumber} from "bignumber.js";
 import ethUtil = require("ethereumjs-util");
 import * as Web3 from "web3";

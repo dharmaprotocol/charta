@@ -16,7 +16,7 @@ import {DebtKernelContract} from "../../../types/generated/debt_kernel";
 import {DebtRegistryContract} from "../../../types/generated/debt_registry";
 import {DebtTokenContract} from "../../../types/generated/debt_token";
 import {DummyTokenContract} from "../../../types/generated/dummy_token";
-import {DummyTokenRegistryContract} from "../../../types/generated/dummy_token_registry";
+import {TokenRegistryContract} from "../../../types/generated/token_registry";
 import {RepaymentRouterContract} from "../../../types/generated/repayment_router";
 import {TokenTransferProxyContract} from "../../../types/generated/token_transfer_proxy";
 
@@ -100,7 +100,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4712388 };
 
     const reset = async () => {
-        const dummyTokenRegistryContract = await DummyTokenRegistryContract.deployed(web3, TX_DEFAULTS);
+        const dummyTokenRegistryContract = await TokenRegistryContract.deployed(web3, TX_DEFAULTS);
 
         const dummyREPTokenAddress = await dummyTokenRegistryContract.getTokenAddress.callAsync("REP");
         const dummyZRXTokenAddress = await dummyTokenRegistryContract.getTokenAddress.callAsync("ZRX");
