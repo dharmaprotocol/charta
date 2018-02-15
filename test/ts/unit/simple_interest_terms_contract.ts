@@ -78,6 +78,12 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
 
         router = new RepaymentRouterContract(repaymentRouterWeb3Contract, TX_DEFAULTS);
         termsContract = new SimpleInterestTermsContractContract(termsContractWeb3Contract, TX_DEFAULTS);
+
+        // PAYER begins with a balance of 5 ether.
+        await mockToken.mockBalanceOfFor.sendTransactionAsync(
+            PAYER, Units.ether(5),
+        );
+
     });
 
     describe("Initialization", () => {
