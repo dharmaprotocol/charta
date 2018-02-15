@@ -155,11 +155,24 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
             });
 
             describe("...with terms contract's expected `tokenAddress`", () => {
-                it("should return true (indicating success)");
 
-                // Up to you whether we test for some sort of internal representation of this,
-                // or we just use the #getValueRepaid method to check this.
-                it("should record the repayment");
+              const AMOUNT = Units.ether(1);
+
+                before(async () => {
+                    await router.repay.sendTransactionAsync(
+                        ARBITRARY_AGREEMENT_ID,
+                        AMOUNT,
+                        mockToken.address, // this is the address it's expecting.
+                        { from: PAYER }
+                    );
+                });
+
+                it("should record the repayment", async () => {
+                    await expect(termsContract.getValueRepaidToDate.callAsync(
+                      ARBITRARY_AGREEMENT_ID
+                    )).to.eventually.bignumber.equal(AMOUNT);
+                });
+
             });
         });
     });
