@@ -150,7 +150,7 @@ contract SimpleInterestTermsContract is TermsContract {
 
         // The last 15 bytes of the parameters represents the term length of the loan,
         // as defined in terms of the specified amortization units.
-        // Since this value take the rightmost place in the parameters string,
+        // Since this value takes the rightmost place in the parameters string,
         // we do not need to bit-shift it.
         bytes32 termLengthInAmortizationUnits =
             parameters & 0x0000000000000000000000000000000000ffffffffffffffffffffffffffffff;
