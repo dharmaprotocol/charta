@@ -177,9 +177,30 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
         });
     });
 
-    describe("#getValueRepaid", () => {
-        describe("nonexistent debt agreement", () => {
-            it("should throw");
+    describe("#getValueRepaidToDate", () => {
+
+        describe("non-existent debt agreement", () => {
+
+          const NON_EXISTENT_AGREEMENT_ID = web3.sha3("this agreement id doesn't exist!");
+
+            before(async () => {
+                await mockRegistry.mockGetBeneficiaryReturnValueFor.sendTransactionAsync(
+                    NON_EXISTENT_AGREEMENT_ID,
+                    NULL_ADDRESS, // no beneficiary indicates non-existent debt agreement.
+                );
+
+                await router.repay.sendTransactionAsync(
+                  NON_EXISTENT_AGREEMENT_ID,
+                  Units.ether(1),
+                  mockToken.address
+                );
+            });
+
+            it("should not register any repayment", async () => {
+                await expect(termsContract.getValueRepaidToDate.callAsync(
+                  NON_EXISTENT_AGREEMENT_ID
+                )).to.eventually.bignumber.equal(Units.ether(0));
+            });
         });
 
         describe("extant debt agreement", () => {
