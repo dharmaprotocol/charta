@@ -118,13 +118,40 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
         });
 
         describe("RepaymentRouter calls registerRepayment", () => {
+
+            before(async () => {
+                await mockRegistry.mockGetBeneficiaryReturnValueFor.sendTransactionAsync(
+                    ARBITRARY_AGREEMENT_ID,
+                    BENEFICIARY,
+                );
+
+                await mockRegistry.mockGetTermsReturnValueFor.sendTransactionAsync(
+                    ARBITRARY_AGREEMENT_ID,
+                    termsContract.address,
+                    TERMS_CONTRACT_PARAMETERS,
+                );
+
+                await mockRegistry.mockGetTermsContractReturnValueFor.sendTransactionAsync(
+                    ARBITRARY_AGREEMENT_ID,
+                    termsContract.address,
+                );
+            });
+
             describe("...with a different `tokenAddress` than expected by the terms contract", () => {
-                // Not entirely sure if you can test this without creating some sort of mock
-                // contract to do this on your behalf -- to my knowledge, return values
-                // from solidity methods can only be accessed by contracts (and not just
-                // end users).  Double check this, though
-                it("should return false");
-                it("should not record the repayment in any capacity");
+
+                before(async () => {
+                    await expect(router.repay.sendTransactionAsync(
+                        ARBITRARY_AGREEMENT_ID,
+                        Units.ether(1),
+                        ATTACKER // this is not the address it's expecting.
+                    )).to.eventually.be.rejectedWith(REVERT_ERROR);
+                });
+
+                it("should not record the repayment", async () => {
+                    await expect(termsContract.getValueRepaidToDate.callAsync(
+                      ARBITRARY_AGREEMENT_ID
+                    )).to.eventually.bignumber.equal(Units.ether(0));
+                });
             });
 
             describe("...with terms contract's expected `tokenAddress`", () => {
