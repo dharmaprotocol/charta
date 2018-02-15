@@ -54,14 +54,6 @@ contract RepaymentRouter is Pausable {
         address _token
     );
 
-    event LogNFTRepayment(
-        bytes32 indexed _agreementId,
-        address indexed _payer,
-        address indexed _beneficiary,
-        uint _tokenId,
-        address _token
-    );
-
     event LogError(uint8 indexed _errorId, bytes32 indexed _agreementId);
 
     /**
@@ -128,64 +120,5 @@ contract RepaymentRouter is Pausable {
         LogRepayment(agreementId, msg.sender, beneficiary, amount, tokenAddress);
 
         return amount;
-    }
-
-    /**
-     * Given an agreement id (synonymous to 'issuanceHash' in the debt registry), routes a repayment
-     * of a given ERC721 token  to the debt's current beneficiary and reports the repayment
-     * to the debt's associated terms contract.
-     */
-    function repayNFT(
-        bytes32 agreementId,
-        uint tokenId,
-        address tokenAddress
-    )
-        public
-        whenNotPaused
-        returns (uint _tokenId)
-    {
-        require(tokenAddress != address(0));
-
-        // Get registry entry and check if entry is valid
-        address beneficiary = debtRegistry.getBeneficiary(agreementId);
-        if (beneficiary == address(0)) {
-            LogError(uint8(Errors.DEBT_AGREEMENT_NONEXISTENT), agreementId);
-            return 0;
-        }
-
-        ERC721 nonFungibleToken = ERC721(tokenAddress);
-        require(nonFungibleToken.implementsERC721());
-
-        // Check payer owns token and has granted router approval to transfer it
-        if (nonFungibleToken.ownerOf(tokenId) != msg.sender ||
-            nonFungibleToken.getApproved(tokenId) != address(tokenTransferProxy)) {
-            LogError(uint8(Errors.PAYER_OWNERSHIP_OR_ROUTER_APPROVAL_MISSING), agreementId);
-            return 0;
-        }
-
-        // Notify terms contract
-        address termsContract = debtRegistry.getTermsContract(agreementId);
-        if (!TermsContract(termsContract).registerNFTRepayment(
-            agreementId,
-            msg.sender,
-            beneficiary,
-            tokenId,
-            tokenAddress
-        )) {
-            LogError(uint8(Errors.ROUTER_UNAUTHORIZED_TO_REPORT_REPAYMENT), agreementId);
-            return 0;
-        }
-
-        tokenTransferProxy.transferFrom(
-            tokenAddress,
-            msg.sender,
-            beneficiary,
-            tokenId
-        );
-
-        // Log event for repayment
-        LogNFTRepayment(agreementId, msg.sender, beneficiary, tokenId, tokenAddress);
-
-        return tokenId;
     }
 }

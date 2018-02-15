@@ -137,6 +137,18 @@ contract DebtToken is MintableNonFungibleToken, Pausable {
     }
 
     /**
+     * We override the core approvals method of the parent non-fungible token
+     * contract to allow its functionality to be frozen in the case of an emergency
+     */
+    function _approve(address _to, uint _tokenId)
+        internal
+        whenNotPaused
+    {
+        super._approve(_to, _tokenId);
+    }
+
+
+    /**
      * We oveerride the core ownership transfer method of the parent non-fungible token
      * contract so that it mutates the debt registry every time a token is transferred
      */
@@ -146,17 +158,7 @@ contract DebtToken is MintableNonFungibleToken, Pausable {
         if (registry.getBeneficiary(bytes32(_tokenId)) != _to) {
             registry.modifyBeneficiary(bytes32(_tokenId), _to);
         }
-    }
 
-    /**
-     * We oveerride the core ownership getter of the parent non-fungible token
-     * contract so that it retrieves the debt's current beneficiary from the debt registry
-     */
-    function _ownerOf(uint _tokenId)
-        internal
-        view
-        returns (address _owner)
-    {
-        return registry.getBeneficiary(bytes32(_tokenId));
+        super._setTokenOwner(_tokenId, _to);
     }
 }

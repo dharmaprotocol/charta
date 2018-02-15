@@ -396,24 +396,14 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
         before(resetAndInitState);
 
         describe("user calls ownerOf on a given tokenId", async () => {
-            before(async () => {
-                mockRegistry.mockGetBeneficiaryReturnValueFor.
-                    sendTransactionAsync(debtEntries[0].getIssuanceHash(), TOKEN_OWNER_3);
-            });
-
-            it("should return what registry says debt's beneficiary is", async () => {
-                await expect(debtToken.ownerOf.callAsync(debtEntries[0].getTokenId()))
-                    .to.eventually.equal(TOKEN_OWNER_3);
+            it("should return the owner of the given token at that point in time", async () => {
+                await expect(debtToken.ownerOf.callAsync(debtEntries[1].getTokenId()))
+                    .to.eventually.equal(TOKEN_OWNER_2);
             });
 
             describe("...when token is burned / doesn't exist", async () => {
-                before(async () => {
-                    await mockRegistry.mockGetBeneficiaryReturnValueFor.
-                        sendTransactionAsync(debtEntries[0].getIssuanceHash(), NULL_ADDRESS);
-                });
-
                 it("should return null address", async () => {
-                    await expect(debtToken.ownerOf.callAsync(debtEntries[0].getTokenId()))
+                    await expect(debtToken.ownerOf.callAsync(NONEXISTENT_TOKEN_ID))
                         .to.eventually.equal(NULL_ADDRESS);
                 });
             });

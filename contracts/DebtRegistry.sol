@@ -35,16 +35,6 @@ contract DebtRegistry is Pausable {
     using SafeMath for uint;
     using PermissionsLib for PermissionsLib.Permissions;
 
-    struct Issuance {
-        address version;
-        address debtor;
-        address underwriter;
-        uint underwriterRiskRating;
-        address termsContract;
-        bytes32 termsContractParameters;
-        uint salt;
-    }
-
     struct Entry {
         address version;
         address beneficiary;
@@ -107,6 +97,11 @@ contract DebtRegistry is Pausable {
         _;
     }
 
+    modifier nonNullBeneficiary(address beneficiary) {
+        require(beneficiary != address(0));
+        _;
+    }
+
     /**
      * Inserts a new entry into the registry, if the entry is valid and sender is
      * authorized to make 'insert' mutations to the registry.
@@ -124,6 +119,7 @@ contract DebtRegistry is Pausable {
         public
         onlyAuthorizedToInsert
         whenNotPaused
+        nonNullBeneficiary(_beneficiary)
         returns (bytes32 _issuanceHash)
     {
         Entry memory entry = Entry(
@@ -164,6 +160,7 @@ contract DebtRegistry is Pausable {
         onlyAuthorizedToEdit
         whenNotPaused
         onlyExtantEntry(issuanceHash)
+        nonNullBeneficiary(newBeneficiary)
     {
         address previousBeneficiary = registry[issuanceHash].beneficiary;
 
@@ -206,7 +203,6 @@ contract DebtRegistry is Pausable {
      */
     function revokeInsertAgentAuthorization(address agent)
         public
-        whenNotPaused
         onlyOwner
     {
         entryInsertPermissions.revokeAuthorization(agent);

@@ -2,7 +2,6 @@ module.exports = (deployer: any, network: string, accounts: string[]) => {
     const PermissionsLib = artifacts.require("PermissionsLib");
     const DummyContract = artifacts.require("DummyContract");
     const DummyToken = artifacts.require("DummyToken");
-    const DummyTokenRegistry = artifacts.require("DummyTokenRegistry");
     const MockDebtRegistry = artifacts.require("MockDebtRegistry");
     const MockERC20Token = artifacts.require("MockERC20Token");
     const MockERC721Token = artifacts.require("MockERC721Token");

@@ -37,23 +37,6 @@ interface TermsContract {
         address tokenAddress
     ) public returns (bool _success);
 
-    /// A variant of the registerRepayment function that records the debtor's
-    /// repayment in non-fungible tokens (i.e. ERC721), as well as any auxiliary metadata needed by the contract
-    /// to determine ex post facto the value repaid (e.g. current USD
-    /// exchange rate)
-    /// @param  agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.
-    /// @param  payer address. The address of the payer.
-    /// @param  beneficiary address. The address of the payment's beneficiary.
-    /// @param  tokenId The tokenId of the NFT transferred in the repayment transaction
-    /// @param  tokenAddress The address of the token with which the repayment transaction was executed.
-    function registerNFTRepayment(
-        bytes32 agreementId,
-        address payer,
-        address beneficiary,
-        uint256 tokenId,
-        address tokenAddress
-    ) public returns (bool _success);
-
      /// Returns the cumulative units-of-value expected to be repaid by a given block timestamp.
      ///  Note this is not a constant function -- this value can vary on basis of any number of
      ///  conditions (e.g. interest rates can be renegotiated if repayments are delinquent).
@@ -65,12 +48,10 @@ interface TermsContract {
         uint256 timestamp
     ) public view returns (uint256);
 
-     /// Returns the cumulative units-of-value repaid by the point at which a given block timestamp has lapsed.
+     /// Returns the cumulative units-of-value repaid by the point at which this method is called.
      /// @param  agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.
-     /// @param timestamp uint. The timestamp of the block for which repayment value is being queried.
-     /// @return uint256 The cumulative units-of-value repaid by the time the given timestamp lapsed.
-    function getValueRepaid(
-        bytes32 agreementId,
-        uint256 timestamp
+     /// @return uint256 The cumulative units-of-value repaid up until now.
+    function getValueRepaidToDate(
+        bytes32 agreementId
     ) public view returns (uint256);
 }
