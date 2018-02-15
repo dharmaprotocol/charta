@@ -84,6 +84,11 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
             PAYER, Units.ether(5),
         );
 
+        // TransferProxy is granted an allowance of 3 ether from PAYER.
+        await mockToken.mockAllowanceFor.sendTransactionAsync(
+            PAYER, mockTokenTransferProxy.address, Units.ether(3),
+        );
+
     });
 
     describe("Initialization", () => {
