@@ -135,21 +135,25 @@ contract SimpleInterestTermsContract is TermsContract {
             uint120 _termLengthInAmortizationUnits
         )
     {
-        bytes16 principalPlusInterest;
-        bytes1 amortizationUnitType;
-        bytes15 termLengthInAmortizationUnits;
+        // The first 16 bytes of the parameters represent the total principal + interest
+        bytes32 principalPlusInterestShifted =
+            parameters & 0xffffffffffffffffffffffffffffffff00000000000000000000000000000000;
+        // The subsequent byte represents the amortization unit type code
+        bytes32 amortizationUnitTypeShifted =
+            parameters & 0x00000000000000000000000000000000ff000000000000000000000000000000;
 
-        // In Solidity, the only way by which we can granularly split a 32 byte
-        // field into its constituent components is via inline assembly.
-        // We split the first 16 bytes of the parameters into the hex
-        // encoded principal plus interest, the subsequent byte into
-        // the hex encoded amortization unit type code, and the remining
-        // 15 bytes into the hex encoded term length.
-        assembly {
-            principalPlusInterest := calldataload(4)
-            amortizationUnitType := calldataload(20)
-            termLengthInAmortizationUnits := calldataload(21)
-        }
+        // We bit-shift these values, respectively, 16 bytes and 15 bytes right using
+        // mathematical operations, so that their 32 byte integer counterparts
+        // correspond to the intended values packed in the 32 byte string
+        uint principalPlusInterest = uint(principalPlusInterestShifted) / 2 ** 128;
+        uint amortizationUnitType = uint(amortizationUnitTypeShifted) / 2 ** 120;
+
+        // The last 15 bytes of the parameters represents the term length of the loan,
+        // as defined in terms of the specified amortization units.
+        // Since this value take the rightmost place in the parameters string,
+        // we do not need to bit-shift it.
+        bytes32 termLengthInAmortizationUnits =
+            parameters & 0x0000000000000000000000000000000000ffffffffffffffffffffffffffffff;
 
         return (
             uint128(principalPlusInterest),
