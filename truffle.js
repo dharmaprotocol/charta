@@ -10,7 +10,8 @@ module.exports = {
       host: 'localhost',
       port: 8546,
       network_id: '42',
-      gas: 4712388
+      from: "0x84e2229ec0c4031e7ceb78aaaa8421e48022d0c3",
+      gas: 4000000
     }
   },
   test_directory: 'transpiled/test',
