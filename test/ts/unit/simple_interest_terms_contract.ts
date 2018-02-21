@@ -333,6 +333,18 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
                 expect(params[2]).to.bignumber.equal(termLength);
             });
 
+            before(async () => {
+                await mockRegistry.mockGetTermsContractParameters.sendTransactionAsync(
+                    ARBITRARY_AGREEMENT_ID,
+                    validTermsParams
+                );
+
+                await mockRegistry.mockGetIssuanceBlockTimestamp.sendTransactionAsync(
+                    ARBITRARY_AGREEMENT_ID,
+                    new BigNumber(BLOCK_ISSUANCE_TIMESTAMP)
+                );
+            });
+
         });
     });
   });
