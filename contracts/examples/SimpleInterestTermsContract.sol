@@ -107,6 +107,10 @@ contract SimpleInterestTermsContract is TermsContract {
         uint128 principalPlusInterest;
         uint8 amortizationUnitType;
         uint120 termLengthInAmortizationUnits;
+    function min(uint a, uint b) private pure returns (uint) {
+        return a < b ? a : b;
+    }
+
 
         (principalPlusInterest, amortizationUnitType, termLengthInAmortizationUnits) =
             unpackParameters(parameters);
