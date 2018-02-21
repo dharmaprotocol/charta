@@ -292,11 +292,37 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
             });
         });
 
-        describe("when termsContractParameters associated /w debt agreement well-formed", () => {
-            /**
-             * Test to see that math works out correctly given correctly formed
-             * parameters
-             */
+        describe("when termsContractParameters associated w/ debt agreement are well-formed", () => {
+
+            /*
+            The params define a simple interest contract with the below terms:
+              - Principal: 1 ether
+              - Interest rate: 10%
+              - Term length: 2 MONTHS
+              - Amortization Unit Type: month
+            */
+            const principalPlusInterest = Units.ether(1.1);
+            const amortizationUnitType = new BigNumber(3); // unit code for months.
+            const termLength = new BigNumber(2); // term is for 2 months.
+
+            const principalPlusInterestHex = principalPlusInterest.toString(16);
+            const amortizationUnitTypeHex = amortizationUnitType.toString(16);
+            const termLengthHex = termLength.toString(16);
+
+            const validTermsParams = (
+                "0x" +
+                principalPlusInterestHex.padStart(32, "0") +
+                amortizationUnitTypeHex.padStart(2, "0") +
+                termLengthHex.padStart(30, "0")
+            );
+
+            const ORIGIN_MOMENT = moment();
+            const BLOCK_ISSUANCE_TIMESTAMP = ORIGIN_MOMENT.unix();
+
+            const ZERO_AMOUNT = Units.ether(0);
+            const MIDPOINT_AMOUNT = Units.ether(.55);
+            const FULL_AMOUNT = principalPlusInterest;
+
         });
     });
   });
