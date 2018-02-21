@@ -363,6 +363,25 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
                 });
             });
 
+            describe("timestamps that occur after the issuance has expired", () => {
+
+                const THREE_MONTHS_AFTER = ORIGIN_MOMENT.add(3, 'months').unix(); // full-amount
+                const ONE_HUNDRED_DAYS_AFTER = ORIGIN_MOMENT.add(100, 'days').unix(); // full-amount
+
+                it("should return the full amount of the principal plus interest", async () => {
+                    await expect(termsContract.getExpectedRepaymentValue.callAsync(
+                        ARBITRARY_AGREEMENT_ID,
+                        new BigNumber(THREE_MONTHS_AFTER)
+                    )).to.eventually.bignumber.equal(FULL_AMOUNT);
+
+                    await expect(termsContract.getExpectedRepaymentValue.callAsync(
+                        ARBITRARY_AGREEMENT_ID,
+                        new BigNumber(ONE_HUNDRED_DAYS_AFTER)
+                    )).to.eventually.bignumber.equal(FULL_AMOUNT);
+                });
+
+            });
+
         });
     });
   });
