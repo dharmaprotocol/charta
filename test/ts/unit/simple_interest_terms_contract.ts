@@ -345,6 +345,24 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
                 );
             });
 
+            describe("timestamps that occur before the block issuance's timestamp", () => {
+
+                const SEVENTY_DAYS_BEFORE = ORIGIN_MOMENT.subtract(70, 'days').unix(); // zero-amount
+                const ONE_MONTH_BEFORE = ORIGIN_MOMENT.subtract(1, 'months').unix(); // zero-amount
+
+                it("should return an expected value of 0", async () => {
+                    await expect(termsContract.getExpectedRepaymentValue.callAsync(
+                        ARBITRARY_AGREEMENT_ID,
+                        new BigNumber(SEVENTY_DAYS_BEFORE)
+                    )).to.eventually.bignumber.equal(ZERO_AMOUNT);
+
+                    await expect(termsContract.getExpectedRepaymentValue.callAsync(
+                        ARBITRARY_AGREEMENT_ID,
+                        new BigNumber(ONE_MONTH_BEFORE)
+                    )).to.eventually.bignumber.equal(ZERO_AMOUNT);
+                });
+            });
+
         });
     });
   });
