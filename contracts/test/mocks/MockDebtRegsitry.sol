@@ -202,7 +202,7 @@ contract MockDebtRegistry is MockContract {
             "getTerms_termsContractParameters",
             "getTermsContract",
             "getTermsContractParameters",
-            "",
+            "getIssuanceBlockTimestamp",
             "",
             ""
         ];
