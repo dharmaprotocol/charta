@@ -115,14 +115,33 @@ contract SimpleInterestTermsContract is TermsContract {
         return a < b ? a : b;
     }
 
+    function unpackParamsForAgreementID(
+        bytes32 agreementId
+    )
+        public
+        view
+        returns (
+            uint _principalPlusInterest,
+            uint _amortizationUnitLengthInSeconds,
+            uint _termLengthInAmortizationUnits
+        )
+    {
+      bytes32 parameters = debtRegistry.getTermsContractParameters(agreementId);
 
-        (principalPlusInterest, amortizationUnitType, termLengthInAmortizationUnits) =
-            unpackParameters(parameters);
+      uint128 principalPlusInterest;
+      uint8 amortizationUnitType;
+      uint120 termLengthInAmortizationUnits;
 
-        uint amortizationUnitLength = getAmortizationUnitLengthInSeconds(amortizationUnitType);
-        uint numRepaymentPeriods = timestamp.sub(issuanceBlockTimestamp).div(amortizationUnitLength);
+      (principalPlusInterest, amortizationUnitType, termLengthInAmortizationUnits) =
+          unpackParameters(parameters);
 
-        return numRepaymentPeriods.mul(principalPlusInterest).div(termLengthInAmortizationUnits);
+      uint amortizationUnitLengthInSeconds = getAmortizationUnitLengthInSeconds(amortizationUnitType);
+
+      return (
+          uint(principalPlusInterest),
+          amortizationUnitLengthInSeconds,
+          uint(termLengthInAmortizationUnits)
+      );
     }
 
      /// Returns the cumulative units-of-value repaid to date.
