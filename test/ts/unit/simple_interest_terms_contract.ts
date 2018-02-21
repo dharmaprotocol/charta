@@ -1,8 +1,5 @@
-import * as ABIDecoder from "abi-decoder";
 import * as chai from "chai";
-import * as _ from "lodash";
 import * as Units from "../test_utils/units";
-
 import {BigNumber} from "bignumber.js";
 
 import {RepaymentRouterContract} from "../../../types/generated/repayment_router";
