@@ -101,12 +101,23 @@ contract SimpleInterestTermsContract is TermsContract {
         view
         returns (uint _expectedRepaymentValue)
     {
-        bytes32 parameters = debtRegistry.getTermsContractParameters(agreementId);
+        var (
+            principalPlusInterest,
+            amortizationUnitLengthInSeconds,
+            termLengthInAmortizationUnits
+        ) = unpackParamsForAgreementID(agreementId);
+
         uint issuanceBlockTimestamp = debtRegistry.getIssuanceBlockTimestamp(agreementId);
 
-        uint128 principalPlusInterest;
-        uint8 amortizationUnitType;
-        uint120 termLengthInAmortizationUnits;
+        uint termLengthInSeconds = termLengthInAmortizationUnits.mul(amortizationUnitLengthInSeconds);
+
+        return timestamp;
+
+        uint delta = min(max(timestamp - issuanceBlockTimestamp, 0), termLengthInSeconds);
+
+        /* return principalPlusInterest.mul(delta).div(termLengthInSeconds); */
+    }
+
     function max(uint a, uint b) private pure returns (uint) {
         return a > b ? a : b;
     }
