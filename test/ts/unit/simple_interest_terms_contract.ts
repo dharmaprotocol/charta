@@ -323,6 +323,16 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
             const MIDPOINT_AMOUNT = Units.ether(.55);
             const FULL_AMOUNT = principalPlusInterest;
 
+            it("unpacks valid params", async () => {
+                var params: BigNumber[];
+                params = await termsContract.unpackParameters.callAsync(
+                  validTermsParams
+                );
+                expect(params[0]).to.bignumber.equal(principalPlusInterest);
+                expect(params[1]).to.bignumber.equal(amortizationUnitType);
+                expect(params[2]).to.bignumber.equal(termLength);
+            });
+
         });
     });
   });
