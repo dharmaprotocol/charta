@@ -128,6 +128,24 @@ contract MockDebtRegistry is MockContract {
     {
         mockReturnValue("getIssuanceBlockTimestamp", issuanceHash, bytes32(timestamp));
     }
+
+    function getTermsContractParameters(bytes32 issuanceHash)
+        public
+        view
+        returns (bytes32)
+    {
+        return getMockReturnValue("getTermsContractParameters", issuanceHash);
+    }
+
+    function mockGetTermsContractParameters(
+        bytes32 issuanceHash,
+        bytes32 params
+    )
+        public
+    {
+        mockReturnValue("getTermsContractParameters", issuanceHash, params);
+    }
+
     function mockGetTermsContractReturnValueFor(
         bytes32 issuanceHash,
         address termsContract
