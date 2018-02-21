@@ -382,6 +382,39 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
 
             });
 
+            describe("timestamps that occur at some point during the issuance's term length", () => {
+
+                const SIXTEEN_DAYS_AFTER = ORIGIN_MOMENT.add(16, 'days').unix(); // zero-amount
+                const ONE_MONTH_AFTER = ORIGIN_MOMENT.add(1, 'months').unix(); // midpoint-amount
+                const FORTY_DAYS_AFTER = ORIGIN_MOMENT.add(40, 'days').unix(); // midpoint-amount
+                const TWO_MONTHS_AFTER = ORIGIN_MOMENT.add(2, 'months').unix(); // full-amount
+
+                it("should return an expected value of 0", async () => {
+                    await expect(termsContract.getExpectedRepaymentValue.callAsync(
+                        ARBITRARY_AGREEMENT_ID,
+                        new BigNumber(SIXTEEN_DAYS_AFTER)
+                    )).to.eventually.bignumber.equal(ZERO_AMOUNT);
+                });
+
+                it("should return an expected value equivalent to the midpoint amount", async () => {
+                    await expect(termsContract.getExpectedRepaymentValue.callAsync(
+                        ARBITRARY_AGREEMENT_ID,
+                        new BigNumber(ONE_MONTH_AFTER)
+                    )).to.eventually.bignumber.equal(MIDPOINT_AMOUNT);
+
+                    await expect(termsContract.getExpectedRepaymentValue.callAsync(
+                        ARBITRARY_AGREEMENT_ID,
+                        new BigNumber(FORTY_DAYS_AFTER)
+                    )).to.eventually.bignumber.equal(MIDPOINT_AMOUNT);
+                });
+
+                it("should return the full amount of the principal plus interest", async () => {
+                    await expect(termsContract.getExpectedRepaymentValue.callAsync(
+                        ARBITRARY_AGREEMENT_ID,
+                        new BigNumber(TWO_MONTHS_AFTER)
+                    )).to.eventually.bignumber.equal(FULL_AMOUNT);
+                });
+            });
         });
     });
   });
