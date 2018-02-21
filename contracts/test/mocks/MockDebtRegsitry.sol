@@ -194,7 +194,17 @@ contract MockDebtRegistry is MockContract {
         internal
         returns (string[10] functionNames)
     {
-        return ["insert", "modifyBeneficiary", "getBeneficiary", "getTerms_termsContract",
-            "getTerms_termsContractParameters", "getTermsContract", "getTermsContractParameters", "", "", ""];
+        return [
+            "insert",
+            "modifyBeneficiary",
+            "getBeneficiary",
+            "getTerms_termsContract",
+            "getTerms_termsContractParameters",
+            "getTermsContract",
+            "getTermsContractParameters",
+            "",
+            "",
+            ""
+        ];
     }
 }
