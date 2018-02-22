@@ -111,19 +111,16 @@ contract SimpleInterestTermsContract is TermsContract {
 
         uint termLengthInSeconds = termLengthInAmortizationUnits.mul(amortizationUnitLengthInSeconds);
 
-        return timestamp;
+        uint endTimestamp = termLengthInSeconds.add(issuanceBlockTimestamp);
 
-        uint delta = min(max(timestamp - issuanceBlockTimestamp, 0), termLengthInSeconds);
-
-        /* return principalPlusInterest.mul(delta).div(termLengthInSeconds); */
-    }
-
-    function max(uint a, uint b) private pure returns (uint) {
-        return a > b ? a : b;
-    }
-
-    function min(uint a, uint b) private pure returns (uint) {
-        return a < b ? a : b;
+        if (timestamp <= issuanceBlockTimestamp) {
+            return 0;
+        } else if (timestamp >= endTimestamp) {
+            return principalPlusInterest;
+        } else {
+            uint delta = timestamp.sub(issuanceBlockTimestamp);
+            return principalPlusInterest.mul(delta).div(termLengthInSeconds);
+        }
     }
 
     function unpackParamsForAgreementID(
