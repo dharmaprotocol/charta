@@ -114,8 +114,12 @@ contract SimpleInterestTermsContract is TermsContract {
         uint endTimestamp = termLengthInSeconds.add(issuanceBlockTimestamp);
 
         if (timestamp <= issuanceBlockTimestamp) {
+            /* The query occurs before the contract was even initialized so the
+            expected value of repayments is 0. */
             return 0;
         } else if (timestamp >= endTimestamp) {
+            /* the query occurs beyond the contract's term, so the expected
+            value of repayment is the full principal plus interest. */
             return principalPlusInterest;
         } else {
             uint delta = timestamp.sub(issuanceBlockTimestamp);
