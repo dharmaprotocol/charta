@@ -324,7 +324,7 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
             const FULL_AMOUNT = principalPlusInterest;
 
             it("unpacks valid params", async () => {
-                var params = await termsContract.unpackParameters.callAsync(
+                var params = await termsContract.unpackParametersFromBytes.callAsync(
                   validTermsParams
                 );
                 expect(params[0]).to.bignumber.equal(principalPlusInterest);

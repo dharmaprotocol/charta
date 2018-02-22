@@ -199,7 +199,7 @@ contract SimpleInterestTermsContract is TermsContract {
         return valueRepaid[agreementId];
     }
 
-    function unpackParameters(bytes32 parameters)
+    function unpackParametersFromBytes(bytes32 parameters)
         public
         pure
         returns (
