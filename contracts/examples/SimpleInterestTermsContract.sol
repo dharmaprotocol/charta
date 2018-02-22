@@ -162,30 +162,37 @@ contract SimpleInterestTermsContract is TermsContract {
     function unpackParamsForAgreementID(
         bytes32 agreementId
     )
-        public
-        view
-        returns (
-            uint _principalPlusInterest,
-            uint _amortizationUnitLengthInSeconds,
-            uint _termLengthInAmortizationUnits
-        )
+        internal
+        returns (SimpleInterestParams params)
     {
       bytes32 parameters = debtRegistry.getTermsContractParameters(agreementId);
 
-      uint128 principalPlusInterest;
-      uint8 amortizationUnitType;
-      uint120 termLengthInAmortizationUnits;
+      uint principalPlusInterest;
+      uint amortizationUnitTypeAsInt;
+      uint termLengthInAmortizationUnits;
 
-      (principalPlusInterest, amortizationUnitType, termLengthInAmortizationUnits) =
-          unpackParameters(parameters);
+      (principalPlusInterest, amortizationUnitTypeAsInt, termLengthInAmortizationUnits) =
+          unpackParametersFromBytes(parameters);
+
+      AmortizationUnitType amortizationUnitType = AmortizationUnitType(amortizationUnitTypeAsInt);
 
       uint amortizationUnitLengthInSeconds = getAmortizationUnitLengthInSeconds(amortizationUnitType);
 
-      return (
-          uint(principalPlusInterest),
-          amortizationUnitLengthInSeconds,
-          uint(termLengthInAmortizationUnits)
-      );
+      uint issuanceBlockTimestamp = debtRegistry.getIssuanceBlockTimestamp(agreementId);
+
+      uint termLengthInSeconds = termLengthInAmortizationUnits.mul(amortizationUnitLengthInSeconds);
+
+      uint endTimestamp = termLengthInSeconds.add(issuanceBlockTimestamp);
+
+      return SimpleInterestParams({
+          principalPlusInterest: principalPlusInterest,
+          startTimestamp: issuanceBlockTimestamp,
+          endTimestamp: endTimestamp,
+          amortizationUnitType: amortizationUnitType,
+          amortizationUnitLengthInSecond: amortizationUnitLengthInSeconds,
+          termLengthInAmortizationUnits: termLengthInAmortizationUnits,
+          termLengthInSeconds: termLengthInSeconds
+      });
     }
 
      /// Returns the cumulative units-of-value repaid to date.
