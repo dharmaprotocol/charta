@@ -242,20 +242,20 @@ contract SimpleInterestTermsContract is TermsContract {
         );
     }
 
-    function getAmortizationUnitLengthInSeconds(uint8 amortizationUnitType)
+    function getAmortizationUnitLengthInSeconds(AmortizationUnitType amortizationUnitType)
         public
         pure
         returns (uint _amortizationUnitLengthInBlocks)
     {
-        if (amortizationUnitType == uint8(AmortizationUnitType.HOURS)) {
+        if (amortizationUnitType == AmortizationUnitType.HOURS) {
             return HOUR_LENGTH_IN_SECONDS;
-        } else if (amortizationUnitType == uint8(AmortizationUnitType.DAYS)) {
+        } else if (amortizationUnitType == AmortizationUnitType.DAYS) {
             return DAY_LENGTH_IN_SECONDS;
-        } else if (amortizationUnitType == uint8(AmortizationUnitType.WEEKS)) {
+        } else if (amortizationUnitType == AmortizationUnitType.WEEKS) {
             return WEEK_LENGTH_IN_SECONDS;
-        } else if (amortizationUnitType == uint8(AmortizationUnitType.MONTHS)) {
+        } else if (amortizationUnitType == AmortizationUnitType.MONTHS) {
             return MONTH_LENGTH_IN_SECONDS;
-        } else if (amortizationUnitType == uint8(AmortizationUnitType.YEARS)) {
+        } else if (amortizationUnitType == AmortizationUnitType.YEARS) {
             return YEAR_LENGTH_IN_SECONDS;
         }
     }
