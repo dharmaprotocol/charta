@@ -138,6 +138,27 @@ contract SimpleInterestTermsContract is TermsContract {
         }
     }
 
+    function determineNumberOfAmortizationUnitsForTimestamp(
+        uint timestamp,
+        SimpleInterestParams params
+    )
+        internal
+        returns (uint units)
+    {
+      uint delta = timestamp.sub(params.startTimestamp);
+      if (params.amortizationUnitType == AmortizationUnitType.HOURS) {
+          return delta.div(60).div(60);
+      } else if (params.amortizationUnitType == AmortizationUnitType.DAYS) {
+          return delta.div(60).div(60).div(24);
+      } else if (params.amortizationUnitType == AmortizationUnitType.WEEKS) {
+          return delta.div(60).div(60).div(24).div(7);
+      } else if (params.amortizationUnitType == AmortizationUnitType.MONTHS) {
+          return 0; // TODO(kayvon): determine number of months using ethereum-datetime.
+      } else if (params.amortizationUnitType == AmortizationUnitType.YEARS) {
+          return delta.div(60).div(60).div(24).div(7).div(365);
+      }
+    }
+
     function unpackParamsForAgreementID(
         bytes32 agreementId
     )
