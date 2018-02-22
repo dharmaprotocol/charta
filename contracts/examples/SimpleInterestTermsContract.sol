@@ -29,6 +29,16 @@ contract SimpleInterestTermsContract is TermsContract {
 
     enum AmortizationUnitType { HOURS, DAYS, WEEKS, MONTHS, YEARS }
 
+    struct SimpleInterestParams {
+        uint principalPlusInterest;
+        uint startTimestamp;
+        uint endTimestamp;
+        AmortizationUnitType amortizationUnitType;
+        uint amortizationUnitLengthInSecond;
+        uint termLengthInAmortizationUnits;
+        uint termLengthInSeconds;
+    }
+
     uint public constant HOUR_LENGTH_IN_SECONDS = 60 * 60;
     uint public constant DAY_LENGTH_IN_SECONDS = HOUR_LENGTH_IN_SECONDS * 24;
     uint public constant WEEK_LENGTH_IN_SECONDS = DAY_LENGTH_IN_SECONDS * 7;
