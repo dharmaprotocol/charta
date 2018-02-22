@@ -1552,6 +1552,10 @@ esutils@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/esutils/-/esutils-2.0.2.tgz#0abf4f1caa5bcb1f7a9d8acc6dea4faaa04bac9b"
 
+"ethereum-datetime@https://github.com/pipermerriam/ethereum-datetime.git":
+  version "0.0.0"
+  resolved "https://github.com/pipermerriam/ethereum-datetime.git#7aa1c0a3d9c6bd021474810ead43ae71e5566a94"
+
 ethereumjs-abi@^0.6.4:
   version "0.6.5"
   resolved "https://registry.yarnpkg.com/ethereumjs-abi/-/ethereumjs-abi-0.6.5.tgz#5a637ef16ab43473fa72a29ad90871405b3f5241"
