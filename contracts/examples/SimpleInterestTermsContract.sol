@@ -112,29 +112,19 @@ contract SimpleInterestTermsContract is TermsContract {
         view
         returns (uint _expectedRepaymentValue)
     {
-        var (
-            principalPlusInterest,
-            amortizationUnitLengthInSeconds,
-            termLengthInAmortizationUnits
-        ) = unpackParamsForAgreementID(agreementId);
+        SimpleInterestParams memory params = unpackParamsForAgreementID(agreementId);
 
-        uint issuanceBlockTimestamp = debtRegistry.getIssuanceBlockTimestamp(agreementId);
-
-        uint termLengthInSeconds = termLengthInAmortizationUnits.mul(amortizationUnitLengthInSeconds);
-
-        uint endTimestamp = termLengthInSeconds.add(issuanceBlockTimestamp);
-
-        if (timestamp <= issuanceBlockTimestamp) {
+        if (timestamp <= params.startTimestamp) {
             /* The query occurs before the contract was even initialized so the
             expected value of repayments is 0. */
             return 0;
-        } else if (timestamp >= endTimestamp) {
+        } else if (timestamp >= params.endTimestamp) {
             /* the query occurs beyond the contract's term, so the expected
             value of repayment is the full principal plus interest. */
-            return principalPlusInterest;
+            return params.principalPlusInterest;
         } else {
-            uint delta = timestamp.sub(issuanceBlockTimestamp);
-            return principalPlusInterest.mul(delta).div(termLengthInSeconds);
+            uint numUnits = determineNumberOfAmortizationUnitsForTimestamp(timestamp, params);
+            return params.principalPlusInterest.mul(numUnits).div(params.termLengthInAmortizationUnits);
         }
     }
 
