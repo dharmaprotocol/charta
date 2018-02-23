@@ -313,10 +313,10 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
         describe("when termsContractParameters associated w/ debt agreement are well-formed", () => {
 
             /*
-            The params define a simple interest contract with the below terms:
-              - Principal plus interest: 16 ether
-              - Term length: 3 years
+            The params define a simple interest contract with the below valid terms:
+              - Principal plus interest: 12 ether
               - Amortization Unit Type: year
+              - Term length: 3 years
             */
             const principalPlusInterest = Units.ether(12);
             const amortizationUnitType = new BigNumber(4); // unit code for years.
