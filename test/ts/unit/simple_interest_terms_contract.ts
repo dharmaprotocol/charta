@@ -296,14 +296,13 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
 
             /*
             The params define a simple interest contract with the below terms:
-              - Principal: 10 ether
-              - Interest rate: 10%
-              - Term length: 2 years
+              - Principal plus interest: 16 ether
+              - Term length: 3 years
               - Amortization Unit Type: year
             */
             const principalPlusInterest = Units.ether(12);
             const amortizationUnitType = new BigNumber(4); // unit code for years.
-            const termLength = new BigNumber(2); // term is for two years.
+            const termLength = new BigNumber(3); // term is three years.
 
             const principalPlusInterestHex = principalPlusInterest.toString(16);
             const amortizationUnitTypeHex = amortizationUnitType.toString(16);
@@ -320,7 +319,7 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
             const BLOCK_ISSUANCE_TIMESTAMP = ORIGIN_MOMENT.unix();
 
             const ZERO_AMOUNT = Units.ether(0);
-            const MIDPOINT_AMOUNT = principalPlusInterest.div(2);
+            const INSTALLMENT_AMOUNT = principalPlusInterest.div(termLength);
             const FULL_AMOUNT = principalPlusInterest;
 
             it("unpacks valid params", async () => {
@@ -367,8 +366,10 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
             describe("timestamps that occur DURING the issuance's term length", () => {
 
                 const SIXTEEN_DAYS_AFTER = ORIGIN_MOMENT.add(16, 'days').unix(); // zero-amount
-                const ONE_YEAR_AFTER = ORIGIN_MOMENT.add(12, 'months').unix(); // midpoint-amount
-                const TWO_YEARS_AFTER = ORIGIN_MOMENT.add(2, 'years').unix(); // full-amount
+                const ONE_YEAR_AFTER = ORIGIN_MOMENT.add(1, 'year').unix(); // one-installment
+                const TWO_YEARS_AFTER = ORIGIN_MOMENT.add(2, 'years').unix(); // two-installments
+                const TWO_PLUS_YEARS_AFTER = ORIGIN_MOMENT.add(2, 'years').add(4, 'months').unix(); // two-installments
+                const THREE_YEARS_AFTER = ORIGIN_MOMENT.add(3, 'years').unix(); // full-amount
 
                 it("should return an expected value of 0", async () => {
                     await expect(termsContract.getExpectedRepaymentValue.callAsync(
@@ -377,25 +378,39 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
                     )).to.eventually.bignumber.equal(ZERO_AMOUNT);
                 });
 
-                it("should return an expected value equivalent to the midpoint amount", async () => {
+                it("should return an expected value equivalent to one installment", async () => {
                     await expect(termsContract.getExpectedRepaymentValue.callAsync(
                         ARBITRARY_AGREEMENT_ID,
                         new BigNumber(ONE_YEAR_AFTER)
-                    )).to.eventually.bignumber.equal(MIDPOINT_AMOUNT);
+                    )).to.eventually.bignumber.equal(INSTALLMENT_AMOUNT);
+                });
+
+                it("should return an expected value equivalent to two installments", async () => {
+                    await expect(termsContract.getExpectedRepaymentValue.callAsync(
+                        ARBITRARY_AGREEMENT_ID,
+                        new BigNumber(TWO_YEARS_AFTER)
+                    )).to.eventually.bignumber.equal(INSTALLMENT_AMOUNT.mul(2));
+                });
+
+                it("should return an expected value equivalent to two installments", async () => {
+                    await expect(termsContract.getExpectedRepaymentValue.callAsync(
+                        ARBITRARY_AGREEMENT_ID,
+                        new BigNumber(TWO_PLUS_YEARS_AFTER)
+                    )).to.eventually.bignumber.equal(INSTALLMENT_AMOUNT.mul(2));
                 });
 
                 it("should return the full amount of the principal plus interest", async () => {
                     await expect(termsContract.getExpectedRepaymentValue.callAsync(
                         ARBITRARY_AGREEMENT_ID,
-                        new BigNumber(TWO_YEARS_AFTER)
+                        new BigNumber(THREE_YEARS_AFTER)
                     )).to.eventually.bignumber.equal(FULL_AMOUNT);
                 });
             });
 
             describe("timestamps that occur AFTER the issuance's full term has elapsed", () => {
 
-                const ONE_DAY_AFTER_EXPIRATION = ORIGIN_MOMENT.add(2, 'years').add(1, 'day').unix(); // full-amount
-                const THREE_YEARS_AFTER = ORIGIN_MOMENT.add(3, 'years').unix(); // full-amount
+                const ONE_DAY_AFTER_EXPIRATION = ORIGIN_MOMENT.add(3, 'years').add(1, 'day').unix(); // full-amount
+                const FOUR_YEARS_AFTER = ORIGIN_MOMENT.add(4, 'years').unix(); // full-amount
 
                 it("should return the full amount of the principal plus interest", async () => {
                     await expect(termsContract.getExpectedRepaymentValue.callAsync(
@@ -407,7 +422,7 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
                 it("should return the full amount of the principal plus interest", async () => {
                     await expect(termsContract.getExpectedRepaymentValue.callAsync(
                         ARBITRARY_AGREEMENT_ID,
-                        new BigNumber(THREE_YEARS_AFTER)
+                        new BigNumber(FOUR_YEARS_AFTER)
                     )).to.eventually.bignumber.equal(FULL_AMOUNT);
                 });
             });
