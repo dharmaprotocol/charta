@@ -283,21 +283,25 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
     });
 
     describe("#getExpectedRepaymentValue", () => {
+
         describe("when termsContract associated w/ debt agreement is not `this`", () => {
             it("should throw");
         });
 
         describe("when termsContractParameters associated w/ debt agreement malformed", () => {
-            // the only way this can happen is...
+
+          const principalPlusInterest = Units.ether(10);
+          const amortizationUnitType = new BigNumber(10); // invalid unit code.
+          const termLength = new BigNumber(10);
+
+          const invalidTermsParams = hexifyParams(principalPlusInterest, amortizationUnitType, termLength);
+
             describe("amortizationUnitType is not one of the valid types", () => {
-                const malformedTermsContractParameters =
-                    "0x00000000000000002ff62db077c0000010000000000000000000000000000007"
 
                 before(async () => {
-                    await mockRegistry.mockGetTermsReturnValueFor.sendTransactionAsync(
+                    await mockRegistry.mockGetTermsContractParameters.sendTransactionAsync(
                         ARBITRARY_AGREEMENT_ID,
-                        termsContract.address,
-                        malformedTermsContractParameters
+                        invalidTermsParams
                     );
                 });
 
