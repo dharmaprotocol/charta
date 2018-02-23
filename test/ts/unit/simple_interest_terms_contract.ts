@@ -345,8 +345,8 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
 
             describe("timestamps that occur BEFORE the block issuance's timestamp", () => {
 
-                const ONE_YEAR_BEFORE = ORIGIN_MOMENT.subtract(1, 'year').unix(); // zero-amount
-                const ONE_DAY_BEFORE = ORIGIN_MOMENT.subtract(1, 'day').unix(); // zero-amount
+                const ONE_YEAR_BEFORE = moment(ORIGIN_MOMENT).subtract(1, 'year').unix(); // zero-amount
+                const ONE_DAY_BEFORE = moment(ORIGIN_MOMENT).subtract(1, 'day').unix(); // zero-amount
 
                 it("should return an expected value of 0", async () => {
                     await expect(termsContract.getExpectedRepaymentValue.callAsync(
@@ -365,13 +365,14 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
 
             describe("timestamps that occur DURING the issuance's term length", () => {
 
-                const SIXTEEN_DAYS_AFTER = ORIGIN_MOMENT.add(16, 'days').unix(); // zero-amount
-                const ONE_YEAR_AFTER = ORIGIN_MOMENT.add(1, 'year').unix(); // one-installment
-                const TWO_YEARS_AFTER = ORIGIN_MOMENT.add(2, 'years').unix(); // two-installments
-                const TWO_PLUS_YEARS_AFTER = ORIGIN_MOMENT.add(2, 'years').add(4, 'months').unix(); // two-installments
-                const THREE_YEARS_AFTER = ORIGIN_MOMENT.add(3, 'years').unix(); // full-amount
+                const SIXTEEN_DAYS_AFTER = moment(ORIGIN_MOMENT).add(16, 'days').unix(); // zero-amount
+                const ONE_YEAR_AFTER = moment(ORIGIN_MOMENT).add(1, 'year').unix(); // one-installment
+                const TWO_YEARS_AFTER = moment(ORIGIN_MOMENT).add(2, 'years').unix(); // two-installments
+                const TWO_PLUS_YEARS_AFTER = moment(ORIGIN_MOMENT).add(2, 'years').add(4, 'months').unix(); // two-installments
+                const THREE_YEARS_AFTER = moment(ORIGIN_MOMENT).add(3, 'years').unix(); // full-amount
 
                 it("should return an expected value of 0", async () => {
+
                     await expect(termsContract.getExpectedRepaymentValue.callAsync(
                         ARBITRARY_AGREEMENT_ID,
                         new BigNumber(SIXTEEN_DAYS_AFTER)
@@ -409,8 +410,8 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
 
             describe("timestamps that occur AFTER the issuance's full term has elapsed", () => {
 
-                const ONE_DAY_AFTER_EXPIRATION = ORIGIN_MOMENT.add(3, 'years').add(1, 'day').unix(); // full-amount
-                const FOUR_YEARS_AFTER = ORIGIN_MOMENT.add(4, 'years').unix(); // full-amount
+                const ONE_DAY_AFTER_EXPIRATION = moment(ORIGIN_MOMENT).add(3, 'years').add(1, 'day').unix(); // full-amount
+                const FOUR_YEARS_AFTER = moment(ORIGIN_MOMENT).add(4, 'years').unix(); // full-amount
 
                 it("should return the full amount of the principal plus interest", async () => {
                     await expect(termsContract.getExpectedRepaymentValue.callAsync(
