@@ -49,6 +49,24 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
 
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
 
+    function hexifyParams(
+        principalPlusInterest: BigNumber,
+        amortizationUnitType: BigNumber,
+        termLength: BigNumber
+    ): string {
+
+      const principalPlusInterestHex = principalPlusInterest.toString(16);
+      const amortizationUnitTypeHex = amortizationUnitType.toString(16);
+      const termLengthHex = termLength.toString(16);
+
+      return (
+          "0x" +
+          principalPlusInterestHex.padStart(32, "0") +
+          amortizationUnitTypeHex.padStart(2, "0") +
+          termLengthHex.padStart(30, "0")
+      );
+    }
+
     before(async () => {
         mockRegistry = await MockDebtRegistryContract.deployed(web3, TX_DEFAULTS);
         mockToken = await MockERC20TokenContract.deployed(web3, TX_DEFAULTS);
