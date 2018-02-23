@@ -116,6 +116,7 @@ contract SimpleInterestTermsContract is TermsContract {
     )
         public
         view
+        onlyThisContract(agreementId)
         returns (uint _expectedRepaymentValue)
     {
         SimpleInterestParams memory params = unpackParamsForAgreementID(agreementId);
