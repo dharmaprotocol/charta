@@ -166,6 +166,9 @@ contract SimpleInterestTermsContract is TermsContract {
       (principalPlusInterest, amortizationUnitTypeAsInt, termLengthInAmortizationUnits) =
           unpackParametersFromBytes(parameters);
 
+      // Before we cast to `AmortizationUnitType`, ensure that the raw value being stored is valid.
+      require(amortizationUnitTypeAsInt <= uint(AmortizationUnitType.YEARS));
+
       AmortizationUnitType amortizationUnitType = AmortizationUnitType(amortizationUnitTypeAsInt);
 
       uint amortizationUnitLengthInSeconds = getAmortizationUnitLengthInSeconds(amortizationUnitType);
