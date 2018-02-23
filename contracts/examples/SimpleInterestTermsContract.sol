@@ -34,7 +34,7 @@ contract SimpleInterestTermsContract is TermsContract {
         uint startTimestamp;
         uint endTimestamp;
         AmortizationUnitType amortizationUnitType;
-        uint amortizationUnitLengthInSecond;
+        uint amortizationUnitLengthInSeconds;
         uint termLengthInAmortizationUnits;
         uint termLengthInSeconds;
     }
@@ -179,7 +179,7 @@ contract SimpleInterestTermsContract is TermsContract {
           startTimestamp: issuanceBlockTimestamp,
           endTimestamp: endTimestamp,
           amortizationUnitType: amortizationUnitType,
-          amortizationUnitLengthInSecond: amortizationUnitLengthInSeconds,
+          amortizationUnitLengthInSeconds: amortizationUnitLengthInSeconds,
           termLengthInAmortizationUnits: termLengthInAmortizationUnits,
           termLengthInSeconds: termLengthInSeconds
       });
