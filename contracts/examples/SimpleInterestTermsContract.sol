@@ -145,7 +145,7 @@ contract SimpleInterestTermsContract is TermsContract {
       } else if (params.amortizationUnitType == AmortizationUnitType.MONTHS) {
           return 0; // TODO(kayvon): determine number of months using ethereum-datetime.
       } else if (params.amortizationUnitType == AmortizationUnitType.YEARS) {
-          return delta.div(60).div(60).div(24).div(7).div(365);
+          return delta.div(60).div(60).div(24).div(365);
       }
     }
 
