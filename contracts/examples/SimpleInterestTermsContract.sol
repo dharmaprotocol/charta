@@ -252,6 +252,8 @@ contract SimpleInterestTermsContract is TermsContract {
             return MONTH_LENGTH_IN_SECONDS;
         } else if (amortizationUnitType == AmortizationUnitType.YEARS) {
             return YEAR_LENGTH_IN_SECONDS;
+        } else {
+            revert();
         }
     }
 }
