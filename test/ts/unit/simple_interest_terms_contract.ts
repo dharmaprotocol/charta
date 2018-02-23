@@ -322,16 +322,7 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
             const amortizationUnitType = new BigNumber(4); // unit code for years.
             const termLength = new BigNumber(3); // term is three years.
 
-            const principalPlusInterestHex = principalPlusInterest.toString(16);
-            const amortizationUnitTypeHex = amortizationUnitType.toString(16);
-            const termLengthHex = termLength.toString(16);
-
-            const validTermsParams = (
-                "0x" +
-                principalPlusInterestHex.padStart(32, "0") +
-                amortizationUnitTypeHex.padStart(2, "0") +
-                termLengthHex.padStart(30, "0")
-            );
+            const validTermsParams = hexifyParams(principalPlusInterest, amortizationUnitType, termLength);
 
             const ORIGIN_MOMENT = moment();
             const BLOCK_ISSUANCE_TIMESTAMP = ORIGIN_MOMENT.unix();
