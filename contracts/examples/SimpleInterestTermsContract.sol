@@ -240,7 +240,7 @@ contract SimpleInterestTermsContract is TermsContract {
     function getAmortizationUnitLengthInSeconds(AmortizationUnitType amortizationUnitType)
         public
         pure
-        returns (uint _amortizationUnitLengthInBlocks)
+        returns (uint _amortizationUnitLengthInSeconds)
     {
         if (amortizationUnitType == AmortizationUnitType.HOURS) {
             return HOUR_LENGTH_IN_SECONDS;
