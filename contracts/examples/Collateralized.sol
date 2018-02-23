@@ -112,7 +112,7 @@ contract Collateralized is TermsContract {
         // check if expected value has been paid
         require(
             getExpectedRepaymentValue(issuanceCommitmentHash, block.number) <=
-            getValueRepaid(issuanceCommitmentHash, block.number)
+            getValueRepaidToDate(issuanceCommitmentHash)
         );
 
         // withdrawn collateral
@@ -144,7 +144,7 @@ contract Collateralized is TermsContract {
         // check if expected value hasn't been paid
         require(
             getExpectedRepaymentValue(issuanceCommitmentHash, block.number) >
-            getValueRepaid(issuanceCommitmentHash, block.number)
+            getValueRepaidToDate(issuanceCommitmentHash)
         );
 
         // seize collateral
