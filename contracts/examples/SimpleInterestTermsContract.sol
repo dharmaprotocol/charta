@@ -57,6 +57,12 @@ contract SimpleInterestTermsContract is TermsContract {
       _;
     }
 
+    modifier onlyThisContract(bytes32 agreementId) {
+        address _contract = debtRegistry.getTermsContract(agreementId);
+        require(address(this) == _contract);
+        _;
+    }
+
     function SimpleInterestTermsContract(
         address _debtRegistry,
         address _repaymentToken,
