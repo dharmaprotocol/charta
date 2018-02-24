@@ -159,16 +159,16 @@ contract SimpleInterestTermsContract is TermsContract {
       bytes32 parameters = debtRegistry.getTermsContractParameters(agreementId);
 
       uint principalPlusInterest;
-      uint amortizationUnitTypeAsInt;
+      uint amortizationUnitTypeAsUint;
       uint termLengthInAmortizationUnits;
 
-      (principalPlusInterest, amortizationUnitTypeAsInt, termLengthInAmortizationUnits) =
+      (principalPlusInterest, amortizationUnitTypeAsUint, termLengthInAmortizationUnits) =
           unpackParametersFromBytes(parameters);
 
       // Before we cast to `AmortizationUnitType`, ensure that the raw value being stored is valid.
-      require(amortizationUnitTypeAsInt <= uint(AmortizationUnitType.YEARS));
+      require(amortizationUnitTypeAsUint <= uint(AmortizationUnitType.YEARS));
 
-      AmortizationUnitType amortizationUnitType = AmortizationUnitType(amortizationUnitTypeAsInt);
+      AmortizationUnitType amortizationUnitType = AmortizationUnitType(amortizationUnitTypeAsUint);
 
       uint amortizationUnitLengthInSeconds = getAmortizationUnitLengthInSeconds(amortizationUnitType);
 
