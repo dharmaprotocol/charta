@@ -24,7 +24,6 @@
     "@types/json-stable-stringify": "^1.0.32",
     "@types/lodash": "^4.14.86",
     "NonFungibleToken": "https://github.com/dharmaprotocol/NonFungibleToken.git",
-    "ethereum-datetime": "https://github.com/pipermerriam/ethereum-datetime.git",
     "abi-decoder": "^1.0.9",
     "bignumber.js": "^4.1.0",
     "copyfiles": "^1.2.0",
