@@ -268,6 +268,7 @@ contract DebtRegistry is Pausable {
     function getTermsContractParameters(bytes32 issuanceHash)
         public
         view
+        onlyExtantEntry(issuanceHash)
         returns (bytes32)
     {
         return registry[issuanceHash].termsContractParameters;
