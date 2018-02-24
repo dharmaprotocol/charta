@@ -75,7 +75,7 @@ contract Collateralized is TermsContract {
         // validate amount and lockup period.
         require(amount > 0 && lockupPeriodEndTimestamp > block.timestamp);
 
-        // check for already present collateral.
+        // ensure that the agreement has not already been collateralized.
         require(collateralForAgreementID[agreementID].lockupPeriod == 0);
 
         // take tokens as collateral.
