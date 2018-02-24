@@ -37,23 +37,24 @@ contract Collateralized is TermsContract {
     }
 
     DebtRegistry public debtRegistry;
-    mapping(bytes32 => Collateral) public collaterals;
+
+    mapping(bytes32 => Collateral) public collateralForAgreementID;
 
     event CollateralLocked(
-        bytes32 indexed issuanceCommitmentHash,
+        bytes32 indexed agreementID,
         address token,
         uint amount
     );
 
     event CollateralReturned(
-        bytes32 indexed issuanceCommitmentHash,
+        bytes32 indexed agreementID,
         address indexed collateralizer,
         address token,
         uint amount
     );
 
     event CollateralSeized(
-        bytes32 indexed issuanceCommitmentHash,
+        bytes32 indexed agreementID,
         address indexed beneficiary,
         address token,
         uint amount
@@ -64,104 +65,115 @@ contract Collateralized is TermsContract {
     }
 
     function collateralize(
-        bytes32 issuanceCommitmentHash,
+        bytes32 agreementID,
         address token,
         uint amount,
-        uint lockupPeriodEndBlockNumber
+        uint lockupPeriodEndTimestamp
     )
         public
     {
-        // validate amount and lockup period
-        require(amount > 0 && lockupPeriodEndBlockNumber > block.number);
+        // validate amount and lockup period.
+        require(amount > 0 && lockupPeriodEndTimestamp > block.timestamp);
 
-        // check for already present collateral
-        require(collaterals[issuanceCommitmentHash].lockupPeriod == 0);
+        // check for already present collateral.
+        require(collateralForAgreementID[agreementID].lockupPeriod == 0);
 
-        // take tokens as collateral
+        // take tokens as collateral.
         require(ERC20(token).transferFrom(
-            collateral.collateralizer,
+            msg.sender,
             address(this),
             amount
         ));
 
-        // create new collateral for given issuanceCommitmentHash
+        // create collateral instance.
         Collateral memory collateral = Collateral({
             collateralizer: msg.sender,
             token: token,
             amount: amount,
-            lockupPeriod: lockupPeriodEndBlockNumber,
+            lockupPeriod: lockupPeriodEndTimestamp,
             withdrawn: false
         });
-        collaterals[issuanceCommitmentHash] = collateral;
 
-        // add event for given issuanceCommitmentHash
-        CollateralLocked(issuanceCommitmentHash, token, amount);
+        // store collateral in mapping.
+        collateralForAgreementID[agreementID] = collateral;
+
+        // emit event that collateral has been secured.
+        CollateralLocked(agreementID, token, amount);
     }
 
-    function returnCollateral(bytes32 issuanceCommitmentHash) public {
-        // fetch collateral object
-        Collateral memory collateral = collaterals[issuanceCommitmentHash];
+    function returnCollateral(
+        bytes32 agreementID
+    )
+        public
+    {
+        // fetch collateral object.
+        Collateral memory collateral = collateralForAgreementID[agreementID];
 
         // check if collateral is not empty, lockupPeriod is over and not withdrawn
         require(
             collateral.lockupPeriod > 0 &&
-            block.number > collateral.lockupPeriod &&
+            block.timestamp > collateral.lockupPeriod &&
             !collateral.withdrawn
         );
 
-        // check if expected value has been paid
+        // ensure sufficient payment.
         require(
-            getExpectedRepaymentValue(issuanceCommitmentHash, block.number) <=
-            getValueRepaidToDate(issuanceCommitmentHash)
+            getExpectedRepaymentValue(agreementID, block.timestamp) <=
+            getValueRepaidToDate(agreementID)
         );
 
-        // withdrawn collateral
+        // transfer collateral back to sender.
+        require(
+          ERC20(collateral.token).transfer(collateral.collateralizer, collateral.amount)
+        );
+
+        // mark collateral as withdrawn.
         collateral.withdrawn = true;
 
-        // transfer collaterals back to sender
-        ERC20(collateral.token).transfer(collateral.collateralizer, collateral.amount);
-
-        // log return event
+        // log that the collateral has been succesfully returned to collateralizer.
         CollateralReturned(
-            issuanceCommitmentHash,
+            agreementID,
             collateral.collateralizer,
             collateral.token,
             collateral.amount
         );
     }
 
-    function seizeCollateral(bytes32 issuanceCommitmentHash) public {
-        // fetch collateral object
-        Collateral memory collateral = collaterals[issuanceCommitmentHash];
+    function seizeCollateral(
+        bytes32 agreementID
+    )
+        public
+    {
+        // fetch collateral object.
+        Collateral memory collateral = collateralForAgreementID[agreementID];
 
-        // check if collateral is not empty, lockupPeriod is over and not withdrawn
+        // check if collateral is not empty, lockupPeriod is over and not withdrawn.
         require(
             collateral.lockupPeriod > 0 &&
-            block.number > collateral.lockupPeriod &&
+            block.timestamp > collateral.lockupPeriod &&
             !collateral.withdrawn
         );
 
-        // check if expected value hasn't been paid
+        // ensure debtor is in violation of the terms.
         require(
-            getExpectedRepaymentValue(issuanceCommitmentHash, block.number) >
-            getValueRepaidToDate(issuanceCommitmentHash)
+            getExpectedRepaymentValue(agreementID, block.timestamp) >
+            getValueRepaidToDate(agreementID)
         );
 
-        // seize collateral
+        // determine beneficiary of the seized collateral.
+        address beneficiary = debtRegistry.getBeneficiary(agreementID);
+
+        // seize collateral and transfer to beneficiary.
+        require(
+            ERC20(collateral.token).transfer(beneficiary, collateral.amount)
+        );
+
+        // mark collateral as withdrawn once transfer has succeeded.
         collateral.withdrawn = true;
 
-        // get beneficiary from debt registry
-        address beneficiary = debtRegistry.getBeneficiary(issuanceCommitmentHash);
-
-        // transfer(seize) collaterals back to beneficiary
-        ERC20(collateral.token).transfer(
-            beneficiary,
-            collateral.amount
-        );
-
-        // log seize event
+        // log the seizure event.
         CollateralSeized(
-            issuanceCommitmentHash,
+            agreementID,
             beneficiary,
             collateral.token,
             collateral.amount
