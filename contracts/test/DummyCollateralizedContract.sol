@@ -7,9 +7,7 @@ import "../examples/Collateralized.sol";
 contract DummyCollateralizedContract is Collateralized {
     using SafeMath for uint;
 
-    function DummyCollateralizedContract(address _debtRegistry) {
-        Collateralized(address);
-    }
+    function DummyCollateralizedContract(address _debtRegistry) Collateralized(_debtRegistry) public {}
 
     function registerRepayment(
         bytes32 agreementId,
