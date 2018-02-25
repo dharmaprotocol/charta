@@ -133,19 +133,8 @@ contract SimpleInterestTermsContract is TermsContract {
         returns (uint units)
     {
       uint delta = timestamp.sub(params.startTimestamp);
-      if (params.amortizationUnitType == AmortizationUnitType.HOURS) {
-          return delta.div(HOUR_LENGTH_IN_SECONDS);
-      } else if (params.amortizationUnitType == AmortizationUnitType.DAYS) {
-          return delta.div(DAY_LENGTH_IN_SECONDS);
-      } else if (params.amortizationUnitType == AmortizationUnitType.WEEKS) {
-          return delta.div(WEEK_LENGTH_IN_SECONDS);
-      } else if (params.amortizationUnitType == AmortizationUnitType.MONTHS) {
-          // TODO(kayvon): improve this naive implementation. Not all months have 30 days.
-          return delta.div(MONTH_LENGTH_IN_SECONDS);
-      } else if (params.amortizationUnitType == AmortizationUnitType.YEARS) {
-          // TODO(kayvon): improve this naive implementation. Not all years have 365 days.
-          return delta.div(YEAR_LENGTH_IN_SECONDS);
-      }
+      uint amortizationUnitLengthInSeconds = getAmortizationUnitLengthInSeconds(params.amortizationUnitType);
+      return delta.div(amortizationUnitLengthInSeconds);
     }
 
     function unpackParamsForAgreementID(
