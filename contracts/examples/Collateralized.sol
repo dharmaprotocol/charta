@@ -125,9 +125,13 @@ contract Collateralized is TermsContract {
             getValueRepaidToDate(agreementID)
         );
 
-        // transfer collateral back to sender.
+        // transfer the collateral this contract was holding in escrow back to sender.
         require(
-          ERC20(collateral.token).transfer(collateral.collateralizer, collateral.amount)
+            ERC20(collateral.token).transferFrom(
+                address(this),
+                collateral.collateralizer,
+                collateral.amount
+            )
         );
 
         // mark collateral as withdrawn.
