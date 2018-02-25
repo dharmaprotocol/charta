@@ -69,7 +69,7 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
 
         // TransferProxy is granted an allowance of 3 ether from PAYER.
         await mockToken.mockAllowanceFor.sendTransactionAsync(
-            PAYER, mockTokenTransferProxy.address, Units.ether(3),
+            PAYER, collateralContract.address, Units.ether(5),
         );
 
     });
@@ -83,6 +83,57 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
     describe("#collateralize", () => {
 
       describe("invariants", () => {
+
+        it("should throw if the amount being put up for collateral is zero", async () => {
+            await expect(collateralContract.collateralize.sendTransactionAsync(
+              ARBITRARY_AGREEMENT_ID,
+              mockToken.address,
+              new BigNumber(0), // zero collateral
+              new BigNumber(moment().add(2, 'years').unix())
+            )).to.eventually.be.rejectedWith(REVERT_ERROR);
+        });
+
+        it("should throw if the lockup period occurs in the past", async () => {
+            await expect(collateralContract.collateralize.sendTransactionAsync(
+              ARBITRARY_AGREEMENT_ID,
+              mockToken.address,
+              new BigNumber(10),
+              new BigNumber(moment().subtract(2, 'years').unix()) // timestamp that occurs in the past.
+            )).to.eventually.be.rejectedWith(REVERT_ERROR);
+        });
+
+        it("should throw if the agreement already has already been collateralized", async () => {
+            // We first colletaralize the contract.
+            await collateralContract.collateralize.sendTransactionAsync(
+                ARBITRARY_AGREEMENT_ID,
+                mockToken.address,
+                new BigNumber(5),
+                new BigNumber(moment().add(2, 'years').unix()),
+                { from: PAYER }
+            );
+
+            // a second attempt to collateralize the contract should fail.
+            await expect(collateralContract.collateralize.sendTransactionAsync(
+                ARBITRARY_AGREEMENT_ID,
+                mockToken.address,
+                new BigNumber(10),
+                new BigNumber(moment().add(3, 'years').unix()),
+                { from: PAYER }
+            )).to.eventually.be.rejectedWith(REVERT_ERROR);
+        });
+
+        it("should throw if the collateral fails to transfer", async () => {
+            await expect(collateralContract.collateralize.sendTransactionAsync(
+              ARBITRARY_AGREEMENT_ID,
+              mockToken.address,
+              new BigNumber(10),
+              new BigNumber(moment().add(2, 'years').unix()),
+              { from: CONTRACT_OWNER }
+            )).to.eventually.be.rejectedWith(REVERT_ERROR);
+        });
+
+      });
+    });
 
     describe("#returnCollateral", () => {
     });
