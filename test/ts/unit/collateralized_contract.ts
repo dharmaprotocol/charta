@@ -9,18 +9,12 @@ import {
 } from "../logs/collateralized_contract";
 
 import {DummyCollateralizedContractContract} from "../../../types/generated/dummy_collateralized_contract";
-
 import {MockDebtRegistryContract} from "../../../types/generated/mock_debt_registry";
 import {MockERC20TokenContract} from "../../../types/generated/mock_e_r_c20_token";
-import {MockTokenTransferProxyContract} from "../../../types/generated/mock_token_transfer_proxy";
-
-import {RepaymentRouterErrorCodes} from "../../../types/errors";
 
 import {BigNumberSetup} from "../test_utils/bignumber_setup";
 import ChaiSetup from "../test_utils/chai_setup";
-import {INVALID_OPCODE, REVERT_ERROR} from "../test_utils/constants";
-
-import {LogError, LogRepayment} from "../logs/repayment_router";
+import {REVERT_ERROR} from "../test_utils/constants";
 
 import * as moment from "moment";
 
@@ -38,21 +32,17 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
     let collateralContract: DummyCollateralizedContractContract;
     let mockToken: MockERC20TokenContract;
     let mockRegistry: MockDebtRegistryContract;
-    let mockTokenTransferProxy: MockTokenTransferProxyContract;
 
     const CONTRACT_OWNER = ACCOUNTS[0];
     const PAYER = ACCOUNTS[1];
     const BENEFICIARY = ACCOUNTS[2];
     const ATTACKER = ACCOUNTS[3];
 
-    const NULL_ADDRESS = "0x0000000000000000000000000000000000000000";
-
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
 
     before(async () => {
         mockRegistry = await MockDebtRegistryContract.deployed(web3, TX_DEFAULTS);
         mockToken = await MockERC20TokenContract.deployed(web3, TX_DEFAULTS);
-        mockTokenTransferProxy = await MockTokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
 
         const collateralContractTruffle = await dummyCollateralizedContract.new(
             mockRegistry.address
