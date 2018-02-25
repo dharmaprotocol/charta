@@ -1,6 +1,12 @@
+import * as ABIDecoder from "abi-decoder";
 import * as chai from "chai";
 import * as Units from "../test_utils/units";
 import {BigNumber} from "bignumber.js";
+import * as Web3 from "web3";
+
+import {
+  CollateralLocked
+} from "../logs/collateralized_contract";
 
 import {DummyCollateralizedContractContract} from "../../../types/generated/dummy_collateralized_contract";
 
@@ -39,11 +45,6 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
     const BENEFICIARY = ACCOUNTS[2];
     const ATTACKER = ACCOUNTS[3];
 
-    const TERMS_CONTRACT_PARAMETERS =
-        web3.sha3("any 32 byte hex value can represent the terms contract's parameters");
-    const ARBITRARY_AGREEMENT_ID =
-        web3.sha3("any 32 byte hex value can represent an agreement id");
-
     const NULL_ADDRESS = "0x0000000000000000000000000000000000000000";
 
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
@@ -72,6 +73,12 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
             PAYER, collateralContract.address, Units.ether(5),
         );
 
+        // Initialize ABI Decoder for deciphering log receipts
+        ABIDecoder.addABI(collateralContract.abi);
+    });
+
+    after(() => {
+        ABIDecoder.removeABI(collateralContract.abi);
     });
 
     describe("Initialization", () => {
@@ -83,6 +90,9 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
     describe("#collateralize", () => {
 
       describe("invariants", () => {
+
+        const ARBITRARY_AGREEMENT_ID =
+            web3.sha3("any 32 byte hex value can represent an agreement id");
 
         it("should throw if the amount being put up for collateral is zero", async () => {
             await expect(collateralContract.collateralize.sendTransactionAsync(
@@ -131,8 +141,48 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
               { from: CONTRACT_OWNER }
             )).to.eventually.be.rejectedWith(REVERT_ERROR);
         });
+      });
+
+      describe("successful collateralization", () => {
+
+        const AGREEMENT_ID = web3.sha3("this agreement will be successfully collateralized");
+
+        const collateralAmount = Units.ether(5);
+        let res: Web3.TransactionReceipt;
+
+        before(async () => {
+            const txHash = await collateralContract.collateralize.sendTransactionAsync(
+                AGREEMENT_ID,
+                mockToken.address,
+                collateralAmount,
+                new BigNumber(moment().add(2, 'years').unix()),
+                { from: PAYER }
+            );
+            res = await web3.eth.getTransactionReceipt(txHash);
+        });
+
+        it("should call `transferFrom` on specified token w/ specified parameters", async () => {
+            await expect(mockToken.wasTransferFromCalledWith.callAsync(
+                PAYER,
+                collateralContract.address,
+                collateralAmount,
+            )).to.eventually.be.true;
+        });
+
+        it("should emit log indicating that the collateral was secured", async () => {
+            const [logReturned] = ABIDecoder.decodeLogs(res.logs);
+            const logExpected = CollateralLocked(
+              collateralContract.address,
+              AGREEMENT_ID,
+              mockToken.address,
+              collateralAmount
+            );
+
+            expect(logReturned).to.deep.equal(logExpected);
+        });
 
       });
+
     });
 
     describe("#returnCollateral", () => {
