@@ -120,12 +120,12 @@ contract SimpleInterestTermsContract is TermsContract {
             value of repayment is the full principal plus interest. */
             return params.principalPlusInterest;
         } else {
-            uint numUnits = determineNumberOfAmortizationUnitsForTimestamp(timestamp, params);
+            uint numUnits = numAmortizationUnitsForTimestamp(timestamp, params);
             return params.principalPlusInterest.mul(numUnits).div(params.termLengthInAmortizationUnits);
         }
     }
 
-    function determineNumberOfAmortizationUnitsForTimestamp(
+    function numAmortizationUnitsForTimestamp(
         uint timestamp,
         SimpleInterestParams params
     )
