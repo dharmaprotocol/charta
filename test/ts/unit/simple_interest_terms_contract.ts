@@ -282,6 +282,25 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
         });
     });
 
+    describe("#unpackParametersFromBytes", () => {
+
+        const principalPlusInterest = Units.ether(200); // 200 ether.
+        const amortizationUnitType = new BigNumber(4); // unit code for years.
+        const termLength = new BigNumber(10); // term is for 10 years.
+
+        const inputParamsAsHex = hexifyParams(principalPlusInterest,
+            amortizationUnitType, termLength);
+
+        it("unpacks valid params", async () => {
+            var outputParams = await termsContract.unpackParametersFromBytes.callAsync(
+              inputParamsAsHex
+            );
+            expect(outputParams[0]).to.bignumber.equal(principalPlusInterest);
+            expect(outputParams[1]).to.bignumber.equal(amortizationUnitType);
+            expect(outputParams[2]).to.bignumber.equal(termLength);
+        });
+    });
+
     describe("#getExpectedRepaymentValue", () => {
 
         describe("when termsContract associated w/ debt agreement is not `this`", () => {
@@ -368,15 +387,6 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
                     ARBITRARY_AGREEMENT_ID,
                     new BigNumber(BLOCK_ISSUANCE_TIMESTAMP)
                 );
-            });
-
-            it("unpacks valid params", async () => {
-                var params = await termsContract.unpackParametersFromBytes.callAsync(
-                  validTermsParams
-                );
-                expect(params[0]).to.bignumber.equal(principalPlusInterest);
-                expect(params[1]).to.bignumber.equal(amortizationUnitType);
-                expect(params[2]).to.bignumber.equal(termLength);
             });
 
             describe("timestamps that occur BEFORE the block issuance's timestamp", () => {
