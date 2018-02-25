@@ -31,7 +31,7 @@ contract SimpleInterestTermsContract is TermsContract {
     struct SimpleInterestParams {
         uint principalPlusInterest;
         uint startTimestamp;
-        uint endTimestamp;
+        uint termEndUnixTimestamp;
         AmortizationUnitType amortizationUnitType;
         uint termLengthInAmortizationUnits;
     }
@@ -115,7 +115,7 @@ contract SimpleInterestTermsContract is TermsContract {
             /* The query occurs before the contract was even initialized so the
             expected value of repayments is 0. */
             return 0;
-        } else if (timestamp >= params.endTimestamp) {
+        } else if (timestamp >= params.termEndUnixTimestamp) {
             /* the query occurs beyond the contract's term, so the expected
             value of repayment is the full principal plus interest. */
             return params.principalPlusInterest;
@@ -163,12 +163,12 @@ contract SimpleInterestTermsContract is TermsContract {
 
       uint termLengthInSeconds = termLengthInAmortizationUnits.mul(amortizationUnitLengthInSeconds);
 
-      uint endTimestamp = termLengthInSeconds.add(issuanceBlockTimestamp);
+      uint termEndUnixTimestamp = termLengthInSeconds.add(issuanceBlockTimestamp);
 
       return SimpleInterestParams({
           principalPlusInterest: principalPlusInterest,
           startTimestamp: issuanceBlockTimestamp,
-          endTimestamp: endTimestamp,
+          termEndUnixTimestamp: termEndUnixTimestamp,
           amortizationUnitType: amortizationUnitType,
           termLengthInAmortizationUnits: termLengthInAmortizationUnits
       });
