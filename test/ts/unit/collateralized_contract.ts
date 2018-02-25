@@ -79,4 +79,16 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
             await expect(collateralContract.debtRegistry.callAsync()).to.eventually.equal(mockRegistry.address);
         });
     });
+
+    describe("#collateralize", () => {
+
+      describe("invariants", () => {
+
+    describe("#returnCollateral", () => {
+    });
+
+    describe("#seizeCollateral", () => {
+    });
+
+
 });
