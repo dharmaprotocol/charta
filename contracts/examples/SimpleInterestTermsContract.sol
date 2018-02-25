@@ -58,8 +58,7 @@ contract SimpleInterestTermsContract is TermsContract {
     }
 
     modifier onlyThisContract(bytes32 agreementId) {
-        address _contract = debtRegistry.getTermsContract(agreementId);
-        require(address(this) == _contract);
+        require(address(this) == debtRegistry.getTermsContract(agreementId));
         _;
     }
 
