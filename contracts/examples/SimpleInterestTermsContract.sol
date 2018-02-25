@@ -33,9 +33,7 @@ contract SimpleInterestTermsContract is TermsContract {
         uint startTimestamp;
         uint endTimestamp;
         AmortizationUnitType amortizationUnitType;
-        uint amortizationUnitLengthInSeconds;
         uint termLengthInAmortizationUnits;
-        uint termLengthInSeconds;
     }
 
     uint public constant HOUR_LENGTH_IN_SECONDS = 60 * 60;
@@ -183,9 +181,7 @@ contract SimpleInterestTermsContract is TermsContract {
           startTimestamp: issuanceBlockTimestamp,
           endTimestamp: endTimestamp,
           amortizationUnitType: amortizationUnitType,
-          amortizationUnitLengthInSeconds: amortizationUnitLengthInSeconds,
-          termLengthInAmortizationUnits: termLengthInAmortizationUnits,
-          termLengthInSeconds: termLengthInSeconds
+          termLengthInAmortizationUnits: termLengthInAmortizationUnits
       });
     }
 
