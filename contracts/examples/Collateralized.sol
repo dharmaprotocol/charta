@@ -72,13 +72,16 @@ contract Collateralized is TermsContract {
     )
         public
     {
-        // validate amount and lockup period.
-        require(amount > 0 && lockupPeriodEndTimestamp > block.timestamp);
+        // the amount being put up for collateral must exceed 0.
+        require(amount > 0);
 
-        // ensure that the agreement has not already been collateralized.
+        // the lockup period must occur at some point in the future.
+        require(lockupPeriodEndTimestamp > block.timestamp);
+
+        // the agreement cannot be collateralized more than once.
         require(collateralForAgreementID[agreementID].lockupPeriod == 0);
 
-        // take tokens as collateral.
+        // the collateral must be successfully received by this contract.
         require(ERC20(token).transferFrom(
             msg.sender,
             address(this),
