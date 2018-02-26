@@ -25,3 +25,22 @@ export function CollateralLocked(
         name: "CollateralLocked",
     };
 }
+
+export function CollateralReturned(
+    contract: Address,
+    agreementID: Bytes32,
+    collateralizer: Address,
+    token: Address,
+    amount: UInt
+): ABIDecoder.DecodedLog {
+    return {
+        address: contract,
+        events: LogUtils.getParams([
+            ["agreementID", agreementID],
+            ["collateralizer", collateralizer],
+            ["token", token],
+            ["amount", amount],
+        ]),
+        name: "CollateralReturned",
+    };
+}

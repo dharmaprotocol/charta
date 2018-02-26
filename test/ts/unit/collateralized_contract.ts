@@ -5,7 +5,8 @@ import {BigNumber} from "bignumber.js";
 import * as Web3 from "web3";
 
 import {
-  CollateralLocked
+  CollateralLocked,
+  CollateralReturned
 } from "../logs/collateralized_contract";
 
 import {DummyCollateralizedContractContract} from "../../../types/generated/dummy_collateralized_contract";
