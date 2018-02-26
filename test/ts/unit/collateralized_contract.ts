@@ -283,7 +283,7 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
             res = await web3.eth.getTransactionReceipt(txHash);
         });
 
-        it("should call `transferFrom` on specified token w/ specified parameters", async () => {
+        it("should call `transferFrom` on specified token w/ collateralizer as receipient", async () => {
             await expect(mockToken.wasTransferFromCalledWith.callAsync(
                 collateralContract.address, // from the contract
                 COLLATERALIZER, // back to the collateralizer
@@ -385,6 +385,69 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
 
           await expect(collateralContract.seizeCollateral.sendTransactionAsync(
               AGREEMENT_ID
+          )).to.eventually.be.rejectedWith(REVERT_ERROR);
+      });
+
+    });
+
+    describe("the successful seizure of collateral", () => {
+
+      const DEFAULTED_AGREEMENT_ID = web3.sha3("this agreement will require the seizure of collateral.");
+
+      let res: Web3.TransactionReceipt;
+
+      before(async () => {
+
+          await mockRegistry.mockGetBeneficiaryReturnValueFor.sendTransactionAsync(
+              DEFAULTED_AGREEMENT_ID,
+              BENEFICIARY
+          );
+
+          await collateralContract.setDummyCollateral.sendTransactionAsync(
+              DEFAULTED_AGREEMENT_ID,
+              COLLATERALIZER,
+              mockToken.address,
+              COLLATERAL_AMOUNT,
+              new BigNumber(moment().subtract(1, 'month').unix()), // lockup period has expired.
+              false // collateral has not been withdrawn.
+          );
+
+          await collateralContract.setDummyExpectedRepaymentValue.sendTransactionAsync(
+              DEFAULTED_AGREEMENT_ID,
+              COLLATERAL_AMOUNT
+          );
+
+          const txHash = await collateralContract.seizeCollateral.sendTransactionAsync(
+              DEFAULTED_AGREEMENT_ID
+          );
+
+          res = await web3.eth.getTransactionReceipt(txHash);
+      });
+
+      it("should call `transferFrom` on specified token w/ beneficiary as receipient", async () => {
+          await expect(mockToken.wasTransferFromCalledWith.callAsync(
+              collateralContract.address, // from the contract
+              BENEFICIARY, // to the beneficiary
+              COLLATERAL_AMOUNT,
+          )).to.eventually.be.true;
+      });
+
+      it("should emit log indicating that the collateral was seized", async () => {
+          const [logReturned] = ABIDecoder.decodeLogs(res.logs);
+          const logExpected = CollateralSeized(
+              collateralContract.address,
+              DEFAULTED_AGREEMENT_ID,
+              BENEFICIARY,
+              mockToken.address,
+              COLLATERAL_AMOUNT
+          );
+
+          expect(logReturned).to.deep.equal(logExpected);
+      });
+
+      it("should throw on any subsequent calls to `seizeCollateral`", async () => {
+          await expect(collateralContract.seizeCollateral.sendTransactionAsync(
+              DEFAULTED_AGREEMENT_ID
           )).to.eventually.be.rejectedWith(REVERT_ERROR);
       });
 
