@@ -44,3 +44,22 @@ export function CollateralReturned(
         name: "CollateralReturned",
     };
 }
+
+export function CollateralSeized(
+    contract: Address,
+    agreementID: Bytes32,
+    beneficiary: Address,
+    token: Address,
+    amount: UInt
+): ABIDecoder.DecodedLog {
+    return {
+        address: contract,
+        events: LogUtils.getParams([
+            ["agreementID", agreementID],
+            ["beneficiary", beneficiary],
+            ["token", token],
+            ["amount", amount],
+        ]),
+        name: "CollateralSeized",
+    };
+}

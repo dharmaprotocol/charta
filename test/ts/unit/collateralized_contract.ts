@@ -6,7 +6,8 @@ import * as Web3 from "web3";
 
 import {
   CollateralLocked,
-  CollateralReturned
+  CollateralReturned,
+  CollateralSeized
 } from "../logs/collateralized_contract";
 
 import {DummyCollateralizedContractContract} from "../../../types/generated/dummy_collateralized_contract";
