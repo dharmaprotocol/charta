@@ -48,13 +48,30 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
         mockRegistry = await MockDebtRegistryContract.deployed(web3, TX_DEFAULTS);
         mockToken = await MockERC20TokenContract.deployed(web3, TX_DEFAULTS);
 
+        /*
+        In our test environment, we want to interact with the contract being
+        unit tested as a statically-typed entity. In order to accomplish this,
+        we take the following steps:
+
+          1 - Instantiate an instance of the contract through the Truffle
+              framework.
+          2 - Instantiate an instance of the contract through the Web3 API using
+              the truffle instance's ABI.
+          3 - Use the Web3 contract instance to instantiate a statically-typed
+              version of the contract as handled by ABI-GEN, which generates
+              a contract wrapper with types pulled from the contract's ABI.
+         */
+
+        // Step 1: Instantiate a truffle instance of the contract.
         const collateralContractTruffle = await dummyCollateralizedContract.new(
             mockRegistry.address
         );
 
+        // Step 2: Instantiate a web3 instance of the contract.
         const collateralContractWeb3Contract =
             web3.eth.contract(dummyCollateralizedContract.abi).at(collateralContractTruffle.address);
 
+        // Step 3: Instantiate a statically-typed version of the contract.
         collateralContract = new DummyCollateralizedContractContract(collateralContractWeb3Contract, TX_DEFAULTS);
 
         // The COLLATERALIZER begins with a balance of 5 ether.
