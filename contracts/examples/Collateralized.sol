@@ -109,15 +109,17 @@ contract Collateralized is TermsContract {
     )
         public
     {
-        // fetch collateral object.
+        // fetch relevant collateral instance.
         Collateral memory collateral = collateralForAgreementID[agreementID];
 
-        // check if collateral is not empty, lockupPeriod is over and not withdrawn
-        require(
-            collateral.lockupPeriod > 0 &&
-            block.timestamp > collateral.lockupPeriod &&
-            !collateral.withdrawn
-        );
+        // Ensure a valid form of collateral is tied to this agreement id.
+        require(collateral.lockupPeriod > 0);
+
+        // Collateral can only be returned after the lockup period.
+        require(block.timestamp > collateral.lockupPeriod);
+
+        // Collateral can only be returned if it has yet to be withdrawn.
+        require(!collateral.withdrawn);
 
         // ensure sufficient payment.
         require(
@@ -151,15 +153,17 @@ contract Collateralized is TermsContract {
     )
         public
     {
-        // fetch collateral object.
+        // fetch relevant collateral instance.
         Collateral memory collateral = collateralForAgreementID[agreementID];
 
-        // check if collateral is not empty, lockupPeriod is over and not withdrawn.
-        require(
-            collateral.lockupPeriod > 0 &&
-            block.timestamp > collateral.lockupPeriod &&
-            !collateral.withdrawn
-        );
+        // Ensure a valid form of collateral is tied to this agreement id.
+        require(collateral.lockupPeriod > 0);
+
+        // Seizure can only occur after the lockup period.
+        require(block.timestamp > collateral.lockupPeriod);
+
+        // Seizure can only occur if the collateral has yet to be withdrawn.
+        require(!collateral.withdrawn);
 
         // ensure debtor is in violation of the terms.
         require(
