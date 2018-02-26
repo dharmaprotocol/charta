@@ -35,12 +35,12 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
     let mockToken: MockERC20TokenContract;
     let mockRegistry: MockDebtRegistryContract;
 
-    const CONTRACT_OWNER = ACCOUNTS[0];
+    const CUSTODIAN = ACCOUNTS[0];
     const COLLATERALIZER = ACCOUNTS[1];
     const BENEFICIARY = ACCOUNTS[2];
     const ATTACKER = ACCOUNTS[3];
 
-    const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
+    const TX_DEFAULTS = { from: CUSTODIAN, gas: 4000000 };
 
     const COLLATERAL_AMOUNT = Units.ether(5);
 
@@ -139,7 +139,7 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
                 mockToken.address,
                 new BigNumber(10),
                 new BigNumber(moment().add(2, 'years').unix()),
-                { from: CONTRACT_OWNER } // the COLLATERALIZER has alloted an allowance, not the CONTRACT_OWNER
+                { from: ATTACKER }
             )).to.eventually.be.rejectedWith(REVERT_ERROR);
         });
       });
