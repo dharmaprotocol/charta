@@ -302,11 +302,17 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
 
             expect(logReturned).to.deep.equal(logExpected);
         });
+
+        it("should throw on any subsequent calls to withdraw", async () => {
+            await expect(collateralContract.returnCollateral.sendTransactionAsync(
+                AGREEMENT_ID
+            )).to.eventually.be.rejectedWith(REVERT_ERROR);
+        });
+
       });
   });
 
-    describe("#seizeCollateral", () => {
-    });
-
+  describe("#seizeCollateral", () => {
+  });
 
 });
