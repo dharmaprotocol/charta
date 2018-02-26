@@ -184,7 +184,7 @@ contract Collateralized is TermsContract {
         );
 
         // mark collateral as withdrawn once transfer has succeeded.
-        collateral.withdrawn = true;
+        collateralForAgreementID[agreementID].withdrawn = true;
 
         // log the seizure event.
         CollateralSeized(
