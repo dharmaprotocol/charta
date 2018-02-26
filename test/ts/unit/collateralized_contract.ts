@@ -74,16 +74,6 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
         // Step 3: Instantiate a statically-typed version of the contract.
         collateralContract = new DummyCollateralizedContractContract(collateralContractWeb3Contract, TX_DEFAULTS);
 
-        // The COLLATERALIZER begins with a balance of 5 ether.
-        await mockToken.mockBalanceOfFor.sendTransactionAsync(
-            COLLATERALIZER, COLLATERAL_AMOUNT,
-        );
-
-        // The COLLATERALIZER has granted an allowance to the collateralized contract.
-        await mockToken.mockAllowanceFor.sendTransactionAsync(
-            COLLATERALIZER, collateralContract.address, COLLATERAL_AMOUNT,
-        );
-
         // Initialize ABI Decoder for deciphering log receipts
         ABIDecoder.addABI(collateralContract.abi);
     });
