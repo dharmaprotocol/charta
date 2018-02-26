@@ -174,7 +174,7 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
 
             describe("...with terms contract's expected `tokenAddress`", () => {
 
-              const AMOUNT = Units.ether(1);
+                const AMOUNT = Units.ether(1);
 
                 before(async () => {
                     await router.repay.sendTransactionAsync(
