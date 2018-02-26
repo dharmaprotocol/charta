@@ -282,10 +282,42 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
         });
     });
 
+    describe("#unpackParametersFromBytes", () => {
+
+        const principalPlusInterest = Units.ether(200); // 200 ether.
+        const amortizationUnitType = new BigNumber(4); // unit code for years.
+        const termLength = new BigNumber(10); // term is for 10 years.
+
+        const inputParamsAsHex = hexifyParams(principalPlusInterest,
+            amortizationUnitType, termLength);
+
+        it("correctly unpacks parameters into their respective types given raw byte data", async () => {
+            let outputParams = await termsContract.unpackParametersFromBytes.callAsync(
+              inputParamsAsHex
+            );
+            expect(outputParams[0]).to.bignumber.equal(principalPlusInterest);
+            expect(outputParams[1]).to.bignumber.equal(amortizationUnitType);
+            expect(outputParams[2]).to.bignumber.equal(termLength);
+        });
+    });
+
     describe("#getExpectedRepaymentValue", () => {
 
         describe("when termsContract associated w/ debt agreement is not `this`", () => {
-            it("should throw");
+
+            before(async () => {
+                await mockRegistry.mockGetTermsContractReturnValueFor.sendTransactionAsync(
+                    ARBITRARY_AGREEMENT_ID,
+                    ATTACKER // this is an attacker's address and not the contract's address.
+                );
+            });
+
+            it("should throw", async () => {
+                await expect(termsContract.getExpectedRepaymentValue.callAsync(
+                    ARBITRARY_AGREEMENT_ID,
+                    new BigNumber(moment().unix())
+                )).to.eventually.be.rejectedWith(REVERT_ERROR);
+            });
         });
 
         describe("when termsContractParameters associated w/ debt agreement malformed", () => {
@@ -299,6 +331,11 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
             describe("amortizationUnitType is not one of the valid types", () => {
 
                 before(async () => {
+                  await mockRegistry.mockGetTermsContractReturnValueFor.sendTransactionAsync(
+                      ARBITRARY_AGREEMENT_ID,
+                      termsContract.address
+                  );
+
                     await mockRegistry.mockGetTermsContractParameters.sendTransactionAsync(
                         ARBITRARY_AGREEMENT_ID,
                         invalidTermsParams
@@ -335,16 +372,12 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
             const INSTALLMENT_AMOUNT = principalPlusInterest.div(termLength);
             const FULL_AMOUNT = principalPlusInterest;
 
-            it("unpacks valid params", async () => {
-                var params = await termsContract.unpackParametersFromBytes.callAsync(
-                  validTermsParams
-                );
-                expect(params[0]).to.bignumber.equal(principalPlusInterest);
-                expect(params[1]).to.bignumber.equal(amortizationUnitType);
-                expect(params[2]).to.bignumber.equal(termLength);
-            });
-
             before(async () => {
+                await mockRegistry.mockGetTermsContractReturnValueFor.sendTransactionAsync(
+                    ARBITRARY_AGREEMENT_ID,
+                    termsContract.address
+                );
+
                 await mockRegistry.mockGetTermsContractParameters.sendTransactionAsync(
                     ARBITRARY_AGREEMENT_ID,
                     validTermsParams

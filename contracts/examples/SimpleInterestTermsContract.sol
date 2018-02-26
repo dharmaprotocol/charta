@@ -54,6 +54,11 @@ contract SimpleInterestTermsContract is TermsContract {
       _;
     }
 
+    modifier onlyMappedToThisContract(bytes32 agreementId) {
+        require(address(this) == debtRegistry.getTermsContract(agreementId));
+        _;
+    }
+
     function SimpleInterestTermsContract(
         address _debtRegistry,
         address _repaymentToken,
@@ -107,6 +112,7 @@ contract SimpleInterestTermsContract is TermsContract {
     )
         public
         view
+        onlyMappedToThisContract(agreementId)
         returns (uint _expectedRepaymentValue)
     {
         SimpleInterestParams memory params = unpackParamsForAgreementID(agreementId);
