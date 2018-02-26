@@ -154,7 +154,7 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
             res = await web3.eth.getTransactionReceipt(txHash);
         });
 
-        it("should call `transferFrom` on specified token w/ specified parameters", async () => {
+        it("should call `transferFrom` on specified token w/ collateralContract as receipient", async () => {
             await expect(mockToken.wasTransferFromCalledWith.callAsync(
                 COLLATERALIZER,
                 collateralContract.address,
