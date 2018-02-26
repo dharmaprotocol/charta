@@ -300,10 +300,9 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
             res = await web3.eth.getTransactionReceipt(txHash);
         });
 
-        it("should call `transferFrom` on specified token w/ collateralizer as receipient", async () => {
-            await expect(mockToken.wasTransferFromCalledWith.callAsync(
-                collateralContract.address, // from the contract
-                COLLATERALIZER, // back to the collateralizer
+        it("should call `transfer` on specified token w/ collateralizer as receipient", async () => {
+            await expect(mockToken.wasTransferCalledWith.callAsync(
+                COLLATERALIZER,
                 COLLATERAL_AMOUNT,
             )).to.eventually.be.true;
         });
@@ -441,10 +440,9 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
           res = await web3.eth.getTransactionReceipt(txHash);
       });
 
-      it("should call `transferFrom` on specified token w/ beneficiary as receipient", async () => {
-          await expect(mockToken.wasTransferFromCalledWith.callAsync(
-              collateralContract.address, // from the contract
-              BENEFICIARY, // to the beneficiary
+      it("should call `transfer` on specified token w/ beneficiary as receipient", async () => {
+          await expect(mockToken.wasTransferCalledWith.callAsync(
+              BENEFICIARY,
               COLLATERAL_AMOUNT,
           )).to.eventually.be.true;
       });

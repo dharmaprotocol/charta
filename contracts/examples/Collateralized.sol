@@ -135,8 +135,7 @@ contract Collateralized is TermsContract {
 
         // transfer the collateral this contract was holding in escrow back to sender.
         require(
-            ERC20(collateral.token).transferFrom(
-                address(this),
+            ERC20(collateral.token).transfer(
                 collateral.collateralizer,
                 collateral.amount
             )
@@ -182,8 +181,7 @@ contract Collateralized is TermsContract {
 
         // seize collateral and transfer to beneficiary.
         require(
-            ERC20(collateral.token).transferFrom(
-                address(this),
+            ERC20(collateral.token).transfer(
                 beneficiary,
                 collateral.amount
             )
