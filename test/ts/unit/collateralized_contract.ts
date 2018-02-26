@@ -246,8 +246,64 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
                 DEFAULTED_AGREEMENT_ID
             )).to.eventually.be.rejectedWith(REVERT_ERROR);
         });
+      });
 
-    });
+      describe("the successful return of collateral", () => {
+
+        const AGREEMENT_ID = web3.sha3("this agreement will unwind as intended.");
+
+        let res: Web3.TransactionReceipt;
+
+        before(async () => {
+
+            await collateralContract.setDummyCollateral.sendTransactionAsync(
+                AGREEMENT_ID,
+                COLLATERALIZER,
+                mockToken.address,
+                COLLATERAL_AMOUNT,
+                new BigNumber(moment().subtract(1, 'month').unix()), // lockup period has expired.
+                false // collateral has not been withdrawn.
+            );
+
+            await collateralContract.setDummyExpectedRepaymentValue.sendTransactionAsync(
+                AGREEMENT_ID,
+                COLLATERAL_AMOUNT
+            );
+
+            await collateralContract.setDummyValueRepaid.sendTransactionAsync(
+                AGREEMENT_ID,
+                COLLATERAL_AMOUNT
+            );
+
+            const txHash = await collateralContract.returnCollateral.sendTransactionAsync(
+                AGREEMENT_ID
+            );
+
+            res = await web3.eth.getTransactionReceipt(txHash);
+        });
+
+        it("should call `transferFrom` on specified token w/ specified parameters", async () => {
+            await expect(mockToken.wasTransferFromCalledWith.callAsync(
+                collateralContract.address, // from the contract
+                COLLATERALIZER, // back to the collateralizer
+                COLLATERAL_AMOUNT,
+            )).to.eventually.be.true;
+        });
+
+        it("should emit log indicating that the collateral was returned", async () => {
+            const [logReturned] = ABIDecoder.decodeLogs(res.logs);
+            const logExpected = CollateralReturned(
+                collateralContract.address,
+                AGREEMENT_ID,
+                COLLATERALIZER,
+                mockToken.address,
+                COLLATERAL_AMOUNT
+            );
+
+            expect(logReturned).to.deep.equal(logExpected);
+        });
+      });
+  });
 
     describe("#seizeCollateral", () => {
     });
