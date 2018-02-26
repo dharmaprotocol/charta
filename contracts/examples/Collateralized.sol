@@ -78,7 +78,13 @@ contract Collateralized is TermsContract {
         // the lockup period must occur at some point in the future.
         require(lockupPeriodEndTimestamp > block.timestamp);
 
-        // the agreement cannot be collateralized more than once.
+        /*
+        Ensure that the agreement has not already been collateralized.
+
+        If the agreement has already been collateralized, this check will fail
+        because any valid form of collateral will have a non-zero lockupPeriod.
+        Only an uncollateralized agreement would meet this requirement.
+        */
         require(collateralForAgreementID[agreementID].lockupPeriod == 0);
 
         // the collateral must be successfully received by this contract.
