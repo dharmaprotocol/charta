@@ -113,26 +113,6 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
             )).to.eventually.be.rejectedWith(REVERT_ERROR);
         });
 
-        it("should throw if the agreement already has already been collateralized", async () => {
-            // We first colletaralize the contract.
-            await collateralContract.collateralize.sendTransactionAsync(
-                ARBITRARY_AGREEMENT_ID,
-                mockToken.address,
-                new BigNumber(5),
-                new BigNumber(moment().add(2, 'years').unix()),
-                { from: COLLATERALIZER }
-            );
-
-            // a second attempt to collateralize the contract should fail.
-            await expect(collateralContract.collateralize.sendTransactionAsync(
-                ARBITRARY_AGREEMENT_ID,
-                mockToken.address,
-                new BigNumber(10),
-                new BigNumber(moment().add(3, 'years').unix()),
-                { from: COLLATERALIZER }
-            )).to.eventually.be.rejectedWith(REVERT_ERROR);
-        });
-
         it("should throw if the collateral fails to transfer", async () => {
             await expect(collateralContract.collateralize.sendTransactionAsync(
                 ARBITRARY_AGREEMENT_ID,
