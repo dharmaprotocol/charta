@@ -293,6 +293,7 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
 
         it("unpacks valid params", async () => {
             var outputParams = await termsContract.unpackParametersFromBytes.callAsync(
+            let outputParams = await termsContract.unpackParametersFromBytes.callAsync(
               inputParamsAsHex
             );
             expect(outputParams[0]).to.bignumber.equal(principalPlusInterest);
