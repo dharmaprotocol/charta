@@ -3,17 +3,17 @@ import * as chai from "chai";
 import * as _ from "lodash";
 import * as Units from "../test_utils/units";
 
-import {DebtKernelContract} from "../../../types/generated/debt_kernel";
-import {RepaymentRouterContract} from "../../../types/generated/repayment_router";
-import {TokenTransferProxyContract} from "../../../types/generated/token_transfer_proxy";
+import { DebtKernelContract } from "../../../types/generated/debt_kernel";
+import { RepaymentRouterContract } from "../../../types/generated/repayment_router";
+import { TokenTransferProxyContract } from "../../../types/generated/token_transfer_proxy";
 
-import {MockERC20TokenContract} from "../../../types/generated/mock_e_r_c20_token";
+import { MockERC20TokenContract } from "../../../types/generated/mock_e_r_c20_token";
 
-import {BigNumberSetup} from "../test_utils/bignumber_setup";
+import { BigNumberSetup } from "../test_utils/bignumber_setup";
 import ChaiSetup from "../test_utils/chai_setup";
-import {INVALID_OPCODE, REVERT_ERROR} from "../test_utils/constants";
+import { INVALID_OPCODE, REVERT_ERROR } from "../test_utils/constants";
 
-import {LogError, LogRepayment} from "../logs/repayment_router";
+import { LogError, LogRepayment } from "../logs/repayment_router";
 
 // Set up Chai
 ChaiSetup.configure();
@@ -22,7 +22,7 @@ const expect = chai.expect;
 // Configure BigNumber exponentiation
 BigNumberSetup.configure();
 
-contract("Token Transfer Proxy (Unit Tests)", async (ACCOUNTS) => {
+contract("Token Transfer Proxy (Unit Tests)", async ACCOUNTS => {
     let proxy: TokenTransferProxyContract;
     let kernel: DebtKernelContract;
     let repaymentRouter: RepaymentRouterContract;
@@ -46,25 +46,31 @@ contract("Token Transfer Proxy (Unit Tests)", async (ACCOUNTS) => {
 
     describe("Initialization", () => {
         it("should list the kernel and repayment router as authorized transfer agents", async () => {
-            await expect(proxy.getAuthorizedTransferAgents.callAsync())
-                .to.eventually.deep.equal([kernel.address, repaymentRouter.address]);
+            await expect(proxy.getAuthorizedTransferAgents.callAsync()).to.eventually.deep.equal([
+                kernel.address,
+                repaymentRouter.address,
+            ]);
         });
     });
 
     describe("Authorizing and Revoking Transfer Agents", () => {
         describe("non-contract owner attempts to authorize transfer agent", () => {
             it("should throw", async () => {
-                await expect(proxy.addAuthorizedTransferAgent
-                    .sendTransactionAsync(ATTACKER, { from: ATTACKER }))
-                    .to.eventually.be.rejectedWith(REVERT_ERROR);
+                await expect(
+                    proxy.addAuthorizedTransferAgent.sendTransactionAsync(ATTACKER, {
+                        from: ATTACKER,
+                    }),
+                ).to.eventually.be.rejectedWith(REVERT_ERROR);
             });
         });
 
         describe("non-contract owner attempts to revoke transfer agent", () => {
             it("should throw", async () => {
-                await expect(proxy.revokeTransferAgentAuthorization
-                    .sendTransactionAsync(kernel.address, { from: ATTACKER }))
-                    .to.eventually.be.rejectedWith(REVERT_ERROR);
+                await expect(
+                    proxy.revokeTransferAgentAuthorization.sendTransactionAsync(kernel.address, {
+                        from: ATTACKER,
+                    }),
+                ).to.eventually.be.rejectedWith(REVERT_ERROR);
             });
         });
 
@@ -74,8 +80,9 @@ contract("Token Transfer Proxy (Unit Tests)", async (ACCOUNTS) => {
             });
 
             it("should return agent as authorized", async () => {
-                await expect(proxy.getAuthorizedTransferAgents.callAsync())
-                    .to.eventually.deep.equal([kernel.address, repaymentRouter.address, AGENT]);
+                await expect(
+                    proxy.getAuthorizedTransferAgents.callAsync(),
+                ).to.eventually.deep.equal([kernel.address, repaymentRouter.address, AGENT]);
             });
         });
 
@@ -85,8 +92,9 @@ contract("Token Transfer Proxy (Unit Tests)", async (ACCOUNTS) => {
             });
 
             it("should return agent as unauthorized", async () => {
-                await expect(proxy.getAuthorizedTransferAgents.callAsync())
-                    .to.eventually.deep.equal([kernel.address, repaymentRouter.address]);
+                await expect(
+                    proxy.getAuthorizedTransferAgents.callAsync(),
+                ).to.eventually.deep.equal([kernel.address, repaymentRouter.address]);
             });
         });
     });
@@ -94,12 +102,14 @@ contract("Token Transfer Proxy (Unit Tests)", async (ACCOUNTS) => {
     describe("#transferFrom", () => {
         describe("unauthorized agent attempts to transfer tokens via transfer proxy", () => {
             it("should throw", async () => {
-                await expect(proxy.transferFrom.sendTransactionAsync(
-                    mockToken.address,
-                    CONTRACT_OWNER,
-                    ATTACKER,
-                    Units.ether(1),
-                )).to.eventually.be.rejectedWith(REVERT_ERROR);
+                await expect(
+                    proxy.transferFrom.sendTransactionAsync(
+                        mockToken.address,
+                        CONTRACT_OWNER,
+                        ATTACKER,
+                        Units.ether(1),
+                    ),
+                ).to.eventually.be.rejectedWith(REVERT_ERROR);
             });
         });
 
@@ -116,11 +126,9 @@ contract("Token Transfer Proxy (Unit Tests)", async (ACCOUNTS) => {
             });
 
             it("should call transferFrom on specified token w/ specified parameters", async () => {
-                await expect(mockToken.wasTransferFromCalledWith.callAsync(
-                    SENDER,
-                    SENDEE,
-                    Units.ether(1),
-                )).to.eventually.be.true;
+                await expect(
+                    mockToken.wasTransferFromCalledWith.callAsync(SENDER, SENDEE, Units.ether(1)),
+                ).to.eventually.be.true;
             });
         });
     });

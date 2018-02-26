@@ -3,23 +3,23 @@ import * as chai from "chai";
 import * as _ from "lodash";
 import * as Units from "../test_utils/units";
 
-import {BigNumber} from "bignumber.js";
+import { BigNumber } from "bignumber.js";
 
-import {RepaymentRouterContract} from "../../../types/generated/repayment_router";
+import { RepaymentRouterContract } from "../../../types/generated/repayment_router";
 
-import {MockDebtRegistryContract} from "../../../types/generated/mock_debt_registry";
-import {MockERC20TokenContract} from "../../../types/generated/mock_e_r_c20_token";
-import {MockERC721TokenContract} from "../../../types/generated/mock_e_r_c721_token";
-import {MockTermsContractContract} from "../../../types/generated/mock_terms_contract";
-import {MockTokenTransferProxyContract} from "../../../types/generated/mock_token_transfer_proxy";
+import { MockDebtRegistryContract } from "../../../types/generated/mock_debt_registry";
+import { MockERC20TokenContract } from "../../../types/generated/mock_e_r_c20_token";
+import { MockERC721TokenContract } from "../../../types/generated/mock_e_r_c721_token";
+import { MockTermsContractContract } from "../../../types/generated/mock_terms_contract";
+import { MockTokenTransferProxyContract } from "../../../types/generated/mock_token_transfer_proxy";
 
-import {RepaymentRouterErrorCodes} from "../../../types/errors";
+import { RepaymentRouterErrorCodes } from "../../../types/errors";
 
-import {BigNumberSetup} from "../test_utils/bignumber_setup";
+import { BigNumberSetup } from "../test_utils/bignumber_setup";
 import ChaiSetup from "../test_utils/chai_setup";
-import {INVALID_OPCODE, REVERT_ERROR} from "../test_utils/constants";
+import { INVALID_OPCODE, REVERT_ERROR } from "../test_utils/constants";
 
-import {LogError, LogRepayment} from "../logs/repayment_router";
+import { LogError, LogRepayment } from "../logs/repayment_router";
 
 // Set up Chai
 ChaiSetup.configure();
@@ -30,7 +30,7 @@ BigNumberSetup.configure();
 
 const repaymentRouterContract = artifacts.require("RepaymentRouter");
 
-contract("Repayment Router (Unit Tests)", async (ACCOUNTS) => {
+contract("Repayment Router (Unit Tests)", async ACCOUNTS => {
     let router: RepaymentRouterContract;
 
     let mockToken: MockERC20TokenContract;
@@ -43,10 +43,10 @@ contract("Repayment Router (Unit Tests)", async (ACCOUNTS) => {
     const PAYER = ACCOUNTS[1];
     const BENEFICIARY = ACCOUNTS[2];
 
-    const TERMS_CONTRACT_PARAMETERS =
-        web3.sha3("any 32 byte hex value can represent the terms contract's parameters");
-    const ARBITRARY_AGREEMENT_ID =
-        web3.sha3("any 32 byte hex value can represent an agreement id");
+    const TERMS_CONTRACT_PARAMETERS = web3.sha3(
+        "any 32 byte hex value can represent the terms contract's parameters",
+    );
+    const ARBITRARY_AGREEMENT_ID = web3.sha3("any 32 byte hex value can represent an agreement id");
 
     const NON_FUNGIBLE_TOKEN_ID = new BigNumber(13);
 
@@ -61,13 +61,16 @@ contract("Repayment Router (Unit Tests)", async (ACCOUNTS) => {
         mockTermsContract = await MockTermsContractContract.deployed(web3, TX_DEFAULTS);
         mockTokenTransferProxy = await MockTokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
 
-        const repaymentRouterTruffle =
-            await repaymentRouterContract.new(mockRegistry.address, mockTokenTransferProxy.address);
+        const repaymentRouterTruffle = await repaymentRouterContract.new(
+            mockRegistry.address,
+            mockTokenTransferProxy.address,
+        );
 
         // The typings we use ingest vanilla Web3 contracts, so we convert the
         // contract instance deployed by truffle into a Web3 contract instance
-        const repaymentRouterWeb3Contract =
-            web3.eth.contract(repaymentRouterTruffle.abi).at(repaymentRouterTruffle.address);
+        const repaymentRouterWeb3Contract = web3.eth
+            .contract(repaymentRouterTruffle.abi)
+            .at(repaymentRouterTruffle.address);
 
         router = new RepaymentRouterContract(repaymentRouterWeb3Contract, TX_DEFAULTS);
 
@@ -88,37 +91,46 @@ contract("Repayment Router (Unit Tests)", async (ACCOUNTS) => {
                     NULL_ADDRESS,
                 );
 
-                const txHash = await router.repay.sendTransactionAsync(ARBITRARY_AGREEMENT_ID,
-                    Units.ether(1), mockToken.address);
+                const txHash = await router.repay.sendTransactionAsync(
+                    ARBITRARY_AGREEMENT_ID,
+                    Units.ether(1),
+                    mockToken.address,
+                );
                 const receipt = await web3.eth.getTransactionReceipt(txHash);
 
                 [errorLog] = _.compact(ABIDecoder.decodeLogs(receipt.logs));
             });
 
             it("should return DEBT_AGREEMENT_NONEXISTENT error", () => {
-                expect(errorLog).to.deep.equal(LogError(
-                    router.address,
-                    RepaymentRouterErrorCodes.DEBT_AGREEMENT_NONEXISTENT,
-                    ARBITRARY_AGREEMENT_ID,
-                ));
+                expect(errorLog).to.deep.equal(
+                    LogError(
+                        router.address,
+                        RepaymentRouterErrorCodes.DEBT_AGREEMENT_NONEXISTENT,
+                        ARBITRARY_AGREEMENT_ID,
+                    ),
+                );
             });
 
             it("should not transfer tokens from payer", async () => {
-                await expect(mockToken.wasTransferFromCalledWith.callAsync(
-                    NULL_ADDRESS,
-                    NULL_ADDRESS,
-                    Units.ether(1),
-                )).to.eventually.be.false;
+                await expect(
+                    mockToken.wasTransferFromCalledWith.callAsync(
+                        NULL_ADDRESS,
+                        NULL_ADDRESS,
+                        Units.ether(1),
+                    ),
+                ).to.eventually.be.false;
             });
 
             it("should not register repayment with terms contract", async () => {
-                await expect(mockTermsContract.wasRegisterRepaymentCalledWith.callAsync(
-                    ARBITRARY_AGREEMENT_ID,
-                    NULL_ADDRESS,
-                    NULL_ADDRESS,
-                    Units.ether(1),
-                    mockToken.address,
-                )).to.eventually.be.false;
+                await expect(
+                    mockTermsContract.wasRegisterRepaymentCalledWith.callAsync(
+                        ARBITRARY_AGREEMENT_ID,
+                        NULL_ADDRESS,
+                        NULL_ADDRESS,
+                        Units.ether(1),
+                        mockToken.address,
+                    ),
+                ).to.eventually.be.false;
             });
         });
 
@@ -146,45 +158,58 @@ contract("Repayment Router (Unit Tests)", async (ACCOUNTS) => {
 
                 before(async () => {
                     await mockToken.mockBalanceOfFor.sendTransactionAsync(
-                        PAYER, Units.ether(1).minus(1),
+                        PAYER,
+                        Units.ether(1).minus(1),
                     );
 
                     await mockToken.mockAllowanceFor.sendTransactionAsync(
-                        PAYER, router.address, Units.ether(1),
+                        PAYER,
+                        router.address,
+                        Units.ether(1),
                     );
 
-                    const txHash = await router.repay.sendTransactionAsync(ARBITRARY_AGREEMENT_ID,
-                        Units.ether(1), mockToken.address, { from: PAYER });
+                    const txHash = await router.repay.sendTransactionAsync(
+                        ARBITRARY_AGREEMENT_ID,
+                        Units.ether(1),
+                        mockToken.address,
+                        { from: PAYER },
+                    );
                     const receipt = await web3.eth.getTransactionReceipt(txHash);
 
                     [errorLog] = _.compact(ABIDecoder.decodeLogs(receipt.logs));
                 });
 
                 it("should return PAYER_BALANCE_OR_ALLOWANCE_INSUFFICIENT error", () => {
-                    expect(errorLog).to.deep.equal(LogError(
-                        router.address,
-                        RepaymentRouterErrorCodes.PAYER_BALANCE_OR_ALLOWANCE_INSUFFICIENT,
-                        ARBITRARY_AGREEMENT_ID,
-                    ));
+                    expect(errorLog).to.deep.equal(
+                        LogError(
+                            router.address,
+                            RepaymentRouterErrorCodes.PAYER_BALANCE_OR_ALLOWANCE_INSUFFICIENT,
+                            ARBITRARY_AGREEMENT_ID,
+                        ),
+                    );
                 });
 
                 it("should not transfer tokens from payer", async () => {
-                    await expect(mockTokenTransferProxy.wasTransferFromCalledWith.callAsync(
-                        mockToken.address,
-                        PAYER,
-                        BENEFICIARY,
-                        Units.ether(1),
-                    )).to.eventually.be.false;
+                    await expect(
+                        mockTokenTransferProxy.wasTransferFromCalledWith.callAsync(
+                            mockToken.address,
+                            PAYER,
+                            BENEFICIARY,
+                            Units.ether(1),
+                        ),
+                    ).to.eventually.be.false;
                 });
 
                 it("should not register repayment with terms contract", async () => {
-                    await expect(mockTermsContract.wasRegisterRepaymentCalledWith.callAsync(
-                        ARBITRARY_AGREEMENT_ID,
-                        PAYER,
-                        BENEFICIARY,
-                        Units.ether(1),
-                        mockToken.address,
-                    )).to.eventually.be.false;
+                    await expect(
+                        mockTermsContract.wasRegisterRepaymentCalledWith.callAsync(
+                            ARBITRARY_AGREEMENT_ID,
+                            PAYER,
+                            BENEFICIARY,
+                            Units.ether(1),
+                            mockToken.address,
+                        ),
+                    ).to.eventually.be.false;
                 });
             });
 
@@ -192,46 +217,56 @@ contract("Repayment Router (Unit Tests)", async (ACCOUNTS) => {
                 let errorLog: ABIDecoder.DecodedLog;
 
                 before(async () => {
-                    await mockToken.mockBalanceOfFor.sendTransactionAsync(
-                        PAYER, Units.ether(1),
-                    );
+                    await mockToken.mockBalanceOfFor.sendTransactionAsync(PAYER, Units.ether(1));
 
                     await mockToken.mockAllowanceFor.sendTransactionAsync(
-                        PAYER, mockTokenTransferProxy.address, Units.ether(1).minus(1),
+                        PAYER,
+                        mockTokenTransferProxy.address,
+                        Units.ether(1).minus(1),
                     );
 
-                    const txHash = await router.repay.sendTransactionAsync(ARBITRARY_AGREEMENT_ID,
-                        Units.ether(1), mockToken.address, { from: PAYER });
+                    const txHash = await router.repay.sendTransactionAsync(
+                        ARBITRARY_AGREEMENT_ID,
+                        Units.ether(1),
+                        mockToken.address,
+                        { from: PAYER },
+                    );
                     const receipt = await web3.eth.getTransactionReceipt(txHash);
 
                     [errorLog] = _.compact(ABIDecoder.decodeLogs(receipt.logs));
                 });
 
                 it("should return PAYER_BALANCE_OR_ALLOWANCE_INSUFFICIENT error", () => {
-                    expect(errorLog).to.deep.equal(LogError(
-                        router.address,
-                        RepaymentRouterErrorCodes.PAYER_BALANCE_OR_ALLOWANCE_INSUFFICIENT,
-                        ARBITRARY_AGREEMENT_ID,
-                    ));
+                    expect(errorLog).to.deep.equal(
+                        LogError(
+                            router.address,
+                            RepaymentRouterErrorCodes.PAYER_BALANCE_OR_ALLOWANCE_INSUFFICIENT,
+                            ARBITRARY_AGREEMENT_ID,
+                        ),
+                    );
                 });
 
                 it("should not transfer tokens from payer", async () => {
-                    await expect(mockTokenTransferProxy.wasTransferFromCalledWith.callAsync(
-                        mockToken.address,
-                        PAYER,
-                        BENEFICIARY,
-                        Units.ether(1),
-                    )).to.eventually.be.false;
+                    await expect(
+                        mockTokenTransferProxy.wasTransferFromCalledWith.callAsync(
+                            mockToken.address,
+                            PAYER,
+                            BENEFICIARY,
+                            Units.ether(1),
+                        ),
+                    ).to.eventually.be.false;
                 });
 
                 it("should not register repayment with terms contract", async () => {
-                    await expect(mockTermsContract.wasRegisterRepaymentCalledWith.callAsync(
-                        ARBITRARY_AGREEMENT_ID,
-                        PAYER,
-                        BENEFICIARY,
-                        Units.ether(1),
-                        mockToken.address,
-                    )).to.eventually.be.false;
+                    await expect(
+                        mockTermsContract.wasRegisterRepaymentCalledWith.callAsync(
+                            ARBITRARY_AGREEMENT_ID,
+                            PAYER,
+                            BENEFICIARY,
+                            Units.ether(1),
+                            mockToken.address,
+                        ),
+                    ).to.eventually.be.false;
                 });
             });
 
@@ -239,38 +274,48 @@ contract("Repayment Router (Unit Tests)", async (ACCOUNTS) => {
                 let errorLog: ABIDecoder.DecodedLog;
 
                 before(async () => {
-                    await mockToken.mockBalanceOfFor.sendTransactionAsync(
-                        PAYER, Units.ether(1),
-                    );
+                    await mockToken.mockBalanceOfFor.sendTransactionAsync(PAYER, Units.ether(1));
 
                     await mockToken.mockAllowanceFor.sendTransactionAsync(
-                        PAYER, mockTokenTransferProxy.address, Units.ether(1),
+                        PAYER,
+                        mockTokenTransferProxy.address,
+                        Units.ether(1),
                     );
 
-                    await mockTermsContract.mockRegisterRepaymentReturnValue.sendTransactionAsync(false);
+                    await mockTermsContract.mockRegisterRepaymentReturnValue.sendTransactionAsync(
+                        false,
+                    );
 
-                    const txHash = await router.repay.sendTransactionAsync(ARBITRARY_AGREEMENT_ID,
-                        Units.ether(1), mockToken.address, { from: PAYER });
+                    const txHash = await router.repay.sendTransactionAsync(
+                        ARBITRARY_AGREEMENT_ID,
+                        Units.ether(1),
+                        mockToken.address,
+                        { from: PAYER },
+                    );
                     const receipt = await web3.eth.getTransactionReceipt(txHash);
 
                     [errorLog] = _.compact(ABIDecoder.decodeLogs(receipt.logs));
                 });
 
                 it("should return ROUTER_UNAUTHORIZED_TO_REPORT_REPAYMENT error", () => {
-                    expect(errorLog).to.deep.equal(LogError(
-                        router.address,
-                        RepaymentRouterErrorCodes.ROUTER_UNAUTHORIZED_TO_REPORT_REPAYMENT,
-                        ARBITRARY_AGREEMENT_ID,
-                    ));
+                    expect(errorLog).to.deep.equal(
+                        LogError(
+                            router.address,
+                            RepaymentRouterErrorCodes.ROUTER_UNAUTHORIZED_TO_REPORT_REPAYMENT,
+                            ARBITRARY_AGREEMENT_ID,
+                        ),
+                    );
                 });
 
                 it("should not transfer tokens from payer", async () => {
-                    await expect(mockTokenTransferProxy.wasTransferFromCalledWith.callAsync(
-                        mockToken.address,
-                        PAYER,
-                        BENEFICIARY,
-                        Units.ether(1),
-                    )).to.eventually.be.false;
+                    await expect(
+                        mockTokenTransferProxy.wasTransferFromCalledWith.callAsync(
+                            mockToken.address,
+                            PAYER,
+                            BENEFICIARY,
+                            Units.ether(1),
+                        ),
+                    ).to.eventually.be.false;
                 });
             });
 
@@ -278,51 +323,63 @@ contract("Repayment Router (Unit Tests)", async (ACCOUNTS) => {
                 let repaymentLog: ABIDecoder.DecodedLog;
 
                 before(async () => {
-                    await mockToken.mockBalanceOfFor.sendTransactionAsync(
-                        PAYER, Units.ether(1),
-                    );
+                    await mockToken.mockBalanceOfFor.sendTransactionAsync(PAYER, Units.ether(1));
 
                     await mockToken.mockAllowanceFor.sendTransactionAsync(
-                        PAYER, mockTokenTransferProxy.address, Units.ether(1),
+                        PAYER,
+                        mockTokenTransferProxy.address,
+                        Units.ether(1),
                     );
 
-                    await mockTermsContract.mockRegisterRepaymentReturnValue.sendTransactionAsync(true);
+                    await mockTermsContract.mockRegisterRepaymentReturnValue.sendTransactionAsync(
+                        true,
+                    );
 
-                    const txHash = await router.repay.sendTransactionAsync(ARBITRARY_AGREEMENT_ID,
-                        Units.ether(1), mockToken.address, { from: PAYER });
+                    const txHash = await router.repay.sendTransactionAsync(
+                        ARBITRARY_AGREEMENT_ID,
+                        Units.ether(1),
+                        mockToken.address,
+                        { from: PAYER },
+                    );
                     const receipt = await web3.eth.getTransactionReceipt(txHash);
 
                     [repaymentLog] = _.compact(ABIDecoder.decodeLogs(receipt.logs));
                 });
 
                 it("should transfer tokens of specified amount from payer", async () => {
-                    await expect(mockTokenTransferProxy.wasTransferFromCalledWith.callAsync(
-                        mockToken.address,
-                        PAYER,
-                        BENEFICIARY,
-                        Units.ether(1),
-                    )).to.eventually.be.true;
+                    await expect(
+                        mockTokenTransferProxy.wasTransferFromCalledWith.callAsync(
+                            mockToken.address,
+                            PAYER,
+                            BENEFICIARY,
+                            Units.ether(1),
+                        ),
+                    ).to.eventually.be.true;
                 });
 
                 it("should register repayment with terms contract", async () => {
-                    await expect(mockTermsContract.wasRegisterRepaymentCalledWith.callAsync(
-                        ARBITRARY_AGREEMENT_ID,
-                        PAYER,
-                        BENEFICIARY,
-                        Units.ether(1),
-                        mockToken.address,
-                    )).to.eventually.be.true;
+                    await expect(
+                        mockTermsContract.wasRegisterRepaymentCalledWith.callAsync(
+                            ARBITRARY_AGREEMENT_ID,
+                            PAYER,
+                            BENEFICIARY,
+                            Units.ether(1),
+                            mockToken.address,
+                        ),
+                    ).to.eventually.be.true;
                 });
 
                 it("should emit repayment log", () => {
-                    expect(repaymentLog).to.deep.equal(LogRepayment(
-                        router.address,
-                        ARBITRARY_AGREEMENT_ID,
-                        PAYER,
-                        BENEFICIARY,
-                        Units.ether(1),
-                        mockToken.address,
-                    ));
+                    expect(repaymentLog).to.deep.equal(
+                        LogRepayment(
+                            router.address,
+                            ARBITRARY_AGREEMENT_ID,
+                            PAYER,
+                            BENEFICIARY,
+                            Units.ether(1),
+                            mockToken.address,
+                        ),
+                    );
                 });
             });
         });
@@ -330,17 +387,27 @@ contract("Repayment Router (Unit Tests)", async (ACCOUNTS) => {
         describe("Global Invariants", () => {
             describe("called with null token address", () => {
                 it("should throw", async () => {
-                    await expect(router.repay.sendTransactionAsync(ARBITRARY_AGREEMENT_ID,
-                        Units.ether(1), NULL_ADDRESS, { from: PAYER }))
-                        .to.eventually.be.rejectedWith(REVERT_ERROR);
+                    await expect(
+                        router.repay.sendTransactionAsync(
+                            ARBITRARY_AGREEMENT_ID,
+                            Units.ether(1),
+                            NULL_ADDRESS,
+                            { from: PAYER },
+                        ),
+                    ).to.eventually.be.rejectedWith(REVERT_ERROR);
                 });
             });
 
             describe("called with zero token amount", () => {
                 it("should throw", async () => {
-                    await expect(router.repay.sendTransactionAsync(ARBITRARY_AGREEMENT_ID,
-                        new BigNumber(0), mockToken.address, { from: PAYER }))
-                        .to.eventually.be.rejectedWith(REVERT_ERROR);
+                    await expect(
+                        router.repay.sendTransactionAsync(
+                            ARBITRARY_AGREEMENT_ID,
+                            new BigNumber(0),
+                            mockToken.address,
+                            { from: PAYER },
+                        ),
+                    ).to.eventually.be.rejectedWith(REVERT_ERROR);
                 });
             });
         });

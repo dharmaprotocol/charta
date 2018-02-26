@@ -1,20 +1,13 @@
-import {promisify} from "@0xproject/utils";
-import {BigNumber} from "bignumber.js";
+import { promisify } from "@0xproject/utils";
+import { BigNumber } from "bignumber.js";
 import * as crypto from "crypto";
 import * as Web3 from "web3";
 import * as solidity from "../../utils/solidity";
 
 import ethUtil = require("ethereumjs-util");
-import {
-    Address,
-    Bytes32,
-    UInt,
-} from "../common";
-import {
-    IssuanceCommitmentParams,
-    Signatories,
-} from "./schema";
-import {ECDSASignature, SignableMessage} from "./signable_message";
+import { Address, Bytes32, UInt } from "../common";
+import { IssuanceCommitmentParams, Signatories } from "./schema";
+import { ECDSASignature, SignableMessage } from "./signable_message";
 
 const NULL_ADDRESS = "0x0000000000000000000000000000000000000000";
 const NULL_SIGNATURE = { r: "0x0", s: "0x0", v: 0 };
@@ -60,17 +53,15 @@ export class IssuanceCommitment extends SignableMessage {
         web3: Web3,
         signatories: Signatories = {},
     ): Promise<SignedIssuanceCommitment> {
-        const debtorSignature = signatories.debtor ?
-            await this.getSignature(web3, signatories.debtor) : NULL_SIGNATURE;
+        const debtorSignature = signatories.debtor
+            ? await this.getSignature(web3, signatories.debtor)
+            : NULL_SIGNATURE;
 
-        const underwriterSignature = signatories.underwriter ?
-            await this.getSignature(web3, signatories.underwriter) : NULL_SIGNATURE;
+        const underwriterSignature = signatories.underwriter
+            ? await this.getSignature(web3, signatories.underwriter)
+            : NULL_SIGNATURE;
 
-        return new SignedIssuanceCommitment(
-            this,
-            debtorSignature,
-            underwriterSignature,
-        );
+        return new SignedIssuanceCommitment(this, debtorSignature, underwriterSignature);
     }
 
     public getHash(): string {
@@ -120,10 +111,7 @@ export class SignedIssuanceCommitment extends IssuanceCommitment {
     }
 
     public getIssuanceValues(): BigNumber[] {
-        return [
-            this.getUnderwriterRiskRating(),
-            this.getSalt(),
-        ];
+        return [this.getUnderwriterRiskRating(), this.getSalt()];
     }
 
     public getUnderwriterSignature(): ECDSASignature {
@@ -131,16 +119,10 @@ export class SignedIssuanceCommitment extends IssuanceCommitment {
     }
 
     public getSignaturesS(): Bytes32[] {
-        return [
-            this.issuerSignature.s,
-            this.underwriterSignature.s,
-        ];
+        return [this.issuerSignature.s, this.underwriterSignature.s];
     }
 
     public getSignaturesV(): number[] {
-        return [
-            this.issuerSignature.v,
-            this.underwriterSignature.v,
-        ];
+        return [this.issuerSignature.v, this.underwriterSignature.v];
     }
 }

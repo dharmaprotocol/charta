@@ -1,6 +1,6 @@
 import * as _ from "lodash";
-import {DebtOrder, SignedDebtOrder} from "../../../types/kernel/debt_order";
-import {IssuanceCommitment} from "../../../types/kernel/issuance_commitment";
+import { DebtOrder, SignedDebtOrder } from "../../../types/kernel/debt_order";
+import { IssuanceCommitment } from "../../../types/kernel/issuance_commitment";
 
 export class DebtOrderFactory {
     private defaultParams: { [key: string]: any };
@@ -14,14 +14,17 @@ export class DebtOrderFactory {
 
         Object.assign(params, modifications);
 
-        const issuance = new IssuanceCommitment({
-            debtor: params.debtor,
-            termsContract: params.termsContract,
-            termsContractParameters: params.termsContractParameters,
-            underwriter: params.underwriter,
-            underwriterRiskRating: params.underwriterRiskRating,
-            version: params.issuanceVersion,
-        }, params.salt);
+        const issuance = new IssuanceCommitment(
+            {
+                debtor: params.debtor,
+                termsContract: params.termsContract,
+                termsContractParameters: params.termsContractParameters,
+                underwriter: params.underwriter,
+                underwriterRiskRating: params.underwriterRiskRating,
+                version: params.issuanceVersion,
+            },
+            params.salt,
+        );
 
         const debtOrder = new DebtOrder({
             creditorFee: params.creditorFee,

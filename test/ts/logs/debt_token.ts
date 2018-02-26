@@ -1,4 +1,4 @@
-import {Address, Log, UInt} from "../../../types/common";
+import { Address, Log, UInt } from "../../../types/common";
 
 import * as ABIDecoder from "abi-decoder";
 import * as BigNumber from "bignumber.js";
@@ -13,10 +13,7 @@ export function LogMint(
 ): ABIDecoder.DecodedLog {
     return {
         address: contract,
-        events: LogUtils.getParams([
-            ["_to", to],
-            ["_tokenId", tokenId],
-        ]),
+        events: LogUtils.getParams([["_to", to], ["_tokenId", tokenId]]),
         name: "Mint",
     };
 }
@@ -29,11 +26,7 @@ export function LogTransfer(
 ): ABIDecoder.DecodedLog {
     return {
         address: contract,
-        events: LogUtils.getParams([
-            ["_from", from],
-            ["_to", to],
-            ["_tokenId", tokenId],
-        ]),
+        events: LogUtils.getParams([["_from", from], ["_to", to], ["_tokenId", tokenId]]),
         name: "Transfer",
     };
 }
@@ -46,7 +39,11 @@ export function LogApproval(
 ): ABIDecoder.DecodedLog {
     return {
         address: contract,
-        events: LogUtils.getParams([["_owner", owner], ["_approved", approved], ["_tokenId", tokenId]]),
+        events: LogUtils.getParams([
+            ["_owner", owner],
+            ["_approved", approved],
+            ["_tokenId", tokenId],
+        ]),
         name: "Approval",
     };
 }

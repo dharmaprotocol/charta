@@ -1,9 +1,9 @@
 import * as BigNumber from "bignumber.js";
 import * as chai from "chai";
 import * as Web3 from "web3";
-import {DummyContractContract} from "../../../types/generated/dummy_contract";
+import { DummyContractContract } from "../../../types/generated/dummy_contract";
 import ChaiSetup from "../test_utils/chai_setup";
-import {INVALID_OPCODE} from "../test_utils/constants.js";
+import { INVALID_OPCODE } from "../test_utils/constants.js";
 
 ChaiSetup.configure();
 const expect = chai.expect;
@@ -11,7 +11,7 @@ const expect = chai.expect;
 const permissionsLibraryContract = artifacts.require("PermissionsLib");
 const dummyContract = artifacts.require("DummyContract");
 
-contract("Permissions", (ACCOUNTS) => {
+contract("Permissions", ACCOUNTS => {
     const USER = ACCOUNTS[0];
     const AGENTS = [ACCOUNTS[1], ACCOUNTS[2], ACCOUNTS[3]];
     const INQUIRER = ACCOUNTS[4];
@@ -34,8 +34,7 @@ contract("Permissions", (ACCOUNTS) => {
                 permissionsLibrary.authorize("0x", USER);
             };
 
-            expect(authorizeF)
-                .to.throw(TypeError, /not a function/);
+            expect(authorizeF).to.throw(TypeError, /not a function/);
         });
 
         it("should not publicly expose revocation function", async () => {
@@ -43,8 +42,7 @@ contract("Permissions", (ACCOUNTS) => {
                 permissionsLibrary.revokeAuthorization("0x", USER);
             };
 
-            expect(revokeF)
-                .to.throw(TypeError, /not a function/);
+            expect(revokeF).to.throw(TypeError, /not a function/);
         });
     });
 
@@ -60,26 +58,32 @@ contract("Permissions", (ACCOUNTS) => {
 
         before(async () => {
             const dummyContractTruffleInstance = await dummyContract.deployed();
-            const dummyContractWeb3Contract =
-                web3.eth.contract(dummyContractTruffleInstance.abi)
-                    .at(dummyContractTruffleInstance.address);
-            dummyContractInstance = new DummyContractContract(dummyContractWeb3Contract, TX_DEFAULTS);
+            const dummyContractWeb3Contract = web3.eth
+                .contract(dummyContractTruffleInstance.abi)
+                .at(dummyContractTruffleInstance.address);
+            dummyContractInstance = new DummyContractContract(
+                dummyContractWeb3Contract,
+                TX_DEFAULTS,
+            );
         });
 
         it("should start with empty permission sets", async () => {
-            await expect(dummyContractInstance.getFirstSetAuthorizedAgents.callAsync())
-                .to.eventually.deep.equal([]);
+            await expect(
+                dummyContractInstance.getFirstSetAuthorizedAgents.callAsync(),
+            ).to.eventually.deep.equal([]);
         });
 
         describe("authorizations", () => {
             it("starts with all agents unauthorized", async () => {
-                const firstSetPromises = AGENTS.map((agent) => {
-                    return expect(dummyContractInstance.isAuthorizedInFirstSet.callAsync(agent))
-                        .to.eventually.equal(false);
+                const firstSetPromises = AGENTS.map(agent => {
+                    return expect(
+                        dummyContractInstance.isAuthorizedInFirstSet.callAsync(agent),
+                    ).to.eventually.equal(false);
                 });
-                const secondSetPromises = AGENTS.map((agent) => {
-                    return expect(dummyContractInstance.isAuthorizedInSecondSet.callAsync(agent))
-                        .to.eventually.equal(false);
+                const secondSetPromises = AGENTS.map(agent => {
+                    return expect(
+                        dummyContractInstance.isAuthorizedInSecondSet.callAsync(agent),
+                    ).to.eventually.equal(false);
                 });
 
                 return Promise.all([...firstSetPromises, ...secondSetPromises]);
@@ -91,19 +95,21 @@ contract("Permissions", (ACCOUNTS) => {
                 });
 
                 it("authorizes first agent in first set", async () => {
-                    expect(dummyContractInstance
-                        .isAuthorizedInFirstSet.callAsync(AGENTS[0])).to.eventually.equal(true);
+                    expect(
+                        dummyContractInstance.isAuthorizedInFirstSet.callAsync(AGENTS[0]),
+                    ).to.eventually.equal(true);
                 });
 
                 it("doesn't authorize first agent in second set", async () => {
-                    expect(dummyContractInstance
-                        .isAuthorizedInSecondSet.callAsync(AGENTS[0])).to.eventually.equal(false);
+                    expect(
+                        dummyContractInstance.isAuthorizedInSecondSet.callAsync(AGENTS[0]),
+                    ).to.eventually.equal(false);
                 });
 
                 it("returns correct authorized agents for first set", async () => {
-                    expect(dummyContractInstance
-                        .getFirstSetAuthorizedAgents.callAsync())
-                        .to.eventually.deep.equal([AGENTS[0]]);
+                    expect(
+                        dummyContractInstance.getFirstSetAuthorizedAgents.callAsync(),
+                    ).to.eventually.deep.equal([AGENTS[0]]);
                 });
             });
 
@@ -113,24 +119,27 @@ contract("Permissions", (ACCOUNTS) => {
                 });
 
                 it("authorizes second agent in first set", async () => {
-                    expect(dummyContractInstance
-                        .isAuthorizedInFirstSet.callAsync(AGENTS[1])).to.eventually.equal(true);
+                    expect(
+                        dummyContractInstance.isAuthorizedInFirstSet.callAsync(AGENTS[1]),
+                    ).to.eventually.equal(true);
                 });
 
                 it("maintains first agent authorization in first set", async () => {
-                    expect(dummyContractInstance
-                        .isAuthorizedInFirstSet.callAsync(AGENTS[0])).to.eventually.equal(true);
+                    expect(
+                        dummyContractInstance.isAuthorizedInFirstSet.callAsync(AGENTS[0]),
+                    ).to.eventually.equal(true);
                 });
 
                 it("doesn't authorize second agent in second set", async () => {
-                    expect(dummyContractInstance
-                        .isAuthorizedInSecondSet.callAsync(AGENTS[1])).to.eventually.equal(false);
+                    expect(
+                        dummyContractInstance.isAuthorizedInSecondSet.callAsync(AGENTS[1]),
+                    ).to.eventually.equal(false);
                 });
 
                 it("returns correct authorized agents for first set", async () => {
-                    expect(dummyContractInstance
-                        .getFirstSetAuthorizedAgents.callAsync())
-                        .to.eventually.deep.equal([AGENTS[0], AGENTS[1]]);
+                    expect(
+                        dummyContractInstance.getFirstSetAuthorizedAgents.callAsync(),
+                    ).to.eventually.deep.equal([AGENTS[0], AGENTS[1]]);
                 });
             });
 
@@ -140,42 +149,47 @@ contract("Permissions", (ACCOUNTS) => {
                 });
 
                 it("authorizes third agent in first set", async () => {
-                    expect(dummyContractInstance
-                        .isAuthorizedInFirstSet.callAsync(AGENTS[2])).to.eventually.equal(true);
+                    expect(
+                        dummyContractInstance.isAuthorizedInFirstSet.callAsync(AGENTS[2]),
+                    ).to.eventually.equal(true);
                 });
 
                 it("doesn't authorize third agent in second set", async () => {
-                    expect(dummyContractInstance
-                        .isAuthorizedInSecondSet.callAsync(AGENTS[2])).to.eventually.equal(false);
+                    expect(
+                        dummyContractInstance.isAuthorizedInSecondSet.callAsync(AGENTS[2]),
+                    ).to.eventually.equal(false);
                 });
 
                 it("returns correct authorized agents for second set", async () => {
-                    expect(dummyContractInstance
-                        .getFirstSetAuthorizedAgents.callAsync())
-                        .to.eventually
-                        .deep.equal([AGENTS[0], AGENTS[1], AGENTS[2]]);
+                    expect(
+                        dummyContractInstance.getFirstSetAuthorizedAgents.callAsync(),
+                    ).to.eventually.deep.equal([AGENTS[0], AGENTS[1], AGENTS[2]]);
                 });
             });
 
             describe("user authorizes third agent in second set", () => {
                 before(async () => {
-                    await dummyContractInstance.authorizeInSecondSet.sendTransactionAsync(AGENTS[2]);
+                    await dummyContractInstance.authorizeInSecondSet.sendTransactionAsync(
+                        AGENTS[2],
+                    );
                 });
 
                 it("authorizes third agent in second set", async () => {
-                    expect(dummyContractInstance
-                        .isAuthorizedInSecondSet.callAsync(AGENTS[2])).to.eventually.equal(true);
+                    expect(
+                        dummyContractInstance.isAuthorizedInSecondSet.callAsync(AGENTS[2]),
+                    ).to.eventually.equal(true);
                 });
 
                 it("maintains third agent authorization in first set", async () => {
-                    expect(dummyContractInstance
-                        .isAuthorizedInFirstSet.callAsync(AGENTS[2])).to.eventually.equal(true);
+                    expect(
+                        dummyContractInstance.isAuthorizedInFirstSet.callAsync(AGENTS[2]),
+                    ).to.eventually.equal(true);
                 });
 
                 it("returns correct authorized agents for second set", async () => {
-                    expect(dummyContractInstance
-                        .getSecondSetAuthorizedAgents.callAsync())
-                        .to.eventually.deep.equal([AGENTS[2]]);
+                    expect(
+                        dummyContractInstance.getSecondSetAuthorizedAgents.callAsync(),
+                    ).to.eventually.deep.equal([AGENTS[2]]);
                 });
             });
         });
@@ -187,14 +201,15 @@ contract("Permissions", (ACCOUNTS) => {
                 });
 
                 it("revokes second agent in first set", () => {
-                    expect(dummyContractInstance
-                        .isAuthorizedInFirstSet.callAsync(AGENTS[1])).to.eventually.equal(false);
+                    expect(
+                        dummyContractInstance.isAuthorizedInFirstSet.callAsync(AGENTS[1]),
+                    ).to.eventually.equal(false);
                 });
 
                 it("returns correct authorized agents for first set", () => {
-                    expect(dummyContractInstance
-                        .getFirstSetAuthorizedAgents.callAsync())
-                        .to.eventually.deep.equal([AGENTS[0], AGENTS[2]]);
+                    expect(
+                        dummyContractInstance.getFirstSetAuthorizedAgents.callAsync(),
+                    ).to.eventually.deep.equal([AGENTS[0], AGENTS[2]]);
                 });
             });
 
@@ -204,19 +219,21 @@ contract("Permissions", (ACCOUNTS) => {
                 });
 
                 it("revokes third agent in first set", () => {
-                    expect(dummyContractInstance
-                        .isAuthorizedInFirstSet.callAsync(AGENTS[2])).to.eventually.equal(false);
+                    expect(
+                        dummyContractInstance.isAuthorizedInFirstSet.callAsync(AGENTS[2]),
+                    ).to.eventually.equal(false);
                 });
 
                 it("maintains third agent authorization in second set", () => {
-                    expect(dummyContractInstance
-                        .isAuthorizedInSecondSet.callAsync(AGENTS[2])).to.eventually.equal(true);
+                    expect(
+                        dummyContractInstance.isAuthorizedInSecondSet.callAsync(AGENTS[2]),
+                    ).to.eventually.equal(true);
                 });
 
                 it("returns correct authorized agents for first set", () => {
-                    expect(dummyContractInstance
-                        .getFirstSetAuthorizedAgents.callAsync())
-                        .to.eventually.deep.equal([AGENTS[0]]);
+                    expect(
+                        dummyContractInstance.getFirstSetAuthorizedAgents.callAsync(),
+                    ).to.eventually.deep.equal([AGENTS[0]]);
                 });
             });
 
@@ -226,14 +243,15 @@ contract("Permissions", (ACCOUNTS) => {
                 });
 
                 it("revokes third agent in first set", () => {
-                    expect(dummyContractInstance
-                        .isAuthorizedInSecondSet.callAsync(AGENTS[2])).to.eventually.equal(false);
+                    expect(
+                        dummyContractInstance.isAuthorizedInSecondSet.callAsync(AGENTS[2]),
+                    ).to.eventually.equal(false);
                 });
 
                 it("returns correct authorized agents for first set", () => {
-                    expect(dummyContractInstance
-                        .getSecondSetAuthorizedAgents.callAsync())
-                        .to.eventually.deep.equal([]);
+                    expect(
+                        dummyContractInstance.getSecondSetAuthorizedAgents.callAsync(),
+                    ).to.eventually.deep.equal([]);
                 });
             });
         });

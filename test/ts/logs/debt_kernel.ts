@@ -1,20 +1,15 @@
-import {Address, Bytes32, Log, UInt} from "../../../types/common";
+import { Address, Bytes32, Log, UInt } from "../../../types/common";
 
 import * as ABIDecoder from "abi-decoder";
-import {BigNumber} from "bignumber.js";
+import { BigNumber } from "bignumber.js";
 import * as _ from "lodash";
 import * as Web3 from "web3";
 import * as LogUtils from "./log_utils";
 
-export function LogDebtIssuance(
-    contract: Address,
-    issuanceHash: Bytes32,
-): ABIDecoder.DecodedLog {
+export function LogDebtIssuance(contract: Address, issuanceHash: Bytes32): ABIDecoder.DecodedLog {
     return {
         address: contract,
-        events: LogUtils.getParams([
-            ["_issuanceHash", issuanceHash],
-        ]),
+        events: LogUtils.getParams([["_issuanceHash", issuanceHash]]),
         name: "LogDebtIssuance",
     };
 }
@@ -98,10 +93,10 @@ export function LogError(
 ): ABIDecoder.DecodedLog {
     return {
         address: contract,
-        events: LogUtils.getParams([
-            ["_errorId", errorId],
-            ["_orderHash", orderHash],
-        ], ["uint8", "bytes32"]),
+        events: LogUtils.getParams(
+            [["_errorId", errorId], ["_orderHash", orderHash]],
+            ["uint8", "bytes32"],
+        ),
         name: "LogError",
     };
 }

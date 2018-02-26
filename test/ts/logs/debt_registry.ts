@@ -3,16 +3,10 @@ import * as BigNumber from "bignumber.js";
 import * as _ from "lodash";
 import * as LogUtils from "./log_utils";
 
-import {
-    Address,
-    Bytes32,
-} from "../../../types/common";
-import {DebtRegistryEntry} from "../../../types/registry/entry";
+import { Address, Bytes32 } from "../../../types/common";
+import { DebtRegistryEntry } from "../../../types/registry/entry";
 
-export function LogInsertEntry(
-    contract: Address,
-    entry: DebtRegistryEntry,
-): ABIDecoder.DecodedLog {
+export function LogInsertEntry(contract: Address, entry: DebtRegistryEntry): ABIDecoder.DecodedLog {
     return {
         address: contract,
         events: LogUtils.getParams([
@@ -50,9 +44,7 @@ export function LogAddAuthorizedInsertAgent(
 ): ABIDecoder.DecodedLog {
     return {
         address: contract,
-        events: LogUtils.getParams([
-            ["agent", agent],
-        ]),
+        events: LogUtils.getParams([["agent", agent]]),
         name: "LogAddAuthorizedInsertAgent",
     };
 }
@@ -63,9 +55,7 @@ export function LogAddAuthorizedEditAgent(
 ): ABIDecoder.DecodedLog {
     return {
         address: contract,
-        events: LogUtils.getParams([
-            ["agent", agent],
-        ]),
+        events: LogUtils.getParams([["agent", agent]]),
         name: "LogAddAuthorizedEditAgent",
     };
 }
@@ -76,9 +66,7 @@ export function LogRevokeInsertAgentAuthorization(
 ): ABIDecoder.DecodedLog {
     return {
         address: contract,
-        events: LogUtils.getParams([
-            ["agent", agent],
-        ]),
+        events: LogUtils.getParams([["agent", agent]]),
         name: "LogRevokeInsertAgentAuthorization",
     };
 }
@@ -89,9 +77,7 @@ export function LogRevokeEditAgentAuthorization(
 ): ABIDecoder.DecodedLog {
     return {
         address: contract,
-        events: LogUtils.getParams([
-            ["agent", agent],
-        ]),
+        events: LogUtils.getParams([["agent", agent]]),
         name: "LogRevokeEditAgentAuthorization",
     };
 }
