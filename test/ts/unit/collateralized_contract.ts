@@ -139,14 +139,13 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
 
         const AGREEMENT_ID = web3.sha3("this agreement will be successfully collateralized");
 
-        const collateralAmount = Units.ether(5);
         let res: Web3.TransactionReceipt;
 
         before(async () => {
             const txHash = await collateralContract.collateralize.sendTransactionAsync(
                 AGREEMENT_ID,
                 mockToken.address,
-                collateralAmount,
+                COLLATERAL_AMOUNT,
                 new BigNumber(moment().add(2, 'years').unix()),
                 { from: COLLATERALIZER }
             );
@@ -157,7 +156,7 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
             await expect(mockToken.wasTransferFromCalledWith.callAsync(
                 COLLATERALIZER,
                 collateralContract.address,
-                collateralAmount,
+                COLLATERAL_AMOUNT,
             )).to.eventually.be.true;
         });
 
@@ -167,7 +166,7 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
               collateralContract.address,
               AGREEMENT_ID,
               mockToken.address,
-              collateralAmount
+              COLLATERAL_AMOUNT
             );
 
             expect(logReturned).to.deep.equal(logExpected);
@@ -180,8 +179,6 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
     describe("#returnCollateral", () => {
 
       describe("#invariants", () => {
-
-        const collateralAmount = Units.ether(5);
 
         it("should throw if no collateral is mapped to the agreement id", async () => {
             const ID_FOR_NON_EXISTENT_AGREEMENT = web3.sha3("this agreement does not exist.");
@@ -199,7 +196,7 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
                 ID_FOR_ACTIVE_AGREEMENT,
                 COLLATERALIZER,
                 mockToken.address,
-                collateralAmount,
+                COLLATERAL_AMOUNT,
                 new BigNumber(moment().add(2, 'years').unix()), // lockup period is still in effect.
                 false
             );
@@ -217,7 +214,7 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
                 ID_FOR_RESOLVED_AGREEMENT,
                 COLLATERALIZER,
                 mockToken.address,
-                collateralAmount,
+                COLLATERAL_AMOUNT,
                 new BigNumber(moment().subtract(2, 'years').unix()),
                 true // collateral marked as withdrawn.
             );
@@ -235,14 +232,14 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
                 DEFAULTED_AGREEMENT_ID,
                 COLLATERALIZER,
                 mockToken.address,
-                collateralAmount,
+                COLLATERAL_AMOUNT,
                 new BigNumber(moment().subtract(1, 'month').unix()), // lockup period has expired.
                 false
             );
 
             await collateralContract.setDummyExpectedRepaymentValue.sendTransactionAsync(
                 DEFAULTED_AGREEMENT_ID,
-                collateralAmount
+                COLLATERAL_AMOUNT
             );
 
             await expect(collateralContract.returnCollateral.sendTransactionAsync(
