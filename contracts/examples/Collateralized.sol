@@ -135,7 +135,7 @@ contract Collateralized is TermsContract {
         );
 
         // mark collateral as withdrawn.
-        collateral.withdrawn = true;
+        collateralForAgreementID[agreementID].withdrawn = true;
 
         // log that the collateral has been succesfully returned to collateralizer.
         CollateralReturned(
