@@ -308,7 +308,7 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
             before(async () => {
                 await mockRegistry.mockGetTermsContractReturnValueFor.sendTransactionAsync(
                     ARBITRARY_AGREEMENT_ID,
-                    ATTACKER // this is an attacker's address and thus should result in a revert.
+                    ATTACKER // this is an attacker's address and not the contract's address.
                 );
             });
 
