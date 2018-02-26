@@ -181,6 +181,16 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
             expect(logReturned).to.deep.equal(logExpected);
         });
 
+        it("should throw on subsequent calls to `collateralize`", async () => {
+            await expect(collateralContract.collateralize.sendTransactionAsync(
+                AGREEMENT_ID,
+                mockToken.address,
+                new BigNumber(1),
+                new BigNumber(moment().add(2, 'years').unix()),
+                { from: COLLATERALIZER }
+            )).to.eventually.be.rejectedWith(REVERT_ERROR);
+        });
+
       });
 
     });
