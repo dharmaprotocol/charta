@@ -176,7 +176,11 @@ contract Collateralized is TermsContract {
 
         // seize collateral and transfer to beneficiary.
         require(
-            ERC20(collateral.token).transfer(beneficiary, collateral.amount)
+            ERC20(collateral.token).transferFrom(
+                address(this),
+                beneficiary,
+                collateral.amount
+            )
         );
 
         // mark collateral as withdrawn once transfer has succeeded.
