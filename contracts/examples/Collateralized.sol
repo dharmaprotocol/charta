@@ -87,10 +87,26 @@ contract Collateralized is TermsContract {
         */
         require(collateralForAgreementID[agreementID].lockupPeriod == 0);
 
-        // the collateral must be successfully received by this contract.
-        require(ERC20(token).transferFrom(
-            msg.sender,
-            address(this),
+        ERC20 erc20token = ERC20(token);
+        address collateralizer = msg.sender;
+        address custodian = address(this);
+
+        /*
+        The collateralizer must have sufficient balance equal to or greater
+        than the amount being put up for collateral.
+        */
+        require(erc20token.balanceOf(collateralizer) >= amount);
+
+        /*
+        The custodian must have an allowance granted by the collateralizer equal
+        to or greater than the amount being put up for collateral.
+        */
+        require(erc20token.allowance(collateralizer, custodian) >= amount);
+
+        // the collateral must be successfully transferred to this contract.
+        require(erc20token.transferFrom(
+            collateralizer,
+            custodian,
             amount
         ));
 
