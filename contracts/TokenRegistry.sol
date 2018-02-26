@@ -5,7 +5,7 @@ import "zeppelin-solidity/contracts/ownership/Ownable.sol";
 
 contract TokenRegistry is Ownable {
     mapping (bytes32 => address) public symbolToTokenAddress;
-    string[] internal tokenSymbols;
+    string[] public tokenSymbols;
 
     function setTokenAddress(string symbol, address token) public onlyOwner {
         if (symbolToTokenAddress[keccak256(symbol)] == 0) {
