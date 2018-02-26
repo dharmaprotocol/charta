@@ -228,7 +228,6 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
         it("should throw if the agreement is in default and the lockup period has expired", async () => {
             const DEFAULTED_AGREEMENT_ID = web3.sha3("this agreement was defaulted upon.");
 
-            // Collateralize an agreement with a lock up period in the future.
             await collateralContract.setDummyCollateral.sendTransactionAsync(
                 DEFAULTED_AGREEMENT_ID,
                 COLLATERALIZER,
