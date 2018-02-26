@@ -291,8 +291,7 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
         const inputParamsAsHex = hexifyParams(principalPlusInterest,
             amortizationUnitType, termLength);
 
-        it("unpacks valid params", async () => {
-            var outputParams = await termsContract.unpackParametersFromBytes.callAsync(
+        it("correctly unpacks parameters into their respective types given raw byte data", async () => {
             let outputParams = await termsContract.unpackParametersFromBytes.callAsync(
               inputParamsAsHex
             );
