@@ -48,24 +48,31 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
         mockRegistry = await MockDebtRegistryContract.deployed(web3, TX_DEFAULTS);
         mockToken = await MockERC20TokenContract.deployed(web3, TX_DEFAULTS);
 
+        /*
+        In our test environment, we want to interact with the contract being
+        unit tested as a statically-typed entity. In order to accomplish this,
+        we take the following steps:
+
+          1 - Instantiate an instance of the contract through the Truffle
+              framework.
+          2 - Instantiate an instance of the contract through the Web3 API using
+              the truffle instance's ABI.
+          3 - Use the Web3 contract instance to instantiate a statically-typed
+              version of the contract as handled by ABI-GEN, which generates
+              a contract wrapper with types pulled from the contract's ABI.
+         */
+
+        // Step 1: Instantiate a truffle instance of the contract.
         const collateralContractTruffle = await dummyCollateralizedContract.new(
             mockRegistry.address
         );
 
+        // Step 2: Instantiate a web3 instance of the contract.
         const collateralContractWeb3Contract =
             web3.eth.contract(dummyCollateralizedContract.abi).at(collateralContractTruffle.address);
 
+        // Step 3: Instantiate a statically-typed version of the contract.
         collateralContract = new DummyCollateralizedContractContract(collateralContractWeb3Contract, TX_DEFAULTS);
-
-        // The COLLATERALIZER begins with a balance of 5 ether.
-        await mockToken.mockBalanceOfFor.sendTransactionAsync(
-            COLLATERALIZER, COLLATERAL_AMOUNT,
-        );
-
-        // The COLLATERALIZER has granted an allowance to the collateralized contract.
-        await mockToken.mockAllowanceFor.sendTransactionAsync(
-            COLLATERALIZER, collateralContract.address, COLLATERAL_AMOUNT,
-        );
 
         // Initialize ABI Decoder for deciphering log receipts
         ABIDecoder.addABI(collateralContract.abi);
@@ -88,6 +95,8 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
         const ARBITRARY_AGREEMENT_ID =
             web3.sha3("any 32 byte hex value can represent an agreement id");
 
+        const ZERO_AMOUNT = Units.ether(0);
+
         it("should throw if the amount being put up for collateral is zero", async () => {
             await expect(collateralContract.collateralize.sendTransactionAsync(
               ARBITRARY_AGREEMENT_ID,
@@ -106,33 +115,49 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
             )).to.eventually.be.rejectedWith(REVERT_ERROR);
         });
 
-        it("should throw if the agreement already has already been collateralized", async () => {
-            // We first colletaralize the contract.
-            await collateralContract.collateralize.sendTransactionAsync(
-                ARBITRARY_AGREEMENT_ID,
-                mockToken.address,
-                new BigNumber(5),
-                new BigNumber(moment().add(2, 'years').unix()),
-                { from: COLLATERALIZER }
+        it("should throw if the collateralizer does not have sufficient balance", async () => {
+            // This balance is not sufficient.
+            await mockToken.mockBalanceOfFor.sendTransactionAsync(
+                COLLATERALIZER,
+                ZERO_AMOUNT
             );
 
-            // a second attempt to collateralize the contract should fail.
+            // This allowance is sufficient.
+            await mockToken.mockAllowanceFor.sendTransactionAsync(
+                COLLATERALIZER,
+                collateralContract.address,
+                COLLATERAL_AMOUNT
+            );
+
             await expect(collateralContract.collateralize.sendTransactionAsync(
                 ARBITRARY_AGREEMENT_ID,
                 mockToken.address,
-                new BigNumber(10),
-                new BigNumber(moment().add(3, 'years').unix()),
+                COLLATERAL_AMOUNT,
+                new BigNumber(moment().add(2, 'years').unix()),
                 { from: COLLATERALIZER }
             )).to.eventually.be.rejectedWith(REVERT_ERROR);
         });
 
-        it("should throw if the collateral fails to transfer", async () => {
+        it("should throw if allowances are not sufficient", async () => {
+            // This balance is sufficient.
+            await mockToken.mockBalanceOfFor.sendTransactionAsync(
+                COLLATERALIZER,
+                COLLATERAL_AMOUNT
+            );
+
+            // This allowance is not sufficient.
+            await mockToken.mockAllowanceFor.sendTransactionAsync(
+                COLLATERALIZER,
+                collateralContract.address,
+                ZERO_AMOUNT
+            );
+
             await expect(collateralContract.collateralize.sendTransactionAsync(
                 ARBITRARY_AGREEMENT_ID,
-                mockToken.address,
-                new BigNumber(10),
+                mockToken.address, // the acting custodian is the collateralized contract.
+                COLLATERAL_AMOUNT,
                 new BigNumber(moment().add(2, 'years').unix()),
-                { from: CONTRACT_OWNER } // the COLLATERALIZER has alloted an allowance, not the CONTRACT_OWNER
+                { from: COLLATERALIZER }
             )).to.eventually.be.rejectedWith(REVERT_ERROR);
         });
       });
@@ -144,6 +169,22 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
         let res: Web3.TransactionReceipt;
 
         before(async () => {
+
+            await mockToken.reset.sendTransactionAsync();
+
+            // this balance is sufficient.
+            await mockToken.mockBalanceOfFor.sendTransactionAsync(
+              COLLATERALIZER,
+              COLLATERAL_AMOUNT
+            );
+
+            // this allowance is sufficient.
+            await mockToken.mockAllowanceFor.sendTransactionAsync(
+              COLLATERALIZER,
+              collateralContract.address,
+              COLLATERAL_AMOUNT
+            );
+
             const txHash = await collateralContract.collateralize.sendTransactionAsync(
                 AGREEMENT_ID,
                 mockToken.address,
@@ -151,6 +192,7 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
                 new BigNumber(moment().add(2, 'years').unix()),
                 { from: COLLATERALIZER }
             );
+
             res = await web3.eth.getTransactionReceipt(txHash);
         });
 
@@ -172,6 +214,16 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
             );
 
             expect(logReturned).to.deep.equal(logExpected);
+        });
+
+        it("should throw on subsequent calls to `collateralize`", async () => {
+            await expect(collateralContract.collateralize.sendTransactionAsync(
+                AGREEMENT_ID,
+                mockToken.address,
+                new BigNumber(1),
+                new BigNumber(moment().add(2, 'years').unix()),
+                { from: COLLATERALIZER }
+            )).to.eventually.be.rejectedWith(REVERT_ERROR);
         });
 
       });
@@ -283,10 +335,9 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
             res = await web3.eth.getTransactionReceipt(txHash);
         });
 
-        it("should call `transferFrom` on specified token w/ collateralizer as receipient", async () => {
-            await expect(mockToken.wasTransferFromCalledWith.callAsync(
-                collateralContract.address, // from the contract
-                COLLATERALIZER, // back to the collateralizer
+        it("should call `transfer` on specified token w/ collateralizer as receipient", async () => {
+            await expect(mockToken.wasTransferCalledWith.callAsync(
+                COLLATERALIZER,
                 COLLATERAL_AMOUNT,
             )).to.eventually.be.true;
         });
@@ -424,10 +475,9 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
           res = await web3.eth.getTransactionReceipt(txHash);
       });
 
-      it("should call `transferFrom` on specified token w/ beneficiary as receipient", async () => {
-          await expect(mockToken.wasTransferFromCalledWith.callAsync(
-              collateralContract.address, // from the contract
-              BENEFICIARY, // to the beneficiary
+      it("should call `transfer` on specified token w/ beneficiary as receipient", async () => {
+          await expect(mockToken.wasTransferCalledWith.callAsync(
+              BENEFICIARY,
               COLLATERAL_AMOUNT,
           )).to.eventually.be.true;
       });

@@ -85,7 +85,11 @@ contract MockERC20Token is MockContract {
         ));
     }
 
+    /* `balanceOf` */
+
     function balanceOf(address _owner) public view returns(uint _balance) {
+        functionCalledWithArgs("balanceOf", keccak256(_owner));
+
         return uint(getMockReturnValue("balanceOf", keccak256(_owner)));
     }
 
@@ -93,12 +97,37 @@ contract MockERC20Token is MockContract {
         mockReturnValue("balanceOf", keccak256(_owner), bytes32(_balance));
     }
 
+    function wasBalanceOfCalledWith(
+        address _owner
+    )
+        public
+        view
+        returns (bool wasCalled)
+    {
+        return wasFunctionCalledWithArgs("balanceOf", keccak256(_owner));
+    }
+
+    /* `allowance` */
+
     function allowance(address _owner, address _to) public view returns(uint _allowance) {
+        functionCalledWithArgs("allowance", keccak256(_owner, _to));
+
         return uint(getMockReturnValue("allowance", keccak256(_owner, _to)));
     }
 
     function mockAllowanceFor(address _owner, address _to, uint _allowance) public {
         mockReturnValue("allowance", keccak256(_owner, _to), bytes32(_allowance));
+    }
+
+    function wasAllowanceCalledWith(
+        address _owner,
+        address _to
+    )
+        public
+        view
+        returns (bool wasCalled)
+    {
+        return wasFunctionCalledWithArgs("allowance", keccak256(_owner, _to));
     }
 
     function getTransferArgsSignature(
