@@ -149,6 +149,9 @@ contract Collateralized is TermsContract {
             getValueRepaidToDate(agreementID)
         );
 
+        // mark collateral as withdrawn.
+        collateralForAgreementID[agreementID].withdrawn = true;
+
         // transfer the collateral this contract was holding in escrow back to sender.
         require(
             ERC20(collateral.token).transfer(
@@ -156,9 +159,6 @@ contract Collateralized is TermsContract {
                 collateral.amount
             )
         );
-
-        // mark collateral as withdrawn.
-        collateralForAgreementID[agreementID].withdrawn = true;
 
         // log that the collateral has been succesfully returned to collateralizer.
         CollateralReturned(
@@ -192,6 +192,9 @@ contract Collateralized is TermsContract {
             getValueRepaidToDate(agreementID)
         );
 
+        // mark collateral as withdrawn once transfer has succeeded.
+        collateralForAgreementID[agreementID].withdrawn = true;
+
         // determine beneficiary of the seized collateral.
         address beneficiary = debtRegistry.getBeneficiary(agreementID);
 
@@ -202,9 +205,6 @@ contract Collateralized is TermsContract {
                 collateral.amount
             )
         );
-
-        // mark collateral as withdrawn once transfer has succeeded.
-        collateralForAgreementID[agreementID].withdrawn = true;
 
         // log the seizure event.
         CollateralSeized(

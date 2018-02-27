@@ -295,6 +295,11 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
                 COLLATERAL_AMOUNT
             );
 
+            await collateralContract.setDummyValueRepaid.sendTransactionAsync(
+                DEFAULTED_AGREEMENT_ID,
+                COLLATERAL_AMOUNT.minus(1)
+            );
+
             await expect(collateralContract.returnCollateral.sendTransactionAsync(
                 DEFAULTED_AGREEMENT_ID
             )).to.eventually.be.rejectedWith(REVERT_ERROR);
@@ -441,7 +446,7 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
 
     });
 
-    describe("the successful seizure of collateral", () => {
+    describe("the successful seizure of collateral when loan in default", () => {
 
       const DEFAULTED_AGREEMENT_ID = web3.sha3("this agreement will require the seizure of collateral.");
 
@@ -461,6 +466,11 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
               COLLATERAL_AMOUNT,
               new BigNumber(moment().subtract(1, 'month').unix()), // lockup period has expired.
               false // collateral has not been withdrawn.
+          );
+
+          await collateralContract.setDummyValueRepaid.sendTransactionAsync(
+              DEFAULTED_AGREEMENT_ID,
+              COLLATERAL_AMOUNT.minus(1)
           );
 
           await collateralContract.setDummyExpectedRepaymentValue.sendTransactionAsync(
