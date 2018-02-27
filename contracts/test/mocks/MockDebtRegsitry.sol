@@ -112,6 +112,40 @@ contract MockDebtRegistry is MockContract {
         return address(getMockReturnValue("getTermsContract", issuanceHash));
     }
 
+    function getIssuanceBlockTimestamp(bytes32 issuanceHash)
+        public
+        view
+        returns (uint timestamp)
+    {
+        return uint(getMockReturnValue("getIssuanceBlockTimestamp", issuanceHash));
+    }
+
+    function mockGetIssuanceBlockTimestamp(
+        bytes32 issuanceHash,
+        uint timestamp
+    )
+        public
+    {
+        mockReturnValue("getIssuanceBlockTimestamp", issuanceHash, bytes32(timestamp));
+    }
+
+    function getTermsContractParameters(bytes32 issuanceHash)
+        public
+        view
+        returns (bytes32)
+    {
+        return getMockReturnValue("getTermsContractParameters", issuanceHash);
+    }
+
+    function mockGetTermsContractParameters(
+        bytes32 issuanceHash,
+        bytes32 params
+    )
+        public
+    {
+        mockReturnValue("getTermsContractParameters", issuanceHash, params);
+    }
+
     function mockGetTermsContractReturnValueFor(
         bytes32 issuanceHash,
         address termsContract
@@ -160,7 +194,17 @@ contract MockDebtRegistry is MockContract {
         internal
         returns (string[10] functionNames)
     {
-        return ["insert", "modifyBeneficiary", "getBeneficiary", "getTerms_termsContract",
-            "getTerms_termsContractParameters", "getTermsContract", "getTermsContractParameters", "", "", ""];
+        return [
+            "insert",
+            "modifyBeneficiary",
+            "getBeneficiary",
+            "getTerms_termsContract",
+            "getTerms_termsContractParameters",
+            "getTermsContract",
+            "getTermsContractParameters",
+            "getIssuanceBlockTimestamp",
+            "",
+            ""
+        ];
     }
 }
