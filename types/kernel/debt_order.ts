@@ -1,15 +1,12 @@
-import {BigNumber} from "bignumber.js";
+import { BigNumber } from "bignumber.js";
 import ethUtil = require("ethereumjs-util");
 import * as Web3 from "web3";
 
-import {IssuanceCommitment} from "./issuance_commitment";
-import {OrderParams} from "./schema";
-import {ECDSASignature, SignableMessage} from "./signable_message";
+import { IssuanceCommitment } from "./issuance_commitment";
+import { OrderParams } from "./schema";
+import { ECDSASignature, SignableMessage } from "./signable_message";
 
-import {
-    Address,
-    Bytes32,
-} from "../common";
+import { Address, Bytes32 } from "../common";
 
 import * as solidity from "../../utils/solidity";
 
@@ -123,19 +120,29 @@ export class DebtOrder extends SignableMessage {
         creditor: Address,
         signatories: DebtOrderSignatories,
     ): Promise<SignedDebtOrder> {
-        const creditorSignature = signatories.creditor ?
-            await this.getSignature(web3, signatories.creditor,
-                this.getDebtOrderHash()) : NULL_SIGNATURE;
+        const creditorSignature = signatories.creditor
+            ? await this.getSignature(web3, signatories.creditor, this.getDebtOrderHash())
+            : NULL_SIGNATURE;
 
-        const debtorSignature = signatories.debtor ?
-            await this.getSignature(web3, signatories.debtor, this.getDebtOrderHash()) : NULL_SIGNATURE;
+        const debtorSignature = signatories.debtor
+            ? await this.getSignature(web3, signatories.debtor, this.getDebtOrderHash())
+            : NULL_SIGNATURE;
 
-        const underwriterSignature = signatories.underwriter ?
-            await this.getSignature(web3, signatories.underwriter,
-                this.getUnderwriterCommitmentHash()) : NULL_SIGNATURE;
+        const underwriterSignature = signatories.underwriter
+            ? await this.getSignature(
+                  web3,
+                  signatories.underwriter,
+                  this.getUnderwriterCommitmentHash(),
+              )
+            : NULL_SIGNATURE;
 
-        return new SignedDebtOrder(this, creditor,
-            creditorSignature, debtorSignature, underwriterSignature);
+        return new SignedDebtOrder(
+            this,
+            creditor,
+            creditorSignature,
+            debtorSignature,
+            underwriterSignature,
+        );
     }
 }
 
@@ -201,32 +208,18 @@ export class SignedDebtOrder extends DebtOrder {
     }
 
     public getOrderBytes32(): Bytes32[] {
-        return [
-            this.getIssuanceCommitment().getTermsContractParameters(),
-        ];
+        return [this.getIssuanceCommitment().getTermsContractParameters()];
     }
 
     public getSignaturesR(): Bytes32[] {
-        return [
-            this.debtorSignature.r,
-            this.creditorSignature.r,
-            this.underwriterSignature.r,
-        ];
+        return [this.debtorSignature.r, this.creditorSignature.r, this.underwriterSignature.r];
     }
 
     public getSignaturesS(): Bytes32[] {
-        return [
-            this.debtorSignature.s,
-            this.creditorSignature.s,
-            this.underwriterSignature.s,
-        ];
+        return [this.debtorSignature.s, this.creditorSignature.s, this.underwriterSignature.s];
     }
 
     public getSignaturesV(): number[] {
-        return [
-            this.debtorSignature.v,
-            this.creditorSignature.v,
-            this.underwriterSignature.v,
-        ];
+        return [this.debtorSignature.v, this.creditorSignature.v, this.underwriterSignature.v];
     }
 }

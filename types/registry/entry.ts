@@ -4,13 +4,8 @@ import * as crypto from "crypto";
 import ethUtil = require("ethereumjs-util");
 import * as _ from "lodash";
 import * as solidity from "../../utils/solidity";
-import {
-    Address,
-    Bytes32,
-    Log,
-    UInt,
-} from "../common";
-import {RegistryEntryParameters, SemanticVersion} from "./schema";
+import { Address, Bytes32, Log, UInt } from "../common";
+import { RegistryEntryParameters, SemanticVersion } from "./schema";
 
 export class DebtRegistryEntry {
     public params: RegistryEntryParameters;
@@ -55,7 +50,7 @@ export class DebtRegistryEntry {
         return this.params.underwriterRiskRating;
     }
 
-    public getTermsContract(): Address  {
+    public getTermsContract(): Address {
         return this.params.termsContract;
     }
 

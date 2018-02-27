@@ -2,7 +2,10 @@ import * as ABIDecoder from "abi-decoder";
 import * as BigNumber from "bignumber.js";
 import * as _ from "lodash";
 
-export function getParams(args: Array<[string, any]>, types?: string[]): ABIDecoder.DecodedMethodParam[] {
+export function getParams(
+    args: Array<[string, any]>,
+    types?: string[],
+): ABIDecoder.DecodedMethodParam[] {
     return _.map(args, (param: [string, any], i: number): ABIDecoder.DecodedMethodParam => {
         let type: string;
 

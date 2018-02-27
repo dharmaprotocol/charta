@@ -1,5 +1,5 @@
-import {BigNumber} from "bignumber.js";
-import {Address, Bytes32, UInt} from "../common";
+import { BigNumber } from "bignumber.js";
+import { Address, Bytes32, UInt } from "../common";
 
 export type SemanticVersion = string;
 

@@ -1,6 +1,6 @@
 import * as _ from "lodash";
 import * as Web3 from "web3";
-import {TxData, TxDataPayable} from "./common";
+import { TxData, TxDataPayable } from "./common";
 
 export class BaseContract {
     public address: string;

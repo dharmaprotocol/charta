@@ -2,18 +2,13 @@ import * as ABIDecoder from "abi-decoder";
 import * as BigNumber from "bignumber.js";
 import * as LogUtils from "./log_utils";
 
-import {
-    Address,
-    Bytes32,
-    UInt
-} from "../../../types/common";
-
+import { Address, Bytes32, UInt } from "../../../types/common";
 
 export function CollateralLocked(
     contract: Address,
     agreementID: Bytes32,
     token: Address,
-    amount: UInt
+    amount: UInt,
 ): ABIDecoder.DecodedLog {
     return {
         address: contract,
@@ -31,7 +26,7 @@ export function CollateralReturned(
     agreementID: Bytes32,
     collateralizer: Address,
     token: Address,
-    amount: UInt
+    amount: UInt,
 ): ABIDecoder.DecodedLog {
     return {
         address: contract,
@@ -50,7 +45,7 @@ export function CollateralSeized(
     agreementID: Bytes32,
     beneficiary: Address,
     token: Address,
-    amount: UInt
+    amount: UInt,
 ): ABIDecoder.DecodedLog {
     return {
         address: contract,

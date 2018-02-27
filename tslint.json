@@ -1,8 +1,16 @@
 {
   "extends": ["tslint:latest"],
   "rules": {
+    "ordered-imports": [
+      true,
+      {
+        "import-sources-order": "any",
+        "named-imports-order": "lowercase-first"
+      }
+    ],
     "interface-name": false,
     "max-classes-per-file": false,
-    "no-string-literal": false
+    "no-string-literal": false,
+    "no-implicit-dependencies": [true, "dev"]
   }
 }

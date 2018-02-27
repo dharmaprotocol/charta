@@ -1,5 +1,5 @@
 import * as Web3 from "web3";
-import {Address, UInt} from "./common";
+import { Address, UInt } from "./common";
 
 declare type ContractTest = (accounts: Address[]) => void;
 declare type ExecutionBlock = () => void;
@@ -10,10 +10,10 @@ interface Artifacts {
 }
 
 declare global {
-  function contract(name: string, test: ContractTest): void;
+    function contract(name: string, test: ContractTest): void;
 
-  var artifacts: Artifacts;
-  var web3: Web3;
+    var artifacts: Artifacts;
+    var web3: Web3;
 
-  var chaiIsConfigured: boolean;
+    var chaiIsConfigured: boolean;
 }

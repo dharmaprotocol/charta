@@ -4,13 +4,14 @@ import "zeppelin-solidity/contracts/math/SafeMath.sol";
 
 import "../examples/Collateralized.sol";
 
+
 contract DummyCollateralizedContract is Collateralized {
     using SafeMath for uint;
 
     mapping(bytes32 => uint) internal amountRepaid;
     mapping(bytes32 => uint) internal expectedRepaymentValue;
 
-    function DummyCollateralizedContract(address _debtRegistry) Collateralized(_debtRegistry) public {}
+    function DummyCollateralizedContract(address _debtRegistry) public Collateralized(_debtRegistry) {}
 
     /* Naive `TermsContract` interface implementation. */
 
@@ -21,14 +22,14 @@ contract DummyCollateralizedContract is Collateralized {
         uint256 unitsOfRepayment,
         address tokenAddress
     ) public returns (bool _success) {
-      return false;
+        return false;
     }
 
     function getExpectedRepaymentValue(
         bytes32 agreementId,
         uint256 timestamp
     ) public view returns (uint256) {
-      return expectedRepaymentValue[agreementId];
+        return expectedRepaymentValue[agreementId];
     }
 
     function getValueRepaidToDate(

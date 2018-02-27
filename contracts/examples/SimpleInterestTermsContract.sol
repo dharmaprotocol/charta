@@ -21,7 +21,6 @@ pragma solidity 0.4.18;
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
 import "../DebtRegistry.sol";
 import "../TermsContract.sol";
-import "ethereum-datetime/contracts/DateTime.sol";
 
 
 contract SimpleInterestTermsContract is TermsContract {
@@ -31,12 +30,10 @@ contract SimpleInterestTermsContract is TermsContract {
 
     struct SimpleInterestParams {
         uint principalPlusInterest;
-        uint startTimestamp;
-        uint endTimestamp;
+        uint termStartUnixTimestamp;
+        uint termEndUnixTimestamp;
         AmortizationUnitType amortizationUnitType;
-        uint amortizationUnitLengthInSeconds;
         uint termLengthInAmortizationUnits;
-        uint termLengthInSeconds;
     }
 
     uint public constant HOUR_LENGTH_IN_SECONDS = 60 * 60;
@@ -45,7 +42,7 @@ contract SimpleInterestTermsContract is TermsContract {
     uint public constant MONTH_LENGTH_IN_SECONDS = DAY_LENGTH_IN_SECONDS * 30;
     uint public constant YEAR_LENGTH_IN_SECONDS = DAY_LENGTH_IN_SECONDS * 365;
 
-    mapping (bytes32 => uint) valueRepaid;
+    mapping (bytes32 => uint) public valueRepaid;
 
     DebtRegistry public debtRegistry;
 
@@ -53,8 +50,8 @@ contract SimpleInterestTermsContract is TermsContract {
     address public repaymentRouter;
 
     modifier onlyRouter() {
-      require(msg.sender == repaymentRouter);
-      _;
+        require(msg.sender == repaymentRouter);
+        _;
     }
 
     modifier onlyMappedToThisContract(bytes32 agreementId) {
@@ -120,80 +117,18 @@ contract SimpleInterestTermsContract is TermsContract {
     {
         SimpleInterestParams memory params = unpackParamsForAgreementID(agreementId);
 
-        if (timestamp <= params.startTimestamp) {
+        if (timestamp <= params.termStartUnixTimestamp) {
             /* The query occurs before the contract was even initialized so the
             expected value of repayments is 0. */
             return 0;
-        } else if (timestamp >= params.endTimestamp) {
+        } else if (timestamp >= params.termEndUnixTimestamp) {
             /* the query occurs beyond the contract's term, so the expected
             value of repayment is the full principal plus interest. */
             return params.principalPlusInterest;
         } else {
-            uint numUnits = determineNumberOfAmortizationUnitsForTimestamp(timestamp, params);
+            uint numUnits = numAmortizationUnitsForTimestamp(timestamp, params);
             return params.principalPlusInterest.mul(numUnits).div(params.termLengthInAmortizationUnits);
         }
-    }
-
-    function determineNumberOfAmortizationUnitsForTimestamp(
-        uint timestamp,
-        SimpleInterestParams params
-    )
-        internal
-        returns (uint units)
-    {
-      uint delta = timestamp.sub(params.startTimestamp);
-      if (params.amortizationUnitType == AmortizationUnitType.HOURS) {
-          return delta.div(HOUR_LENGTH_IN_SECONDS);
-      } else if (params.amortizationUnitType == AmortizationUnitType.DAYS) {
-          return delta.div(DAY_LENGTH_IN_SECONDS);
-      } else if (params.amortizationUnitType == AmortizationUnitType.WEEKS) {
-          return delta.div(WEEK_LENGTH_IN_SECONDS);
-      } else if (params.amortizationUnitType == AmortizationUnitType.MONTHS) {
-          // TODO(kayvon): improve this naive implementation. Not all months have 30 days.
-          return delta.div(MONTH_LENGTH_IN_SECONDS);
-      } else if (params.amortizationUnitType == AmortizationUnitType.YEARS) {
-          // TODO(kayvon): improve this naive implementation. Not all years have 365 days.
-          return delta.div(YEAR_LENGTH_IN_SECONDS);
-      }
-    }
-
-    function unpackParamsForAgreementID(
-        bytes32 agreementId
-    )
-        internal
-        returns (SimpleInterestParams params)
-    {
-      bytes32 parameters = debtRegistry.getTermsContractParameters(agreementId);
-
-      uint principalPlusInterest;
-      uint amortizationUnitTypeAsInt;
-      uint termLengthInAmortizationUnits;
-
-      (principalPlusInterest, amortizationUnitTypeAsInt, termLengthInAmortizationUnits) =
-          unpackParametersFromBytes(parameters);
-
-      // Before we cast to `AmortizationUnitType`, ensure that the raw value being stored is valid.
-      require(amortizationUnitTypeAsInt <= uint(AmortizationUnitType.YEARS));
-
-      AmortizationUnitType amortizationUnitType = AmortizationUnitType(amortizationUnitTypeAsInt);
-
-      uint amortizationUnitLengthInSeconds = getAmortizationUnitLengthInSeconds(amortizationUnitType);
-
-      uint issuanceBlockTimestamp = debtRegistry.getIssuanceBlockTimestamp(agreementId);
-
-      uint termLengthInSeconds = termLengthInAmortizationUnits.mul(amortizationUnitLengthInSeconds);
-
-      uint endTimestamp = termLengthInSeconds.add(issuanceBlockTimestamp);
-
-      return SimpleInterestParams({
-          principalPlusInterest: principalPlusInterest,
-          startTimestamp: issuanceBlockTimestamp,
-          endTimestamp: endTimestamp,
-          amortizationUnitType: amortizationUnitType,
-          amortizationUnitLengthInSeconds: amortizationUnitLengthInSeconds,
-          termLengthInAmortizationUnits: termLengthInAmortizationUnits,
-          termLengthInSeconds: termLengthInSeconds
-      });
     }
 
      /// Returns the cumulative units-of-value repaid to date.
@@ -243,8 +178,57 @@ contract SimpleInterestTermsContract is TermsContract {
         );
     }
 
+    function numAmortizationUnitsForTimestamp(
+        uint timestamp,
+        SimpleInterestParams params
+    )
+        internal
+        returns (uint units)
+    {
+        uint delta = timestamp.sub(params.termStartUnixTimestamp);
+        uint amortizationUnitLengthInSeconds = getAmortizationUnitLengthInSeconds(params.amortizationUnitType);
+        return delta.div(amortizationUnitLengthInSeconds);
+    }
+
+    function unpackParamsForAgreementID(
+        bytes32 agreementId
+    )
+        internal
+        returns (SimpleInterestParams params)
+    {
+        bytes32 parameters = debtRegistry.getTermsContractParameters(agreementId);
+
+        uint principalPlusInterest;
+        uint amortizationUnitTypeAsUint;
+        uint termLengthInAmortizationUnits;
+
+        (principalPlusInterest, amortizationUnitTypeAsUint, termLengthInAmortizationUnits) =
+            unpackParametersFromBytes(parameters);
+
+        // Before we cast to `AmortizationUnitType`, ensure that the raw value being stored is valid.
+        require(amortizationUnitTypeAsUint <= uint(AmortizationUnitType.YEARS));
+
+        AmortizationUnitType amortizationUnitType = AmortizationUnitType(amortizationUnitTypeAsUint);
+
+        uint amortizationUnitLengthInSeconds = getAmortizationUnitLengthInSeconds(amortizationUnitType);
+
+        uint issuanceBlockTimestamp = debtRegistry.getIssuanceBlockTimestamp(agreementId);
+
+        uint termLengthInSeconds = termLengthInAmortizationUnits.mul(amortizationUnitLengthInSeconds);
+
+        uint termEndUnixTimestamp = termLengthInSeconds.add(issuanceBlockTimestamp);
+
+        return SimpleInterestParams({
+            principalPlusInterest: principalPlusInterest,
+            termStartUnixTimestamp: issuanceBlockTimestamp,
+            termEndUnixTimestamp: termEndUnixTimestamp,
+            amortizationUnitType: amortizationUnitType,
+            termLengthInAmortizationUnits: termLengthInAmortizationUnits
+        });
+    }
+
     function getAmortizationUnitLengthInSeconds(AmortizationUnitType amortizationUnitType)
-        public
+        internal
         pure
         returns (uint _amortizationUnitLengthInSeconds)
     {

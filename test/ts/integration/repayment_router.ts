@@ -5,28 +5,28 @@ import * as moment from "moment";
 import * as Web3 from "web3";
 import * as Units from "../test_utils/units";
 
-import {BigNumber} from "bignumber.js";
+import { BigNumber } from "bignumber.js";
 
-import {DebtKernelContract} from "../../../types/generated/debt_kernel";
-import {DebtRegistryContract} from "../../../types/generated/debt_registry";
-import {DebtTokenContract} from "../../../types/generated/debt_token";
-import {DummyTokenContract} from "../../../types/generated/dummy_token";
+import { DebtKernelContract } from "../../../types/generated/debt_kernel";
+import { DebtRegistryContract } from "../../../types/generated/debt_registry";
+import { DebtTokenContract } from "../../../types/generated/debt_token";
+import { DummyTokenContract } from "../../../types/generated/dummy_token";
 
-import {TokenRegistryContract} from "../../../types/generated/token_registry";
-import {RepaymentRouterContract} from "../../../types/generated/repayment_router";
-import {SimpleInterestTermsContractContract} from "../../../types/generated/simple_interest_terms_contract";
-import {TokenTransferProxyContract} from "../../../types/generated/token_transfer_proxy";
+import { TokenRegistryContract } from "../../../types/generated/token_registry";
+import { RepaymentRouterContract } from "../../../types/generated/repayment_router";
+import { SimpleInterestTermsContractContract } from "../../../types/generated/simple_interest_terms_contract";
+import { TokenTransferProxyContract } from "../../../types/generated/token_transfer_proxy";
 
-import {DebtOrderFactory} from "../factories/debt_order_factory";
+import { DebtOrderFactory } from "../factories/debt_order_factory";
 
-import {RepaymentRouterErrorCodes} from "../../../types/errors";
-import {DebtOrder, SignedDebtOrder} from "../../../types/kernel/debt_order";
+import { RepaymentRouterErrorCodes } from "../../../types/errors";
+import { DebtOrder, SignedDebtOrder } from "../../../types/kernel/debt_order";
 
-import {BigNumberSetup} from "../test_utils/bignumber_setup";
+import { BigNumberSetup } from "../test_utils/bignumber_setup";
 import ChaiSetup from "../test_utils/chai_setup";
-import {INVALID_OPCODE, REVERT_ERROR} from "../test_utils/constants";
+import { INVALID_OPCODE, REVERT_ERROR } from "../test_utils/constants";
 
-import {LogError, LogRepayment} from "../logs/repayment_router";
+import { LogError, LogRepayment } from "../logs/repayment_router";
 
 import leftPad = require("left-pad");
 
@@ -66,7 +66,9 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
 
     before(async () => {
         const dummyTokenRegistryContract = await TokenRegistryContract.deployed(web3, TX_DEFAULTS);
-        const dummyREPTokenAddress = await dummyTokenRegistryContract.getTokenAddress.callAsync("REP");
+        const dummyREPTokenAddress = await dummyTokenRegistryContract.getTokenAddress.callAsync(
+            "REP",
+        );
 
         principalToken = await DummyTokenContract.at(dummyREPTokenAddress, web3, TX_DEFAULTS);
 
@@ -76,14 +78,22 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
 
         await principalToken.setBalance.sendTransactionAsync(BENEFICIARY_1, Units.ether(100));
         await principalToken.setBalance.sendTransactionAsync(BENEFICIARY_2, Units.ether(100));
-        await principalToken.approve.sendTransactionAsync(tokenTransferProxy.address,
-            Units.ether(100), { from: BENEFICIARY_1 });
-        await principalToken.approve.sendTransactionAsync(tokenTransferProxy.address,
-            Units.ether(100), { from: BENEFICIARY_2 });
+        await principalToken.approve.sendTransactionAsync(
+            tokenTransferProxy.address,
+            Units.ether(100),
+            { from: BENEFICIARY_1 },
+        );
+        await principalToken.approve.sendTransactionAsync(
+            tokenTransferProxy.address,
+            Units.ether(100),
+            { from: BENEFICIARY_2 },
+        );
 
         const debtRegistry = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
-        const repaymentRouterTruffle = await repaymentRouterContract.new(debtRegistry.address,
-            tokenTransferProxy.address);
+        const repaymentRouterTruffle = await repaymentRouterContract.new(
+            debtRegistry.address,
+            tokenTransferProxy.address,
+        );
         const termsContractTruffle = await simpleInterestTermsContract.new(
             debtRegistry.address,
             principalToken.address,
@@ -92,20 +102,29 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
 
         // The typings we use ingest vanilla Web3 contracts, so we convert the
         // contract instance deployed by truffle into a Web3 contract instance
-        const repaymentRouterWeb3Contract =
-            web3.eth.contract(repaymentRouterTruffle.abi).at(repaymentRouterTruffle.address);
-        const termsContractWeb3Contract =
-            web3.eth.contract(simpleInterestTermsContract.abi).at(termsContractTruffle.address);
+        const repaymentRouterWeb3Contract = web3.eth
+            .contract(repaymentRouterTruffle.abi)
+            .at(repaymentRouterTruffle.address);
+        const termsContractWeb3Contract = web3.eth
+            .contract(simpleInterestTermsContract.abi)
+            .at(termsContractTruffle.address);
 
         router = new RepaymentRouterContract(repaymentRouterWeb3Contract, TX_DEFAULTS);
-        termsContract = new SimpleInterestTermsContractContract(termsContractWeb3Contract, TX_DEFAULTS);
+        termsContract = new SimpleInterestTermsContractContract(
+            termsContractWeb3Contract,
+            TX_DEFAULTS,
+        );
 
         await tokenTransferProxy.addAuthorizedTransferAgent.sendTransactionAsync(router.address);
 
         const termLengthInBlocks = 43200;
         const principalPlusInterest = Units.ether(1.1);
 
-        const uint16PrincipalPlusInterest = leftPad(web3.toHex(principalPlusInterest).substr(2), 32, "0");
+        const uint16PrincipalPlusInterest = leftPad(
+            web3.toHex(principalPlusInterest).substr(2),
+            32,
+            "0",
+        );
         const uint16TermLength = leftPad(web3.toHex(termLengthInBlocks).substr(2), 32, "0");
 
         const termsContractParameters = "0x" + uint16PrincipalPlusInterest + uint16TermLength;
@@ -117,7 +136,11 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
             debtTokenContract: debtToken.address,
             debtor: DEBTOR,
             debtorFee: Units.ether(0.001),
-            expirationTimestampInSec: new BigNumber(moment().add(1, "days").unix()),
+            expirationTimestampInSec: new BigNumber(
+                moment()
+                    .add(1, "days")
+                    .unix(),
+            ),
             issuanceVersion: router.address,
             orderSignatories: { debtor: DEBTOR, creditor: BENEFICIARY_1, underwriter: UNDERWRITER },
             principalAmount: Units.ether(1),
@@ -156,31 +179,37 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
 
                 const txHash = await router.repay.sendTransactionAsync(
                     agreementId,
-                    Units.ether(1.1), principalToken.address);
+                    Units.ether(1.1),
+                    principalToken.address,
+                );
                 receipt = await web3.eth.getTransactionReceipt(txHash);
 
                 [errorLog] = _.compact(ABIDecoder.decodeLogs(receipt.logs));
             });
 
             it("should return DEBT_AGREEMENT_NONEXISTENT error", () => {
-                expect(errorLog).to.deep.equal(LogError(
-                    router.address,
-                    RepaymentRouterErrorCodes.DEBT_AGREEMENT_NONEXISTENT,
-                    agreementId,
-                ));
+                expect(errorLog).to.deep.equal(
+                    LogError(
+                        router.address,
+                        RepaymentRouterErrorCodes.DEBT_AGREEMENT_NONEXISTENT,
+                        agreementId,
+                    ),
+                );
             });
 
             it("should not transfer tokens from payer", async () => {
-                await expect(principalToken.balanceOf.callAsync(PAYER))
-                    .to.eventually.bignumber.equal(payerBalanceBefore);
-                await expect(principalToken.balanceOf.callAsync(BENEFICIARY_1))
-                    .to.eventually.bignumber.equal(beneficiaryBalanceBefore);
+                await expect(
+                    principalToken.balanceOf.callAsync(PAYER),
+                ).to.eventually.bignumber.equal(payerBalanceBefore);
+                await expect(
+                    principalToken.balanceOf.callAsync(BENEFICIARY_1),
+                ).to.eventually.bignumber.equal(beneficiaryBalanceBefore);
             });
 
             it("should not register repayment with terms contract", async () => {
-                await expect(termsContract.getValueRepaidToDate.callAsync(
-                    agreementId,
-                )).to.eventually.bignumber.equal(0);
+                await expect(
+                    termsContract.getValueRepaidToDate.callAsync(agreementId),
+                ).to.eventually.bignumber.equal(0);
             });
         });
 
@@ -207,84 +236,111 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
                 });
 
                 it("should throw", async () => {
-                    await expect(router.repay.sendTransactionAsync(agreementId,
-                        Units.ether(1.1), principalToken.address, { from: PAYER }))
-                        .to.eventually.be.rejectedWith(REVERT_ERROR);
+                    await expect(
+                        router.repay.sendTransactionAsync(
+                            agreementId,
+                            Units.ether(1.1),
+                            principalToken.address,
+                            { from: PAYER },
+                        ),
+                    ).to.eventually.be.rejectedWith(REVERT_ERROR);
                 });
             });
 
             describe("...with insufficient balance for payment", () => {
                 before(async () => {
                     payerBalanceBefore = await principalToken.balanceOf.callAsync(PAYER);
-                    beneficiaryBalanceBefore = await principalToken.balanceOf.callAsync(BENEFICIARY_1);
+                    beneficiaryBalanceBefore = await principalToken.balanceOf.callAsync(
+                        BENEFICIARY_1,
+                    );
 
-                    const txHash = await router.repay.sendTransactionAsync(agreementId,
-                        Units.ether(1.1), principalToken.address, { from: PAYER });
+                    const txHash = await router.repay.sendTransactionAsync(
+                        agreementId,
+                        Units.ether(1.1),
+                        principalToken.address,
+                        { from: PAYER },
+                    );
                     receipt = await web3.eth.getTransactionReceipt(txHash);
 
                     [errorLog] = _.compact(ABIDecoder.decodeLogs(receipt.logs));
                 });
 
                 it("should return PAYER_BALANCE_OR_ALLOWANCE_INSUFFICIENT error", () => {
-                    expect(errorLog).to.deep.equal(LogError(
-                        router.address,
-                        RepaymentRouterErrorCodes.PAYER_BALANCE_OR_ALLOWANCE_INSUFFICIENT,
-                        agreementId,
-                    ));
+                    expect(errorLog).to.deep.equal(
+                        LogError(
+                            router.address,
+                            RepaymentRouterErrorCodes.PAYER_BALANCE_OR_ALLOWANCE_INSUFFICIENT,
+                            agreementId,
+                        ),
+                    );
                 });
 
                 it("should not transfer tokens from payer", async () => {
-                    await expect(principalToken.balanceOf.callAsync(PAYER))
-                        .to.eventually.bignumber.equal(payerBalanceBefore);
-                    await expect(principalToken.balanceOf.callAsync(BENEFICIARY_1))
-                        .to.eventually.bignumber.equal(beneficiaryBalanceBefore);
+                    await expect(
+                        principalToken.balanceOf.callAsync(PAYER),
+                    ).to.eventually.bignumber.equal(payerBalanceBefore);
+                    await expect(
+                        principalToken.balanceOf.callAsync(BENEFICIARY_1),
+                    ).to.eventually.bignumber.equal(beneficiaryBalanceBefore);
                 });
 
                 it("should not register repayment with terms contract", async () => {
-                    await expect(termsContract.getValueRepaidToDate.callAsync(
-                        agreementId,
-                    )).to.eventually.bignumber.equal(0);
+                    await expect(
+                        termsContract.getValueRepaidToDate.callAsync(agreementId),
+                    ).to.eventually.bignumber.equal(0);
                 });
             });
 
             describe("...with insufficient allowance for payment", () => {
                 before(async () => {
-                    await principalToken.setBalance.sendTransactionAsync(
-                        PAYER, Units.ether(1.1), { from: CONTRACT_OWNER },
-                    );
+                    await principalToken.setBalance.sendTransactionAsync(PAYER, Units.ether(1.1), {
+                        from: CONTRACT_OWNER,
+                    });
                     await principalToken.approve.sendTransactionAsync(
-                        tokenTransferProxy.address, Units.ether(1), { from: PAYER },
+                        tokenTransferProxy.address,
+                        Units.ether(1),
+                        { from: PAYER },
                     );
 
                     payerBalanceBefore = await principalToken.balanceOf.callAsync(PAYER);
-                    beneficiaryBalanceBefore = await principalToken.balanceOf.callAsync(BENEFICIARY_1);
+                    beneficiaryBalanceBefore = await principalToken.balanceOf.callAsync(
+                        BENEFICIARY_1,
+                    );
 
-                    const txHash = await router.repay.sendTransactionAsync(agreementId,
-                        Units.ether(1.1), principalToken.address, { from: PAYER });
+                    const txHash = await router.repay.sendTransactionAsync(
+                        agreementId,
+                        Units.ether(1.1),
+                        principalToken.address,
+                        { from: PAYER },
+                    );
                     receipt = await web3.eth.getTransactionReceipt(txHash);
 
                     [errorLog] = _.compact(ABIDecoder.decodeLogs(receipt.logs));
                 });
 
                 it("should return PAYER_BALANCE_OR_ALLOWANCE_INSUFFICIENT error", () => {
-                    expect(errorLog).to.deep.equal(LogError(
-                        router.address,
-                        RepaymentRouterErrorCodes.PAYER_BALANCE_OR_ALLOWANCE_INSUFFICIENT,
-                        agreementId,
-                    ));
+                    expect(errorLog).to.deep.equal(
+                        LogError(
+                            router.address,
+                            RepaymentRouterErrorCodes.PAYER_BALANCE_OR_ALLOWANCE_INSUFFICIENT,
+                            agreementId,
+                        ),
+                    );
                 });
 
                 it("should not transfer tokens from payer", async () => {
-                    await expect(principalToken.balanceOf.callAsync(PAYER))
-                        .to.eventually.bignumber.equal(payerBalanceBefore);
-                    await expect(principalToken.balanceOf.callAsync(BENEFICIARY_1))
-                        .to.eventually.bignumber.equal(beneficiaryBalanceBefore);
+                    await expect(
+                        principalToken.balanceOf.callAsync(PAYER),
+                    ).to.eventually.bignumber.equal(payerBalanceBefore);
+                    await expect(
+                        principalToken.balanceOf.callAsync(BENEFICIARY_1),
+                    ).to.eventually.bignumber.equal(beneficiaryBalanceBefore);
                 });
 
                 it("should not register repayment with terms contract", async () => {
-                    await expect(termsContract.getValueRepaidToDate.callAsync(
-                        agreementId,
-                    )).to.eventually.bignumber.equal(0);
+                    await expect(
+                        termsContract.getValueRepaidToDate.callAsync(agreementId),
+                    ).to.eventually.bignumber.equal(0);
                 });
             });
 
@@ -292,44 +348,59 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
                 let repaymentLog: ABIDecoder.DecodedLog;
 
                 before(async () => {
-                    await principalToken.setBalance.sendTransactionAsync(
-                        PAYER, Units.ether(1.1), { from: CONTRACT_OWNER },
-                    );
+                    await principalToken.setBalance.sendTransactionAsync(PAYER, Units.ether(1.1), {
+                        from: CONTRACT_OWNER,
+                    });
                     await principalToken.approve.sendTransactionAsync(
-                        tokenTransferProxy.address, Units.ether(1.1), { from: PAYER },
+                        tokenTransferProxy.address,
+                        Units.ether(1.1),
+                        { from: PAYER },
                     );
 
                     payerBalanceBefore = await principalToken.balanceOf.callAsync(PAYER);
-                    beneficiaryBalanceBefore = await principalToken.balanceOf.callAsync(BENEFICIARY_1);
+                    beneficiaryBalanceBefore = await principalToken.balanceOf.callAsync(
+                        BENEFICIARY_1,
+                    );
 
-                    const txHash = await router.repay.sendTransactionAsync(agreementId,
-                        Units.ether(1.1), principalToken.address, { from: PAYER });
+                    const txHash = await router.repay.sendTransactionAsync(
+                        agreementId,
+                        Units.ether(1.1),
+                        principalToken.address,
+                        { from: PAYER },
+                    );
                     receipt = await web3.eth.getTransactionReceipt(txHash);
 
                     [repaymentLog] = _.compact(ABIDecoder.decodeLogs(receipt.logs));
                 });
 
                 it("should transfer tokens of specified amount from payer", async () => {
-                    await expect(principalToken.balanceOf.callAsync(PAYER))
-                        .to.eventually.bignumber.equal(payerBalanceBefore.minus(Units.ether(1.1)));
-                    await expect(principalToken.balanceOf.callAsync(BENEFICIARY_1))
-                        .to.eventually.bignumber.equal(beneficiaryBalanceBefore.plus(Units.ether(1.1)));
+                    await expect(
+                        principalToken.balanceOf.callAsync(PAYER),
+                    ).to.eventually.bignumber.equal(payerBalanceBefore.minus(Units.ether(1.1)));
+                    await expect(
+                        principalToken.balanceOf.callAsync(BENEFICIARY_1),
+                    ).to.eventually.bignumber.equal(
+                        beneficiaryBalanceBefore.plus(Units.ether(1.1)),
+                    );
                 });
 
                 it("should register repayment with terms contract", async () => {
-                    await expect(termsContract.getValueRepaidToDate.callAsync(
-                        agreementId)).to.eventually.bignumber.equal(Units.ether(1.1));
+                    await expect(
+                        termsContract.getValueRepaidToDate.callAsync(agreementId),
+                    ).to.eventually.bignumber.equal(Units.ether(1.1));
                 });
 
                 it("should emit repayment log", () => {
-                    expect(repaymentLog).to.deep.equal(LogRepayment(
-                        router.address,
-                        agreementId,
-                        PAYER,
-                        BENEFICIARY_1,
-                        Units.ether(1.1),
-                        principalToken.address,
-                    ));
+                    expect(repaymentLog).to.deep.equal(
+                        LogRepayment(
+                            router.address,
+                            agreementId,
+                            PAYER,
+                            BENEFICIARY_1,
+                            Units.ether(1.1),
+                            principalToken.address,
+                        ),
+                    );
                 });
             });
         });
@@ -337,17 +408,29 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
         describe("Global Invariants", () => {
             describe("called with null token address", () => {
                 it("should throw", async () => {
-                    await expect(router.repay.sendTransactionAsync(agreementId,
-                        Units.ether(1), NULL_ADDRESS, { from: PAYER }))
-                        .to.eventually.be.rejectedWith(REVERT_ERROR);
+                    await expect(
+                        router.repay.sendTransactionAsync(
+                            agreementId,
+                            Units.ether(1),
+                            NULL_ADDRESS,
+                            {
+                                from: PAYER,
+                            },
+                        ),
+                    ).to.eventually.be.rejectedWith(REVERT_ERROR);
                 });
             });
 
             describe("called with zero token amount", () => {
                 it("should throw", async () => {
-                    await expect(router.repay.sendTransactionAsync(agreementId,
-                        new BigNumber(0), principalToken.address, { from: PAYER }))
-                        .to.eventually.be.rejectedWith(REVERT_ERROR);
+                    await expect(
+                        router.repay.sendTransactionAsync(
+                            agreementId,
+                            new BigNumber(0),
+                            principalToken.address,
+                            { from: PAYER },
+                        ),
+                    ).to.eventually.be.rejectedWith(REVERT_ERROR);
                 });
             });
         });

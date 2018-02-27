@@ -2,8 +2,8 @@ import * as chai from "chai";
 import * as Units from "../test_utils/units";
 import { BigNumber } from "bignumber.js";
 
+import { CompoundInterestTermsContractContract } from "../../../types/generated/compound_interest_terms_contract";
 import { RepaymentRouterContract } from "../../../types/generated/repayment_router";
-import { SimpleInterestTermsContractContract } from "../../../types/generated/simple_interest_terms_contract";
 import { MockDebtRegistryContract } from "../../../types/generated/mock_debt_registry";
 import { MockERC20TokenContract } from "../../../types/generated/mock_e_r_c20_token";
 import { MockTokenTransferProxyContract } from "../../../types/generated/mock_token_transfer_proxy";
@@ -26,11 +26,28 @@ const expect = chai.expect;
 BigNumberSetup.configure();
 
 const repaymentRouterContract = artifacts.require("RepaymentRouter");
-const simpleInterestTermsContract = artifacts.require("SimpleInterestTermsContract");
-const mockTokenContract = artifacts.require("MockERC20Token");
+const compoundInterestTermsContract = artifacts.require("CompoundInterestTermsContract");
 
-contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
-    let termsContract: SimpleInterestTermsContractContract;
+/*
+ * The compound interest rate formula we're leveraging is
+ *  V = P(1 + r/n)^(tn)
+ *
+ * Given that we assume n = 1 (i.e. compounding happens
+ *  once per amortization interval), we can reduce the
+ *  formula to
+ *  V = P(1 + r)^t
+ *
+ * Thus, for simplification, we explicated the following
+ * terms:
+ *
+ * V := expectedRepaymentValue
+ * P := principal
+ * (1 + r) := interestRateBase
+ * t := termLengthInAmortizationUnits
+ */
+
+contract("CompoundInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
+    let termsContract: CompoundInterestTermsContractContract;
     let router: RepaymentRouterContract;
     let mockToken: MockERC20TokenContract;
     let mockRegistry: MockDebtRegistryContract;
@@ -51,20 +68,42 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
 
     function hexifyParams(
-        principalPlusInterest: BigNumber,
+        principal: BigNumber,
+        interestRate: BigNumber,
         amortizationUnitType: BigNumber,
         termLength: BigNumber,
     ): string {
-        const principalPlusInterestHex = principalPlusInterest.toString(16);
+        const principalHex = principal.toString(16);
+        const interestRateHex = interestRate.toString(16);
         const amortizationUnitTypeHex = amortizationUnitType.toString(16);
         const termLengthHex = termLength.toString(16);
 
         return (
             "0x" +
-            principalPlusInterestHex.padStart(32, "0") +
+            principalHex.padStart(32, "0") +
+            interestRateHex.padStart(16, "0") +
             amortizationUnitTypeHex.padStart(2, "0") +
-            termLengthHex.padStart(30, "0")
+            termLengthHex.padStart(14, "0")
         );
+    }
+
+    function toInterestRateFloat(interestRateSolidityPrecision: BigNumber): BigNumber {
+        return interestRateSolidityPrecision.div(10 ** 9);
+    }
+
+    function toInterestRateBase(interestRateFloat: BigNumber): BigNumber {
+        return interestRateFloat.add(1);
+    }
+
+    function expectedRepaymentValue(
+        principal: BigNumber,
+        interestRateSolidityPrecision: BigNumber,
+        termLengthInAmortizationUnits: BigNumber,
+    ): BigNumber {
+        const interestRateFloat = toInterestRateFloat(interestRateSolidityPrecision);
+        const interestRateBase = toInterestRateBase(interestRateFloat);
+
+        return principal.times(interestRateBase.pow(termLengthInAmortizationUnits.toNumber()));
     }
 
     before(async () => {
@@ -77,7 +116,7 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
             mockTokenTransferProxy.address,
         );
 
-        const termsContractTruffle = await simpleInterestTermsContract.new(
+        const termsContractTruffle = await compoundInterestTermsContract.new(
             mockRegistry.address,
             mockToken.address,
             repaymentRouterTruffle.address,
@@ -90,11 +129,11 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
             .at(repaymentRouterTruffle.address);
 
         const termsContractWeb3Contract = web3.eth
-            .contract(simpleInterestTermsContract.abi)
+            .contract(compoundInterestTermsContract.abi)
             .at(termsContractTruffle.address);
 
         router = new RepaymentRouterContract(repaymentRouterWeb3Contract, TX_DEFAULTS);
-        termsContract = new SimpleInterestTermsContractContract(
+        termsContract = new CompoundInterestTermsContractContract(
             termsContractWeb3Contract,
             TX_DEFAULTS,
         );
@@ -164,20 +203,14 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
             });
 
             describe("...with a different `tokenAddress` than expected by the terms contract", () => {
-                let dummyToken: MockERC20TokenContract;
-
                 before(async () => {
-                    const mockTokenContractTruffle = await mockTokenContract.new();
-                    const mockTokenContractWeb3 = web3.eth
-                        .contract(mockTokenContractTruffle.abi)
-                        .at(mockTokenContractTruffle.address);
-                    dummyToken = new MockERC20TokenContract(mockTokenContractWeb3, TX_DEFAULTS);
-
-                    await router.repay.sendTransactionAsync(
-                        ARBITRARY_AGREEMENT_ID,
-                        Units.ether(10),
-                        dummyToken.address, // this is not the token that it's expecting.
-                    );
+                    await expect(
+                        router.repay.sendTransactionAsync(
+                            ARBITRARY_AGREEMENT_ID,
+                            Units.ether(1),
+                            ATTACKER, // this is not the address it's expecting.
+                        ),
+                    ).to.eventually.be.rejectedWith(REVERT_ERROR);
                 });
 
                 it("should not record the repayment", async () => {
@@ -290,12 +323,14 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
     });
 
     describe("#unpackParametersFromBytes", () => {
-        const principalPlusInterest = Units.ether(200); // 200 ether.
+        const principal = Units.ether(200); // 200 ether.
+        const interestRate = Units.percent(0.5);
         const amortizationUnitType = new BigNumber(4); // unit code for years.
         const termLength = new BigNumber(10); // term is for 10 years.
 
         const inputParamsAsHex = hexifyParams(
-            principalPlusInterest,
+            principal,
+            interestRate,
             amortizationUnitType,
             termLength,
         );
@@ -305,9 +340,10 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
                 inputParamsAsHex,
             );
 
-            expect(outputParams[0]).to.bignumber.equal(principalPlusInterest);
-            expect(outputParams[1]).to.bignumber.equal(amortizationUnitType);
-            expect(outputParams[2]).to.bignumber.equal(termLength);
+            expect(outputParams[0]).to.bignumber.equal(principal);
+            expect(outputParams[1]).to.bignumber.equal(interestRate);
+            expect(outputParams[2]).to.bignumber.equal(amortizationUnitType);
+            expect(outputParams[3]).to.bignumber.equal(termLength);
         });
     });
 
@@ -331,12 +367,14 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
         });
 
         describe("when termsContractParameters associated w/ debt agreement malformed", () => {
-            const principalPlusInterest = Units.ether(10);
+            const principal = Units.ether(10);
+            const interestRate = Units.percent(2.333);
             const amortizationUnitType = new BigNumber(10); // invalid unit code.
             const termLength = new BigNumber(10);
 
             const invalidTermsParams = hexifyParams(
-                principalPlusInterest,
+                principal,
+                interestRate,
                 amortizationUnitType,
                 termLength,
             );
@@ -367,17 +405,20 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
 
         describe("when termsContractParameters associated w/ debt agreement are well-formed", () => {
             /*
-            The params define a simple interest contract with the below valid terms:
-              - Principal plus interest: 12 ether
+            The params define a compound interest contract with the below valid terms:
+              - Principal: 12 ether
+              - Interest Rate: 4.5923%
               - Amortization Unit Type: year
               - Term length: 3 years
             */
-            const principalPlusInterest = Units.ether(12);
+            const principal = Units.ether(12);
+            const interestRate = Units.percent(4.5923);
             const amortizationUnitType = new BigNumber(4); // unit code for years.
             const termLength = new BigNumber(3); // term is three years.
 
             const validTermsParams = hexifyParams(
-                principalPlusInterest,
+                principal,
+                interestRate,
                 amortizationUnitType,
                 termLength,
             );
@@ -386,8 +427,17 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
             const BLOCK_ISSUANCE_TIMESTAMP = ORIGIN_MOMENT.unix();
 
             const ZERO_AMOUNT = Units.ether(0);
-            const INSTALLMENT_AMOUNT = principalPlusInterest.div(termLength);
-            const FULL_AMOUNT = principalPlusInterest;
+            const FIRST_INSTALLMENT_AMOUNT = expectedRepaymentValue(
+                principal,
+                interestRate,
+                new BigNumber(1),
+            );
+            const SECOND_INSTALLMENT_AMOUNT = expectedRepaymentValue(
+                principal,
+                interestRate,
+                new BigNumber(2),
+            );
+            const FULL_AMOUNT = expectedRepaymentValue(principal, interestRate, termLength);
 
             before(async () => {
                 await mockRegistry.mockGetTermsContractReturnValueFor.sendTransactionAsync(
@@ -460,34 +510,34 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
                     ).to.eventually.bignumber.equal(ZERO_AMOUNT);
                 });
 
-                it("should return an expected value equivalent to one installment", async () => {
+                it("should return an expected value equivalent to the first installment", async () => {
                     await expect(
                         termsContract.getExpectedRepaymentValue.callAsync(
                             ARBITRARY_AGREEMENT_ID,
                             new BigNumber(ONE_YEAR_AFTER),
                         ),
-                    ).to.eventually.bignumber.equal(INSTALLMENT_AMOUNT);
+                    ).to.eventually.bignumber.equal(FIRST_INSTALLMENT_AMOUNT);
                 });
 
-                it("should return an expected value equivalent to two installments", async () => {
+                it("should return an expected value equivalent to the total after second installment", async () => {
                     await expect(
                         termsContract.getExpectedRepaymentValue.callAsync(
                             ARBITRARY_AGREEMENT_ID,
                             new BigNumber(TWO_YEARS_AFTER),
                         ),
-                    ).to.eventually.bignumber.equal(INSTALLMENT_AMOUNT.mul(2));
+                    ).to.eventually.bignumber.equal(SECOND_INSTALLMENT_AMOUNT);
                 });
 
-                it("should return an expected value equivalent to two installments", async () => {
+                it("should return an expected value equivalent to the total after second installment", async () => {
                     await expect(
                         termsContract.getExpectedRepaymentValue.callAsync(
                             ARBITRARY_AGREEMENT_ID,
                             new BigNumber(TWO_PLUS_YEARS_AFTER),
                         ),
-                    ).to.eventually.bignumber.equal(INSTALLMENT_AMOUNT.mul(2));
+                    ).to.eventually.bignumber.equal(SECOND_INSTALLMENT_AMOUNT);
                 });
 
-                it("should return the full amount of the principal plus interest", async () => {
+                it("should return the full amount of all three installments", async () => {
                     await expect(
                         termsContract.getExpectedRepaymentValue.callAsync(
                             ARBITRARY_AGREEMENT_ID,
@@ -525,5 +575,204 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
                 });
             });
         });
+
+        /*
+         * HACK: Address known issue: given that Solidity must use integers to compute
+         *  compound interest functions, we require interestRates passed into
+         *  the function have 9 decimals worth of precision.  This means that,
+         *  with the following compound interest formula...
+         *
+         *      V = P(1+r)^t
+         *
+         *  Can be translated in solidity to...
+         *
+         *      V * 10^(9t) = P((1+r) * 10^9)^t
+         *
+         *  Meaning we compute the expected repayment value with ....
+         *
+         *      V = P((1+r) * 10^9)^t / 10^(9t)
+         *
+         *  This is all well and good, but there are scenarios in which
+         *  the intermediate value V * 10^(9t) overflows a 256-bit unsigned
+         *  integer.
+         *
+         *  Seeking guidance from security auditors for best practices
+         *  in emulating fraction exponentiation in Solidity.
+         */
+        // describe("when termsContractParameters define parameters sensitive to overflow errors", () => {
+        //     /*
+        //     The params define a compound interest contract with the below valid terms:
+        //       - Principal: 10000 ether
+        //       - Interest Rate: 2000%
+        //       - Amortization Unit Type: hours
+        //       - Term length: 90 hours
+        //     */
+        //     const principal = Units.ether(1000);
+        //     const interestRate = Units.percent(2000);
+        //     const amortizationUnitType = new BigNumber(0); // unit code for hours.
+        //     const termLength = new BigNumber(90); // term is 90.
+        //
+        //     const validTermsParams = hexifyParams(
+        //         principal,
+        //         interestRate,
+        //         amortizationUnitType,
+        //         termLength,
+        //     );
+        //
+        //     const ORIGIN_MOMENT = moment();
+        //     const BLOCK_ISSUANCE_TIMESTAMP = ORIGIN_MOMENT.unix();
+        //
+        //     const ZERO_AMOUNT = Units.ether(0);
+        //     const FIRST_INSTALLMENT_AMOUNT = expectedRepaymentValue(
+        //         principal,
+        //         interestRate,
+        //         new BigNumber(1),
+        //     );
+        //     const SIXTY_FOURTH_INSTALLMENT_AMOUNT = expectedRepaymentValue(
+        //         principal,
+        //         interestRate,
+        //         new BigNumber(64),
+        //     );
+        //     const FULL_AMOUNT = expectedRepaymentValue(
+        //         principal,
+        //         interestRate,
+        //         termLength,
+        //     );
+        //
+        //     before(async () => {
+        //         await mockRegistry.mockGetTermsContractReturnValueFor.sendTransactionAsync(
+        //             ARBITRARY_AGREEMENT_ID,
+        //             termsContract.address,
+        //         );
+        //
+        //         await mockRegistry.mockGetTermsContractParameters.sendTransactionAsync(
+        //             ARBITRARY_AGREEMENT_ID,
+        //             validTermsParams,
+        //         );
+        //
+        //         await mockRegistry.mockGetIssuanceBlockTimestamp.sendTransactionAsync(
+        //             ARBITRARY_AGREEMENT_ID,
+        //             new BigNumber(BLOCK_ISSUANCE_TIMESTAMP),
+        //         );
+        //     });
+        //
+        //     describe("timestamps that occur BEFORE the block issuance's timestamp", () => {
+        //         const ONE_YEAR_BEFORE = moment(ORIGIN_MOMENT)
+        //             .subtract(1, "year")
+        //             .unix(); // zero-amount
+        //         const ONE_DAY_BEFORE = moment(ORIGIN_MOMENT)
+        //             .subtract(1, "day")
+        //             .unix(); // zero-amount
+        //
+        //         it("should return an expected value of 0", async () => {
+        //             await expect(
+        //                 termsContract.getExpectedRepaymentValue.callAsync(
+        //                     ARBITRARY_AGREEMENT_ID,
+        //                     new BigNumber(ONE_YEAR_BEFORE),
+        //                 ),
+        //             ).to.eventually.bignumber.equal(ZERO_AMOUNT);
+        //         });
+        //
+        //         it("should return an expected value of 0", async () => {
+        //             await expect(
+        //                 termsContract.getExpectedRepaymentValue.callAsync(
+        //                     ARBITRARY_AGREEMENT_ID,
+        //                     new BigNumber(ONE_DAY_BEFORE),
+        //                 ),
+        //             ).to.eventually.bignumber.equal(ZERO_AMOUNT);
+        //         });
+        //     });
+        //
+        //     describe("timestamps that occur DURING the issuance's term length", () => {
+        //         const FIFTEEN_MINUTES_AFTER = moment(ORIGIN_MOMENT)
+        //             .add(15, "minutes")
+        //             .unix(); // zero-amount
+        //         const ONE_HOUR_AFTER = moment(ORIGIN_MOMENT)
+        //             .add(1, "hours")
+        //             .unix(); // one-installment
+        //         const SIXTY_FOUR_HOURS_AFTER = moment(ORIGIN_MOMENT)
+        //             .add(64, "hours")
+        //             .unix(); // sixty-four-installments
+        //         const SIXTY_FOUR_HOURS_PLUS_AFTER = moment(ORIGIN_MOMENT)
+        //             .add(64, "hours")
+        //             .add(4, "minutes")
+        //             .unix(); // sixty-four-installments
+        //         const NINETY_HOURS_AFTER = moment(ORIGIN_MOMENT)
+        //             .add(90, "hours")
+        //             .unix(); // full-amount
+        //
+        //         it("should return an expected value of 0", async () => {
+        //             await expect(
+        //                 termsContract.getExpectedRepaymentValue.callAsync(
+        //                     ARBITRARY_AGREEMENT_ID,
+        //                     new BigNumber(FIFTEEN_MINUTES_AFTER),
+        //                 ),
+        //             ).to.eventually.bignumber.equal(ZERO_AMOUNT);
+        //         });
+        //
+        //         it("should return an expected value equivalent to the first installment", async () => {
+        //             await expect(
+        //                 termsContract.getExpectedRepaymentValue.callAsync(
+        //                     ARBITRARY_AGREEMENT_ID,
+        //                     new BigNumber(ONE_HOUR_AFTER),
+        //                 ),
+        //             ).to.eventually.bignumber.equal(FIRST_INSTALLMENT_AMOUNT);
+        //         });
+        //
+        //         it("should return an expected value equivalent to the total after 64 installments", async () => {
+        //             await expect(
+        //                 termsContract.getExpectedRepaymentValue.callAsync(
+        //                     ARBITRARY_AGREEMENT_ID,
+        //                     new BigNumber(SIXTY_FOUR_HOURS_AFTER),
+        //                 ),
+        //             ).to.eventually.bignumber.equal(SIXTY_FOURTH_INSTALLMENT_AMOUNT);
+        //         });
+        //
+        //         it("should return an expected value equivalent to the total after 64 installment", async () => {
+        //             await expect(
+        //                 termsContract.getExpectedRepaymentValue.callAsync(
+        //                     ARBITRARY_AGREEMENT_ID,
+        //                     new BigNumber(SIXTY_FOUR_HOURS_PLUS_AFTER),
+        //                 ),
+        //             ).to.eventually.bignumber.equal(SIXTY_FOURTH_INSTALLMENT_AMOUNT);
+        //         });
+        //
+        //         it("should return the full amount of all 90 installments", async () => {
+        //             await expect(
+        //                 termsContract.getExpectedRepaymentValue.callAsync(
+        //                     ARBITRARY_AGREEMENT_ID,
+        //                     new BigNumber(NINETY_HOURS_AFTER),
+        //                 ),
+        //             ).to.eventually.bignumber.equal(FULL_AMOUNT);
+        //         });
+        //     });
+        //
+        //     describe("timestamps that occur AFTER the issuance's full term has elapsed", () => {
+        //         const ONE_WEEK_AFTER = moment(ORIGIN_MOMENT)
+        //             .add(1, "weeks")
+        //             .unix(); // full-amount
+        //         const ONE_YEAR_AFTER = moment(ORIGIN_MOMENT)
+        //             .add(1, "years")
+        //             .unix(); // full-amount
+        //
+        //         it("should return the full amount of the principal plus interest", async () => {
+        //             await expect(
+        //                 termsContract.getExpectedRepaymentValue.callAsync(
+        //                     ARBITRARY_AGREEMENT_ID,
+        //                     new BigNumber(ONE_WEEK_AFTER),
+        //                 ),
+        //             ).to.eventually.bignumber.equal(FULL_AMOUNT);
+        //         });
+        //
+        //         it("should return the full amount of the principal plus interest", async () => {
+        //             await expect(
+        //                 termsContract.getExpectedRepaymentValue.callAsync(
+        //                     ARBITRARY_AGREEMENT_ID,
+        //                     new BigNumber(ONE_YEAR_AFTER),
+        //                 ),
+        //             ).to.eventually.bignumber.equal(FULL_AMOUNT);
+        //         });
+        //     });
+        // });
     });
 });

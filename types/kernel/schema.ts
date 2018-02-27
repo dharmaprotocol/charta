@@ -1,10 +1,6 @@
-import {BigNumber} from "bignumber.js";
-import {
-    Address,
-    Bytes32,
-    UInt,
-} from "../common";
-import {IssuanceCommitment} from "./issuance_commitment";
+import { BigNumber } from "bignumber.js";
+import { Address, Bytes32, UInt } from "../common";
+import { IssuanceCommitment } from "./issuance_commitment";
 
 export interface IssuanceCommitmentParams {
     version: Address;
