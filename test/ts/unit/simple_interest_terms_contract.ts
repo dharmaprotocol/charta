@@ -27,6 +27,7 @@ BigNumberSetup.configure();
 
 const repaymentRouterContract = artifacts.require("RepaymentRouter");
 const simpleInterestTermsContract = artifacts.require("SimpleInterestTermsContract");
+const mockTokenContract = artifacts.require("MockERC20Token");
 
 contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
     let termsContract: SimpleInterestTermsContractContract;
@@ -157,12 +158,18 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
 
             describe("...with a different `tokenAddress` than expected by the terms contract", () => {
 
+              let dummyToken: MockERC20TokenContract;
+
                 before(async () => {
-                    await expect(router.repay.sendTransactionAsync(
-                        ARBITRARY_AGREEMENT_ID,
-                        Units.ether(1),
-                        ATTACKER // this is not the address it's expecting.
-                    )).to.eventually.be.rejectedWith(REVERT_ERROR);
+                  const mockTokenContractTruffle = await mockTokenContract.new();
+                  const mockTokenContractWeb3 = web3.eth.contract(mockTokenContractTruffle.abi).at(mockTokenContractTruffle.address);
+                  dummyToken = new MockERC20TokenContract(mockTokenContractWeb3, TX_DEFAULTS);
+
+                  await router.repay.sendTransactionAsync(
+                      ARBITRARY_AGREEMENT_ID,
+                      Units.ether(10),
+                      dummyToken.address // this is not the token that it's expecting.
+                  )
                 });
 
                 it("should not record the repayment", async () => {
