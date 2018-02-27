@@ -1,4 +1,4 @@
-import {BigNumber} from "bignumber.js";
+    import {BigNumber} from "bignumber.js";
 
 import * as ABIDecoder from "abi-decoder";
 import * as chai from "chai";

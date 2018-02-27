@@ -72,16 +72,41 @@ contract Collateralized is TermsContract {
     )
         public
     {
-        // validate amount and lockup period.
-        require(amount > 0 && lockupPeriodEndTimestamp > block.timestamp);
+        // the amount being put up for collateral must exceed 0.
+        require(amount > 0);
 
-        // ensure that the agreement has not already been collateralized.
+        // the lockup period must occur at some point in the future.
+        require(lockupPeriodEndTimestamp > block.timestamp);
+
+        /*
+        Ensure that the agreement has not already been collateralized.
+
+        If the agreement has already been collateralized, this check will fail
+        because any valid form of collateral will have a non-zero lockupPeriod.
+        Only an uncollateralized agreement would meet this requirement.
+        */
         require(collateralForAgreementID[agreementID].lockupPeriod == 0);
 
-        // take tokens as collateral.
-        require(ERC20(token).transferFrom(
-            msg.sender,
-            address(this),
+        ERC20 erc20token = ERC20(token);
+        address collateralizer = msg.sender;
+        address custodian = address(this);
+
+        /*
+        The collateralizer must have sufficient balance equal to or greater
+        than the amount being put up for collateral.
+        */
+        require(erc20token.balanceOf(collateralizer) >= amount);
+
+        /*
+        The custodian must have an allowance granted by the collateralizer equal
+        to or greater than the amount being put up for collateral.
+        */
+        require(erc20token.allowance(collateralizer, custodian) >= amount);
+
+        // the collateral must be successfully transferred to this contract.
+        require(erc20token.transferFrom(
+            collateralizer,
+            custodian,
             amount
         ));
 
@@ -106,15 +131,17 @@ contract Collateralized is TermsContract {
     )
         public
     {
-        // fetch collateral object.
+        // fetch relevant collateral instance.
         Collateral memory collateral = collateralForAgreementID[agreementID];
 
-        // check if collateral is not empty, lockupPeriod is over and not withdrawn
-        require(
-            collateral.lockupPeriod > 0 &&
-            block.timestamp > collateral.lockupPeriod &&
-            !collateral.withdrawn
-        );
+        // Ensure a valid form of collateral is tied to this agreement id.
+        require(collateral.lockupPeriod > 0);
+
+        // Collateral can only be returned after the lockup period.
+        require(block.timestamp > collateral.lockupPeriod);
+
+        // Collateral can only be returned if it has yet to be withdrawn.
+        require(!collateral.withdrawn);
 
         // ensure sufficient payment.
         require(
@@ -122,13 +149,16 @@ contract Collateralized is TermsContract {
             getValueRepaidToDate(agreementID)
         );
 
-        // transfer collateral back to sender.
-        require(
-          ERC20(collateral.token).transfer(collateral.collateralizer, collateral.amount)
-        );
-
         // mark collateral as withdrawn.
-        collateral.withdrawn = true;
+        collateralForAgreementID[agreementID].withdrawn = true;
+
+        // transfer the collateral this contract was holding in escrow back to sender.
+        require(
+            ERC20(collateral.token).transfer(
+                collateral.collateralizer,
+                collateral.amount
+            )
+        );
 
         // log that the collateral has been succesfully returned to collateralizer.
         CollateralReturned(
@@ -144,15 +174,17 @@ contract Collateralized is TermsContract {
     )
         public
     {
-        // fetch collateral object.
+        // fetch relevant collateral instance.
         Collateral memory collateral = collateralForAgreementID[agreementID];
 
-        // check if collateral is not empty, lockupPeriod is over and not withdrawn.
-        require(
-            collateral.lockupPeriod > 0 &&
-            block.timestamp > collateral.lockupPeriod &&
-            !collateral.withdrawn
-        );
+        // Ensure a valid form of collateral is tied to this agreement id.
+        require(collateral.lockupPeriod > 0);
+
+        // Seizure can only occur after the lockup period.
+        require(block.timestamp > collateral.lockupPeriod);
+
+        // Seizure can only occur if the collateral has yet to be withdrawn.
+        require(!collateral.withdrawn);
 
         // ensure debtor is in violation of the terms.
         require(
@@ -160,16 +192,19 @@ contract Collateralized is TermsContract {
             getValueRepaidToDate(agreementID)
         );
 
+        // mark collateral as withdrawn once transfer has succeeded.
+        collateralForAgreementID[agreementID].withdrawn = true;
+
         // determine beneficiary of the seized collateral.
         address beneficiary = debtRegistry.getBeneficiary(agreementID);
 
         // seize collateral and transfer to beneficiary.
         require(
-            ERC20(collateral.token).transfer(beneficiary, collateral.amount)
+            ERC20(collateral.token).transfer(
+                beneficiary,
+                collateral.amount
+            )
         );
-
-        // mark collateral as withdrawn once transfer has succeeded.
-        collateral.withdrawn = true;
 
         // log the seizure event.
         CollateralSeized(
