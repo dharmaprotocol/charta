@@ -48,6 +48,9 @@ contract DebtRegistry is Pausable {
     // Primary registry mapping issuance hashes to their corresponding entries
     mapping (bytes32 => Entry) internal registry;
 
+    // Maps debtor addresses to a list of their debts' issuance hashes
+    mapping (address => bytes32[]) internal debtorToDebts;
+
     PermissionsLib.Permissions internal entryInsertPermissions;
     PermissionsLib.Permissions internal entryEditPermissions;
 
@@ -137,6 +140,7 @@ contract DebtRegistry is Pausable {
         require(registry[issuanceHash].beneficiary == address(0));
 
         registry[issuanceHash] = entry;
+        debtorToDebts[_debtor].push(issuanceHash);
 
         LogInsertEntry(
             issuanceHash,
@@ -322,6 +326,17 @@ contract DebtRegistry is Pausable {
         return entryEditPermissions.getAuthorizedAgents();
     }
 
+    /**
+     * Returns the list of debt agreements a debtor is party to,
+     * with each debt agreement listed by issuance hash.
+     */
+    function getDebtorsDebts(address debtor)
+        public
+        view
+        returns(bytes32[])
+    {
+        return debtorToDebts[debtor];
+    }
 
     /**
      * Helper function for computing the hash of a given issuance.

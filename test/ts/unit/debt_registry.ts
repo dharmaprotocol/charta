@@ -151,6 +151,8 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
     });
 
     describe("owner authorizes agent(s) for inserting entries", () => {
+        let expectedDebtorsDebts: string[] = [];
+
         describe("first agent", () => {
             let res: Web3.TransactionReceipt;
 
@@ -213,6 +215,7 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
             before(async () => {
                 entry = generateEntryFn();
                 const txHash = await insertEntryFn(entry, { from: AGENT_1 });
+                expectedDebtorsDebts.push(entry.getIssuanceHash());
                 res = await web3.eth.getTransactionReceipt(txHash);
                 block = await web3.eth.getBlock(res.blockNumber);
             });
@@ -243,6 +246,12 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
                         expect(value).to.equal(expectedEntry[i]);
                     }
                 });
+            });
+
+            it("should add entry's issuance hash to first agent's list of debts", async () => {
+                await expect(
+                    registry.getDebtorsDebts.callAsync(entry.getDebtor()),
+                ).to.eventually.deep.equal(expectedDebtorsDebts);
             });
 
             it("should throw when first agent tries editing entry", async () => {
@@ -260,6 +269,7 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
             before(async () => {
                 entry = generateEntryFn();
                 const txHash = await insertEntryFn(entry, { from: AGENT_2 });
+                expectedDebtorsDebts.push(entry.getIssuanceHash());
                 res = await web3.eth.getTransactionReceipt(txHash);
                 block = await web3.eth.getBlock(res.blockNumber);
             });
@@ -290,6 +300,12 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
                         expect(value).to.equal(expectedEntry[i]);
                     }
                 });
+            });
+
+            it("should add entry's issuance hash to debtor's list of debts", async () => {
+                await expect(
+                    registry.getDebtorsDebts.callAsync(entry.getDebtor()),
+                ).to.eventually.deep.equal(expectedDebtorsDebts);
             });
 
             it("should throw when second agent tries editing entry", async () => {
