@@ -95,6 +95,23 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
         const ARBITRARY_AGREEMENT_ID =
             web3.sha3("any 32 byte hex value can represent an agreement id");
 
+        const ZERO_AMOUNT = Units.ether(0);
+
+        before(async () => {
+            // This balance is not sufficient.
+            await mockToken.mockBalanceOfFor.sendTransactionAsync(
+                COLLATERALIZER,
+                ZERO_AMOUNT
+            );
+
+            // This allowance is not sufficient.
+            await mockToken.mockAllowanceFor.sendTransactionAsync(
+                COLLATERALIZER,
+                collateralContract.address,
+                ZERO_AMOUNT
+            );
+        });
+
         it("should throw if the amount being put up for collateral is zero", async () => {
             await expect(collateralContract.collateralize.sendTransactionAsync(
               ARBITRARY_AGREEMENT_ID,
@@ -113,13 +130,29 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
             )).to.eventually.be.rejectedWith(REVERT_ERROR);
         });
 
-        it("should throw if the collateral fails to transfer", async () => {
+        it("should throw if the collateralizer does not have sufficient balance", async () => {
             await expect(collateralContract.collateralize.sendTransactionAsync(
                 ARBITRARY_AGREEMENT_ID,
                 mockToken.address,
-                new BigNumber(10),
+                COLLATERAL_AMOUNT,
                 new BigNumber(moment().add(2, 'years').unix()),
-                { from: ATTACKER }
+                { from: COLLATERALIZER }
+            )).to.eventually.be.rejectedWith(REVERT_ERROR);
+        });
+
+        it("should throw if the custodian is not allotted sufficient allowance by the collateralizer", async () => {
+            // set a sufficient balance so that we fall through to the allowance check.
+            await mockToken.mockBalanceOfFor.sendTransactionAsync(
+                COLLATERALIZER,
+                COLLATERAL_AMOUNT
+            );
+
+            await expect(collateralContract.collateralize.sendTransactionAsync(
+                ARBITRARY_AGREEMENT_ID,
+                mockToken.address, // the acting custodian is the collateralized contract.
+                COLLATERAL_AMOUNT,
+                new BigNumber(moment().add(2, 'years').unix()),
+                { from: COLLATERALIZER }
             )).to.eventually.be.rejectedWith(REVERT_ERROR);
         });
       });
@@ -131,6 +164,22 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
         let res: Web3.TransactionReceipt;
 
         before(async () => {
+
+            await mockToken.reset.sendTransactionAsync();
+
+            // this balance is sufficient.
+            await mockToken.mockBalanceOfFor.sendTransactionAsync(
+              COLLATERALIZER,
+              COLLATERAL_AMOUNT
+            );
+
+            // this allowance is sufficient.
+            await mockToken.mockAllowanceFor.sendTransactionAsync(
+              COLLATERALIZER,
+              collateralContract.address,
+              COLLATERAL_AMOUNT
+            );
+
             const txHash = await collateralContract.collateralize.sendTransactionAsync(
                 AGREEMENT_ID,
                 mockToken.address,
@@ -138,6 +187,7 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
                 new BigNumber(moment().add(2, 'years').unix()),
                 { from: COLLATERALIZER }
             );
+
             res = await web3.eth.getTransactionReceipt(txHash);
         });
 
