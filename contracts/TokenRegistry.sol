@@ -9,7 +9,7 @@ contract TokenRegistry is Ownable {
 
     function setTokenAddress(string symbol, address token) public onlyOwner {
         if (symbolToTokenAddress[keccak256(symbol)] == 0) {
-          tokenSymbols.push(symbol);
+            tokenSymbols.push(symbol);
         }
 
         symbolToTokenAddress[keccak256(symbol)] = token;

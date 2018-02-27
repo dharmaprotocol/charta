@@ -33,7 +33,7 @@ const repaymentRouterContract = artifacts.require("RepaymentRouter");
 const debtRegistryContract = artifacts.require("DebtRegistry");
 const termsContract = artifacts.require("SimpleInterestTermsContract");
 
-contract("Debt Registry (Unit Tests)", async ACCOUNTS => {
+contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
     const CONTRACT_OWNER = ACCOUNTS[0];
 
     // We choose arbitrary addresses to represent data fields in the registry
@@ -540,8 +540,9 @@ contract("Debt Registry (Unit Tests)", async ACCOUNTS => {
             describe("Queries tied to non-existent debt agreements", () => {
                 it("should throw when querying for TermsContractParameters", async () => {
                     const NON_EXISTENT_AGREEMENT_ID = web3.sha3("this agreement id does not exist");
-                    await expect(registry.getTermsContractParameters.callAsync(
-                        NON_EXISTENT_AGREEMENT_ID)).to.eventually.be.rejectedWith(REVERT_ERROR);
+                    await expect(
+                        registry.getTermsContractParameters.callAsync(NON_EXISTENT_AGREEMENT_ID),
+                    ).to.eventually.be.rejectedWith(REVERT_ERROR);
                 });
             });
 

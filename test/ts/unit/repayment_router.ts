@@ -30,7 +30,7 @@ BigNumberSetup.configure();
 
 const repaymentRouterContract = artifacts.require("RepaymentRouter");
 
-contract("Repayment Router (Unit Tests)", async ACCOUNTS => {
+contract("Repayment Router (Unit Tests)", async (ACCOUNTS) => {
     let router: RepaymentRouterContract;
 
     let mockToken: MockERC20TokenContract;

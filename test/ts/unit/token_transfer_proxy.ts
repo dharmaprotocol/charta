@@ -22,7 +22,7 @@ const expect = chai.expect;
 // Configure BigNumber exponentiation
 BigNumberSetup.configure();
 
-contract("Token Transfer Proxy (Unit Tests)", async ACCOUNTS => {
+contract("Token Transfer Proxy (Unit Tests)", async (ACCOUNTS) => {
     let proxy: TokenTransferProxyContract;
     let kernel: DebtKernelContract;
     let repaymentRouter: RepaymentRouterContract;

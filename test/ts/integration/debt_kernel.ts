@@ -1,41 +1,35 @@
-import { BigNumber } from "bignumber.js";
-
 import * as ABIDecoder from "abi-decoder";
-import * as chai from "chai";
-import * as _ from "lodash";
-import * as moment from "moment";
-import * as Web3 from "web3";
 import * as Units from "../test_utils/units";
+import * as Web3 from "web3";
+import * as _ from "lodash";
+import * as chai from "chai";
+import * as moment from "moment";
 import * as utils from "../test_utils/utils";
 
-import { LogDebtOrderFilled, LogError } from "../logs/debt_kernel";
-import { LogInsertEntry, LogModifyEntryBeneficiary } from "../logs/debt_registry";
-import { LogApproval, LogMint, LogTransfer } from "../logs/debt_token";
-
-import { DebtKernelContract } from "../../../types/generated/debt_kernel";
-import { DebtRegistryContract } from "../../../types/generated/debt_registry";
-import { DebtTokenContract } from "../../../types/generated/debt_token";
-import { DummyTokenContract } from "../../../types/generated/dummy_token";
-import { TokenRegistryContract } from "../../../types/generated/token_registry";
-import { RepaymentRouterContract } from "../../../types/generated/repayment_router";
-import { TokenTransferProxyContract } from "../../../types/generated/token_transfer_proxy";
-
-import { BigNumberSetup } from "../test_utils/bignumber_setup";
-import ChaiSetup from "../test_utils/chai_setup";
-import { INVALID_OPCODE, REVERT_ERROR } from "../test_utils/constants";
-
-import { DebtOrderFactory } from "../factories/debt_order_factory";
-
 import { DebtOrder, SignedDebtOrder } from "../../../types/kernel/debt_order";
+import { INVALID_OPCODE, REVERT_ERROR } from "../test_utils/constants";
 import {
     IssuanceCommitment,
     SignedIssuanceCommitment,
 } from "../../../types/kernel/issuance_commitment";
+import { LogApproval, LogMint, LogTransfer } from "../logs/debt_token";
+import { LogDebtOrderFilled, LogError } from "../logs/debt_kernel";
+import { LogInsertEntry, LogModifyEntryBeneficiary } from "../logs/debt_registry";
 
-import { DebtRegistryEntry } from "../../../types/registry/entry";
-
-import { TxDataPayable } from "../../../types/common";
+import { BigNumber } from "bignumber.js";
+import { BigNumberSetup } from "../test_utils/bignumber_setup";
+import ChaiSetup from "../test_utils/chai_setup";
+import { DebtKernelContract } from "../../../types/generated/debt_kernel";
 import { DebtKernelErrorCodes } from "../../../types/errors";
+import { DebtOrderFactory } from "../factories/debt_order_factory";
+import { DebtRegistryContract } from "../../../types/generated/debt_registry";
+import { DebtRegistryEntry } from "../../../types/registry/entry";
+import { DebtTokenContract } from "../../../types/generated/debt_token";
+import { DummyTokenContract } from "../../../types/generated/dummy_token";
+import { RepaymentRouterContract } from "../../../types/generated/repayment_router";
+import { TokenRegistryContract } from "../../../types/generated/token_registry";
+import { TokenTransferProxyContract } from "../../../types/generated/token_transfer_proxy";
+import { TxDataPayable } from "../../../types/common";
 
 // Configure BigNumber exponentiation
 BigNumberSetup.configure();
@@ -46,7 +40,7 @@ const expect = chai.expect;
 
 const debtKernelContract = artifacts.require("DebtKernel");
 
-contract("Debt Kernel (Integration Tests)", async ACCOUNTS => {
+contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
     let kernel: DebtKernelContract;
     let repaymentRouter: RepaymentRouterContract;
     let tokenTransferProxy: TokenTransferProxyContract;
@@ -753,7 +747,7 @@ contract("Debt Kernel (Integration Tests)", async ACCOUNTS => {
                 });
             });
 
-            describe("...when creditorFee + principal > 0, token transfer proxy does not have sufficient allowance", () => {
+            describe("...when creditorFee + principal > 0, proxy does not have sufficient allowance", () => {
                 before(async () => {
                     debtOrder = await orderFactory.generateDebtOrder();
                     await setupBalancesAndAllowances();

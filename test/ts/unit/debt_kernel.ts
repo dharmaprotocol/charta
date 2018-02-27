@@ -46,7 +46,7 @@ const expect = chai.expect;
 const debtKernelContract = artifacts.require("DebtKernel");
 const mockDebtTokenContract = artifacts.require("MockDebtToken");
 
-contract("Debt Kernel (Unit Tests)", async ACCOUNTS => {
+contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
     let kernel: DebtKernelContract;
     let repaymentRouter: RepaymentRouterContract;
     let mockDebtToken: MockDebtTokenContract;

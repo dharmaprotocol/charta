@@ -26,9 +26,7 @@ const expect = chai.expect;
 BigNumberSetup.configure();
 
 const repaymentRouterContract = artifacts.require("RepaymentRouter");
-const compoundInterestTermsContract = artifacts.require(
-    "CompoundInterestTermsContract",
-);
+const compoundInterestTermsContract = artifacts.require("CompoundInterestTermsContract");
 
 /*
  * The compound interest rate formula we're leveraging is
@@ -48,7 +46,7 @@ const compoundInterestTermsContract = artifacts.require(
  * t := termLengthInAmortizationUnits
  */
 
-contract("CompoundInterestTermsContract (Unit Tests)", async ACCOUNTS => {
+contract("CompoundInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
     let termsContract: CompoundInterestTermsContractContract;
     let router: RepaymentRouterContract;
     let mockToken: MockERC20TokenContract;
@@ -63,9 +61,7 @@ contract("CompoundInterestTermsContract (Unit Tests)", async ACCOUNTS => {
     const TERMS_CONTRACT_PARAMETERS = web3.sha3(
         "any 32 byte hex value can represent the terms contract's parameters",
     );
-    const ARBITRARY_AGREEMENT_ID = web3.sha3(
-        "any 32 byte hex value can represent an agreement id",
-    );
+    const ARBITRARY_AGREEMENT_ID = web3.sha3("any 32 byte hex value can represent an agreement id");
 
     const NULL_ADDRESS = "0x0000000000000000000000000000000000000000";
 
@@ -91,9 +87,7 @@ contract("CompoundInterestTermsContract (Unit Tests)", async ACCOUNTS => {
         );
     }
 
-    function toInterestRateFloat(
-        interestRateSolidityPrecision: BigNumber,
-    ): BigNumber {
+    function toInterestRateFloat(interestRateSolidityPrecision: BigNumber): BigNumber {
         return interestRateSolidityPrecision.div(10 ** 9);
     }
 
@@ -106,26 +100,16 @@ contract("CompoundInterestTermsContract (Unit Tests)", async ACCOUNTS => {
         interestRateSolidityPrecision: BigNumber,
         termLengthInAmortizationUnits: BigNumber,
     ): BigNumber {
-        const interestRateFloat = toInterestRateFloat(
-            interestRateSolidityPrecision,
-        );
+        const interestRateFloat = toInterestRateFloat(interestRateSolidityPrecision);
         const interestRateBase = toInterestRateBase(interestRateFloat);
 
-        return principal.times(
-            interestRateBase.pow(termLengthInAmortizationUnits.toNumber()),
-        );
+        return principal.times(interestRateBase.pow(termLengthInAmortizationUnits.toNumber()));
     }
 
     before(async () => {
-        mockRegistry = await MockDebtRegistryContract.deployed(
-            web3,
-            TX_DEFAULTS,
-        );
+        mockRegistry = await MockDebtRegistryContract.deployed(web3, TX_DEFAULTS);
         mockToken = await MockERC20TokenContract.deployed(web3, TX_DEFAULTS);
-        mockTokenTransferProxy = await MockTokenTransferProxyContract.deployed(
-            web3,
-            TX_DEFAULTS,
-        );
+        mockTokenTransferProxy = await MockTokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
 
         const repaymentRouterTruffle = await repaymentRouterContract.new(
             mockRegistry.address,
@@ -148,20 +132,14 @@ contract("CompoundInterestTermsContract (Unit Tests)", async ACCOUNTS => {
             .contract(compoundInterestTermsContract.abi)
             .at(termsContractTruffle.address);
 
-        router = new RepaymentRouterContract(
-            repaymentRouterWeb3Contract,
-            TX_DEFAULTS,
-        );
+        router = new RepaymentRouterContract(repaymentRouterWeb3Contract, TX_DEFAULTS);
         termsContract = new CompoundInterestTermsContractContract(
             termsContractWeb3Contract,
             TX_DEFAULTS,
         );
 
         // PAYER begins with a balance of 5 ether.
-        await mockToken.mockBalanceOfFor.sendTransactionAsync(
-            PAYER,
-            Units.ether(5),
-        );
+        await mockToken.mockBalanceOfFor.sendTransactionAsync(PAYER, Units.ether(5));
 
         // TransferProxy is granted an allowance of 3 ether from PAYER.
         await mockToken.mockAllowanceFor.sendTransactionAsync(
@@ -173,19 +151,19 @@ contract("CompoundInterestTermsContract (Unit Tests)", async ACCOUNTS => {
 
     describe("Initialization", () => {
         it("points to the DebtRegistry passed in through the constructor", async () => {
-            await expect(
-                termsContract.debtRegistry.callAsync(),
-            ).to.eventually.equal(mockRegistry.address);
+            await expect(termsContract.debtRegistry.callAsync()).to.eventually.equal(
+                mockRegistry.address,
+            );
         });
         it("points to the RepaymentRouter passed in through the constructor", async () => {
-            await expect(
-                termsContract.repaymentRouter.callAsync(),
-            ).to.eventually.equal(router.address);
+            await expect(termsContract.repaymentRouter.callAsync()).to.eventually.equal(
+                router.address,
+            );
         });
         it("points to the token contract passed in through the constructor", async () => {
-            await expect(
-                termsContract.repaymentToken.callAsync(),
-            ).to.eventually.equal(mockToken.address);
+            await expect(termsContract.repaymentToken.callAsync()).to.eventually.equal(
+                mockToken.address,
+            );
         });
     });
 
@@ -237,9 +215,7 @@ contract("CompoundInterestTermsContract (Unit Tests)", async ACCOUNTS => {
 
                 it("should not record the repayment", async () => {
                     await expect(
-                        termsContract.getValueRepaidToDate.callAsync(
-                            ARBITRARY_AGREEMENT_ID,
-                        ),
+                        termsContract.getValueRepaidToDate.callAsync(ARBITRARY_AGREEMENT_ID),
                     ).to.eventually.bignumber.equal(Units.ether(0));
                 });
             });
@@ -258,9 +234,7 @@ contract("CompoundInterestTermsContract (Unit Tests)", async ACCOUNTS => {
 
                 it("should record the repayment", async () => {
                     await expect(
-                        termsContract.getValueRepaidToDate.callAsync(
-                            ARBITRARY_AGREEMENT_ID,
-                        ),
+                        termsContract.getValueRepaidToDate.callAsync(ARBITRARY_AGREEMENT_ID),
                     ).to.eventually.bignumber.equal(AMOUNT);
                 });
             });
@@ -269,9 +243,7 @@ contract("CompoundInterestTermsContract (Unit Tests)", async ACCOUNTS => {
 
     describe("#getValueRepaidToDate", () => {
         describe("non-existent debt agreement", () => {
-            const NON_EXISTENT_AGREEMENT_ID = web3.sha3(
-                "this agreement id doesn't exist!",
-            );
+            const NON_EXISTENT_AGREEMENT_ID = web3.sha3("this agreement id doesn't exist!");
 
             before(async () => {
                 await mockRegistry.mockGetBeneficiaryReturnValueFor.sendTransactionAsync(
@@ -288,9 +260,7 @@ contract("CompoundInterestTermsContract (Unit Tests)", async ACCOUNTS => {
 
             it("should not register any repayment", async () => {
                 await expect(
-                    termsContract.getValueRepaidToDate.callAsync(
-                        NON_EXISTENT_AGREEMENT_ID,
-                    ),
+                    termsContract.getValueRepaidToDate.callAsync(NON_EXISTENT_AGREEMENT_ID),
                 ).to.eventually.bignumber.equal(Units.ether(0));
             });
         });
@@ -328,9 +298,7 @@ contract("CompoundInterestTermsContract (Unit Tests)", async ACCOUNTS => {
 
                 it("returns 1 ether", async () => {
                     await expect(
-                        termsContract.getValueRepaidToDate.callAsync(
-                            EXTANT_AGREEMENT_ID,
-                        ),
+                        termsContract.getValueRepaidToDate.callAsync(EXTANT_AGREEMENT_ID),
                     ).to.eventually.bignumber.equal(Units.ether(1));
                 });
             });
@@ -347,9 +315,7 @@ contract("CompoundInterestTermsContract (Unit Tests)", async ACCOUNTS => {
 
                 it("returns 2 ether", async () => {
                     await expect(
-                        termsContract.getValueRepaidToDate.callAsync(
-                            EXTANT_AGREEMENT_ID,
-                        ),
+                        termsContract.getValueRepaidToDate.callAsync(EXTANT_AGREEMENT_ID),
                     ).to.eventually.bignumber.equal(Units.ether(2));
                 });
             });
@@ -471,11 +437,7 @@ contract("CompoundInterestTermsContract (Unit Tests)", async ACCOUNTS => {
                 interestRate,
                 new BigNumber(2),
             );
-            const FULL_AMOUNT = expectedRepaymentValue(
-                principal,
-                interestRate,
-                termLength,
-            );
+            const FULL_AMOUNT = expectedRepaymentValue(principal, interestRate, termLength);
 
             before(async () => {
                 await mockRegistry.mockGetTermsContractReturnValueFor.sendTransactionAsync(

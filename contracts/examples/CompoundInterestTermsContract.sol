@@ -22,6 +22,7 @@ import "zeppelin-solidity/contracts/math/SafeMath.sol";
 import "../DebtRegistry.sol";
 import "../TermsContract.sol";
 
+
 /**
  * TODO: Address known issue: given that Solidity must use integers to compute
  *  compound interest functions, we require interestRates passed into
@@ -69,7 +70,7 @@ import "../TermsContract.sol";
 contract CompoundInterestTermsContract is TermsContract {
     using SafeMath for uint;
 
-    uint constant INTEREST_RATE_DECIMALS = 9;
+    uint public constant INTEREST_RATE_DECIMALS = 9;
 
     enum AmortizationUnitType { HOURS, DAYS, WEEKS, MONTHS, YEARS }
 
@@ -88,7 +89,7 @@ contract CompoundInterestTermsContract is TermsContract {
     uint public constant MONTH_LENGTH_IN_SECONDS = DAY_LENGTH_IN_SECONDS * 30;
     uint public constant YEAR_LENGTH_IN_SECONDS = DAY_LENGTH_IN_SECONDS * 365;
 
-    mapping (bytes32 => uint) valueRepaid;
+    mapping (bytes32 => uint) public valueRepaid;
 
     DebtRegistry public debtRegistry;
 
@@ -96,8 +97,8 @@ contract CompoundInterestTermsContract is TermsContract {
     address public repaymentRouter;
 
     modifier onlyRouter() {
-      require(msg.sender == repaymentRouter);
-      _;
+        require(msg.sender == repaymentRouter);
+        _;
     }
 
     modifier onlyMappedToThisContract(bytes32 agreementId) {
@@ -194,156 +195,11 @@ contract CompoundInterestTermsContract is TermsContract {
     /// @param agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.
     /// @return uint256 The cumulative units-of-value repaid by the specified block timestamp.
     function getValueRepaidToDate(bytes32 agreementId)
-       public
-       view
-       returns (uint _valueRepaid)
-    {
-       return valueRepaid[agreementId];
-    }
-
-    ////////////////////////
-    // INTERNAL FUNCTIONS //
-    ////////////////////////
-
-    /**
-     * Returns the number of amortization units that have
-     * elapsed between the term start timestamp
-     * specified in `params` and the given `timestamp`
-     *
-     * @param timestamp uint Unix timestamp for which we are querying elapsed amortization units
-     * @param params CompoundInterestParams Unpacked parameters of the debt agreemen
-     * @return uint Number of amortization units elapsed between term start and `timestamp`
-     */
-    function numAmortizationUnitsForTimestamp(
-        uint timestamp,
-        CompoundInterestParams params
-    )
-        internal
-        returns (uint units)
-    {
-        if (timestamp <= params.termStartUnixTimestamp) {
-            return 0;
-        }
-
-        uint delta = timestamp.sub(params.termStartUnixTimestamp);
-        uint amortizationUnitLengthInSeconds =
-            getAmortizationUnitLengthInSeconds(params.amortizationUnitType);
-        return delta.div(amortizationUnitLengthInSeconds);
-    }
-
-    /**
-     * Retrieves terms contract parameters associated
-     * with `agreementId` and unpacks the hex representation
-     * into a struct containing the the fields defined in
-     * the CompoundInterestParams struct
-     *
-     * @param agreementId bytes32 The debt agreement's issuance hash
-     * @return CompoundInterestParams _params
-     */
-    function unpackParamsForAgreementID(
-        bytes32 agreementId
-    )
-        internal
-        returns (CompoundInterestParams _params)
-    {
-      bytes32 parameters = debtRegistry.getTermsContractParameters(agreementId);
-
-      uint principal;
-      uint interestRate;
-      uint amortizationUnitTypeAsUint;
-      uint termLengthInAmortizationUnits;
-
-      (principal, interestRate, amortizationUnitTypeAsUint, termLengthInAmortizationUnits) =
-          unpackParametersFromBytes(parameters);
-
-      // Before we cast to `AmortizationUnitType`, ensure that the raw value being stored is valid.
-      require(amortizationUnitTypeAsUint <= uint(AmortizationUnitType.YEARS));
-
-      AmortizationUnitType amortizationUnitType = AmortizationUnitType(amortizationUnitTypeAsUint);
-
-      uint amortizationUnitLengthInSeconds = getAmortizationUnitLengthInSeconds(amortizationUnitType);
-      uint issuanceBlockTimestamp = debtRegistry.getIssuanceBlockTimestamp(agreementId);
-      uint termLengthInSeconds = termLengthInAmortizationUnits.mul(amortizationUnitLengthInSeconds);
-      uint termEndUnixTimestamp = termLengthInSeconds.add(issuanceBlockTimestamp);
-
-      return CompoundInterestParams({
-          principal: principal,
-          interestRate: interestRate,
-          termStartUnixTimestamp: issuanceBlockTimestamp,
-          termEndUnixTimestamp: termEndUnixTimestamp,
-          amortizationUnitType: amortizationUnitType,
-          termLengthInAmortizationUnits: termLengthInAmortizationUnits
-      });
-    }
-
-    /**
-     * Given a principal amount, interest rate (with 9 decimals of precision),
-     * and a number of amortization units, calculates
-     * the principal + total expected compound interest by time
-     * the specified number of amortization units has elapsed.
-     *
-     * @param principal uint The principal amount
-     * @param interestRate uint The interest rate, with 9 decimals of precision
-     * @param numAmortizationUnits uint The number of amortization units elapsed
-     * @return uint The sum of the principal and compounded interest rate.
-     */
-    function calculateCompoundInterestExpectedValue(
-        uint principal,
-        uint interestRate,
-        uint numAmortizationUnits
-    )
         public
-        pure
-        returns (uint _compoundInterestExpectedValue)
+        view
+        returns (uint _valueRepaid)
     {
-        uint interestRateBase = toInterestRateBase(interestRate);
-        uint unnormalizedExpectedValue = principal.mul(
-            interestRateBase ** numAmortizationUnits
-        );
-
-        // When exponentiating a number with 9 decimals of precision in
-        // Solidity by a number N, our result ends up 10 ^ (9*N)
-        // overweighted.  Thus, we normalize the value down by a factor
-        // of 10 ^ (9*N)
-        return normalizeDecimalPlaces(unnormalizedExpectedValue, numAmortizationUnits);
-    }
-
-    /**
-     * Returns the interest rate incremented by 1
-     * (with 9 decimal precision), for usage in
-     * the compound interest formula.
-     *
-     * @param interestRate uint A given interest rate with 9 decimal precision
-     * @return uint Interest rate with 9 decimal precision incremented by 1
-     */
-    function toInterestRateBase(uint interestRate)
-        internal
-        pure
-        returns (uint _interestRateBase)
-    {
-        // Since interestRate has 9 decimals of precision, incrementing
-        // it by 1 is the equivalent of adding 10^9
-        return interestRate + 10 ** INTEREST_RATE_DECIMALS;
-    }
-
-
-    /**
-     * Divides the given value by 10^(9 * power).  This is necessary because,
-     * when we exponentiate a uint with 9 decimals of precision,
-     * solidity treats the 9 decimals of precision as significant digits > 1,
-     * and, therefore, this utility proves useful for scaling down
-     * the results of such mathematical operations.
-     *
-     * @param value uint The value we wish to normalize
-     * @param power uint The power by which we will exponentiate 10^9 in normalizing value
-     * @return uint Value divided by 10^(9*power)
-     */
-    function normalizeDecimalPlaces(uint value, uint power)
-        public
-        pure
-        returns (uint _normalizedValues)
-    {
-        return value.div(10 ** (INTEREST_RATE_DECIMALS*power));
+        return valueRepaid[agreementId];
     }
 
     /**
@@ -401,6 +257,151 @@ contract CompoundInterestTermsContract is TermsContract {
         );
     }
 
+    ////////////////////////
+    // INTERNAL FUNCTIONS //
+    ////////////////////////
+
+    /**
+     * Returns the number of amortization units that have
+     * elapsed between the term start timestamp
+     * specified in `params` and the given `timestamp`
+     *
+     * @param timestamp uint Unix timestamp for which we are querying elapsed amortization units
+     * @param params CompoundInterestParams Unpacked parameters of the debt agreemen
+     * @return uint Number of amortization units elapsed between term start and `timestamp`
+     */
+    function numAmortizationUnitsForTimestamp(
+        uint timestamp,
+        CompoundInterestParams params
+    )
+        internal
+        returns (uint units)
+    {
+        if (timestamp <= params.termStartUnixTimestamp) {
+            return 0;
+        }
+
+        uint delta = timestamp.sub(params.termStartUnixTimestamp);
+        uint amortizationUnitLengthInSeconds =
+            getAmortizationUnitLengthInSeconds(params.amortizationUnitType);
+        return delta.div(amortizationUnitLengthInSeconds);
+    }
+
+    /**
+     * Retrieves terms contract parameters associated
+     * with `agreementId` and unpacks the hex representation
+     * into a struct containing the the fields defined in
+     * the CompoundInterestParams struct
+     *
+     * @param agreementId bytes32 The debt agreement's issuance hash
+     * @return CompoundInterestParams _params
+     */
+    function unpackParamsForAgreementID(
+        bytes32 agreementId
+    )
+        internal
+        returns (CompoundInterestParams _params)
+    {
+        bytes32 parameters = debtRegistry.getTermsContractParameters(agreementId);
+
+        uint principal;
+        uint interestRate;
+        uint amortizationUnitTypeAsUint;
+        uint termLengthInAmortizationUnits;
+
+        (principal, interestRate, amortizationUnitTypeAsUint, termLengthInAmortizationUnits) =
+            unpackParametersFromBytes(parameters);
+
+        // Before we cast to `AmortizationUnitType`, ensure that the raw value being stored is valid.
+        require(amortizationUnitTypeAsUint <= uint(AmortizationUnitType.YEARS));
+
+        AmortizationUnitType amortizationUnitType = AmortizationUnitType(amortizationUnitTypeAsUint);
+
+        uint amortizationUnitLengthInSeconds = getAmortizationUnitLengthInSeconds(amortizationUnitType);
+        uint issuanceBlockTimestamp = debtRegistry.getIssuanceBlockTimestamp(agreementId);
+        uint termLengthInSeconds = termLengthInAmortizationUnits.mul(amortizationUnitLengthInSeconds);
+        uint termEndUnixTimestamp = termLengthInSeconds.add(issuanceBlockTimestamp);
+
+        return CompoundInterestParams({
+            principal: principal,
+            interestRate: interestRate,
+            termStartUnixTimestamp: issuanceBlockTimestamp,
+            termEndUnixTimestamp: termEndUnixTimestamp,
+            amortizationUnitType: amortizationUnitType,
+            termLengthInAmortizationUnits: termLengthInAmortizationUnits
+        });
+    }
+
+    /**
+     * Given a principal amount, interest rate (with 9 decimals of precision),
+     * and a number of amortization units, calculates
+     * the principal + total expected compound interest by time
+     * the specified number of amortization units has elapsed.
+     *
+     * @param principal uint The principal amount
+     * @param interestRate uint The interest rate, with 9 decimals of precision
+     * @param numAmortizationUnits uint The number of amortization units elapsed
+     * @return uint The sum of the principal and compounded interest rate.
+     */
+    function calculateCompoundInterestExpectedValue(
+        uint principal,
+        uint interestRate,
+        uint numAmortizationUnits
+    )
+        internal
+        pure
+        returns (uint _compoundInterestExpectedValue)
+    {
+        uint interestRateBase = toInterestRateBase(interestRate);
+        uint unnormalizedExpectedValue = principal.mul(
+            interestRateBase ** numAmortizationUnits
+        );
+
+        // When exponentiating a number with 9 decimals of precision in
+        // Solidity by a number N, our result ends up 10 ^ (9*N)
+        // overweighted.  Thus, we normalize the value down by a factor
+        // of 10 ^ (9*N)
+        return normalizeDecimalPlaces(unnormalizedExpectedValue, numAmortizationUnits);
+    }
+
+    /**
+     * Returns the interest rate incremented by 1
+     * (with 9 decimal precision), for usage in
+     * the compound interest formula.
+     *
+     * @param interestRate uint A given interest rate with 9 decimal precision
+     * @return uint Interest rate with 9 decimal precision incremented by 1
+     */
+    function toInterestRateBase(uint interestRate)
+        internal
+        pure
+        returns (uint _interestRateBase)
+    {
+        // Since interestRate has 9 decimals of precision, incrementing
+        // it by 1 is the equivalent of adding 10^9
+        return interestRate + 10 ** INTEREST_RATE_DECIMALS;
+    }
+
+
+    /**
+     * Divides the given value by 10^(9 * power).  This is necessary because,
+     * when we exponentiate a uint with 9 decimals of precision,
+     * solidity treats the 9 decimals of precision as significant digits > 1,
+     * and, therefore, this utility proves useful for scaling down
+     * the results of such mathematical operations.
+     *
+     * @param value uint The value we wish to normalize
+     * @param power uint The power by which we will exponentiate 10^9 in normalizing value
+     * @return uint Value divided by 10^(9*power)
+     */
+    function normalizeDecimalPlaces(uint value, uint power)
+        internal
+        pure
+        returns (uint _normalizedValues)
+    {
+        return value.div(10 ** (INTEREST_RATE_DECIMALS*power));
+    }
+
     /**
      * Given an amortization unit type, returns that amortization unit's
      * length in seconds.
@@ -409,7 +410,7 @@ contract CompoundInterestTermsContract is TermsContract {
      * @return _amortizationUnitLengthInSeconds The length of the amortization unit in seconds.
      */
     function getAmortizationUnitLengthInSeconds(AmortizationUnitType amortizationUnitType)
-        public
+        internal
         pure
         returns (uint _amortizationUnitLengthInSeconds)
     {

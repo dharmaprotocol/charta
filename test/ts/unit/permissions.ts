@@ -11,7 +11,7 @@ const expect = chai.expect;
 const permissionsLibraryContract = artifacts.require("PermissionsLib");
 const dummyContract = artifacts.require("DummyContract");
 
-contract("Permissions", ACCOUNTS => {
+contract("Permissions", (ACCOUNTS) => {
     const USER = ACCOUNTS[0];
     const AGENTS = [ACCOUNTS[1], ACCOUNTS[2], ACCOUNTS[3]];
     const INQUIRER = ACCOUNTS[4];
@@ -75,12 +75,12 @@ contract("Permissions", ACCOUNTS => {
 
         describe("authorizations", () => {
             it("starts with all agents unauthorized", async () => {
-                const firstSetPromises = AGENTS.map(agent => {
+                const firstSetPromises = AGENTS.map((agent) => {
                     return expect(
                         dummyContractInstance.isAuthorizedInFirstSet.callAsync(agent),
                     ).to.eventually.equal(false);
                 });
-                const secondSetPromises = AGENTS.map(agent => {
+                const secondSetPromises = AGENTS.map((agent) => {
                     return expect(
                         dummyContractInstance.isAuthorizedInSecondSet.callAsync(agent),
                     ).to.eventually.equal(false);

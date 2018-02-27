@@ -40,7 +40,7 @@ BigNumberSetup.configure();
 const simpleInterestTermsContract = artifacts.require("SimpleInterestTermsContract");
 const repaymentRouterContract = artifacts.require("RepaymentRouter");
 
-contract("Repayment Router (Integration Tests)", async ACCOUNTS => {
+contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
     let router: RepaymentRouterContract;
     let kernel: DebtKernelContract;
     let debtToken: DebtTokenContract;
