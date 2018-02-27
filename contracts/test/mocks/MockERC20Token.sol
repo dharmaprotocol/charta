@@ -85,7 +85,11 @@ contract MockERC20Token is MockContract {
         ));
     }
 
+    /* `balanceOf` */
+
     function balanceOf(address _owner) public view returns(uint _balance) {
+        functionCalledWithArgs("balanceOf", keccak256(_owner));
+
         return uint(getMockReturnValue("balanceOf", keccak256(_owner)));
     }
 
@@ -93,6 +97,15 @@ contract MockERC20Token is MockContract {
         mockReturnValue("balanceOf", keccak256(_owner), bytes32(_balance));
     }
 
+    function wasBalanceOfCalledWith(
+        address _owner
+    )
+        public
+        view
+        returns (bool wasCalled)
+    {
+        return wasFunctionCalledWithArgs("balanceOf", keccak256(_owner));
+    }
     function allowance(address _owner, address _to) public view returns(uint _allowance) {
         return uint(getMockReturnValue("allowance", keccak256(_owner, _to)));
     }
