@@ -97,21 +97,6 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
 
         const ZERO_AMOUNT = Units.ether(0);
 
-        before(async () => {
-            // This balance is not sufficient.
-            await mockToken.mockBalanceOfFor.sendTransactionAsync(
-                COLLATERALIZER,
-                ZERO_AMOUNT
-            );
-
-            // This allowance is not sufficient.
-            await mockToken.mockAllowanceFor.sendTransactionAsync(
-                COLLATERALIZER,
-                collateralContract.address,
-                ZERO_AMOUNT
-            );
-        });
-
         it("should throw if the amount being put up for collateral is zero", async () => {
             await expect(collateralContract.collateralize.sendTransactionAsync(
               ARBITRARY_AGREEMENT_ID,
@@ -131,6 +116,19 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
         });
 
         it("should throw if the collateralizer does not have sufficient balance", async () => {
+            // This balance is not sufficient.
+            await mockToken.mockBalanceOfFor.sendTransactionAsync(
+                COLLATERALIZER,
+                ZERO_AMOUNT
+            );
+
+            // This allowance is sufficient.
+            await mockToken.mockAllowanceFor.sendTransactionAsync(
+                COLLATERALIZER,
+                collateralContract.address,
+                COLLATERAL_AMOUNT
+            );
+
             await expect(collateralContract.collateralize.sendTransactionAsync(
                 ARBITRARY_AGREEMENT_ID,
                 mockToken.address,
@@ -140,11 +138,18 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
             )).to.eventually.be.rejectedWith(REVERT_ERROR);
         });
 
-        it("should throw if the custodian is not allotted sufficient allowance by the collateralizer", async () => {
-            // set a sufficient balance so that we fall through to the allowance check.
+        it("should throw if allowances are not sufficient", async () => {
+            // This balance is sufficient.
             await mockToken.mockBalanceOfFor.sendTransactionAsync(
                 COLLATERALIZER,
                 COLLATERAL_AMOUNT
+            );
+
+            // This allowance is not sufficient.
+            await mockToken.mockAllowanceFor.sendTransactionAsync(
+                COLLATERALIZER,
+                collateralContract.address,
+                ZERO_AMOUNT
             );
 
             await expect(collateralContract.collateralize.sendTransactionAsync(
