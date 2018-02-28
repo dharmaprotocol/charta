@@ -30,11 +30,12 @@ import "./CompoundInterestTermsContract.sol";
 contract CollateralizedCompoundInterestTermsContract is Collateralized, CompoundInterestTermsContract {
     function CollateralizedCompoundInterestTermsContract(
         address _debtRegistry,
+        address _debtKernel,
         address _repaymentToken,
         address _repaymentRouter
     )
         public
-        CompoundInterestTermsContract(_debtRegistry, _repaymentToken, _repaymentRouter)
+        CompoundInterestTermsContract(_debtRegistry, _debtKernel, _repaymentToken, _repaymentRouter)
         Collateralized(_debtRegistry)
     {
         // No initialization necessary
