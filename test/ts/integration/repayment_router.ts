@@ -96,6 +96,7 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
         );
         const termsContractTruffle = await simpleInterestTermsContract.new(
             debtRegistry.address,
+            kernel.address,
             principalToken.address,
             repaymentRouterTruffle.address,
         );

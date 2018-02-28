@@ -19,6 +19,7 @@ import { DebtKernelContract } from "../../../types/generated/debt_kernel";
 import { MockDebtTokenContract } from "../../../types/generated/mock_debt_token";
 import { MockERC20TokenContract } from "../../../types/generated/mock_e_r_c20_token";
 import { MockTokenTransferProxyContract } from "../../../types/generated/mock_token_transfer_proxy";
+import { MockTermsContractContract } from "../../../types/generated/mock_terms_contract";
 import { RepaymentRouterContract } from "../../../types/generated/repayment_router";
 
 import { DebtKernelErrorCodes } from "../../../types/errors";
@@ -45,6 +46,7 @@ const expect = chai.expect;
 
 const debtKernelContract = artifacts.require("DebtKernel");
 const mockDebtTokenContract = artifacts.require("MockDebtToken");
+const mockTermsContractArtifacts = artifacts.require("MockTermsContract");
 
 contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
     let kernel: DebtKernelContract;
@@ -52,6 +54,7 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
     let mockDebtToken: MockDebtTokenContract;
     let mockPrincipalToken: MockERC20TokenContract;
     let mockTokenTransferProxy: MockTokenTransferProxyContract;
+    let mockTermsContract: MockTermsContractContract;
 
     let orderFactory: DebtOrderFactory;
     let defaultOrderParams: { [key: string]: any };
@@ -71,9 +74,8 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
 
     const UNDERWRITER = ACCOUNTS[11];
     const RELAYER = ACCOUNTS[12];
-    const TERMS_CONTRACT = ACCOUNTS[13];
-    const MALICIOUS_TERMS_CONTRACTS = ACCOUNTS[14];
-    const MALICIOUS_EXCHANGE_CONTRACT = ACCOUNTS[15];
+
+    const MALICIOUS_TERMS_CONTRACTS = ACCOUNTS[13];
 
     const TERMS_CONTRACT_PARAMETERS = web3.sha3("arbitrary terms contract parameters");
 
@@ -84,15 +86,38 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
     const reset = async () => {
         mockTokenTransferProxy = await MockTokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
 
-        const kernelContractInstance = await debtKernelContract.new(mockTokenTransferProxy.address);
+        /*
+        In our test environment, we want to interact with the contract being
+        unit tested as a statically-typed entity. In order to accomplish this,
+        we take the following steps:
 
-        // The typings we use ingest vanilla Web3 contracts, so we convert the
-        // contract instance deployed by truffle into a Web3 contract instance
-        const web3ContractInstance = web3.eth
+          1 - Instantiate an instance of the contract through the Truffle
+              framework.
+          2 - Instantiate an instance of the contract through the Web3 API using
+              the truffle instance's ABI.
+          3 - Use the Web3 contract instance to instantiate a statically-typed
+              version of the contract as handled by ABI-GEN, which generates
+              a contract wrapper with types pulled from the contract's ABI.
+         */
+
+        // Step 1: Instantiate a truffle instance of the contract.
+        const kernelContractInstance = await debtKernelContract.new(mockTokenTransferProxy.address);
+        const mockTermsContractInstance = await mockTermsContractArtifacts.new();
+
+        // Step 2: Instantiate a web3 instance of the contract.
+        const kernelWeb3ContractInstance = web3.eth
             .contract(debtKernelContract.abi)
             .at(kernelContractInstance.address);
+        const mockTermsContractWeb3ContractInstance = web3.eth
+            .contract(mockTermsContractArtifacts.abi)
+            .at(mockTermsContractInstance.address);
 
-        kernel = new DebtKernelContract(web3ContractInstance, TX_DEFAULTS);
+        // Step 3: Instantiate a statically-typed version of the contract.
+        kernel = new DebtKernelContract(kernelWeb3ContractInstance, TX_DEFAULTS);
+        mockTermsContract = new MockTermsContractContract(
+            mockTermsContractWeb3ContractInstance,
+            TX_DEFAULTS,
+        );
 
         // Load current Repayment Router for use as a version address in the Issuance
         // commitments
@@ -120,7 +145,7 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
             principalTokenAddress: mockPrincipalToken.address,
             relayer: RELAYER,
             relayerFee: Units.ether(0.0015),
-            termsContract: TERMS_CONTRACT,
+            termsContract: mockTermsContract.address,
             termsContractParameters: TERMS_CONTRACT_PARAMETERS,
             underwriter: UNDERWRITER,
             underwriterFee: Units.ether(0.0015),
@@ -217,6 +242,12 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
                         debtOrder.getPrincipalAmount().plus(debtOrder.getCreditorFee()),
                     );
 
+                    await mockTermsContract.reset.sendTransactionAsync();
+                    await mockTermsContract.mockRegisterTermStartReturnValue.sendTransactionAsync(
+                        debtOrder.getIssuanceCommitment().getHash(),
+                        true,
+                    );
+
                     const txHash = await kernel.fillDebtOrder.sendTransactionAsync(
                         debtOrder.getCreditor(),
                         debtOrder.getOrderAddresses(),
@@ -299,6 +330,14 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
                             debtOrder.getRelayerFee(),
                         ),
                     );
+                });
+
+                it("should register term start with terms contract", async () => {
+                    await expect(
+                        mockTermsContract.wasRegisterTermStartCalledWith.callAsync(
+                            debtOrder.getIssuanceCommitment().getHash(),
+                        ),
+                    ).to.eventually.be.true;
                 });
             };
         };
@@ -681,6 +720,48 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
                     );
                 });
             });
+
+            describe("...when terms contract returns false for `registerTermStart`", () => {
+                before(async () => {
+                    await resetMocks();
+
+                    debtOrder = await orderFactory.generateDebtOrder();
+
+                    await mockDebtToken.mockCreateReturnValue.sendTransactionAsync(
+                        new BigNumber(debtOrder.getIssuanceCommitment().getHash()),
+                    );
+
+                    await mockPrincipalToken.mockBalanceOfFor.sendTransactionAsync(
+                        debtOrder.getCreditor(),
+                        debtOrder.getPrincipalAmount().plus(debtOrder.getCreditorFee()),
+                    );
+                    await mockPrincipalToken.mockAllowanceFor.sendTransactionAsync(
+                        debtOrder.getCreditor(),
+                        mockTokenTransferProxy.address,
+                        debtOrder.getPrincipalAmount().plus(debtOrder.getCreditorFee()),
+                    );
+
+                    await mockTermsContract.mockRegisterTermStartReturnValue.sendTransactionAsync(
+                        debtOrder.getIssuanceCommitment().getHash(),
+                        false,
+                    );
+                });
+
+                it("should throw", async () => {
+                    await expect(
+                        kernel.fillDebtOrder.sendTransactionAsync(
+                            debtOrder.getCreditor(),
+                            debtOrder.getOrderAddresses(),
+                            debtOrder.getOrderValues(),
+                            debtOrder.getOrderBytes32(),
+                            debtOrder.getSignaturesV(),
+                            debtOrder.getSignaturesR(),
+                            debtOrder.getSignaturesS(),
+                            { from: debtOrder.getCreditor() },
+                        ),
+                    ).to.eventually.be.rejectedWith(REVERT_ERROR);
+                });
+            });
         });
 
         describe("User fills valid, nonconsensual debt order", () => {
@@ -842,49 +923,6 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
                             signaturesS,
                             signaturesV,
                         ] = await getMismatchedSignatures(order, order, mismatchedOrder);
-                        await testShouldReturnError(
-                            order,
-                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
-                            signaturesR,
-                            signaturesS,
-                            signaturesV,
-                        );
-                    });
-                });
-            });
-
-            describe("...with mismatched 0x exchange contract", () => {
-                before(async () => {
-                    mismatchedOrder = await orderFactory.generateDebtOrder({
-                        salt: order.getIssuanceCommitment().getSalt(),
-                        zeroExExchangeContract: MALICIOUS_EXCHANGE_CONTRACT,
-                    });
-                });
-
-                describe("creditor's signature commits to 0x exchange contract =/= order's", async () => {
-                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
-                        const [
-                            signaturesR,
-                            signaturesS,
-                            signaturesV,
-                        ] = await getMismatchedSignatures(order, mismatchedOrder, order);
-                        await testShouldReturnError(
-                            order,
-                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
-                            signaturesR,
-                            signaturesS,
-                            signaturesV,
-                        );
-                    });
-                });
-
-                describe("debtor's signature commits to 0x exchange contract =/= order's", async () => {
-                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
-                        const [
-                            signaturesR,
-                            signaturesS,
-                            signaturesV,
-                        ] = await getMismatchedSignatures(mismatchedOrder, order, order);
                         await testShouldReturnError(
                             order,
                             DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,

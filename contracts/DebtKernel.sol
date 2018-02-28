@@ -19,6 +19,7 @@
 pragma solidity 0.4.18;
 
 import "./DebtToken.sol";
+import "./TermsContract.sol";
 import "./TokenTransferProxy.sol";
 import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
@@ -178,6 +179,12 @@ contract DebtKernel is Pausable {
 
         // Mint debt token and finalize debt agreement
         issueDebtAgreement(creditor, debtOrder.issuance);
+
+        // Register debt agreement's start with terms contract
+        require(
+            TermsContract(debtOrder.issuance.termsContract)
+                .registerTermStart(debtOrder.issuance.issuanceHash)
+        );
 
         // Transfer principal to debtor
         if (debtOrder.principalAmount > 0) {

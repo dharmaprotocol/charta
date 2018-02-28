@@ -18,24 +18,32 @@
 
 pragma solidity 0.4.18;
 
+import "../../TermsContract.sol";
 
-interface TermsContract {
-     /// When called, the registerTermStart function registers the fact that
-     ///    the debt agreement has begun.  This method is called as a hook by the
-     ///    DebtKernel when a debt order associated with `agreementId` is filled.
-     ///    Method is not required to make any sort of internal state change
-     ///    upon the debt agreement's start, but MUST return `true` in order to
-     ///    acknowledge receipt of the transaction.  If, for any reason, the
-     ///    debt agreement stored at `agreementId` is incompatible with this contract,
-     ///    MUST return `false`, which will cause the pertinent order fill to fail.
-     ///    If this method is called for a debt agreement whose term has already begun,
-     ///    must THROW.  Similarly, if this method is called by any contract other
-     ///    than the current DebtKernel, must THROW.
-     /// @param  agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.
-     /// @return _success bool. Acknowledgment of whether
+
+/**
+ * Contract created for testing purposes that will consistently reject
+ * debt order fills that are mapped to it by returning `false` for
+ * `registerTermStart`
+ *
+ * Author: Nadav Hollander Github: nadavhollander
+ */
+contract IncompatibleTermsContract is TermsContract {
+    /// When called, the registerTermStart function registers the fact that
+    ///    the debt agreement has begun.  Given that the SimpleInterestTermsContract
+    ///    doesn't rely on taking any sorts of actions when the loan term begins,
+    ///    we simply validate DebtKernel is the transaction sender, and return
+    ///    `true` if the debt agreement is associated with this terms contract.
+    /// @param  agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.
+    /// @return _success bool. Acknowledgment of whether
     function registerTermStart(
         bytes32 agreementId
-    ) public returns (bool _success);
+    )
+        public
+        returns (bool _success)
+    {
+        return false;
+    }
 
      /// When called, the registerRepayment function records the debtor's
      ///  repayment, as well as any auxiliary metadata needed by the contract
@@ -52,23 +60,38 @@ interface TermsContract {
         address beneficiary,
         uint256 unitsOfRepayment,
         address tokenAddress
-    ) public returns (bool _success);
+    )
+        public
+        returns (bool _success)
+    {
+        return false;
+    }
 
-     /// Returns the cumulative units-of-value expected to be repaid by a given block timestamp.
+     /// Returns the cumulative units-of-value expected to be repaid given a block's timestamp.
      ///  Note this is not a constant function -- this value can vary on basis of any number of
      ///  conditions (e.g. interest rates can be renegotiated if repayments are delinquent).
      /// @param  agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.
-     /// @param  timestamp uint. The timestamp of the block for which repayment expectation is being queried.
-     /// @return uint256 The cumulative units-of-value expected to be repaid by the time the given timestamp lapses.
+     /// @param  timestamp uint. The timestamp for which repayment expectation is being queried.
+     /// @return uint256 The cumulative units-of-value expected to be repaid given a block's timestamp.
     function getExpectedRepaymentValue(
         bytes32 agreementId,
         uint256 timestamp
-    ) public view returns (uint256);
+    )
+        public
+        view
+        returns (uint _expectedRepaymentValue)
+    {
+        return 0;
+    }
 
-     /// Returns the cumulative units-of-value repaid by the point at which this method is called.
-     /// @param  agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.
-     /// @return uint256 The cumulative units-of-value repaid up until now.
-    function getValueRepaidToDate(
-        bytes32 agreementId
-    ) public view returns (uint256);
+     /// Returns the cumulative units-of-value repaid to date.
+     /// @param agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.
+     /// @return uint256 The cumulative units-of-value repaid by the specified block timestamp.
+    function getValueRepaidToDate(bytes32 agreementId)
+        public
+        view
+        returns (uint _valueRepaid)
+    {
+        return 0;
+    }
 }
