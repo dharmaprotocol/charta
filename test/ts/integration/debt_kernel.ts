@@ -99,11 +99,14 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
 
         dummyREPToken = await DummyTokenContract.at(dummyREPTokenAddress, web3, TX_DEFAULTS);
 
-        simpleInterestTermsContractAddress = await termsContractRegistryContract
-            .getSimpleInterestTermsContractAddress
-            .callAsync(dummyREPTokenAddress);
+        simpleInterestTermsContractAddress = await termsContractRegistryContract.getSimpleInterestTermsContractAddress.callAsync(
+            dummyREPTokenAddress,
+        );
 
-        const incompatibleTermsContract = await IncompatibleTermsContractContract.deployed(web3, TX_DEFAULTS);
+        const incompatibleTermsContract = await IncompatibleTermsContractContract.deployed(
+            web3,
+            TX_DEFAULTS,
+        );
         incompatibleTermsContractAddress = incompatibleTermsContract.address;
 
         debtTokenContract = await DebtTokenContract.deployed(web3, TX_DEFAULTS);
@@ -879,7 +882,6 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                     debtOrder = await orderFactory.generateDebtOrder({
                         termsContract: incompatibleTermsContractAddress,
                     });
-
                 });
 
                 it("should throw", async () => {
