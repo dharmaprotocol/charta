@@ -69,57 +69,35 @@ contract MockTermsContract is MockContract {
         ));
     }
 
-    function registerNFTRepayment(
-        bytes32 agreementId,
-        address payer,
-        address beneficiary,
-        uint tokenId,
-        address tokenAddress
+    function registerTermStart(
+        bytes32 agreementId
     )
         public
-        returns (bool _success)
+        returns (bool _registered)
     {
-        functionCalledWithArgs("registerNFTRepayment", keccak256(
-            agreementId,
-            payer,
-            beneficiary,
-            tokenId,
-            tokenAddress
-        ));
+        functionCalledWithArgs("registerTermStart", agreementId);
 
-        return getMockReturnValue("registerNFTRepayment", DEFAULT_SIGNATURE_ARGS) == bytes32(1);
+        return getMockReturnValue("registerTermStart", agreementId) == bytes32(1);
     }
 
-    function mockRegisterNFTRepaymentReturnValue(bool success)
+    function mockRegisterTermStartReturnValue(bytes32 agreementId, bool success)
         public
     {
-        mockReturnValue("registerNFTRepayment", DEFAULT_SIGNATURE_ARGS, success ? bytes32(1) : bytes32(0));
+        mockReturnValue("registerTermStart", agreementId, success ? bytes32(1) : bytes32(0));
     }
 
-    function wasRegisterNFTRepaymentCalledWith(
-        bytes32 agreementId,
-        address payer,
-        address beneficiary,
-        uint tokenId,
-        address tokenAddress
-    )
+    function wasRegisterTermStartCalledWith(bytes32 agreementId)
         public
         view
-        returns (bool wasCalled)
+        returns (bool _wasCalled)
     {
-        return wasFunctionCalledWithArgs("registerNFTRepayment", keccak256(
-            agreementId,
-            payer,
-            beneficiary,
-            tokenId,
-            tokenAddress
-        ));
+        return wasFunctionCalledWithArgs("registerTermStart", agreementId);
     }
 
     function getFunctionList()
         internal
         returns (string[10] functionNames)
     {
-        return ["registerRepayment", "registerNFTRepayment", "", "", "", "", "", "", "", ""];
+        return ["registerRepayment", "registerTermStart", "", "", "", "", "", "", "", ""];
     }
 }
