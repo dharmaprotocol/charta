@@ -2,7 +2,7 @@ pragma solidity 0.4.18;
 
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
 
-import "../examples/Collateralized.sol";
+import "../../examples/Collateralized.sol";
 
 
 contract DummyCollateralizedContract is Collateralized {
@@ -14,6 +14,12 @@ contract DummyCollateralizedContract is Collateralized {
     function DummyCollateralizedContract(address _debtRegistry) public Collateralized(_debtRegistry) {}
 
     /* Naive `TermsContract` interface implementation. */
+
+    function registerTermStart(
+        bytes32 agreementId
+    ) public returns (bool _success) {
+        return true;
+    }
 
     function registerRepayment(
         bytes32 agreementId,
