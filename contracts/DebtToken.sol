@@ -39,11 +39,9 @@ contract DebtToken is MintableNonFungibleToken, Pausable {
     string public symbol = "DDT";
 
     DebtRegistry public registry;
-    uint internal brokeredTokenId;
 
     PermissionsLib.Permissions internal tokenCreationPermissions;
     PermissionsLib.Permissions internal tokenBrokeragePermissions;
-    PermissionsLib.Permissions internal tokenExchangePermissions;
 
     /**
      * Constructor that sets the address of the debt registry.
