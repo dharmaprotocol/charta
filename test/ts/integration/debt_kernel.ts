@@ -26,7 +26,9 @@ import { DebtRegistryContract } from "../../../types/generated/debt_registry";
 import { DebtRegistryEntry } from "../../../types/registry/entry";
 import { DebtTokenContract } from "../../../types/generated/debt_token";
 import { DummyTokenContract } from "../../../types/generated/dummy_token";
+import { IncompatibleTermsContractContract } from "../../../types/generated/incompatible_terms_contract";
 import { RepaymentRouterContract } from "../../../types/generated/repayment_router";
+import { TermsContractRegistryContract } from "../../../types/generated/terms_contract_registry";
 import { TokenRegistryContract } from "../../../types/generated/token_registry";
 import { TokenTransferProxyContract } from "../../../types/generated/token_transfer_proxy";
 import { TxDataPayable } from "../../../types/common";
@@ -48,8 +50,9 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
     let debtRegistryContract: DebtRegistryContract;
 
     let dummyREPToken: DummyTokenContract;
-    let dummyZRXToken: DummyTokenContract;
-    let dummyMKRToken: DummyTokenContract;
+
+    let simpleInterestTermsContractAddress: string;
+    let incompatibleTermsContractAddress: string;
 
     let defaultOrderParams: { [key: string]: any };
     let orderFactory: DebtOrderFactory;
@@ -74,9 +77,8 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
 
     const UNDERWRITER = ACCOUNTS[11];
     const RELAYER = ACCOUNTS[12];
-    const TERMS_CONTRACT = ACCOUNTS[13];
-    const MALICIOUS_TERMS_CONTRACTS = ACCOUNTS[14];
-    const MALICIOUS_EXCHANGE_CONTRACT = ACCOUNTS[15];
+
+    const MALICIOUS_TERMS_CONTRACTS = ACCOUNTS[13];
 
     const TERMS_CONTRACT_PARAMETERS = web3.sha3("arbitrary terms contract parameters");
 
@@ -86,37 +88,30 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
 
     const reset = async () => {
         const dummyTokenRegistryContract = await TokenRegistryContract.deployed(web3, TX_DEFAULTS);
+        const termsContractRegistryContract = await TermsContractRegistryContract.deployed(
+            web3,
+            TX_DEFAULTS,
+        );
 
         const dummyREPTokenAddress = await dummyTokenRegistryContract.getTokenAddress.callAsync(
             "REP",
         );
-        const dummyZRXTokenAddress = await dummyTokenRegistryContract.getTokenAddress.callAsync(
-            "ZRX",
-        );
-        const dummyMKRTokenAddress = await dummyTokenRegistryContract.getTokenAddress.callAsync(
-            "MKR",
-        );
 
         dummyREPToken = await DummyTokenContract.at(dummyREPTokenAddress, web3, TX_DEFAULTS);
-        dummyZRXToken = await DummyTokenContract.at(dummyZRXTokenAddress, web3, TX_DEFAULTS);
-        dummyMKRToken = await DummyTokenContract.at(dummyMKRTokenAddress, web3, TX_DEFAULTS);
+
+        simpleInterestTermsContractAddress = await termsContractRegistryContract
+            .getSimpleInterestTermsContractAddress
+            .callAsync(dummyREPTokenAddress);
+
+        const incompatibleTermsContract = await IncompatibleTermsContractContract.deployed(web3, TX_DEFAULTS);
+        incompatibleTermsContractAddress = incompatibleTermsContract.address;
 
         debtTokenContract = await DebtTokenContract.deployed(web3, TX_DEFAULTS);
         debtRegistryContract = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
         tokenTransferProxy = await TokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
 
-        const kernelContractInstance = await debtKernelContract.new(tokenTransferProxy.address);
+        kernel = await DebtKernelContract.deployed(web3, TX_DEFAULTS);
 
-        // The typings we use ingest vanilla Web3 contracts, so we convert the
-        // contract instance deployed by truffle into a Web3 contract instance
-        const web3ContractInstance = web3.eth
-            .contract(debtKernelContract.abi)
-            .at(kernelContractInstance.address);
-
-        kernel = new DebtKernelContract(web3ContractInstance, TX_DEFAULTS);
-
-        // Load current Repayment Router for use as a version address in the Issuance
-        // commitments
         repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
 
         defaultOrderParams = {
@@ -138,7 +133,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
             principalTokenAddress: dummyREPToken.address,
             relayer: RELAYER,
             relayerFee: Units.ether(0.0015),
-            termsContract: TERMS_CONTRACT,
+            termsContract: simpleInterestTermsContractAddress,
             termsContractParameters: TERMS_CONTRACT_PARAMETERS,
             underwriter: UNDERWRITER,
             underwriterFee: Units.ether(0.0015),
@@ -151,25 +146,6 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
         ABIDecoder.addABI(debtKernelContract.abi);
         ABIDecoder.addABI(debtTokenContract.abi);
         ABIDecoder.addABI(debtRegistryContract.abi);
-    };
-
-    const initialize = async () => {
-        await kernel.setDebtToken.sendTransactionAsync(debtTokenContract.address, {
-            from: CONTRACT_OWNER,
-        });
-
-        await debtTokenContract.addAuthorizedMintAgent.sendTransactionAsync(kernel.address, {
-            from: CONTRACT_OWNER,
-        });
-
-        await tokenTransferProxy.addAuthorizedTransferAgent.sendTransactionAsync(kernel.address, {
-            from: CONTRACT_OWNER,
-        });
-    };
-
-    const resetAndInit = async () => {
-        await reset();
-        await initialize();
     };
 
     before(reset);
@@ -494,7 +470,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
             };
         };
 
-        before(resetAndInit);
+        before(reset);
 
         describe("User fills valid, consensual debt order", () => {
             describe("...and debt kernel is paused by owner", async () => {
@@ -525,9 +501,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
             describe(
                 "...with underwriter and relayer",
                 testOrderFill(CONTRACT_OWNER, async () => {
-                    debtOrder = await orderFactory.generateDebtOrder({
-                        principalTokenAddress: dummyMKRToken.address,
-                    });
+                    debtOrder = await orderFactory.generateDebtOrder();
                 }),
             );
 
@@ -899,6 +873,30 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                     );
                 });
             });
+
+            describe("...when terms contract returns false for `registerTermStart`", () => {
+                before(async () => {
+                    debtOrder = await orderFactory.generateDebtOrder({
+                        termsContract: incompatibleTermsContractAddress,
+                    });
+
+                });
+
+                it("should throw", async () => {
+                    await expect(
+                        kernel.fillDebtOrder.sendTransactionAsync(
+                            debtOrder.getCreditor(),
+                            debtOrder.getOrderAddresses(),
+                            debtOrder.getOrderValues(),
+                            debtOrder.getOrderBytes32(),
+                            debtOrder.getSignaturesV(),
+                            debtOrder.getSignaturesR(),
+                            debtOrder.getSignaturesS(),
+                            { from: debtOrder.getCreditor() },
+                        ),
+                    ).to.eventually.be.rejectedWith(REVERT_ERROR);
+                });
+            });
         });
 
         describe("User fills valid, nonconsensual debt order", () => {
@@ -1044,49 +1042,6 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                             signaturesS,
                             signaturesV,
                         ] = await getMismatchedSignatures(debtOrder, debtOrder, mismatchedOrder);
-                        await testShouldReturnError(
-                            debtOrder,
-                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
-                            signaturesR,
-                            signaturesS,
-                            signaturesV,
-                        );
-                    });
-                });
-            });
-
-            describe("...with mismatched 0x exchange contract", () => {
-                before(async () => {
-                    mismatchedOrder = await orderFactory.generateDebtOrder({
-                        salt: debtOrder.getIssuanceCommitment().getSalt(),
-                        zeroExExchangeContract: MALICIOUS_EXCHANGE_CONTRACT,
-                    });
-                });
-
-                describe("creditor's signature commits to 0x exchange contract =/= order's", async () => {
-                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
-                        const [
-                            signaturesR,
-                            signaturesS,
-                            signaturesV,
-                        ] = await getMismatchedSignatures(debtOrder, mismatchedOrder, debtOrder);
-                        await testShouldReturnError(
-                            debtOrder,
-                            DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,
-                            signaturesR,
-                            signaturesS,
-                            signaturesV,
-                        );
-                    });
-                });
-
-                describe("debtor's signature commits to 0x exchange contract =/= order's", async () => {
-                    it("should return ORDER_INVALID_NON_CONSENSUAL error", async () => {
-                        const [
-                            signaturesR,
-                            signaturesS,
-                            signaturesV,
-                        ] = await getMismatchedSignatures(mismatchedOrder, debtOrder, debtOrder);
                         await testShouldReturnError(
                             debtOrder,
                             DebtKernelErrorCodes.ORDER_INVALID_NON_CONSENSUAL,

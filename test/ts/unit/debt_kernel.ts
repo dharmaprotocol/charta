@@ -242,6 +242,7 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
                         debtOrder.getPrincipalAmount().plus(debtOrder.getCreditorFee()),
                     );
 
+                    await mockTermsContract.reset.sendTransactionAsync();
                     await mockTermsContract.mockRegisterTermStartReturnValue.sendTransactionAsync(
                         debtOrder.getIssuanceCommitment().getHash(),
                         true,
@@ -329,6 +330,14 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
                             debtOrder.getRelayerFee(),
                         ),
                     );
+                });
+
+                it("should register term start with terms contract", async () => {
+                    await expect(
+                        mockTermsContract.wasRegisterTermStartCalledWith.callAsync(
+                            debtOrder.getIssuanceCommitment().getHash(),
+                        ),
+                    ).to.eventually.be.true;
                 });
             };
         };

@@ -28,4 +28,29 @@ contract TermsContractRegistry {
             "SimpleInterestTermsContract"
         )];
     }
+
+    function setCompoundInterestTermsContractAddress(
+        address tokenAddress,
+        address termsContract
+    )
+        public
+    {
+        symbolToTermsContractAddress[keccak256(
+            tokenAddress,
+            "CompoundInterestTermsContract"
+        )] = termsContract;
+    }
+
+    function getCompoundInterestTermsContractAddress(
+        address tokenAddress
+    )
+        public
+        view
+        returns (address)
+    {
+        return symbolToTermsContractAddress[keccak256(
+            tokenAddress,
+            "CompoundInterestTermsContract"
+        )];
+    }
 }
