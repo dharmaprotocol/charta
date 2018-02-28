@@ -93,11 +93,17 @@ contract CompoundInterestTermsContract is TermsContract {
 
     DebtRegistry public debtRegistry;
 
+    address public debtKernel;
     address public repaymentToken;
     address public repaymentRouter;
 
     modifier onlyRouter() {
         require(msg.sender == repaymentRouter);
+        _;
+    }
+
+    modifier onlyDebtKernel() {
+        require(msg.sender == debtKernel);
         _;
     }
 
@@ -112,6 +118,7 @@ contract CompoundInterestTermsContract is TermsContract {
 
     function CompoundInterestTermsContract(
         address _debtRegistry,
+        address _debtKernel,
         address _repaymentToken,
         address _repaymentRouter
     )
@@ -119,9 +126,28 @@ contract CompoundInterestTermsContract is TermsContract {
     {
         debtRegistry = DebtRegistry(_debtRegistry);
 
+        debtKernel = _debtKernel;
         repaymentToken = _repaymentToken;
         repaymentRouter = _repaymentRouter;
     }
+
+    /// When called, the registerTermStart function registers the fact that
+    ///    the debt agreement has begun.  Given that the CompoundInterestTermsContract
+    ///    doesn't rely on taking any sorts of actions when the loan term begins,
+    ///    we simply validate DebtKernel is the transaction sender, and return
+    ///    `true` if the debt agreement is associated with this terms contract.
+    /// @param  agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.
+    /// @return _success bool. Acknowledgment of whether
+    function registerTermStart(
+        bytes32 agreementId
+    )
+        public
+        onlyDebtKernel
+        returns (bool _success)
+    {
+        return debtRegistry.getTermsContract(agreementId) == address(this);
+    }
+
 
      /// When called, the registerRepayment function records the debtor's
      ///  repayment, as well as any auxiliary metadata needed by the contract
