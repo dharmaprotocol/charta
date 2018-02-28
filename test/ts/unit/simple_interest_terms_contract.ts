@@ -39,7 +39,7 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
     const CONTRACT_OWNER = ACCOUNTS[0];
     const PAYER = ACCOUNTS[1];
     const BENEFICIARY = ACCOUNTS[2];
-    const DEBT_KERNEL_ADDRESS = ACCOUNTS[3];
+    const MOCK_DEBT_KERNEL_ADDRESS = ACCOUNTS[3];
     const ATTACKER = ACCOUNTS[4];
 
     const TERMS_CONTRACT_PARAMETERS = web3.sha3(
@@ -80,7 +80,7 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
 
         const termsContractTruffle = await simpleInterestTermsContract.new(
             mockRegistry.address,
-            DEBT_KERNEL_ADDRESS,
+            MOCK_DEBT_KERNEL_ADDRESS,
             mockToken.address,
             repaymentRouterTruffle.address,
         );
@@ -148,7 +148,7 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
             it("should not throw", async () => {
                 await expect(
                     termsContract.registerTermStart.sendTransactionAsync(ARBITRARY_AGREEMENT_ID, {
-                        from: DEBT_KERNEL_ADDRESS,
+                        from: MOCK_DEBT_KERNEL_ADDRESS,
                     }),
                 ).to.eventually.be.fulfilled;
             });
