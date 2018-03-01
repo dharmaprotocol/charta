@@ -6,6 +6,7 @@ module.exports = (deployer, network, accounts) => {
     const DebtKernel = artifacts.require("DebtKernel");
     const RepaymentRouter = artifacts.require("RepaymentRouter");
     const TokenTransferProxy = artifacts.require("TokenTransferProxy");
+    const MultiSigWallet = artifacts.require("MultiSigWallet");
 
     deployer.deploy(PermissionsLib);
     deployer.link(PermissionsLib, DummyContract);
@@ -16,5 +17,6 @@ module.exports = (deployer, network, accounts) => {
         await deployer.deploy(TokenTransferProxy);
         await deployer.deploy(RepaymentRouter, DebtRegistry.address, TokenTransferProxy.address);
         await deployer.deploy(DebtKernel, TokenTransferProxy.address);
+        await deployer.deploy(MultiSigWallet, accounts, accounts.length);
     });
 };
