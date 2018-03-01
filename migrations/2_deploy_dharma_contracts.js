@@ -1,5 +1,7 @@
 const MULTISIG_SIGNATORIES = require("./MULTISIG_SIGNATORIES");
 
+const LIVE_NETWORK_ID = "live";
+
 module.exports = (deployer, network, accounts) => {
     // Import the Dharma contracts.
     const PermissionsLib = artifacts.require("PermissionsLib");
@@ -14,7 +16,7 @@ module.exports = (deployer, network, accounts) => {
     // accordingly.
     let signatories;
     switch (network) {
-        case "live":
+        case LIVE_NETWORK_ID:
             signatories = MULTISIG_SIGNATORIES.SIGNATORIES;
             break;
         default:
