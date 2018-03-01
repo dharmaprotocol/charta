@@ -2,7 +2,6 @@ const OWNERS = require("./OWNERS");
 
 module.exports = (deployer, network, accounts) => {
     const PermissionsLib = artifacts.require("PermissionsLib");
-    const DummyContract = artifacts.require("DummyContract");
     const DebtRegistry = artifacts.require("DebtRegistry");
     const DebtToken = artifacts.require("DebtToken");
     const DebtKernel = artifacts.require("DebtKernel");
@@ -28,8 +27,6 @@ module.exports = (deployer, network, accounts) => {
     required = Math.floor(owners.length / 2);
 
     deployer.deploy(PermissionsLib);
-    deployer.link(PermissionsLib, DummyContract);
-    deployer.deploy(DummyContract);
     deployer.link(PermissionsLib, DebtRegistry);
     return deployer.deploy(DebtRegistry).then(async () => {
         await deployer.deploy(DebtToken, DebtRegistry.address);
