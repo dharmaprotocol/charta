@@ -18,8 +18,6 @@ module.exports = (deployer, network, accounts) => {
     // We switch on the network to ensure we're configuring our MultiSigWallet
     // accordingly.
     let owners;
-    let required;
-
     switch (network) {
         case "live":
             owners = OWNERS.owners;
@@ -32,7 +30,7 @@ module.exports = (deployer, network, accounts) => {
             throw "invalid network";
     }
 
-    required = Math.floor(owners.length / 2);
+    const required = Math.floor(owners.length / 2);
 
     deployer.deploy(PermissionsLib);
     deployer.link(PermissionsLib, DebtRegistry);
