@@ -1,4 +1,4 @@
-const OWNERS = require("./OWNERS");
+const MULTISIG_SIGNATORIES = require("./MULTISIG_SIGNATORIES");
 
 module.exports = (deployer, network, accounts) => {
     // Import the Dharma contracts.
@@ -12,24 +12,24 @@ module.exports = (deployer, network, accounts) => {
 
     // We switch on the network to ensure we're configuring our MultiSigWallet
     // accordingly.
-    let owners;
+    let signatories;
     switch (network) {
         case "live":
-            owners = OWNERS.owners;
+            signatories = MULTISIG_SIGNATORIES.SIGNATORIES;
             break;
         case "kovan":
         case "development":
-            owners = accounts;
+            signatories = accounts;
             break;
         default:
             throw "invalid network";
     }
 
-    const required = Math.floor(owners.length / 2);
+    const required = Math.floor(signatories.length / 2);
 
-    // Deploy the MultiSigWallet with a set of owners and the number of
+    // Deploy the MultiSigWallet with a set of signatories and the number of
     // authorizations required before a transaction can be executed.
-    deployer.deploy(MultiSigWallet, owners, required);
+    deployer.deploy(MultiSigWallet, signatories, required);
 
     // Deploy our Permissions library and link our `DebtRegistry` to it.
     deployer.deploy(PermissionsLib);
