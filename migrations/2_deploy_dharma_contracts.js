@@ -1,7 +1,13 @@
 const OWNERS = require("./OWNERS");
 
 module.exports = (deployer, network, accounts) => {
+    /*
+    Import our Permissions library, which will need to be deployed first so
+    that it can be linked to the contracts that depend on it.
+    */
     const PermissionsLib = artifacts.require("PermissionsLib");
+
+    // Import the Dharma contracts.
     const DebtRegistry = artifacts.require("DebtRegistry");
     const DebtToken = artifacts.require("DebtToken");
     const DebtKernel = artifacts.require("DebtKernel");
@@ -9,6 +15,8 @@ module.exports = (deployer, network, accounts) => {
     const TokenTransferProxy = artifacts.require("TokenTransferProxy");
     const MultiSigWallet = artifacts.require("MultiSigWallet");
 
+    // We switch on the network to ensure we're configuring our MultiSigWallet
+    // accordingly.
     let owners;
     let required;
 
