@@ -17,12 +17,8 @@ module.exports = (deployer, network, accounts) => {
         case "live":
             signatories = MULTISIG_SIGNATORIES.SIGNATORIES;
             break;
-        case "kovan":
-        case "development":
-            signatories = accounts;
-            break;
         default:
-            throw "invalid network";
+            signatories = accounts;
     }
 
     const required = Math.floor(signatories.length / 2);
