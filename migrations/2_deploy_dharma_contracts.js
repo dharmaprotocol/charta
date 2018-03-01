@@ -1,3 +1,5 @@
+const OWNERS = require("./OWNERS");
+
 module.exports = (deployer, network, accounts) => {
     const PermissionsLib = artifacts.require("PermissionsLib");
     const DummyContract = artifacts.require("DummyContract");
@@ -17,6 +19,6 @@ module.exports = (deployer, network, accounts) => {
         await deployer.deploy(TokenTransferProxy);
         await deployer.deploy(RepaymentRouter, DebtRegistry.address, TokenTransferProxy.address);
         await deployer.deploy(DebtKernel, TokenTransferProxy.address);
-        await deployer.deploy(MultiSigWallet, accounts, accounts.length);
+        await deployer.deploy(MultiSigWallet, OWNERS.owners, OWNERS.owners.length);
     });
 };
