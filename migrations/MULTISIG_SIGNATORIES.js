@@ -8,4 +8,9 @@ const OWNER_FIVE = "0x" + keccak256("test account five");
 
 const SIGNATORIES = [OWNER_ONE, OWNER_TWO, OWNER_THREE, OWNER_FOUR, OWNER_FIVE];
 
-module.exports.SIGNATORIES = SIGNATORIES;
+const THRESHOLD = 1 / 2; // 50%
+
+module.exports = {
+    SIGNATORIES: SIGNATORIES,
+    THRESHOLD: THRESHOLD,
+};
