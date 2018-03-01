@@ -10,6 +10,23 @@ module.exports = (deployer, network, accounts) => {
     const TokenTransferProxy = artifacts.require("TokenTransferProxy");
     const MultiSigWallet = artifacts.require("MultiSigWallet");
 
+    let owners;
+    let required;
+
+    switch (network) {
+        case "live":
+            owners = OWNERS.owners;
+            break;
+        case "kovan":
+        case "development":
+            owners = accounts;
+            break;
+        default:
+            throw "invalid network";
+    }
+
+    required = Math.floor(owners.length / 2);
+
     deployer.deploy(PermissionsLib);
     deployer.link(PermissionsLib, DummyContract);
     deployer.deploy(DummyContract);
@@ -19,6 +36,6 @@ module.exports = (deployer, network, accounts) => {
         await deployer.deploy(TokenTransferProxy);
         await deployer.deploy(RepaymentRouter, DebtRegistry.address, TokenTransferProxy.address);
         await deployer.deploy(DebtKernel, TokenTransferProxy.address);
-        await deployer.deploy(MultiSigWallet, OWNERS.owners, OWNERS.owners.length);
+        await deployer.deploy(MultiSigWallet, owners, required);
     });
 };
