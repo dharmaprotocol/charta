@@ -23,11 +23,13 @@ module.exports = (deployer, network, accounts) => {
             signatories = accounts;
     }
 
-    const required = Math.floor(signatories.length / 2);
+    const numAuthorizationsRequired = Math.ceil(
+        signatories.length * MULTISIG_SIGNATORIES.THRESHOLD,
+    );
 
     // Deploy the MultiSigWallet with a set of signatories and the number of
     // authorizations required before a transaction can be executed.
-    deployer.deploy(MultiSigWallet, signatories, required);
+    deployer.deploy(MultiSigWallet, signatories, numAuthorizationsRequired);
 
     // Deploy our Permissions library and link our `DebtRegistry` to it.
     deployer.deploy(PermissionsLib);
