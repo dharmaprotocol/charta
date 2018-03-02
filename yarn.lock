@@ -2,11 +2,11 @@
 # yarn lockfile v1
 
 
-"@0xproject/abi-gen@0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@0xproject/abi-gen/-/abi-gen-0.1.1.tgz#dfb41a7a1d663edd88f8436b492fc217008afbfb"
+"@0xproject/abi-gen@0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@0xproject/abi-gen/-/abi-gen-0.2.3.tgz#36bfc2c16ef99c5d71355b138d57dc0d1a38afcf"
   dependencies:
-    "@0xproject/utils" "^0.1.3"
+    "@0xproject/utils" "^0.3.4"
     chalk "^2.3.0"
     glob "^7.1.2"
     handlebars "^4.0.11"
@@ -31,13 +31,14 @@
     js-sha3 "^0.7.0"
     lodash "^4.17.4"
 
-"@0xproject/utils@^0.1.3":
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/@0xproject/utils/-/utils-0.1.3.tgz#58a9c7e19ab7710e0af17a0c2f1c7fc1b3140e85"
+"@0xproject/utils@^0.3.4":
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/@0xproject/utils/-/utils-0.3.4.tgz#263ac7a5ef0b4c65ce893d3e6d1e9b1c2cf75b0b"
   dependencies:
     bignumber.js "~4.1.0"
     js-sha3 "^0.7.0"
     lodash "^4.17.4"
+    web3 "^0.20.0"
 
 "@types/bignumber.js@^4.0.3":
   version "4.0.3"
