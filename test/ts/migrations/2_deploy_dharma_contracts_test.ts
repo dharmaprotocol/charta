@@ -20,6 +20,7 @@ import { DebtTokenContract } from "../../../types/generated/debt_token";
 import { DebtRegistryContract } from "../../../types/generated/debt_registry";
 import { RepaymentRouterContract } from "../../../types/generated/repayment_router";
 import { TokenTransferProxyContract } from "../../../types/generated/token_transfer_proxy";
+import { DebtKernelContract } from "../../../types/generated/debt_kernel";
 
 contract("Migration #2: Deploying Dharma Contracts", async (ACCOUNTS) => {
     const CONTRACT_OWNER = ACCOUNTS[0];
@@ -30,6 +31,7 @@ contract("Migration #2: Deploying Dharma Contracts", async (ACCOUNTS) => {
     let debtRegistry: DebtRegistryContract;
     let tokenTransferProxy: TokenTransferProxyContract;
     let repaymentRouter: RepaymentRouterContract;
+    let debtKernel: DebtKernelContract;
 
     before(async () => {
         // wallet = await MultiSigWalletContract.deployed(web3, TX_DEFAULTS);
@@ -37,6 +39,7 @@ contract("Migration #2: Deploying Dharma Contracts", async (ACCOUNTS) => {
         debtRegistry = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
         repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
         tokenTransferProxy = await TokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
+        debtKernel = await DebtKernelContract.deployed(web3, TX_DEFAULTS);
     });
 
     describe("#DebtToken", () => {
@@ -53,6 +56,14 @@ contract("Migration #2: Deploying Dharma Contracts", async (ACCOUNTS) => {
         });
         it("references the deployed instance of the token transfer proxy", async () => {
             expect(repaymentRouter.debtRegistry.callAsync()).to.eventually.equal(
+                tokenTransferProxy.address,
+            );
+        });
+    });
+
+    describe("#DebtKernel", () => {
+        it("references the deployed instance of the token transfer proxy", async () => {
+            expect(debtKernel.TOKEN_TRANSFER_PROXY.callAsync()).to.eventually.equal(
                 tokenTransferProxy.address,
             );
         });
