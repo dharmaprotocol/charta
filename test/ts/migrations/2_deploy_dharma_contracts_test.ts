@@ -15,7 +15,7 @@ const expect = chai.expect;
 BigNumberSetup.configure();
 
 // Dharma Contracts
-import { MultiSigWalletContract } from "../../../types/generated/multi_sig_wallet";
+// import { MultiSigWalletContract } from "../../../types/generated/multi_sig_wallet";
 import { DebtTokenContract } from "../../../types/generated/debt_token";
 import { DebtRegistryContract } from "../../../types/generated/debt_registry";
 
@@ -23,12 +23,12 @@ contract("Migration #2: Deploying Dharma Contracts", async (ACCOUNTS) => {
     const CONTRACT_OWNER = ACCOUNTS[0];
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
 
-    let wallet: MultiSigWalletContract;
+    // let wallet: MultiSigWalletContract;
     let debtToken: DebtTokenContract;
     let debtRegistry: DebtRegistryContract;
 
     before(async () => {
-        wallet = await MultiSigWalletContract.deployed(web3, TX_DEFAULTS);
+        // wallet = await MultiSigWalletContract.deployed(web3, TX_DEFAULTS);
         debtToken = await DebtTokenContract.deployed(web3, TX_DEFAULTS);
         debtRegistry = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
     });
@@ -39,16 +39,16 @@ contract("Migration #2: Deploying Dharma Contracts", async (ACCOUNTS) => {
         });
     });
 
-    describe("#MultiSigWallet", () => {
-        it("lists the correct accounts as owner", async () => {
-            _.forEach(ACCOUNTS, (value: any, i: number) => {
-                expect(wallet.isOwner.callAsync(value)).to.eventually.be.true;
-            });
-        });
-
-        it("lists the correct number of required authorizations", async () => {
-            const requiredComputed = new BigNumber(ACCOUNTS.length / 2);
-            expect(wallet.required.callAsync()).to.eventually.bignumber.equal(requiredComputed);
-        });
-    });
+    // describe("#MultiSigWallet", () => {
+    //     it("lists the correct accounts as owner", async () => {
+    //         _.forEach(ACCOUNTS, (value: any, i: number) => {
+    //             expect(wallet.isOwner.callAsync(value)).to.eventually.be.true;
+    //         });
+    //     });
+    //
+    //     it("lists the correct number of required authorizations", async () => {
+    //         const requiredComputed = new BigNumber(ACCOUNTS.length / 2);
+    //         expect(wallet.required.callAsync()).to.eventually.bignumber.equal(requiredComputed);
+    //     });
+    // });
 });
