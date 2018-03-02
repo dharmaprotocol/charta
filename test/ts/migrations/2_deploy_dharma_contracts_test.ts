@@ -34,6 +34,12 @@ contract("Migration #2: Deploying Dharma Contracts", async (ACCOUNTS) => {
     let debtKernel: DebtKernelContract;
 
     before(async () => {
+        /*
+        Note(kayvon): we do make an implicit assumption here that the most
+        recently deployed versions of our Dharma contracts are in fact the
+        ones deployed during our migration process. These tests will break if
+        and when we make changes to how we configure our test environment.
+        */
         wallet = await MultiSigWalletContract.deployed(web3, TX_DEFAULTS);
         debtToken = await DebtTokenContract.deployed(web3, TX_DEFAULTS);
         debtRegistry = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
