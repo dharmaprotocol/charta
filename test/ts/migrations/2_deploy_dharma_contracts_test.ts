@@ -46,11 +46,13 @@ contract("Migration #2: Deploying Dharma Contracts", async (ACCOUNTS) => {
     });
 
     describe("#RepaymentRouter", () => {
-        it("references the deployed instances of the debt registry and token transfer proxy", async () => {
+        it("references the deployed instance of the debt registry", async () => {
             expect(repaymentRouter.debtRegistry.callAsync()).to.eventually.equal(
                 debtRegistry.address,
             );
-            expect(repaymentRouter.tokenTransferProxy.callAsync()).to.eventually.equal(
+        });
+        it("references the deployed instance of the token transfer proxy", async () => {
+            expect(repaymentRouter.debtRegistry.callAsync()).to.eventually.equal(
                 tokenTransferProxy.address,
             );
         });
