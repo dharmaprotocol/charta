@@ -18,8 +18,6 @@ BigNumberSetup.configure();
 import { MultiSigWalletContract } from "../../../types/generated/multi_sig_wallet";
 
 contract("Migration #2: Deploying Dharma Contracts", async (ACCOUNTS) => {
-    const requiredComputed = new BigNumber(ACCOUNTS.length / 2);
-
     const CONTRACT_OWNER = ACCOUNTS[0];
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
 
@@ -37,6 +35,7 @@ contract("Migration #2: Deploying Dharma Contracts", async (ACCOUNTS) => {
         });
 
         it("lists the correct number of required authorizations", async () => {
+            const requiredComputed = new BigNumber(ACCOUNTS.length / 2);
             expect(wallet.required.callAsync()).to.eventually.bignumber.equal(requiredComputed);
         });
     });
