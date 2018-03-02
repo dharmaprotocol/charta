@@ -55,7 +55,7 @@ contract("Migration #2: Deploying Dharma Contracts", async (ACCOUNTS) => {
             );
         });
         it("references the deployed instance of the token transfer proxy", async () => {
-            expect(repaymentRouter.debtRegistry.callAsync()).to.eventually.equal(
+            expect(repaymentRouter.tokenTransferProxy.callAsync()).to.eventually.equal(
                 tokenTransferProxy.address,
             );
         });
