@@ -151,7 +151,7 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
     });
 
     describe("owner authorizes agent(s) for inserting entries", () => {
-        let expectedDebtorsDebts: string[] = [];
+        const expectedDebtorsDebts: string[] = [];
 
         describe("first agent", () => {
             let res: Web3.TransactionReceipt;
