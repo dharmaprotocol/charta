@@ -51,3 +51,5 @@ declare module "abi-decoder" {
     export function decodeLogs(logs: Web3.LogEntry[]): DecodedLog[];
     export function decodeMethod(data: string): DecodedMethod;
 }
+
+declare module "tiny-promisify";

@@ -16,6 +16,6 @@
     "node_modules/types-bn/index.d.ts",
     "types/*.ts",
     "test/**/*.ts",
-    "utils/solidity.ts",
+    "utils/*.ts",
   ]
 }
