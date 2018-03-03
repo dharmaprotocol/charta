@@ -33,19 +33,42 @@ contract("Migration #2: Deploying Dharma Contracts", async (ACCOUNTS) => {
     let repaymentRouter: RepaymentRouterContract;
     let debtKernel: DebtKernelContract;
 
-    before(async () => {
-        /*
-        Note(kayvon): we do make an implicit assumption here that the most
-        recently deployed versions of our Dharma contracts are in fact the
-        ones deployed during our migration process. These tests will break if
-        and when we make changes to how we configure our test environment.
-        */
-        wallet = await MultiSigWalletContract.deployed(web3, TX_DEFAULTS);
-        debtToken = await DebtTokenContract.deployed(web3, TX_DEFAULTS);
-        debtRegistry = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
-        repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
-        tokenTransferProxy = await TokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
-        debtKernel = await DebtKernelContract.deployed(web3, TX_DEFAULTS);
+    /*
+    Note(kayvon): we do make an implicit assumption here that the most recently
+    deployed versions of our Dharma contracts are in fact the ones deployed
+    during our migration process. These tests will break if and when we make
+    changes to how we configure our test environment.
+    */
+    describe("Deployment", () => {
+        it("should deploy the `MultiSigWallet` contract to the current network", async () => {
+            wallet = await MultiSigWalletContract.deployed(web3, TX_DEFAULTS);
+            expect(wallet.address).to.not.be.null;
+        });
+
+        it("should deploy the `DebtRegistry` contract to the current network", async () => {
+            debtRegistry = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
+            expect(debtRegistry.address).to.not.be.null;
+        });
+
+        it("should deploy the `RepaymentRouter` contract to the current network", async () => {
+            repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
+            expect(repaymentRouter.address).to.not.be.null;
+        });
+
+        it("should deploy the `DebtToken` contract to the current network", async () => {
+            debtToken = await DebtTokenContract.deployed(web3, TX_DEFAULTS);
+            expect(debtToken.address).to.not.be.null;
+        });
+
+        it("should deploy the `TokenTransferProxy` contract to the current network", async () => {
+            tokenTransferProxy = await TokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
+            expect(tokenTransferProxy.address).to.not.be.null;
+        });
+
+        it("should deploy the `DebtKernel` contract to the current network", async () => {
+            debtKernel = await DebtKernelContract.deployed(web3, TX_DEFAULTS);
+            expect(debtKernel.address).to.not.be.null;
+        });
     });
 
     describe("#DebtToken", () => {
