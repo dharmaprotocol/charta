@@ -6,7 +6,7 @@
     "generate-typings": "abi-gen --abiGlob './build/contracts/*.json' --templates ./types/contract_templates --output ./types/generated",
     "transpile": "rm -rf ./transpiled; copyfiles ./build/**/* ./transpiled; tsc",
     "lint-ts": "tslint migrations/*.ts test/**/*.ts",
-    "lint-sol": "solhint contracts/*.sol contracts/**/*.sol",
+    "lint-sol": "solhint contracts/*.sol contracts/libraries/*.sol contracts/examples/*.sol contracts/test/**/.sol",
     "lint": "npm run lint-ts; npm run lint-sol",
     "compile": "truffle compile",
     "soltsice": "soltsice",
