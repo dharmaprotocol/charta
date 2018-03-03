@@ -1,6 +1,5 @@
 import * as promisify from "tiny-promisify";
 import * as Web3 from "web3";
-import * as Web3BetaUtils from "web3-utils";
 
 export class Web3Utils {
     private web3: Web3;
