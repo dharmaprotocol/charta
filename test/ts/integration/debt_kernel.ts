@@ -99,6 +99,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
 
         dummyREPToken = await DummyTokenContract.at(dummyREPTokenAddress, web3, TX_DEFAULTS);
 
+        // tslint:disable-next-line
         simpleInterestTermsContractAddress = await termsContractRegistryContract.getSimpleInterestTermsContractAddress.callAsync(
             dummyREPTokenAddress,
         );
