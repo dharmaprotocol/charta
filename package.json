@@ -2,6 +2,7 @@
   "name": "@dharmaprotocol/contracts",
   "version": "0.0.5",
   "main": "dist/artifacts/index.js",
+  "typings": "dist/types/artifacts/index.d.ts",
   "files": [
     "dist"
   ],
