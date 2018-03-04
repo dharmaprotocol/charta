@@ -28,31 +28,31 @@ module.exports = (deployer, network, accounts) => {
 
             const dummyREPToken = await DummyToken.new(
                 "Augur REP",
-                "REP",
+                CONSTANTS.REP_TOKEN_SYMBOL,
                 CONSTANTS.DUMMY_TOKEN_DECIMALS,
                 CONSTANTS.DUMMY_TOKEN_SUPPLY,
             );
-            await tokenRegistry.setTokenAddress("REP", dummyREPToken.address, {
+            await tokenRegistry.setTokenAddress(CONSTANTS.REP_TOKEN_SYMBOL, dummyREPToken.address, {
                 from: accounts[0],
             });
 
             const dummyMKRToken = await DummyToken.new(
                 "Maker DAO",
-                "MKR",
+                CONSTANTS.MKR_TOKEN_SYMBOL,
                 CONSTANTS.DUMMY_TOKEN_DECIMALS,
                 CONSTANTS.DUMMY_TOKEN_SUPPLY,
             );
-            await tokenRegistry.setTokenAddress("MKR", dummyMKRToken.address, {
+            await tokenRegistry.setTokenAddress(CONSTANTS.MKR_TOKEN_SYMBOL, dummyMKRToken.address, {
                 from: accounts[0],
             });
 
             const dummyZRXToken = await DummyToken.new(
                 "0x Token",
-                "ZRX",
+                CONSTANTS.ZRX_TOKEN_SYMBOL,
                 CONSTANTS.DUMMY_TOKEN_DECIMALS,
                 CONSTANTS.DUMMY_TOKEN_SUPPLY,
             );
-            await tokenRegistry.setTokenAddress("ZRX", dummyZRXToken.address, {
+            await tokenRegistry.setTokenAddress(CONSTANTS.ZRX_TOKEN_SYMBOL, dummyZRXToken.address, {
                 from: accounts[0],
             });
         });
