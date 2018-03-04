@@ -1,7 +1,7 @@
 {
   "name": "@dharmaprotocol/contracts",
   "version": "0.0.4",
-  "main": "dist/index.js",
+  "main": "dist/artifacts/index.js",
   "files": [
     "dist"
   ],
