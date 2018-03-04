@@ -13665,10 +13665,15 @@
     "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
   },
   "networks": {
+    "42": {
+      "events": {},
+      "links": {},
+      "address": "0xc317dbc8a81c605e8989ea195d68d81d9cf4c44f"
+    },
     "70": {
       "events": {},
       "links": {},
-      "address": "0xfdb7abc8cb58ac2eb30c5f95bc3657c5244af547"
+      "address": "0x98bab10d22c7dab817f4e35b57529d7775305c80"
     },
     "1519951250780": {
       "events": {},
@@ -13677,5 +13682,5 @@
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-04T02:44:46.290Z"
+  "updatedAt": "2018-03-04T05:27:49.319Z"
 }
