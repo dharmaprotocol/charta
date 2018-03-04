@@ -45,50 +45,37 @@ contract("Migration #2: Deploying Dharma Contracts", async (ACCOUNTS) => {
     describe("Deployment", () => {
         it("should deploy the `MultiSigWallet` contract to the current network", async () => {
             wallet = await MultiSigWalletContract.deployed(web3, TX_DEFAULTS);
-            const doesContractExist = await web3Utils.doesContractExistAtAddressAsync(
-                wallet.address,
-            );
-            expect(doesContractExist).to.be.true;
+            expect(web3Utils.doesContractExistAtAddressAsync(wallet.address)).to.eventually.be.true;
         });
 
         it("should deploy the `DebtRegistry` contract to the current network", async () => {
             debtRegistry = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
-            const doesContractExist = await web3Utils.doesContractExistAtAddressAsync(
-                debtRegistry.address,
-            );
-            expect(doesContractExist).to.be.true;
+            expect(web3Utils.doesContractExistAtAddressAsync(debtRegistry.address)).to.eventually.be
+                .true;
         });
 
         it("should deploy the `RepaymentRouter` contract to the current network", async () => {
             repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
-            const doesContractExist = await web3Utils.doesContractExistAtAddressAsync(
-                repaymentRouter.address,
-            );
-            expect(doesContractExist).to.be.true;
+            expect(web3Utils.doesContractExistAtAddressAsync(repaymentRouter.address)).to.eventually
+                .be.true;
         });
 
         it("should deploy the `DebtToken` contract to the current network", async () => {
             debtToken = await DebtTokenContract.deployed(web3, TX_DEFAULTS);
-            const doesContractExist = await web3Utils.doesContractExistAtAddressAsync(
-                debtToken.address,
-            );
-            expect(doesContractExist).to.be.true;
+            expect(web3Utils.doesContractExistAtAddressAsync(debtToken.address)).to.eventually.be
+                .true;
         });
 
         it("should deploy the `TokenTransferProxy` contract to the current network", async () => {
             tokenTransferProxy = await TokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
-            const doesContractExist = await web3Utils.doesContractExistAtAddressAsync(
-                tokenTransferProxy.address,
-            );
-            expect(doesContractExist).to.be.true;
+            expect(web3Utils.doesContractExistAtAddressAsync(tokenTransferProxy.address)).to
+                .eventually.be.true;
         });
 
         it("should deploy the `DebtKernel` contract to the current network", async () => {
             debtKernel = await DebtKernelContract.deployed(web3, TX_DEFAULTS);
-            const doesContractExist = await web3Utils.doesContractExistAtAddressAsync(
-                debtKernel.address,
-            );
-            expect(doesContractExist).to.be.true;
+            expect(web3Utils.doesContractExistAtAddressAsync(debtKernel.address)).to.eventually.be
+                .true;
         });
     });
 
