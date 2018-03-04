@@ -1,10 +1,10 @@
-import DebtRegistry from "./contracts/DebtRegistry.json";
-import DebtKernel from "./contracts/DebtKernel.json";
-import RepaymentRouter from "./contracts/RepaymentRouter.json";
-import TokenTransferProxy from "./contracts/TokenTransferProxy.json";
-import TokenRegistry from "./contracts/TokenRegistry.json";
-import DebtToken from "./contracts/DebtToken.json";
-import TermsContractRegistry from "./contracts/TermsContractRegistry.json";
+const DebtRegistry = require("./contracts/DebtRegistry.json");
+const DebtKernel = require("./contracts/DebtKernel.json");
+const RepaymentRouter = require("./contracts/RepaymentRouter.json");
+const TokenTransferProxy = require("./contracts/TokenTransferProxy.json");
+const TokenRegistry = require("./contracts/TokenRegistry.json");
+const DebtToken = require("./contracts/DebtToken.json");
+const TermsContractRegistry = require("./contracts/TermsContractRegistry.json");
 
 export {
     DebtRegistry,
