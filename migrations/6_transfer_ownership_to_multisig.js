@@ -9,7 +9,7 @@ module.exports = (deployer, network, accounts) => {
     const MultiSigWallet = artifacts.require("MultiSigWallet");
 
     return deployer.then(async () => {
-        if (network == CONSTANTS.LIVE_NETWORK_ID) {
+        if (network === CONSTANTS.LIVE_NETWORK_ID) {
             const registry = await DebtRegistry.deployed();
             const token = await DebtToken.deployed();
             const kernel = await DebtKernel.deployed();
