@@ -1,6 +1,4 @@
-const MULTISIG_SIGNATORIES = require("./MULTISIG_SIGNATORIES");
-
-const LIVE_NETWORK_ID = "live";
+const CONSTANTS = require("./migration_constants");
 
 module.exports = (deployer, network, accounts) => {
     // Import the Dharma contracts.
@@ -16,16 +14,14 @@ module.exports = (deployer, network, accounts) => {
     // accordingly.
     let signatories;
     switch (network) {
-        case LIVE_NETWORK_ID:
-            signatories = MULTISIG_SIGNATORIES.SIGNATORIES;
+        case CONSTANTS.LIVE_NETWORK_ID:
+            signatories = CONSTANTS.SIGNATORIES;
             break;
         default:
             signatories = accounts;
     }
 
-    const numAuthorizationsRequired = Math.ceil(
-        signatories.length * MULTISIG_SIGNATORIES.THRESHOLD,
-    );
+    const numAuthorizationsRequired = Math.ceil(signatories.length * CONSTANTS.THRESHOLD);
 
     // Deploy the MultiSigWallet with a set of signatories and the number of
     // authorizations required before a transaction can be executed.
