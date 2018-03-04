@@ -13,6 +13,8 @@ module.exports = (deployer, network, accounts) => {
     const MintableNonFungibleToken = artifacts.require("MintableNonFungibleToken");
     const TokenRegistry = artifacts.require("TokenRegistry");
 
+    OWNER = account[0];
+
     if (network !== CONSTANTS.LIVE_NETWORK_ID) {
         deployer.link(PermissionsLib, DummyContract);
         deployer.deploy(DummyContract);
@@ -33,7 +35,7 @@ module.exports = (deployer, network, accounts) => {
                 CONSTANTS.DUMMY_TOKEN_SUPPLY,
             );
             await tokenRegistry.setTokenAddress(CONSTANTS.REP_TOKEN_SYMBOL, dummyREPToken.address, {
-                from: accounts[0],
+                from: OWNER,
             });
 
             const dummyMKRToken = await DummyToken.new(
@@ -43,7 +45,7 @@ module.exports = (deployer, network, accounts) => {
                 CONSTANTS.DUMMY_TOKEN_SUPPLY,
             );
             await tokenRegistry.setTokenAddress(CONSTANTS.MKR_TOKEN_SYMBOL, dummyMKRToken.address, {
-                from: accounts[0],
+                from: OWNER,
             });
 
             const dummyZRXToken = await DummyToken.new(
@@ -53,7 +55,7 @@ module.exports = (deployer, network, accounts) => {
                 CONSTANTS.DUMMY_TOKEN_SUPPLY,
             );
             await tokenRegistry.setTokenAddress(CONSTANTS.ZRX_TOKEN_SYMBOL, dummyZRXToken.address, {
-                from: accounts[0],
+                from: OWNER,
             });
         });
     } // TODO Add some sort of linking for live tokens to token registry
