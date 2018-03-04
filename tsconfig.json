@@ -17,5 +17,7 @@
     "types/*.ts",
     "test/**/*.ts",
     "utils/*.ts",
+    "artifacts/*.ts",
+    "artifacts/**/*.ts",
   ]
 }
