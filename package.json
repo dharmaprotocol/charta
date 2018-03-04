@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "main": "dist/index.js",
   "files": [
-    "transpiled"
+    "dist"
   ],
   "description": "New & improved smart contracts for Dharma protocol",
   "scripts": {
