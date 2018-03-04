@@ -51,5 +51,67 @@ contract("Migration #3: Deploying Test Contracts", async (ACCOUNTS) => {
             );
             expect(doesContractExist).to.be.true;
         });
+        it("should deploy the `MockDebtRegistry` contract to the current network", async () => {
+            mockDebtRegistry = await MockDebtRegistryContract.deployed(web3, TX_DEFAULTS);
+            const doesContractExist = await web3Utils.doesContractExistAtAddressAsync(
+                mockDebtRegistry.address,
+            );
+            expect(doesContractExist).to.be.true;
+        });
+        it("should deploy the `MockERC20Token` contract to the current network", async () => {
+            mockERC20Token = await MockERC20TokenContract.deployed(web3, TX_DEFAULTS);
+            const doesContractExist = await web3Utils.doesContractExistAtAddressAsync(
+                mockERC20Token.address,
+            );
+            expect(doesContractExist).to.be.true;
+        });
+        it("should deploy the `MockERC721Token` contract to the current network", async () => {
+            mockERC721Token = await MockERC721TokenContract.deployed(web3, TX_DEFAULTS);
+            const doesContractExist = await web3Utils.doesContractExistAtAddressAsync(
+                mockERC721Token.address,
+            );
+            expect(doesContractExist).to.be.true;
+        });
+        it("should deploy the `MockDebtToken` contract to the current network", async () => {
+            mockDebtTokenContract = await MockDebtTokenContract.deployed(web3, TX_DEFAULTS);
+            const doesContractExist = await web3Utils.doesContractExistAtAddressAsync(
+                mockDebtTokenContract.address,
+            );
+            expect(doesContractExist).to.be.true;
+        });
+        it("should deploy the `MockTermsContract` contract to the current network", async () => {
+            mockTermsContract = await MockTermsContractContract.deployed(web3, TX_DEFAULTS);
+            const doesContractExist = await web3Utils.doesContractExistAtAddressAsync(
+                mockDebtTokenContract.address,
+            );
+            expect(doesContractExist).to.be.true;
+        });
+        it("should deploy the `MockTokenTransferProxy` contract to the current network", async () => {
+            mockTokenTransferProxy = await MockTokenTransferProxyContract.deployed(
+                web3,
+                TX_DEFAULTS,
+            );
+            const doesContractExist = await web3Utils.doesContractExistAtAddressAsync(
+                mockTokenTransferProxy.address,
+            );
+            expect(doesContractExist).to.be.true;
+        });
+        it("should deploy the `MintableNonFungibleToken` contract to the current network", async () => {
+            mintableNonFungibleToken = await MintableNonFungibleTokenContract.deployed(
+                web3,
+                TX_DEFAULTS,
+            );
+            const doesContractExist = await web3Utils.doesContractExistAtAddressAsync(
+                mintableNonFungibleToken.address,
+            );
+            expect(doesContractExist).to.be.true;
+        });
+        it("should deploy the `TokenRegistry` contract to the current network", async () => {
+            tokenRegistry = await TokenRegistryContract.deployed(web3, TX_DEFAULTS);
+            const doesContractExist = await web3Utils.doesContractExistAtAddressAsync(
+                tokenRegistry.address,
+            );
+            expect(doesContractExist).to.be.true;
+        });
     });
 });
