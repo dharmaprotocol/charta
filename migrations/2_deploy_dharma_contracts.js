@@ -1,7 +1,5 @@
 const CONSTANTS = require("./migration_constants");
 
-const LIVE_NETWORK_ID = "live";
-
 module.exports = (deployer, network, accounts) => {
     // Import the Dharma contracts.
     const PermissionsLib = artifacts.require("PermissionsLib");
@@ -16,7 +14,7 @@ module.exports = (deployer, network, accounts) => {
     // accordingly.
     let signatories;
     switch (network) {
-        case LIVE_NETWORK_ID:
+        case CONSTANTS.LIVE_NETWORK_ID:
             signatories = CONSTANTS.SIGNATORIES;
             break;
         default:
