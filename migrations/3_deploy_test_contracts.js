@@ -13,7 +13,7 @@ module.exports = (deployer, network, accounts) => {
     const MintableNonFungibleToken = artifacts.require("MintableNonFungibleToken");
     const TokenRegistry = artifacts.require("TokenRegistry");
 
-    OWNER = account[0];
+    OWNER = accounts[0];
 
     if (network !== CONSTANTS.LIVE_NETWORK_ID) {
         deployer.link(PermissionsLib, DummyContract);
