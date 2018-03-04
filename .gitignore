@@ -3,6 +3,7 @@
 /transpiled
 /types/generated/*
 /build
+/dist
 
 ### Node ###
 

@@ -1,13 +1,14 @@
 {
   "name": "@dharmaprotocol/contracts",
   "version": "0.0.1",
-  "main": "transpiled/artifacts",
+  "main": "dist/index.js",
   "files": [
     "transpiled"
   ],
   "description": "New & improved smart contracts for Dharma protocol",
   "scripts": {
     "deploy:kovan": "bash scripts/deploy_kovan.sh",
+    "dist": "bash scripts/prepare_dist.sh",
     "generate-typings": "abi-gen --abis './build/contracts/*.json' --out './types/generated' --template './types/contract_templates/contract.mustache' --partials './types/contract_templates/partials/*.mustache'",
     "transpile": "rm -rf ./transpiled; copyfiles ./build/**/* ./transpiled; tsc",
     "lint-ts": "tslint migrations/*.ts test/**/*.ts",
@@ -51,6 +52,9 @@
   "pre-commit": [
     "prettify",
     "lint"
+  ],
+  "prepublishOnly": [
+    "dist"
   ],
   "devDependencies": {
     "@0xproject/abi-gen": "0.2.3",
