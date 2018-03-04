@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "description": "New & improved smart contracts for Dharma protocol",
   "scripts": {
+    "generate-typings": "abi-gen --abis './build/contracts/*.json' --out './types/generated' --template './types/contract_templates/contract.mustache' --partials './types/contract_templates/partials/*.mustache'",
     "deploy:kovan": "bash scripts/deploy_kovan.sh",
-    "generate-typings": "abi-gen --abiGlob './build/contracts/*.json' --templates ./types/contract_templates --output ./types/generated",
     "transpile": "rm -rf ./transpiled; copyfiles ./build/**/* ./transpiled; tsc",
     "lint-ts": "tslint migrations/*.ts test/**/*.ts",
     "lint-sol": "solhint contracts/*.sol contracts/libraries/*.sol contracts/examples/*.sol contracts/test/**/.sol",
