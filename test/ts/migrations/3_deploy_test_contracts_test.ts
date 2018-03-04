@@ -32,6 +32,10 @@ import { TokenRegistryContract } from "../../../types/generated/token_registry";
 contract("Migration #3: Deploying Test Contracts", async (ACCOUNTS) => {
     const CONTRACT_OWNER = ACCOUNTS[0];
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
+    const NULL_ADDRESS = "0x0000000000000000000000000000000000000000";
+    const REP_TOKEN_SYMBOL = "REP";
+    const MKR_TOKEN_SYMBOL = "MKR";
+    const ZRX_TOKEN_SYMBOL = "ZRX";
 
     let dummyContract: DummyContractContract;
     let mockDebtRegistry: MockDebtRegistryContract;
@@ -112,6 +116,23 @@ contract("Migration #3: Deploying Test Contracts", async (ACCOUNTS) => {
                 tokenRegistry.address,
             );
             expect(doesContractExist).to.be.true;
+        });
+    });
+    describe("#TokenRegistry", () => {
+        it("should register the address for Augur's REP token", async () => {
+            expect(
+                tokenRegistry.getTokenAddress.callAsync(REP_TOKEN_SYMBOL),
+            ).to.eventually.not.equal(NULL_ADDRESS);
+        });
+        it("should register the address for Maker's MKR token", async () => {
+            expect(
+                tokenRegistry.getTokenAddress.callAsync(MKR_TOKEN_SYMBOL),
+            ).to.eventually.not.equal(NULL_ADDRESS);
+        });
+        it("should register the address for 0x's ZRX token", async () => {
+            expect(
+                tokenRegistry.getTokenAddress.callAsync(ZRX_TOKEN_SYMBOL),
+            ).to.eventually.not.equal(NULL_ADDRESS);
         });
     });
 });
