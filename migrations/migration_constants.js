@@ -7,13 +7,15 @@ const OWNER_FOUR = "0x" + keccak256("test account four");
 const OWNER_FIVE = "0x" + keccak256("test account five");
 
 const SIGNATORIES = [OWNER_ONE, OWNER_TWO, OWNER_THREE, OWNER_FOUR, OWNER_FIVE];
-
 const THRESHOLD = 1 / 2; // 50%
-
 const LIVE_NETWORK_ID = "live";
+const DUMMY_TOKEN_SUPPLY = 10 ** 27;
+const DUMMY_TOKEN_DECIMALS = 18;
 
 module.exports = {
     SIGNATORIES,
     THRESHOLD,
     LIVE_NETWORK_ID,
+    DUMMY_TOKEN_SUPPLY,
+    DUMMY_TOKEN_DECIMALS,
 };
