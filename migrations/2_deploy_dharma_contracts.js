@@ -1,4 +1,4 @@
-const MULTISIG_SIGNATORIES = require("./MULTISIG_SIGNATORIES");
+const CONSTANTS = require("./migration_constants");
 
 const LIVE_NETWORK_ID = "live";
 
@@ -17,15 +17,13 @@ module.exports = (deployer, network, accounts) => {
     let signatories;
     switch (network) {
         case LIVE_NETWORK_ID:
-            signatories = MULTISIG_SIGNATORIES.SIGNATORIES;
+            signatories = CONSTANTS.SIGNATORIES;
             break;
         default:
             signatories = accounts;
     }
 
-    const numAuthorizationsRequired = Math.ceil(
-        signatories.length * MULTISIG_SIGNATORIES.THRESHOLD,
-    );
+    const numAuthorizationsRequired = Math.ceil(signatories.length * CONSTANTS.THRESHOLD);
 
     // Deploy the MultiSigWallet with a set of signatories and the number of
     // authorizations required before a transaction can be executed.
