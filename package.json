@@ -9,7 +9,8 @@
     "artifacts",
     "contracts",
     "migrations",
-    "scripts"
+    "scripts",
+    "tsconfig.dist.json"
   ],
   "description": "New & improved smart contracts for Dharma protocol",
   "scripts": {
