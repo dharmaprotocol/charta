@@ -1,3 +1,5 @@
+const CONSTANTS = require("./migration_constants");
+
 module.exports = (deployer, network, accounts) => {
     const PermissionsLib = artifacts.require("PermissionsLib");
     const DummyContract = artifacts.require("DummyContract");
@@ -11,10 +13,9 @@ module.exports = (deployer, network, accounts) => {
     const MintableNonFungibleToken = artifacts.require("MintableNonFungibleToken");
     const TokenRegistry = artifacts.require("TokenRegistry");
 
-    const DUMMY_TOKEN_SUPPLY = 10 ** 27;
-    const DUMMY_TOKEN_DECIMALS = 18;
+    OWNER = accounts[0];
 
-    if (network !== "live") {
+    if (network !== CONSTANTS.LIVE_NETWORK_ID) {
         deployer.link(PermissionsLib, DummyContract);
         deployer.deploy(DummyContract);
         deployer.deploy(MockDebtRegistry);
@@ -29,30 +30,33 @@ module.exports = (deployer, network, accounts) => {
 
             const dummyREPToken = await DummyToken.new(
                 "Augur REP",
-                "REP",
-                DUMMY_TOKEN_DECIMALS,
-                DUMMY_TOKEN_SUPPLY,
+                CONSTANTS.REP_TOKEN_SYMBOL,
+                CONSTANTS.DUMMY_TOKEN_DECIMALS,
+                CONSTANTS.DUMMY_TOKEN_SUPPLY,
             );
-            await tokenRegistry.setTokenAddress("REP", dummyREPToken.address,
-                { from: accounts[0] });
+            await tokenRegistry.setTokenAddress(CONSTANTS.REP_TOKEN_SYMBOL, dummyREPToken.address, {
+                from: OWNER,
+            });
 
             const dummyMKRToken = await DummyToken.new(
                 "Maker DAO",
-                "MKR",
-                DUMMY_TOKEN_DECIMALS,
-                DUMMY_TOKEN_SUPPLY,
+                CONSTANTS.MKR_TOKEN_SYMBOL,
+                CONSTANTS.DUMMY_TOKEN_DECIMALS,
+                CONSTANTS.DUMMY_TOKEN_SUPPLY,
             );
-            await tokenRegistry.setTokenAddress("MKR", dummyMKRToken.address,
-                { from: accounts[0] });
+            await tokenRegistry.setTokenAddress(CONSTANTS.MKR_TOKEN_SYMBOL, dummyMKRToken.address, {
+                from: OWNER,
+            });
 
             const dummyZRXToken = await DummyToken.new(
                 "0x Token",
-                "ZRX",
-                DUMMY_TOKEN_DECIMALS,
-                DUMMY_TOKEN_SUPPLY,
+                CONSTANTS.ZRX_TOKEN_SYMBOL,
+                CONSTANTS.DUMMY_TOKEN_DECIMALS,
+                CONSTANTS.DUMMY_TOKEN_SUPPLY,
             );
-            await tokenRegistry.setTokenAddress("ZRX", dummyZRXToken.address,
-                { from: accounts[0] });
+            await tokenRegistry.setTokenAddress(CONSTANTS.ZRX_TOKEN_SYMBOL, dummyZRXToken.address, {
+                from: OWNER,
+            });
         });
     } // TODO Add some sort of linking for live tokens to token registry
 };
