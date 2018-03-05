@@ -13,6 +13,7 @@
   },
   "include": [
     "node_modules/web3-typescript-typings/index.d.ts",
-    "artifacts/*.ts"
+    "artifacts/*.ts",
+    "artifacts/ts/*.ts"
   ]
 }
