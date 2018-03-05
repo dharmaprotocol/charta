@@ -1246,9 +1246,9 @@ export const MintableNonFungibleToken =
     "70": {
       "events": {},
       "links": {},
-      "address": "0xf742061af43cc169f9ccc25a776282bf41e328e9"
+      "address": "0x401631f04c323d127a12cdb377216f7d3b252ed0"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-05T01:00:24.740Z"
+  "updatedAt": "2018-03-05T04:42:11.031Z"
 }

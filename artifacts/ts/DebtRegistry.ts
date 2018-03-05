@@ -7831,9 +7831,9 @@ export const DebtRegistry =
         }
       },
       "links": {},
-      "address": "0xdc8b54dc3ca7b1647cce552066eaae328540fc8e"
+      "address": "0x3762426d592990bda04fe42f31549117c827645b"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-05T01:02:05.097Z"
+  "updatedAt": "2018-03-05T04:42:12.294Z"
 }

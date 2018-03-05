@@ -680,9 +680,9 @@ export const TokenRegistry =
     "70": {
       "events": {},
       "links": {},
-      "address": "0x17c68817497dd5f7c6c247cde737c15a08a34178"
+      "address": "0x5833e409d1c61e4d3139654db5faea6ee819a664"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-05T01:01:37.357Z"
+  "updatedAt": "2018-03-05T04:42:11.850Z"
 }

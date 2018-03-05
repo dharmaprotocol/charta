@@ -5,10 +5,15 @@
   "typings": "dist/types/artifacts/index.d.ts",
   "files": [
     "build",
-    "dist"
+    "dist",
+    "artifacts",
+    "contracts",
+    "migrations",
+    "scripts"
   ],
   "description": "New & improved smart contracts for Dharma protocol",
   "scripts": {
+    "deploy:development": "bash scripts/deploy_development.sh",
     "deploy:kovan": "bash scripts/deploy_kovan.sh",
     "dist": "bash scripts/prepare_dist.sh",
     "generate-typings": "abi-gen --abis './build/contracts/*.json' --out './types/generated' --template './types/contract_templates/contract.mustache' --partials './types/contract_templates/partials/*.mustache'",

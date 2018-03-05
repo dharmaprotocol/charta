@@ -2420,9 +2420,9 @@ export const PermissionsLib =
     "70": {
       "events": {},
       "links": {},
-      "address": "0x7ae1f826438fb07d9c55a7b96cff64953f9b3314"
+      "address": "0xc13d026d7e4e6c2864240aa1f26bb436c6271338"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-05T01:00:24.722Z"
+  "updatedAt": "2018-03-05T04:42:11.003Z"
 }

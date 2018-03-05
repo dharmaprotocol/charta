@@ -7044,5 +7044,5 @@ export const SimpleInterestTermsContract =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-05T01:01:37.373Z"
+  "updatedAt": "2018-03-05T04:42:11.865Z"
 }

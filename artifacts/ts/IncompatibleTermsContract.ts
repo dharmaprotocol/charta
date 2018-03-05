@@ -818,9 +818,9 @@ export const IncompatibleTermsContract =
     "70": {
       "events": {},
       "links": {},
-      "address": "0x6b2aa16010ce0aa0662edf8c30b78e82037a27ba"
+      "address": "0xb35f2124203a1560e5e0a4d6dcfc1f4f4d4d6b07"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-05T01:01:37.369Z"
+  "updatedAt": "2018-03-05T04:42:11.858Z"
 }
