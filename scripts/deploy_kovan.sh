@@ -1,14 +1,14 @@
-# We use the build.dev/ directory as a day-to-day development
-# environment, and use the build/ directory to store production
+# We use the build/ directory as a day-to-day development
+# environment, and use the artifacts/ directory to store production
 # artifacts (i.e. artifacts where our contracts are deployed
 # on non-local blockchains).
 #
-# Truffle will by default use the build.dev folder to fetch the most recent
+# Truffle will by default use the build folder to fetch the most recent
 # artifacts and update them with the newly deployed contract
 # addresses, saving the newest artifacts in build.dev
 #
-# Thus, when pushing a new build to Kovan, we want to replace build.dev
-# folder with most recent saved  production build/ directory contents
+# Thus, when pushing a new build to Kovan, we want to replace build
+# folder with most recent saved  production artifacts/ directory contents
 # so that our new artifacts include the addresses of contracts deployed in production
 # on networks *other* than Kovan.
 rm build/contracts/*
