@@ -9,7 +9,8 @@
     "module": "commonjs",
     "baseUrl": ".",
     "rootDir": ".",
-    "target": "es6"
+    "target": "es6",
+    "types": []
   },
   "include": [
     "node_modules/web3-typescript-typings/index.d.ts",
