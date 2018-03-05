@@ -10,7 +10,8 @@
     "contracts",
     "migrations",
     "scripts",
-    "tsconfig.dist.json"
+    "tsconfig.dist.json",
+    "truffle.js"
   ],
   "description": "New & improved smart contracts for Dharma protocol",
   "scripts": {
