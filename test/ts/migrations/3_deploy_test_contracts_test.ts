@@ -50,10 +50,8 @@ contract("Migration #3: Deploying Test Contracts", async (ACCOUNTS) => {
     describe("Deployment", () => {
         it("should deploy the `DummyContract` contract to the current network", async () => {
             dummyContract = await DummyContractContract.deployed(web3, TX_DEFAULTS);
-            const doesContractExist = await web3Utils.doesContractExistAtAddressAsync(
-                dummyContract.address,
-            );
-            expect(doesContractExist).to.be.true;
+            expect(web3Utils.doesContractExistAtAddressAsync(dummyContract.address)).to.eventually
+                .be.true;
         });
         it("should deploy the `MockDebtRegistry` contract to the current network", async () => {
             mockDebtRegistry = await MockDebtRegistryContract.deployed(web3, TX_DEFAULTS);
