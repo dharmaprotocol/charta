@@ -53,8 +53,3 @@ declare module "abi-decoder" {
 }
 
 declare module "tiny-promisify";
-
-declare module "*.json" {
-    const value: any;
-    export default value;
-}
