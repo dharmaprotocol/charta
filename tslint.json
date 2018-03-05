@@ -14,7 +14,6 @@
     "interface-name": false,
     "max-classes-per-file": false,
     "no-string-literal": false,
-    "no-implicit-dependencies": [true, "dev"],
-    "no-unused-expression": false
+    "no-implicit-dependencies": [true, "dev"]
   }
 }
