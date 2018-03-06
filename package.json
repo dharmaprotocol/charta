@@ -40,6 +40,10 @@
   "prepublishOnly": [
     "dist"
   ],
+  "dependencies": {
+    "NonFungibleToken": "https://github.com/dharmaprotocol/NonFungibleToken.git",
+    "zeppelin-solidity": "^1.6.0"
+  },
   "devDependencies": {
     "@0xproject/abi-gen": "0.2.3",
     "@0xproject/types": "^0.1.1",
@@ -70,7 +74,6 @@
     "left-pad": "^1.2.0",
     "lodash": "^4.17.4",
     "moment": "^2.20.1",
-    "NonFungibleToken": "https://github.com/dharmaprotocol/NonFungibleToken.git",
     "pre-commit": "^1.2.2",
     "prettier": "^1.10.2",
     "solhint": "^1.1.8",
@@ -83,7 +86,6 @@
     "types-ethereumjs-util": "^0.0.5",
     "typescript": "^2.6.1",
     "web3-typescript-typings": "^0.7.2",
-    "web3": "0.19.0",
-    "zeppelin-solidity": "^1.6.0"
+    "web3": "0.19.0"
   }
 }
