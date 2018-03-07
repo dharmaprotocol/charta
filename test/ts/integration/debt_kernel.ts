@@ -93,7 +93,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
             TX_DEFAULTS,
         );
 
-        const dummyREPTokenAddress = await dummyTokenRegistryContract.getTokenAddress.callAsync(
+        const dummyREPTokenAddress = await dummyTokenRegistryContract.getTokenAddressBySymbol.callAsync(
             "REP",
         );
 

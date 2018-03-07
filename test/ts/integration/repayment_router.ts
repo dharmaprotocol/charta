@@ -66,7 +66,7 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
 
     before(async () => {
         const dummyTokenRegistryContract = await TokenRegistryContract.deployed(web3, TX_DEFAULTS);
-        const dummyREPTokenAddress = await dummyTokenRegistryContract.getTokenAddress.callAsync(
+        const dummyREPTokenAddress = await dummyTokenRegistryContract.getTokenAddressBySymbol.callAsync(
             "REP",
         );
 

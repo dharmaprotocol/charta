@@ -16,8 +16,6 @@
     "node_modules/types-bn/index.d.ts",
     "types/*.ts",
     "test/**/*.ts",
-    "utils/*.ts",
-    "artifacts/*.ts",
-    "artifacts/**/*.ts",
+    "utils/*.ts"
   ]
 }
