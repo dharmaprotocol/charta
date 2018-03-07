@@ -103,17 +103,17 @@ contract("Migration #3: Deploying Test Contracts", async (ACCOUNTS) => {
     describe("#TokenRegistry", () => {
         it("should register the address for Augur's REP token", async () => {
             expect(
-                tokenRegistry.getTokenAddress.callAsync(REP_TOKEN_SYMBOL),
+                tokenRegistry.getTokenAddressBySymbol.callAsync(REP_TOKEN_SYMBOL),
             ).to.eventually.not.equal(NULL_ADDRESS);
         });
         it("should register the address for Maker's MKR token", async () => {
             expect(
-                tokenRegistry.getTokenAddress.callAsync(MKR_TOKEN_SYMBOL),
+                tokenRegistry.getTokenAddressBySymbol.callAsync(MKR_TOKEN_SYMBOL),
             ).to.eventually.not.equal(NULL_ADDRESS);
         });
         it("should register the address for 0x's ZRX token", async () => {
             expect(
-                tokenRegistry.getTokenAddress.callAsync(ZRX_TOKEN_SYMBOL),
+                tokenRegistry.getTokenAddressBySymbol.callAsync(ZRX_TOKEN_SYMBOL),
             ).to.eventually.not.equal(NULL_ADDRESS);
         });
     });

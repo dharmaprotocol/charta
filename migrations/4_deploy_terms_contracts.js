@@ -24,9 +24,9 @@ module.exports = (deployer, network, accounts) => {
         if (network !== "live") {
             const tokenRegistry = await TokenRegistry.deployed(web3);
 
-            const dummyREPTokenAddress = await tokenRegistry.getTokenAddress("REP");
-            const dummyMKRTokenAddress = await tokenRegistry.getTokenAddress("MKR");
-            const dummyZRXTokenAddress = await tokenRegistry.getTokenAddress("ZRX");
+            const dummyREPTokenAddress = await tokenRegistry.getTokenAddressBySymbol("REP");
+            const dummyMKRTokenAddress = await tokenRegistry.getTokenAddressBySymbol("MKR");
+            const dummyZRXTokenAddress = await tokenRegistry.getTokenAddressBySymbol("ZRX");
 
             /*
              * Deploy SimpleInterestTermsContract's for each token type.
