@@ -16,7 +16,8 @@ contract DummyCollateralizedContract is Collateralized {
     /* Naive `TermsContract` interface implementation. */
 
     function registerTermStart(
-        bytes32 agreementId
+        bytes32 agreementId,
+        address debtor
     ) public returns (bool _success) {
         return true;
     }

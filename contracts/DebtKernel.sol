@@ -181,10 +181,15 @@ contract DebtKernel is Pausable {
         issueDebtAgreement(creditor, debtOrder.issuance);
 
         // Register debt agreement's start with terms contract
-        require(
-            TermsContract(debtOrder.issuance.termsContract)
-                .registerTermStart(debtOrder.issuance.issuanceHash)
-        );
+        if (debtOrder.issuance.termsContract != address(0)) {
+            require(
+                TermsContract(debtOrder.issuance.termsContract)
+                    .registerTermStart(
+                        debtOrder.issuance.issuanceHash,
+                        debtOrder.issuance.debtor
+                    )
+            );
+        }
 
         // Transfer principal to debtor
         if (debtOrder.principalAmount > 0) {

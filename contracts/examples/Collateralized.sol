@@ -23,6 +23,7 @@ import "zeppelin-solidity/contracts/token/ERC20/ERC20.sol";
 
 import "../TermsContract.sol";
 import "../DebtRegistry.sol";
+import "../TokenRegistry.sol";
 
 
 contract Collateralized is TermsContract {
@@ -32,11 +33,12 @@ contract Collateralized is TermsContract {
         address collateralizer;
         address token;
         uint amount;
-        uint lockupPeriod;
+        uint gracePeriodInDays;
         bool withdrawn;
     }
 
     DebtRegistry public debtRegistry;
+    TokenRegistry public tokenRegistry;
 
     mapping(bytes32 => Collateral) public collateralForAgreementID;
 
@@ -64,11 +66,35 @@ contract Collateralized is TermsContract {
         debtRegistry = DebtRegistry(_debtRegistry);
     }
 
+    function registerTermStart(bytes32 agreementId)
+        public
+        returns (bool _success)
+    {
+        address termsContract;
+        bytes32 termsContractParameters;
+
+        // Pull the terms contract and associated parameters for the newly created agreement
+        (termsContract, termsContractParameters) = debtRegistry.getTerms(agreementId);
+
+        // Assert newly created agreement specifies this contract as its terms contract
+        require(termsContract == address(this));
+
+        uint collateralTokenIndex;
+        uint collateralAmount;
+        uint gracePeriodInDays;
+
+        // Unpack terms contract parameters in order to get collateralization-specific params
+        (collateralTokenIndex, collateralAmount, gracePeriodInDays) =
+            unpackCollateralParametersFromBytes(termsContractParameters);
+
+
+    }
+
     function collateralize(
         bytes32 agreementID,
         address token,
         uint amount,
-        uint lockupPeriodEndTimestamp
+        uint gracePeriodInDays
     )
         public
     {
@@ -238,11 +264,7 @@ contract Collateralized is TermsContract {
     function unpackCollateralParametersFromBytes(bytes32 parameters)
         public
         pure
-        returns (
-            uint collateralTokenIndexInRegistry,
-            uint collateralAmount,
-            uint gracePeriodInDays
-        )
+        returns (uint, uint, uint)
     {
         // The first byte of the 108 reserved bits represents the collateral token.
         bytes32 collateralTokenIndexShifted =
@@ -255,7 +277,7 @@ contract Collateralized is TermsContract {
         // mathematical operations, so that their 32 byte integer counterparts
         // correspond to the intended values packed in the 32 byte string
         uint collateralTokenIndex = uint(collateralTokenIndexShifted) / 2 ** 100;
-        uint collateralAmount = uint(amortizationUnitTypeShifted) / 2 ** 120;
+        uint collateralAmount = uint(collateralAmountShifted) / 2 ** 8;
 
         // The last byte of the parameters represents the "grace period" of the loan,
         // as defined in terms of days.

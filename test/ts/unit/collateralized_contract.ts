@@ -39,6 +39,8 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
     const BENEFICIARY = ACCOUNTS[2];
     const ATTACKER = ACCOUNTS[3];
 
+    const NULL_PARAMETERS = "0x0000000000000000000000000000000000000000000000000000000000000000";
+
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
 
     const COLLATERAL_AMOUNT = Units.ether(5);
@@ -93,492 +95,538 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
         });
     });
 
-    describe("#collateralize", () => {
-        describe("#invariants", () => {
-            const ARBITRARY_AGREEMENT_ID = web3.sha3(
-                "any 32 byte hex value can represent an agreement id",
-            );
+    describe("#unpackCollateralParametersFromBytes", () => {
+        describe("it should unpack collateral parameters correctly", () => {
+            it("Scenario #1", async () => {
+                const packedParameters = NULL_PARAMETERS;
+                const expectedUnpackedParameters = [0, 0, 0];
 
-            const ZERO_AMOUNT = Units.ether(0);
-
-            it("should throw if the amount being put up for collateral is zero", async () => {
-                await expect(
-                    collateralContract.collateralize.sendTransactionAsync(
-                        ARBITRARY_AGREEMENT_ID,
-                        mockToken.address,
-                        new BigNumber(0), // zero collateral
-                        new BigNumber(
-                            moment()
-                                .add(2, "years")
-                                .unix(),
-                        ),
-                    ),
-                ).to.eventually.be.rejectedWith(REVERT_ERROR);
-            });
-
-            it("should throw if the lockup period occurs in the past", async () => {
-                await expect(
-                    collateralContract.collateralize.sendTransactionAsync(
-                        ARBITRARY_AGREEMENT_ID,
-                        mockToken.address,
-                        new BigNumber(10),
-                        new BigNumber(
-                            moment()
-                                .subtract(2, "years")
-                                .unix(),
-                        ), // timestamp that occurs in the past.
-                    ),
-                ).to.eventually.be.rejectedWith(REVERT_ERROR);
-            });
-
-            it("should throw if the collateralizer does not have sufficient balance", async () => {
-                // This balance is not sufficient.
-                await mockToken.mockBalanceOfFor.sendTransactionAsync(COLLATERALIZER, ZERO_AMOUNT);
-
-                // This allowance is sufficient.
-                await mockToken.mockAllowanceFor.sendTransactionAsync(
-                    COLLATERALIZER,
-                    collateralContract.address,
-                    COLLATERAL_AMOUNT,
+                const unpackedParameters = await collateralContract.unpackCollateralParametersFromBytes.callAsync(
+                    packedParameters,
                 );
 
-                await expect(
-                    collateralContract.collateralize.sendTransactionAsync(
-                        ARBITRARY_AGREEMENT_ID,
-                        mockToken.address,
-                        COLLATERAL_AMOUNT,
-                        new BigNumber(
-                            moment()
-                                .add(2, "years")
-                                .unix(),
-                        ),
-                        { from: COLLATERALIZER },
-                    ),
-                ).to.eventually.be.rejectedWith(REVERT_ERROR);
+                expect(unpackedParameters[0]).to.bignumber.equal(expectedUnpackedParameters[0]);
+                expect(unpackedParameters[1]).to.bignumber.equal(expectedUnpackedParameters[1]);
+                expect(unpackedParameters[2]).to.bignumber.equal(expectedUnpackedParameters[2]);
             });
 
-            it("should throw if allowances are not sufficient", async () => {
-                // This balance is sufficient.
-                await mockToken.mockBalanceOfFor.sendTransactionAsync(
-                    COLLATERALIZER,
-                    COLLATERAL_AMOUNT,
+            it("Scenario #2", async () => {
+                const packedParameters =
+                    "0x0000000000000000000000000000000000000ff00000000de0b6b3a764000001";
+                const expectedUnpackedParameters = [255, Units.ether(1), 1];
+
+                const unpackedParameters = await collateralContract.unpackCollateralParametersFromBytes.callAsync(
+                    packedParameters,
                 );
 
-                // This allowance is not sufficient.
-                await mockToken.mockAllowanceFor.sendTransactionAsync(
-                    COLLATERALIZER,
-                    collateralContract.address,
-                    ZERO_AMOUNT,
-                );
-
-                await expect(
-                    collateralContract.collateralize.sendTransactionAsync(
-                        ARBITRARY_AGREEMENT_ID,
-                        mockToken.address, // the acting custodian is the collateralized contract.
-                        COLLATERAL_AMOUNT,
-                        new BigNumber(
-                            moment()
-                                .add(2, "years")
-                                .unix(),
-                        ),
-                        { from: COLLATERALIZER },
-                    ),
-                ).to.eventually.be.rejectedWith(REVERT_ERROR);
-            });
-        });
-
-        describe("successful collateralization", () => {
-            const AGREEMENT_ID = web3.sha3("this agreement will be successfully collateralized");
-
-            let res: Web3.TransactionReceipt;
-
-            before(async () => {
-                await mockToken.reset.sendTransactionAsync();
-
-                // this balance is sufficient.
-                await mockToken.mockBalanceOfFor.sendTransactionAsync(
-                    COLLATERALIZER,
-                    COLLATERAL_AMOUNT,
-                );
-
-                // this allowance is sufficient.
-                await mockToken.mockAllowanceFor.sendTransactionAsync(
-                    COLLATERALIZER,
-                    collateralContract.address,
-                    COLLATERAL_AMOUNT,
-                );
-
-                const txHash = await collateralContract.collateralize.sendTransactionAsync(
-                    AGREEMENT_ID,
-                    mockToken.address,
-                    COLLATERAL_AMOUNT,
-                    new BigNumber(
-                        moment()
-                            .add(2, "years")
-                            .unix(),
-                    ),
-                    { from: COLLATERALIZER },
-                );
-
-                res = await web3.eth.getTransactionReceipt(txHash);
+                expect(unpackedParameters[0]).to.bignumber.equal(expectedUnpackedParameters[0]);
+                expect(unpackedParameters[1]).to.bignumber.equal(expectedUnpackedParameters[1]);
+                expect(unpackedParameters[2]).to.bignumber.equal(expectedUnpackedParameters[2]);
             });
 
-            it("should call `transferFrom` on specified token w/ collateralContract as receipient", async () => {
-                await expect(
-                    mockToken.wasTransferFromCalledWith.callAsync(
-                        COLLATERALIZER,
-                        collateralContract.address,
-                        COLLATERAL_AMOUNT,
-                    ),
-                ).to.eventually.be.true;
-            });
+            it("Scenario #3", async () => {
+                const packedParameters =
+                    "0x00000abcd000000000000000000000000000012008060e0dbc5d6766800000ff";
+                const expectedUnpackedParameters = [18, Units.ether(9700000), 255];
 
-            it("should emit log indicating that the collateral was secured", async () => {
-                const [logReturned] = ABIDecoder.decodeLogs(res.logs);
-                const logExpected = CollateralLocked(
-                    collateralContract.address,
-                    AGREEMENT_ID,
-                    mockToken.address,
-                    COLLATERAL_AMOUNT,
+                const unpackedParameters = await collateralContract.unpackCollateralParametersFromBytes.callAsync(
+                    packedParameters,
                 );
 
-                expect(logReturned).to.deep.equal(logExpected);
-            });
-
-            it("should throw on subsequent calls to `collateralize`", async () => {
-                await expect(
-                    collateralContract.collateralize.sendTransactionAsync(
-                        AGREEMENT_ID,
-                        mockToken.address,
-                        new BigNumber(1),
-                        new BigNumber(
-                            moment()
-                                .add(2, "years")
-                                .unix(),
-                        ),
-                        { from: COLLATERALIZER },
-                    ),
-                ).to.eventually.be.rejectedWith(REVERT_ERROR);
+                expect(unpackedParameters[0]).to.bignumber.equal(expectedUnpackedParameters[0]);
+                expect(unpackedParameters[1]).to.bignumber.equal(expectedUnpackedParameters[1]);
+                expect(unpackedParameters[2]).to.bignumber.equal(expectedUnpackedParameters[2]);
             });
         });
     });
 
-    describe("#returnCollateral", () => {
-        describe("#invariants", () => {
-            it("should throw if no collateral is mapped to the agreement id", async () => {
-                const ID_FOR_NON_EXISTENT_AGREEMENT = web3.sha3("this agreement does not exist.");
-
-                await expect(
-                    collateralContract.returnCollateral.sendTransactionAsync(
-                        ID_FOR_NON_EXISTENT_AGREEMENT,
-                    ),
-                ).to.eventually.be.rejectedWith(REVERT_ERROR);
-            });
-
-            it("should throw if the lockup period is still in effect", async () => {
-                const ID_FOR_ACTIVE_AGREEMENT = web3.sha3("this agreement is still in effect.");
-
-                // Collateralize an agreement with a lock up period in the future.
-                await collateralContract.setDummyCollateral.sendTransactionAsync(
-                    ID_FOR_ACTIVE_AGREEMENT,
-                    COLLATERALIZER,
-                    mockToken.address,
-                    COLLATERAL_AMOUNT,
-                    new BigNumber(
-                        moment()
-                            .add(2, "years")
-                            .unix(),
-                    ), // lockup period is still in effect.
-                    false,
-                );
-
-                await expect(
-                    collateralContract.returnCollateral.sendTransactionAsync(
-                        ID_FOR_ACTIVE_AGREEMENT,
-                    ),
-                ).to.eventually.be.rejectedWith(REVERT_ERROR);
-            });
-
-            it("should throw if the collateral has already been withdrawn", async () => {
-                const ID_FOR_RESOLVED_AGREEMENT = web3.sha3("this agreement has been resolved.");
-
-                // Collateralize an agreement with a lock up period in the future.
-                await collateralContract.setDummyCollateral.sendTransactionAsync(
-                    ID_FOR_RESOLVED_AGREEMENT,
-                    COLLATERALIZER,
-                    mockToken.address,
-                    COLLATERAL_AMOUNT,
-                    new BigNumber(
-                        moment()
-                            .subtract(2, "years")
-                            .unix(),
-                    ),
-                    true, // collateral marked as withdrawn.
-                );
-
-                await expect(
-                    collateralContract.returnCollateral.sendTransactionAsync(
-                        ID_FOR_RESOLVED_AGREEMENT,
-                    ),
-                ).to.eventually.be.rejectedWith(REVERT_ERROR);
-            });
-
-            it("should throw if the agreement is in default and the lockup period has expired", async () => {
-                const DEFAULTED_AGREEMENT_ID = web3.sha3("this agreement was defaulted upon.");
-
-                await collateralContract.setDummyCollateral.sendTransactionAsync(
-                    DEFAULTED_AGREEMENT_ID,
-                    COLLATERALIZER,
-                    mockToken.address,
-                    COLLATERAL_AMOUNT,
-                    new BigNumber(
-                        moment()
-                            .subtract(1, "month")
-                            .unix(),
-                    ), // lockup period has expired.
-                    false,
-                );
-
-                await collateralContract.setDummyExpectedRepaymentValue.sendTransactionAsync(
-                    DEFAULTED_AGREEMENT_ID,
-                    COLLATERAL_AMOUNT,
-                );
-
-                await collateralContract.setDummyValueRepaid.sendTransactionAsync(
-                    DEFAULTED_AGREEMENT_ID,
-                    COLLATERAL_AMOUNT.minus(1),
-                );
-
-                await expect(
-                    collateralContract.returnCollateral.sendTransactionAsync(
-                        DEFAULTED_AGREEMENT_ID,
-                    ),
-                ).to.eventually.be.rejectedWith(REVERT_ERROR);
-            });
-        });
-
-        describe("the successful return of collateral", () => {
-            const AGREEMENT_ID = web3.sha3("this agreement will unwind as intended.");
-
-            let res: Web3.TransactionReceipt;
-
-            before(async () => {
-                await collateralContract.setDummyCollateral.sendTransactionAsync(
-                    AGREEMENT_ID,
-                    COLLATERALIZER,
-                    mockToken.address,
-                    COLLATERAL_AMOUNT,
-                    new BigNumber(
-                        moment()
-                            .subtract(1, "month")
-                            .unix(),
-                    ), // lockup period has expired.
-                    false, // collateral has not been withdrawn.
-                );
-
-                await collateralContract.setDummyExpectedRepaymentValue.sendTransactionAsync(
-                    AGREEMENT_ID,
-                    COLLATERAL_AMOUNT,
-                );
-
-                await collateralContract.setDummyValueRepaid.sendTransactionAsync(
-                    AGREEMENT_ID,
-                    COLLATERAL_AMOUNT,
-                );
-
-                const txHash = await collateralContract.returnCollateral.sendTransactionAsync(
-                    AGREEMENT_ID,
-                );
-
-                res = await web3.eth.getTransactionReceipt(txHash);
-            });
-
-            it("should call `transfer` on specified token w/ collateralizer as receipient", async () => {
-                await expect(
-                    mockToken.wasTransferCalledWith.callAsync(COLLATERALIZER, COLLATERAL_AMOUNT),
-                ).to.eventually.be.true;
-            });
-
-            it("should emit log indicating that the collateral was returned", async () => {
-                const [logReturned] = ABIDecoder.decodeLogs(res.logs);
-                const logExpected = CollateralReturned(
-                    collateralContract.address,
-                    AGREEMENT_ID,
-                    COLLATERALIZER,
-                    mockToken.address,
-                    COLLATERAL_AMOUNT,
-                );
-
-                expect(logReturned).to.deep.equal(logExpected);
-            });
-
-            it("should throw on any subsequent calls to withdraw", async () => {
-                await expect(
-                    collateralContract.returnCollateral.sendTransactionAsync(AGREEMENT_ID),
-                ).to.eventually.be.rejectedWith(REVERT_ERROR);
-            });
-        });
-    });
-
-    describe("#seizeCollateral", () => {
-        describe("#invariants", () => {
-            it("should throw if no collateral is mapped to the agreement id", async () => {
-                const ID_FOR_NON_EXISTENT_AGREEMENT = web3.sha3("this agreement does not exist.");
-
-                await expect(
-                    collateralContract.seizeCollateral.sendTransactionAsync(
-                        ID_FOR_NON_EXISTENT_AGREEMENT,
-                    ),
-                ).to.eventually.be.rejectedWith(REVERT_ERROR);
-            });
-
-            it("should throw if the lockup period is still in effect", async () => {
-                const ID_FOR_ACTIVE_AGREEMENT = web3.sha3("this agreement is still in effect.");
-
-                // Collateralize an agreement with a lock up period in the future.
-                await collateralContract.setDummyCollateral.sendTransactionAsync(
-                    ID_FOR_ACTIVE_AGREEMENT,
-                    COLLATERALIZER,
-                    mockToken.address,
-                    COLLATERAL_AMOUNT,
-                    new BigNumber(
-                        moment()
-                            .add(2, "years")
-                            .unix(),
-                    ), // lockup period is still in effect.
-                    false,
-                );
-
-                await expect(
-                    collateralContract.seizeCollateral.sendTransactionAsync(
-                        ID_FOR_ACTIVE_AGREEMENT,
-                    ),
-                ).to.eventually.be.rejectedWith(REVERT_ERROR);
-            });
-
-            it("should throw if the collateral has already been withdrawn", async () => {
-                const ID_FOR_RESOLVED_AGREEMENT = web3.sha3("this agreement has been resolved.");
-
-                // Collateralize an agreement with a lock up period in the future.
-                await collateralContract.setDummyCollateral.sendTransactionAsync(
-                    ID_FOR_RESOLVED_AGREEMENT,
-                    COLLATERALIZER,
-                    mockToken.address,
-                    COLLATERAL_AMOUNT,
-                    new BigNumber(
-                        moment()
-                            .subtract(2, "years")
-                            .unix(),
-                    ),
-                    true, // collateral marked as withdrawn.
-                );
-
-                await expect(
-                    collateralContract.seizeCollateral.sendTransactionAsync(
-                        ID_FOR_RESOLVED_AGREEMENT,
-                    ),
-                ).to.eventually.be.rejectedWith(REVERT_ERROR);
-            });
-
-            it("should throw if the agreement is not in default", async () => {
-                const AGREEMENT_ID = web3.sha3("this agreement is going just fine.");
-
-                await collateralContract.setDummyCollateral.sendTransactionAsync(
-                    AGREEMENT_ID,
-                    COLLATERALIZER,
-                    mockToken.address,
-                    COLLATERAL_AMOUNT,
-                    new BigNumber(
-                        moment()
-                            .subtract(1, "month")
-                            .unix(),
-                    ), // lockup period has expired.
-                    false,
-                );
-
-                await collateralContract.setDummyExpectedRepaymentValue.sendTransactionAsync(
-                    AGREEMENT_ID,
-                    COLLATERAL_AMOUNT,
-                );
-
-                await collateralContract.setDummyValueRepaid.sendTransactionAsync(
-                    AGREEMENT_ID,
-                    COLLATERAL_AMOUNT,
-                );
-
-                await expect(
-                    collateralContract.seizeCollateral.sendTransactionAsync(AGREEMENT_ID),
-                ).to.eventually.be.rejectedWith(REVERT_ERROR);
-            });
-        });
-
-        describe("the successful seizure of collateral when loan in default", () => {
-            const DEFAULTED_AGREEMENT_ID = web3.sha3(
-                "this agreement will require the seizure of collateral.",
-            );
-
-            let res: Web3.TransactionReceipt;
-
-            before(async () => {
-                await mockRegistry.mockGetBeneficiaryReturnValueFor.sendTransactionAsync(
-                    DEFAULTED_AGREEMENT_ID,
-                    BENEFICIARY,
-                );
-
-                await collateralContract.setDummyCollateral.sendTransactionAsync(
-                    DEFAULTED_AGREEMENT_ID,
-                    COLLATERALIZER,
-                    mockToken.address,
-                    COLLATERAL_AMOUNT,
-                    new BigNumber(
-                        moment()
-                            .subtract(1, "month")
-                            .unix(),
-                    ), // lockup period has expired.
-                    false, // collateral has not been withdrawn.
-                );
-
-                await collateralContract.setDummyValueRepaid.sendTransactionAsync(
-                    DEFAULTED_AGREEMENT_ID,
-                    COLLATERAL_AMOUNT.minus(1),
-                );
-
-                await collateralContract.setDummyExpectedRepaymentValue.sendTransactionAsync(
-                    DEFAULTED_AGREEMENT_ID,
-                    COLLATERAL_AMOUNT,
-                );
-
-                const txHash = await collateralContract.seizeCollateral.sendTransactionAsync(
-                    DEFAULTED_AGREEMENT_ID,
-                );
-
-                res = await web3.eth.getTransactionReceipt(txHash);
-            });
-
-            it("should call `transfer` on specified token w/ beneficiary as receipient", async () => {
-                await expect(
-                    mockToken.wasTransferCalledWith.callAsync(BENEFICIARY, COLLATERAL_AMOUNT),
-                ).to.eventually.be.true;
-            });
-
-            it("should emit log indicating that the collateral was seized", async () => {
-                const [logReturned] = ABIDecoder.decodeLogs(res.logs);
-                const logExpected = CollateralSeized(
-                    collateralContract.address,
-                    DEFAULTED_AGREEMENT_ID,
-                    BENEFICIARY,
-                    mockToken.address,
-                    COLLATERAL_AMOUNT,
-                );
-
-                expect(logReturned).to.deep.equal(logExpected);
-            });
-
-            it("should throw on any subsequent calls to `seizeCollateral`", async () => {
-                await expect(
-                    collateralContract.seizeCollateral.sendTransactionAsync(DEFAULTED_AGREEMENT_ID),
-                ).to.eventually.be.rejectedWith(REVERT_ERROR);
-            });
-        });
-    });
+    //
+    // describe("#collateralize", () => {
+    //     describe("#invariants", () => {
+    //         const ARBITRARY_AGREEMENT_ID = web3.sha3(
+    //             "any 32 byte hex value can represent an agreement id",
+    //         );
+    //
+    //         const ZERO_AMOUNT = Units.ether(0);
+    //
+    //         it("should throw if the amount being put up for collateral is zero", async () => {
+    //             await expect(
+    //                 collateralContract.collateralize.sendTransactionAsync(
+    //                     ARBITRARY_AGREEMENT_ID,
+    //                     mockToken.address,
+    //                     new BigNumber(0), // zero collateral
+    //                     new BigNumber(
+    //                         moment()
+    //                             .add(2, "years")
+    //                             .unix(),
+    //                     ),
+    //                 ),
+    //             ).to.eventually.be.rejectedWith(REVERT_ERROR);
+    //         });
+    //
+    //         it("should throw if the lockup period occurs in the past", async () => {
+    //             await expect(
+    //                 collateralContract.collateralize.sendTransactionAsync(
+    //                     ARBITRARY_AGREEMENT_ID,
+    //                     mockToken.address,
+    //                     new BigNumber(10),
+    //                     new BigNumber(
+    //                         moment()
+    //                             .subtract(2, "years")
+    //                             .unix(),
+    //                     ), // timestamp that occurs in the past.
+    //                 ),
+    //             ).to.eventually.be.rejectedWith(REVERT_ERROR);
+    //         });
+    //
+    //         it("should throw if the collateralizer does not have sufficient balance", async () => {
+    //             // This balance is not sufficient.
+    //             await mockToken.mockBalanceOfFor.sendTransactionAsync(COLLATERALIZER, ZERO_AMOUNT);
+    //
+    //             // This allowance is sufficient.
+    //             await mockToken.mockAllowanceFor.sendTransactionAsync(
+    //                 COLLATERALIZER,
+    //                 collateralContract.address,
+    //                 COLLATERAL_AMOUNT,
+    //             );
+    //
+    //             await expect(
+    //                 collateralContract.collateralize.sendTransactionAsync(
+    //                     ARBITRARY_AGREEMENT_ID,
+    //                     mockToken.address,
+    //                     COLLATERAL_AMOUNT,
+    //                     new BigNumber(
+    //                         moment()
+    //                             .add(2, "years")
+    //                             .unix(),
+    //                     ),
+    //                     { from: COLLATERALIZER },
+    //                 ),
+    //             ).to.eventually.be.rejectedWith(REVERT_ERROR);
+    //         });
+    //
+    //         it("should throw if allowances are not sufficient", async () => {
+    //             // This balance is sufficient.
+    //             await mockToken.mockBalanceOfFor.sendTransactionAsync(
+    //                 COLLATERALIZER,
+    //                 COLLATERAL_AMOUNT,
+    //             );
+    //
+    //             // This allowance is not sufficient.
+    //             await mockToken.mockAllowanceFor.sendTransactionAsync(
+    //                 COLLATERALIZER,
+    //                 collateralContract.address,
+    //                 ZERO_AMOUNT,
+    //             );
+    //
+    //             await expect(
+    //                 collateralContract.collateralize.sendTransactionAsync(
+    //                     ARBITRARY_AGREEMENT_ID,
+    //                     mockToken.address, // the acting custodian is the collateralized contract.
+    //                     COLLATERAL_AMOUNT,
+    //                     new BigNumber(
+    //                         moment()
+    //                             .add(2, "years")
+    //                             .unix(),
+    //                     ),
+    //                     { from: COLLATERALIZER },
+    //                 ),
+    //             ).to.eventually.be.rejectedWith(REVERT_ERROR);
+    //         });
+    //     });
+    //
+    //     describe("successful collateralization", () => {
+    //         const AGREEMENT_ID = web3.sha3("this agreement will be successfully collateralized");
+    //
+    //         let res: Web3.TransactionReceipt;
+    //
+    //         before(async () => {
+    //             await mockToken.reset.sendTransactionAsync();
+    //
+    //             // this balance is sufficient.
+    //             await mockToken.mockBalanceOfFor.sendTransactionAsync(
+    //                 COLLATERALIZER,
+    //                 COLLATERAL_AMOUNT,
+    //             );
+    //
+    //             // this allowance is sufficient.
+    //             await mockToken.mockAllowanceFor.sendTransactionAsync(
+    //                 COLLATERALIZER,
+    //                 collateralContract.address,
+    //                 COLLATERAL_AMOUNT,
+    //             );
+    //
+    //             const txHash = await collateralContract.collateralize.sendTransactionAsync(
+    //                 AGREEMENT_ID,
+    //                 mockToken.address,
+    //                 COLLATERAL_AMOUNT,
+    //                 new BigNumber(
+    //                     moment()
+    //                         .add(2, "years")
+    //                         .unix(),
+    //                 ),
+    //                 { from: COLLATERALIZER },
+    //             );
+    //
+    //             res = await web3.eth.getTransactionReceipt(txHash);
+    //         });
+    //
+    //         it("should call `transferFrom` on specified token w/ collateralContract as receipient", async () => {
+    //             await expect(
+    //                 mockToken.wasTransferFromCalledWith.callAsync(
+    //                     COLLATERALIZER,
+    //                     collateralContract.address,
+    //                     COLLATERAL_AMOUNT,
+    //                 ),
+    //             ).to.eventually.be.true;
+    //         });
+    //
+    //         it("should emit log indicating that the collateral was secured", async () => {
+    //             const [logReturned] = ABIDecoder.decodeLogs(res.logs);
+    //             const logExpected = CollateralLocked(
+    //                 collateralContract.address,
+    //                 AGREEMENT_ID,
+    //                 mockToken.address,
+    //                 COLLATERAL_AMOUNT,
+    //             );
+    //
+    //             expect(logReturned).to.deep.equal(logExpected);
+    //         });
+    //
+    //         it("should throw on subsequent calls to `collateralize`", async () => {
+    //             await expect(
+    //                 collateralContract.collateralize.sendTransactionAsync(
+    //                     AGREEMENT_ID,
+    //                     mockToken.address,
+    //                     new BigNumber(1),
+    //                     new BigNumber(
+    //                         moment()
+    //                             .add(2, "years")
+    //                             .unix(),
+    //                     ),
+    //                     { from: COLLATERALIZER },
+    //                 ),
+    //             ).to.eventually.be.rejectedWith(REVERT_ERROR);
+    //         });
+    //     });
+    // });
+    //
+    // describe("#returnCollateral", () => {
+    //     describe("#invariants", () => {
+    //         it("should throw if no collateral is mapped to the agreement id", async () => {
+    //             const ID_FOR_NON_EXISTENT_AGREEMENT = web3.sha3("this agreement does not exist.");
+    //
+    //             await expect(
+    //                 collateralContract.returnCollateral.sendTransactionAsync(
+    //                     ID_FOR_NON_EXISTENT_AGREEMENT,
+    //                 ),
+    //             ).to.eventually.be.rejectedWith(REVERT_ERROR);
+    //         });
+    //
+    //         it("should throw if the lockup period is still in effect", async () => {
+    //             const ID_FOR_ACTIVE_AGREEMENT = web3.sha3("this agreement is still in effect.");
+    //
+    //             // Collateralize an agreement with a lock up period in the future.
+    //             await collateralContract.setDummyCollateral.sendTransactionAsync(
+    //                 ID_FOR_ACTIVE_AGREEMENT,
+    //                 COLLATERALIZER,
+    //                 mockToken.address,
+    //                 COLLATERAL_AMOUNT,
+    //                 new BigNumber(
+    //                     moment()
+    //                         .add(2, "years")
+    //                         .unix(),
+    //                 ), // lockup period is still in effect.
+    //                 false,
+    //             );
+    //
+    //             await expect(
+    //                 collateralContract.returnCollateral.sendTransactionAsync(
+    //                     ID_FOR_ACTIVE_AGREEMENT,
+    //                 ),
+    //             ).to.eventually.be.rejectedWith(REVERT_ERROR);
+    //         });
+    //
+    //         it("should throw if the collateral has already been withdrawn", async () => {
+    //             const ID_FOR_RESOLVED_AGREEMENT = web3.sha3("this agreement has been resolved.");
+    //
+    //             // Collateralize an agreement with a lock up period in the future.
+    //             await collateralContract.setDummyCollateral.sendTransactionAsync(
+    //                 ID_FOR_RESOLVED_AGREEMENT,
+    //                 COLLATERALIZER,
+    //                 mockToken.address,
+    //                 COLLATERAL_AMOUNT,
+    //                 new BigNumber(
+    //                     moment()
+    //                         .subtract(2, "years")
+    //                         .unix(),
+    //                 ),
+    //                 true, // collateral marked as withdrawn.
+    //             );
+    //
+    //             await expect(
+    //                 collateralContract.returnCollateral.sendTransactionAsync(
+    //                     ID_FOR_RESOLVED_AGREEMENT,
+    //                 ),
+    //             ).to.eventually.be.rejectedWith(REVERT_ERROR);
+    //         });
+    //
+    //         it("should throw if the agreement is in default and the lockup period has expired", async () => {
+    //             const DEFAULTED_AGREEMENT_ID = web3.sha3("this agreement was defaulted upon.");
+    //
+    //             await collateralContract.setDummyCollateral.sendTransactionAsync(
+    //                 DEFAULTED_AGREEMENT_ID,
+    //                 COLLATERALIZER,
+    //                 mockToken.address,
+    //                 COLLATERAL_AMOUNT,
+    //                 new BigNumber(
+    //                     moment()
+    //                         .subtract(1, "month")
+    //                         .unix(),
+    //                 ), // lockup period has expired.
+    //                 false,
+    //             );
+    //
+    //             await collateralContract.setDummyExpectedRepaymentValue.sendTransactionAsync(
+    //                 DEFAULTED_AGREEMENT_ID,
+    //                 COLLATERAL_AMOUNT,
+    //             );
+    //
+    //             await collateralContract.setDummyValueRepaid.sendTransactionAsync(
+    //                 DEFAULTED_AGREEMENT_ID,
+    //                 COLLATERAL_AMOUNT.minus(1),
+    //             );
+    //
+    //             await expect(
+    //                 collateralContract.returnCollateral.sendTransactionAsync(
+    //                     DEFAULTED_AGREEMENT_ID,
+    //                 ),
+    //             ).to.eventually.be.rejectedWith(REVERT_ERROR);
+    //         });
+    //     });
+    //
+    //     describe("the successful return of collateral", () => {
+    //         const AGREEMENT_ID = web3.sha3("this agreement will unwind as intended.");
+    //
+    //         let res: Web3.TransactionReceipt;
+    //
+    //         before(async () => {
+    //             await collateralContract.setDummyCollateral.sendTransactionAsync(
+    //                 AGREEMENT_ID,
+    //                 COLLATERALIZER,
+    //                 mockToken.address,
+    //                 COLLATERAL_AMOUNT,
+    //                 new BigNumber(
+    //                     moment()
+    //                         .subtract(1, "month")
+    //                         .unix(),
+    //                 ), // lockup period has expired.
+    //                 false, // collateral has not been withdrawn.
+    //             );
+    //
+    //             await collateralContract.setDummyExpectedRepaymentValue.sendTransactionAsync(
+    //                 AGREEMENT_ID,
+    //                 COLLATERAL_AMOUNT,
+    //             );
+    //
+    //             await collateralContract.setDummyValueRepaid.sendTransactionAsync(
+    //                 AGREEMENT_ID,
+    //                 COLLATERAL_AMOUNT,
+    //             );
+    //
+    //             const txHash = await collateralContract.returnCollateral.sendTransactionAsync(
+    //                 AGREEMENT_ID,
+    //             );
+    //
+    //             res = await web3.eth.getTransactionReceipt(txHash);
+    //         });
+    //
+    //         it("should call `transfer` on specified token w/ collateralizer as receipient", async () => {
+    //             await expect(
+    //                 mockToken.wasTransferCalledWith.callAsync(COLLATERALIZER, COLLATERAL_AMOUNT),
+    //             ).to.eventually.be.true;
+    //         });
+    //
+    //         it("should emit log indicating that the collateral was returned", async () => {
+    //             const [logReturned] = ABIDecoder.decodeLogs(res.logs);
+    //             const logExpected = CollateralReturned(
+    //                 collateralContract.address,
+    //                 AGREEMENT_ID,
+    //                 COLLATERALIZER,
+    //                 mockToken.address,
+    //                 COLLATERAL_AMOUNT,
+    //             );
+    //
+    //             expect(logReturned).to.deep.equal(logExpected);
+    //         });
+    //
+    //         it("should throw on any subsequent calls to withdraw", async () => {
+    //             await expect(
+    //                 collateralContract.returnCollateral.sendTransactionAsync(AGREEMENT_ID),
+    //             ).to.eventually.be.rejectedWith(REVERT_ERROR);
+    //         });
+    //     });
+    // });
+    //
+    // describe("#seizeCollateral", () => {
+    //     describe("#invariants", () => {
+    //         it("should throw if no collateral is mapped to the agreement id", async () => {
+    //             const ID_FOR_NON_EXISTENT_AGREEMENT = web3.sha3("this agreement does not exist.");
+    //
+    //             await expect(
+    //                 collateralContract.seizeCollateral.sendTransactionAsync(
+    //                     ID_FOR_NON_EXISTENT_AGREEMENT,
+    //                 ),
+    //             ).to.eventually.be.rejectedWith(REVERT_ERROR);
+    //         });
+    //
+    //         it("should throw if the lockup period is still in effect", async () => {
+    //             const ID_FOR_ACTIVE_AGREEMENT = web3.sha3("this agreement is still in effect.");
+    //
+    //             // Collateralize an agreement with a lock up period in the future.
+    //             await collateralContract.setDummyCollateral.sendTransactionAsync(
+    //                 ID_FOR_ACTIVE_AGREEMENT,
+    //                 COLLATERALIZER,
+    //                 mockToken.address,
+    //                 COLLATERAL_AMOUNT,
+    //                 new BigNumber(
+    //                     moment()
+    //                         .add(2, "years")
+    //                         .unix(),
+    //                 ), // lockup period is still in effect.
+    //                 false,
+    //             );
+    //
+    //             await expect(
+    //                 collateralContract.seizeCollateral.sendTransactionAsync(
+    //                     ID_FOR_ACTIVE_AGREEMENT,
+    //                 ),
+    //             ).to.eventually.be.rejectedWith(REVERT_ERROR);
+    //         });
+    //
+    //         it("should throw if the collateral has already been withdrawn", async () => {
+    //             const ID_FOR_RESOLVED_AGREEMENT = web3.sha3("this agreement has been resolved.");
+    //
+    //             // Collateralize an agreement with a lock up period in the future.
+    //             await collateralContract.setDummyCollateral.sendTransactionAsync(
+    //                 ID_FOR_RESOLVED_AGREEMENT,
+    //                 COLLATERALIZER,
+    //                 mockToken.address,
+    //                 COLLATERAL_AMOUNT,
+    //                 new BigNumber(
+    //                     moment()
+    //                         .subtract(2, "years")
+    //                         .unix(),
+    //                 ),
+    //                 true, // collateral marked as withdrawn.
+    //             );
+    //
+    //             await expect(
+    //                 collateralContract.seizeCollateral.sendTransactionAsync(
+    //                     ID_FOR_RESOLVED_AGREEMENT,
+    //                 ),
+    //             ).to.eventually.be.rejectedWith(REVERT_ERROR);
+    //         });
+    //
+    //         it("should throw if the agreement is not in default", async () => {
+    //             const AGREEMENT_ID = web3.sha3("this agreement is going just fine.");
+    //
+    //             await collateralContract.setDummyCollateral.sendTransactionAsync(
+    //                 AGREEMENT_ID,
+    //                 COLLATERALIZER,
+    //                 mockToken.address,
+    //                 COLLATERAL_AMOUNT,
+    //                 new BigNumber(
+    //                     moment()
+    //                         .subtract(1, "month")
+    //                         .unix(),
+    //                 ), // lockup period has expired.
+    //                 false,
+    //             );
+    //
+    //             await collateralContract.setDummyExpectedRepaymentValue.sendTransactionAsync(
+    //                 AGREEMENT_ID,
+    //                 COLLATERAL_AMOUNT,
+    //             );
+    //
+    //             await collateralContract.setDummyValueRepaid.sendTransactionAsync(
+    //                 AGREEMENT_ID,
+    //                 COLLATERAL_AMOUNT,
+    //             );
+    //
+    //             await expect(
+    //                 collateralContract.seizeCollateral.sendTransactionAsync(AGREEMENT_ID),
+    //             ).to.eventually.be.rejectedWith(REVERT_ERROR);
+    //         });
+    //     });
+    //
+    //     describe("the successful seizure of collateral when loan in default", () => {
+    //         const DEFAULTED_AGREEMENT_ID = web3.sha3(
+    //             "this agreement will require the seizure of collateral.",
+    //         );
+    //
+    //         let res: Web3.TransactionReceipt;
+    //
+    //         before(async () => {
+    //             await mockRegistry.mockGetBeneficiaryReturnValueFor.sendTransactionAsync(
+    //                 DEFAULTED_AGREEMENT_ID,
+    //                 BENEFICIARY,
+    //             );
+    //
+    //             await collateralContract.setDummyCollateral.sendTransactionAsync(
+    //                 DEFAULTED_AGREEMENT_ID,
+    //                 COLLATERALIZER,
+    //                 mockToken.address,
+    //                 COLLATERAL_AMOUNT,
+    //                 new BigNumber(
+    //                     moment()
+    //                         .subtract(1, "month")
+    //                         .unix(),
+    //                 ), // lockup period has expired.
+    //                 false, // collateral has not been withdrawn.
+    //             );
+    //
+    //             await collateralContract.setDummyValueRepaid.sendTransactionAsync(
+    //                 DEFAULTED_AGREEMENT_ID,
+    //                 COLLATERAL_AMOUNT.minus(1),
+    //             );
+    //
+    //             await collateralContract.setDummyExpectedRepaymentValue.sendTransactionAsync(
+    //                 DEFAULTED_AGREEMENT_ID,
+    //                 COLLATERAL_AMOUNT,
+    //             );
+    //
+    //             const txHash = await collateralContract.seizeCollateral.sendTransactionAsync(
+    //                 DEFAULTED_AGREEMENT_ID,
+    //             );
+    //
+    //             res = await web3.eth.getTransactionReceipt(txHash);
+    //         });
+    //
+    //         it("should call `transfer` on specified token w/ beneficiary as receipient", async () => {
+    //             await expect(
+    //                 mockToken.wasTransferCalledWith.callAsync(BENEFICIARY, COLLATERAL_AMOUNT),
+    //             ).to.eventually.be.true;
+    //         });
+    //
+    //         it("should emit log indicating that the collateral was seized", async () => {
+    //             const [logReturned] = ABIDecoder.decodeLogs(res.logs);
+    //             const logExpected = CollateralSeized(
+    //                 collateralContract.address,
+    //                 DEFAULTED_AGREEMENT_ID,
+    //                 BENEFICIARY,
+    //                 mockToken.address,
+    //                 COLLATERAL_AMOUNT,
+    //             );
+    //
+    //             expect(logReturned).to.deep.equal(logExpected);
+    //         });
+    //
+    //         it("should throw on any subsequent calls to `seizeCollateral`", async () => {
+    //             await expect(
+    //                 collateralContract.seizeCollateral.sendTransactionAsync(DEFAULTED_AGREEMENT_ID),
+    //             ).to.eventually.be.rejectedWith(REVERT_ERROR);
+    //         });
+    //     });
+    // });
 });

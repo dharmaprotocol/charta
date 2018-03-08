@@ -86,9 +86,11 @@ contract SimpleInterestTermsContract is TermsContract {
     ///    we simply validate DebtKernel is the transaction sender, and return
     ///    `true` if the debt agreement is associated with this terms contract.
     /// @param  agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.
+    /// @param  debtor address. The debtor in this particular issuance.
     /// @return _success bool. Acknowledgment of whether
     function registerTermStart(
-        bytes32 agreementId
+        bytes32 agreementId,
+        address debtor
     )
         public
         onlyDebtKernel
