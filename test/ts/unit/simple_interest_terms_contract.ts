@@ -37,10 +37,11 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
     let mockTokenTransferProxy: MockTokenTransferProxyContract;
 
     const CONTRACT_OWNER = ACCOUNTS[0];
-    const PAYER = ACCOUNTS[1];
-    const BENEFICIARY = ACCOUNTS[2];
-    const MOCK_DEBT_KERNEL_ADDRESS = ACCOUNTS[3];
-    const ATTACKER = ACCOUNTS[4];
+    const DEBTOR = ACCOUNTS[1];
+    const PAYER = ACCOUNTS[2];
+    const BENEFICIARY = ACCOUNTS[3];
+    const MOCK_DEBT_KERNEL_ADDRESS = ACCOUNTS[4];
+    const ATTACKER = ACCOUNTS[5];
 
     const TERMS_CONTRACT_PARAMETERS = web3.sha3(
         "any 32 byte hex value can represent the terms contract's parameters",
@@ -137,9 +138,13 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
         describe("agent who is not DebtKernel calls registerTermStart", () => {
             it("should throw", async () => {
                 await expect(
-                    termsContract.registerTermStart.sendTransactionAsync(ARBITRARY_AGREEMENT_ID, {
-                        from: ATTACKER,
-                    }),
+                    termsContract.registerTermStart.sendTransactionAsync(
+                        ARBITRARY_AGREEMENT_ID,
+                        DEBTOR,
+                        {
+                            from: ATTACKER,
+                        },
+                    ),
                 ).to.eventually.be.rejectedWith(REVERT_ERROR);
             });
         });
@@ -147,9 +152,13 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
         describe("agent who is DebtKernel calls registerTermStart", () => {
             it("should not throw", async () => {
                 await expect(
-                    termsContract.registerTermStart.sendTransactionAsync(ARBITRARY_AGREEMENT_ID, {
-                        from: MOCK_DEBT_KERNEL_ADDRESS,
-                    }),
+                    termsContract.registerTermStart.sendTransactionAsync(
+                        ARBITRARY_AGREEMENT_ID,
+                        DEBTOR,
+                        {
+                            from: MOCK_DEBT_KERNEL_ADDRESS,
+                        },
+                    ),
                 ).to.eventually.be.fulfilled;
             });
         });
