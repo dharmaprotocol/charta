@@ -214,4 +214,61 @@ contract Collateralized is TermsContract {
             collateral.amount
         );
     }
+
+    /**
+     * Unpacks collateralization-specific parameters from their tightly-packed
+     * representationn in a terms contract parameter string.
+     *
+     * For collateralized terms contracts, we reserve the lowest order 108 bits
+     * of the terms contract parameters for parameters relevant to collateralization.
+     *
+     * Contracts that inherit from the Collateralized terms contract
+     * can encode whichever parameter schema they please in the remaining
+     * space of the terms contract parameters.
+     * The 108 bits are encoded as follows (from higher order bits to lower order bits):
+     *
+     * 8 bits - Collateral Token (encoded by its unsigned integer index in the TokenRegistry contract)
+     * 92 bits - Collateral Amount (encoded as an unsigned integer)
+     * 8 bits - Grace Period* Length (encoded as an unsigned integer)
+     *
+     * * = The "Grace" Period is the number of days a debtor has between
+     *      when they fall behind on an expected payment and when their collateral
+     *      can be seized by the creditor.
+     */
+    function unpackCollateralParametersFromBytes(bytes32 parameters)
+        public
+        pure
+        returns (
+            uint collateralTokenIndexInRegistry,
+            uint collateralAmount,
+            uint gracePeriodInDays
+        )
+    {
+        // The first byte of the 108 reserved bits represents the collateral token.
+        bytes32 collateralTokenIndexShifted =
+            parameters & 0x0000000000000000000000000000000000000ff0000000000000000000000000;
+        // The subsequent 92 bits represents the collateral amount, as denominated in the above token.
+        bytes32 collateralAmountShifted =
+            parameters & 0x000000000000000000000000000000000000000fffffffffffffffffffffff00;
+
+        // We bit-shift these values, respectively, 100 bits and 8 bits right using
+        // mathematical operations, so that their 32 byte integer counterparts
+        // correspond to the intended values packed in the 32 byte string
+        uint collateralTokenIndex = uint(collateralTokenIndexShifted) / 2 ** 100;
+        uint collateralAmount = uint(amortizationUnitTypeShifted) / 2 ** 120;
+
+        // The last byte of the parameters represents the "grace period" of the loan,
+        // as defined in terms of days.
+        // Since this value takes the rightmost place in the parameters string,
+        // we do not need to bit-shift it.
+        bytes32 gracePeriodInDays =
+            parameters & 0x00000000000000000000000000000000000000000000000000000000000000ff;
+
+        return (
+            collateralTokenIndex,
+            collateralAmount,
+            uint(gracePeriodInDays)
+        );
+    }
+
 }
