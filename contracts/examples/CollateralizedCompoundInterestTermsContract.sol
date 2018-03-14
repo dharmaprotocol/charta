@@ -31,12 +31,13 @@ contract CollateralizedCompoundInterestTermsContract is Collateralized, Compound
     function CollateralizedCompoundInterestTermsContract(
         address _debtRegistry,
         address _debtKernel,
+        address _tokenRegistry,
         address _repaymentToken,
         address _repaymentRouter
     )
         public
         CompoundInterestTermsContract(_debtRegistry, _debtKernel, _repaymentToken, _repaymentRouter)
-        Collateralized(_debtRegistry)
+        Collateralized(_debtKernel, _debtRegistry, _tokenRegistry)
     {
         // No initialization necessary
     }

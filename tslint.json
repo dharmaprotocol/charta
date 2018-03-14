@@ -4,6 +4,7 @@
       "tslint-no-unused-expression-chai"
   ],
   "rules": {
+    "object-literal-sort-keys": false,
     "ordered-imports": [
       true,
       {
@@ -14,6 +15,7 @@
     "interface-name": false,
     "max-classes-per-file": false,
     "no-string-literal": false,
-    "no-implicit-dependencies": [true, "dev"]
+    "no-implicit-dependencies": false,
+    "no-submodule-imports": false
   }
 }

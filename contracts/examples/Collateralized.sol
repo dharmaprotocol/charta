@@ -29,18 +29,14 @@ import "../TokenRegistry.sol";
 contract Collateralized is TermsContract {
     using SafeMath for uint;
 
-    struct Collateral {
-        address collateralizer;
-        address token;
-        uint amount;
-        uint gracePeriodInDays;
-        bool withdrawn;
-    }
+    address public debtKernelAddress;
 
     DebtRegistry public debtRegistry;
     TokenRegistry public tokenRegistry;
 
-    mapping(bytes32 => Collateral) public collateralForAgreementID;
+    mapping(bytes32 => address) public agreementToCollateralizer;
+
+    uint public constant SECONDS_IN_DAY = 24*60*60;
 
     event CollateralLocked(
         bytes32 indexed agreementID,
@@ -62,94 +58,68 @@ contract Collateralized is TermsContract {
         uint amount
     );
 
-    function Collateralized(address _debtRegistry) public {
+    function Collateralized(address _debtKernel, address _debtRegistry, address _tokenRegistry) public {
+        debtKernelAddress = _debtKernel;
         debtRegistry = DebtRegistry(_debtRegistry);
+        tokenRegistry = TokenRegistry(_tokenRegistry);
     }
 
-    function registerTermStart(bytes32 agreementId)
+    function registerTermStart(bytes32 agreementId, address collateralizer)
         public
         returns (bool _success)
     {
-        address termsContract;
-        bytes32 termsContractParameters;
+        require(msg.sender == debtKernelAddress);
 
-        // Pull the terms contract and associated parameters for the newly created agreement
-        (termsContract, termsContractParameters) = debtRegistry.getTerms(agreementId);
-
-        // Assert newly created agreement specifies this contract as its terms contract
-        require(termsContract == address(this));
-
-        uint collateralTokenIndex;
+        address collateralToken;
         uint collateralAmount;
         uint gracePeriodInDays;
 
-        // Unpack terms contract parameters in order to get collateralization-specific params
-        (collateralTokenIndex, collateralAmount, gracePeriodInDays) =
-            unpackCollateralParametersFromBytes(termsContractParameters);
+        (collateralToken, collateralAmount, gracePeriodInDays) = retrieveCollateralParameters(agreementId);
 
-
-    }
-
-    function collateralize(
-        bytes32 agreementID,
-        address token,
-        uint amount,
-        uint gracePeriodInDays
-    )
-        public
-    {
         // the amount being put up for collateral must exceed 0.
-        require(amount > 0);
-
-        // the lockup period must occur at some point in the future.
-        require(lockupPeriodEndTimestamp > block.timestamp);
+        require(collateralAmount > 0);
 
         /*
         Ensure that the agreement has not already been collateralized.
 
         If the agreement has already been collateralized, this check will fail
-        because any valid form of collateral will have a non-zero lockupPeriod.
-        Only an uncollateralized agreement would meet this requirement.
+        because any valid collateralization must have some sort of valid
+        address associated with it as a collateralizer.  Given that it is impossible
+        to send transactions from address 0x0, this check will only fail
+        when the agreement is already collateralized.
         */
-        require(collateralForAgreementID[agreementID].lockupPeriod == 0);
+        require(agreementToCollateralizer[agreementId] == address(0));
 
-        ERC20 erc20token = ERC20(token);
-        address collateralizer = msg.sender;
+        ERC20 erc20token = ERC20(collateralToken);
         address custodian = address(this);
 
         /*
         The collateralizer must have sufficient balance equal to or greater
         than the amount being put up for collateral.
         */
-        require(erc20token.balanceOf(collateralizer) >= amount);
+        require(erc20token.balanceOf(collateralizer) >= collateralAmount);
 
         /*
         The custodian must have an allowance granted by the collateralizer equal
         to or greater than the amount being put up for collateral.
         */
-        require(erc20token.allowance(collateralizer, custodian) >= amount);
+        require(erc20token.allowance(collateralizer, custodian) >= collateralAmount);
+
+        // store collaterallizer in mapping, effectively demarcating that the
+        // agreement is now collateralized.
+        agreementToCollateralizer[agreementId] = collateralizer;
 
         // the collateral must be successfully transferred to this contract.
         require(erc20token.transferFrom(
             collateralizer,
             custodian,
-            amount
+            collateralAmount
         ));
 
-        // create collateral instance.
-        Collateral memory collateral = Collateral({
-            collateralizer: msg.sender,
-            token: token,
-            amount: amount,
-            lockupPeriod: lockupPeriodEndTimestamp,
-            withdrawn: false
-        });
-
-        // store collateral in mapping.
-        collateralForAgreementID[agreementID] = collateral;
-
         // emit event that collateral has been secured.
-        CollateralLocked(agreementID, token, amount);
+        CollateralLocked(agreementId, collateralToken, collateralAmount);
+
+        return true;
     }
 
     function returnCollateral(
@@ -158,16 +128,16 @@ contract Collateralized is TermsContract {
         public
     {
         // fetch relevant collateral instance.
-        Collateral memory collateral = collateralForAgreementID[agreementID];
+        /* Collateral memory collateral = collateralForAgreementID[agreementID]; */
 
         // Ensure a valid form of collateral is tied to this agreement id.
-        require(collateral.lockupPeriod > 0);
+        /* require(collateral.lockupPeriod > 0); */
 
         // Collateral can only be returned after the lockup period.
-        require(block.timestamp > collateral.lockupPeriod);
+        /* require(block.timestamp > collateral.lockupPeriod); */
 
         // Collateral can only be returned if it has yet to be withdrawn.
-        require(!collateral.withdrawn);
+        /* require(!collateral.withdrawn);
 
         // ensure sufficient payment.
         require(
@@ -192,52 +162,63 @@ contract Collateralized is TermsContract {
             collateral.collateralizer,
             collateral.token,
             collateral.amount
-        );
+        ); */
     }
 
     function seizeCollateral(
-        bytes32 agreementID
+        bytes32 agreementId
     )
         public
     {
-        // fetch relevant collateral instance.
-        Collateral memory collateral = collateralForAgreementID[agreementID];
+        // fetch all relevant collateralization parameters
+        address collateralToken;
+        uint collateralAmount;
+        uint gracePeriodInDays;
 
-        // Ensure a valid form of collateral is tied to this agreement id.
-        require(collateral.lockupPeriod > 0);
+        (collateralToken, collateralAmount, gracePeriodInDays) = retrieveCollateralParameters(agreementId);
 
-        // Seizure can only occur after the lockup period.
-        require(block.timestamp > collateral.lockupPeriod);
+        // Ensure a valid form of collateral is tied to this agreement id
+        require(collateralAmount > 0);
 
         // Seizure can only occur if the collateral has yet to be withdrawn.
-        require(!collateral.withdrawn);
+        // When we withdraw collateral, we reset the collateral agreement
+        // in a gas-efficient manner by resetting the address of the collateralizer to 0
+        require(agreementToCollateralizer[agreementId] != address(0));
 
-        // ensure debtor is in violation of the terms.
+        // Ensure debt is in a state of default when we account for the
+        // specified "grace period".  We do this by checking whether the
+        // *current* value repaid to-date exceeds the expected repayment value
+        // at the point of time at which the grace period would begin if it ended
+        // now.  This crucially relies on the assumption that both expected repayment value
+        /// and value repaid to date monotonically increase over time
         require(
-            getExpectedRepaymentValue(agreementID, block.timestamp) >
-            getValueRepaidToDate(agreementID)
+            getExpectedRepaymentValue(
+                agreementId,
+                timestampAdjustedForGracePeriod(gracePeriodInDays)
+            ) > getValueRepaidToDate(agreementId)
         );
 
-        // mark collateral as withdrawn once transfer has succeeded.
-        collateralForAgreementID[agreementID].withdrawn = true;
+        // Mark agreement's collateral as withdrawn by setting the agreement's
+        // collateralizer to 0x0.
+        agreementToCollateralizer[agreementId] = address(0);
 
         // determine beneficiary of the seized collateral.
-        address beneficiary = debtRegistry.getBeneficiary(agreementID);
+        address beneficiary = debtRegistry.getBeneficiary(agreementId);
 
         // seize collateral and transfer to beneficiary.
         require(
-            ERC20(collateral.token).transfer(
+            ERC20(collateralToken).transfer(
                 beneficiary,
-                collateral.amount
+                collateralAmount
             )
         );
 
         // log the seizure event.
         CollateralSeized(
-            agreementID,
+            agreementId,
             beneficiary,
-            collateral.token,
-            collateral.amount
+            collateralToken,
+            collateralAmount
         );
     }
 
@@ -293,4 +274,45 @@ contract Collateralized is TermsContract {
         );
     }
 
+    function timestampAdjustedForGracePeriod(uint gracePeriodInDays)
+        public
+        view
+        returns (uint)
+    {
+        return block.timestamp.sub(
+            SECONDS_IN_DAY.mul(gracePeriodInDays)
+        );
+    }
+
+    function retrieveCollateralParameters(bytes32 agreementId)
+        internal
+        view
+        returns (address _collateralToken, uint _collateralAmount, uint _gracePeriodInDays)
+    {
+        address termsContract;
+        bytes32 termsContractParameters;
+
+        // Pull the terms contract and associated parameters for the agreement
+        (termsContract, termsContractParameters) = debtRegistry.getTerms(agreementId);
+
+        // Assert agreement specifies this contract as its terms contract
+        require(termsContract == address(this));
+
+        uint collateralTokenIndex;
+        uint collateralAmount;
+        uint gracePeriodInDays;
+
+        // Unpack terms contract parameters in order to get collateralization-specific params
+        (collateralTokenIndex, collateralAmount, gracePeriodInDays) =
+            unpackCollateralParametersFromBytes(termsContractParameters);
+
+        // Resolve address of token associated with this agreement in token registry
+        address collateralToken = tokenRegistry.getTokenAddressByIndex(collateralTokenIndex);
+
+        return (
+            collateralToken,
+            collateralAmount,
+            gracePeriodInDays
+        );
+    }
 }

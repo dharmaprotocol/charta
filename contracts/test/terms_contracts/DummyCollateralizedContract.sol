@@ -9,9 +9,18 @@ contract DummyCollateralizedContract is Collateralized {
     using SafeMath for uint;
 
     mapping(bytes32 => uint) internal amountRepaid;
-    mapping(bytes32 => uint) internal expectedRepaymentValue;
+    mapping(bytes32 => mapping(uint => uint)) internal expectedValueRepaidAtTimestamp;
+    uint[] internal repaymentTimestamps;
 
-    function DummyCollateralizedContract(address _debtRegistry) public Collateralized(_debtRegistry) {}
+    function DummyCollateralizedContract(
+        address _debtKernel,
+        address _debtRegistry,
+        address _tokenRegistry
+    ) public Collateralized(
+        _debtKernel,
+        _debtRegistry,
+        _tokenRegistry
+    ) {}
 
     /* Naive `TermsContract` interface implementation. */
 
@@ -19,7 +28,7 @@ contract DummyCollateralizedContract is Collateralized {
         bytes32 agreementId,
         address debtor
     ) public returns (bool _success) {
-        return true;
+        return super.registerTermStart(agreementId, debtor);
     }
 
     function registerRepayment(
@@ -36,7 +45,18 @@ contract DummyCollateralizedContract is Collateralized {
         bytes32 agreementId,
         uint256 timestamp
     ) public view returns (uint256) {
-        return expectedRepaymentValue[agreementId];
+        uint latestDueDateBeforeTimestamp;
+
+        for (uint i = 0; i < repaymentTimestamps.length; i++) {
+            uint dueDateTimestamp = repaymentTimestamps[i];
+
+            if (dueDateTimestamp <= timestamp &&
+                dueDateTimestamp > latestDueDateBeforeTimestamp) {
+                latestDueDateBeforeTimestamp = dueDateTimestamp;
+            }
+        }
+
+        return expectedValueRepaidAtTimestamp[agreementId][latestDueDateBeforeTimestamp];
     }
 
     function getValueRepaidToDate(
@@ -47,13 +67,6 @@ contract DummyCollateralizedContract is Collateralized {
 
     /* Dummy functionality used to mock behavior for testing purposes. */
 
-    function setDummyExpectedRepaymentValue(
-        bytes32 agreementId,
-        uint amount
-    ) public {
-        expectedRepaymentValue[agreementId] = amount;
-    }
-
     function setDummyValueRepaid(
         bytes32 agreementId,
         uint amount
@@ -61,21 +74,22 @@ contract DummyCollateralizedContract is Collateralized {
         amountRepaid[agreementId] = amount;
     }
 
-    function setDummyCollateral(
-        bytes32 agreementID,
-        address collateralizer,
-        address token,
-        uint amount,
-        uint lockupPeriodEndTimestamp,
-        bool withdrawn
+    function mockExpectedRepaymentValue(
+        bytes32 agreementId,
+        uint timestamp,
+        uint amount
     ) public {
-        collateralForAgreementID[agreementID] = Collateral({
-            collateralizer: collateralizer,
-            token: token,
-            amount: amount,
-            lockupPeriod: lockupPeriodEndTimestamp,
-            withdrawn: withdrawn
-        });
+        if (expectedValueRepaidAtTimestamp[agreementId][timestamp] == 0) {
+            repaymentTimestamps.push(timestamp);
+        }
+
+        expectedValueRepaidAtTimestamp[agreementId][timestamp] = amount;
     }
 
+    function setDummyAgreementCollateralizer(
+        bytes32 agreementId,
+        address collateralizer
+    ) public {
+        agreementToCollateralizer[agreementId] = collateralizer;
+    }
 }
