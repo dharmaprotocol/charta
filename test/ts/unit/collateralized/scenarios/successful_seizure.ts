@@ -41,7 +41,7 @@ export const SUCCESSFUL_SEIZURE: SeizeCollateralScenario[] = [
                 expectedRepaymentValue: Units.ether(0.5),
             },
         ],
-        agreementId: web3.sha3("Arbitrary 32 byte id for successful scenario #1"),
+        agreementId: web3.sha3("Arbitrary 32 byte id for successful seizure scenario #1"),
     },
     {
         description:
@@ -57,7 +57,7 @@ export const SUCCESSFUL_SEIZURE: SeizeCollateralScenario[] = [
             },
         ],
         from: (beneficiary: string, other: string) => other,
-        agreementId: web3.sha3("Arbitrary 32 byte id for successful scenario #1"),
+        agreementId: web3.sha3("Arbitrary 32 byte id for successful seizure scenario #2"),
     },
     {
         description:
@@ -73,14 +73,14 @@ export const SUCCESSFUL_SEIZURE: SeizeCollateralScenario[] = [
                 expectedRepaymentValue: Units.ether(0.5),
             },
         ],
-        agreementId: web3.sha3("Arbitrary 32 byte id for successful scenario #1"),
+        agreementId: web3.sha3("Arbitrary 32 byte id for successful seizure scenario #3"),
     },
     {
         description:
             "(Grace Period = 7 Days) Debt entered default > grace period's length ago, no repayments since",
         ...defaultArgs,
         gracePeriodInDays: new BigNumber(7),
-        agreementId: web3.sha3("Arbitrary 32 byte id for successful scenario #2"),
+        agreementId: web3.sha3("Arbitrary 32 byte id for successful seizure scenario #4"),
     },
     {
         description:
@@ -88,7 +88,7 @@ export const SUCCESSFUL_SEIZURE: SeizeCollateralScenario[] = [
         ...defaultArgs,
         gracePeriodInDays: new BigNumber(7),
         from: (beneficiary: string, other: string) => other,
-        agreementId: web3.sha3("Arbitrary 32 byte id for successful scenario #2"),
+        agreementId: web3.sha3("Arbitrary 32 byte id for successful seizure scenario #5"),
     },
     {
         description:
@@ -96,7 +96,7 @@ export const SUCCESSFUL_SEIZURE: SeizeCollateralScenario[] = [
         ...defaultArgs,
         valueRepaidToDate: Units.ether(0.5).minus(1),
         gracePeriodInDays: new BigNumber(7),
-        agreementId: web3.sha3("Arbitrary 32 byte id for successful scenario #2"),
+        agreementId: web3.sha3("Arbitrary 32 byte id for successful seizure scenario #6"),
     },
     {
         description:
@@ -111,7 +111,7 @@ export const SUCCESSFUL_SEIZURE: SeizeCollateralScenario[] = [
                 expectedRepaymentValue: Units.ether(0.5),
             },
         ],
-        agreementId: web3.sha3("Arbitrary 32 byte id for successful scenario #3"),
+        agreementId: web3.sha3("Arbitrary 32 byte id for successful seizure scenario #7"),
     },
     {
         description:
@@ -127,7 +127,7 @@ export const SUCCESSFUL_SEIZURE: SeizeCollateralScenario[] = [
             },
         ],
         from: (beneficiary: string, other: string) => other,
-        agreementId: web3.sha3("Arbitrary 32 byte id for successful scenario #3"),
+        agreementId: web3.sha3("Arbitrary 32 byte id for successful seizure scenario #8"),
     },
     {
         description:
@@ -143,6 +143,6 @@ export const SUCCESSFUL_SEIZURE: SeizeCollateralScenario[] = [
                 expectedRepaymentValue: Units.ether(0.5),
             },
         ],
-        agreementId: web3.sha3("Arbitrary 32 byte id for successful scenario #3"),
+        agreementId: web3.sha3("Arbitrary 32 byte id for successful seizure scenario #9"),
     },
 ];

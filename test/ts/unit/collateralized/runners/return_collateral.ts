@@ -1,7 +1,6 @@
 // modules
 import { expect } from "chai";
 import * as ABIDecoder from "abi-decoder";
-import * as moment from "moment";
 import { compact } from "lodash";
 import { BigNumber } from "bignumber.js";
 
@@ -12,15 +11,15 @@ import { MockERC20TokenContract } from "types/generated/mock_e_r_c20_token";
 import { MockTokenRegistryContract } from "types/generated/mock_token_registry";
 
 // scenarios
-import { SeizeCollateralScenario, TestAccounts, TestContracts } from "./";
+import { ReturnCollateralScenario, TestAccounts, TestContracts } from "./";
 
 // utils
 import { NULL_ADDRESS, REVERT_ERROR } from "../../../test_utils/constants";
 
 // logs
-import { CollateralSeized } from "../../../logs/collateralized_contract";
+import { CollateralReturned } from "../../../logs/collateralized_contract";
 
-export class SeizeCollateralRunner {
+export class ReturnCollateralRunner {
     private contracts: TestContracts;
     private accounts: TestAccounts;
 
@@ -33,13 +32,14 @@ export class SeizeCollateralRunner {
         this.accounts = accounts;
     }
 
-    public testScenario(scenario: SeizeCollateralScenario) {
+    public testScenario(scenario: ReturnCollateralScenario) {
         let mockCollateralizedTermsContract: MockCollateralizedTermsContractContract;
         let mockDebtRegistry: MockDebtRegistryContract;
         let mockCollateralToken: MockERC20TokenContract;
         let mockTokenRegistry: MockTokenRegistryContract;
 
         let COLLATERALIZER: string;
+        let NON_COLLATERALIZER: string;
         let BENEFICIARY_1: string;
         let BENEFICIARY_2: string;
         let ATTACKER: string;
@@ -54,6 +54,7 @@ export class SeizeCollateralRunner {
                 mockTokenRegistry = this.contracts.mockTokenRegistry;
 
                 COLLATERALIZER = this.accounts.COLLATERALIZER;
+                NON_COLLATERALIZER = this.accounts.NON_COLLATERALIZER;
                 BENEFICIARY_1 = this.accounts.BENEFICIARY_1;
                 BENEFICIARY_2 = this.accounts.BENEFICIARY_2;
                 ATTACKER = this.accounts.ATTACKER;
@@ -61,7 +62,6 @@ export class SeizeCollateralRunner {
                 await mockDebtRegistry.reset.sendTransactionAsync();
                 await mockCollateralToken.reset.sendTransactionAsync();
                 await mockTokenRegistry.reset.sendTransactionAsync();
-                await mockCollateralizedTermsContract.reset;
 
                 // We mock the collateralized agreement by taking the following steps:
 
@@ -96,7 +96,7 @@ export class SeizeCollateralRunner {
                 if (scenario.debtAgreementExists) {
                     await mockDebtRegistry.mockGetBeneficiaryReturnValueFor.sendTransactionAsync(
                         scenario.agreementId,
-                        scenario.beneficiary(BENEFICIARY_1, BENEFICIARY_2),
+                        BENEFICIARY_1,
                     );
                 }
 
@@ -125,6 +125,12 @@ export class SeizeCollateralRunner {
                     scenario.valueRepaidToDate,
                 );
 
+                // 7.  Mocking the debt term's ending timestamp
+                await mockCollateralizedTermsContract.mockTermEndTimestamp.sendTransactionAsync(
+                    scenario.agreementId,
+                    new BigNumber(scenario.termEndTimestamp),
+                );
+
                 if (typeof scenario.before !== "undefined") {
                     await scenario.before(mockCollateralizedTermsContract);
                 }
@@ -138,9 +144,9 @@ export class SeizeCollateralRunner {
 
             if (scenario.succeeds) {
                 it("should not throw", async () => {
-                    txHash = await mockCollateralizedTermsContract.seizeCollateral.sendTransactionAsync(
+                    txHash = await mockCollateralizedTermsContract.returnCollateral.sendTransactionAsync(
                         scenario.agreementId,
-                        { from: scenario.from(BENEFICIARY_1, BENEFICIARY_2) },
+                        { from: scenario.from(COLLATERALIZER, NON_COLLATERALIZER) },
                     );
 
                     expect(true);
@@ -154,25 +160,25 @@ export class SeizeCollateralRunner {
                     ).to.eventually.equal(NULL_ADDRESS);
                 });
 
-                it("should emit log that collateral has been seized", async () => {
+                it("should emit log that collateral has been returned", async () => {
                     const receipt = await web3.eth.getTransactionReceipt(txHash);
                     const [CollateralSeizedLog] = compact(ABIDecoder.decodeLogs(receipt.logs));
 
                     expect(CollateralSeizedLog).to.deep.equal(
-                        CollateralSeized(
+                        CollateralReturned(
                             mockCollateralizedTermsContract.address,
                             scenario.agreementId,
-                            scenario.beneficiary(BENEFICIARY_1, BENEFICIARY_2),
+                            COLLATERALIZER,
                             mockCollateralToken.address,
                             scenario.collateralAmount,
                         ),
                     );
                 });
 
-                it("should transfer collateral from terms contract to current beneficiary", async () => {
+                it("should transfer collateral from terms contract to collateralizer", async () => {
                     await expect(
                         mockCollateralToken.wasTransferCalledWith.callAsync(
-                            scenario.beneficiary(BENEFICIARY_1, BENEFICIARY_2),
+                            COLLATERALIZER,
                             scenario.collateralAmount,
                         ),
                     ).to.eventually.be.true;
@@ -180,9 +186,9 @@ export class SeizeCollateralRunner {
             } else {
                 it("should throw", async () => {
                     await expect(
-                        mockCollateralizedTermsContract.seizeCollateral.sendTransactionAsync(
+                        mockCollateralizedTermsContract.returnCollateral.sendTransactionAsync(
                             scenario.agreementId,
-                            { from: scenario.from(BENEFICIARY_1, ATTACKER) },
+                            { from: scenario.from(COLLATERALIZER, NON_COLLATERALIZER) },
                         ),
                     ).to.eventually.be.rejectedWith(REVERT_ERROR);
                 });

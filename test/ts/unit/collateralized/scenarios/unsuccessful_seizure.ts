@@ -9,7 +9,7 @@ import * as _ from "lodash";
 import * as Units from "../../../test_utils/units";
 
 // wrappers
-import { DummyCollateralizedContractContract } from "types/generated/dummy_collateralized_contract";
+import { MockCollateralizedTermsContractContract } from "types/generated/mock_collateralized_terms_contract";
 
 const defaultArgs = {
     collateralAmount: Units.ether(1),
@@ -36,20 +36,20 @@ export const UNSUCCESSFUL_SEIZURE: SeizeCollateralScenario[] = [
         description: "Debt agreement does not exist",
         ...defaultArgs,
         debtAgreementExists: false,
-        agreementId: web3.sha3("Arbitrary 32 byte id for unsuccessful scenario #0"),
+        agreementId: web3.sha3("Arbitrary 32 byte id for unsuccessful seizure scenario #0"),
     },
     {
         description: "Debt agreement does not point to collateralized terms contract",
         ...defaultArgs,
         termsContract: (collateralizedContract: string, attacker: string) => attacker,
-        agreementId: web3.sha3("Arbitrary 32 byte id for unsuccessful scenario #1"),
+        agreementId: web3.sha3("Arbitrary 32 byte id for unsuccessful seizure scenario #1"),
     },
     {
         description:
             "Debt agreement points to collateralized terms contract but was never itself collateralized",
         ...defaultArgs,
         debtAgreementCollateralized: false,
-        agreementId: web3.sha3("Arbitrary 32 byte id for unsuccessful scenario #2"),
+        agreementId: web3.sha3("Arbitrary 32 byte id for unsuccessful seizure scenario #2"),
     },
     {
         description: "(Grace Period = 0 Days) Debt is not currently in state of default",
@@ -57,14 +57,14 @@ export const UNSUCCESSFUL_SEIZURE: SeizeCollateralScenario[] = [
         valueRepaidToDate: _.last(defaultArgs.expectedRepaymentValueSchedule)
             .expectedRepaymentValue,
         gracePeriodInDays: new BigNumber(0),
-        agreementId: web3.sha3("Arbitrary 32 byte id for unsuccessful scenario #3"),
+        agreementId: web3.sha3("Arbitrary 32 byte id for unsuccessful seizure scenario #3"),
     },
     {
         description: "(Grace Period = 7 Days) Debt is not currently in state of default",
         ...defaultArgs,
         valueRepaidToDate: _.last(defaultArgs.expectedRepaymentValueSchedule)
             .expectedRepaymentValue,
-        agreementId: web3.sha3("Arbitrary 32 byte id for unsuccessful scenario #4"),
+        agreementId: web3.sha3("Arbitrary 32 byte id for unsuccessful seizure scenario #4"),
     },
     {
         description:
@@ -78,13 +78,13 @@ export const UNSUCCESSFUL_SEIZURE: SeizeCollateralScenario[] = [
                 expectedRepaymentValue: Units.ether(0.5),
             },
         ],
-        agreementId: web3.sha3("Arbitrary 32 byte id for unsuccessful scenario #5"),
+        agreementId: web3.sha3("Arbitrary 32 byte id for unsuccessful seizure scenario #5"),
     },
     {
         description: "(Grace Period = 90 Days) Debt is not currently in state of default",
         ...defaultArgs,
         gracePeriodInDays: new BigNumber(90),
-        agreementId: web3.sha3("Arbitrary 32 byte id for unsuccessful scenario #6"),
+        agreementId: web3.sha3("Arbitrary 32 byte id for unsuccessful seizure scenario #6"),
     },
     {
         description:
@@ -100,27 +100,40 @@ export const UNSUCCESSFUL_SEIZURE: SeizeCollateralScenario[] = [
                 expectedRepaymentValue: Units.ether(0.5),
             },
         ],
-        agreementId: web3.sha3("Arbitrary 32 byte id for unsuccessful scenario #7"),
+        agreementId: web3.sha3("Arbitrary 32 byte id for unsuccessful seizure scenario #7"),
     },
     {
         description: "Collateral has already been seized",
         ...defaultArgs,
-        before: async (collateralContract: DummyCollateralizedContractContract) => {
+        before: async (collateralContract: MockCollateralizedTermsContractContract) => {
             await collateralContract.seizeCollateral.sendTransactionAsync(
-                web3.sha3("Arbitrary 32 byte id for unsuccessful scenario #8"),
+                web3.sha3("Arbitrary 32 byte id for unsuccessful seizure scenario #8"),
             );
         },
-        agreementId: web3.sha3("Arbitrary 32 byte id for unsuccessful scenario #8"),
+        agreementId: web3.sha3("Arbitrary 32 byte id for unsuccessful seizure scenario #8"),
     },
     {
         description: "Collateral has already been returned",
         ...defaultArgs,
-        before: async (collateralContract: DummyCollateralizedContractContract) => {
-            await collateralContract.returnCollateral.sendTransactionAsync(
-                web3.sha3("Arbitrary 32 byte id for unsuccessful scenario #9"),
+        valueRepaidToDate: Units.ether(0.5),
+        before: async (collateralContract: MockCollateralizedTermsContractContract) => {
+            const agreementId = web3.sha3(
+                "Arbitrary 32 byte id for unsuccessful seizure scenario #9",
             );
+
+            // Mock the debt term's ending timestamp as having lapsed so that we can return collateral
+            await collateralContract.mockTermEndTimestamp.sendTransactionAsync(
+                agreementId,
+                new BigNumber(
+                    moment()
+                        .subtract(1, "hours")
+                        .unix(),
+                ),
+            );
+
+            await collateralContract.returnCollateral.sendTransactionAsync(agreementId);
         },
-        agreementId: web3.sha3("Arbitrary 32 byte id for unsuccessful scenario #9"),
+        agreementId: web3.sha3("Arbitrary 32 byte id for unsuccessful seizure scenario #9"),
     },
     {
         description: "Expected repayment and value repaid to date both at 0",
@@ -134,6 +147,6 @@ export const UNSUCCESSFUL_SEIZURE: SeizeCollateralScenario[] = [
             },
         ],
         valueRepaidToDate: new BigNumber(0),
-        agreementId: web3.sha3("Arbitrary 32 byte id for unsuccessful scenario #10"),
+        agreementId: web3.sha3("Arbitrary 32 byte id for unsuccessful seizure scenario #10"),
     },
 ];

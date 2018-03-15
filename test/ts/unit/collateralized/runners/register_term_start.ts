@@ -4,7 +4,7 @@ import * as ABIDecoder from "abi-decoder";
 import { compact } from "lodash";
 
 // wrappers
-import { DummyCollateralizedContractContract } from "types/generated/dummy_collateralized_contract";
+import { MockCollateralizedTermsContractContract } from "types/generated/mock_collateralized_terms_contract";
 import { MockDebtRegistryContract } from "types/generated/mock_debt_registry";
 import { MockERC20TokenContract } from "types/generated/mock_e_r_c20_token";
 import { MockTokenRegistryContract } from "types/generated/mock_token_registry";
@@ -36,7 +36,7 @@ export class RegisterTermStartRunner {
         let COLLATERALIZER: string;
         let MOCK_DEBT_KERNEL_ADDRESS: string;
 
-        let dummyCollateralizedContract: DummyCollateralizedContractContract;
+        let mockCollateralizedTermsContract: MockCollateralizedTermsContractContract;
         let mockDebtRegistry: MockDebtRegistryContract;
         let mockCollateralToken: MockERC20TokenContract;
         let mockTokenRegistry: MockTokenRegistryContract;
@@ -49,7 +49,7 @@ export class RegisterTermStartRunner {
                 COLLATERALIZER = this.accounts.COLLATERALIZER;
                 MOCK_DEBT_KERNEL_ADDRESS = this.accounts.MOCK_DEBT_KERNEL_ADDRESS;
 
-                dummyCollateralizedContract = this.contracts.dummyCollateralizedContract;
+                mockCollateralizedTermsContract = this.contracts.mockCollateralizedTermsContract;
                 mockDebtRegistry = this.contracts.mockDebtRegistry;
                 mockCollateralToken = this.contracts.mockCollateralToken;
                 mockTokenRegistry = this.contracts.mockTokenRegistry;
@@ -74,27 +74,27 @@ export class RegisterTermStartRunner {
                 // Mock collateral token's allowance for collateralizer
                 await mockCollateralToken.mockAllowanceFor.sendTransactionAsync(
                     COLLATERALIZER,
-                    dummyCollateralizedContract.address,
+                    mockCollateralizedTermsContract.address,
                     scenario.collateralTokenAllowance,
                 );
 
                 // Mock `debtRegistry.getTerms` return value
                 await mockDebtRegistry.mockGetTermsReturnValueFor.sendTransactionAsync(
                     scenario.agreementId,
-                    scenario.termsContract(dummyCollateralizedContract.address, ATTACKER),
+                    scenario.termsContract(mockCollateralizedTermsContract.address, ATTACKER),
                     scenario.termsContractParameters,
                 );
 
-                ABIDecoder.addABI(dummyCollateralizedContract.abi);
+                ABIDecoder.addABI(mockCollateralizedTermsContract.abi);
             });
 
             after(() => {
-                ABIDecoder.removeABI(dummyCollateralizedContract.abi);
+                ABIDecoder.removeABI(mockCollateralizedTermsContract.abi);
             });
 
             if (scenario.succeeds) {
                 it("should register without throwing", async () => {
-                    txHash = await dummyCollateralizedContract.registerTermStart.sendTransactionAsync(
+                    txHash = await mockCollateralizedTermsContract.registerTermStart.sendTransactionAsync(
                         scenario.agreementId,
                         COLLATERALIZER,
                         { from: scenario.from(MOCK_DEBT_KERNEL_ADDRESS, ATTACKER) },
@@ -105,7 +105,7 @@ export class RegisterTermStartRunner {
 
                 it("should store record of collateralization", async () => {
                     await expect(
-                        dummyCollateralizedContract.agreementToCollateralizer.callAsync(
+                        mockCollateralizedTermsContract.agreementToCollateralizer.callAsync(
                             scenario.agreementId,
                         ),
                     ).to.eventually.equal(COLLATERALIZER);
@@ -117,7 +117,7 @@ export class RegisterTermStartRunner {
 
                     expect(collateralLockedLog).to.deep.equal(
                         CollateralLocked(
-                            dummyCollateralizedContract.address,
+                            mockCollateralizedTermsContract.address,
                             scenario.agreementId,
                             mockCollateralToken.address,
                             scenario.expectedCollateralAmount,
@@ -129,7 +129,7 @@ export class RegisterTermStartRunner {
                     await expect(
                         mockCollateralToken.wasTransferFromCalledWith.callAsync(
                             COLLATERALIZER,
-                            dummyCollateralizedContract.address,
+                            mockCollateralizedTermsContract.address,
                             scenario.expectedCollateralAmount,
                         ),
                     ).to.eventually.be.true;
@@ -137,7 +137,7 @@ export class RegisterTermStartRunner {
 
                 it("should throw on subsequent calls with same agreement id", async () => {
                     await expect(
-                        dummyCollateralizedContract.registerTermStart.sendTransactionAsync(
+                        mockCollateralizedTermsContract.registerTermStart.sendTransactionAsync(
                             scenario.agreementId,
                             COLLATERALIZER,
                             { from: scenario.from(MOCK_DEBT_KERNEL_ADDRESS, ATTACKER) },
@@ -147,7 +147,7 @@ export class RegisterTermStartRunner {
             } else {
                 it("should throw", async () => {
                     await expect(
-                        dummyCollateralizedContract.registerTermStart.sendTransactionAsync(
+                        mockCollateralizedTermsContract.registerTermStart.sendTransactionAsync(
                             scenario.agreementId,
                             COLLATERALIZER,
                             { from: scenario.from(MOCK_DEBT_KERNEL_ADDRESS, ATTACKER) },

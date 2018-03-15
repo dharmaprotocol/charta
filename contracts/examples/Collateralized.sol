@@ -127,47 +127,59 @@ contract Collateralized is TermsContract {
     )
         public
     {
-        /* // fetch relevant collateral instance.
-        Collateral memory collateral = collateralForAgreementID[agreementID];
+        // fetch all relevant collateralization parameters
+        address collateralToken;
+        uint collateralAmount;
+        uint gracePeriodInDays;
 
-        // Ensure a valid form of collateral is tied to this agreement id.
-        require(collateral.lockupPeriod > 0);
+        (collateralToken, collateralAmount, gracePeriodInDays) = retrieveCollateralParameters(agreementId);
 
-        // Collateral can only be returned after the lockup period.
-        require(block.timestamp > collateral.lockupPeriod);
+        // Ensure a valid form of collateral is tied to this agreement id
+        require(collateralAmount > 0);
 
-        // Collateral can only be returned if it has yet to be withdrawn.
-        require(!collateral.withdrawn);
+        // Withdrawal can only occur if the collateral has yet to be withdrawn.
+        // When we withdraw collateral, we reset the collateral agreement
+        // in a gas-efficient manner by resetting the address of the collateralizer to 0
+        require(agreementToCollateralizer[agreementId] != address(0));
 
-        // ensure sufficient payment.
+        // Ensure that the debt agreement's term has lapsed
+        require(getTermEndTimestamp(agreementId) < block.timestamp);
+
+        // Ensure that the debt is not in a state of default
         require(
-            getExpectedRepaymentValue(agreementID, block.timestamp) <=
-            getValueRepaidToDate(agreementID)
+            getExpectedRepaymentValue(
+                agreementId,
+                block.timestamp
+            ) <= getValueRepaidToDate(agreementId)
         );
 
-        // mark collateral as withdrawn.
-        collateralForAgreementID[agreementID].withdrawn = true;
-
-        // transfer the collateral this contract was holding in escrow back to sender.
-        require(
-            ERC20(collateral.token).transfer(
-                collateral.collateralizer,
-                collateral.amount
-            )
-        );
-
-        // log that the collateral has been succesfully returned to collateralizer.
-        CollateralReturned(
-            agreementID,
-            collateral.collateralizer,
-            collateral.token,
-            collateral.amount
-        ); */
+        // determine collateralizer of the collateral.
+        address collateralizer = agreementToCollateralizer[agreementId];
 
         // Mark agreement's collateral as withdrawn by setting the agreement's
         // collateralizer to 0x0.
         delete agreementToCollateralizer[agreementId];
+
+        // seize collateral and transfer to beneficiary.
+        require(
+            ERC20(collateralToken).transfer(
+                collateralizer,
+                collateralAmount
+            )
+        );
+
+        // log the seizure event.
+        CollateralReturned(
+            agreementId,
+            collateralizer,
+            collateralToken,
+            collateralAmount
+        );
     }
+
+    function getTermEndTimestamp(
+        bytes32 agreementId
+    ) public view returns (uint _timestamp);
 
     function seizeCollateral(
         bytes32 agreementId
