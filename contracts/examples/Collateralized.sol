@@ -123,21 +123,21 @@ contract Collateralized is TermsContract {
     }
 
     function returnCollateral(
-        bytes32 agreementID
+        bytes32 agreementId
     )
         public
     {
-        // fetch relevant collateral instance.
-        /* Collateral memory collateral = collateralForAgreementID[agreementID]; */
+        /* // fetch relevant collateral instance.
+        Collateral memory collateral = collateralForAgreementID[agreementID];
 
         // Ensure a valid form of collateral is tied to this agreement id.
-        /* require(collateral.lockupPeriod > 0); */
+        require(collateral.lockupPeriod > 0);
 
         // Collateral can only be returned after the lockup period.
-        /* require(block.timestamp > collateral.lockupPeriod); */
+        require(block.timestamp > collateral.lockupPeriod);
 
         // Collateral can only be returned if it has yet to be withdrawn.
-        /* require(!collateral.withdrawn);
+        require(!collateral.withdrawn);
 
         // ensure sufficient payment.
         require(
@@ -163,6 +163,10 @@ contract Collateralized is TermsContract {
             collateral.token,
             collateral.amount
         ); */
+
+        // Mark agreement's collateral as withdrawn by setting the agreement's
+        // collateralizer to 0x0.
+        delete agreementToCollateralizer[agreementId];
     }
 
     function seizeCollateral(
@@ -200,7 +204,7 @@ contract Collateralized is TermsContract {
 
         // Mark agreement's collateral as withdrawn by setting the agreement's
         // collateralizer to 0x0.
-        agreementToCollateralizer[agreementId] = address(0);
+        delete agreementToCollateralizer[agreementId];
 
         // determine beneficiary of the seized collateral.
         address beneficiary = debtRegistry.getBeneficiary(agreementId);

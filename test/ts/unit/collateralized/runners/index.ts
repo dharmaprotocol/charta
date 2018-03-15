@@ -71,14 +71,23 @@ export interface SeizeCollateralScenario {
     valueRepaidToDate: BigNumber;
     // Schedule for expected repayment value
     expectedRepaymentValueSchedule: ExpectedRepaymentValueDate[];
+    // Specifies whether the terms contract associated with
+    // the given issuance is the collateralized contract
+    termsContract: (collateralizedContract: string, attacker: string) => string;
     // Specifies whether the debt is currently owned by the
     // original beneficiary or some other party
     beneficiary: (originalBeneficiary: string, other: string) => string;
     // Specifies whether the transaction is coming from the original
     // beneficiary or someone else
     from: (originalBeneficiary: string, other: string) => string;
+    // Specifies whether the debt agreement exists in the debt registry
+    debtAgreementExists: boolean;
+    // Specifies whether collateral has been posted in the name of the debt agreement
+    debtAgreementCollateralized: boolean;
     // Specifies whether the call is expected to succeed.
     succeeds: boolean;
+    // Before block
+    before?: (collateralizedContract: DummyCollateralizedContractContract) => Promise<void>;
 }
 
 export { RegisterTermStartRunner, SeizeCollateralRunner };

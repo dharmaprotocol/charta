@@ -80,25 +80,33 @@ export class SeizeCollateralRunner {
 
                 // 2. Mocking the terms of the debt agreement to correspond to the
                 //      collateralized terms contract and our generated parameters
-                await mockDebtRegistry.mockGetTermsReturnValueFor.sendTransactionAsync(
-                    scenario.agreementId,
-                    dummyCollateralizedContract.address,
-                    termsContractParameters,
-                );
+                //      (if agreement exists)
+                if (scenario.debtAgreementExists) {
+                    await mockDebtRegistry.mockGetTermsReturnValueFor.sendTransactionAsync(
+                        scenario.agreementId,
+                        scenario.termsContract(dummyCollateralizedContract.address, ATTACKER),
+                        termsContractParameters,
+                    );
+                }
 
                 // 3. Mocking the debt's current beneficiary
-                await mockDebtRegistry.mockGetBeneficiaryReturnValueFor.sendTransactionAsync(
-                    scenario.agreementId,
-                    scenario.beneficiary(BENEFICIARY_1, BENEFICIARY_2),
-                );
+                //        (if agreement exists)
+                if (scenario.debtAgreementExists) {
+                    await mockDebtRegistry.mockGetBeneficiaryReturnValueFor.sendTransactionAsync(
+                        scenario.agreementId,
+                        scenario.beneficiary(BENEFICIARY_1, BENEFICIARY_2),
+                    );
+                }
 
                 // 4. Mocking the current "collateralizer" value associated with the agreement
                 //      id to be non-zero, indicating that the agreement has begun and
                 //      the collateral has been pulled.
-                await dummyCollateralizedContract.setDummyAgreementCollateralizer.sendTransactionAsync(
-                    scenario.agreementId,
-                    COLLATERALIZER,
-                );
+                if (scenario.debtAgreementCollateralized) {
+                    await dummyCollateralizedContract.setDummyAgreementCollateralizer.sendTransactionAsync(
+                        scenario.agreementId,
+                        COLLATERALIZER,
+                    );
+                }
 
                 // 5. Mocking the expected repayment schedule for the agreement id
                 for (const repaymentDate of scenario.expectedRepaymentValueSchedule) {
@@ -114,6 +122,10 @@ export class SeizeCollateralRunner {
                     scenario.agreementId,
                     scenario.valueRepaidToDate,
                 );
+
+                if (typeof scenario.before !== "undefined") {
+                    await scenario.before(dummyCollateralizedContract);
+                }
 
                 ABIDecoder.addABI(dummyCollateralizedContract.abi);
             });
