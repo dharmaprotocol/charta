@@ -104,14 +104,20 @@ contract Collateralized is TermsContract {
     {
         require(msg.sender == debtKernelAddress);
 
+        // Fetch all relevant collateralization parameters
+
+        // The token in which collateral is denominated
         address collateralToken;
+        // The amount being put up for collateral
         uint collateralAmount;
+        // The number of days a debtor has after a debt enters default
+        // before their collateral is elligible for seizure.
         uint gracePeriodInDays;
 
         (collateralToken, collateralAmount, gracePeriodInDays) = retrieveCollateralParameters(agreementId);
 
-        // the amount being put up for collateral must exceed 0.
         require(collateralAmount > 0);
+        require(collateralToken != address(0));
 
         /*
         Ensure that the agreement has not already been collateralized.
@@ -168,15 +174,21 @@ contract Collateralized is TermsContract {
     )
         public
     {
-        // fetch all relevant collateralization parameters
+        // Fetch all relevant collateralization parameters
+
+        // The token in which collateral is denominated
         address collateralToken;
+        // The amount being put up for collateral
         uint collateralAmount;
+        // The number of days a debtor has after a debt enters default
+        // before their collateral is elligible for seizure.
         uint gracePeriodInDays;
 
         (collateralToken, collateralAmount, gracePeriodInDays) = retrieveCollateralParameters(agreementId);
 
         // Ensure a valid form of collateral is tied to this agreement id
         require(collateralAmount > 0);
+        require(collateralToken != address(0));
 
         // Withdrawal can only occur if the collateral has yet to be withdrawn.
         // When we withdraw collateral, we reset the collateral agreement
@@ -201,7 +213,7 @@ contract Collateralized is TermsContract {
         // collateralizer to 0x0.
         delete agreementToCollateralizer[agreementId];
 
-        // seize collateral and transfer to beneficiary.
+        // transfer the collateral this contract was holding in escrow back to collateralizer.
         require(
             ERC20(collateralToken).transfer(
                 collateralizer,
@@ -209,7 +221,7 @@ contract Collateralized is TermsContract {
             )
         );
 
-        // log the seizure event.
+        // log the return event.
         CollateralReturned(
             agreementId,
             collateralizer,
@@ -230,15 +242,21 @@ contract Collateralized is TermsContract {
     )
         public
     {
-        // fetch all relevant collateralization parameters
+        // Fetch all relevant collateralization parameters
+
+        // The token in which collateral is denominated
         address collateralToken;
+        // The amount being put up for collateral
         uint collateralAmount;
+        // The number of days a debtor has after a debt enters default
+        // before their collateral is elligible for seizure.
         uint gracePeriodInDays;
 
         (collateralToken, collateralAmount, gracePeriodInDays) = retrieveCollateralParameters(agreementId);
 
         // Ensure a valid form of collateral is tied to this agreement id
         require(collateralAmount > 0);
+        require(collateralToken != address(0));
 
         // Seizure can only occur if the collateral has yet to be withdrawn.
         // When we withdraw collateral, we reset the collateral agreement
@@ -265,7 +283,7 @@ contract Collateralized is TermsContract {
         // determine beneficiary of the seized collateral.
         address beneficiary = debtRegistry.getBeneficiary(agreementId);
 
-        // seize collateral and transfer to beneficiary.
+        // transfer the collateral this contract was holding in escrow to beneficiary.
         require(
             ERC20(collateralToken).transfer(
                 beneficiary,
