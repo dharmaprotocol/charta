@@ -26,6 +26,18 @@ import "../DebtRegistry.sol";
 import "../TokenRegistry.sol";
 
 
+/**
+ * Abstract semi-implemented interface for generic collateralized terms contract.
+ *
+ * NOTE: Terms contracts that inherit from Collateralized.sol must adhere to the following constraints
+ *      1. They reserve the lowest order 108 bits of their terms contract parameters
+ *         for collateralization-specific parameters.
+ *      2. They implement the abstract `getTermEndTimestamp` function.
+ *      3. The expected repayment value and value repaid to date *MUST* monotonically increase
+ *         over time -- i.e. `x < x' <=> getExpectedRepaymentValue(x) < getExpectedRepaymentValue(x')`
+ *
+ * Authors (in no particular order): nadavhollander, saturnial, jdkanani
+ */
 contract Collateralized is TermsContract {
     using SafeMath for uint;
 
@@ -64,6 +76,28 @@ contract Collateralized is TermsContract {
         tokenRegistry = TokenRegistry(_tokenRegistry);
     }
 
+    /**
+     * Abstract interface for a function that returns the last timestamp
+     * at which any repayment is expected -- i.e., the debt agreement's
+     * term's ending.
+     *
+     * @param agreementId bytes32 The debt agreement's ID
+     * @return _timestamp uint
+     */
+    function getTermEndTimestamp(
+        bytes32 agreementId
+    ) public view returns (uint _timestamp);
+
+    /**
+     * Hook that is called by the DebtKernel upon a debt agreement's
+     * issuance.  Parses out collateralization-specific parameters
+     * from the debt agreement's terms contract parameters and
+     * pulls collateral from the debtor based on those parameters.
+     *
+     * @param agreementId bytes32 The debt's agreement ID
+     * @param collateralizer address The debt agreement's collateralizer
+     * @return _success bool
+     */
     function registerTermStart(bytes32 agreementId, address collateralizer)
         public
         returns (bool _success)
@@ -122,6 +156,13 @@ contract Collateralized is TermsContract {
         return true;
     }
 
+    /**
+     * Returns collateral to the debt agreement's original collateralizer
+     * if and only if the debt agreement's term has lapsed and
+     * the total expected repayment value has been repaid.
+     *
+     * @param agreementId bytes32 The debt agreement's ID
+     */
     function returnCollateral(
         bytes32 agreementId
     )
@@ -177,10 +218,13 @@ contract Collateralized is TermsContract {
         );
     }
 
-    function getTermEndTimestamp(
-        bytes32 agreementId
-    ) public view returns (uint _timestamp);
-
+    /**
+     * Seizes the collateral from the given debt agreement and
+     * transfers it to the debt agreement's current beneficiary
+     * (i.e. the person who "owns" the debt).
+     *
+     * @param agreementId bytes32 The debt agreement's ID
+     */
     function seizeCollateral(
         bytes32 agreementId
     )

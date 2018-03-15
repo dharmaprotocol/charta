@@ -8,11 +8,19 @@ import "../../examples/Collateralized.sol";
 contract MockCollateralizedTermsContract is Collateralized {
     using SafeMath for uint;
 
+    // Maps from agreementId's to the amount repaid to date
     mapping (bytes32 => uint) internal amountRepaid;
+    // Maps from agreementId's to a mapping of timestamps to the expected
+    // value repaid at said timestamp
     mapping (bytes32 => mapping (uint => uint)) internal expectedValueRepaidAtTimestamp;
-    mapping (bytes32 => uint[5]) internal repaymentTimestamps;
+    // Maps from agreementId's to a list of timestamps at which
+    // repayments are expected (used primarily for resetting our mocks)
+    mapping (bytes32 => uint[5]) internal expectedRepaymentSchedule;
+    // Maps from agreementId's to the number of repayment dates
+    // expected for that agreement
     mapping (bytes32 => uint) internal numRepaymentTimestamps;
-    mapping (bytes32 => uint) internal termEndTimestamps;
+    // Maps from agreementId's to the mocked term end timestamp
+    mapping (bytes32 => uint) internal termEndTimestamp;
 
     function MockCollateralizedTermsContract(
         address _debtKernel,
@@ -47,8 +55,11 @@ contract MockCollateralizedTermsContract is Collateralized {
     ) public view returns (uint256) {
         uint latestDueDateBeforeTimestamp;
 
+        // Iterate over each mocked repayment timestamp associated with the
+        // agreement ID and find the LATEST timestamp that is BEFORE
+        // the timestamp specified in the functiom arguments
         for (uint i = 0; i < 5; i++) {
-            uint dueDateTimestamp = repaymentTimestamps[agreementId][i];
+            uint dueDateTimestamp = expectedRepaymentSchedule[agreementId][i];
 
             if (dueDateTimestamp <= timestamp &&
                 dueDateTimestamp > latestDueDateBeforeTimestamp) {
@@ -56,13 +67,14 @@ contract MockCollateralizedTermsContract is Collateralized {
             }
         }
 
+        // Return the expected value repaid at said timestamp
         return expectedValueRepaidAtTimestamp[agreementId][latestDueDateBeforeTimestamp];
     }
 
     function getTermEndTimestamp(
         bytes32 agreementId
     ) public view returns (uint256) {
-        return termEndTimestamps[agreementId];
+        return termEndTimestamp[agreementId];
     }
 
     function getValueRepaidToDate(
@@ -85,9 +97,11 @@ contract MockCollateralizedTermsContract is Collateralized {
         uint timestamp,
         uint amount
     ) public {
+        // If timestamp is not mocked already, append it to list of repayment timestamps
+        // associated with agreementId
         if (expectedValueRepaidAtTimestamp[agreementId][timestamp] == 0) {
             uint numRepaymentTimestampsForAgreement = numRepaymentTimestamps[agreementId];
-            repaymentTimestamps[agreementId][numRepaymentTimestampsForAgreement] = timestamp;
+            expectedRepaymentSchedule[agreementId][numRepaymentTimestampsForAgreement] = timestamp;
             numRepaymentTimestamps[agreementId]++;
         }
 
@@ -98,7 +112,7 @@ contract MockCollateralizedTermsContract is Collateralized {
         bytes32 agreementId,
         uint timestamp
     ) public {
-        termEndTimestamps[agreementId] = timestamp;
+        termEndTimestamp[agreementId] = timestamp;
     }
 
     function mockDummyAgreementCollateralizer(
@@ -110,7 +124,7 @@ contract MockCollateralizedTermsContract is Collateralized {
 
     function reset(bytes32 agreementId) public {
         for (uint i = 0; i < 5; i++) {
-            repaymentTimestamps[agreementId][i] = 0;
+            expectedRepaymentSchedule[agreementId][i] = 0;
         }
 
         numRepaymentTimestamps[agreementId] = 0;
