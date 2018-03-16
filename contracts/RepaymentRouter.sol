@@ -109,12 +109,15 @@ contract RepaymentRouter is Pausable {
         }
 
         // Transfer amount to creditor
-        require(tokenTransferProxy.transferFrom(
+        if (!tokenTransferProxy.transferFrom(
             tokenAddress,
             msg.sender,
             beneficiary,
             amount
-        ));
+        )) {
+            LogError(uint8(Errors.PAYER_OWNERSHIP_OR_ROUTER_APPROVAL_MISSING), agreementId);
+            return 0;
+        }
 
         // Log event for repayment
         LogRepayment(agreementId, msg.sender, beneficiary, amount, tokenAddress);
