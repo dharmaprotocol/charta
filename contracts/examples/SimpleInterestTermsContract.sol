@@ -28,6 +28,7 @@ contract SimpleInterestTermsContract is TermsContract {
     using SafeMath for uint;
 
     enum AmortizationUnitType { HOURS, DAYS, WEEKS, MONTHS, YEARS }
+    uint public constant NUM_AMORTIZATION_UNIT_TYPES = 5;
 
     struct SimpleInterestParams {
         address principalTokenAddress;
@@ -51,6 +52,14 @@ contract SimpleInterestTermsContract is TermsContract {
 
     address public debtKernel;
     address public repaymentRouter;
+
+    event LogSimpleInterestTermStart(
+        bytes32 indexed agreementId,
+        address indexed principalToken,
+        uint principalPlusInterest,
+        uint indexed amortizationUnitType,
+        uint termLengthInAmortizationUnits
+    );
 
     modifier onlyRouter() {
         require(msg.sender == repaymentRouter);
@@ -104,16 +113,36 @@ contract SimpleInterestTermsContract is TermsContract {
         (termsContract, termsContractParameters) = debtRegistry.getTerms(agreementId);
 
         uint principalTokenIndex;
+        uint principalPlusInterest;
+        uint amortizationUnitType;
+        uint termLengthInAmortizationUnits;
 
-        /* solhint-disable-next-line */
-        (principalTokenIndex, , , ) = unpackParametersFromBytes(termsContractParameters);
+        (principalTokenIndex, principalPlusInterest, amortizationUnitType, termLengthInAmortizationUnits) =
+            unpackParametersFromBytes(termsContractParameters);
 
         address principalTokenAddress =
             tokenRegistry.getTokenAddressByIndex(principalTokenIndex);
 
-        // Returns true (i.e. valid) if the specified principal token is valid
-        // and the specified terms contract is this one.
-        return principalTokenAddress != address(0) && termsContract == address(this);
+        // Returns true (i.e. valid) if the specified principal token is valid,
+        // the specified amortization unit type is valid, and the terms contract
+        // associated with the agreement is this one.  We need not check
+        // if any of the other simple interest parameters are valid, because
+        // it is impossible to encode invalid values for them.
+        if (principalTokenAddress != address(0) &&
+            amortizationUnitType < NUM_AMORTIZATION_UNIT_TYPES &&
+            termsContract == address(this)) {
+            LogSimpleInterestTermStart(
+                agreementId,
+                principalTokenAddress,
+                principalPlusInterest,
+                amortizationUnitType,
+                termLengthInAmortizationUnits
+            );
+
+            return true;
+        }
+
+        return false;
     }
 
      /// When called, the registerRepayment function records the debtor's
