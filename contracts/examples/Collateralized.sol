@@ -163,7 +163,7 @@ contract Collateralized is TermsContract {
         // emit event that collateral has been secured.
         CollateralLocked(agreementId, collateralToken, collateralAmount);
 
-        return super.registerTermStart(agreementId, collateralizer);
+        return true;
     }
 
     /**

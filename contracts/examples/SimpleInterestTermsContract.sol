@@ -98,8 +98,22 @@ contract SimpleInterestTermsContract is TermsContract {
         onlyDebtKernel
         returns (bool _success)
     {
-        return super.registerTermStart(agreementId, debtor) &&
-            debtRegistry.getTermsContract(agreementId) == address(this);
+        address termsContract;
+        bytes32 termsContractParameters;
+
+        (termsContract, termsContractParameters) = debtRegistry.getTerms(agreementId);
+
+        uint principalTokenIndex;
+
+        /* solhint-disable-next-line */
+        (principalTokenIndex, , , ) = unpackParametersFromBytes(termsContractParameters);
+
+        address principalTokenAddress =
+            tokenRegistry.getTokenAddressByIndex(principalTokenIndex);
+
+        // Returns true (i.e. valid) if the specified principal token is valid
+        // and the specified terms contract is this one.
+        return principalTokenAddress != address(0) && termsContract == address(this);
     }
 
      /// When called, the registerRepayment function records the debtor's
