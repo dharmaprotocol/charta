@@ -1,5 +1,7 @@
 import * as chai from "chai";
 import * as Units from "../test_utils/units";
+import * as ABIDecoder from "abi-decoder";
+import * as _ from "lodash";
 import { BigNumber } from "bignumber.js";
 
 import { RepaymentRouterContract } from "../../../types/generated/repayment_router";
@@ -15,7 +17,7 @@ import { BigNumberSetup } from "../test_utils/bignumber_setup";
 import ChaiSetup from "../test_utils/chai_setup";
 import { INVALID_OPCODE, REVERT_ERROR } from "../test_utils/constants";
 
-import { LogError, LogRepayment } from "../logs/repayment_router";
+import { LogSimpleInterestTermStart } from "../logs/simple_interest_terms_contract";
 
 import * as moment from "moment";
 
@@ -123,6 +125,12 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
             mockTokenTransferProxy.address,
             Units.ether(3),
         );
+
+        ABIDecoder.addABI(termsContract.abi);
+    });
+
+    after(() => {
+        ABIDecoder.removeABI(termsContract.abi);
     });
 
     describe("Initialization", () => {
@@ -143,9 +151,6 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
         });
     });
 
-    // #registerTermStart in SimpleInterestTermsContract is a no-op function that simply
-    //  returns true if the DebtKernel is its caller.  This is because the simpleInterestTermsContract
-    //  need not take any action at the loan term's start.
     describe("#registerTermStart", async () => {
         describe("agent who is not DebtKernel calls registerTermStart", () => {
             it("should throw", async () => {
@@ -162,16 +167,148 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
         });
 
         describe("agent who is DebtKernel calls registerTermStart", () => {
-            it("should not throw", async () => {
-                await expect(
-                    termsContract.registerTermStart.sendTransactionAsync(
+            const principalTokenIndex = new BigNumber(8); // token at index 8
+            const principalPlusInterest = Units.ether(10); // 200 ether.
+            const amortizationUnitType = new BigNumber(2); // unit code for weeks.
+            const termLength = new BigNumber(10); // term is for 10 weeks.
+
+            const termsParams = hexifyParams(
+                principalTokenIndex,
+                principalPlusInterest,
+                amortizationUnitType,
+                termLength,
+            );
+
+            describe("agreement refers to different terms contract", () => {
+                before(async () => {
+                    await mockRegistry.mockGetTermsReturnValueFor.sendTransactionAsync(
+                        ARBITRARY_AGREEMENT_ID,
+                        NULL_ADDRESS, // NOT the terms contract's address
+                        termsParams,
+                    );
+
+                    await mockTokenRegistry.mockGetTokenAddressByIndex.sendTransactionAsync(
+                        principalTokenIndex,
+                        mockToken.address,
+                    );
+                });
+
+                it("should not emit log indicating success", async () => {
+                    const txHash = await termsContract.registerTermStart.sendTransactionAsync(
                         ARBITRARY_AGREEMENT_ID,
                         DEBTOR,
                         {
                             from: MOCK_DEBT_KERNEL_ADDRESS,
                         },
-                    ),
-                ).to.eventually.be.fulfilled;
+                    );
+
+                    const receipt = await web3.eth.getTransactionReceipt(txHash);
+                    expect(_.compact(ABIDecoder.decodeLogs(receipt.logs))).to.be.empty;
+                });
+            });
+
+            describe("terms contract parameters are invalid", () => {
+                describe("token at principalTokenIndex is undefined in registry", () => {
+                    before(async () => {
+                        await mockRegistry.mockGetTermsReturnValueFor.sendTransactionAsync(
+                            ARBITRARY_AGREEMENT_ID,
+                            termsContract.address,
+                            termsParams,
+                        );
+
+                        await mockTokenRegistry.mockGetTokenAddressByIndex.sendTransactionAsync(
+                            principalTokenIndex,
+                            NULL_ADDRESS,
+                        );
+                    });
+
+                    it("should not emit log indicating success", async () => {
+                        const txHash = await termsContract.registerTermStart.sendTransactionAsync(
+                            ARBITRARY_AGREEMENT_ID,
+                            DEBTOR,
+                            {
+                                from: MOCK_DEBT_KERNEL_ADDRESS,
+                            },
+                        );
+
+                        const receipt = await web3.eth.getTransactionReceipt(txHash);
+                        expect(_.compact(ABIDecoder.decodeLogs(receipt.logs))).to.be.empty;
+                    });
+                });
+
+                describe("amortizationUnitType is not a valid value", () => {
+                    before(async () => {
+                        const invalidTermsParams = hexifyParams(
+                            principalTokenIndex,
+                            principalPlusInterest,
+                            new BigNumber(5), // this is an invalid value for the amortizationUnitType
+                            termLength,
+                        );
+
+                        await mockRegistry.mockGetTermsReturnValueFor.sendTransactionAsync(
+                            ARBITRARY_AGREEMENT_ID,
+                            termsContract.address,
+                            invalidTermsParams,
+                        );
+
+                        await mockTokenRegistry.mockGetTokenAddressByIndex.sendTransactionAsync(
+                            principalTokenIndex,
+                            mockToken.address,
+                        );
+                    });
+
+                    it("should not emit log indicating success", async () => {
+                        const txHash = await termsContract.registerTermStart.sendTransactionAsync(
+                            ARBITRARY_AGREEMENT_ID,
+                            DEBTOR,
+                            {
+                                from: MOCK_DEBT_KERNEL_ADDRESS,
+                            },
+                        );
+
+                        const receipt = await web3.eth.getTransactionReceipt(txHash);
+                        expect(_.compact(ABIDecoder.decodeLogs(receipt.logs))).to.be.empty;
+                    });
+                });
+            });
+
+            describe("Terms are valid for SimpleInterestTermsContract", () => {
+                before(async () => {
+                    await mockRegistry.mockGetTermsReturnValueFor.sendTransactionAsync(
+                        ARBITRARY_AGREEMENT_ID,
+                        termsContract.address,
+                        termsParams,
+                    );
+
+                    await mockTokenRegistry.mockGetTokenAddressByIndex.sendTransactionAsync(
+                        principalTokenIndex,
+                        mockToken.address,
+                    );
+                });
+
+                it("should emit log indicating success", async () => {
+                    const txHash = await termsContract.registerTermStart.sendTransactionAsync(
+                        ARBITRARY_AGREEMENT_ID,
+                        DEBTOR,
+                        {
+                            from: MOCK_DEBT_KERNEL_ADDRESS,
+                        },
+                    );
+
+                    const receipt = await web3.eth.getTransactionReceipt(txHash);
+                    const [logTermStart] = _.compact(ABIDecoder.decodeLogs(receipt.logs));
+
+                    expect(logTermStart).to.deep.equal(
+                        LogSimpleInterestTermStart(
+                            termsContract.address,
+                            ARBITRARY_AGREEMENT_ID,
+                            mockToken.address,
+                            principalPlusInterest,
+                            amortizationUnitType,
+                            termLength,
+                        ),
+                    );
+                });
             });
         });
     });
