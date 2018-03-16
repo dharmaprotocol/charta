@@ -7,6 +7,7 @@ import { SimpleInterestTermsContractContract } from "../../../types/generated/si
 import { MockDebtRegistryContract } from "../../../types/generated/mock_debt_registry";
 import { MockERC20TokenContract } from "../../../types/generated/mock_e_r_c20_token";
 import { MockTokenTransferProxyContract } from "../../../types/generated/mock_token_transfer_proxy";
+import { MockTokenRegistryContract } from "../../../types/generated/mock_token_registry";
 
 import { RepaymentRouterErrorCodes } from "../../../types/errors";
 
@@ -35,6 +36,7 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
     let mockToken: MockERC20TokenContract;
     let mockRegistry: MockDebtRegistryContract;
     let mockTokenTransferProxy: MockTokenTransferProxyContract;
+    let mockTokenRegistry: MockTokenRegistryContract;
 
     const CONTRACT_OWNER = ACCOUNTS[0];
     const DEBTOR = ACCOUNTS[1];
@@ -52,27 +54,37 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
 
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
 
+    function bitShiftLeft(target: BigNumber, numPlaces: number): BigNumber {
+        const binaryTargetString = target.toString(2);
+        const binaryTargetStringShifted = binaryTargetString + "0".repeat(numPlaces);
+
+        return new BigNumber(binaryTargetStringShifted, 2);
+    }
+
     function hexifyParams(
+        principalTokenIndex: BigNumber,
         principalPlusInterest: BigNumber,
         amortizationUnitType: BigNumber,
         termLength: BigNumber,
     ): string {
-        const principalPlusInterestHex = principalPlusInterest.toString(16);
-        const amortizationUnitTypeHex = amortizationUnitType.toString(16);
-        const termLengthHex = termLength.toString(16);
+        const principalTokenIndexShifted = bitShiftLeft(principalTokenIndex, 248);
+        const principalPlusInterestShifted = bitShiftLeft(principalPlusInterest, 128);
+        const amortizationUnitTypeShifted = bitShiftLeft(amortizationUnitType, 124);
+        const termLengthShifted = bitShiftLeft(termLength, 108);
 
-        return (
-            "0x" +
-            principalPlusInterestHex.padStart(32, "0") +
-            amortizationUnitTypeHex.padStart(2, "0") +
-            termLengthHex.padStart(30, "0")
-        );
+        const baseTenParameters = principalTokenIndexShifted
+            .plus(principalPlusInterestShifted)
+            .plus(amortizationUnitTypeShifted)
+            .plus(termLengthShifted);
+
+        return `0x${baseTenParameters.toString(16).padStart(64, "0")}`;
     }
 
     before(async () => {
         mockRegistry = await MockDebtRegistryContract.deployed(web3, TX_DEFAULTS);
         mockToken = await MockERC20TokenContract.deployed(web3, TX_DEFAULTS);
         mockTokenTransferProxy = await MockTokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
+        mockTokenRegistry = await MockTokenRegistryContract.deployed(web3, TX_DEFAULTS);
 
         const repaymentRouterTruffle = await repaymentRouterContract.new(
             mockRegistry.address,
@@ -80,9 +92,9 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
         );
 
         const termsContractTruffle = await simpleInterestTermsContract.new(
-            mockRegistry.address,
             MOCK_DEBT_KERNEL_ADDRESS,
-            mockToken.address,
+            mockRegistry.address,
+            mockTokenRegistry.address,
             repaymentRouterTruffle.address,
         );
 
@@ -124,9 +136,9 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
                 router.address,
             );
         });
-        it("points to the token contract passed in through the constructor", async () => {
-            await expect(termsContract.repaymentToken.callAsync()).to.eventually.equal(
-                mockToken.address,
+        it("points to the TokenRegistry passed in through the constructor", async () => {
+            await expect(termsContract.tokenRegistry.callAsync()).to.eventually.equal(
+                mockTokenRegistry.address,
             );
         });
     });
@@ -182,6 +194,18 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
 
         describe("RepaymentRouter calls registerRepayment", () => {
             before(async () => {
+                const principalTokenIndex = new BigNumber(0);
+                const principalPlusInterest = Units.ether(1);
+                const amortizationUnitType = new BigNumber(0);
+                const termLengthInAmortizationUnits = new BigNumber(3);
+
+                const termsContractParameters = hexifyParams(
+                    principalTokenIndex,
+                    principalPlusInterest,
+                    amortizationUnitType,
+                    termLengthInAmortizationUnits,
+                );
+
                 await mockRegistry.mockGetBeneficiaryReturnValueFor.sendTransactionAsync(
                     ARBITRARY_AGREEMENT_ID,
                     BENEFICIARY,
@@ -190,12 +214,17 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
                 await mockRegistry.mockGetTermsReturnValueFor.sendTransactionAsync(
                     ARBITRARY_AGREEMENT_ID,
                     termsContract.address,
-                    TERMS_CONTRACT_PARAMETERS,
+                    termsContractParameters,
                 );
 
                 await mockRegistry.mockGetTermsContractReturnValueFor.sendTransactionAsync(
                     ARBITRARY_AGREEMENT_ID,
                     termsContract.address,
+                );
+
+                await mockTokenRegistry.mockGetTokenAddressByIndex.sendTransactionAsync(
+                    new BigNumber(0),
+                    mockToken.address,
                 );
             });
 
@@ -271,6 +300,18 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
         describe("extant debt agreement", () => {
             const EXTANT_AGREEMENT_ID = web3.sha3("this agreement id exists!");
 
+            const principalTokenIndex = new BigNumber(2); // token at index 6 of token registry.
+            const principalPlusInterest = Units.ether(100); // 200 ether.
+            const amortizationUnitType = new BigNumber(2); // unit code for weeks.
+            const termLength = new BigNumber(10); // term is for 10 weeks.
+
+            const inputParamsAsHex = hexifyParams(
+                principalTokenIndex,
+                principalPlusInterest,
+                amortizationUnitType,
+                termLength,
+            );
+
             before(async () => {
                 await mockRegistry.mockGetBeneficiaryReturnValueFor.sendTransactionAsync(
                     EXTANT_AGREEMENT_ID,
@@ -280,12 +321,17 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
                 await mockRegistry.mockGetTermsReturnValueFor.sendTransactionAsync(
                     EXTANT_AGREEMENT_ID,
                     termsContract.address,
-                    TERMS_CONTRACT_PARAMETERS,
+                    inputParamsAsHex,
                 );
 
                 await mockRegistry.mockGetTermsContractReturnValueFor.sendTransactionAsync(
                     EXTANT_AGREEMENT_ID,
                     termsContract.address,
+                );
+
+                await mockTokenRegistry.mockGetTokenAddressByIndex.sendTransactionAsync(
+                    new BigNumber(2),
+                    mockToken.address,
                 );
             });
 
@@ -326,11 +372,13 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
     });
 
     describe("#unpackParametersFromBytes", () => {
+        const principalTokenIndex = new BigNumber(6); // token at index 6 of token registry.
         const principalPlusInterest = Units.ether(200); // 200 ether.
         const amortizationUnitType = new BigNumber(4); // unit code for years.
         const termLength = new BigNumber(10); // term is for 10 years.
 
         const inputParamsAsHex = hexifyParams(
+            principalTokenIndex,
             principalPlusInterest,
             amortizationUnitType,
             termLength,
@@ -341,9 +389,10 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
                 inputParamsAsHex,
             );
 
-            expect(outputParams[0]).to.bignumber.equal(principalPlusInterest);
-            expect(outputParams[1]).to.bignumber.equal(amortizationUnitType);
-            expect(outputParams[2]).to.bignumber.equal(termLength);
+            expect(outputParams[0]).to.bignumber.equal(principalTokenIndex);
+            expect(outputParams[1]).to.bignumber.equal(principalPlusInterest);
+            expect(outputParams[2]).to.bignumber.equal(amortizationUnitType);
+            expect(outputParams[3]).to.bignumber.equal(termLength);
         });
     });
 
@@ -367,11 +416,13 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
         });
 
         describe("when termsContractParameters associated w/ debt agreement malformed", () => {
+            const principalTokenIndex = new BigNumber(0);
             const principalPlusInterest = Units.ether(10);
             const amortizationUnitType = new BigNumber(10); // invalid unit code.
             const termLength = new BigNumber(10);
 
             const invalidTermsParams = hexifyParams(
+                principalTokenIndex,
                 principalPlusInterest,
                 amortizationUnitType,
                 termLength,
@@ -387,6 +438,11 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
                     await mockRegistry.mockGetTermsContractParameters.sendTransactionAsync(
                         ARBITRARY_AGREEMENT_ID,
                         invalidTermsParams,
+                    );
+
+                    await mockTokenRegistry.mockGetTokenAddressByIndex.sendTransactionAsync(
+                        principalTokenIndex,
+                        mockToken.address,
                     );
                 });
 
@@ -408,11 +464,13 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
               - Amortization Unit Type: year
               - Term length: 3 years
             */
+            const principalTokenIndex = new BigNumber(0); // arbitrary index for principal token in registry
             const principalPlusInterest = Units.ether(12);
             const amortizationUnitType = new BigNumber(4); // unit code for years.
             const termLength = new BigNumber(3); // term is three years.
 
             const validTermsParams = hexifyParams(
+                principalTokenIndex,
                 principalPlusInterest,
                 amortizationUnitType,
                 termLength,
@@ -439,6 +497,11 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
                 await mockRegistry.mockGetIssuanceBlockTimestamp.sendTransactionAsync(
                     ARBITRARY_AGREEMENT_ID,
                     new BigNumber(BLOCK_ISSUANCE_TIMESTAMP),
+                );
+
+                await mockTokenRegistry.mockGetTokenAddressByIndex.sendTransactionAsync(
+                    principalTokenIndex,
+                    mockToken.address,
                 );
             });
 
