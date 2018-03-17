@@ -43,7 +43,7 @@ contract RepaymentRouter is Pausable {
         DEBT_AGREEMENT_NONEXISTENT,
         PAYER_BALANCE_OR_ALLOWANCE_INSUFFICIENT,
         PAYER_OWNERSHIP_OR_ROUTER_APPROVAL_MISSING,
-        ROUTER_UNAUTHORIZED_TO_REPORT_REPAYMENT
+        REPAYMENT_REJECTED_BY_TERMS_CONTRACT
     }
 
     event LogRepayment(
@@ -104,7 +104,7 @@ contract RepaymentRouter is Pausable {
             amount,
             tokenAddress
         )) {
-            LogError(uint8(Errors.ROUTER_UNAUTHORIZED_TO_REPORT_REPAYMENT), agreementId);
+            LogError(uint8(Errors.REPAYMENT_REJECTED_BY_TERMS_CONTRACT), agreementId);
             return 0;
         }
 
