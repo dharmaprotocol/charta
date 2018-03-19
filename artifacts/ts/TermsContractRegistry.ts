@@ -1095,7 +1095,7 @@ export const TermsContractRegistry =
     "42": {
       "events": {},
       "links": {},
-      "address": "0xa967d14b3c0ab921ab222725cb83951a8a1a138f"
+      "address": "0x8d1f61839ca3446388178e89413c42e13988a6ce"
     },
     "70": {
       "events": {},
@@ -1104,5 +1104,5 @@ export const TermsContractRegistry =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-05T04:42:11.849Z"
+  "updatedAt": "2018-03-19T22:49:37.113Z"
 }
