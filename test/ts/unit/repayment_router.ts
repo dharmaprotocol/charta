@@ -270,7 +270,7 @@ contract("Repayment Router (Unit Tests)", async (ACCOUNTS) => {
                 });
             });
 
-            describe("...with terms contract that does not register reports from router", () => {
+            describe("...with terms contract that rejects repayment", () => {
                 let errorLog: ABIDecoder.DecodedLog;
 
                 before(async () => {
@@ -297,11 +297,11 @@ contract("Repayment Router (Unit Tests)", async (ACCOUNTS) => {
                     [errorLog] = _.compact(ABIDecoder.decodeLogs(receipt.logs));
                 });
 
-                it("should return ROUTER_UNAUTHORIZED_TO_REPORT_REPAYMENT error", () => {
+                it("should return REPAYMENT_REJECTED_BY_TERMS_CONTRACT error", () => {
                     expect(errorLog).to.deep.equal(
                         LogError(
                             router.address,
-                            RepaymentRouterErrorCodes.ROUTER_UNAUTHORIZED_TO_REPORT_REPAYMENT,
+                            RepaymentRouterErrorCodes.REPAYMENT_REJECTED_BY_TERMS_CONTRACT,
                             ARBITRARY_AGREEMENT_ID,
                         ),
                     );
