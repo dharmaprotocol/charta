@@ -10,9 +10,8 @@ import {
     CollateralSeized,
 } from "../../logs/collateralized_contract";
 
-import {
-    MockCollateralizedTermsContractContract,
-} from "../../../../types/generated/mock_collateralized_terms_contract";
+// tslint:disable-next-line
+import { MockCollateralizedTermsContractContract } from "../../../../types/generated/mock_collateralized_terms_contract";
 import { TokenRegistryContract } from "../../../../types/generated/token_registry";
 import { MockDebtRegistryContract } from "../../../../types/generated/mock_debt_registry";
 import { MockERC20TokenContract } from "../../../../types/generated/mock_e_r_c20_token";
@@ -26,12 +25,12 @@ import { REVERT_ERROR } from "../../test_utils/constants";
 import { RegisterTermStartRunner, ReturnCollateralRunner, SeizeCollateralRunner } from "./runners/";
 
 // scenarios
-import { UNSUCCESSFUL_COLLATERALIZATION } from "./scenarios/unsuccessful_collateralization";
-import { SUCCESSFUL_COLLATERALIZATION } from "./scenarios/successful_collateralization";
-import { UNSUCCESSFUL_SEIZURE } from "./scenarios/unsuccessful_seizure";
-import { SUCCESSFUL_SEIZURE } from "./scenarios/successful_seizure";
-import { UNSUCCESSFUL_RETURN } from "./scenarios/unsuccessful_return";
-import { SUCCESSFUL_RETURN } from "./scenarios/successful_return";
+import { UNSUCCESSFUL_COLLATERALIZATION_SCENARIOS } from "./scenarios/unsuccessful_collateralization";
+import { SUCCESSFUL_COLLATERALIZATION_SCENARIOS } from "./scenarios/successful_collateralization";
+import { UNSUCCESSFUL_SEIZURE_SCENARIOS } from "./scenarios/unsuccessful_seizure";
+import { SUCCESSFUL_SEIZURE_SCENARIOS } from "./scenarios/successful_seizure";
+import { UNSUCCESSFUL_RETURN_SCENARIOS } from "./scenarios/unsuccessful_return";
+import { SUCCESSFUL_RETURN_SCENARIOS } from "./scenarios/successful_return";
 
 import * as moment from "moment";
 
@@ -235,31 +234,31 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
 
     describe("#registerTermStart", () => {
         describe("unsuccessful collateralizations", () => {
-            UNSUCCESSFUL_COLLATERALIZATION.forEach(registerTermStartRunner.testScenario);
+            UNSUCCESSFUL_COLLATERALIZATION_SCENARIOS.forEach(registerTermStartRunner.testScenario);
         });
 
         describe("successful collateralizations", () => {
-            SUCCESSFUL_COLLATERALIZATION.forEach(registerTermStartRunner.testScenario);
+            SUCCESSFUL_COLLATERALIZATION_SCENARIOS.forEach(registerTermStartRunner.testScenario);
         });
     });
 
     describe("#seizeCollateral", () => {
         describe("Unsuccessful Collateral Seizure", () => {
-            UNSUCCESSFUL_SEIZURE.forEach(seizeCollateralRunner.testScenario);
+            UNSUCCESSFUL_SEIZURE_SCENARIOS.forEach(seizeCollateralRunner.testScenario);
         });
 
         describe("Successful Collateral Seizure", () => {
-            SUCCESSFUL_SEIZURE.forEach(seizeCollateralRunner.testScenario);
+            SUCCESSFUL_SEIZURE_SCENARIOS.forEach(seizeCollateralRunner.testScenario);
         });
     });
 
     describe("#returnCollateral", () => {
         describe("Unsuccessful Collateral Return", () => {
-            UNSUCCESSFUL_RETURN.forEach(returnCollateralRunner.testScenario);
+            UNSUCCESSFUL_RETURN_SCENARIOS.forEach(returnCollateralRunner.testScenario);
         });
 
         describe("Successful Collateral Return", () => {
-            SUCCESSFUL_RETURN.forEach(returnCollateralRunner.testScenario);
+            SUCCESSFUL_RETURN_SCENARIOS.forEach(returnCollateralRunner.testScenario);
         });
     });
 });

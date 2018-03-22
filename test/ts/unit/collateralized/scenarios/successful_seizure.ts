@@ -27,7 +27,7 @@ const defaultArgs = {
     succeeds: true,
 };
 
-export const SUCCESSFUL_SEIZURE: SeizeCollateralScenario[] = [
+export const SUCCESSFUL_SEIZURE_SCENARIOS: SeizeCollateralScenario[] = [
     {
         description:
             "(Grace Period = 0 Days) Debt entered default > grace period's length ago, no repayments since",
