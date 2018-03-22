@@ -26,7 +26,7 @@
     "compile": "truffle compile --all",
     "migrate": "truffle migrate",
     "prettify": "prettier --write test/ts/**/*.ts types/**/*.ts types/*.ts artifacts/*.ts",
-    "test": "npm run compile; npm run generate-typings; npm run transpile; npm run migrate; truffle test transpiled/test/ts/unit/collateralized/collateralized_contract.js",
+    "test": "npm run compile; npm run generate-typings; npm run transpile; npm run migrate; truffle test",
     "chain": "ganache-cli --networkId 70 --accounts 20",
     "validate": "npm ls"
   },
