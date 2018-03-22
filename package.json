@@ -79,7 +79,7 @@
     "solhint": "^1.1.8",
     "solidity-sha3": "^0.4.1",
     "tiny-promisify": "^1.0.0",
-    "truffle": "4.0.3",
+    "truffle": "4.0.4",
     "tslint": "^5.8.0",
     "tslint-no-unused-expression-chai": "0.0.3",
     "types-bn": "^0.0.1",
