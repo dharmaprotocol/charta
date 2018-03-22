@@ -18,6 +18,7 @@ import { SimpleInterestTermsContractContract } from "../../../types/generated/si
 import { TokenTransferProxyContract } from "../../../types/generated/token_transfer_proxy";
 
 import { DebtOrderFactory } from "../factories/debt_order_factory";
+import { SimpleInterestParameters } from "../factories/terms_contract_parameters";
 
 import { RepaymentRouterErrorCodes } from "../../../types/errors";
 import { DebtOrder, SignedDebtOrder } from "../../../types/kernel/debt_order";
@@ -89,46 +90,15 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
             { from: BENEFICIARY_2 },
         );
 
-        const debtRegistry = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
-        const repaymentRouterTruffle = await repaymentRouterContract.new(
-            debtRegistry.address,
-            tokenTransferProxy.address,
+        router = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
+        termsContract = await SimpleInterestTermsContractContract.deployed(web3, TX_DEFAULTS);
+
+        const termsContractParameters = SimpleInterestParameters.pack(
+            new BigNumber(0), // Our migrations set REP up to be at index 0 of the registry
+            Units.ether(1.1), // Expected Principal Plus Interest
+            new BigNumber(1), // The amortization unit type (weekly)
+            new BigNumber(4), // Term length in amortization units.
         );
-        const termsContractTruffle = await simpleInterestTermsContract.new(
-            debtRegistry.address,
-            kernel.address,
-            principalToken.address,
-            repaymentRouterTruffle.address,
-        );
-
-        // The typings we use ingest vanilla Web3 contracts, so we convert the
-        // contract instance deployed by truffle into a Web3 contract instance
-        const repaymentRouterWeb3Contract = web3.eth
-            .contract(repaymentRouterTruffle.abi)
-            .at(repaymentRouterTruffle.address);
-        const termsContractWeb3Contract = web3.eth
-            .contract(simpleInterestTermsContract.abi)
-            .at(termsContractTruffle.address);
-
-        router = new RepaymentRouterContract(repaymentRouterWeb3Contract, TX_DEFAULTS);
-        termsContract = new SimpleInterestTermsContractContract(
-            termsContractWeb3Contract,
-            TX_DEFAULTS,
-        );
-
-        await tokenTransferProxy.addAuthorizedTransferAgent.sendTransactionAsync(router.address);
-
-        const termLengthInBlocks = 43200;
-        const principalPlusInterest = Units.ether(1.1);
-
-        const uint16PrincipalPlusInterest = leftPad(
-            web3.toHex(principalPlusInterest).substr(2),
-            32,
-            "0",
-        );
-        const uint16TermLength = leftPad(web3.toHex(termLengthInBlocks).substr(2), 32, "0");
-
-        const termsContractParameters = "0x" + uint16PrincipalPlusInterest + uint16TermLength;
 
         const defaultOrderParams = {
             creditorFee: Units.ether(0.002),
