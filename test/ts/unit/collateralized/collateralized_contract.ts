@@ -110,54 +110,24 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
         );
 
         // Initialize scenario runners
-        registerTermStartRunner.initialize(
-            {
-                mockCollateralizedTermsContract: collateralContract,
-                mockCollateralToken: mockToken,
-                mockDebtRegistry,
-                mockTokenRegistry,
-            },
-            {
-                ATTACKER,
-                BENEFICIARY_1,
-                BENEFICIARY_2,
-                COLLATERALIZER,
-                NON_COLLATERALIZER,
-                MOCK_DEBT_KERNEL_ADDRESS,
-            },
-        );
-        seizeCollateralRunner.initialize(
-            {
-                mockCollateralizedTermsContract: collateralContract,
-                mockCollateralToken: mockToken,
-                mockDebtRegistry,
-                mockTokenRegistry,
-            },
-            {
-                ATTACKER,
-                BENEFICIARY_1,
-                BENEFICIARY_2,
-                COLLATERALIZER,
-                NON_COLLATERALIZER,
-                MOCK_DEBT_KERNEL_ADDRESS,
-            },
-        );
-        returnCollateralRunner.initialize(
-            {
-                mockCollateralizedTermsContract: collateralContract,
-                mockCollateralToken: mockToken,
-                mockDebtRegistry,
-                mockTokenRegistry,
-            },
-            {
-                ATTACKER,
-                BENEFICIARY_1,
-                BENEFICIARY_2,
-                COLLATERALIZER,
-                NON_COLLATERALIZER,
-                MOCK_DEBT_KERNEL_ADDRESS,
-            },
-        );
+        const testContracts = {
+            mockCollateralizedTermsContract: collateralContract,
+            mockCollateralToken: mockToken,
+            mockDebtRegistry,
+            mockTokenRegistry,
+        };
+        const testAccounts = {
+            ATTACKER,
+            BENEFICIARY_1,
+            BENEFICIARY_2,
+            COLLATERALIZER,
+            NON_COLLATERALIZER,
+            MOCK_DEBT_KERNEL_ADDRESS,
+        };
+
+        registerTermStartRunner.initialize(testContracts, testAccounts);
+        seizeCollateralRunner.initialize(testContracts, testAccounts);
+        returnCollateralRunner.initialize(testContracts, testAccounts);
 
         // Initialize ABI Decoder for deciphering log receipts
         ABIDecoder.addABI(collateralContract.abi);
