@@ -1,9 +1,12 @@
+// External
 import * as chai from "chai";
 import * as Units from "../test_utils/units";
 import * as ABIDecoder from "abi-decoder";
 import * as _ from "lodash";
 import { BigNumber } from "bignumber.js";
+import * as moment from "moment";
 
+// Wrappers
 import { RepaymentRouterContract } from "../../../types/generated/repayment_router";
 import { SimpleInterestTermsContractContract } from "../../../types/generated/simple_interest_terms_contract";
 import { MockDebtRegistryContract } from "../../../types/generated/mock_debt_registry";
@@ -11,15 +14,15 @@ import { MockERC20TokenContract } from "../../../types/generated/mock_e_r_c20_to
 import { MockTokenTransferProxyContract } from "../../../types/generated/mock_token_transfer_proxy";
 import { MockTokenRegistryContract } from "../../../types/generated/mock_token_registry";
 
+// Constants
 import { RepaymentRouterErrorCodes } from "../../../types/errors";
 
+// Test Utils
 import { BigNumberSetup } from "../test_utils/bignumber_setup";
 import ChaiSetup from "../test_utils/chai_setup";
 import { INVALID_OPCODE, REVERT_ERROR } from "../test_utils/constants";
-
 import { LogSimpleInterestTermStart } from "../logs/simple_interest_terms_contract";
-
-import * as moment from "moment";
+import { SimpleInterestParameters } from "../factories/terms_contract_parameters";
 
 // Set up Chai
 ChaiSetup.configure();
@@ -55,32 +58,6 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
     const NULL_ADDRESS = "0x0000000000000000000000000000000000000000";
 
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
-
-    function bitShiftLeft(target: BigNumber, numPlaces: number): BigNumber {
-        const binaryTargetString = target.toString(2);
-        const binaryTargetStringShifted = binaryTargetString + "0".repeat(numPlaces);
-
-        return new BigNumber(binaryTargetStringShifted, 2);
-    }
-
-    function hexifyParams(
-        principalTokenIndex: BigNumber,
-        principalPlusInterest: BigNumber,
-        amortizationUnitType: BigNumber,
-        termLength: BigNumber,
-    ): string {
-        const principalTokenIndexShifted = bitShiftLeft(principalTokenIndex, 248);
-        const principalPlusInterestShifted = bitShiftLeft(principalPlusInterest, 128);
-        const amortizationUnitTypeShifted = bitShiftLeft(amortizationUnitType, 124);
-        const termLengthShifted = bitShiftLeft(termLength, 108);
-
-        const baseTenParameters = principalTokenIndexShifted
-            .plus(principalPlusInterestShifted)
-            .plus(amortizationUnitTypeShifted)
-            .plus(termLengthShifted);
-
-        return `0x${baseTenParameters.toString(16).padStart(64, "0")}`;
-    }
 
     before(async () => {
         mockRegistry = await MockDebtRegistryContract.deployed(web3, TX_DEFAULTS);
@@ -172,7 +149,7 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
             const amortizationUnitType = new BigNumber(2); // unit code for weeks.
             const termLength = new BigNumber(10); // term is for 10 weeks.
 
-            const termsParams = hexifyParams(
+            const termsParams = SimpleInterestParameters.pack(
                 principalTokenIndex,
                 principalPlusInterest,
                 amortizationUnitType,
@@ -238,7 +215,7 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
 
                 describe("amortizationUnitType is not a valid value", () => {
                     before(async () => {
-                        const invalidTermsParams = hexifyParams(
+                        const invalidTermsParams = SimpleInterestParameters.pack(
                             principalTokenIndex,
                             principalPlusInterest,
                             new BigNumber(5), // this is an invalid value for the amortizationUnitType
@@ -336,7 +313,7 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
                 const amortizationUnitType = new BigNumber(0);
                 const termLengthInAmortizationUnits = new BigNumber(3);
 
-                const termsContractParameters = hexifyParams(
+                const termsContractParameters = SimpleInterestParameters.pack(
                     principalTokenIndex,
                     principalPlusInterest,
                     amortizationUnitType,
@@ -442,7 +419,7 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
             const amortizationUnitType = new BigNumber(2); // unit code for weeks.
             const termLength = new BigNumber(10); // term is for 10 weeks.
 
-            const inputParamsAsHex = hexifyParams(
+            const inputParamsAsHex = SimpleInterestParameters.pack(
                 principalTokenIndex,
                 principalPlusInterest,
                 amortizationUnitType,
@@ -514,7 +491,7 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
         const amortizationUnitType = new BigNumber(4); // unit code for years.
         const termLength = new BigNumber(10); // term is for 10 years.
 
-        const inputParamsAsHex = hexifyParams(
+        const inputParamsAsHex = SimpleInterestParameters.pack(
             principalTokenIndex,
             principalPlusInterest,
             amortizationUnitType,
@@ -558,7 +535,7 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
             const amortizationUnitType = new BigNumber(10); // invalid unit code.
             const termLength = new BigNumber(10);
 
-            const invalidTermsParams = hexifyParams(
+            const invalidTermsParams = SimpleInterestParameters.pack(
                 principalTokenIndex,
                 principalPlusInterest,
                 amortizationUnitType,
@@ -606,7 +583,7 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
             const amortizationUnitType = new BigNumber(4); // unit code for years.
             const termLength = new BigNumber(3); // term is three years.
 
-            const validTermsParams = hexifyParams(
+            const validTermsParams = SimpleInterestParameters.pack(
                 principalTokenIndex,
                 principalPlusInterest,
                 amortizationUnitType,
