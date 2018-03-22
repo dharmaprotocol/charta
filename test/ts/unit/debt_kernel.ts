@@ -245,6 +245,7 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
                     await mockTermsContract.reset.sendTransactionAsync();
                     await mockTermsContract.mockRegisterTermStartReturnValue.sendTransactionAsync(
                         debtOrder.getIssuanceCommitment().getHash(),
+                        debtOrder.getDebtor(),
                         true,
                     );
 
@@ -336,6 +337,7 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
                     await expect(
                         mockTermsContract.wasRegisterTermStartCalledWith.callAsync(
                             debtOrder.getIssuanceCommitment().getHash(),
+                            debtOrder.getDebtor(),
                         ),
                     ).to.eventually.be.true;
                 });
@@ -743,6 +745,7 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
 
                     await mockTermsContract.mockRegisterTermStartReturnValue.sendTransactionAsync(
                         debtOrder.getIssuanceCommitment().getHash(),
+                        debtOrder.getDebtor(),
                         false,
                     );
                 });

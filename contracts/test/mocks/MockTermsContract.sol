@@ -70,28 +70,36 @@ contract MockTermsContract is MockContract {
     }
 
     function registerTermStart(
-        bytes32 agreementId
+        bytes32 agreementId,
+        address debtor
     )
         public
         returns (bool _registered)
     {
-        functionCalledWithArgs("registerTermStart", agreementId);
+        functionCalledWithArgs("registerTermStart", keccak256(agreementId, debtor));
 
-        return getMockReturnValue("registerTermStart", agreementId) == bytes32(1);
+        return getMockReturnValue(
+            "registerTermStart",
+            keccak256(agreementId, debtor)
+        ) == bytes32(1);
     }
 
-    function mockRegisterTermStartReturnValue(bytes32 agreementId, bool success)
+    function mockRegisterTermStartReturnValue(bytes32 agreementId, address debtor, bool success)
         public
     {
-        mockReturnValue("registerTermStart", agreementId, success ? bytes32(1) : bytes32(0));
+        mockReturnValue(
+            "registerTermStart",
+            keccak256(agreementId, debtor),
+            success ? bytes32(1) : bytes32(0)
+        );
     }
 
-    function wasRegisterTermStartCalledWith(bytes32 agreementId)
+    function wasRegisterTermStartCalledWith(bytes32 agreementId, address debtor)
         public
         view
         returns (bool _wasCalled)
     {
-        return wasFunctionCalledWithArgs("registerTermStart", agreementId);
+        return wasFunctionCalledWithArgs("registerTermStart", keccak256(agreementId, debtor));
     }
 
     function getFunctionList()

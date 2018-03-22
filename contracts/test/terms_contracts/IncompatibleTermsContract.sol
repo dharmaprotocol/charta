@@ -37,7 +37,8 @@ contract IncompatibleTermsContract is TermsContract {
     /// @param  agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.
     /// @return _success bool. Acknowledgment of whether
     function registerTermStart(
-        bytes32 agreementId
+        bytes32 agreementId,
+        address debtor
     )
         public
         returns (bool _success)

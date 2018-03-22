@@ -32,9 +32,11 @@ interface TermsContract {
      ///    must THROW.  Similarly, if this method is called by any contract other
      ///    than the current DebtKernel, must THROW.
      /// @param  agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.
+     /// @param  debtor address. The debtor in this particular issuance.
      /// @return _success bool. Acknowledgment of whether
     function registerTermStart(
-        bytes32 agreementId
+        bytes32 agreementId,
+        address debtor
     ) public returns (bool _success);
 
      /// When called, the registerRepayment function records the debtor's
