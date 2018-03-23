@@ -31,12 +31,13 @@ contract CollateralizedSimpleInterestTermsContract is Collateralized, SimpleInte
     function CollateralizedSimpleInterestTermsContract(
         address _debtRegistry,
         address _debtKernel,
+        address _tokenRegistry,
         address _repaymentToken,
         address _repaymentRouter
     )
         public
         SimpleInterestTermsContract(_debtRegistry, _debtKernel, _repaymentToken, _repaymentRouter)
-        Collateralized(_debtRegistry)
+        Collateralized(_debtKernel, _debtRegistry, _tokenRegistry)
     {
         // No initialization necessary
     }

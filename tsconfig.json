@@ -15,7 +15,7 @@
     "node_modules/types-ethereumjs-util/index.d.ts",
     "node_modules/types-bn/index.d.ts",
     "types/*.ts",
-    "test/**/*.ts",
+    "test/ts/**/*.ts",
     "utils/*.ts"
   ]
 }
