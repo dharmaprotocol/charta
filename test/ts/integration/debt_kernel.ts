@@ -6,16 +6,20 @@ import * as chai from "chai";
 import * as moment from "moment";
 import * as utils from "../test_utils/utils";
 
+// Types
 import { DebtOrder, SignedDebtOrder } from "../../../types/kernel/debt_order";
-import { INVALID_OPCODE, REVERT_ERROR } from "../test_utils/constants";
 import {
     IssuanceCommitment,
     SignedIssuanceCommitment,
 } from "../../../types/kernel/issuance_commitment";
+
+// Test Utils
 import { LogApproval, LogMint, LogTransfer } from "../logs/debt_token";
 import { LogDebtOrderFilled, LogError } from "../logs/debt_kernel";
 import { LogInsertEntry, LogModifyEntryBeneficiary } from "../logs/debt_registry";
+import { SimpleInterestParameters } from "../factories/terms_contract_parameters";
 
+// Wrappers
 import { BigNumber } from "bignumber.js";
 import { BigNumberSetup } from "../test_utils/bignumber_setup";
 import ChaiSetup from "../test_utils/chai_setup";
@@ -28,10 +32,14 @@ import { DebtTokenContract } from "../../../types/generated/debt_token";
 import { DummyTokenContract } from "../../../types/generated/dummy_token";
 import { IncompatibleTermsContractContract } from "../../../types/generated/incompatible_terms_contract";
 import { RepaymentRouterContract } from "../../../types/generated/repayment_router";
+import { SimpleInterestTermsContractContract } from "../../../types/generated/simple_interest_terms_contract";
 import { TermsContractRegistryContract } from "../../../types/generated/terms_contract_registry";
 import { TokenRegistryContract } from "../../../types/generated/token_registry";
 import { TokenTransferProxyContract } from "../../../types/generated/token_transfer_proxy";
 import { TxDataPayable } from "../../../types/common";
+
+// Constants
+import { INVALID_OPCODE, REVERT_ERROR } from "../test_utils/constants";
 
 // Configure BigNumber exponentiation
 BigNumberSetup.configure();
@@ -45,13 +53,13 @@ const debtKernelContract = artifacts.require("DebtKernel");
 contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
     let kernel: DebtKernelContract;
     let repaymentRouter: RepaymentRouterContract;
+    let simpleInterestTermsContract: SimpleInterestTermsContractContract;
     let tokenTransferProxy: TokenTransferProxyContract;
     let debtTokenContract: DebtTokenContract;
     let debtRegistryContract: DebtRegistryContract;
 
     let dummyREPToken: DummyTokenContract;
 
-    let simpleInterestTermsContractAddress: string;
     let incompatibleTermsContractAddress: string;
 
     let defaultOrderParams: { [key: string]: any };
@@ -80,29 +88,18 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
 
     const MALICIOUS_TERMS_CONTRACTS = ACCOUNTS[13];
 
-    const TERMS_CONTRACT_PARAMETERS = web3.sha3("arbitrary terms contract parameters");
-
     const NULL_ADDRESS = "0x0000000000000000000000000000000000000000";
 
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4712388 };
 
     const reset = async () => {
         const dummyTokenRegistryContract = await TokenRegistryContract.deployed(web3, TX_DEFAULTS);
-        const termsContractRegistryContract = await TermsContractRegistryContract.deployed(
-            web3,
-            TX_DEFAULTS,
-        );
 
         const dummyREPTokenAddress = await dummyTokenRegistryContract.getTokenAddressBySymbol.callAsync(
             "REP",
         );
 
         dummyREPToken = await DummyTokenContract.at(dummyREPTokenAddress, web3, TX_DEFAULTS);
-
-        // tslint:disable-next-line
-        simpleInterestTermsContractAddress = await termsContractRegistryContract.getSimpleInterestTermsContractAddress.callAsync(
-            dummyREPTokenAddress,
-        );
 
         const incompatibleTermsContract = await IncompatibleTermsContractContract.deployed(
             web3,
@@ -112,11 +109,22 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
 
         debtTokenContract = await DebtTokenContract.deployed(web3, TX_DEFAULTS);
         debtRegistryContract = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
+        simpleInterestTermsContract = await SimpleInterestTermsContractContract.deployed(
+            web3,
+            TX_DEFAULTS,
+        );
         tokenTransferProxy = await TokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
 
         kernel = await DebtKernelContract.deployed(web3, TX_DEFAULTS);
 
         repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
+
+        const termsContractParameters = SimpleInterestParameters.pack(
+            new BigNumber(0), // Our migrations set REP up to be at index 0 of the registry
+            Units.ether(1.1), // Expected Principal Plus Interest
+            new BigNumber(1), // The amortization unit type (weekly)
+            new BigNumber(4), // Term length in amortization units.
+        );
 
         defaultOrderParams = {
             creditor: CREDITOR_1,
@@ -137,8 +145,8 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
             principalTokenAddress: dummyREPToken.address,
             relayer: RELAYER,
             relayerFee: Units.ether(0.0015),
-            termsContract: simpleInterestTermsContractAddress,
-            termsContractParameters: TERMS_CONTRACT_PARAMETERS,
+            termsContract: simpleInterestTermsContract.address,
+            termsContractParameters,
             underwriter: UNDERWRITER,
             underwriterFee: Units.ether(0.0015),
             underwriterRiskRating: Units.percent(1.35),
