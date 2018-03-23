@@ -271,7 +271,7 @@ export const DetailedERC721 =
       "absolutePath": "NonFungibleToken/contracts/DetailedERC721.sol",
       "exportedSymbols": {
         "DetailedERC721": [
-          6934
+          4479
         ]
       }
     },
@@ -284,39 +284,39 @@ export const DetailedERC721 =
             ".18"
           ]
         },
-        "id": 6904,
+        "id": 4449,
         "name": "PragmaDirective",
-        "src": "0:23:27"
+        "src": "0:23:17"
       },
       {
         "attributes": {
-          "SourceUnit": 7008,
+          "SourceUnit": 4553,
           "absolutePath": "NonFungibleToken/contracts/ERC721.sol",
           "file": "./ERC721.sol",
-          "scope": 6935,
+          "scope": 4480,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 6905,
+        "id": 4450,
         "name": "ImportDirective",
-        "src": "25:22:27"
+        "src": "25:22:17"
       },
       {
         "attributes": {
           "contractDependencies": [
-            7007
+            4552
           ],
           "contractKind": "contract",
           "documentation": "Interface for optional functionality in the ERC721 standard\nfor non-fungible tokens.\n * Author: Nadav Hollander (nadav at dharma.io)",
           "fullyImplemented": false,
           "linearizedBaseContracts": [
-            6934,
-            7007
+            4479,
+            4552
           ],
           "name": "DetailedERC721",
-          "scope": 6935
+          "scope": 4480
         },
         "children": [
           {
@@ -330,17 +330,17 @@ export const DetailedERC721 =
                 "attributes": {
                   "contractScope": null,
                   "name": "ERC721",
-                  "referencedDeclaration": 7007,
+                  "referencedDeclaration": 4552,
                   "type": "contract ERC721"
                 },
-                "id": 6906,
+                "id": 4451,
                 "name": "UserDefinedTypeName",
-                "src": "227:6:27"
+                "src": "227:6:17"
               }
             ],
-            "id": 6907,
+            "id": 4452,
             "name": "InheritanceSpecifier",
-            "src": "227:6:27"
+            "src": "227:6:17"
           },
           {
             "attributes": {
@@ -353,7 +353,7 @@ export const DetailedERC721 =
               ],
               "name": "name",
               "payable": false,
-              "scope": 6934,
+              "scope": 4479,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -366,9 +366,9 @@ export const DetailedERC721 =
                   ]
                 },
                 "children": [],
-                "id": 6908,
+                "id": 4453,
                 "name": "ParameterList",
-                "src": "253:2:27"
+                "src": "253:2:17"
               },
               {
                 "children": [
@@ -376,7 +376,7 @@ export const DetailedERC721 =
                     "attributes": {
                       "constant": false,
                       "name": "_name",
-                      "scope": 6912,
+                      "scope": 4457,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory",
@@ -389,24 +389,24 @@ export const DetailedERC721 =
                           "name": "string",
                           "type": "string storage pointer"
                         },
-                        "id": 6909,
+                        "id": 4454,
                         "name": "ElementaryTypeName",
-                        "src": "277:6:27"
+                        "src": "277:6:17"
                       }
                     ],
-                    "id": 6910,
+                    "id": 4455,
                     "name": "VariableDeclaration",
-                    "src": "277:12:27"
+                    "src": "277:12:17"
                   }
                 ],
-                "id": 6911,
+                "id": 4456,
                 "name": "ParameterList",
-                "src": "276:14:27"
+                "src": "276:14:17"
               }
             ],
-            "id": 6912,
+            "id": 4457,
             "name": "FunctionDefinition",
-            "src": "240:51:27"
+            "src": "240:51:17"
           },
           {
             "attributes": {
@@ -419,7 +419,7 @@ export const DetailedERC721 =
               ],
               "name": "symbol",
               "payable": false,
-              "scope": 6934,
+              "scope": 4479,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -432,9 +432,9 @@ export const DetailedERC721 =
                   ]
                 },
                 "children": [],
-                "id": 6913,
+                "id": 4458,
                 "name": "ParameterList",
-                "src": "311:2:27"
+                "src": "311:2:17"
               },
               {
                 "children": [
@@ -442,7 +442,7 @@ export const DetailedERC721 =
                     "attributes": {
                       "constant": false,
                       "name": "_symbol",
-                      "scope": 6917,
+                      "scope": 4462,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory",
@@ -455,24 +455,24 @@ export const DetailedERC721 =
                           "name": "string",
                           "type": "string storage pointer"
                         },
-                        "id": 6914,
+                        "id": 4459,
                         "name": "ElementaryTypeName",
-                        "src": "335:6:27"
+                        "src": "335:6:17"
                       }
                     ],
-                    "id": 6915,
+                    "id": 4460,
                     "name": "VariableDeclaration",
-                    "src": "335:14:27"
+                    "src": "335:14:17"
                   }
                 ],
-                "id": 6916,
+                "id": 4461,
                 "name": "ParameterList",
-                "src": "334:16:27"
+                "src": "334:16:17"
               }
             ],
-            "id": 6917,
+            "id": 4462,
             "name": "FunctionDefinition",
-            "src": "296:55:27"
+            "src": "296:55:17"
           },
           {
             "attributes": {
@@ -485,7 +485,7 @@ export const DetailedERC721 =
               ],
               "name": "tokenMetadata",
               "payable": false,
-              "scope": 6934,
+              "scope": 4479,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -497,7 +497,7 @@ export const DetailedERC721 =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 6924,
+                      "scope": 4469,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -510,19 +510,19 @@ export const DetailedERC721 =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 6918,
+                        "id": 4463,
                         "name": "ElementaryTypeName",
-                        "src": "379:4:27"
+                        "src": "379:4:17"
                       }
                     ],
-                    "id": 6919,
+                    "id": 4464,
                     "name": "VariableDeclaration",
-                    "src": "379:13:27"
+                    "src": "379:13:17"
                   }
                 ],
-                "id": 6920,
+                "id": 4465,
                 "name": "ParameterList",
-                "src": "378:15:27"
+                "src": "378:15:17"
               },
               {
                 "children": [
@@ -530,7 +530,7 @@ export const DetailedERC721 =
                     "attributes": {
                       "constant": false,
                       "name": "_infoUrl",
-                      "scope": 6924,
+                      "scope": 4469,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory",
@@ -543,24 +543,24 @@ export const DetailedERC721 =
                           "name": "string",
                           "type": "string storage pointer"
                         },
-                        "id": 6921,
+                        "id": 4466,
                         "name": "ElementaryTypeName",
-                        "src": "415:6:27"
+                        "src": "415:6:17"
                       }
                     ],
-                    "id": 6922,
+                    "id": 4467,
                     "name": "VariableDeclaration",
-                    "src": "415:15:27"
+                    "src": "415:15:17"
                   }
                 ],
-                "id": 6923,
+                "id": 4468,
                 "name": "ParameterList",
-                "src": "414:17:27"
+                "src": "414:17:17"
               }
             ],
-            "id": 6924,
+            "id": 4469,
             "name": "FunctionDefinition",
-            "src": "356:76:27"
+            "src": "356:76:17"
           },
           {
             "attributes": {
@@ -573,7 +573,7 @@ export const DetailedERC721 =
               ],
               "name": "tokenOfOwnerByIndex",
               "payable": false,
-              "scope": 6934,
+              "scope": 4479,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -585,7 +585,7 @@ export const DetailedERC721 =
                     "attributes": {
                       "constant": false,
                       "name": "_owner",
-                      "scope": 6933,
+                      "scope": 4478,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -598,20 +598,20 @@ export const DetailedERC721 =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 6925,
+                        "id": 4470,
                         "name": "ElementaryTypeName",
-                        "src": "466:7:27"
+                        "src": "466:7:17"
                       }
                     ],
-                    "id": 6926,
+                    "id": 4471,
                     "name": "VariableDeclaration",
-                    "src": "466:14:27"
+                    "src": "466:14:17"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "_index",
-                      "scope": 6933,
+                      "scope": 4478,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -624,19 +624,19 @@ export const DetailedERC721 =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 6927,
+                        "id": 4472,
                         "name": "ElementaryTypeName",
-                        "src": "482:4:27"
+                        "src": "482:4:17"
                       }
                     ],
-                    "id": 6928,
+                    "id": 4473,
                     "name": "VariableDeclaration",
-                    "src": "482:11:27"
+                    "src": "482:11:17"
                   }
                 ],
-                "id": 6929,
+                "id": 4474,
                 "name": "ParameterList",
-                "src": "465:29:27"
+                "src": "465:29:17"
               },
               {
                 "children": [
@@ -644,7 +644,7 @@ export const DetailedERC721 =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 6933,
+                      "scope": 4478,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -657,34 +657,34 @@ export const DetailedERC721 =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 6930,
+                        "id": 4475,
                         "name": "ElementaryTypeName",
-                        "src": "516:4:27"
+                        "src": "516:4:17"
                       }
                     ],
-                    "id": 6931,
+                    "id": 4476,
                     "name": "VariableDeclaration",
-                    "src": "516:13:27"
+                    "src": "516:13:17"
                   }
                 ],
-                "id": 6932,
+                "id": 4477,
                 "name": "ParameterList",
-                "src": "515:15:27"
+                "src": "515:15:17"
               }
             ],
-            "id": 6933,
+            "id": 4478,
             "name": "FunctionDefinition",
-            "src": "437:94:27"
+            "src": "437:94:17"
           }
         ],
-        "id": 6934,
+        "id": 4479,
         "name": "ContractDefinition",
-        "src": "200:333:27"
+        "src": "200:333:17"
       }
     ],
-    "id": 6935,
+    "id": 4480,
     "name": "SourceUnit",
-    "src": "0:534:27"
+    "src": "0:534:17"
   },
   "compiler": {
     "name": "solc",
@@ -692,5 +692,5 @@ export const DetailedERC721 =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-05T00:23:04.359Z"
+  "updatedAt": "2018-03-19T22:46:09.668Z"
 }

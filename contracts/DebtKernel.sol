@@ -181,6 +181,9 @@ contract DebtKernel is Pausable {
         issueDebtAgreement(creditor, debtOrder.issuance);
 
         // Register debt agreement's start with terms contract
+        // We permit terms contracts to be undefined (for debt agreements which
+        // may not have terms contracts associated with them), and only
+        // register a term's start if the terms contract address is defined.
         if (debtOrder.issuance.termsContract != address(0)) {
             require(
                 TermsContract(debtOrder.issuance.termsContract)
