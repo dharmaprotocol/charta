@@ -29,16 +29,27 @@ import "./SimpleInterestTermsContract.sol";
  */
 contract CollateralizedSimpleInterestTermsContract is Collateralized, SimpleInterestTermsContract {
     function CollateralizedSimpleInterestTermsContract(
-        address _debtRegistry,
         address _debtKernel,
+        address _debtRegistry,
         address _tokenRegistry,
-        address _repaymentToken,
         address _repaymentRouter
     )
         public
-        SimpleInterestTermsContract(_debtRegistry, _debtKernel, _repaymentToken, _repaymentRouter)
+        SimpleInterestTermsContract(_debtKernel, _debtRegistry, _tokenRegistry, _repaymentRouter)
         Collateralized(_debtKernel, _debtRegistry, _tokenRegistry)
     {
         // No initialization necessary
+    }
+
+    function getTermEndTimestamp(
+        bytes32 _agreementId
+    )
+        public
+        view
+        returns (uint)
+    {
+        SimpleInterestParams memory params = unpackParamsForAgreementID(_agreementId);
+
+        return params.termEndUnixTimestamp;
     }
 }
