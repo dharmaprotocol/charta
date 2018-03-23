@@ -2,7 +2,6 @@ module.exports = (deployer, network, accounts) => {
     const DebtRegistry = artifacts.require("DebtRegistry");
     const DebtKernel = artifacts.require("DebtKernel");
     const RepaymentRouter = artifacts.require("RepaymentRouter");
-    const TermsContractRegistry = artifacts.require("TermsContractRegistry");
     const TokenRegistry = artifacts.require("TokenRegistry");
     const SimpleInterestTermsContract = artifacts.require("SimpleInterestTermsContract");
     const CompoundInterestTermsContract = artifacts.require("CompoundInterestTermsContract");
