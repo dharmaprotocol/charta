@@ -94,13 +94,21 @@ export class RegisterTermStartRunner {
 
             if (scenario.succeeds) {
                 it("should register without throwing", async () => {
-                    txHash = await mockCollateralizedTermsContract.registerTermStart.sendTransactionAsync(
-                        scenario.agreementId,
-                        COLLATERALIZER,
-                        { from: scenario.from(MOCK_DEBT_KERNEL_ADDRESS, ATTACKER) },
-                    );
+                    await expect(
+                        new Promise(async (resolve, reject) => {
+                            try {
+                                txHash = await mockCollateralizedTermsContract.registerTermStart.sendTransactionAsync(
+                                    scenario.agreementId,
+                                    COLLATERALIZER,
+                                    { from: scenario.from(MOCK_DEBT_KERNEL_ADDRESS, ATTACKER) },
+                                );
 
-                    expect(true);
+                                resolve(txHash);
+                            } catch (e) {
+                                reject(e);
+                            }
+                        }),
+                    ).to.eventually.not.be.rejected;
                 });
 
                 it("should store record of collateralization", async () => {

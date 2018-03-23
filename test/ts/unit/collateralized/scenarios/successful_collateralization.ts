@@ -14,7 +14,7 @@ const defaultArgs = {
     termsContract: (collateralizedContract: string, attacker: string) => collateralizedContract,
 };
 
-export const SUCCESSFUL_COLLATERALIZATION: RegisterTermStartScenario[] = [
+export const SUCCESSFUL_COLLATERALIZATION_SCENARIOS: RegisterTermStartScenario[] = [
     {
         description: "Collateralize 0.005 REP with 20 day grace period",
         ...defaultArgs,

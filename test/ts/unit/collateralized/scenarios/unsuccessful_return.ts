@@ -39,7 +39,7 @@ const defaultArgs = {
     succeeds: false,
 };
 
-export const UNSUCCESSFUL_RETURN: ReturnCollateralScenario[] = [
+export const UNSUCCESSFUL_RETURN_SCENARIOS: ReturnCollateralScenario[] = [
     {
         description: "Debt agreement does not exist",
         ...defaultArgs,

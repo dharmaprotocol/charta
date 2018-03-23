@@ -31,7 +31,7 @@ const defaultArgs = {
     succeeds: false,
 };
 
-export const UNSUCCESSFUL_SEIZURE: SeizeCollateralScenario[] = [
+export const UNSUCCESSFUL_SEIZURE_SCENARIOS: SeizeCollateralScenario[] = [
     {
         description: "Debt agreement does not exist",
         ...defaultArgs,
