@@ -144,12 +144,20 @@ export class ReturnCollateralRunner {
 
             if (scenario.succeeds) {
                 it("should not throw", async () => {
-                    txHash = await mockCollateralizedTermsContract.returnCollateral.sendTransactionAsync(
-                        scenario.agreementId,
-                        { from: scenario.from(COLLATERALIZER, NON_COLLATERALIZER) },
-                    );
+                    await expect(
+                        new Promise(async (resolve, reject) => {
+                            try {
+                                txHash = await mockCollateralizedTermsContract.returnCollateral.sendTransactionAsync(
+                                    scenario.agreementId,
+                                    { from: scenario.from(COLLATERALIZER, NON_COLLATERALIZER) },
+                                );
 
-                    expect(true);
+                                resolve(txHash);
+                            } catch (e) {
+                                reject(e);
+                            }
+                        }),
+                    ).to.eventually.not.be.rejected;
                 });
 
                 it("should erase record of current collateralization", async () => {

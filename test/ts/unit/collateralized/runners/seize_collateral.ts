@@ -138,12 +138,20 @@ export class SeizeCollateralRunner {
 
             if (scenario.succeeds) {
                 it("should not throw", async () => {
-                    txHash = await mockCollateralizedTermsContract.seizeCollateral.sendTransactionAsync(
-                        scenario.agreementId,
-                        { from: scenario.from(BENEFICIARY_1, BENEFICIARY_2) },
-                    );
+                    await expect(
+                        new Promise(async (resolve, reject) => {
+                            try {
+                                txHash = await mockCollateralizedTermsContract.seizeCollateral.sendTransactionAsync(
+                                    scenario.agreementId,
+                                    { from: scenario.from(BENEFICIARY_1, BENEFICIARY_2) },
+                                );
 
-                    expect(true);
+                                resolve(txHash);
+                            } catch (e) {
+                                reject(e);
+                            }
+                        }),
+                    ).to.eventually.not.be.rejected;
                 });
 
                 it("should erase record of current collateralization", async () => {

@@ -20,7 +20,7 @@ const defaultArgs = {
     termsContractParameters: "0x00000000000000000000000000000000000000200000000de0b6b3a764000001",
 };
 
-export const UNSUCCESSFUL_COLLATERALIZATION: RegisterTermStartScenario[] = [
+export const UNSUCCESSFUL_COLLATERALIZATION_SCENARIOS: RegisterTermStartScenario[] = [
     {
         description: "Caller is not debt kernel",
         ...defaultArgs,

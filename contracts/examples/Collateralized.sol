@@ -70,7 +70,11 @@ contract Collateralized is TermsContract {
         uint amount
     );
 
-    function Collateralized(address _debtKernel, address _debtRegistry, address _tokenRegistry) public {
+    function Collateralized(
+        address _debtKernel,
+        address _debtRegistry,
+        address _tokenRegistry
+    ) public {
         debtKernelAddress = _debtKernel;
         debtRegistry = DebtRegistry(_debtRegistry);
         tokenRegistry = TokenRegistry(_tokenRegistry);

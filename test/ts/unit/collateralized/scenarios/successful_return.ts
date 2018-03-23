@@ -7,7 +7,7 @@ import * as moment from "moment";
 // utils
 import * as Units from "../../../test_utils/units";
 
-export const SUCCESSFUL_RETURN: ReturnCollateralScenario[] = [
+export const SUCCESSFUL_RETURN_SCENARIOS: ReturnCollateralScenario[] = [
     {
         description: "Debt's term has lapsed and debt has been repaid",
         collateralAmount: Units.ether(3),
