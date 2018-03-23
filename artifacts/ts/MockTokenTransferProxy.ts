@@ -1236,7 +1236,7 @@ export const MockTokenTransferProxy =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x174722461bcf153ba42da17d9f8af46bddf32938"
+      "address": "0x631e4e0dedaf3c7d8608f8cef293457630989ad3"
     },
     "70": {
       "events": {},
@@ -1245,5 +1245,5 @@ export const MockTokenTransferProxy =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-19T22:48:21.292Z"
+  "updatedAt": "2018-03-23T04:46:36.419Z"
 }

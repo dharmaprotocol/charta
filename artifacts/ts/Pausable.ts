@@ -94,8 +94,8 @@ export const Pausable =
   ],
   "bytecode": "0x606060405260008060146101000a81548160ff021916908315150217905550336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555061048e8061006d6000396000f30060606040526004361061006d576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680633f4ba83a146100725780635c975abb146100875780638456cb59146100b45780638da5cb5b146100c9578063f2fde38b1461011e575b600080fd5b341561007d57600080fd5b610085610157565b005b341561009257600080fd5b61009a610215565b604051808215151515815260200191505060405180910390f35b34156100bf57600080fd5b6100c7610228565b005b34156100d457600080fd5b6100dc6102e8565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561012957600080fd5b610155600480803573ffffffffffffffffffffffffffffffffffffffff1690602001909190505061030d565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156101b257600080fd5b600060149054906101000a900460ff1615156101cd57600080fd5b60008060146101000a81548160ff0219169083151502179055507f7805862f689e2f13df9f062ff482ad3ad112aca9e0847911ed832e158c525b3360405160405180910390a1565b600060149054906101000a900460ff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561028357600080fd5b600060149054906101000a900460ff1615151561029f57600080fd5b6001600060146101000a81548160ff0219169083151502179055507f6985a02210a168e66602d3235cb6db0e70f92b3ba4d376a33c0f3d9434bff62560405160405180910390a1565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561036857600080fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff16141515156103a457600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a723058205be24b61a066a10bfd0a9eb94e9d155ec538fc2596b84750ec438cd11151a0970029",
   "deployedBytecode": "0x60606040526004361061006d576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680633f4ba83a146100725780635c975abb146100875780638456cb59146100b45780638da5cb5b146100c9578063f2fde38b1461011e575b600080fd5b341561007d57600080fd5b610085610157565b005b341561009257600080fd5b61009a610215565b604051808215151515815260200191505060405180910390f35b34156100bf57600080fd5b6100c7610228565b005b34156100d457600080fd5b6100dc6102e8565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561012957600080fd5b610155600480803573ffffffffffffffffffffffffffffffffffffffff1690602001909190505061030d565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156101b257600080fd5b600060149054906101000a900460ff1615156101cd57600080fd5b60008060146101000a81548160ff0219169083151502179055507f7805862f689e2f13df9f062ff482ad3ad112aca9e0847911ed832e158c525b3360405160405180910390a1565b600060149054906101000a900460ff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561028357600080fd5b600060149054906101000a900460ff1615151561029f57600080fd5b6001600060146101000a81548160ff0219169083151502179055507f6985a02210a168e66602d3235cb6db0e70f92b3ba4d376a33c0f3d9434bff62560405160405180910390a1565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561036857600080fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff16141515156103a457600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a723058205be24b61a066a10bfd0a9eb94e9d155ec538fc2596b84750ec438cd11151a0970029",
-  "sourceMap": "177:745:21:-;;;268:5;247:26;;;;;;;;;;;;;;;;;;;;509:10:23;501:5;;:18;;;;;;;;;;;;;;;;;;177:745:21;;;;;;",
-  "deployedSourceMap": "177:745:21:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;833:87;;;;;;;;;;;;;;247:26;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;666:85;;;;;;;;;;;;;;238:20:23;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;832:169;;;;;;;;;;;;;;;;;;;;;;;;;;;;833:87:21;653:5:23;;;;;;;;;;;639:19;;:10;:19;;;631:28;;;;;;;;568:6:21;;;;;;;;;;;560:15;;;;;;;;895:5;886:6;;:14;;;;;;;;;;;;;;;;;;906:9;;;;;;;;;;833:87::o;247:26::-;;;;;;;;;;;;;:::o;666:85::-;653:5:23;;;;;;;;;;;639:19;;:10;:19;;;631:28;;;;;;;;416:6:21;;;;;;;;;;;415:7;407:16;;;;;;;;729:4;720:6;;:13;;;;;;;;;;;;;;;;;;739:7;;;;;;;;;;666:85::o;238:20:23:-;;;;;;;;;;;;;:::o;832:169::-;653:5;;;;;;;;;;;639:19;;:10;:19;;;631:28;;;;;;;;928:1;908:22;;:8;:22;;;;900:31;;;;;;;;965:8;937:37;;958:5;;;;;;;;;;;937:37;;;;;;;;;;;;988:8;980:5;;:16;;;;;;;;;;;;;;;;;;832:169;:::o",
+  "sourceMap": "177:745:20:-;;;268:5;247:26;;;;;;;;;;;;;;;;;;;;509:10:22;501:5;;:18;;;;;;;;;;;;;;;;;;177:745:20;;;;;;",
+  "deployedSourceMap": "177:745:20:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;833:87;;;;;;;;;;;;;;247:26;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;666:85;;;;;;;;;;;;;;238:20:22;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;832:169;;;;;;;;;;;;;;;;;;;;;;;;;;;;833:87:20;653:5:22;;;;;;;;;;;639:19;;:10;:19;;;631:28;;;;;;;;568:6:20;;;;;;;;;;;560:15;;;;;;;;895:5;886:6;;:14;;;;;;;;;;;;;;;;;;906:9;;;;;;;;;;833:87::o;247:26::-;;;;;;;;;;;;;:::o;666:85::-;653:5:22;;;;;;;;;;;639:19;;:10;:19;;;631:28;;;;;;;;416:6:20;;;;;;;;;;;415:7;407:16;;;;;;;;729:4;720:6;;:13;;;;;;;;;;;;;;;;;;739:7;;;;;;;;;;666:85::o;238:20:22:-;;;;;;;;;;;;;:::o;832:169::-;653:5;;;;;;;;;;;639:19;;:10;:19;;;631:28;;;;;;;;928:1;908:22;;:8;:22;;;;900:31;;;;;;;;965:8;937:37;;958:5;;;;;;;;;;;937:37;;;;;;;;;;;;988:8;980:5;;:16;;;;;;;;;;;;;;;;;;832:169;:::o",
   "source": "pragma solidity ^0.4.18;\n\n\nimport \"../ownership/Ownable.sol\";\n\n\n/**\n * @title Pausable\n * @dev Base contract which allows children to implement an emergency stop mechanism.\n */\ncontract Pausable is Ownable {\n  event Pause();\n  event Unpause();\n\n  bool public paused = false;\n\n\n  /**\n   * @dev Modifier to make a function callable only when the contract is not paused.\n   */\n  modifier whenNotPaused() {\n    require(!paused);\n    _;\n  }\n\n  /**\n   * @dev Modifier to make a function callable only when the contract is paused.\n   */\n  modifier whenPaused() {\n    require(paused);\n    _;\n  }\n\n  /**\n   * @dev called by the owner to pause, triggers stopped state\n   */\n  function pause() onlyOwner whenNotPaused public {\n    paused = true;\n    Pause();\n  }\n\n  /**\n   * @dev called by the owner to unpause, returns to normal state\n   */\n  function unpause() onlyOwner whenPaused public {\n    paused = false;\n    Unpause();\n  }\n}\n",
   "sourcePath": "zeppelin-solidity/contracts/lifecycle/Pausable.sol",
   "ast": {
@@ -103,7 +103,7 @@ export const Pausable =
       "absolutePath": "zeppelin-solidity/contracts/lifecycle/Pausable.sol",
       "exportedSymbols": {
         "Pausable": [
-          5234
+          5244
         ]
       }
     },
@@ -117,39 +117,39 @@ export const Pausable =
             ".18"
           ]
         },
-        "id": 5176,
+        "id": 5186,
         "name": "PragmaDirective",
-        "src": "0:24:21"
+        "src": "0:24:20"
       },
       {
         "attributes": {
-          "SourceUnit": 5389,
+          "SourceUnit": 5399,
           "absolutePath": "zeppelin-solidity/contracts/ownership/Ownable.sol",
           "file": "../ownership/Ownable.sol",
-          "scope": 5235,
+          "scope": 5245,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 5177,
+        "id": 5187,
         "name": "ImportDirective",
-        "src": "27:34:21"
+        "src": "27:34:20"
       },
       {
         "attributes": {
           "contractDependencies": [
-            5388
+            5398
           ],
           "contractKind": "contract",
           "documentation": "@title Pausable\n@dev Base contract which allows children to implement an emergency stop mechanism.",
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            5234,
-            5388
+            5244,
+            5398
           ],
           "name": "Pausable",
-          "scope": 5235
+          "scope": 5245
         },
         "children": [
           {
@@ -163,17 +163,17 @@ export const Pausable =
                 "attributes": {
                   "contractScope": null,
                   "name": "Ownable",
-                  "referencedDeclaration": 5388,
+                  "referencedDeclaration": 5398,
                   "type": "contract Ownable"
                 },
-                "id": 5178,
+                "id": 5188,
                 "name": "UserDefinedTypeName",
-                "src": "198:7:21"
+                "src": "198:7:20"
               }
             ],
-            "id": 5179,
+            "id": 5189,
             "name": "InheritanceSpecifier",
-            "src": "198:7:21"
+            "src": "198:7:20"
           },
           {
             "attributes": {
@@ -188,14 +188,14 @@ export const Pausable =
                   ]
                 },
                 "children": [],
-                "id": 5180,
+                "id": 5190,
                 "name": "ParameterList",
-                "src": "221:2:21"
+                "src": "221:2:20"
               }
             ],
-            "id": 5181,
+            "id": 5191,
             "name": "EventDefinition",
-            "src": "210:14:21"
+            "src": "210:14:20"
           },
           {
             "attributes": {
@@ -210,20 +210,20 @@ export const Pausable =
                   ]
                 },
                 "children": [],
-                "id": 5182,
+                "id": 5192,
                 "name": "ParameterList",
-                "src": "240:2:21"
+                "src": "240:2:20"
               }
             ],
-            "id": 5183,
+            "id": 5193,
             "name": "EventDefinition",
-            "src": "227:16:21"
+            "src": "227:16:20"
           },
           {
             "attributes": {
               "constant": false,
               "name": "paused",
-              "scope": 5234,
+              "scope": 5244,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "bool",
@@ -235,9 +235,9 @@ export const Pausable =
                   "name": "bool",
                   "type": "bool"
                 },
-                "id": 5184,
+                "id": 5194,
                 "name": "ElementaryTypeName",
-                "src": "247:4:21"
+                "src": "247:4:20"
               },
               {
                 "attributes": {
@@ -252,14 +252,14 @@ export const Pausable =
                   "type": "bool",
                   "value": "false"
                 },
-                "id": 5185,
+                "id": 5195,
                 "name": "Literal",
-                "src": "268:5:21"
+                "src": "268:5:20"
               }
             ],
-            "id": 5186,
+            "id": 5196,
             "name": "VariableDeclaration",
-            "src": "247:26:21"
+            "src": "247:26:20"
           },
           {
             "attributes": {
@@ -274,9 +274,9 @@ export const Pausable =
                   ]
                 },
                 "children": [],
-                "id": 5187,
+                "id": 5197,
                 "name": "ParameterList",
-                "src": "398:2:21"
+                "src": "398:2:20"
               },
               {
                 "children": [
@@ -308,13 +308,13 @@ export const Pausable =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5478,
+                              "referencedDeclaration": 5488,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 5188,
+                            "id": 5198,
                             "name": "Identifier",
-                            "src": "407:7:21"
+                            "src": "407:7:20"
                           },
                           {
                             "attributes": {
@@ -334,43 +334,43 @@ export const Pausable =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5186,
+                                  "referencedDeclaration": 5196,
                                   "type": "bool",
                                   "value": "paused"
                                 },
-                                "id": 5189,
+                                "id": 5199,
                                 "name": "Identifier",
-                                "src": "416:6:21"
+                                "src": "416:6:20"
                               }
                             ],
-                            "id": 5190,
+                            "id": 5200,
                             "name": "UnaryOperation",
-                            "src": "415:7:21"
+                            "src": "415:7:20"
                           }
                         ],
-                        "id": 5191,
+                        "id": 5201,
                         "name": "FunctionCall",
-                        "src": "407:16:21"
+                        "src": "407:16:20"
                       }
                     ],
-                    "id": 5192,
+                    "id": 5202,
                     "name": "ExpressionStatement",
-                    "src": "407:16:21"
+                    "src": "407:16:20"
                   },
                   {
-                    "id": 5193,
+                    "id": 5203,
                     "name": "PlaceholderStatement",
-                    "src": "429:1:21"
+                    "src": "429:1:20"
                   }
                 ],
-                "id": 5194,
+                "id": 5204,
                 "name": "Block",
-                "src": "401:34:21"
+                "src": "401:34:20"
               }
             ],
-            "id": 5195,
+            "id": 5205,
             "name": "ModifierDefinition",
-            "src": "376:59:21"
+            "src": "376:59:20"
           },
           {
             "attributes": {
@@ -385,9 +385,9 @@ export const Pausable =
                   ]
                 },
                 "children": [],
-                "id": 5196,
+                "id": 5206,
                 "name": "ParameterList",
-                "src": "551:2:21"
+                "src": "551:2:20"
               },
               {
                 "children": [
@@ -419,13 +419,13 @@ export const Pausable =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5478,
+                              "referencedDeclaration": 5488,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 5197,
+                            "id": 5207,
                             "name": "Identifier",
-                            "src": "560:7:21"
+                            "src": "560:7:20"
                           },
                           {
                             "attributes": {
@@ -433,38 +433,38 @@ export const Pausable =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5186,
+                              "referencedDeclaration": 5196,
                               "type": "bool",
                               "value": "paused"
                             },
-                            "id": 5198,
+                            "id": 5208,
                             "name": "Identifier",
-                            "src": "568:6:21"
+                            "src": "568:6:20"
                           }
                         ],
-                        "id": 5199,
+                        "id": 5209,
                         "name": "FunctionCall",
-                        "src": "560:15:21"
+                        "src": "560:15:20"
                       }
                     ],
-                    "id": 5200,
+                    "id": 5210,
                     "name": "ExpressionStatement",
-                    "src": "560:15:21"
+                    "src": "560:15:20"
                   },
                   {
-                    "id": 5201,
+                    "id": 5211,
                     "name": "PlaceholderStatement",
-                    "src": "581:1:21"
+                    "src": "581:1:20"
                   }
                 ],
-                "id": 5202,
+                "id": 5212,
                 "name": "Block",
-                "src": "554:33:21"
+                "src": "554:33:20"
               }
             ],
-            "id": 5203,
+            "id": 5213,
             "name": "ModifierDefinition",
-            "src": "532:55:21"
+            "src": "532:55:20"
           },
           {
             "attributes": {
@@ -473,7 +473,7 @@ export const Pausable =
               "isConstructor": false,
               "name": "pause",
               "payable": false,
-              "scope": 5234,
+              "scope": 5244,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -486,9 +486,9 @@ export const Pausable =
                   ]
                 },
                 "children": [],
-                "id": 5204,
+                "id": 5214,
                 "name": "ParameterList",
-                "src": "680:2:21"
+                "src": "680:2:20"
               },
               {
                 "attributes": {
@@ -497,9 +497,9 @@ export const Pausable =
                   ]
                 },
                 "children": [],
-                "id": 5209,
+                "id": 5219,
                 "name": "ParameterList",
-                "src": "714:0:21"
+                "src": "714:0:20"
               },
               {
                 "attributes": {
@@ -514,18 +514,18 @@ export const Pausable =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 5362,
+                      "referencedDeclaration": 5372,
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
-                    "id": 5205,
+                    "id": 5215,
                     "name": "Identifier",
-                    "src": "683:9:21"
+                    "src": "683:9:20"
                   }
                 ],
-                "id": 5206,
+                "id": 5216,
                 "name": "ModifierInvocation",
-                "src": "683:9:21"
+                "src": "683:9:20"
               },
               {
                 "attributes": {
@@ -540,18 +540,18 @@ export const Pausable =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 5195,
+                      "referencedDeclaration": 5205,
                       "type": "modifier ()",
                       "value": "whenNotPaused"
                     },
-                    "id": 5207,
+                    "id": 5217,
                     "name": "Identifier",
-                    "src": "693:13:21"
+                    "src": "693:13:20"
                   }
                 ],
-                "id": 5208,
+                "id": 5218,
                 "name": "ModifierInvocation",
-                "src": "693:13:21"
+                "src": "693:13:20"
               },
               {
                 "children": [
@@ -574,13 +574,13 @@ export const Pausable =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5186,
+                              "referencedDeclaration": 5196,
                               "type": "bool",
                               "value": "paused"
                             },
-                            "id": 5210,
+                            "id": 5220,
                             "name": "Identifier",
-                            "src": "720:6:21"
+                            "src": "720:6:20"
                           },
                           {
                             "attributes": {
@@ -595,19 +595,19 @@ export const Pausable =
                               "type": "bool",
                               "value": "true"
                             },
-                            "id": 5211,
+                            "id": 5221,
                             "name": "Literal",
-                            "src": "729:4:21"
+                            "src": "729:4:20"
                           }
                         ],
-                        "id": 5212,
+                        "id": 5222,
                         "name": "Assignment",
-                        "src": "720:13:21"
+                        "src": "720:13:20"
                       }
                     ],
-                    "id": 5213,
+                    "id": 5223,
                     "name": "ExpressionStatement",
-                    "src": "720:13:21"
+                    "src": "720:13:20"
                   },
                   {
                     "children": [
@@ -637,33 +637,33 @@ export const Pausable =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5181,
+                              "referencedDeclaration": 5191,
                               "type": "function ()",
                               "value": "Pause"
                             },
-                            "id": 5214,
+                            "id": 5224,
                             "name": "Identifier",
-                            "src": "739:5:21"
+                            "src": "739:5:20"
                           }
                         ],
-                        "id": 5215,
+                        "id": 5225,
                         "name": "FunctionCall",
-                        "src": "739:7:21"
+                        "src": "739:7:20"
                       }
                     ],
-                    "id": 5216,
+                    "id": 5226,
                     "name": "ExpressionStatement",
-                    "src": "739:7:21"
+                    "src": "739:7:20"
                   }
                 ],
-                "id": 5217,
+                "id": 5227,
                 "name": "Block",
-                "src": "714:37:21"
+                "src": "714:37:20"
               }
             ],
-            "id": 5218,
+            "id": 5228,
             "name": "FunctionDefinition",
-            "src": "666:85:21"
+            "src": "666:85:20"
           },
           {
             "attributes": {
@@ -672,7 +672,7 @@ export const Pausable =
               "isConstructor": false,
               "name": "unpause",
               "payable": false,
-              "scope": 5234,
+              "scope": 5244,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -685,9 +685,9 @@ export const Pausable =
                   ]
                 },
                 "children": [],
-                "id": 5219,
+                "id": 5229,
                 "name": "ParameterList",
-                "src": "849:2:21"
+                "src": "849:2:20"
               },
               {
                 "attributes": {
@@ -696,9 +696,9 @@ export const Pausable =
                   ]
                 },
                 "children": [],
-                "id": 5224,
+                "id": 5234,
                 "name": "ParameterList",
-                "src": "880:0:21"
+                "src": "880:0:20"
               },
               {
                 "attributes": {
@@ -713,18 +713,18 @@ export const Pausable =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 5362,
+                      "referencedDeclaration": 5372,
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
-                    "id": 5220,
+                    "id": 5230,
                     "name": "Identifier",
-                    "src": "852:9:21"
+                    "src": "852:9:20"
                   }
                 ],
-                "id": 5221,
+                "id": 5231,
                 "name": "ModifierInvocation",
-                "src": "852:9:21"
+                "src": "852:9:20"
               },
               {
                 "attributes": {
@@ -739,18 +739,18 @@ export const Pausable =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 5203,
+                      "referencedDeclaration": 5213,
                       "type": "modifier ()",
                       "value": "whenPaused"
                     },
-                    "id": 5222,
+                    "id": 5232,
                     "name": "Identifier",
-                    "src": "862:10:21"
+                    "src": "862:10:20"
                   }
                 ],
-                "id": 5223,
+                "id": 5233,
                 "name": "ModifierInvocation",
-                "src": "862:10:21"
+                "src": "862:10:20"
               },
               {
                 "children": [
@@ -773,13 +773,13 @@ export const Pausable =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5186,
+                              "referencedDeclaration": 5196,
                               "type": "bool",
                               "value": "paused"
                             },
-                            "id": 5225,
+                            "id": 5235,
                             "name": "Identifier",
-                            "src": "886:6:21"
+                            "src": "886:6:20"
                           },
                           {
                             "attributes": {
@@ -794,19 +794,19 @@ export const Pausable =
                               "type": "bool",
                               "value": "false"
                             },
-                            "id": 5226,
+                            "id": 5236,
                             "name": "Literal",
-                            "src": "895:5:21"
+                            "src": "895:5:20"
                           }
                         ],
-                        "id": 5227,
+                        "id": 5237,
                         "name": "Assignment",
-                        "src": "886:14:21"
+                        "src": "886:14:20"
                       }
                     ],
-                    "id": 5228,
+                    "id": 5238,
                     "name": "ExpressionStatement",
-                    "src": "886:14:21"
+                    "src": "886:14:20"
                   },
                   {
                     "children": [
@@ -836,43 +836,43 @@ export const Pausable =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5183,
+                              "referencedDeclaration": 5193,
                               "type": "function ()",
                               "value": "Unpause"
                             },
-                            "id": 5229,
+                            "id": 5239,
                             "name": "Identifier",
-                            "src": "906:7:21"
+                            "src": "906:7:20"
                           }
                         ],
-                        "id": 5230,
+                        "id": 5240,
                         "name": "FunctionCall",
-                        "src": "906:9:21"
+                        "src": "906:9:20"
                       }
                     ],
-                    "id": 5231,
+                    "id": 5241,
                     "name": "ExpressionStatement",
-                    "src": "906:9:21"
+                    "src": "906:9:20"
                   }
                 ],
-                "id": 5232,
+                "id": 5242,
                 "name": "Block",
-                "src": "880:40:21"
+                "src": "880:40:20"
               }
             ],
-            "id": 5233,
+            "id": 5243,
             "name": "FunctionDefinition",
-            "src": "833:87:21"
+            "src": "833:87:20"
           }
         ],
-        "id": 5234,
+        "id": 5244,
         "name": "ContractDefinition",
-        "src": "177:745:21"
+        "src": "177:745:20"
       }
     ],
-    "id": 5235,
+    "id": 5245,
     "name": "SourceUnit",
-    "src": "0:923:21"
+    "src": "0:923:20"
   },
   "compiler": {
     "name": "solc",
@@ -880,5 +880,5 @@ export const Pausable =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-19T22:46:09.679Z"
+  "updatedAt": "2018-03-23T04:19:01.781Z"
 }

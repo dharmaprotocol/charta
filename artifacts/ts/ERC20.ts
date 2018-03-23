@@ -187,7 +187,7 @@ export const ERC20 =
       "absolutePath": "zeppelin-solidity/contracts/token/ERC20/ERC20.sol",
       "exportedSymbols": {
         "ERC20": [
-          5431
+          5441
         ]
       }
     },
@@ -201,39 +201,39 @@ export const ERC20 =
             ".18"
           ]
         },
-        "id": 5390,
+        "id": 5400,
         "name": "PragmaDirective",
-        "src": "0:24:24"
+        "src": "0:24:23"
       },
       {
         "attributes": {
-          "SourceUnit": 5464,
+          "SourceUnit": 5474,
           "absolutePath": "zeppelin-solidity/contracts/token/ERC20/ERC20Basic.sol",
           "file": "./ERC20Basic.sol",
-          "scope": 5432,
+          "scope": 5442,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 5391,
+        "id": 5401,
         "name": "ImportDirective",
-        "src": "26:26:24"
+        "src": "26:26:23"
       },
       {
         "attributes": {
           "contractDependencies": [
-            5463
+            5473
           ],
           "contractKind": "contract",
           "documentation": "@title ERC20 interface\n@dev see https://github.com/ethereum/EIPs/issues/20",
           "fullyImplemented": false,
           "linearizedBaseContracts": [
-            5431,
-            5463
+            5441,
+            5473
           ],
           "name": "ERC20",
-          "scope": 5432
+          "scope": 5442
         },
         "children": [
           {
@@ -247,17 +247,17 @@ export const ERC20 =
                 "attributes": {
                   "contractScope": null,
                   "name": "ERC20Basic",
-                  "referencedDeclaration": 5463,
+                  "referencedDeclaration": 5473,
                   "type": "contract ERC20Basic"
                 },
-                "id": 5392,
+                "id": 5402,
                 "name": "UserDefinedTypeName",
-                "src": "162:10:24"
+                "src": "162:10:23"
               }
             ],
-            "id": 5393,
+            "id": 5403,
             "name": "InheritanceSpecifier",
-            "src": "162:10:24"
+            "src": "162:10:23"
           },
           {
             "attributes": {
@@ -270,7 +270,7 @@ export const ERC20 =
               ],
               "name": "allowance",
               "payable": false,
-              "scope": 5431,
+              "scope": 5441,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -282,7 +282,7 @@ export const ERC20 =
                     "attributes": {
                       "constant": false,
                       "name": "owner",
-                      "scope": 5402,
+                      "scope": 5412,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -295,20 +295,20 @@ export const ERC20 =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 5394,
+                        "id": 5404,
                         "name": "ElementaryTypeName",
-                        "src": "196:7:24"
+                        "src": "196:7:23"
                       }
                     ],
-                    "id": 5395,
+                    "id": 5405,
                     "name": "VariableDeclaration",
-                    "src": "196:13:24"
+                    "src": "196:13:23"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "spender",
-                      "scope": 5402,
+                      "scope": 5412,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -321,19 +321,19 @@ export const ERC20 =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 5396,
+                        "id": 5406,
                         "name": "ElementaryTypeName",
-                        "src": "211:7:24"
+                        "src": "211:7:23"
                       }
                     ],
-                    "id": 5397,
+                    "id": 5407,
                     "name": "VariableDeclaration",
-                    "src": "211:15:24"
+                    "src": "211:15:23"
                   }
                 ],
-                "id": 5398,
+                "id": 5408,
                 "name": "ParameterList",
-                "src": "195:32:24"
+                "src": "195:32:23"
               },
               {
                 "children": [
@@ -341,7 +341,7 @@ export const ERC20 =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 5402,
+                      "scope": 5412,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -354,24 +354,24 @@ export const ERC20 =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 5399,
+                        "id": 5409,
                         "name": "ElementaryTypeName",
-                        "src": "249:7:24"
+                        "src": "249:7:23"
                       }
                     ],
-                    "id": 5400,
+                    "id": 5410,
                     "name": "VariableDeclaration",
-                    "src": "249:7:24"
+                    "src": "249:7:23"
                   }
                 ],
-                "id": 5401,
+                "id": 5411,
                 "name": "ParameterList",
-                "src": "248:9:24"
+                "src": "248:9:23"
               }
             ],
-            "id": 5402,
+            "id": 5412,
             "name": "FunctionDefinition",
-            "src": "177:81:24"
+            "src": "177:81:23"
           },
           {
             "attributes": {
@@ -384,7 +384,7 @@ export const ERC20 =
               ],
               "name": "transferFrom",
               "payable": false,
-              "scope": 5431,
+              "scope": 5441,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -396,7 +396,7 @@ export const ERC20 =
                     "attributes": {
                       "constant": false,
                       "name": "from",
-                      "scope": 5413,
+                      "scope": 5423,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -409,20 +409,20 @@ export const ERC20 =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 5403,
+                        "id": 5413,
                         "name": "ElementaryTypeName",
-                        "src": "283:7:24"
+                        "src": "283:7:23"
                       }
                     ],
-                    "id": 5404,
+                    "id": 5414,
                     "name": "VariableDeclaration",
-                    "src": "283:12:24"
+                    "src": "283:12:23"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "to",
-                      "scope": 5413,
+                      "scope": 5423,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -435,20 +435,20 @@ export const ERC20 =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 5405,
+                        "id": 5415,
                         "name": "ElementaryTypeName",
-                        "src": "297:7:24"
+                        "src": "297:7:23"
                       }
                     ],
-                    "id": 5406,
+                    "id": 5416,
                     "name": "VariableDeclaration",
-                    "src": "297:10:24"
+                    "src": "297:10:23"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "value",
-                      "scope": 5413,
+                      "scope": 5423,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -461,19 +461,19 @@ export const ERC20 =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 5407,
+                        "id": 5417,
                         "name": "ElementaryTypeName",
-                        "src": "309:7:24"
+                        "src": "309:7:23"
                       }
                     ],
-                    "id": 5408,
+                    "id": 5418,
                     "name": "VariableDeclaration",
-                    "src": "309:13:24"
+                    "src": "309:13:23"
                   }
                 ],
-                "id": 5409,
+                "id": 5419,
                 "name": "ParameterList",
-                "src": "282:41:24"
+                "src": "282:41:23"
               },
               {
                 "children": [
@@ -481,7 +481,7 @@ export const ERC20 =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 5413,
+                      "scope": 5423,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -494,24 +494,24 @@ export const ERC20 =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 5410,
+                        "id": 5420,
                         "name": "ElementaryTypeName",
-                        "src": "340:4:24"
+                        "src": "340:4:23"
                       }
                     ],
-                    "id": 5411,
+                    "id": 5421,
                     "name": "VariableDeclaration",
-                    "src": "340:4:24"
+                    "src": "340:4:23"
                   }
                 ],
-                "id": 5412,
+                "id": 5422,
                 "name": "ParameterList",
-                "src": "339:6:24"
+                "src": "339:6:23"
               }
             ],
-            "id": 5413,
+            "id": 5423,
             "name": "FunctionDefinition",
-            "src": "261:85:24"
+            "src": "261:85:23"
           },
           {
             "attributes": {
@@ -524,7 +524,7 @@ export const ERC20 =
               ],
               "name": "approve",
               "payable": false,
-              "scope": 5431,
+              "scope": 5441,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -536,7 +536,7 @@ export const ERC20 =
                     "attributes": {
                       "constant": false,
                       "name": "spender",
-                      "scope": 5422,
+                      "scope": 5432,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -549,20 +549,20 @@ export const ERC20 =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 5414,
+                        "id": 5424,
                         "name": "ElementaryTypeName",
-                        "src": "366:7:24"
+                        "src": "366:7:23"
                       }
                     ],
-                    "id": 5415,
+                    "id": 5425,
                     "name": "VariableDeclaration",
-                    "src": "366:15:24"
+                    "src": "366:15:23"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "value",
-                      "scope": 5422,
+                      "scope": 5432,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -575,19 +575,19 @@ export const ERC20 =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 5416,
+                        "id": 5426,
                         "name": "ElementaryTypeName",
-                        "src": "383:7:24"
+                        "src": "383:7:23"
                       }
                     ],
-                    "id": 5417,
+                    "id": 5427,
                     "name": "VariableDeclaration",
-                    "src": "383:13:24"
+                    "src": "383:13:23"
                   }
                 ],
-                "id": 5418,
+                "id": 5428,
                 "name": "ParameterList",
-                "src": "365:32:24"
+                "src": "365:32:23"
               },
               {
                 "children": [
@@ -595,7 +595,7 @@ export const ERC20 =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 5422,
+                      "scope": 5432,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -608,24 +608,24 @@ export const ERC20 =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 5419,
+                        "id": 5429,
                         "name": "ElementaryTypeName",
-                        "src": "414:4:24"
+                        "src": "414:4:23"
                       }
                     ],
-                    "id": 5420,
+                    "id": 5430,
                     "name": "VariableDeclaration",
-                    "src": "414:4:24"
+                    "src": "414:4:23"
                   }
                 ],
-                "id": 5421,
+                "id": 5431,
                 "name": "ParameterList",
-                "src": "413:6:24"
+                "src": "413:6:23"
               }
             ],
-            "id": 5422,
+            "id": 5432,
             "name": "FunctionDefinition",
-            "src": "349:71:24"
+            "src": "349:71:23"
           },
           {
             "attributes": {
@@ -640,7 +640,7 @@ export const ERC20 =
                       "constant": false,
                       "indexed": true,
                       "name": "owner",
-                      "scope": 5430,
+                      "scope": 5440,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -653,21 +653,21 @@ export const ERC20 =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 5423,
+                        "id": 5433,
                         "name": "ElementaryTypeName",
-                        "src": "438:7:24"
+                        "src": "438:7:23"
                       }
                     ],
-                    "id": 5424,
+                    "id": 5434,
                     "name": "VariableDeclaration",
-                    "src": "438:21:24"
+                    "src": "438:21:23"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "indexed": true,
                       "name": "spender",
-                      "scope": 5430,
+                      "scope": 5440,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -680,21 +680,21 @@ export const ERC20 =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 5425,
+                        "id": 5435,
                         "name": "ElementaryTypeName",
-                        "src": "461:7:24"
+                        "src": "461:7:23"
                       }
                     ],
-                    "id": 5426,
+                    "id": 5436,
                     "name": "VariableDeclaration",
-                    "src": "461:23:24"
+                    "src": "461:23:23"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "indexed": false,
                       "name": "value",
-                      "scope": 5430,
+                      "scope": 5440,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -707,34 +707,34 @@ export const ERC20 =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 5427,
+                        "id": 5437,
                         "name": "ElementaryTypeName",
-                        "src": "486:7:24"
+                        "src": "486:7:23"
                       }
                     ],
-                    "id": 5428,
+                    "id": 5438,
                     "name": "VariableDeclaration",
-                    "src": "486:13:24"
+                    "src": "486:13:23"
                   }
                 ],
-                "id": 5429,
+                "id": 5439,
                 "name": "ParameterList",
-                "src": "437:63:24"
+                "src": "437:63:23"
               }
             ],
-            "id": 5430,
+            "id": 5440,
             "name": "EventDefinition",
-            "src": "423:78:24"
+            "src": "423:78:23"
           }
         ],
-        "id": 5431,
+        "id": 5441,
         "name": "ContractDefinition",
-        "src": "144:359:24"
+        "src": "144:359:23"
       }
     ],
-    "id": 5432,
+    "id": 5442,
     "name": "SourceUnit",
-    "src": "0:504:24"
+    "src": "0:504:23"
   },
   "compiler": {
     "name": "solc",
@@ -742,5 +742,5 @@ export const ERC20 =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-19T22:46:09.681Z"
+  "updatedAt": "2018-03-23T04:19:01.783Z"
 }
