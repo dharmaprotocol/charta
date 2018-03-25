@@ -13669,7 +13669,7 @@ export const MultiSigWallet =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x2c770260a8c56e2ff0c7992af7eb7573dd80ec41"
+      "address": "0xcc9fdb2172b580c0c0b95785fe77b824c242f467"
     },
     "70": {
       "events": {},
@@ -13678,5 +13678,5 @@ export const MultiSigWallet =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-25T03:20:16.638Z"
+  "updatedAt": "2018-03-25T23:15:49.542Z"
 }

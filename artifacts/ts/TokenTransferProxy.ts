@@ -1307,7 +1307,7 @@ export const TokenTransferProxy =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x8f984391f0006db7afb296a5319001a9ba927eef"
+      "address": "0x1cbe56b43cbc358301e5abe558deb0314cac491c"
     },
     "70": {
       "events": {},
@@ -1316,5 +1316,5 @@ export const TokenTransferProxy =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-25T03:20:16.576Z"
+  "updatedAt": "2018-03-25T23:15:49.518Z"
 }

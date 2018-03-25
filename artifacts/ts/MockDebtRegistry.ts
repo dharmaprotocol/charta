@@ -5281,7 +5281,7 @@ export const MockDebtRegistry =
     "42": {
       "events": {},
       "links": {},
-      "address": "0xc51b9da3dc2b2ab999d10f059b866e6e38c48dec"
+      "address": "0x610d2f58b3534f9172d3eb9fd24c398e9d415e50"
     },
     "70": {
       "events": {},
@@ -5290,5 +5290,5 @@ export const MockDebtRegistry =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-25T03:18:16.384Z"
+  "updatedAt": "2018-03-25T23:14:53.265Z"
 }

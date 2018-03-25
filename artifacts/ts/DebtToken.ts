@@ -3370,7 +3370,7 @@ export const DebtToken =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x13dddf80d5beb1600ddccc6dcd5ccf7c5d4dd9af"
+      "address": "0xc80b519b4f8602c71dcddb9a0ebb0197bbcc60fa"
     },
     "70": {
       "events": {},
@@ -3379,5 +3379,5 @@ export const DebtToken =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-25T03:20:16.575Z"
+  "updatedAt": "2018-03-25T23:15:49.517Z"
 }

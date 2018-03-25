@@ -1588,9 +1588,9 @@ export const MockTokenRegistry =
     "42": {
       "events": {},
       "links": {},
-      "address": "0xe91793c54230f87ba0a998d46b3f8ce2df35bc52"
+      "address": "0x944c88bcd9f343e816189848baca4e192ebbfc3c"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-25T03:18:16.394Z"
+  "updatedAt": "2018-03-25T23:14:53.280Z"
 }
