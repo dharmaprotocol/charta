@@ -60,7 +60,7 @@ contract TokenRegistry is Ownable {
     }
 
     /**
-     * Given a symbol, resolves the index of the token the symbols is mapped to within the registry's
+     * Given a symbol, resolves the index of the token the symbol is mapped to within the registry's
      * symbol hash list.
      */
     function getTokenIndexBySymbol(string symbol) public view returns (uint) {
