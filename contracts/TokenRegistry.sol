@@ -48,7 +48,7 @@ contract TokenRegistry is Ownable {
     }
 
     /**
-     * Given the known index of a token within the registry's symbol hash list,
+     * Given the known index of a token within the registry's symbol list,
      * returns the address of the token mapped to the symbol at that index.
      *
      * This is a useful utility for compactly encoding the address of a token into a
@@ -63,7 +63,7 @@ contract TokenRegistry is Ownable {
 
     /**
      * Given a symbol, resolves the index of the token the symbol is mapped to within the registry's
-     * symbol hash list.
+     * symbol list.
      */
     function getTokenIndexBySymbol(string symbol) public view returns (uint) {
         return symbolHashToTokenIndex[keccak256(symbol)];
