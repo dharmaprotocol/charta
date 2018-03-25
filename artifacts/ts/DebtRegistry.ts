@@ -7689,7 +7689,7 @@ export const DebtRegistry =
         }
       },
       "links": {},
-      "address": "0x5e494f3ffe0bef6fa2146750945e812eeeaa42a4"
+      "address": "0x64fe5c1d9f31be6318d5a0ac26ec43354dfd7830"
     },
     "70": {
       "events": {
@@ -7835,5 +7835,5 @@ export const DebtRegistry =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-23T04:47:36.607Z"
+  "updatedAt": "2018-03-25T03:20:16.587Z"
 }
