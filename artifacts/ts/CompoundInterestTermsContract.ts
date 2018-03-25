@@ -8634,5 +8634,5 @@ export const CompoundInterestTermsContract =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-23T04:47:01.151Z"
+  "updatedAt": "2018-03-25T03:18:28.774Z"
 }

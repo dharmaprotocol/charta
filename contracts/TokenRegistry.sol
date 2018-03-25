@@ -19,6 +19,7 @@ import "zeppelin-solidity/contracts/ownership/Ownable.sol";
  */
 contract TokenRegistry is Ownable {
     mapping (bytes32 => address) public symbolToTokenAddress;
+    mapping (bytes32 => uint) public symbolToTokenIndex;
     bytes32[256] public tokenSymbolHashList;
     uint8 public tokenSymbolHashListLength;
 
@@ -32,6 +33,7 @@ contract TokenRegistry is Ownable {
 
         if (symbolToTokenAddress[symbolHash] == address(0)) {
             tokenSymbolHashList[tokenSymbolHashListLength] = symbolHash;
+            symbolToTokenAddress[symbolHash] = tokenSymbolHashListLength;
             tokenSymbolHashListLength++;
         }
 
@@ -55,5 +57,13 @@ contract TokenRegistry is Ownable {
      */
     function getTokenAddressByIndex(uint index) public view returns (address) {
         return symbolToTokenAddress[tokenSymbolHashList[index]];
+    }
+
+    /**
+     * Given a symbol, resolves the index of the token the symbol is mapped to within the registry's
+     * symbol hash list.
+     */
+    function getTokenIndexBySymbol(string symbol) public view returns (uint) {
+        return symbolToTokenIndex[keccak256(symbol)];
     }
 }

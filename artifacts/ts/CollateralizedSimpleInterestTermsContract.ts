@@ -1225,9 +1225,9 @@ export const CollateralizedSimpleInterestTermsContract =
     "42": {
       "events": {},
       "links": {},
-      "address": "0xfb06d230aeb0d9ff7bdfd4d9be22d1abfa4b6704"
+      "address": "0xe141b366eb10ee34a03a2d353892c2296d0d8b6c"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-23T04:47:01.135Z"
+  "updatedAt": "2018-03-25T03:18:28.766Z"
 }
