@@ -27,7 +27,7 @@ import "NonFungibleToken/contracts/ERC721.sol";
 
 
 /**
- * The RepaymentRouter routes allowers payers to make repayments on any
+ * The RepaymentRouter routes allows payers to make repayments on any
  * given debt agreement in any given token by routing the payments to
  * the debt agreement's beneficiary.  Additionally, the router acts
  * as a trusted oracle to the debt agreement's terms contract, informing
