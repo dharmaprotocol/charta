@@ -33,7 +33,7 @@ contract TokenRegistry is Ownable {
 
         if (symbolHashToTokenAddress[symbolHash] == address(0)) {
             tokenSymbolList[tokenSymbolListLength] = symbol;
-            symbolHashToTokenAddress[symbolHash] = tokenSymbolListLength;
+            symbolHashToTokenIndex[symbolHash] = tokenSymbolListLength;
             tokenSymbolListLength++;
         }
 

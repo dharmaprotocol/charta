@@ -2988,7 +2988,7 @@ export const MockTermsContract =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x3c011817343e737e09ff62effa1ad6c217e04a2b"
+      "address": "0xb786d210a931f0748212a265f345c88f62df2c1c"
     },
     "70": {
       "events": {},
@@ -2997,5 +2997,5 @@ export const MockTermsContract =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-25T23:14:53.282Z"
+  "updatedAt": "2018-03-26T00:44:17.237Z"
 }

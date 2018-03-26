@@ -17508,7 +17508,7 @@ export const DebtKernel =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x2a50eadc90546dafb0d180baca223d0c09a54f4d"
+      "address": "0xf11dad394c48b7a39cdb45bb0c0cc96eab44fe10"
     },
     "70": {
       "events": {},
@@ -17517,5 +17517,5 @@ export const DebtKernel =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-25T23:15:49.533Z"
+  "updatedAt": "2018-03-26T00:45:13.179Z"
 }
