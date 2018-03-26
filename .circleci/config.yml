@@ -11,5 +11,4 @@ jobs:
             name: testrpc
             command: yarn chain
             background: true
-        - run: sleep 90
         - run: yarn test
