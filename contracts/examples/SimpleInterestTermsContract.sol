@@ -322,7 +322,7 @@ contract SimpleInterestTermsContract is TermsContract {
         // The debt's entire term's length, denominated in the aforementioned amortization units
         uint termLengthInAmortizationUnits;
 
-        (principalTokenIndex, principalPlusInterest, amortizationUnitTypeAsUint, termLengthInAmortizationUnits) =
+        (principalTokenIndex, principalAmount, interestRate, rawAmortizationUnitType, termLengthInAmortizationUnits) =
             unpackParametersFromBytes(parameters);
 
         address principalTokenAddress =
@@ -334,7 +334,7 @@ contract SimpleInterestTermsContract is TermsContract {
         // Before we cast to `AmortizationUnitType`, ensure that the raw value being stored is valid.
         require(amortizationUnitTypeAsUint <= uint(AmortizationUnitType.YEARS));
 
-        AmortizationUnitType amortizationUnitType = AmortizationUnitType(amortizationUnitTypeAsUint);
+        AmortizationUnitType amortizationUnitType = AmortizationUnitType(rawAmortizationUnitType);
 
         uint amortizationUnitLengthInSeconds =
             getAmortizationUnitLengthInSeconds(amortizationUnitType);
