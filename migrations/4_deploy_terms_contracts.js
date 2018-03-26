@@ -4,12 +4,8 @@ module.exports = (deployer, network, accounts) => {
     const RepaymentRouter = artifacts.require("RepaymentRouter");
     const TokenRegistry = artifacts.require("TokenRegistry");
     const SimpleInterestTermsContract = artifacts.require("SimpleInterestTermsContract");
-    const CompoundInterestTermsContract = artifacts.require("CompoundInterestTermsContract");
     const CollateralizedSimpleInterestTermsContract = artifacts.require(
         "CollateralizedSimpleInterestTermsContract",
-    );
-    const CollateralizedCompoundInterestTermsContract = artifacts.require(
-        "CompoundInterestTermsContract",
     );
     const IncompatibleTermsContract = artifacts.require("IncompatibleTermsContract");
 
