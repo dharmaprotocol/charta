@@ -252,13 +252,13 @@ contract SimpleInterestTermsContract is TermsContract {
             parameters & 0x000000000000000000000000000000000ffff000000000000000000000000000;
 
         /*
-        We then bit-shift each of these values so that the 32-byte integer
+        We then bit shift left each of these values so that the 32-byte uint
         counterpart correctly represents the value that was originally packed
         into the 32 byte string.
 
         The below chart summarizes where in the 32 byte string each value
         terminates -- which indicates the extent to which each value must be bit
-        shifted.
+        shifted left.
 
                                         Location (bytes)	Location (bits)
                                         32                  256
