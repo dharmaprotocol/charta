@@ -239,10 +239,10 @@ contract SimpleInterestTermsContract is TermsContract {
             parameters & 0xff00000000000000000000000000000000000000000000000000000000000000;
         // The subsequent 12 bytes of the parameters encode the principal amount.
         bytes32 principalAmountShifted =
-            parameters & 0x00fffffffffffffffffffffffffff00000000000000000000000000000000000;
+            parameters & 0x00ffffffffffffffffffffffff00000000000000000000000000000000000000;
         // The subsequent 3 bytes of the parameters encode the interest rate.
         bytes32 interestRateShifted =
-            parameters & 0x00000000000000000000000000000fff00000000000000000000000000000000;
+            parameters & 0x00000000000000000000000000ffffff00000000000000000000000000000000;
         // The subsequent 4 bits (half byte) encode the amortization unit type code.
         bytes32 amortizationUnitTypeShifted =
             parameters & 0x00000000000000000000000000000000f0000000000000000000000000000000;
