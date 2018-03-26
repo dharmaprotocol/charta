@@ -322,8 +322,8 @@ contract SimpleInterestTermsContract is TermsContract {
         uint principalAmount;
         // The loan's interest rate.
         uint interestRate;
-        // The amortization unit in which the repayments installments schedule is defined
-        uint amortizationUnitTypeAsUint;
+        // The amortization unit in which the repayments installments schedule is defined.
+        uint rawAmortizationUnitType;
         // The debt's entire term's length, denominated in the aforementioned amortization units
         uint termLengthInAmortizationUnits;
 
@@ -337,7 +337,7 @@ contract SimpleInterestTermsContract is TermsContract {
         require(principalTokenAddress != address(0));
 
         // Before we cast to `AmortizationUnitType`, ensure that the raw value being stored is valid.
-        require(amortizationUnitTypeAsUint <= uint(AmortizationUnitType.YEARS));
+        require(rawAmortizationUnitType <= uint(AmortizationUnitType.YEARS));
 
         AmortizationUnitType amortizationUnitType = AmortizationUnitType(rawAmortizationUnitType);
 
