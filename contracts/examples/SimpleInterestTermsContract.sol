@@ -195,6 +195,7 @@ contract SimpleInterestTermsContract is TermsContract {
         returns (uint _expectedRepaymentValue)
     {
         SimpleInterestParams memory params = unpackParamsForAgreementID(agreementId);
+        uint principalPlusInterest = calculatePrincipalPlusInterest(params);
 
         if (timestamp <= params.termStartUnixTimestamp) {
             /* The query occurs before the contract was even initialized so the
@@ -203,10 +204,10 @@ contract SimpleInterestTermsContract is TermsContract {
         } else if (timestamp >= params.termEndUnixTimestamp) {
             /* the query occurs beyond the contract's term, so the expected
             value of repayment is the full principal plus interest. */
-            return params.principalPlusInterest;
+            return principalPlusInterest;
         } else {
             uint numUnits = numAmortizationUnitsForTimestamp(timestamp, params);
-            return params.principalPlusInterest.mul(numUnits).div(params.termLengthInAmortizationUnits);
+            return principalPlusInterest.mul(numUnits).div(params.termLengthInAmortizationUnits);
         }
     }
 
