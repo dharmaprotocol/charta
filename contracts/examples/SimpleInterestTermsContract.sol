@@ -247,9 +247,21 @@ contract SimpleInterestTermsContract is TermsContract {
             parameters & 0x000000000000000000000000000000000ffff000000000000000000000000000;
 
         /*
-        We then bit-shift these values so that their 32 byte integer
-        counterparts correctly correspond to the intended values originally
-        packed into the 32 byte string.
+        We then bit-shift each of these values so that the 32-byte integer
+        counterpart correctly represents the value that was originally packed
+        into the 32 byte string.
+
+        The below chart summarizes where in the 32 byte string each value
+        terminates -- which indicates the extent to which each value must be bit
+        shifted.
+
+                                        Location (bytes)	Location (bits)
+                                        32                  256
+        principalTokenIndex	            31	                248
+        principalAmount	                19                  152
+        interestRate                    16                  128
+        amortizationUnitType            15.5                124
+        termLengthInAmortizationUnits   13.5                108
         */
         uint principalTokenIndex = uint(principalTokenIndexShifted) / 2 ** 248;
         uint principalAmount = uint(principalPlusInterestShifted) / 2 ** 152;
