@@ -32,7 +32,8 @@ contract SimpleInterestTermsContract is TermsContract {
 
     struct SimpleInterestParams {
         address principalTokenAddress;
-        uint principalPlusInterest;
+        uint principalAmount;
+        uint interestRate;
         uint termStartUnixTimestamp;
         uint termEndUnixTimestamp;
         AmortizationUnitType amortizationUnitType;
@@ -346,7 +347,8 @@ contract SimpleInterestTermsContract is TermsContract {
 
         return SimpleInterestParams({
             principalTokenAddress: principalTokenAddress,
-            principalPlusInterest: principalPlusInterest,
+            principalAmount: principalAmount,
+            interestRate: interestRate,
             termStartUnixTimestamp: issuanceBlockTimestamp,
             termEndUnixTimestamp: termEndUnixTimestamp,
             amortizationUnitType: amortizationUnitType,
