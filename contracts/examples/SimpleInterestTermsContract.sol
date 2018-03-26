@@ -318,9 +318,10 @@ contract SimpleInterestTermsContract is TermsContract {
 
         // Index of the token used for principal payments in the Token Registry
         uint principalTokenIndex;
-        // Amount, denominated in the aforementioned token, expected in total principal
-        // plus interest.
-        uint principalPlusInterest;
+        // The principal amount denominated in the aforementioned token.
+        uint principalAmount;
+        // The loan's interest rate.
+        uint interestRate;
         // The amortization unit in which the repayments installments schedule is defined
         uint amortizationUnitTypeAsUint;
         // The debt's entire term's length, denominated in the aforementioned amortization units
