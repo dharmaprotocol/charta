@@ -264,7 +264,7 @@ contract SimpleInterestTermsContract is TermsContract {
         termLengthInAmortizationUnits   13.5                108
         */
         uint principalTokenIndex = uint(principalTokenIndexShifted) / 2 ** 248;
-        uint principalAmount = uint(principalPlusInterestShifted) / 2 ** 152;
+        uint principalAmount = uint(principalAmountShifted) / 2 ** 152;
         uint interestRate = uint(interestRateShifted) / 2 ** 128;
         uint amortizationUnitType = uint(amortizationUnitTypeShifted) / 2 ** 124;
         uint termLengthInAmortizationUnits =
