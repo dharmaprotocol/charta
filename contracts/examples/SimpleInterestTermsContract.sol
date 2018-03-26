@@ -57,7 +57,8 @@ contract SimpleInterestTermsContract is TermsContract {
     event LogSimpleInterestTermStart(
         bytes32 indexed agreementId,
         address indexed principalToken,
-        uint principalPlusInterest,
+        uint principalAmount,
+        uint interestRate,
         uint indexed amortizationUnitType,
         uint termLengthInAmortizationUnits
     );
@@ -114,11 +115,12 @@ contract SimpleInterestTermsContract is TermsContract {
         (termsContract, termsContractParameters) = debtRegistry.getTerms(agreementId);
 
         uint principalTokenIndex;
-        uint principalPlusInterest;
+        uint principalAmount;
+        uint interestRate;
         uint amortizationUnitType;
         uint termLengthInAmortizationUnits;
 
-        (principalTokenIndex, principalPlusInterest, amortizationUnitType, termLengthInAmortizationUnits) =
+        (principalTokenIndex, principalAmount, interestRate, amortizationUnitType, termLengthInAmortizationUnits) =
             unpackParametersFromBytes(termsContractParameters);
 
         address principalTokenAddress =
@@ -135,7 +137,8 @@ contract SimpleInterestTermsContract is TermsContract {
             LogSimpleInterestTermStart(
                 agreementId,
                 principalTokenAddress,
-                principalPlusInterest,
+                principalAmount,
+                interestRate,
                 amortizationUnitType,
                 termLengthInAmortizationUnits
             );
