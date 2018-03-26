@@ -269,15 +269,15 @@ contract SimpleInterestTermsContract is TermsContract {
         termLengthInAmortizationUnits   13.5                108
         */
         return (
-            bitShiftLeft(principalTokenIndexShifted, 248),
-            bitShiftLeft(principalAmountShifted, 152),
-            bitShiftLeft(interestRateShifted, 128),
-            bitShiftLeft(amortizationUnitTypeShifted, 124),
-            bitShiftLeft(termLengthInAmortizationUnitsShifted, 108)
+            bitShiftRight(principalTokenIndexShifted, 248),
+            bitShiftRight(principalAmountShifted, 152),
+            bitShiftRight(interestRateShifted, 128),
+            bitShiftRight(amortizationUnitTypeShifted, 124),
+            bitShiftRight(termLengthInAmortizationUnitsShifted, 108)
         );
     }
 
-    function bitShiftLeft(bytes32 value, uint amount)
+    function bitShiftRight(bytes32 value, uint amount)
         internal
         pure
         returns (uint)
