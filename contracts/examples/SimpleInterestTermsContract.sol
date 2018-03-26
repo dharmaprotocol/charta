@@ -279,6 +279,14 @@ contract SimpleInterestTermsContract is TermsContract {
         );
     }
 
+    function bitShiftLeft(bytes32 value, uint amount)
+        internal
+        pure
+        returns (uint)
+    {
+        return uint(value) / 2 ** amount;
+    }
+
     function numAmortizationUnitsForTimestamp(
         uint timestamp,
         SimpleInterestParams params
