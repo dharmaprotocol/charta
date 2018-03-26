@@ -222,7 +222,8 @@ contract SimpleInterestTermsContract is TermsContract {
         pure
         returns (
             uint _principalTokenIndex,
-            uint _principalPlusInterest,
+            uint _principalAmount,
+            uint _interestRate,
             uint _amortizationUnitType,
             uint _termLengthInAmortizationUnits
         )
@@ -231,10 +232,13 @@ contract SimpleInterestTermsContract is TermsContract {
         // token registry.
         bytes32 principalTokenIndexShifted =
             parameters & 0xff00000000000000000000000000000000000000000000000000000000000000;
-        // The subsequent 15 bytes of the parameters encode the total principal + interest
-        bytes32 principalPlusInterestShifted =
-            parameters & 0x00ffffffffffffffffffffffffffffff00000000000000000000000000000000;
-        // The subsequent 4 bits encode the amortization unit type code
+        // The subsequent 12 bytes of the parameters encode the principal amount.
+        bytes32 principalAmountShifted =
+            parameters & 0x00fffffffffffffffffffffffffff00000000000000000000000000000000000;
+        // The subsequent 3 bytes of the parameters encode the interest rate.
+        bytes32 interestRateShifted =
+            parameters & 0x00000000000000000000000000000fff00000000000000000000000000000000;
+        // The subsequent 4 bits (half byte) encode the amortization unit type code.
         bytes32 amortizationUnitTypeShifted =
             parameters & 0x00000000000000000000000000000000f0000000000000000000000000000000;
         // The subsequent 2 bytes encode the term length, as denominated in
@@ -242,18 +246,22 @@ contract SimpleInterestTermsContract is TermsContract {
         bytes32 termLengthInAmortizationUnitsShifted =
             parameters & 0x000000000000000000000000000000000ffff000000000000000000000000000;
 
-        // We bit-shift these values, respectively, 248 bits, 126 bits, 124 bits,
-        // and 108 bits right mathematical operations, so that their 32 byte
-        // integer counterparts correspond to the intended values packed in the 32 byte string
+        /*
+        We then bit-shift these values so that their 32 byte integer
+        counterparts correctly correspond to the intended values originally
+        packed into the 32 byte string.
+        */
         uint principalTokenIndex = uint(principalTokenIndexShifted) / 2 ** 248;
-        uint principalPlusInterest = uint(principalPlusInterestShifted) / 2 ** 128;
+        uint principalAmount = uint(principalPlusInterestShifted) / 2 ** 152;
+        uint interestRate = uint(interestRateShifted) / 2 ** 128;
         uint amortizationUnitType = uint(amortizationUnitTypeShifted) / 2 ** 124;
         uint termLengthInAmortizationUnits =
             uint(termLengthInAmortizationUnitsShifted) / 2 ** 108;
 
         return (
             principalTokenIndex,
-            principalPlusInterest,
+            principalAmount,
+            interestRate,
             amortizationUnitType,
             termLengthInAmortizationUnits
         );
