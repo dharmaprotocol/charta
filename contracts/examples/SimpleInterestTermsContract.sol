@@ -299,6 +299,17 @@ contract SimpleInterestTermsContract is TermsContract {
         return delta.div(amortizationUnitLengthInSeconds);
     }
 
+    function calculatePrincipalPlusInterest(
+        SimpleInterestParams params
+    )
+        internal
+        returns (uint _principalPlusInterest)
+    {
+        uint interestPayment = params.principalAmount.mul(params.interestRate);
+        uint totalInterest = interestPayment.mul(params.termLengthInAmortizationUnits);
+        return params.principalAmount.add(totalInterest);
+    }
+
     function unpackParamsForAgreementID(
         bytes32 agreementId
     )
