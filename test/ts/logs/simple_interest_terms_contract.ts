@@ -8,7 +8,8 @@ export function LogSimpleInterestTermStart(
     contract: Address,
     agreementID: Bytes32,
     principalToken: Address,
-    principalPlusInterest: UInt,
+    principalAmount: UInt,
+    interestRate: UInt,
     amortizationUnitType: UInt,
     termLengthInAmortizationUnits: UInt,
 ): ABIDecoder.DecodedLog {
@@ -17,7 +18,8 @@ export function LogSimpleInterestTermStart(
         events: LogUtils.getParams([
             ["agreementId", agreementID],
             ["principalToken", principalToken],
-            ["principalPlusInterest", principalPlusInterest],
+            ["principalAmount", principalAmount],
+            ["interestRate", interestRate],
             ["amortizationUnitType", amortizationUnitType],
             ["termLengthInAmortizationUnits", termLengthInAmortizationUnits],
         ]),
