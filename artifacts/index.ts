@@ -7,7 +7,6 @@ import { DebtToken } from "./ts/DebtToken";
 import { DummyToken } from "./ts/DummyToken";
 import { ERC20 } from "./ts/ERC20";
 import { SimpleInterestTermsContract } from "./ts/SimpleInterestTermsContract";
-import { CompoundInterestTermsContract } from "./ts/CompoundInterestTermsContract";
 import { TermsContract } from "./ts/TermsContract";
 
 export {
@@ -20,6 +19,5 @@ export {
     DummyToken,
     ERC20,
     SimpleInterestTermsContract,
-    CompoundInterestTermsContract,
     TermsContract,
 };
