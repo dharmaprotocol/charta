@@ -301,7 +301,7 @@ contract SimpleInterestTermsContract is TermsContract {
     }
 
     /**
-     * Calculates the total  repayment value expected at the end of the loan's term.
+     * Calculates the total repayment value expected at the end of the loan's term.
      *
      * This computation assumes that interest is paid per amortization period.
      *
