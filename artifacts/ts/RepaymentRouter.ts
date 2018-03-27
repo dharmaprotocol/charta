@@ -271,7 +271,7 @@ export const RepaymentRouter =
       },
       {
         "attributes": {
-          "SourceUnit": 2280,
+          "SourceUnit": 2322,
           "absolutePath": "/Users/nadavhollander/Documents/Dharma/Development/charta/contracts/TokenTransferProxy.sol",
           "file": "./TokenTransferProxy.sol",
           "scope": 2064,
@@ -286,7 +286,7 @@ export const RepaymentRouter =
       },
       {
         "attributes": {
-          "SourceUnit": 5442,
+          "SourceUnit": 5535,
           "absolutePath": "zeppelin-solidity/contracts/token/ERC20/ERC20.sol",
           "file": "zeppelin-solidity/contracts/token/ERC20/ERC20.sol",
           "scope": 2064,
@@ -301,7 +301,7 @@ export const RepaymentRouter =
       },
       {
         "attributes": {
-          "SourceUnit": 5245,
+          "SourceUnit": 5338,
           "absolutePath": "zeppelin-solidity/contracts/lifecycle/Pausable.sol",
           "file": "zeppelin-solidity/contracts/lifecycle/Pausable.sol",
           "scope": 2064,
@@ -316,7 +316,7 @@ export const RepaymentRouter =
       },
       {
         "attributes": {
-          "SourceUnit": 4563,
+          "SourceUnit": 4656,
           "absolutePath": "NonFungibleToken/contracts/ERC721.sol",
           "file": "NonFungibleToken/contracts/ERC721.sol",
           "scope": 2064,
@@ -332,16 +332,16 @@ export const RepaymentRouter =
       {
         "attributes": {
           "contractDependencies": [
-            5244,
-            5398
+            5337,
+            5491
           ],
           "contractKind": "contract",
           "documentation": "The RepaymentRouter routes allowers payers to make repayments on any\ngiven debt agreement in any given token by routing the payments to\nthe debt agreement's beneficiary.  Additionally, the router acts\nas a trusted oracle to the debt agreement's terms contract, informing\nit of exactly what payments have been made in what quantity and in what token.\n * Authors: Jaynti Kanani -- Github: jdkanani, Nadav Hollander -- Github: nadavhollander",
           "fullyImplemented": true,
           "linearizedBaseContracts": [
             2063,
-            5244,
-            5398
+            5337,
+            5491
           ],
           "name": "RepaymentRouter",
           "scope": 2064
@@ -358,7 +358,7 @@ export const RepaymentRouter =
                 "attributes": {
                   "contractScope": null,
                   "name": "Pausable",
-                  "referencedDeclaration": 5244,
+                  "referencedDeclaration": 5337,
                   "type": "contract Pausable"
                 },
                 "id": 1878,
@@ -414,7 +414,7 @@ export const RepaymentRouter =
                 "attributes": {
                   "contractScope": null,
                   "name": "TokenTransferProxy",
-                  "referencedDeclaration": 2279,
+                  "referencedDeclaration": 2321,
                   "type": "contract TokenTransferProxy"
                 },
                 "id": 1882,
@@ -917,7 +917,7 @@ export const RepaymentRouter =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2279,
+                                  "referencedDeclaration": 2321,
                                   "type": "type(contract TokenTransferProxy)",
                                   "value": "TokenTransferProxy"
                                 },
@@ -1108,7 +1108,7 @@ export const RepaymentRouter =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 5205,
+                      "referencedDeclaration": 5298,
                       "type": "modifier ()",
                       "value": "whenNotPaused"
                     },
@@ -1151,7 +1151,7 @@ export const RepaymentRouter =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5488,
+                              "referencedDeclaration": 5581,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -1287,7 +1287,7 @@ export const RepaymentRouter =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5488,
+                              "referencedDeclaration": 5581,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -1795,7 +1795,7 @@ export const RepaymentRouter =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "balanceOf",
-                                      "referencedDeclaration": 5455,
+                                      "referencedDeclaration": 5548,
                                       "type": "function (address) view external returns (uint256)"
                                     },
                                     "children": [
@@ -1825,7 +1825,7 @@ export const RepaymentRouter =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 5441,
+                                              "referencedDeclaration": 5534,
                                               "type": "type(contract ERC20)",
                                               "value": "ERC20"
                                             },
@@ -1875,7 +1875,7 @@ export const RepaymentRouter =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 5485,
+                                          "referencedDeclaration": 5578,
                                           "type": "msg",
                                           "value": "msg"
                                         },
@@ -1950,7 +1950,7 @@ export const RepaymentRouter =
                                           "typeString": "address"
                                         },
                                         {
-                                          "typeIdentifier": "t_contract$_TokenTransferProxy_$2279",
+                                          "typeIdentifier": "t_contract$_TokenTransferProxy_$2321",
                                           "typeString": "contract TokenTransferProxy"
                                         }
                                       ],
@@ -1959,7 +1959,7 @@ export const RepaymentRouter =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "allowance",
-                                      "referencedDeclaration": 5412,
+                                      "referencedDeclaration": 5505,
                                       "type": "function (address,address) view external returns (uint256)"
                                     },
                                     "children": [
@@ -1989,7 +1989,7 @@ export const RepaymentRouter =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 5441,
+                                              "referencedDeclaration": 5534,
                                               "type": "type(contract ERC20)",
                                               "value": "ERC20"
                                             },
@@ -2039,7 +2039,7 @@ export const RepaymentRouter =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 5485,
+                                          "referencedDeclaration": 5578,
                                           "type": "msg",
                                           "value": "msg"
                                         },
@@ -2531,7 +2531,7 @@ export const RepaymentRouter =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5485,
+                                      "referencedDeclaration": 5578,
                                       "type": "msg",
                                       "value": "msg"
                                     },
@@ -2797,7 +2797,7 @@ export const RepaymentRouter =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5488,
+                              "referencedDeclaration": 5581,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -2845,7 +2845,7 @@ export const RepaymentRouter =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "transferFrom",
-                                  "referencedDeclaration": 2278,
+                                  "referencedDeclaration": 2320,
                                   "type": "function (address,address,address,uint256) external returns (bool)"
                                 },
                                 "children": [
@@ -2900,7 +2900,7 @@ export const RepaymentRouter =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5485,
+                                      "referencedDeclaration": 5578,
                                       "type": "msg",
                                       "value": "msg"
                                     },
@@ -3040,7 +3040,7 @@ export const RepaymentRouter =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5485,
+                                  "referencedDeclaration": 5578,
                                   "type": "msg",
                                   "value": "msg"
                                 },
@@ -3157,7 +3157,7 @@ export const RepaymentRouter =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x3b012c3a20608f12f0891df5b1050f75a62d2021"
+      "address": "0x28a071a80f9616d0e7458ced7162ac7e39e50663"
     },
     "70": {
       "events": {},
@@ -3166,5 +3166,5 @@ export const RepaymentRouter =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-26T00:45:13.167Z"
+  "updatedAt": "2018-03-27T04:35:05.247Z"
 }

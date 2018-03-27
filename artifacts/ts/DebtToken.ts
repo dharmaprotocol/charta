@@ -576,7 +576,7 @@ export const DebtToken =
       },
       {
         "attributes": {
-          "SourceUnit": 4628,
+          "SourceUnit": 4721,
           "absolutePath": "NonFungibleToken/contracts/MintableNonFungibleToken.sol",
           "file": "NonFungibleToken/contracts/MintableNonFungibleToken.sol",
           "scope": 1870,
@@ -591,7 +591,7 @@ export const DebtToken =
       },
       {
         "attributes": {
-          "SourceUnit": 5245,
+          "SourceUnit": 5338,
           "absolutePath": "zeppelin-solidity/contracts/lifecycle/Pausable.sol",
           "file": "zeppelin-solidity/contracts/lifecycle/Pausable.sol",
           "scope": 1870,
@@ -606,7 +606,7 @@ export const DebtToken =
       },
       {
         "attributes": {
-          "SourceUnit": 5442,
+          "SourceUnit": 5535,
           "absolutePath": "zeppelin-solidity/contracts/token/ERC20/ERC20.sol",
           "file": "zeppelin-solidity/contracts/token/ERC20/ERC20.sol",
           "scope": 1870,
@@ -622,24 +622,24 @@ export const DebtToken =
       {
         "attributes": {
           "contractDependencies": [
-            4489,
-            4562,
-            4627,
-            5184,
-            5244,
-            5398
+            4582,
+            4655,
+            4720,
+            5277,
+            5337,
+            5491
           ],
           "contractKind": "contract",
           "documentation": "The DebtToken contract governs all business logic for making a debt agreement\ntransferable as an ERC721 non-fungible token.  Additionally, the contract\nallows authorized contracts to trigger the minting of a debt agreement token\nand, in turn, the insertion of a debt issuance into the DebtRegsitry.\n * Author: Nadav Hollander -- Github: nadavhollander",
           "fullyImplemented": true,
           "linearizedBaseContracts": [
             1869,
-            5244,
-            5398,
-            4627,
-            5184,
-            4489,
-            4562
+            5337,
+            5491,
+            4720,
+            5277,
+            4582,
+            4655
           ],
           "name": "DebtToken",
           "scope": 1870
@@ -656,7 +656,7 @@ export const DebtToken =
                 "attributes": {
                   "contractScope": null,
                   "name": "MintableNonFungibleToken",
-                  "referencedDeclaration": 4627,
+                  "referencedDeclaration": 4720,
                   "type": "contract MintableNonFungibleToken"
                 },
                 "id": 1671,
@@ -679,7 +679,7 @@ export const DebtToken =
                 "attributes": {
                   "contractScope": null,
                   "name": "Pausable",
-                  "referencedDeclaration": 5244,
+                  "referencedDeclaration": 5337,
                   "type": "contract Pausable"
                 },
                 "id": 1673,
@@ -697,7 +697,7 @@ export const DebtToken =
                 "attributes": {
                   "contractScope": null,
                   "name": "PermissionsLib",
-                  "referencedDeclaration": 3657,
+                  "referencedDeclaration": 3750,
                   "type": "library PermissionsLib"
                 },
                 "id": 1675,
@@ -708,7 +708,7 @@ export const DebtToken =
                 "attributes": {
                   "contractScope": null,
                   "name": "PermissionsLib.Permissions",
-                  "referencedDeclaration": 3491,
+                  "referencedDeclaration": 3584,
                   "type": "struct PermissionsLib.Permissions storage pointer"
                 },
                 "id": 1676,
@@ -848,7 +848,7 @@ export const DebtToken =
                 "attributes": {
                   "contractScope": null,
                   "name": "PermissionsLib.Permissions",
-                  "referencedDeclaration": 3491,
+                  "referencedDeclaration": 3584,
                   "type": "struct PermissionsLib.Permissions storage pointer"
                 },
                 "id": 1686,
@@ -876,7 +876,7 @@ export const DebtToken =
                 "attributes": {
                   "contractScope": null,
                   "name": "PermissionsLib.Permissions",
-                  "referencedDeclaration": 3491,
+                  "referencedDeclaration": 3584,
                   "type": "struct PermissionsLib.Permissions storage pointer"
                 },
                 "id": 1688,
@@ -1324,7 +1324,7 @@ export const DebtToken =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 5205,
+                      "referencedDeclaration": 5298,
                       "type": "modifier ()",
                       "value": "whenNotPaused"
                     },
@@ -1367,7 +1367,7 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5488,
+                              "referencedDeclaration": 5581,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -1403,7 +1403,7 @@ export const DebtToken =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "isAuthorized",
-                                  "referencedDeclaration": 3628,
+                                  "referencedDeclaration": 3721,
                                   "type": "function (struct PermissionsLib.Permissions storage pointer,address) view returns (bool)"
                                 },
                                 "children": [
@@ -1444,7 +1444,7 @@ export const DebtToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5485,
+                                      "referencedDeclaration": 5578,
                                       "type": "msg",
                                       "value": "msg"
                                     },
@@ -1738,7 +1738,7 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4626,
+                              "referencedDeclaration": 4719,
                               "type": "function (address,uint256)",
                               "value": "mint"
                             },
@@ -1966,7 +1966,7 @@ export const DebtToken =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 5372,
+                      "referencedDeclaration": 5465,
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
@@ -2011,7 +2011,7 @@ export const DebtToken =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "authorize",
-                              "referencedDeclaration": 3534,
+                              "referencedDeclaration": 3627,
                               "type": "function (struct PermissionsLib.Permissions storage pointer,address)"
                             },
                             "children": [
@@ -2138,7 +2138,7 @@ export const DebtToken =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 5372,
+                      "referencedDeclaration": 5465,
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
@@ -2183,7 +2183,7 @@ export const DebtToken =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "revokeAuthorization",
-                              "referencedDeclaration": 3613,
+                              "referencedDeclaration": 3706,
                               "type": "function (struct PermissionsLib.Permissions storage pointer,address)"
                             },
                             "children": [
@@ -2346,7 +2346,7 @@ export const DebtToken =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "getAuthorizedAgents",
-                              "referencedDeclaration": 3656,
+                              "referencedDeclaration": 3749,
                               "type": "function (struct PermissionsLib.Permissions storage pointer) view returns (address[] memory)"
                             },
                             "children": [
@@ -2398,7 +2398,7 @@ export const DebtToken =
               "payable": false,
               "scope": 1869,
               "stateMutability": "nonpayable",
-              "superFunction": 4988,
+              "superFunction": 5081,
               "visibility": "internal"
             },
             "children": [
@@ -2511,7 +2511,7 @@ export const DebtToken =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 5205,
+                      "referencedDeclaration": 5298,
                       "type": "modifier ()",
                       "value": "whenNotPaused"
                     },
@@ -2564,7 +2564,7 @@ export const DebtToken =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "_clearApprovalAndTransfer",
-                              "referencedDeclaration": 4988,
+                              "referencedDeclaration": 5081,
                               "type": "function (address,address,uint256)"
                             },
                             "children": [
@@ -2574,7 +2574,7 @@ export const DebtToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5519,
+                                  "referencedDeclaration": 5612,
                                   "type": "contract super DebtToken",
                                   "value": "super"
                                 },
@@ -2658,7 +2658,7 @@ export const DebtToken =
               "payable": false,
               "scope": 1869,
               "stateMutability": "nonpayable",
-              "superFunction": 5014,
+              "superFunction": 5107,
               "visibility": "internal"
             },
             "children": [
@@ -2745,7 +2745,7 @@ export const DebtToken =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 5205,
+                      "referencedDeclaration": 5298,
                       "type": "modifier ()",
                       "value": "whenNotPaused"
                     },
@@ -2794,7 +2794,7 @@ export const DebtToken =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "_approve",
-                              "referencedDeclaration": 5014,
+                              "referencedDeclaration": 5107,
                               "type": "function (address,uint256)"
                             },
                             "children": [
@@ -2804,7 +2804,7 @@ export const DebtToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5519,
+                                  "referencedDeclaration": 5612,
                                   "type": "contract super DebtToken",
                                   "value": "super"
                                 },
@@ -2877,7 +2877,7 @@ export const DebtToken =
               "payable": false,
               "scope": 1869,
               "stateMutability": "nonpayable",
-              "superFunction": 5083,
+              "superFunction": 5176,
               "visibility": "internal"
             },
             "children": [
@@ -3281,7 +3281,7 @@ export const DebtToken =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "_setTokenOwner",
-                              "referencedDeclaration": 5083,
+                              "referencedDeclaration": 5176,
                               "type": "function (uint256,address)"
                             },
                             "children": [
@@ -3291,7 +3291,7 @@ export const DebtToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5519,
+                                  "referencedDeclaration": 5612,
                                   "type": "contract super DebtToken",
                                   "value": "super"
                                 },
@@ -3370,7 +3370,7 @@ export const DebtToken =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x9e47c8aee3afb330ca2e693b0df239b080f3d7cb"
+      "address": "0x44b3203ffa73465765cca43fe338dc08a3c4b5c1"
     },
     "70": {
       "events": {},
@@ -3379,5 +3379,5 @@ export const DebtToken =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-26T00:45:13.161Z"
+  "updatedAt": "2018-03-27T04:35:05.235Z"
 }

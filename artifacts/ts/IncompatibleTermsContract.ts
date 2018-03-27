@@ -114,7 +114,7 @@ export const IncompatibleTermsContract =
       "absolutePath": "/Users/nadavhollander/Documents/Dharma/Development/charta/contracts/test/terms_contracts/IncompatibleTermsContract.sol",
       "exportedSymbols": {
         "IncompatibleTermsContract": [
-          4457
+          4550
         ]
       }
     },
@@ -127,7 +127,7 @@ export const IncompatibleTermsContract =
             ".18"
           ]
         },
-        "id": 4401,
+        "id": 4494,
         "name": "PragmaDirective",
         "src": "584:23:15"
       },
@@ -136,13 +136,13 @@ export const IncompatibleTermsContract =
           "SourceUnit": 2107,
           "absolutePath": "/Users/nadavhollander/Documents/Dharma/Development/charta/contracts/TermsContract.sol",
           "file": "../../TermsContract.sol",
-          "scope": 4458,
+          "scope": 4551,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 4402,
+        "id": 4495,
         "name": "ImportDirective",
         "src": "609:33:15"
       },
@@ -155,11 +155,11 @@ export const IncompatibleTermsContract =
           "documentation": "Contract created for testing purposes that will consistently reject\ndebt order fills that are mapped to it by returning `false` for\n`registerTermStart`\n * Author: Nadav Hollander Github: nadavhollander",
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            4457,
+            4550,
             2106
           ],
           "name": "IncompatibleTermsContract",
-          "scope": 4458
+          "scope": 4551
         },
         "children": [
           {
@@ -176,12 +176,12 @@ export const IncompatibleTermsContract =
                   "referencedDeclaration": 2106,
                   "type": "contract TermsContract"
                 },
-                "id": 4403,
+                "id": 4496,
                 "name": "UserDefinedTypeName",
                 "src": "905:13:15"
               }
             ],
-            "id": 4404,
+            "id": 4497,
             "name": "InheritanceSpecifier",
             "src": "905:13:15"
           },
@@ -195,7 +195,7 @@ export const IncompatibleTermsContract =
               ],
               "name": "registerTermStart",
               "payable": false,
-              "scope": 4457,
+              "scope": 4550,
               "stateMutability": "nonpayable",
               "superFunction": 2074,
               "visibility": "public"
@@ -207,7 +207,7 @@ export const IncompatibleTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 4416,
+                      "scope": 4509,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -220,12 +220,12 @@ export const IncompatibleTermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 4405,
+                        "id": 4498,
                         "name": "ElementaryTypeName",
                         "src": "1536:7:15"
                       }
                     ],
-                    "id": 4406,
+                    "id": 4499,
                     "name": "VariableDeclaration",
                     "src": "1536:19:15"
                   },
@@ -233,7 +233,7 @@ export const IncompatibleTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "debtor",
-                      "scope": 4416,
+                      "scope": 4509,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -246,17 +246,17 @@ export const IncompatibleTermsContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 4407,
+                        "id": 4500,
                         "name": "ElementaryTypeName",
                         "src": "1565:7:15"
                       }
                     ],
-                    "id": 4408,
+                    "id": 4501,
                     "name": "VariableDeclaration",
                     "src": "1565:14:15"
                   }
                 ],
-                "id": 4409,
+                "id": 4502,
                 "name": "ParameterList",
                 "src": "1526:59:15"
               },
@@ -266,7 +266,7 @@ export const IncompatibleTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "_success",
-                      "scope": 4416,
+                      "scope": 4509,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -279,17 +279,17 @@ export const IncompatibleTermsContract =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 4410,
+                        "id": 4503,
                         "name": "ElementaryTypeName",
                         "src": "1618:4:15"
                       }
                     ],
-                    "id": 4411,
+                    "id": 4504,
                     "name": "VariableDeclaration",
                     "src": "1618:13:15"
                   }
                 ],
-                "id": 4412,
+                "id": 4505,
                 "name": "ParameterList",
                 "src": "1617:15:15"
               },
@@ -297,7 +297,7 @@ export const IncompatibleTermsContract =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 4412
+                      "functionReturnParameters": 4505
                     },
                     "children": [
                       {
@@ -313,22 +313,22 @@ export const IncompatibleTermsContract =
                           "type": "bool",
                           "value": "false"
                         },
-                        "id": 4413,
+                        "id": 4506,
                         "name": "Literal",
                         "src": "1654:5:15"
                       }
                     ],
-                    "id": 4414,
+                    "id": 4507,
                     "name": "Return",
                     "src": "1647:12:15"
                   }
                 ],
-                "id": 4415,
+                "id": 4508,
                 "name": "Block",
                 "src": "1637:29:15"
               }
             ],
-            "id": 4416,
+            "id": 4509,
             "name": "FunctionDefinition",
             "src": "1500:166:15"
           },
@@ -342,7 +342,7 @@ export const IncompatibleTermsContract =
               ],
               "name": "registerRepayment",
               "payable": false,
-              "scope": 4457,
+              "scope": 4550,
               "stateMutability": "nonpayable",
               "superFunction": 2089,
               "visibility": "public"
@@ -354,7 +354,7 @@ export const IncompatibleTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 4434,
+                      "scope": 4527,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -367,12 +367,12 @@ export const IncompatibleTermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 4417,
+                        "id": 4510,
                         "name": "ElementaryTypeName",
                         "src": "2413:7:15"
                       }
                     ],
-                    "id": 4418,
+                    "id": 4511,
                     "name": "VariableDeclaration",
                     "src": "2413:19:15"
                   },
@@ -380,7 +380,7 @@ export const IncompatibleTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "payer",
-                      "scope": 4434,
+                      "scope": 4527,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -393,12 +393,12 @@ export const IncompatibleTermsContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 4419,
+                        "id": 4512,
                         "name": "ElementaryTypeName",
                         "src": "2442:7:15"
                       }
                     ],
-                    "id": 4420,
+                    "id": 4513,
                     "name": "VariableDeclaration",
                     "src": "2442:13:15"
                   },
@@ -406,7 +406,7 @@ export const IncompatibleTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "beneficiary",
-                      "scope": 4434,
+                      "scope": 4527,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -419,12 +419,12 @@ export const IncompatibleTermsContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 4421,
+                        "id": 4514,
                         "name": "ElementaryTypeName",
                         "src": "2465:7:15"
                       }
                     ],
-                    "id": 4422,
+                    "id": 4515,
                     "name": "VariableDeclaration",
                     "src": "2465:19:15"
                   },
@@ -432,7 +432,7 @@ export const IncompatibleTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "unitsOfRepayment",
-                      "scope": 4434,
+                      "scope": 4527,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -445,12 +445,12 @@ export const IncompatibleTermsContract =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 4423,
+                        "id": 4516,
                         "name": "ElementaryTypeName",
                         "src": "2494:7:15"
                       }
                     ],
-                    "id": 4424,
+                    "id": 4517,
                     "name": "VariableDeclaration",
                     "src": "2494:24:15"
                   },
@@ -458,7 +458,7 @@ export const IncompatibleTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "tokenAddress",
-                      "scope": 4434,
+                      "scope": 4527,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -471,17 +471,17 @@ export const IncompatibleTermsContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 4425,
+                        "id": 4518,
                         "name": "ElementaryTypeName",
                         "src": "2528:7:15"
                       }
                     ],
-                    "id": 4426,
+                    "id": 4519,
                     "name": "VariableDeclaration",
                     "src": "2528:20:15"
                   }
                 ],
-                "id": 4427,
+                "id": 4520,
                 "name": "ParameterList",
                 "src": "2403:151:15"
               },
@@ -491,7 +491,7 @@ export const IncompatibleTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "_success",
-                      "scope": 4434,
+                      "scope": 4527,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -504,17 +504,17 @@ export const IncompatibleTermsContract =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 4428,
+                        "id": 4521,
                         "name": "ElementaryTypeName",
                         "src": "2587:4:15"
                       }
                     ],
-                    "id": 4429,
+                    "id": 4522,
                     "name": "VariableDeclaration",
                     "src": "2587:13:15"
                   }
                 ],
-                "id": 4430,
+                "id": 4523,
                 "name": "ParameterList",
                 "src": "2586:15:15"
               },
@@ -522,7 +522,7 @@ export const IncompatibleTermsContract =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 4430
+                      "functionReturnParameters": 4523
                     },
                     "children": [
                       {
@@ -538,22 +538,22 @@ export const IncompatibleTermsContract =
                           "type": "bool",
                           "value": "false"
                         },
-                        "id": 4431,
+                        "id": 4524,
                         "name": "Literal",
                         "src": "2623:5:15"
                       }
                     ],
-                    "id": 4432,
+                    "id": 4525,
                     "name": "Return",
                     "src": "2616:12:15"
                   }
                 ],
-                "id": 4433,
+                "id": 4526,
                 "name": "Block",
                 "src": "2606:29:15"
               }
             ],
-            "id": 4434,
+            "id": 4527,
             "name": "FunctionDefinition",
             "src": "2377:258:15"
           },
@@ -567,7 +567,7 @@ export const IncompatibleTermsContract =
               ],
               "name": "getExpectedRepaymentValue",
               "payable": false,
-              "scope": 4457,
+              "scope": 4550,
               "stateMutability": "view",
               "superFunction": 2098,
               "visibility": "public"
@@ -579,7 +579,7 @@ export const IncompatibleTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 4446,
+                      "scope": 4539,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -592,12 +592,12 @@ export const IncompatibleTermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 4435,
+                        "id": 4528,
                         "name": "ElementaryTypeName",
                         "src": "3288:7:15"
                       }
                     ],
-                    "id": 4436,
+                    "id": 4529,
                     "name": "VariableDeclaration",
                     "src": "3288:19:15"
                   },
@@ -605,7 +605,7 @@ export const IncompatibleTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "timestamp",
-                      "scope": 4446,
+                      "scope": 4539,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -618,17 +618,17 @@ export const IncompatibleTermsContract =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 4437,
+                        "id": 4530,
                         "name": "ElementaryTypeName",
                         "src": "3317:7:15"
                       }
                     ],
-                    "id": 4438,
+                    "id": 4531,
                     "name": "VariableDeclaration",
                     "src": "3317:17:15"
                   }
                 ],
-                "id": 4439,
+                "id": 4532,
                 "name": "ParameterList",
                 "src": "3278:62:15"
               },
@@ -638,7 +638,7 @@ export const IncompatibleTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "_expectedRepaymentValue",
-                      "scope": 4446,
+                      "scope": 4539,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -651,17 +651,17 @@ export const IncompatibleTermsContract =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 4440,
+                        "id": 4533,
                         "name": "ElementaryTypeName",
                         "src": "3386:4:15"
                       }
                     ],
-                    "id": 4441,
+                    "id": 4534,
                     "name": "VariableDeclaration",
                     "src": "3386:28:15"
                   }
                 ],
-                "id": 4442,
+                "id": 4535,
                 "name": "ParameterList",
                 "src": "3385:30:15"
               },
@@ -669,7 +669,7 @@ export const IncompatibleTermsContract =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 4442
+                      "functionReturnParameters": 4535
                     },
                     "children": [
                       {
@@ -685,22 +685,22 @@ export const IncompatibleTermsContract =
                           "type": "int_const 0",
                           "value": "0"
                         },
-                        "id": 4443,
+                        "id": 4536,
                         "name": "Literal",
                         "src": "3437:1:15"
                       }
                     ],
-                    "id": 4444,
+                    "id": 4537,
                     "name": "Return",
                     "src": "3430:8:15"
                   }
                 ],
-                "id": 4445,
+                "id": 4538,
                 "name": "Block",
                 "src": "3420:25:15"
               }
             ],
-            "id": 4446,
+            "id": 4539,
             "name": "FunctionDefinition",
             "src": "3244:201:15"
           },
@@ -714,7 +714,7 @@ export const IncompatibleTermsContract =
               ],
               "name": "getValueRepaidToDate",
               "payable": false,
-              "scope": 4457,
+              "scope": 4550,
               "stateMutability": "view",
               "superFunction": 2105,
               "visibility": "public"
@@ -726,7 +726,7 @@ export const IncompatibleTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 4456,
+                      "scope": 4549,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -739,17 +739,17 @@ export const IncompatibleTermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 4447,
+                        "id": 4540,
                         "name": "ElementaryTypeName",
                         "src": "3756:7:15"
                       }
                     ],
-                    "id": 4448,
+                    "id": 4541,
                     "name": "VariableDeclaration",
                     "src": "3756:19:15"
                   }
                 ],
-                "id": 4449,
+                "id": 4542,
                 "name": "ParameterList",
                 "src": "3755:21:15"
               },
@@ -759,7 +759,7 @@ export const IncompatibleTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "_valueRepaid",
-                      "scope": 4456,
+                      "scope": 4549,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -772,17 +772,17 @@ export const IncompatibleTermsContract =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 4450,
+                        "id": 4543,
                         "name": "ElementaryTypeName",
                         "src": "3822:4:15"
                       }
                     ],
-                    "id": 4451,
+                    "id": 4544,
                     "name": "VariableDeclaration",
                     "src": "3822:17:15"
                   }
                 ],
-                "id": 4452,
+                "id": 4545,
                 "name": "ParameterList",
                 "src": "3821:19:15"
               },
@@ -790,7 +790,7 @@ export const IncompatibleTermsContract =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 4452
+                      "functionReturnParameters": 4545
                     },
                     "children": [
                       {
@@ -806,32 +806,32 @@ export const IncompatibleTermsContract =
                           "type": "int_const 0",
                           "value": "0"
                         },
-                        "id": 4453,
+                        "id": 4546,
                         "name": "Literal",
                         "src": "3862:1:15"
                       }
                     ],
-                    "id": 4454,
+                    "id": 4547,
                     "name": "Return",
                     "src": "3855:8:15"
                   }
                 ],
-                "id": 4455,
+                "id": 4548,
                 "name": "Block",
                 "src": "3845:25:15"
               }
             ],
-            "id": 4456,
+            "id": 4549,
             "name": "FunctionDefinition",
             "src": "3726:144:15"
           }
         ],
-        "id": 4457,
+        "id": 4550,
         "name": "ContractDefinition",
         "src": "867:3005:15"
       }
     ],
-    "id": 4458,
+    "id": 4551,
     "name": "SourceUnit",
     "src": "584:3289:15"
   },
@@ -843,7 +843,7 @@ export const IncompatibleTermsContract =
     "42": {
       "events": {},
       "links": {},
-      "address": "0xbe36a5f5a6cd90612bd5be32a809076c4e002a04"
+      "address": "0x2928db67218fc032e36226b3375a4ec3569210a0"
     },
     "70": {
       "events": {},
@@ -852,5 +852,5 @@ export const IncompatibleTermsContract =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-26T00:44:40.840Z"
+  "updatedAt": "2018-03-27T04:34:28.873Z"
 }

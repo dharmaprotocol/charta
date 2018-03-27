@@ -467,7 +467,7 @@ export const DebtKernel =
       },
       {
         "attributes": {
-          "SourceUnit": 2280,
+          "SourceUnit": 2322,
           "absolutePath": "/Users/nadavhollander/Documents/Dharma/Development/charta/contracts/TokenTransferProxy.sol",
           "file": "./TokenTransferProxy.sol",
           "scope": 1143,
@@ -482,7 +482,7 @@ export const DebtKernel =
       },
       {
         "attributes": {
-          "SourceUnit": 5245,
+          "SourceUnit": 5338,
           "absolutePath": "zeppelin-solidity/contracts/lifecycle/Pausable.sol",
           "file": "zeppelin-solidity/contracts/lifecycle/Pausable.sol",
           "scope": 1143,
@@ -497,7 +497,7 @@ export const DebtKernel =
       },
       {
         "attributes": {
-          "SourceUnit": 5343,
+          "SourceUnit": 5436,
           "absolutePath": "zeppelin-solidity/contracts/math/SafeMath.sol",
           "file": "zeppelin-solidity/contracts/math/SafeMath.sol",
           "scope": 1143,
@@ -512,7 +512,7 @@ export const DebtKernel =
       },
       {
         "attributes": {
-          "SourceUnit": 5442,
+          "SourceUnit": 5535,
           "absolutePath": "zeppelin-solidity/contracts/token/ERC20/ERC20.sol",
           "file": "zeppelin-solidity/contracts/token/ERC20/ERC20.sol",
           "scope": 1143,
@@ -528,16 +528,16 @@ export const DebtKernel =
       {
         "attributes": {
           "contractDependencies": [
-            5244,
-            5398
+            5337,
+            5491
           ],
           "contractKind": "contract",
           "documentation": "The DebtKernel is the hub of all business logic governing how and when\ndebt orders can be filled and cancelled.  All logic that determines\nwhether a debt order is valid & consensual is contained herein,\nas well as the mechanisms that transfer fees to keepers and\nprincipal payments to debtors.\n * Author: Nadav Hollander -- Github: nadavhollander",
           "fullyImplemented": true,
           "linearizedBaseContracts": [
             1142,
-            5244,
-            5398
+            5337,
+            5491
           ],
           "name": "DebtKernel",
           "scope": 1143
@@ -554,7 +554,7 @@ export const DebtKernel =
                 "attributes": {
                   "contractScope": null,
                   "name": "Pausable",
-                  "referencedDeclaration": 5244,
+                  "referencedDeclaration": 5337,
                   "type": "contract Pausable"
                 },
                 "id": 8,
@@ -572,7 +572,7 @@ export const DebtKernel =
                 "attributes": {
                   "contractScope": null,
                   "name": "SafeMath",
-                  "referencedDeclaration": 5342,
+                  "referencedDeclaration": 5435,
                   "type": "library SafeMath"
                 },
                 "id": 10,
@@ -2055,7 +2055,7 @@ export const DebtKernel =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 5372,
+                      "referencedDeclaration": 5465,
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
@@ -2580,7 +2580,7 @@ export const DebtKernel =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 5205,
+                      "referencedDeclaration": 5298,
                       "type": "modifier ()",
                       "value": "whenNotPaused"
                     },
@@ -3359,7 +3359,7 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5488,
+                                      "referencedDeclaration": 5581,
                                       "type": "function (bool) pure",
                                       "value": "require"
                                     },
@@ -3719,7 +3719,7 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5488,
+                                      "referencedDeclaration": 5581,
                                       "type": "function (bool) pure",
                                       "value": "require"
                                     },
@@ -3894,7 +3894,7 @@ export const DebtKernel =
                                               "isPure": false,
                                               "lValueRequested": false,
                                               "member_name": "sub",
-                                              "referencedDeclaration": 5317,
+                                              "referencedDeclaration": 5410,
                                               "type": "function (uint256,uint256) pure returns (uint256)"
                                             },
                                             "children": [
@@ -4098,7 +4098,7 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5488,
+                                      "referencedDeclaration": 5581,
                                       "type": "function (bool) pure",
                                       "value": "require"
                                     },
@@ -4404,7 +4404,7 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5488,
+                                      "referencedDeclaration": 5581,
                                       "type": "function (bool) pure",
                                       "value": "require"
                                     },
@@ -5205,7 +5205,7 @@ export const DebtKernel =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 5205,
+                      "referencedDeclaration": 5298,
                       "type": "modifier ()",
                       "value": "whenNotPaused"
                     },
@@ -5248,7 +5248,7 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5488,
+                              "referencedDeclaration": 5581,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -5304,7 +5304,7 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 5485,
+                                          "referencedDeclaration": 5578,
                                           "type": "msg",
                                           "value": "msg"
                                         },
@@ -5369,7 +5369,7 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 5485,
+                                          "referencedDeclaration": 5578,
                                           "type": "msg",
                                           "value": "msg"
                                         },
@@ -5806,7 +5806,7 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5485,
+                                  "referencedDeclaration": 5578,
                                   "type": "msg",
                                   "value": "msg"
                                 },
@@ -6042,7 +6042,7 @@ export const DebtKernel =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 5205,
+                      "referencedDeclaration": 5298,
                       "type": "modifier ()",
                       "value": "whenNotPaused"
                     },
@@ -6214,7 +6214,7 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5488,
+                              "referencedDeclaration": 5581,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -6255,7 +6255,7 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5485,
+                                      "referencedDeclaration": 5578,
                                       "type": "msg",
                                       "value": "msg"
                                     },
@@ -6520,7 +6520,7 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5485,
+                                  "referencedDeclaration": 5578,
                                   "type": "msg",
                                   "value": "msg"
                                 },
@@ -7046,7 +7046,7 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5476,
+                              "referencedDeclaration": 5569,
                               "type": "function (bool) pure",
                               "value": "assert"
                             },
@@ -7528,7 +7528,7 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5485,
+                                  "referencedDeclaration": 5578,
                                   "type": "msg",
                                   "value": "msg"
                                 },
@@ -8128,7 +8128,7 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5485,
+                                  "referencedDeclaration": 5578,
                                   "type": "msg",
                                   "value": "msg"
                                 },
@@ -8799,7 +8799,7 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5485,
+                                      "referencedDeclaration": 5578,
                                       "type": "msg",
                                       "value": "msg"
                                     },
@@ -9572,7 +9572,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "add",
-                              "referencedDeclaration": 5341,
+                              "referencedDeclaration": 5434,
                               "type": "function (uint256,uint256) pure returns (uint256)"
                             },
                             "children": [
@@ -9715,7 +9715,7 @@ export const DebtKernel =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "add",
-                                  "referencedDeclaration": 5341,
+                                  "referencedDeclaration": 5434,
                                   "type": "function (uint256,uint256) pure returns (uint256)"
                                 },
                                 "children": [
@@ -10983,7 +10983,7 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5477,
+                                  "referencedDeclaration": 5570,
                                   "type": "block",
                                   "value": "block"
                                 },
@@ -11239,7 +11239,7 @@ export const DebtKernel =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "ownerOf",
-                                  "referencedDeclaration": 4740,
+                                  "referencedDeclaration": 4833,
                                   "type": "function (uint256) view external returns (address)"
                                 },
                                 "children": [
@@ -12342,7 +12342,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "add",
-                              "referencedDeclaration": 5341,
+                              "referencedDeclaration": 5434,
                               "type": "function (uint256,uint256) pure returns (uint256)"
                             },
                             "children": [
@@ -13126,7 +13126,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "transferFrom",
-                              "referencedDeclaration": 2278,
+                              "referencedDeclaration": 2320,
                               "type": "function (address,address,address,uint256) external returns (bool)"
                             },
                             "children": [
@@ -13156,7 +13156,7 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2279,
+                                      "referencedDeclaration": 2321,
                                       "type": "type(contract TokenTransferProxy)",
                                       "value": "TokenTransferProxy"
                                     },
@@ -15427,7 +15427,7 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5479,
+                              "referencedDeclaration": 5572,
                               "type": "function () pure returns (bytes32)",
                               "value": "keccak256"
                             },
@@ -15690,7 +15690,7 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5479,
+                              "referencedDeclaration": 5572,
                               "type": "function () pure returns (bytes32)",
                               "value": "keccak256"
                             },
@@ -15738,7 +15738,7 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5524,
+                                  "referencedDeclaration": 5617,
                                   "type": "contract DebtKernel",
                                   "value": "this"
                                 },
@@ -16096,7 +16096,7 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5479,
+                              "referencedDeclaration": 5572,
                               "type": "function () pure returns (bytes32)",
                               "value": "keccak256"
                             },
@@ -16144,7 +16144,7 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5524,
+                                  "referencedDeclaration": 5617,
                                   "type": "contract DebtKernel",
                                   "value": "this"
                                 },
@@ -16733,7 +16733,7 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5478,
+                                  "referencedDeclaration": 5571,
                                   "type": "function (bytes32,uint8,bytes32,bytes32) pure returns (address)",
                                   "value": "ecrecover"
                                 },
@@ -16771,7 +16771,7 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5479,
+                                      "referencedDeclaration": 5572,
                                       "type": "function () pure returns (bytes32)",
                                       "value": "keccak256"
                                     },
@@ -17057,7 +17057,7 @@ export const DebtKernel =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "balanceOf",
-                                      "referencedDeclaration": 5455,
+                                      "referencedDeclaration": 5548,
                                       "type": "function (address) view external returns (uint256)"
                                     },
                                     "children": [
@@ -17087,7 +17087,7 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 5441,
+                                              "referencedDeclaration": 5534,
                                               "type": "type(contract ERC20)",
                                               "value": "ERC20"
                                             },
@@ -17356,7 +17356,7 @@ export const DebtKernel =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "allowance",
-                                      "referencedDeclaration": 5412,
+                                      "referencedDeclaration": 5505,
                                       "type": "function (address,address) view external returns (uint256)"
                                     },
                                     "children": [
@@ -17386,7 +17386,7 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 5441,
+                                              "referencedDeclaration": 5534,
                                               "type": "type(contract ERC20)",
                                               "value": "ERC20"
                                             },
@@ -17508,7 +17508,7 @@ export const DebtKernel =
     "42": {
       "events": {},
       "links": {},
-      "address": "0xf11dad394c48b7a39cdb45bb0c0cc96eab44fe10"
+      "address": "0x53116adaf596f97086b2a02200cefc79a3cfca11"
     },
     "70": {
       "events": {},
@@ -17517,5 +17517,5 @@ export const DebtKernel =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-26T00:45:13.179Z"
+  "updatedAt": "2018-03-27T04:35:05.258Z"
 }

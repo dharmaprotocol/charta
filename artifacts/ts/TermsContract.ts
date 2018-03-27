@@ -673,5 +673,5 @@ export const TermsContract =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-23T04:19:01.757Z"
+  "updatedAt": "2018-03-27T04:31:52.450Z"
 }

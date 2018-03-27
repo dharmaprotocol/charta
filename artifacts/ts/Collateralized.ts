@@ -377,7 +377,7 @@ export const Collateralized =
       "absolutePath": "/Users/nadavhollander/Documents/Dharma/Development/charta/contracts/examples/Collateralized.sol",
       "exportedSymbols": {
         "Collateralized": [
-          2809
+          2851
         ]
       }
     },
@@ -390,37 +390,37 @@ export const Collateralized =
             ".18"
           ]
         },
-        "id": 2281,
+        "id": 2323,
         "name": "PragmaDirective",
         "src": "584:23:7"
       },
       {
         "attributes": {
-          "SourceUnit": 5343,
+          "SourceUnit": 5436,
           "absolutePath": "zeppelin-solidity/contracts/math/SafeMath.sol",
           "file": "zeppelin-solidity/contracts/math/SafeMath.sol",
-          "scope": 2810,
+          "scope": 2852,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 2282,
+        "id": 2324,
         "name": "ImportDirective",
         "src": "609:55:7"
       },
       {
         "attributes": {
-          "SourceUnit": 5442,
+          "SourceUnit": 5535,
           "absolutePath": "zeppelin-solidity/contracts/token/ERC20/ERC20.sol",
           "file": "zeppelin-solidity/contracts/token/ERC20/ERC20.sol",
-          "scope": 2810,
+          "scope": 2852,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 2283,
+        "id": 2325,
         "name": "ImportDirective",
         "src": "665:59:7"
       },
@@ -429,13 +429,13 @@ export const Collateralized =
           "SourceUnit": 2107,
           "absolutePath": "/Users/nadavhollander/Documents/Dharma/Development/charta/contracts/TermsContract.sol",
           "file": "../TermsContract.sol",
-          "scope": 2810,
+          "scope": 2852,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 2284,
+        "id": 2326,
         "name": "ImportDirective",
         "src": "726:30:7"
       },
@@ -444,28 +444,28 @@ export const Collateralized =
           "SourceUnit": 1665,
           "absolutePath": "/Users/nadavhollander/Documents/Dharma/Development/charta/contracts/DebtRegistry.sol",
           "file": "../DebtRegistry.sol",
-          "scope": 2810,
+          "scope": 2852,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 2285,
+        "id": 2327,
         "name": "ImportDirective",
         "src": "757:29:7"
       },
       {
         "attributes": {
-          "SourceUnit": 2197,
+          "SourceUnit": 2239,
           "absolutePath": "/Users/nadavhollander/Documents/Dharma/Development/charta/contracts/TokenRegistry.sol",
           "file": "../TokenRegistry.sol",
-          "scope": 2810,
+          "scope": 2852,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 2286,
+        "id": 2328,
         "name": "ImportDirective",
         "src": "787:30:7"
       },
@@ -478,11 +478,11 @@ export const Collateralized =
           "documentation": "Abstract semi-implemented interface for generic collateralized terms contract.\n * NOTE: Terms contracts that inherit from Collateralized.sol must adhere to the following constraints\n     1. They reserve the lowest order 108 bits of their terms contract parameters\n        for collateralization-specific parameters.\n     2. They implement the abstract `getTermEndTimestamp` function.\n     3. The expected repayment value and value repaid to date *MUST* monotonically increase\n        over time -- i.e. `x < x' <=> getExpectedRepaymentValue(x) < getExpectedRepaymentValue(x')`\n * Authors (in no particular order): nadavhollander, saturnial, jdkanani",
           "fullyImplemented": false,
           "linearizedBaseContracts": [
-            2809,
+            2851,
             2106
           ],
           "name": "Collateralized",
-          "scope": 2810
+          "scope": 2852
         },
         "children": [
           {
@@ -499,12 +499,12 @@ export const Collateralized =
                   "referencedDeclaration": 2106,
                   "type": "contract TermsContract"
                 },
-                "id": 2287,
+                "id": 2329,
                 "name": "UserDefinedTypeName",
                 "src": "1527:13:7"
               }
             ],
-            "id": 2288,
+            "id": 2330,
             "name": "InheritanceSpecifier",
             "src": "1527:13:7"
           },
@@ -514,10 +514,10 @@ export const Collateralized =
                 "attributes": {
                   "contractScope": null,
                   "name": "SafeMath",
-                  "referencedDeclaration": 5342,
+                  "referencedDeclaration": 5435,
                   "type": "library SafeMath"
                 },
-                "id": 2289,
+                "id": 2331,
                 "name": "UserDefinedTypeName",
                 "src": "1553:8:7"
               },
@@ -526,12 +526,12 @@ export const Collateralized =
                   "name": "uint",
                   "type": "uint256"
                 },
-                "id": 2290,
+                "id": 2332,
                 "name": "ElementaryTypeName",
                 "src": "1566:4:7"
               }
             ],
-            "id": 2291,
+            "id": 2333,
             "name": "UsingForDirective",
             "src": "1547:24:7"
           },
@@ -539,7 +539,7 @@ export const Collateralized =
             "attributes": {
               "constant": false,
               "name": "debtKernelAddress",
-              "scope": 2809,
+              "scope": 2851,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "address",
@@ -552,12 +552,12 @@ export const Collateralized =
                   "name": "address",
                   "type": "address"
                 },
-                "id": 2292,
+                "id": 2334,
                 "name": "ElementaryTypeName",
                 "src": "1577:7:7"
               }
             ],
-            "id": 2293,
+            "id": 2335,
             "name": "VariableDeclaration",
             "src": "1577:32:7"
           },
@@ -565,7 +565,7 @@ export const Collateralized =
             "attributes": {
               "constant": false,
               "name": "debtRegistry",
-              "scope": 2809,
+              "scope": 2851,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "contract DebtRegistry",
@@ -580,12 +580,12 @@ export const Collateralized =
                   "referencedDeclaration": 1664,
                   "type": "contract DebtRegistry"
                 },
-                "id": 2294,
+                "id": 2336,
                 "name": "UserDefinedTypeName",
                 "src": "1616:12:7"
               }
             ],
-            "id": 2295,
+            "id": 2337,
             "name": "VariableDeclaration",
             "src": "1616:32:7"
           },
@@ -593,7 +593,7 @@ export const Collateralized =
             "attributes": {
               "constant": false,
               "name": "tokenRegistry",
-              "scope": 2809,
+              "scope": 2851,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "contract TokenRegistry",
@@ -605,15 +605,15 @@ export const Collateralized =
                 "attributes": {
                   "contractScope": null,
                   "name": "TokenRegistry",
-                  "referencedDeclaration": 2196,
+                  "referencedDeclaration": 2238,
                   "type": "contract TokenRegistry"
                 },
-                "id": 2296,
+                "id": 2338,
                 "name": "UserDefinedTypeName",
                 "src": "1654:13:7"
               }
             ],
-            "id": 2297,
+            "id": 2339,
             "name": "VariableDeclaration",
             "src": "1654:34:7"
           },
@@ -621,7 +621,7 @@ export const Collateralized =
             "attributes": {
               "constant": false,
               "name": "agreementToCollateralizer",
-              "scope": 2809,
+              "scope": 2851,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(bytes32 => address)",
@@ -639,7 +639,7 @@ export const Collateralized =
                       "name": "bytes32",
                       "type": "bytes32"
                     },
-                    "id": 2298,
+                    "id": 2340,
                     "name": "ElementaryTypeName",
                     "src": "1703:7:7"
                   },
@@ -648,17 +648,17 @@ export const Collateralized =
                       "name": "address",
                       "type": "address"
                     },
-                    "id": 2299,
+                    "id": 2341,
                     "name": "ElementaryTypeName",
                     "src": "1714:7:7"
                   }
                 ],
-                "id": 2300,
+                "id": 2342,
                 "name": "Mapping",
                 "src": "1695:27:7"
               }
             ],
-            "id": 2301,
+            "id": 2343,
             "name": "VariableDeclaration",
             "src": "1695:60:7"
           },
@@ -666,7 +666,7 @@ export const Collateralized =
             "attributes": {
               "constant": true,
               "name": "SECONDS_IN_DAY",
-              "scope": 2809,
+              "scope": 2851,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "uint256",
@@ -678,7 +678,7 @@ export const Collateralized =
                   "name": "uint",
                   "type": "uint256"
                 },
-                "id": 2302,
+                "id": 2344,
                 "name": "ElementaryTypeName",
                 "src": "1762:4:7"
               },
@@ -725,7 +725,7 @@ export const Collateralized =
                           "type": "int_const 24",
                           "value": "24"
                         },
-                        "id": 2303,
+                        "id": 2345,
                         "name": "Literal",
                         "src": "1800:2:7"
                       },
@@ -742,12 +742,12 @@ export const Collateralized =
                           "type": "int_const 60",
                           "value": "60"
                         },
-                        "id": 2304,
+                        "id": 2346,
                         "name": "Literal",
                         "src": "1803:2:7"
                       }
                     ],
-                    "id": 2305,
+                    "id": 2347,
                     "name": "BinaryOperation",
                     "src": "1800:5:7"
                   },
@@ -764,17 +764,17 @@ export const Collateralized =
                       "type": "int_const 60",
                       "value": "60"
                     },
-                    "id": 2306,
+                    "id": 2348,
                     "name": "Literal",
                     "src": "1806:2:7"
                   }
                 ],
-                "id": 2307,
+                "id": 2349,
                 "name": "BinaryOperation",
                 "src": "1800:8:7"
               }
             ],
-            "id": 2308,
+            "id": 2350,
             "name": "VariableDeclaration",
             "src": "1762:46:7"
           },
@@ -791,7 +791,7 @@ export const Collateralized =
                       "constant": false,
                       "indexed": true,
                       "name": "agreementID",
-                      "scope": 2316,
+                      "scope": 2358,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -804,12 +804,12 @@ export const Collateralized =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 2309,
+                        "id": 2351,
                         "name": "ElementaryTypeName",
                         "src": "1847:7:7"
                       }
                     ],
-                    "id": 2310,
+                    "id": 2352,
                     "name": "VariableDeclaration",
                     "src": "1847:27:7"
                   },
@@ -818,7 +818,7 @@ export const Collateralized =
                       "constant": false,
                       "indexed": false,
                       "name": "token",
-                      "scope": 2316,
+                      "scope": 2358,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -831,12 +831,12 @@ export const Collateralized =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2311,
+                        "id": 2353,
                         "name": "ElementaryTypeName",
                         "src": "1884:7:7"
                       }
                     ],
-                    "id": 2312,
+                    "id": 2354,
                     "name": "VariableDeclaration",
                     "src": "1884:13:7"
                   },
@@ -845,7 +845,7 @@ export const Collateralized =
                       "constant": false,
                       "indexed": false,
                       "name": "amount",
-                      "scope": 2316,
+                      "scope": 2358,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -858,22 +858,22 @@ export const Collateralized =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 2313,
+                        "id": 2355,
                         "name": "ElementaryTypeName",
                         "src": "1907:4:7"
                       }
                     ],
-                    "id": 2314,
+                    "id": 2356,
                     "name": "VariableDeclaration",
                     "src": "1907:11:7"
                   }
                 ],
-                "id": 2315,
+                "id": 2357,
                 "name": "ParameterList",
                 "src": "1837:87:7"
               }
             ],
-            "id": 2316,
+            "id": 2358,
             "name": "EventDefinition",
             "src": "1815:110:7"
           },
@@ -890,7 +890,7 @@ export const Collateralized =
                       "constant": false,
                       "indexed": true,
                       "name": "agreementID",
-                      "scope": 2326,
+                      "scope": 2368,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -903,12 +903,12 @@ export const Collateralized =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 2317,
+                        "id": 2359,
                         "name": "ElementaryTypeName",
                         "src": "1965:7:7"
                       }
                     ],
-                    "id": 2318,
+                    "id": 2360,
                     "name": "VariableDeclaration",
                     "src": "1965:27:7"
                   },
@@ -917,7 +917,7 @@ export const Collateralized =
                       "constant": false,
                       "indexed": true,
                       "name": "collateralizer",
-                      "scope": 2326,
+                      "scope": 2368,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -930,12 +930,12 @@ export const Collateralized =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2319,
+                        "id": 2361,
                         "name": "ElementaryTypeName",
                         "src": "2002:7:7"
                       }
                     ],
-                    "id": 2320,
+                    "id": 2362,
                     "name": "VariableDeclaration",
                     "src": "2002:30:7"
                   },
@@ -944,7 +944,7 @@ export const Collateralized =
                       "constant": false,
                       "indexed": false,
                       "name": "token",
-                      "scope": 2326,
+                      "scope": 2368,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -957,12 +957,12 @@ export const Collateralized =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2321,
+                        "id": 2363,
                         "name": "ElementaryTypeName",
                         "src": "2042:7:7"
                       }
                     ],
-                    "id": 2322,
+                    "id": 2364,
                     "name": "VariableDeclaration",
                     "src": "2042:13:7"
                   },
@@ -971,7 +971,7 @@ export const Collateralized =
                       "constant": false,
                       "indexed": false,
                       "name": "amount",
-                      "scope": 2326,
+                      "scope": 2368,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -984,22 +984,22 @@ export const Collateralized =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 2323,
+                        "id": 2365,
                         "name": "ElementaryTypeName",
                         "src": "2065:4:7"
                       }
                     ],
-                    "id": 2324,
+                    "id": 2366,
                     "name": "VariableDeclaration",
                     "src": "2065:11:7"
                   }
                 ],
-                "id": 2325,
+                "id": 2367,
                 "name": "ParameterList",
                 "src": "1955:127:7"
               }
             ],
-            "id": 2326,
+            "id": 2368,
             "name": "EventDefinition",
             "src": "1931:152:7"
           },
@@ -1016,7 +1016,7 @@ export const Collateralized =
                       "constant": false,
                       "indexed": true,
                       "name": "agreementID",
-                      "scope": 2336,
+                      "scope": 2378,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -1029,12 +1029,12 @@ export const Collateralized =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 2327,
+                        "id": 2369,
                         "name": "ElementaryTypeName",
                         "src": "2121:7:7"
                       }
                     ],
-                    "id": 2328,
+                    "id": 2370,
                     "name": "VariableDeclaration",
                     "src": "2121:27:7"
                   },
@@ -1043,7 +1043,7 @@ export const Collateralized =
                       "constant": false,
                       "indexed": true,
                       "name": "beneficiary",
-                      "scope": 2336,
+                      "scope": 2378,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1056,12 +1056,12 @@ export const Collateralized =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2329,
+                        "id": 2371,
                         "name": "ElementaryTypeName",
                         "src": "2158:7:7"
                       }
                     ],
-                    "id": 2330,
+                    "id": 2372,
                     "name": "VariableDeclaration",
                     "src": "2158:27:7"
                   },
@@ -1070,7 +1070,7 @@ export const Collateralized =
                       "constant": false,
                       "indexed": false,
                       "name": "token",
-                      "scope": 2336,
+                      "scope": 2378,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1083,12 +1083,12 @@ export const Collateralized =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2331,
+                        "id": 2373,
                         "name": "ElementaryTypeName",
                         "src": "2195:7:7"
                       }
                     ],
-                    "id": 2332,
+                    "id": 2374,
                     "name": "VariableDeclaration",
                     "src": "2195:13:7"
                   },
@@ -1097,7 +1097,7 @@ export const Collateralized =
                       "constant": false,
                       "indexed": false,
                       "name": "amount",
-                      "scope": 2336,
+                      "scope": 2378,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1110,22 +1110,22 @@ export const Collateralized =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 2333,
+                        "id": 2375,
                         "name": "ElementaryTypeName",
                         "src": "2218:4:7"
                       }
                     ],
-                    "id": 2334,
+                    "id": 2376,
                     "name": "VariableDeclaration",
                     "src": "2218:11:7"
                   }
                 ],
-                "id": 2335,
+                "id": 2377,
                 "name": "ParameterList",
                 "src": "2111:124:7"
               }
             ],
-            "id": 2336,
+            "id": 2378,
             "name": "EventDefinition",
             "src": "2089:147:7"
           },
@@ -1139,7 +1139,7 @@ export const Collateralized =
               ],
               "name": "Collateralized",
               "payable": false,
-              "scope": 2809,
+              "scope": 2851,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -1151,7 +1151,7 @@ export const Collateralized =
                     "attributes": {
                       "constant": false,
                       "name": "_debtKernel",
-                      "scope": 2362,
+                      "scope": 2404,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1164,12 +1164,12 @@ export const Collateralized =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2337,
+                        "id": 2379,
                         "name": "ElementaryTypeName",
                         "src": "2275:7:7"
                       }
                     ],
-                    "id": 2338,
+                    "id": 2380,
                     "name": "VariableDeclaration",
                     "src": "2275:19:7"
                   },
@@ -1177,7 +1177,7 @@ export const Collateralized =
                     "attributes": {
                       "constant": false,
                       "name": "_debtRegistry",
-                      "scope": 2362,
+                      "scope": 2404,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1190,12 +1190,12 @@ export const Collateralized =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2339,
+                        "id": 2381,
                         "name": "ElementaryTypeName",
                         "src": "2304:7:7"
                       }
                     ],
-                    "id": 2340,
+                    "id": 2382,
                     "name": "VariableDeclaration",
                     "src": "2304:21:7"
                   },
@@ -1203,7 +1203,7 @@ export const Collateralized =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenRegistry",
-                      "scope": 2362,
+                      "scope": 2404,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1216,17 +1216,17 @@ export const Collateralized =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2341,
+                        "id": 2383,
                         "name": "ElementaryTypeName",
                         "src": "2335:7:7"
                       }
                     ],
-                    "id": 2342,
+                    "id": 2384,
                     "name": "VariableDeclaration",
                     "src": "2335:22:7"
                   }
                 ],
-                "id": 2343,
+                "id": 2385,
                 "name": "ParameterList",
                 "src": "2265:98:7"
               },
@@ -1237,7 +1237,7 @@ export const Collateralized =
                   ]
                 },
                 "children": [],
-                "id": 2344,
+                "id": 2386,
                 "name": "ParameterList",
                 "src": "2371:0:7"
               },
@@ -1262,11 +1262,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2293,
+                              "referencedDeclaration": 2335,
                               "type": "address",
                               "value": "debtKernelAddress"
                             },
-                            "id": 2345,
+                            "id": 2387,
                             "name": "Identifier",
                             "src": "2381:17:7"
                           },
@@ -1276,21 +1276,21 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2338,
+                              "referencedDeclaration": 2380,
                               "type": "address",
                               "value": "_debtKernel"
                             },
-                            "id": 2346,
+                            "id": 2388,
                             "name": "Identifier",
                             "src": "2401:11:7"
                           }
                         ],
-                        "id": 2347,
+                        "id": 2389,
                         "name": "Assignment",
                         "src": "2381:31:7"
                       }
                     ],
-                    "id": 2348,
+                    "id": 2390,
                     "name": "ExpressionStatement",
                     "src": "2381:31:7"
                   },
@@ -1313,11 +1313,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2295,
+                              "referencedDeclaration": 2337,
                               "type": "contract DebtRegistry",
                               "value": "debtRegistry"
                             },
-                            "id": 2349,
+                            "id": 2391,
                             "name": "Identifier",
                             "src": "2422:12:7"
                           },
@@ -1351,7 +1351,7 @@ export const Collateralized =
                                   "type": "type(contract DebtRegistry)",
                                   "value": "DebtRegistry"
                                 },
-                                "id": 2350,
+                                "id": 2392,
                                 "name": "Identifier",
                                 "src": "2437:12:7"
                               },
@@ -1361,26 +1361,26 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2340,
+                                  "referencedDeclaration": 2382,
                                   "type": "address",
                                   "value": "_debtRegistry"
                                 },
-                                "id": 2351,
+                                "id": 2393,
                                 "name": "Identifier",
                                 "src": "2450:13:7"
                               }
                             ],
-                            "id": 2352,
+                            "id": 2394,
                             "name": "FunctionCall",
                             "src": "2437:27:7"
                           }
                         ],
-                        "id": 2353,
+                        "id": 2395,
                         "name": "Assignment",
                         "src": "2422:42:7"
                       }
                     ],
-                    "id": 2354,
+                    "id": 2396,
                     "name": "ExpressionStatement",
                     "src": "2422:42:7"
                   },
@@ -1403,11 +1403,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2297,
+                              "referencedDeclaration": 2339,
                               "type": "contract TokenRegistry",
                               "value": "tokenRegistry"
                             },
-                            "id": 2355,
+                            "id": 2397,
                             "name": "Identifier",
                             "src": "2474:13:7"
                           },
@@ -1437,11 +1437,11 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2196,
+                                  "referencedDeclaration": 2238,
                                   "type": "type(contract TokenRegistry)",
                                   "value": "TokenRegistry"
                                 },
-                                "id": 2356,
+                                "id": 2398,
                                 "name": "Identifier",
                                 "src": "2490:13:7"
                               },
@@ -1451,36 +1451,36 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2342,
+                                  "referencedDeclaration": 2384,
                                   "type": "address",
                                   "value": "_tokenRegistry"
                                 },
-                                "id": 2357,
+                                "id": 2399,
                                 "name": "Identifier",
                                 "src": "2504:14:7"
                               }
                             ],
-                            "id": 2358,
+                            "id": 2400,
                             "name": "FunctionCall",
                             "src": "2490:29:7"
                           }
                         ],
-                        "id": 2359,
+                        "id": 2401,
                         "name": "Assignment",
                         "src": "2474:45:7"
                       }
                     ],
-                    "id": 2360,
+                    "id": 2402,
                     "name": "ExpressionStatement",
                     "src": "2474:45:7"
                   }
                 ],
-                "id": 2361,
+                "id": 2403,
                 "name": "Block",
                 "src": "2371:155:7"
               }
             ],
-            "id": 2362,
+            "id": 2404,
             "name": "FunctionDefinition",
             "src": "2242:284:7"
           },
@@ -1495,7 +1495,7 @@ export const Collateralized =
               ],
               "name": "getTermEndTimestamp",
               "payable": false,
-              "scope": 2809,
+              "scope": 2851,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -1507,7 +1507,7 @@ export const Collateralized =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 2369,
+                      "scope": 2411,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -1520,17 +1520,17 @@ export const Collateralized =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 2363,
+                        "id": 2405,
                         "name": "ElementaryTypeName",
                         "src": "2849:7:7"
                       }
                     ],
-                    "id": 2364,
+                    "id": 2406,
                     "name": "VariableDeclaration",
                     "src": "2849:19:7"
                   }
                 ],
-                "id": 2365,
+                "id": 2407,
                 "name": "ParameterList",
                 "src": "2839:35:7"
               },
@@ -1540,7 +1540,7 @@ export const Collateralized =
                     "attributes": {
                       "constant": false,
                       "name": "_timestamp",
-                      "scope": 2369,
+                      "scope": 2411,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1553,22 +1553,22 @@ export const Collateralized =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 2366,
+                        "id": 2408,
                         "name": "ElementaryTypeName",
                         "src": "2896:4:7"
                       }
                     ],
-                    "id": 2367,
+                    "id": 2409,
                     "name": "VariableDeclaration",
                     "src": "2896:15:7"
                   }
                 ],
-                "id": 2368,
+                "id": 2410,
                 "name": "ParameterList",
                 "src": "2895:17:7"
               }
             ],
-            "id": 2369,
+            "id": 2411,
             "name": "FunctionDefinition",
             "src": "2811:102:7"
           },
@@ -1582,7 +1582,7 @@ export const Collateralized =
               ],
               "name": "registerTermStart",
               "payable": false,
-              "scope": 2809,
+              "scope": 2851,
               "stateMutability": "nonpayable",
               "superFunction": 2074,
               "visibility": "public"
@@ -1594,7 +1594,7 @@ export const Collateralized =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 2482,
+                      "scope": 2524,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -1607,12 +1607,12 @@ export const Collateralized =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 2370,
+                        "id": 2412,
                         "name": "ElementaryTypeName",
                         "src": "3395:7:7"
                       }
                     ],
-                    "id": 2371,
+                    "id": 2413,
                     "name": "VariableDeclaration",
                     "src": "3395:19:7"
                   },
@@ -1620,7 +1620,7 @@ export const Collateralized =
                     "attributes": {
                       "constant": false,
                       "name": "collateralizer",
-                      "scope": 2482,
+                      "scope": 2524,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1633,17 +1633,17 @@ export const Collateralized =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2372,
+                        "id": 2414,
                         "name": "ElementaryTypeName",
                         "src": "3416:7:7"
                       }
                     ],
-                    "id": 2373,
+                    "id": 2415,
                     "name": "VariableDeclaration",
                     "src": "3416:22:7"
                   }
                 ],
-                "id": 2374,
+                "id": 2416,
                 "name": "ParameterList",
                 "src": "3394:45:7"
               },
@@ -1653,7 +1653,7 @@ export const Collateralized =
                     "attributes": {
                       "constant": false,
                       "name": "_success",
-                      "scope": 2482,
+                      "scope": 2524,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -1666,17 +1666,17 @@ export const Collateralized =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 2375,
+                        "id": 2417,
                         "name": "ElementaryTypeName",
                         "src": "3472:4:7"
                       }
                     ],
-                    "id": 2376,
+                    "id": 2418,
                     "name": "VariableDeclaration",
                     "src": "3472:13:7"
                   }
                 ],
-                "id": 2377,
+                "id": 2419,
                 "name": "ParameterList",
                 "src": "3471:15:7"
               },
@@ -1710,11 +1710,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5488,
+                              "referencedDeclaration": 5581,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 2378,
+                            "id": 2420,
                             "name": "Identifier",
                             "src": "3501:7:7"
                           },
@@ -1751,16 +1751,16 @@ export const Collateralized =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5485,
+                                      "referencedDeclaration": 5578,
                                       "type": "msg",
                                       "value": "msg"
                                     },
-                                    "id": 2379,
+                                    "id": 2421,
                                     "name": "Identifier",
                                     "src": "3509:3:7"
                                   }
                                 ],
-                                "id": 2380,
+                                "id": 2422,
                                 "name": "MemberAccess",
                                 "src": "3509:10:7"
                               },
@@ -1770,26 +1770,26 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2293,
+                                  "referencedDeclaration": 2335,
                                   "type": "address",
                                   "value": "debtKernelAddress"
                                 },
-                                "id": 2381,
+                                "id": 2423,
                                 "name": "Identifier",
                                 "src": "3523:17:7"
                               }
                             ],
-                            "id": 2382,
+                            "id": 2424,
                             "name": "BinaryOperation",
                             "src": "3509:31:7"
                           }
                         ],
-                        "id": 2383,
+                        "id": 2425,
                         "name": "FunctionCall",
                         "src": "3501:40:7"
                       }
                     ],
-                    "id": 2384,
+                    "id": 2426,
                     "name": "ExpressionStatement",
                     "src": "3501:40:7"
                   },
@@ -1805,7 +1805,7 @@ export const Collateralized =
                         "attributes": {
                           "constant": false,
                           "name": "collateralToken",
-                          "scope": 2482,
+                          "scope": 2524,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "address",
@@ -1818,17 +1818,17 @@ export const Collateralized =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 2385,
+                            "id": 2427,
                             "name": "ElementaryTypeName",
                             "src": "3668:7:7"
                           }
                         ],
-                        "id": 2386,
+                        "id": 2428,
                         "name": "VariableDeclaration",
                         "src": "3668:23:7"
                       }
                     ],
-                    "id": 2387,
+                    "id": 2429,
                     "name": "VariableDeclarationStatement",
                     "src": "3668:23:7"
                   },
@@ -1844,7 +1844,7 @@ export const Collateralized =
                         "attributes": {
                           "constant": false,
                           "name": "collateralAmount",
-                          "scope": 2482,
+                          "scope": 2524,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -1857,17 +1857,17 @@ export const Collateralized =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 2388,
+                            "id": 2430,
                             "name": "ElementaryTypeName",
                             "src": "3751:4:7"
                           }
                         ],
-                        "id": 2389,
+                        "id": 2431,
                         "name": "VariableDeclaration",
                         "src": "3751:21:7"
                       }
                     ],
-                    "id": 2390,
+                    "id": 2432,
                     "name": "VariableDeclarationStatement",
                     "src": "3751:21:7"
                   },
@@ -1883,7 +1883,7 @@ export const Collateralized =
                         "attributes": {
                           "constant": false,
                           "name": "gracePeriodInDays",
-                          "scope": 2482,
+                          "scope": 2524,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -1896,17 +1896,17 @@ export const Collateralized =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 2391,
+                            "id": 2433,
                             "name": "ElementaryTypeName",
                             "src": "3914:4:7"
                           }
                         ],
-                        "id": 2392,
+                        "id": 2434,
                         "name": "VariableDeclaration",
                         "src": "3914:22:7"
                       }
                     ],
-                    "id": 2393,
+                    "id": 2435,
                     "name": "VariableDeclarationStatement",
                     "src": "3914:22:7"
                   },
@@ -1940,11 +1940,11 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2386,
+                                  "referencedDeclaration": 2428,
                                   "type": "address",
                                   "value": "collateralToken"
                                 },
-                                "id": 2394,
+                                "id": 2436,
                                 "name": "Identifier",
                                 "src": "3948:15:7"
                               },
@@ -1954,11 +1954,11 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2389,
+                                  "referencedDeclaration": 2431,
                                   "type": "uint256",
                                   "value": "collateralAmount"
                                 },
-                                "id": 2395,
+                                "id": 2437,
                                 "name": "Identifier",
                                 "src": "3965:16:7"
                               },
@@ -1968,16 +1968,16 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2392,
+                                  "referencedDeclaration": 2434,
                                   "type": "uint256",
                                   "value": "gracePeriodInDays"
                                 },
-                                "id": 2396,
+                                "id": 2438,
                                 "name": "Identifier",
                                 "src": "3983:17:7"
                               }
                             ],
-                            "id": 2397,
+                            "id": 2439,
                             "name": "TupleExpression",
                             "src": "3947:54:7"
                           },
@@ -2007,11 +2007,11 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2808,
+                                  "referencedDeclaration": 2850,
                                   "type": "function (bytes32) view returns (address,uint256,uint256)",
                                   "value": "retrieveCollateralParameters"
                                 },
-                                "id": 2398,
+                                "id": 2440,
                                 "name": "Identifier",
                                 "src": "4004:28:7"
                               },
@@ -2021,26 +2021,26 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2371,
+                                  "referencedDeclaration": 2413,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 2399,
+                                "id": 2441,
                                 "name": "Identifier",
                                 "src": "4033:11:7"
                               }
                             ],
-                            "id": 2400,
+                            "id": 2442,
                             "name": "FunctionCall",
                             "src": "4004:41:7"
                           }
                         ],
-                        "id": 2401,
+                        "id": 2443,
                         "name": "Assignment",
                         "src": "3947:98:7"
                       }
                     ],
-                    "id": 2402,
+                    "id": 2444,
                     "name": "ExpressionStatement",
                     "src": "3947:98:7"
                   },
@@ -2072,11 +2072,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5488,
+                              "referencedDeclaration": 5581,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 2403,
+                            "id": 2445,
                             "name": "Identifier",
                             "src": "4056:7:7"
                           },
@@ -2101,11 +2101,11 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2389,
+                                  "referencedDeclaration": 2431,
                                   "type": "uint256",
                                   "value": "collateralAmount"
                                 },
-                                "id": 2404,
+                                "id": 2446,
                                 "name": "Identifier",
                                 "src": "4064:16:7"
                               },
@@ -2122,22 +2122,22 @@ export const Collateralized =
                                   "type": "int_const 0",
                                   "value": "0"
                                 },
-                                "id": 2405,
+                                "id": 2447,
                                 "name": "Literal",
                                 "src": "4083:1:7"
                               }
                             ],
-                            "id": 2406,
+                            "id": 2448,
                             "name": "BinaryOperation",
                             "src": "4064:20:7"
                           }
                         ],
-                        "id": 2407,
+                        "id": 2449,
                         "name": "FunctionCall",
                         "src": "4056:29:7"
                       }
                     ],
-                    "id": 2408,
+                    "id": 2450,
                     "name": "ExpressionStatement",
                     "src": "4056:29:7"
                   },
@@ -2169,11 +2169,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5488,
+                              "referencedDeclaration": 5581,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 2409,
+                            "id": 2451,
                             "name": "Identifier",
                             "src": "4095:7:7"
                           },
@@ -2198,11 +2198,11 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2386,
+                                  "referencedDeclaration": 2428,
                                   "type": "address",
                                   "value": "collateralToken"
                                 },
-                                "id": 2410,
+                                "id": 2452,
                                 "name": "Identifier",
                                 "src": "4103:15:7"
                               },
@@ -2236,7 +2236,7 @@ export const Collateralized =
                                       "type": "type(address)",
                                       "value": "address"
                                     },
-                                    "id": 2411,
+                                    "id": 2453,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "4122:7:7"
                                   },
@@ -2253,27 +2253,27 @@ export const Collateralized =
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 2412,
+                                    "id": 2454,
                                     "name": "Literal",
                                     "src": "4130:1:7"
                                   }
                                 ],
-                                "id": 2413,
+                                "id": 2455,
                                 "name": "FunctionCall",
                                 "src": "4122:10:7"
                               }
                             ],
-                            "id": 2414,
+                            "id": 2456,
                             "name": "BinaryOperation",
                             "src": "4103:29:7"
                           }
                         ],
-                        "id": 2415,
+                        "id": 2457,
                         "name": "FunctionCall",
                         "src": "4095:38:7"
                       }
                     ],
-                    "id": 2416,
+                    "id": 2458,
                     "name": "ExpressionStatement",
                     "src": "4095:38:7"
                   },
@@ -2305,11 +2305,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5488,
+                              "referencedDeclaration": 5581,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 2417,
+                            "id": 2459,
                             "name": "Identifier",
                             "src": "4602:7:7"
                           },
@@ -2344,11 +2344,11 @@ export const Collateralized =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2301,
+                                      "referencedDeclaration": 2343,
                                       "type": "mapping(bytes32 => address)",
                                       "value": "agreementToCollateralizer"
                                     },
-                                    "id": 2418,
+                                    "id": 2460,
                                     "name": "Identifier",
                                     "src": "4610:25:7"
                                   },
@@ -2358,16 +2358,16 @@ export const Collateralized =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2371,
+                                      "referencedDeclaration": 2413,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 2419,
+                                    "id": 2461,
                                     "name": "Identifier",
                                     "src": "4636:11:7"
                                   }
                                 ],
-                                "id": 2420,
+                                "id": 2462,
                                 "name": "IndexAccess",
                                 "src": "4610:38:7"
                               },
@@ -2401,7 +2401,7 @@ export const Collateralized =
                                       "type": "type(address)",
                                       "value": "address"
                                     },
-                                    "id": 2421,
+                                    "id": 2463,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "4652:7:7"
                                   },
@@ -2418,34 +2418,34 @@ export const Collateralized =
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 2422,
+                                    "id": 2464,
                                     "name": "Literal",
                                     "src": "4660:1:7"
                                   }
                                 ],
-                                "id": 2423,
+                                "id": 2465,
                                 "name": "FunctionCall",
                                 "src": "4652:10:7"
                               }
                             ],
-                            "id": 2424,
+                            "id": 2466,
                             "name": "BinaryOperation",
                             "src": "4610:52:7"
                           }
                         ],
-                        "id": 2425,
+                        "id": 2467,
                         "name": "FunctionCall",
                         "src": "4602:61:7"
                       }
                     ],
-                    "id": 2426,
+                    "id": 2468,
                     "name": "ExpressionStatement",
                     "src": "4602:61:7"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        2428
+                        2470
                       ]
                     },
                     "children": [
@@ -2453,7 +2453,7 @@ export const Collateralized =
                         "attributes": {
                           "constant": false,
                           "name": "erc20token",
-                          "scope": 2482,
+                          "scope": 2524,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "contract ERC20",
@@ -2465,15 +2465,15 @@ export const Collateralized =
                             "attributes": {
                               "contractScope": null,
                               "name": "ERC20",
-                              "referencedDeclaration": 5441,
+                              "referencedDeclaration": 5534,
                               "type": "contract ERC20"
                             },
-                            "id": 2427,
+                            "id": 2469,
                             "name": "UserDefinedTypeName",
                             "src": "4674:5:7"
                           }
                         ],
-                        "id": 2428,
+                        "id": 2470,
                         "name": "VariableDeclaration",
                         "src": "4674:16:7"
                       },
@@ -2503,11 +2503,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5441,
+                              "referencedDeclaration": 5534,
                               "type": "type(contract ERC20)",
                               "value": "ERC20"
                             },
-                            "id": 2429,
+                            "id": 2471,
                             "name": "Identifier",
                             "src": "4693:5:7"
                           },
@@ -2517,28 +2517,28 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2386,
+                              "referencedDeclaration": 2428,
                               "type": "address",
                               "value": "collateralToken"
                             },
-                            "id": 2430,
+                            "id": 2472,
                             "name": "Identifier",
                             "src": "4699:15:7"
                           }
                         ],
-                        "id": 2431,
+                        "id": 2473,
                         "name": "FunctionCall",
                         "src": "4693:22:7"
                       }
                     ],
-                    "id": 2432,
+                    "id": 2474,
                     "name": "VariableDeclarationStatement",
                     "src": "4674:41:7"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        2434
+                        2476
                       ]
                     },
                     "children": [
@@ -2546,7 +2546,7 @@ export const Collateralized =
                         "attributes": {
                           "constant": false,
                           "name": "custodian",
-                          "scope": 2482,
+                          "scope": 2524,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "address",
@@ -2559,12 +2559,12 @@ export const Collateralized =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 2433,
+                            "id": 2475,
                             "name": "ElementaryTypeName",
                             "src": "4725:7:7"
                           }
                         ],
-                        "id": 2434,
+                        "id": 2476,
                         "name": "VariableDeclaration",
                         "src": "4725:17:7"
                       },
@@ -2587,7 +2587,7 @@ export const Collateralized =
                             "attributes": {
                               "argumentTypes": [
                                 {
-                                  "typeIdentifier": "t_contract$_Collateralized_$2809",
+                                  "typeIdentifier": "t_contract$_Collateralized_$2851",
                                   "typeString": "contract Collateralized"
                                 }
                               ],
@@ -2598,7 +2598,7 @@ export const Collateralized =
                               "type": "type(address)",
                               "value": "address"
                             },
-                            "id": 2435,
+                            "id": 2477,
                             "name": "ElementaryTypeNameExpression",
                             "src": "4745:7:7"
                           },
@@ -2608,21 +2608,21 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5530,
+                              "referencedDeclaration": 5623,
                               "type": "contract Collateralized",
                               "value": "this"
                             },
-                            "id": 2436,
+                            "id": 2478,
                             "name": "Identifier",
                             "src": "4753:4:7"
                           }
                         ],
-                        "id": 2437,
+                        "id": 2479,
                         "name": "FunctionCall",
                         "src": "4745:13:7"
                       }
                     ],
-                    "id": 2438,
+                    "id": 2480,
                     "name": "VariableDeclarationStatement",
                     "src": "4725:33:7"
                   },
@@ -2654,11 +2654,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5488,
+                              "referencedDeclaration": 5581,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 2439,
+                            "id": 2481,
                             "name": "Identifier",
                             "src": "4920:7:7"
                           },
@@ -2705,7 +2705,7 @@ export const Collateralized =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "balanceOf",
-                                      "referencedDeclaration": 5455,
+                                      "referencedDeclaration": 5548,
                                       "type": "function (address) view external returns (uint256)"
                                     },
                                     "children": [
@@ -2715,16 +2715,16 @@ export const Collateralized =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 2428,
+                                          "referencedDeclaration": 2470,
                                           "type": "contract ERC20",
                                           "value": "erc20token"
                                         },
-                                        "id": 2440,
+                                        "id": 2482,
                                         "name": "Identifier",
                                         "src": "4928:10:7"
                                       }
                                     ],
-                                    "id": 2441,
+                                    "id": 2483,
                                     "name": "MemberAccess",
                                     "src": "4928:20:7"
                                   },
@@ -2734,16 +2734,16 @@ export const Collateralized =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2373,
+                                      "referencedDeclaration": 2415,
                                       "type": "address",
                                       "value": "collateralizer"
                                     },
-                                    "id": 2442,
+                                    "id": 2484,
                                     "name": "Identifier",
                                     "src": "4949:14:7"
                                   }
                                 ],
-                                "id": 2443,
+                                "id": 2485,
                                 "name": "FunctionCall",
                                 "src": "4928:36:7"
                               },
@@ -2753,26 +2753,26 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2389,
+                                  "referencedDeclaration": 2431,
                                   "type": "uint256",
                                   "value": "collateralAmount"
                                 },
-                                "id": 2444,
+                                "id": 2486,
                                 "name": "Identifier",
                                 "src": "4968:16:7"
                               }
                             ],
-                            "id": 2445,
+                            "id": 2487,
                             "name": "BinaryOperation",
                             "src": "4928:56:7"
                           }
                         ],
-                        "id": 2446,
+                        "id": 2488,
                         "name": "FunctionCall",
                         "src": "4920:65:7"
                       }
                     ],
-                    "id": 2447,
+                    "id": 2489,
                     "name": "ExpressionStatement",
                     "src": "4920:65:7"
                   },
@@ -2804,11 +2804,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5488,
+                              "referencedDeclaration": 5581,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 2448,
+                            "id": 2490,
                             "name": "Identifier",
                             "src": "5166:7:7"
                           },
@@ -2859,7 +2859,7 @@ export const Collateralized =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "allowance",
-                                      "referencedDeclaration": 5412,
+                                      "referencedDeclaration": 5505,
                                       "type": "function (address,address) view external returns (uint256)"
                                     },
                                     "children": [
@@ -2869,16 +2869,16 @@ export const Collateralized =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 2428,
+                                          "referencedDeclaration": 2470,
                                           "type": "contract ERC20",
                                           "value": "erc20token"
                                         },
-                                        "id": 2449,
+                                        "id": 2491,
                                         "name": "Identifier",
                                         "src": "5174:10:7"
                                       }
                                     ],
-                                    "id": 2450,
+                                    "id": 2492,
                                     "name": "MemberAccess",
                                     "src": "5174:20:7"
                                   },
@@ -2888,11 +2888,11 @@ export const Collateralized =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2373,
+                                      "referencedDeclaration": 2415,
                                       "type": "address",
                                       "value": "collateralizer"
                                     },
-                                    "id": 2451,
+                                    "id": 2493,
                                     "name": "Identifier",
                                     "src": "5195:14:7"
                                   },
@@ -2902,16 +2902,16 @@ export const Collateralized =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2434,
+                                      "referencedDeclaration": 2476,
                                       "type": "address",
                                       "value": "custodian"
                                     },
-                                    "id": 2452,
+                                    "id": 2494,
                                     "name": "Identifier",
                                     "src": "5211:9:7"
                                   }
                                 ],
-                                "id": 2453,
+                                "id": 2495,
                                 "name": "FunctionCall",
                                 "src": "5174:47:7"
                               },
@@ -2921,26 +2921,26 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2389,
+                                  "referencedDeclaration": 2431,
                                   "type": "uint256",
                                   "value": "collateralAmount"
                                 },
-                                "id": 2454,
+                                "id": 2496,
                                 "name": "Identifier",
                                 "src": "5225:16:7"
                               }
                             ],
-                            "id": 2455,
+                            "id": 2497,
                             "name": "BinaryOperation",
                             "src": "5174:67:7"
                           }
                         ],
-                        "id": 2456,
+                        "id": 2498,
                         "name": "FunctionCall",
                         "src": "5166:76:7"
                       }
                     ],
-                    "id": 2457,
+                    "id": 2499,
                     "name": "ExpressionStatement",
                     "src": "5166:76:7"
                   },
@@ -2973,11 +2973,11 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2301,
+                                  "referencedDeclaration": 2343,
                                   "type": "mapping(bytes32 => address)",
                                   "value": "agreementToCollateralizer"
                                 },
-                                "id": 2458,
+                                "id": 2500,
                                 "name": "Identifier",
                                 "src": "5375:25:7"
                               },
@@ -2987,16 +2987,16 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2371,
+                                  "referencedDeclaration": 2413,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 2459,
+                                "id": 2501,
                                 "name": "Identifier",
                                 "src": "5401:11:7"
                               }
                             ],
-                            "id": 2460,
+                            "id": 2502,
                             "name": "IndexAccess",
                             "src": "5375:38:7"
                           },
@@ -3006,21 +3006,21 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2373,
+                              "referencedDeclaration": 2415,
                               "type": "address",
                               "value": "collateralizer"
                             },
-                            "id": 2461,
+                            "id": 2503,
                             "name": "Identifier",
                             "src": "5416:14:7"
                           }
                         ],
-                        "id": 2462,
+                        "id": 2504,
                         "name": "Assignment",
                         "src": "5375:55:7"
                       }
                     ],
-                    "id": 2463,
+                    "id": 2505,
                     "name": "ExpressionStatement",
                     "src": "5375:55:7"
                   },
@@ -3052,11 +3052,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5488,
+                              "referencedDeclaration": 5581,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 2464,
+                            "id": 2506,
                             "name": "Identifier",
                             "src": "5518:7:7"
                           },
@@ -3096,7 +3096,7 @@ export const Collateralized =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "transferFrom",
-                                  "referencedDeclaration": 5423,
+                                  "referencedDeclaration": 5516,
                                   "type": "function (address,address,uint256) external returns (bool)"
                                 },
                                 "children": [
@@ -3106,16 +3106,16 @@ export const Collateralized =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2428,
+                                      "referencedDeclaration": 2470,
                                       "type": "contract ERC20",
                                       "value": "erc20token"
                                     },
-                                    "id": 2465,
+                                    "id": 2507,
                                     "name": "Identifier",
                                     "src": "5526:10:7"
                                   }
                                 ],
-                                "id": 2466,
+                                "id": 2508,
                                 "name": "MemberAccess",
                                 "src": "5526:23:7"
                               },
@@ -3125,11 +3125,11 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2373,
+                                  "referencedDeclaration": 2415,
                                   "type": "address",
                                   "value": "collateralizer"
                                 },
-                                "id": 2467,
+                                "id": 2509,
                                 "name": "Identifier",
                                 "src": "5563:14:7"
                               },
@@ -3139,11 +3139,11 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2434,
+                                  "referencedDeclaration": 2476,
                                   "type": "address",
                                   "value": "custodian"
                                 },
-                                "id": 2468,
+                                "id": 2510,
                                 "name": "Identifier",
                                 "src": "5591:9:7"
                               },
@@ -3153,26 +3153,26 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2389,
+                                  "referencedDeclaration": 2431,
                                   "type": "uint256",
                                   "value": "collateralAmount"
                                 },
-                                "id": 2469,
+                                "id": 2511,
                                 "name": "Identifier",
                                 "src": "5614:16:7"
                               }
                             ],
-                            "id": 2470,
+                            "id": 2512,
                             "name": "FunctionCall",
                             "src": "5526:114:7"
                           }
                         ],
-                        "id": 2471,
+                        "id": 2513,
                         "name": "FunctionCall",
                         "src": "5518:123:7"
                       }
                     ],
-                    "id": 2472,
+                    "id": 2514,
                     "name": "ExpressionStatement",
                     "src": "5518:123:7"
                   },
@@ -3212,11 +3212,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2316,
+                              "referencedDeclaration": 2358,
                               "type": "function (bytes32,address,uint256)",
                               "value": "CollateralLocked"
                             },
-                            "id": 2473,
+                            "id": 2515,
                             "name": "Identifier",
                             "src": "5708:16:7"
                           },
@@ -3226,11 +3226,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2371,
+                              "referencedDeclaration": 2413,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 2474,
+                            "id": 2516,
                             "name": "Identifier",
                             "src": "5725:11:7"
                           },
@@ -3240,11 +3240,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2386,
+                              "referencedDeclaration": 2428,
                               "type": "address",
                               "value": "collateralToken"
                             },
-                            "id": 2475,
+                            "id": 2517,
                             "name": "Identifier",
                             "src": "5738:15:7"
                           },
@@ -3254,27 +3254,27 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2389,
+                              "referencedDeclaration": 2431,
                               "type": "uint256",
                               "value": "collateralAmount"
                             },
-                            "id": 2476,
+                            "id": 2518,
                             "name": "Identifier",
                             "src": "5755:16:7"
                           }
                         ],
-                        "id": 2477,
+                        "id": 2519,
                         "name": "FunctionCall",
                         "src": "5708:64:7"
                       }
                     ],
-                    "id": 2478,
+                    "id": 2520,
                     "name": "ExpressionStatement",
                     "src": "5708:64:7"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 2377
+                      "functionReturnParameters": 2419
                     },
                     "children": [
                       {
@@ -3290,22 +3290,22 @@ export const Collateralized =
                           "type": "bool",
                           "value": "true"
                         },
-                        "id": 2479,
+                        "id": 2521,
                         "name": "Literal",
                         "src": "5790:4:7"
                       }
                     ],
-                    "id": 2480,
+                    "id": 2522,
                     "name": "Return",
                     "src": "5783:11:7"
                   }
                 ],
-                "id": 2481,
+                "id": 2523,
                 "name": "Block",
                 "src": "3491:2310:7"
               }
             ],
-            "id": 2482,
+            "id": 2524,
             "name": "FunctionDefinition",
             "src": "3368:2433:7"
           },
@@ -3319,7 +3319,7 @@ export const Collateralized =
               ],
               "name": "returnCollateral",
               "payable": false,
-              "scope": 2809,
+              "scope": 2851,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -3331,7 +3331,7 @@ export const Collateralized =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 2579,
+                      "scope": 2621,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -3344,17 +3344,17 @@ export const Collateralized =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 2483,
+                        "id": 2525,
                         "name": "ElementaryTypeName",
                         "src": "6119:7:7"
                       }
                     ],
-                    "id": 2484,
+                    "id": 2526,
                     "name": "VariableDeclaration",
                     "src": "6119:19:7"
                   }
                 ],
-                "id": 2485,
+                "id": 2527,
                 "name": "ParameterList",
                 "src": "6109:35:7"
               },
@@ -3365,7 +3365,7 @@ export const Collateralized =
                   ]
                 },
                 "children": [],
-                "id": 2486,
+                "id": 2528,
                 "name": "ParameterList",
                 "src": "6164:0:7"
               },
@@ -3383,7 +3383,7 @@ export const Collateralized =
                         "attributes": {
                           "constant": false,
                           "name": "collateralToken",
-                          "scope": 2579,
+                          "scope": 2621,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "address",
@@ -3396,17 +3396,17 @@ export const Collateralized =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 2487,
+                            "id": 2529,
                             "name": "ElementaryTypeName",
                             "src": "6290:7:7"
                           }
                         ],
-                        "id": 2488,
+                        "id": 2530,
                         "name": "VariableDeclaration",
                         "src": "6290:23:7"
                       }
                     ],
-                    "id": 2489,
+                    "id": 2531,
                     "name": "VariableDeclarationStatement",
                     "src": "6290:23:7"
                   },
@@ -3422,7 +3422,7 @@ export const Collateralized =
                         "attributes": {
                           "constant": false,
                           "name": "collateralAmount",
-                          "scope": 2579,
+                          "scope": 2621,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -3435,17 +3435,17 @@ export const Collateralized =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 2490,
+                            "id": 2532,
                             "name": "ElementaryTypeName",
                             "src": "6373:4:7"
                           }
                         ],
-                        "id": 2491,
+                        "id": 2533,
                         "name": "VariableDeclaration",
                         "src": "6373:21:7"
                       }
                     ],
-                    "id": 2492,
+                    "id": 2534,
                     "name": "VariableDeclarationStatement",
                     "src": "6373:21:7"
                   },
@@ -3461,7 +3461,7 @@ export const Collateralized =
                         "attributes": {
                           "constant": false,
                           "name": "gracePeriodInDays",
-                          "scope": 2579,
+                          "scope": 2621,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -3474,17 +3474,17 @@ export const Collateralized =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 2493,
+                            "id": 2535,
                             "name": "ElementaryTypeName",
                             "src": "6536:4:7"
                           }
                         ],
-                        "id": 2494,
+                        "id": 2536,
                         "name": "VariableDeclaration",
                         "src": "6536:22:7"
                       }
                     ],
-                    "id": 2495,
+                    "id": 2537,
                     "name": "VariableDeclarationStatement",
                     "src": "6536:22:7"
                   },
@@ -3518,11 +3518,11 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2488,
+                                  "referencedDeclaration": 2530,
                                   "type": "address",
                                   "value": "collateralToken"
                                 },
-                                "id": 2496,
+                                "id": 2538,
                                 "name": "Identifier",
                                 "src": "6570:15:7"
                               },
@@ -3532,11 +3532,11 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2491,
+                                  "referencedDeclaration": 2533,
                                   "type": "uint256",
                                   "value": "collateralAmount"
                                 },
-                                "id": 2497,
+                                "id": 2539,
                                 "name": "Identifier",
                                 "src": "6587:16:7"
                               },
@@ -3546,16 +3546,16 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2494,
+                                  "referencedDeclaration": 2536,
                                   "type": "uint256",
                                   "value": "gracePeriodInDays"
                                 },
-                                "id": 2498,
+                                "id": 2540,
                                 "name": "Identifier",
                                 "src": "6605:17:7"
                               }
                             ],
-                            "id": 2499,
+                            "id": 2541,
                             "name": "TupleExpression",
                             "src": "6569:54:7"
                           },
@@ -3585,11 +3585,11 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2808,
+                                  "referencedDeclaration": 2850,
                                   "type": "function (bytes32) view returns (address,uint256,uint256)",
                                   "value": "retrieveCollateralParameters"
                                 },
-                                "id": 2500,
+                                "id": 2542,
                                 "name": "Identifier",
                                 "src": "6626:28:7"
                               },
@@ -3599,26 +3599,26 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2484,
+                                  "referencedDeclaration": 2526,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 2501,
+                                "id": 2543,
                                 "name": "Identifier",
                                 "src": "6655:11:7"
                               }
                             ],
-                            "id": 2502,
+                            "id": 2544,
                             "name": "FunctionCall",
                             "src": "6626:41:7"
                           }
                         ],
-                        "id": 2503,
+                        "id": 2545,
                         "name": "Assignment",
                         "src": "6569:98:7"
                       }
                     ],
-                    "id": 2504,
+                    "id": 2546,
                     "name": "ExpressionStatement",
                     "src": "6569:98:7"
                   },
@@ -3650,11 +3650,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5488,
+                              "referencedDeclaration": 5581,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 2505,
+                            "id": 2547,
                             "name": "Identifier",
                             "src": "6752:7:7"
                           },
@@ -3679,11 +3679,11 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2491,
+                                  "referencedDeclaration": 2533,
                                   "type": "uint256",
                                   "value": "collateralAmount"
                                 },
-                                "id": 2506,
+                                "id": 2548,
                                 "name": "Identifier",
                                 "src": "6760:16:7"
                               },
@@ -3700,22 +3700,22 @@ export const Collateralized =
                                   "type": "int_const 0",
                                   "value": "0"
                                 },
-                                "id": 2507,
+                                "id": 2549,
                                 "name": "Literal",
                                 "src": "6779:1:7"
                               }
                             ],
-                            "id": 2508,
+                            "id": 2550,
                             "name": "BinaryOperation",
                             "src": "6760:20:7"
                           }
                         ],
-                        "id": 2509,
+                        "id": 2551,
                         "name": "FunctionCall",
                         "src": "6752:29:7"
                       }
                     ],
-                    "id": 2510,
+                    "id": 2552,
                     "name": "ExpressionStatement",
                     "src": "6752:29:7"
                   },
@@ -3747,11 +3747,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5488,
+                              "referencedDeclaration": 5581,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 2511,
+                            "id": 2553,
                             "name": "Identifier",
                             "src": "6791:7:7"
                           },
@@ -3776,11 +3776,11 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2488,
+                                  "referencedDeclaration": 2530,
                                   "type": "address",
                                   "value": "collateralToken"
                                 },
-                                "id": 2512,
+                                "id": 2554,
                                 "name": "Identifier",
                                 "src": "6799:15:7"
                               },
@@ -3814,7 +3814,7 @@ export const Collateralized =
                                       "type": "type(address)",
                                       "value": "address"
                                     },
-                                    "id": 2513,
+                                    "id": 2555,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "6818:7:7"
                                   },
@@ -3831,27 +3831,27 @@ export const Collateralized =
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 2514,
+                                    "id": 2556,
                                     "name": "Literal",
                                     "src": "6826:1:7"
                                   }
                                 ],
-                                "id": 2515,
+                                "id": 2557,
                                 "name": "FunctionCall",
                                 "src": "6818:10:7"
                               }
                             ],
-                            "id": 2516,
+                            "id": 2558,
                             "name": "BinaryOperation",
                             "src": "6799:29:7"
                           }
                         ],
-                        "id": 2517,
+                        "id": 2559,
                         "name": "FunctionCall",
                         "src": "6791:38:7"
                       }
                     ],
-                    "id": 2518,
+                    "id": 2560,
                     "name": "ExpressionStatement",
                     "src": "6791:38:7"
                   },
@@ -3883,11 +3883,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5488,
+                              "referencedDeclaration": 5581,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 2519,
+                            "id": 2561,
                             "name": "Identifier",
                             "src": "7083:7:7"
                           },
@@ -3922,11 +3922,11 @@ export const Collateralized =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2301,
+                                      "referencedDeclaration": 2343,
                                       "type": "mapping(bytes32 => address)",
                                       "value": "agreementToCollateralizer"
                                     },
-                                    "id": 2520,
+                                    "id": 2562,
                                     "name": "Identifier",
                                     "src": "7091:25:7"
                                   },
@@ -3936,16 +3936,16 @@ export const Collateralized =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2484,
+                                      "referencedDeclaration": 2526,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 2521,
+                                    "id": 2563,
                                     "name": "Identifier",
                                     "src": "7117:11:7"
                                   }
                                 ],
-                                "id": 2522,
+                                "id": 2564,
                                 "name": "IndexAccess",
                                 "src": "7091:38:7"
                               },
@@ -3979,7 +3979,7 @@ export const Collateralized =
                                       "type": "type(address)",
                                       "value": "address"
                                     },
-                                    "id": 2523,
+                                    "id": 2565,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "7133:7:7"
                                   },
@@ -3996,27 +3996,27 @@ export const Collateralized =
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 2524,
+                                    "id": 2566,
                                     "name": "Literal",
                                     "src": "7141:1:7"
                                   }
                                 ],
-                                "id": 2525,
+                                "id": 2567,
                                 "name": "FunctionCall",
                                 "src": "7133:10:7"
                               }
                             ],
-                            "id": 2526,
+                            "id": 2568,
                             "name": "BinaryOperation",
                             "src": "7091:52:7"
                           }
                         ],
-                        "id": 2527,
+                        "id": 2569,
                         "name": "FunctionCall",
                         "src": "7083:61:7"
                       }
                     ],
-                    "id": 2528,
+                    "id": 2570,
                     "name": "ExpressionStatement",
                     "src": "7083:61:7"
                   },
@@ -4048,11 +4048,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5488,
+                              "referencedDeclaration": 5581,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 2529,
+                            "id": 2571,
                             "name": "Identifier",
                             "src": "7215:7:7"
                           },
@@ -4097,11 +4097,11 @@ export const Collateralized =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2369,
+                                      "referencedDeclaration": 2411,
                                       "type": "function (bytes32) view returns (uint256)",
                                       "value": "getTermEndTimestamp"
                                     },
-                                    "id": 2530,
+                                    "id": 2572,
                                     "name": "Identifier",
                                     "src": "7223:19:7"
                                   },
@@ -4111,16 +4111,16 @@ export const Collateralized =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2484,
+                                      "referencedDeclaration": 2526,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 2531,
+                                    "id": 2573,
                                     "name": "Identifier",
                                     "src": "7243:11:7"
                                   }
                                 ],
-                                "id": 2532,
+                                "id": 2574,
                                 "name": "FunctionCall",
                                 "src": "7223:32:7"
                               },
@@ -4142,31 +4142,31 @@ export const Collateralized =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5477,
+                                      "referencedDeclaration": 5570,
                                       "type": "block",
                                       "value": "block"
                                     },
-                                    "id": 2533,
+                                    "id": 2575,
                                     "name": "Identifier",
                                     "src": "7258:5:7"
                                   }
                                 ],
-                                "id": 2534,
+                                "id": 2576,
                                 "name": "MemberAccess",
                                 "src": "7258:15:7"
                               }
                             ],
-                            "id": 2535,
+                            "id": 2577,
                             "name": "BinaryOperation",
                             "src": "7223:50:7"
                           }
                         ],
-                        "id": 2536,
+                        "id": 2578,
                         "name": "FunctionCall",
                         "src": "7215:59:7"
                       }
                     ],
-                    "id": 2537,
+                    "id": 2579,
                     "name": "ExpressionStatement",
                     "src": "7215:59:7"
                   },
@@ -4198,11 +4198,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5488,
+                              "referencedDeclaration": 5581,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 2538,
+                            "id": 2580,
                             "name": "Identifier",
                             "src": "7346:7:7"
                           },
@@ -4255,7 +4255,7 @@ export const Collateralized =
                                       "type": "function (bytes32,uint256) view returns (uint256)",
                                       "value": "getExpectedRepaymentValue"
                                     },
-                                    "id": 2539,
+                                    "id": 2581,
                                     "name": "Identifier",
                                     "src": "7367:25:7"
                                   },
@@ -4265,11 +4265,11 @@ export const Collateralized =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2484,
+                                      "referencedDeclaration": 2526,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 2540,
+                                    "id": 2582,
                                     "name": "Identifier",
                                     "src": "7410:11:7"
                                   },
@@ -4291,21 +4291,21 @@ export const Collateralized =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 5477,
+                                          "referencedDeclaration": 5570,
                                           "type": "block",
                                           "value": "block"
                                         },
-                                        "id": 2541,
+                                        "id": 2583,
                                         "name": "Identifier",
                                         "src": "7439:5:7"
                                       }
                                     ],
-                                    "id": 2542,
+                                    "id": 2584,
                                     "name": "MemberAccess",
                                     "src": "7439:15:7"
                                   }
                                 ],
-                                "id": 2543,
+                                "id": 2585,
                                 "name": "FunctionCall",
                                 "src": "7367:101:7"
                               },
@@ -4339,7 +4339,7 @@ export const Collateralized =
                                       "type": "function (bytes32) view returns (uint256)",
                                       "value": "getValueRepaidToDate"
                                     },
-                                    "id": 2544,
+                                    "id": 2586,
                                     "name": "Identifier",
                                     "src": "7472:20:7"
                                   },
@@ -4349,38 +4349,38 @@ export const Collateralized =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2484,
+                                      "referencedDeclaration": 2526,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 2545,
+                                    "id": 2587,
                                     "name": "Identifier",
                                     "src": "7493:11:7"
                                   }
                                 ],
-                                "id": 2546,
+                                "id": 2588,
                                 "name": "FunctionCall",
                                 "src": "7472:33:7"
                               }
                             ],
-                            "id": 2547,
+                            "id": 2589,
                             "name": "BinaryOperation",
                             "src": "7367:138:7"
                           }
                         ],
-                        "id": 2548,
+                        "id": 2590,
                         "name": "FunctionCall",
                         "src": "7346:169:7"
                       }
                     ],
-                    "id": 2549,
+                    "id": 2591,
                     "name": "ExpressionStatement",
                     "src": "7346:169:7"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        2551
+                        2593
                       ]
                     },
                     "children": [
@@ -4388,7 +4388,7 @@ export const Collateralized =
                         "attributes": {
                           "constant": false,
                           "name": "collateralizer",
-                          "scope": 2579,
+                          "scope": 2621,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "address",
@@ -4401,12 +4401,12 @@ export const Collateralized =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 2550,
+                            "id": 2592,
                             "name": "ElementaryTypeName",
                             "src": "7581:7:7"
                           }
                         ],
-                        "id": 2551,
+                        "id": 2593,
                         "name": "VariableDeclaration",
                         "src": "7581:22:7"
                       },
@@ -4426,11 +4426,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2301,
+                              "referencedDeclaration": 2343,
                               "type": "mapping(bytes32 => address)",
                               "value": "agreementToCollateralizer"
                             },
-                            "id": 2552,
+                            "id": 2594,
                             "name": "Identifier",
                             "src": "7606:25:7"
                           },
@@ -4440,21 +4440,21 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2484,
+                              "referencedDeclaration": 2526,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 2553,
+                            "id": 2595,
                             "name": "Identifier",
                             "src": "7632:11:7"
                           }
                         ],
-                        "id": 2554,
+                        "id": 2596,
                         "name": "IndexAccess",
                         "src": "7606:38:7"
                       }
                     ],
-                    "id": 2555,
+                    "id": 2597,
                     "name": "VariableDeclarationStatement",
                     "src": "7581:63:7"
                   },
@@ -4488,11 +4488,11 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2301,
+                                  "referencedDeclaration": 2343,
                                   "type": "mapping(bytes32 => address)",
                                   "value": "agreementToCollateralizer"
                                 },
-                                "id": 2556,
+                                "id": 2598,
                                 "name": "Identifier",
                                 "src": "7775:25:7"
                               },
@@ -4502,26 +4502,26 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2484,
+                                  "referencedDeclaration": 2526,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 2557,
+                                "id": 2599,
                                 "name": "Identifier",
                                 "src": "7801:11:7"
                               }
                             ],
-                            "id": 2558,
+                            "id": 2600,
                             "name": "IndexAccess",
                             "src": "7775:38:7"
                           }
                         ],
-                        "id": 2559,
+                        "id": 2601,
                         "name": "UnaryOperation",
                         "src": "7768:45:7"
                       }
                     ],
-                    "id": 2560,
+                    "id": 2602,
                     "name": "ExpressionStatement",
                     "src": "7768:45:7"
                   },
@@ -4553,11 +4553,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5488,
+                              "referencedDeclaration": 5581,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 2561,
+                            "id": 2603,
                             "name": "Identifier",
                             "src": "7919:7:7"
                           },
@@ -4593,7 +4593,7 @@ export const Collateralized =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "transfer",
-                                  "referencedDeclaration": 5464,
+                                  "referencedDeclaration": 5557,
                                   "type": "function (address,uint256) external returns (bool)"
                                 },
                                 "children": [
@@ -4623,11 +4623,11 @@ export const Collateralized =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 5441,
+                                          "referencedDeclaration": 5534,
                                           "type": "type(contract ERC20)",
                                           "value": "ERC20"
                                         },
-                                        "id": 2562,
+                                        "id": 2604,
                                         "name": "Identifier",
                                         "src": "7940:5:7"
                                       },
@@ -4637,21 +4637,21 @@ export const Collateralized =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 2488,
+                                          "referencedDeclaration": 2530,
                                           "type": "address",
                                           "value": "collateralToken"
                                         },
-                                        "id": 2563,
+                                        "id": 2605,
                                         "name": "Identifier",
                                         "src": "7946:15:7"
                                       }
                                     ],
-                                    "id": 2564,
+                                    "id": 2606,
                                     "name": "FunctionCall",
                                     "src": "7940:22:7"
                                   }
                                 ],
-                                "id": 2565,
+                                "id": 2607,
                                 "name": "MemberAccess",
                                 "src": "7940:31:7"
                               },
@@ -4661,11 +4661,11 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2551,
+                                  "referencedDeclaration": 2593,
                                   "type": "address",
                                   "value": "collateralizer"
                                 },
-                                "id": 2566,
+                                "id": 2608,
                                 "name": "Identifier",
                                 "src": "7989:14:7"
                               },
@@ -4675,26 +4675,26 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2491,
+                                  "referencedDeclaration": 2533,
                                   "type": "uint256",
                                   "value": "collateralAmount"
                                 },
-                                "id": 2567,
+                                "id": 2609,
                                 "name": "Identifier",
                                 "src": "8021:16:7"
                               }
                             ],
-                            "id": 2568,
+                            "id": 2610,
                             "name": "FunctionCall",
                             "src": "7940:111:7"
                           }
                         ],
-                        "id": 2569,
+                        "id": 2611,
                         "name": "FunctionCall",
                         "src": "7919:142:7"
                       }
                     ],
-                    "id": 2570,
+                    "id": 2612,
                     "name": "ExpressionStatement",
                     "src": "7919:142:7"
                   },
@@ -4738,11 +4738,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2326,
+                              "referencedDeclaration": 2368,
                               "type": "function (bytes32,address,address,uint256)",
                               "value": "CollateralReturned"
                             },
-                            "id": 2571,
+                            "id": 2613,
                             "name": "Identifier",
                             "src": "8105:18:7"
                           },
@@ -4752,11 +4752,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2484,
+                              "referencedDeclaration": 2526,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 2572,
+                            "id": 2614,
                             "name": "Identifier",
                             "src": "8137:11:7"
                           },
@@ -4766,11 +4766,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2551,
+                              "referencedDeclaration": 2593,
                               "type": "address",
                               "value": "collateralizer"
                             },
-                            "id": 2573,
+                            "id": 2615,
                             "name": "Identifier",
                             "src": "8162:14:7"
                           },
@@ -4780,11 +4780,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2488,
+                              "referencedDeclaration": 2530,
                               "type": "address",
                               "value": "collateralToken"
                             },
-                            "id": 2574,
+                            "id": 2616,
                             "name": "Identifier",
                             "src": "8190:15:7"
                           },
@@ -4794,31 +4794,31 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2491,
+                              "referencedDeclaration": 2533,
                               "type": "uint256",
                               "value": "collateralAmount"
                             },
-                            "id": 2575,
+                            "id": 2617,
                             "name": "Identifier",
                             "src": "8219:16:7"
                           }
                         ],
-                        "id": 2576,
+                        "id": 2618,
                         "name": "FunctionCall",
                         "src": "8105:140:7"
                       }
                     ],
-                    "id": 2577,
+                    "id": 2619,
                     "name": "ExpressionStatement",
                     "src": "8105:140:7"
                   }
                 ],
-                "id": 2578,
+                "id": 2620,
                 "name": "Block",
                 "src": "6164:2088:7"
               }
             ],
-            "id": 2579,
+            "id": 2621,
             "name": "FunctionDefinition",
             "src": "6084:2168:7"
           },
@@ -4832,7 +4832,7 @@ export const Collateralized =
               ],
               "name": "seizeCollateral",
               "payable": false,
-              "scope": 2809,
+              "scope": 2851,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -4844,7 +4844,7 @@ export const Collateralized =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 2669,
+                      "scope": 2711,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -4857,17 +4857,17 @@ export const Collateralized =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 2580,
+                        "id": 2622,
                         "name": "ElementaryTypeName",
                         "src": "8546:7:7"
                       }
                     ],
-                    "id": 2581,
+                    "id": 2623,
                     "name": "VariableDeclaration",
                     "src": "8546:19:7"
                   }
                 ],
-                "id": 2582,
+                "id": 2624,
                 "name": "ParameterList",
                 "src": "8536:35:7"
               },
@@ -4878,7 +4878,7 @@ export const Collateralized =
                   ]
                 },
                 "children": [],
-                "id": 2583,
+                "id": 2625,
                 "name": "ParameterList",
                 "src": "8591:0:7"
               },
@@ -4896,7 +4896,7 @@ export const Collateralized =
                         "attributes": {
                           "constant": false,
                           "name": "collateralToken",
-                          "scope": 2669,
+                          "scope": 2711,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "address",
@@ -4909,17 +4909,17 @@ export const Collateralized =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 2584,
+                            "id": 2626,
                             "name": "ElementaryTypeName",
                             "src": "8717:7:7"
                           }
                         ],
-                        "id": 2585,
+                        "id": 2627,
                         "name": "VariableDeclaration",
                         "src": "8717:23:7"
                       }
                     ],
-                    "id": 2586,
+                    "id": 2628,
                     "name": "VariableDeclarationStatement",
                     "src": "8717:23:7"
                   },
@@ -4935,7 +4935,7 @@ export const Collateralized =
                         "attributes": {
                           "constant": false,
                           "name": "collateralAmount",
-                          "scope": 2669,
+                          "scope": 2711,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -4948,17 +4948,17 @@ export const Collateralized =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 2587,
+                            "id": 2629,
                             "name": "ElementaryTypeName",
                             "src": "8800:4:7"
                           }
                         ],
-                        "id": 2588,
+                        "id": 2630,
                         "name": "VariableDeclaration",
                         "src": "8800:21:7"
                       }
                     ],
-                    "id": 2589,
+                    "id": 2631,
                     "name": "VariableDeclarationStatement",
                     "src": "8800:21:7"
                   },
@@ -4974,7 +4974,7 @@ export const Collateralized =
                         "attributes": {
                           "constant": false,
                           "name": "gracePeriodInDays",
-                          "scope": 2669,
+                          "scope": 2711,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -4987,17 +4987,17 @@ export const Collateralized =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 2590,
+                            "id": 2632,
                             "name": "ElementaryTypeName",
                             "src": "8963:4:7"
                           }
                         ],
-                        "id": 2591,
+                        "id": 2633,
                         "name": "VariableDeclaration",
                         "src": "8963:22:7"
                       }
                     ],
-                    "id": 2592,
+                    "id": 2634,
                     "name": "VariableDeclarationStatement",
                     "src": "8963:22:7"
                   },
@@ -5031,11 +5031,11 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2585,
+                                  "referencedDeclaration": 2627,
                                   "type": "address",
                                   "value": "collateralToken"
                                 },
-                                "id": 2593,
+                                "id": 2635,
                                 "name": "Identifier",
                                 "src": "8997:15:7"
                               },
@@ -5045,11 +5045,11 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2588,
+                                  "referencedDeclaration": 2630,
                                   "type": "uint256",
                                   "value": "collateralAmount"
                                 },
-                                "id": 2594,
+                                "id": 2636,
                                 "name": "Identifier",
                                 "src": "9014:16:7"
                               },
@@ -5059,16 +5059,16 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2591,
+                                  "referencedDeclaration": 2633,
                                   "type": "uint256",
                                   "value": "gracePeriodInDays"
                                 },
-                                "id": 2595,
+                                "id": 2637,
                                 "name": "Identifier",
                                 "src": "9032:17:7"
                               }
                             ],
-                            "id": 2596,
+                            "id": 2638,
                             "name": "TupleExpression",
                             "src": "8996:54:7"
                           },
@@ -5098,11 +5098,11 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2808,
+                                  "referencedDeclaration": 2850,
                                   "type": "function (bytes32) view returns (address,uint256,uint256)",
                                   "value": "retrieveCollateralParameters"
                                 },
-                                "id": 2597,
+                                "id": 2639,
                                 "name": "Identifier",
                                 "src": "9053:28:7"
                               },
@@ -5112,26 +5112,26 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2581,
+                                  "referencedDeclaration": 2623,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 2598,
+                                "id": 2640,
                                 "name": "Identifier",
                                 "src": "9082:11:7"
                               }
                             ],
-                            "id": 2599,
+                            "id": 2641,
                             "name": "FunctionCall",
                             "src": "9053:41:7"
                           }
                         ],
-                        "id": 2600,
+                        "id": 2642,
                         "name": "Assignment",
                         "src": "8996:98:7"
                       }
                     ],
-                    "id": 2601,
+                    "id": 2643,
                     "name": "ExpressionStatement",
                     "src": "8996:98:7"
                   },
@@ -5163,11 +5163,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5488,
+                              "referencedDeclaration": 5581,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 2602,
+                            "id": 2644,
                             "name": "Identifier",
                             "src": "9179:7:7"
                           },
@@ -5192,11 +5192,11 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2588,
+                                  "referencedDeclaration": 2630,
                                   "type": "uint256",
                                   "value": "collateralAmount"
                                 },
-                                "id": 2603,
+                                "id": 2645,
                                 "name": "Identifier",
                                 "src": "9187:16:7"
                               },
@@ -5213,22 +5213,22 @@ export const Collateralized =
                                   "type": "int_const 0",
                                   "value": "0"
                                 },
-                                "id": 2604,
+                                "id": 2646,
                                 "name": "Literal",
                                 "src": "9206:1:7"
                               }
                             ],
-                            "id": 2605,
+                            "id": 2647,
                             "name": "BinaryOperation",
                             "src": "9187:20:7"
                           }
                         ],
-                        "id": 2606,
+                        "id": 2648,
                         "name": "FunctionCall",
                         "src": "9179:29:7"
                       }
                     ],
-                    "id": 2607,
+                    "id": 2649,
                     "name": "ExpressionStatement",
                     "src": "9179:29:7"
                   },
@@ -5260,11 +5260,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5488,
+                              "referencedDeclaration": 5581,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 2608,
+                            "id": 2650,
                             "name": "Identifier",
                             "src": "9218:7:7"
                           },
@@ -5289,11 +5289,11 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2585,
+                                  "referencedDeclaration": 2627,
                                   "type": "address",
                                   "value": "collateralToken"
                                 },
-                                "id": 2609,
+                                "id": 2651,
                                 "name": "Identifier",
                                 "src": "9226:15:7"
                               },
@@ -5327,7 +5327,7 @@ export const Collateralized =
                                       "type": "type(address)",
                                       "value": "address"
                                     },
-                                    "id": 2610,
+                                    "id": 2652,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "9245:7:7"
                                   },
@@ -5344,27 +5344,27 @@ export const Collateralized =
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 2611,
+                                    "id": 2653,
                                     "name": "Literal",
                                     "src": "9253:1:7"
                                   }
                                 ],
-                                "id": 2612,
+                                "id": 2654,
                                 "name": "FunctionCall",
                                 "src": "9245:10:7"
                               }
                             ],
-                            "id": 2613,
+                            "id": 2655,
                             "name": "BinaryOperation",
                             "src": "9226:29:7"
                           }
                         ],
-                        "id": 2614,
+                        "id": 2656,
                         "name": "FunctionCall",
                         "src": "9218:38:7"
                       }
                     ],
-                    "id": 2615,
+                    "id": 2657,
                     "name": "ExpressionStatement",
                     "src": "9218:38:7"
                   },
@@ -5396,11 +5396,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5488,
+                              "referencedDeclaration": 5581,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 2616,
+                            "id": 2658,
                             "name": "Identifier",
                             "src": "9507:7:7"
                           },
@@ -5435,11 +5435,11 @@ export const Collateralized =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2301,
+                                      "referencedDeclaration": 2343,
                                       "type": "mapping(bytes32 => address)",
                                       "value": "agreementToCollateralizer"
                                     },
-                                    "id": 2617,
+                                    "id": 2659,
                                     "name": "Identifier",
                                     "src": "9515:25:7"
                                   },
@@ -5449,16 +5449,16 @@ export const Collateralized =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2581,
+                                      "referencedDeclaration": 2623,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 2618,
+                                    "id": 2660,
                                     "name": "Identifier",
                                     "src": "9541:11:7"
                                   }
                                 ],
-                                "id": 2619,
+                                "id": 2661,
                                 "name": "IndexAccess",
                                 "src": "9515:38:7"
                               },
@@ -5492,7 +5492,7 @@ export const Collateralized =
                                       "type": "type(address)",
                                       "value": "address"
                                     },
-                                    "id": 2620,
+                                    "id": 2662,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "9557:7:7"
                                   },
@@ -5509,27 +5509,27 @@ export const Collateralized =
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 2621,
+                                    "id": 2663,
                                     "name": "Literal",
                                     "src": "9565:1:7"
                                   }
                                 ],
-                                "id": 2622,
+                                "id": 2664,
                                 "name": "FunctionCall",
                                 "src": "9557:10:7"
                               }
                             ],
-                            "id": 2623,
+                            "id": 2665,
                             "name": "BinaryOperation",
                             "src": "9515:52:7"
                           }
                         ],
-                        "id": 2624,
+                        "id": 2666,
                         "name": "FunctionCall",
                         "src": "9507:61:7"
                       }
                     ],
-                    "id": 2625,
+                    "id": 2667,
                     "name": "ExpressionStatement",
                     "src": "9507:61:7"
                   },
@@ -5561,11 +5561,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5488,
+                              "referencedDeclaration": 5581,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 2626,
+                            "id": 2668,
                             "name": "Identifier",
                             "src": "10047:7:7"
                           },
@@ -5618,7 +5618,7 @@ export const Collateralized =
                                       "type": "function (bytes32,uint256) view returns (uint256)",
                                       "value": "getExpectedRepaymentValue"
                                     },
-                                    "id": 2627,
+                                    "id": 2669,
                                     "name": "Identifier",
                                     "src": "10068:25:7"
                                   },
@@ -5628,11 +5628,11 @@ export const Collateralized =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2581,
+                                      "referencedDeclaration": 2623,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 2628,
+                                    "id": 2670,
                                     "name": "Identifier",
                                     "src": "10111:11:7"
                                   },
@@ -5662,11 +5662,11 @@ export const Collateralized =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 2743,
+                                          "referencedDeclaration": 2785,
                                           "type": "function (uint256) view returns (uint256)",
                                           "value": "timestampAdjustedForGracePeriod"
                                         },
-                                        "id": 2629,
+                                        "id": 2671,
                                         "name": "Identifier",
                                         "src": "10140:31:7"
                                       },
@@ -5676,21 +5676,21 @@ export const Collateralized =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 2591,
+                                          "referencedDeclaration": 2633,
                                           "type": "uint256",
                                           "value": "gracePeriodInDays"
                                         },
-                                        "id": 2630,
+                                        "id": 2672,
                                         "name": "Identifier",
                                         "src": "10172:17:7"
                                       }
                                     ],
-                                    "id": 2631,
+                                    "id": 2673,
                                     "name": "FunctionCall",
                                     "src": "10140:50:7"
                                   }
                                 ],
-                                "id": 2632,
+                                "id": 2674,
                                 "name": "FunctionCall",
                                 "src": "10068:136:7"
                               },
@@ -5724,7 +5724,7 @@ export const Collateralized =
                                       "type": "function (bytes32) view returns (uint256)",
                                       "value": "getValueRepaidToDate"
                                     },
-                                    "id": 2633,
+                                    "id": 2675,
                                     "name": "Identifier",
                                     "src": "10207:20:7"
                                   },
@@ -5734,31 +5734,31 @@ export const Collateralized =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2581,
+                                      "referencedDeclaration": 2623,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 2634,
+                                    "id": 2676,
                                     "name": "Identifier",
                                     "src": "10228:11:7"
                                   }
                                 ],
-                                "id": 2635,
+                                "id": 2677,
                                 "name": "FunctionCall",
                                 "src": "10207:33:7"
                               }
                             ],
-                            "id": 2636,
+                            "id": 2678,
                             "name": "BinaryOperation",
                             "src": "10068:172:7"
                           }
                         ],
-                        "id": 2637,
+                        "id": 2679,
                         "name": "FunctionCall",
                         "src": "10047:203:7"
                       }
                     ],
-                    "id": 2638,
+                    "id": 2680,
                     "name": "ExpressionStatement",
                     "src": "10047:203:7"
                   },
@@ -5792,11 +5792,11 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2301,
+                                  "referencedDeclaration": 2343,
                                   "type": "mapping(bytes32 => address)",
                                   "value": "agreementToCollateralizer"
                                 },
-                                "id": 2639,
+                                "id": 2681,
                                 "name": "Identifier",
                                 "src": "10381:25:7"
                               },
@@ -5806,33 +5806,33 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2581,
+                                  "referencedDeclaration": 2623,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 2640,
+                                "id": 2682,
                                 "name": "Identifier",
                                 "src": "10407:11:7"
                               }
                             ],
-                            "id": 2641,
+                            "id": 2683,
                             "name": "IndexAccess",
                             "src": "10381:38:7"
                           }
                         ],
-                        "id": 2642,
+                        "id": 2684,
                         "name": "UnaryOperation",
                         "src": "10374:45:7"
                       }
                     ],
-                    "id": 2643,
+                    "id": 2685,
                     "name": "ExpressionStatement",
                     "src": "10374:45:7"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        2645
+                        2687
                       ]
                     },
                     "children": [
@@ -5840,7 +5840,7 @@ export const Collateralized =
                         "attributes": {
                           "constant": false,
                           "name": "beneficiary",
-                          "scope": 2669,
+                          "scope": 2711,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "address",
@@ -5853,12 +5853,12 @@ export const Collateralized =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 2644,
+                            "id": 2686,
                             "name": "ElementaryTypeName",
                             "src": "10489:7:7"
                           }
                         ],
-                        "id": 2645,
+                        "id": 2687,
                         "name": "VariableDeclaration",
                         "src": "10489:19:7"
                       },
@@ -5900,16 +5900,16 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2295,
+                                  "referencedDeclaration": 2337,
                                   "type": "contract DebtRegistry",
                                   "value": "debtRegistry"
                                 },
-                                "id": 2646,
+                                "id": 2688,
                                 "name": "Identifier",
                                 "src": "10511:12:7"
                               }
                             ],
-                            "id": 2647,
+                            "id": 2689,
                             "name": "MemberAccess",
                             "src": "10511:27:7"
                           },
@@ -5919,21 +5919,21 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2581,
+                              "referencedDeclaration": 2623,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 2648,
+                            "id": 2690,
                             "name": "Identifier",
                             "src": "10539:11:7"
                           }
                         ],
-                        "id": 2649,
+                        "id": 2691,
                         "name": "FunctionCall",
                         "src": "10511:40:7"
                       }
                     ],
-                    "id": 2650,
+                    "id": 2692,
                     "name": "VariableDeclarationStatement",
                     "src": "10489:62:7"
                   },
@@ -5965,11 +5965,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5488,
+                              "referencedDeclaration": 5581,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 2651,
+                            "id": 2693,
                             "name": "Identifier",
                             "src": "10649:7:7"
                           },
@@ -6005,7 +6005,7 @@ export const Collateralized =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "transfer",
-                                  "referencedDeclaration": 5464,
+                                  "referencedDeclaration": 5557,
                                   "type": "function (address,uint256) external returns (bool)"
                                 },
                                 "children": [
@@ -6035,11 +6035,11 @@ export const Collateralized =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 5441,
+                                          "referencedDeclaration": 5534,
                                           "type": "type(contract ERC20)",
                                           "value": "ERC20"
                                         },
-                                        "id": 2652,
+                                        "id": 2694,
                                         "name": "Identifier",
                                         "src": "10670:5:7"
                                       },
@@ -6049,21 +6049,21 @@ export const Collateralized =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 2585,
+                                          "referencedDeclaration": 2627,
                                           "type": "address",
                                           "value": "collateralToken"
                                         },
-                                        "id": 2653,
+                                        "id": 2695,
                                         "name": "Identifier",
                                         "src": "10676:15:7"
                                       }
                                     ],
-                                    "id": 2654,
+                                    "id": 2696,
                                     "name": "FunctionCall",
                                     "src": "10670:22:7"
                                   }
                                 ],
-                                "id": 2655,
+                                "id": 2697,
                                 "name": "MemberAccess",
                                 "src": "10670:31:7"
                               },
@@ -6073,11 +6073,11 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2645,
+                                  "referencedDeclaration": 2687,
                                   "type": "address",
                                   "value": "beneficiary"
                                 },
-                                "id": 2656,
+                                "id": 2698,
                                 "name": "Identifier",
                                 "src": "10719:11:7"
                               },
@@ -6087,26 +6087,26 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2588,
+                                  "referencedDeclaration": 2630,
                                   "type": "uint256",
                                   "value": "collateralAmount"
                                 },
-                                "id": 2657,
+                                "id": 2699,
                                 "name": "Identifier",
                                 "src": "10748:16:7"
                               }
                             ],
-                            "id": 2658,
+                            "id": 2700,
                             "name": "FunctionCall",
                             "src": "10670:108:7"
                           }
                         ],
-                        "id": 2659,
+                        "id": 2701,
                         "name": "FunctionCall",
                         "src": "10649:139:7"
                       }
                     ],
-                    "id": 2660,
+                    "id": 2702,
                     "name": "ExpressionStatement",
                     "src": "10649:139:7"
                   },
@@ -6150,11 +6150,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2336,
+                              "referencedDeclaration": 2378,
                               "type": "function (bytes32,address,address,uint256)",
                               "value": "CollateralSeized"
                             },
-                            "id": 2661,
+                            "id": 2703,
                             "name": "Identifier",
                             "src": "10833:16:7"
                           },
@@ -6164,11 +6164,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2581,
+                              "referencedDeclaration": 2623,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 2662,
+                            "id": 2704,
                             "name": "Identifier",
                             "src": "10863:11:7"
                           },
@@ -6178,11 +6178,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2645,
+                              "referencedDeclaration": 2687,
                               "type": "address",
                               "value": "beneficiary"
                             },
-                            "id": 2663,
+                            "id": 2705,
                             "name": "Identifier",
                             "src": "10888:11:7"
                           },
@@ -6192,11 +6192,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2585,
+                              "referencedDeclaration": 2627,
                               "type": "address",
                               "value": "collateralToken"
                             },
-                            "id": 2664,
+                            "id": 2706,
                             "name": "Identifier",
                             "src": "10913:15:7"
                           },
@@ -6206,31 +6206,31 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2588,
+                              "referencedDeclaration": 2630,
                               "type": "uint256",
                               "value": "collateralAmount"
                             },
-                            "id": 2665,
+                            "id": 2707,
                             "name": "Identifier",
                             "src": "10942:16:7"
                           }
                         ],
-                        "id": 2666,
+                        "id": 2708,
                         "name": "FunctionCall",
                         "src": "10833:135:7"
                       }
                     ],
-                    "id": 2667,
+                    "id": 2709,
                     "name": "ExpressionStatement",
                     "src": "10833:135:7"
                   }
                 ],
-                "id": 2668,
+                "id": 2710,
                 "name": "Block",
                 "src": "8591:2384:7"
               }
             ],
-            "id": 2669,
+            "id": 2711,
             "name": "FunctionDefinition",
             "src": "8512:2463:7"
           },
@@ -6244,7 +6244,7 @@ export const Collateralized =
               ],
               "name": "unpackCollateralParametersFromBytes",
               "payable": false,
-              "scope": 2809,
+              "scope": 2851,
               "stateMutability": "pure",
               "superFunction": null,
               "visibility": "public"
@@ -6256,7 +6256,7 @@ export const Collateralized =
                     "attributes": {
                       "constant": false,
                       "name": "parameters",
-                      "scope": 2726,
+                      "scope": 2768,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -6269,17 +6269,17 @@ export const Collateralized =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 2670,
+                        "id": 2712,
                         "name": "ElementaryTypeName",
                         "src": "12095:7:7"
                       }
                     ],
-                    "id": 2671,
+                    "id": 2713,
                     "name": "VariableDeclaration",
                     "src": "12095:18:7"
                   }
                 ],
-                "id": 2672,
+                "id": 2714,
                 "name": "ParameterList",
                 "src": "12094:20:7"
               },
@@ -6289,7 +6289,7 @@ export const Collateralized =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 2726,
+                      "scope": 2768,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -6302,12 +6302,12 @@ export const Collateralized =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 2673,
+                        "id": 2715,
                         "name": "ElementaryTypeName",
                         "src": "12160:4:7"
                       }
                     ],
-                    "id": 2674,
+                    "id": 2716,
                     "name": "VariableDeclaration",
                     "src": "12160:4:7"
                   },
@@ -6315,7 +6315,7 @@ export const Collateralized =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 2726,
+                      "scope": 2768,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -6328,12 +6328,12 @@ export const Collateralized =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 2675,
+                        "id": 2717,
                         "name": "ElementaryTypeName",
                         "src": "12166:4:7"
                       }
                     ],
-                    "id": 2676,
+                    "id": 2718,
                     "name": "VariableDeclaration",
                     "src": "12166:4:7"
                   },
@@ -6341,7 +6341,7 @@ export const Collateralized =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 2726,
+                      "scope": 2768,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -6354,17 +6354,17 @@ export const Collateralized =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 2677,
+                        "id": 2719,
                         "name": "ElementaryTypeName",
                         "src": "12172:4:7"
                       }
                     ],
-                    "id": 2678,
+                    "id": 2720,
                     "name": "VariableDeclaration",
                     "src": "12172:4:7"
                   }
                 ],
-                "id": 2679,
+                "id": 2721,
                 "name": "ParameterList",
                 "src": "12159:18:7"
               },
@@ -6373,7 +6373,7 @@ export const Collateralized =
                   {
                     "attributes": {
                       "assignments": [
-                        2681
+                        2723
                       ]
                     },
                     "children": [
@@ -6381,7 +6381,7 @@ export const Collateralized =
                         "attributes": {
                           "constant": false,
                           "name": "collateralTokenIndexShifted",
-                          "scope": 2726,
+                          "scope": 2768,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bytes32",
@@ -6394,12 +6394,12 @@ export const Collateralized =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 2680,
+                            "id": 2722,
                             "name": "ElementaryTypeName",
                             "src": "12276:7:7"
                           }
                         ],
-                        "id": 2681,
+                        "id": 2723,
                         "name": "VariableDeclaration",
                         "src": "12276:35:7"
                       },
@@ -6424,11 +6424,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2671,
+                              "referencedDeclaration": 2713,
                               "type": "bytes32",
                               "value": "parameters"
                             },
-                            "id": 2682,
+                            "id": 2724,
                             "name": "Identifier",
                             "src": "12326:10:7"
                           },
@@ -6445,24 +6445,24 @@ export const Collateralized =
                               "type": "int_const 323250903058198497381659317370880",
                               "value": "0x0000000000000000000000000000000000000ff0000000000000000000000000"
                             },
-                            "id": 2683,
+                            "id": 2725,
                             "name": "Literal",
                             "src": "12339:66:7"
                           }
                         ],
-                        "id": 2684,
+                        "id": 2726,
                         "name": "BinaryOperation",
                         "src": "12326:79:7"
                       }
                     ],
-                    "id": 2685,
+                    "id": 2727,
                     "name": "VariableDeclarationStatement",
                     "src": "12276:129:7"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        2687
+                        2729
                       ]
                     },
                     "children": [
@@ -6470,7 +6470,7 @@ export const Collateralized =
                         "attributes": {
                           "constant": false,
                           "name": "collateralAmountShifted",
-                          "scope": 2726,
+                          "scope": 2768,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bytes32",
@@ -6483,12 +6483,12 @@ export const Collateralized =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 2686,
+                            "id": 2728,
                             "name": "ElementaryTypeName",
                             "src": "12518:7:7"
                           }
                         ],
-                        "id": 2687,
+                        "id": 2729,
                         "name": "VariableDeclaration",
                         "src": "12518:31:7"
                       },
@@ -6513,11 +6513,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2671,
+                              "referencedDeclaration": 2713,
                               "type": "bytes32",
                               "value": "parameters"
                             },
-                            "id": 2688,
+                            "id": 2730,
                             "name": "Identifier",
                             "src": "12564:10:7"
                           },
@@ -6534,24 +6534,24 @@ export const Collateralized =
                               "type": "int_const 1267650600228229401496703205120",
                               "value": "0x000000000000000000000000000000000000000fffffffffffffffffffffff00"
                             },
-                            "id": 2689,
+                            "id": 2731,
                             "name": "Literal",
                             "src": "12577:66:7"
                           }
                         ],
-                        "id": 2690,
+                        "id": 2732,
                         "name": "BinaryOperation",
                         "src": "12564:79:7"
                       }
                     ],
-                    "id": 2691,
+                    "id": 2733,
                     "name": "VariableDeclarationStatement",
                     "src": "12518:125:7"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        2693
+                        2735
                       ]
                     },
                     "children": [
@@ -6559,7 +6559,7 @@ export const Collateralized =
                         "attributes": {
                           "constant": false,
                           "name": "collateralTokenIndex",
-                          "scope": 2726,
+                          "scope": 2768,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -6572,12 +6572,12 @@ export const Collateralized =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 2692,
+                            "id": 2734,
                             "name": "ElementaryTypeName",
                             "src": "12891:4:7"
                           }
                         ],
-                        "id": 2693,
+                        "id": 2735,
                         "name": "VariableDeclaration",
                         "src": "12891:25:7"
                       },
@@ -6626,7 +6626,7 @@ export const Collateralized =
                                   "type": "type(uint256)",
                                   "value": "uint"
                                 },
-                                "id": 2694,
+                                "id": 2736,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "12919:4:7"
                               },
@@ -6636,16 +6636,16 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2681,
+                                  "referencedDeclaration": 2723,
                                   "type": "bytes32",
                                   "value": "collateralTokenIndexShifted"
                                 },
-                                "id": 2695,
+                                "id": 2737,
                                 "name": "Identifier",
                                 "src": "12924:27:7"
                               }
                             ],
-                            "id": 2696,
+                            "id": 2738,
                             "name": "FunctionCall",
                             "src": "12919:33:7"
                           },
@@ -6677,7 +6677,7 @@ export const Collateralized =
                                   "type": "int_const 2",
                                   "value": "2"
                                 },
-                                "id": 2697,
+                                "id": 2739,
                                 "name": "Literal",
                                 "src": "12955:1:7"
                               },
@@ -6694,29 +6694,29 @@ export const Collateralized =
                                   "type": "int_const 100",
                                   "value": "100"
                                 },
-                                "id": 2698,
+                                "id": 2740,
                                 "name": "Literal",
                                 "src": "12960:3:7"
                               }
                             ],
-                            "id": 2699,
+                            "id": 2741,
                             "name": "BinaryOperation",
                             "src": "12955:8:7"
                           }
                         ],
-                        "id": 2700,
+                        "id": 2742,
                         "name": "BinaryOperation",
                         "src": "12919:44:7"
                       }
                     ],
-                    "id": 2701,
+                    "id": 2743,
                     "name": "VariableDeclarationStatement",
                     "src": "12891:72:7"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        2703
+                        2745
                       ]
                     },
                     "children": [
@@ -6724,7 +6724,7 @@ export const Collateralized =
                         "attributes": {
                           "constant": false,
                           "name": "collateralAmount",
-                          "scope": 2726,
+                          "scope": 2768,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -6737,12 +6737,12 @@ export const Collateralized =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 2702,
+                            "id": 2744,
                             "name": "ElementaryTypeName",
                             "src": "12973:4:7"
                           }
                         ],
-                        "id": 2703,
+                        "id": 2745,
                         "name": "VariableDeclaration",
                         "src": "12973:21:7"
                       },
@@ -6791,7 +6791,7 @@ export const Collateralized =
                                   "type": "type(uint256)",
                                   "value": "uint"
                                 },
-                                "id": 2704,
+                                "id": 2746,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "12997:4:7"
                               },
@@ -6801,16 +6801,16 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2687,
+                                  "referencedDeclaration": 2729,
                                   "type": "bytes32",
                                   "value": "collateralAmountShifted"
                                 },
-                                "id": 2705,
+                                "id": 2747,
                                 "name": "Identifier",
                                 "src": "13002:23:7"
                               }
                             ],
-                            "id": 2706,
+                            "id": 2748,
                             "name": "FunctionCall",
                             "src": "12997:29:7"
                           },
@@ -6842,7 +6842,7 @@ export const Collateralized =
                                   "type": "int_const 2",
                                   "value": "2"
                                 },
-                                "id": 2707,
+                                "id": 2749,
                                 "name": "Literal",
                                 "src": "13029:1:7"
                               },
@@ -6859,29 +6859,29 @@ export const Collateralized =
                                   "type": "int_const 8",
                                   "value": "8"
                                 },
-                                "id": 2708,
+                                "id": 2750,
                                 "name": "Literal",
                                 "src": "13034:1:7"
                               }
                             ],
-                            "id": 2709,
+                            "id": 2751,
                             "name": "BinaryOperation",
                             "src": "13029:6:7"
                           }
                         ],
-                        "id": 2710,
+                        "id": 2752,
                         "name": "BinaryOperation",
                         "src": "12997:38:7"
                       }
                     ],
-                    "id": 2711,
+                    "id": 2753,
                     "name": "VariableDeclarationStatement",
                     "src": "12973:62:7"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        2713
+                        2755
                       ]
                     },
                     "children": [
@@ -6889,7 +6889,7 @@ export const Collateralized =
                         "attributes": {
                           "constant": false,
                           "name": "gracePeriodInDays",
-                          "scope": 2726,
+                          "scope": 2768,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bytes32",
@@ -6902,12 +6902,12 @@ export const Collateralized =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 2712,
+                            "id": 2754,
                             "name": "ElementaryTypeName",
                             "src": "13295:7:7"
                           }
                         ],
-                        "id": 2713,
+                        "id": 2755,
                         "name": "VariableDeclaration",
                         "src": "13295:25:7"
                       },
@@ -6932,11 +6932,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2671,
+                              "referencedDeclaration": 2713,
                               "type": "bytes32",
                               "value": "parameters"
                             },
-                            "id": 2714,
+                            "id": 2756,
                             "name": "Identifier",
                             "src": "13335:10:7"
                           },
@@ -6953,23 +6953,23 @@ export const Collateralized =
                               "type": "int_const 255",
                               "value": "0x00000000000000000000000000000000000000000000000000000000000000ff"
                             },
-                            "id": 2715,
+                            "id": 2757,
                             "name": "Literal",
                             "src": "13348:66:7"
                           }
                         ],
-                        "id": 2716,
+                        "id": 2758,
                         "name": "BinaryOperation",
                         "src": "13335:79:7"
                       }
                     ],
-                    "id": 2717,
+                    "id": 2759,
                     "name": "VariableDeclarationStatement",
                     "src": "13295:119:7"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 2679
+                      "functionReturnParameters": 2721
                     },
                     "children": [
                       {
@@ -6989,11 +6989,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2693,
+                              "referencedDeclaration": 2735,
                               "type": "uint256",
                               "value": "collateralTokenIndex"
                             },
-                            "id": 2718,
+                            "id": 2760,
                             "name": "Identifier",
                             "src": "13446:20:7"
                           },
@@ -7003,11 +7003,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2703,
+                              "referencedDeclaration": 2745,
                               "type": "uint256",
                               "value": "collateralAmount"
                             },
-                            "id": 2719,
+                            "id": 2761,
                             "name": "Identifier",
                             "src": "13480:16:7"
                           },
@@ -7041,7 +7041,7 @@ export const Collateralized =
                                   "type": "type(uint256)",
                                   "value": "uint"
                                 },
-                                "id": 2720,
+                                "id": 2762,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "13510:4:7"
                               },
@@ -7051,36 +7051,36 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2713,
+                                  "referencedDeclaration": 2755,
                                   "type": "bytes32",
                                   "value": "gracePeriodInDays"
                                 },
-                                "id": 2721,
+                                "id": 2763,
                                 "name": "Identifier",
                                 "src": "13515:17:7"
                               }
                             ],
-                            "id": 2722,
+                            "id": 2764,
                             "name": "FunctionCall",
                             "src": "13510:23:7"
                           }
                         ],
-                        "id": 2723,
+                        "id": 2765,
                         "name": "TupleExpression",
                         "src": "13432:111:7"
                       }
                     ],
-                    "id": 2724,
+                    "id": 2766,
                     "name": "Return",
                     "src": "13425:118:7"
                   }
                 ],
-                "id": 2725,
+                "id": 2767,
                 "name": "Block",
                 "src": "12182:1368:7"
               }
             ],
-            "id": 2726,
+            "id": 2768,
             "name": "FunctionDefinition",
             "src": "12050:1500:7"
           },
@@ -7094,7 +7094,7 @@ export const Collateralized =
               ],
               "name": "timestampAdjustedForGracePeriod",
               "payable": false,
-              "scope": 2809,
+              "scope": 2851,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -7106,7 +7106,7 @@ export const Collateralized =
                     "attributes": {
                       "constant": false,
                       "name": "gracePeriodInDays",
-                      "scope": 2743,
+                      "scope": 2785,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -7119,17 +7119,17 @@ export const Collateralized =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 2727,
+                        "id": 2769,
                         "name": "ElementaryTypeName",
                         "src": "13597:4:7"
                       }
                     ],
-                    "id": 2728,
+                    "id": 2770,
                     "name": "VariableDeclaration",
                     "src": "13597:22:7"
                   }
                 ],
-                "id": 2729,
+                "id": 2771,
                 "name": "ParameterList",
                 "src": "13596:24:7"
               },
@@ -7139,7 +7139,7 @@ export const Collateralized =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 2743,
+                      "scope": 2785,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -7152,17 +7152,17 @@ export const Collateralized =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 2730,
+                        "id": 2772,
                         "name": "ElementaryTypeName",
                         "src": "13666:4:7"
                       }
                     ],
-                    "id": 2731,
+                    "id": 2773,
                     "name": "VariableDeclaration",
                     "src": "13666:4:7"
                   }
                 ],
-                "id": 2732,
+                "id": 2774,
                 "name": "ParameterList",
                 "src": "13665:6:7"
               },
@@ -7170,7 +7170,7 @@ export const Collateralized =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 2732
+                      "functionReturnParameters": 2774
                     },
                     "children": [
                       {
@@ -7201,7 +7201,7 @@ export const Collateralized =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "sub",
-                              "referencedDeclaration": 5317,
+                              "referencedDeclaration": 5410,
                               "type": "function (uint256,uint256) pure returns (uint256)"
                             },
                             "children": [
@@ -7223,21 +7223,21 @@ export const Collateralized =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5477,
+                                      "referencedDeclaration": 5570,
                                       "type": "block",
                                       "value": "block"
                                     },
-                                    "id": 2733,
+                                    "id": 2775,
                                     "name": "Identifier",
                                     "src": "13693:5:7"
                                   }
                                 ],
-                                "id": 2734,
+                                "id": 2776,
                                 "name": "MemberAccess",
                                 "src": "13693:15:7"
                               }
                             ],
-                            "id": 2735,
+                            "id": 2777,
                             "name": "MemberAccess",
                             "src": "13693:19:7"
                           },
@@ -7269,7 +7269,7 @@ export const Collateralized =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "mul",
-                                  "referencedDeclaration": 5279,
+                                  "referencedDeclaration": 5372,
                                   "type": "function (uint256,uint256) pure returns (uint256)"
                                 },
                                 "children": [
@@ -7279,16 +7279,16 @@ export const Collateralized =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2308,
+                                      "referencedDeclaration": 2350,
                                       "type": "uint256",
                                       "value": "SECONDS_IN_DAY"
                                     },
-                                    "id": 2736,
+                                    "id": 2778,
                                     "name": "Identifier",
                                     "src": "13726:14:7"
                                   }
                                 ],
-                                "id": 2737,
+                                "id": 2779,
                                 "name": "MemberAccess",
                                 "src": "13726:18:7"
                               },
@@ -7298,36 +7298,36 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2728,
+                                  "referencedDeclaration": 2770,
                                   "type": "uint256",
                                   "value": "gracePeriodInDays"
                                 },
-                                "id": 2738,
+                                "id": 2780,
                                 "name": "Identifier",
                                 "src": "13745:17:7"
                               }
                             ],
-                            "id": 2739,
+                            "id": 2781,
                             "name": "FunctionCall",
                             "src": "13726:37:7"
                           }
                         ],
-                        "id": 2740,
+                        "id": 2782,
                         "name": "FunctionCall",
                         "src": "13693:80:7"
                       }
                     ],
-                    "id": 2741,
+                    "id": 2783,
                     "name": "Return",
                     "src": "13686:87:7"
                   }
                 ],
-                "id": 2742,
+                "id": 2784,
                 "name": "Block",
                 "src": "13676:104:7"
               }
             ],
-            "id": 2743,
+            "id": 2785,
             "name": "FunctionDefinition",
             "src": "13556:224:7"
           },
@@ -7341,7 +7341,7 @@ export const Collateralized =
               ],
               "name": "retrieveCollateralParameters",
               "payable": false,
-              "scope": 2809,
+              "scope": 2851,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "internal"
@@ -7353,7 +7353,7 @@ export const Collateralized =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 2808,
+                      "scope": 2850,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -7366,17 +7366,17 @@ export const Collateralized =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 2744,
+                        "id": 2786,
                         "name": "ElementaryTypeName",
                         "src": "13824:7:7"
                       }
                     ],
-                    "id": 2745,
+                    "id": 2787,
                     "name": "VariableDeclaration",
                     "src": "13824:19:7"
                   }
                 ],
-                "id": 2746,
+                "id": 2788,
                 "name": "ParameterList",
                 "src": "13823:21:7"
               },
@@ -7386,7 +7386,7 @@ export const Collateralized =
                     "attributes": {
                       "constant": false,
                       "name": "_collateralToken",
-                      "scope": 2808,
+                      "scope": 2850,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -7399,12 +7399,12 @@ export const Collateralized =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2747,
+                        "id": 2789,
                         "name": "ElementaryTypeName",
                         "src": "13892:7:7"
                       }
                     ],
-                    "id": 2748,
+                    "id": 2790,
                     "name": "VariableDeclaration",
                     "src": "13892:24:7"
                   },
@@ -7412,7 +7412,7 @@ export const Collateralized =
                     "attributes": {
                       "constant": false,
                       "name": "_collateralAmount",
-                      "scope": 2808,
+                      "scope": 2850,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -7425,12 +7425,12 @@ export const Collateralized =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 2749,
+                        "id": 2791,
                         "name": "ElementaryTypeName",
                         "src": "13918:4:7"
                       }
                     ],
-                    "id": 2750,
+                    "id": 2792,
                     "name": "VariableDeclaration",
                     "src": "13918:22:7"
                   },
@@ -7438,7 +7438,7 @@ export const Collateralized =
                     "attributes": {
                       "constant": false,
                       "name": "_gracePeriodInDays",
-                      "scope": 2808,
+                      "scope": 2850,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -7451,17 +7451,17 @@ export const Collateralized =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 2751,
+                        "id": 2793,
                         "name": "ElementaryTypeName",
                         "src": "13942:4:7"
                       }
                     ],
-                    "id": 2752,
+                    "id": 2794,
                     "name": "VariableDeclaration",
                     "src": "13942:23:7"
                   }
                 ],
-                "id": 2753,
+                "id": 2795,
                 "name": "ParameterList",
                 "src": "13891:75:7"
               },
@@ -7479,7 +7479,7 @@ export const Collateralized =
                         "attributes": {
                           "constant": false,
                           "name": "termsContract",
-                          "scope": 2808,
+                          "scope": 2850,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "address",
@@ -7492,17 +7492,17 @@ export const Collateralized =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 2754,
+                            "id": 2796,
                             "name": "ElementaryTypeName",
                             "src": "13981:7:7"
                           }
                         ],
-                        "id": 2755,
+                        "id": 2797,
                         "name": "VariableDeclaration",
                         "src": "13981:21:7"
                       }
                     ],
-                    "id": 2756,
+                    "id": 2798,
                     "name": "VariableDeclarationStatement",
                     "src": "13981:21:7"
                   },
@@ -7518,7 +7518,7 @@ export const Collateralized =
                         "attributes": {
                           "constant": false,
                           "name": "termsContractParameters",
-                          "scope": 2808,
+                          "scope": 2850,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bytes32",
@@ -7531,17 +7531,17 @@ export const Collateralized =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 2757,
+                            "id": 2799,
                             "name": "ElementaryTypeName",
                             "src": "14012:7:7"
                           }
                         ],
-                        "id": 2758,
+                        "id": 2800,
                         "name": "VariableDeclaration",
                         "src": "14012:31:7"
                       }
                     ],
-                    "id": 2759,
+                    "id": 2801,
                     "name": "VariableDeclarationStatement",
                     "src": "14012:31:7"
                   },
@@ -7575,11 +7575,11 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2755,
+                                  "referencedDeclaration": 2797,
                                   "type": "address",
                                   "value": "termsContract"
                                 },
-                                "id": 2760,
+                                "id": 2802,
                                 "name": "Identifier",
                                 "src": "14134:13:7"
                               },
@@ -7589,16 +7589,16 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2758,
+                                  "referencedDeclaration": 2800,
                                   "type": "bytes32",
                                   "value": "termsContractParameters"
                                 },
-                                "id": 2761,
+                                "id": 2803,
                                 "name": "Identifier",
                                 "src": "14149:23:7"
                               }
                             ],
-                            "id": 2762,
+                            "id": 2804,
                             "name": "TupleExpression",
                             "src": "14133:40:7"
                           },
@@ -7640,16 +7640,16 @@ export const Collateralized =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2295,
+                                      "referencedDeclaration": 2337,
                                       "type": "contract DebtRegistry",
                                       "value": "debtRegistry"
                                     },
-                                    "id": 2763,
+                                    "id": 2805,
                                     "name": "Identifier",
                                     "src": "14176:12:7"
                                   }
                                 ],
-                                "id": 2764,
+                                "id": 2806,
                                 "name": "MemberAccess",
                                 "src": "14176:21:7"
                               },
@@ -7659,26 +7659,26 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2745,
+                                  "referencedDeclaration": 2787,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 2765,
+                                "id": 2807,
                                 "name": "Identifier",
                                 "src": "14198:11:7"
                               }
                             ],
-                            "id": 2766,
+                            "id": 2808,
                             "name": "FunctionCall",
                             "src": "14176:34:7"
                           }
                         ],
-                        "id": 2767,
+                        "id": 2809,
                         "name": "Assignment",
                         "src": "14133:77:7"
                       }
                     ],
-                    "id": 2768,
+                    "id": 2810,
                     "name": "ExpressionStatement",
                     "src": "14133:77:7"
                   },
@@ -7710,11 +7710,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5488,
+                              "referencedDeclaration": 5581,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 2769,
+                            "id": 2811,
                             "name": "Identifier",
                             "src": "14295:7:7"
                           },
@@ -7739,11 +7739,11 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2755,
+                                  "referencedDeclaration": 2797,
                                   "type": "address",
                                   "value": "termsContract"
                                 },
-                                "id": 2770,
+                                "id": 2812,
                                 "name": "Identifier",
                                 "src": "14303:13:7"
                               },
@@ -7766,7 +7766,7 @@ export const Collateralized =
                                     "attributes": {
                                       "argumentTypes": [
                                         {
-                                          "typeIdentifier": "t_contract$_Collateralized_$2809",
+                                          "typeIdentifier": "t_contract$_Collateralized_$2851",
                                           "typeString": "contract Collateralized"
                                         }
                                       ],
@@ -7777,7 +7777,7 @@ export const Collateralized =
                                       "type": "type(address)",
                                       "value": "address"
                                     },
-                                    "id": 2771,
+                                    "id": 2813,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "14320:7:7"
                                   },
@@ -7787,31 +7787,31 @@ export const Collateralized =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5530,
+                                      "referencedDeclaration": 5623,
                                       "type": "contract Collateralized",
                                       "value": "this"
                                     },
-                                    "id": 2772,
+                                    "id": 2814,
                                     "name": "Identifier",
                                     "src": "14328:4:7"
                                   }
                                 ],
-                                "id": 2773,
+                                "id": 2815,
                                 "name": "FunctionCall",
                                 "src": "14320:13:7"
                               }
                             ],
-                            "id": 2774,
+                            "id": 2816,
                             "name": "BinaryOperation",
                             "src": "14303:30:7"
                           }
                         ],
-                        "id": 2775,
+                        "id": 2817,
                         "name": "FunctionCall",
                         "src": "14295:39:7"
                       }
                     ],
-                    "id": 2776,
+                    "id": 2818,
                     "name": "ExpressionStatement",
                     "src": "14295:39:7"
                   },
@@ -7827,7 +7827,7 @@ export const Collateralized =
                         "attributes": {
                           "constant": false,
                           "name": "collateralTokenIndex",
-                          "scope": 2808,
+                          "scope": 2850,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -7840,17 +7840,17 @@ export const Collateralized =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 2777,
+                            "id": 2819,
                             "name": "ElementaryTypeName",
                             "src": "14345:4:7"
                           }
                         ],
-                        "id": 2778,
+                        "id": 2820,
                         "name": "VariableDeclaration",
                         "src": "14345:25:7"
                       }
                     ],
-                    "id": 2779,
+                    "id": 2821,
                     "name": "VariableDeclarationStatement",
                     "src": "14345:25:7"
                   },
@@ -7866,7 +7866,7 @@ export const Collateralized =
                         "attributes": {
                           "constant": false,
                           "name": "collateralAmount",
-                          "scope": 2808,
+                          "scope": 2850,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -7879,17 +7879,17 @@ export const Collateralized =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 2780,
+                            "id": 2822,
                             "name": "ElementaryTypeName",
                             "src": "14380:4:7"
                           }
                         ],
-                        "id": 2781,
+                        "id": 2823,
                         "name": "VariableDeclaration",
                         "src": "14380:21:7"
                       }
                     ],
-                    "id": 2782,
+                    "id": 2824,
                     "name": "VariableDeclarationStatement",
                     "src": "14380:21:7"
                   },
@@ -7905,7 +7905,7 @@ export const Collateralized =
                         "attributes": {
                           "constant": false,
                           "name": "gracePeriodInDays",
-                          "scope": 2808,
+                          "scope": 2850,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -7918,17 +7918,17 @@ export const Collateralized =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 2783,
+                            "id": 2825,
                             "name": "ElementaryTypeName",
                             "src": "14411:4:7"
                           }
                         ],
-                        "id": 2784,
+                        "id": 2826,
                         "name": "VariableDeclaration",
                         "src": "14411:22:7"
                       }
                     ],
-                    "id": 2785,
+                    "id": 2827,
                     "name": "VariableDeclarationStatement",
                     "src": "14411:22:7"
                   },
@@ -7962,11 +7962,11 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2778,
+                                  "referencedDeclaration": 2820,
                                   "type": "uint256",
                                   "value": "collateralTokenIndex"
                                 },
-                                "id": 2786,
+                                "id": 2828,
                                 "name": "Identifier",
                                 "src": "14539:20:7"
                               },
@@ -7976,11 +7976,11 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2781,
+                                  "referencedDeclaration": 2823,
                                   "type": "uint256",
                                   "value": "collateralAmount"
                                 },
-                                "id": 2787,
+                                "id": 2829,
                                 "name": "Identifier",
                                 "src": "14561:16:7"
                               },
@@ -7990,16 +7990,16 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2784,
+                                  "referencedDeclaration": 2826,
                                   "type": "uint256",
                                   "value": "gracePeriodInDays"
                                 },
-                                "id": 2788,
+                                "id": 2830,
                                 "name": "Identifier",
                                 "src": "14579:17:7"
                               }
                             ],
-                            "id": 2789,
+                            "id": 2831,
                             "name": "TupleExpression",
                             "src": "14538:59:7"
                           },
@@ -8029,11 +8029,11 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2726,
+                                  "referencedDeclaration": 2768,
                                   "type": "function (bytes32) pure returns (uint256,uint256,uint256)",
                                   "value": "unpackCollateralParametersFromBytes"
                                 },
-                                "id": 2790,
+                                "id": 2832,
                                 "name": "Identifier",
                                 "src": "14612:35:7"
                               },
@@ -8043,33 +8043,33 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2758,
+                                  "referencedDeclaration": 2800,
                                   "type": "bytes32",
                                   "value": "termsContractParameters"
                                 },
-                                "id": 2791,
+                                "id": 2833,
                                 "name": "Identifier",
                                 "src": "14648:23:7"
                               }
                             ],
-                            "id": 2792,
+                            "id": 2834,
                             "name": "FunctionCall",
                             "src": "14612:60:7"
                           }
                         ],
-                        "id": 2793,
+                        "id": 2835,
                         "name": "Assignment",
                         "src": "14538:134:7"
                       }
                     ],
-                    "id": 2794,
+                    "id": 2836,
                     "name": "ExpressionStatement",
                     "src": "14538:134:7"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        2796
+                        2838
                       ]
                     },
                     "children": [
@@ -8077,7 +8077,7 @@ export const Collateralized =
                         "attributes": {
                           "constant": false,
                           "name": "collateralToken",
-                          "scope": 2808,
+                          "scope": 2850,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "address",
@@ -8090,12 +8090,12 @@ export const Collateralized =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 2795,
+                            "id": 2837,
                             "name": "ElementaryTypeName",
                             "src": "14768:7:7"
                           }
                         ],
-                        "id": 2796,
+                        "id": 2838,
                         "name": "VariableDeclaration",
                         "src": "14768:23:7"
                       },
@@ -8127,7 +8127,7 @@ export const Collateralized =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "getTokenAddressByIndex",
-                              "referencedDeclaration": 2195,
+                              "referencedDeclaration": 2211,
                               "type": "function (uint256) view external returns (address)"
                             },
                             "children": [
@@ -8137,16 +8137,16 @@ export const Collateralized =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2297,
+                                  "referencedDeclaration": 2339,
                                   "type": "contract TokenRegistry",
                                   "value": "tokenRegistry"
                                 },
-                                "id": 2797,
+                                "id": 2839,
                                 "name": "Identifier",
                                 "src": "14794:13:7"
                               }
                             ],
-                            "id": 2798,
+                            "id": 2840,
                             "name": "MemberAccess",
                             "src": "14794:36:7"
                           },
@@ -8156,27 +8156,27 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2778,
+                              "referencedDeclaration": 2820,
                               "type": "uint256",
                               "value": "collateralTokenIndex"
                             },
-                            "id": 2799,
+                            "id": 2841,
                             "name": "Identifier",
                             "src": "14831:20:7"
                           }
                         ],
-                        "id": 2800,
+                        "id": 2842,
                         "name": "FunctionCall",
                         "src": "14794:58:7"
                       }
                     ],
-                    "id": 2801,
+                    "id": 2843,
                     "name": "VariableDeclarationStatement",
                     "src": "14768:84:7"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 2753
+                      "functionReturnParameters": 2795
                     },
                     "children": [
                       {
@@ -8196,11 +8196,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2796,
+                              "referencedDeclaration": 2838,
                               "type": "address",
                               "value": "collateralToken"
                             },
-                            "id": 2802,
+                            "id": 2844,
                             "name": "Identifier",
                             "src": "14884:15:7"
                           },
@@ -8210,11 +8210,11 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2781,
+                              "referencedDeclaration": 2823,
                               "type": "uint256",
                               "value": "collateralAmount"
                             },
-                            "id": 2803,
+                            "id": 2845,
                             "name": "Identifier",
                             "src": "14913:16:7"
                           },
@@ -8224,41 +8224,41 @@ export const Collateralized =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2784,
+                              "referencedDeclaration": 2826,
                               "type": "uint256",
                               "value": "gracePeriodInDays"
                             },
-                            "id": 2804,
+                            "id": 2846,
                             "name": "Identifier",
                             "src": "14943:17:7"
                           }
                         ],
-                        "id": 2805,
+                        "id": 2847,
                         "name": "TupleExpression",
                         "src": "14870:100:7"
                       }
                     ],
-                    "id": 2806,
+                    "id": 2848,
                     "name": "Return",
                     "src": "14863:107:7"
                   }
                 ],
-                "id": 2807,
+                "id": 2849,
                 "name": "Block",
                 "src": "13971:1006:7"
               }
             ],
-            "id": 2808,
+            "id": 2850,
             "name": "FunctionDefinition",
             "src": "13786:1191:7"
           }
         ],
-        "id": 2809,
+        "id": 2851,
         "name": "ContractDefinition",
         "src": "1500:13479:7"
       }
     ],
-    "id": 2810,
+    "id": 2852,
     "name": "SourceUnit",
     "src": "584:14396:7"
   },
@@ -8268,5 +8268,5 @@ export const Collateralized =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-23T04:19:01.770Z"
+  "updatedAt": "2018-03-27T04:31:52.462Z"
 }

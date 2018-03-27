@@ -339,7 +339,7 @@ export const MintableNonFungibleToken =
       "absolutePath": "NonFungibleToken/contracts/MintableNonFungibleToken.sol",
       "exportedSymbols": {
         "MintableNonFungibleToken": [
-          4627
+          4720
         ]
       }
     },
@@ -352,58 +352,58 @@ export const MintableNonFungibleToken =
             ".18"
           ]
         },
-        "id": 4564,
+        "id": 4657,
         "name": "PragmaDirective",
         "src": "0:23:18"
       },
       {
         "attributes": {
-          "SourceUnit": 5185,
+          "SourceUnit": 5278,
           "absolutePath": "NonFungibleToken/contracts/NonFungibleToken.sol",
           "file": "./NonFungibleToken.sol",
-          "scope": 4628,
+          "scope": 4721,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 4565,
+        "id": 4658,
         "name": "ImportDirective",
         "src": "25:32:18"
       },
       {
         "attributes": {
-          "SourceUnit": 5343,
+          "SourceUnit": 5436,
           "absolutePath": "zeppelin-solidity/contracts/math/SafeMath.sol",
           "file": "zeppelin-solidity/contracts/math/SafeMath.sol",
-          "scope": 4628,
+          "scope": 4721,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 4566,
+        "id": 4659,
         "name": "ImportDirective",
         "src": "58:55:18"
       },
       {
         "attributes": {
           "contractDependencies": [
-            4489,
-            4562,
-            5184
+            4582,
+            4655,
+            5277
           ],
           "contractKind": "contract",
           "documentation": "@title MintableNonFungibleToken\n * Superset of the ERC721 standard that allows for the minting\nof non-fungible tokens.",
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            4627,
-            5184,
-            4489,
-            4562
+            4720,
+            5277,
+            4582,
+            4655
           ],
           "name": "MintableNonFungibleToken",
-          "scope": 4628
+          "scope": 4721
         },
         "children": [
           {
@@ -417,15 +417,15 @@ export const MintableNonFungibleToken =
                 "attributes": {
                   "contractScope": null,
                   "name": "NonFungibleToken",
-                  "referencedDeclaration": 5184,
+                  "referencedDeclaration": 5277,
                   "type": "contract NonFungibleToken"
                 },
-                "id": 4567,
+                "id": 4660,
                 "name": "UserDefinedTypeName",
                 "src": "289:16:18"
               }
             ],
-            "id": 4568,
+            "id": 4661,
             "name": "InheritanceSpecifier",
             "src": "289:16:18"
           },
@@ -435,10 +435,10 @@ export const MintableNonFungibleToken =
                 "attributes": {
                   "contractScope": null,
                   "name": "SafeMath",
-                  "referencedDeclaration": 5342,
+                  "referencedDeclaration": 5435,
                   "type": "library SafeMath"
                 },
-                "id": 4569,
+                "id": 4662,
                 "name": "UserDefinedTypeName",
                 "src": "318:8:18"
               },
@@ -447,12 +447,12 @@ export const MintableNonFungibleToken =
                   "name": "uint",
                   "type": "uint256"
                 },
-                "id": 4570,
+                "id": 4663,
                 "name": "ElementaryTypeName",
                 "src": "331:4:18"
               }
             ],
-            "id": 4571,
+            "id": 4664,
             "name": "UsingForDirective",
             "src": "312:24:18"
           },
@@ -469,7 +469,7 @@ export const MintableNonFungibleToken =
                       "constant": false,
                       "indexed": true,
                       "name": "_to",
-                      "scope": 4577,
+                      "scope": 4670,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -482,12 +482,12 @@ export const MintableNonFungibleToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 4572,
+                        "id": 4665,
                         "name": "ElementaryTypeName",
                         "src": "353:7:18"
                       }
                     ],
-                    "id": 4573,
+                    "id": 4666,
                     "name": "VariableDeclaration",
                     "src": "353:19:18"
                   },
@@ -496,7 +496,7 @@ export const MintableNonFungibleToken =
                       "constant": false,
                       "indexed": true,
                       "name": "_tokenId",
-                      "scope": 4577,
+                      "scope": 4670,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -509,22 +509,22 @@ export const MintableNonFungibleToken =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 4574,
+                        "id": 4667,
                         "name": "ElementaryTypeName",
                         "src": "374:7:18"
                       }
                     ],
-                    "id": 4575,
+                    "id": 4668,
                     "name": "VariableDeclaration",
                     "src": "374:24:18"
                   }
                 ],
-                "id": 4576,
+                "id": 4669,
                 "name": "ParameterList",
                 "src": "352:47:18"
               }
             ],
-            "id": 4577,
+            "id": 4670,
             "name": "EventDefinition",
             "src": "342:58:18"
           },
@@ -540,7 +540,7 @@ export const MintableNonFungibleToken =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 4593,
+                      "scope": 4686,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -553,17 +553,17 @@ export const MintableNonFungibleToken =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 4578,
+                        "id": 4671,
                         "name": "ElementaryTypeName",
                         "src": "436:4:18"
                       }
                     ],
-                    "id": 4579,
+                    "id": 4672,
                     "name": "VariableDeclaration",
                     "src": "436:13:18"
                   }
                 ],
-                "id": 4580,
+                "id": 4673,
                 "name": "ParameterList",
                 "src": "435:15:18"
               },
@@ -597,11 +597,11 @@ export const MintableNonFungibleToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5488,
+                              "referencedDeclaration": 5581,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 4581,
+                            "id": 4674,
                             "name": "Identifier",
                             "src": "461:7:18"
                           },
@@ -636,11 +636,11 @@ export const MintableNonFungibleToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 4642,
+                                      "referencedDeclaration": 4735,
                                       "type": "mapping(uint256 => address)",
                                       "value": "tokenIdToOwner"
                                     },
-                                    "id": 4582,
+                                    "id": 4675,
                                     "name": "Identifier",
                                     "src": "469:14:18"
                                   },
@@ -650,16 +650,16 @@ export const MintableNonFungibleToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 4579,
+                                      "referencedDeclaration": 4672,
                                       "type": "uint256",
                                       "value": "_tokenId"
                                     },
-                                    "id": 4583,
+                                    "id": 4676,
                                     "name": "Identifier",
                                     "src": "484:8:18"
                                   }
                                 ],
-                                "id": 4584,
+                                "id": 4677,
                                 "name": "IndexAccess",
                                 "src": "469:24:18"
                               },
@@ -693,7 +693,7 @@ export const MintableNonFungibleToken =
                                       "type": "type(address)",
                                       "value": "address"
                                     },
-                                    "id": 4585,
+                                    "id": 4678,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "497:7:18"
                                   },
@@ -710,42 +710,42 @@ export const MintableNonFungibleToken =
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 4586,
+                                    "id": 4679,
                                     "name": "Literal",
                                     "src": "505:1:18"
                                   }
                                 ],
-                                "id": 4587,
+                                "id": 4680,
                                 "name": "FunctionCall",
                                 "src": "497:10:18"
                               }
                             ],
-                            "id": 4588,
+                            "id": 4681,
                             "name": "BinaryOperation",
                             "src": "469:38:18"
                           }
                         ],
-                        "id": 4589,
+                        "id": 4682,
                         "name": "FunctionCall",
                         "src": "461:47:18"
                       }
                     ],
-                    "id": 4590,
+                    "id": 4683,
                     "name": "ExpressionStatement",
                     "src": "461:47:18"
                   },
                   {
-                    "id": 4591,
+                    "id": 4684,
                     "name": "PlaceholderStatement",
                     "src": "518:1:18"
                   }
                 ],
-                "id": 4592,
+                "id": 4685,
                 "name": "Block",
                 "src": "451:75:18"
               }
             ],
-            "id": 4593,
+            "id": 4686,
             "name": "ModifierDefinition",
             "src": "406:120:18"
           },
@@ -756,7 +756,7 @@ export const MintableNonFungibleToken =
               "isConstructor": false,
               "name": "mint",
               "payable": false,
-              "scope": 4627,
+              "scope": 4720,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -768,7 +768,7 @@ export const MintableNonFungibleToken =
                     "attributes": {
                       "constant": false,
                       "name": "_owner",
-                      "scope": 4626,
+                      "scope": 4719,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -781,12 +781,12 @@ export const MintableNonFungibleToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 4594,
+                        "id": 4687,
                         "name": "ElementaryTypeName",
                         "src": "546:7:18"
                       }
                     ],
-                    "id": 4595,
+                    "id": 4688,
                     "name": "VariableDeclaration",
                     "src": "546:14:18"
                   },
@@ -794,7 +794,7 @@ export const MintableNonFungibleToken =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 4626,
+                      "scope": 4719,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -807,17 +807,17 @@ export const MintableNonFungibleToken =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 4596,
+                        "id": 4689,
                         "name": "ElementaryTypeName",
                         "src": "562:7:18"
                       }
                     ],
-                    "id": 4597,
+                    "id": 4690,
                     "name": "VariableDeclaration",
                     "src": "562:16:18"
                   }
                 ],
-                "id": 4598,
+                "id": 4691,
                 "name": "ParameterList",
                 "src": "545:34:18"
               },
@@ -828,7 +828,7 @@ export const MintableNonFungibleToken =
                   ]
                 },
                 "children": [],
-                "id": 4602,
+                "id": 4695,
                 "name": "ParameterList",
                 "src": "638:0:18"
               },
@@ -840,11 +840,11 @@ export const MintableNonFungibleToken =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 4593,
+                      "referencedDeclaration": 4686,
                       "type": "modifier (uint256)",
                       "value": "onlyNonexistentToken"
                     },
-                    "id": 4599,
+                    "id": 4692,
                     "name": "Identifier",
                     "src": "603:20:18"
                   },
@@ -854,16 +854,16 @@ export const MintableNonFungibleToken =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 4597,
+                      "referencedDeclaration": 4690,
                       "type": "uint256",
                       "value": "_tokenId"
                     },
-                    "id": 4600,
+                    "id": 4693,
                     "name": "Identifier",
                     "src": "624:8:18"
                   }
                 ],
-                "id": 4601,
+                "id": 4694,
                 "name": "ModifierInvocation",
                 "src": "603:30:18"
               },
@@ -901,11 +901,11 @@ export const MintableNonFungibleToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5083,
+                              "referencedDeclaration": 5176,
                               "type": "function (uint256,address)",
                               "value": "_setTokenOwner"
                             },
-                            "id": 4603,
+                            "id": 4696,
                             "name": "Identifier",
                             "src": "648:14:18"
                           },
@@ -915,11 +915,11 @@ export const MintableNonFungibleToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4597,
+                              "referencedDeclaration": 4690,
                               "type": "uint256",
                               "value": "_tokenId"
                             },
-                            "id": 4604,
+                            "id": 4697,
                             "name": "Identifier",
                             "src": "663:8:18"
                           },
@@ -929,21 +929,21 @@ export const MintableNonFungibleToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4595,
+                              "referencedDeclaration": 4688,
                               "type": "address",
                               "value": "_owner"
                             },
-                            "id": 4605,
+                            "id": 4698,
                             "name": "Identifier",
                             "src": "673:6:18"
                           }
                         ],
-                        "id": 4606,
+                        "id": 4699,
                         "name": "FunctionCall",
                         "src": "648:32:18"
                       }
                     ],
-                    "id": 4607,
+                    "id": 4700,
                     "name": "ExpressionStatement",
                     "src": "648:32:18"
                   },
@@ -979,11 +979,11 @@ export const MintableNonFungibleToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5109,
+                              "referencedDeclaration": 5202,
                               "type": "function (address,uint256)",
                               "value": "_addTokenToOwnersList"
                             },
-                            "id": 4608,
+                            "id": 4701,
                             "name": "Identifier",
                             "src": "690:21:18"
                           },
@@ -993,11 +993,11 @@ export const MintableNonFungibleToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4595,
+                              "referencedDeclaration": 4688,
                               "type": "address",
                               "value": "_owner"
                             },
-                            "id": 4609,
+                            "id": 4702,
                             "name": "Identifier",
                             "src": "712:6:18"
                           },
@@ -1007,21 +1007,21 @@ export const MintableNonFungibleToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4597,
+                              "referencedDeclaration": 4690,
                               "type": "uint256",
                               "value": "_tokenId"
                             },
-                            "id": 4610,
+                            "id": 4703,
                             "name": "Identifier",
                             "src": "720:8:18"
                           }
                         ],
-                        "id": 4611,
+                        "id": 4704,
                         "name": "FunctionCall",
                         "src": "690:39:18"
                       }
                     ],
-                    "id": 4612,
+                    "id": 4705,
                     "name": "ExpressionStatement",
                     "src": "690:39:18"
                   },
@@ -1044,11 +1044,11 @@ export const MintableNonFungibleToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4638,
+                              "referencedDeclaration": 4731,
                               "type": "uint256",
                               "value": "numTokensTotal"
                             },
-                            "id": 4613,
+                            "id": 4706,
                             "name": "Identifier",
                             "src": "740:14:18"
                           },
@@ -1080,7 +1080,7 @@ export const MintableNonFungibleToken =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "add",
-                                  "referencedDeclaration": 5341,
+                                  "referencedDeclaration": 5434,
                                   "type": "function (uint256,uint256) pure returns (uint256)"
                                 },
                                 "children": [
@@ -1090,16 +1090,16 @@ export const MintableNonFungibleToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 4638,
+                                      "referencedDeclaration": 4731,
                                       "type": "uint256",
                                       "value": "numTokensTotal"
                                     },
-                                    "id": 4614,
+                                    "id": 4707,
                                     "name": "Identifier",
                                     "src": "757:14:18"
                                   }
                                 ],
-                                "id": 4615,
+                                "id": 4708,
                                 "name": "MemberAccess",
                                 "src": "757:18:18"
                               },
@@ -1116,22 +1116,22 @@ export const MintableNonFungibleToken =
                                   "type": "int_const 1",
                                   "value": "1"
                                 },
-                                "id": 4616,
+                                "id": 4709,
                                 "name": "Literal",
                                 "src": "776:1:18"
                               }
                             ],
-                            "id": 4617,
+                            "id": 4710,
                             "name": "FunctionCall",
                             "src": "757:21:18"
                           }
                         ],
-                        "id": 4618,
+                        "id": 4711,
                         "name": "Assignment",
                         "src": "740:38:18"
                       }
                     ],
-                    "id": 4619,
+                    "id": 4712,
                     "name": "ExpressionStatement",
                     "src": "740:38:18"
                   },
@@ -1167,11 +1167,11 @@ export const MintableNonFungibleToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4577,
+                              "referencedDeclaration": 4670,
                               "type": "function (address,uint256)",
                               "value": "Mint"
                             },
-                            "id": 4620,
+                            "id": 4713,
                             "name": "Identifier",
                             "src": "789:4:18"
                           },
@@ -1181,11 +1181,11 @@ export const MintableNonFungibleToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4595,
+                              "referencedDeclaration": 4688,
                               "type": "address",
                               "value": "_owner"
                             },
-                            "id": 4621,
+                            "id": 4714,
                             "name": "Identifier",
                             "src": "794:6:18"
                           },
@@ -1195,41 +1195,41 @@ export const MintableNonFungibleToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4597,
+                              "referencedDeclaration": 4690,
                               "type": "uint256",
                               "value": "_tokenId"
                             },
-                            "id": 4622,
+                            "id": 4715,
                             "name": "Identifier",
                             "src": "802:8:18"
                           }
                         ],
-                        "id": 4623,
+                        "id": 4716,
                         "name": "FunctionCall",
                         "src": "789:22:18"
                       }
                     ],
-                    "id": 4624,
+                    "id": 4717,
                     "name": "ExpressionStatement",
                     "src": "789:22:18"
                   }
                 ],
-                "id": 4625,
+                "id": 4718,
                 "name": "Block",
                 "src": "638:180:18"
               }
             ],
-            "id": 4626,
+            "id": 4719,
             "name": "FunctionDefinition",
             "src": "532:286:18"
           }
         ],
-        "id": 4627,
+        "id": 4720,
         "name": "ContractDefinition",
         "src": "252:568:18"
       }
     ],
-    "id": 4628,
+    "id": 4721,
     "name": "SourceUnit",
     "src": "0:821:18"
   },
@@ -1241,7 +1241,7 @@ export const MintableNonFungibleToken =
     "42": {
       "events": {},
       "links": {},
-      "address": "0xa4b4a14a85e2616702c12e29fb7b4a7eaba8237f"
+      "address": "0x691d786d3825ab743fb2331fbeaecfd1f5d2734c"
     },
     "70": {
       "events": {},
@@ -1250,5 +1250,5 @@ export const MintableNonFungibleToken =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-26T00:44:17.251Z"
+  "updatedAt": "2018-03-27T04:34:04.411Z"
 }

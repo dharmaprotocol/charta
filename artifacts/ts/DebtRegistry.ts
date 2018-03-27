@@ -539,7 +539,7 @@ export const DebtRegistry =
       },
       {
         "attributes": {
-          "SourceUnit": 3658,
+          "SourceUnit": 3751,
           "absolutePath": "/Users/nadavhollander/Documents/Dharma/Development/charta/contracts/libraries/PermissionsLib.sol",
           "file": "./libraries/PermissionsLib.sol",
           "scope": 1665,
@@ -554,7 +554,7 @@ export const DebtRegistry =
       },
       {
         "attributes": {
-          "SourceUnit": 5343,
+          "SourceUnit": 5436,
           "absolutePath": "zeppelin-solidity/contracts/math/SafeMath.sol",
           "file": "zeppelin-solidity/contracts/math/SafeMath.sol",
           "scope": 1665,
@@ -569,7 +569,7 @@ export const DebtRegistry =
       },
       {
         "attributes": {
-          "SourceUnit": 5245,
+          "SourceUnit": 5338,
           "absolutePath": "zeppelin-solidity/contracts/lifecycle/Pausable.sol",
           "file": "zeppelin-solidity/contracts/lifecycle/Pausable.sol",
           "scope": 1665,
@@ -585,16 +585,16 @@ export const DebtRegistry =
       {
         "attributes": {
           "contractDependencies": [
-            5244,
-            5398
+            5337,
+            5491
           ],
           "contractKind": "contract",
           "documentation": "The DebtRegistry stores the parameters and beneficiaries of all debt agreements in\nDharma protocol.  It authorizes a limited number of agents to\nperform mutations on it -- those agents can be changed at any\ntime by the contract's owner.\n * Author: Nadav Hollander -- Github: nadavhollander",
           "fullyImplemented": true,
           "linearizedBaseContracts": [
             1664,
-            5244,
-            5398
+            5337,
+            5491
           ],
           "name": "DebtRegistry",
           "scope": 1665
@@ -611,7 +611,7 @@ export const DebtRegistry =
                 "attributes": {
                   "contractScope": null,
                   "name": "Pausable",
-                  "referencedDeclaration": 5244,
+                  "referencedDeclaration": 5337,
                   "type": "contract Pausable"
                 },
                 "id": 1148,
@@ -629,7 +629,7 @@ export const DebtRegistry =
                 "attributes": {
                   "contractScope": null,
                   "name": "SafeMath",
-                  "referencedDeclaration": 5342,
+                  "referencedDeclaration": 5435,
                   "type": "library SafeMath"
                 },
                 "id": 1150,
@@ -656,7 +656,7 @@ export const DebtRegistry =
                 "attributes": {
                   "contractScope": null,
                   "name": "PermissionsLib",
-                  "referencedDeclaration": 3657,
+                  "referencedDeclaration": 3750,
                   "type": "library PermissionsLib"
                 },
                 "id": 1153,
@@ -667,7 +667,7 @@ export const DebtRegistry =
                 "attributes": {
                   "contractScope": null,
                   "name": "PermissionsLib.Permissions",
-                  "referencedDeclaration": 3491,
+                  "referencedDeclaration": 3584,
                   "type": "struct PermissionsLib.Permissions storage pointer"
                 },
                 "id": 1154,
@@ -993,7 +993,7 @@ export const DebtRegistry =
                 "attributes": {
                   "contractScope": null,
                   "name": "PermissionsLib.Permissions",
-                  "referencedDeclaration": 3491,
+                  "referencedDeclaration": 3584,
                   "type": "struct PermissionsLib.Permissions storage pointer"
                 },
                 "id": 1180,
@@ -1021,7 +1021,7 @@ export const DebtRegistry =
                 "attributes": {
                   "contractScope": null,
                   "name": "PermissionsLib.Permissions",
-                  "referencedDeclaration": 3491,
+                  "referencedDeclaration": 3584,
                   "type": "struct PermissionsLib.Permissions storage pointer"
                 },
                 "id": 1182,
@@ -1539,7 +1539,7 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5488,
+                              "referencedDeclaration": 5581,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -1575,7 +1575,7 @@ export const DebtRegistry =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "isAuthorized",
-                                  "referencedDeclaration": 3628,
+                                  "referencedDeclaration": 3721,
                                   "type": "function (struct PermissionsLib.Permissions storage pointer,address) view returns (bool)"
                                 },
                                 "children": [
@@ -1616,7 +1616,7 @@ export const DebtRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5485,
+                                      "referencedDeclaration": 5578,
                                       "type": "msg",
                                       "value": "msg"
                                     },
@@ -1706,7 +1706,7 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5488,
+                              "referencedDeclaration": 5581,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -1742,7 +1742,7 @@ export const DebtRegistry =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "isAuthorized",
-                                  "referencedDeclaration": 3628,
+                                  "referencedDeclaration": 3721,
                                   "type": "function (struct PermissionsLib.Permissions storage pointer,address) view returns (bool)"
                                 },
                                 "children": [
@@ -1783,7 +1783,7 @@ export const DebtRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5485,
+                                      "referencedDeclaration": 5578,
                                       "type": "msg",
                                       "value": "msg"
                                     },
@@ -1895,7 +1895,7 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5488,
+                              "referencedDeclaration": 5581,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -2133,7 +2133,7 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5488,
+                              "referencedDeclaration": 5581,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -2556,7 +2556,7 @@ export const DebtRegistry =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 5205,
+                      "referencedDeclaration": 5298,
                       "type": "modifier ()",
                       "value": "whenNotPaused"
                     },
@@ -2801,7 +2801,7 @@ export const DebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5477,
+                                  "referencedDeclaration": 5570,
                                   "type": "block",
                                   "value": "block"
                                 },
@@ -2979,7 +2979,7 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5488,
+                              "referencedDeclaration": 5581,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -3710,7 +3710,7 @@ export const DebtRegistry =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 5205,
+                      "referencedDeclaration": 5298,
                       "type": "modifier ()",
                       "value": "whenNotPaused"
                     },
@@ -4166,7 +4166,7 @@ export const DebtRegistry =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 5372,
+                      "referencedDeclaration": 5465,
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
@@ -4211,7 +4211,7 @@ export const DebtRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "authorize",
-                              "referencedDeclaration": 3534,
+                              "referencedDeclaration": 3627,
                               "type": "function (struct PermissionsLib.Permissions storage pointer,address)"
                             },
                             "children": [
@@ -4398,7 +4398,7 @@ export const DebtRegistry =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 5372,
+                      "referencedDeclaration": 5465,
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
@@ -4443,7 +4443,7 @@ export const DebtRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "authorize",
-                              "referencedDeclaration": 3534,
+                              "referencedDeclaration": 3627,
                               "type": "function (struct PermissionsLib.Permissions storage pointer,address)"
                             },
                             "children": [
@@ -4630,7 +4630,7 @@ export const DebtRegistry =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 5372,
+                      "referencedDeclaration": 5465,
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
@@ -4675,7 +4675,7 @@ export const DebtRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "revokeAuthorization",
-                              "referencedDeclaration": 3613,
+                              "referencedDeclaration": 3706,
                               "type": "function (struct PermissionsLib.Permissions storage pointer,address)"
                             },
                             "children": [
@@ -4862,7 +4862,7 @@ export const DebtRegistry =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 5372,
+                      "referencedDeclaration": 5465,
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
@@ -4907,7 +4907,7 @@ export const DebtRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "revokeAuthorization",
-                              "referencedDeclaration": 3613,
+                              "referencedDeclaration": 3706,
                               "type": "function (struct PermissionsLib.Permissions storage pointer,address)"
                             },
                             "children": [
@@ -6780,7 +6780,7 @@ export const DebtRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "getAuthorizedAgents",
-                              "referencedDeclaration": 3656,
+                              "referencedDeclaration": 3749,
                               "type": "function (struct PermissionsLib.Permissions storage pointer) view returns (address[] memory)"
                             },
                             "children": [
@@ -6929,7 +6929,7 @@ export const DebtRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "getAuthorizedAgents",
-                              "referencedDeclaration": 3656,
+                              "referencedDeclaration": 3749,
                               "type": "function (struct PermissionsLib.Permissions storage pointer) view returns (address[] memory)"
                             },
                             "children": [
@@ -7323,7 +7323,7 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5479,
+                              "referencedDeclaration": 5572,
                               "type": "function () pure returns (bytes32)",
                               "value": "keccak256"
                             },
@@ -7689,7 +7689,7 @@ export const DebtRegistry =
         }
       },
       "links": {},
-      "address": "0xaac16b9be8921a636d8f7ef0da38d5002879557d"
+      "address": "0x94aead550b70e454a066ffbee6c58717ddc9c4e9"
     },
     "70": {
       "events": {
@@ -7835,5 +7835,5 @@ export const DebtRegistry =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-26T00:45:13.164Z"
+  "updatedAt": "2018-03-27T04:35:05.244Z"
 }
