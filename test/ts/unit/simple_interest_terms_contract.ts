@@ -612,17 +612,21 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
 
             const ORIGIN_MOMENT = moment();
             const BLOCK_ISSUANCE_TIMESTAMP = ORIGIN_MOMENT.unix();
-            const INTEREST_RATE_SCALING_FACTOR = new BigNumber(10 ** 4);
-
-            const INSTALLMENT_AMOUNT = principalAmount
-                .mul(interestRate)
-                .div(INTEREST_RATE_SCALING_FACTOR)
-                .plus(principalAmount.div(termLength));
 
             const ZERO_AMOUNT = Units.ether(0);
-            const FULL_AMOUNT = INSTALLMENT_AMOUNT.mul(termLength);
+            let INSTALLMENT_AMOUNT: BigNumber;
+            let FULL_AMOUNT: BigNumber;
 
             before(async () => {
+                const INTEREST_RATE_SCALING_FACTOR = await termsContract.INTEREST_RATE_SCALING_FACTOR.callAsync();
+
+                INSTALLMENT_AMOUNT = principalAmount
+                    .mul(interestRate)
+                    .div(INTEREST_RATE_SCALING_FACTOR)
+                    .plus(principalAmount.div(termLength));
+
+                FULL_AMOUNT = INSTALLMENT_AMOUNT.mul(termLength);
+
                 await mockRegistry.mockGetTermsContractReturnValueFor.sendTransactionAsync(
                     ARBITRARY_AGREEMENT_ID,
                     termsContract.address,
