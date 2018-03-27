@@ -300,6 +300,14 @@ contract SimpleInterestTermsContract is TermsContract {
         return delta.div(amortizationUnitLengthInSeconds);
     }
 
+    /**
+     * Calculates the total  repayment value expected at the end of the loan's term.
+     *
+     * This computation assumes that interest is paid per amortization period.
+     *
+     * @param params SimpleInterestParams. The parameters that define the simple interest loan.
+     * @return uint The total repayment value expected at the end of the loan's term.
+     */
     function calculateTotalPrincipalPlusInterest(
         SimpleInterestParams params
     )
