@@ -7,5 +7,5 @@ export function ether(amount: number): BigNumber {
 }
 
 export function percent(amount: number): BigNumber {
-    return new BigNumber(amount).div(100).times(10 ** 9);
+    return new BigNumber(amount).div(100).times(10 ** 5);
 }
