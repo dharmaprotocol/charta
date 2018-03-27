@@ -195,7 +195,7 @@ contract SimpleInterestTermsContract is TermsContract {
         returns (uint _expectedRepaymentValue)
     {
         SimpleInterestParams memory params = unpackParamsForAgreementID(agreementId);
-        uint principalPlusInterest = calculatePrincipalPlusInterest(params);
+        uint principalPlusInterest = calculateTotalPrincipalPlusInterest(params);
 
         if (timestamp <= params.termStartUnixTimestamp) {
             /* The query occurs before the contract was even initialized so the
@@ -251,6 +251,9 @@ contract SimpleInterestTermsContract is TermsContract {
         bytes32 termLengthInAmortizationUnitsShifted =
             parameters & 0x000000000000000000000000000000000ffff000000000000000000000000000;
 
+        // Note that the remaining 108 bits are reserved for any parameters relevant to a
+        // collateralized terms contracts.
+
         /*
         We then bit shift left each of these values so that the 32-byte uint
         counterpart correctly represents the value that was originally packed
@@ -297,7 +300,15 @@ contract SimpleInterestTermsContract is TermsContract {
         return delta.div(amortizationUnitLengthInSeconds);
     }
 
-    function calculatePrincipalPlusInterest(
+    /**
+     * Calculates the total repayment value expected at the end of the loan's term.
+     *
+     * This computation assumes that interest is paid per amortization period.
+     *
+     * @param params SimpleInterestParams. The parameters that define the simple interest loan.
+     * @return uint The total repayment value expected at the end of the loan's term.
+     */
+    function calculateTotalPrincipalPlusInterest(
         SimpleInterestParams params
     )
         internal
@@ -320,7 +331,7 @@ contract SimpleInterestTermsContract is TermsContract {
         uint principalTokenIndex;
         // The principal amount denominated in the aforementioned token.
         uint principalAmount;
-        // The loan's interest rate.
+        // The interest rate accrued per amortization unit.
         uint interestRate;
         // The amortization unit in which the repayments installments schedule is defined.
         uint rawAmortizationUnitType;
