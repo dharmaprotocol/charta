@@ -114,7 +114,7 @@ export const TermsContract =
       "absolutePath": "/Users/nadavhollander/Documents/Dharma/Development/charta/contracts/TermsContract.sol",
       "exportedSymbols": {
         "TermsContract": [
-          2106
+          564
         ]
       }
     },
@@ -127,9 +127,9 @@ export const TermsContract =
             ".18"
           ]
         },
-        "id": 2065,
+        "id": 523,
         "name": "PragmaDirective",
-        "src": "584:23:4"
+        "src": "584:23:1"
       },
       {
         "attributes": {
@@ -143,10 +143,10 @@ export const TermsContract =
           "documentation": null,
           "fullyImplemented": false,
           "linearizedBaseContracts": [
-            2106
+            564
           ],
           "name": "TermsContract",
-          "scope": 2107
+          "scope": 565
         },
         "children": [
           {
@@ -160,7 +160,7 @@ export const TermsContract =
               ],
               "name": "registerTermStart",
               "payable": false,
-              "scope": 2106,
+              "scope": 564,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -172,7 +172,7 @@ export const TermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 2074,
+                      "scope": 532,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -185,20 +185,20 @@ export const TermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 2066,
+                        "id": 524,
                         "name": "ElementaryTypeName",
-                        "src": "1794:7:4"
+                        "src": "1794:7:1"
                       }
                     ],
-                    "id": 2067,
+                    "id": 525,
                     "name": "VariableDeclaration",
-                    "src": "1794:19:4"
+                    "src": "1794:19:1"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "debtor",
-                      "scope": 2074,
+                      "scope": 532,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -211,19 +211,19 @@ export const TermsContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2068,
+                        "id": 526,
                         "name": "ElementaryTypeName",
-                        "src": "1823:7:4"
+                        "src": "1823:7:1"
                       }
                     ],
-                    "id": 2069,
+                    "id": 527,
                     "name": "VariableDeclaration",
-                    "src": "1823:14:4"
+                    "src": "1823:14:1"
                   }
                 ],
-                "id": 2070,
+                "id": 528,
                 "name": "ParameterList",
-                "src": "1784:59:4"
+                "src": "1784:59:1"
               },
               {
                 "children": [
@@ -231,7 +231,7 @@ export const TermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "_success",
-                      "scope": 2074,
+                      "scope": 532,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -244,24 +244,24 @@ export const TermsContract =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 2071,
+                        "id": 529,
                         "name": "ElementaryTypeName",
-                        "src": "1860:4:4"
+                        "src": "1860:4:1"
                       }
                     ],
-                    "id": 2072,
+                    "id": 530,
                     "name": "VariableDeclaration",
-                    "src": "1860:13:4"
+                    "src": "1860:13:1"
                   }
                 ],
-                "id": 2073,
+                "id": 531,
                 "name": "ParameterList",
-                "src": "1859:15:4"
+                "src": "1859:15:1"
               }
             ],
-            "id": 2074,
+            "id": 532,
             "name": "FunctionDefinition",
-            "src": "1758:117:4"
+            "src": "1758:117:1"
           },
           {
             "attributes": {
@@ -274,7 +274,7 @@ export const TermsContract =
               ],
               "name": "registerRepayment",
               "payable": false,
-              "scope": 2106,
+              "scope": 564,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -286,7 +286,7 @@ export const TermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 2089,
+                      "scope": 547,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -299,20 +299,20 @@ export const TermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 2075,
+                        "id": 533,
                         "name": "ElementaryTypeName",
-                        "src": "2622:7:4"
+                        "src": "2622:7:1"
                       }
                     ],
-                    "id": 2076,
+                    "id": 534,
                     "name": "VariableDeclaration",
-                    "src": "2622:19:4"
+                    "src": "2622:19:1"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "payer",
-                      "scope": 2089,
+                      "scope": 547,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -325,20 +325,20 @@ export const TermsContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2077,
+                        "id": 535,
                         "name": "ElementaryTypeName",
-                        "src": "2651:7:4"
+                        "src": "2651:7:1"
                       }
                     ],
-                    "id": 2078,
+                    "id": 536,
                     "name": "VariableDeclaration",
-                    "src": "2651:13:4"
+                    "src": "2651:13:1"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "beneficiary",
-                      "scope": 2089,
+                      "scope": 547,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -351,20 +351,20 @@ export const TermsContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2079,
+                        "id": 537,
                         "name": "ElementaryTypeName",
-                        "src": "2674:7:4"
+                        "src": "2674:7:1"
                       }
                     ],
-                    "id": 2080,
+                    "id": 538,
                     "name": "VariableDeclaration",
-                    "src": "2674:19:4"
+                    "src": "2674:19:1"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "unitsOfRepayment",
-                      "scope": 2089,
+                      "scope": 547,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -377,20 +377,20 @@ export const TermsContract =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 2081,
+                        "id": 539,
                         "name": "ElementaryTypeName",
-                        "src": "2703:7:4"
+                        "src": "2703:7:1"
                       }
                     ],
-                    "id": 2082,
+                    "id": 540,
                     "name": "VariableDeclaration",
-                    "src": "2703:24:4"
+                    "src": "2703:24:1"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "tokenAddress",
-                      "scope": 2089,
+                      "scope": 547,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -403,19 +403,19 @@ export const TermsContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2083,
+                        "id": 541,
                         "name": "ElementaryTypeName",
-                        "src": "2737:7:4"
+                        "src": "2737:7:1"
                       }
                     ],
-                    "id": 2084,
+                    "id": 542,
                     "name": "VariableDeclaration",
-                    "src": "2737:20:4"
+                    "src": "2737:20:1"
                   }
                 ],
-                "id": 2085,
+                "id": 543,
                 "name": "ParameterList",
-                "src": "2612:151:4"
+                "src": "2612:151:1"
               },
               {
                 "children": [
@@ -423,7 +423,7 @@ export const TermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "_success",
-                      "scope": 2089,
+                      "scope": 547,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -436,24 +436,24 @@ export const TermsContract =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 2086,
+                        "id": 544,
                         "name": "ElementaryTypeName",
-                        "src": "2780:4:4"
+                        "src": "2780:4:1"
                       }
                     ],
-                    "id": 2087,
+                    "id": 545,
                     "name": "VariableDeclaration",
-                    "src": "2780:13:4"
+                    "src": "2780:13:1"
                   }
                 ],
-                "id": 2088,
+                "id": 546,
                 "name": "ParameterList",
-                "src": "2779:15:4"
+                "src": "2779:15:1"
               }
             ],
-            "id": 2089,
+            "id": 547,
             "name": "FunctionDefinition",
-            "src": "2586:209:4"
+            "src": "2586:209:1"
           },
           {
             "attributes": {
@@ -466,7 +466,7 @@ export const TermsContract =
               ],
               "name": "getExpectedRepaymentValue",
               "payable": false,
-              "scope": 2106,
+              "scope": 564,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -478,7 +478,7 @@ export const TermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 2098,
+                      "scope": 556,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -491,20 +491,20 @@ export const TermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 2090,
+                        "id": 548,
                         "name": "ElementaryTypeName",
-                        "src": "3475:7:4"
+                        "src": "3475:7:1"
                       }
                     ],
-                    "id": 2091,
+                    "id": 549,
                     "name": "VariableDeclaration",
-                    "src": "3475:19:4"
+                    "src": "3475:19:1"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "timestamp",
-                      "scope": 2098,
+                      "scope": 556,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -517,19 +517,19 @@ export const TermsContract =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 2092,
+                        "id": 550,
                         "name": "ElementaryTypeName",
-                        "src": "3504:7:4"
+                        "src": "3504:7:1"
                       }
                     ],
-                    "id": 2093,
+                    "id": 551,
                     "name": "VariableDeclaration",
-                    "src": "3504:17:4"
+                    "src": "3504:17:1"
                   }
                 ],
-                "id": 2094,
+                "id": 552,
                 "name": "ParameterList",
-                "src": "3465:62:4"
+                "src": "3465:62:1"
               },
               {
                 "children": [
@@ -537,7 +537,7 @@ export const TermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 2098,
+                      "scope": 556,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -550,24 +550,24 @@ export const TermsContract =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 2095,
+                        "id": 553,
                         "name": "ElementaryTypeName",
-                        "src": "3549:7:4"
+                        "src": "3549:7:1"
                       }
                     ],
-                    "id": 2096,
+                    "id": 554,
                     "name": "VariableDeclaration",
-                    "src": "3549:7:4"
+                    "src": "3549:7:1"
                   }
                 ],
-                "id": 2097,
+                "id": 555,
                 "name": "ParameterList",
-                "src": "3548:9:4"
+                "src": "3548:9:1"
               }
             ],
-            "id": 2098,
+            "id": 556,
             "name": "FunctionDefinition",
-            "src": "3431:127:4"
+            "src": "3431:127:1"
           },
           {
             "attributes": {
@@ -580,7 +580,7 @@ export const TermsContract =
               ],
               "name": "getValueRepaidToDate",
               "payable": false,
-              "scope": 2106,
+              "scope": 564,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -592,7 +592,7 @@ export const TermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 2105,
+                      "scope": 563,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -605,19 +605,19 @@ export const TermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 2099,
+                        "id": 557,
                         "name": "ElementaryTypeName",
-                        "src": "3895:7:4"
+                        "src": "3895:7:1"
                       }
                     ],
-                    "id": 2100,
+                    "id": 558,
                     "name": "VariableDeclaration",
-                    "src": "3895:19:4"
+                    "src": "3895:19:1"
                   }
                 ],
-                "id": 2101,
+                "id": 559,
                 "name": "ParameterList",
-                "src": "3885:35:4"
+                "src": "3885:35:1"
               },
               {
                 "children": [
@@ -625,7 +625,7 @@ export const TermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 2105,
+                      "scope": 563,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -638,34 +638,34 @@ export const TermsContract =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 2102,
+                        "id": 560,
                         "name": "ElementaryTypeName",
-                        "src": "3942:7:4"
+                        "src": "3942:7:1"
                       }
                     ],
-                    "id": 2103,
+                    "id": 561,
                     "name": "VariableDeclaration",
-                    "src": "3942:7:4"
+                    "src": "3942:7:1"
                   }
                 ],
-                "id": 2104,
+                "id": 562,
                 "name": "ParameterList",
-                "src": "3941:9:4"
+                "src": "3941:9:1"
               }
             ],
-            "id": 2105,
+            "id": 563,
             "name": "FunctionDefinition",
-            "src": "3856:95:4"
+            "src": "3856:95:1"
           }
         ],
-        "id": 2106,
+        "id": 564,
         "name": "ContractDefinition",
-        "src": "610:3343:4"
+        "src": "610:3343:1"
       }
     ],
-    "id": 2107,
+    "id": 565,
     "name": "SourceUnit",
-    "src": "584:3370:4"
+    "src": "584:3370:1"
   },
   "compiler": {
     "name": "solc",
@@ -673,5 +673,5 @@ export const TermsContract =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-27T04:31:52.450Z"
+  "updatedAt": "2018-03-27T17:52:35.349Z"
 }
