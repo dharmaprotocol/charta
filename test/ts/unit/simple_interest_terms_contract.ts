@@ -145,10 +145,10 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
 
         describe("agent who is DebtKernel calls registerTermStart", () => {
             const principalTokenIndex = new BigNumber(8); // token at index 8
-            const principalAmount = Units.ether(1); // 10 ether.
-            const interestRate = Units.percent(2.5); // 2% interest rate.
+            const principalAmount = Units.ether(1); // 1 ether.
+            const interestRate = Units.percent(2.5); // 2.5% interest rate.
             const amortizationUnitType = new BigNumber(2); // unit code for weeks.
-            const termLength = new BigNumber(4); // term is for 10 weeks.
+            const termLength = new BigNumber(4); // term is for 4 weeks.
 
             const termsParams = SimpleInterestParameters.pack(
                 principalTokenIndex,
