@@ -195,7 +195,7 @@ contract SimpleInterestTermsContract is TermsContract {
         returns (uint _expectedRepaymentValue)
     {
         SimpleInterestParams memory params = unpackParamsForAgreementID(agreementId);
-        uint principalPlusInterest = calculatePrincipalPlusInterest(params);
+        uint principalPlusInterest = calculateTotalPrincipalPlusInterest(params);
 
         if (timestamp <= params.termStartUnixTimestamp) {
             /* The query occurs before the contract was even initialized so the
@@ -300,7 +300,7 @@ contract SimpleInterestTermsContract is TermsContract {
         return delta.div(amortizationUnitLengthInSeconds);
     }
 
-    function calculatePrincipalPlusInterest(
+    function calculateTotalPrincipalPlusInterest(
         SimpleInterestParams params
     )
         internal
