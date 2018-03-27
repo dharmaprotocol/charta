@@ -612,9 +612,11 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
 
             const ORIGIN_MOMENT = moment();
             const BLOCK_ISSUANCE_TIMESTAMP = ORIGIN_MOMENT.unix();
+            const INTEREST_RATE_SCALING_FACTOR = new BigNumber(10 ** 4);
 
             const INSTALLMENT_AMOUNT = principalAmount
                 .mul(interestRate)
+                .div(INTEREST_RATE_SCALING_FACTOR)
                 .plus(principalAmount.div(termLength));
 
             const ZERO_AMOUNT = Units.ether(0);
