@@ -73,4 +73,12 @@ interface TermsContract {
     function getValueRepaidToDate(
         bytes32 agreementId
     ) public view returns (uint256);
+
+    /**
+     * A method that returns a Unix timestamp representing the end of the debt terms
+     * contract.
+     */
+    function getTermEndTimestamp(
+        bytes32 _agreementId
+    ) public view returns (uint);
 }
