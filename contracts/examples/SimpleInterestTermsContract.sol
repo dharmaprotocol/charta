@@ -46,6 +46,11 @@ contract SimpleInterestTermsContract is TermsContract {
     uint public constant MONTH_LENGTH_IN_SECONDS = DAY_LENGTH_IN_SECONDS * 30;
     uint public constant YEAR_LENGTH_IN_SECONDS = DAY_LENGTH_IN_SECONDS * 365;
 
+    // Given that Solidity doesn't support floating points, we represent
+    // decimal values (such as interestRate) with fixed point values
+    // scaled up by a factor of 10000 -- e.g. 10.342% => 1034250
+    uint public constant INTEREST_RATE_SCALING_FACTOR = 10 ** 4;
+
     mapping (bytes32 => uint) public valueRepaid;
 
     DebtRegistry public debtRegistry;
@@ -314,8 +319,16 @@ contract SimpleInterestTermsContract is TermsContract {
         internal
         returns (uint _principalPlusInterest)
     {
-        uint interestPayment = params.principalAmount.mul(params.interestRate);
+        // Since we represent decimal interest rates using their
+        // scaled-up, fixed point representation, we have to
+        // downscale the result of the interest payment computation
+        // by the scaling factor we choose for interest rates.
+        uint interestPayment = params.principalAmount
+            .mul(params.interestRate)
+            .div(INTEREST_RATE_SCALING_FACTOR);
+
         uint totalInterest = interestPayment.mul(params.termLengthInAmortizationUnits);
+
         return params.principalAmount.add(totalInterest);
     }
 
