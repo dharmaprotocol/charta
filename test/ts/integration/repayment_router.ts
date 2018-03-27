@@ -95,7 +95,8 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
 
         const termsContractParameters = SimpleInterestParameters.pack(
             new BigNumber(0), // Our migrations set REP up to be at index 0 of the registry
-            Units.ether(1.1), // Expected Principal Plus Interest
+            Units.ether(1), // principal of 1 ether
+            Units.percent(2.5), // interest rate of 2.5%
             new BigNumber(1), // The amortization unit type (weekly)
             new BigNumber(4), // Term length in amortization units.
         );
