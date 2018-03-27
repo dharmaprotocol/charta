@@ -251,6 +251,9 @@ contract SimpleInterestTermsContract is TermsContract {
         bytes32 termLengthInAmortizationUnitsShifted =
             parameters & 0x000000000000000000000000000000000ffff000000000000000000000000000;
 
+        // Note that the remaining 108 bits are reserved for any parameters relevant to a
+        // collateralized terms contracts.
+
         /*
         We then bit shift left each of these values so that the 32-byte uint
         counterpart correctly represents the value that was originally packed
