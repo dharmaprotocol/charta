@@ -331,7 +331,7 @@ contract SimpleInterestTermsContract is TermsContract {
         uint principalTokenIndex;
         // The principal amount denominated in the aforementioned token.
         uint principalAmount;
-        // The loan's interest rate.
+        // The interest rate accrued per amortization unit.
         uint interestRate;
         // The amortization unit in which the repayments installments schedule is defined.
         uint rawAmortizationUnitType;
