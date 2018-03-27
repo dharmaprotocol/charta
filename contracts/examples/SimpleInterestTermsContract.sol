@@ -32,7 +32,8 @@ contract SimpleInterestTermsContract is TermsContract {
 
     struct SimpleInterestParams {
         address principalTokenAddress;
-        uint principalPlusInterest;
+        uint principalAmount;
+        uint interestRate;
         uint termStartUnixTimestamp;
         uint termEndUnixTimestamp;
         AmortizationUnitType amortizationUnitType;
@@ -56,7 +57,8 @@ contract SimpleInterestTermsContract is TermsContract {
     event LogSimpleInterestTermStart(
         bytes32 indexed agreementId,
         address indexed principalToken,
-        uint principalPlusInterest,
+        uint principalAmount,
+        uint interestRate,
         uint indexed amortizationUnitType,
         uint termLengthInAmortizationUnits
     );
@@ -113,11 +115,12 @@ contract SimpleInterestTermsContract is TermsContract {
         (termsContract, termsContractParameters) = debtRegistry.getTerms(agreementId);
 
         uint principalTokenIndex;
-        uint principalPlusInterest;
+        uint principalAmount;
+        uint interestRate;
         uint amortizationUnitType;
         uint termLengthInAmortizationUnits;
 
-        (principalTokenIndex, principalPlusInterest, amortizationUnitType, termLengthInAmortizationUnits) =
+        (principalTokenIndex, principalAmount, interestRate, amortizationUnitType, termLengthInAmortizationUnits) =
             unpackParametersFromBytes(termsContractParameters);
 
         address principalTokenAddress =
@@ -134,7 +137,8 @@ contract SimpleInterestTermsContract is TermsContract {
             LogSimpleInterestTermStart(
                 agreementId,
                 principalTokenAddress,
-                principalPlusInterest,
+                principalAmount,
+                interestRate,
                 amortizationUnitType,
                 termLengthInAmortizationUnits
             );
@@ -191,6 +195,7 @@ contract SimpleInterestTermsContract is TermsContract {
         returns (uint _expectedRepaymentValue)
     {
         SimpleInterestParams memory params = unpackParamsForAgreementID(agreementId);
+        uint principalPlusInterest = calculateTotalPrincipalPlusInterest(params);
 
         if (timestamp <= params.termStartUnixTimestamp) {
             /* The query occurs before the contract was even initialized so the
@@ -199,10 +204,10 @@ contract SimpleInterestTermsContract is TermsContract {
         } else if (timestamp >= params.termEndUnixTimestamp) {
             /* the query occurs beyond the contract's term, so the expected
             value of repayment is the full principal plus interest. */
-            return params.principalPlusInterest;
+            return principalPlusInterest;
         } else {
             uint numUnits = numAmortizationUnitsForTimestamp(timestamp, params);
-            return params.principalPlusInterest.mul(numUnits).div(params.termLengthInAmortizationUnits);
+            return principalPlusInterest.mul(numUnits).div(params.termLengthInAmortizationUnits);
         }
     }
 
@@ -222,7 +227,8 @@ contract SimpleInterestTermsContract is TermsContract {
         pure
         returns (
             uint _principalTokenIndex,
-            uint _principalPlusInterest,
+            uint _principalAmount,
+            uint _interestRate,
             uint _amortizationUnitType,
             uint _termLengthInAmortizationUnits
         )
@@ -231,10 +237,13 @@ contract SimpleInterestTermsContract is TermsContract {
         // token registry.
         bytes32 principalTokenIndexShifted =
             parameters & 0xff00000000000000000000000000000000000000000000000000000000000000;
-        // The subsequent 15 bytes of the parameters encode the total principal + interest
-        bytes32 principalPlusInterestShifted =
-            parameters & 0x00ffffffffffffffffffffffffffffff00000000000000000000000000000000;
-        // The subsequent 4 bits encode the amortization unit type code
+        // The subsequent 12 bytes of the parameters encode the principal amount.
+        bytes32 principalAmountShifted =
+            parameters & 0x00ffffffffffffffffffffffff00000000000000000000000000000000000000;
+        // The subsequent 3 bytes of the parameters encode the interest rate.
+        bytes32 interestRateShifted =
+            parameters & 0x00000000000000000000000000ffffff00000000000000000000000000000000;
+        // The subsequent 4 bits (half byte) encode the amortization unit type code.
         bytes32 amortizationUnitTypeShifted =
             parameters & 0x00000000000000000000000000000000f0000000000000000000000000000000;
         // The subsequent 2 bytes encode the term length, as denominated in
@@ -242,21 +251,41 @@ contract SimpleInterestTermsContract is TermsContract {
         bytes32 termLengthInAmortizationUnitsShifted =
             parameters & 0x000000000000000000000000000000000ffff000000000000000000000000000;
 
-        // We bit-shift these values, respectively, 248 bits, 126 bits, 124 bits,
-        // and 108 bits right mathematical operations, so that their 32 byte
-        // integer counterparts correspond to the intended values packed in the 32 byte string
-        uint principalTokenIndex = uint(principalTokenIndexShifted) / 2 ** 248;
-        uint principalPlusInterest = uint(principalPlusInterestShifted) / 2 ** 128;
-        uint amortizationUnitType = uint(amortizationUnitTypeShifted) / 2 ** 124;
-        uint termLengthInAmortizationUnits =
-            uint(termLengthInAmortizationUnitsShifted) / 2 ** 108;
+        // Note that the remaining 108 bits are reserved for any parameters relevant to a
+        // collateralized terms contracts.
 
+        /*
+        We then bit shift left each of these values so that the 32-byte uint
+        counterpart correctly represents the value that was originally packed
+        into the 32 byte string.
+
+        The below chart summarizes where in the 32 byte string each value
+        terminates -- which indicates the extent to which each value must be bit
+        shifted left.
+
+                                        Location (bytes)	Location (bits)
+                                        32                  256
+        principalTokenIndex	            31	                248
+        principalAmount	                19                  152
+        interestRate                    16                  128
+        amortizationUnitType            15.5                124
+        termLengthInAmortizationUnits   13.5                108
+        */
         return (
-            principalTokenIndex,
-            principalPlusInterest,
-            amortizationUnitType,
-            termLengthInAmortizationUnits
+            bitShiftRight(principalTokenIndexShifted, 248),
+            bitShiftRight(principalAmountShifted, 152),
+            bitShiftRight(interestRateShifted, 128),
+            bitShiftRight(amortizationUnitTypeShifted, 124),
+            bitShiftRight(termLengthInAmortizationUnitsShifted, 108)
         );
+    }
+
+    function bitShiftRight(bytes32 value, uint amount)
+        internal
+        pure
+        returns (uint)
+    {
+        return uint(value) / 2 ** amount;
     }
 
     function numAmortizationUnitsForTimestamp(
@@ -271,6 +300,25 @@ contract SimpleInterestTermsContract is TermsContract {
         return delta.div(amortizationUnitLengthInSeconds);
     }
 
+    /**
+     * Calculates the total repayment value expected at the end of the loan's term.
+     *
+     * This computation assumes that interest is paid per amortization period.
+     *
+     * @param params SimpleInterestParams. The parameters that define the simple interest loan.
+     * @return uint The total repayment value expected at the end of the loan's term.
+     */
+    function calculateTotalPrincipalPlusInterest(
+        SimpleInterestParams params
+    )
+        internal
+        returns (uint _principalPlusInterest)
+    {
+        uint interestPayment = params.principalAmount.mul(params.interestRate);
+        uint totalInterest = interestPayment.mul(params.termLengthInAmortizationUnits);
+        return params.principalAmount.add(totalInterest);
+    }
+
     function unpackParamsForAgreementID(
         bytes32 agreementId
     )
@@ -281,15 +329,16 @@ contract SimpleInterestTermsContract is TermsContract {
 
         // Index of the token used for principal payments in the Token Registry
         uint principalTokenIndex;
-        // Amount, denominated in the aforementioned token, expected in total principal
-        // plus interest.
-        uint principalPlusInterest;
-        // The amortization unit in which the repayments installments schedule is defined
-        uint amortizationUnitTypeAsUint;
+        // The principal amount denominated in the aforementioned token.
+        uint principalAmount;
+        // The interest rate accrued per amortization unit.
+        uint interestRate;
+        // The amortization unit in which the repayments installments schedule is defined.
+        uint rawAmortizationUnitType;
         // The debt's entire term's length, denominated in the aforementioned amortization units
         uint termLengthInAmortizationUnits;
 
-        (principalTokenIndex, principalPlusInterest, amortizationUnitTypeAsUint, termLengthInAmortizationUnits) =
+        (principalTokenIndex, principalAmount, interestRate, rawAmortizationUnitType, termLengthInAmortizationUnits) =
             unpackParametersFromBytes(parameters);
 
         address principalTokenAddress =
@@ -299,9 +348,9 @@ contract SimpleInterestTermsContract is TermsContract {
         require(principalTokenAddress != address(0));
 
         // Before we cast to `AmortizationUnitType`, ensure that the raw value being stored is valid.
-        require(amortizationUnitTypeAsUint <= uint(AmortizationUnitType.YEARS));
+        require(rawAmortizationUnitType <= uint(AmortizationUnitType.YEARS));
 
-        AmortizationUnitType amortizationUnitType = AmortizationUnitType(amortizationUnitTypeAsUint);
+        AmortizationUnitType amortizationUnitType = AmortizationUnitType(rawAmortizationUnitType);
 
         uint amortizationUnitLengthInSeconds =
             getAmortizationUnitLengthInSeconds(amortizationUnitType);
@@ -314,7 +363,8 @@ contract SimpleInterestTermsContract is TermsContract {
 
         return SimpleInterestParams({
             principalTokenAddress: principalTokenAddress,
-            principalPlusInterest: principalPlusInterest,
+            principalAmount: principalAmount,
+            interestRate: interestRate,
             termStartUnixTimestamp: issuanceBlockTimestamp,
             termEndUnixTimestamp: termEndUnixTimestamp,
             amortizationUnitType: amortizationUnitType,

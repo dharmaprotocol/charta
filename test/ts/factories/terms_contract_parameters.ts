@@ -12,7 +12,8 @@ class TermsContractParameters {
 export class SimpleInterestParameters extends TermsContractParameters {
     public static pack(
         principalTokenIndex: BigNumber,
-        principalPlusInterest: BigNumber,
+        principalAmount: BigNumber,
+        interestRate: BigNumber,
         amortizationUnitType: BigNumber,
         termLength: BigNumber,
     ): string {
@@ -20,10 +21,11 @@ export class SimpleInterestParameters extends TermsContractParameters {
             principalTokenIndex,
             248,
         );
-        const principalPlusInterestShifted = TermsContractParameters.bitShiftLeft(
-            principalPlusInterest,
-            128,
-        );
+
+        const principalAmountShifted = TermsContractParameters.bitShiftLeft(principalAmount, 152);
+
+        const interestRateShifted = TermsContractParameters.bitShiftLeft(interestRate, 128);
+
         const amortizationUnitTypeShifted = TermsContractParameters.bitShiftLeft(
             amortizationUnitType,
             124,
@@ -31,7 +33,8 @@ export class SimpleInterestParameters extends TermsContractParameters {
         const termLengthShifted = TermsContractParameters.bitShiftLeft(termLength, 108);
 
         const baseTenParameters = principalTokenIndexShifted
-            .plus(principalPlusInterestShifted)
+            .plus(principalAmountShifted)
+            .plus(interestRateShifted)
             .plus(amortizationUnitTypeShifted)
             .plus(termLengthShifted);
 

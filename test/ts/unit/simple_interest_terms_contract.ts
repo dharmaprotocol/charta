@@ -145,13 +145,15 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
 
         describe("agent who is DebtKernel calls registerTermStart", () => {
             const principalTokenIndex = new BigNumber(8); // token at index 8
-            const principalPlusInterest = Units.ether(10); // 200 ether.
+            const principalAmount = Units.ether(1); // 1 ether.
+            const interestRate = Units.percent(2.5); // 2.5% interest rate.
             const amortizationUnitType = new BigNumber(2); // unit code for weeks.
-            const termLength = new BigNumber(10); // term is for 10 weeks.
+            const termLength = new BigNumber(4); // term is for 4 weeks.
 
             const termsParams = SimpleInterestParameters.pack(
                 principalTokenIndex,
-                principalPlusInterest,
+                principalAmount,
+                interestRate,
                 amortizationUnitType,
                 termLength,
             );
@@ -217,7 +219,8 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
                     before(async () => {
                         const invalidTermsParams = SimpleInterestParameters.pack(
                             principalTokenIndex,
-                            principalPlusInterest,
+                            principalAmount,
+                            interestRate,
                             new BigNumber(5), // this is an invalid value for the amortizationUnitType
                             termLength,
                         );
@@ -280,7 +283,8 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
                             termsContract.address,
                             ARBITRARY_AGREEMENT_ID,
                             mockToken.address,
-                            principalPlusInterest,
+                            principalAmount,
+                            interestRate,
                             amortizationUnitType,
                             termLength,
                         ),
@@ -309,13 +313,15 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
         describe("RepaymentRouter calls registerRepayment", () => {
             before(async () => {
                 const principalTokenIndex = new BigNumber(0);
-                const principalPlusInterest = Units.ether(1);
+                const principalAmount = Units.ether(1);
+                const interestRate = Units.percent(1);
                 const amortizationUnitType = new BigNumber(0);
                 const termLengthInAmortizationUnits = new BigNumber(3);
 
                 const termsContractParameters = SimpleInterestParameters.pack(
                     principalTokenIndex,
-                    principalPlusInterest,
+                    principalAmount,
+                    interestRate,
                     amortizationUnitType,
                     termLengthInAmortizationUnits,
                 );
@@ -414,14 +420,16 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
         describe("extant debt agreement", () => {
             const EXTANT_AGREEMENT_ID = web3.sha3("this agreement id exists!");
 
-            const principalTokenIndex = new BigNumber(2); // token at index 6 of token registry.
-            const principalPlusInterest = Units.ether(100); // 200 ether.
+            const principalTokenIndex = new BigNumber(2); // token at index 2 of token registry.
+            const principalAmount = Units.ether(100); // 100 ether.
+            const interestRate = Units.percent(1); // 1% interest rate.
             const amortizationUnitType = new BigNumber(2); // unit code for weeks.
             const termLength = new BigNumber(10); // term is for 10 weeks.
 
             const inputParamsAsHex = SimpleInterestParameters.pack(
                 principalTokenIndex,
-                principalPlusInterest,
+                principalAmount,
+                interestRate,
                 amortizationUnitType,
                 termLength,
             );
@@ -487,26 +495,33 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
 
     describe("#unpackParametersFromBytes", () => {
         const principalTokenIndex = new BigNumber(6); // token at index 6 of token registry.
-        const principalPlusInterest = Units.ether(200); // 200 ether.
+        const principalAmount = Units.ether(200); // 200 ether.
+        const interestRate = Units.percent(1.5); // 1.5% interest rate.
         const amortizationUnitType = new BigNumber(4); // unit code for years.
         const termLength = new BigNumber(10); // term is for 10 years.
 
         const inputParamsAsHex = SimpleInterestParameters.pack(
             principalTokenIndex,
-            principalPlusInterest,
+            principalAmount,
+            interestRate,
             amortizationUnitType,
             termLength,
         );
 
         it("correctly unpacks parameters into their respective types given raw byte data", async () => {
-            const outputParams = await termsContract.unpackParametersFromBytes.callAsync(
-                inputParamsAsHex,
-            );
+            const [
+                unpackedPrincipalTokenIndex,
+                unpackedPrincipalAmount,
+                unpackedInterestRate,
+                unpackedAmortizationUnitType,
+                unpackedTermLength,
+            ] = await termsContract.unpackParametersFromBytes.callAsync(inputParamsAsHex);
 
-            expect(outputParams[0]).to.bignumber.equal(principalTokenIndex);
-            expect(outputParams[1]).to.bignumber.equal(principalPlusInterest);
-            expect(outputParams[2]).to.bignumber.equal(amortizationUnitType);
-            expect(outputParams[3]).to.bignumber.equal(termLength);
+            expect(unpackedPrincipalTokenIndex).to.bignumber.equal(principalTokenIndex);
+            expect(unpackedPrincipalAmount).to.bignumber.equal(principalAmount);
+            expect(unpackedInterestRate).to.bignumber.equal(interestRate);
+            expect(unpackedAmortizationUnitType).to.bignumber.equal(amortizationUnitType);
+            expect(unpackedTermLength).to.bignumber.equal(termLength);
         });
     });
 
@@ -531,13 +546,15 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
 
         describe("when termsContractParameters associated w/ debt agreement malformed", () => {
             const principalTokenIndex = new BigNumber(0);
-            const principalPlusInterest = Units.ether(10);
+            const principalAmount = Units.ether(10);
+            const interestRate = Units.percent(1);
             const amortizationUnitType = new BigNumber(10); // invalid unit code.
             const termLength = new BigNumber(10);
 
             const invalidTermsParams = SimpleInterestParameters.pack(
                 principalTokenIndex,
-                principalPlusInterest,
+                principalAmount,
+                interestRate,
                 amortizationUnitType,
                 termLength,
             );
@@ -574,18 +591,21 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
         describe("when termsContractParameters associated w/ debt agreement are well-formed", () => {
             /*
             The params define a simple interest contract with the below valid terms:
-              - Principal plus interest: 12 ether
+              - Principal: 12 ether
+              - Interest rate: 1%
               - Amortization Unit Type: year
-              - Term length: 3 years
+              - Term length: 3
             */
             const principalTokenIndex = new BigNumber(0); // arbitrary index for principal token in registry
-            const principalPlusInterest = Units.ether(12);
+            const principalAmount = Units.ether(12); // 12 ether principal.
+            const interestRate = Units.percent(1); // 1% interest rate.
             const amortizationUnitType = new BigNumber(4); // unit code for years.
             const termLength = new BigNumber(3); // term is three years.
 
             const validTermsParams = SimpleInterestParameters.pack(
                 principalTokenIndex,
-                principalPlusInterest,
+                principalAmount,
+                interestRate,
                 amortizationUnitType,
                 termLength,
             );
@@ -593,9 +613,12 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
             const ORIGIN_MOMENT = moment();
             const BLOCK_ISSUANCE_TIMESTAMP = ORIGIN_MOMENT.unix();
 
+            const INSTALLMENT_AMOUNT = principalAmount
+                .mul(interestRate)
+                .plus(principalAmount.div(termLength));
+
             const ZERO_AMOUNT = Units.ether(0);
-            const INSTALLMENT_AMOUNT = principalPlusInterest.div(termLength);
-            const FULL_AMOUNT = principalPlusInterest;
+            const FULL_AMOUNT = INSTALLMENT_AMOUNT.mul(termLength);
 
             before(async () => {
                 await mockRegistry.mockGetTermsContractReturnValueFor.sendTransactionAsync(
