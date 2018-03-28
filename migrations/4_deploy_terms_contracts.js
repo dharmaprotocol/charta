@@ -18,7 +18,7 @@ module.exports = (deployer, network, accounts) => {
         DebtKernel.address,
         DebtRegistry.address,
         TokenRegistry.address,
-        RepaymentRouter.address,
+        RepaymentRouter.address
     );
 
     deployer.deploy(

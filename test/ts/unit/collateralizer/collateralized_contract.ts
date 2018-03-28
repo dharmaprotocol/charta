@@ -1,38 +1,17 @@
 import * as ABIDecoder from "abi-decoder";
 import * as chai from "chai";
 import * as Units from "../../test_utils/units";
-import { BigNumber } from "bignumber.js";
-import * as Web3 from "web3";
-
-import {
-    CollateralLocked,
-    CollateralReturned,
-    CollateralSeized,
-} from "../../logs/collateralized_contract";
 
 // tslint:disable-next-line
-import { MockCollateralizedTermsContractContract } from "../../../../types/generated/mock_collateralized_terms_contract";
+import { CollateralizerContract } from "../../../../types/generated/collateralizer";
 import { TokenRegistryContract } from "../../../../types/generated/token_registry";
 import { MockDebtRegistryContract } from "../../../../types/generated/mock_debt_registry";
 import { MockERC20TokenContract } from "../../../../types/generated/mock_e_r_c20_token";
 import { MockTokenRegistryContract } from "../../../../types/generated/mock_token_registry";
+import { MockTokenTransferProxyContract } from "../../../../types/generated/mock_token_transfer_proxy";
 
 import { BigNumberSetup } from "../../test_utils/bignumber_setup";
 import ChaiSetup from "../../test_utils/chai_setup";
-import { REVERT_ERROR } from "../../test_utils/constants";
-
-// scenario runners
-import { RegisterTermStartRunner, ReturnCollateralRunner, SeizeCollateralRunner } from "./runners/";
-
-// scenarios
-import { UNSUCCESSFUL_COLLATERALIZATION_SCENARIOS } from "./scenarios/unsuccessful_collateralization";
-import { SUCCESSFUL_COLLATERALIZATION_SCENARIOS } from "./scenarios/successful_collateralization";
-import { UNSUCCESSFUL_SEIZURE_SCENARIOS } from "./scenarios/unsuccessful_seizure";
-import { SUCCESSFUL_SEIZURE_SCENARIOS } from "./scenarios/successful_seizure";
-import { UNSUCCESSFUL_RETURN_SCENARIOS } from "./scenarios/unsuccessful_return";
-import { SUCCESSFUL_RETURN_SCENARIOS } from "./scenarios/successful_return";
-
-import * as moment from "moment";
 
 // Set up Chai
 ChaiSetup.configure();
@@ -41,40 +20,29 @@ const expect = chai.expect;
 // Configure BigNumber exponentiation
 BigNumberSetup.configure();
 
-const mockCollateralizedContract = artifacts.require("MockCollateralizedTermsContract");
+const collateralizer = artifacts.require("Collateralizer");
 
 contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
-    let collateralContract: MockCollateralizedTermsContractContract;
+    let collateralContract: CollateralizerContract;
     let tokenRegistry: TokenRegistryContract;
     let mockToken: MockERC20TokenContract;
     let mockDebtRegistry: MockDebtRegistryContract;
     let mockTokenRegistry: MockTokenRegistryContract;
-
-    // Scenario runnner
-    const registerTermStartRunner = new RegisterTermStartRunner();
-    const returnCollateralRunner = new ReturnCollateralRunner();
-    const seizeCollateralRunner = new SeizeCollateralRunner();
+    let mockTokenTransferProxy: MockTokenTransferProxyContract;
 
     const CONTRACT_OWNER = ACCOUNTS[0];
-    const COLLATERALIZER = ACCOUNTS[1];
-    const NON_COLLATERALIZER = ACCOUNTS[2];
-    const BENEFICIARY_1 = ACCOUNTS[3];
-    const BENEFICIARY_2 = ACCOUNTS[4];
-    const MOCK_DEBT_KERNEL_ADDRESS = ACCOUNTS[5];
-    const ATTACKER = ACCOUNTS[6];
+    const MOCK_DEBT_KERNEL_ADDRESS = ACCOUNTS[1];
 
     const NULL_PARAMETERS = "0x0000000000000000000000000000000000000000000000000000000000000000";
 
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
 
-    const COLLATERAL_AMOUNT = Units.ether(5);
-
     before(async () => {
         tokenRegistry = await TokenRegistryContract.deployed(web3, TX_DEFAULTS);
-
         mockDebtRegistry = await MockDebtRegistryContract.deployed(web3, TX_DEFAULTS);
         mockToken = await MockERC20TokenContract.deployed(web3, TX_DEFAULTS);
         mockTokenRegistry = await MockTokenRegistryContract.deployed(web3, TX_DEFAULTS);
+        mockTokenTransferProxy = await MockTokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
 
         /*
         In our test environment, we want to interact with the contract being
@@ -91,43 +59,24 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
          */
 
         // Step 1: Instantiate a truffle instance of the contract.
-        const collateralContractTruffle = await mockCollateralizedContract.new(
+        const collateralContractTruffle = await collateralizer.new(
             MOCK_DEBT_KERNEL_ADDRESS,
             mockDebtRegistry.address,
             mockTokenRegistry.address,
+            mockTokenTransferProxy.address,
             { from: CONTRACT_OWNER },
         );
 
         // Step 2: Instantiate a web3 instance of the contract.
         const collateralContractWeb3Contract = web3.eth
-            .contract(mockCollateralizedContract.abi)
+            .contract(collateralizer.abi)
             .at(collateralContractTruffle.address);
 
         // Step 3: Instantiate a statically-typed version of the contract.
-        collateralContract = new MockCollateralizedTermsContractContract(
+        collateralContract = new CollateralizerContract(
             collateralContractWeb3Contract,
             TX_DEFAULTS,
         );
-
-        // Initialize scenario runners
-        const testContracts = {
-            mockCollateralizedTermsContract: collateralContract,
-            mockCollateralToken: mockToken,
-            mockDebtRegistry,
-            mockTokenRegistry,
-        };
-        const testAccounts = {
-            ATTACKER,
-            BENEFICIARY_1,
-            BENEFICIARY_2,
-            COLLATERALIZER,
-            NON_COLLATERALIZER,
-            MOCK_DEBT_KERNEL_ADDRESS,
-        };
-
-        registerTermStartRunner.initialize(testContracts, testAccounts);
-        seizeCollateralRunner.initialize(testContracts, testAccounts);
-        returnCollateralRunner.initialize(testContracts, testAccounts);
 
         // Initialize ABI Decoder for deciphering log receipts
         ABIDecoder.addABI(collateralContract.abi);
@@ -199,36 +148,6 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
                 expect(unpackedParameters[1]).to.bignumber.equal(expectedUnpackedParameters[1]);
                 expect(unpackedParameters[2]).to.bignumber.equal(expectedUnpackedParameters[2]);
             });
-        });
-    });
-
-    describe("#registerTermStart", () => {
-        describe("unsuccessful collateralizations", () => {
-            UNSUCCESSFUL_COLLATERALIZATION_SCENARIOS.forEach(registerTermStartRunner.testScenario);
-        });
-
-        describe("successful collateralizations", () => {
-            SUCCESSFUL_COLLATERALIZATION_SCENARIOS.forEach(registerTermStartRunner.testScenario);
-        });
-    });
-
-    describe("#seizeCollateral", () => {
-        describe("Unsuccessful Collateral Seizure", () => {
-            UNSUCCESSFUL_SEIZURE_SCENARIOS.forEach(seizeCollateralRunner.testScenario);
-        });
-
-        describe("Successful Collateral Seizure", () => {
-            SUCCESSFUL_SEIZURE_SCENARIOS.forEach(seizeCollateralRunner.testScenario);
-        });
-    });
-
-    describe("#returnCollateral", () => {
-        describe("Unsuccessful Collateral Return", () => {
-            UNSUCCESSFUL_RETURN_SCENARIOS.forEach(returnCollateralRunner.testScenario);
-        });
-
-        describe("Successful Collateral Return", () => {
-            SUCCESSFUL_RETURN_SCENARIOS.forEach(returnCollateralRunner.testScenario);
         });
     });
 });

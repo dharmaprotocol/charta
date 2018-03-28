@@ -18,27 +18,42 @@
 
 pragma solidity 0.4.18;
 
-import "./Collateralized.sol";
+import "../Collateralizer.sol";
 import "./SimpleInterestTermsContract.sol";
 
 
 /**
  * Example collateralized terms contract for usage in simple interest debt agreements
  *
- * Authors: nadavhollander, saturnial, jdkanani
+ * Authors: nadavhollander, saturnial, jdkanani, graemecode
  */
-contract CollateralizedSimpleInterestTermsContract is Collateralized, SimpleInterestTermsContract {
+contract CollateralizedSimpleInterestTermsContract is SimpleInterestTermsContract {
+    // The contract that handles asset collateralization.
+    Collateralizer public collateralizer;
+
     function CollateralizedSimpleInterestTermsContract(
         address _debtKernel,
         address _debtRegistry,
         address _tokenRegistry,
-        address _repaymentRouter
+        address _repaymentRouter,
+        address _collateralizer
+    ) public SimpleInterestTermsContract(_debtKernel, _debtRegistry, _tokenRegistry, _repaymentRouter)
+    {
+        collateralizer = Collateralizer(_collateralizer);
+    }
+
+    function registerTermStart(
+        bytes32 agreementId,
+        address debtor
     )
         public
-        SimpleInterestTermsContract(_debtKernel, _debtRegistry, _tokenRegistry, _repaymentRouter)
-        Collateralized(_debtKernel, _debtRegistry, _tokenRegistry)
+        onlyDebtKernel
+        returns (bool _success)
     {
-        // No initialization necessary
+        bool registered = super.registerTermStart(agreementId, debtor);
+        bool collateralized = collateralizer.collateralize(agreementId, debtor);
+
+        return registered && collateralized;
     }
 
     function getTermEndTimestamp(

@@ -6,14 +6,13 @@ import * as Units from "../test_utils/units";
 import { DebtKernelContract } from "../../../types/generated/debt_kernel";
 import { RepaymentRouterContract } from "../../../types/generated/repayment_router";
 import { TokenTransferProxyContract } from "../../../types/generated/token_transfer_proxy";
+import { CollateralizerContract } from "../../../types/generated/collateralizer";
 
 import { MockERC20TokenContract } from "../../../types/generated/mock_e_r_c20_token";
 
 import { BigNumberSetup } from "../test_utils/bignumber_setup";
 import ChaiSetup from "../test_utils/chai_setup";
-import { INVALID_OPCODE, REVERT_ERROR } from "../test_utils/constants";
-
-import { LogError, LogRepayment } from "../logs/repayment_router";
+import { REVERT_ERROR } from "../test_utils/constants";
 
 // Set up Chai
 ChaiSetup.configure();
@@ -27,6 +26,7 @@ contract("Token Transfer Proxy (Unit Tests)", async (ACCOUNTS) => {
     let kernel: DebtKernelContract;
     let repaymentRouter: RepaymentRouterContract;
     let mockToken: MockERC20TokenContract;
+    let collateralizer: CollateralizerContract;
 
     const CONTRACT_OWNER = ACCOUNTS[0];
     const ATTACKER = ACCOUNTS[1];
@@ -42,6 +42,7 @@ contract("Token Transfer Proxy (Unit Tests)", async (ACCOUNTS) => {
         kernel = await DebtKernelContract.deployed(web3, TX_DEFAULTS);
         repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
         mockToken = await MockERC20TokenContract.deployed(web3, TX_DEFAULTS);
+        collateralizer = await CollateralizerContract.deployed(web3, TX_DEFAULTS);
     });
 
     describe("Initialization", () => {
@@ -49,6 +50,7 @@ contract("Token Transfer Proxy (Unit Tests)", async (ACCOUNTS) => {
             await expect(proxy.getAuthorizedTransferAgents.callAsync()).to.eventually.deep.equal([
                 kernel.address,
                 repaymentRouter.address,
+                collateralizer.address,
             ]);
         });
     });
@@ -82,7 +84,12 @@ contract("Token Transfer Proxy (Unit Tests)", async (ACCOUNTS) => {
             it("should return agent as authorized", async () => {
                 await expect(
                     proxy.getAuthorizedTransferAgents.callAsync(),
-                ).to.eventually.deep.equal([kernel.address, repaymentRouter.address, AGENT]);
+                ).to.eventually.deep.equal([
+                    kernel.address,
+                    repaymentRouter.address,
+                    collateralizer.address,
+                    AGENT,
+                ]);
             });
         });
 
@@ -94,7 +101,11 @@ contract("Token Transfer Proxy (Unit Tests)", async (ACCOUNTS) => {
             it("should return agent as unauthorized", async () => {
                 await expect(
                     proxy.getAuthorizedTransferAgents.callAsync(),
-                ).to.eventually.deep.equal([kernel.address, repaymentRouter.address]);
+                ).to.eventually.deep.equal([
+                    kernel.address,
+                    repaymentRouter.address,
+                    collateralizer.address,
+                ]);
             });
         });
     });

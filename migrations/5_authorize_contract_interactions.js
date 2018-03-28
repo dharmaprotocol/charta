@@ -4,6 +4,7 @@ module.exports = (deployer, network, accounts) => {
     const DebtKernel = artifacts.require("DebtKernel");
     const TokenTransferProxy = artifacts.require("TokenTransferProxy");
     const RepaymentRouter = artifacts.require("RepaymentRouter");
+    const Collateralizer = artifacts.require("Collateralizer");
 
     const TX_DEFAULTS = { from: accounts[0], gas: 4000000 };
 
@@ -13,6 +14,7 @@ module.exports = (deployer, network, accounts) => {
         const kernel = await DebtKernel.deployed();
         const proxy = await TokenTransferProxy.deployed();
         const router = await RepaymentRouter.deployed();
+        const collateralizer = await Collateralizer.deployed();
 
         // Authorize token contract to make mutations to the registry
         await registry.addAuthorizedInsertAgent(token.address);
@@ -29,5 +31,8 @@ module.exports = (deployer, network, accounts) => {
 
         // Authorize repayment router to make `transferFrom` calls on the token transfer proxy
         await proxy.addAuthorizedTransferAgent(router.address);
+
+        // Authorize collateralizer to make `transferFrom` calls on the token transfer proxy.
+        await proxy.addAuthorizedTransferAgent(collateralizer.address);
     });
 };

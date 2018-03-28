@@ -285,6 +285,15 @@ contract SimpleInterestTermsContract is TermsContract {
         );
     }
 
+    function getTermEndTimestamp(
+        bytes32 _agreementId
+    ) public view returns (uint)
+    {
+        SimpleInterestParams memory params = unpackParamsForAgreementID(_agreementId);
+
+        return params.termEndUnixTimestamp;
+    }
+
     function bitShiftRight(bytes32 value, uint amount)
         internal
         pure

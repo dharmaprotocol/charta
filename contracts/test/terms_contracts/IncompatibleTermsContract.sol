@@ -95,4 +95,11 @@ contract IncompatibleTermsContract is TermsContract {
     {
         return 0;
     }
+
+    function getTermEndTimestamp(
+        bytes32 _agreementId
+    ) public view returns (uint)
+    {
+        return 0;
+    }
 }
