@@ -1,8 +1,13 @@
+// External Libraries
 import * as ABIDecoder from "abi-decoder";
 import * as chai from "chai";
 import * as Units from "../../test_utils/units";
 
-// tslint:disable-next-line
+// Utils
+import { BigNumberSetup } from "../../test_utils/bignumber_setup";
+import ChaiSetup from "../../test_utils/chai_setup";
+
+// Generated Types
 import { CollateralizerContract } from "../../../../types/generated/collateralizer";
 import { TokenRegistryContract } from "../../../../types/generated/token_registry";
 import { MockDebtRegistryContract } from "../../../../types/generated/mock_debt_registry";
@@ -10,11 +15,11 @@ import { MockERC20TokenContract } from "../../../../types/generated/mock_e_r_c20
 import { MockTokenRegistryContract } from "../../../../types/generated/mock_token_registry";
 import { MockTokenTransferProxyContract } from "../../../../types/generated/mock_token_transfer_proxy";
 
-import { BigNumberSetup } from "../../test_utils/bignumber_setup";
-import ChaiSetup from "../../test_utils/chai_setup";
-
-// scenario runners
+// Scenario Runners
 import { CollateralizeRunner } from "./runners";
+
+// Scenario Constants
+import {SUCCESSFUL_COLLATERALIZATION_SCENARIOS} from "./scenarios/successful_collateralization";
 
 // Set up Chai
 ChaiSetup.configure();
@@ -33,8 +38,15 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
     let mockTokenRegistry: MockTokenRegistryContract;
     let mockTokenTransferProxy: MockTokenTransferProxyContract;
 
+    const collateralizeRunner = new CollateralizeRunner();
+
     const CONTRACT_OWNER = ACCOUNTS[0];
-    const MOCK_DEBT_KERNEL_ADDRESS = ACCOUNTS[1];
+    const COLLATERALIZER = ACCOUNTS[1];
+    const NON_COLLATERALIZER = ACCOUNTS[2];
+    const BENEFICIARY_1 = ACCOUNTS[3];
+    const BENEFICIARY_2 = ACCOUNTS[4];
+    const MOCK_DEBT_KERNEL_ADDRESS = ACCOUNTS[5];
+    const ATTACKER = ACCOUNTS[6];
 
     const NULL_PARAMETERS = "0x0000000000000000000000000000000000000000000000000000000000000000";
 
@@ -80,6 +92,25 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
             collateralContractWeb3Contract,
             TX_DEFAULTS,
         );
+
+        const testContracts = {
+            collateralizer: collateralContract,
+            mockCollateralToken: mockToken,
+            mockDebtRegistry,
+            mockTokenRegistry,
+        };
+
+        const testAccounts = {
+            ATTACKER,
+            BENEFICIARY_1,
+            BENEFICIARY_2,
+            COLLATERALIZER,
+            NON_COLLATERALIZER,
+            MOCK_DEBT_KERNEL_ADDRESS,
+        };
+
+        // Initialize runners.
+        collateralizeRunner.initialize(testContracts, testAccounts);
 
         // Initialize ABI Decoder for deciphering log receipts
         ABIDecoder.addABI(collateralContract.abi);
@@ -156,7 +187,7 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
 
     describe("#collateralize", () => {
        describe("Successful collateralization", () => {
-           // STUB.
+           SUCCESSFUL_COLLATERALIZATION_SCENARIOS.forEach(collateralizeRunner.testScenario);
        });
     });
 });
