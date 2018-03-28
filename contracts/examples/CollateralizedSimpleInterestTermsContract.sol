@@ -25,7 +25,7 @@ import "./SimpleInterestTermsContract.sol";
 /**
  * Example collateralized terms contract for usage in simple interest debt agreements
  *
- * Authors: nadavhollander, saturnial, jdkanani
+ * Authors: nadavhollander, saturnial, jdkanani, graemecode
  */
 contract CollateralizedSimpleInterestTermsContract is SimpleInterestTermsContract {
     // The contract that handles asset collateralization.
@@ -50,8 +50,10 @@ contract CollateralizedSimpleInterestTermsContract is SimpleInterestTermsContrac
         onlyDebtKernel
         returns (bool _success)
     {
-        super.registerTermStart(agreementId, debtor);
-        collateralizer.collateralize(agreementId, debtor);
+        bool registered = super.registerTermStart(agreementId, debtor);
+        bool collateralized = collateralizer.collateralize(agreementId, debtor);
+
+        return registered && collateralized;
     }
 
     function getTermEndTimestamp(

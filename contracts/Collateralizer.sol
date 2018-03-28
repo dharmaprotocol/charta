@@ -108,6 +108,7 @@ contract Collateralizer {
             termsContract
         ) = retrieveCollateralParameters(agreementId);
 
+        require(termsContract == msg.sender);
         require(collateralAmount > 0);
         require(collateralToken != address(0));
 
@@ -143,10 +144,10 @@ contract Collateralizer {
 
         // the collateral must be successfully transferred to this contract.
         require(erc20token.transferFrom(
-                collateralizer,
-                custodian,
-                collateralAmount
-            ));
+            collateralizer,
+            custodian,
+            collateralAmount
+        ));
 
         // emit event that collateral has been secured.
         CollateralLocked(agreementId, collateralToken, collateralAmount);
@@ -332,10 +333,10 @@ contract Collateralizer {
     {
         // The first byte of the 108 reserved bits represents the collateral token.
         bytes32 collateralTokenIndexShifted =
-        parameters & 0x0000000000000000000000000000000000000ff0000000000000000000000000;
+            parameters & 0x0000000000000000000000000000000000000ff0000000000000000000000000;
         // The subsequent 92 bits represents the collateral amount, as denominated in the above token.
         bytes32 collateralAmountShifted =
-        parameters & 0x000000000000000000000000000000000000000fffffffffffffffffffffff00;
+            parameters & 0x000000000000000000000000000000000000000fffffffffffffffffffffff00;
 
         // We bit-shift these values, respectively, 100 bits and 8 bits right using
         // mathematical operations, so that their 32 byte integer counterparts
@@ -348,7 +349,7 @@ contract Collateralizer {
         // Since this value takes the rightmost place in the parameters string,
         // we do not need to bit-shift it.
         bytes32 gracePeriodInDays =
-        parameters & 0x00000000000000000000000000000000000000000000000000000000000000ff;
+            parameters & 0x00000000000000000000000000000000000000000000000000000000000000ff;
 
         return (
             collateralTokenIndex,

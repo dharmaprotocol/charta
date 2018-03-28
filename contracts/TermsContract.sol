@@ -75,7 +75,7 @@ interface TermsContract {
     ) public view returns (uint256);
 
     /**
-     * A method that returns a Unix timestamp representing the end of the debt terms
+     * A method that returns a Unix timestamp representing the end of the debt agreement's term.
      * contract.
      */
     function getTermEndTimestamp(
