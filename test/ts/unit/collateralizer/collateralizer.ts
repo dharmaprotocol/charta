@@ -20,7 +20,8 @@ import { MockTermsContractContract } from "../../../../types/generated/mock_term
 import { CollateralizeRunner } from "./runners";
 
 // Scenario Constants
-import {SUCCESSFUL_COLLATERALIZATION_SCENARIOS} from "./scenarios/successful_collateralization";
+import { SUCCESSFUL_COLLATERALIZATION_SCENARIOS } from "./scenarios/successful_collateralization";
+import { UNSUCCESSFUL_COLLATERALIZATION_SCENARIOS } from "./scenarios/unsuccessful_collateralization";
 
 // Set up Chai
 ChaiSetup.configure();
@@ -198,6 +199,10 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
     describe("#collateralize", () => {
        describe("Successful collateralization", () => {
            SUCCESSFUL_COLLATERALIZATION_SCENARIOS.forEach(collateralizeRunner.testScenario);
+       });
+
+       describe("Unsuccessful collateralization", () => {
+            UNSUCCESSFUL_COLLATERALIZATION_SCENARIOS.forEach(collateralizeRunner.testScenario);
        });
     });
 });

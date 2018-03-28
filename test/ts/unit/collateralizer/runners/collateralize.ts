@@ -19,6 +19,7 @@ import { REVERT_ERROR } from "../../../test_utils/constants";
 
 // logs
 import { CollateralLocked } from "../../../logs/collateralized_contract";
+import {MockTokenTransferProxyContract} from "../../../../../types/generated/mock_token_transfer_proxy";
 
 export class CollateralizeRunner {
     private contracts: TestContracts;
@@ -43,6 +44,7 @@ export class CollateralizeRunner {
         let mockDebtRegistry: MockDebtRegistryContract;
         let mockCollateralToken: MockERC20TokenContract;
         let mockTokenRegistry: MockTokenRegistryContract;
+        let mockTokenTransferProxy: MockTokenTransferProxyContract;
 
         let txHash: string;
 
@@ -57,6 +59,7 @@ export class CollateralizeRunner {
                 mockDebtRegistry = this.contracts.mockDebtRegistry;
                 mockCollateralToken = this.contracts.mockCollateralToken;
                 mockTokenRegistry = this.contracts.mockTokenRegistry;
+                mockTokenTransferProxy = this.contracts.mockTokenTransferProxy;
 
                 await mockDebtRegistry.reset.sendTransactionAsync();
                 await mockCollateralToken.reset.sendTransactionAsync();
@@ -97,9 +100,9 @@ export class CollateralizeRunner {
                 );
 
                 // Mock collateral token's allowance for proxy.
-                await this.contracts.mockCollateralToken.mockAllowanceFor.sendTransactionAsync(
+                await mockCollateralToken.mockAllowanceFor.sendTransactionAsync(
                     COLLATERALIZER,
-                    this.contracts.mockTokenTransferProxy.address,
+                    mockTokenTransferProxy.address,
                     scenario.collateralTokenAllowance,
                 );
 
@@ -118,13 +121,56 @@ export class CollateralizeRunner {
 
             if (scenario.succeeds) {
                 it("should return a valid transaction hash", async () => {
-                    const result = await collateralizer.collateralize.sendTransactionAsync(
+                    txHash = await collateralizer.collateralize.sendTransactionAsync(
                         scenario.agreementId,
                         COLLATERALIZER,
                         { from: scenario.from(MOCK_TERMS_CONTRACT_ADDRESS, ATTACKER) },
                     );
 
-                    expect(result.length).to.equal(66);
+                    expect(txHash.length).to.equal(66);
+                });
+
+                it("should store record of collateralization", async () => {
+                    await expect(
+                        collateralizer.agreementToCollateralizer.callAsync(
+                            scenario.agreementId,
+                        ),
+                    ).to.eventually.equal(COLLATERALIZER);
+                });
+
+                it("should emit log that collateral has been secured", async () => {
+                    const receipt = await web3.eth.getTransactionReceipt(txHash);
+                    const [collateralLockedLog] = compact(ABIDecoder.decodeLogs(receipt.logs));
+
+                    expect(collateralLockedLog).to.deep.equal(
+                        CollateralLocked(
+                            collateralizer.address,
+                            scenario.agreementId,
+                            mockCollateralToken.address,
+                            scenario.expectedCollateralAmount,
+                        ),
+                    );
+                });
+
+                it("should transfer collateral from debtor to collateralizer contract via proxy", async () => {
+                    await expect(
+                        mockTokenTransferProxy.wasTransferFromCalledWith.callAsync(
+                            mockCollateralToken.address,
+                            COLLATERALIZER,
+                            collateralizer.address,
+                            scenario.expectedCollateralAmount,
+                        ),
+                    ).to.eventually.be.true;
+                });
+
+                it("should throw on subsequent calls with same agreement id", async () => {
+                    await expect(
+                        collateralizer.collateralize.sendTransactionAsync(
+                            scenario.agreementId,
+                            COLLATERALIZER,
+                            { from: scenario.from(MOCK_DEBT_KERNEL_ADDRESS, ATTACKER) },
+                        ),
+                    ).to.eventually.be.rejectedWith(REVERT_ERROR);
                 });
             }
         });

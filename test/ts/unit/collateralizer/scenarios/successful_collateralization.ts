@@ -1,13 +1,11 @@
-// external
+// External Libraries
 import { BigNumber } from "bignumber.js";
 
 import {
-    CollateralizeRunner,
     CollateralizeScenario,
-    TestContracts,
 } from "../runners/";
 
-// utils
+// Utils
 import * as Units from "../../../test_utils/units";
 
 const defaultArgs = {
