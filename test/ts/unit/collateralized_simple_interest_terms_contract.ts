@@ -81,6 +81,7 @@ contract("CollateralizedSimpleInterestTermsContract (Unit Tests)", async (ACCOUN
             MOCK_DEBT_KERNEL_ADDRESS,
             mockRegistry.address,
             mockTokenRegistry.address,
+            mockTokenTransferProxy.address,
             { from: CONTRACT_OWNER },
         );
 
@@ -134,10 +135,10 @@ contract("CollateralizedSimpleInterestTermsContract (Unit Tests)", async (ACCOUN
         // Mock collateral token's balance for collateralizer
         await mockCollateralToken.mockBalanceOfFor.sendTransactionAsync(DEBTOR, Units.ether(1));
 
-        // Mock collateral token's allowance for collateralizer
-        await mockToken.mockAllowanceFor.sendTransactionAsync(
+        // Mock collateral token's allowance for proxy.
+        await mockCollateralToken.mockAllowanceFor.sendTransactionAsync(
             DEBTOR,
-            collateralizer.address,
+            mockTokenTransferProxy.address,
             Units.ether(1),
         );
 

@@ -8,6 +8,7 @@ import { TokenRegistryContract } from "../../../../types/generated/token_registr
 import { MockDebtRegistryContract } from "../../../../types/generated/mock_debt_registry";
 import { MockERC20TokenContract } from "../../../../types/generated/mock_e_r_c20_token";
 import { MockTokenRegistryContract } from "../../../../types/generated/mock_token_registry";
+import { MockTokenTransferProxyContract } from "../../../../types/generated/mock_token_transfer_proxy";
 
 import { BigNumberSetup } from "../../test_utils/bignumber_setup";
 import ChaiSetup from "../../test_utils/chai_setup";
@@ -27,6 +28,7 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
     let mockToken: MockERC20TokenContract;
     let mockDebtRegistry: MockDebtRegistryContract;
     let mockTokenRegistry: MockTokenRegistryContract;
+    let mockTokenTransferProxy: MockTokenTransferProxyContract;
 
     const CONTRACT_OWNER = ACCOUNTS[0];
     const MOCK_DEBT_KERNEL_ADDRESS = ACCOUNTS[1];
@@ -37,10 +39,10 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
 
     before(async () => {
         tokenRegistry = await TokenRegistryContract.deployed(web3, TX_DEFAULTS);
-
         mockDebtRegistry = await MockDebtRegistryContract.deployed(web3, TX_DEFAULTS);
         mockToken = await MockERC20TokenContract.deployed(web3, TX_DEFAULTS);
         mockTokenRegistry = await MockTokenRegistryContract.deployed(web3, TX_DEFAULTS);
+        mockTokenTransferProxy = await MockTokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
 
         /*
         In our test environment, we want to interact with the contract being
@@ -61,6 +63,7 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
             MOCK_DEBT_KERNEL_ADDRESS,
             mockDebtRegistry.address,
             mockTokenRegistry.address,
+            mockTokenTransferProxy.address,
             { from: CONTRACT_OWNER },
         );
 

@@ -8,6 +8,7 @@ module.exports = (deployer, network, accounts) => {
         "CollateralizedSimpleInterestTermsContract",
     );
     const IncompatibleTermsContract = artifacts.require("IncompatibleTermsContract");
+    const Collateralizer = artifacts.require("Collateralizer");
 
     const TX_DEFAULTS = { from: accounts[0], gas: 4000000 };
 
@@ -19,6 +20,7 @@ module.exports = (deployer, network, accounts) => {
         DebtRegistry.address,
         TokenRegistry.address,
         RepaymentRouter.address,
+        Collateralizer.address
     );
 
     deployer.deploy(

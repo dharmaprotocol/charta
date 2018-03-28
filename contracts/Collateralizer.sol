@@ -24,6 +24,7 @@ import "zeppelin-solidity/contracts/token/ERC20/ERC20.sol";
 import "./TermsContract.sol";
 import "./DebtRegistry.sol";
 import "./TokenRegistry.sol";
+import "./TokenTransferProxy.sol";
 
 
 /**
@@ -41,6 +42,7 @@ contract Collateralizer {
 
     DebtRegistry public debtRegistry;
     TokenRegistry public tokenRegistry;
+    TokenTransferProxy public tokenTransferProxy;
 
     // Collateralizer here refers to the owner of the asset that is being collateralized.
     mapping(bytes32 => address) public agreementToCollateralizer;
@@ -70,11 +72,13 @@ contract Collateralizer {
     function Collateralizer(
         address _debtKernel,
         address _debtRegistry,
-        address _tokenRegistry
+        address _tokenRegistry,
+        address _tokenTransferProxy
     ) public {
         debtKernelAddress = _debtKernel;
         debtRegistry = DebtRegistry(_debtRegistry);
         tokenRegistry = TokenRegistry(_tokenRegistry);
+        tokenTransferProxy = TokenTransferProxy(_tokenTransferProxy);
     }
 
     /**
@@ -133,17 +137,18 @@ contract Collateralizer {
         require(erc20token.balanceOf(collateralizer) >= collateralAmount);
 
         /*
-        The custodian must have an allowance granted by the collateralizer equal
+        The proxy must have an allowance granted by the collateralizer equal
         to or greater than the amount being put up for collateral.
         */
-        require(erc20token.allowance(collateralizer, custodian) >= collateralAmount);
+        require(erc20token.allowance(collateralizer, tokenTransferProxy) >= collateralAmount);
 
         // store collaterallizer in mapping, effectively demarcating that the
         // agreement is now collateralized.
         agreementToCollateralizer[agreementId] = collateralizer;
 
-        // the collateral must be successfully transferred to this contract.
-        require(erc20token.transferFrom(
+        // the collateral must be successfully transferred to this contract, via a proxy.
+        require(tokenTransferProxy.transferFrom(
+            erc20token,
             collateralizer,
             custodian,
             collateralAmount
