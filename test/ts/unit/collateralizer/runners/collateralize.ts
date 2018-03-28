@@ -2,14 +2,12 @@
 import { expect } from "chai";
 import * as ABIDecoder from "abi-decoder";
 import { compact } from "lodash";
-import * as Units from "../../../test_utils/units";
 
 // wrappers
 import { CollateralizerContract } from "types/generated/collateralizer";
 import { MockDebtRegistryContract } from "types/generated/mock_debt_registry";
 import { MockERC20TokenContract } from "types/generated/mock_e_r_c20_token";
 import { MockTokenRegistryContract } from "types/generated/mock_token_registry";
-
 
 // scenarios
 import {CollateralizeScenario, TestAccounts, TestContracts} from "./";
@@ -168,7 +166,17 @@ export class CollateralizeRunner {
                         collateralizer.collateralize.sendTransactionAsync(
                             scenario.agreementId,
                             COLLATERALIZER,
-                            { from: scenario.from(MOCK_DEBT_KERNEL_ADDRESS, ATTACKER) },
+                            { from: scenario.from(MOCK_TERMS_CONTRACT_ADDRESS, ATTACKER) },
+                        ),
+                    ).to.eventually.be.rejectedWith(REVERT_ERROR);
+                });
+            } else {
+                it("should throw", async () => {
+                    await expect(
+                        collateralizer.collateralize.sendTransactionAsync(
+                            scenario.agreementId,
+                            COLLATERALIZER,
+                            { from: scenario.from(MOCK_TERMS_CONTRACT_ADDRESS, ATTACKER) },
                         ),
                     ).to.eventually.be.rejectedWith(REVERT_ERROR);
                 });
