@@ -185,7 +185,9 @@ contract Collateralizer is Pausable {
      */
     function returnCollateral(
         bytes32 agreementId
-    ) public
+    )
+        public
+        whenNotPaused
     {
         // Fetch all relevant collateralization parameters
 
@@ -261,6 +263,7 @@ contract Collateralizer is Pausable {
         bytes32 agreementId
     )
         public
+        whenNotPaused
     {
 
         // The token in which collateral is denominated
