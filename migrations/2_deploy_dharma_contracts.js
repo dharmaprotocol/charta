@@ -10,6 +10,7 @@ module.exports = (deployer, network, accounts) => {
     const TokenTransferProxy = artifacts.require("TokenTransferProxy");
     const MultiSigWallet = artifacts.require("MultiSigWallet");
     const Collateralizer = artifacts.require("Collateralizer");
+    const TokenRegistry = artifacts.require("TokenRegistry");
 
     // We switch on the network to ensure we're configuring our MultiSigWallet
     // accordingly.
@@ -37,5 +38,13 @@ module.exports = (deployer, network, accounts) => {
         await deployer.deploy(TokenTransferProxy);
         await deployer.deploy(RepaymentRouter, DebtRegistry.address, TokenTransferProxy.address);
         await deployer.deploy(DebtKernel, TokenTransferProxy.address);
+
+        await deployer.deploy(
+            Collateralizer,
+            DebtKernel.address,
+            DebtRegistry.address,
+            TokenRegistry.address,
+            TokenTransferProxy.address,
+        )
     });
 };
