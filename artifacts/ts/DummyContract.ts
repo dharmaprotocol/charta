@@ -1531,7 +1531,7 @@ export const DummyContract =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x0d85e4330c35ab0e8a58911eb787e31892157ebe"
+      "address": "0x2b53657b731578b0ae70e6fe098d4aa28b8042bd"
     },
     "70": {
       "events": {},
@@ -1540,5 +1540,5 @@ export const DummyContract =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-27T18:02:11.690Z"
+  "updatedAt": "2018-03-28T21:53:21.091Z"
 }

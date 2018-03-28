@@ -3995,7 +3995,7 @@ export const MockERC721Token =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x016764351241441fc105f3a01d82f3e7f3539529"
+      "address": "0x9ae6e01dfd0e7e1184acf839c116bce8b36c7474"
     },
     "70": {
       "events": {},
@@ -4004,5 +4004,5 @@ export const MockERC721Token =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-27T18:02:11.702Z"
+  "updatedAt": "2018-03-28T21:53:21.109Z"
 }

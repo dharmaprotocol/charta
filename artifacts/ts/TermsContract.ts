@@ -22,6 +22,25 @@ export const TermsContract =
       "type": "function"
     },
     {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_agreementId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "getTermEndTimestamp",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
       "constant": false,
       "inputs": [
         {
@@ -107,14 +126,14 @@ export const TermsContract =
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "/*\n\n  Copyright 2017 Dharma Labs Inc.\n\n  Licensed under the Apache License, Version 2.0 (the \"License\");\n  you may not use this file except in compliance with the License.\n  You may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\n  Unless required by applicable law or agreed to in writing, software\n  distributed under the License is distributed on an \"AS IS\" BASIS,\n  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n  See the License for the specific language governing permissions and\n  limitations under the License.\n\n*/\n\npragma solidity 0.4.18;\n\n\ninterface TermsContract {\n     /// When called, the registerTermStart function registers the fact that\n     ///    the debt agreement has begun.  This method is called as a hook by the\n     ///    DebtKernel when a debt order associated with `agreementId` is filled.\n     ///    Method is not required to make any sort of internal state change\n     ///    upon the debt agreement's start, but MUST return `true` in order to\n     ///    acknowledge receipt of the transaction.  If, for any reason, the\n     ///    debt agreement stored at `agreementId` is incompatible with this contract,\n     ///    MUST return `false`, which will cause the pertinent order fill to fail.\n     ///    If this method is called for a debt agreement whose term has already begun,\n     ///    must THROW.  Similarly, if this method is called by any contract other\n     ///    than the current DebtKernel, must THROW.\n     /// @param  agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.\n     /// @param  debtor address. The debtor in this particular issuance.\n     /// @return _success bool. Acknowledgment of whether\n    function registerTermStart(\n        bytes32 agreementId,\n        address debtor\n    ) public returns (bool _success);\n\n     /// When called, the registerRepayment function records the debtor's\n     ///  repayment, as well as any auxiliary metadata needed by the contract\n     ///  to determine ex post facto the value repaid (e.g. current USD\n     ///  exchange rate)\n     /// @param  agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.\n     /// @param  payer address. The address of the payer.\n     /// @param  beneficiary address. The address of the payment's beneficiary.\n     /// @param  unitsOfRepayment uint. The units-of-value repaid in the transaction.\n     /// @param  tokenAddress address. The address of the token with which the repayment transaction was executed.\n    function registerRepayment(\n        bytes32 agreementId,\n        address payer,\n        address beneficiary,\n        uint256 unitsOfRepayment,\n        address tokenAddress\n    ) public returns (bool _success);\n\n     /// Returns the cumulative units-of-value expected to be repaid by a given block timestamp.\n     ///  Note this is not a constant function -- this value can vary on basis of any number of\n     ///  conditions (e.g. interest rates can be renegotiated if repayments are delinquent).\n     /// @param  agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.\n     /// @param  timestamp uint. The timestamp of the block for which repayment expectation is being queried.\n     /// @return uint256 The cumulative units-of-value expected to be repaid by the time the given timestamp lapses.\n    function getExpectedRepaymentValue(\n        bytes32 agreementId,\n        uint256 timestamp\n    ) public view returns (uint256);\n\n     /// Returns the cumulative units-of-value repaid by the point at which this method is called.\n     /// @param  agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.\n     /// @return uint256 The cumulative units-of-value repaid up until now.\n    function getValueRepaidToDate(\n        bytes32 agreementId\n    ) public view returns (uint256);\n}\n",
+  "source": "/*\n\n  Copyright 2017 Dharma Labs Inc.\n\n  Licensed under the Apache License, Version 2.0 (the \"License\");\n  you may not use this file except in compliance with the License.\n  You may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\n  Unless required by applicable law or agreed to in writing, software\n  distributed under the License is distributed on an \"AS IS\" BASIS,\n  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n  See the License for the specific language governing permissions and\n  limitations under the License.\n\n*/\n\npragma solidity 0.4.18;\n\n\ninterface TermsContract {\n     /// When called, the registerTermStart function registers the fact that\n     ///    the debt agreement has begun.  This method is called as a hook by the\n     ///    DebtKernel when a debt order associated with `agreementId` is filled.\n     ///    Method is not required to make any sort of internal state change\n     ///    upon the debt agreement's start, but MUST return `true` in order to\n     ///    acknowledge receipt of the transaction.  If, for any reason, the\n     ///    debt agreement stored at `agreementId` is incompatible with this contract,\n     ///    MUST return `false`, which will cause the pertinent order fill to fail.\n     ///    If this method is called for a debt agreement whose term has already begun,\n     ///    must THROW.  Similarly, if this method is called by any contract other\n     ///    than the current DebtKernel, must THROW.\n     /// @param  agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.\n     /// @param  debtor address. The debtor in this particular issuance.\n     /// @return _success bool. Acknowledgment of whether\n    function registerTermStart(\n        bytes32 agreementId,\n        address debtor\n    ) public returns (bool _success);\n\n     /// When called, the registerRepayment function records the debtor's\n     ///  repayment, as well as any auxiliary metadata needed by the contract\n     ///  to determine ex post facto the value repaid (e.g. current USD\n     ///  exchange rate)\n     /// @param  agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.\n     /// @param  payer address. The address of the payer.\n     /// @param  beneficiary address. The address of the payment's beneficiary.\n     /// @param  unitsOfRepayment uint. The units-of-value repaid in the transaction.\n     /// @param  tokenAddress address. The address of the token with which the repayment transaction was executed.\n    function registerRepayment(\n        bytes32 agreementId,\n        address payer,\n        address beneficiary,\n        uint256 unitsOfRepayment,\n        address tokenAddress\n    ) public returns (bool _success);\n\n     /// Returns the cumulative units-of-value expected to be repaid by a given block timestamp.\n     ///  Note this is not a constant function -- this value can vary on basis of any number of\n     ///  conditions (e.g. interest rates can be renegotiated if repayments are delinquent).\n     /// @param  agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.\n     /// @param  timestamp uint. The timestamp of the block for which repayment expectation is being queried.\n     /// @return uint256 The cumulative units-of-value expected to be repaid by the time the given timestamp lapses.\n    function getExpectedRepaymentValue(\n        bytes32 agreementId,\n        uint256 timestamp\n    ) public view returns (uint256);\n\n     /// Returns the cumulative units-of-value repaid by the point at which this method is called.\n     /// @param  agreementId bytes32. The agreement id (issuance hash) of the debt agreement to which this pertains.\n     /// @return uint256 The cumulative units-of-value repaid up until now.\n    function getValueRepaidToDate(\n        bytes32 agreementId\n    ) public view returns (uint256);\n\n    /**\n     * A method that returns a Unix timestamp representing the end of the debt agreement's term.\n     * contract.\n     */\n    function getTermEndTimestamp(\n        bytes32 _agreementId\n    ) public view returns (uint);\n}\n",
   "sourcePath": "/Users/nadavhollander/Documents/Dharma/Development/charta/contracts/TermsContract.sol",
   "ast": {
     "attributes": {
       "absolutePath": "/Users/nadavhollander/Documents/Dharma/Development/charta/contracts/TermsContract.sol",
       "exportedSymbols": {
         "TermsContract": [
-          564
+          1200
         ]
       }
     },
@@ -127,9 +146,9 @@ export const TermsContract =
             ".18"
           ]
         },
-        "id": 523,
+        "id": 1152,
         "name": "PragmaDirective",
-        "src": "584:23:1"
+        "src": "584:23:2"
       },
       {
         "attributes": {
@@ -143,10 +162,10 @@ export const TermsContract =
           "documentation": null,
           "fullyImplemented": false,
           "linearizedBaseContracts": [
-            564
+            1200
           ],
           "name": "TermsContract",
-          "scope": 565
+          "scope": 1201
         },
         "children": [
           {
@@ -160,7 +179,7 @@ export const TermsContract =
               ],
               "name": "registerTermStart",
               "payable": false,
-              "scope": 564,
+              "scope": 1200,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -172,7 +191,7 @@ export const TermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 532,
+                      "scope": 1161,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -185,20 +204,20 @@ export const TermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 524,
+                        "id": 1153,
                         "name": "ElementaryTypeName",
-                        "src": "1794:7:1"
+                        "src": "1794:7:2"
                       }
                     ],
-                    "id": 525,
+                    "id": 1154,
                     "name": "VariableDeclaration",
-                    "src": "1794:19:1"
+                    "src": "1794:19:2"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "debtor",
-                      "scope": 532,
+                      "scope": 1161,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -211,19 +230,19 @@ export const TermsContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 526,
+                        "id": 1155,
                         "name": "ElementaryTypeName",
-                        "src": "1823:7:1"
+                        "src": "1823:7:2"
                       }
                     ],
-                    "id": 527,
+                    "id": 1156,
                     "name": "VariableDeclaration",
-                    "src": "1823:14:1"
+                    "src": "1823:14:2"
                   }
                 ],
-                "id": 528,
+                "id": 1157,
                 "name": "ParameterList",
-                "src": "1784:59:1"
+                "src": "1784:59:2"
               },
               {
                 "children": [
@@ -231,7 +250,7 @@ export const TermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "_success",
-                      "scope": 532,
+                      "scope": 1161,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -244,24 +263,24 @@ export const TermsContract =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 529,
+                        "id": 1158,
                         "name": "ElementaryTypeName",
-                        "src": "1860:4:1"
+                        "src": "1860:4:2"
                       }
                     ],
-                    "id": 530,
+                    "id": 1159,
                     "name": "VariableDeclaration",
-                    "src": "1860:13:1"
+                    "src": "1860:13:2"
                   }
                 ],
-                "id": 531,
+                "id": 1160,
                 "name": "ParameterList",
-                "src": "1859:15:1"
+                "src": "1859:15:2"
               }
             ],
-            "id": 532,
+            "id": 1161,
             "name": "FunctionDefinition",
-            "src": "1758:117:1"
+            "src": "1758:117:2"
           },
           {
             "attributes": {
@@ -274,7 +293,7 @@ export const TermsContract =
               ],
               "name": "registerRepayment",
               "payable": false,
-              "scope": 564,
+              "scope": 1200,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -286,7 +305,7 @@ export const TermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 547,
+                      "scope": 1176,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -299,20 +318,20 @@ export const TermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 533,
+                        "id": 1162,
                         "name": "ElementaryTypeName",
-                        "src": "2622:7:1"
+                        "src": "2622:7:2"
                       }
                     ],
-                    "id": 534,
+                    "id": 1163,
                     "name": "VariableDeclaration",
-                    "src": "2622:19:1"
+                    "src": "2622:19:2"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "payer",
-                      "scope": 547,
+                      "scope": 1176,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -325,20 +344,20 @@ export const TermsContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 535,
+                        "id": 1164,
                         "name": "ElementaryTypeName",
-                        "src": "2651:7:1"
+                        "src": "2651:7:2"
                       }
                     ],
-                    "id": 536,
+                    "id": 1165,
                     "name": "VariableDeclaration",
-                    "src": "2651:13:1"
+                    "src": "2651:13:2"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "beneficiary",
-                      "scope": 547,
+                      "scope": 1176,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -351,20 +370,20 @@ export const TermsContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 537,
+                        "id": 1166,
                         "name": "ElementaryTypeName",
-                        "src": "2674:7:1"
+                        "src": "2674:7:2"
                       }
                     ],
-                    "id": 538,
+                    "id": 1167,
                     "name": "VariableDeclaration",
-                    "src": "2674:19:1"
+                    "src": "2674:19:2"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "unitsOfRepayment",
-                      "scope": 547,
+                      "scope": 1176,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -377,20 +396,20 @@ export const TermsContract =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 539,
+                        "id": 1168,
                         "name": "ElementaryTypeName",
-                        "src": "2703:7:1"
+                        "src": "2703:7:2"
                       }
                     ],
-                    "id": 540,
+                    "id": 1169,
                     "name": "VariableDeclaration",
-                    "src": "2703:24:1"
+                    "src": "2703:24:2"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "tokenAddress",
-                      "scope": 547,
+                      "scope": 1176,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -403,19 +422,19 @@ export const TermsContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 541,
+                        "id": 1170,
                         "name": "ElementaryTypeName",
-                        "src": "2737:7:1"
+                        "src": "2737:7:2"
                       }
                     ],
-                    "id": 542,
+                    "id": 1171,
                     "name": "VariableDeclaration",
-                    "src": "2737:20:1"
+                    "src": "2737:20:2"
                   }
                 ],
-                "id": 543,
+                "id": 1172,
                 "name": "ParameterList",
-                "src": "2612:151:1"
+                "src": "2612:151:2"
               },
               {
                 "children": [
@@ -423,7 +442,7 @@ export const TermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "_success",
-                      "scope": 547,
+                      "scope": 1176,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -436,24 +455,24 @@ export const TermsContract =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 544,
+                        "id": 1173,
                         "name": "ElementaryTypeName",
-                        "src": "2780:4:1"
+                        "src": "2780:4:2"
                       }
                     ],
-                    "id": 545,
+                    "id": 1174,
                     "name": "VariableDeclaration",
-                    "src": "2780:13:1"
+                    "src": "2780:13:2"
                   }
                 ],
-                "id": 546,
+                "id": 1175,
                 "name": "ParameterList",
-                "src": "2779:15:1"
+                "src": "2779:15:2"
               }
             ],
-            "id": 547,
+            "id": 1176,
             "name": "FunctionDefinition",
-            "src": "2586:209:1"
+            "src": "2586:209:2"
           },
           {
             "attributes": {
@@ -466,7 +485,7 @@ export const TermsContract =
               ],
               "name": "getExpectedRepaymentValue",
               "payable": false,
-              "scope": 564,
+              "scope": 1200,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -478,7 +497,7 @@ export const TermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 556,
+                      "scope": 1185,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -491,20 +510,20 @@ export const TermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 548,
+                        "id": 1177,
                         "name": "ElementaryTypeName",
-                        "src": "3475:7:1"
+                        "src": "3475:7:2"
                       }
                     ],
-                    "id": 549,
+                    "id": 1178,
                     "name": "VariableDeclaration",
-                    "src": "3475:19:1"
+                    "src": "3475:19:2"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "timestamp",
-                      "scope": 556,
+                      "scope": 1185,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -517,19 +536,19 @@ export const TermsContract =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 550,
+                        "id": 1179,
                         "name": "ElementaryTypeName",
-                        "src": "3504:7:1"
+                        "src": "3504:7:2"
                       }
                     ],
-                    "id": 551,
+                    "id": 1180,
                     "name": "VariableDeclaration",
-                    "src": "3504:17:1"
+                    "src": "3504:17:2"
                   }
                 ],
-                "id": 552,
+                "id": 1181,
                 "name": "ParameterList",
-                "src": "3465:62:1"
+                "src": "3465:62:2"
               },
               {
                 "children": [
@@ -537,7 +556,7 @@ export const TermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 556,
+                      "scope": 1185,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -550,24 +569,24 @@ export const TermsContract =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 553,
+                        "id": 1182,
                         "name": "ElementaryTypeName",
-                        "src": "3549:7:1"
+                        "src": "3549:7:2"
                       }
                     ],
-                    "id": 554,
+                    "id": 1183,
                     "name": "VariableDeclaration",
-                    "src": "3549:7:1"
+                    "src": "3549:7:2"
                   }
                 ],
-                "id": 555,
+                "id": 1184,
                 "name": "ParameterList",
-                "src": "3548:9:1"
+                "src": "3548:9:2"
               }
             ],
-            "id": 556,
+            "id": 1185,
             "name": "FunctionDefinition",
-            "src": "3431:127:1"
+            "src": "3431:127:2"
           },
           {
             "attributes": {
@@ -580,7 +599,7 @@ export const TermsContract =
               ],
               "name": "getValueRepaidToDate",
               "payable": false,
-              "scope": 564,
+              "scope": 1200,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -592,7 +611,7 @@ export const TermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 563,
+                      "scope": 1192,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -605,19 +624,19 @@ export const TermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 557,
+                        "id": 1186,
                         "name": "ElementaryTypeName",
-                        "src": "3895:7:1"
+                        "src": "3895:7:2"
                       }
                     ],
-                    "id": 558,
+                    "id": 1187,
                     "name": "VariableDeclaration",
-                    "src": "3895:19:1"
+                    "src": "3895:19:2"
                   }
                 ],
-                "id": 559,
+                "id": 1188,
                 "name": "ParameterList",
-                "src": "3885:35:1"
+                "src": "3885:35:2"
               },
               {
                 "children": [
@@ -625,7 +644,7 @@ export const TermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 563,
+                      "scope": 1192,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -638,34 +657,122 @@ export const TermsContract =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 560,
+                        "id": 1189,
                         "name": "ElementaryTypeName",
-                        "src": "3942:7:1"
+                        "src": "3942:7:2"
                       }
                     ],
-                    "id": 561,
+                    "id": 1190,
                     "name": "VariableDeclaration",
-                    "src": "3942:7:1"
+                    "src": "3942:7:2"
                   }
                 ],
-                "id": 562,
+                "id": 1191,
                 "name": "ParameterList",
-                "src": "3941:9:1"
+                "src": "3941:9:2"
               }
             ],
-            "id": 563,
+            "id": 1192,
             "name": "FunctionDefinition",
-            "src": "3856:95:1"
+            "src": "3856:95:2"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "constant": true,
+              "implemented": false,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "getTermEndTimestamp",
+              "payable": false,
+              "scope": 1200,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_agreementId",
+                      "scope": 1199,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 1193,
+                        "name": "ElementaryTypeName",
+                        "src": "4125:7:2"
+                      }
+                    ],
+                    "id": 1194,
+                    "name": "VariableDeclaration",
+                    "src": "4125:20:2"
+                  }
+                ],
+                "id": 1195,
+                "name": "ParameterList",
+                "src": "4115:36:2"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 1199,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint",
+                          "type": "uint256"
+                        },
+                        "id": 1196,
+                        "name": "ElementaryTypeName",
+                        "src": "4173:4:2"
+                      }
+                    ],
+                    "id": 1197,
+                    "name": "VariableDeclaration",
+                    "src": "4173:4:2"
+                  }
+                ],
+                "id": 1198,
+                "name": "ParameterList",
+                "src": "4172:6:2"
+              }
+            ],
+            "id": 1199,
+            "name": "FunctionDefinition",
+            "src": "4087:92:2"
           }
         ],
-        "id": 564,
+        "id": 1200,
         "name": "ContractDefinition",
-        "src": "610:3343:1"
+        "src": "610:3571:2"
       }
     ],
-    "id": 565,
+    "id": 1201,
     "name": "SourceUnit",
-    "src": "584:3370:1"
+    "src": "584:3598:2"
   },
   "compiler": {
     "name": "solc",
@@ -673,5 +780,5 @@ export const TermsContract =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-27T17:52:35.349Z"
+  "updatedAt": "2018-03-28T21:50:45.979Z"
 }
