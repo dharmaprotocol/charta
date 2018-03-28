@@ -9,9 +9,7 @@ import * as moment from "moment";
 // Wrappers
 import { RepaymentRouterContract } from "../../../types/generated/repayment_router";
 import { CollateralizerContract } from "../../../types/generated/collateralizer";
-import {
-    CollateralizedSimpleInterestTermsContractContract,
-} from "../../../types/generated/collateralized_simple_interest_terms_contract";
+import { CollateralizedSimpleInterestTermsContractContract } from "../../../types/generated/collateralized_simple_interest_terms_contract";
 import { MockDebtRegistryContract } from "../../../types/generated/mock_debt_registry";
 import { MockERC20TokenContract } from "../../../types/generated/mock_e_r_c20_token";
 import { MockTokenTransferProxyContract } from "../../../types/generated/mock_token_transfer_proxy";
@@ -142,6 +140,11 @@ contract("CollateralizedSimpleInterestTermsContract (Unit Tests)", async (ACCOUN
             DEBTOR,
             mockTokenTransferProxy.address,
             Units.ether(1),
+        );
+
+        // Grant the terms contract authorization to call the `collateralize` function.
+        await collateralizer.addAuthorizedCollateralizeAgent.sendTransactionAsync(
+            termsContract.address,
         );
 
         ABIDecoder.addABI(termsContract.abi);

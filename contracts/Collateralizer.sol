@@ -33,9 +33,8 @@ import "./TokenTransferProxy.sol";
   *
   * Authors (in no particular order): nadavhollander, saturnial, jdkanani, graemecode
   */
-contract Collateralizer {
-    PermissionsLib.Permissions internal collateralizationPermissions;
-
+contract Collateralizer is Pausable {
+    using PermissionsLib for PermissionsLib.Permissions;
     using SafeMath for uint;
 
     address public debtKernelAddress;
@@ -46,6 +45,8 @@ contract Collateralizer {
 
     // Collateralizer here refers to the owner of the asset that is being collateralized.
     mapping(bytes32 => address) public agreementToCollateralizer;
+
+    PermissionsLib.Permissions internal collateralizationPermissions;
 
     uint public constant SECONDS_IN_DAY = 24*60*60;
 
@@ -69,6 +70,19 @@ contract Collateralizer {
         uint amount
     );
 
+    event LogAddAuthorizedCollateralizeAgent(
+        address agent
+    );
+
+    event LogRevokeAuthorizedCollateralizeAgent(
+        address agent
+    );
+
+    modifier onlyAuthorizedToCollateralize() {
+        require(collateralizationPermissions.isAuthorized(msg.sender));
+        _;
+    }
+
     function Collateralizer(
         address _debtKernel,
         address _debtRegistry,
@@ -90,10 +104,12 @@ contract Collateralizer {
     function collateralize(
         bytes32 agreementId,
         address collateralizer
-    ) public returns (bool _success)
+    )
+        public
+        onlyAuthorizedToCollateralize
+        whenNotPaused
+        returns (bool _success)
     {
-        // require(collateralizationPermissions.isAuthorized(msg.sender));
-
         // The token in which collateral is denominated
         address collateralToken;
         // The amount being put up for collateral
@@ -309,6 +325,41 @@ contract Collateralizer {
             collateralToken,
             collateralAmount
         );
+    }
+
+    /**
+     * Adds an address to the list of agents authorized
+     * to invoke the `collateralize` function.
+     */
+    function addAuthorizedCollateralizeAgent(address agent)
+        public
+        onlyOwner
+    {
+        collateralizationPermissions.authorize(agent);
+        LogAddAuthorizedCollateralizeAgent(agent);
+    }
+
+    /**
+     * Removes an address from the list of agents authorized
+     * to invoke the `collateralize` function.
+     */
+    function revokeCollateralizeAuthorization(address agent)
+        public
+        onlyOwner
+    {
+        collateralizationPermissions.revokeAuthorization(agent);
+        LogRevokeAuthorizedCollateralizeAgent(agent);
+    }
+
+    /**
+    * Returns the list of agents authorized to invoke the 'collateralize' function.
+    */
+    function getAuthorizedCollateralizeAgents()
+        public
+        view
+        returns(address[])
+    {
+        return collateralizationPermissions.getAuthorizedAgents();
     }
 
     /**
