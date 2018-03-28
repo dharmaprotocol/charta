@@ -14,6 +14,7 @@ import { MockDebtRegistryContract } from "../../../../types/generated/mock_debt_
 import { MockERC20TokenContract } from "../../../../types/generated/mock_e_r_c20_token";
 import { MockTokenRegistryContract } from "../../../../types/generated/mock_token_registry";
 import { MockTokenTransferProxyContract } from "../../../../types/generated/mock_token_transfer_proxy";
+import { MockTermsContractContract } from "../../../../types/generated/mock_terms_contract";
 
 // Scenario Runners
 import { CollateralizeRunner } from "./runners";
@@ -37,6 +38,7 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
     let mockDebtRegistry: MockDebtRegistryContract;
     let mockTokenRegistry: MockTokenRegistryContract;
     let mockTokenTransferProxy: MockTokenTransferProxyContract;
+    let mockTermsContract: MockTermsContractContract;
 
     const collateralizeRunner = new CollateralizeRunner();
 
@@ -46,7 +48,8 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
     const BENEFICIARY_1 = ACCOUNTS[3];
     const BENEFICIARY_2 = ACCOUNTS[4];
     const MOCK_DEBT_KERNEL_ADDRESS = ACCOUNTS[5];
-    const ATTACKER = ACCOUNTS[6];
+    const MOCK_TERMS_CONTRACT_ADDRESS = ACCOUNTS[6];
+    const ATTACKER = ACCOUNTS[7];
 
     const NULL_PARAMETERS = "0x0000000000000000000000000000000000000000000000000000000000000000";
 
@@ -58,6 +61,7 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
         mockToken = await MockERC20TokenContract.deployed(web3, TX_DEFAULTS);
         mockTokenRegistry = await MockTokenRegistryContract.deployed(web3, TX_DEFAULTS);
         mockTokenTransferProxy = await MockTokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
+        mockTermsContract = await MockTermsContractContract.deployed(web3, TX_DEFAULTS);
 
         /*
         In our test environment, we want to interact with the contract being
@@ -98,6 +102,7 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
             mockCollateralToken: mockToken,
             mockDebtRegistry,
             mockTokenRegistry,
+            mockTokenTransferProxy,
         };
 
         const testAccounts = {
@@ -107,6 +112,7 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
             COLLATERALIZER,
             NON_COLLATERALIZER,
             MOCK_DEBT_KERNEL_ADDRESS,
+            MOCK_TERMS_CONTRACT_ADDRESS,
         };
 
         // Initialize runners.
@@ -114,6 +120,22 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
 
         // Initialize ABI Decoder for deciphering log receipts
         ABIDecoder.addABI(collateralContract.abi);
+
+        // TODO: below this line should move into some before hook per scenario.
+        // Mock collateral token's balance for collateralizer
+        await mockToken.mockBalanceOfFor.sendTransactionAsync(COLLATERALIZER, Units.ether(1));
+
+        // Mock collateral token's allowance for proxy.
+        // await mockToken.mockAllowanceFor.sendTransactionAsync(
+        //     COLLATERALIZER,
+        //     mockTokenTransferProxy.address,
+        //     Units.ether(1),
+        // );
+
+        // Grant the terms contract authorization to call the `collateralize` function.
+        await collateralContract.addAuthorizedCollateralizeAgent.sendTransactionAsync(
+            MOCK_TERMS_CONTRACT_ADDRESS,
+        );
     });
 
     after(() => {

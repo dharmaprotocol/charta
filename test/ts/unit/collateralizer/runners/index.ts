@@ -6,6 +6,7 @@ import { CollateralizerContract } from "types/generated/collateralizer";
 import { MockDebtRegistryContract } from "types/generated/mock_debt_registry";
 import { MockERC20TokenContract } from "types/generated/mock_e_r_c20_token";
 import { MockTokenRegistryContract } from "types/generated/mock_token_registry";
+import { MockTokenTransferProxyContract } from "types/generated/mock_token_transfer_proxy";
 
 // Test Runners
 import {
@@ -17,6 +18,7 @@ export interface TestContracts {
     mockDebtRegistry: MockDebtRegistryContract;
     mockCollateralToken: MockERC20TokenContract;
     mockTokenRegistry: MockTokenRegistryContract;
+    mockTokenTransferProxy: MockTokenTransferProxyContract;
 }
 
 export interface TestAccounts {
@@ -25,6 +27,7 @@ export interface TestAccounts {
     COLLATERALIZER: string;
     NON_COLLATERALIZER: string;
     MOCK_DEBT_KERNEL_ADDRESS: string;
+    MOCK_TERMS_CONTRACT_ADDRESS: string;
     ATTACKER: string;
 }
 

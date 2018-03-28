@@ -2,12 +2,14 @@
 import { expect } from "chai";
 import * as ABIDecoder from "abi-decoder";
 import { compact } from "lodash";
+import * as Units from "../../../test_utils/units";
 
 // wrappers
 import { CollateralizerContract } from "types/generated/collateralizer";
 import { MockDebtRegistryContract } from "types/generated/mock_debt_registry";
 import { MockERC20TokenContract } from "types/generated/mock_e_r_c20_token";
 import { MockTokenRegistryContract } from "types/generated/mock_token_registry";
+
 
 // scenarios
 import {CollateralizeScenario, TestAccounts, TestContracts} from "./";
@@ -35,6 +37,7 @@ export class CollateralizeRunner {
         let ATTACKER: string;
         let COLLATERALIZER: string;
         let MOCK_DEBT_KERNEL_ADDRESS: string;
+        let MOCK_TERMS_CONTRACT_ADDRESS: string;
 
         let collateralizer: CollateralizerContract;
         let mockDebtRegistry: MockDebtRegistryContract;
@@ -48,6 +51,7 @@ export class CollateralizeRunner {
                 ATTACKER = this.accounts.ATTACKER;
                 COLLATERALIZER = this.accounts.COLLATERALIZER;
                 MOCK_DEBT_KERNEL_ADDRESS = this.accounts.MOCK_DEBT_KERNEL_ADDRESS;
+                MOCK_TERMS_CONTRACT_ADDRESS = this.accounts.MOCK_TERMS_CONTRACT_ADDRESS;
 
                 collateralizer = this.contracts.collateralizer;
                 mockDebtRegistry = this.contracts.mockDebtRegistry;
@@ -81,8 +85,22 @@ export class CollateralizeRunner {
                 // Mock `debtRegistry.getTerms` return value
                 await mockDebtRegistry.mockGetTermsReturnValueFor.sendTransactionAsync(
                     scenario.agreementId,
-                    scenario.termsContract(collateralizer.address, ATTACKER),
+                    scenario.termsContract(MOCK_TERMS_CONTRACT_ADDRESS, ATTACKER),
                     scenario.termsContractParameters,
+                );
+
+                // Mock the collateral token's presence in the token registry at
+                // the specified index
+                await mockTokenRegistry.mockGetTokenAddressByIndex.sendTransactionAsync(
+                    scenario.collateralTokenIndexInRegistry,
+                    this.contracts.mockCollateralToken.address,
+                );
+
+                // Mock collateral token's allowance for proxy.
+                await this.contracts.mockCollateralToken.mockAllowanceFor.sendTransactionAsync(
+                    COLLATERALIZER,
+                    this.contracts.mockTokenTransferProxy.address,
+                    Units.ether(1),
                 );
 
                 ABIDecoder.addABI(collateralizer.abi);
@@ -93,22 +111,14 @@ export class CollateralizeRunner {
             });
 
             if (scenario.succeeds) {
-                it("should register without throwing", async () => {
-                    await expect(
-                        new Promise(async (resolve, reject) => {
-                            try {
-                                txHash = await collateralizer.collateralize.sendTransactionAsync(
-                                    scenario.agreementId,
-                                    COLLATERALIZER,
-                                    {from: scenario.from(MOCK_DEBT_KERNEL_ADDRESS, ATTACKER)},
-                                );
+                it("should return a valid transaction hash", async () => {
+                    const result = await collateralizer.collateralize.sendTransactionAsync(
+                        scenario.agreementId,
+                        COLLATERALIZER,
+                        { from: scenario.from(MOCK_TERMS_CONTRACT_ADDRESS, ATTACKER) },
+                    );
 
-                                resolve(txHash);
-                            } catch (e) {
-                                reject(e);
-                            }
-                        }),
-                    ).to.eventually.not.be.rejected;
+                    expect(result.length).to.equal(66);
                 });
             }
         });
