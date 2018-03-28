@@ -100,7 +100,13 @@ export class CollateralizeRunner {
                 await this.contracts.mockCollateralToken.mockAllowanceFor.sendTransactionAsync(
                     COLLATERALIZER,
                     this.contracts.mockTokenTransferProxy.address,
-                    Units.ether(1),
+                    scenario.collateralTokenAllowance,
+                );
+
+                // Mock collateral token's balance for collateralizer.
+                await mockCollateralToken.mockBalanceOfFor.sendTransactionAsync(
+                    COLLATERALIZER,
+                    scenario.collateralTokenBalance,
                 );
 
                 ABIDecoder.addABI(collateralizer.abi);

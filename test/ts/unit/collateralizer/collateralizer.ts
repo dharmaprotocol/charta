@@ -115,27 +115,15 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
             MOCK_TERMS_CONTRACT_ADDRESS,
         };
 
+        // Grant the terms contract authorization to call the `collateralize` function.
+        await collateralContract.addAuthorizedCollateralizeAgent.sendTransactionAsync(
+            MOCK_TERMS_CONTRACT_ADDRESS,
+        );
         // Initialize runners.
         collateralizeRunner.initialize(testContracts, testAccounts);
 
         // Initialize ABI Decoder for deciphering log receipts
         ABIDecoder.addABI(collateralContract.abi);
-
-        // TODO: below this line should move into some before hook per scenario.
-        // Mock collateral token's balance for collateralizer
-        await mockToken.mockBalanceOfFor.sendTransactionAsync(COLLATERALIZER, Units.ether(1));
-
-        // Mock collateral token's allowance for proxy.
-        // await mockToken.mockAllowanceFor.sendTransactionAsync(
-        //     COLLATERALIZER,
-        //     mockTokenTransferProxy.address,
-        //     Units.ether(1),
-        // );
-
-        // Grant the terms contract authorization to call the `collateralize` function.
-        await collateralContract.addAuthorizedCollateralizeAgent.sendTransactionAsync(
-            MOCK_TERMS_CONTRACT_ADDRESS,
-        );
     });
 
     after(() => {
