@@ -84,7 +84,12 @@ contract("Token Transfer Proxy (Unit Tests)", async (ACCOUNTS) => {
             it("should return agent as authorized", async () => {
                 await expect(
                     proxy.getAuthorizedTransferAgents.callAsync(),
-                ).to.eventually.deep.equal([kernel.address, repaymentRouter.address, collateralizer.address, AGENT]);
+                ).to.eventually.deep.equal([
+                    kernel.address,
+                    repaymentRouter.address,
+                    collateralizer.address,
+                    AGENT,
+                ]);
             });
         });
 
@@ -96,7 +101,11 @@ contract("Token Transfer Proxy (Unit Tests)", async (ACCOUNTS) => {
             it("should return agent as unauthorized", async () => {
                 await expect(
                     proxy.getAuthorizedTransferAgents.callAsync(),
-                ).to.eventually.deep.equal([kernel.address, repaymentRouter.address, collateralizer.address]);
+                ).to.eventually.deep.equal([
+                    kernel.address,
+                    repaymentRouter.address,
+                    collateralizer.address,
+                ]);
             });
         });
     });
