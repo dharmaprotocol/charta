@@ -13,6 +13,9 @@ import { MockTokenTransferProxyContract } from "../../../../types/generated/mock
 import { BigNumberSetup } from "../../test_utils/bignumber_setup";
 import ChaiSetup from "../../test_utils/chai_setup";
 
+// scenario runners
+import { CollateralizeRunner } from "./runners";
+
 // Set up Chai
 ChaiSetup.configure();
 const expect = chai.expect;
@@ -149,5 +152,11 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
                 expect(unpackedParameters[2]).to.bignumber.equal(expectedUnpackedParameters[2]);
             });
         });
+    });
+
+    describe("#collateralize", () => {
+       describe("Successful collateralization", () => {
+           // STUB.
+       });
     });
 });
