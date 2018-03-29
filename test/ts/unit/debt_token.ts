@@ -1105,6 +1105,48 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
         });
     });
 
+    describe("#getApproved()", () => {
+        const SENDER = TOKEN_OWNER_1;
+        let SENDER_TOKEN_ID: BigNumber;
+        const APPROVED = TOKEN_OWNER_2;
+
+        before(async () => {
+            await resetAndInitState();
+
+            // debtEntries is filled after resetAndInitState is called
+            SENDER_TOKEN_ID = debtEntries[0].getTokenId();
+        });
+
+        describe("token is approved", () => {
+            before(async () => {
+                await debtToken.approve.sendTransactionAsync(APPROVED, SENDER_TOKEN_ID, {
+                    from: SENDER,
+                });
+            });
+
+            it("should return correct approved address", async () => {
+                await expect(debtToken.getApproved.callAsync(SENDER_TOKEN_ID)).to.eventually.equal(
+                    APPROVED,
+                );
+            });
+        });
+
+        describe("token is not approved", () => {
+            before(async () => {
+                // clear approval for sender's token
+                await debtToken.approve.sendTransactionAsync(NULL_ADDRESS, SENDER_TOKEN_ID, {
+                    from: SENDER,
+                });
+            });
+
+            it("should return zero address", async () => {
+                await expect(
+                    debtToken.getApproved.callAsync(SENDER_TOKEN_ID),
+                ).to.eventually.bignumber.equal(NULL_ADDRESS);
+            });
+        });
+    });
+
     describe("#transferFrom()", () => {
         before(resetAndInitState);
 
