@@ -407,16 +407,40 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
             ).to.eventually.bignumber.equal(debtEntries[2].getTokenId());
         });
 
-        it("should throw if called at index > balanceOf.callAsync(owner)", async () => {
-            await expect(
-                debtToken.tokenOfOwnerByIndex.callAsync(TOKEN_OWNER_1, INDEX_1),
-            ).to.eventually.be.rejectedWith(INVALID_OPCODE);
-            await expect(
-                debtToken.tokenOfOwnerByIndex.callAsync(TOKEN_OWNER_2, INDEX_1),
-            ).to.eventually.be.rejectedWith(INVALID_OPCODE);
-            await expect(
-                debtToken.tokenOfOwnerByIndex.callAsync(TOKEN_OWNER_3, INDEX_1),
-            ).to.eventually.be.rejectedWith(INVALID_OPCODE);
+        describe("owner is zero address", () => {
+            it("should throw", async () => {
+                await expect(
+                    debtToken.tokenOfOwnerByIndex.callAsync(NULL_ADDRESS, INDEX_0),
+                ).to.eventually.be.rejectedWith(REVERT_ERROR);
+            });
+        });
+
+        describe("index > balanceOf(owner)", () => {
+            it("should throw", async () => {
+                await expect(
+                    debtToken.tokenOfOwnerByIndex.callAsync(TOKEN_OWNER_1, INDEX_2),
+                ).to.eventually.be.rejectedWith(REVERT_ERROR);
+                await expect(
+                    debtToken.tokenOfOwnerByIndex.callAsync(TOKEN_OWNER_2, INDEX_2),
+                ).to.eventually.be.rejectedWith(REVERT_ERROR);
+                await expect(
+                    debtToken.tokenOfOwnerByIndex.callAsync(TOKEN_OWNER_3, INDEX_2),
+                ).to.eventually.be.rejectedWith(REVERT_ERROR);
+            });
+        });
+
+        describe("index = balanceOf(owner)", () => {
+            it("should throw", async () => {
+                await expect(
+                    debtToken.tokenOfOwnerByIndex.callAsync(TOKEN_OWNER_1, INDEX_1),
+                ).to.eventually.be.rejectedWith(REVERT_ERROR);
+                await expect(
+                    debtToken.tokenOfOwnerByIndex.callAsync(TOKEN_OWNER_2, INDEX_1),
+                ).to.eventually.be.rejectedWith(REVERT_ERROR);
+                await expect(
+                    debtToken.tokenOfOwnerByIndex.callAsync(TOKEN_OWNER_3, INDEX_1),
+                ).to.eventually.be.rejectedWith(REVERT_ERROR);
+            });
         });
     });
 
