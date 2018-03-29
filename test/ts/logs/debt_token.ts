@@ -47,3 +47,20 @@ export function LogApproval(
         name: "Approval",
     };
 }
+
+export function LogApprovalForAll(
+    contract: Address,
+    owner: Address,
+    operator: Address,
+    approved: boolean,
+): ABIDecoder.DecodedLog {
+    return {
+        address: contract,
+        events: LogUtils.getParams([
+            ["_owner", owner],
+            ["_operator", operator],
+            ["_approved", approved],
+        ]),
+        name: "ApprovalForAll",
+    };
+}

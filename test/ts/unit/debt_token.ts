@@ -11,7 +11,7 @@ import { MockERC20TokenContract } from "../../../types/generated/mock_e_r_c20_to
 
 import { Address, TxData } from "../../../types/common";
 import { DebtRegistryEntry } from "../../../types/registry/entry";
-import { LogApproval, LogMint, LogTransfer } from "../logs/debt_token";
+import { LogApproval, LogApprovalForAll, LogMint, LogTransfer } from "../logs/debt_token";
 import { BigNumberSetup } from "../test_utils/bignumber_setup";
 import ChaiSetup from "../test_utils/chai_setup";
 import { INVALID_OPCODE, REVERT_ERROR } from "../test_utils/constants";
@@ -957,6 +957,149 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
                     );
 
                     expect(approvalLog).to.deep.equal(logExpected);
+                });
+            });
+        });
+    });
+
+    describe("#setApprovalForAll()", () => {
+        before(resetAndInitState);
+
+        const SENDER = TOKEN_OWNER_1;
+
+        describe("operator is the owner", () => {
+            const OPERATOR = SENDER;
+
+            it("should throw", async () => {
+                await expect(
+                    debtToken.setApprovalForAll.sendTransactionAsync(OPERATOR, true, {
+                        from: OPERATOR,
+                    }),
+                ).to.eventually.be.rejectedWith(REVERT_ERROR);
+            });
+        });
+
+        describe("operator is not the owner", () => {
+            const OPERATOR = TOKEN_OWNER_2;
+
+            describe("no operator approval set by the sender", () => {
+                let res: Web3.TransactionReceipt;
+                let logs: ABIDecoder.DecodedLog[];
+
+                before(async () => {
+                    const txHash = await debtToken.setApprovalForAll.sendTransactionAsync(
+                        OPERATOR,
+                        true,
+                        { from: SENDER },
+                    );
+
+                    res = await web3.eth.getTransactionReceipt(txHash);
+                    logs = ABIDecoder.decodeLogs(res.logs);
+                });
+
+                it("approves the operator", async () => {
+                    await expect(
+                        debtToken.isApprovedForAll.callAsync(SENDER, OPERATOR),
+                    ).to.eventually.equal(true);
+                });
+
+                it("emits an approval event", async () => {
+                    const [approvalForAllLog] = ABIDecoder.decodeLogs(res.logs);
+                    const logExpected = LogApprovalForAll(
+                        debtToken.address,
+                        SENDER,
+                        OPERATOR,
+                        true,
+                    );
+
+                    expect(logs.length).equal(1);
+                    expect(approvalForAllLog).to.deep.equal(logExpected);
+                });
+            });
+
+            describe("operator was set as not approved", () => {
+                beforeEach(async () => {
+                    await debtToken.setApprovalForAll.sendTransactionAsync(OPERATOR, false, {
+                        from: SENDER,
+                    });
+                });
+
+                it("approves the operator", async () => {
+                    await debtToken.setApprovalForAll.sendTransactionAsync(OPERATOR, true, {
+                        from: SENDER,
+                    });
+
+                    await expect(
+                        debtToken.isApprovedForAll.callAsync(SENDER, OPERATOR),
+                    ).to.eventually.equal(true);
+                });
+
+                it("emits an approval event", async () => {
+                    const txHash = await debtToken.setApprovalForAll.sendTransactionAsync(
+                        OPERATOR,
+                        true,
+                        { from: SENDER },
+                    );
+
+                    const res = await web3.eth.getTransactionReceipt(txHash);
+
+                    const [approvalForAllLog] = ABIDecoder.decodeLogs(res.logs);
+                    const logExpected = LogApprovalForAll(
+                        debtToken.address,
+                        SENDER,
+                        OPERATOR,
+                        true,
+                    );
+
+                    expect(approvalForAllLog).to.deep.equal(logExpected);
+                });
+
+                it("can unset the operator approval", async () => {
+                    await debtToken.setApprovalForAll.sendTransactionAsync(OPERATOR, false, {
+                        from: SENDER,
+                    });
+
+                    await expect(
+                        debtToken.isApprovedForAll.callAsync(SENDER, OPERATOR),
+                    ).to.eventually.equal(false);
+                });
+            });
+
+            describe("operator was already approved", () => {
+                beforeEach(async () => {
+                    await debtToken.setApprovalForAll.sendTransactionAsync(OPERATOR, true, {
+                        from: SENDER,
+                    });
+                });
+
+                it("keeps the approval to the given address", async () => {
+                    await debtToken.setApprovalForAll.sendTransactionAsync(OPERATOR, true, {
+                        from: SENDER,
+                    });
+
+                    await expect(
+                        debtToken.isApprovedForAll.callAsync(SENDER, OPERATOR),
+                    ).to.eventually.equal(true);
+                });
+
+                it("emits an approval event", async () => {
+                    const txHash = await debtToken.setApprovalForAll.sendTransactionAsync(
+                        OPERATOR,
+                        true,
+                        { from: SENDER },
+                    );
+
+                    const res = await web3.eth.getTransactionReceipt(txHash);
+
+                    const [approvalForAllLog] = ABIDecoder.decodeLogs(res.logs);
+                    const logExpected = LogApprovalForAll(
+                        debtToken.address,
+                        SENDER,
+                        OPERATOR,
+                        true,
+                    );
+
+                    expect(approvalForAllLog).to.deep.equal(logExpected);
                 });
             });
         });
