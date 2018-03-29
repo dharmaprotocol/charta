@@ -1212,30 +1212,98 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
         });
 
         describe("user transfers token from owner w/ approval...", () => {
-            before(async () => {
-                await debtToken.approve.sendTransactionAsync(
-                    TOKEN_OWNER_2,
-                    debtEntries[0].getTokenId(),
-                    {
-                        from: TOKEN_OWNER_1,
-                    },
-                );
-            });
-
             describe("...from himself to himself", () => {
-                it("should throw", async () => {
+                let res: Web3.TransactionReceipt;
+                let approvalLog: ABIDecoder.DecodedLog;
+                let transferLog: ABIDecoder.DecodedLog;
+                let TOKEN_ID: BigNumber;
+                let debtEntry: DebtRegistryEntry;
+                const OWNER = TOKEN_OWNER_1;
+
+                before(async () => {
+                    TOKEN_ID = debtEntries[0].getTokenId();
+                    debtEntry = debtEntries[0];
+
+                    await debtToken.approve.sendTransactionAsync(TOKEN_OWNER_2, TOKEN_ID, {
+                        from: TOKEN_OWNER_1,
+                    });
+
+                    const txHash = await debtToken.transferFrom.sendTransactionAsync(
+                        OWNER,
+                        OWNER,
+                        TOKEN_ID,
+                        { from: OWNER },
+                    );
+
+                    res = await web3.eth.getTransactionReceipt(txHash);
+                    [approvalLog, transferLog] = ABIDecoder.decodeLogs(res.logs);
+                });
+
+                it("should not call registry.modifyBeneficiary with his own address", async () => {
                     await expect(
-                        debtToken.transferFrom.sendTransactionAsync(
-                            TOKEN_OWNER_2,
-                            TOKEN_OWNER_2,
-                            debtEntries[1].getTokenId(),
-                            { from: TOKEN_OWNER_2 },
+                        mockRegistry.wasModifyBeneficiaryCalledWith.callAsync(
+                            debtEntry.getIssuanceHash(),
+                            OWNER,
                         ),
+                    ).to.eventually.be.false;
+                });
+
+                it("keeps ownership of the token", async () => {
+                    await expect(debtToken.ownerOf.callAsync(TOKEN_ID)).to.eventually.be.equal(
+                        OWNER,
+                    );
+                });
+
+                it("clears the approval for the token ID", async () => {
+                    await expect(debtToken.getApproved.callAsync(TOKEN_ID)).to.eventually.be.equal(
+                        NULL_ADDRESS,
+                    );
+                });
+
+                it("should emit approval clear log", () => {
+                    const logExpected = LogApproval(
+                        debtToken.address,
+                        OWNER,
+                        NULL_ADDRESS,
+                        TOKEN_ID,
+                    );
+
+                    expect(approvalLog).to.deep.equal(logExpected);
+                });
+
+                it("should emit transfer log", () => {
+                    const logExpected = LogTransfer(debtToken.address, OWNER, OWNER, TOKEN_ID);
+
+                    expect(transferLog).to.deep.equal(logExpected);
+                });
+
+                it("keeps the owner balance", async () => {
+                    await expect(
+                        debtToken.balanceOf.callAsync(OWNER),
+                    ).to.be.eventually.bignumber.equal(1);
+                });
+
+                it("keeps same tokens by index", async () => {
+                    await expect(
+                        debtToken.tokenOfOwnerByIndex.callAsync(OWNER, INDEX_0),
+                    ).to.eventually.bignumber.equal(TOKEN_ID);
+
+                    // balance of OWNER is 1. Hence INDEX_1 should throw
+                    await expect(
+                        debtToken.tokenOfOwnerByIndex.callAsync(OWNER, INDEX_1),
                     ).to.eventually.be.rejectedWith(REVERT_ERROR);
                 });
             });
 
             describe("...to null address", () => {
+                before(async () => {
+                    await debtToken.approve.sendTransactionAsync(
+                        TOKEN_OWNER_2,
+                        debtEntries[0].getTokenId(),
+                        { from: TOKEN_OWNER_1 },
+                    );
+                });
+
                 it("should throw", async () => {
                     await expect(
                         debtToken.transferFrom.sendTransactionAsync(
@@ -1254,6 +1322,12 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
                 let transferLog: ABIDecoder.DecodedLog;
 
                 before(async () => {
+                    await debtToken.approve.sendTransactionAsync(
+                        TOKEN_OWNER_2,
+                        debtEntries[0].getTokenId(),
+                        { from: TOKEN_OWNER_1 },
+                    );
+
                     const txHash = await debtToken.transferFrom.sendTransactionAsync(
                         TOKEN_OWNER_1,
                         TOKEN_OWNER_2,
@@ -1312,7 +1386,7 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
                     // TOKEN_OWNER_1
                     await expect(
                         debtToken.tokenOfOwnerByIndex.callAsync(TOKEN_OWNER_1, INDEX_0),
-                    ).to.eventually.be.rejectedWith(INVALID_OPCODE);
+                    ).to.eventually.be.rejectedWith(REVERT_ERROR);
 
                     // TOKEN_OWNER_2
                     await expect(
@@ -1323,7 +1397,7 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
                     ).to.eventually.bignumber.equal(debtEntries[0].getTokenId());
                     await expect(
                         debtToken.tokenOfOwnerByIndex.callAsync(TOKEN_OWNER_2, INDEX_2),
-                    ).to.eventually.be.rejectedWith(INVALID_OPCODE);
+                    ).to.eventually.be.rejectedWith(REVERT_ERROR);
 
                     // TOKEN_OWNER_3
                     await expect(
@@ -1331,7 +1405,7 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
                     ).to.eventually.bignumber.equal(debtEntries[2].getTokenId());
                     await expect(
                         debtToken.tokenOfOwnerByIndex.callAsync(TOKEN_OWNER_3, INDEX_1),
-                    ).to.eventually.be.rejectedWith(INVALID_OPCODE);
+                    ).to.eventually.be.rejectedWith(REVERT_ERROR);
                 });
             });
         });
