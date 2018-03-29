@@ -342,9 +342,16 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
         });
     });
 
-    describe("Flags", async () => {
-        it("should expose implementsERC721 method", async () => {
-            await expect(debtToken.implementsERC721.callAsync()).to.eventually.equal(true);
+    describe("#supportsInterface()", async () => {
+        it("0xffffffff should return false", async () => {
+            await expect(debtToken.supportsInterface.callAsync("0xffffffff")).to.eventually.equal(
+                false,
+            );
+        });
+        it("should return true for ERC721", async () => {
+            await expect(debtToken.supportsInterface.callAsync("0x80ac58cd")).to.eventually.equal(
+                true,
+            );
         });
     });
 

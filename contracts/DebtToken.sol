@@ -19,6 +19,7 @@
 pragma solidity 0.4.18;
 
 import "./DebtRegistry.sol";
+import "./ERC165.sol";
 import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
 import "zeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 import "zeppelin-solidity/contracts/token/ERC20/ERC20.sol";
@@ -32,7 +33,7 @@ import "zeppelin-solidity/contracts/token/ERC20/ERC20.sol";
  *
  * Author: Nadav Hollander -- Github: nadavhollander
  */
-contract DebtToken is ERC721Token, Pausable {
+contract DebtToken is ERC721Token, ERC165, Pausable {
     using PermissionsLib for PermissionsLib.Permissions;
 
     DebtRegistry public registry;
@@ -48,6 +49,18 @@ contract DebtToken is ERC721Token, Pausable {
         ERC721Token("DebtToken", "DDT")
     {
         registry = DebtRegistry(_registry);
+    }
+
+    /**
+     * ERC165 interface.
+     * Returns true for ERC721, false otherwise
+     */
+    function supportsInterface(bytes4 interfaceID)
+        external
+        view
+        returns (bool _isSupported)
+    {
+        return interfaceID == 0x80ac58cd; // ERC721
     }
 
     /**
