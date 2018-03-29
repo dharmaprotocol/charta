@@ -1147,6 +1147,41 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
         });
     });
 
+    describe("#isApprovedForAll", () => {
+        before(resetAndInitState);
+
+        const OWNER = TOKEN_OWNER_1;
+        const OPERATOR = TOKEN_OWNER_2;
+
+        describe("operator is approved for an owner", () => {
+            before(async () => {
+                await debtToken.setApprovalForAll.sendTransactionAsync(OPERATOR, true, {
+                    from: OWNER,
+                });
+            });
+
+            it("should return true", async () => {
+                await expect(
+                    debtToken.isApprovedForAll.callAsync(OWNER, OPERATOR),
+                ).to.eventually.equal(true);
+            });
+        });
+
+        describe("operator is not approved for an owner", () => {
+            before(async () => {
+                await debtToken.setApprovalForAll.sendTransactionAsync(OPERATOR, false, {
+                    from: OWNER,
+                });
+            });
+
+            it("should return false", async () => {
+                await expect(
+                    debtToken.isApprovedForAll.callAsync(OWNER, OPERATOR),
+                ).to.eventually.equal(false);
+            });
+        });
+    });
+
     describe("#transferFrom()", () => {
         before(resetAndInitState);
 
