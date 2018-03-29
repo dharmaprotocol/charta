@@ -37,7 +37,7 @@ declare module "abi-decoder" {
 
     interface DecodedMethodParam {
         name: string;
-        value: string;
+        value: any;
         type: string;
     }
 

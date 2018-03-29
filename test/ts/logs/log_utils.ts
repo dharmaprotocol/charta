@@ -25,6 +25,8 @@ export function getParams(
                 }
             } else if (typeof value === "number" || value instanceof BigNumber.BigNumber) {
                 type = "uint256";
+            } else if (typeof value === "boolean") {
+                type = "bool";
             } else {
                 throw new Error(`Could not recognize type of value ${value}`);
             }
@@ -33,7 +35,7 @@ export function getParams(
         return {
             name,
             type,
-            value: value.toString(),
+            value: type === "bool" ? value : value.toString(),
         };
     });
 }
