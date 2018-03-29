@@ -197,7 +197,7 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
         });
 
         describe("authorized agent mints debt token", () => {
-            let mintLog: ABIDecoder.DecodedLog;
+            let transferLog: ABIDecoder.DecodedLog;
 
             before(async () => {
                 await mockRegistry.mockInsertReturnValue.sendTransactionAsync(
@@ -217,7 +217,7 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
                 );
 
                 const res = await web3.eth.getTransactionReceipt(txHash);
-                [mintLog] = _.compact(ABIDecoder.decodeLogs(res.logs));
+                [transferLog] = _.compact(ABIDecoder.decodeLogs(res.logs));
             });
 
             it("should call registry.insert function with issuance arguments", async () => {
@@ -235,14 +235,15 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
                 ).to.eventually.equal(true);
             });
 
-            it("should emit minting log event", () => {
-                const logExpected = LogMint(
+            it("should emit transfer log event", () => {
+                const logExpected = LogTransfer(
                     debtToken.address,
+                    NULL_ADDRESS,
                     debtEntries[0].getBeneficiary(),
                     debtEntries[0].getTokenId(),
                 );
 
-                expect(mintLog).to.deep.equal(logExpected);
+                expect(transferLog).to.deep.equal(logExpected);
             });
 
             it("should increase total supply by 1", async () => {
@@ -261,7 +262,7 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
                         debtEntries[0].getBeneficiary(),
                         INDEX_1,
                     ),
-                ).to.eventually.be.rejectedWith(INVALID_OPCODE);
+                ).to.eventually.be.rejectedWith(REVERT_ERROR);
             });
         });
         describe("authorized agent mints second debt token to same creditor", () => {
@@ -313,15 +314,16 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
                 ).to.eventually.equal(true);
             });
 
-            it("should emit minting log event", () => {
-                const [mintLog] = _.compact(ABIDecoder.decodeLogs(res.logs));
-                const logExpected = LogMint(
+            it("should emit transfer log event", () => {
+                const [transferLog] = _.compact(ABIDecoder.decodeLogs(res.logs));
+                const logExpected = LogTransfer(
                     debtToken.address,
+                    NULL_ADDRESS,
                     secondDebt.getBeneficiary(),
                     secondDebt.getTokenId(),
                 );
 
-                expect(mintLog).to.deep.equal(logExpected);
+                expect(transferLog).to.deep.equal(logExpected);
             });
 
             it("should increase total supply by 1", async () => {
@@ -337,7 +339,7 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
                 ).to.eventually.bignumber.equal(secondDebt.getTokenId());
                 await expect(
                     debtToken.tokenOfOwnerByIndex.callAsync(secondDebt.getBeneficiary(), INDEX_2),
-                ).to.eventually.be.rejectedWith(INVALID_OPCODE);
+                ).to.eventually.be.rejectedWith(REVERT_ERROR);
             });
         });
     });
