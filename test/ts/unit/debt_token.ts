@@ -455,10 +455,10 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
             });
 
             describe("...when token is burned / doesn't exist", async () => {
-                it("should return null address", async () => {
+                it("should throw", async () => {
                     await expect(
                         debtToken.ownerOf.callAsync(NONEXISTENT_TOKEN_ID),
-                    ).to.eventually.equal(NULL_ADDRESS);
+                    ).to.eventually.be.rejectedWith(REVERT_ERROR);
                 });
             });
         });
