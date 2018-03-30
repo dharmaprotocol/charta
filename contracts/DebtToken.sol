@@ -153,6 +153,15 @@ contract DebtToken is ERC721Token, ERC165, Pausable {
     }
 
     /**
+     * Support deprecated ERC721 method
+     */
+    function transfer(address _to, uint _tokenId)
+        public
+    {
+        safeTransferFrom(msg.sender, _to, _tokenId);
+    }
+
+    /**
      * We override transferFrom methods of the parent ERC721Token
      * contract to allow its functionality to be frozen in the case of an emergency
      */
