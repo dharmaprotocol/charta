@@ -11,7 +11,7 @@ import { DebtTokenContract } from "../../../types/generated/debt_token";
 import { Address } from "../../../types/common";
 import { DebtRegistryEntry } from "../../../types/registry/entry";
 import { LogInsertEntry, LogModifyEntryBeneficiary } from "../logs/debt_registry";
-import { LogApproval, LogMint, LogTransfer } from "../logs/debt_token";
+import { LogApproval, LogTransfer } from "../logs/debt_token";
 import { BigNumberSetup } from "../test_utils/bignumber_setup";
 import ChaiSetup from "../test_utils/chai_setup";
 import { REVERT_ERROR } from "../test_utils/constants";
@@ -228,7 +228,7 @@ contract("Debt Token (Integration Tests)", (ACCOUNTS) => {
 
             describe("...when debt token not paused", () => {
                 let insertRegistryLog: ABIDecoder.DecodedLog;
-                let mintLog: ABIDecoder.DecodedLog;
+                let transferLog: ABIDecoder.DecodedLog;
 
                 before(async () => {
                     const txHash = await debtToken.create.sendTransactionAsync(
@@ -243,7 +243,7 @@ contract("Debt Token (Integration Tests)", (ACCOUNTS) => {
                         { from: AUTHORIZED_MINT_AGENT },
                     );
                     const res = await web3.eth.getTransactionReceipt(txHash);
-                    [insertRegistryLog, mintLog] = ABIDecoder.decodeLogs(res.logs);
+                    [insertRegistryLog, transferLog] = ABIDecoder.decodeLogs(res.logs);
                 });
 
                 it("should emit registry insert log event", () => {
@@ -252,14 +252,15 @@ contract("Debt Token (Integration Tests)", (ACCOUNTS) => {
                     expect(insertRegistryLog).to.deep.equal(logExpected);
                 });
 
-                it("should emit minting log event", () => {
-                    const logExpected = LogMint(
+                it("should emit transfer log event", () => {
+                    const logExpected = LogTransfer(
                         debtToken.address,
+                        NULL_ADDRESS,
                         debtEntries[0].getBeneficiary(),
                         debtEntries[0].getTokenId(),
                     );
 
-                    expect(mintLog).to.deep.equal(logExpected);
+                    expect(transferLog).to.deep.equal(logExpected);
                 });
 
                 it("should increase total supply by 1", async () => {
@@ -320,15 +321,16 @@ contract("Debt Token (Integration Tests)", (ACCOUNTS) => {
                 res = await web3.eth.getTransactionReceipt(txHash);
             });
 
-            it("should emit minting log event", () => {
-                const [insertRegistryLog, mintLog] = ABIDecoder.decodeLogs(res.logs);
-                const logExpected = LogMint(
+            it("should emit transfer log event", () => {
+                const [insertRegistryLog, transferLog] = ABIDecoder.decodeLogs(res.logs);
+                const logExpected = LogTransfer(
                     debtToken.address,
+                    NULL_ADDRESS,
                     secondDebt.getBeneficiary(),
                     secondDebt.getTokenId(),
                 );
 
-                expect(mintLog).to.deep.equal(logExpected);
+                expect(transferLog).to.deep.equal(logExpected);
             });
 
             it("should increase total supply by 1", async () => {

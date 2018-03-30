@@ -11,7 +11,7 @@ import { MockERC20TokenContract } from "../../../types/generated/mock_e_r_c20_to
 
 import { Address, TxData } from "../../../types/common";
 import { DebtRegistryEntry } from "../../../types/registry/entry";
-import { LogApproval, LogApprovalForAll, LogMint, LogTransfer } from "../logs/debt_token";
+import { LogApproval, LogApprovalForAll, LogTransfer } from "../logs/debt_token";
 import { BigNumberSetup } from "../test_utils/bignumber_setup";
 import ChaiSetup from "../test_utils/chai_setup";
 import { INVALID_OPCODE, REVERT_ERROR } from "../test_utils/constants";
