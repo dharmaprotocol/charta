@@ -12,6 +12,7 @@ import { MockCollateralizedTermsContractContract } from "types/generated/mock_co
 // Test Runners
 import { CollateralizeRunner } from "./collateralize";
 import { ReturnCollateralRunner } from "./return_collateral";
+import { SeizeCollateralRunner } from "./seize_collateral";
 
 export interface TestContracts {
     collateralizer: CollateralizerContract;
@@ -100,4 +101,41 @@ export interface ReturnCollateralScenario {
     ) => Promise<void>;
 }
 
-export { CollateralizeRunner, ReturnCollateralRunner };
+export interface SeizeCollateralScenario {
+    // Description string
+    description: string;
+    // Arbitrary agreement id used in this scenario
+    agreementId: string;
+    // The amount collateralized
+    collateralAmount: BigNumber;
+    // The grace period, encoded in days
+    gracePeriodInDays: BigNumber;
+    // Current value repaid to date
+    valueRepaidToDate: BigNumber;
+    // Schedule for expected repayment value
+    expectedRepaymentValueSchedule: ExpectedRepaymentValueDate[];
+    // Specifies whether the terms contract associated with
+    // the given issuance is the collateralized contract
+    termsContract: (collateralizedContract: string, attacker: string) => string;
+    // Specifies whether the debt is currently owned by the
+    // original beneficiary or some other party
+    beneficiary: (originalBeneficiary: string, other: string) => string;
+    // Specifies whether the transaction is coming from the original
+    // beneficiary or someone else
+    from: (originalBeneficiary: string, other: string) => string;
+    // Specifies whether the debt agreement exists in the debt registry
+    debtAgreementExists: boolean;
+    // Specifies whether collateral has been posted in the name of the debt agreement
+    debtAgreementCollateralized: boolean;
+    // Specifies whether the call is expected to succeed.
+    succeeds: boolean;
+    // Specifies whether the terms contract in the agreement id exists and is valid.
+    validTermsContract: true;
+    // Before block
+    before?: (
+        collateralizerContract: CollateralizerContract,
+        termsContract: MockCollateralizedTermsContractContract,
+    ) => Promise<void>;
+}
+
+export { CollateralizeRunner, ReturnCollateralRunner, SeizeCollateralRunner };

@@ -17,14 +17,17 @@ import { MockTokenTransferProxyContract } from "../../../../types/generated/mock
 import { MockCollateralizedTermsContractContract } from "../../../../types/generated/mock_collateralized_terms_contract";
 
 // Scenario Runners
-import { CollateralizeRunner, ReturnCollateralRunner } from "./runners";
+import { CollateralizeRunner, ReturnCollateralRunner, S } from "./runners";
 
 // Scenario Constants
 import { SUCCESSFUL_COLLATERALIZATION_SCENARIOS } from "./scenarios/successful_collateralization";
 import { UNSUCCESSFUL_COLLATERALIZATION_SCENARIOS } from "./scenarios/unsuccessful_collateralization";
 import { SUCCESSFUL_RETURN_SCENARIOS } from "./scenarios/successful_return";
 import { UNSUCCESSFUL_RETURN_SCENARIOS } from "./scenarios/unsuccessful_return";
+import { SUCCESSFUL_SEIZURE_SCENARIOS } from "./scenarios/successful_seizure";
+import { UNSUCCESSFUL_SEIZURE_SCENARIOS } from "./scenarios/unsuccessful_seizure";
 import {MockTokenTransferProxy} from "../../../../artifacts/ts/MockTokenTransferProxy";
+import {SeizeCollateralRunner} from "./runners/seize_collateral";
 
 // Set up Chai
 ChaiSetup.configure();
@@ -46,6 +49,7 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
 
     const collateralizeRunner = new CollateralizeRunner();
     const returnCollateralRunner = new ReturnCollateralRunner();
+    const seizeCollateralRunner = new SeizeCollateralRunner();
 
     const CONTRACT_OWNER = ACCOUNTS[0];
     const COLLATERALIZER = ACCOUNTS[1];
@@ -133,6 +137,7 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
         // Initialize runners.
         collateralizeRunner.initialize(testContracts, testAccounts);
         returnCollateralRunner.initialize(testContracts, testAccounts);
+        seizeCollateralRunner.initialize(testContracts, testAccounts);
 
         // Initialize ABI Decoder for deciphering log receipts
         ABIDecoder.addABI(collateralizerContract.abi);
@@ -224,6 +229,16 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
 
         describe("Unsuccessful collateral return", () => {
             UNSUCCESSFUL_RETURN_SCENARIOS.forEach(returnCollateralRunner.testScenario);
+        });
+    });
+
+    describe("#seizeCollateral", () => {
+        describe("Unsuccessful Collateral Seizure", () => {
+            UNSUCCESSFUL_SEIZURE_SCENARIOS.forEach(seizeCollateralRunner.testScenario);
+        });
+
+        describe("Successful Collateral Seizure", () => {
+            SUCCESSFUL_SEIZURE_SCENARIOS.forEach(seizeCollateralRunner.testScenario);
         });
     });
 });
