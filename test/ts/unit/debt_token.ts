@@ -464,6 +464,26 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
         });
     });
 
+    describe("#exists()", () => {
+        before(resetAndInitState);
+
+        describe("token exists", () => {
+            it("should return true", async () => {
+                await expect(
+                    debtToken.exists.callAsync(debtEntries[0].getTokenId()),
+                ).to.eventually.equal(true);
+            });
+        });
+
+        describe("token does not exist", () => {
+            it("should return false", async () => {
+                await expect(debtToken.exists.callAsync(NONEXISTENT_TOKEN_ID)).to.eventually.equal(
+                    false,
+                );
+            });
+        });
+    });
+
     describe("#transfer()", async () => {
         before(resetAndInitState);
 
