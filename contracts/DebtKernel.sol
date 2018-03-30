@@ -423,7 +423,7 @@ contract DebtKernel is Pausable {
         }
 
         // Invariant: debt order's issuance must not already be minted as debt token
-        if (debtToken.ownerOf(uint(debtOrder.issuance.issuanceHash)) != address(0)) {
+        if (debtToken.exists(uint(debtOrder.issuance.issuanceHash))) {
             LogError(uint8(Errors.DEBT_ISSUED), debtOrder.debtOrderHash);
             return false;
         }
