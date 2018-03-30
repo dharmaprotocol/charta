@@ -7,11 +7,11 @@ import { MockDebtRegistryContract } from "types/generated/mock_debt_registry";
 import { MockERC20TokenContract } from "types/generated/mock_e_r_c20_token";
 import { MockTokenRegistryContract } from "types/generated/mock_token_registry";
 import { MockTokenTransferProxyContract } from "types/generated/mock_token_transfer_proxy";
+import { MockCollateralizedTermsContractContract } from "../../../../../types/generated/mock_collateralized_terms_contract";
 
 // Test Runners
-import {
-    CollateralizeRunner,
-} from "./collateralize";
+import { CollateralizeRunner } from "./collateralize";
+import { ReturnCollateralRunner } from "./return_collateral";
 
 export interface TestContracts {
     collateralizer: CollateralizerContract;
@@ -19,6 +19,12 @@ export interface TestContracts {
     mockCollateralToken: MockERC20TokenContract;
     mockTokenRegistry: MockTokenRegistryContract;
     mockTokenTransferProxy: MockTokenTransferProxyContract;
+    mockTermsContract: MockCollateralizedTermsContractContract;
+}
+
+export interface ExpectedRepaymentValueDate {
+    timestamp: number;
+    expectedRepaymentValue: BigNumber;
 }
 
 export interface TestAccounts {
@@ -60,4 +66,35 @@ export interface CollateralizeScenario {
     expectedGracePeriodInDays?: BigNumber;
 }
 
-export { CollateralizeRunner };
+export interface ReturnCollateralScenario {
+    // Description string
+    description: string;
+    // Arbitrary agreement id used in this scenario
+    agreementId: string;
+    // The amount collateralized
+    collateralAmount: BigNumber;
+    // The grace period, encoded in days
+    gracePeriodInDays: BigNumber;
+    // Current value repaid to date
+    valueRepaidToDate: BigNumber;
+    // The timestamp of the debt's term end
+    termEndTimestamp: number;
+    // Schedule for expected repayment value
+    expectedRepaymentValueSchedule: ExpectedRepaymentValueDate[];
+    // Specifies whether the terms contract associated with
+    // the given issuance is the collateralized contract
+    termsContract: (collateralizedContract: string, attacker: string) => string;
+    // Specifies whether the transaction is coming from the original
+    // beneficiary or someone else
+    from: (collateralizer: string, other: string) => string;
+    // Specifies whether the debt agreement exists in the debt registry
+    debtAgreementExists: boolean;
+    // Specifies whether collateral has been posted in the name of the debt agreement
+    debtAgreementCollateralized: boolean;
+    // Specifies whether the call is expected to succeed.
+    succeeds: boolean;
+    // Before block
+    before?: (collateralizedContract: CollateralizerContract) => Promise<void>;
+}
+
+export { CollateralizeRunner, ReturnCollateralRunner };
