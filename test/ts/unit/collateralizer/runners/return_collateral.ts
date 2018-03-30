@@ -121,17 +121,13 @@ export class ReturnCollateralRunner {
                     scenario.collateralAmount,
                 );
 
-                await mockTermsContract.mockCallCollateralize.sendTransactionAsync(
-                    collateralizer.address,
-                    scenario.agreementId,
-                    COLLATERALIZER,
-                );
-
-                // await collateralizer.collateralize.sendTransactionAsync(
-                //     scenario.agreementId,
-                //     COLLATERALIZER,
-                //     { from: mockTermsContract.address },
-                // );
+                if (scenario.debtAgreementExists && scenario.debtAgreementCollateralized) {
+                    await mockTermsContract.mockCallCollateralize.sendTransactionAsync(
+                        collateralizer.address,
+                        scenario.agreementId,
+                        COLLATERALIZER,
+                    );
+                }
 
                 // 4. Mocking the current "collateralizer" value associated with the agreement
                 //      id to be non-zero, indicating that the agreement has begun and
@@ -164,9 +160,9 @@ export class ReturnCollateralRunner {
                     new BigNumber(scenario.termEndTimestamp),
                 );
 
-                // if (typeof scenario.before !== "undefined") {
-                //     await scenario.before(mockTermsContract);
-                // }
+                if (typeof scenario.before !== "undefined") {
+                    await scenario.before(collateralizer, mockTermsContract);
+                }
 
                 ABIDecoder.addABI(collateralizer.abi);
             });

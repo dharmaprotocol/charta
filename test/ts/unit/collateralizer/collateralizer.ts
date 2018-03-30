@@ -23,6 +23,7 @@ import { CollateralizeRunner, ReturnCollateralRunner } from "./runners";
 import { SUCCESSFUL_COLLATERALIZATION_SCENARIOS } from "./scenarios/successful_collateralization";
 import { UNSUCCESSFUL_COLLATERALIZATION_SCENARIOS } from "./scenarios/unsuccessful_collateralization";
 import { SUCCESSFUL_RETURN_SCENARIOS } from "./scenarios/successful_return";
+import { UNSUCCESSFUL_RETURN_SCENARIOS } from "./scenarios/unsuccessful_return";
 import {MockTokenTransferProxy} from "../../../../artifacts/ts/MockTokenTransferProxy";
 
 // Set up Chai
@@ -52,9 +53,8 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
     const BENEFICIARY_1 = ACCOUNTS[3];
     const BENEFICIARY_2 = ACCOUNTS[4];
     const MOCK_DEBT_KERNEL_ADDRESS = ACCOUNTS[5];
-    const ATTACKER = ACCOUNTS[6];
-
-    let MOCK_TERMS_CONTRACT_ADDRESS;
+    const MOCK_TERMS_CONTRACT_ADDRESS = ACCOUNTS[6];
+    const ATTACKER = ACCOUNTS[7];
 
     const NULL_PARAMETERS = "0x0000000000000000000000000000000000000000000000000000000000000000";
 
@@ -67,8 +67,6 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
         mockTokenRegistry = await MockTokenRegistryContract.deployed(web3, TX_DEFAULTS);
         mockTokenTransferProxy = await MockTokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
         mockTermsContract = await MockCollateralizedTermsContractContract.deployed(web3, TX_DEFAULTS);
-
-        MOCK_TERMS_CONTRACT_ADDRESS = mockTermsContract.address;
 
         /*
         In our test environment, we want to interact with the contract being
@@ -126,6 +124,10 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
         // Grant the terms contract authorization to call the `collateralize` function.
         await collateralizerContract.addAuthorizedCollateralizeAgent.sendTransactionAsync(
             mockTermsContract.address,
+        );
+
+        await collateralizerContract.addAuthorizedCollateralizeAgent.sendTransactionAsync(
+            MOCK_TERMS_CONTRACT_ADDRESS,
         );
 
         // Initialize runners.
@@ -207,11 +209,11 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
 
     describe("#collateralize", () => {
        describe("Successful collateralization", () => {
-           // SUCCESSFUL_COLLATERALIZATION_SCENARIOS.forEach(collateralizeRunner.testScenario);
+           SUCCESSFUL_COLLATERALIZATION_SCENARIOS.forEach(collateralizeRunner.testScenario);
        });
 
        describe("Unsuccessful collateralization", () => {
-            // UNSUCCESSFUL_COLLATERALIZATION_SCENARIOS.forEach(collateralizeRunner.testScenario);
+            UNSUCCESSFUL_COLLATERALIZATION_SCENARIOS.forEach(collateralizeRunner.testScenario);
        });
     });
 
@@ -221,7 +223,7 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
         });
 
         describe("Unsuccessful collateral return", () => {
-            // UNSUCCESSFUL_COLLATERALIZATION_SCENARIOS.forEach(returnCollateralRunner.testScenario);
+            UNSUCCESSFUL_RETURN_SCENARIOS.forEach(returnCollateralRunner.testScenario);
         });
     });
 });

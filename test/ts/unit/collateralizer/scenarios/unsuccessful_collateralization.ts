@@ -24,7 +24,7 @@ const defaultArgs = {
 
 export const UNSUCCESSFUL_COLLATERALIZATION_SCENARIOS: CollateralizeScenario[] = [
     {
-        description: "Caller is not debt kernel",
+        description: "Caller is not terms contract",
         ...defaultArgs,
         agreementId: web3.sha3(
             "Arbitrary 32 byte id for unsuccessful collateralization scenario #1",

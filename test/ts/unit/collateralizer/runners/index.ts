@@ -7,7 +7,7 @@ import { MockDebtRegistryContract } from "types/generated/mock_debt_registry";
 import { MockERC20TokenContract } from "types/generated/mock_e_r_c20_token";
 import { MockTokenRegistryContract } from "types/generated/mock_token_registry";
 import { MockTokenTransferProxyContract } from "types/generated/mock_token_transfer_proxy";
-import { MockCollateralizedTermsContractContract } from "../../../../../types/generated/mock_collateralized_terms_contract";
+import { MockCollateralizedTermsContractContract } from "types/generated/mock_collateralized_terms_contract";
 
 // Test Runners
 import { CollateralizeRunner } from "./collateralize";
@@ -94,7 +94,10 @@ export interface ReturnCollateralScenario {
     // Specifies whether the call is expected to succeed.
     succeeds: boolean;
     // Before block
-    before?: (collateralizedContract: CollateralizerContract) => Promise<void>;
+    before?: (
+        collateralizerContract: CollateralizerContract,
+        termsContract: MockCollateralizedTermsContractContract,
+    ) => Promise<void>;
 }
 
 export { CollateralizeRunner, ReturnCollateralRunner };
