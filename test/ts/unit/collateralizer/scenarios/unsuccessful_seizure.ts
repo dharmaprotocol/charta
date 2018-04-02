@@ -1,4 +1,4 @@
-import { SeizeCollateralScenario, TestContracts } from "../runners/";
+import { SeizeCollateralScenario } from "../runners/";
 
 // external
 import { BigNumber } from "bignumber.js";

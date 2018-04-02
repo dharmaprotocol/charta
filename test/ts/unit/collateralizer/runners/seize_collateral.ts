@@ -132,16 +132,6 @@ export class SeizeCollateralRunner {
                     );
                 }
 
-                // 4. Mocking the current "collateralizer" value associated with the agreement
-                //      id to be non-zero, indicating that the agreement has begun and
-                //      the collateral has been pulled.
-                // if (scenario.debtAgreementCollateralized) {
-                //     await mockCollateralizedTermsContract.mockDummyAgreementCollateralizer.sendTransactionAsync(
-                //         scenario.agreementId,
-                //         COLLATERALIZER,
-                //     );
-                // }
-
                 // 5. Mocking the expected repayment schedule for the agreement id
                 for (const repaymentDate of scenario.expectedRepaymentValueSchedule) {
                     await mockTermsContract.mockExpectedRepaymentValue.sendTransactionAsync(

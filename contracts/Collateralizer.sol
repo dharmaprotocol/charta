@@ -106,7 +106,7 @@ contract Collateralizer is Pausable {
         address collateralizer
     )
         public
-//        onlyAuthorizedToCollateralize
+        onlyAuthorizedToCollateralize
         whenNotPaused
         returns (bool _success)
     {
