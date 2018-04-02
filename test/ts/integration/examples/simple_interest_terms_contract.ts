@@ -11,7 +11,7 @@ import ChaiSetup from "../../test_utils/chai_setup";
 import * as Units from "../../test_utils/units";
 
 // Logs
-import { LogSimpleInterestTermStart } from "../../logs/simple_interest_terms_contract";
+import { LogRegisterRepayment, LogSimpleInterestTermStart } from "../../logs/simple_interest_terms_contract";
 
 // Wrappers
 import { SignedDebtOrder } from "../../../../types/kernel/debt_order";
@@ -177,9 +177,6 @@ contract("Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) 
         );
 
         // Setup ABI decoder in order to decode logs
-        ABIDecoder.addABI(debtKernelContract.abi);
-        ABIDecoder.addABI(debtTokenContract.abi);
-        ABIDecoder.addABI(debtRegistryContract.abi);
         ABIDecoder.addABI(simpleInterestTermsContract.abi);
     };
 
@@ -233,6 +230,88 @@ contract("Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) 
                );
 
                expect(result).to.eventually.be.rejectedWith(REVERT_ERROR);
+            });
+        });
+    });
+
+    describe("#registerRepayment", () => {
+        before(async () => {
+            await kernel.fillDebtOrder.sendTransactionAsync(
+                debtOrder.getCreditor(),
+                debtOrder.getOrderAddresses(),
+                debtOrder.getOrderValues(),
+                debtOrder.getOrderBytes32(),
+                debtOrder.getSignaturesV(),
+                debtOrder.getSignaturesR(),
+                debtOrder.getSignaturesS(),
+                { from: UNDERWRITER },
+            );
+
+            await dummyREPToken.setBalance.sendTransactionAsync(DEBTOR_1, Units.ether(1.29), {
+                from: CONTRACT_OWNER,
+            });
+
+            await dummyREPToken.approve.sendTransactionAsync(
+                tokenTransferProxy.address,
+                Units.ether(1.29),
+                { from: DEBTOR_1 },
+            );
+        });
+
+        describe("when called outside of the RepaymentRouter", () => {
+            it("should revert the transaction", async () => {
+                await expect(
+                    simpleInterestTermsContract.registerRepayment.sendTransactionAsync(
+                        agreementId,
+                        DEBTOR_1,
+                        CREDITOR_1,
+                        Units.ether(1),
+                        debtOrder.getPrincipalTokenAddress(),
+                        { from: ATTACKER },
+                    ),
+                ).to.eventually.be.rejectedWith(REVERT_ERROR);
+            });
+        });
+
+        describe("when called from the RepaymentRouter", () => {
+            let amountRepaid: BigNumber;
+            let txHash: string;
+
+            before(async () => {
+                amountRepaid = Units.ether(1.29);
+
+                txHash = await repaymentRouter.repay.sendTransactionAsync(
+                    agreementId,
+                    amountRepaid,
+                    debtOrder.getPrincipalTokenAddress(),
+                    { from: DEBTOR_1 },
+                );
+            });
+
+            it("should record the repayment", async () => {
+                await expect(
+                    simpleInterestTermsContract.getValueRepaidToDate.callAsync(agreementId),
+                ).to.eventually.bignumber.equal(amountRepaid);
+            });
+
+            it("should emit a LogRegisterRepayment event", async () => {
+                const receipt = await web3.eth.getTransactionReceipt(txHash);
+
+                const returnedLog = _.find(
+                    ABIDecoder.decodeLogs(receipt.logs),
+                    { name: "LogRegisterRepayment" },
+                );
+
+                const expectedLog = LogRegisterRepayment(
+                    simpleInterestTermsContract.address,
+                    agreementId,
+                    DEBTOR_1,
+                    CREDITOR_1,
+                    amountRepaid,
+                    debtOrder.getPrincipalTokenAddress(),
+                );
+
+                expect(returnedLog).to.deep.equal(expectedLog);
             });
         });
     });
