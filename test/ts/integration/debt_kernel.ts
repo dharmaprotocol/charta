@@ -1,31 +1,31 @@
+// External Libraries
 import * as ABIDecoder from "abi-decoder";
-import * as Units from "../test_utils/units";
 import * as Web3 from "web3";
 import * as _ from "lodash";
 import * as chai from "chai";
 import * as moment from "moment";
-import * as utils from "../test_utils/utils";
-
-// Types
-import { DebtOrder, SignedDebtOrder } from "../../../types/kernel/debt_order";
-import {
-    IssuanceCommitment,
-    SignedIssuanceCommitment,
-} from "../../../types/kernel/issuance_commitment";
+import { BigNumber } from "bignumber.js";
 
 // Test Utils
-import { LogApproval, LogMint, LogTransfer } from "../logs/debt_token";
+import * as Units from "../test_utils/units";
+import ChaiSetup from "../test_utils/chai_setup";
+import { BigNumberSetup } from "../test_utils/bignumber_setup";
+
+// Types
+import { SignedDebtOrder } from "../../../types/kernel/debt_order";
+
+// Logs
+import { LogMint, LogTransfer } from "../logs/debt_token";
 import { LogDebtOrderFilled, LogError } from "../logs/debt_kernel";
-import { LogInsertEntry, LogModifyEntryBeneficiary } from "../logs/debt_registry";
+import { LogInsertEntry } from "../logs/debt_registry";
+
+// Factories
 import { SimpleInterestParameters } from "../factories/terms_contract_parameters";
+import { DebtOrderFactory } from "../factories/debt_order_factory";
 
 // Wrappers
-import { BigNumber } from "bignumber.js";
-import { BigNumberSetup } from "../test_utils/bignumber_setup";
-import ChaiSetup from "../test_utils/chai_setup";
 import { DebtKernelContract } from "../../../types/generated/debt_kernel";
 import { DebtKernelErrorCodes } from "../../../types/errors";
-import { DebtOrderFactory } from "../factories/debt_order_factory";
 import { DebtRegistryContract } from "../../../types/generated/debt_registry";
 import { DebtRegistryEntry } from "../../../types/registry/entry";
 import { DebtTokenContract } from "../../../types/generated/debt_token";
@@ -33,13 +33,11 @@ import { DummyTokenContract } from "../../../types/generated/dummy_token";
 import { IncompatibleTermsContractContract } from "../../../types/generated/incompatible_terms_contract";
 import { RepaymentRouterContract } from "../../../types/generated/repayment_router";
 import { SimpleInterestTermsContractContract } from "../../../types/generated/simple_interest_terms_contract";
-import { TermsContractRegistryContract } from "../../../types/generated/terms_contract_registry";
 import { TokenRegistryContract } from "../../../types/generated/token_registry";
 import { TokenTransferProxyContract } from "../../../types/generated/token_transfer_proxy";
-import { TxDataPayable } from "../../../types/common";
 
 // Constants
-import { INVALID_OPCODE, REVERT_ERROR } from "../test_utils/constants";
+import { REVERT_ERROR } from "../test_utils/constants";
 
 // Configure BigNumber exponentiation
 BigNumberSetup.configure();
@@ -67,26 +65,11 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
 
     const CONTRACT_OWNER = ACCOUNTS[0];
     const ATTACKER = ACCOUNTS[1];
-
-    const ISSUER_1 = ACCOUNTS[2];
-    const ISSUER_2 = ACCOUNTS[3];
-    const ISSUER_3 = ACCOUNTS[4];
-    const ISSUERS = [ISSUER_1, ISSUER_2, ISSUER_3];
-
-    const DEBTOR_1 = ACCOUNTS[5];
-    const DEBTOR_2 = ACCOUNTS[6];
-    const DEBTOR_3 = ACCOUNTS[7];
-    const DEBTORS = [DEBTOR_1, DEBTOR_2, DEBTOR_3];
-
-    const CREDITOR_1 = ACCOUNTS[8];
-    const CREDITOR_2 = ACCOUNTS[9];
-    const CREDITOR_3 = ACCOUNTS[10];
-    const CREDITORS = [CREDITOR_1, CREDITOR_2, CREDITOR_3];
-
-    const UNDERWRITER = ACCOUNTS[11];
-    const RELAYER = ACCOUNTS[12];
-
-    const MALICIOUS_TERMS_CONTRACTS = ACCOUNTS[13];
+    const DEBTOR_1 = ACCOUNTS[2];
+    const CREDITOR_1 = ACCOUNTS[3];
+    const UNDERWRITER = ACCOUNTS[4];
+    const RELAYER = ACCOUNTS[6];
+    const MALICIOUS_TERMS_CONTRACTS = ACCOUNTS[7];
 
     const NULL_ADDRESS = "0x0000000000000000000000000000000000000000";
 
