@@ -68,6 +68,14 @@ contract SimpleInterestTermsContract is TermsContract {
         uint termLengthInAmortizationUnits
     );
 
+    event LogRegisterRepayment(
+        bytes32 agreementId,
+        address payer,
+        address beneficiary,
+        uint256 unitsOfRepayment,
+        address tokenAddress
+    );
+
     modifier onlyRouter() {
         require(msg.sender == repaymentRouter);
         _;
@@ -178,6 +186,15 @@ contract SimpleInterestTermsContract is TermsContract {
 
         if (tokenAddress == params.principalTokenAddress) {
             valueRepaid[agreementId] = valueRepaid[agreementId].add(unitsOfRepayment);
+
+            LogRegisterRepayment(
+                agreementId,
+                payer,
+                beneficiary,
+                unitsOfRepayment,
+                tokenAddress
+            );
+
             return true;
         }
 
