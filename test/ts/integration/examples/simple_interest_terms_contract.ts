@@ -1,33 +1,22 @@
+// External Libraries
 import * as ABIDecoder from "abi-decoder";
-import * as Units from "../../test_utils/units";
-import * as Web3 from "web3";
 import * as _ from "lodash";
 import * as chai from "chai";
 import * as moment from "moment";
-import * as utils from "../../test_utils/utils";
-
-// Types
-import { DebtOrder, SignedDebtOrder } from "../../../../types/kernel/debt_order";
-import {
-    IssuanceCommitment,
-    SignedIssuanceCommitment,
-} from "../../../../types/kernel/issuance_commitment";
+import { BigNumber } from "bignumber.js";
 
 // Test Utils
-import { LogApproval, LogMint, LogTransfer } from "../../logs/debt_token";
-import { LogDebtOrderFilled, LogError } from "../../logs/debt_kernel";
-import { LogInsertEntry, LogModifyEntryBeneficiary } from "../../logs/debt_registry";
-import { SimpleInterestParameters } from "../../factories/terms_contract_parameters";
-
-// Wrappers
-import { BigNumber } from "bignumber.js";
 import { BigNumberSetup } from "../../test_utils/bignumber_setup";
 import ChaiSetup from "../../test_utils/chai_setup";
+import * as Units from "../../test_utils/units";
+
+// Logs
+import { LogSimpleInterestTermStart } from "../../logs/simple_interest_terms_contract";
+
+// Wrappers
+import { SignedDebtOrder } from "../../../../types/kernel/debt_order";
 import { DebtKernelContract } from "../../../../types/generated/debt_kernel";
-import { DebtKernelErrorCodes } from "../../../../types/errors";
-import { DebtOrderFactory } from "../../factories/debt_order_factory";
 import { DebtRegistryContract } from "../../../../types/generated/debt_registry";
-import { DebtRegistryEntry } from "../../../../types/registry/entry";
 import { DebtTokenContract } from "../../../../types/generated/debt_token";
 import { DummyTokenContract } from "../../../../types/generated/dummy_token";
 import { IncompatibleTermsContractContract } from "../../../../types/generated/incompatible_terms_contract";
@@ -35,10 +24,13 @@ import { RepaymentRouterContract } from "../../../../types/generated/repayment_r
 import { SimpleInterestTermsContractContract } from "../../../../types/generated/simple_interest_terms_contract";
 import { TokenRegistryContract } from "../../../../types/generated/token_registry";
 import { TokenTransferProxyContract } from "../../../../types/generated/token_transfer_proxy";
-import { TxDataPayable } from "../../../../types/common";
+
+// Factories
+import { DebtOrderFactory } from "../../factories/debt_order_factory";
+import { SimpleInterestParameters } from "../../factories/terms_contract_parameters";
 
 // Constants
-import { INVALID_OPCODE, REVERT_ERROR } from "../../test_utils/constants";
+import { REVERT_ERROR } from "../../test_utils/constants";
 
 // Configure BigNumber exponentiation
 BigNumberSetup.configure();
@@ -64,32 +56,26 @@ contract("Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) 
     let defaultOrderParams: { [key: string]: any };
     let orderFactory: DebtOrderFactory;
 
+    let debtOrder: SignedDebtOrder;
+    let agreementId: string;
+
     const CONTRACT_OWNER = ACCOUNTS[0];
     const ATTACKER = ACCOUNTS[1];
 
-    const ISSUER_1 = ACCOUNTS[2];
-    const ISSUER_2 = ACCOUNTS[3];
-    const ISSUER_3 = ACCOUNTS[4];
-    const ISSUERS = [ISSUER_1, ISSUER_2, ISSUER_3];
-
     const DEBTOR_1 = ACCOUNTS[5];
-    const DEBTOR_2 = ACCOUNTS[6];
-    const DEBTOR_3 = ACCOUNTS[7];
-    const DEBTORS = [DEBTOR_1, DEBTOR_2, DEBTOR_3];
 
     const CREDITOR_1 = ACCOUNTS[8];
-    const CREDITOR_2 = ACCOUNTS[9];
-    const CREDITOR_3 = ACCOUNTS[10];
-    const CREDITORS = [CREDITOR_1, CREDITOR_2, CREDITOR_3];
 
     const UNDERWRITER = ACCOUNTS[11];
     const RELAYER = ACCOUNTS[12];
 
-    const MALICIOUS_TERMS_CONTRACTS = ACCOUNTS[13];
-
-    const NULL_ADDRESS = "0x0000000000000000000000000000000000000000";
-
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4712388 };
+
+    const REP_INDEX = new BigNumber(0);
+    const PRINCIPAL_AMOUNT = Units.ether(1);
+    const INTEREST_RATE = Units.percent(2.5);
+    const AMORTIZATION_UNIT_TYPE = new BigNumber(1);
+    const TERM_LENGTH_UNITS = new BigNumber(4);
 
     const reset = async () => {
         const dummyTokenRegistryContract = await TokenRegistryContract.deployed(web3, TX_DEFAULTS);
@@ -119,11 +105,11 @@ contract("Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) 
         repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
 
         const termsContractParameters = SimpleInterestParameters.pack(
-            new BigNumber(0), // Our migrations set REP up to be at index 0 of the registry
-            Units.ether(1), // principal of 1 ether
-            Units.percent(2.5), // interest rate of 2.5%
-            new BigNumber(1), // The amortization unit type (weekly)
-            new BigNumber(4), // Term length in amortization units.
+            REP_INDEX,
+            PRINCIPAL_AMOUNT,
+            INTEREST_RATE,
+            AMORTIZATION_UNIT_TYPE,
+            TERM_LENGTH_UNITS,
         );
 
         defaultOrderParams = {
@@ -154,10 +140,47 @@ contract("Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) 
 
         orderFactory = new DebtOrderFactory(defaultOrderParams);
 
+        debtOrder = await orderFactory.generateDebtOrder();
+        agreementId = debtOrder.getIssuanceCommitment().getHash();
+
+        /*
+         * Set balances for filling a debt order successfully.
+         */
+
+        const token = await DummyTokenContract.at(
+            debtOrder.getPrincipalTokenAddress(),
+            web3,
+            TX_DEFAULTS,
+        );
+
+        const debtor = debtOrder.getDebtor();
+        const creditor = debtOrder.getCreditor();
+
+        await token.setBalance.sendTransactionAsync(debtor, new BigNumber(0), {
+            from: CONTRACT_OWNER,
+        });
+        await token.approve.sendTransactionAsync(tokenTransferProxy.address, new BigNumber(0), {
+            from: debtor,
+        });
+
+        const creditorBalanceAndAllowance = debtOrder
+            .getPrincipalAmount()
+            .plus(debtOrder.getCreditorFee());
+
+        await token.setBalance.sendTransactionAsync(creditor, creditorBalanceAndAllowance, {
+            from: CONTRACT_OWNER,
+        });
+        await token.approve.sendTransactionAsync(
+            tokenTransferProxy.address,
+            creditorBalanceAndAllowance,
+            { from: creditor },
+        );
+
         // Setup ABI decoder in order to decode logs
         ABIDecoder.addABI(debtKernelContract.abi);
         ABIDecoder.addABI(debtTokenContract.abi);
         ABIDecoder.addABI(debtRegistryContract.abi);
+        ABIDecoder.addABI(simpleInterestTermsContract.abi);
     };
 
     before(reset);
@@ -168,9 +191,36 @@ contract("Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) 
     });
 
     describe("#registerTermStart", () => {
-        describe("when given well formed agreementId and debtor address", () => {
-           it("should emit a LogSimpleInterestTermStart event", async () => {
-               // STUB.
+        describe("when invoked by the filling of a debt order", () => {
+            it("should emit a LogSimpleInterestTermStart event", async () => {
+                const txHash = await kernel.fillDebtOrder.sendTransactionAsync(
+                    debtOrder.getCreditor(),
+                    debtOrder.getOrderAddresses(),
+                    debtOrder.getOrderValues(),
+                    debtOrder.getOrderBytes32(),
+                    debtOrder.getSignaturesV(),
+                    debtOrder.getSignaturesR(),
+                    debtOrder.getSignaturesS(),
+                    { from: UNDERWRITER },
+                );
+
+                const receipt = await web3.eth.getTransactionReceipt(txHash);
+                const returnedLog = _.find(
+                    ABIDecoder.decodeLogs(receipt.logs),
+                    { name: "LogSimpleInterestTermStart" },
+                );
+
+                const expectedLog = LogSimpleInterestTermStart(
+                    simpleInterestTermsContract.address,
+                    agreementId,
+                    debtOrder.getPrincipalTokenAddress(),
+                    debtOrder.getPrincipalAmount(),
+                    INTEREST_RATE,
+                    AMORTIZATION_UNIT_TYPE,
+                    TERM_LENGTH_UNITS,
+                );
+
+                expect(returnedLog).to.deep.equal(expectedLog);
            });
         });
 
@@ -182,6 +232,18 @@ contract("Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) 
                    simpleInterestTermsContract.registerTermStart.sendTransactionAsync(malformedAgreementId, DEBTOR_1),
                ).to.eventually.be.rejectedWith(REVERT_ERROR);
            });
+        });
+
+        describe("when called outside of the debt kernel", () => {
+           it("should revert the transaction", () => {
+               const result = simpleInterestTermsContract.registerTermStart.sendTransactionAsync(
+                   agreementId,
+                   DEBTOR_1,
+                   { from: ATTACKER },
+               );
+
+               expect(result).to.eventually.be.rejectedWith(REVERT_ERROR);
+            });
         });
     });
 });
