@@ -224,16 +224,6 @@ contract("Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) 
            });
         });
 
-        describe("when given a malformed agreementId", () => {
-           it("should revert the transaction", async () => {
-               const malformedAgreementId = "0x111fff";
-
-               expect(
-                   simpleInterestTermsContract.registerTermStart.sendTransactionAsync(malformedAgreementId, DEBTOR_1),
-               ).to.eventually.be.rejectedWith(REVERT_ERROR);
-           });
-        });
-
         describe("when called outside of the debt kernel", () => {
            it("should revert the transaction", () => {
                const result = simpleInterestTermsContract.registerTermStart.sendTransactionAsync(
