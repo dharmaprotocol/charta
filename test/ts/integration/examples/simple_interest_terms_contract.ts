@@ -10,9 +10,6 @@ import { BigNumberSetup } from "../../test_utils/bignumber_setup";
 import ChaiSetup from "../../test_utils/chai_setup";
 import * as Units from "../../test_utils/units";
 
-// Logs
-import { LogRegisterRepayment, LogSimpleInterestTermStart } from "../../logs/simple_interest_terms_contract";
-
 // Wrappers
 import { SignedDebtOrder } from "../../../../types/kernel/debt_order";
 import { DebtKernelContract } from "../../../../types/generated/debt_kernel";
@@ -43,10 +40,10 @@ const debtKernelContract = artifacts.require("DebtKernel");
 
 // Scenarios
 import { SUCCESSFUL_REGISTER_REPAYMENT_SCENARIOS } from "./scenarios/successful_register_repayment";
+import { UNSUCCESSFUL_REGISTER_REPAYMENT_SCENARIOS } from "./scenarios/unsuccessful_register_repayment";
 
 // Scenario Runners
 import { RegisterRepaymentRunner } from "./runners";
-import {UNSUCCESSFUL_REGISTER_REPAYMENT_SCENARIOS} from "./scenarios/unsuccessful_register_repayment";
 
 contract("Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) => {
     let kernel: DebtKernelContract;
