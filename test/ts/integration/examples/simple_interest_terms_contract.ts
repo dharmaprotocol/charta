@@ -1,9 +1,9 @@
 // External Libraries
 import * as ABIDecoder from "abi-decoder";
-import * as _ from "lodash";
 import * as chai from "chai";
 import * as moment from "moment";
 import { BigNumber } from "bignumber.js";
+import * as _ from "lodash";
 
 // Test Utils
 import { BigNumberSetup } from "../../test_utils/bignumber_setup";
@@ -43,7 +43,10 @@ import { SUCCESSFUL_REGISTER_REPAYMENT_SCENARIOS } from "./scenarios/successful_
 import { UNSUCCESSFUL_REGISTER_REPAYMENT_SCENARIOS } from "./scenarios/unsuccessful_register_repayment";
 
 // Scenario Runners
-import { RegisterRepaymentRunner } from "./runners";
+import { RegisterRepaymentRunner, RegisterTermStartRunner } from "./runners";
+import {LogSimpleInterestTermStart} from "../../logs/simple_interest_terms_contract";
+import {SUCCESSFUL_REGISTER_TERM_START_SCENARIOS} from "./scenarios/successful_term_start";
+import {UNSUCCESSFUL_REGISTER_TERM_START_SCENARIOS} from "./scenarios/unsuccessful_term_start";
 
 contract("Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) => {
     let kernel: DebtKernelContract;
@@ -64,7 +67,6 @@ contract("Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) 
     let agreementId: string;
 
     const CONTRACT_OWNER = ACCOUNTS[0];
-    const ATTACKER = ACCOUNTS[1];
 
     const DEBTOR_1 = ACCOUNTS[5];
 
@@ -82,6 +84,7 @@ contract("Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) 
     const TERM_LENGTH_UNITS = new BigNumber(4);
 
     const registerRepaymentRunner = new RegisterRepaymentRunner();
+    const registerTermStartRunner = new RegisterTermStartRunner();
 
     const reset = async () => {
         const dummyTokenRegistryContract = await TokenRegistryContract.deployed(web3, TX_DEFAULTS);
@@ -176,14 +179,12 @@ contract("Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) 
         await token.setBalance.sendTransactionAsync(creditor, creditorBalanceAndAllowance, {
             from: CONTRACT_OWNER,
         });
+
         await token.approve.sendTransactionAsync(
             tokenTransferProxy.address,
             creditorBalanceAndAllowance,
             { from: creditor },
         );
-
-        // Setup ABI decoder in order to decode logs
-        ABIDecoder.addABI(simpleInterestTermsContract.abi);
     };
 
     before(reset);
@@ -213,24 +214,16 @@ contract("Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) 
         };
 
         registerRepaymentRunner.initialize(testAccounts, testContracts, debtOrder, termsParams);
-    });
-
-    after(() => {
-        // Tear down ABIDecoder before next set of tests
-        ABIDecoder.removeABI(debtKernelContract.abi);
+        registerTermStartRunner.initialize(testAccounts, testContracts, debtOrder, termsParams);
     });
 
     describe("#registerTermStart", () => {
-        describe("when called outside of the debt kernel", () => {
-           it("should revert the transaction", () => {
-               const result = simpleInterestTermsContract.registerTermStart.sendTransactionAsync(
-                   agreementId,
-                   DEBTOR_1,
-                   { from: ATTACKER },
-               );
+        describe("Successful register term state", () => {
+            SUCCESSFUL_REGISTER_TERM_START_SCENARIOS.forEach(registerTermStartRunner.testScenario);
+        });
 
-               expect(result).to.eventually.be.rejectedWith(REVERT_ERROR);
-            });
+        describe("Unsuccessful register term state", () => {
+            UNSUCCESSFUL_REGISTER_TERM_START_SCENARIOS.forEach(registerTermStartRunner.testScenario);
         });
     });
 
