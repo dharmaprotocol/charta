@@ -3,9 +3,6 @@ import * as ABIDecoder from "abi-decoder";
 import * as _ from "lodash";
 import { expect } from "chai";
 
-// Test Utils
-import * as Units from "../../../test_utils/units";
-
 // Scenario runners
 import { RegisterRepaymentScenario, TermsParams, TestAccounts, TestContracts } from "../runners";
 
@@ -93,6 +90,13 @@ export class RegisterRepaymentRunner {
                         { from: DEBTOR_1 },
                     );
                 }
+            });
+
+            after(() => {
+                const { simpleInterestTermsContract } = this.contracts;
+
+                // Tear down ABIDecoder before next set of tests
+                ABIDecoder.removeABI(simpleInterestTermsContract.abi);
             });
 
             if (scenario.succeeds) {

@@ -1,6 +1,7 @@
 // External libraries
 import { BigNumber } from "bignumber.js";
 import { RegisterRepaymentRunner } from "./register_repayment";
+import { RegisterTermStartRunner } from "./register_term_start";
 
 // Wrappers
 import { SignedDebtOrder } from "../../../../../types/kernel/debt_order";
@@ -48,4 +49,13 @@ export interface RegisterRepaymentScenario {
     repayFromRouter: boolean;
 }
 
-export { RegisterRepaymentRunner };
+export interface RegisterTermStartScenario {
+    // The test's description
+    description: string;
+    // True if the scenario does not revert, and the repayment gets logged.
+    succeeds: boolean;
+    // True if registerTermStart is called by the debt kernel upon an order being filled.
+    invokedByDebtKernel: boolean;
+}
+
+export { RegisterRepaymentRunner, RegisterTermStartRunner };
