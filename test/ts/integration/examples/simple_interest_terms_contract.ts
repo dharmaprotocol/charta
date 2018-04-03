@@ -46,6 +46,7 @@ import { SUCCESSFUL_REGISTER_REPAYMENT_SCENARIOS } from "./scenarios/successful_
 
 // Scenario Runners
 import { RegisterRepaymentRunner } from "./runners";
+import {UNSUCCESSFUL_REGISTER_REPAYMENT_SCENARIOS} from "./scenarios/unsuccessful_register_repayment";
 
 contract("Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) => {
     let kernel: DebtKernelContract;
@@ -241,61 +242,8 @@ contract("Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) 
             SUCCESSFUL_REGISTER_REPAYMENT_SCENARIOS.forEach(registerRepaymentRunner.testScenario);
         });
 
-        // describe("when called outside of the RepaymentRouter", () => {
-        //     it("should revert the transaction", async () => {
-        //         await expect(
-        //             simpleInterestTermsContract.registerRepayment.sendTransactionAsync(
-        //                 agreementId,
-        //                 DEBTOR_1,
-        //                 CREDITOR_1,
-        //                 Units.ether(1),
-        //                 debtOrder.getPrincipalTokenAddress(),
-        //                 { from: ATTACKER },
-        //             ),
-        //         ).to.eventually.be.rejectedWith(REVERT_ERROR);
-        //     });
-        // });
-        //
-        // describe("when called from the RepaymentRouter", () => {
-        //     let amountRepaid: BigNumber;
-        //     let txHash: string;
-        //
-        //     before(async () => {
-        //         amountRepaid = Units.ether(1.29);
-        //
-        //         txHash = await repaymentRouter.repay.sendTransactionAsync(
-        //             agreementId,
-        //             amountRepaid,
-        //             debtOrder.getPrincipalTokenAddress(),
-        //             { from: DEBTOR_1 },
-        //         );
-        //     });
-        //
-        //     it("should record the repayment", async () => {
-        //         await expect(
-        //             simpleInterestTermsContract.getValueRepaidToDate.callAsync(agreementId),
-        //         ).to.eventually.bignumber.equal(amountRepaid);
-        //     });
-        //
-        //     it("should emit a LogRegisterRepayment event", async () => {
-        //         const receipt = await web3.eth.getTransactionReceipt(txHash);
-        //
-        //         const returnedLog = _.find(
-        //             ABIDecoder.decodeLogs(receipt.logs),
-        //             { name: "LogRegisterRepayment" },
-        //         );
-        //
-        //         const expectedLog = LogRegisterRepayment(
-        //             simpleInterestTermsContract.address,
-        //             agreementId,
-        //             DEBTOR_1,
-        //             CREDITOR_1,
-        //             amountRepaid,
-        //             debtOrder.getPrincipalTokenAddress(),
-        //         );
-        //
-        //         expect(returnedLog).to.deep.equal(expectedLog);
-        //     });
-        // });
+        describe("Unsuccessful register repayment", () => {
+            UNSUCCESSFUL_REGISTER_REPAYMENT_SCENARIOS.forEach(registerRepaymentRunner.testScenario);
+        });
     });
 });

@@ -14,6 +14,7 @@ import { SignedDebtOrder } from "../../../../../types/kernel/debt_order";
 
 // Logs
 import { LogRegisterRepayment } from "../../../logs/simple_interest_terms_contract";
+import {REVERT_ERROR} from "../../../test_utils/constants";
 
 export class RegisterRepaymentRunner {
     private accounts: TestAccounts;
@@ -127,6 +128,24 @@ export class RegisterRepaymentRunner {
                     await expect(
                         simpleInterestTermsContract.getValueRepaidToDate.callAsync(AGREEMENT_ID),
                     ).to.eventually.bignumber.equal(scenario.repaymentAmount);
+                });
+            } else {
+                it("should revert the transaction", async () => {
+                    const { simpleInterestTermsContract } = this.contracts;
+                    const { AGREEMENT_ID } = this.termsParams;
+                    const { DEBTOR_1, CREDITOR_1 } = this.accounts;
+                    const debtOrder = this.debtOrder;
+
+                    await expect(
+                        simpleInterestTermsContract.registerRepayment.sendTransactionAsync(
+                            AGREEMENT_ID,
+                            DEBTOR_1,
+                            CREDITOR_1,
+                            scenario.repaymentAmount,
+                            debtOrder.getPrincipalTokenAddress(),
+                            { from: DEBTOR_1 },
+                        ),
+                    ).to.eventually.be.rejectedWith(REVERT_ERROR);
                 });
             }
         });
