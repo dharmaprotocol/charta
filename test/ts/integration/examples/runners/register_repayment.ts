@@ -119,6 +119,15 @@ export class RegisterRepaymentRunner {
 
                     expect(returnedLog).to.deep.equal(expectedLog);
                 });
+
+                it("should record the repayment", async () => {
+                    const { simpleInterestTermsContract } = this.contracts;
+                    const { AGREEMENT_ID } = this.termsParams;
+
+                    await expect(
+                        simpleInterestTermsContract.getValueRepaidToDate.callAsync(AGREEMENT_ID),
+                    ).to.eventually.bignumber.equal(scenario.repaymentAmount);
+                });
             }
         });
     }
