@@ -94,7 +94,7 @@ contract DebtToken is ERC721Token, ERC165, Pausable {
             _salt
         );
 
-        _mint(_beneficiary, uint(entryHash));
+        super._mint(_beneficiary, uint(entryHash));
 
         return uint(entryHash);
     }
@@ -195,13 +195,6 @@ contract DebtToken is ERC721Token, ERC165, Pausable {
     {
         _modifyBeneficiary(_tokenId, _to);
         super.safeTransferFrom(_from, _to, _tokenId, _data);
-    }
-
-    function _mint(address _owner, uint _tokenId)
-        internal
-    {
-        _modifyBeneficiary(_tokenId, _owner);
-        super._mint(_owner, _tokenId);
     }
 
     /**
