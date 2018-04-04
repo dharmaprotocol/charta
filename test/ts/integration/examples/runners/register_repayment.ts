@@ -7,7 +7,7 @@ import { BigNumber } from "bignumber.js";
 import { REVERT_ERROR } from "../../../test_utils/constants";
 
 // Scenario runners
-import { RegisterRepaymentScenario, TestAccounts, TestContracts } from "../runners";
+import { RegisterRepaymentScenario } from "./";
 
 // Wrappers
 import { DummyTokenContract } from "../../../../../types/generated/dummy_token";
@@ -26,7 +26,10 @@ export class RegisterRepaymentRunner extends SimpleInterestTermsContractRunner {
 
         describe(scenario.description, () => {
             before(async () => {
-                await this.reset(scenario);
+                await this.setupDebtOrder(scenario);
+
+                dummyZRXToken = await this.setupDummyZRXToken();
+                dummyREPToken = this.contracts.dummyREPToken;
 
                 const {
                     CONTRACT_OWNER,
@@ -36,24 +39,11 @@ export class RegisterRepaymentRunner extends SimpleInterestTermsContractRunner {
                 const {
                     tokenTransferProxy,
                     simpleInterestTermsContract,
-                    dummyTokenRegistryContract,
                 } = this.contracts;
 
-                dummyREPToken = this.contracts.dummyREPToken;
-
-                const dummyZRXTokenAddress = await dummyTokenRegistryContract.getTokenAddressBySymbol.callAsync(
-                    "ZRX",
-                );
+                await this.fillDebtOrder();
 
                 const principalToken = scenario.principalToken(dummyREPToken);
-
-                dummyZRXToken = await DummyTokenContract.at(
-                    dummyZRXTokenAddress,
-                    web3,
-                    { from: CONTRACT_OWNER, gas: 4712388 },
-                );
-
-                await this.fillDebtOrder();
 
                 await principalToken.setBalance.sendTransactionAsync(DEBTOR_1, scenario.repaymentAmount, {
                     from: CONTRACT_OWNER,
@@ -70,10 +60,7 @@ export class RegisterRepaymentRunner extends SimpleInterestTermsContractRunner {
             });
 
             after(() => {
-                const { simpleInterestTermsContract } = this.contracts;
-
-                // Tear down ABIDecoder before next set of tests
-                ABIDecoder.removeABI(simpleInterestTermsContract.abi);
+                ABIDecoder.removeABI(this.contracts.simpleInterestTermsContract.abi);
             });
 
             if (scenario.succeeds) {
@@ -173,6 +160,26 @@ export class RegisterRepaymentRunner extends SimpleInterestTermsContractRunner {
             amount,
             tokenAddress,
             { from: DEBTOR_1 },
+        );
+    }
+
+    private async setupDummyZRXToken(): Promise<DummyTokenContract> {
+        const {
+            dummyTokenRegistryContract,
+        } = this.contracts;
+
+        const {
+            CONTRACT_OWNER,
+        } = this.accounts;
+
+        const dummyZRXTokenAddress = await dummyTokenRegistryContract.getTokenAddressBySymbol.callAsync(
+            "ZRX",
+        );
+
+        return DummyTokenContract.at(
+            dummyZRXTokenAddress,
+            web3,
+            { from: CONTRACT_OWNER, gas: 4712388 },
         );
     }
 }

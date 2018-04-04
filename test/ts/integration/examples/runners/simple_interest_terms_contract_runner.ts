@@ -6,7 +6,7 @@ import * as Units from "../../../test_utils/units";
 import * as moment from "moment";
 
 // Scenario runners
-import {RegisterRepaymentScenario, RegisterTermStartScenario, TestAccounts, TestContracts} from "../runners";
+import { RegisterRepaymentScenario, RegisterTermStartScenario, TestAccounts, TestContracts } from "./";
 
 // Wrappers
 import { SignedDebtOrder } from "../../../../../types/kernel/debt_order";
@@ -59,7 +59,7 @@ export abstract class SimpleInterestTermsContractRunner {
         );
     }
 
-    protected async reset(scenario: RegisterRepaymentScenario | RegisterTermStartScenario) {
+    protected async setupDebtOrder(scenario: RegisterRepaymentScenario | RegisterTermStartScenario) {
         const {
             simpleInterestTermsContract,
             kernel,
