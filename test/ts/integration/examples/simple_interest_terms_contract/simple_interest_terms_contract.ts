@@ -95,11 +95,11 @@ contract("Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) 
     });
 
     describe("#registerTermStart", () => {
-        describe("Successful register term state", () => {
+        describe("Successful register term start", () => {
             SUCCESSFUL_REGISTER_TERM_START_SCENARIOS.forEach(registerTermStartRunner.testScenario);
         });
 
-        describe("Unsuccessful register term state", () => {
+        describe("Unsuccessful register term start", () => {
             UNSUCCESSFUL_REGISTER_TERM_START_SCENARIOS.forEach(registerTermStartRunner.testScenario);
         });
     });

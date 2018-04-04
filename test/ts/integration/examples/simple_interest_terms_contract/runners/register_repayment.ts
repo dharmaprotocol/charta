@@ -18,6 +18,8 @@ import { LogRegisterRepayment } from "../../../../logs/simple_interest_terms_con
 // Runners
 import { SimpleInterestTermsContractRunner } from "./simple_interest_terms_contract_runner";
 
+const DEFAULT_GAS_AMOUNT = 4712388;
+
 export class RegisterRepaymentRunner extends SimpleInterestTermsContractRunner {
     public testScenario(scenario: RegisterRepaymentScenario) {
         let txHash: string;
@@ -161,7 +163,7 @@ export class RegisterRepaymentRunner extends SimpleInterestTermsContractRunner {
         return DummyTokenContract.at(
             dummyZRXTokenAddress,
             web3,
-            { from: this.accounts.CONTRACT_OWNER, gas: 4712388 },
+            { from: this.accounts.CONTRACT_OWNER, gas: DEFAULT_GAS_AMOUNT },
         );
     }
 }
