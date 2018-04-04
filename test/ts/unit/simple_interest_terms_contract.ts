@@ -620,12 +620,13 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
             before(async () => {
                 const INTEREST_RATE_SCALING_FACTOR = await termsContract.INTEREST_RATE_SCALING_FACTOR.callAsync();
 
-                INSTALLMENT_AMOUNT = principalAmount
+                const TOTAL_INTEREST = principalAmount
                     .mul(interestRate)
-                    .div(INTEREST_RATE_SCALING_FACTOR)
-                    .plus(principalAmount.div(termLength));
+                    .div(INTEREST_RATE_SCALING_FACTOR);
 
-                FULL_AMOUNT = INSTALLMENT_AMOUNT.mul(termLength);
+                FULL_AMOUNT = principalAmount.add(TOTAL_INTEREST);
+
+                INSTALLMENT_AMOUNT = FULL_AMOUNT.div(termLength);
 
                 await mockRegistry.mockGetTermsContractReturnValueFor.sendTransactionAsync(
                     ARBITRARY_AGREEMENT_ID,

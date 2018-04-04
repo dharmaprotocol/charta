@@ -332,11 +332,9 @@ contract SimpleInterestTermsContract is TermsContract {
         // scaled-up, fixed point representation, we have to
         // downscale the result of the interest payment computation
         // by the scaling factor we choose for interest rates.
-        uint interestPayment = params.principalAmount
+        uint totalInterest = params.principalAmount
             .mul(params.interestRate)
             .div(INTEREST_RATE_SCALING_FACTOR);
-
-        uint totalInterest = interestPayment.mul(params.termLengthInAmortizationUnits);
 
         return params.principalAmount.add(totalInterest);
     }
