@@ -75,20 +75,17 @@ export class RegisterRepaymentRunner extends SimpleInterestTermsContractRunner {
                 }
 
                 it("should emit a LogRegisterRepayment event", async () => {
-                    const { simpleInterestTermsContract } = this.contracts;
                     const { DEBTOR_1, CREDITOR_1 } = this.accounts;
-                    const debtOrder = this.debtOrder;
-                    const agreementId = this.agreementId;
 
                     const returnedLog = await this.getLogs(txHash, "LogRegisterRepayment");
 
                     const expectedLog = LogRegisterRepayment(
-                        simpleInterestTermsContract.address,
-                        agreementId,
+                        this.contracts.simpleInterestTermsContract.address,
+                        this.agreementId,
                         DEBTOR_1,
                         CREDITOR_1,
                         scenario.repaymentAmount,
-                        debtOrder.getPrincipalTokenAddress(),
+                        this.debtOrder.getPrincipalTokenAddress(),
                     );
 
                     expect(returnedLog).to.deep.equal(expectedLog);
@@ -138,49 +135,35 @@ export class RegisterRepaymentRunner extends SimpleInterestTermsContractRunner {
     private registerRepayment(amount: BigNumber) {
         const { simpleInterestTermsContract } = this.contracts;
         const { DEBTOR_1, CREDITOR_1 } = this.accounts;
-        const debtOrder = this.debtOrder;
-        const agreementId = this.agreementId;
 
         return simpleInterestTermsContract.registerRepayment.sendTransactionAsync(
-            agreementId,
+            this.agreementId,
             DEBTOR_1,
             CREDITOR_1,
             amount,
-            debtOrder.getPrincipalTokenAddress(),
+            this.debtOrder.getPrincipalTokenAddress(),
             {from: DEBTOR_1},
         );
     }
 
     private repayWithRouter(amount: BigNumber, tokenAddress: string) {
-        const { repaymentRouter } = this.contracts;
-        const { DEBTOR_1 } = this.accounts;
-        const agreementId = this.agreementId;
-
-        return repaymentRouter.repay.sendTransactionAsync(
-            agreementId,
+        return this.contracts.repaymentRouter.repay.sendTransactionAsync(
+            this.agreementId,
             amount,
             tokenAddress,
-            { from: DEBTOR_1 },
+            { from: this.accounts.DEBTOR_1 },
         );
     }
 
     private async setupDummyZRXToken(): Promise<DummyTokenContract> {
-        const {
-            dummyTokenRegistryContract,
-        } = this.contracts;
-
-        const {
-            CONTRACT_OWNER,
-        } = this.accounts;
-
-        const dummyZRXTokenAddress = await dummyTokenRegistryContract.getTokenAddressBySymbol.callAsync(
+        const dummyZRXTokenAddress = await this.contracts.dummyTokenRegistryContract.getTokenAddressBySymbol.callAsync(
             "ZRX",
         );
 
         return DummyTokenContract.at(
             dummyZRXTokenAddress,
             web3,
-            { from: CONTRACT_OWNER, gas: 4712388 },
+            { from: this.accounts.CONTRACT_OWNER, gas: 4712388 },
         );
     }
 }
