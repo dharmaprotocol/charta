@@ -4,14 +4,14 @@ import { RegisterRepaymentRunner } from "./register_repayment";
 import { RegisterTermStartRunner } from "./register_term_start";
 
 // Wrappers
-import { SignedDebtOrder } from "../../../../../types/kernel/debt_order";
-import { DummyTokenContract } from "../../../../../types/generated/dummy_token";
-import { DebtKernelContract } from "../../../../../types/generated/debt_kernel";
-import { TokenTransferProxyContract } from "../../../../../types/generated/token_transfer_proxy";
-import { SimpleInterestTermsContractContract } from "../../../../../types/generated/simple_interest_terms_contract";
-import { RepaymentRouterContract } from "../../../../../types/generated/repayment_router";
-import { TokenRegistryContract } from "../../../../../types/generated/token_registry";
-import { DebtTokenContract } from "../../../../../types/generated/debt_token";
+import { SignedDebtOrder } from "../../../../../../types/kernel/debt_order";
+import { DummyTokenContract } from "../../../../../../types/generated/dummy_token";
+import { DebtKernelContract } from "../../../../../../types/generated/debt_kernel";
+import { TokenTransferProxyContract } from "../../../../../../types/generated/token_transfer_proxy";
+import { SimpleInterestTermsContractContract } from "../../../../../../types/generated/simple_interest_terms_contract";
+import { RepaymentRouterContract } from "../../../../../../types/generated/repayment_router";
+import { TokenRegistryContract } from "../../../../../../types/generated/token_registry";
+import { DebtTokenContract } from "../../../../../../types/generated/debt_token";
 
 export interface TestAccounts {
     UNDERWRITER: string;

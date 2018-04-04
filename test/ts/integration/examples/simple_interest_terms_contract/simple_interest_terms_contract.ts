@@ -1,16 +1,16 @@
 // Test Utils
-import { BigNumberSetup } from "../../test_utils/bignumber_setup";
-import ChaiSetup from "../../test_utils/chai_setup";
+import { BigNumberSetup } from "../../../test_utils/bignumber_setup";
+import ChaiSetup from "../../../test_utils/chai_setup";
 
 // Wrappers
-import { DebtKernelContract } from "../../../../types/generated/debt_kernel";
-import { DebtRegistryContract } from "../../../../types/generated/debt_registry";
-import { DebtTokenContract } from "../../../../types/generated/debt_token";
-import { DummyTokenContract } from "../../../../types/generated/dummy_token";
-import { RepaymentRouterContract } from "../../../../types/generated/repayment_router";
-import { SimpleInterestTermsContractContract } from "../../../../types/generated/simple_interest_terms_contract";
-import { TokenRegistryContract } from "../../../../types/generated/token_registry";
-import { TokenTransferProxyContract } from "../../../../types/generated/token_transfer_proxy";
+import { DebtKernelContract } from "../../../../../types/generated/debt_kernel";
+import { DebtRegistryContract } from "../../../../../types/generated/debt_registry";
+import { DebtTokenContract } from "../../../../../types/generated/debt_token";
+import { DummyTokenContract } from "../../../../../types/generated/dummy_token";
+import { RepaymentRouterContract } from "../../../../../types/generated/repayment_router";
+import { SimpleInterestTermsContractContract } from "../../../../../types/generated/simple_interest_terms_contract";
+import { TokenRegistryContract } from "../../../../../types/generated/token_registry";
+import { TokenTransferProxyContract } from "../../../../../types/generated/token_transfer_proxy";
 
 // Configure BigNumber exponentiation
 BigNumberSetup.configure();

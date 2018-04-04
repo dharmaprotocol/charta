@@ -1,12 +1,12 @@
-import * as Units from "../../../test_utils/units";
+import * as Units from "../../../../test_utils/units";
 import { BigNumber } from "bignumber.js";
 
 // Scenarios
 import { RegisterRepaymentScenario } from "../runners/index";
 
 // Wrappers
-import { SignedDebtOrder } from "../../../../../types/kernel/debt_order";
-import { DummyTokenContract } from "../../../../../types/generated/dummy_token";
+import { SignedDebtOrder } from "../../../../../../types/kernel/debt_order";
+import { DummyTokenContract } from "../../../../../../types/generated/dummy_token";
 
 const defaultArgs = {
     principalTokenIndex: new BigNumber(0),

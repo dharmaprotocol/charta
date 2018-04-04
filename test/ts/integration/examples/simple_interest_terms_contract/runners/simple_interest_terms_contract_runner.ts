@@ -2,19 +2,19 @@
 import * as ABIDecoder from "abi-decoder";
 import * as _ from "lodash";
 import { BigNumber } from "bignumber.js";
-import * as Units from "../../../test_utils/units";
+import * as Units from "../../../../test_utils/units";
 import * as moment from "moment";
 
 // Scenario runners
 import { RegisterRepaymentScenario, RegisterTermStartScenario, TestAccounts, TestContracts } from "./";
 
 // Wrappers
-import { SignedDebtOrder } from "../../../../../types/kernel/debt_order";
-import { DummyTokenContract } from "../../../../../types/generated/dummy_token";
+import { SignedDebtOrder } from "../../../../../../types/kernel/debt_order";
+import { DummyTokenContract } from "../../../../../../types/generated/dummy_token";
 
 // Logs
-import { SimpleInterestParameters } from "../../../factories/terms_contract_parameters";
-import { DebtOrderFactory } from "../../../factories/debt_order_factory";
+import { SimpleInterestParameters } from "../../../../factories/terms_contract_parameters";
+import { DebtOrderFactory } from "../../../../factories/debt_order_factory";
 
 export abstract class SimpleInterestTermsContractRunner {
     protected accounts: TestAccounts;
