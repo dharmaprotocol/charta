@@ -3,13 +3,13 @@ import * as ABIDecoder from "abi-decoder";
 import { expect } from "chai";
 
 // Test Utils
-import { REVERT_ERROR } from "../../../test_utils/constants";
+import { REVERT_ERROR } from "../../../../test_utils/constants";
 
 // Scenario runners
 import { RegisterTermStartScenario } from "./";
 
 // Logs
-import { LogSimpleInterestTermStart } from "../../../logs/simple_interest_terms_contract";
+import { LogSimpleInterestTermStart } from "../../../../logs/simple_interest_terms_contract";
 
 // Runners
 import { SimpleInterestTermsContractRunner } from "./simple_interest_terms_contract_runner";

@@ -1,5 +1,5 @@
 import { BigNumber } from "bignumber.js";
-import * as Units from "../../../test_utils/units";
+import * as Units from "../../../../test_utils/units";
 
 // Scenarios
 import { RegisterTermStartScenario } from "../runners/index";

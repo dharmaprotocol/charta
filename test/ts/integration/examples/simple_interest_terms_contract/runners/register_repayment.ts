@@ -4,16 +4,16 @@ import { expect } from "chai";
 import { BigNumber } from "bignumber.js";
 
 // Test Utils
-import { REVERT_ERROR } from "../../../test_utils/constants";
+import { REVERT_ERROR } from "../../../../test_utils/constants";
 
 // Scenario runners
 import { RegisterRepaymentScenario } from "./";
 
 // Wrappers
-import { DummyTokenContract } from "../../../../../types/generated/dummy_token";
+import { DummyTokenContract } from "../../../../../../types/generated/dummy_token";
 
 // Logs
-import { LogRegisterRepayment } from "../../../logs/simple_interest_terms_contract";
+import { LogRegisterRepayment } from "../../../../logs/simple_interest_terms_contract";
 
 // Runners
 import { SimpleInterestTermsContractRunner } from "./simple_interest_terms_contract_runner";
