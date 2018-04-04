@@ -46,8 +46,6 @@ export interface RegisterRepaymentScenario {
     termLengthUnits: BigNumber;
     // The amount that the payer is attempting to repay.
     repaymentAmount: BigNumber;
-    // The principal token used in this scenario.
-    principalToken: (principalToken: DummyTokenContract) => DummyTokenContract;
     // The token used for repayments.
     repaymentToken: (principalToken: DummyTokenContract, otherToken: DummyTokenContract) => DummyTokenContract;
     // The debt order to use in this scenario.

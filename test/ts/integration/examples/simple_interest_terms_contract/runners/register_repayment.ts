@@ -46,13 +46,11 @@ export class RegisterRepaymentRunner extends SimpleInterestTermsContractRunner {
                 // Fill a debt order, against which to test repayments.
                 await this.fillDebtOrder();
 
-                const principalToken = scenario.principalToken(dummyREPToken);
-
-                await principalToken.setBalance.sendTransactionAsync(DEBTOR_1, scenario.repaymentAmount, {
+                await dummyREPToken.setBalance.sendTransactionAsync(DEBTOR_1, scenario.repaymentAmount, {
                     from: CONTRACT_OWNER,
                 });
 
-                await principalToken.approve.sendTransactionAsync(
+                await dummyREPToken.approve.sendTransactionAsync(
                     tokenTransferProxy.address,
                     scenario.repaymentAmount,
                     { from: DEBTOR_1 },
