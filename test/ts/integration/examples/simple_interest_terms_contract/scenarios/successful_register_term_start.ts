@@ -37,7 +37,7 @@ export const SUCCESSFUL_REGISTER_TERM_START_SCENARIOS: RegisterTermStartScenario
     {
         description: "when the terms length is 100",
         ...defaultArgs,
-        termLengthUnits: new BigNumber(0),
+        termLengthUnits: new BigNumber(100),
     },
     {
         description: "when the amortization unit type is 4",
