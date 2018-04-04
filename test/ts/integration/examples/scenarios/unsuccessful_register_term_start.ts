@@ -10,6 +10,8 @@ const defaultArgs = {
     interestRate: Units.percent(2.5),
     amortizationUnitType: new BigNumber(1),
     termLengthUnits: new BigNumber(4),
+    succeeds: false,
+    invokedByDebtKernel: true,
 };
 
 export const UNSUCCESSFUL_REGISTER_TERM_START_SCENARIOS: RegisterTermStartScenario[] = [
@@ -17,6 +19,15 @@ export const UNSUCCESSFUL_REGISTER_TERM_START_SCENARIOS: RegisterTermStartScenar
         description: "when invoked outside of the debt kernel",
         ...defaultArgs,
         invokedByDebtKernel: false,
-        succeeds: false,
+    },
+    {
+        description: "when the amortization unit type is 5",
+        ...defaultArgs,
+        amortizationUnitType: new BigNumber(5),
+    },
+    {
+        description: "when the principal amount is 0",
+        ...defaultArgs,
+        principalAmount: new BigNumber(0),
     },
 ];
