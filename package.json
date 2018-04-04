@@ -65,6 +65,7 @@
     "copyfiles": "^1.2.0",
     "ethereumjs-abi": "^0.6.4",
     "ethereumjs-util": "^5.1.2",
+    "ethjs-abi": "^0.2.1",
     "fs-extra": "^5.0.0",
     "ganache-cli": "^6.1.0",
     "import-sort-cli": "^4.2.0",
