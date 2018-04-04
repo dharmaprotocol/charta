@@ -64,16 +64,16 @@ export class RegisterRepaymentRunner extends SimpleInterestTermsContractRunner {
                 ABIDecoder.removeABI(this.contracts.simpleInterestTermsContract.abi);
             });
 
-            if (scenario.succeeds) {
-                if (scenario.repayFromRouter) {
-                    before(async () => {
-                        txHash = await this.repayWithRouter(
-                            scenario.repaymentAmount,
-                            scenario.repaymentToken(dummyREPToken, dummyZRXToken).address,
-                        );
-                    });
-                }
+            if (scenario.repayFromRouter && !scenario.reverts) {
+                before(async () => {
+                    txHash = await this.repayWithRouter(
+                        scenario.repaymentAmount,
+                        scenario.repaymentToken(dummyREPToken, dummyZRXToken).address,
+                    );
+                });
+            }
 
+            if (scenario.succeeds) {
                 it("should emit a LogRegisterRepayment event", async () => {
                     const { DEBTOR_1, CREDITOR_1 } = this.accounts;
 
