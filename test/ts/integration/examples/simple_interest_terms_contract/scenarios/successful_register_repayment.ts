@@ -2,12 +2,11 @@ import { BigNumber } from "bignumber.js";
 import * as Units from "../../../../test_utils/units";
 
 // Scenarios
-import {SimpleInterestContractTerms, RegisterRepaymentScenario} from "../runners/index";
+import { RegisterRepaymentScenario } from "../runners/";
 
 // Wrappers
 import { SignedDebtOrder } from "../../../../../../types/kernel/debt_order";
 import { DummyTokenContract } from "../../../../../../types/generated/dummy_token";
-import {SimpleInterestParameters} from "../../../../factories/terms_contract_parameters";
 
 const defaultArgs = {
     principalTokenIndex: new BigNumber(0),
@@ -16,10 +15,8 @@ const defaultArgs = {
     amortizationUnitType: new BigNumber(1),
     termLengthUnits: new BigNumber(4),
     repaymentAmount: Units.ether(1.29),
-    principalToken: (principalToken: DummyTokenContract) => principalToken,
     repaymentToken: (principalToken: DummyTokenContract, otherToken: DummyTokenContract) => principalToken,
     debtOrder: (debtOrder: SignedDebtOrder) => debtOrder,
-    termsContractParameters: (terms: SimpleInterestContractTerms) => SimpleInterestParameters.pack(...terms),
     repayFromRouter: true,
     succeeds: true,
     reverts: false,

@@ -25,6 +25,7 @@ export class RegisterRepaymentRunner extends SimpleInterestTermsContractRunner {
         let txHash: string;
         let dummyREPToken: DummyTokenContract;
         let dummyZRXToken: DummyTokenContract;
+        let repaidAmountBefore: BigNumber;
 
         describe(scenario.description, () => {
             before(async () => {
@@ -55,6 +56,9 @@ export class RegisterRepaymentRunner extends SimpleInterestTermsContractRunner {
                     scenario.repaymentAmount,
                     { from: DEBTOR_1 },
                 );
+
+                repaidAmountBefore = await this.contracts.simpleInterestTermsContract
+                    .getValueRepaidToDate.callAsync(this.agreementId);
 
                 // Setup ABI decoder in order to decode logs
                 ABIDecoder.addABI(simpleInterestTermsContract.abi);
@@ -114,7 +118,7 @@ export class RegisterRepaymentRunner extends SimpleInterestTermsContractRunner {
 
                     await expect(
                         simpleInterestTermsContract.getValueRepaidToDate.callAsync(agreementId),
-                    ).to.eventually.bignumber.equal(scenario.repaymentAmount);
+                    ).to.eventually.bignumber.equal(repaidAmountBefore.add(scenario.repaymentAmount));
                 });
             } else {
                 it("should not record a repayment", async () => {
@@ -123,7 +127,7 @@ export class RegisterRepaymentRunner extends SimpleInterestTermsContractRunner {
 
                     await expect(
                         simpleInterestTermsContract.getValueRepaidToDate.callAsync(agreementId),
-                    ).to.eventually.bignumber.equal(0);
+                    ).to.eventually.bignumber.equal(repaidAmountBefore);
                 });
             }
         });

@@ -2,7 +2,10 @@ import { BigNumber } from "bignumber.js";
 import * as Units from "../../../../test_utils/units";
 
 // Scenarios
-import { RegisterTermStartScenario } from "../runners/index";
+import { RegisterTermStartScenario } from "../runners";
+
+// Factories
+import { SimpleInterestContractTerms, SimpleInterestParameters } from "../../../../factories/terms_contract_parameters";
 
 const defaultArgs = {
     principalTokenIndex: new BigNumber(0),
@@ -12,6 +15,7 @@ const defaultArgs = {
     termLengthUnits: new BigNumber(4),
     invokedByDebtKernel: true,
     succeeds: true,
+    termsContractParameters: (terms: SimpleInterestContractTerms) => SimpleInterestParameters.pack(terms),
 };
 
 export const SUCCESSFUL_REGISTER_TERM_START_SCENARIOS: RegisterTermStartScenario[] = [
