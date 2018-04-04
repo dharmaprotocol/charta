@@ -104,12 +104,6 @@ export class CollateralizeRunner {
                     scenario.collateralTokenAllowance,
                 );
 
-                // Mock collateral token's balance for collateralizer.
-                await mockCollateralToken.mockBalanceOfFor.sendTransactionAsync(
-                    COLLATERALIZER,
-                    scenario.collateralTokenBalance,
-                );
-
                 ABIDecoder.addABI(collateralizer.abi);
             });
 

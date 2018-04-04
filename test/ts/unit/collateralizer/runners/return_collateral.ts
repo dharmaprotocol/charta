@@ -1,10 +1,10 @@
-// modules
+// External Libraries
 import { expect } from "chai";
 import * as ABIDecoder from "abi-decoder";
 import { compact } from "lodash";
 import { BigNumber } from "bignumber.js";
 
-// wrappers
+// Wrappers
 import { CollateralizerContract } from "types/generated/collateralizer";
 import { MockDebtRegistryContract } from "types/generated/mock_debt_registry";
 import { MockERC20TokenContract } from "types/generated/mock_e_r_c20_token";
@@ -12,13 +12,16 @@ import { MockTokenRegistryContract } from "types/generated/mock_token_registry";
 import { MockTokenTransferProxyContract } from "types/generated/mock_token_transfer_proxy";
 import { MockCollateralizedTermsContractContract } from "../../../../../types/generated/mock_collateralized_terms_contract";
 
-// scenarios
+// Test Scenarios
 import { ReturnCollateralScenario, TestAccounts, TestContracts } from "./";
 
-// utils
+// Test Utils
 import { NULL_ADDRESS, REVERT_ERROR } from "../../../test_utils/constants";
 
-// logs
+// Factories
+import { CollateralizedSimpleInterestTermsParameters } from "../../../factories/terms_contract_parameters";
+
+// Logs
 import { CollateralReturned } from "../../../logs/collateralized_contract";
 
 export class ReturnCollateralRunner {
@@ -79,7 +82,7 @@ export class ReturnCollateralRunner {
 
                 // 2.  Packing that index and other collateralization parameters
                 //      into a terms contract parameter string.
-                const termsContractParameters = this.packTermsContractParameters(
+                const termsContractParameters = CollateralizedSimpleInterestTermsParameters.pack(
                     new BigNumber(0),
                     scenario.collateralAmount,
                     scenario.gracePeriodInDays,
@@ -181,9 +184,9 @@ export class ReturnCollateralRunner {
 
                 it("should emit log that collateral has been returned", async () => {
                     const receipt = await web3.eth.getTransactionReceipt(txHash);
-                    const [CollateralSeizedLog] = compact(ABIDecoder.decodeLogs(receipt.logs));
+                    const [CollateralReturnedLog] = compact(ABIDecoder.decodeLogs(receipt.logs));
 
-                    expect(CollateralSeizedLog).to.deep.equal(
+                    expect(CollateralReturnedLog).to.deep.equal(
                         CollateralReturned(
                             collateralizer.address,
                             scenario.agreementId,
@@ -213,20 +216,5 @@ export class ReturnCollateralRunner {
                 });
             }
         });
-    }
-
-    private packTermsContractParameters(
-        collateralTokenIndex: BigNumber,
-        collateralAmount: BigNumber,
-        gracePeriodInDays: BigNumber,
-    ): string {
-        const encodedCollateralToken = collateralTokenIndex.toString(16).padStart(2, "0");
-        const encodedCollateralAmount = collateralAmount.toString(16).padStart(23, "0");
-        const encodedGracePeriodInDays = gracePeriodInDays.toString(16).padStart(2, "0");
-
-        const packedCollateralParameters =
-            encodedCollateralToken + encodedCollateralAmount + encodedGracePeriodInDays;
-
-        return `0x${packedCollateralParameters.padStart(64, "0")}`;
     }
 }

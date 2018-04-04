@@ -1,11 +1,10 @@
-// modules
+// External Libraries
 import { expect } from "chai";
 import * as ABIDecoder from "abi-decoder";
-import * as moment from "moment";
 import { compact } from "lodash";
 import { BigNumber } from "bignumber.js";
 
-// wrappers
+// Wrappers
 import { CollateralizerContract } from "types/generated/collateralizer";
 import { MockDebtRegistryContract } from "types/generated/mock_debt_registry";
 import { MockERC20TokenContract } from "types/generated/mock_e_r_c20_token";
@@ -13,14 +12,17 @@ import { MockTokenRegistryContract } from "types/generated/mock_token_registry";
 import { MockTokenTransferProxyContract } from "types/generated/mock_token_transfer_proxy";
 import { MockCollateralizedTermsContractContract } from "../../../../../types/generated/mock_collateralized_terms_contract";
 
-// scenarios
+// Scenarios
 import { SeizeCollateralScenario, TestAccounts, TestContracts } from "./";
 
-// utils
+// Test Utils
 import { NULL_ADDRESS, REVERT_ERROR } from "../../../test_utils/constants";
 
-// logs
+// Logs
 import { CollateralSeized } from "../../../logs/collateralized_contract";
+
+// Factories
+import { CollateralizedSimpleInterestTermsParameters } from "../../../factories/terms_contract_parameters";
 
 export class SeizeCollateralRunner {
     private contracts: TestContracts;
@@ -80,7 +82,7 @@ export class SeizeCollateralRunner {
 
                 // 2.  Packing that index and other collateralization parameters
                 //      into a terms contract parameter string.
-                const termsContractParameters = this.packTermsContractParameters(
+                const termsContractParameters = CollateralizedSimpleInterestTermsParameters.pack(
                     new BigNumber(0),
                     scenario.collateralAmount,
                     scenario.gracePeriodInDays,
@@ -147,12 +149,6 @@ export class SeizeCollateralRunner {
                     scenario.valueRepaidToDate,
                 );
 
-                // 7.  Mocking the debt term's ending timestamp
-                // await mockTermsContract.mockTermEndTimestamp.sendTransactionAsync(
-                //     scenario.agreementId,
-                //     new BigNumber(scenario.termEndTimestamp),
-                // );
-
                 if (typeof scenario.before !== "undefined") {
                     await scenario.before(collateralizer, mockTermsContract);
                 }
@@ -166,20 +162,12 @@ export class SeizeCollateralRunner {
 
             if (scenario.succeeds) {
                 it("should not throw", async () => {
-                    await expect(
-                        new Promise(async (resolve, reject) => {
-                            try {
-                                txHash = await collateralizer.seizeCollateral.sendTransactionAsync(
-                                    scenario.agreementId,
-                                    { from: scenario.from(BENEFICIARY_1, BENEFICIARY_2) },
-                                );
+                    txHash = await collateralizer.seizeCollateral.sendTransactionAsync(
+                        scenario.agreementId,
+                        { from: scenario.from(BENEFICIARY_1, BENEFICIARY_2) },
+                    );
 
-                                resolve(txHash);
-                            } catch (e) {
-                                reject(e);
-                            }
-                        }),
-                    ).to.eventually.not.be.rejected;
+                    expect(txHash.length).to.equal(66);
                 });
 
                 it("should erase record of current collateralization", async () => {
@@ -224,20 +212,5 @@ export class SeizeCollateralRunner {
                 });
             }
         });
-    }
-
-    private packTermsContractParameters(
-        collateralTokenIndex: BigNumber,
-        collateralAmount: BigNumber,
-        gracePeriodInDays: BigNumber,
-    ): string {
-        const encodedCollateralToken = collateralTokenIndex.toString(16).padStart(2, "0");
-        const encodedCollateralAmount = collateralAmount.toString(16).padStart(23, "0");
-        const encodedGracePeriodInDays = gracePeriodInDays.toString(16).padStart(2, "0");
-
-        const packedCollateralParameters =
-            encodedCollateralToken + encodedCollateralAmount + encodedGracePeriodInDays;
-
-        return `0x${packedCollateralParameters.padStart(64, "0")}`;
     }
 }
