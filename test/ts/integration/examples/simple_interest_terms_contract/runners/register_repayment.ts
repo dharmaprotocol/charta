@@ -41,6 +41,7 @@ export class RegisterRepaymentRunner extends SimpleInterestTermsContractRunner {
                     simpleInterestTermsContract,
                 } = this.contracts;
 
+                // Fill a debt order, against which to test repayments.
                 await this.fillDebtOrder();
 
                 const principalToken = scenario.principalToken(dummyREPToken);
@@ -64,14 +65,14 @@ export class RegisterRepaymentRunner extends SimpleInterestTermsContractRunner {
             });
 
             if (scenario.succeeds) {
-                before(async () => {
-                    if (scenario.repayFromRouter) {
+                if (scenario.repayFromRouter) {
+                    before(async () => {
                         txHash = await this.repayWithRouter(
                             scenario.repaymentAmount,
                             scenario.repaymentToken(dummyREPToken, dummyZRXToken).address,
                         );
-                    }
-                });
+                    });
+                }
 
                 it("should emit a LogRegisterRepayment event", async () => {
                     const { simpleInterestTermsContract } = this.contracts;
