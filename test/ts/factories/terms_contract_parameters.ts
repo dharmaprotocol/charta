@@ -24,7 +24,10 @@ export class SimpleInterestParameters extends TermsContractParameters {
             248,
         );
 
-        const principalAmountShifted = TermsContractParameters.bitShiftLeft(terms.principalAmount, 152);
+        const principalAmountShifted = TermsContractParameters.bitShiftLeft(
+            terms.principalAmount,
+            152,
+        );
 
         const interestRateShifted = TermsContractParameters.bitShiftLeft(terms.interestRate, 128);
 

@@ -34,4 +34,9 @@ export const UNSUCCESSFUL_REGISTER_TERM_START_SCENARIOS: RegisterTermStartScenar
         ...defaultArgs,
         principalAmount: new BigNumber(0),
     },
+    {
+        description: "when the terms contract parameters are malformed",
+        ...defaultArgs,
+        termsContractParameters: (terms: SimpleInterestContractTerms) => "0xf10111",
+    },
 ];
