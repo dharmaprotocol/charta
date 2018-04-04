@@ -16,6 +16,8 @@ import { DummyTokenContract } from "../../../../../../types/generated/dummy_toke
 import { SimpleInterestParameters } from "../../../../factories/terms_contract_parameters";
 import { DebtOrderFactory } from "../../../../factories/debt_order_factory";
 
+const DEFAULT_GAS_AMOUNT = 4712388;
+
 export abstract class SimpleInterestTermsContractRunner {
     protected accounts: TestAccounts;
     protected contracts: TestContracts;
@@ -126,7 +128,7 @@ export abstract class SimpleInterestTermsContractRunner {
         const token = await DummyTokenContract.at(
             debtOrder.getPrincipalTokenAddress(),
             web3,
-            { from: CONTRACT_OWNER, gas: 4712388 },
+            { from: CONTRACT_OWNER, gas: DEFAULT_GAS_AMOUNT },
         );
 
         const debtor = debtOrder.getDebtor();
