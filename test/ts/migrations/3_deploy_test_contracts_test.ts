@@ -25,7 +25,6 @@ import { MockERC721TokenContract } from "../../../types/generated/mock_e_r_c721_
 import { MockDebtTokenContract } from "../../../types/generated/mock_debt_token";
 import { MockTermsContractContract } from "../../../types/generated/mock_terms_contract";
 import { MockTokenTransferProxyContract } from "../../../types/generated/mock_token_transfer_proxy";
-import { MintableNonFungibleTokenContract } from "../../../types/generated/mintable_non_fungible_token";
 
 import { TokenRegistryContract } from "../../../types/generated/token_registry";
 
@@ -44,7 +43,6 @@ contract("Migration #3: Deploying Test Contracts", async (ACCOUNTS) => {
     let mockDebtTokenContract: MockDebtTokenContract;
     let mockTermsContract: MockTermsContractContract;
     let mockTokenTransferProxy: MockTokenTransferProxyContract;
-    let mintableNonFungibleToken: MintableNonFungibleTokenContract;
     let tokenRegistry: TokenRegistryContract;
 
     describe("Deployment", () => {
@@ -84,14 +82,6 @@ contract("Migration #3: Deploying Test Contracts", async (ACCOUNTS) => {
                 TX_DEFAULTS,
             );
             expect(web3Utils.doesContractExistAtAddressAsync(mockTokenTransferProxy.address)).to
-                .eventually.be.true;
-        });
-        it("should deploy the `MintableNonFungibleToken` contract to the current network", async () => {
-            mintableNonFungibleToken = await MintableNonFungibleTokenContract.deployed(
-                web3,
-                TX_DEFAULTS,
-            );
-            expect(web3Utils.doesContractExistAtAddressAsync(mintableNonFungibleToken.address)).to
                 .eventually.be.true;
         });
         it("should deploy the `TokenRegistry` contract to the current network", async () => {

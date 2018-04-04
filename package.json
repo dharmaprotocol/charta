@@ -41,8 +41,7 @@
     "dist"
   ],
   "dependencies": {
-    "NonFungibleToken": "https://github.com/dharmaprotocol/NonFungibleToken.git",
-    "zeppelin-solidity": "^1.6.0"
+    "zeppelin-solidity": "^1.8.0"
   },
   "devDependencies": {
     "@0xproject/abi-gen": "0.2.3",

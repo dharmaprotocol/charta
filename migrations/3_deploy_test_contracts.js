@@ -11,7 +11,6 @@ module.exports = (deployer, network, accounts) => {
     const MockTermsContract = artifacts.require("MockTermsContract");
     const MockTokenRegistry = artifacts.require("MockTokenRegistry");
     const MockTokenTransferProxyContract = artifacts.require("MockTokenTransferProxy");
-    const MintableNonFungibleToken = artifacts.require("MintableNonFungibleToken");
     const TokenRegistry = artifacts.require("TokenRegistry");
 
     OWNER = accounts[0];
@@ -26,7 +25,6 @@ module.exports = (deployer, network, accounts) => {
         deployer.deploy(MockTermsContract);
         deployer.deploy(MockTokenTransferProxyContract);
         deployer.deploy(MockTokenRegistry);
-        deployer.deploy(MintableNonFungibleToken);
         deployer.deploy(TokenRegistry).then(async () => {
             const tokenRegistry = await TokenRegistry.deployed();
 
