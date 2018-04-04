@@ -29,10 +29,6 @@ export const SUCCESSFUL_REGISTER_REPAYMENT_SCENARIOS: RegisterRepaymentScenario[
         ...defaultArgs,
     },
     {
-        description: "when called from the RepaymentRouter",
-        ...defaultArgs,
-    },
-    {
         description: "when payment is greater than the principal amount",
         ...defaultArgs,
         repaymentAmount: defaultArgs.principalAmount.add(1),
