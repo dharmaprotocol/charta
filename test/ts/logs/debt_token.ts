@@ -6,18 +6,6 @@ import * as _ from "lodash";
 import * as Web3 from "web3";
 import * as LogUtils from "./log_utils";
 
-export function LogMint(
-    contract: Address,
-    to: Address,
-    tokenId: BigNumber.BigNumber,
-): ABIDecoder.DecodedLog {
-    return {
-        address: contract,
-        events: LogUtils.getParams([["_to", to], ["_tokenId", tokenId]]),
-        name: "Mint",
-    };
-}
-
 export function LogTransfer(
     contract: Address,
     from: Address,
@@ -45,5 +33,22 @@ export function LogApproval(
             ["_tokenId", tokenId],
         ]),
         name: "Approval",
+    };
+}
+
+export function LogApprovalForAll(
+    contract: Address,
+    owner: Address,
+    operator: Address,
+    approved: boolean,
+): ABIDecoder.DecodedLog {
+    return {
+        address: contract,
+        events: LogUtils.getParams([
+            ["_owner", owner],
+            ["_operator", operator],
+            ["_approved", approved],
+        ]),
+        name: "ApprovalForAll",
     };
 }

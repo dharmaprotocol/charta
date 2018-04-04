@@ -176,7 +176,9 @@ contract MockDebtToken is MockContract {
         view
         returns (address _owner)
     {
-        return address(getMockReturnValue("ownerOf", keccak256(_tokenId)));
+        _owner = _getOwner(_tokenId);
+        require(_owner != address(0));
+        return _owner;
     }
 
     function mockOwnerOfFor(uint _tokenId, address _owner)
@@ -185,10 +187,26 @@ contract MockDebtToken is MockContract {
         mockReturnValue("ownerOf", keccak256(_tokenId), bytes32(_owner));
     }
 
+    function exists(uint _tokenId)
+        public
+        view
+        returns (bool _exists)
+    {
+        return _getOwner(_tokenId) != address(0);
+    }
+
+    function _getOwner(uint _tokenId)
+        private
+        view
+        returns (address _owner)
+    {
+        return address(getMockReturnValue("ownerOf", keccak256(_tokenId)));
+    }
+
     function getFunctionList()
         internal
         returns (string[10] functionNames)
     {
-        return ["create", "brokerZeroExOrder", "ownerOf", "transfer", "", "", "", "", "", ""];
+        return ["create", "brokerZeroExOrder", "ownerOf", "transfer", "exists", "", "", "", "", ""];
     }
 }

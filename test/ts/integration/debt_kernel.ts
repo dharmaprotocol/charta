@@ -15,7 +15,7 @@ import { BigNumberSetup } from "../test_utils/bignumber_setup";
 import { SignedDebtOrder } from "../../../types/kernel/debt_order";
 
 // Logs
-import { LogMint, LogTransfer } from "../logs/debt_token";
+import { LogApproval, LogTransfer } from "../logs/debt_token";
 import { LogDebtOrderFilled, LogError } from "../logs/debt_kernel";
 import { LogInsertEntry } from "../logs/debt_registry";
 
@@ -394,10 +394,11 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                         );
                     });
 
-                    it("should emit debt token mint log", async () => {
+                    it("should emit debt token transfer log", async () => {
                         await expect(logs.shift()).to.deep.equal(
-                            LogMint(
+                            LogTransfer(
                                 debtTokenContract.address,
+                                NULL_ADDRESS,
                                 debtOrder.getCreditor(),
                                 new BigNumber(debtOrder.getIssuanceCommitment().getHash()),
                             ),

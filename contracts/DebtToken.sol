@@ -19,8 +19,9 @@
 pragma solidity 0.4.18;
 
 import "./DebtRegistry.sol";
-import "NonFungibleToken/contracts/MintableNonFungibleToken.sol";
+import "./ERC165.sol";
 import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
+import "zeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 import "zeppelin-solidity/contracts/token/ERC20/ERC20.sol";
 
 
@@ -32,11 +33,8 @@ import "zeppelin-solidity/contracts/token/ERC20/ERC20.sol";
  *
  * Author: Nadav Hollander -- Github: nadavhollander
  */
-contract DebtToken is MintableNonFungibleToken, Pausable {
+contract DebtToken is ERC721Token, ERC165, Pausable {
     using PermissionsLib for PermissionsLib.Permissions;
-
-    string public name  = "DebtToken";
-    string public symbol = "DDT";
 
     DebtRegistry public registry;
 
@@ -48,8 +46,21 @@ contract DebtToken is MintableNonFungibleToken, Pausable {
      */
     function DebtToken(address _registry)
         public
+        ERC721Token("DebtToken", "DDT")
     {
         registry = DebtRegistry(_registry);
+    }
+
+    /**
+     * ERC165 interface.
+     * Returns true for ERC721, false otherwise
+     */
+    function supportsInterface(bytes4 interfaceID)
+        external
+        view
+        returns (bool _isSupported)
+    {
+        return interfaceID == 0x80ac58cd; // ERC721
     }
 
     /**
@@ -83,7 +94,7 @@ contract DebtToken is MintableNonFungibleToken, Pausable {
             _salt
         );
 
-        mint(_beneficiary, uint(entryHash));
+        super._mint(_beneficiary, uint(entryHash));
 
         return uint(entryHash);
     }
@@ -120,43 +131,81 @@ contract DebtToken is MintableNonFungibleToken, Pausable {
     }
 
     /**
-     * We override the core transfer method of the parent non-fungible token
+     * We override approval method of the parent ERC721Token
      * contract to allow its functionality to be frozen in the case of an emergency
      */
-    function _clearApprovalAndTransfer(
-        address _from,
-        address _to,
-        uint _tokenId
-    )
-        internal
+    function approve(address _to, uint _tokenId)
+        public
         whenNotPaused
     {
-        super._clearApprovalAndTransfer(_from, _to, _tokenId);
+        super.approve(_to, _tokenId);
     }
 
     /**
-     * We override the core approvals method of the parent non-fungible token
+     * We override setApprovalForAll method of the parent ERC721Token
      * contract to allow its functionality to be frozen in the case of an emergency
      */
-    function _approve(address _to, uint _tokenId)
-        internal
+    function setApprovalForAll(address _to, bool _approved)
+        public
         whenNotPaused
     {
-        super._approve(_to, _tokenId);
+        super.setApprovalForAll(_to, _approved);
     }
 
+    /**
+     * Support deprecated ERC721 method
+     */
+    function transfer(address _to, uint _tokenId)
+        public
+    {
+        safeTransferFrom(msg.sender, _to, _tokenId);
+    }
 
     /**
-     * We oveerride the core ownership transfer method of the parent non-fungible token
-     * contract so that it mutates the debt registry every time a token is transferred
+     * We override transferFrom methods of the parent ERC721Token
+     * contract to allow its functionality to be frozen in the case of an emergency
      */
-    function _setTokenOwner(uint _tokenId, address _to)
+    function transferFrom(address _from, address _to, uint _tokenId)
+        public
+        whenNotPaused
+    {
+        _modifyBeneficiary(_tokenId, _to);
+        super.transferFrom(_from, _to, _tokenId);
+    }
+
+    /**
+     * We override safeTransferFrom methods of the parent ERC721Token
+     * contract to allow its functionality to be frozen in the case of an emergency
+     */
+    function safeTransferFrom(address _from, address _to, uint _tokenId)
+        public
+        whenNotPaused
+    {
+        _modifyBeneficiary(_tokenId, _to);
+        super.safeTransferFrom(_from, _to, _tokenId);
+    }
+
+    /**
+     * We override safeTransferFrom methods of the parent ERC721Token
+     * contract to allow its functionality to be frozen in the case of an emergency
+     */
+    function safeTransferFrom(address _from, address _to, uint _tokenId, bytes _data)
+        public
+        whenNotPaused
+    {
+        _modifyBeneficiary(_tokenId, _to);
+        super.safeTransferFrom(_from, _to, _tokenId, _data);
+    }
+
+    /**
+     * _modifyBeneficiary mutates the debt registry. This function should be
+     * called every time a token is transferred or minted
+     */
+    function _modifyBeneficiary(uint _tokenId, address _to)
         internal
     {
         if (registry.getBeneficiary(bytes32(_tokenId)) != _to) {
             registry.modifyBeneficiary(bytes32(_tokenId), _to);
         }
-
-        super._setTokenOwner(_tokenId, _to);
     }
 }
