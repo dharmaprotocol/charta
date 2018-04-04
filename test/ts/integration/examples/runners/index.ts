@@ -58,7 +58,7 @@ export interface RegisterRepaymentScenario {
 export interface RegisterTermStartScenario {
     // The test's description
     description: string;
-    // True if the scenario does not revert, and the repayment gets logged.
+    // True if the scenario does not revert and the terms contract is started.
     succeeds: boolean;
     // True if registerTermStart is called by the debt kernel upon an order being filled.
     invokedByDebtKernel: boolean;
