@@ -11,7 +11,7 @@ import { SignedDebtOrder } from "../../../../../types/kernel/debt_order";
 
 // Logs
 import { LogSimpleInterestTermStart } from "../../../logs/simple_interest_terms_contract";
-import {REVERT_ERROR} from "../../../test_utils/constants";
+import { REVERT_ERROR } from "../../../test_utils/constants";
 
 export class RegisterTermStartRunner {
     private accounts: TestAccounts;
@@ -37,54 +37,31 @@ export class RegisterTermStartRunner {
 
         describe(scenario.description, () => {
             before(async () => {
-                const {
-                    UNDERWRITER,
-                } = this.accounts;
-
-                const {
-                    kernel,
-                    simpleInterestTermsContract,
-                } = this.contracts;
-
-                const debtOrder = this.debtOrder;
-
                 if (scenario.invokedByDebtKernel) {
-                    txHash = await kernel.fillDebtOrder.sendTransactionAsync(
-                        debtOrder.getCreditor(),
-                        debtOrder.getOrderAddresses(),
-                        debtOrder.getOrderValues(),
-                        debtOrder.getOrderBytes32(),
-                        debtOrder.getSignaturesV(),
-                        debtOrder.getSignaturesR(),
-                        debtOrder.getSignaturesS(),
-                        { from: UNDERWRITER },
-                    );
+                    // Fill the debt order, thereby invoking registerTermsStart from the debt kernel.
+                    txHash = await this.fillDebtOrder();
                 }
 
                 // Setup ABI decoder in order to decode logs
-                ABIDecoder.addABI(simpleInterestTermsContract.abi);
-                ABIDecoder.addABI(kernel.abi);
+                ABIDecoder.addABI(this.contracts.simpleInterestTermsContract.abi);
             });
 
             after(() => {
-                const { simpleInterestTermsContract } = this.contracts;
-
                 // Tear down ABIDecoder before next set of tests
-                ABIDecoder.removeABI(simpleInterestTermsContract.abi);
+                ABIDecoder.removeABI(this.contracts.simpleInterestTermsContract.abi);
             });
 
             if (scenario.succeeds) {
                 it("should emit a LogSimpleInterestTermStart event", async () => {
                     const { simpleInterestTermsContract } = this.contracts;
-                    const { AGREEMENT_ID, INTEREST_RATE, AMORTIZATION_UNIT_TYPE, TERM_LENGTH_UNITS } = this.termsParams;
+                    const {
+                        AGREEMENT_ID,
+                        INTEREST_RATE,
+                        AMORTIZATION_UNIT_TYPE,
+                        TERM_LENGTH_UNITS,
+                    } = this.termsParams;
+
                     const debtOrder = this.debtOrder;
-
-                    const receipt = await web3.eth.getTransactionReceipt(txHash);
-
-                    const returnedLog = _.find(
-                        ABIDecoder.decodeLogs(receipt.logs),
-                        { name: "LogSimpleInterestTermStart" },
-                    );
 
                     const expectedLog = LogSimpleInterestTermStart(
                         simpleInterestTermsContract.address,
@@ -96,23 +73,55 @@ export class RegisterTermStartRunner {
                         TERM_LENGTH_UNITS,
                     );
 
+                    const returnedLog = await this.getLogs(txHash, "LogSimpleInterestTermStart");
                     expect(returnedLog).to.deep.equal(expectedLog);
                 });
             } else {
-                it("should revert the transaction", async () => {
-                    const { AGREEMENT_ID } = this.termsParams;
-                    const { DEBTOR_1, UNDERWRITER } = this.accounts;
-                    const { simpleInterestTermsContract } = this.contracts;
-
-                    expect(
-                        simpleInterestTermsContract.registerTermStart.sendTransactionAsync(
-                            AGREEMENT_ID,
-                            DEBTOR_1,
-                            { from: UNDERWRITER },
-                        ),
-                    ).to.eventually.be.rejectedWith(REVERT_ERROR);
-                });
+                // If registerTermsStart is not invoked by the debt kernel, the transaction should be reverted.
+                if (!scenario.invokedByDebtKernel) {
+                    it("should revert the transaction", async () => {
+                        expect(this.registerTermsStart()).to.eventually.be.rejectedWith(REVERT_ERROR);
+                    });
+                }
             }
         });
+    }
+
+    private registerTermsStart() {
+        const { AGREEMENT_ID } = this.termsParams;
+        const { DEBTOR_1, UNDERWRITER } = this.accounts;
+        const { simpleInterestTermsContract } = this.contracts;
+
+        return simpleInterestTermsContract.registerTermStart.sendTransactionAsync(
+            AGREEMENT_ID,
+            DEBTOR_1,
+            { from: UNDERWRITER },
+        );
+    }
+
+    private fillDebtOrder() {
+        const { UNDERWRITER } = this.accounts;
+        const { kernel } = this.contracts;
+        const debtOrder = this.debtOrder;
+
+        return kernel.fillDebtOrder.sendTransactionAsync(
+            debtOrder.getCreditor(),
+            debtOrder.getOrderAddresses(),
+            debtOrder.getOrderValues(),
+            debtOrder.getOrderBytes32(),
+            debtOrder.getSignaturesV(),
+            debtOrder.getSignaturesR(),
+            debtOrder.getSignaturesS(),
+            { from: UNDERWRITER },
+        );
+    }
+
+    private async getLogs(txHash: string, event: string) {
+        const receipt = await web3.eth.getTransactionReceipt(txHash);
+
+        return _.find(
+            ABIDecoder.decodeLogs(receipt.logs),
+            { name: event },
+        );
     }
 }
