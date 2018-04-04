@@ -46,8 +46,8 @@ contract MockCollateralizedTermsContract is MockContract {
         uint unitsOfRepayment,
         address tokenAddress
     )
-    public
-    returns (bool _success)
+        public
+        returns (bool _success)
     {
         functionCalledWithArgs("registerRepayment", keccak256(
                 agreementId,
@@ -63,7 +63,11 @@ contract MockCollateralizedTermsContract is MockContract {
     function getExpectedRepaymentValue(
         bytes32 agreementId,
         uint256 timestamp
-    ) public view returns (uint256) {
+    )
+        public
+        view
+        returns (uint256)
+    {
         uint latestDueDateBeforeTimestamp;
 
         // Iterate over each mocked repayment timestamp associated with the
@@ -82,14 +86,16 @@ contract MockCollateralizedTermsContract is MockContract {
         return expectedValueRepaidAtTimestamp[agreementId][latestDueDateBeforeTimestamp];
     }
 
-    function getValueRepaidToDate(
-        bytes32 agreementId
-    ) public view returns (uint256) {
+    function getValueRepaidToDate(bytes32 agreementId)
+        public
+        view
+        returns (uint256)
+    {
         return amountRepaid[agreementId];
     }
 
     function mockRegisterRepaymentReturnValue(bool success)
-    public
+        public
     {
         mockReturnValue("registerRepayment", DEFAULT_SIGNATURE_ARGS, success ? bytes32(1) : bytes32(0));
     }
@@ -101,9 +107,9 @@ contract MockCollateralizedTermsContract is MockContract {
         uint unitsOfRepayment,
         address tokenAddress
     )
-    public
-    view
-    returns (bool wasCalled)
+        public
+        view
+        returns (bool wasCalled)
     {
         return wasFunctionCalledWithArgs("registerRepayment", keccak256(
                 agreementId,
@@ -118,8 +124,8 @@ contract MockCollateralizedTermsContract is MockContract {
         bytes32 agreementId,
         address debtor
     )
-    public
-    returns (bool _registered)
+        public
+        returns (bool _registered)
     {
         functionCalledWithArgs("registerTermStart", keccak256(agreementId, debtor));
 
@@ -129,16 +135,21 @@ contract MockCollateralizedTermsContract is MockContract {
         ) == bytes32(1);
     }
 
-    function getTermEndTimestamp(
-        bytes32 agreementId
-    ) public view returns (uint256) {
+    function getTermEndTimestamp(bytes32 agreementId)
+        public
+        view
+        returns (uint256)
+    {
         return termEndTimestamp[agreementId];
     }
 
-    function wasRegisterTermStartCalledWith(bytes32 agreementId, address debtor)
-    public
-    view
-    returns (bool _wasCalled)
+    function wasRegisterTermStartCalledWith(
+        bytes32 agreementId,
+        address debtor
+    )
+        public
+        view
+        returns (bool _wasCalled)
     {
         return wasFunctionCalledWithArgs("registerTermStart", keccak256(agreementId, debtor));
     }
@@ -148,14 +159,18 @@ contract MockCollateralizedTermsContract is MockContract {
     function mockTermEndTimestamp(
         bytes32 agreementId,
         uint timestamp
-    ) public {
+    )
+        public
+    {
         termEndTimestamp[agreementId] = timestamp;
     }
 
     function mockDummyValueRepaid(
         bytes32 agreementId,
         uint amount
-    ) public {
+    )
+        public
+    {
         amountRepaid[agreementId] = amount;
     }
 
@@ -163,7 +178,9 @@ contract MockCollateralizedTermsContract is MockContract {
         bytes32 agreementId,
         uint timestamp,
         uint amount
-    ) public {
+    )
+        public
+    {
         // If timestamp is not mocked already, append it to list of repayment timestamps
         // associated with agreementId
         if (expectedValueRepaidAtTimestamp[agreementId][timestamp] == 0) {
@@ -188,7 +205,7 @@ contract MockCollateralizedTermsContract is MockContract {
         bytes32 _agreementId,
         address _debtor
     )
-    public
+        public
     {
         Collateralizer collateralizer = Collateralizer(_collateralizer);
 
@@ -199,8 +216,8 @@ contract MockCollateralizedTermsContract is MockContract {
     }
 
     function getFunctionList()
-    internal
-    returns (string[10] functionNames)
+        internal
+        returns (string[10] functionNames)
     {
         return ["registerRepayment", "registerTermStart", "", "", "", "", "", "", "", ""];
     }
