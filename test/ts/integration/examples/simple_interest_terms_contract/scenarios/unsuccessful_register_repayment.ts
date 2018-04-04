@@ -2,11 +2,12 @@ import * as Units from "../../../../test_utils/units";
 import { BigNumber } from "bignumber.js";
 
 // Scenarios
-import { RegisterRepaymentScenario } from "../runners/index";
+import {SimpleInterestContractTerms, RegisterRepaymentScenario} from "../runners/index";
 
 // Wrappers
 import { SignedDebtOrder } from "../../../../../../types/kernel/debt_order";
 import { DummyTokenContract } from "../../../../../../types/generated/dummy_token";
+import {SimpleInterestParameters} from "../../../../factories/terms_contract_parameters";
 
 const defaultArgs = {
     principalTokenIndex: new BigNumber(0),
@@ -14,6 +15,7 @@ const defaultArgs = {
     interestRate: Units.percent(2.5),
     amortizationUnitType: new BigNumber(1),
     termLengthUnits: new BigNumber(4),
+    termsContractParameters: (terms: ContractTerms) => SimpleInterestParameters.pack(...terms),
 };
 
 export const UNSUCCESSFUL_REGISTER_REPAYMENT_SCENARIOS: RegisterRepaymentScenario[] = [

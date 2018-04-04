@@ -72,13 +72,13 @@ export abstract class SimpleInterestTermsContractRunner {
 
         const { DEBTOR_1, CREDITOR_1, UNDERWRITER, RELAYER } = this.accounts;
 
-        const termsContractParameters = SimpleInterestParameters.pack(
-            scenario.principalTokenIndex,
-            scenario.principalAmount,
-            scenario.interestRate,
-            scenario.amortizationUnitType,
-            scenario.termLengthUnits,
-        );
+        const termsContractParameters = SimpleInterestParameters.pack({
+            principalTokenIndex: scenario.principalTokenIndex,
+            principalAmount: scenario.principalAmount,
+            interestRate: scenario.interestRate,
+            amortizationUnitType: scenario.amortizationUnitType,
+            termLengthUnits: scenario.termLengthUnits,
+        });
 
         const defaultOrderParams = {
             creditor: CREDITOR_1,
