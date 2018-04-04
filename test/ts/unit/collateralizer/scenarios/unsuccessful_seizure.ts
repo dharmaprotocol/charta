@@ -87,7 +87,7 @@ export const UNSUCCESSFUL_SEIZURE_SCENARIOS: SeizeCollateralScenario[] = [
         description: "(Grace Period = 90 Days) Debt is not currently in state of default",
         ...defaultArgs,
         gracePeriodInDays: new BigNumber(90),
-        valueRepaidToDate: defaultArgs.
+        valueRepaidToDate: defaultArgs,
         agreementId: web3.sha3("Arbitrary 32 byte id for unsuccessful seizure scenario #6"),
     },
     {
