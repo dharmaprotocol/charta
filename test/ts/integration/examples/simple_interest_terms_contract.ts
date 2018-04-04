@@ -1,9 +1,6 @@
 // External Libraries
-import * as ABIDecoder from "abi-decoder";
-import * as chai from "chai";
 import * as moment from "moment";
 import { BigNumber } from "bignumber.js";
-import * as _ from "lodash";
 
 // Test Utils
 import { BigNumberSetup } from "../../test_utils/bignumber_setup";
@@ -26,27 +23,20 @@ import { TokenTransferProxyContract } from "../../../../types/generated/token_tr
 import { DebtOrderFactory } from "../../factories/debt_order_factory";
 import { SimpleInterestParameters } from "../../factories/terms_contract_parameters";
 
-// Constants
-import { REVERT_ERROR } from "../../test_utils/constants";
-
 // Configure BigNumber exponentiation
 BigNumberSetup.configure();
 
 // Set up Chai
 ChaiSetup.configure();
-const expect = chai.expect;
-
-const debtKernelContract = artifacts.require("DebtKernel");
 
 // Scenarios
 import { SUCCESSFUL_REGISTER_REPAYMENT_SCENARIOS } from "./scenarios/successful_register_repayment";
 import { UNSUCCESSFUL_REGISTER_REPAYMENT_SCENARIOS } from "./scenarios/unsuccessful_register_repayment";
+import { SUCCESSFUL_REGISTER_TERM_START_SCENARIOS } from "./scenarios/successful_term_start";
+import { UNSUCCESSFUL_REGISTER_TERM_START_SCENARIOS } from "./scenarios/unsuccessful_term_start";
 
 // Scenario Runners
 import { RegisterRepaymentRunner, RegisterTermStartRunner } from "./runners";
-import {LogSimpleInterestTermStart} from "../../logs/simple_interest_terms_contract";
-import {SUCCESSFUL_REGISTER_TERM_START_SCENARIOS} from "./scenarios/successful_term_start";
-import {UNSUCCESSFUL_REGISTER_TERM_START_SCENARIOS} from "./scenarios/unsuccessful_term_start";
 
 contract("Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) => {
     let kernel: DebtKernelContract;
@@ -55,6 +45,7 @@ contract("Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) 
     let tokenTransferProxy: TokenTransferProxyContract;
     let debtTokenContract: DebtTokenContract;
     let debtRegistryContract: DebtRegistryContract;
+    let dummyTokenRegistryContract: TokenRegistryContract;
 
     let dummyREPToken: DummyTokenContract;
 
@@ -87,7 +78,7 @@ contract("Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) 
     const registerTermStartRunner = new RegisterTermStartRunner();
 
     const reset = async () => {
-        const dummyTokenRegistryContract = await TokenRegistryContract.deployed(web3, TX_DEFAULTS);
+        dummyTokenRegistryContract = await TokenRegistryContract.deployed(web3, TX_DEFAULTS);
 
         const dummyREPTokenAddress = await dummyTokenRegistryContract.getTokenAddressBySymbol.callAsync(
             "REP",
@@ -203,6 +194,7 @@ contract("Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) 
             dummyREPToken,
             simpleInterestTermsContract,
             repaymentRouter,
+            dummyTokenRegistryContract,
         };
 
         const termsParams = {
@@ -228,12 +220,12 @@ contract("Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) 
     });
 
     describe("#registerRepayment", () => {
-        describe("Successful register repayment", () => {
-            SUCCESSFUL_REGISTER_REPAYMENT_SCENARIOS.forEach(registerRepaymentRunner.testScenario);
-        });
-
         describe("Unsuccessful register repayment", () => {
             UNSUCCESSFUL_REGISTER_REPAYMENT_SCENARIOS.forEach(registerRepaymentRunner.testScenario);
+        });
+
+        describe("Successful register repayment", () => {
+            SUCCESSFUL_REGISTER_REPAYMENT_SCENARIOS.forEach(registerRepaymentRunner.testScenario);
         });
     });
 });

@@ -2,16 +2,20 @@
 import * as ABIDecoder from "abi-decoder";
 import * as _ from "lodash";
 import { expect } from "chai";
+import { BigNumber } from "bignumber.js";
+
+// Test Utils
+import { REVERT_ERROR } from "../../../test_utils/constants";
 
 // Scenario runners
 import { RegisterRepaymentScenario, TermsParams, TestAccounts, TestContracts } from "../runners";
 
 // Wrappers
 import { SignedDebtOrder } from "../../../../../types/kernel/debt_order";
+import { DummyTokenContract } from "../../../../../types/generated/dummy_token";
 
 // Logs
 import { LogRegisterRepayment } from "../../../logs/simple_interest_terms_contract";
-import {REVERT_ERROR} from "../../../test_utils/constants";
 
 export class RegisterRepaymentRunner {
     private accounts: TestAccounts;
@@ -34,40 +38,36 @@ export class RegisterRepaymentRunner {
 
     public testScenario(scenario: RegisterRepaymentScenario) {
         let txHash: string;
+        let dummyREPToken: DummyTokenContract;
+        let dummyZRXToken: DummyTokenContract;
 
         describe(scenario.description, () => {
+
             before(async () => {
                 const {
                     CONTRACT_OWNER,
-                    UNDERWRITER,
                     DEBTOR_1,
                 } = this.accounts;
 
                 const {
-                    kernel,
                     tokenTransferProxy,
-                    dummyREPToken,
                     simpleInterestTermsContract,
-                    repaymentRouter,
+                    dummyTokenRegistryContract,
                 } = this.contracts;
 
-                const {
-                    AGREEMENT_ID,
-                } = this.termsParams;
+                dummyREPToken = this.contracts.dummyREPToken;
 
-                const debtOrder = scenario.debtOrder(this.debtOrder);
+                const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4712388 };
+
+                const dummyZRXTokenAddress = await dummyTokenRegistryContract.getTokenAddressBySymbol.callAsync(
+                    "ZRX",
+                );
+
                 const principalToken = scenario.principalToken(dummyREPToken);
 
-                await kernel.fillDebtOrder.sendTransactionAsync(
-                    debtOrder.getCreditor(),
-                    debtOrder.getOrderAddresses(),
-                    debtOrder.getOrderValues(),
-                    debtOrder.getOrderBytes32(),
-                    debtOrder.getSignaturesV(),
-                    debtOrder.getSignaturesR(),
-                    debtOrder.getSignaturesS(),
-                    { from: UNDERWRITER },
-                );
+                dummyZRXToken = await DummyTokenContract.at(dummyZRXTokenAddress, web3, TX_DEFAULTS);
+
+                await this.fillDebtOrder();
 
                 await principalToken.setBalance.sendTransactionAsync(DEBTOR_1, scenario.repaymentAmount, {
                     from: CONTRACT_OWNER,
@@ -81,15 +81,6 @@ export class RegisterRepaymentRunner {
 
                 // Setup ABI decoder in order to decode logs
                 ABIDecoder.addABI(simpleInterestTermsContract.abi);
-
-                if (scenario.repayFromRouter) {
-                    txHash = await repaymentRouter.repay.sendTransactionAsync(
-                        AGREEMENT_ID,
-                        scenario.repaymentAmount,
-                        debtOrder.getPrincipalTokenAddress(),
-                        { from: DEBTOR_1 },
-                    );
-                }
             });
 
             after(() => {
@@ -100,18 +91,22 @@ export class RegisterRepaymentRunner {
             });
 
             if (scenario.succeeds) {
+                before(async () => {
+                    if (scenario.repayFromRouter) {
+                        txHash = await this.repayWithRouter(
+                            scenario.repaymentAmount,
+                            scenario.repaymentToken(dummyREPToken, dummyZRXToken).address,
+                        );
+                    }
+                });
+
                 it("should emit a LogRegisterRepayment event", async () => {
                     const { simpleInterestTermsContract } = this.contracts;
                     const { AGREEMENT_ID } = this.termsParams;
                     const { DEBTOR_1, CREDITOR_1 } = this.accounts;
                     const debtOrder = this.debtOrder;
 
-                    const receipt = await web3.eth.getTransactionReceipt(txHash);
-
-                    const returnedLog = _.find(
-                        ABIDecoder.decodeLogs(receipt.logs),
-                        { name: "LogRegisterRepayment" },
-                    );
+                    const returnedLog = await this.getLogs(txHash, "LogRegisterRepayment");
 
                     const expectedLog = LogRegisterRepayment(
                         simpleInterestTermsContract.address,
@@ -134,24 +129,90 @@ export class RegisterRepaymentRunner {
                     ).to.eventually.bignumber.equal(scenario.repaymentAmount);
                 });
             } else {
-                it("should revert the transaction", async () => {
+                if (scenario.reverts) {
+                    it("should revert the transaction", async () => {
+                        // The transaction can be reverted via the router, or the terms contract itself.
+                        let transaction;
+
+                        if (scenario.repayFromRouter) {
+                            transaction = this.repayWithRouter(
+                                scenario.repaymentAmount,
+                                scenario.repaymentToken(dummyREPToken, dummyZRXToken).address,
+                            );
+                        } else {
+                            // The transaction is attempted on the terms contract itself.
+                            transaction = this.registerRepayment(scenario.repaymentAmount);
+                        }
+
+                        await expect(transaction).to.eventually.be.rejectedWith(REVERT_ERROR);
+                    });
+                }
+
+                it("should not record a repayment", async () => {
                     const { simpleInterestTermsContract } = this.contracts;
                     const { AGREEMENT_ID } = this.termsParams;
-                    const { DEBTOR_1, CREDITOR_1 } = this.accounts;
-                    const debtOrder = this.debtOrder;
 
                     await expect(
-                        simpleInterestTermsContract.registerRepayment.sendTransactionAsync(
-                            AGREEMENT_ID,
-                            DEBTOR_1,
-                            CREDITOR_1,
-                            scenario.repaymentAmount,
-                            debtOrder.getPrincipalTokenAddress(),
-                            { from: DEBTOR_1 },
-                        ),
-                    ).to.eventually.be.rejectedWith(REVERT_ERROR);
+                        simpleInterestTermsContract.getValueRepaidToDate.callAsync(AGREEMENT_ID),
+                    ).to.eventually.bignumber.equal(0);
                 });
             }
         });
+    }
+
+    // Calls registerRepayment() directly on the terms contract.
+    private registerRepayment(amount: BigNumber) {
+        const { simpleInterestTermsContract } = this.contracts;
+        const { AGREEMENT_ID } = this.termsParams;
+        const { DEBTOR_1, CREDITOR_1 } = this.accounts;
+        const debtOrder = this.debtOrder;
+
+        return simpleInterestTermsContract.registerRepayment.sendTransactionAsync(
+            AGREEMENT_ID,
+            DEBTOR_1,
+            CREDITOR_1,
+            amount,
+            debtOrder.getPrincipalTokenAddress(),
+            {from: DEBTOR_1},
+        );
+    }
+
+    private repayWithRouter(amount: BigNumber, tokenAddress: string) {
+        const { repaymentRouter } = this.contracts;
+        const { AGREEMENT_ID } = this.termsParams;
+        const { DEBTOR_1 } = this.accounts;
+
+        return repaymentRouter.repay.sendTransactionAsync(
+            AGREEMENT_ID,
+            amount,
+            tokenAddress,
+            { from: DEBTOR_1 },
+        );
+    }
+
+    private async getLogs(txHash: string, event: string) {
+        const receipt = await web3.eth.getTransactionReceipt(txHash);
+
+        return _.find(
+            ABIDecoder.decodeLogs(receipt.logs),
+            { name: event },
+        );
+    }
+
+    private fillDebtOrder() {
+        const { UNDERWRITER } = this.accounts;
+        const { kernel } = this.contracts;
+        const debtOrder = this.debtOrder;
+
+        return kernel.fillDebtOrder.sendTransactionAsync(
+            debtOrder.getCreditor(),
+            debtOrder.getOrderAddresses(),
+            debtOrder.getOrderValues(),
+            debtOrder.getOrderBytes32(),
+            debtOrder.getSignaturesV(),
+            debtOrder.getSignaturesR(),
+            debtOrder.getSignaturesS(),
+            { from: UNDERWRITER },
+        );
     }
 }

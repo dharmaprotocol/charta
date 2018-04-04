@@ -10,6 +10,7 @@ import { DebtKernelContract } from "../../../../../types/generated/debt_kernel";
 import { TokenTransferProxyContract } from "../../../../../types/generated/token_transfer_proxy";
 import { SimpleInterestTermsContractContract } from "../../../../../types/generated/simple_interest_terms_contract";
 import {RepaymentRouterContract} from "../../../../../types/generated/repayment_router";
+import { TokenRegistryContract } from "../../../../../types/generated/token_registry";
 
 export interface TestAccounts {
     UNDERWRITER: string;
@@ -24,6 +25,7 @@ export interface TestContracts {
     dummyREPToken: DummyTokenContract;
     simpleInterestTermsContract: SimpleInterestTermsContractContract;
     repaymentRouter: RepaymentRouterContract;
+    dummyTokenRegistryContract: TokenRegistryContract;
 }
 
 export interface TermsParams {
@@ -41,10 +43,14 @@ export interface RegisterRepaymentScenario {
     repaymentAmount: BigNumber;
     // The principal token used in this scenario.
     principalToken: (principalToken: DummyTokenContract) => DummyTokenContract;
+    // The token used for repayments.
+    repaymentToken: (principalToken: DummyTokenContract, otherToken: DummyTokenContract) => DummyTokenContract;
     // The debt order to use in this scenario.
     debtOrder: (debtOrder: SignedDebtOrder) => SignedDebtOrder;
-    // True if the scenario does not revert, and the repayment gets logged.
+    // True if repayment gets logged.
     succeeds: boolean;
+    // True if the transaction is reverted.
+    reverts: boolean;
     // True if the repayment makes a payment on behalf of the debtor in the scenario.
     repayFromRouter: boolean;
 }

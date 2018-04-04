@@ -12,8 +12,10 @@ export const SUCCESSFUL_REGISTER_REPAYMENT_SCENARIOS: RegisterRepaymentScenario[
         description: "when called from the RepaymentRouter",
         repaymentAmount: Units.ether(1.29),
         principalToken: (principalToken: DummyTokenContract) => principalToken,
+        repaymentToken: (principalToken: DummyTokenContract, otherToken: DummyTokenContract) => principalToken,
         debtOrder: (debtOrder: SignedDebtOrder) => debtOrder,
         repayFromRouter: true,
         succeeds: true,
+        reverts: false,
     },
 ];
