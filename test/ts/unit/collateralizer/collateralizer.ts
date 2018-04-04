@@ -1,17 +1,33 @@
+// External Libraries
 import * as ABIDecoder from "abi-decoder";
 import * as chai from "chai";
 import * as Units from "../../test_utils/units";
 
-// tslint:disable-next-line
+// Utils
+import { BigNumberSetup } from "../../test_utils/bignumber_setup";
+import ChaiSetup from "../../test_utils/chai_setup";
+
+// Generated Types
 import { CollateralizerContract } from "../../../../types/generated/collateralizer";
 import { TokenRegistryContract } from "../../../../types/generated/token_registry";
 import { MockDebtRegistryContract } from "../../../../types/generated/mock_debt_registry";
 import { MockERC20TokenContract } from "../../../../types/generated/mock_e_r_c20_token";
 import { MockTokenRegistryContract } from "../../../../types/generated/mock_token_registry";
 import { MockTokenTransferProxyContract } from "../../../../types/generated/mock_token_transfer_proxy";
+import { MockCollateralizedTermsContractContract } from "../../../../types/generated/mock_collateralized_terms_contract";
 
-import { BigNumberSetup } from "../../test_utils/bignumber_setup";
-import ChaiSetup from "../../test_utils/chai_setup";
+// Scenario Runners
+import { CollateralizeRunner, ReturnCollateralRunner, S } from "./runners";
+
+// Scenario Constants
+import { SUCCESSFUL_COLLATERALIZATION_SCENARIOS } from "./scenarios/successful_collateralization";
+import { UNSUCCESSFUL_COLLATERALIZATION_SCENARIOS } from "./scenarios/unsuccessful_collateralization";
+import { SUCCESSFUL_RETURN_SCENARIOS } from "./scenarios/successful_return";
+import { UNSUCCESSFUL_RETURN_SCENARIOS } from "./scenarios/unsuccessful_return";
+import { SUCCESSFUL_SEIZURE_SCENARIOS } from "./scenarios/successful_seizure";
+import { UNSUCCESSFUL_SEIZURE_SCENARIOS } from "./scenarios/unsuccessful_seizure";
+import {MockTokenTransferProxy} from "../../../../artifacts/ts/MockTokenTransferProxy";
+import {SeizeCollateralRunner} from "./runners/seize_collateral";
 
 // Set up Chai
 ChaiSetup.configure();
@@ -23,15 +39,26 @@ BigNumberSetup.configure();
 const collateralizer = artifacts.require("Collateralizer");
 
 contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
-    let collateralContract: CollateralizerContract;
+    let collateralizerContract: CollateralizerContract;
     let tokenRegistry: TokenRegistryContract;
     let mockToken: MockERC20TokenContract;
     let mockDebtRegistry: MockDebtRegistryContract;
     let mockTokenRegistry: MockTokenRegistryContract;
     let mockTokenTransferProxy: MockTokenTransferProxyContract;
+    let mockTermsContract: MockCollateralizedTermsContractContract;
+
+    const collateralizeRunner = new CollateralizeRunner();
+    const returnCollateralRunner = new ReturnCollateralRunner();
+    const seizeCollateralRunner = new SeizeCollateralRunner();
 
     const CONTRACT_OWNER = ACCOUNTS[0];
-    const MOCK_DEBT_KERNEL_ADDRESS = ACCOUNTS[1];
+    const COLLATERALIZER = ACCOUNTS[1];
+    const NON_COLLATERALIZER = ACCOUNTS[2];
+    const BENEFICIARY_1 = ACCOUNTS[3];
+    const BENEFICIARY_2 = ACCOUNTS[4];
+    const MOCK_DEBT_KERNEL_ADDRESS = ACCOUNTS[5];
+    const MOCK_TERMS_CONTRACT_ADDRESS = ACCOUNTS[6];
+    const ATTACKER = ACCOUNTS[7];
 
     const NULL_PARAMETERS = "0x0000000000000000000000000000000000000000000000000000000000000000";
 
@@ -43,6 +70,7 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
         mockToken = await MockERC20TokenContract.deployed(web3, TX_DEFAULTS);
         mockTokenRegistry = await MockTokenRegistryContract.deployed(web3, TX_DEFAULTS);
         mockTokenTransferProxy = await MockTokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
+        mockTermsContract = await MockCollateralizedTermsContractContract.deployed(web3, TX_DEFAULTS);
 
         /*
         In our test environment, we want to interact with the contract being
@@ -73,34 +101,67 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
             .at(collateralContractTruffle.address);
 
         // Step 3: Instantiate a statically-typed version of the contract.
-        collateralContract = new CollateralizerContract(
+        collateralizerContract = new CollateralizerContract(
             collateralContractWeb3Contract,
             TX_DEFAULTS,
         );
 
+        const testContracts = {
+            collateralizer: collateralizerContract,
+            mockCollateralToken: mockToken,
+            mockDebtRegistry,
+            mockTokenRegistry,
+            mockTokenTransferProxy,
+            mockTermsContract,
+        };
+
+        const testAccounts = {
+            ATTACKER,
+            BENEFICIARY_1,
+            BENEFICIARY_2,
+            COLLATERALIZER,
+            NON_COLLATERALIZER,
+            MOCK_DEBT_KERNEL_ADDRESS,
+            MOCK_TERMS_CONTRACT_ADDRESS,
+        };
+
+        // Grant the terms contract authorization to call the `collateralize` function.
+        await collateralizerContract.addAuthorizedCollateralizeAgent.sendTransactionAsync(
+            mockTermsContract.address,
+        );
+
+        await collateralizerContract.addAuthorizedCollateralizeAgent.sendTransactionAsync(
+            MOCK_TERMS_CONTRACT_ADDRESS,
+        );
+
+        // Initialize runners.
+        collateralizeRunner.initialize(testContracts, testAccounts);
+        returnCollateralRunner.initialize(testContracts, testAccounts);
+        seizeCollateralRunner.initialize(testContracts, testAccounts);
+
         // Initialize ABI Decoder for deciphering log receipts
-        ABIDecoder.addABI(collateralContract.abi);
+        ABIDecoder.addABI(collateralizerContract.abi);
     });
 
     after(() => {
-        ABIDecoder.removeABI(collateralContract.abi);
+        ABIDecoder.removeABI(collateralizerContract.abi);
     });
 
     describe("Initialization", () => {
         it("points to the DebtKernel passed in through the constructor", async () => {
-            await expect(collateralContract.debtKernelAddress.callAsync()).to.eventually.equal(
+            await expect(collateralizerContract.debtKernelAddress.callAsync()).to.eventually.equal(
                 MOCK_DEBT_KERNEL_ADDRESS,
             );
         });
 
         it("points to the DebtRegistry passed in through the constructor", async () => {
-            await expect(collateralContract.debtRegistry.callAsync()).to.eventually.equal(
+            await expect(collateralizerContract.debtRegistry.callAsync()).to.eventually.equal(
                 mockDebtRegistry.address,
             );
         });
 
         it("points to the TokenRegistry passed in through the constructor", async () => {
-            await expect(collateralContract.tokenRegistry.callAsync()).to.eventually.equal(
+            await expect(collateralizerContract.tokenRegistry.callAsync()).to.eventually.equal(
                 mockTokenRegistry.address,
             );
         });
@@ -112,7 +173,7 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
                 const packedParameters = NULL_PARAMETERS;
                 const expectedUnpackedParameters = [0, 0, 0];
 
-                const unpackedParameters = await collateralContract.unpackCollateralParametersFromBytes.callAsync(
+                const unpackedParameters = await collateralizerContract.unpackCollateralParametersFromBytes.callAsync(
                     packedParameters,
                 );
 
@@ -126,7 +187,7 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
                     "0x0000000000000000000000000000000000000ff00000000de0b6b3a764000001";
                 const expectedUnpackedParameters = [255, Units.ether(1), 1];
 
-                const unpackedParameters = await collateralContract.unpackCollateralParametersFromBytes.callAsync(
+                const unpackedParameters = await collateralizerContract.unpackCollateralParametersFromBytes.callAsync(
                     packedParameters,
                 );
 
@@ -140,7 +201,7 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
                     "0x00000abcd000000000000000000000000000012008060e0dbc5d6766800000ff";
                 const expectedUnpackedParameters = [18, Units.ether(9700000), 255];
 
-                const unpackedParameters = await collateralContract.unpackCollateralParametersFromBytes.callAsync(
+                const unpackedParameters = await collateralizerContract.unpackCollateralParametersFromBytes.callAsync(
                     packedParameters,
                 );
 
@@ -148,6 +209,36 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
                 expect(unpackedParameters[1]).to.bignumber.equal(expectedUnpackedParameters[1]);
                 expect(unpackedParameters[2]).to.bignumber.equal(expectedUnpackedParameters[2]);
             });
+        });
+    });
+
+    describe("#collateralize", () => {
+       describe("Successful collateralization", () => {
+           SUCCESSFUL_COLLATERALIZATION_SCENARIOS.forEach(collateralizeRunner.testScenario);
+       });
+
+       describe("Unsuccessful collateralization", () => {
+            UNSUCCESSFUL_COLLATERALIZATION_SCENARIOS.forEach(collateralizeRunner.testScenario);
+       });
+    });
+
+    describe("#returnCollateral", () => {
+        describe("Successful collateral return", () => {
+            SUCCESSFUL_RETURN_SCENARIOS.forEach(returnCollateralRunner.testScenario);
+        });
+
+        describe("Unsuccessful collateral return", () => {
+            UNSUCCESSFUL_RETURN_SCENARIOS.forEach(returnCollateralRunner.testScenario);
+        });
+    });
+
+    describe("#seizeCollateral", () => {
+        describe("Unsuccessful Collateral Seizure", () => {
+            UNSUCCESSFUL_SEIZURE_SCENARIOS.forEach(seizeCollateralRunner.testScenario);
+        });
+
+        describe("Successful Collateral Seizure", () => {
+            SUCCESSFUL_SEIZURE_SCENARIOS.forEach(seizeCollateralRunner.testScenario);
         });
     });
 });
