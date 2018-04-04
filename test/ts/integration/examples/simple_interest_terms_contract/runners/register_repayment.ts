@@ -64,7 +64,24 @@ export class RegisterRepaymentRunner extends SimpleInterestTermsContractRunner {
                 ABIDecoder.removeABI(this.contracts.simpleInterestTermsContract.abi);
             });
 
-            if (scenario.repayFromRouter && !scenario.reverts) {
+            if (scenario.reverts) {
+                it("should revert the transaction", async () => {
+                    // The transaction can be reverted via the router, or the terms contract itself.
+                    let transaction;
+
+                    if (scenario.repayFromRouter) {
+                        transaction = this.repayWithRouter(
+                            scenario.repaymentAmount,
+                            scenario.repaymentToken(dummyREPToken, dummyZRXToken).address,
+                        );
+                    } else {
+                        // The transaction is attempted on the terms contract itself.
+                        transaction = this.registerRepayment(scenario.repaymentAmount);
+                    }
+
+                    await expect(transaction).to.eventually.be.rejectedWith(REVERT_ERROR);
+                });
+            } else {
                 before(async () => {
                     txHash = await this.repayWithRouter(
                         scenario.repaymentAmount,
@@ -100,25 +117,6 @@ export class RegisterRepaymentRunner extends SimpleInterestTermsContractRunner {
                     ).to.eventually.bignumber.equal(scenario.repaymentAmount);
                 });
             } else {
-                if (scenario.reverts) {
-                    it("should revert the transaction", async () => {
-                        // The transaction can be reverted via the router, or the terms contract itself.
-                        let transaction;
-
-                        if (scenario.repayFromRouter) {
-                            transaction = this.repayWithRouter(
-                                scenario.repaymentAmount,
-                                scenario.repaymentToken(dummyREPToken, dummyZRXToken).address,
-                            );
-                        } else {
-                            // The transaction is attempted on the terms contract itself.
-                            transaction = this.registerRepayment(scenario.repaymentAmount);
-                        }
-
-                        await expect(transaction).to.eventually.be.rejectedWith(REVERT_ERROR);
-                    });
-                }
-
                 it("should not record a repayment", async () => {
                     const { simpleInterestTermsContract } = this.contracts;
                     const agreementId = this.agreementId;
