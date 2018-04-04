@@ -13,7 +13,6 @@ import { DebtKernelContract } from "../../../../types/generated/debt_kernel";
 import { DebtRegistryContract } from "../../../../types/generated/debt_registry";
 import { DebtTokenContract } from "../../../../types/generated/debt_token";
 import { DummyTokenContract } from "../../../../types/generated/dummy_token";
-import { IncompatibleTermsContractContract } from "../../../../types/generated/incompatible_terms_contract";
 import { RepaymentRouterContract } from "../../../../types/generated/repayment_router";
 import { SimpleInterestTermsContractContract } from "../../../../types/generated/simple_interest_terms_contract";
 import { TokenRegistryContract } from "../../../../types/generated/token_registry";
@@ -49,8 +48,6 @@ contract("Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) 
 
     let dummyREPToken: DummyTokenContract;
 
-    let incompatibleTermsContractAddress: string;
-
     let defaultOrderParams: { [key: string]: any };
     let orderFactory: DebtOrderFactory;
 
@@ -85,12 +82,6 @@ contract("Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) 
         );
 
         dummyREPToken = await DummyTokenContract.at(dummyREPTokenAddress, web3, TX_DEFAULTS);
-
-        const incompatibleTermsContract = await IncompatibleTermsContractContract.deployed(
-            web3,
-            TX_DEFAULTS,
-        );
-        incompatibleTermsContractAddress = incompatibleTermsContract.address;
 
         debtTokenContract = await DebtTokenContract.deployed(web3, TX_DEFAULTS);
         debtRegistryContract = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
