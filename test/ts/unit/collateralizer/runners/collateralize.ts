@@ -76,13 +76,6 @@ export class CollateralizeRunner {
                     scenario.collateralTokenBalance,
                 );
 
-                // Mock collateral token's allowance for collateralizer
-                await mockCollateralToken.mockAllowanceFor.sendTransactionAsync(
-                    COLLATERALIZER,
-                    collateralizer.address,
-                    scenario.collateralTokenAllowance,
-                );
-
                 // Mock `debtRegistry.getTerms` return value
                 await mockDebtRegistry.mockGetTermsReturnValueFor.sendTransactionAsync(
                     scenario.agreementId,
