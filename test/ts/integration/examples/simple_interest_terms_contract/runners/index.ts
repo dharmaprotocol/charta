@@ -12,6 +12,7 @@ import { SimpleInterestTermsContractContract } from "../../../../../../types/gen
 import { RepaymentRouterContract } from "../../../../../../types/generated/repayment_router";
 import { TokenRegistryContract } from "../../../../../../types/generated/token_registry";
 import { DebtTokenContract } from "../../../../../../types/generated/debt_token";
+import { SimpleInterestContractTerms } from "../../../../factories/terms_contract_parameters";
 
 export interface TestAccounts {
     UNDERWRITER: string;
@@ -56,7 +57,6 @@ export interface RegisterRepaymentScenario {
     reverts: boolean;
     // True if the repayment makes a payment on behalf of the debtor in the scenario.
     repayFromRouter: boolean;
-
 }
 
 export interface RegisterTermStartScenario {
@@ -72,6 +72,8 @@ export interface RegisterTermStartScenario {
     amortizationUnitType: BigNumber;
     // The number of units of the given amortization type, e.g. 4 hours, for the debt order.
     termLengthUnits: BigNumber;
+    // Given some contract terms, returns a packed version to be used in the scenario.
+    termsContractParameters: (terms: SimpleInterestContractTerms) => string;
     // True if the scenario does not revert and the terms contract is started.
     succeeds: boolean;
     // True if registerTermStart is called by the debt kernel upon an order being filled.

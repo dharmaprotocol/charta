@@ -192,15 +192,15 @@ contract("CollateralizedSimpleInterestTermsContract (Unit Tests)", async (ACCOUN
             const principalAmount = Units.ether(1); // 1 ether.
             const interestRate = Units.percent(2.5); // 2.5% interest rate.
             const amortizationUnitType = new BigNumber(2); // unit code for weeks.
-            const termLength = new BigNumber(4); // term is for 4 weeks.
+            const termLengthUnits = new BigNumber(4); // term is for 4 weeks.
 
-            const termsParams = SimpleInterestParameters.pack(
+            const termsParams = SimpleInterestParameters.pack({
                 principalTokenIndex,
                 principalAmount,
                 interestRate,
                 amortizationUnitType,
-                termLength,
-            );
+                termLengthUnits,
+            });
 
             describe("agreement refers to different terms contract", () => {
                 before(async () => {
@@ -259,13 +259,14 @@ contract("CollateralizedSimpleInterestTermsContract (Unit Tests)", async (ACCOUN
 
                 describe("amortizationUnitType is not a valid value", () => {
                     before(async () => {
-                        const invalidTermsParams = SimpleInterestParameters.pack(
+                        const invalidTermsParams = SimpleInterestParameters.pack({
                             principalTokenIndex,
                             principalAmount,
                             interestRate,
-                            new BigNumber(5), // this is an invalid value for the amortizationUnitType
-                            termLength,
-                        );
+                            // Invalid value for the amortizationUnitType.
+                            amortizationUnitType: new BigNumber(5),
+                            termLengthUnits,
+                        });
 
                         await mockRegistry.mockGetTermsReturnValueFor.sendTransactionAsync(
                             ARBITRARY_AGREEMENT_ID,
@@ -327,7 +328,7 @@ contract("CollateralizedSimpleInterestTermsContract (Unit Tests)", async (ACCOUN
                             principalAmount,
                             interestRate,
                             amortizationUnitType,
-                            termLength,
+                            termLengthUnits,
                         ),
                     );
                 });
@@ -357,15 +358,15 @@ contract("CollateralizedSimpleInterestTermsContract (Unit Tests)", async (ACCOUN
                 const principalAmount = Units.ether(1);
                 const interestRate = Units.percent(1);
                 const amortizationUnitType = new BigNumber(0);
-                const termLengthInAmortizationUnits = new BigNumber(3);
+                const termLengthUnits = new BigNumber(3);
 
-                const termsContractParameters = SimpleInterestParameters.pack(
+                const termsContractParameters = SimpleInterestParameters.pack({
                     principalTokenIndex,
                     principalAmount,
                     interestRate,
                     amortizationUnitType,
-                    termLengthInAmortizationUnits,
-                );
+                    termLengthUnits,
+                });
 
                 await mockRegistry.mockGetBeneficiaryReturnValueFor.sendTransactionAsync(
                     ARBITRARY_AGREEMENT_ID,
@@ -469,15 +470,15 @@ contract("CollateralizedSimpleInterestTermsContract (Unit Tests)", async (ACCOUN
             const principalAmount = Units.ether(100); // 100 ether.
             const interestRate = Units.percent(1); // 1% interest rate.
             const amortizationUnitType = new BigNumber(2); // unit code for weeks.
-            const termLength = new BigNumber(10); // term is for 10 weeks.
+            const termLengthUnits = new BigNumber(10); // term is for 10 weeks.
 
-            const inputParamsAsHex = SimpleInterestParameters.pack(
+            const inputParamsAsHex = SimpleInterestParameters.pack({
                 principalTokenIndex,
                 principalAmount,
                 interestRate,
                 amortizationUnitType,
-                termLength,
-            );
+                termLengthUnits,
+            });
 
             before(async () => {
                 await mockRegistry.mockGetBeneficiaryReturnValueFor.sendTransactionAsync(
@@ -543,15 +544,15 @@ contract("CollateralizedSimpleInterestTermsContract (Unit Tests)", async (ACCOUN
         const principalAmount = Units.ether(200); // 200 ether.
         const interestRate = Units.percent(1.5); // 1.5% interest rate.
         const amortizationUnitType = new BigNumber(4); // unit code for years.
-        const termLength = new BigNumber(10); // term is for 10 years.
+        const termLengthUnits = new BigNumber(10); // term is for 10 years.
 
-        const inputParamsAsHex = SimpleInterestParameters.pack(
+        const inputParamsAsHex = SimpleInterestParameters.pack({
             principalTokenIndex,
             principalAmount,
             interestRate,
             amortizationUnitType,
-            termLength,
-        );
+            termLengthUnits,
+        });
 
         it("correctly unpacks parameters into their respective types given raw byte data", async () => {
             const [
@@ -566,7 +567,7 @@ contract("CollateralizedSimpleInterestTermsContract (Unit Tests)", async (ACCOUN
             expect(unpackedPrincipalAmount).to.bignumber.equal(principalAmount);
             expect(unpackedInterestRate).to.bignumber.equal(interestRate);
             expect(unpackedAmortizationUnitType).to.bignumber.equal(amortizationUnitType);
-            expect(unpackedTermLength).to.bignumber.equal(termLength);
+            expect(unpackedTermLength).to.bignumber.equal(termLengthUnits);
         });
     });
 
@@ -594,15 +595,15 @@ contract("CollateralizedSimpleInterestTermsContract (Unit Tests)", async (ACCOUN
             const principalAmount = Units.ether(10);
             const interestRate = Units.percent(1);
             const amortizationUnitType = new BigNumber(10); // invalid unit code.
-            const termLength = new BigNumber(10);
+            const termLengthUnits = new BigNumber(10);
 
-            const invalidTermsParams = SimpleInterestParameters.pack(
+            const invalidTermsParams = SimpleInterestParameters.pack({
                 principalTokenIndex,
                 principalAmount,
                 interestRate,
                 amortizationUnitType,
-                termLength,
-            );
+                termLengthUnits,
+            });
 
             describe("amortizationUnitType is not one of the valid types", () => {
                 before(async () => {
@@ -645,15 +646,15 @@ contract("CollateralizedSimpleInterestTermsContract (Unit Tests)", async (ACCOUN
             const principalAmount = Units.ether(12); // 12 ether principal.
             const interestRate = Units.percent(1); // 1% interest rate.
             const amortizationUnitType = new BigNumber(4); // unit code for years.
-            const termLength = new BigNumber(3); // term is three years.
+            const termLengthUnits = new BigNumber(3); // term is three years.
 
-            const validTermsParams = SimpleInterestParameters.pack(
+            const validTermsParams = SimpleInterestParameters.pack({
                 principalTokenIndex,
                 principalAmount,
                 interestRate,
                 amortizationUnitType,
-                termLength,
-            );
+                termLengthUnits,
+            });
 
             const ORIGIN_MOMENT = moment();
             const BLOCK_ISSUANCE_TIMESTAMP = ORIGIN_MOMENT.unix();
@@ -668,9 +669,9 @@ contract("CollateralizedSimpleInterestTermsContract (Unit Tests)", async (ACCOUN
                 INSTALLMENT_AMOUNT = principalAmount
                     .mul(interestRate)
                     .div(INTEREST_RATE_SCALING_FACTOR)
-                    .plus(principalAmount.div(termLength));
+                    .plus(principalAmount.div(termLengthUnits));
 
-                FULL_AMOUNT = INSTALLMENT_AMOUNT.mul(termLength);
+                FULL_AMOUNT = INSTALLMENT_AMOUNT.mul(termLengthUnits);
 
                 await mockRegistry.mockGetTermsContractReturnValueFor.sendTransactionAsync(
                     ARBITRARY_AGREEMENT_ID,
