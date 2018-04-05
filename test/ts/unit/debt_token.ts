@@ -4,6 +4,7 @@ import * as chai from "chai";
 import * as _ from "lodash";
 import * as Web3 from "web3";
 import * as Units from "../test_utils/units";
+import { sendTransaction } from "../test_utils/send_transactions";
 
 import { DebtTokenContract } from "../../../types/generated/debt_token";
 import { MockDebtRegistryContract } from "../../../types/generated/mock_debt_registry";
@@ -30,6 +31,7 @@ const repaymentRouterContract = artifacts.require("RepaymentRouter");
 contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
     let debtToken: DebtTokenContract;
 
+    let debtTokenTruffle: Web3.ContractInstance;
     let receiver: MockERC721ReceiverContract;
 
     let mockRegistry: MockDebtRegistryContract;
@@ -84,7 +86,7 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
 
         mockToken = await MockERC20TokenContract.deployed(web3, TX_DEFAULTS);
 
-        const debtTokenTruffle = await debtTokenContract.new(mockRegistry.address, {
+        debtTokenTruffle = await debtTokenContract.new(mockRegistry.address, {
             from: CONTRACT_OWNER,
         });
 
@@ -1434,5 +1436,102 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
                 });
             });
         });
+    });
+
+    describe("#safeTransferFrom()", () => {
+        beforeEach(resetAndInitState);
+
+        const safelyTransferWithData = async (
+            from: string,
+            to: string,
+            tokenID: BigNumber,
+            data: string,
+        ) => {
+            return await sendTransaction(
+                debtTokenTruffle,
+                "safeTransferFrom",
+                "address,address,uint256,bytes",
+                [from, to, tokenID, data],
+                { from: from },
+            );
+        };
+
+        const safelyTransferWithoutData = async (from: string, to: string, tokenID: BigNumber) => {
+            return await sendTransaction(
+                debtTokenTruffle,
+                "safeTransferFrom",
+                "address,address,uint256",
+                [from, to, tokenID],
+                { from: from },
+            );
+        };
+
+        const shouldSafelyTransfer = async (to?: string) => {
+            describe("with data", () => {
+                it("should call `onERC721Received`", async function() {
+                    const data = "0x42";
+                    const tokenID = debtEntries[0].getTokenId();
+                    await safelyTransferWithData(
+                        TOKEN_OWNER_1,
+                        to ? to : receiver.address,
+                        tokenID,
+                        data,
+                    );
+                    expect(
+                        receiver.wasOnERC721ReceivedCalledWith.callAsync(
+                            TOKEN_OWNER_1,
+                            tokenID,
+                            data,
+                        ),
+                    ).to.eventually.be.true;
+                });
+            });
+            describe("without data", () => {
+                it("should call `onERC721Received`", async function() {
+                    const tokenID = debtEntries[0].getTokenId();
+                    await safelyTransferWithoutData(
+                        TOKEN_OWNER_1,
+                        to ? to : receiver.address,
+                        tokenID,
+                    );
+                    expect(
+                        receiver.wasOnERC721ReceivedCalledWith.callAsync(
+                            TOKEN_OWNER_1,
+                            tokenID,
+                            "",
+                        ),
+                    ).to.eventually.be.true;
+                });
+            });
+        };
+
+        const shouldNotSafelyTransfer = async (toReceiver: boolean = true) => {
+            describe("with data", () => {
+                it("should revert", async function() {
+                    const data = "0x42";
+                    const tokenID = debtEntries[0].getTokenId();
+                    expect(
+                        safelyTransferWithData(
+                            TOKEN_OWNER_1,
+                            toReceiver ? receiver.address : mockRegistry.address,
+                            tokenID,
+                            data,
+                        ),
+                    ).to.eventually.be.rejectedWith(REVERT_ERROR);
+                });
+            });
+            describe("without data", () => {
+                it("should revert", async function() {
+                    const tokenID = debtEntries[0].getTokenId();
+                    expect(
+                        safelyTransferWithoutData(
+                            TOKEN_OWNER_1,
+                            toReceiver ? receiver.address : mockRegistry.address,
+                            tokenID,
+                        ),
+                    ).to.eventually.be.rejectedWith(REVERT_ERROR);
+                });
+            });
+        };
     });
 });
