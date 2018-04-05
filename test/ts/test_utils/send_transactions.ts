@@ -26,8 +26,8 @@ function findMethod(abi: Web3.AbiDefinition[], name: string, inputTypes: string)
 // method of a contract.
 // Truffle contract instance cannot handle overloaded methods
 // (truffle will only handle the first implementation of the method).
-export default function sendTransaction(
-    truffleContractInstance: any,
+export function sendTransaction(
+    truffleContractInstance: Web3.ContractInstance,
     methodName: string,
     inputTypes: string,
     inputVals: any[],
