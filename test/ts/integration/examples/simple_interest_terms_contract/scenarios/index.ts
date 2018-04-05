@@ -82,8 +82,7 @@ export interface RegisterTermStartScenario {
 }
 
 export interface UnpackParametersFromBytesScenario {
-    // The test's description
-    description: string;
+    // NOTE: The test's description is constructed programmatically from the `input` field.
     // String of type bytes32 that is passed to the `UnpackParametersFromBytes` function.
     input: string;
     // The terms that are expected in the output (NOTE: not the expected output itself.)

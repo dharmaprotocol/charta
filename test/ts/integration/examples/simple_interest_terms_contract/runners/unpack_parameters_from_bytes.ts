@@ -1,7 +1,7 @@
 // External libraries
 import { expect } from "chai";
 
-// Scenario runners
+// Scenarios
 import { UnpackParametersFromBytesScenario } from "../scenarios/index";
 
 // Wrappers
@@ -20,7 +20,7 @@ export class UnpackParametersFromBytesRunner {
     }
 
     public testScenario(scenario: UnpackParametersFromBytesScenario) {
-        describe(scenario.description, () => {
+        describe(`when given ${scenario.input}`, () => {
             it(`should return ${JSON.stringify(scenario.expectedTerms)}`, async () => {
                 const result = await this.simpleInterestTermsContract.unpackParametersFromBytes.callAsync(
                     scenario.input,
