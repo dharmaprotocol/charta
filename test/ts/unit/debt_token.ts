@@ -1554,5 +1554,8 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
             shouldNotSafelyTransfer();
         });
 
+        describe("to a contract that does not implement the required function", () => {
+            shouldNotSafelyTransfer(false);
+        });
     });
 });
