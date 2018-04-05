@@ -3,7 +3,6 @@ import * as Units from "../../../../test_utils/units";
 
 // Scenarios
 import { UnpackParametersFromBytesScenario } from "./";
-import { SimpleInterestParameters } from "../../../../factories/terms_contract_parameters";
 
 const defaultArgs = {
     expectedTerms: {
