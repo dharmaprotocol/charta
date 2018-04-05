@@ -2,9 +2,7 @@ import { BigNumber } from "bignumber.js";
 import * as Units from "../../../../test_utils/units";
 
 // Scenarios
-import { RegisterTermStartScenario } from "../runners";
-
-import { DEFAULT_REGISTER_TERM_START_ARGS } from "./";
+import { DEFAULT_REGISTER_TERM_START_ARGS, RegisterTermStartScenario } from "./";
 
 export const SUCCESSFUL_REGISTER_TERM_START_SCENARIOS: RegisterTermStartScenario[] = [
     {

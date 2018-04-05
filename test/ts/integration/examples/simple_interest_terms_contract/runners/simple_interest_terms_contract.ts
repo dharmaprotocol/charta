@@ -7,7 +7,9 @@ import * as moment from "moment";
 import { DecodedLog } from "abi-decoder";
 
 // Scenario runners
-import { RegisterRepaymentScenario, RegisterTermStartScenario, TestAccounts, TestContracts } from "./";
+import { RegisterRepaymentScenario, RegisterTermStartScenario } from "../scenarios";
+
+import { TestAccounts, TestContracts } from "./";
 
 // Wrappers
 import { SignedDebtOrder } from "../../../../../../types/kernel/debt_order";

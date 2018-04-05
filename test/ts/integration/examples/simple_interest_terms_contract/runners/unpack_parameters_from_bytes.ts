@@ -1,36 +1,37 @@
-// // External libraries
-// import * as ABIDecoder from "abi-decoder";
-// import { expect } from "chai";
-//
-// // Scenario runners
-// import { RegisterTermStartScenario } from "./";
-//
-// // Runners
-// import { SimpleInterestTermsContractRunner } from "./simple_interest_terms_contract";
-//
-// export class UnpackParametersFromBytes extends SimpleInterestTermsContractRunner {
-//     public testScenario(scenario: RegisterTermStartScenario) {
-//         let txHash: string;
-//
-//         describe(scenario.description, () => {
-//             before(async () => {
-//                 await this.setupDebtOrder(scenario);
-//
-//                 // Setup ABI decoder in order to decode logs
-//                 ABIDecoder.addABI(this.contracts.simpleInterestTermsContract.abi);
-//             });
-//
-//             after(() => {
-//                 // Tear down ABIDecoder before next set of tests
-//                 ABIDecoder.removeABI(this.contracts.simpleInterestTermsContract.abi);
-//             });
-//
-//             it(`should return ${scenario.expectedOutput}`, () => {
-//                 const this.contracts.simpleInterestTermsContract.unpackParametersFromBytes(
-//                     scenario.termsContractParameters
-//                 ));
-//                expect()
-//             });
-//         });
-//     }
-// }
+// External libraries
+import { expect } from "chai";
+
+// Scenario runners
+import { UnpackParametersFromBytesScenario } from "../scenarios/index";
+
+// Wrappers
+import { SimpleInterestTermsContractContract } from "../../../../../../types/generated/simple_interest_terms_contract";
+
+// This is testing a "pure" function, and so it does not need the setup provided in SimpleInterestTermsContractRunner.
+export class UnpackParametersFromBytesRunner {
+    private simpleInterestTermsContract: SimpleInterestTermsContractContract;
+
+    constructor() {
+        this.testScenario = this.testScenario.bind(this);
+    }
+
+    public initialize(simpleInterestTermsContract: SimpleInterestTermsContractContract) {
+        this.simpleInterestTermsContract = simpleInterestTermsContract;
+    }
+
+    public testScenario(scenario: UnpackParametersFromBytesScenario) {
+        describe(scenario.description, () => {
+            it(`should return ${JSON.stringify(scenario.expectedTerms)}`, async () => {
+                const result = await this.simpleInterestTermsContract.unpackParametersFromBytes.callAsync(
+                    scenario.input,
+                );
+
+                // E.g. '["0","1000000000000000000","2500","1","4"]' - BigNumber components are stringified.
+                const resultString = JSON.stringify(result);
+                const expectedValuesString = JSON.stringify(Object.values(scenario.expectedTerms));
+
+                expect(resultString).to.equal(expectedValuesString);
+            });
+        });
+    }
+}

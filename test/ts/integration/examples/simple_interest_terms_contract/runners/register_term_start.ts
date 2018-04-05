@@ -6,7 +6,7 @@ import { expect } from "chai";
 import { REVERT_ERROR } from "../../../../test_utils/constants";
 
 // Scenario runners
-import { RegisterTermStartScenario } from "./";
+import { RegisterTermStartScenario } from "../scenarios";
 
 // Logs
 import { LogSimpleInterestTermStart } from "../../../../logs/simple_interest_terms_contract";
