@@ -46,3 +46,20 @@ export class SimpleInterestParameters extends TermsContractParameters {
         return `0x${baseTenParameters.toString(16).padStart(64, "0")}`;
     }
 }
+
+export class CollateralizedSimpleInterestTermsParameters extends TermsContractParameters {
+    public static pack(
+        collateralTokenIndex: BigNumber,
+        collateralAmount: BigNumber,
+        gracePeriodInDays: BigNumber,
+    ): string {
+        const encodedCollateralToken = collateralTokenIndex.toString(16).padStart(2, "0");
+        const encodedCollateralAmount = collateralAmount.toString(16).padStart(23, "0");
+        const encodedGracePeriodInDays = gracePeriodInDays.toString(16).padStart(2, "0");
+
+        const packedCollateralParameters =
+            encodedCollateralToken + encodedCollateralAmount + encodedGracePeriodInDays;
+
+        return `0x${packedCollateralParameters.padStart(64, "0")}`;
+    }
+}

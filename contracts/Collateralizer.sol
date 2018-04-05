@@ -189,8 +189,6 @@ contract Collateralizer is Pausable {
         public
         whenNotPaused
     {
-        // Fetch all relevant collateralization parameters
-
         // The token in which collateral is denominated
         address collateralToken;
         // The amount being put up for collateral
@@ -201,6 +199,7 @@ contract Collateralizer is Pausable {
         // The terms contract according to which this asset is being collateralized.
         TermsContract termsContract;
 
+        // Fetch all relevant collateralization parameters.
         (
             collateralToken,
             collateralAmount,
