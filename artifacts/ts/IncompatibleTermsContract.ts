@@ -983,7 +983,7 @@ export const IncompatibleTermsContract =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x1a87d08d203e652b8eaa328bb53b0847f8e184bc"
+      "address": "0x5bd4e59aaab577589da5ed33d43f0a81f1c534fa"
     },
     "70": {
       "events": {},
@@ -992,5 +992,5 @@ export const IncompatibleTermsContract =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-28T21:53:44.845Z"
+  "updatedAt": "2018-04-05T21:29:52.639Z"
 }
