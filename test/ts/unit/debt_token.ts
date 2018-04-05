@@ -8,6 +8,7 @@ import * as Units from "../test_utils/units";
 import { DebtTokenContract } from "../../../types/generated/debt_token";
 import { MockDebtRegistryContract } from "../../../types/generated/mock_debt_registry";
 import { MockERC20TokenContract } from "../../../types/generated/mock_e_r_c20_token";
+import { MockERC721ReceiverContract } from "../../../types/generated/mock_e_r_c721_receiver";
 
 import { Address, TxData } from "../../../types/common";
 import { DebtRegistryEntry } from "../../../types/registry/entry";
@@ -28,6 +29,8 @@ const repaymentRouterContract = artifacts.require("RepaymentRouter");
 
 contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
     let debtToken: DebtTokenContract;
+
+    let receiver: MockERC721ReceiverContract;
 
     let mockRegistry: MockDebtRegistryContract;
     let mockToken: MockERC20TokenContract;
@@ -84,6 +87,9 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
         const debtTokenTruffle = await debtTokenContract.new(mockRegistry.address, {
             from: CONTRACT_OWNER,
         });
+
+        receiver = await MockERC721ReceiverContract.deployed(web3, TX_DEFAULTS);
+        await receiver.reset.sendTransactionAsync();
 
         // The typings we use ingest vanilla Web3 contracts, so we convert the
         // contract instance deployed by truffle into a Web3 contract instance
