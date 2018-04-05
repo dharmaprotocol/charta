@@ -16,7 +16,7 @@ import { DummyTokenContract } from "../../../../../../types/generated/dummy_toke
 import { LogRegisterRepayment } from "../../../../logs/simple_interest_terms_contract";
 
 // Runners
-import { SimpleInterestTermsContractRunner } from "./simple_interest_terms_contract_runner";
+import { SimpleInterestTermsContractRunner } from "./simple_interest_terms_contract";
 
 const DEFAULT_GAS_AMOUNT = 4712388;
 
@@ -86,6 +86,7 @@ export class RegisterRepaymentRunner extends SimpleInterestTermsContractRunner {
                     await expect(transaction).to.eventually.be.rejectedWith(REVERT_ERROR);
                 });
             } else {
+                // If the scenario does not revert, we can call the function and get the txHash.
                 before(async () => {
                     txHash = await this.repayWithRouter(
                         scenario.repaymentAmount,
@@ -95,6 +96,15 @@ export class RegisterRepaymentRunner extends SimpleInterestTermsContractRunner {
             }
 
             if (scenario.succeeds) {
+                it("should record the repayment", async () => {
+                    const { simpleInterestTermsContract } = this.contracts;
+                    const agreementId = this.agreementId;
+
+                    await expect(
+                        simpleInterestTermsContract.getValueRepaidToDate.callAsync(agreementId),
+                    ).to.eventually.bignumber.equal(repaidAmountBefore.add(scenario.repaymentAmount));
+                });
+
                 it("should emit a LogRegisterRepayment event", async () => {
                     const { DEBTOR_1, CREDITOR_1 } = this.accounts;
 
@@ -111,16 +121,8 @@ export class RegisterRepaymentRunner extends SimpleInterestTermsContractRunner {
 
                     expect(returnedLog).to.deep.equal(expectedLog);
                 });
-
-                it("should record the repayment", async () => {
-                    const { simpleInterestTermsContract } = this.contracts;
-                    const agreementId = this.agreementId;
-
-                    await expect(
-                        simpleInterestTermsContract.getValueRepaidToDate.callAsync(agreementId),
-                    ).to.eventually.bignumber.equal(repaidAmountBefore.add(scenario.repaymentAmount));
-                });
             } else {
+                // A repayment should never be recorded if the scenario fails.
                 it("should not record a repayment", async () => {
                     const { simpleInterestTermsContract } = this.contracts;
                     const agreementId = this.agreementId;
@@ -129,6 +131,16 @@ export class RegisterRepaymentRunner extends SimpleInterestTermsContractRunner {
                         simpleInterestTermsContract.getValueRepaidToDate.callAsync(agreementId),
                     ).to.eventually.bignumber.equal(repaidAmountBefore);
                 });
+
+                // If the scenario does not revert, we can check the logs from the txHash to
+                // ensure that no logs were emitted for repayments.
+                if (!scenario.reverts) {
+                    it("should not emit a LogRegisterRepayment event", async () => {
+                        const returnedLog = await this.getLogs(txHash, "LogRegisterRepayment");
+
+                        expect(returnedLog).to.be.undefined;
+                    });
+                }
             }
         });
     }
@@ -144,7 +156,7 @@ export class RegisterRepaymentRunner extends SimpleInterestTermsContractRunner {
             CREDITOR_1,
             amount,
             this.debtOrder.getPrincipalTokenAddress(),
-            {from: DEBTOR_1},
+            { from: DEBTOR_1 },
         );
     }
 

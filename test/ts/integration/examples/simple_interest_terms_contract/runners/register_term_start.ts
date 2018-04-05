@@ -12,7 +12,7 @@ import { RegisterTermStartScenario } from "./";
 import { LogSimpleInterestTermStart } from "../../../../logs/simple_interest_terms_contract";
 
 // Runners
-import { SimpleInterestTermsContractRunner } from "./simple_interest_terms_contract_runner";
+import { SimpleInterestTermsContractRunner } from "./simple_interest_terms_contract";
 
 export class RegisterTermStartRunner extends SimpleInterestTermsContractRunner {
     public testScenario(scenario: RegisterTermStartScenario) {
@@ -22,7 +22,7 @@ export class RegisterTermStartRunner extends SimpleInterestTermsContractRunner {
             before(async () => {
                 await this.setupDebtOrder(scenario);
 
-                if (scenario.invokedByDebtKernel) {
+                if (scenario.invokedByDebtKernel && !scenario.reverts) {
                     // Fill the debt order, thereby invoking registerTermsStart from the debt kernel.
                     txHash = await this.fillDebtOrder();
                 }
@@ -55,9 +55,19 @@ export class RegisterTermStartRunner extends SimpleInterestTermsContractRunner {
                     expect(returnedLog).to.deep.equal(expectedLog);
                 });
             } else {
-                if (!scenario.invokedByDebtKernel) {
+                if (scenario.reverts) {
                     it("should revert the transaction", async () => {
-                        expect(this.registerTermsStart()).to.eventually.be.rejectedWith(REVERT_ERROR);
+                        if (!scenario.invokedByDebtKernel) {
+                            expect(this.registerTermsStart()).to.eventually.be.rejectedWith(REVERT_ERROR);
+                        } else {
+                            expect(this.fillDebtOrder()).to.eventually.be.rejectedWith(REVERT_ERROR);
+                        }
+                    });
+                } else {
+                    it("should not emit a LogSimpleInterestTermStart event", async () => {
+                        const returnedLog = await this.getLogs(txHash, "LogSimpleInterestTermStart");
+
+                        expect(returnedLog).to.be.undefined;
                     });
                 }
             }

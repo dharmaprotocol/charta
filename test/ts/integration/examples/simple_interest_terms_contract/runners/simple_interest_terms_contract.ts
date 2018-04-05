@@ -4,6 +4,7 @@ import * as _ from "lodash";
 import { BigNumber } from "bignumber.js";
 import * as Units from "../../../../test_utils/units";
 import * as moment from "moment";
+import { DecodedLog } from "abi-decoder";
 
 // Scenario runners
 import { RegisterRepaymentScenario, RegisterTermStartScenario, TestAccounts, TestContracts } from "./";
@@ -12,7 +13,7 @@ import { RegisterRepaymentScenario, RegisterTermStartScenario, TestAccounts, Tes
 import { SignedDebtOrder } from "../../../../../../types/kernel/debt_order";
 import { DummyTokenContract } from "../../../../../../types/generated/dummy_token";
 
-// Logs
+// Factories
 import { SimpleInterestParameters } from "../../../../factories/terms_contract_parameters";
 import { DebtOrderFactory } from "../../../../factories/debt_order_factory";
 
@@ -35,7 +36,7 @@ export abstract class SimpleInterestTermsContractRunner {
 
     public abstract testScenario(scenario: RegisterRepaymentScenario | RegisterTermStartScenario): void;
 
-    protected async getLogs(txHash: string, event: string) {
+    protected async getLogs(txHash: string, event: string): Promise<DecodedLog | undefined> {
         const receipt = await web3.eth.getTransactionReceipt(txHash);
 
         return _.find(

@@ -15,6 +15,7 @@ const defaultArgs = {
     termLengthUnits: new BigNumber(4),
     invokedByDebtKernel: true,
     succeeds: true,
+    reverts: false,
     termsContractParameters: (terms: SimpleInterestContractTerms) => SimpleInterestParameters.pack(terms),
 };
 

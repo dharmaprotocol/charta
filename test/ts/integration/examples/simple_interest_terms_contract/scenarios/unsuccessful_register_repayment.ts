@@ -20,6 +20,8 @@ const defaultArgs = {
     repaymentToken: (principalToken: DummyTokenContract, otherToken: DummyTokenContract) => principalToken,
     debtOrder: (debtOrder: SignedDebtOrder) => debtOrder,
     succeeds: false,
+    repayFromRouter: true,
+    reverts: false,
 };
 
 export const UNSUCCESSFUL_REGISTER_REPAYMENT_SCENARIOS: RegisterRepaymentScenario[] = [
@@ -33,7 +35,5 @@ export const UNSUCCESSFUL_REGISTER_REPAYMENT_SCENARIOS: RegisterRepaymentScenari
         description: "when payment is attempted with the incorrect token",
         ...defaultArgs,
         repaymentToken: (principalToken: DummyTokenContract, otherToken: DummyTokenContract) => otherToken,
-        repayFromRouter: true,
-        reverts: false,
     },
 ];
