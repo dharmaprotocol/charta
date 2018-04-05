@@ -1546,5 +1546,13 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
             shouldNotSafelyTransfer();
         });
 
+        describe("to a receiver contract that throws", () => {
+            beforeEach(async () => {
+                await receiver.setShouldRevert.sendTransactionAsync(true);
+            });
+
+            shouldNotSafelyTransfer();
+        });
+
     });
 });
