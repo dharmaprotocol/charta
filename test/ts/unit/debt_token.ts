@@ -1533,5 +1533,10 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
                 });
             });
         };
+
+        describe("to a valid receiver contract", () => {
+            shouldSafelyTransfer();
+        });
+
     });
 });
