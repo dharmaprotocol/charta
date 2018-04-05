@@ -76,7 +76,7 @@ export interface RegisterTermStartScenario {
     termsContractParameters: (terms: SimpleInterestContractTerms) => string;
     // True if the scenario does not revert and the terms contract is started.
     succeeds: boolean;
-    // True if the transaction does not revert during the scenario.
+    // True if the transaction reverts during the scenario.
     reverts: boolean;
     // True if registerTermStart is called by the debt kernel upon an order being filled.
     invokedByDebtKernel: boolean;
