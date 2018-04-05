@@ -93,13 +93,13 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
         router = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
         termsContract = await SimpleInterestTermsContractContract.deployed(web3, TX_DEFAULTS);
 
-        const termsContractParameters = SimpleInterestParameters.pack(
-            new BigNumber(0), // Our migrations set REP up to be at index 0 of the registry
-            Units.ether(1), // principal of 1 ether
-            Units.percent(2.5), // interest rate of 2.5%
-            new BigNumber(1), // The amortization unit type (weekly)
-            new BigNumber(4), // Term length in amortization units.
-        );
+        const termsContractParameters = SimpleInterestParameters.pack({
+            principalTokenIndex: new BigNumber(0), // Our migrations set REP up to be at index 0 of the registry
+            principalAmount: Units.ether(1),
+            interestRate: Units.percent(2.5),
+            amortizationUnitType: new BigNumber(1), // (weekly)
+            termLengthUnits: new BigNumber(4),
+        });
 
         const defaultOrderParams = {
             creditorFee: Units.ether(0.002),

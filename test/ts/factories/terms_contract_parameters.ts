@@ -1,5 +1,13 @@
 import { BigNumber } from "bignumber.js";
 
+export interface SimpleInterestContractTerms {
+    principalTokenIndex: BigNumber;
+    principalAmount: BigNumber;
+    interestRate: BigNumber;
+    amortizationUnitType: BigNumber;
+    termLengthUnits: BigNumber;
+}
+
 class TermsContractParameters {
     public static bitShiftLeft(target: BigNumber, numPlaces: number): BigNumber {
         const binaryTargetString = target.toString(2);
@@ -10,27 +18,24 @@ class TermsContractParameters {
 }
 
 export class SimpleInterestParameters extends TermsContractParameters {
-    public static pack(
-        principalTokenIndex: BigNumber,
-        principalAmount: BigNumber,
-        interestRate: BigNumber,
-        amortizationUnitType: BigNumber,
-        termLength: BigNumber,
-    ): string {
+    public static pack(terms: SimpleInterestContractTerms): string {
         const principalTokenIndexShifted = TermsContractParameters.bitShiftLeft(
-            principalTokenIndex,
+            terms.principalTokenIndex,
             248,
         );
 
-        const principalAmountShifted = TermsContractParameters.bitShiftLeft(principalAmount, 152);
+        const principalAmountShifted = TermsContractParameters.bitShiftLeft(
+            terms.principalAmount,
+            152,
+        );
 
-        const interestRateShifted = TermsContractParameters.bitShiftLeft(interestRate, 128);
+        const interestRateShifted = TermsContractParameters.bitShiftLeft(terms.interestRate, 128);
 
         const amortizationUnitTypeShifted = TermsContractParameters.bitShiftLeft(
-            amortizationUnitType,
+            terms.amortizationUnitType,
             124,
         );
-        const termLengthShifted = TermsContractParameters.bitShiftLeft(termLength, 108);
+        const termLengthShifted = TermsContractParameters.bitShiftLeft(terms.termLengthUnits, 108);
 
         const baseTenParameters = principalTokenIndexShifted
             .plus(principalAmountShifted)
