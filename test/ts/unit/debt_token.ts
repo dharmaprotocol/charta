@@ -1538,5 +1538,13 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
             shouldSafelyTransfer();
         });
 
+        describe("to a receiver contract returning an unexpected value", () => {
+            beforeEach(async () => {
+                await receiver.setReturnValueForERC721ReceivedHook.sendTransactionAsync("0x42");
+            });
+
+            shouldNotSafelyTransfer();
+        });
+
     });
 });
