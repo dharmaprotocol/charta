@@ -7,7 +7,7 @@ import { BigNumber } from "bignumber.js";
 import { REVERT_ERROR } from "../../../../test_utils/constants";
 
 // Scenario runners
-import { RegisterRepaymentScenario } from "./";
+import { RegisterRepaymentScenario } from "../scenarios";
 
 // Wrappers
 import { DummyTokenContract } from "../../../../../../types/generated/dummy_token";

@@ -23,9 +23,10 @@ import { SUCCESSFUL_REGISTER_REPAYMENT_SCENARIOS } from "./scenarios/successful_
 import { UNSUCCESSFUL_REGISTER_REPAYMENT_SCENARIOS } from "./scenarios/unsuccessful_register_repayment";
 import { SUCCESSFUL_REGISTER_TERM_START_SCENARIOS } from "./scenarios/successful_register_term_start";
 import { UNSUCCESSFUL_REGISTER_TERM_START_SCENARIOS } from "./scenarios/unsuccessful_register_term_start";
+import { UNPACK_PARAMETERS_FROM_BYTES_SCENARIOS } from "./scenarios/unpack_parameters_from_bytes";
 
 // Scenario Runners
-import { RegisterRepaymentRunner, RegisterTermStartRunner } from "./runners";
+import { RegisterRepaymentRunner, RegisterTermStartRunner, UnpackParametersFromBytesRunner } from "./runners";
 
 contract("Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) => {
     let kernel: DebtKernelContract;
@@ -48,6 +49,7 @@ contract("Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) 
 
     const registerRepaymentRunner = new RegisterRepaymentRunner();
     const registerTermStartRunner = new RegisterTermStartRunner();
+    const unpackParametersFromBytes = new UnpackParametersFromBytesRunner();
 
     before(async () => {
         dummyTokenRegistryContract = await TokenRegistryContract.deployed(web3, TX_DEFAULTS);
@@ -92,6 +94,7 @@ contract("Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) 
 
         registerRepaymentRunner.initialize(testAccounts, testContracts);
         registerTermStartRunner.initialize(testAccounts, testContracts);
+        unpackParametersFromBytes.initialize(simpleInterestTermsContract);
     });
 
     describe("#registerTermStart", () => {
@@ -112,5 +115,9 @@ contract("Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) 
         describe("Successful register repayment", () => {
             SUCCESSFUL_REGISTER_REPAYMENT_SCENARIOS.forEach(registerRepaymentRunner.testScenario);
         });
+    });
+
+    describe("#unpackParametersFromBytes", () => {
+        UNPACK_PARAMETERS_FROM_BYTES_SCENARIOS.forEach(unpackParametersFromBytes.testScenario);
     });
 });

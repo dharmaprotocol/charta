@@ -1,12 +1,9 @@
 import { BigNumber } from "bignumber.js";
 
-// Scenarios
-import { RegisterTermStartScenario } from "../runners";
+import { DEFAULT_REGISTER_TERM_START_ARGS, RegisterTermStartScenario } from "./";
 
 // These default args by themselves will fail (i.e. registering term start will succeed), so each
 // scenario should modify one property, such that the test fails.
-import { DEFAULT_REGISTER_TERM_START_ARGS } from "./";
-
 const defaultArgs = DEFAULT_REGISTER_TERM_START_ARGS;
 defaultArgs.succeeds = false;
 

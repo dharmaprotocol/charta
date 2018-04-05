@@ -1,10 +1,5 @@
-import { BigNumber } from "bignumber.js";
-import * as Units from "../../../../test_utils/units";
-
 // Scenarios
-import { RegisterRepaymentScenario } from "../runners/";
-
-import { DEFAULT_REGISTER_REPAYMENT_ARGS } from "./";
+import { DEFAULT_REGISTER_REPAYMENT_ARGS, RegisterRepaymentScenario } from "./";
 
 export const SUCCESSFUL_REGISTER_REPAYMENT_SCENARIOS: RegisterRepaymentScenario[] = [
     {

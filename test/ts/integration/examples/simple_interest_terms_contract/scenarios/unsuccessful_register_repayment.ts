@@ -1,10 +1,7 @@
-// Scenarios
-import { RegisterRepaymentScenario } from "../runners";
-
 // Wrappers
 import { DummyTokenContract } from "../../../../../../types/generated/dummy_token";
 
-import { DEFAULT_REGISTER_REPAYMENT_ARGS } from "./";
+import { DEFAULT_REGISTER_REPAYMENT_ARGS, RegisterRepaymentScenario } from "./";
 
 // These default args by themselves will fail (the repayment will succeed), so each
 // scenario should modify one property, such that the test fails.
