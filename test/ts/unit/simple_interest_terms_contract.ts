@@ -8,7 +8,7 @@ import * as moment from "moment";
 
 // Wrappers
 import { RepaymentRouterContract } from "../../../types/generated/repayment_router";
-import { SimpleInterestTermsContractContract } from "../../../types/generated/simple_interest_terms_contract";
+import { CollateralizedSimpleInterestTermsContractContract } from "../../../types/generated/simple_interest_terms_contract";
 import { MockDebtRegistryContract } from "../../../types/generated/mock_debt_registry";
 import { MockERC20TokenContract } from "../../../types/generated/mock_e_r_c20_token";
 import { MockTokenTransferProxyContract } from "../../../types/generated/mock_token_transfer_proxy";
@@ -36,7 +36,7 @@ const simpleInterestTermsContract = artifacts.require("SimpleInterestTermsContra
 const mockTokenContract = artifacts.require("MockERC20Token");
 
 contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
-    let termsContract: SimpleInterestTermsContractContract;
+    let termsContract: CollateralizedSimpleInterestTermsContractContract;
     let router: RepaymentRouterContract;
     let mockToken: MockERC20TokenContract;
     let mockRegistry: MockDebtRegistryContract;
@@ -88,7 +88,7 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
             .at(termsContractTruffle.address);
 
         router = new RepaymentRouterContract(repaymentRouterWeb3Contract, TX_DEFAULTS);
-        termsContract = new SimpleInterestTermsContractContract(
+        termsContract = new CollateralizedSimpleInterestTermsContractContract(
             termsContractWeb3Contract,
             TX_DEFAULTS,
         );

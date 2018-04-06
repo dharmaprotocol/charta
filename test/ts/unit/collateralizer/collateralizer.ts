@@ -56,9 +56,9 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
     const NON_COLLATERALIZER = ACCOUNTS[2];
     const BENEFICIARY_1 = ACCOUNTS[3];
     const BENEFICIARY_2 = ACCOUNTS[4];
+    const MOCK_DEBT_KERNEL_ADDRESS = ACCOUNTS[5];
     // The following MOCK_TERMS_CONTRACT_ADDRESS is used in cases where collateralized tested using the "from" modifier.
     // In such cases, the deployed mockTermsContract's address will not be a recognized sender account.
-    const MOCK_DEBT_KERNEL_ADDRESS = ACCOUNTS[5];
     const MOCK_TERMS_CONTRACT_ADDRESS = ACCOUNTS[6];
     const ATTACKER = ACCOUNTS[7];
 

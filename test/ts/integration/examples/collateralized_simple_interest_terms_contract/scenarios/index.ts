@@ -6,12 +6,23 @@ import { DummyTokenContract } from "../../../../../../types/generated/dummy_toke
 import { SignedDebtOrder } from "../../../../../../types/kernel/debt_order";
 
 export const DEFAULT_REGISTER_TERM_START_ARGS = {
+    // Simple terms parameters.
+    // Our migrations set REP up to be at index 0 of the registry.
     principalTokenIndex: new BigNumber(0),
     principalAmount: Units.ether(1),
     interestRate: Units.percent(2.5),
     amortizationUnitType: new BigNumber(1),
     termLengthUnits: new BigNumber(4),
+    // Parameters for collateralization.
+    collateralAmount: Units.ether(0.005),
+    collateralToken: "REP",
+    gracePeriodInDays: new BigNumber(20),
+    collateralTokenIndexInRegistry: new BigNumber(0),
+    // Misc parameters.
+    collateralTokenAllowance: Units.ether(0.005),
+    collateralTokenBalance: Units.ether(0.005),
     invokedByDebtKernel: true,
+    permissionToCollateralize: true,
     succeeds: true,
     reverts: false,
     termsContractParameters: (terms: SimpleInterestContractTerms) => SimpleInterestParameters.pack(terms),
@@ -24,6 +35,14 @@ export const DEFAULT_REGISTER_REPAYMENT_ARGS = {
     amortizationUnitType: new BigNumber(1),
     termLengthUnits: new BigNumber(4),
     repaymentAmount: Units.ether(1.29),
+    // Parameters for collateralization.
+    collateralAmount: Units.ether(0.005),
+    collateralToken: "REP",
+    gracePeriodInDays: new BigNumber(20),
+    collateralTokenIndexInRegistry: new BigNumber(0),
+    // Misc parameters.
+    collateralTokenAllowance: Units.ether(0.005),
+    collateralTokenBalance: Units.ether(0.005),
     repaymentToken: (principalToken: DummyTokenContract, otherToken: DummyTokenContract) => principalToken,
     debtOrder: (debtOrder: SignedDebtOrder) => debtOrder,
     repayFromRouter: true,
@@ -50,6 +69,13 @@ export interface RegisterRepaymentScenario {
     repaymentToken: (principalToken: DummyTokenContract, otherToken: DummyTokenContract) => DummyTokenContract;
     // The debt order to use in this scenario.
     debtOrder: (debtOrder: SignedDebtOrder) => SignedDebtOrder;
+    // Collateralization parameters.
+    collateralAmount: BigNumber;
+    collateralToken: string;
+    gracePeriodInDays: BigNumber;
+    collateralTokenIndexInRegistry: BigNumber;
+    collateralTokenAllowance: BigNumber;
+    collateralTokenBalance: BigNumber;
     // True if repayment gets logged.
     succeeds: boolean;
     // True if the transaction is reverted.
@@ -73,6 +99,15 @@ export interface RegisterTermStartScenario {
     termLengthUnits: BigNumber;
     // Given some contract terms, returns a packed version to be used in the scenario.
     termsContractParameters: (terms: SimpleInterestContractTerms) => string;
+    // True if the terms contract gets granted permission to call `collateralize` on the Collateralizer contract.
+    permissionToCollateralize: boolean;
+    // Collateralization parameters.
+    collateralAmount: BigNumber;
+    collateralToken: string;
+    gracePeriodInDays: BigNumber;
+    collateralTokenIndexInRegistry: BigNumber;
+    collateralTokenAllowance: BigNumber;
+    collateralTokenBalance: BigNumber;
     // True if the scenario does not revert and the terms contract is started.
     succeeds: boolean;
     // True if the transaction reverts during the scenario.

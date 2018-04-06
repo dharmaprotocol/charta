@@ -5,17 +5,17 @@ import { expect } from "chai";
 import { UnpackParametersFromBytesScenario } from "../scenarios/index";
 
 // Wrappers
-import { SimpleInterestTermsContractContract } from "../../../../../../types/generated/simple_interest_terms_contract";
+import { CollateralizedSimpleInterestTermsContractContract } from "../../../../../../types/generated/simple_interest_terms_contract";
 
 // This is testing a "pure" function, and so it does not need the setup provided in SimpleInterestTermsContractRunner.
 export class UnpackParametersFromBytesRunner {
-    private simpleInterestTermsContract: SimpleInterestTermsContractContract;
+    private simpleInterestTermsContract: CollateralizedSimpleInterestTermsContractContract;
 
     constructor() {
         this.testScenario = this.testScenario.bind(this);
     }
 
-    public initialize(simpleInterestTermsContract: SimpleInterestTermsContractContract) {
+    public initialize(simpleInterestTermsContract: CollateralizedSimpleInterestTermsContractContract) {
         this.simpleInterestTermsContract = simpleInterestTermsContract;
     }
 

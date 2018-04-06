@@ -82,11 +82,11 @@ export class SeizeCollateralRunner {
 
                 // 2.  Packing that index and other collateralization parameters
                 //      into a terms contract parameter string.
-                const termsContractParameters = CollateralizedSimpleInterestTermsParameters.pack(
-                    new BigNumber(0),
-                    scenario.collateralAmount,
-                    scenario.gracePeriodInDays,
-                );
+                const termsContractParameters = CollateralizedSimpleInterestTermsParameters.pack({
+                    collateralTokenIndex: new BigNumber(0),
+                    collateralAmount: scenario.collateralAmount,
+                    gracePeriodInDays: scenario.gracePeriodInDays,
+                });
 
                 // 2. Mocking the terms of the debt agreement to correspond to the
                 //      collateralized terms contract and our generated parameters
