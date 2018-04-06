@@ -14,7 +14,7 @@ import { DummyTokenContract } from "../../../types/generated/dummy_token";
 
 import { TokenRegistryContract } from "../../../types/generated/token_registry";
 import { RepaymentRouterContract } from "../../../types/generated/repayment_router";
-import { CollateralizedSimpleInterestTermsContractContract } from "../../../types/generated/simple_interest_terms_contract";
+import { SimpleInterestTermsContractContract } from "../../../types/generated/simple_interest_terms_contract";
 import { TokenTransferProxyContract } from "../../../types/generated/token_transfer_proxy";
 
 import { DebtOrderFactory } from "../factories/debt_order_factory";
@@ -46,7 +46,7 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
     let kernel: DebtKernelContract;
     let debtToken: DebtTokenContract;
     let principalToken: DummyTokenContract;
-    let termsContract: CollateralizedSimpleInterestTermsContractContract;
+    let termsContract: SimpleInterestTermsContractContract;
     let tokenTransferProxy: TokenTransferProxyContract;
 
     let orderFactory: DebtOrderFactory;
@@ -91,7 +91,7 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
         );
 
         router = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
-        termsContract = await CollateralizedSimpleInterestTermsContractContract.deployed(
+        termsContract = await SimpleInterestTermsContractContract.deployed(
             web3,
             TX_DEFAULTS,
         );

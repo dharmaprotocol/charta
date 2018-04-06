@@ -29,8 +29,6 @@ import { UNPACK_PARAMETERS_FROM_BYTES_SCENARIOS } from "./scenarios/unpack_param
 // Scenario Runners
 import { RegisterRepaymentRunner, RegisterTermStartRunner, UnpackParametersFromBytesRunner } from "./runners";
 
-// const collateralizer = artifacts.require("Collateralizer");
-
 contract("Collateralized Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) => {
     let kernel: DebtKernelContract;
     let repaymentRouter: RepaymentRouterContract;
@@ -79,25 +77,6 @@ contract("Collateralized Simple Interest Terms Contract (Integration Tests)", as
         kernel = await DebtKernelContract.deployed(web3, TX_DEFAULTS);
 
         repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
-
-        // const collateralContractTruffle = await collateralizer.new(
-        //     kernel.address,
-        //     debtRegistryContract.address,
-        //     dummyTokenRegistryContract.address,
-        //     tokenTransferProxy.address,
-        //     { from: CONTRACT_OWNER },
-        // );
-        //
-        // // Step 2: Instantiate a web3 instance of the contract.
-        // const collateralContractWeb3Contract = web3.eth
-        //     .contract(collateralizer.abi)
-        //     .at(collateralContractTruffle.address);
-        //
-        // // Step 3: Instantiate a statically-typed version of the contract.
-        // collateralizerContract = new CollateralizerContract(
-        //     collateralContractWeb3Contract,
-        //     TX_DEFAULTS,
-        // );
     });
 
     before(() => {

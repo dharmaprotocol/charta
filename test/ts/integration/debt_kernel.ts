@@ -32,7 +32,7 @@ import { DebtTokenContract } from "../../../types/generated/debt_token";
 import { DummyTokenContract } from "../../../types/generated/dummy_token";
 import { IncompatibleTermsContractContract } from "../../../types/generated/incompatible_terms_contract";
 import { RepaymentRouterContract } from "../../../types/generated/repayment_router";
-import { CollateralizedSimpleInterestTermsContractContract } from "../../../types/generated/simple_interest_terms_contract";
+import { SimpleInterestTermsContractContract } from "../../../types/generated/simple_interest_terms_contract";
 import { TokenRegistryContract } from "../../../types/generated/token_registry";
 import { TokenTransferProxyContract } from "../../../types/generated/token_transfer_proxy";
 
@@ -51,7 +51,7 @@ const debtKernelContract = artifacts.require("DebtKernel");
 contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
     let kernel: DebtKernelContract;
     let repaymentRouter: RepaymentRouterContract;
-    let simpleInterestTermsContract: CollateralizedSimpleInterestTermsContractContract;
+    let simpleInterestTermsContract: SimpleInterestTermsContractContract;
     let tokenTransferProxy: TokenTransferProxyContract;
     let debtTokenContract: DebtTokenContract;
     let debtRegistryContract: DebtRegistryContract;
@@ -92,7 +92,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
 
         debtTokenContract = await DebtTokenContract.deployed(web3, TX_DEFAULTS);
         debtRegistryContract = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
-        simpleInterestTermsContract = await CollateralizedSimpleInterestTermsContractContract.deployed(
+        simpleInterestTermsContract = await SimpleInterestTermsContractContract.deployed(
             web3,
             TX_DEFAULTS,
         );
