@@ -91,10 +91,7 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
         );
 
         router = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
-        termsContract = await SimpleInterestTermsContractContract.deployed(
-            web3,
-            TX_DEFAULTS,
-        );
+        termsContract = await SimpleInterestTermsContractContract.deployed(web3, TX_DEFAULTS);
 
         const termsContractParameters = SimpleInterestParameters.pack({
             principalTokenIndex: new BigNumber(0), // Our migrations set REP up to be at index 0 of the registry
