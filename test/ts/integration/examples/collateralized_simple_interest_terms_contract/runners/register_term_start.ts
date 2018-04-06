@@ -12,9 +12,10 @@ import { RegisterTermStartScenario } from "../scenarios";
 import { LogSimpleInterestTermStart } from "../../../../logs/simple_interest_terms_contract";
 
 // Runners
-import { SimpleInterestTermsContractRunner } from "./simple_interest_terms_contract";
+import { CollateralizedSimpleInterestTermsContractRunner } from "./collateralized_simple_interest_terms_contract";
+import { CollateralLocked } from "../../../../logs/collateralized_contract";
 
-export class RegisterTermStartRunner extends SimpleInterestTermsContractRunner {
+export class RegisterTermStartRunner extends CollateralizedSimpleInterestTermsContractRunner {
     public testScenario(scenario: RegisterTermStartScenario) {
         let txHash: string;
 
@@ -22,27 +23,57 @@ export class RegisterTermStartRunner extends SimpleInterestTermsContractRunner {
             before(async () => {
                 await this.setupDebtOrder(scenario);
 
+                await this.contracts.dummyREPToken.setBalance.sendTransactionAsync(
+                    this.accounts.DEBTOR_1,
+                    scenario.collateralTokenBalance,
+                    {
+                        from: this.accounts.CONTRACT_OWNER,
+                    },
+                );
+
+                await this.contracts.dummyREPToken.approve.sendTransactionAsync(
+                    this.contracts.tokenTransferProxy.address,
+                    scenario.collateralTokenAllowance,
+                    { from: this.accounts.DEBTOR_1 },
+                );
+
+                if (!scenario.permissionToCollateralize) {
+                    await this.contracts.collateralizerContract.revokeCollateralizeAuthorization.sendTransactionAsync(
+                        this.contracts.collateralizedSimpleInterestTermsContract.address,
+                        { from: this.accounts.CONTRACT_OWNER },
+                    );
+                }
+
                 if (scenario.invokedByDebtKernel && !scenario.reverts) {
                     // Fill the debt order, thereby invoking registerTermsStart from the debt kernel.
                     txHash = await this.fillDebtOrder();
                 }
 
-                // Setup ABI decoder in order to decode logs
-                ABIDecoder.addABI(this.contracts.simpleInterestTermsContract.abi);
+                // Setup ABI decoder in order to decode logs.
+                ABIDecoder.addABI(this.contracts.collateralizedSimpleInterestTermsContract.abi);
+                ABIDecoder.addABI(this.contracts.collateralizerContract.abi);
             });
 
-            after(() => {
+            after(async () => {
+                if (!scenario.permissionToCollateralize) {
+                    await this.contracts.collateralizerContract.addAuthorizedCollateralizeAgent.sendTransactionAsync(
+                        this.contracts.collateralizedSimpleInterestTermsContract.address,
+                        { from: this.accounts.CONTRACT_OWNER },
+                    );
+                }
+
                 // Tear down ABIDecoder before next set of tests
-                ABIDecoder.removeABI(this.contracts.simpleInterestTermsContract.abi);
+                ABIDecoder.removeABI(this.contracts.collateralizedSimpleInterestTermsContract.abi);
+                ABIDecoder.removeABI(this.contracts.collateralizerContract.abi);
             });
 
             if (scenario.succeeds) {
                 it("should emit a LogSimpleInterestTermStart event", async () => {
-                    const { simpleInterestTermsContract } = this.contracts;
+                    const { collateralizedSimpleInterestTermsContract } = this.contracts;
                     const debtOrder = this.debtOrder;
 
                     const expectedLog = LogSimpleInterestTermStart(
-                        simpleInterestTermsContract.address,
+                        collateralizedSimpleInterestTermsContract.address,
                         this.agreementId,
                         debtOrder.getPrincipalTokenAddress(),
                         debtOrder.getPrincipalAmount(),
@@ -52,6 +83,21 @@ export class RegisterTermStartRunner extends SimpleInterestTermsContractRunner {
                     );
 
                     const returnedLog = await this.getLogs(txHash, "LogSimpleInterestTermStart");
+                    expect(returnedLog).to.deep.equal(expectedLog);
+                });
+
+                it("should emit a CollateralLocked event", async () => {
+                    const { collateralizerContract } = this.contracts;
+
+                    const expectedLog = CollateralLocked(
+                        collateralizerContract.address,
+                        this.agreementId,
+                        this.contracts.dummyREPToken.address,
+                        scenario.collateralAmount,
+                    );
+
+                    const returnedLog = await this.getLogs(txHash, "CollateralLocked");
+
                     expect(returnedLog).to.deep.equal(expectedLog);
                 });
             } else {
@@ -76,9 +122,9 @@ export class RegisterTermStartRunner extends SimpleInterestTermsContractRunner {
 
     private registerTermsStart() {
         const { DEBTOR_1, UNDERWRITER } = this.accounts;
-        const { simpleInterestTermsContract } = this.contracts;
+        const { collateralizedSimpleInterestTermsContract } = this.contracts;
 
-        return simpleInterestTermsContract.registerTermStart.sendTransactionAsync(
+        return collateralizedSimpleInterestTermsContract.registerTermStart.sendTransactionAsync(
             this.agreementId,
             DEBTOR_1,
             { from: UNDERWRITER },

@@ -16,12 +16,12 @@ import { SignedDebtOrder } from "../../../../../../types/kernel/debt_order";
 import { DummyTokenContract } from "../../../../../../types/generated/dummy_token";
 
 // Factories
-import { SimpleInterestParameters } from "../../../../factories/terms_contract_parameters";
+import { CollateralizedSimpleInterestTermsParameters } from "../../../../factories/terms_contract_parameters";
 import { DebtOrderFactory } from "../../../../factories/debt_order_factory";
 
 const DEFAULT_GAS_AMOUNT = 4712388;
 
-export abstract class SimpleInterestTermsContractRunner {
+export abstract class CollateralizedSimpleInterestTermsContractRunner {
     protected accounts: TestAccounts;
     protected contracts: TestContracts;
     protected debtOrder: SignedDebtOrder;
@@ -66,7 +66,7 @@ export abstract class SimpleInterestTermsContractRunner {
 
     protected async setupDebtOrder(scenario: RegisterRepaymentScenario | RegisterTermStartScenario) {
         const {
-            simpleInterestTermsContract,
+            collateralizedSimpleInterestTermsContract,
             kernel,
             repaymentRouter,
             debtTokenContract,
@@ -75,13 +75,20 @@ export abstract class SimpleInterestTermsContractRunner {
 
         const { DEBTOR_1, CREDITOR_1, UNDERWRITER, RELAYER } = this.accounts;
 
-        const termsContractParameters = SimpleInterestParameters.pack({
-            principalTokenIndex: scenario.principalTokenIndex,
-            principalAmount: scenario.principalAmount,
-            interestRate: scenario.interestRate,
-            amortizationUnitType: scenario.amortizationUnitType,
-            termLengthUnits: scenario.termLengthUnits,
-        });
+        const termsContractParameters = CollateralizedSimpleInterestTermsParameters.pack(
+            {
+                collateralAmount: scenario.collateralAmount,
+                collateralTokenIndex: scenario.collateralTokenIndexInRegistry,
+                gracePeriodInDays: scenario.gracePeriodInDays,
+            },
+            {
+                principalTokenIndex: scenario.principalTokenIndex,
+                principalAmount: scenario.principalAmount,
+                interestRate: scenario.interestRate,
+                amortizationUnitType: scenario.amortizationUnitType,
+                termLengthUnits: scenario.termLengthUnits,
+            },
+        );
 
         const defaultOrderParams = {
             creditor: CREDITOR_1,
@@ -102,7 +109,7 @@ export abstract class SimpleInterestTermsContractRunner {
             principalTokenAddress: dummyREPToken.address,
             relayer: RELAYER,
             relayerFee: Units.ether(0.0015),
-            termsContract: simpleInterestTermsContract.address,
+            termsContract: collateralizedSimpleInterestTermsContract.address,
             termsContractParameters,
             underwriter: UNDERWRITER,
             underwriterFee: Units.ether(0.0015),
