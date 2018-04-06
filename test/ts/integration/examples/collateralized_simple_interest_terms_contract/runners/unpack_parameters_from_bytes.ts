@@ -5,24 +5,25 @@ import { expect } from "chai";
 import { UnpackParametersFromBytesScenario } from "../scenarios/index";
 
 // Wrappers
-import { SimpleInterestTermsContractContract } from "../../../../../../types/generated/simple_interest_terms_contract";
+import { CollateralizedSimpleInterestTermsContractContract } from "../../../../../../types/generated/collateralized_simple_interest_terms_contract";
 
-// This is testing a "pure" function, and so it does not need the setup provided in SimpleInterestTermsContractRunner.
+// This is testing a "pure" function, and so it does
+// not need the setup provided in CollateralizedSimpleInterestTermsContractRunner.
 export class UnpackParametersFromBytesRunner {
-    private simpleInterestTermsContract: SimpleInterestTermsContractContract;
+    private collateralizedSimpleInterestTermsContract: CollateralizedSimpleInterestTermsContractContract;
 
     constructor() {
         this.testScenario = this.testScenario.bind(this);
     }
 
-    public initialize(simpleInterestTermsContract: SimpleInterestTermsContractContract) {
-        this.simpleInterestTermsContract = simpleInterestTermsContract;
+    public initialize(collateralizedSimpleInterestTermsContract: CollateralizedSimpleInterestTermsContractContract) {
+        this.collateralizedSimpleInterestTermsContract = collateralizedSimpleInterestTermsContract;
     }
 
     public testScenario(scenario: UnpackParametersFromBytesScenario) {
         describe(`when given ${scenario.input}`, () => {
             it(`should return ${JSON.stringify(scenario.expectedTerms)}`, async () => {
-                const result = await this.simpleInterestTermsContract.unpackParametersFromBytes.callAsync(
+                const result = await this.collateralizedSimpleInterestTermsContract.unpackParametersFromBytes.callAsync(
                     scenario.input,
                 );
 
