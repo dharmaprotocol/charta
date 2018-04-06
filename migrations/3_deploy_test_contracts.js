@@ -14,7 +14,7 @@ module.exports = (deployer, network, accounts) => {
     const MockTokenTransferProxyContract = artifacts.require("MockTokenTransferProxy");
     const TokenRegistry = artifacts.require("TokenRegistry");
 
-    OWNER = accounts[0];
+    const OWNER = accounts[0];
 
     if (network !== CONSTANTS.LIVE_NETWORK_ID) {
         deployer.link(PermissionsLib, DummyContract);
