@@ -8,7 +8,6 @@ import * as utils from "../test_utils/utils";
 
 import { Address, Bytes32, TxData, TxDataPayable, UInt } from "../../../types/common";
 import { DebtRegistryContract } from "../../../types/generated/debt_registry";
-import { CollateralizedSimpleInterestTermsContractContract } from "../../../types/generated/simple_interest_terms_contract";
 import { DebtRegistryEntry } from "../../../types/registry/entry";
 import {
     LogAddAuthorizedEditAgent,
