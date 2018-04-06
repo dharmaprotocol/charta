@@ -39,13 +39,5 @@ module.exports = (deployer, network, accounts) => {
         await deployer.deploy(RepaymentRouter, DebtRegistry.address, TokenTransferProxy.address);
         await deployer.deploy(DebtKernel, TokenTransferProxy.address);
         await deployer.deploy(TokenRegistry);
-
-        await deployer.deploy(
-            Collateralizer,
-            DebtKernel.address,
-            DebtRegistry.address,
-            TokenRegistry.address,
-            TokenTransferProxy.address,
-        )
     });
 };
