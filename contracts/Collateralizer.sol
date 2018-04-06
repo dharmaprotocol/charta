@@ -52,7 +52,7 @@ contract Collateralizer is Pausable {
 
     event CollateralLocked(
         bytes32 indexed agreementID,
-        address token,
+        address indexed token,
         uint amount
     );
 
@@ -454,10 +454,10 @@ contract Collateralizer is Pausable {
         ) = unpackCollateralParametersFromBytes(termsContractParameters);
 
         // Resolve address of token associated with this agreement in token registry
-        address collateralToken = tokenRegistry.getTokenAddressByIndex(collateralTokenIndex);
+        address collateralTokenAddress = tokenRegistry.getTokenAddressByIndex(collateralTokenIndex);
 
         return (
-            collateralToken,
+            collateralTokenAddress,
             collateralAmount,
             gracePeriodInDays,
             TermsContract(termsContractAddress)
