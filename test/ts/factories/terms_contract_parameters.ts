@@ -8,6 +8,12 @@ export interface SimpleInterestContractTerms {
     termLengthUnits: BigNumber;
 }
 
+export interface CollateralizedContractTerms {
+    collateralTokenIndex: BigNumber;
+    collateralAmount: BigNumber;
+    gracePeriodInDays: BigNumber;
+}
+
 class TermsContractParameters {
     public static bitShiftLeft(target: BigNumber, numPlaces: number): BigNumber {
         const binaryTargetString = target.toString(2);
@@ -49,17 +55,31 @@ export class SimpleInterestParameters extends TermsContractParameters {
 
 export class CollateralizedSimpleInterestTermsParameters extends TermsContractParameters {
     public static pack(
-        collateralTokenIndex: BigNumber,
-        collateralAmount: BigNumber,
-        gracePeriodInDays: BigNumber,
+        collateralTerms: CollateralizedContractTerms,
+        // Optionally, get the full contract terms parameters string by providing the contract terms.
+        contractTerms?: SimpleInterestContractTerms,
     ): string {
-        const encodedCollateralToken = collateralTokenIndex.toString(16).padStart(2, "0");
-        const encodedCollateralAmount = collateralAmount.toString(16).padStart(23, "0");
-        const encodedGracePeriodInDays = gracePeriodInDays.toString(16).padStart(2, "0");
+        const encodedCollateralToken = collateralTerms.collateralTokenIndex
+            .toString(16)
+            .padStart(2, "0");
+        const encodedCollateralAmount = collateralTerms.collateralAmount
+            .toString(16)
+            .padStart(23, "0");
+        const encodedGracePeriodInDays = collateralTerms.gracePeriodInDays
+            .toString(16)
+            .padStart(2, "0");
 
         const packedCollateralParameters =
             encodedCollateralToken + encodedCollateralAmount + encodedGracePeriodInDays;
 
-        return `0x${packedCollateralParameters.padStart(64, "0")}`;
+        if (contractTerms) {
+            const packedTermsParameters = SimpleInterestParameters.pack(contractTerms);
+            return `${packedTermsParameters.substr(0, 39)}${packedCollateralParameters.padStart(
+                27,
+                "0",
+            )}`;
+        } else {
+            return `0x${packedCollateralParameters.padStart(64, "0")}`;
+        }
     }
 }

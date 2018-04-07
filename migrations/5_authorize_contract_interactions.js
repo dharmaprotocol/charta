@@ -5,6 +5,8 @@ module.exports = (deployer, network, accounts) => {
     const TokenTransferProxy = artifacts.require("TokenTransferProxy");
     const RepaymentRouter = artifacts.require("RepaymentRouter");
     const Collateralizer = artifacts.require("Collateralizer");
+    const SimpleInterestTermsContract = artifacts.require("SimpleInterestTermsContract");
+    const CollateralizedSimpleInterestTermsContract = artifacts.require("CollateralizedSimpleInterestTermsContract");
 
     const TX_DEFAULTS = { from: accounts[0], gas: 4000000 };
 
@@ -15,6 +17,8 @@ module.exports = (deployer, network, accounts) => {
         const proxy = await TokenTransferProxy.deployed();
         const router = await RepaymentRouter.deployed();
         const collateralizer = await Collateralizer.deployed();
+        const simpleInterestTermsContract = await SimpleInterestTermsContract.deployed();
+        const collateralizedSimpleInterestTermsContract = await CollateralizedSimpleInterestTermsContract.deployed();
 
         // Authorize token contract to make mutations to the registry
         await registry.addAuthorizedInsertAgent(token.address);
@@ -34,5 +38,11 @@ module.exports = (deployer, network, accounts) => {
 
         // Authorize collateralizer to make `transferFrom` calls on the token transfer proxy.
         await proxy.addAuthorizedTransferAgent(collateralizer.address);
+
+        // Authorize the simple interest terms contract to invoke `collateralize`.
+        await collateralizer.addAuthorizedCollateralizeAgent(simpleInterestTermsContract.address);
+
+        // Authorize the collateralized simple interest terms contract to invoke `collateralize`.
+        await collateralizer.addAuthorizedCollateralizeAgent(collateralizedSimpleInterestTermsContract.address);
     });
 };

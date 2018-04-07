@@ -8,6 +8,8 @@ module.exports = (deployer, network, accounts) => {
         "CollateralizedSimpleInterestTermsContract",
     );
     const IncompatibleTermsContract = artifacts.require("IncompatibleTermsContract");
+    const Collateralizer = artifacts.require("Collateralizer");
+    const TokenTransferProxy = artifacts.require("TokenTransferProxy");
 
     const TX_DEFAULTS = { from: accounts[0], gas: 4000000 };
 
@@ -22,12 +24,21 @@ module.exports = (deployer, network, accounts) => {
     );
 
     deployer.deploy(
-        CollateralizedSimpleInterestTermsContract,
+        Collateralizer,
         DebtKernel.address,
         DebtRegistry.address,
         TokenRegistry.address,
-        RepaymentRouter.address,
-    );
+        TokenTransferProxy.address,
+    ).then(async () => {
+        await deployer.deploy(
+            CollateralizedSimpleInterestTermsContract,
+            DebtKernel.address,
+            DebtRegistry.address,
+            TokenRegistry.address,
+            RepaymentRouter.address,
+            Collateralizer.address,
+        );
+    });
 
     // TODO: De-prioritizing Compound Interest Terms Contract for testnet beta
 
