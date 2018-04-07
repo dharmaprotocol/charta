@@ -10,7 +10,7 @@ export const DEFAULT_REGISTER_TERM_START_ARGS = {
     // Our migrations set REP up to be at index 0 of the registry.
     principalTokenIndex: new BigNumber(0),
     principalAmount: Units.ether(1),
-    interestRate: new BigNumber(2.5),
+    interestRate: new BigNumber(2500),
     amortizationUnitType: new BigNumber(1),
     termLengthUnits: new BigNumber(4),
     // Parameters for collateralization.

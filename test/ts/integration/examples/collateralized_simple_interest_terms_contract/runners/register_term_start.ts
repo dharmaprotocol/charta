@@ -116,10 +116,10 @@ export class RegisterTermStartRunner extends CollateralizedSimpleInterestTermsCo
                        this.accounts.DEBTOR_1,
                    );
 
-                   if (scenario.collateralTokenIndexInRegistry === scenario.principalTokenIndex) {
-                       const amountReceivedFromLoan = scenario.principalAmount.sub(scenario.debtorFee);
+                   if (scenario.collateralTokenIndexInRegistry.equals(scenario.principalTokenIndex)) {
+                       const amountFromLoan = scenario.principalAmount.sub(scenario.debtorFee);
 
-                       expect(balance.toString()).to.equal(amountReceivedFromLoan.toString());
+                       expect(balance.toString()).to.equal(amountFromLoan.toString());
                    } else {
                        expect(balance.toString()).to.equal(
                            scenario.collateralTokenBalance.sub(scenario.collateralAmount).toString(),
