@@ -38,6 +38,12 @@ export const UNSUCCESSFUL_REGISTER_TERM_START_SCENARIOS: RegisterTermStartScenar
         reverts: true,
     },
     {
+        description: "when there is no token at the given token index in the collateral parameters",
+        ...defaultArgs,
+        collateralTokenIndexInRegistry: new BigNumber(23),
+        reverts: true,
+    },
+    {
         description: "when the collateralized amount is 0",
         ...defaultArgs,
         collateralAmount: new BigNumber(0),

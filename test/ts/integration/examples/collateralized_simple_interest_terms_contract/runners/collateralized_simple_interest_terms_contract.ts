@@ -97,7 +97,7 @@ export abstract class CollateralizedSimpleInterestTermsContractRunner {
             debtOrderVersion: kernel.address,
             debtTokenContract: debtTokenContract.address,
             debtor: DEBTOR_1,
-            debtorFee: Units.ether(0.001),
+            debtorFee: scenario.debtorFee,
             expirationTimestampInSec: new BigNumber(
                 moment()
                     .add(1, "days")

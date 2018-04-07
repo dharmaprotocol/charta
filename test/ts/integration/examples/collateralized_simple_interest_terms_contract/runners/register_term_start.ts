@@ -1,5 +1,6 @@
 // External libraries
 import * as ABIDecoder from "abi-decoder";
+import { BigNumber } from "bignumber.js";
 import { expect } from "chai";
 
 // Test Utils
@@ -22,6 +23,15 @@ export class RegisterTermStartRunner extends CollateralizedSimpleInterestTermsCo
         describe(scenario.description, () => {
             before(async () => {
                 await this.setupDebtOrder(scenario);
+
+                // Reset the collateralizer contract's balance for each example.
+                await this.contracts.dummyREPToken.setBalance.sendTransactionAsync(
+                    this.contracts.collateralizerContract.address,
+                    new BigNumber(0),
+                    {
+                        from: this.accounts.CONTRACT_OWNER,
+                    },
+                );
 
                 await this.contracts.dummyREPToken.setBalance.sendTransactionAsync(
                     this.accounts.DEBTOR_1,
@@ -99,6 +109,30 @@ export class RegisterTermStartRunner extends CollateralizedSimpleInterestTermsCo
                     const returnedLog = await this.getLogs(txHash, "CollateralLocked");
 
                     expect(returnedLog).to.deep.equal(expectedLog);
+                });
+
+                it("should decrement the balance for the debtor by the collateral amount", async () => {
+                   const balance = await this.contracts.dummyREPToken.balanceOf.callAsync(
+                       this.accounts.DEBTOR_1,
+                   );
+
+                   if (scenario.collateralTokenIndexInRegistry === scenario.principalTokenIndex) {
+                       const amountReceivedFromLoan = scenario.principalAmount.sub(scenario.debtorFee);
+
+                       expect(balance.toString()).to.equal(amountReceivedFromLoan.toString());
+                   } else {
+                       expect(balance.toString()).to.equal(
+                           scenario.collateralTokenBalance.sub(scenario.collateralAmount).toString(),
+                       );
+                   }
+                });
+
+                it("should increment the collateralizer balance by the collateral amount", async () => {
+                    const balance = await this.contracts.dummyREPToken.balanceOf.callAsync(
+                        this.contracts.collateralizerContract.address,
+                    );
+
+                    expect(balance.toString()).to.equal(scenario.collateralAmount.toString());
                 });
             } else {
                 if (scenario.reverts) {
