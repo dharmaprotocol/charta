@@ -4,10 +4,12 @@ import * as chai from "chai";
 import * as _ from "lodash";
 import * as Web3 from "web3";
 import * as Units from "../test_utils/units";
+import { sendTransaction } from "../test_utils/send_transactions";
 
 import { DebtTokenContract } from "../../../types/generated/debt_token";
 import { MockDebtRegistryContract } from "../../../types/generated/mock_debt_registry";
 import { MockERC20TokenContract } from "../../../types/generated/mock_e_r_c20_token";
+import { MockERC721ReceiverContract } from "../../../types/generated/mock_e_r_c721_receiver";
 
 import { Address, TxData } from "../../../types/common";
 import { DebtRegistryEntry } from "../../../types/registry/entry";
@@ -28,6 +30,9 @@ const repaymentRouterContract = artifacts.require("RepaymentRouter");
 
 contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
     let debtToken: DebtTokenContract;
+
+    let debtTokenWeb3ContractInstance: Web3.ContractInstance;
+    let receiver: MockERC721ReceiverContract;
 
     let mockRegistry: MockDebtRegistryContract;
     let mockToken: MockERC20TokenContract;
@@ -81,15 +86,18 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
 
         mockToken = await MockERC20TokenContract.deployed(web3, TX_DEFAULTS);
 
-        const debtTokenTruffle = await debtTokenContract.new(mockRegistry.address, {
+        debtTokenWeb3ContractInstance = await debtTokenContract.new(mockRegistry.address, {
             from: CONTRACT_OWNER,
         });
+
+        receiver = await MockERC721ReceiverContract.deployed(web3, TX_DEFAULTS);
+        await receiver.reset.sendTransactionAsync();
 
         // The typings we use ingest vanilla Web3 contracts, so we convert the
         // contract instance deployed by truffle into a Web3 contract instance
         const debtTokenWeb3Contract = web3.eth
-            .contract(debtTokenTruffle.abi)
-            .at(debtTokenTruffle.address);
+            .contract(debtTokenWeb3ContractInstance.abi)
+            .at(debtTokenWeb3ContractInstance.address);
 
         debtToken = new DebtTokenContract(debtTokenWeb3Contract, TX_DEFAULTS);
 
@@ -1427,6 +1435,127 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
                     ).to.eventually.be.rejectedWith(REVERT_ERROR);
                 });
             });
+        });
+    });
+
+    describe("#safeTransferFrom()", () => {
+        beforeEach(resetAndInitState);
+
+        const safelyTransferWithData = async (
+            from: string,
+            to: string,
+            tokenID: BigNumber,
+            data: string,
+        ) => {
+            return await sendTransaction(
+                debtTokenWeb3ContractInstance,
+                "safeTransferFrom",
+                "address,address,uint256,bytes",
+                [from, to, tokenID, data],
+                { from: from },
+            );
+        };
+
+        const safelyTransferWithoutData = async (from: string, to: string, tokenID: BigNumber) => {
+            return await sendTransaction(
+                debtTokenWeb3ContractInstance,
+                "safeTransferFrom",
+                "address,address,uint256",
+                [from, to, tokenID],
+                { from: from },
+            );
+        };
+
+        const shouldSafelyTransfer = async (to?: string) => {
+            describe("with data", () => {
+                it("should call `onERC721Received`", async function() {
+                    const data = "0x42";
+                    const tokenID = debtEntries[0].getTokenId();
+                    await safelyTransferWithData(
+                        TOKEN_OWNER_1,
+                        to ? to : receiver.address,
+                        tokenID,
+                        data,
+                    );
+                    expect(
+                        receiver.wasOnERC721ReceivedCalledWith.callAsync(
+                            TOKEN_OWNER_1,
+                            tokenID,
+                            data,
+                        ),
+                    ).to.eventually.be.true;
+                });
+            });
+            describe("without data", () => {
+                it("should call `onERC721Received`", async function() {
+                    const tokenID = debtEntries[0].getTokenId();
+                    await safelyTransferWithoutData(
+                        TOKEN_OWNER_1,
+                        to ? to : receiver.address,
+                        tokenID,
+                    );
+                    expect(
+                        receiver.wasOnERC721ReceivedCalledWith.callAsync(
+                            TOKEN_OWNER_1,
+                            tokenID,
+                            "",
+                        ),
+                    ).to.eventually.be.true;
+                });
+            });
+        };
+
+        const shouldNotSafelyTransfer = async (toReceiver: boolean = true) => {
+            describe("with data", () => {
+                it("should revert", async function() {
+                    const data = "0x42";
+                    const tokenID = debtEntries[0].getTokenId();
+                    expect(
+                        safelyTransferWithData(
+                            TOKEN_OWNER_1,
+                            toReceiver ? receiver.address : mockRegistry.address,
+                            tokenID,
+                            data,
+                        ),
+                    ).to.eventually.be.rejectedWith(REVERT_ERROR);
+                });
+            });
+            describe("without data", () => {
+                it("should revert", async function() {
+                    const tokenID = debtEntries[0].getTokenId();
+                    expect(
+                        safelyTransferWithoutData(
+                            TOKEN_OWNER_1,
+                            toReceiver ? receiver.address : mockRegistry.address,
+                            tokenID,
+                        ),
+                    ).to.eventually.be.rejectedWith(REVERT_ERROR);
+                });
+            });
+        };
+
+        describe("to a valid receiver contract", () => {
+            shouldSafelyTransfer();
+        });
+
+        describe("to a receiver contract returning an unexpected value", () => {
+            beforeEach(async () => {
+                await receiver.setReturnValueForERC721ReceivedHook.sendTransactionAsync("0x42");
+            });
+
+            shouldNotSafelyTransfer();
+        });
+
+        describe("to a receiver contract that throws", () => {
+            beforeEach(async () => {
+                await receiver.setShouldRevert.sendTransactionAsync(true);
+            });
+
+            shouldNotSafelyTransfer();
+        });
+
+        describe("to a contract that does not implement the required function", () => {
+            shouldNotSafelyTransfer(false);
         });
     });
 });
