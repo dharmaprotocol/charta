@@ -3142,7 +3142,7 @@ export const RepaymentRouter =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x15a62e9157ce4ab8d5712c32477ee9e3ed18a409"
+      "address": "0x518c0e31ac63f34a52bb0b437f1bbdb094d3c432"
     },
     "70": {
       "events": {},
@@ -3151,5 +3151,5 @@ export const RepaymentRouter =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-04-07T18:05:53.127Z"
+  "updatedAt": "2018-04-09T04:40:29.437Z"
 }

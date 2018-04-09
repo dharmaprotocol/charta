@@ -1991,7 +1991,7 @@ export const TokenRegistry =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x079517d4be422ffd9fb5a90ff10639eacea8086d"
+      "address": "0x22c6857d49a4bf7f0c87b1a979481a8a611d4eea"
     },
     "70": {
       "events": {},
@@ -2000,5 +2000,5 @@ export const TokenRegistry =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-04-07T18:05:09.136Z"
+  "updatedAt": "2018-04-09T04:39:37.295Z"
 }
