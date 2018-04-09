@@ -216,14 +216,11 @@ contract Collateralizer is Pausable {
         // in a gas-efficient manner by resetting the address of the collateralizer to 0
         require(agreementToCollateralizer[agreementId] != address(0));
 
-        // Ensure that the debt agreement's term has lapsed
-        require(termsContract.getTermEndTimestamp(agreementId) < block.timestamp);
-
         // Ensure that the debt is not in a state of default
         require(
             termsContract.getExpectedRepaymentValue(
                 agreementId,
-                block.timestamp
+                termsContract.getTermEndTimestamp(agreementId)
             ) <= termsContract.getValueRepaidToDate(agreementId)
         );
 
