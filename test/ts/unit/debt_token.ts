@@ -31,7 +31,7 @@ const repaymentRouterContract = artifacts.require("RepaymentRouter");
 contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
     let debtToken: DebtTokenContract;
 
-    let debtTokenTruffle: Web3.ContractInstance;
+    let debtTokenWeb3ContractInstance: Web3.ContractInstance;
     let receiver: MockERC721ReceiverContract;
 
     let mockRegistry: MockDebtRegistryContract;
@@ -86,7 +86,7 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
 
         mockToken = await MockERC20TokenContract.deployed(web3, TX_DEFAULTS);
 
-        debtTokenTruffle = await debtTokenContract.new(mockRegistry.address, {
+        debtTokenWeb3ContractInstance = await debtTokenContract.new(mockRegistry.address, {
             from: CONTRACT_OWNER,
         });
 
@@ -96,8 +96,8 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
         // The typings we use ingest vanilla Web3 contracts, so we convert the
         // contract instance deployed by truffle into a Web3 contract instance
         const debtTokenWeb3Contract = web3.eth
-            .contract(debtTokenTruffle.abi)
-            .at(debtTokenTruffle.address);
+            .contract(debtTokenWeb3ContractInstance.abi)
+            .at(debtTokenWeb3ContractInstance.address);
 
         debtToken = new DebtTokenContract(debtTokenWeb3Contract, TX_DEFAULTS);
 
@@ -1448,7 +1448,7 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
             data: string,
         ) => {
             return await sendTransaction(
-                debtTokenTruffle,
+                debtTokenWeb3ContractInstance,
                 "safeTransferFrom",
                 "address,address,uint256,bytes",
                 [from, to, tokenID, data],
@@ -1458,7 +1458,7 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
 
         const safelyTransferWithoutData = async (from: string, to: string, tokenID: BigNumber) => {
             return await sendTransaction(
-                debtTokenTruffle,
+                debtTokenWeb3ContractInstance,
                 "safeTransferFrom",
                 "address,address,uint256",
                 [from, to, tokenID],
