@@ -22,6 +22,9 @@ import "./MockContract.sol";
 
 
 contract MockTermsContract is MockContract {
+    // Maps from agreementId's to the mocked term end timestamp
+    mapping (bytes32 => uint) internal termEndTimestamp;
+
     function registerRepayment(
         bytes32 agreementId,
         address payer,
@@ -47,6 +50,13 @@ contract MockTermsContract is MockContract {
         public
     {
         mockReturnValue("registerRepayment", DEFAULT_SIGNATURE_ARGS, success ? bytes32(1) : bytes32(0));
+    }
+
+    function mockTermEndTimestamp(
+        bytes32 agreementId,
+        uint timestamp
+    ) public {
+        termEndTimestamp[agreementId] = timestamp;
     }
 
     function wasRegisterRepaymentCalledWith(
@@ -92,6 +102,12 @@ contract MockTermsContract is MockContract {
             keccak256(agreementId, debtor),
             success ? bytes32(1) : bytes32(0)
         );
+    }
+
+    function getTermEndTimestamp(
+        bytes32 agreementId
+    ) public view returns (uint256) {
+        return termEndTimestamp[agreementId];
     }
 
     function wasRegisterTermStartCalledWith(bytes32 agreementId, address debtor)

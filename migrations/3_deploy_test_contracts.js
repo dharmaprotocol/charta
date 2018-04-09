@@ -10,6 +10,7 @@ module.exports = (deployer, network, accounts) => {
     const MockERC721Receiver = artifacts.require("MockERC721Receiver");
     const MockDebtToken = artifacts.require("MockDebtToken");
     const MockTermsContract = artifacts.require("MockTermsContract");
+    const MockCollateralizedTermsContract = artifacts.require("MockCollateralizedTermsContract");
     const MockTokenRegistry = artifacts.require("MockTokenRegistry");
     const MockTokenTransferProxyContract = artifacts.require("MockTokenTransferProxy");
     const TokenRegistry = artifacts.require("TokenRegistry");
@@ -25,6 +26,7 @@ module.exports = (deployer, network, accounts) => {
         deployer.deploy(MockERC721Receiver);
         deployer.deploy(MockDebtToken);
         deployer.deploy(MockTermsContract);
+        deployer.deploy(MockCollateralizedTermsContract);
         deployer.deploy(MockTokenTransferProxyContract);
         deployer.deploy(MockTokenRegistry);
         deployer.deploy(TokenRegistry).then(async () => {
