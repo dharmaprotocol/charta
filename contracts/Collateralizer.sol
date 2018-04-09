@@ -289,16 +289,15 @@ contract Collateralizer is Pausable {
         // in a gas-efficient manner by resetting the address of the collateralizer to 0
         require(agreementToCollateralizer[agreementId] != address(0));
 
-        // Ensure debt is in a state of default when we account for the
-        // specified "grace period".  We do this by checking whether the
-        // *current* value repaid to-date exceeds the expected repayment value
-        // at the point of time at which the grace period would begin if it ended
-        // now.  This crucially relies on the assumption that both expected repayment value
-        /// and value repaid to date monotonically increase over time
+        // Ensure that the debt agreement's term has lapsed, as well as the grace period.
+        require(timestampAdjustedForGracePeriod(gracePeriodInDays) < block.timestamp);
+
+        // Ensure debt is in a state of default I.E. that the amount repaid is
+        // less than the amount expected at the end of the terms end timestamp.
         require(
             termsContract.getExpectedRepaymentValue(
                 agreementId,
-                timestampAdjustedForGracePeriod(gracePeriodInDays)
+                termsContract.getTermEndTimestamp(agreementId)
             ) > termsContract.getValueRepaidToDate(agreementId)
         );
 
@@ -413,12 +412,16 @@ contract Collateralizer is Pausable {
         );
     }
 
+    /**
+     * Returns the current timestamp, plus the grace period. This can be used to
+     * check if the collateral is ready to be seized.
+     */
     function timestampAdjustedForGracePeriod(uint gracePeriodInDays)
         public
         view
         returns (uint)
     {
-        return block.timestamp.sub(
+        return block.timestamp.add(
             SECONDS_IN_DAY.mul(gracePeriodInDays)
         );
     }
