@@ -17,7 +17,7 @@ import { MockTokenTransferProxyContract } from "../../../../types/generated/mock
 import { MockCollateralizedTermsContractContract } from "../../../../types/generated/mock_collateralized_terms_contract";
 
 // Scenario Runners
-import { CollateralizeRunner, ReturnCollateralRunner } from "./runners";
+import { CollateralizeRunner, ReturnCollateralRunner, SeizeCollateralRunner } from "./runners";
 
 // Scenario Constants
 import { SUCCESSFUL_COLLATERALIZATION_SCENARIOS } from "./scenarios/successful_collateralization";
