@@ -60,4 +60,20 @@ export const SUCCESSFUL_RETURN_SCENARIOS: ReturnCollateralScenario[] = [
         from: (collateralizer: string, other: string) => other,
         agreementId: web3.sha3("Arbitrary 32 byte string for successful return scenario #2"),
     },
+    {
+        description: "Debt's term has not yet lapsed, and debt has been fully repaid, called by non-collateralizer",
+        ...defaultArgs,
+        collateralAmount: Units.ether(0.5),
+        gracePeriodInDays: new BigNumber(3),
+        valueRepaidToDate: Units.ether(3),
+        expectedRepaymentValueSchedule: [
+            {
+                timestamp: moment().add(1, "days").unix(),
+                expectedRepaymentValue: Units.ether(2),
+            },
+        ],
+        from: (collateralizer: string, other: string) => other,
+        termEndTimestamp: moment().add(1, "days").unix(),
+        agreementId: web3.sha3("Arbitrary 32 byte string for unsuccessful return scenario #3"),
+    },
 ];

@@ -54,14 +54,6 @@ export const UNSUCCESSFUL_RETURN_SCENARIOS: ReturnCollateralScenario[] = [
         agreementId: web3.sha3("Arbitrary 32 byte string for unsuccessful return scenario #2"),
     },
     {
-        description: "Debt's term has not yet lapsed",
-        ...defaultArgs,
-        termEndTimestamp: moment()
-            .add(1, "days")
-            .unix(),
-        agreementId: web3.sha3("Arbitrary 32 byte string for unsuccessful return scenario #3"),
-    },
-    {
         description: "Debt's term has lapsed BUT debt has NOT been repaid",
         ...defaultArgs,
         valueRepaidToDate: Units.ether(0),
@@ -79,6 +71,8 @@ export const UNSUCCESSFUL_RETURN_SCENARIOS: ReturnCollateralScenario[] = [
         description: "Debt's term has lapsed BUT collateral has already been seized",
         ...defaultArgs,
         valueRepaidToDate: Units.ether(0),
+        // The grace period is elapsed, so that the creditor can seize the assets.
+        gracePeriodInDays: new BigNumber(0),
         before: async (
             collateralizerContract: CollateralizerContract,
             termsContract: MockCollateralizedTermsContractContract,

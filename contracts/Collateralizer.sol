@@ -271,6 +271,8 @@ contract Collateralizer is Pausable {
         uint gracePeriodInDays;
         // The terms contract according to which this asset is being collateralized.
         TermsContract termsContract;
+        // A timestamp in seconds at which the term ends.
+        uint termEndTimestamp;
 
         // Fetch all relevant collateralization parameters
         (
@@ -289,15 +291,17 @@ contract Collateralizer is Pausable {
         // in a gas-efficient manner by resetting the address of the collateralizer to 0
         require(agreementToCollateralizer[agreementId] != address(0));
 
-        // Ensure that the debt agreement's term has lapsed, as well as the grace period.
-        require(timestampAdjustedForGracePeriod(gracePeriodInDays) < block.timestamp);
+        termEndTimestamp = termsContract.getTermEndTimestamp(agreementId);
+
+        // Ensure that the debt agreement's term has elapsed, as well as the grace period.
+        require(termEndTimestamp.add(gracePeriodInDays * SECONDS_IN_DAY) < block.timestamp);
 
         // Ensure debt is in a state of default I.E. that the amount repaid is
         // less than the amount expected at the end of the terms end timestamp.
         require(
             termsContract.getExpectedRepaymentValue(
                 agreementId,
-                termsContract.getTermEndTimestamp(agreementId)
+                termEndTimestamp
             ) > termsContract.getValueRepaidToDate(agreementId)
         );
 
@@ -409,20 +413,6 @@ contract Collateralizer is Pausable {
             collateralTokenIndex,
             collateralAmount,
             uint(gracePeriodInDays)
-        );
-    }
-
-    /**
-     * Returns the current timestamp, plus the grace period. This can be used to
-     * check if the collateral is ready to be seized.
-     */
-    function timestampAdjustedForGracePeriod(uint gracePeriodInDays)
-        public
-        view
-        returns (uint)
-    {
-        return block.timestamp.add(
-            SECONDS_IN_DAY.mul(gracePeriodInDays)
         );
     }
 

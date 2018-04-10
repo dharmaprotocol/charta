@@ -149,6 +149,12 @@ export class SeizeCollateralRunner {
                     scenario.valueRepaidToDate,
                 );
 
+                // 7.  Mocking the debt term's ending timestamp
+                await mockTermsContract.mockTermEndTimestamp.sendTransactionAsync(
+                    scenario.agreementId,
+                    new BigNumber(scenario.termEndTimestamp),
+                );
+
                 if (typeof scenario.before !== "undefined") {
                     await scenario.before(collateralizer, mockTermsContract);
                 }

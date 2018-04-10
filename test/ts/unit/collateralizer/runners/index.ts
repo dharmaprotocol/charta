@@ -112,6 +112,8 @@ export interface SeizeCollateralScenario {
     gracePeriodInDays: BigNumber;
     // Current value repaid to date
     valueRepaidToDate: BigNumber;
+    // The timestamp of the debt's term end
+    termEndTimestamp: number;
     // Schedule for expected repayment value
     expectedRepaymentValueSchedule: ExpectedRepaymentValueDate[];
     // Specifies whether the terms contract associated with

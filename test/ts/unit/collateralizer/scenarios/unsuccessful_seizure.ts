@@ -18,12 +18,11 @@ const defaultArgs = {
     valueRepaidToDate: Units.ether(0.5).minus(1),
     expectedRepaymentValueSchedule: [
         {
-            timestamp: moment()
-                .subtract(8, "days")
-                .unix(),
+            timestamp: moment().subtract(8, "days").unix(),
             expectedRepaymentValue: Units.ether(0.5),
         },
     ],
+    termEndTimestamp: moment().subtract(8, "days").unix(),
     termsContract: (collateralizedContract: string, attacker: string) => collateralizedContract,
     beneficiary: (originalBeneficiary: string, other: string) => originalBeneficiary,
     from: (beneficiary: string, other: string) => beneficiary,
@@ -75,12 +74,11 @@ export const UNSUCCESSFUL_SEIZURE_SCENARIOS: SeizeCollateralScenario[] = [
         ...defaultArgs,
         expectedRepaymentValueSchedule: [
             {
-                timestamp: moment()
-                    .subtract(6, "days")
-                    .unix(),
+                timestamp: moment().subtract(6, "days").unix(),
                 expectedRepaymentValue: Units.ether(0.5),
             },
         ],
+        termEndTimestamp: moment().subtract(6, "days").unix(),
         agreementId: web3.sha3("Arbitrary 32 byte id for unsuccessful seizure scenario #5"),
     },
     {
@@ -97,12 +95,11 @@ export const UNSUCCESSFUL_SEIZURE_SCENARIOS: SeizeCollateralScenario[] = [
         gracePeriodInDays: new BigNumber(90),
         expectedRepaymentValueSchedule: [
             {
-                timestamp: moment()
-                    .subtract(89, "days")
-                    .unix(),
+                timestamp: moment().subtract(89, "days").unix(),
                 expectedRepaymentValue: Units.ether(0.5),
             },
         ],
+        termEndTimestamp: moment().subtract(89, "days").unix(),
         agreementId: web3.sha3("Arbitrary 32 byte id for unsuccessful seizure scenario #7"),
     },
     {
@@ -146,12 +143,11 @@ export const UNSUCCESSFUL_SEIZURE_SCENARIOS: SeizeCollateralScenario[] = [
         ...defaultArgs,
         expectedRepaymentValueSchedule: [
             {
-                timestamp: moment()
-                    .subtract(6, "days")
-                    .unix(),
+                timestamp: moment().subtract(6, "days").unix(),
                 expectedRepaymentValue: new BigNumber(0),
             },
         ],
+        termEndTimestamp: moment().subtract(6, "days").unix(),
         valueRepaidToDate: new BigNumber(0),
         agreementId: web3.sha3("Arbitrary 32 byte id for unsuccessful seizure scenario #10"),
     },

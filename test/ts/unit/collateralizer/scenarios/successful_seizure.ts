@@ -7,18 +7,19 @@ import * as moment from "moment";
 // utils
 import * as Units from "../../../test_utils/units";
 
+const termEndTimestamp = moment().subtract(8, "days").unix();
+
 const defaultArgs = {
     collateralAmount: Units.ether(1),
     gracePeriodInDays: new BigNumber(7),
     valueRepaidToDate: Units.ether(0),
     expectedRepaymentValueSchedule: [
         {
-            timestamp: moment()
-                .subtract(8, "days")
-                .unix(),
+            timestamp: termEndTimestamp,
             expectedRepaymentValue: Units.ether(0.5),
         },
     ],
+    termEndTimestamp,
     termsContract: (collateralizedContract: string, attacker: string) => collateralizedContract,
     beneficiary: (originalBeneficiary: string, other: string) => originalBeneficiary,
     from: (beneficiary: string, other: string) => beneficiary,
@@ -36,12 +37,11 @@ export const SUCCESSFUL_SEIZURE_SCENARIOS: SeizeCollateralScenario[] = [
         gracePeriodInDays: new BigNumber(0),
         expectedRepaymentValueSchedule: [
             {
-                timestamp: moment()
-                    .subtract(1, "hours")
-                    .unix(),
+                timestamp: moment().subtract(1, "hours").unix(),
                 expectedRepaymentValue: Units.ether(0.5),
             },
         ],
+        termEndTimestamp: moment().subtract(1, "hours").unix(),
         agreementId: web3.sha3("Arbitrary 32 byte id for successful seizure scenario #1"),
     },
     {
@@ -51,12 +51,11 @@ export const SUCCESSFUL_SEIZURE_SCENARIOS: SeizeCollateralScenario[] = [
         gracePeriodInDays: new BigNumber(0),
         expectedRepaymentValueSchedule: [
             {
-                timestamp: moment()
-                    .subtract(1, "hours")
-                    .unix(),
+                timestamp: moment().subtract(1, "hours").unix(),
                 expectedRepaymentValue: Units.ether(0.5),
             },
         ],
+        termEndTimestamp: moment().subtract(1, "hours").unix(),
         from: (beneficiary: string, other: string) => other,
         agreementId: web3.sha3("Arbitrary 32 byte id for successful seizure scenario #2"),
     },
@@ -68,12 +67,11 @@ export const SUCCESSFUL_SEIZURE_SCENARIOS: SeizeCollateralScenario[] = [
         valueRepaidToDate: Units.ether(0.5).minus(1),
         expectedRepaymentValueSchedule: [
             {
-                timestamp: moment()
-                    .subtract(1, "hours")
-                    .unix(),
+                timestamp: moment().subtract(1, "hours").unix(),
                 expectedRepaymentValue: Units.ether(0.5),
             },
         ],
+        termEndTimestamp: moment().subtract(1, "hours").unix(),
         agreementId: web3.sha3("Arbitrary 32 byte id for successful seizure scenario #3"),
     },
     {
@@ -106,12 +104,11 @@ export const SUCCESSFUL_SEIZURE_SCENARIOS: SeizeCollateralScenario[] = [
         gracePeriodInDays: new BigNumber(90),
         expectedRepaymentValueSchedule: [
             {
-                timestamp: moment()
-                    .subtract(91, "days")
-                    .unix(),
+                timestamp: moment().subtract(91, "days").unix(),
                 expectedRepaymentValue: Units.ether(0.5),
             },
         ],
+        termEndTimestamp: moment().subtract(91, "days").unix(),
         agreementId: web3.sha3("Arbitrary 32 byte id for successful seizure scenario #7"),
     },
     {
@@ -121,12 +118,11 @@ export const SUCCESSFUL_SEIZURE_SCENARIOS: SeizeCollateralScenario[] = [
         gracePeriodInDays: new BigNumber(90),
         expectedRepaymentValueSchedule: [
             {
-                timestamp: moment()
-                    .subtract(91, "days")
-                    .unix(),
+                timestamp: moment().subtract(91, "days").unix(),
                 expectedRepaymentValue: Units.ether(0.5),
             },
         ],
+        termEndTimestamp: moment().subtract(91, "days").unix(),
         from: (beneficiary: string, other: string) => other,
         agreementId: web3.sha3("Arbitrary 32 byte id for successful seizure scenario #8"),
     },
@@ -138,12 +134,11 @@ export const SUCCESSFUL_SEIZURE_SCENARIOS: SeizeCollateralScenario[] = [
         gracePeriodInDays: new BigNumber(90),
         expectedRepaymentValueSchedule: [
             {
-                timestamp: moment()
-                    .subtract(91, "days")
-                    .unix(),
+                timestamp: moment().subtract(91, "days").unix(),
                 expectedRepaymentValue: Units.ether(0.5),
             },
         ],
+        termEndTimestamp: moment().subtract(91, "days").unix(),
         agreementId: web3.sha3("Arbitrary 32 byte id for successful seizure scenario #9"),
     },
 ];
