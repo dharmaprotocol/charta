@@ -54,14 +54,6 @@ export const UNSUCCESSFUL_RETURN_SCENARIOS: ReturnCollateralScenario[] = [
         agreementId: web3.sha3("Arbitrary 32 byte string for unsuccessful return scenario #2"),
     },
     {
-        description: "Debt's term has not yet lapsed",
-        ...defaultArgs,
-        termEndTimestamp: moment()
-            .add(1, "days")
-            .unix(),
-        agreementId: web3.sha3("Arbitrary 32 byte string for unsuccessful return scenario #3"),
-    },
-    {
         description: "Debt's term has lapsed BUT debt has NOT been repaid",
         ...defaultArgs,
         valueRepaidToDate: Units.ether(0),
