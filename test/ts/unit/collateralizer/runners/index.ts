@@ -112,6 +112,8 @@ export interface SeizeCollateralScenario {
     gracePeriodInDays: BigNumber;
     // Current value repaid to date
     valueRepaidToDate: BigNumber;
+    // The timestamp of the debt's term end
+    termEndTimestamp: number;
     // Schedule for expected repayment value
     expectedRepaymentValueSchedule: ExpectedRepaymentValueDate[];
     // Specifies whether the terms contract associated with
@@ -128,9 +130,9 @@ export interface SeizeCollateralScenario {
     // Specifies whether collateral has been posted in the name of the debt agreement
     debtAgreementCollateralized?: boolean;
     // Specifies whether the call is expected to succeed.
-    succeeds: boolean?;
+    succeeds: boolean;
     // Specifies whether the terms contract in the agreement id exists and is valid.
-    validTermsContract?: true;
+    validTermsContract?: boolean;
     // Before block
     before?: (
         collateralizerContract: CollateralizerContract,
