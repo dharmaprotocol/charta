@@ -17,7 +17,7 @@ import { MockTokenTransferProxyContract } from "../../../../types/generated/mock
 import { MockCollateralizedTermsContractContract } from "../../../../types/generated/mock_collateralized_terms_contract";
 
 // Scenario Runners
-import { CollateralizeRunner, ReturnCollateralRunner, S } from "./runners";
+import { CollateralizeRunner, ReturnCollateralRunner, SeizeCollateralRunner } from "./runners";
 
 // Scenario Constants
 import { SUCCESSFUL_COLLATERALIZATION_SCENARIOS } from "./scenarios/successful_collateralization";
@@ -26,8 +26,6 @@ import { SUCCESSFUL_RETURN_SCENARIOS } from "./scenarios/successful_return";
 import { UNSUCCESSFUL_RETURN_SCENARIOS } from "./scenarios/unsuccessful_return";
 import { SUCCESSFUL_SEIZURE_SCENARIOS } from "./scenarios/successful_seizure";
 import { UNSUCCESSFUL_SEIZURE_SCENARIOS } from "./scenarios/unsuccessful_seizure";
-import {MockTokenTransferProxy} from "../../../../artifacts/ts/MockTokenTransferProxy";
-import {SeizeCollateralRunner} from "./runners/seize_collateral";
 
 // Set up Chai
 ChaiSetup.configure();
