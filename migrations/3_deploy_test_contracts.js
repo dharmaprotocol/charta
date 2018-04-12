@@ -32,35 +32,41 @@ module.exports = (deployer, network, accounts) => {
         deployer.deploy(TokenRegistry).then(async () => {
             const tokenRegistry = await TokenRegistry.deployed();
 
-            const dummyREPToken = await DummyToken.new(
-                "Augur REP",
-                CONSTANTS.REP_TOKEN_SYMBOL,
-                CONSTANTS.DUMMY_TOKEN_DECIMALS,
-                CONSTANTS.DUMMY_TOKEN_SUPPLY,
-            );
-            await tokenRegistry.setTokenAddress(CONSTANTS.REP_TOKEN_SYMBOL, dummyREPToken.address, {
-                from: OWNER,
-            });
+            // Create Dummy Tokens and add them to the registry.
+            CONSTANTS.TOKEN_LIST.forEach(async (token) => {
+                const { name, symbol } = token;
 
-            const dummyMKRToken = await DummyToken.new(
-                "Maker DAO",
-                CONSTANTS.MKR_TOKEN_SYMBOL,
-                CONSTANTS.DUMMY_TOKEN_DECIMALS,
-                CONSTANTS.DUMMY_TOKEN_SUPPLY,
-            );
-            await tokenRegistry.setTokenAddress(CONSTANTS.MKR_TOKEN_SYMBOL, dummyMKRToken.address, {
-                from: OWNER,
-            });
+                const dummyToken = await DummyToken.new(
+                    name,
+                    symbol,
+                    CONSTANTS.DUMMY_TOKEN_DECIMALS,
+                    CONSTANTS.DUMMY_TOKEN_SUPPLY
+                );
 
-            const dummyZRXToken = await DummyToken.new(
-                "0x Token",
-                CONSTANTS.ZRX_TOKEN_SYMBOL,
-                CONSTANTS.DUMMY_TOKEN_DECIMALS,
-                CONSTANTS.DUMMY_TOKEN_SUPPLY,
-            );
-            await tokenRegistry.setTokenAddress(CONSTANTS.ZRX_TOKEN_SYMBOL, dummyZRXToken.address, {
-                from: OWNER,
+                await tokenRegistry.setTokenAttributes(
+                    symbol,
+                    dummyToken.address,
+                    CONSTANTS.DUMMY_TOKEN_DECIMALS,
+                    { from: OWNER }
+                );
             });
         });
-    } // TODO Add some sort of linking for live tokens to token registry
+    } else {
+        // For production migrations.
+        deployer.deploy(TokenRegistry).then(async () => {
+            const tokenRegistry = await TokenRegistry.deployed();
+
+            // Set the address of the tokens in the token registry.
+            CONSTANTS.TOKEN_LIST.forEach(async (token) => {
+                const { symbol, address, decimals } = token;
+
+                await tokenRegistry.setTokenAttributes(
+                    symbol,
+                    address,
+                    decimals,
+                    { from: OWNER }
+                );
+            });
+        });
+    }
 };
