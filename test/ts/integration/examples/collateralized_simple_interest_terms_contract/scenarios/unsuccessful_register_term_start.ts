@@ -34,13 +34,13 @@ export const UNSUCCESSFUL_REGISTER_TERM_START_SCENARIOS: RegisterTermStartScenar
     {
         description: "when there is no token at the given token index in the terms contract parameters",
         ...defaultArgs,
-        principalTokenIndex: new BigNumber(23),
+        principalTokenIndex: new BigNumber(99),
         reverts: true,
     },
     {
         description: "when there is no token at the given token index in the collateral parameters",
         ...defaultArgs,
-        collateralTokenIndexInRegistry: new BigNumber(23),
+        collateralTokenIndexInRegistry: new BigNumber(99),
         reverts: true,
     },
     {
