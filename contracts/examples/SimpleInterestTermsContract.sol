@@ -50,6 +50,10 @@ contract SimpleInterestTermsContract is TermsContract {
     // decimal values (such as interestRate) with fixed point values
     // scaled up by a factor of 10000 -- e.g. 10.342% => 1034250
     uint public constant INTEREST_RATE_SCALING_FACTOR = 10 ** 4;
+    // The number of orders of magnitudes an interest rate (denominated in %)
+    // must be scaled down in order to multiply it by a principal
+    // amount and produce the correct interest amount.
+    uint public constant PERCENTAGE_SCALING_FACTOR = 10 ** 2;
 
     mapping (bytes32 => uint) public valueRepaid;
 
@@ -351,7 +355,8 @@ contract SimpleInterestTermsContract is TermsContract {
         // by the scaling factor we choose for interest rates.
         uint totalInterest = params.principalAmount
             .mul(params.interestRate)
-            .div(INTEREST_RATE_SCALING_FACTOR);
+            .div(INTEREST_RATE_SCALING_FACTOR)
+            .div(PERCENTAGE_SCALING_FACTOR);
 
         return params.principalAmount.add(totalInterest);
     }
