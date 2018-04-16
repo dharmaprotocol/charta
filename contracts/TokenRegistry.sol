@@ -110,4 +110,36 @@ contract TokenRegistry is Ownable {
     function getTokenSymbolByIndex(uint _index) public view returns (string) {
         return tokenSymbolList[_index];
     }
+
+    /**
+     * Given the symbol for a token, returns the number of decimals as provided in
+     * the associated TokensAttribute struct.
+     *
+     * Example:
+     *   getNumDecimalsFromSymbol("REP");
+     *   => 18
+     */
+    function getNumDecimalsFromSymbol(string _symbol) public view returns (uint) {
+        bytes32 symbolHash = keccak256(_symbol);
+
+        TokenAttributes storage attributes = symbolHashToTokenAttributes[symbolHash];
+
+        return attributes.numDecimals;
+    }
+
+    /**
+     * Given the index for a token in the registry, returns the number of decimals as provided in
+     * the associated TokensAttribute struct.
+     *
+     * Example:
+     *   getNumDecimalsByIndex(1);
+     *   => 18
+     */
+    function getNumDecimalsByIndex(uint _index) public view returns (uint) {
+        string memory symbol = getTokenSymbolByIndex(_index);
+
+        uint numDecimals = getNumDecimalsFromSymbol(symbol);
+
+        return numDecimals;
+    }
 }
