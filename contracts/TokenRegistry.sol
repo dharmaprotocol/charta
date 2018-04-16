@@ -136,12 +136,10 @@ contract TokenRegistry is Ownable {
      *   => 18
      */
     function getNumDecimalsByIndex(uint _index) public view returns (uint) {
-        string storage symbol = tokenSymbolList[_index];
+        string memory symbol = getTokenSymbolByIndex(_index);
 
-        bytes32 symbolHash = keccak256(symbol);
+        uint numDecimals = getNumDecimalsFromSymbol(symbol);
 
-        TokenAttributes storage attributes = symbolHashToTokenAttributes[symbolHash];
-
-        return attributes.numDecimals;
+        return numDecimals;
     }
 }
