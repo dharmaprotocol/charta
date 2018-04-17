@@ -1,27 +1,35 @@
 const CONSTANTS = require("./migration_constants");
 
 module.exports = (deployer, network, accounts) => {
-    const DebtRegistry = artifacts.require("DebtRegistry");
-    const DebtToken = artifacts.require("DebtToken");
-    const DebtKernel = artifacts.require("DebtKernel");
-    const TokenTransferProxy = artifacts.require("TokenTransferProxy");
-    const RepaymentRouter = artifacts.require("RepaymentRouter");
+    const CONTRACT_OWNER = accounts[0];
     const MultiSigWallet = artifacts.require("MultiSigWallet");
+
+    /**
+     * A list of contract instances to deploy.
+     *
+     * @type {Web3.ContractInstance[]}
+     */
+    const contractInstances = CONSTANTS.CONTRACT_NAMES.map((contractName) => {
+        return artifacts.require(contractName);
+    });
 
     return deployer.then(async () => {
         if (network === CONSTANTS.LIVE_NETWORK_ID) {
-            const registry = await DebtRegistry.deployed();
-            const token = await DebtToken.deployed();
-            const kernel = await DebtKernel.deployed();
-            const proxy = await TokenTransferProxy.deployed();
-            const router = await RepaymentRouter.deployed();
+            // Deploy the multi-sig wallet, which will own each of the contracts.
             const wallet = await MultiSigWallet.deployed();
 
-            await registry.transferOwnership(wallet.address);
-            await token.transferOwnership(wallet.address);
-            await kernel.transferOwnership(wallet.address);
-            await proxy.transferOwnership(wallet.address);
-            await router.transferOwnership(wallet.address);
+            /*
+             * Deploy and the transfer ownership of each of the contracts
+             * to the multi-sig wallet.
+             */
+            contractInstances.forEach(async (artifact) => {
+                const contract = await artifact.deployed();
+
+                contract.transferOwnership(
+                    wallet.address,
+                    { from: CONTRACT_OWNER },
+                );
+            });
         }
     });
 };
