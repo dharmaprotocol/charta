@@ -46,7 +46,7 @@ export class RegisterTermStartRunner extends SimpleInterestTermsContractRunner {
                         this.agreementId,
                         debtOrder.getPrincipalTokenAddress(),
                         debtOrder.getPrincipalAmount(),
-                        scenario.interestRate,
+                        scenario.interestRateFixedPoint,
                         scenario.amortizationUnitType,
                         scenario.termLengthUnits,
                     );
@@ -58,14 +58,21 @@ export class RegisterTermStartRunner extends SimpleInterestTermsContractRunner {
                 if (scenario.reverts) {
                     it("should revert the transaction", async () => {
                         if (!scenario.invokedByDebtKernel) {
-                            expect(this.registerTermsStart()).to.eventually.be.rejectedWith(REVERT_ERROR);
+                            expect(this.registerTermsStart()).to.eventually.be.rejectedWith(
+                                REVERT_ERROR,
+                            );
                         } else {
-                            expect(this.fillDebtOrder()).to.eventually.be.rejectedWith(REVERT_ERROR);
+                            expect(this.fillDebtOrder()).to.eventually.be.rejectedWith(
+                                REVERT_ERROR,
+                            );
                         }
                     });
                 } else {
                     it("should not emit a LogSimpleInterestTermStart event", async () => {
-                        const returnedLog = await this.getLogs(txHash, "LogSimpleInterestTermStart");
+                        const returnedLog = await this.getLogs(
+                            txHash,
+                            "LogSimpleInterestTermStart",
+                        );
 
                         expect(returnedLog).to.be.undefined;
                     });

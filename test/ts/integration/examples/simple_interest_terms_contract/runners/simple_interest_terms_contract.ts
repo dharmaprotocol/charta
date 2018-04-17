@@ -4,7 +4,6 @@ import * as _ from "lodash";
 import { BigNumber } from "bignumber.js";
 import * as Units from "../../../../test_utils/units";
 import * as moment from "moment";
-import { DecodedLog } from "abi-decoder";
 
 // Scenario runners
 import { RegisterRepaymentScenario, RegisterTermStartScenario } from "../scenarios";
@@ -36,15 +35,17 @@ export abstract class SimpleInterestTermsContractRunner {
         this.contracts = testContracts;
     }
 
-    public abstract testScenario(scenario: RegisterRepaymentScenario | RegisterTermStartScenario): void;
+    public abstract testScenario(
+        scenario: RegisterRepaymentScenario | RegisterTermStartScenario,
+    ): void;
 
-    protected async getLogs(txHash: string, event: string): Promise<DecodedLog | undefined> {
+    protected async getLogs(
+        txHash: string,
+        event: string,
+    ): Promise<ABIDecoder.DecodedLog | undefined> {
         const receipt = await web3.eth.getTransactionReceipt(txHash);
 
-        return _.find(
-            ABIDecoder.decodeLogs(receipt.logs),
-            { name: event },
-        );
+        return _.find(ABIDecoder.decodeLogs(receipt.logs), { name: event });
     }
 
     protected fillDebtOrder() {
@@ -64,7 +65,9 @@ export abstract class SimpleInterestTermsContractRunner {
         );
     }
 
-    protected async setupDebtOrder(scenario: RegisterRepaymentScenario | RegisterTermStartScenario) {
+    protected async setupDebtOrder(
+        scenario: RegisterRepaymentScenario | RegisterTermStartScenario,
+    ) {
         const {
             simpleInterestTermsContract,
             kernel,
@@ -78,7 +81,7 @@ export abstract class SimpleInterestTermsContractRunner {
         const termsContractParameters = SimpleInterestParameters.pack({
             principalTokenIndex: scenario.principalTokenIndex,
             principalAmount: scenario.principalAmount,
-            interestRate: scenario.interestRate,
+            interestRateFixedPoint: scenario.interestRateFixedPoint,
             amortizationUnitType: scenario.amortizationUnitType,
             termLengthUnits: scenario.termLengthUnits,
         });
@@ -106,7 +109,7 @@ export abstract class SimpleInterestTermsContractRunner {
             termsContractParameters,
             underwriter: UNDERWRITER,
             underwriterFee: Units.ether(0.0015),
-            underwriterRiskRating: Units.percent(1.35),
+            underwriterRiskRating: Units.underwriterRiskRatingFixedPoint(1.35),
         };
 
         const orderFactory = new DebtOrderFactory(defaultOrderParams);
@@ -121,18 +124,15 @@ export abstract class SimpleInterestTermsContractRunner {
     }
 
     protected async setBalances() {
-        const {
-            tokenTransferProxy,
-        } = this.contracts;
+        const { tokenTransferProxy } = this.contracts;
 
         const { CONTRACT_OWNER } = this.accounts;
         const debtOrder = this.debtOrder;
 
-        const token = await DummyTokenContract.at(
-            debtOrder.getPrincipalTokenAddress(),
-            web3,
-            { from: CONTRACT_OWNER, gas: DEFAULT_GAS_AMOUNT },
-        );
+        const token = await DummyTokenContract.at(debtOrder.getPrincipalTokenAddress(), web3, {
+            from: CONTRACT_OWNER,
+            gas: DEFAULT_GAS_AMOUNT,
+        });
 
         const debtor = debtOrder.getDebtor();
         const creditor = debtOrder.getCreditor();

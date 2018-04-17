@@ -96,7 +96,7 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
         const termsContractParameters = SimpleInterestParameters.pack({
             principalTokenIndex: new BigNumber(0), // Our migrations set REP up to be at index 0 of the registry
             principalAmount: Units.ether(1),
-            interestRate: Units.percent(2.5),
+            interestRateFixedPoint: Units.interestRateFixedPoint(2.5),
             amortizationUnitType: new BigNumber(1), // (weekly)
             termLengthUnits: new BigNumber(4),
         });
@@ -123,7 +123,7 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
             termsContractParameters,
             underwriter: UNDERWRITER,
             underwriterFee: Units.ether(0.0015),
-            underwriterRiskRating: Units.percent(1.35),
+            underwriterRiskRating: Units.underwriterRiskRatingFixedPoint(1.35),
         };
 
         orderFactory = new DebtOrderFactory(defaultOrderParams);

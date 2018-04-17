@@ -1,30 +1,35 @@
 import { BigNumber } from "bignumber.js";
 import * as Units from "../../../../test_utils/units";
 
-import { SimpleInterestContractTerms, SimpleInterestParameters } from "../../../../factories/terms_contract_parameters";
+import {
+    SimpleInterestContractTerms,
+    SimpleInterestParameters,
+} from "../../../../factories/terms_contract_parameters";
 import { DummyTokenContract } from "../../../../../../types/generated/dummy_token";
 import { SignedDebtOrder } from "../../../../../../types/kernel/debt_order";
 
 export const DEFAULT_REGISTER_TERM_START_ARGS = {
     principalTokenIndex: new BigNumber(0),
     principalAmount: Units.ether(1),
-    interestRate: Units.percent(2.5),
+    interestRateFixedPoint: Units.interestRateFixedPoint(2.5),
     amortizationUnitType: new BigNumber(1),
     termLengthUnits: new BigNumber(4),
     invokedByDebtKernel: true,
     succeeds: true,
     reverts: false,
-    termsContractParameters: (terms: SimpleInterestContractTerms) => SimpleInterestParameters.pack(terms),
+    termsContractParameters: (terms: SimpleInterestContractTerms) =>
+        SimpleInterestParameters.pack(terms),
 };
 
 export const DEFAULT_REGISTER_REPAYMENT_ARGS = {
     principalTokenIndex: new BigNumber(0),
     principalAmount: Units.ether(1),
-    interestRate: Units.percent(2.5),
+    interestRateFixedPoint: Units.interestRateFixedPoint(2.5),
     amortizationUnitType: new BigNumber(1),
     termLengthUnits: new BigNumber(4),
     repaymentAmount: Units.ether(1.29),
-    repaymentToken: (principalToken: DummyTokenContract, otherToken: DummyTokenContract) => principalToken,
+    repaymentToken: (principalToken: DummyTokenContract, otherToken: DummyTokenContract) =>
+        principalToken,
     debtOrder: (debtOrder: SignedDebtOrder) => debtOrder,
     repayFromRouter: true,
     succeeds: true,
@@ -38,8 +43,8 @@ export interface RegisterRepaymentScenario {
     principalTokenIndex: BigNumber;
     // The debt order's principal amount.
     principalAmount: BigNumber;
-    // The debt order's interest rate.
-    interestRate: BigNumber;
+    // The debt order's interest rate (in fixed point).
+    interestRateFixedPoint: BigNumber;
     // The index for amortization type, e.g. 0 for hourly, for debt order.
     amortizationUnitType: BigNumber;
     // The number of units of the given amortization type, e.g. 4 hours, for the debt order.
@@ -47,7 +52,10 @@ export interface RegisterRepaymentScenario {
     // The amount that the payer is attempting to repay.
     repaymentAmount: BigNumber;
     // The token used for repayments.
-    repaymentToken: (principalToken: DummyTokenContract, otherToken: DummyTokenContract) => DummyTokenContract;
+    repaymentToken: (
+        principalToken: DummyTokenContract,
+        otherToken: DummyTokenContract,
+    ) => DummyTokenContract;
     // The debt order to use in this scenario.
     debtOrder: (debtOrder: SignedDebtOrder) => SignedDebtOrder;
     // True if repayment gets logged.
@@ -65,8 +73,8 @@ export interface RegisterTermStartScenario {
     principalTokenIndex: BigNumber;
     // The debt order's principal amount.
     principalAmount: BigNumber;
-    // The debt order's interest rate.
-    interestRate: BigNumber;
+    // The debt order's interest rate (in fixed point).
+    interestRateFixedPoint: BigNumber;
     // The index for amortization type, e.g. 0 for hourly, for debt order.
     amortizationUnitType: BigNumber;
     // The number of units of the given amortization type, e.g. 4 hours, for the debt order.

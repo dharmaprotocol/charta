@@ -149,7 +149,7 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
             termsContractParameters: TERMS_CONTRACT_PARAMETERS,
             underwriter: UNDERWRITER,
             underwriterFee: Units.ether(0.0015),
-            underwriterRiskRating: Units.percent(1.35),
+            underwriterRiskRating: Units.underwriterRiskRatingFixedPoint(1.35),
         };
 
         orderFactory = new DebtOrderFactory(defaultOrderParams);

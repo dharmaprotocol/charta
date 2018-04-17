@@ -95,7 +95,7 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
                 termsContract: TERMS_CONTRACT_ADDRESS,
                 termsContractParameters: ARBITRARY_TERMS_CONTRACT_PARAMS,
                 underwriter: UNDERWRITER,
-                underwriterRiskRating: Units.percent(5),
+                underwriterRiskRating: Units.underwriterRiskRatingFixedPoint(5),
                 version: VERSION,
             });
         };

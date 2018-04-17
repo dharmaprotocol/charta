@@ -103,7 +103,7 @@ contract("Debt Token (Integration Tests)", (ACCOUNTS) => {
                 termsContract: debtRegistry.address,
                 termsContractParameters: ARBITRARY_TERMS_CONTRACT_PARAMS[i],
                 underwriter: UNDERWRITERS[i],
-                underwriterRiskRating: Units.percent(3.4),
+                underwriterRiskRating: Units.underwriterRiskRatingFixedPoint(3.4),
                 version: repaymentRouterContractInstance.address,
             });
         });
