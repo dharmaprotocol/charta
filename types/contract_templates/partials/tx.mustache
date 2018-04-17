@@ -40,12 +40,20 @@ public {{this.name}} = {
         );
         return gas;
     },
-    getABIEncodedTransactionData(
+    async getABIEncodedTransactionData(
     {{> typed_params inputs=inputs}}
         txData: TxData = {},
-    ): string {
+    ): Promise<string> {
         const self = this as {{contractName}}Contract;
-        const abiEncodedTransactionData = self.web3ContractInstance.{{this.name}}.getData();
+        const txDataWithDefaults = await self.applyDefaultsToTxDataAsync(
+            txData,
+        );
+        const abiEncodedTransactionData = await promisify<string>(
+            self.web3ContractInstance.{{this.name}}.getData, self.web3ContractInstance,
+        )(
+            {{> params inputs=inputs}}
+            txDataWithDefaults,
+        );
         return abiEncodedTransactionData;
     },
 };
