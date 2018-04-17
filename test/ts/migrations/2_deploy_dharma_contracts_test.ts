@@ -107,14 +107,16 @@ contract("Migration #2: Deploying Dharma Contracts", async (ACCOUNTS) => {
     });
 
     describe("#MultiSigWallet", () => {
+        const contractOwners = ACCOUNTS.slice(0, 5);
+
         it("lists the correct accounts as owner", async () => {
-            _.forEach(ACCOUNTS, (value: any, i: number) => {
+            _.forEach(contractOwners, (value: any, i: number) => {
                 expect(wallet.isOwner.callAsync(value)).to.eventually.be.true;
             });
         });
 
         it("lists the correct number of required authorizations", async () => {
-            const requiredComputed = new BigNumber(ACCOUNTS.length / 2);
+            const requiredComputed = new BigNumber(Math.ceil(contractOwners.length / 2));
             expect(wallet.required.callAsync()).to.eventually.bignumber.equal(requiredComputed);
         });
     });

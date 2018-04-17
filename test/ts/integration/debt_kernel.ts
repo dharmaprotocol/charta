@@ -8,6 +8,7 @@ import { BigNumber } from "bignumber.js";
 
 // Test Utils
 import * as Units from "../test_utils/units";
+import { multiSigExecute } from "../test_utils/utils";
 import ChaiSetup from "../test_utils/chai_setup";
 import { BigNumberSetup } from "../test_utils/bignumber_setup";
 
@@ -15,7 +16,7 @@ import { BigNumberSetup } from "../test_utils/bignumber_setup";
 import { SignedDebtOrder } from "../../../types/kernel/debt_order";
 
 // Logs
-import { LogApproval, LogTransfer } from "../logs/debt_token";
+import { LogTransfer } from "../logs/debt_token";
 import { LogDebtOrderFilled, LogError } from "../logs/debt_kernel";
 import { LogInsertEntry } from "../logs/debt_registry";
 
@@ -35,6 +36,7 @@ import { RepaymentRouterContract } from "../../../types/generated/repayment_rout
 import { SimpleInterestTermsContractContract } from "../../../types/generated/simple_interest_terms_contract";
 import { TokenRegistryContract } from "../../../types/generated/token_registry";
 import { TokenTransferProxyContract } from "../../../types/generated/token_transfer_proxy";
+import { MultiSigWalletContract } from "../../../types/generated/multi_sig_wallet";
 
 // Constants
 import { REVERT_ERROR } from "../test_utils/constants";
@@ -63,6 +65,8 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
     let defaultOrderParams: { [key: string]: any };
     let orderFactory: DebtOrderFactory;
 
+    let multiSig: MultiSigWalletContract;
+
     const CONTRACT_OWNER = ACCOUNTS[0];
     const ATTACKER = ACCOUNTS[1];
     const DEBTOR_1 = ACCOUNTS[2];
@@ -70,6 +74,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
     const UNDERWRITER = ACCOUNTS[4];
     const RELAYER = ACCOUNTS[6];
     const MALICIOUS_TERMS_CONTRACTS = ACCOUNTS[7];
+    const ALTERNATIVE_TOKEN_ADDRESS = ACCOUNTS[8];
 
     const NULL_ADDRESS = "0x0000000000000000000000000000000000000000";
 
@@ -99,6 +104,8 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
         tokenTransferProxy = await TokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
 
         kernel = await DebtKernelContract.deployed(web3, TX_DEFAULTS);
+
+        multiSig = await MultiSigWalletContract.deployed(web3, TX_DEFAULTS);
 
         repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
 
@@ -152,26 +159,36 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
     });
 
     describe("Initialization & Upgrades", async () => {
-        describe("non-owner sets debt token contract pointer", () => {
-            it("should throw", async () => {
-                expect(
-                    kernel.setDebtToken.sendTransactionAsync(ATTACKER, { from: ATTACKER }),
-                ).to.eventually.be.rejectedWith(REVERT_ERROR);
-            });
-        });
-
-        describe("owner updates debt token contract pointer", () => {
-            before(async () => {
-                debtTokenContract = await DebtTokenContract.deployed(web3, TX_DEFAULTS);
-                await kernel.setDebtToken.sendTransactionAsync(debtTokenContract.address, {
-                    from: CONTRACT_OWNER,
+        describe("#setDebtToken", () => {
+            describe("when called by a non-owner", () => {
+                it("should throw", async () => {
+                    expect(
+                        kernel.setDebtToken.sendTransactionAsync(debtTokenContract.address, {
+                            from: ATTACKER,
+                        }),
+                    ).to.eventually.be.rejectedWith(REVERT_ERROR);
                 });
             });
 
-            it("should point to new debt token contract", async () => {
-                await expect(kernel.debtToken.callAsync()).to.eventually.equal(
-                    debtTokenContract.address,
-                );
+            describe("when executed via the multi-sig", () => {
+                // The kernel is already set to use debtTokenContract.address,
+                // so we test using an alternative address.
+                const newAddress = ALTERNATIVE_TOKEN_ADDRESS;
+
+                before(async () => {
+                    await multiSigExecute(multiSig, kernel, "setDebtToken", ACCOUNTS, [newAddress]);
+                });
+
+                after(async () => {
+                    ABIDecoder.addABI(multiSig.abi);
+                    await multiSigExecute(multiSig, kernel, "setDebtToken", ACCOUNTS, [
+                        debtTokenContract.address,
+                    ]);
+                });
+
+                it("sets the debtToken address to the new address", async () => {
+                    await expect(kernel.debtToken.callAsync()).to.eventually.equal(newAddress);
+                });
             });
         });
     });
@@ -470,14 +487,15 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
         before(reset);
 
         describe("User fills valid, consensual debt order", () => {
-            describe("...and debt kernel is paused by owner", async () => {
+            describe("...and debt kernel is paused by owner via multi-sig execution", async () => {
                 before(async () => {
                     debtOrder = await orderFactory.generateDebtOrder();
-                    await kernel.pause.sendTransactionAsync({ from: CONTRACT_OWNER });
+
+                    await multiSigExecute(multiSig, kernel, "pause", ACCOUNTS);
                 });
 
                 after(async () => {
-                    await kernel.unpause.sendTransactionAsync({ from: CONTRACT_OWNER });
+                    await multiSigExecute(multiSig, kernel, "unpause", ACCOUNTS);
                 });
 
                 it("should throw", async () => {

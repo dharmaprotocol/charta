@@ -19,9 +19,16 @@ module.exports = (deployer, network, accounts) => {
             signatories = CONSTANTS.SIGNATORIES;
             break;
         default:
-            signatories = accounts;
+            signatories = accounts.slice(0, CONSTANTS.SIGNATORIES.length);
     }
 
+    /**
+     * The number of submissions and confirmations required before a transaction is
+     * executed. For example, in the test env there are 5 signatories, and so 3
+     * confirmations are required.
+     *
+     * @type {number}
+     */
     const numAuthorizationsRequired = Math.ceil(signatories.length * CONSTANTS.THRESHOLD);
 
     // Deploy the MultiSigWallet with a set of signatories and the number of

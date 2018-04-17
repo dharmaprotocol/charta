@@ -1,8 +1,4 @@
 import * as chai from "chai";
-import * as Units from "../test_utils/units";
-import { BigNumber } from "bignumber.js";
-import * as Web3 from "web3";
-import * as _ from "lodash";
 import { Web3Utils } from "../../../utils/web3_utils";
 
 import { BigNumberSetup } from "../test_utils/bignumber_setup";

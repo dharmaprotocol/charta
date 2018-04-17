@@ -13,6 +13,21 @@ const DUMMY_TOKEN_SUPPLY = 10 ** 27;
 const DUMMY_TOKEN_DECIMALS = 18;
 
 /**
+ * A list of the contract names, representing the instances
+ * that will be transferred to the multisig wallet.
+ *
+ * @type {string[]}
+ */
+const CONTRACT_NAMES = [
+    "DebtRegistry",
+    "DebtToken",
+    "DebtKernel",
+    "TokenTransferProxy",
+    "RepaymentRouter",
+    "Collateralizer"
+];
+
+/**
  * A list of the top 50 tokens by market cap, according to etherscan.io/tokens.
  * NOTE: These are not in strict order of market cap.
  *
@@ -334,4 +349,5 @@ module.exports = {
     DUMMY_TOKEN_SUPPLY,
     DUMMY_TOKEN_DECIMALS,
     TOKEN_LIST,
+    CONTRACT_NAMES,
 };

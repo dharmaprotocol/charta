@@ -13,6 +13,16 @@ export interface TxDataPayable extends TxData {
     value?: BigNumber;
 }
 
+export interface DecodedLog<Args> {
+    name: string;
+    address: Address;
+    events: any[];
+}
+
+export interface MultiSigSubmissionEventArgs {
+    transactionId: BigNumber;
+}
+
 export const classUtils = {
     // This is useful for classes that have nested methods. Nested methods don't get bound out of the box.
     bindAll(self: any, exclude: string[] = ["contructor"], thisArg?: any): void {
