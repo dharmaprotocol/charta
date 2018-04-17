@@ -52,7 +52,8 @@ contract SimpleInterestTermsContract is TermsContract {
     uint public constant INTEREST_RATE_SCALING_FACTOR = 10 ** 4;
     // The number of orders of magnitudes an interest rate (denominated in %)
     // must be scaled down in order to multiply it by a principal
-    // amount and produce the correct interest amount.
+    // amount and produce the correct interest amount --
+    //      e.g. 10.342% of 100ETH = (10.342 / 100) * 100ETH = 10.342ETH
     uint public constant PERCENTAGE_SCALING_FACTOR = 10 ** 2;
 
     mapping (bytes32 => uint) public valueRepaid;
