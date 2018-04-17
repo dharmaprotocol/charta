@@ -6,6 +6,7 @@ module.exports = (deployer, network, accounts) => {
     const DebtKernel = artifacts.require("DebtKernel");
     const TokenTransferProxy = artifacts.require("TokenTransferProxy");
     const RepaymentRouter = artifacts.require("RepaymentRouter");
+    const Collateralizer = artifacts.require("Collateralizer");
     const MultiSigWallet = artifacts.require("MultiSigWallet");
 
     return deployer.then(async () => {
@@ -15,6 +16,7 @@ module.exports = (deployer, network, accounts) => {
             const kernel = await DebtKernel.deployed();
             const proxy = await TokenTransferProxy.deployed();
             const router = await RepaymentRouter.deployed();
+            const collateralizer = await Collateralizer.deployed();
             const wallet = await MultiSigWallet.deployed();
 
             await registry.transferOwnership(wallet.address);
@@ -22,6 +24,7 @@ module.exports = (deployer, network, accounts) => {
             await kernel.transferOwnership(wallet.address);
             await proxy.transferOwnership(wallet.address);
             await router.transferOwnership(wallet.address);
+            await collateralizer.transferOwnership(wallet.address);
         }
     });
 };
