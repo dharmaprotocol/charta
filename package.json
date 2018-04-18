@@ -26,6 +26,7 @@
     "compile": "truffle compile --all",
     "migrate": "truffle migrate",
     "prettify": "prettier --write test/ts/**/*.ts types/**/*.ts types/*.ts artifacts/*.ts",
+    "prepublishOnly": "npm run dist",
     "test": "npm run compile; npm run generate-typings; npm run transpile; npm run migrate; truffle test",
     "chain": "ganache-cli --networkId 70 --accounts 20",
     "validate": "npm ls"
@@ -36,9 +37,6 @@
   "pre-commit": [
     "prettify",
     "lint"
-  ],
-  "prepublishOnly": [
-    "dist"
   ],
   "dependencies": {
     "zeppelin-solidity": "^1.8.0"
