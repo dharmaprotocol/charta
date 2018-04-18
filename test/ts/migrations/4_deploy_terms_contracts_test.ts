@@ -23,14 +23,13 @@ contract("Migration #4: Deploying Terms Contracts", async (ACCOUNTS) => {
     const CONTRACT_OWNER = ACCOUNTS[0];
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
 
-    let simpleInterestTermsContract: SimpleInterestTermsContract;
     let collateralizedTermsContract: CollateralizedTermsContract;
     let incompatibleTermsContract: IncompatibleTermsContract;
     let collateralizer: Collateralizer;
 
     describe("Deployment", () => {
         it("should deploy `SimpleInterestTermsContract` to the current network", async () => {
-            simpleInterestTermsContract = await SimpleInterestTermsContract.deployed(
+            const simpleInterestTermsContract = await SimpleInterestTermsContract.deployed(
                 web3,
                 TX_DEFAULTS,
             );
