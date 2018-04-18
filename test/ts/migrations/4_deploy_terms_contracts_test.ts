@@ -13,6 +13,7 @@ import { CollateralizerContract as Collateralizer } from "../../../types/generat
 import { DebtRegistryContract } from "../../../types/generated/debt_registry";
 import { TokenRegistryContract } from "../../../types/generated/token_registry";
 import { DebtKernelContract } from "../../../types/generated/debt_kernel";
+import { TokenTransferProxyContract } from "../../../types/generated/token_transfer_proxy";
 
 ChaiSetup.configure();
 
@@ -75,14 +76,14 @@ contract("Migration #4: Deploying Terms Contracts", async (ACCOUNTS) => {
             expect(collateralizerDebtRegistry).to.equal(deployedDebtRegistry.address);
         });
 
-        it("should initialize the collateralizer with the correct TokenRegistry", async () => {
-            const collateralizerTokenRegistry = await collateralizer.tokenRegistry.callAsync();
-            const deployedTokenRegistry = await TokenRegistryContract.deployed(web3, TX_DEFAULTS);
+        it("should initialize the collateralizer with the correct TokenTransferProxy", async () => {
+            const collateralizerTokenTransferProxy = await collateralizer.tokenTransferProxy.callAsync();
+            const deployedTokenTransferProxy = await TokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
 
-            expect(web3Utils.doesContractExistAtAddressAsync(collateralizerTokenRegistry)).to
+            expect(web3Utils.doesContractExistAtAddressAsync(collateralizerTokenTransferProxy)).to
                 .eventually.be.true;
 
-            expect(collateralizerTokenRegistry).to.equal(deployedTokenRegistry.address);
+            expect(collateralizerTokenTransferProxy).to.equal(deployedTokenTransferProxy.address);
         });
 
         it("should initialize the collateralizer with the correct TokenRegistry", async () => {
@@ -95,7 +96,7 @@ contract("Migration #4: Deploying Terms Contracts", async (ACCOUNTS) => {
             expect(collateralizerDebtRegistry).to.equal(deployedDebtRegistry.address);
         });
 
-        it("should initialize the collateralizer with the correct DebtToken address", async () => {
+        it("should initialize the collateralizer with the correct DebtKernel address", async () => {
             const collateralizerDebtKernel = await collateralizer.debtKernelAddress.callAsync();
             const deployedDebtKernel = await DebtKernelContract.deployed(web3, TX_DEFAULTS);
 
