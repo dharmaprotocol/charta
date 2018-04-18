@@ -57,21 +57,24 @@ contract("Migration #5: Authorizing Contract Interactions", async (ACCOUNTS) => 
             await expect(kernel.debtToken.callAsync()).to.eventually.equal(debtToken.address);
         });
 
-        it("should authorize only the kernel, repayment router, and collateralizer " +
-            "to make `transferFrom` calls on the token transfer proxy", async () => {
-            const proxy = await TokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
+        it(
+            "should authorize only the kernel, repayment router, and collateralizer " +
+                "to make `transferFrom` calls on the token transfer proxy",
+            async () => {
+                const proxy = await TokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
 
-            const repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
+                const repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
 
-            const approved = await proxy.getAuthorizedTransferAgents.callAsync();
+                const approved = await proxy.getAuthorizedTransferAgents.callAsync();
 
-            expect(approved).to.deep.eq([
-                kernel.address,
-                repaymentRouter.address,
-                collateralizer.address,
-            ]);
-        });
-        
+                expect(approved).to.deep.eq([
+                    kernel.address,
+                    repaymentRouter.address,
+                    collateralizer.address,
+                ]);
+            },
+        );
+
         it("should authorize the collateralized simple interest terms contract to invoke `collateralize`", async () => {
             const collateralizedTermsContract = await CollateralizedTermsContract.deployed(
                 web3,
