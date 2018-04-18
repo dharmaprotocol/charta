@@ -1,6 +1,8 @@
 const CONSTANTS = require("./migration_constants");
 
 module.exports = (deployer, network, accounts) => {
+    const OWNER = accounts[0];
+
     // Import the Dharma contracts.
     const PermissionsLib = artifacts.require("PermissionsLib");
     const DebtRegistry = artifacts.require("DebtRegistry");
@@ -44,6 +46,23 @@ module.exports = (deployer, network, accounts) => {
         await deployer.deploy(TokenTransferProxy);
         await deployer.deploy(RepaymentRouter, DebtRegistry.address, TokenTransferProxy.address);
         await deployer.deploy(DebtKernel, TokenTransferProxy.address);
-        await deployer.deploy(TokenRegistry);
+
+        deployer.deploy(TokenRegistry).then(async () => {
+            if (network === CONSTANTS.LIVE_NETWORK_ID) {
+                const tokenRegistry = await TokenRegistry.deployed();
+
+                // Set the address of the tokens in the token registry.
+                CONSTANTS.TOKEN_LIST.forEach(async (token) => {
+                    const {symbol, address, decimals} = token;
+
+                    await tokenRegistry.setTokenAttributes(
+                        symbol,
+                        address,
+                        decimals,
+                        { from: OWNER }
+                    );
+                });
+            }
+        });
     });
 };
