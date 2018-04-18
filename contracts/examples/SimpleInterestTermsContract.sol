@@ -32,29 +32,17 @@ contract SimpleInterestTermsContract is TermsContract {
 
     struct SimpleInterestParams {
         address principalTokenAddress;
-
         uint principalAmount;
-
-        // This field contains an encoded interest rate of the debt.
-        //
-        // To get an interest rate in the multiplier format, you need to
-        // divide it by INTEREST_RATE_SCALING_FACTOR_MULTIPLIER.
-        // For example for 1% interest rate (0.01 in the multiplier format)
-        // this field will contain 0.01 * INTEREST_RATE_SCALING_FACTOR_MULTIPLIER = 10'000.
-        // 
-        // To get an interest rate in the percent format, you need to
-        // divide it by INTEREST_RATE_SCALING_FACTOR_PERCENT.
-        // For example for 1% interest rate (1 in the percent format)
-        // this field will contain 1 * INTEREST_RATE_SCALING_FACTOR_PERCENT = 10'000.
-        uint interestRate;
-
         uint termStartUnixTimestamp;
-
         uint termEndUnixTimestamp;
-
         AmortizationUnitType amortizationUnitType;
-
         uint termLengthInAmortizationUnits;
+
+        // Given that Solidity does not support floating points, we encode
+        // interest rates as percentages scaled up by a factor of 10,000
+        // As such, interest rates can, at a maximum, have 4 decimal places
+        // of precision.
+        uint interestRate;
     }
 
     uint public constant HOUR_LENGTH_IN_SECONDS = 60 * 60;
@@ -63,7 +51,13 @@ contract SimpleInterestTermsContract is TermsContract {
     uint public constant MONTH_LENGTH_IN_SECONDS = DAY_LENGTH_IN_SECONDS * 30;
     uint public constant YEAR_LENGTH_IN_SECONDS = DAY_LENGTH_IN_SECONDS * 365;
 
+    // To convert an encoded interest rate into its equivalent in percents,
+    // divide it by INTEREST_RATE_SCALING_FACTOR_PERCENT -- e.g.
+    //     10,000 => 1% interest rate
     uint public constant INTEREST_RATE_SCALING_FACTOR_PERCENT = 10 ** 4;
+    // To convert an encoded interest rate into its equivalent multiplier
+    // (for purposes of calculating total interest), divide it by INTEREST_RATE_SCALING_FACTOR_PERCENT -- e.g.
+    //     10,000 => 0.01 interest multiplier
     uint public constant INTEREST_RATE_SCALING_FACTOR_MULTIPLIER = INTEREST_RATE_SCALING_FACTOR_PERCENT * 100;
 
     mapping (bytes32 => uint) public valueRepaid;
@@ -363,7 +357,7 @@ contract SimpleInterestTermsContract is TermsContract {
         // Since we represent decimal interest rates using their
         // scaled-up, fixed point representation, we have to
         // downscale the result of the interest payment computation
-        // by the scaling factor we choose for interest rates.
+        // by the multiplier scaling factor we choose for interest rates.
         uint totalInterest = params.principalAmount
             .mul(params.interestRate)
             .div(INTEREST_RATE_SCALING_FACTOR_MULTIPLIER);
