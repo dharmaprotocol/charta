@@ -6,21 +6,13 @@ import { Web3Utils } from "../../../utils/web3_utils";
 import ChaiSetup from "../test_utils/chai_setup";
 
 // Wrappers
-import {
-    SimpleInterestTermsContractContract as SimpleInterestTermsContract,
-} from "../../../types/generated/simple_interest_terms_contract";
+import { SimpleInterestTermsContractContract as SimpleInterestTermsContract } from "../../../types/generated/simple_interest_terms_contract";
 
-import {
-    CollateralizedSimpleInterestTermsContractContract as CollateralizedTermsContract,
-} from "../../../types/generated/collateralized_simple_interest_terms_contract";
+import { CollateralizedSimpleInterestTermsContractContract as CollateralizedTermsContract } from "../../../types/generated/collateralized_simple_interest_terms_contract";
 
-import {
-    IncompatibleTermsContractContract as IncompatibleTermsContract,
-} from "../../../types/generated/incompatible_terms_contract";
+import { IncompatibleTermsContractContract as IncompatibleTermsContract } from "../../../types/generated/incompatible_terms_contract";
 
-import {
-    CollateralizerContract as Collateralizer,
-} from "../../../types/generated/collateralizer";
+import { CollateralizerContract as Collateralizer } from "../../../types/generated/collateralizer";
 
 ChaiSetup.configure();
 
@@ -38,35 +30,37 @@ contract("Migration #4: Deploying Terms Contracts", async (ACCOUNTS) => {
 
     describe("Deployment", () => {
         it("should deploy `SimpleInterestTermsContract` to the current network", async () => {
-            simpleInterestTermsContract = await SimpleInterestTermsContract.deployed(web3, TX_DEFAULTS);
+            simpleInterestTermsContract = await SimpleInterestTermsContract.deployed(
+                web3,
+                TX_DEFAULTS,
+            );
 
-            expect(
-                web3Utils.doesContractExistAtAddressAsync(simpleInterestTermsContract.address),
-            ).to.eventually.be.true;
+            expect(web3Utils.doesContractExistAtAddressAsync(simpleInterestTermsContract.address))
+                .to.eventually.be.true;
         });
 
         it("should deploy `CollateralizedSimpleInterestTermsContract` to the current network", async () => {
-            collateralizedTermsContract = await CollateralizedTermsContract.deployed(web3, TX_DEFAULTS);
+            collateralizedTermsContract = await CollateralizedTermsContract.deployed(
+                web3,
+                TX_DEFAULTS,
+            );
 
-            expect(
-                web3Utils.doesContractExistAtAddressAsync(collateralizedTermsContract.address),
-            ).to.eventually.be.true;
+            expect(web3Utils.doesContractExistAtAddressAsync(collateralizedTermsContract.address))
+                .to.eventually.be.true;
         });
 
         it("should deploy `IncompatibleTermsContract` to the current network", async () => {
             incompatibleTermsContract = await IncompatibleTermsContract.deployed(web3, TX_DEFAULTS);
 
-            expect(
-                web3Utils.doesContractExistAtAddressAsync(incompatibleTermsContract.address),
-            ).to.eventually.be.true;
+            expect(web3Utils.doesContractExistAtAddressAsync(incompatibleTermsContract.address)).to
+                .eventually.be.true;
         });
 
         it("should deploy `Collateralizer` to the current network", async () => {
             collateralizer = await Collateralizer.deployed(web3, TX_DEFAULTS);
 
-            expect(
-                web3Utils.doesContractExistAtAddressAsync(collateralizer.address),
-            ).to.eventually.be.true;
+            expect(web3Utils.doesContractExistAtAddressAsync(collateralizer.address)).to.eventually
+                .be.true;
         });
     });
 });

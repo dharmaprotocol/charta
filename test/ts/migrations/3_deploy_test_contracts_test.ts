@@ -114,7 +114,7 @@ contract("Migration #3: Deploying Test Contracts", async (ACCOUNTS) => {
             ).to.eventually.not.equal(NULL_ADDRESS);
         });
 
-        it("should register the address for wrapped ETH token", async () => {
+        it("should register the address for the wrapped ETH token", async () => {
             expect(
                 tokenRegistry.getTokenAddressBySymbol.callAsync(WRAPPED_ETH_SYMBOL),
             ).to.eventually.not.equal(NULL_ADDRESS);
