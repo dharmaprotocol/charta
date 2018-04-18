@@ -14,7 +14,7 @@ const DUMMY_TOKEN_DECIMALS = 18;
 
 /**
  * A list of the contract names, representing the instances
- * to deploy.
+ * that will be transferred to the multi-sig wallet.
  *
  * @type {string[]}
  */

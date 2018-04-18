@@ -16,20 +16,20 @@ import { TokenRegistryContract } from "../../../types/generated/token_registry";
 import { RepaymentRouterContract } from "../../../types/generated/repayment_router";
 import { SimpleInterestTermsContractContract } from "../../../types/generated/simple_interest_terms_contract";
 import { TokenTransferProxyContract } from "../../../types/generated/token_transfer_proxy";
+import { MultiSigWalletContract } from "../../../types/generated/multi_sig_wallet";
 
 import { DebtOrderFactory } from "../factories/debt_order_factory";
 import { SimpleInterestParameters } from "../factories/terms_contract_parameters";
 
 import { RepaymentRouterErrorCodes } from "../../../types/errors";
-import { DebtOrder, SignedDebtOrder } from "../../../types/kernel/debt_order";
+import { SignedDebtOrder } from "../../../types/kernel/debt_order";
 
 import { BigNumberSetup } from "../test_utils/bignumber_setup";
 import ChaiSetup from "../test_utils/chai_setup";
-import { INVALID_OPCODE, REVERT_ERROR } from "../test_utils/constants";
+import { REVERT_ERROR } from "../test_utils/constants";
 
 import { LogError, LogRepayment } from "../logs/repayment_router";
-
-import leftPad = require("left-pad");
+import { multiSigExecute } from "../test_utils/utils";
 
 // Set up Chai
 ChaiSetup.configure();
@@ -48,6 +48,7 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
     let principalToken: DummyTokenContract;
     let termsContract: SimpleInterestTermsContractContract;
     let tokenTransferProxy: TokenTransferProxyContract;
+    let multiSig: MultiSigWalletContract;
 
     let orderFactory: DebtOrderFactory;
     let order: SignedDebtOrder;
@@ -76,6 +77,7 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
         kernel = await DebtKernelContract.deployed(web3, TX_DEFAULTS);
         debtToken = await DebtTokenContract.deployed(web3, TX_DEFAULTS);
         tokenTransferProxy = await TokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
+        multiSig = await MultiSigWalletContract.deployed(web3, TX_DEFAULTS);
 
         await principalToken.setBalance.sendTransactionAsync(BENEFICIARY_1, Units.ether(100));
         await principalToken.setBalance.sendTransactionAsync(BENEFICIARY_2, Units.ether(100));
@@ -200,11 +202,11 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
 
             describe("...when repayment router is paused", () => {
                 before(async () => {
-                    await router.pause.sendTransactionAsync({ from: CONTRACT_OWNER });
+                    await multiSigExecute(multiSig, router, "pause", ACCOUNTS);
                 });
 
                 after(async () => {
-                    await router.unpause.sendTransactionAsync({ from: CONTRACT_OWNER });
+                    await multiSigExecute(multiSig, router, "unpause", ACCOUNTS);
                 });
 
                 it("should throw", async () => {

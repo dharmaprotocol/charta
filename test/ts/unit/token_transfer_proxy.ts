@@ -7,12 +7,15 @@ import { DebtKernelContract } from "../../../types/generated/debt_kernel";
 import { RepaymentRouterContract } from "../../../types/generated/repayment_router";
 import { TokenTransferProxyContract } from "../../../types/generated/token_transfer_proxy";
 import { CollateralizerContract } from "../../../types/generated/collateralizer";
+import { MultiSigWalletContract } from "../../../types/generated/multi_sig_wallet";
 
 import { MockERC20TokenContract } from "../../../types/generated/mock_e_r_c20_token";
 
 import { BigNumberSetup } from "../test_utils/bignumber_setup";
 import ChaiSetup from "../test_utils/chai_setup";
 import { REVERT_ERROR } from "../test_utils/constants";
+import { multiSigExecute } from "../test_utils/utils";
+import { Address, TxData } from "../../../types/common";
 
 // Set up Chai
 ChaiSetup.configure();
@@ -27,6 +30,7 @@ contract("Token Transfer Proxy (Unit Tests)", async (ACCOUNTS) => {
     let repaymentRouter: RepaymentRouterContract;
     let mockToken: MockERC20TokenContract;
     let collateralizer: CollateralizerContract;
+    let multiSig: MultiSigWalletContract;
 
     const CONTRACT_OWNER = ACCOUNTS[0];
     const ATTACKER = ACCOUNTS[1];
@@ -43,6 +47,7 @@ contract("Token Transfer Proxy (Unit Tests)", async (ACCOUNTS) => {
         repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
         mockToken = await MockERC20TokenContract.deployed(web3, TX_DEFAULTS);
         collateralizer = await CollateralizerContract.deployed(web3, TX_DEFAULTS);
+        multiSig = await MultiSigWalletContract.deployed(web3, TX_DEFAULTS);
     });
 
     describe("Initialization", () => {
@@ -76,9 +81,11 @@ contract("Token Transfer Proxy (Unit Tests)", async (ACCOUNTS) => {
             });
         });
 
-        describe("contract owner authorizes transfer agent", () => {
+        describe("multi-sig owners authorize transfer agent", () => {
             before(async () => {
-                await proxy.addAuthorizedTransferAgent.sendTransactionAsync(AGENT);
+                await multiSigExecute(multiSig, proxy, "addAuthorizedTransferAgent", ACCOUNTS, [
+                    AGENT,
+                ]);
             });
 
             it("should return agent as authorized", async () => {
@@ -93,9 +100,15 @@ contract("Token Transfer Proxy (Unit Tests)", async (ACCOUNTS) => {
             });
         });
 
-        describe("contract owner revokes transfer agent", () => {
+        describe("multi-sig owners revokes transfer agent", () => {
             before(async () => {
-                await proxy.revokeTransferAgentAuthorization.sendTransactionAsync(AGENT);
+                await multiSigExecute(
+                    multiSig,
+                    proxy,
+                    "revokeTransferAgentAuthorization",
+                    ACCOUNTS,
+                    [AGENT],
+                );
             });
 
             it("should return agent as unauthorized", async () => {
@@ -126,7 +139,10 @@ contract("Token Transfer Proxy (Unit Tests)", async (ACCOUNTS) => {
 
         describe("authorized agent transfers tokens via transfer proxy", () => {
             before(async () => {
-                await proxy.addAuthorizedTransferAgent.sendTransactionAsync(AGENT);
+                await multiSigExecute(multiSig, proxy, "addAuthorizedTransferAgent", ACCOUNTS, [
+                    AGENT,
+                ]);
+
                 await proxy.transferFrom.sendTransactionAsync(
                     mockToken.address,
                     SENDER,

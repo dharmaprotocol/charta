@@ -2,8 +2,6 @@ import { Address, Log, UInt } from "../../../types/common";
 
 import * as ABIDecoder from "abi-decoder";
 import * as BigNumber from "bignumber.js";
-import * as _ from "lodash";
-import * as Web3 from "web3";
 import * as LogUtils from "./log_utils";
 
 export function LogTransfer(
