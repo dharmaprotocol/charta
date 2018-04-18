@@ -26,7 +26,6 @@ contract("Migration #5: Authorizing Contract Interactions", async (ACCOUNTS) => 
     let kernel: DebtKernelContract;
     let debtToken: DebtTokenContract;
     let registry: DebtRegistryContract;
-    let proxy: TokenTransferProxyContract;
 
     describe("Deployment", () => {
         before(async () => {
@@ -34,62 +33,45 @@ contract("Migration #5: Authorizing Contract Interactions", async (ACCOUNTS) => 
             debtToken = await DebtTokenContract.deployed(web3, TX_DEFAULTS);
             kernel = await DebtKernelContract.deployed(web3, TX_DEFAULTS);
             registry = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
-            proxy = await TokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
         });
 
         it("should authorize `DebtToken` to insert into the registry", async () => {
             const approved = await registry.getAuthorizedInsertAgents.callAsync();
 
-            expect(approved).to.include(debtToken.address);
+            expect(approved).to.deep.eq([debtToken.address]);
         });
 
         it("should authorize `DebtToken` to edit the registry", async () => {
             const approved = await registry.getAuthorizedEditAgents.callAsync();
 
-            expect(approved).to.include(debtToken.address);
+            expect(approved).to.deep.eq([debtToken.address]);
         });
 
-        it("should authorize the kernel to mint and broker debt tokens", async () => {
+        it("should authorize the kernel to mint debt tokens", async () => {
             const approvals = await debtToken.getAuthorizedMintAgents.callAsync();
 
-            expect(approvals).to.include(kernel.address);
+            expect(approvals).to.deep.eq([kernel.address]);
         });
 
         it("should set the kernel to point at current debt token contract", async () => {
             await expect(kernel.debtToken.callAsync()).to.eventually.equal(debtToken.address);
         });
 
-        it("should authorize the kernel to make `transferFrom` calls on the token transfer proxy", async () => {
-            const approved = await proxy.getAuthorizedTransferAgents.callAsync();
+        it("should authorize only the kernel, repayment router, and collateralizer " +
+            "to make `transferFrom` calls on the token transfer proxy", async () => {
+            const proxy = await TokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
 
-            expect(approved).to.include(kernel.address);
-        });
-
-        it("should authorize the repayment router to make `transferFrom` calls on the token transfer proxy", async () => {
             const repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
 
             const approved = await proxy.getAuthorizedTransferAgents.callAsync();
 
-            expect(approved).to.include(repaymentRouter.address);
+            expect(approved).to.deep.eq([
+                kernel.address,
+                repaymentRouter.address,
+                collateralizer.address,
+            ]);
         });
-
-        it("should authorize the collateralizer to make `transferFrom` calls on the token transfer proxy", async () => {
-            const approved = await proxy.getAuthorizedTransferAgents.callAsync();
-
-            expect(approved).to.include(collateralizer.address);
-        });
-
-        it("should authorize the simple interest terms contract to invoke `collateralize`", async () => {
-            const simpleInterestTermsContract = await SimpleInterestTermsContract.deployed(
-                web3,
-                TX_DEFAULTS,
-            );
-
-            const approved = await collateralizer.getAuthorizedCollateralizeAgents.callAsync();
-
-            expect(approved).to.include(simpleInterestTermsContract.address);
-        });
-
+        
         it("should authorize the collateralized simple interest terms contract to invoke `collateralize`", async () => {
             const collateralizedTermsContract = await CollateralizedTermsContract.deployed(
                 web3,
@@ -98,7 +80,7 @@ contract("Migration #5: Authorizing Contract Interactions", async (ACCOUNTS) => 
 
             const approved = await collateralizer.getAuthorizedCollateralizeAgents.callAsync();
 
-            expect(approved).to.include(collateralizedTermsContract.address);
+            expect(approved).to.deep.eq([collateralizedTermsContract.address]);
         });
     });
 });
