@@ -664,11 +664,11 @@ contract("CollateralizedSimpleInterestTermsContract (Unit Tests)", async (ACCOUN
             let FULL_AMOUNT: BigNumber;
 
             before(async () => {
-                const INTEREST_RATE_SCALING_FACTOR = await termsContract.INTEREST_RATE_SCALING_FACTOR.callAsync();
+                const INTEREST_RATE_SCALING_FACTOR_MULTIPLIER = await termsContract.INTEREST_RATE_SCALING_FACTOR_MULTIPLIER.callAsync();
 
                 const TOTAL_INTEREST = principalAmount
                     .mul(interestRate)
-                    .div(INTEREST_RATE_SCALING_FACTOR);
+                    .div(INTEREST_RATE_SCALING_FACTOR_MULTIPLIER);
 
                 FULL_AMOUNT = principalAmount.add(TOTAL_INTEREST);
 
