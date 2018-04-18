@@ -52,10 +52,7 @@ contract("Migration #4: Deploying Terms Contracts", async (ACCOUNTS) => {
         });
 
         it("should deploy `IncompatibleTermsContract` to the current network", async () => {
-            const incompatibleTermsContract = await IncompatibleTermsContract.deployed(
-                web3,
-                TX_DEFAULTS,
-            );
+            const incompatibleTermsContract = await IncompatibleTermsContract.deployed(web3, TX_DEFAULTS);
 
             expect(web3Utils.doesContractExistAtAddressAsync(incompatibleTermsContract.address)).to
                 .eventually.be.true;

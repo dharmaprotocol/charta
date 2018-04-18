@@ -51,22 +51,5 @@ module.exports = (deployer, network, accounts) => {
                 );
             });
         });
-    } else {
-        // For production migrations.
-        deployer.deploy(TokenRegistry).then(async () => {
-            const tokenRegistry = await TokenRegistry.deployed();
-
-            // Set the address of the tokens in the token registry.
-            CONSTANTS.TOKEN_LIST.forEach(async (token) => {
-                const { symbol, address, decimals } = token;
-
-                await tokenRegistry.setTokenAttributes(
-                    symbol,
-                    address,
-                    decimals,
-                    { from: OWNER }
-                );
-            });
-        });
     }
 };
