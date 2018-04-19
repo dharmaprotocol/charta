@@ -73,9 +73,6 @@ contract("Migration #4: Deploying Terms Contracts", async (ACCOUNTS) => {
             const collateralizerDebtRegistry = await collateralizer.debtRegistry.callAsync();
             const deployedDebtRegistry = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
 
-            expect(web3Utils.doesContractExistAtAddressAsync(collateralizerDebtRegistry)).to
-                .eventually.be.true;
-
             expect(collateralizerDebtRegistry).to.equal(deployedDebtRegistry.address);
         });
 
@@ -86,18 +83,12 @@ contract("Migration #4: Deploying Terms Contracts", async (ACCOUNTS) => {
                 TX_DEFAULTS,
             );
 
-            expect(web3Utils.doesContractExistAtAddressAsync(collateralizerTokenTransferProxy)).to
-                .eventually.be.true;
-
             expect(collateralizerTokenTransferProxy).to.equal(deployedTokenTransferProxy.address);
         });
 
         it("should initialize the collateralizer with the correct DebtRegistry", async () => {
             const collateralizerDebtRegistry = await collateralizer.debtRegistry.callAsync();
             const deployedDebtRegistry = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
-
-            expect(web3Utils.doesContractExistAtAddressAsync(collateralizerDebtRegistry)).to
-                .eventually.be.true;
 
             expect(collateralizerDebtRegistry).to.equal(deployedDebtRegistry.address);
         });
@@ -106,18 +97,12 @@ contract("Migration #4: Deploying Terms Contracts", async (ACCOUNTS) => {
             const collateralizerTokenRegistry = await collateralizer.tokenRegistry.callAsync();
             const deployedTokenRegistry = await TokenRegistryContract.deployed(web3, TX_DEFAULTS);
 
-            expect(web3Utils.doesContractExistAtAddressAsync(collateralizerTokenRegistry)).to
-                .eventually.be.true;
-
             expect(collateralizerTokenRegistry).to.equal(deployedTokenRegistry.address);
         });
 
         it("should initialize the collateralizer with the correct DebtKernel address", async () => {
             const collateralizerDebtKernel = await collateralizer.debtKernelAddress.callAsync();
             const deployedDebtKernel = await DebtKernelContract.deployed(web3, TX_DEFAULTS);
-
-            expect(web3Utils.doesContractExistAtAddressAsync(collateralizerDebtKernel)).to
-                .eventually.be.true;
 
             expect(collateralizerDebtKernel).to.equal(deployedDebtKernel.address);
         });
@@ -126,9 +111,6 @@ contract("Migration #4: Deploying Terms Contracts", async (ACCOUNTS) => {
             const simpleInterestDebtKernel = await simpleInterestTermsContract.debtKernel.callAsync();
             const deployedDebtKernel = await DebtKernelContract.deployed(web3, TX_DEFAULTS);
 
-            expect(web3Utils.doesContractExistAtAddressAsync(simpleInterestDebtKernel)).to
-                .eventually.be.true;
-
             expect(simpleInterestDebtKernel).to.equal(deployedDebtKernel.address);
         });
 
@@ -136,18 +118,12 @@ contract("Migration #4: Deploying Terms Contracts", async (ACCOUNTS) => {
             const simpleInterestDebtRegistry = await simpleInterestTermsContract.debtRegistry.callAsync();
             const deployedDebtRegistry = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
 
-            expect(web3Utils.doesContractExistAtAddressAsync(simpleInterestDebtRegistry)).to
-                .eventually.be.true;
-
             expect(simpleInterestDebtRegistry).to.equal(deployedDebtRegistry.address);
         });
 
         it("should initialize `SimpleInterestTermsContract` with the correct TokenRegistry address", async () => {
             const simpleInterestTokenRegistry = await simpleInterestTermsContract.tokenRegistry.callAsync();
             const deployedTokenRegistry = await TokenRegistryContract.deployed(web3, TX_DEFAULTS);
-
-            expect(web3Utils.doesContractExistAtAddressAsync(simpleInterestTokenRegistry)).to
-                .eventually.be.true;
 
             expect(simpleInterestTokenRegistry).to.equal(deployedTokenRegistry.address);
         });
@@ -159,19 +135,12 @@ contract("Migration #4: Deploying Terms Contracts", async (ACCOUNTS) => {
                 TX_DEFAULTS,
             );
 
-            expect(web3Utils.doesContractExistAtAddressAsync(simpleInterestRepaymentRouter)).to
-                .eventually.be.true;
-
             expect(simpleInterestRepaymentRouter).to.equal(deployedRepaymentRouter.address);
         });
 
         it("should initialize `CollateralizedSimpleInterestTermsContract` with the correct DebtKernel address", async () => {
             const collateralizedSimpleInterestDebtKernel = await collateralizedTermsContract.debtKernel.callAsync();
             const deployedDebtKernel = await DebtKernelContract.deployed(web3, TX_DEFAULTS);
-
-            expect(
-                web3Utils.doesContractExistAtAddressAsync(collateralizedSimpleInterestDebtKernel),
-            ).to.eventually.be.true;
 
             expect(collateralizedSimpleInterestDebtKernel).to.equal(deployedDebtKernel.address);
         });
@@ -180,22 +149,12 @@ contract("Migration #4: Deploying Terms Contracts", async (ACCOUNTS) => {
             const collateralizedSimpleInterestDebtRegistry = await collateralizedTermsContract.debtRegistry.callAsync();
             const deployedDebtRegistry = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
 
-            expect(
-                web3Utils.doesContractExistAtAddressAsync(collateralizedSimpleInterestDebtRegistry),
-            ).to.eventually.be.true;
-
             expect(collateralizedSimpleInterestDebtRegistry).to.equal(deployedDebtRegistry.address);
         });
 
         it("should initialize `CollateralizedSimpleInterestTermsContract` with the correct TokenRegistry address", async () => {
             const collateralizedSimpleInterestTokenRegistry = await collateralizedTermsContract.tokenRegistry.callAsync();
             const deployedTokenRegistry = await TokenRegistryContract.deployed(web3, TX_DEFAULTS);
-
-            expect(
-                web3Utils.doesContractExistAtAddressAsync(
-                    collateralizedSimpleInterestTokenRegistry,
-                ),
-            ).to.eventually.be.true;
 
             expect(collateralizedSimpleInterestTokenRegistry).to.equal(
                 deployedTokenRegistry.address,
@@ -209,12 +168,6 @@ contract("Migration #4: Deploying Terms Contracts", async (ACCOUNTS) => {
                 TX_DEFAULTS,
             );
 
-            expect(
-                web3Utils.doesContractExistAtAddressAsync(
-                    collateralizedSimpleInterestRepaymentRouter,
-                ),
-            ).to.eventually.be.true;
-
             expect(collateralizedSimpleInterestRepaymentRouter).to.equal(
                 deployedRepaymentRouter.address,
             );
@@ -223,12 +176,6 @@ contract("Migration #4: Deploying Terms Contracts", async (ACCOUNTS) => {
         it("should initialize `CollateralizedSimpleInterestTermsContract` with the correct Collateralizer address", async () => {
             const collateralizedSimpleInterestCollateralizer = await collateralizedTermsContract.collateralizer.callAsync();
             const deployedCollateralizer = await Collateralizer.deployed(web3, TX_DEFAULTS);
-
-            expect(
-                web3Utils.doesContractExistAtAddressAsync(
-                    collateralizedSimpleInterestCollateralizer,
-                ),
-            ).to.eventually.be.true;
 
             expect(collateralizedSimpleInterestCollateralizer).to.equal(
                 deployedCollateralizer.address,
