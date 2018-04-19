@@ -69,14 +69,14 @@ contract("Migration #4: Deploying Terms Contracts", async (ACCOUNTS) => {
                 .be.true;
         });
 
-        it("should initialize the collateralizer with the correct DebtRegistry", async () => {
+        it("should initialize `Collateralizer` with the correct DebtRegistry", async () => {
             const collateralizerDebtRegistry = await collateralizer.debtRegistry.callAsync();
             const deployedDebtRegistry = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
 
             expect(collateralizerDebtRegistry).to.equal(deployedDebtRegistry.address);
         });
 
-        it("should initialize the collateralizer with the correct TokenTransferProxy", async () => {
+        it("should initialize `Collateralizer` with the correct TokenTransferProxy", async () => {
             const collateralizerTokenTransferProxy = await collateralizer.tokenTransferProxy.callAsync();
             const deployedTokenTransferProxy = await TokenTransferProxyContract.deployed(
                 web3,
@@ -86,21 +86,21 @@ contract("Migration #4: Deploying Terms Contracts", async (ACCOUNTS) => {
             expect(collateralizerTokenTransferProxy).to.equal(deployedTokenTransferProxy.address);
         });
 
-        it("should initialize the collateralizer with the correct DebtRegistry", async () => {
+        it("should initialize `Collateralizer` with the correct DebtRegistry", async () => {
             const collateralizerDebtRegistry = await collateralizer.debtRegistry.callAsync();
             const deployedDebtRegistry = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
 
             expect(collateralizerDebtRegistry).to.equal(deployedDebtRegistry.address);
         });
 
-        it("should initialize the collateralizer with the correct TokenRegistry", async () => {
+        it("should initialize `Collateralizer` with the correct TokenRegistry", async () => {
             const collateralizerTokenRegistry = await collateralizer.tokenRegistry.callAsync();
             const deployedTokenRegistry = await TokenRegistryContract.deployed(web3, TX_DEFAULTS);
 
             expect(collateralizerTokenRegistry).to.equal(deployedTokenRegistry.address);
         });
 
-        it("should initialize the collateralizer with the correct DebtKernel address", async () => {
+        it("should initialize `Collateralizer` with the correct DebtKernel address", async () => {
             const collateralizerDebtKernel = await collateralizer.debtKernelAddress.callAsync();
             const deployedDebtKernel = await DebtKernelContract.deployed(web3, TX_DEFAULTS);
 
