@@ -33,23 +33,25 @@ module.exports = (deployer, network, accounts) => {
             const tokenRegistry = await TokenRegistry.deployed();
 
             // Create Dummy Tokens and add them to the registry.
-            CONSTANTS.TOKEN_LIST.forEach(async (token) => {
-                const { name, symbol } = token;
+            await Promise.all(
+                CONSTANTS.TOKEN_LIST.map(async (token) => {
+                    const {name, symbol} = token;
 
-                const dummyToken = await DummyToken.new(
-                    name,
-                    symbol,
-                    CONSTANTS.DUMMY_TOKEN_DECIMALS,
-                    CONSTANTS.DUMMY_TOKEN_SUPPLY
-                );
+                    const dummyToken = await DummyToken.new(
+                        name,
+                        symbol,
+                        CONSTANTS.DUMMY_TOKEN_DECIMALS,
+                        CONSTANTS.DUMMY_TOKEN_SUPPLY
+                    );
 
-                await tokenRegistry.setTokenAttributes(
-                    symbol,
-                    dummyToken.address,
-                    CONSTANTS.DUMMY_TOKEN_DECIMALS,
-                    { from: OWNER }
-                );
-            });
+                    return tokenRegistry.setTokenAttributes(
+                        symbol,
+                        dummyToken.address,
+                        CONSTANTS.DUMMY_TOKEN_DECIMALS,
+                        {from: OWNER}
+                    );
+                })
+            );
         });
     }
 };

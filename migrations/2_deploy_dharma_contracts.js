@@ -52,16 +52,18 @@ module.exports = (deployer, network, accounts) => {
                 const tokenRegistry = await TokenRegistry.deployed();
 
                 // Set the address of the tokens in the token registry.
-                CONSTANTS.TOKEN_LIST.forEach(async (token) => {
-                    const {symbol, address, decimals} = token;
+                await Promise.all(
+                    CONSTANTS.TOKEN_LIST.map(async (token) => {
+                        const {symbol, address, decimals} = token;
 
-                    await tokenRegistry.setTokenAttributes(
-                        symbol,
-                        address,
-                        decimals,
-                        { from: OWNER }
-                    );
-                });
+                        return tokenRegistry.setTokenAttributes(
+                            symbol,
+                            address,
+                            decimals,
+                            {from: OWNER}
+                        );
+                    })
+                );
             }
         });
     });
