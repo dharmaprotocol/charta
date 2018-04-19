@@ -16,7 +16,9 @@ export class UnpackParametersFromBytesRunner {
         this.testScenario = this.testScenario.bind(this);
     }
 
-    public initialize(collateralizedSimpleInterestTermsContract: CollateralizedSimpleInterestTermsContractContract) {
+    public initialize(
+        collateralizedSimpleInterestTermsContract: CollateralizedSimpleInterestTermsContractContract,
+    ) {
         this.collateralizedSimpleInterestTermsContract = collateralizedSimpleInterestTermsContract;
     }
 

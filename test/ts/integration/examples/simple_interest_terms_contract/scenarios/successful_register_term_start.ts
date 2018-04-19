@@ -12,12 +12,12 @@ export const SUCCESSFUL_REGISTER_TERM_START_SCENARIOS: RegisterTermStartScenario
     {
         description: "when the interest rate is 0",
         ...DEFAULT_REGISTER_TERM_START_ARGS,
-        interestRate: Units.percent(0),
+        interestRateFixedPoint: Units.interestRateFixedPoint(0),
     },
     {
         description: "when the interest rate is 100",
         ...DEFAULT_REGISTER_TERM_START_ARGS,
-        interestRate: Units.percent(100),
+        interestRateFixedPoint: Units.interestRateFixedPoint(100),
     },
     {
         description: "when the terms length is 0",

@@ -110,7 +110,7 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
                 termsContract: TERMS_CONTRACT_ADDRESS,
                 termsContractParameters: ARBITRARY_TERMS_CONTRACT_PARAMS[i],
                 underwriter: UNDERWRITERS[i],
-                underwriterRiskRating: Units.percent(3.4),
+                underwriterRiskRating: Units.underwriterRiskRatingFixedPoint(3.4),
                 version: repaymentRouterContractInstance.address,
             });
         });

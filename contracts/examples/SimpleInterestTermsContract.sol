@@ -33,11 +33,16 @@ contract SimpleInterestTermsContract is TermsContract {
     struct SimpleInterestParams {
         address principalTokenAddress;
         uint principalAmount;
-        uint interestRate;
         uint termStartUnixTimestamp;
         uint termEndUnixTimestamp;
         AmortizationUnitType amortizationUnitType;
         uint termLengthInAmortizationUnits;
+
+        // Given that Solidity does not support floating points, we encode
+        // interest rates as percentages scaled up by a factor of 10,000
+        // As such, interest rates can, at a maximum, have 4 decimal places
+        // of precision.
+        uint interestRate;
     }
 
     uint public constant HOUR_LENGTH_IN_SECONDS = 60 * 60;
@@ -46,10 +51,14 @@ contract SimpleInterestTermsContract is TermsContract {
     uint public constant MONTH_LENGTH_IN_SECONDS = DAY_LENGTH_IN_SECONDS * 30;
     uint public constant YEAR_LENGTH_IN_SECONDS = DAY_LENGTH_IN_SECONDS * 365;
 
-    // Given that Solidity doesn't support floating points, we represent
-    // decimal values (such as interestRate) with fixed point values
-    // scaled up by a factor of 10000 -- e.g. 10.342% => 1034250
-    uint public constant INTEREST_RATE_SCALING_FACTOR = 10 ** 4;
+    // To convert an encoded interest rate into its equivalent in percents,
+    // divide it by INTEREST_RATE_SCALING_FACTOR_PERCENT -- e.g.
+    //     10,000 => 1% interest rate
+    uint public constant INTEREST_RATE_SCALING_FACTOR_PERCENT = 10 ** 4;
+    // To convert an encoded interest rate into its equivalent multiplier
+    // (for purposes of calculating total interest), divide it by INTEREST_RATE_SCALING_FACTOR_PERCENT -- e.g.
+    //     10,000 => 0.01 interest multiplier
+    uint public constant INTEREST_RATE_SCALING_FACTOR_MULTIPLIER = INTEREST_RATE_SCALING_FACTOR_PERCENT * 100;
 
     mapping (bytes32 => uint) public valueRepaid;
 
@@ -348,10 +357,10 @@ contract SimpleInterestTermsContract is TermsContract {
         // Since we represent decimal interest rates using their
         // scaled-up, fixed point representation, we have to
         // downscale the result of the interest payment computation
-        // by the scaling factor we choose for interest rates.
+        // by the multiplier scaling factor we choose for interest rates.
         uint totalInterest = params.principalAmount
             .mul(params.interestRate)
-            .div(INTEREST_RATE_SCALING_FACTOR);
+            .div(INTEREST_RATE_SCALING_FACTOR_MULTIPLIER);
 
         return params.principalAmount.add(totalInterest);
     }

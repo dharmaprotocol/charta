@@ -3,7 +3,7 @@ import { BigNumber } from "bignumber.js";
 export interface SimpleInterestContractTerms {
     principalTokenIndex: BigNumber;
     principalAmount: BigNumber;
-    interestRate: BigNumber;
+    interestRateFixedPoint: BigNumber;
     amortizationUnitType: BigNumber;
     termLengthUnits: BigNumber;
 }
@@ -35,7 +35,10 @@ export class SimpleInterestParameters extends TermsContractParameters {
             152,
         );
 
-        const interestRateShifted = TermsContractParameters.bitShiftLeft(terms.interestRate, 128);
+        const interestRateShifted = TermsContractParameters.bitShiftLeft(
+            terms.interestRateFixedPoint,
+            128,
+        );
 
         const amortizationUnitTypeShifted = TermsContractParameters.bitShiftLeft(
             terms.amortizationUnitType,
