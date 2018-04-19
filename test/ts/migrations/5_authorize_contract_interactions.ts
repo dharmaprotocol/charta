@@ -5,7 +5,6 @@ import * as chai from "chai";
 import ChaiSetup from "../test_utils/chai_setup";
 
 // Wrappers
-import { SimpleInterestTermsContractContract as SimpleInterestTermsContract } from "../../../types/generated/simple_interest_terms_contract";
 import { CollateralizedSimpleInterestTermsContractContract as CollateralizedTermsContract } from "../../../types/generated/collateralized_simple_interest_terms_contract";
 import { CollateralizerContract as Collateralizer } from "../../../types/generated/collateralizer";
 import { DebtKernelContract } from "../../../types/generated/debt_kernel";
