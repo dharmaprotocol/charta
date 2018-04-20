@@ -34,35 +34,35 @@ contract("Migration #6: Transferring Ownership to Multisig", async (ACCOUNTS) =>
 
             expect(owner).to.equal(multisig.address);
         });
-        
+
         it("should transfer ownership of `DebtToken` to the Multisig Wallet", async () => {
             const contract = await DebtTokenContract.deployed(web3, TX_DEFAULTS);
             const owner = await contract.owner.callAsync();
 
             expect(owner).to.equal(multisig.address);
         });
-        
+
         it("should transfer ownership of `DebtKernel` to the Multisig Wallet", async () => {
             const contract = await DebtKernelContract.deployed(web3, TX_DEFAULTS);
             const owner = await contract.owner.callAsync();
 
             expect(owner).to.equal(multisig.address);
         });
-        
+
         it("should transfer ownership of `TokenTransferProxy` to the Multisig Wallet", async () => {
             const contract = await TokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
             const owner = await contract.owner.callAsync();
 
             expect(owner).to.equal(multisig.address);
         });
-        
+
         it("should transfer ownership of `RepaymentRouter` to the Multisig Wallet", async () => {
             const contract = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
             const owner = await contract.owner.callAsync();
 
             expect(owner).to.equal(multisig.address);
         });
-        
+
         it("should transfer ownership of `Collateralizer` to the Multisig Wallet", async () => {
             const contract = await CollateralizerContract.deployed(web3, TX_DEFAULTS);
             const owner = await contract.owner.callAsync();

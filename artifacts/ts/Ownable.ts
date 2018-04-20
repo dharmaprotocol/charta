@@ -56,8 +56,8 @@ export const Ownable =
   ],
   "bytecode": "0x6060604052341561000f57600080fd5b336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506102858061005e6000396000f30060606040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680638da5cb5b14610051578063f2fde38b146100a6575b600080fd5b341561005c57600080fd5b6100646100df565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34156100b157600080fd5b6100dd600480803573ffffffffffffffffffffffffffffffffffffffff16906020019091905050610104565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561015f57600080fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561019b57600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a72305820651cb27e4b776f860b83de0806c4a53f2b8896356bfa3f8017d2ecbb67b392880029",
   "deployedBytecode": "0x60606040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680638da5cb5b14610051578063f2fde38b146100a6575b600080fd5b341561005c57600080fd5b6100646100df565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34156100b157600080fd5b6100dd600480803573ffffffffffffffffffffffffffffffffffffffff16906020019091905050610104565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561015f57600080fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561019b57600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a72305820651cb27e4b776f860b83de0806c4a53f2b8896356bfa3f8017d2ecbb67b392880029",
-  "sourceMap": "217:787:8:-;;;469:55;;;;;;;;509:10;501:5;;:18;;;;;;;;;;;;;;;;;;217:787;;;;;;",
-  "deployedSourceMap": "217:787:8:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;238:20;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;832:169;;;;;;;;;;;;;;;;;;;;;;;;;;;;238:20;;;;;;;;;;;;;:::o;832:169::-;653:5;;;;;;;;;;;639:19;;:10;:19;;;631:28;;;;;;;;928:1;908:22;;:8;:22;;;;900:31;;;;;;;;965:8;937:37;;958:5;;;;;;;;;;;937:37;;;;;;;;;;;;988:8;980:5;;:16;;;;;;;;;;;;;;;;;;832:169;:::o",
+  "sourceMap": "217:787:11:-;;;469:55;;;;;;;;509:10;501:5;;:18;;;;;;;;;;;;;;;;;;217:787;;;;;;",
+  "deployedSourceMap": "217:787:11:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;238:20;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;832:169;;;;;;;;;;;;;;;;;;;;;;;;;;;;238:20;;;;;;;;;;;;;:::o;832:169::-;653:5;;;;;;;;;;;639:19;;:10;:19;;;631:28;;;;;;;;928:1;908:22;;:8;:22;;;;900:31;;;;;;;;965:8;937:37;;958:5;;;;;;;;;;;937:37;;;;;;;;;;;;988:8;980:5;;:16;;;;;;;;;;;;;;;;;;832:169;:::o",
   "source": "pragma solidity ^0.4.18;\n\n\n/**\n * @title Ownable\n * @dev The Ownable contract has an owner address, and provides basic authorization control\n * functions, this simplifies the implementation of \"user permissions\".\n */\ncontract Ownable {\n  address public owner;\n\n\n  event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);\n\n\n  /**\n   * @dev The Ownable constructor sets the original `owner` of the contract to the sender\n   * account.\n   */\n  function Ownable() public {\n    owner = msg.sender;\n  }\n\n  /**\n   * @dev Throws if called by any account other than the owner.\n   */\n  modifier onlyOwner() {\n    require(msg.sender == owner);\n    _;\n  }\n\n  /**\n   * @dev Allows the current owner to transfer control of the contract to a newOwner.\n   * @param newOwner The address to transfer ownership to.\n   */\n  function transferOwnership(address newOwner) public onlyOwner {\n    require(newOwner != address(0));\n    OwnershipTransferred(owner, newOwner);\n    owner = newOwner;\n  }\n\n}\n",
   "sourcePath": "zeppelin-solidity/contracts/ownership/Ownable.sol",
   "ast": {
@@ -65,7 +65,7 @@ export const Ownable =
       "absolutePath": "zeppelin-solidity/contracts/ownership/Ownable.sol",
       "exportedSymbols": {
         "Ownable": [
-          1801
+          2915
         ]
       }
     },
@@ -79,9 +79,9 @@ export const Ownable =
             ".18"
           ]
         },
-        "id": 1747,
+        "id": 2861,
         "name": "PragmaDirective",
-        "src": "0:24:8"
+        "src": "0:24:11"
       },
       {
         "attributes": {
@@ -95,17 +95,17 @@ export const Ownable =
           "documentation": "@title Ownable\n@dev The Ownable contract has an owner address, and provides basic authorization control\nfunctions, this simplifies the implementation of \"user permissions\".",
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            1801
+            2915
           ],
           "name": "Ownable",
-          "scope": 1802
+          "scope": 2916
         },
         "children": [
           {
             "attributes": {
               "constant": false,
               "name": "owner",
-              "scope": 1801,
+              "scope": 2915,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "address",
@@ -118,14 +118,14 @@ export const Ownable =
                   "name": "address",
                   "type": "address"
                 },
-                "id": 1748,
+                "id": 2862,
                 "name": "ElementaryTypeName",
-                "src": "238:7:8"
+                "src": "238:7:11"
               }
             ],
-            "id": 1749,
+            "id": 2863,
             "name": "VariableDeclaration",
-            "src": "238:20:8"
+            "src": "238:20:11"
           },
           {
             "attributes": {
@@ -140,7 +140,7 @@ export const Ownable =
                       "constant": false,
                       "indexed": true,
                       "name": "previousOwner",
-                      "scope": 1755,
+                      "scope": 2869,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -153,21 +153,21 @@ export const Ownable =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 1750,
+                        "id": 2864,
                         "name": "ElementaryTypeName",
-                        "src": "291:7:8"
+                        "src": "291:7:11"
                       }
                     ],
-                    "id": 1751,
+                    "id": 2865,
                     "name": "VariableDeclaration",
-                    "src": "291:29:8"
+                    "src": "291:29:11"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "indexed": true,
                       "name": "newOwner",
-                      "scope": 1755,
+                      "scope": 2869,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -180,24 +180,24 @@ export const Ownable =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 1752,
+                        "id": 2866,
                         "name": "ElementaryTypeName",
-                        "src": "322:7:8"
+                        "src": "322:7:11"
                       }
                     ],
-                    "id": 1753,
+                    "id": 2867,
                     "name": "VariableDeclaration",
-                    "src": "322:24:8"
+                    "src": "322:24:11"
                   }
                 ],
-                "id": 1754,
+                "id": 2868,
                 "name": "ParameterList",
-                "src": "290:57:8"
+                "src": "290:57:11"
               }
             ],
-            "id": 1755,
+            "id": 2869,
             "name": "EventDefinition",
-            "src": "264:84:8"
+            "src": "264:84:11"
           },
           {
             "attributes": {
@@ -209,7 +209,7 @@ export const Ownable =
               ],
               "name": "Ownable",
               "payable": false,
-              "scope": 1801,
+              "scope": 2915,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -222,9 +222,9 @@ export const Ownable =
                   ]
                 },
                 "children": [],
-                "id": 1756,
+                "id": 2870,
                 "name": "ParameterList",
-                "src": "485:2:8"
+                "src": "485:2:11"
               },
               {
                 "attributes": {
@@ -233,9 +233,9 @@ export const Ownable =
                   ]
                 },
                 "children": [],
-                "id": 1757,
+                "id": 2871,
                 "name": "ParameterList",
-                "src": "495:0:8"
+                "src": "495:0:11"
               },
               {
                 "children": [
@@ -258,13 +258,13 @@ export const Ownable =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1749,
+                              "referencedDeclaration": 2863,
                               "type": "address",
                               "value": "owner"
                             },
-                            "id": 1758,
+                            "id": 2872,
                             "name": "Identifier",
-                            "src": "501:5:8"
+                            "src": "501:5:11"
                           },
                           {
                             "attributes": {
@@ -284,38 +284,38 @@ export const Ownable =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1888,
+                                  "referencedDeclaration": 3019,
                                   "type": "msg",
                                   "value": "msg"
                                 },
-                                "id": 1759,
+                                "id": 2873,
                                 "name": "Identifier",
-                                "src": "509:3:8"
+                                "src": "509:3:11"
                               }
                             ],
-                            "id": 1760,
+                            "id": 2874,
                             "name": "MemberAccess",
-                            "src": "509:10:8"
+                            "src": "509:10:11"
                           }
                         ],
-                        "id": 1761,
+                        "id": 2875,
                         "name": "Assignment",
-                        "src": "501:18:8"
+                        "src": "501:18:11"
                       }
                     ],
-                    "id": 1762,
+                    "id": 2876,
                     "name": "ExpressionStatement",
-                    "src": "501:18:8"
+                    "src": "501:18:11"
                   }
                 ],
-                "id": 1763,
+                "id": 2877,
                 "name": "Block",
-                "src": "495:29:8"
+                "src": "495:29:11"
               }
             ],
-            "id": 1764,
+            "id": 2878,
             "name": "FunctionDefinition",
-            "src": "469:55:8"
+            "src": "469:55:11"
           },
           {
             "attributes": {
@@ -330,9 +330,9 @@ export const Ownable =
                   ]
                 },
                 "children": [],
-                "id": 1765,
+                "id": 2879,
                 "name": "ParameterList",
-                "src": "622:2:8"
+                "src": "622:2:11"
               },
               {
                 "children": [
@@ -364,13 +364,13 @@ export const Ownable =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1891,
+                              "referencedDeclaration": 3022,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 1766,
+                            "id": 2880,
                             "name": "Identifier",
-                            "src": "631:7:8"
+                            "src": "631:7:11"
                           },
                           {
                             "attributes": {
@@ -405,18 +405,18 @@ export const Ownable =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1888,
+                                      "referencedDeclaration": 3019,
                                       "type": "msg",
                                       "value": "msg"
                                     },
-                                    "id": 1767,
+                                    "id": 2881,
                                     "name": "Identifier",
-                                    "src": "639:3:8"
+                                    "src": "639:3:11"
                                   }
                                 ],
-                                "id": 1768,
+                                "id": 2882,
                                 "name": "MemberAccess",
-                                "src": "639:10:8"
+                                "src": "639:10:11"
                               },
                               {
                                 "attributes": {
@@ -424,43 +424,43 @@ export const Ownable =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1749,
+                                  "referencedDeclaration": 2863,
                                   "type": "address",
                                   "value": "owner"
                                 },
-                                "id": 1769,
+                                "id": 2883,
                                 "name": "Identifier",
-                                "src": "653:5:8"
+                                "src": "653:5:11"
                               }
                             ],
-                            "id": 1770,
+                            "id": 2884,
                             "name": "BinaryOperation",
-                            "src": "639:19:8"
+                            "src": "639:19:11"
                           }
                         ],
-                        "id": 1771,
+                        "id": 2885,
                         "name": "FunctionCall",
-                        "src": "631:28:8"
+                        "src": "631:28:11"
                       }
                     ],
-                    "id": 1772,
+                    "id": 2886,
                     "name": "ExpressionStatement",
-                    "src": "631:28:8"
+                    "src": "631:28:11"
                   },
                   {
-                    "id": 1773,
+                    "id": 2887,
                     "name": "PlaceholderStatement",
-                    "src": "665:1:8"
+                    "src": "665:1:11"
                   }
                 ],
-                "id": 1774,
+                "id": 2888,
                 "name": "Block",
-                "src": "625:46:8"
+                "src": "625:46:11"
               }
             ],
-            "id": 1775,
+            "id": 2889,
             "name": "ModifierDefinition",
-            "src": "604:67:8"
+            "src": "604:67:11"
           },
           {
             "attributes": {
@@ -469,7 +469,7 @@ export const Ownable =
               "isConstructor": false,
               "name": "transferOwnership",
               "payable": false,
-              "scope": 1801,
+              "scope": 2915,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -481,7 +481,7 @@ export const Ownable =
                     "attributes": {
                       "constant": false,
                       "name": "newOwner",
-                      "scope": 1800,
+                      "scope": 2914,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -494,19 +494,19 @@ export const Ownable =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 1776,
+                        "id": 2890,
                         "name": "ElementaryTypeName",
-                        "src": "859:7:8"
+                        "src": "859:7:11"
                       }
                     ],
-                    "id": 1777,
+                    "id": 2891,
                     "name": "VariableDeclaration",
-                    "src": "859:16:8"
+                    "src": "859:16:11"
                   }
                 ],
-                "id": 1778,
+                "id": 2892,
                 "name": "ParameterList",
-                "src": "858:18:8"
+                "src": "858:18:11"
               },
               {
                 "attributes": {
@@ -515,9 +515,9 @@ export const Ownable =
                   ]
                 },
                 "children": [],
-                "id": 1781,
+                "id": 2895,
                 "name": "ParameterList",
-                "src": "894:0:8"
+                "src": "894:0:11"
               },
               {
                 "attributes": {
@@ -532,18 +532,18 @@ export const Ownable =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 1775,
+                      "referencedDeclaration": 2889,
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
-                    "id": 1779,
+                    "id": 2893,
                     "name": "Identifier",
-                    "src": "884:9:8"
+                    "src": "884:9:11"
                   }
                 ],
-                "id": 1780,
+                "id": 2894,
                 "name": "ModifierInvocation",
-                "src": "884:9:8"
+                "src": "884:9:11"
               },
               {
                 "children": [
@@ -575,13 +575,13 @@ export const Ownable =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1891,
+                              "referencedDeclaration": 3022,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 1782,
+                            "id": 2896,
                             "name": "Identifier",
-                            "src": "900:7:8"
+                            "src": "900:7:11"
                           },
                           {
                             "attributes": {
@@ -604,13 +604,13 @@ export const Ownable =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1777,
+                                  "referencedDeclaration": 2891,
                                   "type": "address",
                                   "value": "newOwner"
                                 },
-                                "id": 1783,
+                                "id": 2897,
                                 "name": "Identifier",
-                                "src": "908:8:8"
+                                "src": "908:8:11"
                               },
                               {
                                 "attributes": {
@@ -642,9 +642,9 @@ export const Ownable =
                                       "type": "type(address)",
                                       "value": "address"
                                     },
-                                    "id": 1784,
+                                    "id": 2898,
                                     "name": "ElementaryTypeNameExpression",
-                                    "src": "920:7:8"
+                                    "src": "920:7:11"
                                   },
                                   {
                                     "attributes": {
@@ -659,29 +659,29 @@ export const Ownable =
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 1785,
+                                    "id": 2899,
                                     "name": "Literal",
-                                    "src": "928:1:8"
+                                    "src": "928:1:11"
                                   }
                                 ],
-                                "id": 1786,
+                                "id": 2900,
                                 "name": "FunctionCall",
-                                "src": "920:10:8"
+                                "src": "920:10:11"
                               }
                             ],
-                            "id": 1787,
+                            "id": 2901,
                             "name": "BinaryOperation",
-                            "src": "908:22:8"
+                            "src": "908:22:11"
                           }
                         ],
-                        "id": 1788,
+                        "id": 2902,
                         "name": "FunctionCall",
-                        "src": "900:31:8"
+                        "src": "900:31:11"
                       }
                     ],
-                    "id": 1789,
+                    "id": 2903,
                     "name": "ExpressionStatement",
-                    "src": "900:31:8"
+                    "src": "900:31:11"
                   },
                   {
                     "children": [
@@ -715,13 +715,13 @@ export const Ownable =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1755,
+                              "referencedDeclaration": 2869,
                               "type": "function (address,address)",
                               "value": "OwnershipTransferred"
                             },
-                            "id": 1790,
+                            "id": 2904,
                             "name": "Identifier",
-                            "src": "937:20:8"
+                            "src": "937:20:11"
                           },
                           {
                             "attributes": {
@@ -729,13 +729,13 @@ export const Ownable =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1749,
+                              "referencedDeclaration": 2863,
                               "type": "address",
                               "value": "owner"
                             },
-                            "id": 1791,
+                            "id": 2905,
                             "name": "Identifier",
-                            "src": "958:5:8"
+                            "src": "958:5:11"
                           },
                           {
                             "attributes": {
@@ -743,23 +743,23 @@ export const Ownable =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1777,
+                              "referencedDeclaration": 2891,
                               "type": "address",
                               "value": "newOwner"
                             },
-                            "id": 1792,
+                            "id": 2906,
                             "name": "Identifier",
-                            "src": "965:8:8"
+                            "src": "965:8:11"
                           }
                         ],
-                        "id": 1793,
+                        "id": 2907,
                         "name": "FunctionCall",
-                        "src": "937:37:8"
+                        "src": "937:37:11"
                       }
                     ],
-                    "id": 1794,
+                    "id": 2908,
                     "name": "ExpressionStatement",
-                    "src": "937:37:8"
+                    "src": "937:37:11"
                   },
                   {
                     "children": [
@@ -780,13 +780,13 @@ export const Ownable =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1749,
+                              "referencedDeclaration": 2863,
                               "type": "address",
                               "value": "owner"
                             },
-                            "id": 1795,
+                            "id": 2909,
                             "name": "Identifier",
-                            "src": "980:5:8"
+                            "src": "980:5:11"
                           },
                           {
                             "attributes": {
@@ -794,43 +794,43 @@ export const Ownable =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1777,
+                              "referencedDeclaration": 2891,
                               "type": "address",
                               "value": "newOwner"
                             },
-                            "id": 1796,
+                            "id": 2910,
                             "name": "Identifier",
-                            "src": "988:8:8"
+                            "src": "988:8:11"
                           }
                         ],
-                        "id": 1797,
+                        "id": 2911,
                         "name": "Assignment",
-                        "src": "980:16:8"
+                        "src": "980:16:11"
                       }
                     ],
-                    "id": 1798,
+                    "id": 2912,
                     "name": "ExpressionStatement",
-                    "src": "980:16:8"
+                    "src": "980:16:11"
                   }
                 ],
-                "id": 1799,
+                "id": 2913,
                 "name": "Block",
-                "src": "894:107:8"
+                "src": "894:107:11"
               }
             ],
-            "id": 1800,
+            "id": 2914,
             "name": "FunctionDefinition",
-            "src": "832:169:8"
+            "src": "832:169:11"
           }
         ],
-        "id": 1801,
+        "id": 2915,
         "name": "ContractDefinition",
-        "src": "217:787:8"
+        "src": "217:787:11"
       }
     ],
-    "id": 1802,
+    "id": 2916,
     "name": "SourceUnit",
-    "src": "0:1005:8"
+    "src": "0:1005:11"
   },
   "compiler": {
     "name": "solc",
@@ -838,5 +838,5 @@ export const Ownable =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-04-10T20:45:23.108Z"
+  "updatedAt": "2018-04-19T23:50:06.583Z"
 }
