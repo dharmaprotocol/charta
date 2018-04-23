@@ -43,6 +43,6 @@ module.exports = (deployer, network, accounts) => {
         await collateralizer.addAuthorizedCollateralizeAgent(collateralizedSimpleInterestTermsContract.address);
 
         // Authorize the token-uri operator to set token URIs on `DebtToken`.
-        await token.addAuthorizedTokenUriAgent(TOKEN_URI_OPERATOR);
+        await token.addAuthorizedTokenURIAgent(TOKEN_URI_OPERATOR);
     });
 };

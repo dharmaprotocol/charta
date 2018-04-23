@@ -134,7 +134,7 @@ contract DebtToken is ERC721Token, ERC165, Pausable {
     /**
      * Adds an address to the list of agents authorized to set token URIs.
      */
-    function addAuthorizedTokenUriAgent(address _agent)
+    function addAuthorizedTokenURIAgent(address _agent)
         public
         onlyOwner
     {
@@ -144,7 +144,7 @@ contract DebtToken is ERC721Token, ERC165, Pausable {
     /**
      * Returns the list of agents authorized to set token URIs.
      */
-    function getAuthorizedTokenUriAgents()
+    function getAuthorizedTokenURIAgents()
         public
         view
         returns (address[] _agents)
@@ -155,7 +155,7 @@ contract DebtToken is ERC721Token, ERC165, Pausable {
     /**
      * Removes an address from the list of agents authorized to set token URIs.
      */
-    function revokeTokenUriAuthorization(address _agent)
+    function revokeTokenURIAuthorization(address _agent)
         public
         onlyOwner
     {

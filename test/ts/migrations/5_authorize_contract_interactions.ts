@@ -88,7 +88,7 @@ contract("Migration #5: Authorizing Contract Interactions", async (ACCOUNTS) => 
         });
 
         it("should authorize the token-uri operator to call setTokenURI", async () => {
-            const approved = await debtToken.getAuthorizedTokenUriAgents.callAsync();
+            const approved = await debtToken.getAuthorizedTokenURIAgents.callAsync();
 
             expect(approved).to.deep.eq([TOKEN_URI_OPERATOR]);
         });
