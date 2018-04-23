@@ -21,7 +21,7 @@ const DUMMY_TOKEN_DECIMALS = 18;
  *
  * @type {string}
  */
-const TOKEN_URI_OPERATOR = "0x5D497982326f641e0b374585ff7C1c1bE9878560";
+const TOKEN_URI_OPERATOR = "0x5d497982326f641e0b374585ff7c1c1be9878560";
 
 /**
  * A list of the contract names, representing the instances
