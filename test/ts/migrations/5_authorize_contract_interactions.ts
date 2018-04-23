@@ -4,6 +4,8 @@ import * as chai from "chai";
 // Utils
 import ChaiSetup from "../test_utils/chai_setup";
 
+import { TOKEN_URI_OPERATOR } from "../../../migrations/migration_constants.js";
+
 // Wrappers
 import { CollateralizedSimpleInterestTermsContractContract as CollateralizedTermsContract } from "../../../types/generated/collateralized_simple_interest_terms_contract";
 import { CollateralizerContract as Collateralizer } from "../../../types/generated/collateralizer";
@@ -83,6 +85,12 @@ contract("Migration #5: Authorizing Contract Interactions", async (ACCOUNTS) => 
             const approved = await collateralizer.getAuthorizedCollateralizeAgents.callAsync();
 
             expect(approved).to.deep.eq([collateralizedTermsContract.address]);
+        });
+
+        it("should authorize the token-uri operator to call setTokenURI", async () => {
+            const approved = await debtToken.getAuthorizedTokenUriAgents.callAsync();
+
+            expect(approved).to.deep.eq([TOKEN_URI_OPERATOR]);
         });
     });
 });
