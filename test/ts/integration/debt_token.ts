@@ -1,8 +1,11 @@
+// External Libraries
 import * as ABIDecoder from "abi-decoder";
 import { BigNumber } from "bignumber.js";
 import * as chai from "chai";
 import * as _ from "lodash";
 import * as Web3 from "web3";
+
+// Test Utils
 import * as Units from "../test_utils/units";
 
 import { DebtRegistryContract } from "../../../types/generated/debt_registry";
@@ -1169,5 +1172,44 @@ contract("Debt Token (Integration Tests)", (ACCOUNTS) => {
         //         });
         //     });
         // });
+    });
+
+    describe("#setTokenURI", () => {
+        let tokenId: BigNumber;
+        const tokenURI = "https://www.example.com/image.jpeg";
+
+        before(async () => {
+            tokenId = debtEntries[0].getTokenId();
+        });
+
+        describe("when called by an account that has permission", () => {
+            before(async () => {
+                await debtToken.addAuthorizedTokenURIAgent.sendTransactionAsync(NON_CONTRACT_OWNER);
+            });
+
+            it("sets the debt token's URI", async () => {
+                await debtToken.setTokenURI.sendTransactionAsync(tokenId, tokenURI, {
+                    from: NON_CONTRACT_OWNER,
+                });
+
+                expect(await debtToken.tokenURI.callAsync(tokenId)).to.equal(tokenURI);
+            });
+        });
+
+        describe("when called by an account that does not have permission", () => {
+            before(async () => {
+                await debtToken.revokeTokenURIAuthorization.sendTransactionAsync(
+                    NON_CONTRACT_OWNER,
+                );
+            });
+
+            it("reverts the transaction", async () => {
+                await expect(
+                    debtToken.setTokenURI.sendTransactionAsync(tokenId, tokenURI, {
+                        from: NON_CONTRACT_OWNER,
+                    }),
+                ).to.eventually.be.rejectedWith(REVERT_ERROR);
+            });
+        });
     });
 });

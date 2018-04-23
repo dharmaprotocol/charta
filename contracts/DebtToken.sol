@@ -40,6 +40,7 @@ contract DebtToken is ERC721Token, ERC165, Pausable {
 
     PermissionsLib.Permissions internal tokenCreationPermissions;
     PermissionsLib.Permissions internal tokenBrokeragePermissions;
+    PermissionsLib.Permissions internal tokenURIPermissions;
 
     /**
      * Constructor that sets the address of the debt registry.
@@ -131,6 +132,37 @@ contract DebtToken is ERC721Token, ERC165, Pausable {
     }
 
     /**
+     * Adds an address to the list of agents authorized to set token URIs.
+     */
+    function addAuthorizedTokenURIAgent(address _agent)
+        public
+        onlyOwner
+    {
+        tokenURIPermissions.authorize(_agent);
+    }
+
+    /**
+     * Returns the list of agents authorized to set token URIs.
+     */
+    function getAuthorizedTokenURIAgents()
+        public
+        view
+        returns (address[] _agents)
+    {
+        return tokenURIPermissions.getAuthorizedAgents();
+    }
+
+    /**
+     * Removes an address from the list of agents authorized to set token URIs.
+     */
+    function revokeTokenURIAuthorization(address _agent)
+        public
+        onlyOwner
+    {
+        tokenURIPermissions.revokeAuthorization(_agent);
+    }
+
+    /**
      * We override approval method of the parent ERC721Token
      * contract to allow its functionality to be frozen in the case of an emergency
      */
@@ -195,6 +227,17 @@ contract DebtToken is ERC721Token, ERC165, Pausable {
     {
         _modifyBeneficiary(_tokenId, _to);
         super.safeTransferFrom(_from, _to, _tokenId, _data);
+    }
+
+    /**
+     * Allows senders with special permissions to set the token URI for a given debt token.
+     */
+    function setTokenURI(uint256 _tokenId, string _uri)
+        public
+        whenNotPaused
+    {
+        require(tokenURIPermissions.isAuthorized(msg.sender));
+        super._setTokenURI(_tokenId, _uri);
     }
 
     /**

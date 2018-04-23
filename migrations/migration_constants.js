@@ -1,16 +1,27 @@
 const keccak256 = require("js-sha3").keccak_256;
 
-const OWNER_ONE = "0x" + keccak256("test account one");
-const OWNER_TWO = "0x" + keccak256("test account two");
-const OWNER_THREE = "0x" + keccak256("test account three");
-const OWNER_FOUR = "0x" + keccak256("test account four");
-const OWNER_FIVE = "0x" + keccak256("test account five");
+function generateAddress(seed) {
+    return "0x" + keccak256(seed).substr(24, 64);
+}
+
+const OWNER_ONE = generateAddress("test account one");
+const OWNER_TWO = generateAddress("test account two");
+const OWNER_THREE = generateAddress("test account three");
+const OWNER_FOUR = generateAddress("test account four");
+const OWNER_FIVE = generateAddress("test account five");
 
 const SIGNATORIES = [OWNER_ONE, OWNER_TWO, OWNER_THREE, OWNER_FOUR, OWNER_FIVE];
 const THRESHOLD = 1 / 2; // 50%
 const LIVE_NETWORK_ID = "live";
 const DUMMY_TOKEN_SUPPLY = 10 ** 27;
 const DUMMY_TOKEN_DECIMALS = 18;
+
+/**
+ * The secure address that is allowed to set DebtToken URIs.
+ *
+ * @type {string}
+ */
+const TOKEN_URI_OPERATOR = "0x5d497982326f641e0b374585ff7c1c1be9878560";
 
 /**
  * A list of the contract names, representing the instances
@@ -344,4 +355,5 @@ module.exports = {
     DUMMY_TOKEN_DECIMALS,
     TOKEN_LIST,
     CONTRACT_NAMES,
+    TOKEN_URI_OPERATOR,
 };

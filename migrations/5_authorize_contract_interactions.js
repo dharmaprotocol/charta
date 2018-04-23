@@ -1,3 +1,5 @@
+const { TOKEN_URI_OPERATOR } = require("./migration_constants");
+
 module.exports = (deployer, network, accounts) => {
     const DebtRegistry = artifacts.require("DebtRegistry");
     const DebtToken = artifacts.require("DebtToken");
@@ -5,7 +7,6 @@ module.exports = (deployer, network, accounts) => {
     const TokenTransferProxy = artifacts.require("TokenTransferProxy");
     const RepaymentRouter = artifacts.require("RepaymentRouter");
     const Collateralizer = artifacts.require("Collateralizer");
-    const SimpleInterestTermsContract = artifacts.require("SimpleInterestTermsContract");
     const CollateralizedSimpleInterestTermsContract = artifacts.require("CollateralizedSimpleInterestTermsContract");
 
     const TX_DEFAULTS = { from: accounts[0], gas: 4000000 };
@@ -17,7 +18,6 @@ module.exports = (deployer, network, accounts) => {
         const proxy = await TokenTransferProxy.deployed();
         const router = await RepaymentRouter.deployed();
         const collateralizer = await Collateralizer.deployed();
-        const simpleInterestTermsContract = await SimpleInterestTermsContract.deployed();
         const collateralizedSimpleInterestTermsContract = await CollateralizedSimpleInterestTermsContract.deployed();
 
         // Authorize token contract to make mutations to the registry
@@ -41,5 +41,8 @@ module.exports = (deployer, network, accounts) => {
 
         // Authorize the collateralized simple interest terms contract to invoke `collateralize`.
         await collateralizer.addAuthorizedCollateralizeAgent(collateralizedSimpleInterestTermsContract.address);
+
+        // Authorize the token-uri operator to set token URIs on `DebtToken`.
+        await token.addAuthorizedTokenURIAgent(TOKEN_URI_OPERATOR);
     });
 };
