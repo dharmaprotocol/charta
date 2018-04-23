@@ -1188,30 +1188,26 @@ contract("Debt Token (Integration Tests)", (ACCOUNTS) => {
             });
 
             it("sets the debt token's URI", async () => {
-                await debtToken.setTokenURI.sendTransactionAsync(
-                    tokenId,
-                    tokenURI,
-                    { from: NON_CONTRACT_OWNER },
-                );
+                await debtToken.setTokenURI.sendTransactionAsync(tokenId, tokenURI, {
+                    from: NON_CONTRACT_OWNER,
+                });
 
-                expect(
-                    await debtToken.tokenURI.callAsync(tokenId),
-                ).to.equal(tokenURI);
+                expect(await debtToken.tokenURI.callAsync(tokenId)).to.equal(tokenURI);
             });
         });
 
         describe("when called by an account that does not have permission", () => {
             before(async () => {
-                await debtToken.revokeTokenURIAuthorization.sendTransactionAsync(NON_CONTRACT_OWNER);
+                await debtToken.revokeTokenURIAuthorization.sendTransactionAsync(
+                    NON_CONTRACT_OWNER,
+                );
             });
 
             it("reverts the transaction", async () => {
                 await expect(
-                    debtToken.setTokenURI.sendTransactionAsync(
-                        tokenId,
-                        tokenURI,
-                        { from: NON_CONTRACT_OWNER },
-                    ),
+                    debtToken.setTokenURI.sendTransactionAsync(tokenId, tokenURI, {
+                        from: NON_CONTRACT_OWNER,
+                    }),
                 ).to.eventually.be.rejectedWith(REVERT_ERROR);
             });
         });

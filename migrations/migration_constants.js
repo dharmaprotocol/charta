@@ -16,8 +16,12 @@ const LIVE_NETWORK_ID = "live";
 const DUMMY_TOKEN_SUPPLY = 10 ** 27;
 const DUMMY_TOKEN_DECIMALS = 18;
 
-// TODO: Add Token URI operator.
-const TOKEN_URI_OPERATOR = OWNER_ONE;
+/**
+ * The secure address that is allowed to set DebtToken URIs.
+ *
+ * @type {string}
+ */
+const TOKEN_URI_OPERATOR = "0x5D497982326f641e0b374585ff7C1c1bE9878560";
 
 /**
  * A list of the contract names, representing the instances
