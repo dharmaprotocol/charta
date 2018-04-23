@@ -9660,9 +9660,9 @@ export const Collateralizer =
         }
       },
       "links": {},
-      "address": "0x762a437b524a22ae6a75d02c13200c0f107a6880"
+      "address": "0xea51803bd99f7533bec6215bf2d5acc5824187f8"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-04-19T23:50:06.578Z"
+  "updatedAt": "2018-04-23T18:13:33.383Z"
 }

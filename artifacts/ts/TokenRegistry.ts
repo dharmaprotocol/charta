@@ -3257,7 +3257,7 @@ export const TokenRegistry =
     "42": {
       "events": {},
       "links": {},
-      "address": "0xf7746cf1d8dd7550805a6f35ec9cf617f998b726"
+      "address": "0x6d59ddc5fcee25e0e8b9da9c19eacaaa77ce1d02"
     },
     "70": {
       "events": {},
@@ -3266,5 +3266,5 @@ export const TokenRegistry =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-04-19T23:50:56.620Z"
+  "updatedAt": "2018-04-23T18:12:24.875Z"
 }

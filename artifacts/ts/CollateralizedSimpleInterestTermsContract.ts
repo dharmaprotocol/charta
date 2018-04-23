@@ -1606,7 +1606,7 @@ export const CollateralizedSimpleInterestTermsContract =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x289649fda728402899313bf95f19517ffc30eb59"
+      "address": "0xde6acf8dcfa49384f48f3b3a1e43e53d9924e5be"
     },
     "70": {
       "events": {},
@@ -1615,5 +1615,5 @@ export const CollateralizedSimpleInterestTermsContract =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-04-10T20:49:08.931Z"
+  "updatedAt": "2018-04-23T18:13:33.193Z"
 }

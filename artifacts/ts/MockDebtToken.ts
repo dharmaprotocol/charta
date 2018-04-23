@@ -5407,7 +5407,7 @@ export const MockDebtToken =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x9b91a1fa923b7f1093a7e82cea1b38ead02fe3c8"
+      "address": "0x432a84f78e11d669477cfe45ad2daca3d9b8a3de"
     },
     "70": {
       "events": {},
@@ -5416,5 +5416,5 @@ export const MockDebtToken =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-04-10T20:48:01.302Z"
+  "updatedAt": "2018-04-23T18:11:53.529Z"
 }

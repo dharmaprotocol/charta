@@ -2415,7 +2415,7 @@ export const PermissionsLib =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x97476fe208668de7a6319ea7222c983987209e6c"
+      "address": "0x4d9d52f1a2b309a6a62931fa1b843af80833d34c"
     },
     "70": {
       "events": {},
@@ -2424,5 +2424,5 @@ export const PermissionsLib =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-04-19T23:50:56.556Z"
+  "updatedAt": "2018-04-23T18:11:53.517Z"
 }

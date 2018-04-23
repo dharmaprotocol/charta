@@ -1790,5 +1790,5 @@ export const DummyToken =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-04-10T20:48:01.284Z"
+  "updatedAt": "2018-04-23T18:11:53.518Z"
 }
