@@ -27,6 +27,8 @@ contract TokenRegistry is Ownable {
         address tokenAddress;
         // The index in `tokenSymbolList` where the token's symbol can be found.
         uint tokenIndex;
+        // The name of the given token, e.g. "Canonical Wrapped Ether"
+        string name;
         // The number of digits that come after the decimal place when displaying token value.
         uint numDecimals;
     }
@@ -37,6 +39,7 @@ contract TokenRegistry is Ownable {
     function setTokenAttributes(
         string _symbol,
         address _tokenAddress,
+        string _tokenName,
         uint _numDecimals
     )
         public onlyOwner
@@ -52,6 +55,7 @@ contract TokenRegistry is Ownable {
             // The token has not yet been added to the registry.
             attributes.tokenAddress = _tokenAddress;
             attributes.numDecimals = _numDecimals;
+            attributes.name = _tokenName;
             attributes.tokenIndex = tokenSymbolListLength;
 
             tokenSymbolList[tokenSymbolListLength] = _symbol;
@@ -60,6 +64,7 @@ contract TokenRegistry is Ownable {
             // The token has already been added to the registry; update attributes.
             attributes.tokenAddress = _tokenAddress;
             attributes.numDecimals = _numDecimals;
+            attributes.name = _tokenName;
         }
 
         // Update this contract's storage.
@@ -112,6 +117,18 @@ contract TokenRegistry is Ownable {
     }
 
     /**
+     * Given a symbol, returns the name of the token the symbol is mapped to within the registry's
+     * symbol list.
+     */
+    function getTokenNameBySymbol(string _symbol) public view returns (string) {
+        bytes32 symbolHash = keccak256(_symbol);
+
+        TokenAttributes storage attributes = symbolHashToTokenAttributes[symbolHash];
+
+        return attributes.name;
+    }
+
+    /**
      * Given the symbol for a token, returns the number of decimals as provided in
      * the associated TokensAttribute struct.
      *
@@ -141,5 +158,83 @@ contract TokenRegistry is Ownable {
         uint numDecimals = getNumDecimalsFromSymbol(symbol);
 
         return numDecimals;
+    }
+
+    /**
+     * Given the index for a token in the registry, returns the name of the token as provided in
+     * the associated TokensAttribute struct.
+     *
+     * Example:
+     *   getTokenNameByIndex(1);
+     *   => "Canonical Wrapped Ether"
+     */
+    function getTokenNameByIndex(uint _index) public view returns (string) {
+        string memory symbol = getTokenSymbolByIndex(_index);
+
+        string memory tokenName = getTokenNameBySymbol(symbol);
+
+        return tokenName;
+    }
+
+    /**
+     * Given the symbol for a token in the registry, returns a tuple containing the token's address,
+     * the token's index in the registry, the token's name, and the number of decimals.
+     *
+     * Example:
+     *   getTokenAttributesBySymbol("WETH");
+     *   => ["0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", 1, "Canonical Wrapped Ether", 18]
+     */
+    function getTokenAttributesBySymbol(string _symbol)
+        public
+        view
+        returns (
+            address,
+            uint,
+            string,
+            uint
+        )
+    {
+        bytes32 symbolHash = keccak256(_symbol);
+
+        TokenAttributes storage attributes = symbolHashToTokenAttributes[symbolHash];
+
+        return (
+            attributes.tokenAddress,
+            attributes.tokenIndex,
+            attributes.name,
+            attributes.numDecimals
+        );
+    }
+
+    /**
+     * Given the index for a token in the registry, returns a tuple containing the token's address,
+     * the token's symbol, the token's name, and the number of decimals.
+     *
+     * Example:
+     *   getTokenAttributesByIndex(1);
+     *   => ["0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", "WETH", "Canonical Wrapped Ether", 18]
+     */
+    function getTokenAttributesByIndex(uint _index)
+        public
+        view
+        returns (
+            address,
+            string,
+            string,
+            uint
+        )
+    {
+        string memory symbol = getTokenSymbolByIndex(_index);
+
+        bytes32 symbolHash = keccak256(symbol);
+
+        TokenAttributes storage attributes = symbolHashToTokenAttributes[symbolHash];
+
+        return (
+            attributes.tokenAddress,
+            symbol,
+            attributes.name,
+            attributes.numDecimals
+        );
     }
 }

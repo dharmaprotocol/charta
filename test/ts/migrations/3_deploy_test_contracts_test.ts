@@ -119,5 +119,11 @@ contract("Migration #3: Deploying Test Contracts", async (ACCOUNTS) => {
                 tokenRegistry.getTokenAddressBySymbol.callAsync(WRAPPED_ETH_SYMBOL),
             ).to.eventually.not.equal(NULL_ADDRESS);
         });
+
+        it("should register the name for the wrapped ETH token, accessible by symbol", async () => {
+            await expect(
+                tokenRegistry.getTokenNameBySymbol.callAsync(WRAPPED_ETH_SYMBOL),
+            ).to.eventually.equal("Canonical Wrapped Ether");
+        });
     });
 });
