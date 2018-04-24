@@ -7,6 +7,7 @@ import * as Web3 from "web3";
 
 // Test Utils
 import * as Units from "../test_utils/units";
+import { multiSigExecute } from "../test_utils/utils";
 
 import { DebtRegistryContract } from "../../../types/generated/debt_registry";
 import { DebtTokenContract } from "../../../types/generated/debt_token";
@@ -18,6 +19,8 @@ import { LogApproval, LogTransfer } from "../logs/debt_token";
 import { BigNumberSetup } from "../test_utils/bignumber_setup";
 import ChaiSetup from "../test_utils/chai_setup";
 import { REVERT_ERROR } from "../test_utils/constants";
+import { MultiSigWalletContract } from "../../../types/generated/multi_sig_wallet";
+import { DebtKernelContract } from "../../../types/generated/debt_kernel";
 
 // Configure BigNumber exponentiation
 BigNumberSetup.configure();
@@ -33,6 +36,9 @@ const repaymentRouterContract = artifacts.require("RepaymentRouter");
 contract("Debt Token (Integration Tests)", (ACCOUNTS) => {
     let debtRegistry: DebtRegistryContract;
     let debtToken: DebtTokenContract;
+    let debtKernel: DebtKernelContract;
+
+    let multiSig: MultiSigWalletContract;
 
     let debtEntries: DebtRegistryEntry[];
 
@@ -73,29 +79,11 @@ contract("Debt Token (Integration Tests)", (ACCOUNTS) => {
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
 
     const resetContracts = async () => {
-        const debtRegistryTruffle = await debtRegistryContract.new({ from: CONTRACT_OWNER });
-        const debtTokenTruffle = await debtTokenContract.new(debtRegistryTruffle.address, {
-            from: CONTRACT_OWNER,
-        });
+        multiSig = await MultiSigWalletContract.deployed(web3, TX_DEFAULTS);
 
-        // The typings we use ingest vanilla Web3 contracts, so we convert the
-        // contract instance deployed by truffle into a Web3 contract instance
-        const debtRegistryWeb3Contract = web3.eth
-            .contract(debtRegistryTruffle.abi)
-            .at(debtRegistryTruffle.address);
-        const debtTokenWeb3Contract = web3.eth
-            .contract(debtTokenTruffle.abi)
-            .at(debtTokenTruffle.address);
-
-        debtRegistry = new DebtRegistryContract(debtRegistryWeb3Contract, TX_DEFAULTS);
-        debtToken = new DebtTokenContract(debtTokenWeb3Contract, TX_DEFAULTS);
-
-        await debtRegistry.addAuthorizedInsertAgent.sendTransactionAsync(debtToken.address, {
-            from: CONTRACT_OWNER,
-        });
-        await debtRegistry.addAuthorizedEditAgent.sendTransactionAsync(debtToken.address, {
-            from: CONTRACT_OWNER,
-        });
+        debtRegistry = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
+        debtToken = await DebtTokenContract.deployed(web3, TX_DEFAULTS);
+        debtKernel = await DebtKernelContract.deployed(web3, TX_DEFAULTS);
 
         const repaymentRouterContractInstance = await repaymentRouterContract.deployed();
 
@@ -117,11 +105,11 @@ contract("Debt Token (Integration Tests)", (ACCOUNTS) => {
     };
 
     const initState = async () => {
-        await debtToken.addAuthorizedMintAgent.sendTransactionAsync(AUTHORIZED_MINT_AGENT, {
-            from: CONTRACT_OWNER,
-        });
+        await multiSigExecute(multiSig, debtToken, "addAuthorizedMintAgent", ACCOUNTS, [
+            AUTHORIZED_MINT_AGENT,
+        ]);
 
-        const registryInsertPromises = _.map(debtEntries, (entry: DebtRegistryEntry, i: number) => {
+        const registryInsertPromises = _.map(debtEntries, (entry: DebtRegistryEntry) => {
             return debtToken.create.sendTransactionAsync(
                 entry.getVersion(),
                 entry.getBeneficiary(),
@@ -152,9 +140,9 @@ contract("Debt Token (Integration Tests)", (ACCOUNTS) => {
     });
 
     describe("Permissions", () => {
-        it("should initialize with no mint authorizations", async () => {
+        it("should be deployed with the debt kernel as authorized to mint", async () => {
             await expect(debtToken.getAuthorizedMintAgents.callAsync()).to.eventually.deep.equal(
-                [],
+                [debtKernel.address],
             );
         });
 
@@ -170,15 +158,18 @@ contract("Debt Token (Integration Tests)", (ACCOUNTS) => {
 
         describe("owner adds mint authorization", () => {
             before(async () => {
-                await debtToken.addAuthorizedMintAgent.sendTransactionAsync(AUTHORIZED_MINT_AGENT, {
-                    from: CONTRACT_OWNER,
-                });
+                await multiSigExecute(multiSig, debtToken, "addAuthorizedMintAgent", ACCOUNTS, [
+                    AUTHORIZED_MINT_AGENT,
+                ]);
             });
 
             it("should return agent as authorized", async () => {
                 await expect(
                     debtToken.getAuthorizedMintAgents.callAsync(),
-                ).to.eventually.deep.equal([AUTHORIZED_MINT_AGENT]);
+                ).to.eventually.deep.equal([
+                    debtKernel.address,
+                    AUTHORIZED_MINT_AGENT,
+                ]);
             });
         });
     });
@@ -205,11 +196,11 @@ contract("Debt Token (Integration Tests)", (ACCOUNTS) => {
         describe("authorized agent mints debt token", () => {
             describe("...when debt token is paused", () => {
                 before(async () => {
-                    await debtToken.pause.sendTransactionAsync({ from: CONTRACT_OWNER });
+                    await multiSigExecute(multiSig, debtToken, "pause", ACCOUNTS);
                 });
 
                 after(async () => {
-                    await debtToken.unpause.sendTransactionAsync({ from: CONTRACT_OWNER });
+                    await multiSigExecute(multiSig, debtToken, "unpause", ACCOUNTS);
                 });
 
                 it("should throw", async () => {
@@ -471,11 +462,11 @@ contract("Debt Token (Integration Tests)", (ACCOUNTS) => {
         describe("user transfers token he owns", async () => {
             describe("...when debt token is paused", () => {
                 before(async () => {
-                    await debtToken.pause.sendTransactionAsync({ from: CONTRACT_OWNER });
+                    await multiSigExecute(multiSig, debtToken, "pause", ACCOUNTS);
                 });
 
                 after(async () => {
-                    await debtToken.unpause.sendTransactionAsync({ from: CONTRACT_OWNER });
+                    await multiSigExecute(multiSig, debtToken, "unpause", ACCOUNTS);
                 });
 
                 it("should throw", async () => {
@@ -1184,7 +1175,9 @@ contract("Debt Token (Integration Tests)", (ACCOUNTS) => {
 
         describe("when called by an account that has permission", () => {
             before(async () => {
-                await debtToken.addAuthorizedTokenURIAgent.sendTransactionAsync(NON_CONTRACT_OWNER);
+                await multiSigExecute(multiSig, debtToken, "addAuthorizedTokenURIAgent", ACCOUNTS, [
+                    NON_CONTRACT_OWNER,
+                ]);
             });
 
             it("sets the debt token's URI", async () => {
@@ -1198,9 +1191,9 @@ contract("Debt Token (Integration Tests)", (ACCOUNTS) => {
 
         describe("when called by an account that does not have permission", () => {
             before(async () => {
-                await debtToken.revokeTokenURIAuthorization.sendTransactionAsync(
+                await multiSigExecute(multiSig, debtToken, "revokeTokenURIAuthorization", ACCOUNTS, [
                     NON_CONTRACT_OWNER,
-                );
+                ]);
             });
 
             it("reverts the transaction", async () => {
