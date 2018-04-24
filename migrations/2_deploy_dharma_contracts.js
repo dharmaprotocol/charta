@@ -54,11 +54,12 @@ module.exports = (deployer, network, accounts) => {
                 // Set the address of the tokens in the token registry.
                 await Promise.all(
                     CONSTANTS.TOKEN_LIST.map(async (token) => {
-                        const {symbol, address, decimals} = token;
+                        const {symbol, address, decimals, name} = token;
 
                         return tokenRegistry.setTokenAttributes(
                             symbol,
                             address,
+                            name,
                             decimals,
                             {from: OWNER}
                         );
