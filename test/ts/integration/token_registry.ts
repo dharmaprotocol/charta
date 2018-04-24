@@ -54,4 +54,22 @@ contract("Token Registry (Integration Tests)", async (ACCOUNTS) => {
             });
         });
     });
+
+    describe("#getTokenAttributesBySymbol", () => {
+        describe("when given 'WETH'", () => {
+            it("returns an array of attributes for WETH", async () => {
+                const [
+                    address,
+                    index,
+                    name,
+                    numDecimals,
+                ] = await registry.getTokenAttributesBySymbol.callAsync("WETH");
+
+                expect(numDecimals.toNumber()).to.equal(18);
+                expect(name).to.equal("Canonical Wrapped Ether");
+                expect(address.length).to.equal(42);
+                expect(index.toNumber()).to.be.at.least(0);
+            });
+        });
+    });
 });

@@ -175,4 +175,66 @@ contract TokenRegistry is Ownable {
 
         return tokenName;
     }
+
+    /**
+     * Given the symbol for a token in the registry, returns a tuple containing the token's address,
+     * the token's index in the registry, the token's name, and the number of decimals.
+     *
+     * Example:
+     *   getTokenAttributesBySymbol("WETH");
+     *   => ["0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", 1, "Canonical Wrapped Ether", 18]
+     */
+    function getTokenAttributesBySymbol(string _symbol)
+        public
+        view
+        returns (
+            address,
+            uint,
+            string,
+            uint
+        )
+    {
+        bytes32 symbolHash = keccak256(_symbol);
+
+        TokenAttributes storage attributes = symbolHashToTokenAttributes[symbolHash];
+
+        return (
+            attributes.tokenAddress,
+            attributes.tokenIndex,
+            attributes.name,
+            attributes.numDecimals
+        );
+    }
+
+    /**
+     * Given the index for a token in the registry, returns a tuple containing the token's address,
+     * the token's symbol, the token's name, and the number of decimals.
+     *
+     * Example:
+     *   getTokenAttributesByIndex(1);
+     *   => ["0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", "WETH", "Canonical Wrapped Ether", 18]
+     */
+    function getTokenAttributesByIndex(uint _index)
+        public
+        view
+        returns (
+            address,
+            string,
+            string,
+            uint
+        )
+    {
+        string memory symbol = getTokenSymbolByIndex(_index);
+
+        bytes32 symbolHash = keccak256(symbol);
+
+        TokenAttributes storage attributes = symbolHashToTokenAttributes[symbolHash];
+
+        return (
+            attributes.tokenAddress,
+            symbol,
+            attributes.name,
+            attributes.numDecimals
+        );
+    }
 }
