@@ -1,5 +1,6 @@
 // External Libraries
 import * as chai from "chai";
+import * as BigNumber from "bignumber.js";
 
 // Test Utils
 import ChaiSetup from "../test_utils/chai_setup";
@@ -51,6 +52,36 @@ contract("Token Registry (Integration Tests)", async (ACCOUNTS) => {
                 const numDecimals = await registry.getNumDecimalsFromSymbol.callAsync("TRX");
 
                 expect(numDecimals.toNumber()).to.equal(6);
+            });
+        });
+    });
+
+    describe("#getTokenIndexBySymbol", () => {
+        describe("when given 'WETH'", () => {
+            it("returns a number", async () => {
+                const index = await registry.getTokenIndexBySymbol.callAsync("WETH");
+
+                expect(index.toNumber()).to.be.at.least(0);
+            });
+        });
+    });
+
+    describe("#getTokenAddressBySymbol", () => {
+        describe("when given 'WETH'", () => {
+            it("returns a valid address", async () => {
+                const address = await registry.getTokenAddressBySymbol.callAsync("WETH");
+
+                expect(address.length).to.eq(42);
+            });
+        });
+    });
+
+    describe("#getTokenAddressByIndex", () => {
+        describe("when given '0'", () => {
+            it("returns a valid address", async () => {
+                const address = await registry.getTokenAddressByIndex.callAsync(new BigNumber(0));
+
+                expect(address.length).to.eq(42);
             });
         });
     });
