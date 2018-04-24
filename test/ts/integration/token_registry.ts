@@ -1,14 +1,22 @@
 // External Libraries
 import * as chai from "chai";
-import * as BigNumber from "bignumber.js";
+import { BigNumber } from "bignumber.js";
 
 // Test Utils
+import { BigNumberSetup } from "../test_utils/bignumber_setup";
 import ChaiSetup from "../test_utils/chai_setup";
+import { multiSigExecute } from "../test_utils/utils";
 
 // Wrappers
 import { TokenRegistryContract } from "../../../types/generated/token_registry";
+import { MultiSigWalletContract } from "../../../types/generated/multi_sig_wallet";
+import { Address, TxData } from "../../../types/common";
+import { BaseContract } from "../../../types/base_contract";
 
 ChaiSetup.configure();
+
+// Configure BigNumber exponentiation
+BigNumberSetup.configure();
 
 const expect = chai.expect;
 
@@ -100,6 +108,71 @@ contract("Token Registry (Integration Tests)", async (ACCOUNTS) => {
                 expect(name).to.equal("Canonical Wrapped Ether");
                 expect(address.length).to.equal(42);
                 expect(index.toNumber()).to.be.at.least(0);
+            });
+        });
+    });
+
+    describe("#setTokenAttributes", () => {
+        const symbol = "WETH";
+
+        const testAttributes = {
+            address: "0x1111000011110000111100001111000011110000",
+            name: "Test Wrapped Ether",
+            numDecimals: new BigNumber(2),
+        };
+
+        // The contract owner.
+        let multiSig: MultiSigWalletContract;
+
+        // Store the token's original attributes, so that we can restore them after tests.
+        let originalAddress: string;
+        let originalName: string;
+        let originalNumDecimals: BigNumber;
+        let originalSymbol: string;
+
+        describe("when called by the multi-sig contract owner", () => {
+            before("store the original token attributes and then set the new ones", async () => {
+                multiSig = await MultiSigWalletContract.deployed(web3, TX_DEFAULTS);
+
+                [
+                    originalAddress,
+                    originalName,
+                    originalSymbol,
+                    originalNumDecimals,
+                ] = await registry.getTokenAttributesBySymbol.callAsync(symbol);
+
+                await multiSigExecute(multiSig, registry, "setTokenAttributes", ACCOUNTS, [
+                    symbol,
+                    testAttributes.address,
+                    testAttributes.name,
+                    testAttributes.numDecimals,
+                ]);
+            });
+
+            after("restore the original token attributes to the registry", async () => {
+                await multiSigExecute(multiSig, registry, "setTokenAttributes", ACCOUNTS, [
+                    symbol,
+                    originalAddress,
+                    originalName,
+                    originalNumDecimals,
+                ]);
+            });
+
+            it("sets the token's name", async () => {
+                expect(await registry.getTokenNameBySymbol.callAsync(symbol)).to.equal(
+                    testAttributes.name,
+                );
+            });
+
+            it("sets the token's address", async () => {
+                expect(await registry.getTokenAddressBySymbol.callAsync(symbol)).to.equal(
+                    testAttributes.address,
+                );
+            });
+
+            it("sets the token's numDecimals", async () => {
+                const result = await registry.getNumDecimalsFromSymbol.callAsync(symbol);
+                expect(result.toNumber()).to.deep.equal(testAttributes.numDecimals.toNumber());
             });
         });
     });
