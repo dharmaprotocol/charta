@@ -5,13 +5,11 @@ import { BigNumber } from "bignumber.js";
 // Test Utils
 import { BigNumberSetup } from "../test_utils/bignumber_setup";
 import ChaiSetup from "../test_utils/chai_setup";
-import { multiSigExecute } from "../test_utils/utils";
+import { isNonNullAddress, multiSigExecute } from "../test_utils/utils";
 
 // Wrappers
 import { TokenRegistryContract } from "../../../types/generated/token_registry";
 import { MultiSigWalletContract } from "../../../types/generated/multi_sig_wallet";
-import { Address, TxData } from "../../../types/common";
-import { BaseContract } from "../../../types/base_contract";
 
 ChaiSetup.configure();
 
@@ -26,8 +24,18 @@ contract("Token Registry (Integration Tests)", async (ACCOUNTS) => {
 
     let registry: TokenRegistryContract;
 
+    /**
+     * The currently index of the Wrapped Ether token in the registry.
+     *
+     * Since we add tokens to the registry asynchronously, we cannot know for certain
+     * what the index will be until the migrations have completed.
+     */
+    let wethIndex: BigNumber;
+
     before(async () => {
         registry = await TokenRegistryContract.deployed(web3, TX_DEFAULTS);
+
+        wethIndex = await registry.getTokenIndexBySymbol.callAsync("WETH");
     });
 
     describe("#getTokenNameBySymbol", () => {
@@ -64,6 +72,26 @@ contract("Token Registry (Integration Tests)", async (ACCOUNTS) => {
         });
     });
 
+    describe("#getNumDecimalsByIndex", () => {
+        describe("when given the index for the WETH token", () => {
+            it("returns '18'", async () => {
+                const numDecimals = await registry.getNumDecimalsByIndex.callAsync(wethIndex);
+
+                expect(numDecimals.toNumber()).to.equal(18);
+            });
+        });
+    });
+
+    describe("#getTokenSymbolByIndex", () => {
+        describe("when given the index for the WETH token", () => {
+            it("returns 'WETH'", async () => {
+                const symbol = await registry.getTokenSymbolByIndex.callAsync(wethIndex);
+
+                expect(symbol).to.equal("WETH");
+            });
+        });
+    });
+
     describe("#getTokenIndexBySymbol", () => {
         describe("when given 'WETH'", () => {
             it("returns a number", async () => {
@@ -79,7 +107,7 @@ contract("Token Registry (Integration Tests)", async (ACCOUNTS) => {
             it("returns a valid address", async () => {
                 const address = await registry.getTokenAddressBySymbol.callAsync("WETH");
 
-                expect(address.length).to.eq(42);
+                expect(isNonNullAddress(address)).to.equal(true);
             });
         });
     });
@@ -89,7 +117,7 @@ contract("Token Registry (Integration Tests)", async (ACCOUNTS) => {
             it("returns a valid address", async () => {
                 const address = await registry.getTokenAddressByIndex.callAsync(new BigNumber(0));
 
-                expect(address.length).to.eq(42);
+                expect(isNonNullAddress(address)).to.equal(true);
             });
         });
     });
@@ -106,8 +134,26 @@ contract("Token Registry (Integration Tests)", async (ACCOUNTS) => {
 
                 expect(numDecimals.toNumber()).to.equal(18);
                 expect(name).to.equal("Canonical Wrapped Ether");
-                expect(address.length).to.equal(42);
+                expect(isNonNullAddress(address)).to.equal(true);
                 expect(index.toNumber()).to.be.at.least(0);
+            });
+        });
+    });
+
+    describe("#getTokenAttributesByIndex", () => {
+        describe("when given the index of the WETH token", () => {
+            it("returns an array of attributes for WETH", async () => {
+                const [
+                    address,
+                    symbol,
+                    name,
+                    numDecimals,
+                ] = await registry.getTokenAttributesByIndex.callAsync(wethIndex);
+
+                expect(numDecimals.toNumber()).to.equal(18);
+                expect(name).to.equal("Canonical Wrapped Ether");
+                expect(symbol).to.equal("WETH");
+                expect(isNonNullAddress(address)).to.equal(true);
             });
         });
     });
