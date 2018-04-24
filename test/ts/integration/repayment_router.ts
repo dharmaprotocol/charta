@@ -8,7 +8,6 @@ import * as Units from "../test_utils/units";
 import { BigNumber } from "bignumber.js";
 
 import { DebtKernelContract } from "../../../types/generated/debt_kernel";
-import { DebtRegistryContract } from "../../../types/generated/debt_registry";
 import { DebtTokenContract } from "../../../types/generated/debt_token";
 import { DummyTokenContract } from "../../../types/generated/dummy_token";
 
@@ -37,9 +36,6 @@ const expect = chai.expect;
 
 // Configure BigNumber exponentiation
 BigNumberSetup.configure();
-
-const simpleInterestTermsContract = artifacts.require("SimpleInterestTermsContract");
-const repaymentRouterContract = artifacts.require("RepaymentRouter");
 
 contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
     let router: RepaymentRouterContract;
