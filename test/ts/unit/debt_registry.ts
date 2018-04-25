@@ -4,7 +4,7 @@ import * as chai from "chai";
 import * as _ from "lodash";
 import * as Web3 from "web3";
 import * as Units from "../test_utils/units";
-import * as utils from "../test_utils/utils";
+import { isBigNumber } from "../test_utils/format";
 
 import { Address, Bytes32, TxData, TxDataPayable, UInt } from "../../../types/common";
 import { DebtRegistryContract } from "../../../types/generated/debt_registry";
@@ -239,7 +239,7 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
                 ];
 
                 _.forEach(retrievedEntry, (value: any, i: number) => {
-                    if (utils.isBigNumber(value)) {
+                    if (isBigNumber(value)) {
                         expect(value).to.bignumber.deep.equal(expectedEntry[i]);
                     } else {
                         expect(value).to.equal(expectedEntry[i]);
@@ -293,7 +293,7 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
                 ];
 
                 _.forEach(retrievedEntry, (value: any, i: number) => {
-                    if (utils.isBigNumber(value)) {
+                    if (isBigNumber(value)) {
                         expect(value).to.bignumber.deep.equal(expectedEntry[i]);
                     } else {
                         expect(value).to.equal(expectedEntry[i]);

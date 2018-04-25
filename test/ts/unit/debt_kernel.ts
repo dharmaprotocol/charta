@@ -6,7 +6,6 @@ import * as _ from "lodash";
 import * as moment from "moment";
 import * as Web3 from "web3";
 import * as Units from "../test_utils/units";
-import * as utils from "../test_utils/utils";
 
 import {
     LogDebtOrderCancelled,
