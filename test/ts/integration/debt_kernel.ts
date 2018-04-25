@@ -8,7 +8,10 @@ import { BigNumber } from "bignumber.js";
 
 // Test Utils
 import * as Units from "../test_utils/units";
-import { multiSigExecute } from "../test_utils/utils";
+import {
+    multiSigExecuteAfterTimelock,
+    multiSigExecutePauseImmediately,
+} from "../test_utils/multisig";
 import ChaiSetup from "../test_utils/chai_setup";
 import { BigNumberSetup } from "../test_utils/bignumber_setup";
 
@@ -36,7 +39,7 @@ import { RepaymentRouterContract } from "../../../types/generated/repayment_rout
 import { SimpleInterestTermsContractContract } from "../../../types/generated/simple_interest_terms_contract";
 import { TokenRegistryContract } from "../../../types/generated/token_registry";
 import { TokenTransferProxyContract } from "../../../types/generated/token_transfer_proxy";
-import { MultiSigWalletContract } from "../../../types/generated/multi_sig_wallet";
+import { DharmaMultiSigWalletContract } from "../../../types/generated/dharma_multi_sig_wallet";
 
 // Constants
 import { REVERT_ERROR } from "../test_utils/constants";
@@ -65,7 +68,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
     let defaultOrderParams: { [key: string]: any };
     let orderFactory: DebtOrderFactory;
 
-    let multiSig: MultiSigWalletContract;
+    let multiSig: DharmaMultiSigWalletContract;
 
     const CONTRACT_OWNER = ACCOUNTS[0];
     const ATTACKER = ACCOUNTS[1];
@@ -105,7 +108,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
 
         kernel = await DebtKernelContract.deployed(web3, TX_DEFAULTS);
 
-        multiSig = await MultiSigWalletContract.deployed(web3, TX_DEFAULTS);
+        multiSig = await DharmaMultiSigWalletContract.deployed(web3, TX_DEFAULTS);
 
         repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
 
@@ -176,14 +179,25 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                 const newAddress = ALTERNATIVE_TOKEN_ADDRESS;
 
                 before(async () => {
-                    await multiSigExecute(multiSig, kernel, "setDebtToken", ACCOUNTS, [newAddress]);
+                    await multiSigExecuteAfterTimelock(
+                        web3,
+                        multiSig,
+                        kernel,
+                        "setDebtToken",
+                        ACCOUNTS,
+                        [newAddress],
+                    );
                 });
 
                 after(async () => {
-                    ABIDecoder.addABI(multiSig.abi);
-                    await multiSigExecute(multiSig, kernel, "setDebtToken", ACCOUNTS, [
-                        debtTokenContract.address,
-                    ]);
+                    await multiSigExecuteAfterTimelock(
+                        web3,
+                        multiSig,
+                        kernel,
+                        "setDebtToken",
+                        ACCOUNTS,
+                        [debtTokenContract.address],
+                    );
                 });
 
                 it("sets the debtToken address to the new address", async () => {
@@ -491,11 +505,19 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                 before(async () => {
                     debtOrder = await orderFactory.generateDebtOrder();
 
-                    await multiSigExecute(multiSig, kernel, "pause", ACCOUNTS);
+                    // "Pause" operations can be executed without waiting for the timelock
+                    // to lapse -- a stipulation that exists for emergencies.
+                    await multiSigExecutePauseImmediately(
+                        web3,
+                        multiSig,
+                        kernel,
+                        "pause",
+                        ACCOUNTS,
+                    );
                 });
 
                 after(async () => {
-                    await multiSigExecute(multiSig, kernel, "unpause", ACCOUNTS);
+                    await multiSigExecuteAfterTimelock(web3, multiSig, kernel, "unpause", ACCOUNTS);
                 });
 
                 it("should throw", async () => {

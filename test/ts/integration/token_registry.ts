@@ -5,11 +5,12 @@ import { BigNumber } from "bignumber.js";
 // Test Utils
 import { BigNumberSetup } from "../test_utils/bignumber_setup";
 import ChaiSetup from "../test_utils/chai_setup";
-import { isNonNullAddress, multiSigExecute } from "../test_utils/utils";
+import { isNonNullAddress } from "../test_utils/format";
+import { multiSigExecuteAfterTimelock } from "../test_utils/multisig";
 
 // Wrappers
 import { TokenRegistryContract } from "../../../types/generated/token_registry";
-import { MultiSigWalletContract } from "../../../types/generated/multi_sig_wallet";
+import { DharmaMultiSigWalletContract } from "../../../types/generated/dharma_multi_sig_wallet";
 
 ChaiSetup.configure();
 
@@ -168,7 +169,7 @@ contract("Token Registry (Integration Tests)", async (ACCOUNTS) => {
         };
 
         // The contract owner.
-        let multiSig: MultiSigWalletContract;
+        let multiSig: DharmaMultiSigWalletContract;
 
         // Store the token's original attributes, so that we can restore them after tests.
         let originalAddress: string;
@@ -178,7 +179,7 @@ contract("Token Registry (Integration Tests)", async (ACCOUNTS) => {
 
         describe("when called by the multi-sig contract owner", () => {
             before("store the original token attributes and then set the new ones", async () => {
-                multiSig = await MultiSigWalletContract.deployed(web3, TX_DEFAULTS);
+                multiSig = await DharmaMultiSigWalletContract.deployed(web3, TX_DEFAULTS);
 
                 [
                     originalAddress,
@@ -187,21 +188,30 @@ contract("Token Registry (Integration Tests)", async (ACCOUNTS) => {
                     originalNumDecimals,
                 ] = await registry.getTokenAttributesBySymbol.callAsync(symbol);
 
-                await multiSigExecute(multiSig, registry, "setTokenAttributes", ACCOUNTS, [
-                    symbol,
-                    testAttributes.address,
-                    testAttributes.name,
-                    testAttributes.numDecimals,
-                ]);
+                await multiSigExecuteAfterTimelock(
+                    web3,
+                    multiSig,
+                    registry,
+                    "setTokenAttributes",
+                    ACCOUNTS,
+                    [
+                        symbol,
+                        testAttributes.address,
+                        testAttributes.name,
+                        testAttributes.numDecimals,
+                    ],
+                );
             });
 
             after("restore the original token attributes to the registry", async () => {
-                await multiSigExecute(multiSig, registry, "setTokenAttributes", ACCOUNTS, [
-                    symbol,
-                    originalAddress,
-                    originalName,
-                    originalNumDecimals,
-                ]);
+                await multiSigExecuteAfterTimelock(
+                    web3,
+                    multiSig,
+                    registry,
+                    "setTokenAttributes",
+                    ACCOUNTS,
+                    [symbol, originalAddress, originalName, originalNumDecimals],
+                );
             });
 
             it("sets the token's name", async () => {
