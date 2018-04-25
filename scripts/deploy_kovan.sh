@@ -21,6 +21,9 @@ ssh -f -o 'ServerAliveInterval 10' -o 'ServerAliveCountMax 3' \
 # Grab PID of ssh connection process
 SSH_PID=$(ps aux | grep "ssh" | grep -v 'grep' | awk '{print $2}')
 
+# Re-compile all contracts
+truffle compile --all
+
 # Deploy contracts onto Kovan network
 truffle migrate --network kovan
 
