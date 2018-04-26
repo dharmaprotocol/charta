@@ -112,6 +112,7 @@ export async function multiSigExecuteAfterTimelock(
     methodName: string,
     accounts: Address[],
     args: any[] = [],
+    timelock: number = TIMELOCK_IN_SECONDS,
     txData?: TxData,
 ): Promise<void> {
     const web3Utils = new Web3Utils(web3);
@@ -125,7 +126,7 @@ export async function multiSigExecuteAfterTimelock(
         txData,
     );
 
-    await web3Utils.increaseTime(TIMELOCK_IN_SECONDS);
+    await web3Utils.increaseTime(timelock);
 
     await multiSig.executeTransaction.sendTransactionAsync(transactionId);
 }
