@@ -2,7 +2,7 @@ const CONSTANTS = require("./migration_constants");
 
 module.exports = (deployer, network, accounts) => {
     const CONTRACT_OWNER = accounts[0];
-    const MultiSigWallet = artifacts.require("MultiSigWallet");
+    const DharmaMultiSigWallet = artifacts.require("DharmaMultiSigWallet");
 
     /**
      * A list of contract instances to deploy.
@@ -15,7 +15,7 @@ module.exports = (deployer, network, accounts) => {
 
     return deployer.then(async () => {
         // Deploy the multi-sig wallet, which will own each of the contracts.
-        const wallet = await MultiSigWallet.deployed();
+        const wallet = await DharmaMultiSigWallet.deployed();
 
         /*
          * Deploy and the transfer ownership of each of the contracts
@@ -24,10 +24,7 @@ module.exports = (deployer, network, accounts) => {
         contractInstances.forEach(async (artifact) => {
             const contract = await artifact.deployed();
 
-            contract.transferOwnership(
-                wallet.address,
-                { from: CONTRACT_OWNER },
-            );
+            contract.transferOwnership(wallet.address, { from: CONTRACT_OWNER });
         });
     });
 };
