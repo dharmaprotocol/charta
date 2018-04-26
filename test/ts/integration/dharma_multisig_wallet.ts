@@ -1,5 +1,6 @@
 // External
 import * as chai from "chai";
+import { BigNumber } from "bignumber.js";
 
 // Wrappers
 import { DharmaMultiSigWalletContract } from "../../../types/generated/dharma_multi_sig_wallet";
@@ -75,6 +76,7 @@ contract("DharmaMultiSigWallet (Integration Tests)", (ACCOUNTS) => {
                 "changeTimeLock",
                 ACCOUNTS,
                 [TIMELOCK_IN_SECONDS],
+                ALTERNATIVE_TIMELOCK_IN_SECONDS,
             );
         });
 
@@ -85,15 +87,73 @@ contract("DharmaMultiSigWallet (Integration Tests)", (ACCOUNTS) => {
         });
     });
 
-    // describe("#confirmTransaction", () => {
-    //     const UNSUBMITTED_TRANSACTION_INDEX = new BigNumber(13);
-    //
-    //     describe("unsubmitted transaction", () => {});
-    // });
+    describe("#confirmTransaction", () => {
+        const UNSUBMITTED_TRANSACTION_INDEX = new BigNumber(13);
 
-    // describe("#revokeConfirmation", () => {});
-    //
-    // describe("#executeTransaction", () => {});
-    //
-    // describe("#executePauseTransactionImmediately", () => {});
+        describe("tx has not been submitted yet", () => {
+            it("should throw");
+        });
+
+        describe("tx has been submitted", () => {
+            describe("non-owner confirms tx", () => {
+                it("should throw");
+            });
+
+            describe("owner confirms tx", () => {
+                describe("when he has not yet confirmed it", () => {
+                    it("should successfully confirm");
+                });
+
+                describe("when he has already confirmed it", () => {
+                    it("should throw");
+                });
+            });
+        });
+    });
+
+    describe("#revokeConfirmation", () => {
+        describe("tx has not been submitted yet", () => {
+            it("should throw");
+        });
+
+        describe("tx has been submitted", () => {
+            describe("non-owner confirms tx", () => {
+                it("should throw");
+            });
+
+            describe("owner has not already confirmed it", () => {
+                it("should throw");
+            });
+
+            describe("owner has already confirmed it", () => {
+                it("should successfully revoke");
+            });
+        });
+    });
+
+    describe("#executeTransaction", () => {
+        describe("transaction has not been sufficiently confirmed", () => {
+            it("should throw");
+        });
+
+        describe("transaction has been sufficiently confirmed", () => {
+            describe("timelock period has not yet passed", () => {
+                it("should throw");
+            });
+
+            describe("timelock period has passed", () => {
+                it("should execute transaction");
+            });
+        });
+    });
+
+    describe("#executePauseTransactionImmediately", () => {
+        describe("transaction has not been sufficiently confirmed", () => {
+            it("should throw");
+        });
+
+        describe("transaction has been sufficiently confirmed", () => {
+            it("should execute transaction");
+        });
+    });
 });
