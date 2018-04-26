@@ -17,6 +17,17 @@ export class Web3Utils {
     }
 
     /**
+     * Returns the current blocktime in seconds.
+     *
+     * @returns {Promise<number>}
+     */
+    public async getCurrentBlockTime(): Promise<number> {
+        const latestBlock = await promisify(this.web3.eth.getBlock)("latest");
+
+        return latestBlock.timestamp;
+    }
+
+    /**
      * Increases block time by the given number of seconds. Returns true
      * if the next block was mined successfully after increasing time.
      *

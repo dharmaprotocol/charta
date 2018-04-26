@@ -139,6 +139,14 @@ export async function multiSigExecuteAfterTimelock(
     await web3Utils.increaseTime(timelock);
 
     await multiSig.executeTransaction.sendTransactionAsync(transactionId);
+
+    const transaction = await multiSig.transactions.callAsync(transactionId);
+
+    const [destination, value, data, executedSuccessfully] = transaction;
+
+    if (!executedSuccessfully) {
+        throw new Error(`Multisig transaction with ID #${transactionId} failed to execute.`);
+    }
 }
 
 /**
@@ -177,4 +185,12 @@ export async function multiSigExecutePauseImmediately(
     );
 
     await multiSig.executePauseTransactionImmediately.sendTransactionAsync(transactionId);
+
+    const transaction = await multiSig.transactions.callAsync(transactionId);
+
+    const [destination, value, data, executedSuccessfully] = transaction;
+
+    if (!executedSuccessfully) {
+        throw new Error(`Multisig transaction with ID #${transactionId} failed to execute.`);
+    }
 }
