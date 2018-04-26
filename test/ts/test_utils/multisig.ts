@@ -15,7 +15,17 @@ import { NULL_ADDRESS } from "./constants";
 import { Web3Utils } from "../../../utils/web3_utils";
 import { TIMELOCK_IN_SECONDS } from "../../../migrations/migration_constants";
 
-async function submitMultiSigTransaction(
+/**
+ * Submits a proposed transaction to the multisig wallet.
+ *
+ * @param multiSig   Multisig wallet contract wrapper
+ * @param contract   Contract to which we wish to send a transaction
+ * @param methodName Name of the method we wish to call
+ * @param args       Arguments to be passed to the method
+ * @param txData     Optional transaction data
+ * @return Transaction ID assigned by the multisig
+ */
+export async function submitMultiSigTransaction(
     multiSig: DharmaMultiSigWalletContract,
     contract: BaseContract,
     methodName: string,
