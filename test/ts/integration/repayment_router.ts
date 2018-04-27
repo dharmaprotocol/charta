@@ -74,6 +74,9 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
         const dummyREPTokenAddress = await dummyTokenRegistryContract.getTokenAddressBySymbol.callAsync(
             "REP",
         );
+        const dummyREPTokenIndex = await dummyTokenRegistryContract.getTokenIndexBySymbol.callAsync(
+            "REP",
+        );
 
         principalToken = await DummyTokenContract.at(dummyREPTokenAddress, web3, TX_DEFAULTS);
 
@@ -99,14 +102,14 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
         termsContract = await SimpleInterestTermsContractContract.deployed(web3, TX_DEFAULTS);
 
         const termsContractParameters = SimpleInterestParameters.pack({
-            principalTokenIndex: new BigNumber(0), // Our migrations set REP up to be at index 0 of the registry
+            principalTokenIndex: dummyREPTokenIndex,
             principalAmount: Units.ether(1),
             interestRateFixedPoint: Units.interestRateFixedPoint(2.5),
             amortizationUnitType: new BigNumber(1), // (weekly)
             termLengthUnits: new BigNumber(4),
         });
 
-        const latestBlockTime = await web3Utils.getCurrentBlockTime();
+        const latestBlockTime = await web3Utils.getLatestBlockTime();
 
         const defaultOrderParams = {
             creditorFee: Units.ether(0.002),
@@ -118,7 +121,7 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
             expirationTimestampInSec: new BigNumber(
                 moment
                     .unix(latestBlockTime)
-                    .add(1, "days")
+                    .add(30, "days")
                     .unix(),
             ),
             issuanceVersion: router.address,

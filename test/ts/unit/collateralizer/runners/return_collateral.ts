@@ -77,7 +77,7 @@ export class ReturnCollateralRunner {
                 await mockCollateralToken.reset.sendTransactionAsync();
                 await mockTokenRegistry.reset.sendTransactionAsync();
 
-                const latestBlockTime = await this.web3Utils.getCurrentBlockTime();
+                const latestBlockTime = await this.web3Utils.getLatestBlockTime();
 
                 // We mock the collateralized agreement by taking the following steps:
                 // 1.  Mocking the collateral token as being placed at index 0
