@@ -129,7 +129,7 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
         mockDebtToken = await MockDebtTokenContract.deployed(web3, TX_DEFAULTS);
         mockPrincipalToken = await MockERC20TokenContract.deployed(web3, TX_DEFAULTS);
 
-        const latestBlockTime = await web3Utils.getCurrentBlockTime();
+        const latestBlockTime = await web3Utils.getLatestBlockTime();
 
         defaultOrderParams = {
             creditor: CREDITOR_1,

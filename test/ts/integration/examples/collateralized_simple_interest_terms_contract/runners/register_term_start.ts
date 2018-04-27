@@ -55,7 +55,7 @@ export class RegisterTermStartRunner extends CollateralizedSimpleInterestTermsCo
                 }
 
                 if (scenario.invokedByDebtKernel && !scenario.reverts) {
-                    const latestBlockTime = await this.web3Utils.getCurrentBlockTime();
+                    const latestBlockTime = await this.web3Utils.getLatestBlockTime();
 
                     // Fill the debt order, thereby invoking registerTermsStart from the debt kernel.
                     txHash = await this.fillDebtOrder();

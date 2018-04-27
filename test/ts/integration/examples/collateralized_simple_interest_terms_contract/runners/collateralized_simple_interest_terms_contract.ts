@@ -87,11 +87,11 @@ export abstract class CollateralizedSimpleInterestTermsContractRunner {
 
         const { DEBTOR_1, CREDITOR_1, UNDERWRITER, RELAYER } = this.accounts;
 
-        const collateralTokenIndex = await dummyTokenRegistryContract.getTokenIndexBySymbol.callAsync(
-            "ZRX",
-        );
         const principalTokenIndex = await dummyTokenRegistryContract.getTokenIndexBySymbol.callAsync(
             "REP",
+        );
+        const collateralTokenIndex = await dummyTokenRegistryContract.getTokenIndexBySymbol.callAsync(
+            "ZRX",
         );
         const nonExistentTokenIndex = new BigNumber(99);
 
@@ -114,7 +114,7 @@ export abstract class CollateralizedSimpleInterestTermsContractRunner {
             },
         );
 
-        const latestBlockTime = await this.web3Utils.getCurrentBlockTime();
+        const latestBlockTime = await this.web3Utils.getLatestBlockTime();
 
         const defaultOrderParams = {
             creditor: CREDITOR_1,

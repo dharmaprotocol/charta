@@ -124,7 +124,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
             termLengthUnits: new BigNumber(4), // Term length in amortization units.
         });
 
-        const latestBlockTime = await web3Utils.getCurrentBlockTime();
+        const latestBlockTime = await web3Utils.getLatestBlockTime();
 
         defaultOrderParams = {
             creditor: CREDITOR_1,
