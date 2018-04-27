@@ -26,7 +26,11 @@ import { UNSUCCESSFUL_REGISTER_TERM_START_SCENARIOS } from "./scenarios/unsucces
 import { UNPACK_PARAMETERS_FROM_BYTES_SCENARIOS } from "./scenarios/unpack_parameters_from_bytes";
 
 // Scenario Runners
-import { RegisterRepaymentRunner, RegisterTermStartRunner, UnpackParametersFromBytesRunner } from "./runners";
+import {
+    RegisterRepaymentRunner,
+    RegisterTermStartRunner,
+    UnpackParametersFromBytesRunner,
+} from "./runners";
 
 contract("Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) => {
     let kernel: DebtKernelContract;
@@ -47,8 +51,8 @@ contract("Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) 
 
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4712388 };
 
-    const registerRepaymentRunner = new RegisterRepaymentRunner();
-    const registerTermStartRunner = new RegisterTermStartRunner();
+    const registerRepaymentRunner = new RegisterRepaymentRunner(web3);
+    const registerTermStartRunner = new RegisterTermStartRunner(web3);
     const unpackParametersFromBytes = new UnpackParametersFromBytesRunner();
 
     before(async () => {
@@ -103,7 +107,9 @@ contract("Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) 
         });
 
         describe("Unsuccessful register term start", () => {
-            UNSUCCESSFUL_REGISTER_TERM_START_SCENARIOS.forEach(registerTermStartRunner.testScenario);
+            UNSUCCESSFUL_REGISTER_TERM_START_SCENARIOS.forEach(
+                registerTermStartRunner.testScenario,
+            );
         });
     });
 
