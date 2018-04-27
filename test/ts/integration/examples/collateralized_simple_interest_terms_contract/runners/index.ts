@@ -26,6 +26,7 @@ export interface TestContracts {
     tokenTransferProxy: TokenTransferProxyContract;
     kernel: DebtKernelContract;
     dummyREPToken: DummyTokenContract;
+    dummyZRXToken: DummyTokenContract;
     collateralizedSimpleInterestTermsContract: CollateralizedSimpleInterestTermsContractContract;
     repaymentRouter: RepaymentRouterContract;
     dummyTokenRegistryContract: TokenRegistryContract;
