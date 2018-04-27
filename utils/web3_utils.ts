@@ -17,11 +17,22 @@ export class Web3Utils {
     }
 
     /**
-     * Returns the current blocktime in seconds.
+     * Returns the latest blocktime in seconds.
      *
      * @returns {Promise<number>}
      */
-    public async getCurrentBlockTime(): Promise<number> {
+    public async getLatestBlockTime(): Promise<number> {
+        // Ganache has a bug in which, if ....
+        //   1. `evm_increaseTime` has been used at some point in the chain's history
+        //   2. `evm_revert` has *just* been used to revert to a previous snapshot
+        //   3. A block has not yet been mined
+        // ...the timestamp returned by `web3.eth.getBlock("latest")`
+        // will not account for the time differential applied by `evm_increaseTime`.
+        //
+        // We force a block to mine in order to avoid the edge case issues
+        // that this bug engenders.
+        await this.mineBlock();
+
         const latestBlock = await promisify(this.web3.eth.getBlock)("latest");
 
         return latestBlock.timestamp;
