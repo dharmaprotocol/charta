@@ -3,6 +3,7 @@ import { expect } from "chai";
 import * as ABIDecoder from "abi-decoder";
 import { compact } from "lodash";
 import { BigNumber } from "bignumber.js";
+import * as Web3 from "web3";
 
 // Wrappers
 import { CollateralizerContract } from "types/generated/collateralizer";
@@ -17,6 +18,7 @@ import { SeizeCollateralScenario, TestAccounts, TestContracts } from "./";
 
 // Test Utils
 import { NULL_ADDRESS, REVERT_ERROR } from "../../../test_utils/constants";
+import { Web3Utils } from "../../../../../utils/web3_utils";
 
 // Logs
 import { CollateralSeized } from "../../../logs/collateralized_contract";
@@ -25,10 +27,14 @@ import { CollateralSeized } from "../../../logs/collateralized_contract";
 import { CollateralizedSimpleInterestTermsParameters } from "../../../factories/terms_contract_parameters";
 
 export class SeizeCollateralRunner {
+    private web3Utils: Web3Utils;
+
     private contracts: TestContracts;
     private accounts: TestAccounts;
 
-    constructor() {
+    constructor(web3: Web3) {
+        this.web3Utils = new Web3Utils(web3);
+
         this.testScenario = this.testScenario.bind(this);
     }
 
@@ -71,6 +77,8 @@ export class SeizeCollateralRunner {
                 await mockDebtRegistry.reset.sendTransactionAsync();
                 await mockCollateralToken.reset.sendTransactionAsync();
                 await mockTokenRegistry.reset.sendTransactionAsync();
+
+                const latestBlockTime = await this.web3Utils.getCurrentBlockTime();
 
                 // We mock the collateralized agreement by taking the following steps:
                 // 1.  Mocking the collateral token as being placed at index 0
@@ -124,9 +132,11 @@ export class SeizeCollateralRunner {
                     scenario.collateralAmount,
                 );
 
-                if (scenario.debtAgreementExists &&
+                if (
+                    scenario.debtAgreementExists &&
                     scenario.debtAgreementCollateralized &&
-                    scenario.validTermsContract) {
+                    scenario.validTermsContract
+                ) {
                     await mockTermsContract.mockCallCollateralize.sendTransactionAsync(
                         collateralizer.address,
                         scenario.agreementId,
@@ -138,7 +148,7 @@ export class SeizeCollateralRunner {
                 for (const repaymentDate of scenario.expectedRepaymentValueSchedule) {
                     await mockTermsContract.mockExpectedRepaymentValue.sendTransactionAsync(
                         scenario.agreementId,
-                        new BigNumber(repaymentDate.timestamp),
+                        new BigNumber(repaymentDate.timestamp(latestBlockTime)),
                         repaymentDate.expectedRepaymentValue,
                     );
                 }
@@ -172,9 +182,7 @@ export class SeizeCollateralRunner {
 
                 it("should erase record of current collateralization", async () => {
                     await expect(
-                        collateralizer.agreementToCollateralizer.callAsync(
-                            scenario.agreementId,
-                        ),
+                        collateralizer.agreementToCollateralizer.callAsync(scenario.agreementId),
                     ).to.eventually.equal(NULL_ADDRESS);
                 });
 
@@ -204,10 +212,9 @@ export class SeizeCollateralRunner {
             } else {
                 it("should throw", async () => {
                     await expect(
-                        collateralizer.seizeCollateral.sendTransactionAsync(
-                            scenario.agreementId,
-                            { from: scenario.from(BENEFICIARY_1, ATTACKER) },
-                        ),
+                        collateralizer.seizeCollateral.sendTransactionAsync(scenario.agreementId, {
+                            from: scenario.from(BENEFICIARY_1, ATTACKER),
+                        }),
                     ).to.eventually.be.rejectedWith(REVERT_ERROR);
                 });
             }
