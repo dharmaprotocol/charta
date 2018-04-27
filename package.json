@@ -39,7 +39,7 @@
     "lint"
   ],
   "dependencies": {
-    "zeppelin-solidity": "^1.8.0"
+    "zeppelin-solidity": "1.8.0"
   },
   "devDependencies": {
     "@0xproject/abi-gen": "0.2.3",
