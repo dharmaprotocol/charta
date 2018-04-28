@@ -10,7 +10,7 @@ module.exports = (deployer, network, accounts) => {
     const DebtKernel = artifacts.require("DebtKernel");
     const RepaymentRouter = artifacts.require("RepaymentRouter");
     const TokenTransferProxy = artifacts.require("TokenTransferProxy");
-    const MultiSigWallet = artifacts.require("MultiSigWallet");
+    const DharmaMultiSigWallet = artifacts.require("DharmaMultiSigWallet");
     const TokenRegistry = artifacts.require("TokenRegistry");
 
     // We switch on the network to ensure we're configuring our MultiSigWallet
@@ -33,9 +33,15 @@ module.exports = (deployer, network, accounts) => {
      */
     const numAuthorizationsRequired = Math.ceil(signatories.length * CONSTANTS.THRESHOLD);
 
-    // Deploy the MultiSigWallet with a set of signatories and the number of
-    // authorizations required before a transaction can be executed.
-    deployer.deploy(MultiSigWallet, signatories, numAuthorizationsRequired);
+    // Deploy the DharmaMultiSigWallet with a set of signatories, the number of
+    // authorizations required before a transaction can be executed, and the
+    // timelock period, defined in seconds.
+    deployer.deploy(
+        DharmaMultiSigWallet,
+        signatories,
+        numAuthorizationsRequired,
+        CONSTANTS.TIMELOCK_IN_SECONDS,
+    );
 
     // Deploy our Permissions library and link our `DebtRegistry` to it.
     deployer.deploy(PermissionsLib);
@@ -54,16 +60,12 @@ module.exports = (deployer, network, accounts) => {
                 // Set the address of the tokens in the token registry.
                 await Promise.all(
                     CONSTANTS.TOKEN_LIST.map(async (token) => {
-                        const {symbol, address, decimals, name} = token;
+                        const { symbol, address, decimals, name } = token;
 
-                        return tokenRegistry.setTokenAttributes(
-                            symbol,
-                            address,
-                            name,
-                            decimals,
-                            {from: OWNER}
-                        );
-                    })
+                        return tokenRegistry.setTokenAttributes(symbol, address, name, decimals, {
+                            from: OWNER,
+                        });
+                    }),
                 );
             }
         });

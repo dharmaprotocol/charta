@@ -15,7 +15,7 @@ import { TokenRegistryContract } from "../../../types/generated/token_registry";
 import { RepaymentRouterContract } from "../../../types/generated/repayment_router";
 import { SimpleInterestTermsContractContract } from "../../../types/generated/simple_interest_terms_contract";
 import { TokenTransferProxyContract } from "../../../types/generated/token_transfer_proxy";
-import { MultiSigWalletContract } from "../../../types/generated/multi_sig_wallet";
+import { DharmaMultiSigWalletContract } from "../../../types/generated/dharma_multi_sig_wallet";
 
 import { DebtOrderFactory } from "../factories/debt_order_factory";
 import { SimpleInterestParameters } from "../factories/terms_contract_parameters";
@@ -26,9 +26,13 @@ import { SignedDebtOrder } from "../../../types/kernel/debt_order";
 import { BigNumberSetup } from "../test_utils/bignumber_setup";
 import ChaiSetup from "../test_utils/chai_setup";
 import { REVERT_ERROR } from "../test_utils/constants";
+import { Web3Utils } from "../../../utils/web3_utils";
 
 import { LogError, LogRepayment } from "../logs/repayment_router";
-import { multiSigExecute } from "../test_utils/utils";
+import {
+    multiSigExecuteAfterTimelock,
+    multiSigExecutePauseImmediately,
+} from "../test_utils/multisig";
 
 // Set up Chai
 ChaiSetup.configure();
@@ -37,6 +41,9 @@ const expect = chai.expect;
 // Configure BigNumber exponentiation
 BigNumberSetup.configure();
 
+// Set up web3 utils
+const web3Utils = new Web3Utils(web3);
+
 contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
     let router: RepaymentRouterContract;
     let kernel: DebtKernelContract;
@@ -44,7 +51,7 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
     let principalToken: DummyTokenContract;
     let termsContract: SimpleInterestTermsContractContract;
     let tokenTransferProxy: TokenTransferProxyContract;
-    let multiSig: MultiSigWalletContract;
+    let multiSig: DharmaMultiSigWalletContract;
 
     let orderFactory: DebtOrderFactory;
     let order: SignedDebtOrder;
@@ -67,13 +74,16 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
         const dummyREPTokenAddress = await dummyTokenRegistryContract.getTokenAddressBySymbol.callAsync(
             "REP",
         );
+        const dummyREPTokenIndex = await dummyTokenRegistryContract.getTokenIndexBySymbol.callAsync(
+            "REP",
+        );
 
         principalToken = await DummyTokenContract.at(dummyREPTokenAddress, web3, TX_DEFAULTS);
 
         kernel = await DebtKernelContract.deployed(web3, TX_DEFAULTS);
         debtToken = await DebtTokenContract.deployed(web3, TX_DEFAULTS);
         tokenTransferProxy = await TokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
-        multiSig = await MultiSigWalletContract.deployed(web3, TX_DEFAULTS);
+        multiSig = await DharmaMultiSigWalletContract.deployed(web3, TX_DEFAULTS);
 
         await principalToken.setBalance.sendTransactionAsync(BENEFICIARY_1, Units.ether(100));
         await principalToken.setBalance.sendTransactionAsync(BENEFICIARY_2, Units.ether(100));
@@ -92,12 +102,14 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
         termsContract = await SimpleInterestTermsContractContract.deployed(web3, TX_DEFAULTS);
 
         const termsContractParameters = SimpleInterestParameters.pack({
-            principalTokenIndex: new BigNumber(0), // Our migrations set REP up to be at index 0 of the registry
+            principalTokenIndex: dummyREPTokenIndex,
             principalAmount: Units.ether(1),
             interestRateFixedPoint: Units.interestRateFixedPoint(2.5),
             amortizationUnitType: new BigNumber(1), // (weekly)
             termLengthUnits: new BigNumber(4),
         });
+
+        const latestBlockTime = await web3Utils.getLatestBlockTime();
 
         const defaultOrderParams = {
             creditorFee: Units.ether(0.002),
@@ -107,8 +119,9 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
             debtor: DEBTOR,
             debtorFee: Units.ether(0.001),
             expirationTimestampInSec: new BigNumber(
-                moment()
-                    .add(1, "days")
+                moment
+                    .unix(latestBlockTime)
+                    .add(30, "days")
                     .unix(),
             ),
             issuanceVersion: router.address,
@@ -198,11 +211,19 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
 
             describe("...when repayment router is paused", () => {
                 before(async () => {
-                    await multiSigExecute(multiSig, router, "pause", ACCOUNTS);
+                    // "Pause" operations can be executed without waiting for the timelock
+                    // to lapse -- a stipulation that exists for emergencies.
+                    await multiSigExecutePauseImmediately(
+                        web3,
+                        multiSig,
+                        router,
+                        "pause",
+                        ACCOUNTS,
+                    );
                 });
 
                 after(async () => {
-                    await multiSigExecute(multiSig, router, "unpause", ACCOUNTS);
+                    await multiSigExecuteAfterTimelock(web3, multiSig, router, "unpause", ACCOUNTS);
                 });
 
                 it("should throw", async () => {

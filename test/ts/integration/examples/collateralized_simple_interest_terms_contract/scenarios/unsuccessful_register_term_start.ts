@@ -32,15 +32,16 @@ export const UNSUCCESSFUL_REGISTER_TERM_START_SCENARIOS: RegisterTermStartScenar
         principalAmount: new BigNumber(0),
     },
     {
-        description: "when there is no token at the given token index in the terms contract parameters",
+        description:
+            "when there is no token at the given token index in the terms contract parameters",
         ...defaultArgs,
-        principalTokenIndex: new BigNumber(99),
+        principalTokenInRegistry: false,
         reverts: true,
     },
     {
         description: "when there is no token at the given token index in the collateral parameters",
         ...defaultArgs,
-        collateralTokenIndexInRegistry: new BigNumber(99),
+        collateralTokenInRegistry: false,
         reverts: true,
     },
     {
@@ -50,7 +51,8 @@ export const UNSUCCESSFUL_REGISTER_TERM_START_SCENARIOS: RegisterTermStartScenar
         reverts: true,
     },
     {
-        description: "when the token proxy allowance granted by the debtor is less than the collateral amount",
+        description:
+            "when the token proxy allowance granted by the debtor is less than the collateral amount",
         ...defaultArgs,
         collateralTokenAllowance: new BigNumber(0),
         reverts: true,

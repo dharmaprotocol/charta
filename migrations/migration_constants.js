@@ -12,6 +12,7 @@ const OWNER_FIVE = generateAddress("test account five");
 
 const SIGNATORIES = [OWNER_ONE, OWNER_TWO, OWNER_THREE, OWNER_FOUR, OWNER_FIVE];
 const THRESHOLD = 1 / 2; // 50%
+const TIMELOCK_IN_SECONDS = 60 * 60 * 24 * 7; // 7 Days
 const LIVE_NETWORK_ID = "live";
 const DUMMY_TOKEN_SUPPLY = 10 ** 27;
 const DUMMY_TOKEN_DECIMALS = 18;
@@ -351,6 +352,7 @@ const TOKEN_LIST = [
 module.exports = {
     SIGNATORIES,
     THRESHOLD,
+    TIMELOCK_IN_SECONDS,
     LIVE_NETWORK_ID,
     DUMMY_TOKEN_SUPPLY,
     DUMMY_TOKEN_DECIMALS,

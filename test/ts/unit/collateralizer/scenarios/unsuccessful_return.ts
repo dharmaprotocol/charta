@@ -18,21 +18,27 @@ const defaultArgs = {
     valueRepaidToDate: Units.ether(1),
     expectedRepaymentValueSchedule: [
         {
-            timestamp: moment()
-                .subtract(14, "days")
-                .unix(),
+            timestamp: (latestBlockTime: number) =>
+                moment
+                    .unix(latestBlockTime)
+                    .subtract(14, "days")
+                    .unix(),
             expectedRepaymentValue: Units.ether(0.5),
         },
         {
-            timestamp: moment()
-                .subtract(7, "days")
-                .unix(),
+            timestamp: (latestBlockTime: number) =>
+                moment
+                    .unix(latestBlockTime)
+                    .subtract(7, "days")
+                    .unix(),
             expectedRepaymentValue: Units.ether(1),
         },
     ],
-    termEndTimestamp: moment()
-        .subtract(1, "hours")
-        .unix(),
+    termEndTimestamp: (latestBlockTime: number) =>
+        moment
+            .unix(latestBlockTime)
+            .subtract(1, "hours")
+            .unix(),
     termsContract: (collateralizedContract: string, attacker: string) => collateralizedContract,
     from: (collateralizer: string, other: string) => collateralizer,
     debtAgreementExists: true,

@@ -31,10 +31,10 @@ export class RegisterRepaymentRunner extends CollateralizedSimpleInterestTermsCo
             before(async () => {
                 await this.setupDebtOrder(scenario);
 
-                dummyZRXToken = await this.setupDummyZRXToken();
+                dummyZRXToken = this.contracts.dummyZRXToken;
                 dummyREPToken = this.contracts.dummyREPToken;
 
-                await this.contracts.dummyREPToken.setBalance.sendTransactionAsync(
+                await this.contracts.dummyZRXToken.setBalance.sendTransactionAsync(
                     this.accounts.DEBTOR_1,
                     scenario.collateralTokenBalance,
                     {
@@ -42,16 +42,13 @@ export class RegisterRepaymentRunner extends CollateralizedSimpleInterestTermsCo
                     },
                 );
 
-                await this.contracts.dummyREPToken.approve.sendTransactionAsync(
+                await this.contracts.dummyZRXToken.approve.sendTransactionAsync(
                     this.contracts.tokenTransferProxy.address,
                     scenario.collateralTokenAllowance,
                     { from: this.accounts.DEBTOR_1 },
                 );
 
-                const {
-                    CONTRACT_OWNER,
-                    DEBTOR_1,
-                } = this.accounts;
+                const { CONTRACT_OWNER, DEBTOR_1 } = this.accounts;
 
                 const {
                     tokenTransferProxy,
@@ -61,9 +58,13 @@ export class RegisterRepaymentRunner extends CollateralizedSimpleInterestTermsCo
                 // Fill a debt order, against which to test repayments.
                 await this.fillDebtOrder();
 
-                await dummyREPToken.setBalance.sendTransactionAsync(DEBTOR_1, scenario.repaymentAmount, {
-                    from: CONTRACT_OWNER,
-                });
+                await dummyREPToken.setBalance.sendTransactionAsync(
+                    DEBTOR_1,
+                    scenario.repaymentAmount,
+                    {
+                        from: CONTRACT_OWNER,
+                    },
+                );
 
                 await dummyREPToken.approve.sendTransactionAsync(
                     tokenTransferProxy.address,
@@ -71,8 +72,9 @@ export class RegisterRepaymentRunner extends CollateralizedSimpleInterestTermsCo
                     { from: DEBTOR_1 },
                 );
 
-                repaidAmountBefore = await this.contracts.collateralizedSimpleInterestTermsContract
-                    .getValueRepaidToDate.callAsync(this.agreementId);
+                repaidAmountBefore = await this.contracts.collateralizedSimpleInterestTermsContract.getValueRepaidToDate.callAsync(
+                    this.agreementId,
+                );
 
                 // Setup ABI decoder in order to decode logs
                 ABIDecoder.addABI(collateralizedSimpleInterestTermsContract.abi);
@@ -115,8 +117,12 @@ export class RegisterRepaymentRunner extends CollateralizedSimpleInterestTermsCo
                     const agreementId = this.agreementId;
 
                     await expect(
-                        collateralizedSimpleInterestTermsContract.getValueRepaidToDate.callAsync(agreementId),
-                    ).to.eventually.bignumber.equal(repaidAmountBefore.add(scenario.repaymentAmount));
+                        collateralizedSimpleInterestTermsContract.getValueRepaidToDate.callAsync(
+                            agreementId,
+                        ),
+                    ).to.eventually.bignumber.equal(
+                        repaidAmountBefore.add(scenario.repaymentAmount),
+                    );
                 });
 
                 it("should emit a LogRegisterRepayment event", async () => {
@@ -142,7 +148,9 @@ export class RegisterRepaymentRunner extends CollateralizedSimpleInterestTermsCo
                     const agreementId = this.agreementId;
 
                     await expect(
-                        collateralizedSimpleInterestTermsContract.getValueRepaidToDate.callAsync(agreementId),
+                        collateralizedSimpleInterestTermsContract.getValueRepaidToDate.callAsync(
+                            agreementId,
+                        ),
                     ).to.eventually.bignumber.equal(repaidAmountBefore);
                 });
 
@@ -180,18 +188,6 @@ export class RegisterRepaymentRunner extends CollateralizedSimpleInterestTermsCo
             amount,
             tokenAddress,
             { from: this.accounts.DEBTOR_1 },
-        );
-    }
-
-    private async setupDummyZRXToken(): Promise<DummyTokenContract> {
-        const dummyZRXTokenAddress = await this.contracts.dummyTokenRegistryContract.getTokenAddressBySymbol.callAsync(
-            "ZRX",
-        );
-
-        return DummyTokenContract.at(
-            dummyZRXTokenAddress,
-            web3,
-            { from: this.accounts.CONTRACT_OWNER, gas: DEFAULT_GAS_AMOUNT },
         );
     }
 }

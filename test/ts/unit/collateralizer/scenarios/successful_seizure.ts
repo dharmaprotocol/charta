@@ -13,9 +13,11 @@ const defaultArgs = {
     valueRepaidToDate: Units.ether(0),
     expectedRepaymentValueSchedule: [
         {
-            timestamp: moment()
-                .subtract(8, "days")
-                .unix(),
+            timestamp: (latestBlockTime: number) =>
+                moment
+                    .unix(latestBlockTime)
+                    .subtract(8, "days")
+                    .unix(),
             expectedRepaymentValue: Units.ether(0.5),
         },
     ],
@@ -36,9 +38,11 @@ export const SUCCESSFUL_SEIZURE_SCENARIOS: SeizeCollateralScenario[] = [
         gracePeriodInDays: new BigNumber(0),
         expectedRepaymentValueSchedule: [
             {
-                timestamp: moment()
-                    .subtract(1, "hours")
-                    .unix(),
+                timestamp: (latestBlockTime: number) =>
+                    moment
+                        .unix(latestBlockTime)
+                        .subtract(1, "hours")
+                        .unix(),
                 expectedRepaymentValue: Units.ether(0.5),
             },
         ],
@@ -51,9 +55,11 @@ export const SUCCESSFUL_SEIZURE_SCENARIOS: SeizeCollateralScenario[] = [
         gracePeriodInDays: new BigNumber(0),
         expectedRepaymentValueSchedule: [
             {
-                timestamp: moment()
-                    .subtract(1, "hours")
-                    .unix(),
+                timestamp: (latestBlockTime: number) =>
+                    moment
+                        .unix(latestBlockTime)
+                        .subtract(1, "hours")
+                        .unix(),
                 expectedRepaymentValue: Units.ether(0.5),
             },
         ],
@@ -68,9 +74,11 @@ export const SUCCESSFUL_SEIZURE_SCENARIOS: SeizeCollateralScenario[] = [
         valueRepaidToDate: Units.ether(0.5).minus(1),
         expectedRepaymentValueSchedule: [
             {
-                timestamp: moment()
-                    .subtract(1, "hours")
-                    .unix(),
+                timestamp: (latestBlockTime: number) =>
+                    moment
+                        .unix(latestBlockTime)
+                        .subtract(1, "hours")
+                        .unix(),
                 expectedRepaymentValue: Units.ether(0.5),
             },
         ],
@@ -106,9 +114,11 @@ export const SUCCESSFUL_SEIZURE_SCENARIOS: SeizeCollateralScenario[] = [
         gracePeriodInDays: new BigNumber(90),
         expectedRepaymentValueSchedule: [
             {
-                timestamp: moment()
-                    .subtract(91, "days")
-                    .unix(),
+                timestamp: (latestBlockTime: number) =>
+                    moment
+                        .unix(latestBlockTime)
+                        .subtract(91, "days")
+                        .unix(),
                 expectedRepaymentValue: Units.ether(0.5),
             },
         ],
@@ -121,9 +131,11 @@ export const SUCCESSFUL_SEIZURE_SCENARIOS: SeizeCollateralScenario[] = [
         gracePeriodInDays: new BigNumber(90),
         expectedRepaymentValueSchedule: [
             {
-                timestamp: moment()
-                    .subtract(91, "days")
-                    .unix(),
+                timestamp: (latestBlockTime: number) =>
+                    moment
+                        .unix(latestBlockTime)
+                        .subtract(91, "days")
+                        .unix(),
                 expectedRepaymentValue: Units.ether(0.5),
             },
         ],
@@ -138,9 +150,11 @@ export const SUCCESSFUL_SEIZURE_SCENARIOS: SeizeCollateralScenario[] = [
         gracePeriodInDays: new BigNumber(90),
         expectedRepaymentValueSchedule: [
             {
-                timestamp: moment()
-                    .subtract(91, "days")
-                    .unix(),
+                timestamp: (latestBlockTime: number) =>
+                    moment
+                        .unix(latestBlockTime)
+                        .subtract(91, "days")
+                        .unix(),
                 expectedRepaymentValue: Units.ether(0.5),
             },
         ],
