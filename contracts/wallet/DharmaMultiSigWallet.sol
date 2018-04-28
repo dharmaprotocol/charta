@@ -18,10 +18,14 @@
 
 pragma solidity 0.4.18;
 
-import "./BaseMultiSigWallet.sol";
+import "./MultiSigWallet.sol";
 
 
-contract DharmaMultiSigWallet is BaseMultiSigWallet {
+contract DharmaMultiSigWallet is MultiSigWallet {
+
+    event ConfirmationTimeSet(uint indexed transactionId, uint confirmationTime);
+    event TimeLockChange(uint timelockInSeconds);
+
     uint public timelockInSeconds;
 
     mapping (uint => uint) public transactionConfirmedBlockTimestamp;
@@ -42,9 +46,9 @@ contract DharmaMultiSigWallet is BaseMultiSigWallet {
     }
 
     modifier validPauseTransaction(uint transactionId) {
-        Transaction storage tx = transactions[transactionId];
+        Transaction storage txn = transactions[transactionId];
 
-        require(isValidPauseTransaction(tx.data));
+        require(isPauseFunctionTransaction(txn.data));
         _;
     }
 
@@ -54,7 +58,7 @@ contract DharmaMultiSigWallet is BaseMultiSigWallet {
         uint _timelockInSeconds
     )
         public
-        BaseMultiSigWallet(_owners, _required)
+        MultiSigWallet(_owners, _required)
     {
         timelockInSeconds = _timelockInSeconds;
     }
@@ -134,7 +138,7 @@ contract DharmaMultiSigWallet is BaseMultiSigWallet {
         public
         notExecuted(transactionId)
         sufficientlyConfirmed(transactionId)
-        isValidPauseTransaction(transactionId)
+        validPauseTransaction(transactionId)
     {
         _executeTransaction(transactionId);
     }

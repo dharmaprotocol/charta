@@ -9,12 +9,12 @@ import { DummyTokenContract } from "../../../../../../types/generated/dummy_toke
 import { SignedDebtOrder } from "../../../../../../types/kernel/debt_order";
 
 export const DEFAULT_REGISTER_TERM_START_ARGS = {
-    principalTokenIndex: new BigNumber(0),
     principalAmount: Units.ether(1),
     interestRateFixedPoint: Units.interestRateFixedPoint(2.5),
     amortizationUnitType: new BigNumber(1),
     termLengthUnits: new BigNumber(4),
     invokedByDebtKernel: true,
+    principalTokenInRegistry: true,
     succeeds: true,
     reverts: false,
     termsContractParameters: (terms: SimpleInterestContractTerms) =>
@@ -22,7 +22,6 @@ export const DEFAULT_REGISTER_TERM_START_ARGS = {
 };
 
 export const DEFAULT_REGISTER_REPAYMENT_ARGS = {
-    principalTokenIndex: new BigNumber(0),
     principalAmount: Units.ether(1),
     interestRateFixedPoint: Units.interestRateFixedPoint(2.5),
     amortizationUnitType: new BigNumber(1),
@@ -31,6 +30,7 @@ export const DEFAULT_REGISTER_REPAYMENT_ARGS = {
     repaymentToken: (principalToken: DummyTokenContract, otherToken: DummyTokenContract) =>
         principalToken,
     debtOrder: (debtOrder: SignedDebtOrder) => debtOrder,
+    principalTokenInRegistry: true,
     repayFromRouter: true,
     succeeds: true,
     reverts: false,
@@ -39,8 +39,6 @@ export const DEFAULT_REGISTER_REPAYMENT_ARGS = {
 export interface RegisterRepaymentScenario {
     // The test's description
     description: string;
-    // The index of the principal token in the registry.
-    principalTokenIndex: BigNumber;
     // The debt order's principal amount.
     principalAmount: BigNumber;
     // The debt order's interest rate (in fixed point).
@@ -58,6 +56,8 @@ export interface RegisterRepaymentScenario {
     ) => DummyTokenContract;
     // The debt order to use in this scenario.
     debtOrder: (debtOrder: SignedDebtOrder) => SignedDebtOrder;
+    // True if registry tracks token with principal token's index.
+    principalTokenInRegistry: boolean;
     // True if repayment gets logged.
     succeeds: boolean;
     // True if the transaction is reverted.
@@ -69,8 +69,6 @@ export interface RegisterRepaymentScenario {
 export interface RegisterTermStartScenario {
     // The test's description
     description: string;
-    // The index of the principal token in the registry.
-    principalTokenIndex: BigNumber;
     // The debt order's principal amount.
     principalAmount: BigNumber;
     // The debt order's interest rate (in fixed point).
@@ -81,6 +79,8 @@ export interface RegisterTermStartScenario {
     termLengthUnits: BigNumber;
     // Given some contract terms, returns a packed version to be used in the scenario.
     termsContractParameters: (terms: SimpleInterestContractTerms) => string;
+    // True if registry tracks token with principal token's index.
+    principalTokenInRegistry: boolean;
     // True if the scenario does not revert and the terms contract is started.
     succeeds: boolean;
     // True if the transaction reverts during the scenario.

@@ -10,8 +10,6 @@ import { SignedDebtOrder } from "../../../../../../types/kernel/debt_order";
 
 export const DEFAULT_REGISTER_TERM_START_ARGS = {
     // Simple terms parameters.
-    // Our migrations set REP up to be at index 0 of the registry.
-    principalTokenIndex: new BigNumber(0),
     principalAmount: Units.ether(1),
     interestRateFixedPoint: Units.interestRateFixedPoint(2.5),
     amortizationUnitType: new BigNumber(1),
@@ -20,13 +18,14 @@ export const DEFAULT_REGISTER_TERM_START_ARGS = {
     collateralAmount: Units.ether(0.005),
     collateralToken: "REP",
     gracePeriodInDays: new BigNumber(20),
-    collateralTokenIndexInRegistry: new BigNumber(0),
     // Misc parameters.
     collateralTokenAllowance: Units.ether(0.005),
     collateralTokenBalance: Units.ether(0.005),
     debtorFee: Units.ether(0.001),
     invokedByDebtKernel: true,
     permissionToCollateralize: true,
+    principalTokenInRegistry: true,
+    collateralTokenInRegistry: true,
     succeeds: true,
     reverts: false,
     termsContractParameters: (terms: SimpleInterestContractTerms) =>
@@ -34,7 +33,6 @@ export const DEFAULT_REGISTER_TERM_START_ARGS = {
 };
 
 export const DEFAULT_REGISTER_REPAYMENT_ARGS = {
-    principalTokenIndex: new BigNumber(0),
     principalAmount: Units.ether(1),
     interestRateFixedPoint: Units.interestRateFixedPoint(2.5),
     amortizationUnitType: new BigNumber(1),
@@ -45,7 +43,6 @@ export const DEFAULT_REGISTER_REPAYMENT_ARGS = {
     collateralAmount: Units.ether(0.005),
     collateralToken: "REP",
     gracePeriodInDays: new BigNumber(20),
-    collateralTokenIndexInRegistry: new BigNumber(0),
     // Misc parameters.
     collateralTokenAllowance: Units.ether(0.005),
     collateralTokenBalance: Units.ether(0.005),
@@ -53,6 +50,8 @@ export const DEFAULT_REGISTER_REPAYMENT_ARGS = {
         principalToken,
     debtOrder: (debtOrder: SignedDebtOrder) => debtOrder,
     repayFromRouter: true,
+    principalTokenInRegistry: true,
+    collateralTokenInRegistry: true,
     succeeds: true,
     reverts: false,
 };
@@ -60,8 +59,6 @@ export const DEFAULT_REGISTER_REPAYMENT_ARGS = {
 export interface RegisterRepaymentScenario {
     // The test's description
     description: string;
-    // The index of the principal token in the registry.
-    principalTokenIndex: BigNumber;
     // The debt order's principal amount.
     principalAmount: BigNumber;
     // The debt order's interest rate (in fixed point).
@@ -84,9 +81,12 @@ export interface RegisterRepaymentScenario {
     collateralAmount: BigNumber;
     collateralToken: string;
     gracePeriodInDays: BigNumber;
-    collateralTokenIndexInRegistry: BigNumber;
     collateralTokenAllowance: BigNumber;
     collateralTokenBalance: BigNumber;
+    // True if the index associated with the principal token is in the token registry
+    principalTokenInRegistry: boolean;
+    // True if the index associated with the collateral token is in the token registry
+    collateralTokenInRegistry: boolean;
     // True if repayment gets logged.
     succeeds: boolean;
     // True if the transaction is reverted.
@@ -98,8 +98,6 @@ export interface RegisterRepaymentScenario {
 export interface RegisterTermStartScenario {
     // The test's description
     description: string;
-    // The index of the principal token in the registry.
-    principalTokenIndex: BigNumber;
     // The debt order's principal amount.
     principalAmount: BigNumber;
     // The debt order's interest rate (in fixed point).
@@ -117,9 +115,12 @@ export interface RegisterTermStartScenario {
     collateralAmount: BigNumber;
     collateralToken: string;
     gracePeriodInDays: BigNumber;
-    collateralTokenIndexInRegistry: BigNumber;
     collateralTokenAllowance: BigNumber;
     collateralTokenBalance: BigNumber;
+    // True if the index associated with the principal token is in the token registry
+    principalTokenInRegistry: boolean;
+    // True if the index associated with the collateral token is in the token registry
+    collateralTokenInRegistry: boolean;
     // True if the scenario does not revert and the terms contract is started.
     succeeds: boolean;
     // True if the transaction reverts during the scenario.

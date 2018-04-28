@@ -9,7 +9,7 @@ import { CollateralizerContract } from "../../../types/generated/collateralizer"
 import { DebtKernelContract } from "../../../types/generated/debt_kernel";
 import { DebtTokenContract } from "../../../types/generated/debt_token";
 import { DebtRegistryContract } from "../../../types/generated/debt_registry";
-import { MultiSigWalletContract } from "../../../types/generated/multi_sig_wallet";
+import { DharmaMultiSigWalletContract } from "../../../types/generated/dharma_multi_sig_wallet";
 import { RepaymentRouterContract } from "../../../types/generated/repayment_router";
 import { TokenTransferProxyContract } from "../../../types/generated/token_transfer_proxy";
 
@@ -21,10 +21,10 @@ contract("Migration #6: Transferring Ownership to Multisig", async (ACCOUNTS) =>
     const CONTRACT_OWNER = ACCOUNTS[0];
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
 
-    let multisig: MultiSigWalletContract;
+    let multisig: DharmaMultiSigWalletContract;
 
     before(async () => {
-        multisig = await MultiSigWalletContract.deployed(web3, TX_DEFAULTS);
+        multisig = await DharmaMultiSigWalletContract.deployed(web3, TX_DEFAULTS);
     });
 
     describe("Deployment", () => {

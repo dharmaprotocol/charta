@@ -27,7 +27,11 @@ import { UNSUCCESSFUL_REGISTER_TERM_START_SCENARIOS } from "./scenarios/unsucces
 import { UNPACK_PARAMETERS_FROM_BYTES_SCENARIOS } from "./scenarios/unpack_parameters_from_bytes";
 
 // Scenario Runners
-import { RegisterRepaymentRunner, RegisterTermStartRunner, UnpackParametersFromBytesRunner } from "./runners";
+import {
+    RegisterRepaymentRunner,
+    RegisterTermStartRunner,
+    UnpackParametersFromBytesRunner,
+} from "./runners";
 
 contract("Collateralized Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) => {
     let kernel: DebtKernelContract;
@@ -40,6 +44,7 @@ contract("Collateralized Simple Interest Terms Contract (Integration Tests)", as
     let collateralizerContract: CollateralizerContract;
 
     let dummyREPToken: DummyTokenContract;
+    let dummyZRXToken: DummyTokenContract;
 
     const CONTRACT_OWNER = ACCOUNTS[0];
     const DEBTOR_1 = ACCOUNTS[5];
@@ -49,8 +54,8 @@ contract("Collateralized Simple Interest Terms Contract (Integration Tests)", as
 
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4712388 };
 
-    const registerRepaymentRunner = new RegisterRepaymentRunner();
-    const registerTermStartRunner = new RegisterTermStartRunner();
+    const registerRepaymentRunner = new RegisterRepaymentRunner(web3);
+    const registerTermStartRunner = new RegisterTermStartRunner(web3);
     const unpackParametersFromBytes = new UnpackParametersFromBytesRunner();
 
     before(async () => {
@@ -59,8 +64,12 @@ contract("Collateralized Simple Interest Terms Contract (Integration Tests)", as
         const dummyREPTokenAddress = await dummyTokenRegistryContract.getTokenAddressBySymbol.callAsync(
             "REP",
         );
+        const dummyZRXTokenAddress = await dummyTokenRegistryContract.getTokenAddressBySymbol.callAsync(
+            "ZRX",
+        );
 
         dummyREPToken = await DummyTokenContract.at(dummyREPTokenAddress, web3, TX_DEFAULTS);
+        dummyZRXToken = await DummyTokenContract.at(dummyZRXTokenAddress, web3, TX_DEFAULTS);
 
         debtTokenContract = await DebtTokenContract.deployed(web3, TX_DEFAULTS);
         debtRegistryContract = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
@@ -77,9 +86,7 @@ contract("Collateralized Simple Interest Terms Contract (Integration Tests)", as
         kernel = await DebtKernelContract.deployed(web3, TX_DEFAULTS);
 
         repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
-    });
 
-    before(() => {
         const testAccounts = {
             UNDERWRITER,
             CONTRACT_OWNER,
@@ -93,6 +100,7 @@ contract("Collateralized Simple Interest Terms Contract (Integration Tests)", as
             tokenTransferProxy,
             kernel,
             dummyREPToken,
+            dummyZRXToken,
             collateralizedSimpleInterestTermsContract,
             repaymentRouter,
             dummyTokenRegistryContract,
@@ -110,7 +118,9 @@ contract("Collateralized Simple Interest Terms Contract (Integration Tests)", as
         });
 
         describe("Unsuccessful register term start", () => {
-            UNSUCCESSFUL_REGISTER_TERM_START_SCENARIOS.forEach(registerTermStartRunner.testScenario);
+            UNSUCCESSFUL_REGISTER_TERM_START_SCENARIOS.forEach(
+                registerTermStartRunner.testScenario,
+            );
         });
     });
 

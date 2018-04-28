@@ -4,7 +4,7 @@ import * as _ from "lodash";
 import { BigNumber } from "bignumber.js";
 import * as Units from "../../../../test_utils/units";
 import * as moment from "moment";
-import { DecodedLog } from "abi-decoder";
+import * as Web3 from "web3";
 
 // Scenario runners
 import { RegisterRepaymentScenario, RegisterTermStartScenario } from "../scenarios";
@@ -19,6 +19,9 @@ import { DummyTokenContract } from "../../../../../../types/generated/dummy_toke
 import { CollateralizedSimpleInterestTermsParameters } from "../../../../factories/terms_contract_parameters";
 import { DebtOrderFactory } from "../../../../factories/debt_order_factory";
 
+// Utils
+import { Web3Utils } from "../../../../../../utils/web3_utils";
+
 const DEFAULT_GAS_AMOUNT = 4712388;
 
 export abstract class CollateralizedSimpleInterestTermsContractRunner {
@@ -27,7 +30,11 @@ export abstract class CollateralizedSimpleInterestTermsContractRunner {
     protected debtOrder: SignedDebtOrder;
     protected agreementId: string;
 
-    constructor() {
+    protected web3Utils: Web3Utils;
+
+    constructor(web3: Web3) {
+        this.web3Utils = new Web3Utils(web3);
+
         this.testScenario = this.testScenario.bind(this);
     }
 
@@ -40,7 +47,10 @@ export abstract class CollateralizedSimpleInterestTermsContractRunner {
         scenario: RegisterRepaymentScenario | RegisterTermStartScenario,
     ): void;
 
-    protected async getLogs(txHash: string, event: string): Promise<DecodedLog | undefined> {
+    protected async getLogs(
+        txHash: string,
+        event: string,
+    ): Promise<ABIDecoder.DecodedLog | undefined> {
         const receipt = await web3.eth.getTransactionReceipt(txHash);
 
         return _.find(ABIDecoder.decodeLogs(receipt.logs), { name: event });
@@ -72,24 +82,39 @@ export abstract class CollateralizedSimpleInterestTermsContractRunner {
             repaymentRouter,
             debtTokenContract,
             dummyREPToken,
+            dummyTokenRegistryContract,
         } = this.contracts;
 
         const { DEBTOR_1, CREDITOR_1, UNDERWRITER, RELAYER } = this.accounts;
 
+        const principalTokenIndex = await dummyTokenRegistryContract.getTokenIndexBySymbol.callAsync(
+            "REP",
+        );
+        const collateralTokenIndex = await dummyTokenRegistryContract.getTokenIndexBySymbol.callAsync(
+            "ZRX",
+        );
+        const nonExistentTokenIndex = new BigNumber(99);
+
         const termsContractParameters = CollateralizedSimpleInterestTermsParameters.pack(
             {
                 collateralAmount: scenario.collateralAmount,
-                collateralTokenIndex: scenario.collateralTokenIndexInRegistry,
+                collateralTokenIndex: scenario.collateralTokenInRegistry
+                    ? collateralTokenIndex
+                    : nonExistentTokenIndex,
                 gracePeriodInDays: scenario.gracePeriodInDays,
             },
             {
-                principalTokenIndex: scenario.principalTokenIndex,
+                principalTokenIndex: scenario.principalTokenInRegistry
+                    ? principalTokenIndex
+                    : nonExistentTokenIndex,
                 principalAmount: scenario.principalAmount,
                 interestRateFixedPoint: scenario.interestRateFixedPoint,
                 amortizationUnitType: scenario.amortizationUnitType,
                 termLengthUnits: scenario.termLengthUnits,
             },
         );
+
+        const latestBlockTime = await this.web3Utils.getLatestBlockTime();
 
         const defaultOrderParams = {
             creditor: CREDITOR_1,
@@ -100,8 +125,9 @@ export abstract class CollateralizedSimpleInterestTermsContractRunner {
             debtor: DEBTOR_1,
             debtorFee: scenario.debtorFee,
             expirationTimestampInSec: new BigNumber(
-                moment()
-                    .add(1, "days")
+                moment
+                    .unix(latestBlockTime)
+                    .add(30, "days")
                     .unix(),
             ),
             issuanceVersion: repaymentRouter.address,

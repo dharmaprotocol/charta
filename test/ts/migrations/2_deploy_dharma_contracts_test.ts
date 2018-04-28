@@ -18,7 +18,7 @@ const web3Utils = new Web3Utils(web3);
 BigNumberSetup.configure();
 
 // Dharma Contracts
-import { MultiSigWalletContract } from "../../../types/generated/multi_sig_wallet";
+import { DharmaMultiSigWalletContract } from "../../../types/generated/dharma_multi_sig_wallet";
 import { DebtTokenContract } from "../../../types/generated/debt_token";
 import { DebtRegistryContract } from "../../../types/generated/debt_registry";
 import { RepaymentRouterContract } from "../../../types/generated/repayment_router";
@@ -29,7 +29,7 @@ contract("Migration #2: Deploying Dharma Contracts", async (ACCOUNTS) => {
     const CONTRACT_OWNER = ACCOUNTS[0];
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
 
-    let wallet: MultiSigWalletContract;
+    let wallet: DharmaMultiSigWalletContract;
     let debtToken: DebtTokenContract;
     let debtRegistry: DebtRegistryContract;
     let tokenTransferProxy: TokenTransferProxyContract;
@@ -44,7 +44,7 @@ contract("Migration #2: Deploying Dharma Contracts", async (ACCOUNTS) => {
     */
     describe("Deployment", () => {
         it("should deploy the `MultiSigWallet` contract to the current network", async () => {
-            wallet = await MultiSigWalletContract.deployed(web3, TX_DEFAULTS);
+            wallet = await DharmaMultiSigWalletContract.deployed(web3, TX_DEFAULTS);
             expect(web3Utils.doesContractExistAtAddressAsync(wallet.address)).to.eventually.be.true;
         });
 
