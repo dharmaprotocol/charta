@@ -7,8 +7,8 @@ function generateAddress(seed) {
 const OWNER_ONE = generateAddress("test account one");
 const OWNER_TWO = generateAddress("test account two");
 const OWNER_THREE = generateAddress("test account three");
-const OWNER_FOUR = generateAddress("test account four");
-const OWNER_FIVE = generateAddress("test account five");
+const OWNER_FOUR = "0xfefdde6a490cd4095de204b6fe31ba1607b19e3f";
+const OWNER_FIVE = "0xa32d732ab0096dbf837f3e5d358ac5b597dcbf73";
 
 const SIGNATORIES = [OWNER_ONE, OWNER_TWO, OWNER_THREE, OWNER_FOUR, OWNER_FIVE];
 const THRESHOLD = 1 / 2; // 50%
@@ -354,6 +354,7 @@ module.exports = {
     THRESHOLD,
     TIMELOCK_IN_SECONDS,
     LIVE_NETWORK_ID,
+    KOVAN_NETWORK_ID,
     DUMMY_TOKEN_SUPPLY,
     DUMMY_TOKEN_DECIMALS,
     TOKEN_LIST,
