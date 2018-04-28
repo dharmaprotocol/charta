@@ -48,7 +48,7 @@ contract DharmaMultiSigWallet is MultiSigWallet {
     modifier validPauseTransaction(uint transactionId) {
         Transaction storage txn = transactions[transactionId];
 
-        require(isPauseFunctionTransaction(txn.data));
+        require(_isPauseFunctionTransaction(txn.data));
         _;
     }
 
@@ -95,7 +95,7 @@ contract DharmaMultiSigWallet is MultiSigWallet {
         // If the transaction is now sufficiently confirmed, we record
         // the timestamp in order to kick off the timelock period
         if (isConfirmed(transactionId)) {
-            setConfirmationTime(transactionId, block.timestamp);
+            _setConfirmationTime(transactionId, block.timestamp);
         }
     }
 
@@ -168,7 +168,7 @@ contract DharmaMultiSigWallet is MultiSigWallet {
      * a transaction reached the minimal threshold of
      * confirmations.
      */
-    function setConfirmationTime(uint transactionId, uint confirmationTime)
+    function _setConfirmationTime(uint transactionId, uint confirmationTime)
         internal
     {
         transactionConfirmedBlockTimestamp[transactionId] = confirmationTime;
@@ -181,7 +181,7 @@ contract DharmaMultiSigWallet is MultiSigWallet {
      * for more information, see the Ethereum wiki's contract ABI specification:
      * https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI
      */
-    function isPauseFunctionTransaction(bytes data)
+    function _isPauseFunctionTransaction(bytes data)
         internal
         view
         returns (bool)
