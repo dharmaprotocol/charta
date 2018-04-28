@@ -18,9 +18,11 @@ const defaultArgs = {
     valueRepaidToDate: Units.ether(0.5).minus(1),
     expectedRepaymentValueSchedule: [
         {
-            timestamp: moment()
-                .subtract(8, "days")
-                .unix(),
+            timestamp: (latestBlockTime: number) =>
+                moment
+                    .unix(latestBlockTime)
+                    .subtract(8, "days")
+                    .unix(),
             expectedRepaymentValue: Units.ether(0.5),
         },
     ],
@@ -75,9 +77,11 @@ export const UNSUCCESSFUL_SEIZURE_SCENARIOS: SeizeCollateralScenario[] = [
         ...defaultArgs,
         expectedRepaymentValueSchedule: [
             {
-                timestamp: moment()
-                    .subtract(6, "days")
-                    .unix(),
+                timestamp: (latestBlockTime: number) =>
+                    moment
+                        .unix(latestBlockTime)
+                        .subtract(6, "days")
+                        .unix(),
                 expectedRepaymentValue: Units.ether(0.5),
             },
         ],
@@ -97,9 +101,11 @@ export const UNSUCCESSFUL_SEIZURE_SCENARIOS: SeizeCollateralScenario[] = [
         gracePeriodInDays: new BigNumber(90),
         expectedRepaymentValueSchedule: [
             {
-                timestamp: moment()
-                    .subtract(89, "days")
-                    .unix(),
+                timestamp: (latestBlockTime: number) =>
+                    moment
+                        .unix(latestBlockTime)
+                        .subtract(89, "days")
+                        .unix(),
                 expectedRepaymentValue: Units.ether(0.5),
             },
         ],
@@ -130,11 +136,7 @@ export const UNSUCCESSFUL_SEIZURE_SCENARIOS: SeizeCollateralScenario[] = [
             // Mock the debt term's ending timestamp as having lapsed so that we can return collateral
             await termsContract.mockTermEndTimestamp.sendTransactionAsync(
                 agreementId,
-                new BigNumber(
-                    moment()
-                        .subtract(1, "hours")
-                        .unix(),
-                ),
+                new BigNumber(0),
             );
 
             await collateralizerContract.returnCollateral.sendTransactionAsync(agreementId);
@@ -146,9 +148,11 @@ export const UNSUCCESSFUL_SEIZURE_SCENARIOS: SeizeCollateralScenario[] = [
         ...defaultArgs,
         expectedRepaymentValueSchedule: [
             {
-                timestamp: moment()
-                    .subtract(6, "days")
-                    .unix(),
+                timestamp: (latestBlockTime: number) =>
+                    moment
+                        .unix(latestBlockTime)
+                        .subtract(6, "days")
+                        .unix(),
                 expectedRepaymentValue: new BigNumber(0),
             },
         ],

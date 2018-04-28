@@ -26,6 +26,7 @@ import { SignedDebtOrder } from "../../../types/kernel/debt_order";
 import { BigNumberSetup } from "../test_utils/bignumber_setup";
 import ChaiSetup from "../test_utils/chai_setup";
 import { REVERT_ERROR } from "../test_utils/constants";
+import { Web3Utils } from "../../../utils/web3_utils";
 
 import { LogError, LogRepayment } from "../logs/repayment_router";
 import {
@@ -39,6 +40,9 @@ const expect = chai.expect;
 
 // Configure BigNumber exponentiation
 BigNumberSetup.configure();
+
+// Set up web3 utils
+const web3Utils = new Web3Utils(web3);
 
 contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
     let router: RepaymentRouterContract;
@@ -70,6 +74,9 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
         const dummyREPTokenAddress = await dummyTokenRegistryContract.getTokenAddressBySymbol.callAsync(
             "REP",
         );
+        const dummyREPTokenIndex = await dummyTokenRegistryContract.getTokenIndexBySymbol.callAsync(
+            "REP",
+        );
 
         principalToken = await DummyTokenContract.at(dummyREPTokenAddress, web3, TX_DEFAULTS);
 
@@ -95,12 +102,14 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
         termsContract = await SimpleInterestTermsContractContract.deployed(web3, TX_DEFAULTS);
 
         const termsContractParameters = SimpleInterestParameters.pack({
-            principalTokenIndex: new BigNumber(0), // Our migrations set REP up to be at index 0 of the registry
+            principalTokenIndex: dummyREPTokenIndex,
             principalAmount: Units.ether(1),
             interestRateFixedPoint: Units.interestRateFixedPoint(2.5),
             amortizationUnitType: new BigNumber(1), // (weekly)
             termLengthUnits: new BigNumber(4),
         });
+
+        const latestBlockTime = await web3Utils.getLatestBlockTime();
 
         const defaultOrderParams = {
             creditorFee: Units.ether(0.002),
@@ -110,8 +119,9 @@ contract("Repayment Router (Integration Tests)", async (ACCOUNTS) => {
             debtor: DEBTOR,
             debtorFee: Units.ether(0.001),
             expirationTimestampInSec: new BigNumber(
-                moment()
-                    .add(1, "days")
+                moment
+                    .unix(latestBlockTime)
+                    .add(30, "days")
                     .unix(),
             ),
             issuanceVersion: router.address,

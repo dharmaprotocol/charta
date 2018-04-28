@@ -14,6 +14,7 @@ import {
 } from "../test_utils/multisig";
 import ChaiSetup from "../test_utils/chai_setup";
 import { BigNumberSetup } from "../test_utils/bignumber_setup";
+import { Web3Utils } from "../../../utils/web3_utils";
 
 // Types
 import { SignedDebtOrder } from "../../../types/kernel/debt_order";
@@ -50,6 +51,9 @@ BigNumberSetup.configure();
 // Set up Chai
 ChaiSetup.configure();
 const expect = chai.expect;
+
+// Set up utils
+const web3Utils = new Web3Utils(web3);
 
 const debtKernelContract = artifacts.require("DebtKernel");
 
@@ -120,6 +124,8 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
             termLengthUnits: new BigNumber(4), // Term length in amortization units.
         });
 
+        const latestBlockTime = await web3Utils.getLatestBlockTime();
+
         defaultOrderParams = {
             creditor: CREDITOR_1,
             creditorFee: Units.ether(0.002),
@@ -129,8 +135,9 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
             debtor: DEBTOR_1,
             debtorFee: Units.ether(0.001),
             expirationTimestampInSec: new BigNumber(
-                moment()
-                    .add(1, "days")
+                moment
+                    .unix(latestBlockTime)
+                    .add(30, "days")
                     .unix(),
             ),
             issuanceVersion: repaymentRouter.address,

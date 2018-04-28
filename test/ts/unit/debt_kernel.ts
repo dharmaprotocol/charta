@@ -31,6 +31,7 @@ import {
 import { BigNumberSetup } from "../test_utils/bignumber_setup";
 import ChaiSetup from "../test_utils/chai_setup";
 import { INVALID_OPCODE, REVERT_ERROR } from "../test_utils/constants";
+import { Web3Utils } from "../../../utils/web3_utils";
 
 import { DebtOrderFactory } from "../factories/debt_order_factory";
 
@@ -42,6 +43,9 @@ BigNumberSetup.configure();
 // Set up Chai
 ChaiSetup.configure();
 const expect = chai.expect;
+
+// Set up Web3 utils
+const web3Utils = new Web3Utils(web3);
 
 const debtKernelContract = artifacts.require("DebtKernel");
 const mockDebtTokenContract = artifacts.require("MockDebtToken");
@@ -125,6 +129,8 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
         mockDebtToken = await MockDebtTokenContract.deployed(web3, TX_DEFAULTS);
         mockPrincipalToken = await MockERC20TokenContract.deployed(web3, TX_DEFAULTS);
 
+        const latestBlockTime = await web3Utils.getLatestBlockTime();
+
         defaultOrderParams = {
             creditor: CREDITOR_1,
             creditorFee: Units.ether(0.002),
@@ -134,8 +140,9 @@ contract("Debt Kernel (Unit Tests)", async (ACCOUNTS) => {
             debtor: DEBTOR_1,
             debtorFee: Units.ether(0.001),
             expirationTimestampInSec: new BigNumber(
-                moment()
-                    .add(1, "days")
+                moment
+                    .unix(latestBlockTime)
+                    .add(30, "days")
                     .unix(),
             ),
             issuanceVersion: repaymentRouter.address,

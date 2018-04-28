@@ -173,9 +173,9 @@ contract("Token Registry (Integration Tests)", async (ACCOUNTS) => {
 
         // Store the token's original attributes, so that we can restore them after tests.
         let originalAddress: string;
+        let originalIndex: BigNumber;
         let originalName: string;
         let originalNumDecimals: BigNumber;
-        let originalSymbol: string;
 
         describe("when called by the multi-sig contract owner", () => {
             before("store the original token attributes and then set the new ones", async () => {
@@ -183,8 +183,8 @@ contract("Token Registry (Integration Tests)", async (ACCOUNTS) => {
 
                 [
                     originalAddress,
+                    originalIndex,
                     originalName,
-                    originalSymbol,
                     originalNumDecimals,
                 ] = await registry.getTokenAttributesBySymbol.callAsync(symbol);
 

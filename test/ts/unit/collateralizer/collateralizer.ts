@@ -46,8 +46,8 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
     let mockTermsContract: MockCollateralizedTermsContractContract;
 
     const collateralizeRunner = new CollateralizeRunner();
-    const returnCollateralRunner = new ReturnCollateralRunner();
-    const seizeCollateralRunner = new SeizeCollateralRunner();
+    const returnCollateralRunner = new ReturnCollateralRunner(web3);
+    const seizeCollateralRunner = new SeizeCollateralRunner(web3);
 
     const CONTRACT_OWNER = ACCOUNTS[0];
     const COLLATERALIZER = ACCOUNTS[1];
@@ -70,7 +70,10 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
         mockToken = await MockERC20TokenContract.deployed(web3, TX_DEFAULTS);
         mockTokenRegistry = await MockTokenRegistryContract.deployed(web3, TX_DEFAULTS);
         mockTokenTransferProxy = await MockTokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
-        mockTermsContract = await MockCollateralizedTermsContractContract.deployed(web3, TX_DEFAULTS);
+        mockTermsContract = await MockCollateralizedTermsContractContract.deployed(
+            web3,
+            TX_DEFAULTS,
+        );
 
         /*
         In our test environment, we want to interact with the contract being
@@ -215,13 +218,13 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
     });
 
     describe("#collateralize", () => {
-       describe("Successful collateralization", () => {
-           SUCCESSFUL_COLLATERALIZATION_SCENARIOS.forEach(collateralizeRunner.testScenario);
-       });
+        describe("Successful collateralization", () => {
+            SUCCESSFUL_COLLATERALIZATION_SCENARIOS.forEach(collateralizeRunner.testScenario);
+        });
 
-       describe("Unsuccessful collateralization", () => {
+        describe("Unsuccessful collateralization", () => {
             UNSUCCESSFUL_COLLATERALIZATION_SCENARIOS.forEach(collateralizeRunner.testScenario);
-       });
+        });
     });
 
     describe("#returnCollateral", () => {
