@@ -21,10 +21,12 @@ module.exports = (deployer, network, accounts) => {
          * Deploy and the transfer ownership of each of the contracts
          * to the multi-sig wallet.
          */
-        contractInstances.forEach(async (artifact) => {
-            const contract = await artifact.deployed();
+        await Promise.all(
+            contractInstances.map(async (artifact) => {
+                const contract = await artifact.deployed();
 
-            contract.transferOwnership(wallet.address, { from: CONTRACT_OWNER });
-        });
+                return contract.transferOwnership(wallet.address, { from: CONTRACT_OWNER });
+            }),
+        );
     });
 };
