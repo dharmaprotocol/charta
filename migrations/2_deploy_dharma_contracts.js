@@ -53,8 +53,10 @@ module.exports = (deployer, network, accounts) => {
         await deployer.deploy(RepaymentRouter, DebtRegistry.address, TokenTransferProxy.address);
         await deployer.deploy(DebtKernel, TokenTransferProxy.address);
 
-        await deployer.deploy(TokenRegistry).then(async (tokenRegistry) => {
+        await deployer.deploy(TokenRegistry).then(async () => {
             if (network === CONSTANTS.LIVE_NETWORK_ID) {
+                const tokenRegistry = await TokenRegistry.deployed();
+
                 // Set the address of the tokens in the token registry.
                 await Promise.all(
                     CONSTANTS.TOKEN_LIST.map(async (token) => {
