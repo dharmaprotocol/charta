@@ -55,7 +55,7 @@ module.exports = (deployer, network, accounts) => {
 
         await deployer.deploy(TokenRegistry).then(async () => {
             if (network === CONSTANTS.LIVE_NETWORK_ID) {
-                const tokenRegistry = TokenRegistry.deployed();
+                const tokenRegistry = await TokenRegistry.deployed();
 
                 // Set the address of the tokens in the token registry.
                 await Promise.all(
