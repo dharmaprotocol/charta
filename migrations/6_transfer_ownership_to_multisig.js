@@ -24,7 +24,7 @@ module.exports = (deployer, network, accounts) => {
         contractInstances.forEach(async (artifact) => {
             const contract = await artifact.deployed();
 
-            contract.transferOwnership(wallet.address, { from: CONTRACT_OWNER });
+            await contract.transferOwnership(wallet.address, { from: CONTRACT_OWNER });
         });
     });
 };
