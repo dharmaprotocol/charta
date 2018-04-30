@@ -7,14 +7,14 @@
 # artifacts and update them with the newly deployed contract
 # addresses, saving the newest artifacts in build.dev
 #
-# Thus, when pushing a new build to Kovan, we want to replace build
+# Thus, when pushing a new build to Mainnet, we want to replace build
 # folder with most recent saved  production artifacts/ directory contents
 # so that our new artifacts include the addresses of contracts deployed in production
-# on networks *other* than Kovan.
+# on networks *other* than Mainnet.
 rm build/contracts/*
 cp artifacts/json/* build/contracts/
 
-# Setup SSH tunnneling with port forwarding into hosted Kovan node
+# Setup SSH tunnneling with port forwarding into hosted Mainnet node
 ssh -f -o 'ServerAliveInterval 10' -o 'ServerAliveCountMax 3' \
     -N -L 8547:localhost:8545 ec2-user@mainnet.dharma.io
 
