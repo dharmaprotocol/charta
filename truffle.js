@@ -19,7 +19,7 @@ module.exports = {
             port: 8547,
             network_id: "1",
             gas: 4000000,
-            gasPrice: 4000000000, // 4 GWei, as per https://ethgasstation.info/
+            gasPrice: 10000000000, // 10 GWei, as per https://ethgasstation.info/
         },
     },
     test_directory: "transpiled/test",
