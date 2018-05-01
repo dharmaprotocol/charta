@@ -17,6 +17,7 @@
   "scripts": {
     "deploy:development": "bash scripts/deploy_development.sh",
     "deploy:kovan": "bash scripts/deploy_kovan.sh",
+    "deploy:mainnet": "bash scripts/deploy_mainnet.sh",
     "dist": "bash scripts/prepare_dist.sh",
     "generate-typings": "abi-gen --abis './build/contracts/*.json' --out './types/generated' --template './types/contract_templates/contract.mustache' --partials './types/contract_templates/partials/*.mustache'",
     "transpile": "rm -rf ./transpiled; copyfiles ./build/**/* ./transpiled; tsc",
