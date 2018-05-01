@@ -4,8 +4,8 @@ export const PermissionsLib =
   "abi": [],
   "bytecode": "0x60606040523415600e57600080fd5b603580601b6000396000f3006060604052600080fd00a165627a7a72305820c354ce7b74c3d2f71d288e1e04a33cbf1ca35c1d7dcdd13bafeacebea2bedd460029",
   "deployedBytecode": "0x6060604052600080fd00a165627a7a72305820c354ce7b74c3d2f71d288e1e04a33cbf1ca35c1d7dcdd13bafeacebea2bedd460029",
-  "sourceMap": "610:2090:13:-;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "610:2090:13:-;;;;;",
+  "sourceMap": "610:2090:12:-;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "610:2090:12:-;;;;;",
   "source": "/*\n\n  Copyright 2017 Dharma Labs Inc.\n\n  Licensed under the Apache License, Version 2.0 (the \"License\");\n  you may not use this file except in compliance with the License.\n  You may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\n  Unless required by applicable law or agreed to in writing, software\n  distributed under the License is distributed on an \"AS IS\" BASIS,\n  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n  See the License for the specific language governing permissions and\n  limitations under the License.\n\n*/\n\npragma solidity 0.4.18;\n\n\nlibrary PermissionsLib {\n    struct Permissions {\n        mapping (address => bool) authorized;\n        mapping (address => uint) agentToIndex; // ensures O(1) look-up\n        address[] authorizedAgents;\n    }\n\n    function authorize(Permissions storage self, address agent)\n        internal\n    {\n        require(isNotAuthorized(self, agent));\n\n        self.authorized[agent] = true;\n        self.authorizedAgents.push(agent);\n        self.agentToIndex[agent] = self.authorizedAgents.length - 1;\n    }\n\n    function revokeAuthorization(Permissions storage self, address agent)\n        internal\n    {\n        /* We only want to do work in the case where the agent whose\n        authorization is being revoked had authorization permissions in the\n        first place. */\n        require(isAuthorized(self, agent));\n\n        uint indexOfAgentToRevoke = self.agentToIndex[agent];\n        uint indexOfAgentToMove = self.authorizedAgents.length - 1;\n        address agentToMove = self.authorizedAgents[indexOfAgentToMove];\n\n        // Revoke the agent's authorization.\n        delete self.authorized[agent];\n\n        // Remove the agent from our collection of authorized agents.\n        self.authorizedAgents[indexOfAgentToRevoke] = agentToMove;\n\n        // Update our indices to reflect the above changes.\n        self.agentToIndex[agentToMove] = indexOfAgentToRevoke;\n        delete self.agentToIndex[agent];\n\n        // Clean up memory that's no longer being used.\n        delete self.authorizedAgents[indexOfAgentToMove];\n        self.authorizedAgents.length -= 1;\n    }\n\n    function isAuthorized(Permissions storage self, address agent)\n        internal\n        view\n        returns (bool)\n    {\n        return self.authorized[agent];\n    }\n\n    function isNotAuthorized(Permissions storage self, address agent)\n        internal\n        view\n        returns (bool)\n    {\n        return !isAuthorized(self, agent);\n    }\n\n    function getAuthorizedAgents(Permissions storage self)\n        internal\n        view\n        returns (address[])\n    {\n        return self.authorizedAgents;\n    }\n}\n",
   "sourcePath": "/Users/nadavhollander/Documents/Dharma/Development/charta/contracts/libraries/PermissionsLib.sol",
   "ast": {
@@ -13,7 +13,7 @@ export const PermissionsLib =
       "absolutePath": "/Users/nadavhollander/Documents/Dharma/Development/charta/contracts/libraries/PermissionsLib.sol",
       "exportedSymbols": {
         "PermissionsLib": [
-          5369
+          4385
         ]
       }
     },
@@ -26,9 +26,9 @@ export const PermissionsLib =
             ".18"
           ]
         },
-        "id": 5191,
+        "id": 4207,
         "name": "PragmaDirective",
-        "src": "584:23:13"
+        "src": "584:23:12"
       },
       {
         "attributes": {
@@ -42,17 +42,17 @@ export const PermissionsLib =
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            5369
+            4385
           ],
           "name": "PermissionsLib",
-          "scope": 5370
+          "scope": 4386
         },
         "children": [
           {
             "attributes": {
               "canonicalName": "PermissionsLib.Permissions",
               "name": "Permissions",
-              "scope": 5369,
+              "scope": 4385,
               "visibility": "public"
             },
             "children": [
@@ -60,7 +60,7 @@ export const PermissionsLib =
                 "attributes": {
                   "constant": false,
                   "name": "authorized",
-                  "scope": 5203,
+                  "scope": 4219,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "mapping(address => bool)",
@@ -78,34 +78,34 @@ export const PermissionsLib =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 5192,
+                        "id": 4208,
                         "name": "ElementaryTypeName",
-                        "src": "677:7:13"
+                        "src": "677:7:12"
                       },
                       {
                         "attributes": {
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 5193,
+                        "id": 4209,
                         "name": "ElementaryTypeName",
-                        "src": "688:4:13"
+                        "src": "688:4:12"
                       }
                     ],
-                    "id": 5194,
+                    "id": 4210,
                     "name": "Mapping",
-                    "src": "668:25:13"
+                    "src": "668:25:12"
                   }
                 ],
-                "id": 5195,
+                "id": 4211,
                 "name": "VariableDeclaration",
-                "src": "668:36:13"
+                "src": "668:36:12"
               },
               {
                 "attributes": {
                   "constant": false,
                   "name": "agentToIndex",
-                  "scope": 5203,
+                  "scope": 4219,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "mapping(address => uint256)",
@@ -123,34 +123,34 @@ export const PermissionsLib =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 5196,
+                        "id": 4212,
                         "name": "ElementaryTypeName",
-                        "src": "723:7:13"
+                        "src": "723:7:12"
                       },
                       {
                         "attributes": {
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 5197,
+                        "id": 4213,
                         "name": "ElementaryTypeName",
-                        "src": "734:4:13"
+                        "src": "734:4:12"
                       }
                     ],
-                    "id": 5198,
+                    "id": 4214,
                     "name": "Mapping",
-                    "src": "714:25:13"
+                    "src": "714:25:12"
                   }
                 ],
-                "id": 5199,
+                "id": 4215,
                 "name": "VariableDeclaration",
-                "src": "714:38:13"
+                "src": "714:38:12"
               },
               {
                 "attributes": {
                   "constant": false,
                   "name": "authorizedAgents",
-                  "scope": 5203,
+                  "scope": 4219,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "address[] storage pointer",
@@ -169,24 +169,24 @@ export const PermissionsLib =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 5200,
+                        "id": 4216,
                         "name": "ElementaryTypeName",
-                        "src": "786:7:13"
+                        "src": "786:7:12"
                       }
                     ],
-                    "id": 5201,
+                    "id": 4217,
                     "name": "ArrayTypeName",
-                    "src": "786:9:13"
+                    "src": "786:9:12"
                   }
                 ],
-                "id": 5202,
+                "id": 4218,
                 "name": "VariableDeclaration",
-                "src": "786:26:13"
+                "src": "786:26:12"
               }
             ],
-            "id": 5203,
+            "id": 4219,
             "name": "StructDefinition",
-            "src": "639:180:13"
+            "src": "639:180:12"
           },
           {
             "attributes": {
@@ -198,7 +198,7 @@ export const PermissionsLib =
               ],
               "name": "authorize",
               "payable": false,
-              "scope": 5369,
+              "scope": 4385,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "internal"
@@ -210,7 +210,7 @@ export const PermissionsLib =
                     "attributes": {
                       "constant": false,
                       "name": "self",
-                      "scope": 5246,
+                      "scope": 4262,
                       "stateVariable": false,
                       "storageLocation": "storage",
                       "type": "struct PermissionsLib.Permissions storage pointer",
@@ -222,23 +222,23 @@ export const PermissionsLib =
                         "attributes": {
                           "contractScope": null,
                           "name": "Permissions",
-                          "referencedDeclaration": 5203,
+                          "referencedDeclaration": 4219,
                           "type": "struct PermissionsLib.Permissions storage pointer"
                         },
-                        "id": 5204,
+                        "id": 4220,
                         "name": "UserDefinedTypeName",
-                        "src": "844:11:13"
+                        "src": "844:11:12"
                       }
                     ],
-                    "id": 5205,
+                    "id": 4221,
                     "name": "VariableDeclaration",
-                    "src": "844:24:13"
+                    "src": "844:24:12"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "agent",
-                      "scope": 5246,
+                      "scope": 4262,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -251,19 +251,19 @@ export const PermissionsLib =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 5206,
+                        "id": 4222,
                         "name": "ElementaryTypeName",
-                        "src": "870:7:13"
+                        "src": "870:7:12"
                       }
                     ],
-                    "id": 5207,
+                    "id": 4223,
                     "name": "VariableDeclaration",
-                    "src": "870:13:13"
+                    "src": "870:13:12"
                   }
                 ],
-                "id": 5208,
+                "id": 4224,
                 "name": "ParameterList",
-                "src": "843:41:13"
+                "src": "843:41:12"
               },
               {
                 "attributes": {
@@ -272,9 +272,9 @@ export const PermissionsLib =
                   ]
                 },
                 "children": [],
-                "id": 5209,
+                "id": 4225,
                 "name": "ParameterList",
-                "src": "906:0:13"
+                "src": "906:0:12"
               },
               {
                 "children": [
@@ -306,13 +306,13 @@ export const PermissionsLib =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9788,
+                              "referencedDeclaration": 10077,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 5210,
+                            "id": 4226,
                             "name": "Identifier",
-                            "src": "916:7:13"
+                            "src": "916:7:12"
                           },
                           {
                             "attributes": {
@@ -333,7 +333,7 @@ export const PermissionsLib =
                                 "attributes": {
                                   "argumentTypes": [
                                     {
-                                      "typeIdentifier": "t_struct$_Permissions_$5203_storage_ptr",
+                                      "typeIdentifier": "t_struct$_Permissions_$4219_storage_ptr",
                                       "typeString": "struct PermissionsLib.Permissions storage pointer"
                                     },
                                     {
@@ -344,13 +344,13 @@ export const PermissionsLib =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5356,
+                                  "referencedDeclaration": 4372,
                                   "type": "function (struct PermissionsLib.Permissions storage pointer,address) view returns (bool)",
                                   "value": "isNotAuthorized"
                                 },
-                                "id": 5211,
+                                "id": 4227,
                                 "name": "Identifier",
-                                "src": "924:15:13"
+                                "src": "924:15:12"
                               },
                               {
                                 "attributes": {
@@ -358,13 +358,13 @@ export const PermissionsLib =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5205,
+                                  "referencedDeclaration": 4221,
                                   "type": "struct PermissionsLib.Permissions storage pointer",
                                   "value": "self"
                                 },
-                                "id": 5212,
+                                "id": 4228,
                                 "name": "Identifier",
-                                "src": "940:4:13"
+                                "src": "940:4:12"
                               },
                               {
                                 "attributes": {
@@ -372,28 +372,28 @@ export const PermissionsLib =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5207,
+                                  "referencedDeclaration": 4223,
                                   "type": "address",
                                   "value": "agent"
                                 },
-                                "id": 5213,
+                                "id": 4229,
                                 "name": "Identifier",
-                                "src": "946:5:13"
+                                "src": "946:5:12"
                               }
                             ],
-                            "id": 5214,
+                            "id": 4230,
                             "name": "FunctionCall",
-                            "src": "924:28:13"
+                            "src": "924:28:12"
                           }
                         ],
-                        "id": 5215,
+                        "id": 4231,
                         "name": "FunctionCall",
-                        "src": "916:37:13"
+                        "src": "916:37:12"
                       }
                     ],
-                    "id": 5216,
+                    "id": 4232,
                     "name": "ExpressionStatement",
-                    "src": "916:37:13"
+                    "src": "916:37:12"
                   },
                   {
                     "children": [
@@ -426,7 +426,7 @@ export const PermissionsLib =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "authorized",
-                                  "referencedDeclaration": 5195,
+                                  "referencedDeclaration": 4211,
                                   "type": "mapping(address => bool)"
                                 },
                                 "children": [
@@ -436,18 +436,18 @@ export const PermissionsLib =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5205,
+                                      "referencedDeclaration": 4221,
                                       "type": "struct PermissionsLib.Permissions storage pointer",
                                       "value": "self"
                                     },
-                                    "id": 5217,
+                                    "id": 4233,
                                     "name": "Identifier",
-                                    "src": "964:4:13"
+                                    "src": "964:4:12"
                                   }
                                 ],
-                                "id": 5220,
+                                "id": 4236,
                                 "name": "MemberAccess",
-                                "src": "964:15:13"
+                                "src": "964:15:12"
                               },
                               {
                                 "attributes": {
@@ -455,18 +455,18 @@ export const PermissionsLib =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5207,
+                                  "referencedDeclaration": 4223,
                                   "type": "address",
                                   "value": "agent"
                                 },
-                                "id": 5219,
+                                "id": 4235,
                                 "name": "Identifier",
-                                "src": "980:5:13"
+                                "src": "980:5:12"
                               }
                             ],
-                            "id": 5221,
+                            "id": 4237,
                             "name": "IndexAccess",
-                            "src": "964:22:13"
+                            "src": "964:22:12"
                           },
                           {
                             "attributes": {
@@ -481,19 +481,19 @@ export const PermissionsLib =
                               "type": "bool",
                               "value": "true"
                             },
-                            "id": 5222,
+                            "id": 4238,
                             "name": "Literal",
-                            "src": "989:4:13"
+                            "src": "989:4:12"
                           }
                         ],
-                        "id": 5223,
+                        "id": 4239,
                         "name": "Assignment",
-                        "src": "964:29:13"
+                        "src": "964:29:12"
                       }
                     ],
-                    "id": 5224,
+                    "id": 4240,
                     "name": "ExpressionStatement",
-                    "src": "964:29:13"
+                    "src": "964:29:12"
                   },
                   {
                     "children": [
@@ -537,7 +537,7 @@ export const PermissionsLib =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "authorizedAgents",
-                                  "referencedDeclaration": 5202,
+                                  "referencedDeclaration": 4218,
                                   "type": "address[] storage ref"
                                 },
                                 "children": [
@@ -547,23 +547,23 @@ export const PermissionsLib =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5205,
+                                      "referencedDeclaration": 4221,
                                       "type": "struct PermissionsLib.Permissions storage pointer",
                                       "value": "self"
                                     },
-                                    "id": 5225,
+                                    "id": 4241,
                                     "name": "Identifier",
-                                    "src": "1003:4:13"
+                                    "src": "1003:4:12"
                                   }
                                 ],
-                                "id": 5228,
+                                "id": 4244,
                                 "name": "MemberAccess",
-                                "src": "1003:21:13"
+                                "src": "1003:21:12"
                               }
                             ],
-                            "id": 5229,
+                            "id": 4245,
                             "name": "MemberAccess",
-                            "src": "1003:26:13"
+                            "src": "1003:26:12"
                           },
                           {
                             "attributes": {
@@ -571,23 +571,23 @@ export const PermissionsLib =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5207,
+                              "referencedDeclaration": 4223,
                               "type": "address",
                               "value": "agent"
                             },
-                            "id": 5230,
+                            "id": 4246,
                             "name": "Identifier",
-                            "src": "1030:5:13"
+                            "src": "1030:5:12"
                           }
                         ],
-                        "id": 5231,
+                        "id": 4247,
                         "name": "FunctionCall",
-                        "src": "1003:33:13"
+                        "src": "1003:33:12"
                       }
                     ],
-                    "id": 5232,
+                    "id": 4248,
                     "name": "ExpressionStatement",
-                    "src": "1003:33:13"
+                    "src": "1003:33:12"
                   },
                   {
                     "children": [
@@ -620,7 +620,7 @@ export const PermissionsLib =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "agentToIndex",
-                                  "referencedDeclaration": 5199,
+                                  "referencedDeclaration": 4215,
                                   "type": "mapping(address => uint256)"
                                 },
                                 "children": [
@@ -630,18 +630,18 @@ export const PermissionsLib =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5205,
+                                      "referencedDeclaration": 4221,
                                       "type": "struct PermissionsLib.Permissions storage pointer",
                                       "value": "self"
                                     },
-                                    "id": 5233,
+                                    "id": 4249,
                                     "name": "Identifier",
-                                    "src": "1046:4:13"
+                                    "src": "1046:4:12"
                                   }
                                 ],
-                                "id": 5236,
+                                "id": 4252,
                                 "name": "MemberAccess",
-                                "src": "1046:17:13"
+                                "src": "1046:17:12"
                               },
                               {
                                 "attributes": {
@@ -649,18 +649,18 @@ export const PermissionsLib =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5207,
+                                  "referencedDeclaration": 4223,
                                   "type": "address",
                                   "value": "agent"
                                 },
-                                "id": 5235,
+                                "id": 4251,
                                 "name": "Identifier",
-                                "src": "1064:5:13"
+                                "src": "1064:5:12"
                               }
                             ],
-                            "id": 5237,
+                            "id": 4253,
                             "name": "IndexAccess",
-                            "src": "1046:24:13"
+                            "src": "1046:24:12"
                           },
                           {
                             "attributes": {
@@ -697,7 +697,7 @@ export const PermissionsLib =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "authorizedAgents",
-                                      "referencedDeclaration": 5202,
+                                      "referencedDeclaration": 4218,
                                       "type": "address[] storage ref"
                                     },
                                     "children": [
@@ -707,23 +707,23 @@ export const PermissionsLib =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 5205,
+                                          "referencedDeclaration": 4221,
                                           "type": "struct PermissionsLib.Permissions storage pointer",
                                           "value": "self"
                                         },
-                                        "id": 5238,
+                                        "id": 4254,
                                         "name": "Identifier",
-                                        "src": "1073:4:13"
+                                        "src": "1073:4:12"
                                       }
                                     ],
-                                    "id": 5239,
+                                    "id": 4255,
                                     "name": "MemberAccess",
-                                    "src": "1073:21:13"
+                                    "src": "1073:21:12"
                                   }
                                 ],
-                                "id": 5240,
+                                "id": 4256,
                                 "name": "MemberAccess",
-                                "src": "1073:28:13"
+                                "src": "1073:28:12"
                               },
                               {
                                 "attributes": {
@@ -738,34 +738,34 @@ export const PermissionsLib =
                                   "type": "int_const 1",
                                   "value": "1"
                                 },
-                                "id": 5241,
+                                "id": 4257,
                                 "name": "Literal",
-                                "src": "1104:1:13"
+                                "src": "1104:1:12"
                               }
                             ],
-                            "id": 5242,
+                            "id": 4258,
                             "name": "BinaryOperation",
-                            "src": "1073:32:13"
+                            "src": "1073:32:12"
                           }
                         ],
-                        "id": 5243,
+                        "id": 4259,
                         "name": "Assignment",
-                        "src": "1046:59:13"
+                        "src": "1046:59:12"
                       }
                     ],
-                    "id": 5244,
+                    "id": 4260,
                     "name": "ExpressionStatement",
-                    "src": "1046:59:13"
+                    "src": "1046:59:12"
                   }
                 ],
-                "id": 5245,
+                "id": 4261,
                 "name": "Block",
-                "src": "906:206:13"
+                "src": "906:206:12"
               }
             ],
-            "id": 5246,
+            "id": 4262,
             "name": "FunctionDefinition",
-            "src": "825:287:13"
+            "src": "825:287:12"
           },
           {
             "attributes": {
@@ -777,7 +777,7 @@ export const PermissionsLib =
               ],
               "name": "revokeAuthorization",
               "payable": false,
-              "scope": 5369,
+              "scope": 4385,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "internal"
@@ -789,7 +789,7 @@ export const PermissionsLib =
                     "attributes": {
                       "constant": false,
                       "name": "self",
-                      "scope": 5325,
+                      "scope": 4341,
                       "stateVariable": false,
                       "storageLocation": "storage",
                       "type": "struct PermissionsLib.Permissions storage pointer",
@@ -801,23 +801,23 @@ export const PermissionsLib =
                         "attributes": {
                           "contractScope": null,
                           "name": "Permissions",
-                          "referencedDeclaration": 5203,
+                          "referencedDeclaration": 4219,
                           "type": "struct PermissionsLib.Permissions storage pointer"
                         },
-                        "id": 5247,
+                        "id": 4263,
                         "name": "UserDefinedTypeName",
-                        "src": "1147:11:13"
+                        "src": "1147:11:12"
                       }
                     ],
-                    "id": 5248,
+                    "id": 4264,
                     "name": "VariableDeclaration",
-                    "src": "1147:24:13"
+                    "src": "1147:24:12"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "agent",
-                      "scope": 5325,
+                      "scope": 4341,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -830,19 +830,19 @@ export const PermissionsLib =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 5249,
+                        "id": 4265,
                         "name": "ElementaryTypeName",
-                        "src": "1173:7:13"
+                        "src": "1173:7:12"
                       }
                     ],
-                    "id": 5250,
+                    "id": 4266,
                     "name": "VariableDeclaration",
-                    "src": "1173:13:13"
+                    "src": "1173:13:12"
                   }
                 ],
-                "id": 5251,
+                "id": 4267,
                 "name": "ParameterList",
-                "src": "1146:41:13"
+                "src": "1146:41:12"
               },
               {
                 "attributes": {
@@ -851,9 +851,9 @@ export const PermissionsLib =
                   ]
                 },
                 "children": [],
-                "id": 5252,
+                "id": 4268,
                 "name": "ParameterList",
-                "src": "1209:0:13"
+                "src": "1209:0:12"
               },
               {
                 "children": [
@@ -885,13 +885,13 @@ export const PermissionsLib =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9788,
+                              "referencedDeclaration": 10077,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 5253,
+                            "id": 4269,
                             "name": "Identifier",
-                            "src": "1388:7:13"
+                            "src": "1388:7:12"
                           },
                           {
                             "attributes": {
@@ -912,7 +912,7 @@ export const PermissionsLib =
                                 "attributes": {
                                   "argumentTypes": [
                                     {
-                                      "typeIdentifier": "t_struct$_Permissions_$5203_storage_ptr",
+                                      "typeIdentifier": "t_struct$_Permissions_$4219_storage_ptr",
                                       "typeString": "struct PermissionsLib.Permissions storage pointer"
                                     },
                                     {
@@ -923,13 +923,13 @@ export const PermissionsLib =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5340,
+                                  "referencedDeclaration": 4356,
                                   "type": "function (struct PermissionsLib.Permissions storage pointer,address) view returns (bool)",
                                   "value": "isAuthorized"
                                 },
-                                "id": 5254,
+                                "id": 4270,
                                 "name": "Identifier",
-                                "src": "1396:12:13"
+                                "src": "1396:12:12"
                               },
                               {
                                 "attributes": {
@@ -937,13 +937,13 @@ export const PermissionsLib =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5248,
+                                  "referencedDeclaration": 4264,
                                   "type": "struct PermissionsLib.Permissions storage pointer",
                                   "value": "self"
                                 },
-                                "id": 5255,
+                                "id": 4271,
                                 "name": "Identifier",
-                                "src": "1409:4:13"
+                                "src": "1409:4:12"
                               },
                               {
                                 "attributes": {
@@ -951,33 +951,33 @@ export const PermissionsLib =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5250,
+                                  "referencedDeclaration": 4266,
                                   "type": "address",
                                   "value": "agent"
                                 },
-                                "id": 5256,
+                                "id": 4272,
                                 "name": "Identifier",
-                                "src": "1415:5:13"
+                                "src": "1415:5:12"
                               }
                             ],
-                            "id": 5257,
+                            "id": 4273,
                             "name": "FunctionCall",
-                            "src": "1396:25:13"
+                            "src": "1396:25:12"
                           }
                         ],
-                        "id": 5258,
+                        "id": 4274,
                         "name": "FunctionCall",
-                        "src": "1388:34:13"
+                        "src": "1388:34:12"
                       }
                     ],
-                    "id": 5259,
+                    "id": 4275,
                     "name": "ExpressionStatement",
-                    "src": "1388:34:13"
+                    "src": "1388:34:12"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        5261
+                        4277
                       ]
                     },
                     "children": [
@@ -985,7 +985,7 @@ export const PermissionsLib =
                         "attributes": {
                           "constant": false,
                           "name": "indexOfAgentToRevoke",
-                          "scope": 5325,
+                          "scope": 4341,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -998,14 +998,14 @@ export const PermissionsLib =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 5260,
+                            "id": 4276,
                             "name": "ElementaryTypeName",
-                            "src": "1433:4:13"
+                            "src": "1433:4:12"
                           }
                         ],
-                        "id": 5261,
+                        "id": 4277,
                         "name": "VariableDeclaration",
-                        "src": "1433:25:13"
+                        "src": "1433:25:12"
                       },
                       {
                         "attributes": {
@@ -1025,7 +1025,7 @@ export const PermissionsLib =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "agentToIndex",
-                              "referencedDeclaration": 5199,
+                              "referencedDeclaration": 4215,
                               "type": "mapping(address => uint256)"
                             },
                             "children": [
@@ -1035,18 +1035,18 @@ export const PermissionsLib =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5248,
+                                  "referencedDeclaration": 4264,
                                   "type": "struct PermissionsLib.Permissions storage pointer",
                                   "value": "self"
                                 },
-                                "id": 5262,
+                                "id": 4278,
                                 "name": "Identifier",
-                                "src": "1461:4:13"
+                                "src": "1461:4:12"
                               }
                             ],
-                            "id": 5263,
+                            "id": 4279,
                             "name": "MemberAccess",
-                            "src": "1461:17:13"
+                            "src": "1461:17:12"
                           },
                           {
                             "attributes": {
@@ -1054,28 +1054,28 @@ export const PermissionsLib =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5250,
+                              "referencedDeclaration": 4266,
                               "type": "address",
                               "value": "agent"
                             },
-                            "id": 5264,
+                            "id": 4280,
                             "name": "Identifier",
-                            "src": "1479:5:13"
+                            "src": "1479:5:12"
                           }
                         ],
-                        "id": 5265,
+                        "id": 4281,
                         "name": "IndexAccess",
-                        "src": "1461:24:13"
+                        "src": "1461:24:12"
                       }
                     ],
-                    "id": 5266,
+                    "id": 4282,
                     "name": "VariableDeclarationStatement",
-                    "src": "1433:52:13"
+                    "src": "1433:52:12"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        5268
+                        4284
                       ]
                     },
                     "children": [
@@ -1083,7 +1083,7 @@ export const PermissionsLib =
                         "attributes": {
                           "constant": false,
                           "name": "indexOfAgentToMove",
-                          "scope": 5325,
+                          "scope": 4341,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -1096,14 +1096,14 @@ export const PermissionsLib =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 5267,
+                            "id": 4283,
                             "name": "ElementaryTypeName",
-                            "src": "1495:4:13"
+                            "src": "1495:4:12"
                           }
                         ],
-                        "id": 5268,
+                        "id": 4284,
                         "name": "VariableDeclaration",
-                        "src": "1495:23:13"
+                        "src": "1495:23:12"
                       },
                       {
                         "attributes": {
@@ -1140,7 +1140,7 @@ export const PermissionsLib =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "authorizedAgents",
-                                  "referencedDeclaration": 5202,
+                                  "referencedDeclaration": 4218,
                                   "type": "address[] storage ref"
                                 },
                                 "children": [
@@ -1150,23 +1150,23 @@ export const PermissionsLib =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5248,
+                                      "referencedDeclaration": 4264,
                                       "type": "struct PermissionsLib.Permissions storage pointer",
                                       "value": "self"
                                     },
-                                    "id": 5269,
+                                    "id": 4285,
                                     "name": "Identifier",
-                                    "src": "1521:4:13"
+                                    "src": "1521:4:12"
                                   }
                                 ],
-                                "id": 5270,
+                                "id": 4286,
                                 "name": "MemberAccess",
-                                "src": "1521:21:13"
+                                "src": "1521:21:12"
                               }
                             ],
-                            "id": 5271,
+                            "id": 4287,
                             "name": "MemberAccess",
-                            "src": "1521:28:13"
+                            "src": "1521:28:12"
                           },
                           {
                             "attributes": {
@@ -1181,24 +1181,24 @@ export const PermissionsLib =
                               "type": "int_const 1",
                               "value": "1"
                             },
-                            "id": 5272,
+                            "id": 4288,
                             "name": "Literal",
-                            "src": "1552:1:13"
+                            "src": "1552:1:12"
                           }
                         ],
-                        "id": 5273,
+                        "id": 4289,
                         "name": "BinaryOperation",
-                        "src": "1521:32:13"
+                        "src": "1521:32:12"
                       }
                     ],
-                    "id": 5274,
+                    "id": 4290,
                     "name": "VariableDeclarationStatement",
-                    "src": "1495:58:13"
+                    "src": "1495:58:12"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        5276
+                        4292
                       ]
                     },
                     "children": [
@@ -1206,7 +1206,7 @@ export const PermissionsLib =
                         "attributes": {
                           "constant": false,
                           "name": "agentToMove",
-                          "scope": 5325,
+                          "scope": 4341,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "address",
@@ -1219,14 +1219,14 @@ export const PermissionsLib =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 5275,
+                            "id": 4291,
                             "name": "ElementaryTypeName",
-                            "src": "1563:7:13"
+                            "src": "1563:7:12"
                           }
                         ],
-                        "id": 5276,
+                        "id": 4292,
                         "name": "VariableDeclaration",
-                        "src": "1563:19:13"
+                        "src": "1563:19:12"
                       },
                       {
                         "attributes": {
@@ -1246,7 +1246,7 @@ export const PermissionsLib =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "authorizedAgents",
-                              "referencedDeclaration": 5202,
+                              "referencedDeclaration": 4218,
                               "type": "address[] storage ref"
                             },
                             "children": [
@@ -1256,18 +1256,18 @@ export const PermissionsLib =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5248,
+                                  "referencedDeclaration": 4264,
                                   "type": "struct PermissionsLib.Permissions storage pointer",
                                   "value": "self"
                                 },
-                                "id": 5277,
+                                "id": 4293,
                                 "name": "Identifier",
-                                "src": "1585:4:13"
+                                "src": "1585:4:12"
                               }
                             ],
-                            "id": 5278,
+                            "id": 4294,
                             "name": "MemberAccess",
-                            "src": "1585:21:13"
+                            "src": "1585:21:12"
                           },
                           {
                             "attributes": {
@@ -1275,23 +1275,23 @@ export const PermissionsLib =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5268,
+                              "referencedDeclaration": 4284,
                               "type": "uint256",
                               "value": "indexOfAgentToMove"
                             },
-                            "id": 5279,
+                            "id": 4295,
                             "name": "Identifier",
-                            "src": "1607:18:13"
+                            "src": "1607:18:12"
                           }
                         ],
-                        "id": 5280,
+                        "id": 4296,
                         "name": "IndexAccess",
-                        "src": "1585:41:13"
+                        "src": "1585:41:12"
                       }
                     ],
-                    "id": 5281,
+                    "id": 4297,
                     "name": "VariableDeclarationStatement",
-                    "src": "1563:63:13"
+                    "src": "1563:63:12"
                   },
                   {
                     "children": [
@@ -1325,7 +1325,7 @@ export const PermissionsLib =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "authorized",
-                                  "referencedDeclaration": 5195,
+                                  "referencedDeclaration": 4211,
                                   "type": "mapping(address => bool)"
                                 },
                                 "children": [
@@ -1335,18 +1335,18 @@ export const PermissionsLib =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5248,
+                                      "referencedDeclaration": 4264,
                                       "type": "struct PermissionsLib.Permissions storage pointer",
                                       "value": "self"
                                     },
-                                    "id": 5282,
+                                    "id": 4298,
                                     "name": "Identifier",
-                                    "src": "1689:4:13"
+                                    "src": "1689:4:12"
                                   }
                                 ],
-                                "id": 5283,
+                                "id": 4299,
                                 "name": "MemberAccess",
-                                "src": "1689:15:13"
+                                "src": "1689:15:12"
                               },
                               {
                                 "attributes": {
@@ -1354,28 +1354,28 @@ export const PermissionsLib =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5250,
+                                  "referencedDeclaration": 4266,
                                   "type": "address",
                                   "value": "agent"
                                 },
-                                "id": 5284,
+                                "id": 4300,
                                 "name": "Identifier",
-                                "src": "1705:5:13"
+                                "src": "1705:5:12"
                               }
                             ],
-                            "id": 5285,
+                            "id": 4301,
                             "name": "IndexAccess",
-                            "src": "1689:22:13"
+                            "src": "1689:22:12"
                           }
                         ],
-                        "id": 5286,
+                        "id": 4302,
                         "name": "UnaryOperation",
-                        "src": "1682:29:13"
+                        "src": "1682:29:12"
                       }
                     ],
-                    "id": 5287,
+                    "id": 4303,
                     "name": "ExpressionStatement",
-                    "src": "1682:29:13"
+                    "src": "1682:29:12"
                   },
                   {
                     "children": [
@@ -1408,7 +1408,7 @@ export const PermissionsLib =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "authorizedAgents",
-                                  "referencedDeclaration": 5202,
+                                  "referencedDeclaration": 4218,
                                   "type": "address[] storage ref"
                                 },
                                 "children": [
@@ -1418,18 +1418,18 @@ export const PermissionsLib =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5248,
+                                      "referencedDeclaration": 4264,
                                       "type": "struct PermissionsLib.Permissions storage pointer",
                                       "value": "self"
                                     },
-                                    "id": 5288,
+                                    "id": 4304,
                                     "name": "Identifier",
-                                    "src": "1792:4:13"
+                                    "src": "1792:4:12"
                                   }
                                 ],
-                                "id": 5291,
+                                "id": 4307,
                                 "name": "MemberAccess",
-                                "src": "1792:21:13"
+                                "src": "1792:21:12"
                               },
                               {
                                 "attributes": {
@@ -1437,18 +1437,18 @@ export const PermissionsLib =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5261,
+                                  "referencedDeclaration": 4277,
                                   "type": "uint256",
                                   "value": "indexOfAgentToRevoke"
                                 },
-                                "id": 5290,
+                                "id": 4306,
                                 "name": "Identifier",
-                                "src": "1814:20:13"
+                                "src": "1814:20:12"
                               }
                             ],
-                            "id": 5292,
+                            "id": 4308,
                             "name": "IndexAccess",
-                            "src": "1792:43:13"
+                            "src": "1792:43:12"
                           },
                           {
                             "attributes": {
@@ -1456,23 +1456,23 @@ export const PermissionsLib =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5276,
+                              "referencedDeclaration": 4292,
                               "type": "address",
                               "value": "agentToMove"
                             },
-                            "id": 5293,
+                            "id": 4309,
                             "name": "Identifier",
-                            "src": "1838:11:13"
+                            "src": "1838:11:12"
                           }
                         ],
-                        "id": 5294,
+                        "id": 4310,
                         "name": "Assignment",
-                        "src": "1792:57:13"
+                        "src": "1792:57:12"
                       }
                     ],
-                    "id": 5295,
+                    "id": 4311,
                     "name": "ExpressionStatement",
-                    "src": "1792:57:13"
+                    "src": "1792:57:12"
                   },
                   {
                     "children": [
@@ -1505,7 +1505,7 @@ export const PermissionsLib =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "agentToIndex",
-                                  "referencedDeclaration": 5199,
+                                  "referencedDeclaration": 4215,
                                   "type": "mapping(address => uint256)"
                                 },
                                 "children": [
@@ -1515,18 +1515,18 @@ export const PermissionsLib =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5248,
+                                      "referencedDeclaration": 4264,
                                       "type": "struct PermissionsLib.Permissions storage pointer",
                                       "value": "self"
                                     },
-                                    "id": 5296,
+                                    "id": 4312,
                                     "name": "Identifier",
-                                    "src": "1920:4:13"
+                                    "src": "1920:4:12"
                                   }
                                 ],
-                                "id": 5299,
+                                "id": 4315,
                                 "name": "MemberAccess",
-                                "src": "1920:17:13"
+                                "src": "1920:17:12"
                               },
                               {
                                 "attributes": {
@@ -1534,18 +1534,18 @@ export const PermissionsLib =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5276,
+                                  "referencedDeclaration": 4292,
                                   "type": "address",
                                   "value": "agentToMove"
                                 },
-                                "id": 5298,
+                                "id": 4314,
                                 "name": "Identifier",
-                                "src": "1938:11:13"
+                                "src": "1938:11:12"
                               }
                             ],
-                            "id": 5300,
+                            "id": 4316,
                             "name": "IndexAccess",
-                            "src": "1920:30:13"
+                            "src": "1920:30:12"
                           },
                           {
                             "attributes": {
@@ -1553,23 +1553,23 @@ export const PermissionsLib =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5261,
+                              "referencedDeclaration": 4277,
                               "type": "uint256",
                               "value": "indexOfAgentToRevoke"
                             },
-                            "id": 5301,
+                            "id": 4317,
                             "name": "Identifier",
-                            "src": "1953:20:13"
+                            "src": "1953:20:12"
                           }
                         ],
-                        "id": 5302,
+                        "id": 4318,
                         "name": "Assignment",
-                        "src": "1920:53:13"
+                        "src": "1920:53:12"
                       }
                     ],
-                    "id": 5303,
+                    "id": 4319,
                     "name": "ExpressionStatement",
-                    "src": "1920:53:13"
+                    "src": "1920:53:12"
                   },
                   {
                     "children": [
@@ -1603,7 +1603,7 @@ export const PermissionsLib =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "agentToIndex",
-                                  "referencedDeclaration": 5199,
+                                  "referencedDeclaration": 4215,
                                   "type": "mapping(address => uint256)"
                                 },
                                 "children": [
@@ -1613,18 +1613,18 @@ export const PermissionsLib =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5248,
+                                      "referencedDeclaration": 4264,
                                       "type": "struct PermissionsLib.Permissions storage pointer",
                                       "value": "self"
                                     },
-                                    "id": 5304,
+                                    "id": 4320,
                                     "name": "Identifier",
-                                    "src": "1990:4:13"
+                                    "src": "1990:4:12"
                                   }
                                 ],
-                                "id": 5305,
+                                "id": 4321,
                                 "name": "MemberAccess",
-                                "src": "1990:17:13"
+                                "src": "1990:17:12"
                               },
                               {
                                 "attributes": {
@@ -1632,28 +1632,28 @@ export const PermissionsLib =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5250,
+                                  "referencedDeclaration": 4266,
                                   "type": "address",
                                   "value": "agent"
                                 },
-                                "id": 5306,
+                                "id": 4322,
                                 "name": "Identifier",
-                                "src": "2008:5:13"
+                                "src": "2008:5:12"
                               }
                             ],
-                            "id": 5307,
+                            "id": 4323,
                             "name": "IndexAccess",
-                            "src": "1990:24:13"
+                            "src": "1990:24:12"
                           }
                         ],
-                        "id": 5308,
+                        "id": 4324,
                         "name": "UnaryOperation",
-                        "src": "1983:31:13"
+                        "src": "1983:31:12"
                       }
                     ],
-                    "id": 5309,
+                    "id": 4325,
                     "name": "ExpressionStatement",
-                    "src": "1983:31:13"
+                    "src": "1983:31:12"
                   },
                   {
                     "children": [
@@ -1687,7 +1687,7 @@ export const PermissionsLib =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "authorizedAgents",
-                                  "referencedDeclaration": 5202,
+                                  "referencedDeclaration": 4218,
                                   "type": "address[] storage ref"
                                 },
                                 "children": [
@@ -1697,18 +1697,18 @@ export const PermissionsLib =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5248,
+                                      "referencedDeclaration": 4264,
                                       "type": "struct PermissionsLib.Permissions storage pointer",
                                       "value": "self"
                                     },
-                                    "id": 5310,
+                                    "id": 4326,
                                     "name": "Identifier",
-                                    "src": "2088:4:13"
+                                    "src": "2088:4:12"
                                   }
                                 ],
-                                "id": 5311,
+                                "id": 4327,
                                 "name": "MemberAccess",
-                                "src": "2088:21:13"
+                                "src": "2088:21:12"
                               },
                               {
                                 "attributes": {
@@ -1716,28 +1716,28 @@ export const PermissionsLib =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5268,
+                                  "referencedDeclaration": 4284,
                                   "type": "uint256",
                                   "value": "indexOfAgentToMove"
                                 },
-                                "id": 5312,
+                                "id": 4328,
                                 "name": "Identifier",
-                                "src": "2110:18:13"
+                                "src": "2110:18:12"
                               }
                             ],
-                            "id": 5313,
+                            "id": 4329,
                             "name": "IndexAccess",
-                            "src": "2088:41:13"
+                            "src": "2088:41:12"
                           }
                         ],
-                        "id": 5314,
+                        "id": 4330,
                         "name": "UnaryOperation",
-                        "src": "2081:48:13"
+                        "src": "2081:48:12"
                       }
                     ],
-                    "id": 5315,
+                    "id": 4331,
                     "name": "ExpressionStatement",
-                    "src": "2081:48:13"
+                    "src": "2081:48:12"
                   },
                   {
                     "children": [
@@ -1772,7 +1772,7 @@ export const PermissionsLib =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "authorizedAgents",
-                                  "referencedDeclaration": 5202,
+                                  "referencedDeclaration": 4218,
                                   "type": "address[] storage ref"
                                 },
                                 "children": [
@@ -1782,23 +1782,23 @@ export const PermissionsLib =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5248,
+                                      "referencedDeclaration": 4264,
                                       "type": "struct PermissionsLib.Permissions storage pointer",
                                       "value": "self"
                                     },
-                                    "id": 5316,
+                                    "id": 4332,
                                     "name": "Identifier",
-                                    "src": "2139:4:13"
+                                    "src": "2139:4:12"
                                   }
                                 ],
-                                "id": 5319,
+                                "id": 4335,
                                 "name": "MemberAccess",
-                                "src": "2139:21:13"
+                                "src": "2139:21:12"
                               }
                             ],
-                            "id": 5320,
+                            "id": 4336,
                             "name": "MemberAccess",
-                            "src": "2139:28:13"
+                            "src": "2139:28:12"
                           },
                           {
                             "attributes": {
@@ -1813,29 +1813,29 @@ export const PermissionsLib =
                               "type": "int_const 1",
                               "value": "1"
                             },
-                            "id": 5321,
+                            "id": 4337,
                             "name": "Literal",
-                            "src": "2171:1:13"
+                            "src": "2171:1:12"
                           }
                         ],
-                        "id": 5322,
+                        "id": 4338,
                         "name": "Assignment",
-                        "src": "2139:33:13"
+                        "src": "2139:33:12"
                       }
                     ],
-                    "id": 5323,
+                    "id": 4339,
                     "name": "ExpressionStatement",
-                    "src": "2139:33:13"
+                    "src": "2139:33:12"
                   }
                 ],
-                "id": 5324,
+                "id": 4340,
                 "name": "Block",
-                "src": "1209:970:13"
+                "src": "1209:970:12"
               }
             ],
-            "id": 5325,
+            "id": 4341,
             "name": "FunctionDefinition",
-            "src": "1118:1061:13"
+            "src": "1118:1061:12"
           },
           {
             "attributes": {
@@ -1847,7 +1847,7 @@ export const PermissionsLib =
               ],
               "name": "isAuthorized",
               "payable": false,
-              "scope": 5369,
+              "scope": 4385,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "internal"
@@ -1859,7 +1859,7 @@ export const PermissionsLib =
                     "attributes": {
                       "constant": false,
                       "name": "self",
-                      "scope": 5340,
+                      "scope": 4356,
                       "stateVariable": false,
                       "storageLocation": "storage",
                       "type": "struct PermissionsLib.Permissions storage pointer",
@@ -1871,23 +1871,23 @@ export const PermissionsLib =
                         "attributes": {
                           "contractScope": null,
                           "name": "Permissions",
-                          "referencedDeclaration": 5203,
+                          "referencedDeclaration": 4219,
                           "type": "struct PermissionsLib.Permissions storage pointer"
                         },
-                        "id": 5326,
+                        "id": 4342,
                         "name": "UserDefinedTypeName",
-                        "src": "2207:11:13"
+                        "src": "2207:11:12"
                       }
                     ],
-                    "id": 5327,
+                    "id": 4343,
                     "name": "VariableDeclaration",
-                    "src": "2207:24:13"
+                    "src": "2207:24:12"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "agent",
-                      "scope": 5340,
+                      "scope": 4356,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1900,19 +1900,19 @@ export const PermissionsLib =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 5328,
+                        "id": 4344,
                         "name": "ElementaryTypeName",
-                        "src": "2233:7:13"
+                        "src": "2233:7:12"
                       }
                     ],
-                    "id": 5329,
+                    "id": 4345,
                     "name": "VariableDeclaration",
-                    "src": "2233:13:13"
+                    "src": "2233:13:12"
                   }
                 ],
-                "id": 5330,
+                "id": 4346,
                 "name": "ParameterList",
-                "src": "2206:41:13"
+                "src": "2206:41:12"
               },
               {
                 "children": [
@@ -1920,7 +1920,7 @@ export const PermissionsLib =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 5340,
+                      "scope": 4356,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -1933,25 +1933,25 @@ export const PermissionsLib =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 5331,
+                        "id": 4347,
                         "name": "ElementaryTypeName",
-                        "src": "2295:4:13"
+                        "src": "2295:4:12"
                       }
                     ],
-                    "id": 5332,
+                    "id": 4348,
                     "name": "VariableDeclaration",
-                    "src": "2295:4:13"
+                    "src": "2295:4:12"
                   }
                 ],
-                "id": 5333,
+                "id": 4349,
                 "name": "ParameterList",
-                "src": "2294:6:13"
+                "src": "2294:6:12"
               },
               {
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 5333
+                      "functionReturnParameters": 4349
                     },
                     "children": [
                       {
@@ -1972,7 +1972,7 @@ export const PermissionsLib =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "authorized",
-                              "referencedDeclaration": 5195,
+                              "referencedDeclaration": 4211,
                               "type": "mapping(address => bool)"
                             },
                             "children": [
@@ -1982,18 +1982,18 @@ export const PermissionsLib =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5327,
+                                  "referencedDeclaration": 4343,
                                   "type": "struct PermissionsLib.Permissions storage pointer",
                                   "value": "self"
                                 },
-                                "id": 5334,
+                                "id": 4350,
                                 "name": "Identifier",
-                                "src": "2322:4:13"
+                                "src": "2322:4:12"
                               }
                             ],
-                            "id": 5335,
+                            "id": 4351,
                             "name": "MemberAccess",
-                            "src": "2322:15:13"
+                            "src": "2322:15:12"
                           },
                           {
                             "attributes": {
@@ -2001,33 +2001,33 @@ export const PermissionsLib =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5329,
+                              "referencedDeclaration": 4345,
                               "type": "address",
                               "value": "agent"
                             },
-                            "id": 5336,
+                            "id": 4352,
                             "name": "Identifier",
-                            "src": "2338:5:13"
+                            "src": "2338:5:12"
                           }
                         ],
-                        "id": 5337,
+                        "id": 4353,
                         "name": "IndexAccess",
-                        "src": "2322:22:13"
+                        "src": "2322:22:12"
                       }
                     ],
-                    "id": 5338,
+                    "id": 4354,
                     "name": "Return",
-                    "src": "2315:29:13"
+                    "src": "2315:29:12"
                   }
                 ],
-                "id": 5339,
+                "id": 4355,
                 "name": "Block",
-                "src": "2305:46:13"
+                "src": "2305:46:12"
               }
             ],
-            "id": 5340,
+            "id": 4356,
             "name": "FunctionDefinition",
-            "src": "2185:166:13"
+            "src": "2185:166:12"
           },
           {
             "attributes": {
@@ -2039,7 +2039,7 @@ export const PermissionsLib =
               ],
               "name": "isNotAuthorized",
               "payable": false,
-              "scope": 5369,
+              "scope": 4385,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "internal"
@@ -2051,7 +2051,7 @@ export const PermissionsLib =
                     "attributes": {
                       "constant": false,
                       "name": "self",
-                      "scope": 5356,
+                      "scope": 4372,
                       "stateVariable": false,
                       "storageLocation": "storage",
                       "type": "struct PermissionsLib.Permissions storage pointer",
@@ -2063,23 +2063,23 @@ export const PermissionsLib =
                         "attributes": {
                           "contractScope": null,
                           "name": "Permissions",
-                          "referencedDeclaration": 5203,
+                          "referencedDeclaration": 4219,
                           "type": "struct PermissionsLib.Permissions storage pointer"
                         },
-                        "id": 5341,
+                        "id": 4357,
                         "name": "UserDefinedTypeName",
-                        "src": "2382:11:13"
+                        "src": "2382:11:12"
                       }
                     ],
-                    "id": 5342,
+                    "id": 4358,
                     "name": "VariableDeclaration",
-                    "src": "2382:24:13"
+                    "src": "2382:24:12"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "agent",
-                      "scope": 5356,
+                      "scope": 4372,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2092,19 +2092,19 @@ export const PermissionsLib =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 5343,
+                        "id": 4359,
                         "name": "ElementaryTypeName",
-                        "src": "2408:7:13"
+                        "src": "2408:7:12"
                       }
                     ],
-                    "id": 5344,
+                    "id": 4360,
                     "name": "VariableDeclaration",
-                    "src": "2408:13:13"
+                    "src": "2408:13:12"
                   }
                 ],
-                "id": 5345,
+                "id": 4361,
                 "name": "ParameterList",
-                "src": "2381:41:13"
+                "src": "2381:41:12"
               },
               {
                 "children": [
@@ -2112,7 +2112,7 @@ export const PermissionsLib =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 5356,
+                      "scope": 4372,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -2125,25 +2125,25 @@ export const PermissionsLib =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 5346,
+                        "id": 4362,
                         "name": "ElementaryTypeName",
-                        "src": "2470:4:13"
+                        "src": "2470:4:12"
                       }
                     ],
-                    "id": 5347,
+                    "id": 4363,
                     "name": "VariableDeclaration",
-                    "src": "2470:4:13"
+                    "src": "2470:4:12"
                   }
                 ],
-                "id": 5348,
+                "id": 4364,
                 "name": "ParameterList",
-                "src": "2469:6:13"
+                "src": "2469:6:12"
               },
               {
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 5348
+                      "functionReturnParameters": 4364
                     },
                     "children": [
                       {
@@ -2177,7 +2177,7 @@ export const PermissionsLib =
                                 "attributes": {
                                   "argumentTypes": [
                                     {
-                                      "typeIdentifier": "t_struct$_Permissions_$5203_storage_ptr",
+                                      "typeIdentifier": "t_struct$_Permissions_$4219_storage_ptr",
                                       "typeString": "struct PermissionsLib.Permissions storage pointer"
                                     },
                                     {
@@ -2188,13 +2188,13 @@ export const PermissionsLib =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5340,
+                                  "referencedDeclaration": 4356,
                                   "type": "function (struct PermissionsLib.Permissions storage pointer,address) view returns (bool)",
                                   "value": "isAuthorized"
                                 },
-                                "id": 5349,
+                                "id": 4365,
                                 "name": "Identifier",
-                                "src": "2498:12:13"
+                                "src": "2498:12:12"
                               },
                               {
                                 "attributes": {
@@ -2202,13 +2202,13 @@ export const PermissionsLib =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5342,
+                                  "referencedDeclaration": 4358,
                                   "type": "struct PermissionsLib.Permissions storage pointer",
                                   "value": "self"
                                 },
-                                "id": 5350,
+                                "id": 4366,
                                 "name": "Identifier",
-                                "src": "2511:4:13"
+                                "src": "2511:4:12"
                               },
                               {
                                 "attributes": {
@@ -2216,38 +2216,38 @@ export const PermissionsLib =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5344,
+                                  "referencedDeclaration": 4360,
                                   "type": "address",
                                   "value": "agent"
                                 },
-                                "id": 5351,
+                                "id": 4367,
                                 "name": "Identifier",
-                                "src": "2517:5:13"
+                                "src": "2517:5:12"
                               }
                             ],
-                            "id": 5352,
+                            "id": 4368,
                             "name": "FunctionCall",
-                            "src": "2498:25:13"
+                            "src": "2498:25:12"
                           }
                         ],
-                        "id": 5353,
+                        "id": 4369,
                         "name": "UnaryOperation",
-                        "src": "2497:26:13"
+                        "src": "2497:26:12"
                       }
                     ],
-                    "id": 5354,
+                    "id": 4370,
                     "name": "Return",
-                    "src": "2490:33:13"
+                    "src": "2490:33:12"
                   }
                 ],
-                "id": 5355,
+                "id": 4371,
                 "name": "Block",
-                "src": "2480:50:13"
+                "src": "2480:50:12"
               }
             ],
-            "id": 5356,
+            "id": 4372,
             "name": "FunctionDefinition",
-            "src": "2357:173:13"
+            "src": "2357:173:12"
           },
           {
             "attributes": {
@@ -2259,7 +2259,7 @@ export const PermissionsLib =
               ],
               "name": "getAuthorizedAgents",
               "payable": false,
-              "scope": 5369,
+              "scope": 4385,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "internal"
@@ -2271,7 +2271,7 @@ export const PermissionsLib =
                     "attributes": {
                       "constant": false,
                       "name": "self",
-                      "scope": 5368,
+                      "scope": 4384,
                       "stateVariable": false,
                       "storageLocation": "storage",
                       "type": "struct PermissionsLib.Permissions storage pointer",
@@ -2283,22 +2283,22 @@ export const PermissionsLib =
                         "attributes": {
                           "contractScope": null,
                           "name": "Permissions",
-                          "referencedDeclaration": 5203,
+                          "referencedDeclaration": 4219,
                           "type": "struct PermissionsLib.Permissions storage pointer"
                         },
-                        "id": 5357,
+                        "id": 4373,
                         "name": "UserDefinedTypeName",
-                        "src": "2565:11:13"
+                        "src": "2565:11:12"
                       }
                     ],
-                    "id": 5358,
+                    "id": 4374,
                     "name": "VariableDeclaration",
-                    "src": "2565:24:13"
+                    "src": "2565:24:12"
                   }
                 ],
-                "id": 5359,
+                "id": 4375,
                 "name": "ParameterList",
-                "src": "2564:26:13"
+                "src": "2564:26:12"
               },
               {
                 "children": [
@@ -2306,7 +2306,7 @@ export const PermissionsLib =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 5368,
+                      "scope": 4384,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address[] memory",
@@ -2325,30 +2325,30 @@ export const PermissionsLib =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 5360,
+                            "id": 4376,
                             "name": "ElementaryTypeName",
-                            "src": "2638:7:13"
+                            "src": "2638:7:12"
                           }
                         ],
-                        "id": 5361,
+                        "id": 4377,
                         "name": "ArrayTypeName",
-                        "src": "2638:9:13"
+                        "src": "2638:9:12"
                       }
                     ],
-                    "id": 5362,
+                    "id": 4378,
                     "name": "VariableDeclaration",
-                    "src": "2638:9:13"
+                    "src": "2638:9:12"
                   }
                 ],
-                "id": 5363,
+                "id": 4379,
                 "name": "ParameterList",
-                "src": "2637:11:13"
+                "src": "2637:11:12"
               },
               {
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 5363
+                      "functionReturnParameters": 4379
                     },
                     "children": [
                       {
@@ -2359,7 +2359,7 @@ export const PermissionsLib =
                           "isPure": false,
                           "lValueRequested": false,
                           "member_name": "authorizedAgents",
-                          "referencedDeclaration": 5202,
+                          "referencedDeclaration": 4218,
                           "type": "address[] storage ref"
                         },
                         "children": [
@@ -2369,49 +2369,54 @@ export const PermissionsLib =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5358,
+                              "referencedDeclaration": 4374,
                               "type": "struct PermissionsLib.Permissions storage pointer",
                               "value": "self"
                             },
-                            "id": 5364,
+                            "id": 4380,
                             "name": "Identifier",
-                            "src": "2670:4:13"
+                            "src": "2670:4:12"
                           }
                         ],
-                        "id": 5365,
+                        "id": 4381,
                         "name": "MemberAccess",
-                        "src": "2670:21:13"
+                        "src": "2670:21:12"
                       }
                     ],
-                    "id": 5366,
+                    "id": 4382,
                     "name": "Return",
-                    "src": "2663:28:13"
+                    "src": "2663:28:12"
                   }
                 ],
-                "id": 5367,
+                "id": 4383,
                 "name": "Block",
-                "src": "2653:45:13"
+                "src": "2653:45:12"
               }
             ],
-            "id": 5368,
+            "id": 4384,
             "name": "FunctionDefinition",
-            "src": "2536:162:13"
+            "src": "2536:162:12"
           }
         ],
-        "id": 5369,
+        "id": 4385,
         "name": "ContractDefinition",
-        "src": "610:2090:13"
+        "src": "610:2090:12"
       }
     ],
-    "id": 5370,
+    "id": 4386,
     "name": "SourceUnit",
-    "src": "584:2117:13"
+    "src": "584:2117:12"
   },
   "compiler": {
     "name": "solc",
     "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
   },
   "networks": {
+    "1": {
+      "events": {},
+      "links": {},
+      "address": "0xb03428dbab3b095c1fe1135ae4ad7a2767e9b291"
+    },
     "42": {
       "events": {},
       "links": {},
@@ -2424,5 +2429,5 @@ export const PermissionsLib =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-04-25T07:08:49.582Z"
+  "updatedAt": "2018-05-01T21:44:45.747Z"
 }

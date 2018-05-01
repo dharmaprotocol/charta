@@ -41,7 +41,7 @@ export const ERC721Receiver =
       "absolutePath": "zeppelin-solidity/contracts/token/ERC721/ERC721Receiver.sol",
       "exportedSymbols": {
         "ERC721Receiver": [
-          9402
+          9691
         ]
       }
     },
@@ -55,9 +55,9 @@ export const ERC721Receiver =
             ".18"
           ]
         },
-        "id": 9387,
+        "id": 9676,
         "name": "PragmaDirective",
-        "src": "0:24:40"
+        "src": "0:24:41"
       },
       {
         "attributes": {
@@ -71,17 +71,17 @@ export const ERC721Receiver =
           "documentation": "@title ERC721 token receiver interface\n@dev Interface for any contract that wants to support safeTransfers\n from ERC721 asset contracts.",
           "fullyImplemented": false,
           "linearizedBaseContracts": [
-            9402
+            9691
           ],
           "name": "ERC721Receiver",
-          "scope": 9403
+          "scope": 9692
         },
         "children": [
           {
             "attributes": {
               "constant": true,
               "name": "ERC721_RECEIVED",
-              "scope": 9402,
+              "scope": 9691,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "bytes4",
@@ -93,9 +93,9 @@ export const ERC721Receiver =
                   "name": "bytes4",
                   "type": "bytes4"
                 },
-                "id": 9388,
+                "id": 9677,
                 "name": "ElementaryTypeName",
-                "src": "455:6:40"
+                "src": "455:6:41"
               },
               {
                 "attributes": {
@@ -110,14 +110,14 @@ export const ERC721Receiver =
                   "type": "int_const 4038714810",
                   "value": "0xf0b9e5ba"
                 },
-                "id": 9389,
+                "id": 9678,
                 "name": "Literal",
-                "src": "489:10:40"
+                "src": "489:10:41"
               }
             ],
-            "id": 9390,
+            "id": 9679,
             "name": "VariableDeclaration",
-            "src": "455:44:40"
+            "src": "455:44:41"
           },
           {
             "attributes": {
@@ -130,7 +130,7 @@ export const ERC721Receiver =
               ],
               "name": "onERC721Received",
               "payable": false,
-              "scope": 9402,
+              "scope": 9691,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -142,7 +142,7 @@ export const ERC721Receiver =
                     "attributes": {
                       "constant": false,
                       "name": "_from",
-                      "scope": 9401,
+                      "scope": 9690,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -155,20 +155,20 @@ export const ERC721Receiver =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 9391,
+                        "id": 9680,
                         "name": "ElementaryTypeName",
-                        "src": "1189:7:40"
+                        "src": "1189:7:41"
                       }
                     ],
-                    "id": 9392,
+                    "id": 9681,
                     "name": "VariableDeclaration",
-                    "src": "1189:13:40"
+                    "src": "1189:13:41"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 9401,
+                      "scope": 9690,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -181,20 +181,20 @@ export const ERC721Receiver =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 9393,
+                        "id": 9682,
                         "name": "ElementaryTypeName",
-                        "src": "1204:7:40"
+                        "src": "1204:7:41"
                       }
                     ],
-                    "id": 9394,
+                    "id": 9683,
                     "name": "VariableDeclaration",
-                    "src": "1204:16:40"
+                    "src": "1204:16:41"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "_data",
-                      "scope": 9401,
+                      "scope": 9690,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes memory",
@@ -207,19 +207,19 @@ export const ERC721Receiver =
                           "name": "bytes",
                           "type": "bytes storage pointer"
                         },
-                        "id": 9395,
+                        "id": 9684,
                         "name": "ElementaryTypeName",
-                        "src": "1222:5:40"
+                        "src": "1222:5:41"
                       }
                     ],
-                    "id": 9396,
+                    "id": 9685,
                     "name": "VariableDeclaration",
-                    "src": "1222:11:40"
+                    "src": "1222:11:41"
                   }
                 ],
-                "id": 9397,
+                "id": 9686,
                 "name": "ParameterList",
-                "src": "1188:46:40"
+                "src": "1188:46:41"
               },
               {
                 "children": [
@@ -227,7 +227,7 @@ export const ERC721Receiver =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 9401,
+                      "scope": 9690,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes4",
@@ -240,34 +240,34 @@ export const ERC721Receiver =
                           "name": "bytes4",
                           "type": "bytes4"
                         },
-                        "id": 9398,
+                        "id": 9687,
                         "name": "ElementaryTypeName",
-                        "src": "1250:6:40"
+                        "src": "1250:6:41"
                       }
                     ],
-                    "id": 9399,
+                    "id": 9688,
                     "name": "VariableDeclaration",
-                    "src": "1250:6:40"
+                    "src": "1250:6:41"
                   }
                 ],
-                "id": 9400,
+                "id": 9689,
                 "name": "ParameterList",
-                "src": "1249:8:40"
+                "src": "1249:8:41"
               }
             ],
-            "id": 9401,
+            "id": 9690,
             "name": "FunctionDefinition",
-            "src": "1163:95:40"
+            "src": "1163:95:41"
           }
         ],
-        "id": 9402,
+        "id": 9691,
         "name": "ContractDefinition",
-        "src": "180:1080:40"
+        "src": "180:1080:41"
       }
     ],
-    "id": 9403,
+    "id": 9692,
     "name": "SourceUnit",
-    "src": "0:1261:40"
+    "src": "0:1261:41"
   },
   "compiler": {
     "name": "solc",
@@ -275,5 +275,5 @@ export const ERC721Receiver =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-04-25T07:03:31.175Z"
+  "updatedAt": "2018-05-01T21:37:41.259Z"
 }
