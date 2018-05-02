@@ -18,8 +18,11 @@
 
 pragma solidity 0.4.18;
 
-
 library PermissionsLib {
+
+    event Authorized(address indexed agent);
+    event AuthorizationRevoked(address indexed agent);
+
     struct Permissions {
         mapping (address => bool) authorized;
         mapping (address => uint) agentToIndex; // ensures O(1) look-up
@@ -34,6 +37,7 @@ library PermissionsLib {
         self.authorized[agent] = true;
         self.authorizedAgents.push(agent);
         self.agentToIndex[agent] = self.authorizedAgents.length - 1;
+        Authorized(agent);
     }
 
     function revokeAuthorization(Permissions storage self, address agent)
@@ -61,6 +65,8 @@ library PermissionsLib {
         // Clean up memory that's no longer being used.
         delete self.authorizedAgents[indexOfAgentToMove];
         self.authorizedAgents.length -= 1;
+
+        AuthorizationRevoked(agent);
     }
 
     function isAuthorized(Permissions storage self, address agent)
