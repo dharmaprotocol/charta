@@ -27,6 +27,15 @@ contract DummyContract {
     PermissionsLib.Permissions private firstPermissionSet;
     PermissionsLib.Permissions private secondPermissionSet;
 
+    /**
+     *  Note(kayvon): these events are emitted by our PermissionsLib, but all contracts that
+     *  depend on the library must also define the events in order for web3 clients to pick them up.
+     *  This topic is discussed in greater detail here (under the section "Events and Libraries"):
+     *  https://blog.aragon.one/library-driven-development-in-solidity-2bebcaf88736
+     */
+    event Authorized(address indexed agent);
+    event AuthorizationRevoked(address indexed agent);
+
     function authorizeInFirstSet(address agent) public {
         firstPermissionSet.authorize(agent);
     }
