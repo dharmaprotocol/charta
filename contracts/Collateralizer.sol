@@ -25,6 +25,7 @@ import "./TermsContract.sol";
 import "./DebtRegistry.sol";
 import "./TokenRegistry.sol";
 import "./TokenTransferProxy.sol";
+import { PermissionsLib, PermissionEvents } from "./libraries/PermissionsLib.sol";
 
 
 /**
@@ -33,7 +34,7 @@ import "./TokenTransferProxy.sol";
   *
   * Authors (in no particular order): nadavhollander, saturnial, jdkanani, graemecode
   */
-contract Collateralizer is Pausable {
+contract Collateralizer is Pausable, PermissionEvents {
     using PermissionsLib for PermissionsLib.Permissions;
     using SafeMath for uint;
 

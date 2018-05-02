@@ -19,6 +19,7 @@
 pragma solidity 0.4.18;
 
 import "./DebtRegistry.sol";
+import { PermissionsLib, PermissionEvents } from "./libraries/PermissionsLib.sol";
 import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
 import "zeppelin-solidity/contracts/token/ERC20/ERC20.sol";
 
@@ -32,7 +33,7 @@ import "zeppelin-solidity/contracts/token/ERC20/ERC20.sol";
  *
  * Author: Nadav Hollander -- Github: nadavhollander
  */
-contract TokenTransferProxy is Pausable {
+contract TokenTransferProxy is Pausable, PermissionEvents {
     using PermissionsLib for PermissionsLib.Permissions;
 
     PermissionsLib.Permissions internal tokenTransferPermissions;
