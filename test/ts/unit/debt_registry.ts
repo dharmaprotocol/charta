@@ -17,6 +17,7 @@ import {
     LogRevokeEditAgentAuthorization,
     LogRevokeInsertAgentAuthorization,
 } from "../logs/debt_registry";
+import { AuthorizationRevoked, Authorized } from "../logs/permissions_lib";
 import { BigNumberSetup } from "../test_utils/bignumber_setup";
 import ChaiSetup from "../test_utils/chai_setup";
 import { INVALID_OPCODE, REVERT_ERROR } from "../test_utils/constants";
@@ -163,10 +164,13 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
             });
 
             it("should emit log saying first agent authorized", async () => {
-                const [logReturned] = ABIDecoder.decodeLogs(res.logs);
-                const logExpected = LogAddAuthorizedInsertAgent(registry.address, AGENT_1);
+                const logsReturned = ABIDecoder.decodeLogs(res.logs);
+                const logsExpected = [
+                    Authorized(registry.address, AGENT_1),
+                    LogAddAuthorizedInsertAgent(registry.address, AGENT_1),
+                ];
 
-                expect(logReturned).to.deep.equal(logExpected);
+                expect(logsReturned).to.deep.equal(logsExpected);
             });
 
             it("should return first agent as authorized", async () => {
@@ -187,10 +191,13 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
             });
 
             it("should emit log saying second agent authorized", async () => {
-                const [logReturned] = ABIDecoder.decodeLogs(res.logs);
-                const logExpected = LogAddAuthorizedInsertAgent(registry.address, AGENT_2);
+                const logsReturned = ABIDecoder.decodeLogs(res.logs);
+                const logsExpected = [
+                    Authorized(registry.address, AGENT_2),
+                    LogAddAuthorizedInsertAgent(registry.address, AGENT_2),
+                ];
 
-                expect(logReturned).to.deep.equal(logExpected);
+                expect(logsReturned).to.deep.equal(logsExpected);
             });
 
             it("should return both first and second agents authorized", async () => {
@@ -326,10 +333,13 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
                 });
 
                 it("should emit log saying third agent authorized", async () => {
-                    const [logReturned] = ABIDecoder.decodeLogs(res.logs);
-                    const logExpected = LogAddAuthorizedEditAgent(registry.address, AGENT_3);
+                    const logsReturned = ABIDecoder.decodeLogs(res.logs);
+                    const logsExpected = [
+                        Authorized(registry.address, AGENT_3),
+                        LogAddAuthorizedEditAgent(registry.address, AGENT_3),
+                    ];
 
-                    expect(logReturned).to.deep.equal(logExpected);
+                    expect(logsReturned).to.deep.equal(logsExpected);
                 });
 
                 it("should return first agent as authorized", async () => {
@@ -350,10 +360,13 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
                 });
 
                 it("should emit log saying fourth agent authorized", async () => {
-                    const [logReturned] = ABIDecoder.decodeLogs(res.logs);
-                    const logExpected = LogAddAuthorizedEditAgent(registry.address, AGENT_4);
+                    const logsReturned = ABIDecoder.decodeLogs(res.logs);
+                    const logsExpected = [
+                        Authorized(registry.address, AGENT_4),
+                        LogAddAuthorizedEditAgent(registry.address, AGENT_4),
+                    ];
 
-                    expect(logReturned).to.deep.equal(logExpected);
+                    expect(logsReturned).to.deep.equal(logsExpected);
                 });
 
                 it("should return third and fourth agent as authorized", async () => {
@@ -488,10 +501,13 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
             });
 
             it("should emit log saying agent authorization revoked", async () => {
-                const [logReturned] = ABIDecoder.decodeLogs(res.logs);
-                const logExpected = LogRevokeInsertAgentAuthorization(registry.address, AGENT_2);
+                const logsReturned = ABIDecoder.decodeLogs(res.logs);
+                const logsExpected = [
+                    AuthorizationRevoked(registry.address, AGENT_2),
+                    LogRevokeInsertAgentAuthorization(registry.address, AGENT_2),
+                ];
 
-                expect(logReturned).to.deep.equal(logExpected);
+                expect(logsReturned).to.deep.equal(logsExpected);
             });
 
             it("should return second agent as unauthorized", async () => {
@@ -521,10 +537,13 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
             });
 
             it("should emit log saying agent authorization revoked", async () => {
-                const [logReturned] = ABIDecoder.decodeLogs(res.logs);
-                const logExpected = LogRevokeEditAgentAuthorization(registry.address, AGENT_3);
+                const logsReturned = ABIDecoder.decodeLogs(res.logs);
+                const logsExpected = [
+                    AuthorizationRevoked(registry.address, AGENT_3),
+                    LogRevokeEditAgentAuthorization(registry.address, AGENT_3),
+                ];
 
-                expect(logReturned).to.deep.equal(logExpected);
+                expect(logsReturned).to.deep.equal(logsExpected);
             });
 
             it("should return third agent as unauthorized", async () => {
