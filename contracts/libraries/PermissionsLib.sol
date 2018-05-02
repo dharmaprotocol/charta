@@ -31,7 +31,9 @@ contract PermissionEvents {
 
 library PermissionsLib {
 
-    // TODO(kayvon): remove these events and inherit from PermissionEvents when possible.
+    // TODO(kayvon): remove these events and inherit from PermissionEvents when libraries are
+    // capable of inheritance.
+    // See relevant github issue here: https://github.com/ethereum/solidity/issues/891
     event Authorized(address indexed agent);
     event AuthorizationRevoked(address indexed agent);
 
