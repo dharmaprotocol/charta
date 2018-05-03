@@ -1,4 +1,5 @@
 const CONSTANTS = require("./migration_constants");
+const { generateParamsForDharmaMultiSigWallet } = require("./utils");
 
 module.exports = (deployer, network, accounts) => {
     const OWNER = accounts[0];
@@ -13,39 +14,19 @@ module.exports = (deployer, network, accounts) => {
     const DharmaMultiSigWallet = artifacts.require("DharmaMultiSigWallet");
     const TokenRegistry = artifacts.require("TokenRegistry");
 
-    // We switch on the network to ensure we're configuring our MultiSigWallet
-    // accordingly.
-    let signatories;
-    switch (network) {
-        case CONSTANTS.LIVE_NETWORK_ID:
-            signatories = CONSTANTS.SIGNATORIES;
-            break;
-        default:
-            signatories = accounts.slice(0, CONSTANTS.SIGNATORIES.length);
-    }
-
-    /**
-     * The number of submissions and confirmations required before a transaction is
-     * executed. For example, in the test env there are 5 signatories, and so 3
-     * confirmations are required.
-     *
-     * @type {number}
-     */
-    const numAuthorizationsRequired = Math.ceil(signatories.length * CONSTANTS.THRESHOLD);
+    const {
+        signatories,
+        numAuthorizationsRequired,
+        timelock,
+    } = generateParamsForDharmaMultiSigWallet(network);
 
     // Deploy the DharmaMultiSigWallet with a set of signatories, the number of
     // authorizations required before a transaction can be executed, and the
     // timelock period, defined in seconds.
-    deployer.deploy(
-        DharmaMultiSigWallet,
-        signatories,
-        numAuthorizationsRequired,
-        CONSTANTS.TIMELOCK_IN_SECONDS,
-    );
-
     // Deploy our Permissions library and link our `DebtRegistry` to it.
     deployer.deploy(PermissionsLib);
     deployer.link(PermissionsLib, DebtRegistry);
+    await deployer.deploy(DharmaMultiSigWallet, signatories, numAuthorizationsRequired, timelock);
 
     return deployer.deploy(DebtRegistry).then(async () => {
         await deployer.deploy(DebtToken, DebtRegistry.address);
