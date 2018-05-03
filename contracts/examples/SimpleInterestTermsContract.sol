@@ -19,9 +19,7 @@
 pragma solidity 0.4.18;
 
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
-import "../DebtRegistry.sol";
-import "../TermsContract.sol";
-import "../TokenRegistry.sol";
+import "../ContractRegistry.sol";
 
 
 contract SimpleInterestTermsContract is TermsContract {
@@ -62,11 +60,7 @@ contract SimpleInterestTermsContract is TermsContract {
 
     mapping (bytes32 => uint) public valueRepaid;
 
-    DebtRegistry public debtRegistry;
-    TokenRegistry public tokenRegistry;
-
-    address public debtKernel;
-    address public repaymentRouter;
+    ContractRegistry public contractRegistry;
 
     event LogSimpleInterestTermStart(
         bytes32 indexed agreementId,
@@ -86,33 +80,26 @@ contract SimpleInterestTermsContract is TermsContract {
     );
 
     modifier onlyRouter() {
-        require(msg.sender == repaymentRouter);
+        require(msg.sender == contractRegistry.repaymentRouter.address);
         _;
     }
 
     modifier onlyMappedToThisContract(bytes32 agreementId) {
-        require(address(this) == debtRegistry.getTermsContract(agreementId));
+        require(address(this) == contractRegistry.debtRegistry.getTermsContract(agreementId));
         _;
     }
 
     modifier onlyDebtKernel() {
-        require(msg.sender == debtKernel);
+        require(msg.sender == contractRegistry.debtKernel.address);
         _;
     }
 
     function SimpleInterestTermsContract(
-        address _debtKernel,
-        address _debtRegistry,
-        address _tokenRegistry,
-        address _repaymentRouter
+        address contractRegistryAddress
     )
         public
     {
-        debtRegistry = DebtRegistry(_debtRegistry);
-        tokenRegistry = TokenRegistry(_tokenRegistry);
-
-        debtKernel = _debtKernel;
-        repaymentRouter = _repaymentRouter;
+        contractRegistry = ContractRegistry(contractRegistryAddress);
     }
 
     /// When called, the registerTermStart function registers the fact that
@@ -134,7 +121,7 @@ contract SimpleInterestTermsContract is TermsContract {
         address termsContract;
         bytes32 termsContractParameters;
 
-        (termsContract, termsContractParameters) = debtRegistry.getTerms(agreementId);
+        (termsContract, termsContractParameters) = contractRegistry.debtRegistry.getTerms(agreementId);
 
         uint principalTokenIndex;
         uint principalAmount;
@@ -146,7 +133,7 @@ contract SimpleInterestTermsContract is TermsContract {
             unpackParametersFromBytes(termsContractParameters);
 
         address principalTokenAddress =
-            tokenRegistry.getTokenAddressByIndex(principalTokenIndex);
+            contractRegistry.tokenRegistry.getTokenAddressByIndex(principalTokenIndex);
 
         // Returns true (i.e. valid) if the specified principal token is valid,
         // the specified amortization unit type is valid, and the terms contract
@@ -371,7 +358,7 @@ contract SimpleInterestTermsContract is TermsContract {
         internal
         returns (SimpleInterestParams params)
     {
-        bytes32 parameters = debtRegistry.getTermsContractParameters(agreementId);
+        bytes32 parameters = contractRegistry.debtRegistry.getTermsContractParameters(agreementId);
 
         // Index of the token used for principal payments in the Token Registry
         uint principalTokenIndex;
@@ -388,7 +375,7 @@ contract SimpleInterestTermsContract is TermsContract {
             unpackParametersFromBytes(parameters);
 
         address principalTokenAddress =
-            tokenRegistry.getTokenAddressByIndex(principalTokenIndex);
+            contractRegistry.tokenRegistry.getTokenAddressByIndex(principalTokenIndex);
 
         // Ensure that the encoded principal token address is valid
         require(principalTokenAddress != address(0));
@@ -401,7 +388,7 @@ contract SimpleInterestTermsContract is TermsContract {
         uint amortizationUnitLengthInSeconds =
             getAmortizationUnitLengthInSeconds(amortizationUnitType);
         uint issuanceBlockTimestamp =
-            debtRegistry.getIssuanceBlockTimestamp(agreementId);
+            contractRegistry.debtRegistry.getIssuanceBlockTimestamp(agreementId);
         uint termLengthInSeconds =
             termLengthInAmortizationUnits.mul(amortizationUnitLengthInSeconds);
         uint termEndUnixTimestamp =
