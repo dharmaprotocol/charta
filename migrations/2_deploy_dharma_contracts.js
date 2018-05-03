@@ -23,9 +23,6 @@ module.exports = (deployer, network, accounts) => {
     // Deploy the DharmaMultiSigWallet with a set of signatories, the number of
     // authorizations required before a transaction can be executed, and the
     // timelock period, defined in seconds.
-    // Deploy our Permissions library and link our `DebtRegistry` to it.
-    deployer.deploy(PermissionsLib);
-    deployer.link(PermissionsLib, DebtRegistry);
     await deployer.deploy(DharmaMultiSigWallet, signatories, numAuthorizationsRequired, timelock);
 
     return deployer.deploy(DebtRegistry).then(async () => {
@@ -50,5 +47,9 @@ module.exports = (deployer, network, accounts) => {
                 );
             }
         });
+    // Deploy our Permissions library and link it to the contracts in our protocol that depend on it.
+    await deployer.deploy(PermissionsLib);
+    deployer.link(PermissionsLib, [DebtRegistry, TokenTransferProxy, Collateralizer, DebtToken]);
+
     });
 };
