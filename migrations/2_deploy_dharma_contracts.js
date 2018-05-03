@@ -13,6 +13,7 @@ module.exports = (deployer, network, accounts) => {
     const TokenTransferProxy = artifacts.require("TokenTransferProxy");
     const DharmaMultiSigWallet = artifacts.require("DharmaMultiSigWallet");
     const TokenRegistry = artifacts.require("TokenRegistry");
+    const Collateralizer = artifacts.require("Collateralizer");
 
     const {
         signatories,
@@ -25,31 +26,36 @@ module.exports = (deployer, network, accounts) => {
     // timelock period, defined in seconds.
     await deployer.deploy(DharmaMultiSigWallet, signatories, numAuthorizationsRequired, timelock);
 
-    return deployer.deploy(DebtRegistry).then(async () => {
-        await deployer.deploy(DebtToken, DebtRegistry.address);
-        await deployer.deploy(TokenTransferProxy);
-        await deployer.deploy(RepaymentRouter, DebtRegistry.address, TokenTransferProxy.address);
-        await deployer.deploy(DebtKernel, TokenTransferProxy.address);
-
-        await deployer.deploy(TokenRegistry).then(async () => {
-            if (network === CONSTANTS.LIVE_NETWORK_ID) {
-                const tokenRegistry = await TokenRegistry.deployed();
-
-                // Set the address of the tokens in the token registry.
-                await Promise.all(
-                    CONSTANTS.TOKEN_LIST.map(async (token) => {
-                        const { symbol, address, decimals, name } = token;
-
-                        return tokenRegistry.setTokenAttributes(symbol, address, name, decimals, {
-                            from: OWNER,
-                        });
-                    }),
-                );
-            }
-        });
     // Deploy our Permissions library and link it to the contracts in our protocol that depend on it.
     await deployer.deploy(PermissionsLib);
     deployer.link(PermissionsLib, [DebtRegistry, TokenTransferProxy, Collateralizer, DebtToken]);
 
+    await deployer.deploy(DebtRegistry);
+    await deployer.deploy(DebtToken, DebtRegistry.address);
+    await deployer.deploy(TokenTransferProxy);
+    await deployer.deploy(RepaymentRouter, DebtRegistry.address, TokenTransferProxy.address);
+    await deployer.deploy(DebtKernel, TokenTransferProxy.address);
+    await deployer.deploy(
+        Collateralizer,
+        DebtKernel.address,
+        DebtRegistry.address,
+        TokenRegistry.address,
+        TokenTransferProxy.address,
+    );
+    await deployer.deploy(TokenRegistry).then(async () => {
+        if (network === CONSTANTS.LIVE_NETWORK_ID) {
+            const tokenRegistry = await TokenRegistry.deployed();
+
+            // Set the address of the tokens in the token registry.
+            await Promise.all(
+                CONSTANTS.TOKEN_LIST.map(async (token) => {
+                    const { symbol, address, decimals, name } = token;
+
+                    return tokenRegistry.setTokenAttributes(symbol, address, name, decimals, {
+                        from: OWNER,
+                    });
+                }),
+            );
+        }
     });
 };
