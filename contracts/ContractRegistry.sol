@@ -62,6 +62,7 @@ contract ContractRegistry is Ownable {
         address newAddress
     )
         public
+        onlyOwner
         returns (bool success)
     {
         address oldAddress;
