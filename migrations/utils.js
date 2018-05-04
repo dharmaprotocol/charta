@@ -11,7 +11,7 @@ const CONSTANTS = require("./migration_constants");
  *                                                tx.
  * @property {number} timelock - the timelock specified in seconds.
  */
-function generateParamsForDharmaMultiSigWallet(network) {
+function generateParamsForDharmaMultiSigWallet(network, accounts) {
     // We switch on the network to ensure we're configuring our MultiSigWallet accordingly.
     let signatories;
     switch (network) {

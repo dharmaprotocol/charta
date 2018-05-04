@@ -20,7 +20,7 @@ module.exports = (deployer, network, accounts) => {
         signatories,
         numAuthorizationsRequired,
         timelock,
-    } = generateParamsForDharmaMultiSigWallet(network);
+    } = generateParamsForDharmaMultiSigWallet(network, accounts);
 
     // Deploy the DharmaMultiSigWallet with a set of signatories, the number of
     // authorizations required before a transaction can be executed, and the
