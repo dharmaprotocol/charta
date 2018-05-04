@@ -13,6 +13,12 @@ import "./TokenTransferProxy.sol";
 
 contract ContractRegistry is Ownable {
 
+    event ContractAddressUpdated(
+        ContractType indexed contractType,
+        address indexed oldAddress,
+        address indexed newAddress
+    );
+
     enum ContractType {
         Collateralizer,
         DebtKernel,
@@ -79,30 +85,42 @@ contract ContractRegistry is Ownable {
         return tokenTransferProxy;
     }
 
-    function updateAddressForContractType(
+    function updateAddress(
         ContractType contractType,
         address newAddress
     )
         public
         returns (bool success)
     {
+        address oldAddress;
+
         if (contractType == ContractType.Collateralizer) {
+            oldAddress = address(collateralizer);
             collateralizer = Collateralizer(newAddress);
         } else if (contractType == ContractType.DebtKernel) {
+            oldAddress = address(debtKernel);
             debtKernel = DebtKernel(newAddress);
         } else if (contractType == ContractType.DebtRegistry) {
+            oldAddress = address(debtRegistry);
             debtRegistry = DebtRegistry(newAddress);
         } else if (contractType == ContractType.DebtToken) {
+            oldAddress = address(debtToken);
             debtToken = DebtToken(newAddress);
         } else if (contractType == ContractType.RepaymentRouter) {
+            oldAddress = address(repaymentRouter);
             repaymentRouter = RepaymentRouter(newAddress);
         } else if (contractType == ContractType.TokenRegistry) {
+            oldAddress = address(tokenRegistry);
             tokenRegistry = TokenRegistry(newAddress);
         } else if (contractType == ContractType.TokenTransferProxy) {
+            oldAddress = address(tokenTransferProxy);
             tokenTransferProxy = TokenTransferProxy(newAddress);
         } else {
             return false;
         }
+
+        ContractAddressUpdated(contractType, oldAddress, newAddress);
+
         return true;
     }
 }
