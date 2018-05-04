@@ -19,6 +19,7 @@
 pragma solidity 0.4.18;
 
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
+
 import "../ContractRegistry.sol";
 
 
@@ -80,26 +81,26 @@ contract SimpleInterestTermsContract is TermsContract {
     );
 
     modifier onlyRouter() {
-        require(msg.sender == contractRegistry.repaymentRouter.address);
+        require(msg.sender == address(contractRegistry.getRepaymentRouter()));
         _;
     }
 
     modifier onlyMappedToThisContract(bytes32 agreementId) {
-        require(address(this) == contractRegistry.debtRegistry.getTermsContract(agreementId));
+        require(address(this) == contractRegistry.getDebtRegistry().getTermsContract(agreementId));
         _;
     }
 
     modifier onlyDebtKernel() {
-        require(msg.sender == contractRegistry.debtKernel.address);
+        require(msg.sender == address(contractRegistry.getDebtKernel()));
         _;
     }
 
     function SimpleInterestTermsContract(
-        address contractRegistryAddress
+        address _contractRegistry
     )
         public
     {
-        contractRegistry = ContractRegistry(contractRegistryAddress);
+        contractRegistry = ContractRegistry(_contractRegistry);
     }
 
     /// When called, the registerTermStart function registers the fact that
@@ -121,7 +122,7 @@ contract SimpleInterestTermsContract is TermsContract {
         address termsContract;
         bytes32 termsContractParameters;
 
-        (termsContract, termsContractParameters) = contractRegistry.debtRegistry.getTerms(agreementId);
+        (termsContract, termsContractParameters) = contractRegistry.getDebtRegistry().getTerms(agreementId);
 
         uint principalTokenIndex;
         uint principalAmount;
@@ -133,7 +134,7 @@ contract SimpleInterestTermsContract is TermsContract {
             unpackParametersFromBytes(termsContractParameters);
 
         address principalTokenAddress =
-            contractRegistry.tokenRegistry.getTokenAddressByIndex(principalTokenIndex);
+            contractRegistry.getTokenRegistry().getTokenAddressByIndex(principalTokenIndex);
 
         // Returns true (i.e. valid) if the specified principal token is valid,
         // the specified amortization unit type is valid, and the terms contract
@@ -358,7 +359,7 @@ contract SimpleInterestTermsContract is TermsContract {
         internal
         returns (SimpleInterestParams params)
     {
-        bytes32 parameters = contractRegistry.debtRegistry.getTermsContractParameters(agreementId);
+        bytes32 parameters = contractRegistry.getDebtRegistry().getTermsContractParameters(agreementId);
 
         // Index of the token used for principal payments in the Token Registry
         uint principalTokenIndex;
@@ -375,7 +376,7 @@ contract SimpleInterestTermsContract is TermsContract {
             unpackParametersFromBytes(parameters);
 
         address principalTokenAddress =
-            contractRegistry.tokenRegistry.getTokenAddressByIndex(principalTokenIndex);
+            contractRegistry.getTokenRegistry().getTokenAddressByIndex(principalTokenIndex);
 
         // Ensure that the encoded principal token address is valid
         require(principalTokenAddress != address(0));
@@ -388,7 +389,7 @@ contract SimpleInterestTermsContract is TermsContract {
         uint amortizationUnitLengthInSeconds =
             getAmortizationUnitLengthInSeconds(amortizationUnitType);
         uint issuanceBlockTimestamp =
-            contractRegistry.debtRegistry.getIssuanceBlockTimestamp(agreementId);
+            contractRegistry.getDebtRegistry().getIssuanceBlockTimestamp(agreementId);
         uint termLengthInSeconds =
             termLengthInAmortizationUnits.mul(amortizationUnitLengthInSeconds);
         uint termEndUnixTimestamp =

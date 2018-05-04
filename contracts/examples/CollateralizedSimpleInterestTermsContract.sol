@@ -19,6 +19,7 @@
 pragma solidity 0.4.18;
 
 import "./SimpleInterestTermsContract.sol";
+import "../Collateralizer.sol";
 
 
 /**
@@ -29,8 +30,8 @@ import "./SimpleInterestTermsContract.sol";
 contract CollateralizedSimpleInterestTermsContract is SimpleInterestTermsContract {
 
     function CollateralizedSimpleInterestTermsContract(
-        address contractRegistryAddress
-    ) public SimpleInterestTermsContract(contractRegistryAddress) {}
+        address contractRegistry
+    ) public SimpleInterestTermsContract(contractRegistry) {}
 
     function registerTermStart(
         bytes32 agreementId,
@@ -41,7 +42,7 @@ contract CollateralizedSimpleInterestTermsContract is SimpleInterestTermsContrac
         returns (bool _success)
     {
         bool registered = super.registerTermStart(agreementId, debtor);
-        bool collateralized = contractRegistry.collateralizer.collateralize(agreementId, debtor);
+        bool collateralized = contractRegistry.getCollateralizer().collateralize(agreementId, debtor);
 
         return registered && collateralized;
     }

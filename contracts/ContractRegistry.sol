@@ -23,13 +23,13 @@ contract ContractRegistry is Ownable {
         TokenTransferProxy
     }
 
-    Collateralizer public collateralizer;
-    DebtKernel public debtKernel;
-    DebtRegistry public debtRegistry;
-    DebtToken public debtToken;
-    RepaymentRouter public repaymentRouter;
-    TokenRegistry public tokenRegistry;
-    TokenTransferProxy public tokenTransferProxy;
+    Collateralizer collateralizer;
+    DebtKernel debtKernel;
+    DebtRegistry debtRegistry;
+    DebtToken debtToken;
+    RepaymentRouter repaymentRouter;
+    TokenRegistry tokenRegistry;
+    TokenTransferProxy tokenTransferProxy;
 
     function ContractRegistry(
         address _collateralizer,
@@ -49,6 +49,34 @@ contract ContractRegistry is Ownable {
         repaymentRouter = RepaymentRouter(_repaymentRouter);
         tokenRegistry = TokenRegistry(_tokenRegistry);
         tokenTransferProxy = TokenTransferProxy(_tokenTransferProxy);
+    }
+
+    function getCollateralizer() public view returns (Collateralizer) {
+        return collateralizer;
+    }
+
+    function getDebtKernel() public view returns (DebtKernel) {
+        return debtKernel;
+    }
+
+    function getDebtRegistry() public view returns (DebtRegistry) {
+        return debtRegistry;
+    }
+
+    function getDebtToken() public view returns (DebtToken) {
+        return debtToken;
+    }
+
+    function getRepaymentRouter() public view returns (RepaymentRouter) {
+        return repaymentRouter;
+    }
+
+    function getTokenRegistry() public view returns (TokenRegistry) {
+        return tokenRegistry;
+    }
+
+    function getTokenTransferProxy() public view returns (TokenTransferProxy) {
+        return tokenTransferProxy;
     }
 
     function updateAddressForContractType(
