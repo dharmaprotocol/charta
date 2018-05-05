@@ -12,6 +12,7 @@ import { DebtRegistryContract } from "../../../types/generated/debt_registry";
 import { DharmaMultiSigWalletContract } from "../../../types/generated/dharma_multi_sig_wallet";
 import { RepaymentRouterContract } from "../../../types/generated/repayment_router";
 import { TokenTransferProxyContract } from "../../../types/generated/token_transfer_proxy";
+import { ContractRegistryContract } from "../../../types/generated/contract_registry";
 
 ChaiSetup.configure();
 
@@ -65,6 +66,13 @@ contract("Migration #6: Transferring Ownership to Multisig", async (ACCOUNTS) =>
 
         it("should transfer ownership of `Collateralizer` to the Multisig Wallet", async () => {
             const contract = await CollateralizerContract.deployed(web3, TX_DEFAULTS);
+            const owner = await contract.owner.callAsync();
+
+            expect(owner).to.equal(multisig.address);
+        });
+
+        it("should transfer ownership of `ContractRegistry` to the Multisig Wallet", async () => {
+            const contract = await ContractRegistryContract.deployed(web3, TX_DEFAULTS);
             const owner = await contract.owner.callAsync();
 
             expect(owner).to.equal(multisig.address);
