@@ -1,5 +1,5 @@
 const CONSTANTS = require("./migration_constants");
-const { generateParamsForDharmaMultiSigWallet } = require("./utils");
+const { generateParamsForDharmaMultiSigWallet, configureTokenRegistry } = require("./utils");
 
 module.exports = (deployer, network, accounts) => {
     const OWNER = accounts[0];
@@ -43,6 +43,8 @@ module.exports = (deployer, network, accounts) => {
             TokenTransferProxy.address,
         );
         await deployer.deploy(TokenRegistry).then(async () => {
+            const DummyToken = artifacts.require("DummyToken");
+            await configureTokenRegistry(network, accounts, TokenRegistry, DummyToken);
         });
         await deployer.deploy(
             ContractRegistry,

@@ -1,5 +1,52 @@
 const CONSTANTS = require("./migration_constants");
 
+async function generateDummyTokens(DummyToken) {
+    return Promise.all(
+        CONSTANTS.TOKEN_LIST.map(async (token) => {
+            const { name, symbol, decimals } = token;
+
+            const dummyToken = await DummyToken.new(
+                name,
+                symbol,
+                decimals,
+                CONSTANTS.DUMMY_TOKEN_SUPPLY,
+            );
+
+            return {
+                name,
+                symbol,
+                address: dummyToken.address,
+                decimals,
+            };
+        }),
+    );
+}
+
+async function configureTokenRegistry(network, accounts, TokenRegistry, DummyToken) {
+    const OWNER = accounts[0];
+    const tokenRegistry = await TokenRegistry.deployed();
+    let tokens;
+
+    switch (network) {
+        case CONSTANTS.LIVE_NETWORK_ID:
+            tokens = CONSTANTS.TOKEN_LIST;
+            break;
+
+        default:
+            tokens = await generateDummyTokens(DummyToken);
+    }
+
+    await Promise.all(
+        tokens.map(async (token) => {
+            const { symbol, address, decimals, name } = token;
+
+            return tokenRegistry.setTokenAttributes(symbol, address, name, decimals, {
+                from: OWNER,
+            });
+        }),
+    );
+}
+
 /**
  * Generates the necessary params to configure the Dharma MultiSigWallet contract.
  *
@@ -40,4 +87,5 @@ function generateParamsForDharmaMultiSigWallet(network, accounts) {
 
 module.exports = {
     generateParamsForDharmaMultiSigWallet,
+    configureTokenRegistry,
 };
