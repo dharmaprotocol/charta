@@ -57,6 +57,10 @@ async function configureTokenRegistry(network, accounts, TokenRegistry, DummyTok
  * @property {number} numAuthorizationsRequired - the number of authorizations required to execute a
  *                                                tx.
  * @property {number} timelock - the timelock specified in seconds.
+ *
+ * @param {string} network - the current network truffle is running against.
+ * @param {string[]} acccounts - the set of unlocked accounts available on the network.
+ * @return {DharmaMultiSigWalletParams}
  */
 function generateParamsForDharmaMultiSigWallet(network, accounts) {
     // We switch on the network to ensure we're configuring our MultiSigWallet accordingly.
