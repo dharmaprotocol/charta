@@ -24,6 +24,9 @@ import { DebtRegistryContract } from "../../../types/generated/debt_registry";
 import { RepaymentRouterContract } from "../../../types/generated/repayment_router";
 import { TokenTransferProxyContract } from "../../../types/generated/token_transfer_proxy";
 import { DebtKernelContract } from "../../../types/generated/debt_kernel";
+import { ContractRegistryContract } from "../../../types/generated/contract_registry";
+import { CollateralizerContract } from "../../../types/generated/collateralizer";
+import { TokenRegistryContract } from "../../../types/generated/token_registry";
 
 contract("Migration #2: Deploying Dharma Contracts", async (ACCOUNTS) => {
     const CONTRACT_OWNER = ACCOUNTS[0];
@@ -35,64 +38,83 @@ contract("Migration #2: Deploying Dharma Contracts", async (ACCOUNTS) => {
     let tokenTransferProxy: TokenTransferProxyContract;
     let repaymentRouter: RepaymentRouterContract;
     let debtKernel: DebtKernelContract;
+    let collateralizer: CollateralizerContract;
+    let contractRegistry: ContractRegistryContract;
+    let tokenRegistry: TokenRegistryContract;
 
-    /*
-    Note(kayvon): we do make an implicit assumption here that the most recently
-    deployed versions of our Dharma contracts are in fact the ones deployed
-    during our migration process. These tests will break if and when we make
-    changes to how we configure our test environment.
-    */
+    before(async () => {
+        wallet = await DharmaMultiSigWalletContract.deployed(web3, TX_DEFAULTS);
+        debtRegistry = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
+        repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
+        debtToken = await DebtTokenContract.deployed(web3, TX_DEFAULTS);
+        tokenTransferProxy = await TokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
+        debtKernel = await DebtKernelContract.deployed(web3, TX_DEFAULTS);
+        collateralizer = await CollateralizerContract.deployed(web3, TX_DEFAULTS);
+        contractRegistry = await ContractRegistryContract.deployed(web3, TX_DEFAULTS);
+        tokenRegistry = await TokenRegistryContract.deployed(web3, TX_DEFAULTS);
+    });
+
     describe("Deployment", () => {
-        it("should deploy the `MultiSigWallet` contract to the current network", async () => {
-            wallet = await DharmaMultiSigWalletContract.deployed(web3, TX_DEFAULTS);
-            expect(web3Utils.doesContractExistAtAddressAsync(wallet.address)).to.eventually.be.true;
+        it("should deploy the `DharmaMultiSigWallet` contract to the current network", async () => {
+            await expect(web3Utils.doesContractExistAtAddressAsync(wallet.address)).to.eventually.be
+                .true;
         });
 
         it("should deploy the `DebtRegistry` contract to the current network", async () => {
-            debtRegistry = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
-            expect(web3Utils.doesContractExistAtAddressAsync(debtRegistry.address)).to.eventually.be
-                .true;
+            await expect(web3Utils.doesContractExistAtAddressAsync(debtRegistry.address)).to
+                .eventually.be.true;
         });
 
         it("should deploy the `RepaymentRouter` contract to the current network", async () => {
-            repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
-            expect(web3Utils.doesContractExistAtAddressAsync(repaymentRouter.address)).to.eventually
-                .be.true;
+            await expect(web3Utils.doesContractExistAtAddressAsync(repaymentRouter.address)).to
+                .eventually.be.true;
         });
 
         it("should deploy the `DebtToken` contract to the current network", async () => {
-            debtToken = await DebtTokenContract.deployed(web3, TX_DEFAULTS);
-            expect(web3Utils.doesContractExistAtAddressAsync(debtToken.address)).to.eventually.be
-                .true;
+            await expect(web3Utils.doesContractExistAtAddressAsync(debtToken.address)).to.eventually
+                .be.true;
         });
 
         it("should deploy the `TokenTransferProxy` contract to the current network", async () => {
-            tokenTransferProxy = await TokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
-            expect(web3Utils.doesContractExistAtAddressAsync(tokenTransferProxy.address)).to
+            await expect(web3Utils.doesContractExistAtAddressAsync(tokenTransferProxy.address)).to
                 .eventually.be.true;
         });
 
         it("should deploy the `DebtKernel` contract to the current network", async () => {
-            debtKernel = await DebtKernelContract.deployed(web3, TX_DEFAULTS);
-            expect(web3Utils.doesContractExistAtAddressAsync(debtKernel.address)).to.eventually.be
-                .true;
+            await expect(web3Utils.doesContractExistAtAddressAsync(debtKernel.address)).to
+                .eventually.be.true;
+        });
+
+        it("should deploy the `Collateralizer` contract to the current network", async () => {
+            await expect(web3Utils.doesContractExistAtAddressAsync(collateralizer.address)).to
+                .eventually.be.true;
+        });
+
+        it("should deploy the `ContractRegistry` contract to the current network", async () => {
+            await expect(web3Utils.doesContractExistAtAddressAsync(contractRegistry.address)).to
+                .eventually.be.true;
+        });
+
+        it("should deploy the `TokenRegistry` contract to the current network", async () => {
+            await expect(web3Utils.doesContractExistAtAddressAsync(tokenRegistry.address)).to
+                .eventually.be.true;
         });
     });
 
     describe("#DebtToken", () => {
         it("references the deployed instance of the debt registry", async () => {
-            expect(debtToken.registry.callAsync()).to.eventually.equal(debtRegistry.address);
+            await expect(debtToken.registry.callAsync()).to.eventually.equal(debtRegistry.address);
         });
     });
 
     describe("#RepaymentRouter", () => {
         it("references the deployed instance of the debt registry", async () => {
-            expect(repaymentRouter.debtRegistry.callAsync()).to.eventually.equal(
+            await expect(repaymentRouter.debtRegistry.callAsync()).to.eventually.equal(
                 debtRegistry.address,
             );
         });
         it("references the deployed instance of the token transfer proxy", async () => {
-            expect(repaymentRouter.tokenTransferProxy.callAsync()).to.eventually.equal(
+            await expect(repaymentRouter.tokenTransferProxy.callAsync()).to.eventually.equal(
                 tokenTransferProxy.address,
             );
         });
@@ -100,24 +122,54 @@ contract("Migration #2: Deploying Dharma Contracts", async (ACCOUNTS) => {
 
     describe("#DebtKernel", () => {
         it("references the deployed instance of the token transfer proxy", async () => {
-            expect(debtKernel.TOKEN_TRANSFER_PROXY.callAsync()).to.eventually.equal(
+            await expect(debtKernel.TOKEN_TRANSFER_PROXY.callAsync()).to.eventually.equal(
                 tokenTransferProxy.address,
             );
         });
     });
 
-    describe("#MultiSigWallet", () => {
+    describe("#DharmaMultiSigWallet", () => {
         const contractOwners = ACCOUNTS.slice(0, 5);
 
         it("lists the correct accounts as owner", async () => {
-            _.forEach(contractOwners, (value: any, i: number) => {
-                expect(wallet.isOwner.callAsync(value)).to.eventually.be.true;
-            });
+            await Promise.all(
+                contractOwners.map(async (owner) => {
+                    return expect(wallet.isOwner.callAsync(owner)).to.eventually.be.true;
+                }),
+            );
         });
 
         it("lists the correct number of required authorizations", async () => {
             const requiredComputed = new BigNumber(Math.ceil(contractOwners.length / 2));
-            expect(wallet.required.callAsync()).to.eventually.bignumber.equal(requiredComputed);
+            await expect(wallet.required.callAsync()).to.eventually.bignumber.equal(
+                requiredComputed,
+            );
+        });
+
+        it("lists the correct value for the timelock (in seconds)", async () => {
+            await expect(wallet.timelockInSeconds.callAsync()).to.eventually.bignumber.equal(
+                new BigNumber(60 * 60 * 24 * 7),
+            );
+        });
+    });
+
+    describe("#Collateralizer", () => {
+        it("references the deployed instance of the debt registry", async () => {
+            await expect(collateralizer.debtRegistry.callAsync()).to.eventually.equal(
+                debtRegistry.address,
+            );
+        });
+
+        it("references the deployed instance of the token transfer proxy", async () => {
+            await expect(collateralizer.tokenTransferProxy.callAsync()).to.eventually.equal(
+                tokenTransferProxy.address,
+            );
+        });
+
+        it("references the deployed instance of the token registry", async () => {
+            await expect(collateralizer.tokenRegistry.callAsync()).to.eventually.equal(
+                tokenRegistry.address,
+            );
         });
     });
 });
