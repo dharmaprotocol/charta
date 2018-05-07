@@ -6,9 +6,7 @@ module.exports = (deployer, network, accounts) => {
     );
     const IncompatibleTermsContract = artifacts.require("IncompatibleTermsContract");
 
-    return deployer.deploy(
-        IncompatibleTermsContract,
-        [SimpleInterestTermsContract, ContractRegistry.address],
-        [CollateralizedSimpleInterestTermsContract, ContractRegistry.address],
-    );
+    deployer.deploy(IncompatibleTermsContract);
+    deployer.deploy(SimpleInterestTermsContract, ContractRegistry.address);
+    deployer.deploy(CollateralizedSimpleInterestTermsContract, ContractRegistry.address);
 };
