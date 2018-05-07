@@ -63,4 +63,41 @@ contract("Contract Registry (Unit Tests)", async (ACCOUNTS) => {
         );
 
     });
+    describe("Initialization", () => {
+        it("points to the collateralizer passed in through the constructor", async () => {
+            await expect(contractRegistry.collateralizer.callAsync()).to.eventually.equal(
+                collateralizer.address,
+            );
+        });
+        it("points to the debt kernel passed in through the constructor", async () => {
+            await expect(contractRegistry.debtKernel.callAsync()).to.eventually.equal(
+                debtKernel.address,
+            );
+        });
+        it("points to the debt registry passed in through the constructor", async () => {
+            await expect(contractRegistry.debtRegistry.callAsync()).to.eventually.equal(
+                mockDebtRegistry.address,
+            );
+        });
+        it("points to the debt token passed in through the constructor", async () => {
+            await expect(contractRegistry.debtToken.callAsync()).to.eventually.equal(
+                mockDebtToken.address,
+            );
+        });
+        it("points to the repayment router passed in through the constructor", async () => {
+            await expect(contractRegistry.repaymentRouter.callAsync()).to.eventually.equal(
+                repaymentRouter.address,
+            );
+        });
+        it("points to the token registry passed in through the constructor", async () => {
+            await expect(contractRegistry.tokenRegistry.callAsync()).to.eventually.equal(
+                mockTokenRegistry.address,
+            );
+        });
+        it("points to the token transfer proxy passed in through the constructor", async () => {
+            await expect(contractRegistry.tokenTransferProxy.callAsync()).to.eventually.equal(
+                mockTokenTransferProxy.address,
+            );
+        });
+    });
 });
