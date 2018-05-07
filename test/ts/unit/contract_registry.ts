@@ -1,3 +1,4 @@
+import * as ABIDecoder from "abi-decoder";
 import * as chai from "chai";
 import * as Web3 from "web3";
 
@@ -62,7 +63,13 @@ contract("Contract Registry (Unit Tests)", async (ACCOUNTS) => {
             TX_DEFAULTS,
         );
 
+        ABIDecoder.addABI(contractRegistry.abi);
     });
+
+    after(() => {
+        ABIDecoder.removeABI(contractRegistry.abi);
+    });
+
     describe("Initialization", () => {
         it("points to the collateralizer passed in through the constructor", async () => {
             await expect(contractRegistry.collateralizer.callAsync()).to.eventually.equal(
