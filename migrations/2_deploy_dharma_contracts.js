@@ -36,6 +36,10 @@ module.exports = (deployer, network, accounts) => {
         await deployer.deploy(TokenTransferProxy);
         await deployer.deploy(RepaymentRouter, DebtRegistry.address, TokenTransferProxy.address);
         await deployer.deploy(DebtKernel, TokenTransferProxy.address);
+        await deployer.deploy(TokenRegistry).then(async () => {
+            const DummyToken = artifacts.require("DummyToken");
+            await configureTokenRegistry(network, accounts, TokenRegistry, DummyToken);
+        });
         await deployer.deploy(
             Collateralizer,
             DebtKernel.address,
@@ -43,10 +47,6 @@ module.exports = (deployer, network, accounts) => {
             TokenRegistry.address,
             TokenTransferProxy.address,
         );
-        await deployer.deploy(TokenRegistry).then(async () => {
-            const DummyToken = artifacts.require("DummyToken");
-            await configureTokenRegistry(network, accounts, TokenRegistry, DummyToken);
-        });
         await deployer.deploy(
             ContractRegistry,
             Collateralizer.address,
