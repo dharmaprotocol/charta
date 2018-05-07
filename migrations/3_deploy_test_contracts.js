@@ -3,7 +3,6 @@ const CONSTANTS = require("./migration_constants");
 module.exports = (deployer, network, accounts) => {
     const PermissionsLib = artifacts.require("PermissionsLib");
     const DummyContract = artifacts.require("DummyContract");
-    const DummyToken = artifacts.require("DummyToken");
     const MockDebtRegistry = artifacts.require("MockDebtRegistry");
     const MockERC20Token = artifacts.require("MockERC20Token");
     const MockERC721Token = artifacts.require("MockERC721Token");

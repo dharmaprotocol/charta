@@ -15,7 +15,6 @@ BigNumberSetup.configure();
 
 // Import our set of test Contracts
 import { DummyContractContract as DummyContract } from "../../../types/generated/dummy_contract";
-import { DummyTokenContract } from "../../../types/generated/dummy_token";
 import { MockDebtRegistryContract } from "../../../types/generated/mock_debt_registry";
 import { MockERC20TokenContract } from "../../../types/generated/mock_e_r_c20_token";
 import { MockERC721TokenContract } from "../../../types/generated/mock_e_r_c721_token";
@@ -31,7 +30,6 @@ contract("Migration #3: Deploying Test Contracts", async (ACCOUNTS) => {
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
 
     let dummyContract: DummyContract;
-    let dummyToken: DummyTokenContract;
     let mockDebtRegistry: MockDebtRegistryContract;
     let mockERC20Token: MockERC20TokenContract;
     let mockERC721Token: MockERC721TokenContract;
@@ -44,7 +42,6 @@ contract("Migration #3: Deploying Test Contracts", async (ACCOUNTS) => {
 
     before(async () => {
         dummyContract = await DummyContract.deployed(web3, TX_DEFAULTS);
-        dummyToken = await DummyTokenContract.deployed(web3, TX_DEFAULTS);
         mockDebtRegistry = await MockDebtRegistryContract.deployed(web3, TX_DEFAULTS);
         mockERC20Token = await MockERC20TokenContract.deployed(web3, TX_DEFAULTS);
         mockERC721Token = await MockERC721TokenContract.deployed(web3, TX_DEFAULTS);
@@ -62,11 +59,6 @@ contract("Migration #3: Deploying Test Contracts", async (ACCOUNTS) => {
     describe("Deployment", () => {
         it("should deploy the `DummyContract` contract to the current network", async () => {
             await expect(web3Utils.doesContractExistAtAddressAsync(dummyContract.address)).to
-                .eventually.be.true;
-        });
-
-        it("should deploy the `DummyTokenContract` contract to the current network", async () => {
-            await expect(web3Utils.doesContractExistAtAddressAsync(dummyToken.address)).to
                 .eventually.be.true;
         });
 
