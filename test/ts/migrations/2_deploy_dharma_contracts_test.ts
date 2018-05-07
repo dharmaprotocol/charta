@@ -172,4 +172,48 @@ contract("Migration #2: Deploying Dharma Contracts", async (ACCOUNTS) => {
             );
         });
     });
+
+    describe("#ContractRegistry", () => {
+        it("references the deployed instance of the collateralizer", async () => {
+            await expect(contractRegistry.collateralizer.callAsync()).to.eventually.equal(
+                collateralizer.address,
+            );
+        });
+
+        it("references the deployed instance of the debt kernel", async () => {
+            await expect(contractRegistry.debtKernel.callAsync()).to.eventually.equal(
+                debtKernel.address,
+            );
+        });
+
+        it("references the deployed instance of the debt registry", async () => {
+            await expect(contractRegistry.debtRegistry.callAsync()).to.eventually.equal(
+                debtRegistry.address,
+            );
+        });
+
+        it("references the deployed instance of the debt token", async () => {
+            await expect(contractRegistry.debtToken.callAsync()).to.eventually.equal(
+                debtToken.address,
+            );
+        });
+
+        it("references the deployed instance of the repayment router", async () => {
+            await expect(contractRegistry.repaymentRouter.callAsync()).to.eventually.equal(
+                repaymentRouter.address,
+            );
+        });
+
+        it("references the deployed instance of the token registry", async () => {
+            await expect(contractRegistry.tokenRegistry.callAsync()).to.eventually.equal(
+                tokenRegistry.address,
+            );
+        });
+
+        it("references the deployed instance of the token transfer proxy", async () => {
+            await expect(contractRegistry.tokenTransferProxy.callAsync()).to.eventually.equal(
+                tokenTransferProxy.address,
+            );
+        });
+    });
 });
