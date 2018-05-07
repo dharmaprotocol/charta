@@ -28,6 +28,9 @@ import { ContractRegistryContract } from "../../../types/generated/contract_regi
 import { CollateralizerContract } from "../../../types/generated/collateralizer";
 import { TokenRegistryContract } from "../../../types/generated/token_registry";
 
+import { NULL_ADDRESS } from "../test_utils/constants";
+import { TOKEN_LIST } from "../../../migrations/migration_constants";
+
 contract("Migration #2: Deploying Dharma Contracts", async (ACCOUNTS) => {
     const CONTRACT_OWNER = ACCOUNTS[0];
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
@@ -170,6 +173,16 @@ contract("Migration #2: Deploying Dharma Contracts", async (ACCOUNTS) => {
             await expect(collateralizer.tokenRegistry.callAsync()).to.eventually.equal(
                 tokenRegistry.address,
             );
+        });
+    });
+
+    describe("#TokenRegistry", () => {
+        it("should populate the registry with a set of dummy tokens", async () => {
+            TOKEN_LIST.forEach(async (token) => {
+                await expect(
+                    tokenRegistry.getTokenAddressBySymbol.callAsync(token.symbol),
+                ).to.eventually.not.equal(NULL_ADDRESS);
+            });
         });
     });
 

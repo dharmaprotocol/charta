@@ -27,11 +27,6 @@ import { TokenRegistryContract } from "../../../types/generated/token_registry";
 contract("Migration #3: Deploying Test Contracts", async (ACCOUNTS) => {
     const CONTRACT_OWNER = ACCOUNTS[0];
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
-    const NULL_ADDRESS = "0x0000000000000000000000000000000000000000";
-    const REP_TOKEN_SYMBOL = "REP";
-    const MKR_TOKEN_SYMBOL = "MKR";
-    const ZRX_TOKEN_SYMBOL = "ZRX";
-    const WRAPPED_ETH_SYMBOL = "WETH";
 
     let dummyContract: DummyContractContract;
     let mockDebtRegistry: MockDebtRegistryContract;
@@ -92,38 +87,6 @@ contract("Migration #3: Deploying Test Contracts", async (ACCOUNTS) => {
             tokenRegistry = await TokenRegistryContract.deployed(web3, TX_DEFAULTS);
             expect(web3Utils.doesContractExistAtAddressAsync(tokenRegistry.address)).to.eventually
                 .be.true;
-        });
-    });
-
-    describe("#TokenRegistry", () => {
-        it("should register the address for Augur's REP token", async () => {
-            expect(
-                tokenRegistry.getTokenAddressBySymbol.callAsync(REP_TOKEN_SYMBOL),
-            ).to.eventually.not.equal(NULL_ADDRESS);
-        });
-
-        it("should register the address for Maker's MKR token", async () => {
-            expect(
-                tokenRegistry.getTokenAddressBySymbol.callAsync(MKR_TOKEN_SYMBOL),
-            ).to.eventually.not.equal(NULL_ADDRESS);
-        });
-
-        it("should register the address for 0x's ZRX token", async () => {
-            expect(
-                tokenRegistry.getTokenAddressBySymbol.callAsync(ZRX_TOKEN_SYMBOL),
-            ).to.eventually.not.equal(NULL_ADDRESS);
-        });
-
-        it("should register the address for the wrapped ETH token", async () => {
-            expect(
-                tokenRegistry.getTokenAddressBySymbol.callAsync(WRAPPED_ETH_SYMBOL),
-            ).to.eventually.not.equal(NULL_ADDRESS);
-        });
-
-        it("should register the name for the wrapped ETH token, accessible by symbol", async () => {
-            await expect(
-                tokenRegistry.getTokenNameBySymbol.callAsync(WRAPPED_ETH_SYMBOL),
-            ).to.eventually.equal("Canonical Wrapped Ether");
         });
     });
 });
