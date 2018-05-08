@@ -1,7 +1,10 @@
+// External
 import * as ABIDecoder from "abi-decoder";
 import * as BigNumber from "bignumber.js";
 import * as _ from "lodash";
 import * as Web3 from "web3";
+
+// Types
 import { SolidityType } from "../../../types/common";
 
 export function getParams(

@@ -10,7 +10,6 @@ import { MockTokenTransferProxyContract } from "../../../types/generated/mock_to
 import { RepaymentRouterContract } from "../../../types/generated/repayment_router";
 import { MockTokenRegistryContract } from "../../../types/generated/mock_token_registry";
 import { CollateralizerContract } from "../../../types/generated/collateralizer";
-
 import { ContractRegistryContract } from "../../../types/generated/contract_registry";
 
 import { ContractAddressUpdated, EventNames } from "../logs/contract_registry";
