@@ -1,6 +1,7 @@
 import * as ABIDecoder from "abi-decoder";
 import * as BigNumber from "bignumber.js";
 import * as _ from "lodash";
+import * as Web3 from "web3";
 import { SolidityType } from "../../../types/common";
 
 export function getParams(
@@ -51,4 +52,12 @@ export function generateParam(
         type,
         value: type === SolidityType.boolean ? value : value.toString(),
     };
+}
+
+export async function parseLogsForEvent(
+    txHash: string,
+    eventName: string,
+): Promise<ABIDecoder.DecodedLog | undefined> {
+    const receipt = await web3.eth.getTransactionReceipt(txHash);
+    return _.find(ABIDecoder.decodeLogs(receipt.logs), { name: eventName });
 }
