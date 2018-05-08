@@ -14,6 +14,7 @@ import { MockDebtRegistryContract } from "../../../types/generated/mock_debt_reg
 import { MockERC20TokenContract } from "../../../types/generated/mock_e_r_c20_token";
 import { MockTokenTransferProxyContract } from "../../../types/generated/mock_token_transfer_proxy";
 import { MockTokenRegistryContract } from "../../../types/generated/mock_token_registry";
+import { ContractRegistryContract } from "../../../types/generated/contract_registry";
 
 // Test Utils
 import { BigNumberSetup } from "../test_utils/bignumber_setup";
@@ -33,6 +34,7 @@ const repaymentRouterContract = artifacts.require("RepaymentRouter");
 const collateralizedSimpleInterestTermsContract = artifacts.require(
     "CollateralizedSimpleInterestTermsContract",
 );
+const contractRegistryArtifact = artifacts.require("ContractRegistry");
 const mockTokenContract = artifacts.require("MockERC20Token");
 const collateralizerContract = artifacts.require("Collateralizer");
 
@@ -48,17 +50,19 @@ contract("CollateralizedSimpleInterestTermsContract (Unit Tests)", async (ACCOUN
     let collateralizer: CollateralizerContract;
     let router: RepaymentRouterContract;
     let mockToken: MockERC20TokenContract;
-    let mockRegistry: MockDebtRegistryContract;
+    let mockDebtRegistry: MockDebtRegistryContract;
     let mockTokenTransferProxy: MockTokenTransferProxyContract;
     let mockTokenRegistry: MockTokenRegistryContract;
     let mockCollateralToken: MockERC20TokenContract;
+    let contractRegistry: ContractRegistryContract;
 
     const CONTRACT_OWNER = ACCOUNTS[0];
     const DEBTOR = ACCOUNTS[1];
     const PAYER = ACCOUNTS[2];
     const BENEFICIARY = ACCOUNTS[3];
     const MOCK_DEBT_KERNEL_ADDRESS = ACCOUNTS[4];
-    const ATTACKER = ACCOUNTS[5];
+    const MOCK_DEBT_TOKEN_ADDRESS = ACCOUNTS[5];
+    const ATTACKER = ACCOUNTS[6];
 
     const ARBITRARY_AGREEMENT_ID = web3.sha3("any 32 byte hex value can represent an agreement id");
     const NULL_ADDRESS = "0x0000000000000000000000000000000000000000";
@@ -66,20 +70,20 @@ contract("CollateralizedSimpleInterestTermsContract (Unit Tests)", async (ACCOUN
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
 
     before(async () => {
-        mockRegistry = await MockDebtRegistryContract.deployed(web3, TX_DEFAULTS);
+        mockDebtRegistry = await MockDebtRegistryContract.deployed(web3, TX_DEFAULTS);
         mockToken = await MockERC20TokenContract.deployed(web3, TX_DEFAULTS);
         mockTokenTransferProxy = await MockTokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
         mockTokenRegistry = await MockTokenRegistryContract.deployed(web3, TX_DEFAULTS);
         mockCollateralToken = await MockERC20TokenContract.deployed(web3, TX_DEFAULTS);
 
         const repaymentRouterTruffle = await repaymentRouterContract.new(
-            mockRegistry.address,
+            mockDebtRegistry.address,
             mockTokenTransferProxy.address,
         );
 
         const collateralizerContractTruffle = await collateralizerContract.new(
             MOCK_DEBT_KERNEL_ADDRESS,
-            mockRegistry.address,
+            mockDebtRegistry.address,
             mockTokenRegistry.address,
             mockTokenTransferProxy.address,
             { from: CONTRACT_OWNER },
@@ -91,12 +95,19 @@ contract("CollateralizedSimpleInterestTermsContract (Unit Tests)", async (ACCOUN
 
         collateralizer = new CollateralizerContract(collateralizerWeb3Contract, TX_DEFAULTS);
 
-        const termsContractTruffle = await collateralizedSimpleInterestTermsContract.new(
-            MOCK_DEBT_KERNEL_ADDRESS,
-            mockRegistry.address,
-            mockTokenRegistry.address,
-            repaymentRouterTruffle.address,
+        const contractRegistryTruffle = await contractRegistryArtifact.new(
             collateralizer.address,
+            MOCK_DEBT_KERNEL_ADDRESS,
+            mockDebtRegistry.address,
+            MOCK_DEBT_TOKEN_ADDRESS,
+            repaymentRouterTruffle.address,
+            mockTokenRegistry.address,
+            mockTokenTransferProxy.address,
+            { from: CONTRACT_OWNER },
+        );
+
+        const termsContractTruffle = await collateralizedSimpleInterestTermsContract.new(
+            contractRegistryTruffle.address,
         );
 
         // The typings we use ingest vanilla Web3 contracts, so we convert the
@@ -109,9 +120,19 @@ contract("CollateralizedSimpleInterestTermsContract (Unit Tests)", async (ACCOUN
             .contract(collateralizedSimpleInterestTermsContract.abi)
             .at(termsContractTruffle.address);
 
+        const contractRegistryAsWeb3Contract = web3.eth
+            .contract(contractRegistryArtifact.abi)
+            .at(contractRegistryTruffle.address);
+
         router = new RepaymentRouterContract(repaymentRouterWeb3Contract, TX_DEFAULTS);
+
         termsContract = new CollateralizedSimpleInterestTermsContractContract(
             termsContractWeb3Contract,
+            TX_DEFAULTS,
+        );
+
+        contractRegistry = new ContractRegistryContract(
+            contractRegistryAsWeb3Contract,
             TX_DEFAULTS,
         );
 
@@ -155,19 +176,9 @@ contract("CollateralizedSimpleInterestTermsContract (Unit Tests)", async (ACCOUN
     });
 
     describe("Initialization", () => {
-        it("points to the DebtRegistry passed in through the constructor", async () => {
-            await expect(termsContract.debtRegistry.callAsync()).to.eventually.equal(
-                mockRegistry.address,
-            );
-        });
-        it("points to the RepaymentRouter passed in through the constructor", async () => {
-            await expect(termsContract.repaymentRouter.callAsync()).to.eventually.equal(
-                router.address,
-            );
-        });
-        it("points to the TokenRegistry passed in through the constructor", async () => {
-            await expect(termsContract.tokenRegistry.callAsync()).to.eventually.equal(
-                mockTokenRegistry.address,
+        it("points to the Contract Registry passed in through the constructor", async () => {
+            await expect(termsContract.contractRegistry.callAsync()).to.eventually.equal(
+                contractRegistry.address,
             );
         });
     });
@@ -204,7 +215,7 @@ contract("CollateralizedSimpleInterestTermsContract (Unit Tests)", async (ACCOUN
 
             describe("agreement refers to different terms contract", () => {
                 before(async () => {
-                    await mockRegistry.mockGetTermsReturnValueFor.sendTransactionAsync(
+                    await mockDebtRegistry.mockGetTermsReturnValueFor.sendTransactionAsync(
                         ARBITRARY_AGREEMENT_ID,
                         NULL_ADDRESS, // NOT the terms contract's address
                         termsParams,
@@ -232,7 +243,7 @@ contract("CollateralizedSimpleInterestTermsContract (Unit Tests)", async (ACCOUN
             describe("terms contract parameters are invalid", () => {
                 describe("token at principalTokenIndex is undefined in registry", () => {
                     before(async () => {
-                        await mockRegistry.mockGetTermsReturnValueFor.sendTransactionAsync(
+                        await mockDebtRegistry.mockGetTermsReturnValueFor.sendTransactionAsync(
                             ARBITRARY_AGREEMENT_ID,
                             termsContract.address,
                             termsParams,
@@ -268,7 +279,7 @@ contract("CollateralizedSimpleInterestTermsContract (Unit Tests)", async (ACCOUN
                             termLengthUnits,
                         });
 
-                        await mockRegistry.mockGetTermsReturnValueFor.sendTransactionAsync(
+                        await mockDebtRegistry.mockGetTermsReturnValueFor.sendTransactionAsync(
                             ARBITRARY_AGREEMENT_ID,
                             termsContract.address,
                             invalidTermsParams,
@@ -296,7 +307,7 @@ contract("CollateralizedSimpleInterestTermsContract (Unit Tests)", async (ACCOUN
 
             describe("Terms are valid for CollateralizedSimpleInterestTermsContractContract", () => {
                 before(async () => {
-                    await mockRegistry.mockGetTermsReturnValueFor.sendTransactionAsync(
+                    await mockDebtRegistry.mockGetTermsReturnValueFor.sendTransactionAsync(
                         ARBITRARY_AGREEMENT_ID,
                         termsContract.address,
                         termsParamsWithCollateral,
@@ -368,18 +379,18 @@ contract("CollateralizedSimpleInterestTermsContract (Unit Tests)", async (ACCOUN
                     termLengthUnits,
                 });
 
-                await mockRegistry.mockGetBeneficiaryReturnValueFor.sendTransactionAsync(
+                await mockDebtRegistry.mockGetBeneficiaryReturnValueFor.sendTransactionAsync(
                     ARBITRARY_AGREEMENT_ID,
                     BENEFICIARY,
                 );
 
-                await mockRegistry.mockGetTermsReturnValueFor.sendTransactionAsync(
+                await mockDebtRegistry.mockGetTermsReturnValueFor.sendTransactionAsync(
                     ARBITRARY_AGREEMENT_ID,
                     termsContract.address,
                     termsContractParameters,
                 );
 
-                await mockRegistry.mockGetTermsContractReturnValueFor.sendTransactionAsync(
+                await mockDebtRegistry.mockGetTermsContractReturnValueFor.sendTransactionAsync(
                     ARBITRARY_AGREEMENT_ID,
                     termsContract.address,
                 );
@@ -444,7 +455,7 @@ contract("CollateralizedSimpleInterestTermsContract (Unit Tests)", async (ACCOUN
             const NON_EXISTENT_AGREEMENT_ID = web3.sha3("this agreement id doesn't exist!");
 
             before(async () => {
-                await mockRegistry.mockGetBeneficiaryReturnValueFor.sendTransactionAsync(
+                await mockDebtRegistry.mockGetBeneficiaryReturnValueFor.sendTransactionAsync(
                     NON_EXISTENT_AGREEMENT_ID,
                     NULL_ADDRESS, // no beneficiary indicates non-existent debt agreement.
                 );
@@ -481,18 +492,18 @@ contract("CollateralizedSimpleInterestTermsContract (Unit Tests)", async (ACCOUN
             });
 
             before(async () => {
-                await mockRegistry.mockGetBeneficiaryReturnValueFor.sendTransactionAsync(
+                await mockDebtRegistry.mockGetBeneficiaryReturnValueFor.sendTransactionAsync(
                     EXTANT_AGREEMENT_ID,
                     BENEFICIARY,
                 );
 
-                await mockRegistry.mockGetTermsReturnValueFor.sendTransactionAsync(
+                await mockDebtRegistry.mockGetTermsReturnValueFor.sendTransactionAsync(
                     EXTANT_AGREEMENT_ID,
                     termsContract.address,
                     inputParamsAsHex,
                 );
 
-                await mockRegistry.mockGetTermsContractReturnValueFor.sendTransactionAsync(
+                await mockDebtRegistry.mockGetTermsContractReturnValueFor.sendTransactionAsync(
                     EXTANT_AGREEMENT_ID,
                     termsContract.address,
                 );
@@ -574,7 +585,7 @@ contract("CollateralizedSimpleInterestTermsContract (Unit Tests)", async (ACCOUN
     describe("#getExpectedRepaymentValue", () => {
         describe("when termsContract associated w/ debt agreement is not `this`", () => {
             before(async () => {
-                await mockRegistry.mockGetTermsContractReturnValueFor.sendTransactionAsync(
+                await mockDebtRegistry.mockGetTermsContractReturnValueFor.sendTransactionAsync(
                     ARBITRARY_AGREEMENT_ID,
                     ATTACKER, // this is an attacker's address and not the contract's address.
                 );
@@ -607,12 +618,12 @@ contract("CollateralizedSimpleInterestTermsContract (Unit Tests)", async (ACCOUN
 
             describe("amortizationUnitType is not one of the valid types", () => {
                 before(async () => {
-                    await mockRegistry.mockGetTermsContractReturnValueFor.sendTransactionAsync(
+                    await mockDebtRegistry.mockGetTermsContractReturnValueFor.sendTransactionAsync(
                         ARBITRARY_AGREEMENT_ID,
                         termsContract.address,
                     );
 
-                    await mockRegistry.mockGetTermsContractParameters.sendTransactionAsync(
+                    await mockDebtRegistry.mockGetTermsContractParameters.sendTransactionAsync(
                         ARBITRARY_AGREEMENT_ID,
                         invalidTermsParams,
                     );
@@ -675,17 +686,17 @@ contract("CollateralizedSimpleInterestTermsContract (Unit Tests)", async (ACCOUN
 
                 INSTALLMENT_AMOUNT = FULL_AMOUNT.div(termLengthUnits);
 
-                await mockRegistry.mockGetTermsContractReturnValueFor.sendTransactionAsync(
+                await mockDebtRegistry.mockGetTermsContractReturnValueFor.sendTransactionAsync(
                     ARBITRARY_AGREEMENT_ID,
                     termsContract.address,
                 );
 
-                await mockRegistry.mockGetTermsContractParameters.sendTransactionAsync(
+                await mockDebtRegistry.mockGetTermsContractParameters.sendTransactionAsync(
                     ARBITRARY_AGREEMENT_ID,
                     validTermsParams,
                 );
 
-                await mockRegistry.mockGetIssuanceBlockTimestamp.sendTransactionAsync(
+                await mockDebtRegistry.mockGetIssuanceBlockTimestamp.sendTransactionAsync(
                     ARBITRARY_AGREEMENT_ID,
                     new BigNumber(BLOCK_ISSUANCE_TIMESTAMP),
                 );

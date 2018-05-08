@@ -24,7 +24,7 @@ const TOKEN_URI_OPERATOR = "0x5d497982326f641e0b374585ff7c1c1be9878560";
  *
  * @type {string[]}
  */
-const CONTRACT_NAMES = [
+const NAMES_OF_CONTRACTS_OWNED_BY_MULTISIG = [
     "DebtRegistry",
     "DebtToken",
     "DebtKernel",
@@ -32,6 +32,7 @@ const CONTRACT_NAMES = [
     "RepaymentRouter",
     "Collateralizer",
     "TokenRegistry",
+    "ContractRegistry",
 ];
 
 /**
@@ -351,6 +352,6 @@ module.exports = {
     DUMMY_TOKEN_SUPPLY,
     DUMMY_TOKEN_DECIMALS,
     TOKEN_LIST,
-    CONTRACT_NAMES,
+    NAMES_OF_CONTRACTS_OWNED_BY_MULTISIG,
     TOKEN_URI_OPERATOR,
 };
