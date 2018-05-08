@@ -54,6 +54,9 @@ contract DebtRegistry is Pausable, PermissionEvents {
     PermissionsLib.Permissions internal entryInsertPermissions;
     PermissionsLib.Permissions internal entryEditPermissions;
 
+    string public constant INSERT_CONTEXT = "debt-registry-insert";
+    string public constant EDIT_CONTEXT = "debt-registry-edit";
+
     event LogInsertEntry(
         bytes32 indexed issuanceHash,
         address indexed beneficiary,
@@ -67,22 +70,6 @@ contract DebtRegistry is Pausable, PermissionEvents {
         bytes32 indexed issuanceHash,
         address indexed previousBeneficiary,
         address indexed newBeneficiary
-    );
-
-    event LogAddAuthorizedInsertAgent(
-        address agent
-    );
-
-    event LogAddAuthorizedEditAgent(
-        address agent
-    );
-
-    event LogRevokeInsertAgentAuthorization(
-        address agent
-    );
-
-    event LogRevokeEditAgentAuthorization(
-        address agent
     );
 
     modifier onlyAuthorizedToInsert() {
@@ -185,8 +172,7 @@ contract DebtRegistry is Pausable, PermissionEvents {
         public
         onlyOwner
     {
-        entryInsertPermissions.authorize(agent);
-        LogAddAuthorizedInsertAgent(agent);
+        entryInsertPermissions.authorize(agent, INSERT_CONTEXT);
     }
 
     /**
@@ -197,8 +183,7 @@ contract DebtRegistry is Pausable, PermissionEvents {
         public
         onlyOwner
     {
-        entryEditPermissions.authorize(agent);
-        LogAddAuthorizedEditAgent(agent);
+        entryEditPermissions.authorize(agent, EDIT_CONTEXT);
     }
 
     /**
@@ -209,8 +194,7 @@ contract DebtRegistry is Pausable, PermissionEvents {
         public
         onlyOwner
     {
-        entryInsertPermissions.revokeAuthorization(agent);
-        LogRevokeInsertAgentAuthorization(agent);
+        entryInsertPermissions.revokeAuthorization(agent, INSERT_CONTEXT);
     }
 
     /**
@@ -221,8 +205,7 @@ contract DebtRegistry is Pausable, PermissionEvents {
         public
         onlyOwner
     {
-        entryEditPermissions.revokeAuthorization(agent);
-        LogRevokeEditAgentAuthorization(agent);
+        entryEditPermissions.revokeAuthorization(agent, EDIT_CONTEXT);
     }
 
     /**
