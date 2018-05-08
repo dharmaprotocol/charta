@@ -97,6 +97,7 @@ contract ContractRegistry is Ownable {
         } else {
             revert();
         }
+
         ContractAddressUpdated(contractType, oldAddress, newAddress);
     }
 
