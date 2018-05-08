@@ -120,10 +120,11 @@ contract("Contract Registry (Unit Tests)", async (ACCOUNTS) => {
     describe("#updateAddress", () => {
         describe("successfully", () => {
             let txHash: string;
+            const DEBT_REGISTRY_ENUM_ID = new BigNumber(2);
 
             before(async () => {
                 txHash = await contractRegistry.updateAddress.sendTransactionAsync(
-                    new BigNumber(2),
+                    DEBT_REGISTRY_ENUM_ID,
                     NEW_DEBT_REGISTRY_ADDRESS,
                     { from: CONTRACT_OWNER },
                 );
@@ -138,7 +139,7 @@ contract("Contract Registry (Unit Tests)", async (ACCOUNTS) => {
             it("emits an event announcing the new address", async () => {
                 const expectedLogEntry = ContractAddressUpdated(
                     contractRegistry.address,
-                    new BigNumber(2),
+                    DEBT_REGISTRY_ENUM_ID,
                     mockDebtRegistry.address,
                     NEW_DEBT_REGISTRY_ADDRESS,
                 );
