@@ -63,7 +63,6 @@ contract ContractRegistry is Ownable {
     )
         public
         onlyOwner
-        returns (bool success)
     {
         address oldAddress;
 
@@ -96,12 +95,11 @@ contract ContractRegistry is Ownable {
             validateNewAddress(newAddress, oldAddress);
             tokenTransferProxy = TokenTransferProxy(newAddress);
         } else {
-            return false;
+            revert();
         }
         ContractAddressUpdated(contractType, oldAddress, newAddress);
     }
 
-        return true;
     function validateNewAddress(
         address newAddress,
         address oldAddress
