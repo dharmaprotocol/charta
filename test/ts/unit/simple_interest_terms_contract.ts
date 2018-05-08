@@ -51,9 +51,9 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
     const PAYER = ACCOUNTS[2];
     const BENEFICIARY = ACCOUNTS[3];
     const MOCK_DEBT_KERNEL_ADDRESS = ACCOUNTS[4];
-    const ATTACKER = ACCOUNTS[5];
-    const MOCK_DEBT_TOKEN_ADDRESS = ACCOUNTS[6];
-    const MOCK_COLLATERALIZER_ADDRESS = ACCOUNTS[7];
+    const MOCK_DEBT_TOKEN_ADDRESS = ACCOUNTS[5];
+    const MOCK_COLLATERALIZER_ADDRESS = ACCOUNTS[6];
+    const ATTACKER = ACCOUNTS[7];
 
     const TERMS_CONTRACT_PARAMETERS = web3.sha3(
         "any 32 byte hex value can represent the terms contract's parameters",
