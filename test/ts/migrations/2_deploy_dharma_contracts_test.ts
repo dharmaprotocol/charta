@@ -142,6 +142,10 @@ contract("Migration #2: Deploying Dharma Contracts", async (ACCOUNTS) => {
             );
         });
 
+        it("lists the exact set of owners", async () => {
+            await expect(wallet.getOwners.callAsync()).to.eventually.deep.equal(contractOwners);
+        });
+
         it("lists the correct number of required authorizations", async () => {
             const requiredComputed = new BigNumber(Math.ceil(contractOwners.length / 2));
             await expect(wallet.required.callAsync()).to.eventually.bignumber.equal(
