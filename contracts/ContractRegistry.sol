@@ -69,31 +69,47 @@ contract ContractRegistry is Ownable {
 
         if (contractType == ContractType.Collateralizer) {
             oldAddress = address(collateralizer);
+            validateNewAddress(newAddress, oldAddress);
             collateralizer = Collateralizer(newAddress);
         } else if (contractType == ContractType.DebtKernel) {
             oldAddress = address(debtKernel);
+            validateNewAddress(newAddress, oldAddress);
             debtKernel = DebtKernel(newAddress);
         } else if (contractType == ContractType.DebtRegistry) {
             oldAddress = address(debtRegistry);
+            validateNewAddress(newAddress, oldAddress);
             debtRegistry = DebtRegistry(newAddress);
         } else if (contractType == ContractType.DebtToken) {
             oldAddress = address(debtToken);
+            validateNewAddress(newAddress, oldAddress);
             debtToken = DebtToken(newAddress);
         } else if (contractType == ContractType.RepaymentRouter) {
             oldAddress = address(repaymentRouter);
+            validateNewAddress(newAddress, oldAddress);
             repaymentRouter = RepaymentRouter(newAddress);
         } else if (contractType == ContractType.TokenRegistry) {
             oldAddress = address(tokenRegistry);
+            validateNewAddress(newAddress, oldAddress);
             tokenRegistry = TokenRegistry(newAddress);
         } else if (contractType == ContractType.TokenTransferProxy) {
             oldAddress = address(tokenTransferProxy);
+            validateNewAddress(newAddress, oldAddress);
             tokenTransferProxy = TokenTransferProxy(newAddress);
         } else {
             return false;
         }
-
         ContractAddressUpdated(contractType, oldAddress, newAddress);
+    }
 
         return true;
+    function validateNewAddress(
+        address newAddress,
+        address oldAddress
+    )
+        internal
+        pure
+    {
+        require(newAddress != address(0)); // new address cannot be null address.
+        require(newAddress != oldAddress); // new address cannot be existing address.
     }
 }
