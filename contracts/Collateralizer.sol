@@ -51,6 +51,8 @@ contract Collateralizer is Pausable, PermissionEvents {
 
     uint public constant SECONDS_IN_DAY = 24*60*60;
 
+    string public constant CONTEXT = "collateralizer";
+
     event CollateralLocked(
         bytes32 indexed agreementID,
         address indexed token,
@@ -69,14 +71,6 @@ contract Collateralizer is Pausable, PermissionEvents {
         address indexed beneficiary,
         address token,
         uint amount
-    );
-
-    event LogAddAuthorizedCollateralizeAgent(
-        address agent
-    );
-
-    event LogRevokeAuthorizedCollateralizeAgent(
-        address agent
     );
 
     modifier onlyAuthorizedToCollateralize() {
@@ -335,8 +329,7 @@ contract Collateralizer is Pausable, PermissionEvents {
         public
         onlyOwner
     {
-        collateralizationPermissions.authorize(agent);
-        LogAddAuthorizedCollateralizeAgent(agent);
+        collateralizationPermissions.authorize(agent, CONTEXT);
     }
 
     /**
@@ -347,8 +340,7 @@ contract Collateralizer is Pausable, PermissionEvents {
         public
         onlyOwner
     {
-        collateralizationPermissions.revokeAuthorization(agent);
-        LogRevokeAuthorizedCollateralizeAgent(agent);
+        collateralizationPermissions.revokeAuthorization(agent, CONTEXT);
     }
 
     /**
