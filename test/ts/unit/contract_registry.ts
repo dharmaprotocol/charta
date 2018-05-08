@@ -119,31 +119,19 @@ contract("Contract Registry (Unit Tests)", async (ACCOUNTS) => {
 
     describe("#updateAddress", () => {
         describe("successfully", () => {
-            let newDebtRegistry: MockDebtRegistryContract;
             let txHash: string;
 
             before(async () => {
-                const newDebtRegistryTruffle = await debtRegistryArtifact.new();
-
-                const newDebtRegistryAsWeb3Contract = web3.eth
-                    .contract(debtRegistryArtifact.abi)
-                    .at(newDebtRegistryTruffle.address);
-
-                newDebtRegistry = new MockDebtRegistryContract(
-                    newDebtRegistryAsWeb3Contract,
-                    TX_DEFAULTS,
-                );
-
                 txHash = await contractRegistry.updateAddress.sendTransactionAsync(
                     new BigNumber(2),
-                    newDebtRegistry.address,
+                    NEW_DEBT_REGISTRY_ADDRESS,
                     { from: CONTRACT_OWNER },
                 );
             });
 
             it("updates the address of the debt registry", async () => {
                 await expect(contractRegistry.debtRegistry.callAsync()).to.eventually.equal(
-                    newDebtRegistry.address,
+                    NEW_DEBT_REGISTRY_ADDRESS,
                 );
             });
 
@@ -152,7 +140,7 @@ contract("Contract Registry (Unit Tests)", async (ACCOUNTS) => {
                     contractRegistry.address,
                     new BigNumber(2),
                     mockDebtRegistry.address,
-                    newDebtRegistry.address,
+                    NEW_DEBT_REGISTRY_ADDRESS,
                 );
                 const resultingLog = await parseLogsForEvent(
                     txHash,
