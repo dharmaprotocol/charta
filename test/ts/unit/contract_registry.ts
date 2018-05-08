@@ -193,7 +193,7 @@ contract("Contract Registry (Unit Tests)", async (ACCOUNTS) => {
                 ).to.eventually.be.rejectedWith(REVERT_ERROR);
             });
 
-            it("reverts if the contract type specified does not exist", async () => {
+            it("throws invalid opcode if the contract type specified is invalid", async () => {
                 await expect(
                     contractRegistry.updateAddress.sendTransactionAsync(
                         new BigNumber(7),
