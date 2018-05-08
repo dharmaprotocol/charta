@@ -29,13 +29,13 @@ contract ContractRegistry is Ownable {
         TokenTransferProxy
     }
 
-    Collateralizer collateralizer;
-    DebtKernel debtKernel;
-    DebtRegistry debtRegistry;
-    DebtToken debtToken;
-    RepaymentRouter repaymentRouter;
-    TokenRegistry tokenRegistry;
-    TokenTransferProxy tokenTransferProxy;
+    Collateralizer public collateralizer;
+    DebtKernel public debtKernel;
+    DebtRegistry public  debtRegistry;
+    DebtToken public debtToken;
+    RepaymentRouter public repaymentRouter;
+    TokenRegistry public tokenRegistry;
+    TokenTransferProxy public tokenTransferProxy;
 
     function ContractRegistry(
         address _collateralizer,
@@ -57,70 +57,57 @@ contract ContractRegistry is Ownable {
         tokenTransferProxy = TokenTransferProxy(_tokenTransferProxy);
     }
 
-    function getCollateralizer() public view returns (Collateralizer) {
-        return collateralizer;
-    }
-
-    function getDebtKernel() public view returns (DebtKernel) {
-        return debtKernel;
-    }
-
-    function getDebtRegistry() public view returns (DebtRegistry) {
-        return debtRegistry;
-    }
-
-    function getDebtToken() public view returns (DebtToken) {
-        return debtToken;
-    }
-
-    function getRepaymentRouter() public view returns (RepaymentRouter) {
-        return repaymentRouter;
-    }
-
-    function getTokenRegistry() public view returns (TokenRegistry) {
-        return tokenRegistry;
-    }
-
-    function getTokenTransferProxy() public view returns (TokenTransferProxy) {
-        return tokenTransferProxy;
-    }
-
     function updateAddress(
         ContractType contractType,
         address newAddress
     )
         public
-        returns (bool success)
+        onlyOwner
     {
         address oldAddress;
 
         if (contractType == ContractType.Collateralizer) {
             oldAddress = address(collateralizer);
+            validateNewAddress(newAddress, oldAddress);
             collateralizer = Collateralizer(newAddress);
         } else if (contractType == ContractType.DebtKernel) {
             oldAddress = address(debtKernel);
+            validateNewAddress(newAddress, oldAddress);
             debtKernel = DebtKernel(newAddress);
         } else if (contractType == ContractType.DebtRegistry) {
             oldAddress = address(debtRegistry);
+            validateNewAddress(newAddress, oldAddress);
             debtRegistry = DebtRegistry(newAddress);
         } else if (contractType == ContractType.DebtToken) {
             oldAddress = address(debtToken);
+            validateNewAddress(newAddress, oldAddress);
             debtToken = DebtToken(newAddress);
         } else if (contractType == ContractType.RepaymentRouter) {
             oldAddress = address(repaymentRouter);
+            validateNewAddress(newAddress, oldAddress);
             repaymentRouter = RepaymentRouter(newAddress);
         } else if (contractType == ContractType.TokenRegistry) {
             oldAddress = address(tokenRegistry);
+            validateNewAddress(newAddress, oldAddress);
             tokenRegistry = TokenRegistry(newAddress);
         } else if (contractType == ContractType.TokenTransferProxy) {
             oldAddress = address(tokenTransferProxy);
+            validateNewAddress(newAddress, oldAddress);
             tokenTransferProxy = TokenTransferProxy(newAddress);
         } else {
-            return false;
+            revert();
         }
-
         ContractAddressUpdated(contractType, oldAddress, newAddress);
+    }
 
-        return true;
+    function validateNewAddress(
+        address newAddress,
+        address oldAddress
+    )
+        internal
+        pure
+    {
+        require(newAddress != address(0)); // new address cannot be null address.
+        require(newAddress != oldAddress); // new address cannot be existing address.
     }
 }

@@ -42,7 +42,7 @@ contract CollateralizedSimpleInterestTermsContract is SimpleInterestTermsContrac
         returns (bool _success)
     {
         bool registered = super.registerTermStart(agreementId, debtor);
-        bool collateralized = contractRegistry.getCollateralizer().collateralize(agreementId, debtor);
+        bool collateralized = contractRegistry.collateralizer().collateralize(agreementId, debtor);
 
         return registered && collateralized;
     }

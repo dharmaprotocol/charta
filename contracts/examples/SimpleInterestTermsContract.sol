@@ -81,17 +81,17 @@ contract SimpleInterestTermsContract is TermsContract {
     );
 
     modifier onlyRouter() {
-        require(msg.sender == address(contractRegistry.getRepaymentRouter()));
+        require(msg.sender == address(contractRegistry.repaymentRouter()));
         _;
     }
 
     modifier onlyMappedToThisContract(bytes32 agreementId) {
-        require(address(this) == contractRegistry.getDebtRegistry().getTermsContract(agreementId));
+        require(address(this) == contractRegistry.debtRegistry().getTermsContract(agreementId));
         _;
     }
 
     modifier onlyDebtKernel() {
-        require(msg.sender == address(contractRegistry.getDebtKernel()));
+        require(msg.sender == address(contractRegistry.debtKernel()));
         _;
     }
 
@@ -122,7 +122,7 @@ contract SimpleInterestTermsContract is TermsContract {
         address termsContract;
         bytes32 termsContractParameters;
 
-        (termsContract, termsContractParameters) = contractRegistry.getDebtRegistry().getTerms(agreementId);
+        (termsContract, termsContractParameters) = contractRegistry.debtRegistry().getTerms(agreementId);
 
         uint principalTokenIndex;
         uint principalAmount;
@@ -134,7 +134,7 @@ contract SimpleInterestTermsContract is TermsContract {
             unpackParametersFromBytes(termsContractParameters);
 
         address principalTokenAddress =
-            contractRegistry.getTokenRegistry().getTokenAddressByIndex(principalTokenIndex);
+            contractRegistry.tokenRegistry().getTokenAddressByIndex(principalTokenIndex);
 
         // Returns true (i.e. valid) if the specified principal token is valid,
         // the specified amortization unit type is valid, and the terms contract
@@ -359,7 +359,7 @@ contract SimpleInterestTermsContract is TermsContract {
         internal
         returns (SimpleInterestParams params)
     {
-        bytes32 parameters = contractRegistry.getDebtRegistry().getTermsContractParameters(agreementId);
+        bytes32 parameters = contractRegistry.debtRegistry().getTermsContractParameters(agreementId);
 
         // Index of the token used for principal payments in the Token Registry
         uint principalTokenIndex;
@@ -376,7 +376,7 @@ contract SimpleInterestTermsContract is TermsContract {
             unpackParametersFromBytes(parameters);
 
         address principalTokenAddress =
-            contractRegistry.getTokenRegistry().getTokenAddressByIndex(principalTokenIndex);
+            contractRegistry.tokenRegistry().getTokenAddressByIndex(principalTokenIndex);
 
         // Ensure that the encoded principal token address is valid
         require(principalTokenAddress != address(0));
@@ -389,7 +389,7 @@ contract SimpleInterestTermsContract is TermsContract {
         uint amortizationUnitLengthInSeconds =
             getAmortizationUnitLengthInSeconds(amortizationUnitType);
         uint issuanceBlockTimestamp =
-            contractRegistry.getDebtRegistry().getIssuanceBlockTimestamp(agreementId);
+            contractRegistry.debtRegistry().getIssuanceBlockTimestamp(agreementId);
         uint termLengthInSeconds =
             termLengthInAmortizationUnits.mul(amortizationUnitLengthInSeconds);
         uint termEndUnixTimestamp =
