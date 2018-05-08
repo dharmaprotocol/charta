@@ -120,11 +120,11 @@ contract("Contract Registry (Unit Tests)", async (ACCOUNTS) => {
     describe("#updateAddress", () => {
         describe("successfully", () => {
             let txHash: string;
-            const DEBT_REGISTRY_ENUM_ID = new BigNumber(2);
+            const DEBT_REGISTRY_ENUM_RAW_VALUE = new BigNumber(2);
 
             before(async () => {
                 txHash = await contractRegistry.updateAddress.sendTransactionAsync(
-                    DEBT_REGISTRY_ENUM_ID,
+                    DEBT_REGISTRY_ENUM_RAW_VALUE,
                     NEW_DEBT_REGISTRY_ADDRESS,
                     { from: CONTRACT_OWNER },
                 );
@@ -139,7 +139,7 @@ contract("Contract Registry (Unit Tests)", async (ACCOUNTS) => {
             it("emits an event announcing the new address", async () => {
                 const expectedLogEntry = ContractAddressUpdated(
                     contractRegistry.address,
-                    DEBT_REGISTRY_ENUM_ID,
+                    DEBT_REGISTRY_ENUM_RAW_VALUE,
                     mockDebtRegistry.address,
                     NEW_DEBT_REGISTRY_ADDRESS,
                 );
@@ -152,10 +152,12 @@ contract("Contract Registry (Unit Tests)", async (ACCOUNTS) => {
         });
 
         describe("unsuccessfully", () => {
+            const DEBT_TOKEN_ENUM_RAW_VALUE = new BigNumber(3);
+
             it("reverts if an account other than the owner sends the transaction", async () => {
                 await expect(
                     contractRegistry.updateAddress.sendTransactionAsync(
-                        new BigNumber(3),
+                        DEBT_TOKEN_ENUM_RAW_VALUE,
                         NEW_DEBT_TOKEN_ADDRESS,
                         { from: ATTACKER }, // not the owner.
                     ),
@@ -165,7 +167,7 @@ contract("Contract Registry (Unit Tests)", async (ACCOUNTS) => {
             it("reverts if the new address specified is the null address", async () => {
                 await expect(
                     contractRegistry.updateAddress.sendTransactionAsync(
-                        new BigNumber(3),
+                        DEBT_TOKEN_ENUM_RAW_VALUE,
                         NULL_ADDRESS,
                         { from: CONTRACT_OWNER },
                     ),
@@ -175,7 +177,7 @@ contract("Contract Registry (Unit Tests)", async (ACCOUNTS) => {
             it("reverts if the new address specified is the existing address", async () => {
                 await expect(
                     contractRegistry.updateAddress.sendTransactionAsync(
-                        new BigNumber(3),
+                        DEBT_TOKEN_ENUM_RAW_VALUE,
                         mockDebtToken.address,
                         { from: CONTRACT_OWNER },
                     ),
@@ -185,7 +187,7 @@ contract("Contract Registry (Unit Tests)", async (ACCOUNTS) => {
             it("throws invalid opcode if the contract type specified is invalid", async () => {
                 await expect(
                     contractRegistry.updateAddress.sendTransactionAsync(
-                        new BigNumber(7),
+                        new BigNumber(7), // invalid value.
                         NEW_DEBT_TOKEN_ADDRESS,
                         { from: CONTRACT_OWNER },
                     ),
