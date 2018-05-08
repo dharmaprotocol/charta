@@ -61,8 +61,8 @@ contract("CollateralizedSimpleInterestTermsContract (Unit Tests)", async (ACCOUN
     const PAYER = ACCOUNTS[2];
     const BENEFICIARY = ACCOUNTS[3];
     const MOCK_DEBT_KERNEL_ADDRESS = ACCOUNTS[4];
-    const ATTACKER = ACCOUNTS[5];
-    const MOCK_DEBT_TOKEN_ADDRESS = ACCOUNTS[6];
+    const MOCK_DEBT_TOKEN_ADDRESS = ACCOUNTS[5];
+    const ATTACKER = ACCOUNTS[6];
 
     const ARBITRARY_AGREEMENT_ID = web3.sha3("any 32 byte hex value can represent an agreement id");
     const NULL_ADDRESS = "0x0000000000000000000000000000000000000000";
