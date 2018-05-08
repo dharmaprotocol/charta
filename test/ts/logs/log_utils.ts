@@ -1,6 +1,7 @@
 import * as ABIDecoder from "abi-decoder";
 import * as BigNumber from "bignumber.js";
 import * as _ from "lodash";
+import { SolidityType } from "../../../types/common";
 
 export function getParams(
     args: Array<[string, any]>,
@@ -38,4 +39,16 @@ export function getParams(
             value: type === "bool" ? value : value.toString(),
         };
     });
+}
+
+export function generateParam(
+    name: string,
+    type: SolidityType,
+    value: any,
+): ABIDecoder.DecodedMethodParam {
+    return {
+        name,
+        type,
+        value: type === SolidityType.boolean ? value : value.toString(),
+    };
 }
