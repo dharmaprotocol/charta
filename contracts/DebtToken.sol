@@ -43,7 +43,6 @@ contract DebtToken is ERC721Token, ERC165, Pausable, PermissionEvents {
     DebtRegistry public registry;
 
     PermissionsLib.Permissions internal tokenCreationPermissions;
-    PermissionsLib.Permissions internal tokenBrokeragePermissions;
     PermissionsLib.Permissions internal tokenURIPermissions;
 
     string public constant CREATION_CONTEXT = "debt-token-creation";
