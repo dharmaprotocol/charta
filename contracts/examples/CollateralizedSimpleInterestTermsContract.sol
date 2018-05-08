@@ -18,8 +18,8 @@
 
 pragma solidity 0.4.18;
 
-import "../Collateralizer.sol";
 import "./SimpleInterestTermsContract.sol";
+import "../Collateralizer.sol";
 
 
 /**
@@ -28,19 +28,10 @@ import "./SimpleInterestTermsContract.sol";
  * Authors: nadavhollander, saturnial, jdkanani, graemecode
  */
 contract CollateralizedSimpleInterestTermsContract is SimpleInterestTermsContract {
-    // The contract that handles asset collateralization.
-    Collateralizer public collateralizer;
 
     function CollateralizedSimpleInterestTermsContract(
-        address _debtKernel,
-        address _debtRegistry,
-        address _tokenRegistry,
-        address _repaymentRouter,
-        address _collateralizer
-    ) public SimpleInterestTermsContract(_debtKernel, _debtRegistry, _tokenRegistry, _repaymentRouter)
-    {
-        collateralizer = Collateralizer(_collateralizer);
-    }
+        address contractRegistry
+    ) public SimpleInterestTermsContract(contractRegistry) {}
 
     function registerTermStart(
         bytes32 agreementId,
@@ -51,7 +42,7 @@ contract CollateralizedSimpleInterestTermsContract is SimpleInterestTermsContrac
         returns (bool _success)
     {
         bool registered = super.registerTermStart(agreementId, debtor);
-        bool collateralized = collateralizer.collateralize(agreementId, debtor);
+        bool collateralized = contractRegistry.collateralizer().collateralize(agreementId, debtor);
 
         return registered && collateralized;
     }

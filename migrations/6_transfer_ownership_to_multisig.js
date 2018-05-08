@@ -1,4 +1,4 @@
-const CONSTANTS = require("./migration_constants");
+const { NAMES_OF_CONTRACTS_OWNED_BY_MULTISIG } = require("./migration_constants");
 
 module.exports = (deployer, network, accounts) => {
     const CONTRACT_OWNER = accounts[0];
@@ -9,7 +9,7 @@ module.exports = (deployer, network, accounts) => {
      *
      * @type {Web3.ContractInstance[]}
      */
-    const contractInstances = CONSTANTS.CONTRACT_NAMES.map((contractName) => {
+    const contractInstances = NAMES_OF_CONTRACTS_OWNED_BY_MULTISIG.map((contractName) => {
         return artifacts.require(contractName);
     });
 

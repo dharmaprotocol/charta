@@ -44,8 +44,6 @@ contract TokenRegistry is Ownable {
     )
         public onlyOwner
     {
-        require(tokenSymbolListLength < 256);
-
         bytes32 symbolHash = keccak256(_symbol);
 
         // Attempt to retrieve the token's attributes from the registry.
