@@ -1,3 +1,4 @@
+import { BigNumber } from "bignumber.js";
 import * as ABIDecoder from "abi-decoder";
 import * as chai from "chai";
 import * as Web3 from "web3";
@@ -12,6 +13,9 @@ import { CollateralizerContract } from "../../../types/generated/collateralizer"
 
 import { ContractRegistryContract } from "../../../types/generated/contract_registry";
 
+import { ContractAddressUpdated, EventNames } from "../logs/contract_registry";
+import { parseLogsForEvent } from "../logs/log_utils";
+
 import ChaiSetup from "../test_utils/chai_setup";
 
 // Set up Chai
@@ -19,6 +23,7 @@ ChaiSetup.configure();
 const expect = chai.expect;
 
 const contractRegistryArtifact = artifacts.require("ContractRegistry");
+const debtRegistryArtifact = artifacts.require("MockDebtRegistry");
 
 contract("Contract Registry (Unit Tests)", async (ACCOUNTS) => {
     const CONTRACT_OWNER = ACCOUNTS[0];
@@ -105,6 +110,46 @@ contract("Contract Registry (Unit Tests)", async (ACCOUNTS) => {
             await expect(contractRegistry.tokenTransferProxy.callAsync()).to.eventually.equal(
                 mockTokenTransferProxy.address,
             );
+        });
+    });
+
+    describe("#updateAddress", () => {
+        let newDebtRegistry: MockDebtRegistryContract;
+        let txHash: string;
+
+        before(async () => {
+            const newDebtRegistryTruffle = await debtRegistryArtifact.new();
+
+            const newDebtRegistryAsWeb3Contract = web3.eth
+                .contract(debtRegistryArtifact.abi)
+                .at(newDebtRegistryTruffle.address);
+
+            newDebtRegistry = new MockDebtRegistryContract(
+                newDebtRegistryAsWeb3Contract,
+                TX_DEFAULTS,
+            );
+
+            txHash = await contractRegistry.updateAddress.sendTransactionAsync(
+                new BigNumber(2),
+                newDebtRegistry.address,
+            );
+        });
+
+        it("updates the address of the debt registry", async () => {
+            await expect(contractRegistry.debtRegistry.callAsync()).to.eventually.equal(
+                newDebtRegistry.address,
+            );
+        });
+
+        it("emits an event announcing the new address", async () => {
+            const expectedLogEntry = ContractAddressUpdated(
+                contractRegistry.address,
+                new BigNumber(2),
+                mockDebtRegistry.address,
+                newDebtRegistry.address,
+            );
+            const resultingLog = await parseLogsForEvent(txHash, EventNames.ContractAddressUpdated);
+            expect(resultingLog).to.deep.equal(expectedLogEntry);
         });
     });
 });
