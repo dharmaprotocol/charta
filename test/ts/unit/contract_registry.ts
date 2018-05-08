@@ -15,6 +15,7 @@ import { ContractRegistryContract } from "../../../types/generated/contract_regi
 
 import { ContractAddressUpdated, EventNames } from "../logs/contract_registry";
 import { parseLogsForEvent } from "../logs/log_utils";
+import { INVALID_OPCODE, NULL_ADDRESS, REVERT_ERROR } from "../test_utils/constants";
 
 import ChaiSetup from "../test_utils/chai_setup";
 
@@ -27,6 +28,9 @@ const debtRegistryArtifact = artifacts.require("MockDebtRegistry");
 
 contract("Contract Registry (Unit Tests)", async (ACCOUNTS) => {
     const CONTRACT_OWNER = ACCOUNTS[0];
+    const ATTACKER = ACCOUNTS[1];
+    const NEW_DEBT_REGISTRY_ADDRESS = ACCOUNTS[2];
+    const NEW_DEBT_TOKEN_ADDRESS = ACCOUNTS[3];
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
 
     let debtKernel: DebtKernelContract;
@@ -114,42 +118,90 @@ contract("Contract Registry (Unit Tests)", async (ACCOUNTS) => {
     });
 
     describe("#updateAddress", () => {
-        let newDebtRegistry: MockDebtRegistryContract;
-        let txHash: string;
+        describe("successfully", () => {
+            let newDebtRegistry: MockDebtRegistryContract;
+            let txHash: string;
 
-        before(async () => {
-            const newDebtRegistryTruffle = await debtRegistryArtifact.new();
+            before(async () => {
+                const newDebtRegistryTruffle = await debtRegistryArtifact.new();
 
-            const newDebtRegistryAsWeb3Contract = web3.eth
-                .contract(debtRegistryArtifact.abi)
-                .at(newDebtRegistryTruffle.address);
+                const newDebtRegistryAsWeb3Contract = web3.eth
+                    .contract(debtRegistryArtifact.abi)
+                    .at(newDebtRegistryTruffle.address);
 
-            newDebtRegistry = new MockDebtRegistryContract(
-                newDebtRegistryAsWeb3Contract,
-                TX_DEFAULTS,
-            );
+                newDebtRegistry = new MockDebtRegistryContract(
+                    newDebtRegistryAsWeb3Contract,
+                    TX_DEFAULTS,
+                );
 
-            txHash = await contractRegistry.updateAddress.sendTransactionAsync(
-                new BigNumber(2),
-                newDebtRegistry.address,
-            );
+                txHash = await contractRegistry.updateAddress.sendTransactionAsync(
+                    new BigNumber(2),
+                    newDebtRegistry.address,
+                    { from: CONTRACT_OWNER },
+                );
+            });
+
+            it("updates the address of the debt registry", async () => {
+                await expect(contractRegistry.debtRegistry.callAsync()).to.eventually.equal(
+                    newDebtRegistry.address,
+                );
+            });
+
+            it("emits an event announcing the new address", async () => {
+                const expectedLogEntry = ContractAddressUpdated(
+                    contractRegistry.address,
+                    new BigNumber(2),
+                    mockDebtRegistry.address,
+                    newDebtRegistry.address,
+                );
+                const resultingLog = await parseLogsForEvent(
+                    txHash,
+                    EventNames.ContractAddressUpdated,
+                );
+                expect(resultingLog).to.deep.equal(expectedLogEntry);
+            });
         });
 
-        it("updates the address of the debt registry", async () => {
-            await expect(contractRegistry.debtRegistry.callAsync()).to.eventually.equal(
-                newDebtRegistry.address,
-            );
-        });
+        describe("unsuccessfully", () => {
+            it("reverts if an account other than the owner sends the transaction", async () => {
+                await expect(
+                    contractRegistry.updateAddress.sendTransactionAsync(
+                        new BigNumber(3),
+                        NEW_DEBT_TOKEN_ADDRESS,
+                        { from: ATTACKER }, // not the owner.
+                    ),
+                ).to.eventually.be.rejectedWith(REVERT_ERROR);
+            });
 
-        it("emits an event announcing the new address", async () => {
-            const expectedLogEntry = ContractAddressUpdated(
-                contractRegistry.address,
-                new BigNumber(2),
-                mockDebtRegistry.address,
-                newDebtRegistry.address,
-            );
-            const resultingLog = await parseLogsForEvent(txHash, EventNames.ContractAddressUpdated);
-            expect(resultingLog).to.deep.equal(expectedLogEntry);
+            it("reverts if the new address specified is the null address", async () => {
+                await expect(
+                    contractRegistry.updateAddress.sendTransactionAsync(
+                        new BigNumber(3),
+                        NULL_ADDRESS,
+                        { from: CONTRACT_OWNER },
+                    ),
+                ).to.eventually.be.rejectedWith(REVERT_ERROR);
+            });
+
+            it("reverts if the new address specified is the existing address", async () => {
+                await expect(
+                    contractRegistry.updateAddress.sendTransactionAsync(
+                        new BigNumber(3),
+                        mockDebtToken.address,
+                        { from: CONTRACT_OWNER },
+                    ),
+                ).to.eventually.be.rejectedWith(REVERT_ERROR);
+            });
+
+            it("reverts if the contract type specified does not exist", async () => {
+                await expect(
+                    contractRegistry.updateAddress.sendTransactionAsync(
+                        new BigNumber(7),
+                        NEW_DEBT_TOKEN_ADDRESS,
+                        { from: CONTRACT_OWNER },
+                    ),
+                ).to.eventually.be.rejectedWith(INVALID_OPCODE);
+            });
         });
     });
 });
