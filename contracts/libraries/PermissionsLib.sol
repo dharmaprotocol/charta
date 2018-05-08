@@ -18,6 +18,7 @@
 
 pragma solidity 0.4.18;
 
+
 /**
  *  Note(kayvon): these events are emitted by our PermissionsLib, but all contracts that
  *  depend on the library must also define the events in order for web3 clients to pick them up.
@@ -28,6 +29,7 @@ contract PermissionEvents {
     event Authorized(address indexed agent);
     event AuthorizationRevoked(address indexed agent);
 }
+
 
 library PermissionsLib {
 
