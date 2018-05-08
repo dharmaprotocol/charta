@@ -133,6 +133,7 @@ contract("Migration #2: Deploying Dharma Contracts", async (ACCOUNTS) => {
 
     describe("#DharmaMultiSigWallet", () => {
         const contractOwners = ACCOUNTS.slice(0, 5);
+        const required = new BigNumber(3);
 
         it("lists the correct accounts as owner", async () => {
             await Promise.all(
@@ -147,10 +148,7 @@ contract("Migration #2: Deploying Dharma Contracts", async (ACCOUNTS) => {
         });
 
         it("lists the correct number of required authorizations", async () => {
-            const requiredComputed = new BigNumber(Math.ceil(contractOwners.length / 2));
-            await expect(wallet.required.callAsync()).to.eventually.bignumber.equal(
-                requiredComputed,
-            );
+            await expect(wallet.required.callAsync()).to.eventually.bignumber.equal(required);
         });
 
         it("lists the correct value for the timelock (in seconds)", async () => {
