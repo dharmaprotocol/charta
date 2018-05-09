@@ -6,6 +6,7 @@ import * as Units from "../../test_utils/units";
 // Utils
 import { BigNumberSetup } from "../../test_utils/bignumber_setup";
 import ChaiSetup from "../../test_utils/chai_setup";
+import { REVERT_ERROR } from "../../test_utils/constants";
 
 // Generated Types
 import { CollateralizerContract } from "../../../../types/generated/collateralizer";
@@ -178,55 +179,82 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
 
     describe("Permissioning", () => {
         describe("#addAuthorizedCollateralizeAgent", () => {
-            let txHash: string;
-
-            before(async () => {
-                txHash = await collateralizerContract.addAuthorizedCollateralizeAgent.sendTransactionAsync(
-                    AGENT,
-                );
+            describe("non-owner adds collateralize agent", () => {
+                it("should throw", async () => {
+                    await expect(
+                        collateralizerContract.addAuthorizedCollateralizeAgent.sendTransactionAsync(
+                            AGENT,
+                            { from: ATTACKER },
+                        ),
+                    ).to.eventually.be.rejectedWith(REVERT_ERROR);
+                });
             });
 
-            it("adds specified agent to set of authorized agents", async () => {
-                const authorizedAgents = await collateralizerContract.getAuthorizedCollateralizeAgents.callAsync();
-                expect(authorizedAgents.includes(AGENT)).to.be.true;
-            });
+            describe("owner adds collateralize agent", () => {
+                let txHash: string;
 
-            it("emits event broadcasting authorization of agent", async () => {
-                const expectedLogEntry = Authorized(
-                    collateralizerContract.address,
-                    AGENT,
-                    "collateralizer",
-                );
-                const resultingLog = await queryLogsForEvent(txHash, EventNames.Authorized);
-                expect(resultingLog).to.deep.equal(expectedLogEntry);
+                before(async () => {
+                    txHash = await collateralizerContract.addAuthorizedCollateralizeAgent.sendTransactionAsync(
+                        AGENT,
+                        { from: CONTRACT_OWNER },
+                    );
+                });
+
+                it("adds specified agent to the set of authorized agents", async () => {
+                    const authorizedAgents = await collateralizerContract.getAuthorizedCollateralizeAgents.callAsync();
+                    expect(authorizedAgents.includes(AGENT)).to.be.true;
+                });
+
+                it("emits event broadcasting authorization of agent", async () => {
+                    const expectedLogEntry = Authorized(
+                        collateralizerContract.address,
+                        AGENT,
+                        "collateralizer",
+                    );
+                    const resultingLog = await queryLogsForEvent(txHash, EventNames.Authorized);
+                    expect(resultingLog).to.deep.equal(expectedLogEntry);
+                });
             });
         });
 
         describe("#revokeCollateralizeAuthorization", () => {
-            let txHash: string;
-
-            before(async () => {
-                txHash = await collateralizerContract.revokeCollateralizeAuthorization.sendTransactionAsync(
-                    AGENT,
-                );
+            describe("non-owner revokes authorization for collateralize agent", () => {
+                it("should throw", async () => {
+                    await expect(
+                        collateralizerContract.revokeCollateralizeAuthorization.sendTransactionAsync(
+                            AGENT,
+                            { from: ATTACKER },
+                        ),
+                    ).to.eventually.be.rejectedWith(REVERT_ERROR);
+                });
             });
 
-            it("removes specified agent from set of authorized agents", async () => {
-                const authorizedAgents = await collateralizerContract.getAuthorizedCollateralizeAgents.callAsync();
-                expect(authorizedAgents.includes(AGENT)).to.be.false;
-            });
+            describe("owner revokes authorization for collateralize agent", () => {
+                let txHash: string;
 
-            it("emits event broadcasting revoking authorization of agent", async () => {
-                const expectedLogEntry = AuthorizationRevoked(
-                    collateralizerContract.address,
-                    AGENT,
-                    "collateralizer",
-                );
-                const resultingLog = await queryLogsForEvent(
-                    txHash,
-                    EventNames.AuthorizationRevoked,
-                );
-                expect(resultingLog).to.deep.equal(expectedLogEntry);
+                before(async () => {
+                    txHash = await collateralizerContract.revokeCollateralizeAuthorization.sendTransactionAsync(
+                        AGENT,
+                    );
+                });
+
+                it("removes specified agent from set of authorized agents", async () => {
+                    const authorizedAgents = await collateralizerContract.getAuthorizedCollateralizeAgents.callAsync();
+                    expect(authorizedAgents.includes(AGENT)).to.be.false;
+                });
+
+                it("emits event broadcasting revoking authorization of agent", async () => {
+                    const expectedLogEntry = AuthorizationRevoked(
+                        collateralizerContract.address,
+                        AGENT,
+                        "collateralizer",
+                    );
+                    const resultingLog = await queryLogsForEvent(
+                        txHash,
+                        EventNames.AuthorizationRevoked,
+                    );
+                    expect(resultingLog).to.deep.equal(expectedLogEntry);
+                });
             });
         });
     });
