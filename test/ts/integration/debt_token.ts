@@ -20,6 +20,7 @@ import { DebtRegistryContract } from "../../../types/generated/debt_registry";
 import { DebtTokenContract } from "../../../types/generated/debt_token";
 import { DharmaMultiSigWalletContract } from "../../../types/generated/dharma_multi_sig_wallet";
 import { DebtKernelContract } from "../../../types/generated/debt_kernel";
+import { RepaymentRouterContract } from "../../../types/generated/repayment_router";
 
 // Types
 import { Address } from "../../../types/common";
@@ -38,13 +39,13 @@ const expect = chai.expect;
 
 const debtRegistryContract = artifacts.require("DebtRegistry");
 const debtTokenContract = artifacts.require("DebtToken");
-const repaymentRouterContract = artifacts.require("RepaymentRouter");
 
 contract("Debt Token (Integration Tests)", (ACCOUNTS) => {
     let debtRegistry: DebtRegistryContract;
     let debtToken: DebtTokenContract;
     let debtKernel: DebtKernelContract;
     let multiSig: DharmaMultiSigWalletContract;
+    let repaymentRouter: RepaymentRouterContract;
 
     let debtEntries: DebtRegistryEntry[];
 
@@ -89,8 +90,7 @@ contract("Debt Token (Integration Tests)", (ACCOUNTS) => {
         debtRegistry = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
         debtToken = await DebtTokenContract.deployed(web3, TX_DEFAULTS);
         debtKernel = await DebtKernelContract.deployed(web3, TX_DEFAULTS);
-
-        const repaymentRouterContractInstance = await repaymentRouterContract.deployed();
+        repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
 
         debtEntries = _.map(TOKEN_OWNERS, (tokenOwner: Address, i: number) => {
             return new DebtRegistryEntry({
@@ -100,7 +100,7 @@ contract("Debt Token (Integration Tests)", (ACCOUNTS) => {
                 termsContractParameters: ARBITRARY_TERMS_CONTRACT_PARAMS[i],
                 underwriter: UNDERWRITERS[i],
                 underwriterRiskRating: Units.underwriterRiskRatingFixedPoint(3.4),
-                version: repaymentRouterContractInstance.address,
+                version: repaymentRouter.address,
             });
         });
 
