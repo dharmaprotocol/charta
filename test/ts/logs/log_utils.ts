@@ -57,7 +57,7 @@ export function generateParam(
     };
 }
 
-export async function parseLogsForEvent(
+export async function queryLogsForEvent(
     txHash: string,
     eventName: string,
 ): Promise<ABIDecoder.DecodedLog | undefined> {

@@ -56,4 +56,5 @@ export enum SolidityType {
     uint = "uint",
     bytes32 = "bytes32",
     boolean = "bool",
+    string = "string",
 }
