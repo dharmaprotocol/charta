@@ -211,31 +211,44 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
             });
 
             describe("#revokeMintAgentAuthorization", () => {
-                let txHash: string;
-
-                before(async () => {
-                    txHash = await debtToken.revokeMintAgentAuthorization.sendTransactionAsync(
-                        AUTHORIZED_MINT_AGENT,
-                        { from: CONTRACT_OWNER },
-                    );
+                describe("non-owner revokes mint authorization", () => {
+                    it("should throw", async () => {
+                        await expect(
+                            debtToken.addAuthorizedMintAgent.sendTransactionAsync(
+                                UNAUTHORIZED_MINT_AGENT,
+                                { from: NON_CONTRACT_OWNER },
+                            ),
+                        ).to.eventually.be.rejectedWith(REVERT_ERROR);
+                    });
                 });
 
-                it("should emit event broadcasting revoking mint authorization", async () => {
-                    const expectedLogEntry = AuthorizationRevoked(
-                        debtToken.address,
-                        AUTHORIZED_MINT_AGENT,
-                        "debt-token-creation",
-                    );
-                    const queryResult = await queryLogsForEvent(
-                        txHash,
-                        EventNames.AuthorizationRevoked,
-                    );
-                    expect(queryResult).to.deep.equal(expectedLogEntry);
-                });
+                describe("owner revokes mint authorization", () => {
+                    let txHash: string;
 
-                it("should not list agent as authorized", async () => {
-                    const authorizedAgents = await debtToken.getAuthorizedMintAgents.callAsync();
-                    await expect(authorizedAgents.includes(AUTHORIZED_MINT_AGENT)).to.be.false;
+                    before(async () => {
+                        txHash = await debtToken.revokeMintAgentAuthorization.sendTransactionAsync(
+                            AUTHORIZED_MINT_AGENT,
+                            { from: CONTRACT_OWNER },
+                        );
+                    });
+
+                    it("should emit event broadcasting revoking mint authorization", async () => {
+                        const expectedLogEntry = AuthorizationRevoked(
+                            debtToken.address,
+                            AUTHORIZED_MINT_AGENT,
+                            "debt-token-creation",
+                        );
+                        const queryResult = await queryLogsForEvent(
+                            txHash,
+                            EventNames.AuthorizationRevoked,
+                        );
+                        expect(queryResult).to.deep.equal(expectedLogEntry);
+                    });
+
+                    it("should not list agent as authorized", async () => {
+                        const authorizedAgents = await debtToken.getAuthorizedMintAgents.callAsync();
+                        await expect(authorizedAgents.includes(AUTHORIZED_MINT_AGENT)).to.be.false;
+                    });
                 });
             });
         });
