@@ -137,7 +137,6 @@ contract("Debt Token (Integration Tests)", (ACCOUNTS) => {
         debtRegistry = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
         debtToken = await DebtTokenContract.deployed(web3, TX_DEFAULTS);
         debtKernel = await DebtKernelContract.deployed(web3, TX_DEFAULTS);
-        repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
 
         ABIDecoder.addABI(debtRegistryContract.abi);
         ABIDecoder.addABI(debtTokenContract.abi);
