@@ -16,7 +16,7 @@ import { REVERT_ERROR } from "../test_utils/constants";
 import { multiSigExecuteAfterTimelock } from "../test_utils/multisig";
 import { Address, TxData } from "../../../types/common";
 import { AuthorizationRevoked, Authorized, EventNames } from "../logs/permissions_lib";
-import { parseLogsForEvent } from "../logs/log_utils";
+import { queryLogsForEvent } from "../logs/log_utils";
 
 // Set up Chai
 ChaiSetup.configure();
@@ -115,7 +115,7 @@ contract("Token Transfer Proxy (Unit Tests)", async (ACCOUNTS) => {
 
             it("should emit event broadcasting authorization of transfer agent", async () => {
                 const expectedLogEntry = Authorized(proxy.address, AGENT, "token-transfer-proxy");
-                const resultingLog = await parseLogsForEvent(txHash, EventNames.Authorized);
+                const resultingLog = await queryLogsForEvent(txHash, EventNames.Authorized);
                 expect(resultingLog).to.deep.equal(expectedLogEntry);
             });
         });
@@ -156,7 +156,7 @@ contract("Token Transfer Proxy (Unit Tests)", async (ACCOUNTS) => {
                     AGENT,
                     "token-transfer-proxy",
                 );
-                const resultingLog = await parseLogsForEvent(
+                const resultingLog = await queryLogsForEvent(
                     txHash,
                     EventNames.AuthorizationRevoked,
                 );

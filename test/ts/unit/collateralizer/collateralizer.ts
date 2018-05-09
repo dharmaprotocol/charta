@@ -28,7 +28,7 @@ import { SUCCESSFUL_SEIZURE_SCENARIOS } from "./scenarios/successful_seizure";
 import { UNSUCCESSFUL_SEIZURE_SCENARIOS } from "./scenarios/unsuccessful_seizure";
 
 import { AuthorizationRevoked, Authorized, EventNames } from "../../logs/permissions_lib";
-import { parseLogsForEvent } from "../../logs/log_utils";
+import { queryLogsForEvent } from "../../logs/log_utils";
 
 // Set up Chai
 ChaiSetup.configure();
@@ -197,7 +197,7 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
                     AGENT,
                     "collateralizer",
                 );
-                const resultingLog = await parseLogsForEvent(txHash, EventNames.Authorized);
+                const resultingLog = await queryLogsForEvent(txHash, EventNames.Authorized);
                 expect(resultingLog).to.deep.equal(expectedLogEntry);
             });
         });
@@ -222,7 +222,7 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
                     AGENT,
                     "collateralizer",
                 );
-                const resultingLog = await parseLogsForEvent(
+                const resultingLog = await queryLogsForEvent(
                     txHash,
                     EventNames.AuthorizationRevoked,
                 );
