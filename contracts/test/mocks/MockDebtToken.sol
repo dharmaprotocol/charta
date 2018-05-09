@@ -52,28 +52,6 @@ contract MockDebtToken is MockContract {
         return uint(getMockReturnValue("create", DEFAULT_SIGNATURE_ARGS));
     }
 
-    function brokerZeroExOrder(
-        uint _tokenId,
-        address _zeroExExchangeContract,
-        address[5] _zeroExOrderAddresses,
-        uint[6] _zeroExOrderValues,
-        uint8 _v,
-        bytes32 _r,
-        bytes32 _s
-    )
-        public
-    {
-        functionCalledWithArgs("brokerZeroExOrder", keccak256(
-            _tokenId,
-            _zeroExExchangeContract,
-            _zeroExOrderAddresses,
-            _zeroExOrderValues,
-            _v,
-            _r,
-            _s
-        ));
-    }
-
     function mockCreateReturnValue(uint _tokenId)
         public
     {
@@ -104,54 +82,6 @@ contract MockDebtToken is MockContract {
             _termsContractParameters,
             _salt
         ));
-    }
-
-    function wasBrokerZeroExOrderCalledWith(
-        uint _tokenId,
-        address _zeroExExchangeContract,
-        address[5] _zeroExOrderAddresses,
-        uint[6] _zeroExOrderValues,
-        uint8 _v,
-        bytes32 _r,
-        bytes32 _s
-    )
-        public
-        view
-        returns (bool wasCalled)
-    {
-        return wasFunctionCalledWithArgs("brokerZeroExOrder", keccak256(
-            _tokenId,
-            _zeroExExchangeContract,
-            _zeroExOrderAddresses,
-            _zeroExOrderValues,
-            _v,
-            _r,
-            _s
-        ));
-    }
-
-    function getBrokerZeroExCallSignature(
-        uint _tokenId,
-        address _zeroExExchangeContract,
-        address[5] _zeroExOrderAddresses,
-        uint[6] _zeroExOrderValues,
-        uint8 _v,
-        bytes32 _r,
-        bytes32 _s
-    )
-        public
-        pure
-        returns (bytes32 callSig)
-    {
-        return keccak256(
-            _tokenId,
-            _zeroExExchangeContract,
-            _zeroExOrderAddresses,
-            _zeroExOrderValues,
-            _v,
-            _r,
-            _s
-        );
     }
 
     function transfer(address _to, uint _tokenId)
@@ -195,6 +125,34 @@ contract MockDebtToken is MockContract {
         return _getOwner(_tokenId) != address(0);
     }
 
+    function addAuthorizedMintAgent(address _agent)
+        public
+    {
+        functionCalledWithArgs("addAuthorizedMintAgent", keccak256(_agent));
+    }
+
+    function wasAddAuthorizedMintAgentCalledWith(address _agent)
+        public
+        view
+        returns (bool _wasCalled)
+    {
+        return wasFunctionCalledWithArgs("addAuthorizedMintAgent", keccak256(_agent));
+    }
+
+    function pause()
+        public
+    {
+        functionCalledWithArgs("pause", keccak256(0));
+    }
+
+    function wasPauseCalled()
+        public
+        view
+        returns (bool _wasCalled)
+    {
+        return wasFunctionCalledWithArgs("pause", keccak256(0));
+    }
+
     function _getOwner(uint _tokenId)
         private
         view
@@ -207,6 +165,6 @@ contract MockDebtToken is MockContract {
         internal
         returns (string[10] functionNames)
     {
-        return ["create", "brokerZeroExOrder", "ownerOf", "transfer", "exists", "", "", "", "", ""];
+        return ["create", "ownerOf", "transfer", "exists", "addAuthorizedMintAgent", "pause", "", "", "", ""];
     }
 }

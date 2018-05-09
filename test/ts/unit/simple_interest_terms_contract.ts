@@ -13,6 +13,7 @@ import { MockDebtRegistryContract } from "../../../types/generated/mock_debt_reg
 import { MockERC20TokenContract } from "../../../types/generated/mock_e_r_c20_token";
 import { MockTokenTransferProxyContract } from "../../../types/generated/mock_token_transfer_proxy";
 import { MockTokenRegistryContract } from "../../../types/generated/mock_token_registry";
+import { ContractRegistryContract } from "../../../types/generated/contract_registry";
 
 // Constants
 import { RepaymentRouterErrorCodes } from "../../../types/errors";
@@ -34,6 +35,7 @@ BigNumberSetup.configure();
 const repaymentRouterContract = artifacts.require("RepaymentRouter");
 const simpleInterestTermsContract = artifacts.require("SimpleInterestTermsContract");
 const mockTokenContract = artifacts.require("MockERC20Token");
+const contractRegistryArtifact = artifacts.require("ContractRegistry");
 
 contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
     let termsContract: SimpleInterestTermsContractContract;
@@ -42,13 +44,16 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
     let mockRegistry: MockDebtRegistryContract;
     let mockTokenTransferProxy: MockTokenTransferProxyContract;
     let mockTokenRegistry: MockTokenRegistryContract;
+    let contractRegistry: ContractRegistryContract;
 
     const CONTRACT_OWNER = ACCOUNTS[0];
     const DEBTOR = ACCOUNTS[1];
     const PAYER = ACCOUNTS[2];
     const BENEFICIARY = ACCOUNTS[3];
     const MOCK_DEBT_KERNEL_ADDRESS = ACCOUNTS[4];
-    const ATTACKER = ACCOUNTS[5];
+    const MOCK_DEBT_TOKEN_ADDRESS = ACCOUNTS[5];
+    const MOCK_COLLATERALIZER_ADDRESS = ACCOUNTS[6];
+    const ATTACKER = ACCOUNTS[7];
 
     const TERMS_CONTRACT_PARAMETERS = web3.sha3(
         "any 32 byte hex value can represent the terms contract's parameters",
@@ -70,11 +75,19 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
             mockTokenTransferProxy.address,
         );
 
-        const termsContractTruffle = await simpleInterestTermsContract.new(
+        const contractRegistryTruffle = await contractRegistryArtifact.new(
+            MOCK_COLLATERALIZER_ADDRESS,
             MOCK_DEBT_KERNEL_ADDRESS,
             mockRegistry.address,
-            mockTokenRegistry.address,
+            MOCK_DEBT_TOKEN_ADDRESS,
             repaymentRouterTruffle.address,
+            mockTokenRegistry.address,
+            mockTokenTransferProxy.address,
+            { from: CONTRACT_OWNER },
+        );
+
+        const termsContractTruffle = await simpleInterestTermsContract.new(
+            contractRegistryTruffle.address,
         );
 
         // The typings we use ingest vanilla Web3 contracts, so we convert the
@@ -87,9 +100,18 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
             .contract(simpleInterestTermsContract.abi)
             .at(termsContractTruffle.address);
 
+        const contractRegistryAsWeb3Contract = web3.eth
+            .contract(contractRegistryArtifact.abi)
+            .at(contractRegistryTruffle.address);
+
         router = new RepaymentRouterContract(repaymentRouterWeb3Contract, TX_DEFAULTS);
         termsContract = new SimpleInterestTermsContractContract(
             termsContractWeb3Contract,
+            TX_DEFAULTS,
+        );
+
+        contractRegistry = new ContractRegistryContract(
+            contractRegistryAsWeb3Contract,
             TX_DEFAULTS,
         );
 
@@ -111,19 +133,9 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
     });
 
     describe("Initialization", () => {
-        it("points to the DebtRegistry passed in through the constructor", async () => {
-            await expect(termsContract.debtRegistry.callAsync()).to.eventually.equal(
-                mockRegistry.address,
-            );
-        });
-        it("points to the RepaymentRouter passed in through the constructor", async () => {
-            await expect(termsContract.repaymentRouter.callAsync()).to.eventually.equal(
-                router.address,
-            );
-        });
-        it("points to the TokenRegistry passed in through the constructor", async () => {
-            await expect(termsContract.tokenRegistry.callAsync()).to.eventually.equal(
-                mockTokenRegistry.address,
+        it("points to the Contract Registry passed in through the constructor", async () => {
+            await expect(termsContract.contractRegistry.callAsync()).to.eventually.equal(
+                contractRegistry.address,
             );
         });
     });

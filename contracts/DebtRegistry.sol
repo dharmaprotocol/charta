@@ -18,7 +18,7 @@
 
 pragma solidity 0.4.18;
 
-import "./libraries/PermissionsLib.sol";
+import { PermissionsLib, PermissionEvents } from "./libraries/PermissionsLib.sol";
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
 import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
 
@@ -31,7 +31,7 @@ import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
  *
  * Author: Nadav Hollander -- Github: nadavhollander
  */
-contract DebtRegistry is Pausable {
+contract DebtRegistry is Pausable, PermissionEvents {
     using SafeMath for uint;
     using PermissionsLib for PermissionsLib.Permissions;
 
@@ -54,6 +54,9 @@ contract DebtRegistry is Pausable {
     PermissionsLib.Permissions internal entryInsertPermissions;
     PermissionsLib.Permissions internal entryEditPermissions;
 
+    string public constant INSERT_CONTEXT = "debt-registry-insert";
+    string public constant EDIT_CONTEXT = "debt-registry-edit";
+
     event LogInsertEntry(
         bytes32 indexed issuanceHash,
         address indexed beneficiary,
@@ -67,22 +70,6 @@ contract DebtRegistry is Pausable {
         bytes32 indexed issuanceHash,
         address indexed previousBeneficiary,
         address indexed newBeneficiary
-    );
-
-    event LogAddAuthorizedInsertAgent(
-        address agent
-    );
-
-    event LogAddAuthorizedEditAgent(
-        address agent
-    );
-
-    event LogRevokeInsertAgentAuthorization(
-        address agent
-    );
-
-    event LogRevokeEditAgentAuthorization(
-        address agent
     );
 
     modifier onlyAuthorizedToInsert() {
@@ -185,8 +172,7 @@ contract DebtRegistry is Pausable {
         public
         onlyOwner
     {
-        entryInsertPermissions.authorize(agent);
-        LogAddAuthorizedInsertAgent(agent);
+        entryInsertPermissions.authorize(agent, INSERT_CONTEXT);
     }
 
     /**
@@ -197,8 +183,7 @@ contract DebtRegistry is Pausable {
         public
         onlyOwner
     {
-        entryEditPermissions.authorize(agent);
-        LogAddAuthorizedEditAgent(agent);
+        entryEditPermissions.authorize(agent, EDIT_CONTEXT);
     }
 
     /**
@@ -209,8 +194,7 @@ contract DebtRegistry is Pausable {
         public
         onlyOwner
     {
-        entryInsertPermissions.revokeAuthorization(agent);
-        LogRevokeInsertAgentAuthorization(agent);
+        entryInsertPermissions.revokeAuthorization(agent, INSERT_CONTEXT);
     }
 
     /**
@@ -221,8 +205,7 @@ contract DebtRegistry is Pausable {
         public
         onlyOwner
     {
-        entryEditPermissions.revokeAuthorization(agent);
-        LogRevokeEditAgentAuthorization(agent);
+        entryEditPermissions.revokeAuthorization(agent, EDIT_CONTEXT);
     }
 
     /**

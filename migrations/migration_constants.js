@@ -1,17 +1,12 @@
-const keccak256 = require("js-sha3").keccak_256;
-
-function generateAddress(seed) {
-    return "0x" + keccak256(seed).substr(24, 64);
-}
-
-const OWNER_ONE = generateAddress("test account one");
-const OWNER_TWO = generateAddress("test account two");
-const OWNER_THREE = generateAddress("test account three");
-const OWNER_FOUR = generateAddress("test account four");
-const OWNER_FIVE = generateAddress("test account five");
+const OWNER_ONE = "0x5d497982326f641e0b374585ff7c1c1be9878560";
+const OWNER_TWO = "0x8f8c5ebde485dfcb64d8e6d1dea833b2d43fb9de";
+const OWNER_THREE = "0xb41411e8cfae259a6494ecdc81833b627f051be4";
+const OWNER_FOUR = "0xfefdde6a490cd4095de204b6fe31ba1607b19e3f";
+const OWNER_FIVE = "0xa32d732ab0096dbf837f3e5d358ac5b597dcbf73";
 
 const SIGNATORIES = [OWNER_ONE, OWNER_TWO, OWNER_THREE, OWNER_FOUR, OWNER_FIVE];
 const THRESHOLD = 1 / 2; // 50%
+const TIMELOCK_IN_SECONDS = 60 * 60 * 24 * 7; // 7 Days
 const LIVE_NETWORK_ID = "live";
 const DUMMY_TOKEN_SUPPLY = 10 ** 27;
 const DUMMY_TOKEN_DECIMALS = 18;
@@ -29,13 +24,15 @@ const TOKEN_URI_OPERATOR = "0x5d497982326f641e0b374585ff7c1c1be9878560";
  *
  * @type {string[]}
  */
-const CONTRACT_NAMES = [
+const NAMES_OF_CONTRACTS_OWNED_BY_MULTISIG = [
     "DebtRegistry",
     "DebtToken",
     "DebtKernel",
     "TokenTransferProxy",
     "RepaymentRouter",
     "Collateralizer",
+    "TokenRegistry",
+    "ContractRegistry",
 ];
 
 /**
@@ -350,10 +347,11 @@ const TOKEN_LIST = [
 module.exports = {
     SIGNATORIES,
     THRESHOLD,
+    TIMELOCK_IN_SECONDS,
     LIVE_NETWORK_ID,
     DUMMY_TOKEN_SUPPLY,
     DUMMY_TOKEN_DECIMALS,
     TOKEN_LIST,
-    CONTRACT_NAMES,
+    NAMES_OF_CONTRACTS_OWNED_BY_MULTISIG,
     TOKEN_URI_OPERATOR,
 };

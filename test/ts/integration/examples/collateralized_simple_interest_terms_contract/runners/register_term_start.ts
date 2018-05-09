@@ -25,7 +25,7 @@ export class RegisterTermStartRunner extends CollateralizedSimpleInterestTermsCo
                 await this.setupDebtOrder(scenario);
 
                 // Reset the collateralizer contract's balance for each example.
-                await this.contracts.dummyREPToken.setBalance.sendTransactionAsync(
+                await this.contracts.dummyZRXToken.setBalance.sendTransactionAsync(
                     this.contracts.collateralizerContract.address,
                     new BigNumber(0),
                     {
@@ -33,7 +33,7 @@ export class RegisterTermStartRunner extends CollateralizedSimpleInterestTermsCo
                     },
                 );
 
-                await this.contracts.dummyREPToken.setBalance.sendTransactionAsync(
+                await this.contracts.dummyZRXToken.setBalance.sendTransactionAsync(
                     this.accounts.DEBTOR_1,
                     scenario.collateralTokenBalance,
                     {
@@ -41,7 +41,7 @@ export class RegisterTermStartRunner extends CollateralizedSimpleInterestTermsCo
                     },
                 );
 
-                await this.contracts.dummyREPToken.approve.sendTransactionAsync(
+                await this.contracts.dummyZRXToken.approve.sendTransactionAsync(
                     this.contracts.tokenTransferProxy.address,
                     scenario.collateralTokenAllowance,
                     { from: this.accounts.DEBTOR_1 },
@@ -55,6 +55,8 @@ export class RegisterTermStartRunner extends CollateralizedSimpleInterestTermsCo
                 }
 
                 if (scenario.invokedByDebtKernel && !scenario.reverts) {
+                    const latestBlockTime = await this.web3Utils.getLatestBlockTime();
+
                     // Fill the debt order, thereby invoking registerTermsStart from the debt kernel.
                     txHash = await this.fillDebtOrder();
                 }
@@ -102,7 +104,7 @@ export class RegisterTermStartRunner extends CollateralizedSimpleInterestTermsCo
                     const expectedLog = CollateralLocked(
                         collateralizerContract.address,
                         this.agreementId,
-                        this.contracts.dummyREPToken.address,
+                        this.contracts.dummyZRXToken.address,
                         scenario.collateralAmount,
                     );
 
@@ -112,27 +114,17 @@ export class RegisterTermStartRunner extends CollateralizedSimpleInterestTermsCo
                 });
 
                 it("should decrement the balance for the debtor by the collateral amount", async () => {
-                    const balance = await this.contracts.dummyREPToken.balanceOf.callAsync(
+                    const balance = await this.contracts.dummyZRXToken.balanceOf.callAsync(
                         this.accounts.DEBTOR_1,
                     );
 
-                    if (
-                        scenario.collateralTokenIndexInRegistry.equals(scenario.principalTokenIndex)
-                    ) {
-                        const amountFromLoan = scenario.principalAmount.sub(scenario.debtorFee);
-
-                        expect(balance.toString()).to.equal(amountFromLoan.toString());
-                    } else {
-                        expect(balance.toString()).to.equal(
-                            scenario.collateralTokenBalance
-                                .sub(scenario.collateralAmount)
-                                .toString(),
-                        );
-                    }
+                    expect(balance.toString()).to.equal(
+                        scenario.collateralTokenBalance.sub(scenario.collateralAmount).toString(),
+                    );
                 });
 
                 it("should increment the collateralizer balance by the collateral amount", async () => {
-                    const balance = await this.contracts.dummyREPToken.balanceOf.callAsync(
+                    const balance = await this.contracts.dummyZRXToken.balanceOf.callAsync(
                         this.contracts.collateralizerContract.address,
                     );
 

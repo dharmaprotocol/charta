@@ -26,9 +26,10 @@ export const UNSUCCESSFUL_REGISTER_TERM_START_SCENARIOS: RegisterTermStartScenar
         principalAmount: new BigNumber(0),
     },
     {
-        description: "when there is no token at the given token index in the terms contract parameters",
+        description:
+            "when there is no token at the given token index in the terms contract parameters",
         ...defaultArgs,
         reverts: true,
-        principalTokenIndex: new BigNumber(99),
+        principalTokenInRegistry: false,
     },
 ];

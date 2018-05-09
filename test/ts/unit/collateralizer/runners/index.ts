@@ -24,7 +24,7 @@ export interface TestContracts {
 }
 
 export interface ExpectedRepaymentValueDate {
-    timestamp: number;
+    timestamp: (latestBlockTime: number) => number;
     expectedRepaymentValue: BigNumber;
 }
 
@@ -79,7 +79,7 @@ export interface ReturnCollateralScenario {
     // Current value repaid to date
     valueRepaidToDate: BigNumber;
     // The timestamp of the debt's term end
-    termEndTimestamp: number;
+    termEndTimestamp: (latestBlockTime: number) => number;
     // Schedule for expected repayment value
     expectedRepaymentValueSchedule: ExpectedRepaymentValueDate[];
     // Specifies whether the terms contract associated with

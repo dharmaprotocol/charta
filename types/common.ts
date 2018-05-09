@@ -48,3 +48,13 @@ export interface Log {
 export type Address = string;
 export type UInt = number | BigNumber;
 export type Bytes32 = string;
+
+export enum SolidityType {
+    address = "address",
+    uint256 = "uint256",
+    uint8 = "uint8",
+    uint = "uint",
+    bytes32 = "bytes32",
+    boolean = "bool",
+    string = "string",
+}

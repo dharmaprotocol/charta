@@ -1,9 +1,15 @@
+import * as ABIDecoder from "abi-decoder";
 import * as BigNumber from "bignumber.js";
 import * as chai from "chai";
 import * as Web3 from "web3";
+
 import { DummyContractContract } from "../../../types/generated/dummy_contract";
+
 import ChaiSetup from "../test_utils/chai_setup";
 import { INVALID_OPCODE } from "../test_utils/constants.js";
+
+import { AuthorizationRevoked, Authorized, EventNames } from "../logs/permissions_lib";
+import { queryLogsForEvent } from "../logs/log_utils";
 
 ChaiSetup.configure();
 const expect = chai.expect;
@@ -13,7 +19,10 @@ const dummyContract = artifacts.require("DummyContract");
 
 contract("Permissions", (ACCOUNTS) => {
     const USER = ACCOUNTS[0];
-    const AGENTS = [ACCOUNTS[1], ACCOUNTS[2], ACCOUNTS[3]];
+    const AGENT_1 = ACCOUNTS[1];
+    const AGENT_2 = ACCOUNTS[2];
+    const AGENT_3 = ACCOUNTS[3];
+    const AGENTS = [AGENT_1, AGENT_2, AGENT_3];
     const INQUIRER = ACCOUNTS[4];
 
     const TX_DEFAULTS = { from: USER, gas: 4000000 };
@@ -65,6 +74,49 @@ contract("Permissions", (ACCOUNTS) => {
                 dummyContractWeb3Contract,
                 TX_DEFAULTS,
             );
+        });
+
+        describe("events", () => {
+            before(() => {
+                // Initialize ABI Decoder for deciphering log receipts.
+                ABIDecoder.addABI(dummyContract.abi);
+            });
+
+            after(() => {
+                // Tear down ABIDecoder before next set of tests.
+                ABIDecoder.removeABI(dummyContract.abi);
+            });
+
+            it("should emit an event when an agent is authorized", async () => {
+                const txHash = await dummyContractInstance.authorizeInFirstSet.sendTransactionAsync(
+                    AGENT_1,
+                );
+
+                const expectedLogEntry = Authorized(
+                    dummyContractInstance.address,
+                    AGENT_1,
+                    "dummy-contract-first-set",
+                );
+                const resultingLog = await queryLogsForEvent(txHash, EventNames.Authorized);
+                expect(resultingLog).to.deep.equal(expectedLogEntry);
+            });
+
+            it("should emit an event when an agent's authorization is revoked", async () => {
+                const txHash = await dummyContractInstance.revokeInFirstSet.sendTransactionAsync(
+                    AGENT_1,
+                );
+
+                const expectedLogEntry = AuthorizationRevoked(
+                    dummyContractInstance.address,
+                    AGENT_1,
+                    "dummy-contract-first-set",
+                );
+                const resultingLog = await queryLogsForEvent(
+                    txHash,
+                    EventNames.AuthorizationRevoked,
+                );
+                expect(resultingLog).to.deep.equal(expectedLogEntry);
+            });
         });
 
         it("should start with empty permission sets", async () => {

@@ -4,19 +4,15 @@ import * as chai from "chai";
 import * as _ from "lodash";
 import * as Web3 from "web3";
 import * as Units from "../test_utils/units";
-import * as utils from "../test_utils/utils";
+import { isBigNumber } from "../test_utils/format";
 
 import { Address, Bytes32, TxData, TxDataPayable, UInt } from "../../../types/common";
 import { DebtRegistryContract } from "../../../types/generated/debt_registry";
 import { DebtRegistryEntry } from "../../../types/registry/entry";
-import {
-    LogAddAuthorizedEditAgent,
-    LogAddAuthorizedInsertAgent,
-    LogInsertEntry,
-    LogModifyEntryBeneficiary,
-    LogRevokeEditAgentAuthorization,
-    LogRevokeInsertAgentAuthorization,
-} from "../logs/debt_registry";
+import { LogInsertEntry, LogModifyEntryBeneficiary } from "../logs/debt_registry";
+import { AuthorizationRevoked, Authorized, EventNames } from "../logs/permissions_lib";
+import { queryLogsForEvent } from "../logs/log_utils";
+
 import { BigNumberSetup } from "../test_utils/bignumber_setup";
 import ChaiSetup from "../test_utils/chai_setup";
 import { INVALID_OPCODE, REVERT_ERROR } from "../test_utils/constants";
@@ -153,20 +149,20 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
         const expectedDebtorsDebts: string[] = [];
 
         describe("first agent", () => {
-            let res: Web3.TransactionReceipt;
+            let txHash: string;
 
             before(async () => {
-                const txHash = await registry.addAuthorizedInsertAgent.sendTransactionAsync(
-                    AGENT_1,
-                );
-                res = await web3.eth.getTransactionReceipt(txHash);
+                txHash = await registry.addAuthorizedInsertAgent.sendTransactionAsync(AGENT_1);
             });
 
-            it("should emit log saying first agent authorized", async () => {
-                const [logReturned] = ABIDecoder.decodeLogs(res.logs);
-                const logExpected = LogAddAuthorizedInsertAgent(registry.address, AGENT_1);
-
-                expect(logReturned).to.deep.equal(logExpected);
+            it("should emit log broadcasting authorization to insert", async () => {
+                const expectedLogEntry = Authorized(
+                    registry.address,
+                    AGENT_1,
+                    "debt-registry-insert",
+                );
+                const queryResult = await queryLogsForEvent(txHash, EventNames.Authorized);
+                expect(queryResult).to.deep.equal(expectedLogEntry);
             });
 
             it("should return first agent as authorized", async () => {
@@ -177,20 +173,20 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
         });
 
         describe("second agent", () => {
-            let res: Web3.TransactionReceipt;
+            let txHash: string;
 
             before(async () => {
-                const txHash = await registry.addAuthorizedInsertAgent.sendTransactionAsync(
-                    AGENT_2,
-                );
-                res = await web3.eth.getTransactionReceipt(txHash);
+                txHash = await registry.addAuthorizedInsertAgent.sendTransactionAsync(AGENT_2);
             });
 
-            it("should emit log saying second agent authorized", async () => {
-                const [logReturned] = ABIDecoder.decodeLogs(res.logs);
-                const logExpected = LogAddAuthorizedInsertAgent(registry.address, AGENT_2);
-
-                expect(logReturned).to.deep.equal(logExpected);
+            it("should emit log broadcasting authorization to insert", async () => {
+                const expectedLogEntry = Authorized(
+                    registry.address,
+                    AGENT_2,
+                    "debt-registry-insert",
+                );
+                const queryResult = await queryLogsForEvent(txHash, EventNames.Authorized);
+                expect(queryResult).to.deep.equal(expectedLogEntry);
             });
 
             it("should return both first and second agents authorized", async () => {
@@ -239,7 +235,7 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
                 ];
 
                 _.forEach(retrievedEntry, (value: any, i: number) => {
-                    if (utils.isBigNumber(value)) {
+                    if (isBigNumber(value)) {
                         expect(value).to.bignumber.deep.equal(expectedEntry[i]);
                     } else {
                         expect(value).to.equal(expectedEntry[i]);
@@ -293,7 +289,7 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
                 ];
 
                 _.forEach(retrievedEntry, (value: any, i: number) => {
-                    if (utils.isBigNumber(value)) {
+                    if (isBigNumber(value)) {
                         expect(value).to.bignumber.deep.equal(expectedEntry[i]);
                     } else {
                         expect(value).to.equal(expectedEntry[i]);
@@ -316,20 +312,20 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
 
         describe("owner authorizes agent(s) for editing entries", () => {
             describe("third agent", () => {
-                let res: Web3.TransactionReceipt;
+                let txHash: string;
 
                 before(async () => {
-                    const txHash = await registry.addAuthorizedEditAgent.sendTransactionAsync(
-                        AGENT_3,
-                    );
-                    res = await web3.eth.getTransactionReceipt(txHash);
+                    txHash = await registry.addAuthorizedEditAgent.sendTransactionAsync(AGENT_3);
                 });
 
-                it("should emit log saying third agent authorized", async () => {
-                    const [logReturned] = ABIDecoder.decodeLogs(res.logs);
-                    const logExpected = LogAddAuthorizedEditAgent(registry.address, AGENT_3);
-
-                    expect(logReturned).to.deep.equal(logExpected);
+                it("should emit log broadcasting authorization to edit", async () => {
+                    const expectedLogEntry = Authorized(
+                        registry.address,
+                        AGENT_3,
+                        "debt-registry-edit",
+                    );
+                    const queryResult = await queryLogsForEvent(txHash, EventNames.Authorized);
+                    expect(queryResult).to.deep.equal(expectedLogEntry);
                 });
 
                 it("should return first agent as authorized", async () => {
@@ -340,20 +336,20 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
             });
 
             describe("fourth agent", () => {
-                let res: Web3.TransactionReceipt;
+                let txHash: string;
 
                 before(async () => {
-                    const txHash = await registry.addAuthorizedEditAgent.sendTransactionAsync(
-                        AGENT_4,
-                    );
-                    res = await web3.eth.getTransactionReceipt(txHash);
+                    txHash = await registry.addAuthorizedEditAgent.sendTransactionAsync(AGENT_4);
                 });
 
-                it("should emit log saying fourth agent authorized", async () => {
-                    const [logReturned] = ABIDecoder.decodeLogs(res.logs);
-                    const logExpected = LogAddAuthorizedEditAgent(registry.address, AGENT_4);
-
-                    expect(logReturned).to.deep.equal(logExpected);
+                it("should emit log broadcasting authorization to edit", async () => {
+                    const expectedLogEntry = Authorized(
+                        registry.address,
+                        AGENT_4,
+                        "debt-registry-edit",
+                    );
+                    const queryResult = await queryLogsForEvent(txHash, EventNames.Authorized);
+                    expect(queryResult).to.deep.equal(expectedLogEntry);
                 });
 
                 it("should return third and fourth agent as authorized", async () => {
@@ -475,23 +471,28 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
         });
 
         describe("owner revokes second agent from inserting entries", () => {
-            let res: Web3.TransactionReceipt;
+            let txHash: string;
 
             before(async () => {
-                const txHash = await registry.revokeInsertAgentAuthorization.sendTransactionAsync(
+                txHash = await registry.revokeInsertAgentAuthorization.sendTransactionAsync(
                     AGENT_2,
                     {
                         from: CONTRACT_OWNER,
                     },
                 );
-                res = await web3.eth.getTransactionReceipt(txHash);
             });
 
-            it("should emit log saying agent authorization revoked", async () => {
-                const [logReturned] = ABIDecoder.decodeLogs(res.logs);
-                const logExpected = LogRevokeInsertAgentAuthorization(registry.address, AGENT_2);
-
-                expect(logReturned).to.deep.equal(logExpected);
+            it("should emit log broadcasting revocation of insert permissions", async () => {
+                const expectedLogEntry = AuthorizationRevoked(
+                    registry.address,
+                    AGENT_2,
+                    "debt-registry-insert",
+                );
+                const queryResult = await queryLogsForEvent(
+                    txHash,
+                    EventNames.AuthorizationRevoked,
+                );
+                expect(queryResult).to.deep.equal(expectedLogEntry);
             });
 
             it("should return second agent as unauthorized", async () => {
@@ -508,23 +509,25 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
         });
 
         describe("owner revokes third agent from editing entries", () => {
-            let res: Web3.TransactionReceipt;
+            let txHash: string;
 
             before(async () => {
-                const txHash = await registry.revokeEditAgentAuthorization.sendTransactionAsync(
-                    AGENT_3,
-                    {
-                        from: CONTRACT_OWNER,
-                    },
-                );
-                res = await web3.eth.getTransactionReceipt(txHash);
+                txHash = await registry.revokeEditAgentAuthorization.sendTransactionAsync(AGENT_3, {
+                    from: CONTRACT_OWNER,
+                });
             });
 
-            it("should emit log saying agent authorization revoked", async () => {
-                const [logReturned] = ABIDecoder.decodeLogs(res.logs);
-                const logExpected = LogRevokeEditAgentAuthorization(registry.address, AGENT_3);
-
-                expect(logReturned).to.deep.equal(logExpected);
+            it("should emit log broadcasting revocation of insert permissions", async () => {
+                const expectedLogEntry = AuthorizationRevoked(
+                    registry.address,
+                    AGENT_3,
+                    "debt-registry-edit",
+                );
+                const queryResult = await queryLogsForEvent(
+                    txHash,
+                    EventNames.AuthorizationRevoked,
+                );
+                expect(queryResult).to.deep.equal(expectedLogEntry);
             });
 
             it("should return third agent as unauthorized", async () => {

@@ -25,6 +25,7 @@ import "./TermsContract.sol";
 import "./DebtRegistry.sol";
 import "./TokenRegistry.sol";
 import "./TokenTransferProxy.sol";
+import { PermissionsLib, PermissionEvents } from "./libraries/PermissionsLib.sol";
 
 
 /**
@@ -33,7 +34,7 @@ import "./TokenTransferProxy.sol";
   *
   * Authors (in no particular order): nadavhollander, saturnial, jdkanani, graemecode
   */
-contract Collateralizer is Pausable {
+contract Collateralizer is Pausable, PermissionEvents {
     using PermissionsLib for PermissionsLib.Permissions;
     using SafeMath for uint;
 
@@ -49,6 +50,8 @@ contract Collateralizer is Pausable {
     PermissionsLib.Permissions internal collateralizationPermissions;
 
     uint public constant SECONDS_IN_DAY = 24*60*60;
+
+    string public constant CONTEXT = "collateralizer";
 
     event CollateralLocked(
         bytes32 indexed agreementID,
@@ -68,14 +71,6 @@ contract Collateralizer is Pausable {
         address indexed beneficiary,
         address token,
         uint amount
-    );
-
-    event LogAddAuthorizedCollateralizeAgent(
-        address agent
-    );
-
-    event LogRevokeAuthorizedCollateralizeAgent(
-        address agent
     );
 
     modifier onlyAuthorizedToCollateralize() {
@@ -334,8 +329,7 @@ contract Collateralizer is Pausable {
         public
         onlyOwner
     {
-        collateralizationPermissions.authorize(agent);
-        LogAddAuthorizedCollateralizeAgent(agent);
+        collateralizationPermissions.authorize(agent, CONTEXT);
     }
 
     /**
@@ -346,8 +340,7 @@ contract Collateralizer is Pausable {
         public
         onlyOwner
     {
-        collateralizationPermissions.revokeAuthorization(agent);
-        LogRevokeAuthorizedCollateralizeAgent(agent);
+        collateralizationPermissions.revokeAuthorization(agent, CONTEXT);
     }
 
     /**

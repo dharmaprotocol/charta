@@ -7,15 +7,16 @@ import { DebtKernelContract } from "../../../types/generated/debt_kernel";
 import { RepaymentRouterContract } from "../../../types/generated/repayment_router";
 import { TokenTransferProxyContract } from "../../../types/generated/token_transfer_proxy";
 import { CollateralizerContract } from "../../../types/generated/collateralizer";
-import { MultiSigWalletContract } from "../../../types/generated/multi_sig_wallet";
-
+import { DharmaMultiSigWalletContract } from "../../../types/generated/dharma_multi_sig_wallet";
 import { MockERC20TokenContract } from "../../../types/generated/mock_e_r_c20_token";
 
 import { BigNumberSetup } from "../test_utils/bignumber_setup";
 import ChaiSetup from "../test_utils/chai_setup";
 import { REVERT_ERROR } from "../test_utils/constants";
-import { multiSigExecute } from "../test_utils/utils";
+import { multiSigExecuteAfterTimelock } from "../test_utils/multisig";
 import { Address, TxData } from "../../../types/common";
+import { AuthorizationRevoked, Authorized, EventNames } from "../logs/permissions_lib";
+import { queryLogsForEvent } from "../logs/log_utils";
 
 // Set up Chai
 ChaiSetup.configure();
@@ -30,7 +31,7 @@ contract("Token Transfer Proxy (Unit Tests)", async (ACCOUNTS) => {
     let repaymentRouter: RepaymentRouterContract;
     let mockToken: MockERC20TokenContract;
     let collateralizer: CollateralizerContract;
-    let multiSig: MultiSigWalletContract;
+    let multiSig: DharmaMultiSigWalletContract;
 
     const CONTRACT_OWNER = ACCOUNTS[0];
     const ATTACKER = ACCOUNTS[1];
@@ -47,7 +48,7 @@ contract("Token Transfer Proxy (Unit Tests)", async (ACCOUNTS) => {
         repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
         mockToken = await MockERC20TokenContract.deployed(web3, TX_DEFAULTS);
         collateralizer = await CollateralizerContract.deployed(web3, TX_DEFAULTS);
-        multiSig = await MultiSigWalletContract.deployed(web3, TX_DEFAULTS);
+        multiSig = await DharmaMultiSigWalletContract.deployed(web3, TX_DEFAULTS);
     });
 
     describe("Initialization", () => {
@@ -82,10 +83,23 @@ contract("Token Transfer Proxy (Unit Tests)", async (ACCOUNTS) => {
         });
 
         describe("multi-sig owners authorize transfer agent", () => {
+            let txHash: string;
+
             before(async () => {
-                await multiSigExecute(multiSig, proxy, "addAuthorizedTransferAgent", ACCOUNTS, [
-                    AGENT,
-                ]);
+                txHash = await multiSigExecuteAfterTimelock(
+                    web3,
+                    multiSig,
+                    proxy,
+                    "addAuthorizedTransferAgent",
+                    ACCOUNTS,
+                    [AGENT],
+                );
+
+                ABIDecoder.addABI(proxy.abi);
+            });
+
+            after(async () => {
+                ABIDecoder.removeABI(proxy.abi);
             });
 
             it("should return agent as authorized", async () => {
@@ -98,17 +112,32 @@ contract("Token Transfer Proxy (Unit Tests)", async (ACCOUNTS) => {
                     AGENT,
                 ]);
             });
+
+            it("should emit event broadcasting authorization of transfer agent", async () => {
+                const expectedLogEntry = Authorized(proxy.address, AGENT, "token-transfer-proxy");
+                const resultingLog = await queryLogsForEvent(txHash, EventNames.Authorized);
+                expect(resultingLog).to.deep.equal(expectedLogEntry);
+            });
         });
 
         describe("multi-sig owners revokes transfer agent", () => {
+            let txHash: string;
+
             before(async () => {
-                await multiSigExecute(
+                txHash = await multiSigExecuteAfterTimelock(
+                    web3,
                     multiSig,
                     proxy,
                     "revokeTransferAgentAuthorization",
                     ACCOUNTS,
                     [AGENT],
                 );
+
+                ABIDecoder.addABI(proxy.abi);
+            });
+
+            after(async () => {
+                ABIDecoder.removeABI(proxy.abi);
             });
 
             it("should return agent as unauthorized", async () => {
@@ -119,6 +148,19 @@ contract("Token Transfer Proxy (Unit Tests)", async (ACCOUNTS) => {
                     repaymentRouter.address,
                     collateralizer.address,
                 ]);
+            });
+
+            it("should emit event broadcasting revocation of transfer agent", async () => {
+                const expectedLogEntry = AuthorizationRevoked(
+                    proxy.address,
+                    AGENT,
+                    "token-transfer-proxy",
+                );
+                const resultingLog = await queryLogsForEvent(
+                    txHash,
+                    EventNames.AuthorizationRevoked,
+                );
+                expect(resultingLog).to.deep.equal(expectedLogEntry);
             });
         });
     });
@@ -139,9 +181,14 @@ contract("Token Transfer Proxy (Unit Tests)", async (ACCOUNTS) => {
 
         describe("authorized agent transfers tokens via transfer proxy", () => {
             before(async () => {
-                await multiSigExecute(multiSig, proxy, "addAuthorizedTransferAgent", ACCOUNTS, [
-                    AGENT,
-                ]);
+                await multiSigExecuteAfterTimelock(
+                    web3,
+                    multiSig,
+                    proxy,
+                    "addAuthorizedTransferAgent",
+                    ACCOUNTS,
+                    [AGENT],
+                );
 
                 await proxy.transferFrom.sendTransactionAsync(
                     mockToken.address,
