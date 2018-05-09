@@ -18,8 +18,12 @@
 
 pragma solidity 0.4.18;
 
+// Internal dependencies.
 import "./DebtRegistry.sol";
 import "./ERC165.sol";
+import { PermissionsLib, PermissionEvents } from "./libraries/PermissionsLib.sol";
+
+// External dependencies.
 import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
 import "zeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 import "zeppelin-solidity/contracts/token/ERC20/ERC20.sol";
@@ -33,14 +37,16 @@ import "zeppelin-solidity/contracts/token/ERC20/ERC20.sol";
  *
  * Author: Nadav Hollander -- Github: nadavhollander
  */
-contract DebtToken is ERC721Token, ERC165, Pausable {
+contract DebtToken is ERC721Token, ERC165, Pausable, PermissionEvents {
     using PermissionsLib for PermissionsLib.Permissions;
 
     DebtRegistry public registry;
 
     PermissionsLib.Permissions internal tokenCreationPermissions;
-    PermissionsLib.Permissions internal tokenBrokeragePermissions;
     PermissionsLib.Permissions internal tokenURIPermissions;
+
+    string public constant CREATION_CONTEXT = "debt-token-creation";
+    string public constant URI_CONTEXT = "debt-token-uri";
 
     /**
      * Constructor that sets the address of the debt registry.
@@ -107,7 +113,7 @@ contract DebtToken is ERC721Token, ERC165, Pausable {
         public
         onlyOwner
     {
-        tokenCreationPermissions.authorize(_agent);
+        tokenCreationPermissions.authorize(_agent, CREATION_CONTEXT);
     }
 
     /**
@@ -117,7 +123,7 @@ contract DebtToken is ERC721Token, ERC165, Pausable {
         public
         onlyOwner
     {
-        tokenCreationPermissions.revokeAuthorization(_agent);
+        tokenCreationPermissions.revokeAuthorization(_agent, CREATION_CONTEXT);
     }
 
     /**
@@ -138,7 +144,7 @@ contract DebtToken is ERC721Token, ERC165, Pausable {
         public
         onlyOwner
     {
-        tokenURIPermissions.authorize(_agent);
+        tokenURIPermissions.authorize(_agent, URI_CONTEXT);
     }
 
     /**
@@ -159,7 +165,7 @@ contract DebtToken is ERC721Token, ERC165, Pausable {
         public
         onlyOwner
     {
-        tokenURIPermissions.revokeAuthorization(_agent);
+        tokenURIPermissions.revokeAuthorization(_agent, URI_CONTEXT);
     }
 
     /**

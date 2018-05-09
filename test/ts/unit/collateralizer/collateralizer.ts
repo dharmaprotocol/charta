@@ -6,6 +6,7 @@ import * as Units from "../../test_utils/units";
 // Utils
 import { BigNumberSetup } from "../../test_utils/bignumber_setup";
 import ChaiSetup from "../../test_utils/chai_setup";
+import { REVERT_ERROR } from "../../test_utils/constants";
 
 // Generated Types
 import { CollateralizerContract } from "../../../../types/generated/collateralizer";
@@ -26,6 +27,9 @@ import { SUCCESSFUL_RETURN_SCENARIOS } from "./scenarios/successful_return";
 import { UNSUCCESSFUL_RETURN_SCENARIOS } from "./scenarios/unsuccessful_return";
 import { SUCCESSFUL_SEIZURE_SCENARIOS } from "./scenarios/successful_seizure";
 import { UNSUCCESSFUL_SEIZURE_SCENARIOS } from "./scenarios/unsuccessful_seizure";
+
+import { AuthorizationRevoked, Authorized, EventNames } from "../../logs/permissions_lib";
+import { queryLogsForEvent } from "../../logs/log_utils";
 
 // Set up Chai
 ChaiSetup.configure();
@@ -58,7 +62,8 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
     // The following MOCK_TERMS_CONTRACT_ADDRESS is used in cases where collateralized tested using the "from" modifier.
     // In such cases, the deployed mockTermsContract's address will not be a recognized sender account.
     const MOCK_TERMS_CONTRACT_ADDRESS = ACCOUNTS[6];
-    const ATTACKER = ACCOUNTS[7];
+    const AGENT = ACCOUNTS[7];
+    const ATTACKER = ACCOUNTS[8];
 
     const NULL_PARAMETERS = "0x0000000000000000000000000000000000000000000000000000000000000000";
 
@@ -169,6 +174,88 @@ contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
             await expect(collateralizerContract.tokenRegistry.callAsync()).to.eventually.equal(
                 mockTokenRegistry.address,
             );
+        });
+    });
+
+    describe("Permissioning", () => {
+        describe("#addAuthorizedCollateralizeAgent", () => {
+            describe("non-owner adds collateralize agent", () => {
+                it("should throw", async () => {
+                    await expect(
+                        collateralizerContract.addAuthorizedCollateralizeAgent.sendTransactionAsync(
+                            AGENT,
+                            { from: ATTACKER },
+                        ),
+                    ).to.eventually.be.rejectedWith(REVERT_ERROR);
+                });
+            });
+
+            describe("owner adds collateralize agent", () => {
+                let txHash: string;
+
+                before(async () => {
+                    txHash = await collateralizerContract.addAuthorizedCollateralizeAgent.sendTransactionAsync(
+                        AGENT,
+                        { from: CONTRACT_OWNER },
+                    );
+                });
+
+                it("adds specified agent to the set of authorized agents", async () => {
+                    const authorizedAgents = await collateralizerContract.getAuthorizedCollateralizeAgents.callAsync();
+                    expect(authorizedAgents.includes(AGENT)).to.be.true;
+                });
+
+                it("emits event broadcasting authorization of agent", async () => {
+                    const expectedLogEntry = Authorized(
+                        collateralizerContract.address,
+                        AGENT,
+                        "collateralizer",
+                    );
+                    const resultingLog = await queryLogsForEvent(txHash, EventNames.Authorized);
+                    expect(resultingLog).to.deep.equal(expectedLogEntry);
+                });
+            });
+        });
+
+        describe("#revokeCollateralizeAuthorization", () => {
+            describe("non-owner revokes authorization for collateralize agent", () => {
+                it("should throw", async () => {
+                    await expect(
+                        collateralizerContract.revokeCollateralizeAuthorization.sendTransactionAsync(
+                            AGENT,
+                            { from: ATTACKER },
+                        ),
+                    ).to.eventually.be.rejectedWith(REVERT_ERROR);
+                });
+            });
+
+            describe("owner revokes authorization for collateralize agent", () => {
+                let txHash: string;
+
+                before(async () => {
+                    txHash = await collateralizerContract.revokeCollateralizeAuthorization.sendTransactionAsync(
+                        AGENT,
+                    );
+                });
+
+                it("removes specified agent from set of authorized agents", async () => {
+                    const authorizedAgents = await collateralizerContract.getAuthorizedCollateralizeAgents.callAsync();
+                    expect(authorizedAgents.includes(AGENT)).to.be.false;
+                });
+
+                it("emits event broadcasting revoking authorization of agent", async () => {
+                    const expectedLogEntry = AuthorizationRevoked(
+                        collateralizerContract.address,
+                        AGENT,
+                        "collateralizer",
+                    );
+                    const resultingLog = await queryLogsForEvent(
+                        txHash,
+                        EventNames.AuthorizationRevoked,
+                    );
+                    expect(resultingLog).to.deep.equal(expectedLogEntry);
+                });
+            });
         });
     });
 

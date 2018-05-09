@@ -19,14 +19,37 @@
 pragma solidity 0.4.18;
 
 
+/**
+ *  Note(kayvon): these events are emitted by our PermissionsLib, but all contracts that
+ *  depend on the library must also define the events in order for web3 clients to pick them up.
+ *  This topic is discussed in greater detail here (under the section "Events and Libraries"):
+ *  https://blog.aragon.one/library-driven-development-in-solidity-2bebcaf88736
+ */
+contract PermissionEvents {
+    event Authorized(address indexed agent, string callingContext);
+    event AuthorizationRevoked(address indexed agent, string callingContext);
+}
+
+
 library PermissionsLib {
+
+    // TODO(kayvon): remove these events and inherit from PermissionEvents when libraries are
+    // capable of inheritance.
+    // See relevant github issue here: https://github.com/ethereum/solidity/issues/891
+    event Authorized(address indexed agent, string callingContext);
+    event AuthorizationRevoked(address indexed agent, string callingContext);
+
     struct Permissions {
         mapping (address => bool) authorized;
         mapping (address => uint) agentToIndex; // ensures O(1) look-up
         address[] authorizedAgents;
     }
 
-    function authorize(Permissions storage self, address agent)
+    function authorize(
+        Permissions storage self,
+        address agent,
+        string callingContext
+    )
         internal
     {
         require(isNotAuthorized(self, agent));
@@ -34,9 +57,14 @@ library PermissionsLib {
         self.authorized[agent] = true;
         self.authorizedAgents.push(agent);
         self.agentToIndex[agent] = self.authorizedAgents.length - 1;
+        Authorized(agent, callingContext);
     }
 
-    function revokeAuthorization(Permissions storage self, address agent)
+    function revokeAuthorization(
+        Permissions storage self,
+        address agent,
+        string callingContext
+    )
         internal
     {
         /* We only want to do work in the case where the agent whose
@@ -61,6 +89,8 @@ library PermissionsLib {
         // Clean up memory that's no longer being used.
         delete self.authorizedAgents[indexOfAgentToMove];
         self.authorizedAgents.length -= 1;
+
+        AuthorizationRevoked(agent, callingContext);
     }
 
     function isAuthorized(Permissions storage self, address agent)

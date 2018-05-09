@@ -13,7 +13,7 @@ import { CollateralizerContract } from "../../../types/generated/collateralizer"
 import { ContractRegistryContract } from "../../../types/generated/contract_registry";
 
 import { ContractAddressUpdated, EventNames } from "../logs/contract_registry";
-import { parseLogsForEvent } from "../logs/log_utils";
+import { queryLogsForEvent } from "../logs/log_utils";
 import { INVALID_OPCODE, NULL_ADDRESS, REVERT_ERROR } from "../test_utils/constants";
 
 import ChaiSetup from "../test_utils/chai_setup";
@@ -142,7 +142,7 @@ contract("Contract Registry (Unit Tests)", async (ACCOUNTS) => {
                     mockDebtRegistry.address,
                     NEW_DEBT_REGISTRY_ADDRESS,
                 );
-                const resultingLog = await parseLogsForEvent(
+                const resultingLog = await queryLogsForEvent(
                     txHash,
                     EventNames.ContractAddressUpdated,
                 );

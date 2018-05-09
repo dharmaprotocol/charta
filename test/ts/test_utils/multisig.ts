@@ -113,7 +113,7 @@ async function submitAndConfirmMultiSigTransaction(
  * @param {Address[]} accounts
  * @param {any[]} args
  * @param {TxData} txData
- * @returns {Promise<void>}
+ * @returns {Promise<string>} txHash - the hash of the transaction that the multi-sig executed.
  */
 export async function multiSigExecuteAfterTimelock(
     web3: Web3,
@@ -124,7 +124,7 @@ export async function multiSigExecuteAfterTimelock(
     args: any[] = [],
     timelock: number = TIMELOCK_IN_SECONDS,
     txData?: TxData,
-): Promise<void> {
+): Promise<string> {
     const web3Utils = new Web3Utils(web3);
 
     const transactionId = await submitAndConfirmMultiSigTransaction(
@@ -138,7 +138,7 @@ export async function multiSigExecuteAfterTimelock(
 
     await web3Utils.increaseTime(timelock);
 
-    await multiSig.executeTransaction.sendTransactionAsync(transactionId);
+    const txHash = await multiSig.executeTransaction.sendTransactionAsync(transactionId);
 
     const transaction = await multiSig.transactions.callAsync(transactionId);
 
@@ -147,6 +147,8 @@ export async function multiSigExecuteAfterTimelock(
     if (!executedSuccessfully) {
         throw new Error(`Multisig transaction with ID #${transactionId} failed to execute.`);
     }
+
+    return txHash;
 }
 
 /**

@@ -19,6 +19,7 @@
 pragma solidity 0.4.18;
 
 import "./DebtRegistry.sol";
+import { PermissionsLib, PermissionEvents } from "./libraries/PermissionsLib.sol";
 import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
 import "zeppelin-solidity/contracts/token/ERC20/ERC20.sol";
 
@@ -32,10 +33,12 @@ import "zeppelin-solidity/contracts/token/ERC20/ERC20.sol";
  *
  * Author: Nadav Hollander -- Github: nadavhollander
  */
-contract TokenTransferProxy is Pausable {
+contract TokenTransferProxy is Pausable, PermissionEvents {
     using PermissionsLib for PermissionsLib.Permissions;
 
     PermissionsLib.Permissions internal tokenTransferPermissions;
+
+    string public constant CONTEXT = "token-transfer-proxy";
 
     /**
      * Add address to list of agents authorized to initiate `transferFrom` calls
@@ -44,7 +47,7 @@ contract TokenTransferProxy is Pausable {
         public
         onlyOwner
     {
-        tokenTransferPermissions.authorize(_agent);
+        tokenTransferPermissions.authorize(_agent, CONTEXT);
     }
 
     /**
@@ -54,7 +57,7 @@ contract TokenTransferProxy is Pausable {
         public
         onlyOwner
     {
-        tokenTransferPermissions.revokeAuthorization(_agent);
+        tokenTransferPermissions.revokeAuthorization(_agent, CONTEXT);
     }
 
     /**
