@@ -301,31 +301,46 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
             });
 
             describe("#revokeTokenURIAuthorization", () => {
-                let txHash: string;
-
-                before(async () => {
-                    txHash = await debtToken.revokeTokenURIAuthorization.sendTransactionAsync(
-                        AUTHORIZED_URI_AGENT,
-                        { from: CONTRACT_OWNER },
-                    );
+                describe("non-owner revokes uri authorization", () => {
+                    it("should throw", async () => {
+                        await expect(
+                            debtToken.revokeTokenURIAuthorization.sendTransactionAsync(
+                                AUTHORIZED_URI_AGENT,
+                                {
+                                    from: NON_CONTRACT_OWNER,
+                                },
+                            ),
+                        ).to.eventually.be.rejectedWith(REVERT_ERROR);
+                    });
                 });
 
-                it("should emit event broadcasting revoking uri authorization", async () => {
-                    const expectedLogEntry = AuthorizationRevoked(
-                        debtToken.address,
-                        AUTHORIZED_URI_AGENT,
-                        "debt-token-uri",
-                    );
-                    const queryResult = await queryLogsForEvent(
-                        txHash,
-                        EventNames.AuthorizationRevoked,
-                    );
-                    expect(queryResult).to.deep.equal(expectedLogEntry);
-                });
+                describe("owner revokes uri authorization", () => {
+                    let txHash: string;
 
-                it("should not list agent as authorized", async () => {
-                    const authorizedAgents = await debtToken.getAuthorizedTokenURIAgents.callAsync();
-                    await expect(authorizedAgents.includes(AUTHORIZED_URI_AGENT)).to.be.false;
+                    before(async () => {
+                        txHash = await debtToken.revokeTokenURIAuthorization.sendTransactionAsync(
+                            AUTHORIZED_URI_AGENT,
+                            { from: CONTRACT_OWNER },
+                        );
+                    });
+
+                    it("should emit event broadcasting revoking uri authorization", async () => {
+                        const expectedLogEntry = AuthorizationRevoked(
+                            debtToken.address,
+                            AUTHORIZED_URI_AGENT,
+                            "debt-token-uri",
+                        );
+                        const queryResult = await queryLogsForEvent(
+                            txHash,
+                            EventNames.AuthorizationRevoked,
+                        );
+                        expect(queryResult).to.deep.equal(expectedLogEntry);
+                    });
+
+                    it("should not list agent as authorized", async () => {
+                        const authorizedAgents = await debtToken.getAuthorizedTokenURIAgents.callAsync();
+                        await expect(authorizedAgents.includes(AUTHORIZED_URI_AGENT)).to.be.false;
+                    });
                 });
             });
         });
