@@ -1,22 +1,31 @@
+// External
 import * as ABIDecoder from "abi-decoder";
 import { BigNumber } from "bignumber.js";
 import * as chai from "chai";
 import * as _ from "lodash";
 import * as Web3 from "web3";
 import * as Units from "../test_utils/units";
-import { sendTransaction } from "../test_utils/send_transactions";
 
+// Contracts
 import { DebtTokenContract } from "../../../types/generated/debt_token";
 import { MockDebtRegistryContract } from "../../../types/generated/mock_debt_registry";
 import { MockERC20TokenContract } from "../../../types/generated/mock_e_r_c20_token";
 import { MockERC721ReceiverContract } from "../../../types/generated/mock_e_r_c721_receiver";
 
+// Types
 import { Address, TxData } from "../../../types/common";
 import { DebtRegistryEntry } from "../../../types/registry/entry";
+
+// Logs
 import { LogApproval, LogApprovalForAll, LogTransfer } from "../logs/debt_token";
+import { AuthorizationRevoked, Authorized, EventNames } from "../logs/permissions_lib";
+import { queryLogsForEvent } from "../logs/log_utils";
+
+// Test utils
 import { BigNumberSetup } from "../test_utils/bignumber_setup";
 import ChaiSetup from "../test_utils/chai_setup";
 import { INVALID_OPCODE, REVERT_ERROR } from "../test_utils/constants";
+import { sendTransaction } from "../test_utils/send_transactions";
 
 // Configure BigNumber exponentiation
 BigNumberSetup.configure();
@@ -45,9 +54,9 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
     const CONTRACT_OWNER = ACCOUNTS[0];
     const NON_CONTRACT_OWNER = ACCOUNTS[1];
     const AUTHORIZED_MINT_AGENT = ACCOUNTS[2];
-    const AUTHORIZED_BROKERAGE_AGENT = ACCOUNTS[3];
+    const AUTHORIZED_URI_AGENT = ACCOUNTS[3];
     const UNAUTHORIZED_MINT_AGENT = ACCOUNTS[4];
-    const UNAUTHORIZED_BROKERAGE_AGENT = ACCOUNTS[5];
+    const UNAUTHORIZED_URI_AGENT = ACCOUNTS[5];
 
     const TOKEN_OWNER_1 = ACCOUNTS[6];
     const TOKEN_OWNER_2 = ACCOUNTS[7];
@@ -154,38 +163,168 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
     });
 
     describe("Permissions", () => {
-        it("should initialize with no authorizations", async () => {
-            await expect(debtToken.getAuthorizedMintAgents.callAsync()).to.eventually.deep.equal(
-                [],
-            );
-        });
-
-        describe("non-owner adds mint authorization", () => {
-            it("should throw", async () => {
+        describe("Token Creation", () => {
+            it("should initialize with no authorizations", async () => {
                 await expect(
-                    debtToken.addAuthorizedMintAgent.sendTransactionAsync(UNAUTHORIZED_MINT_AGENT, {
-                        from: NON_CONTRACT_OWNER,
-                    }),
-                ).to.eventually.be.rejectedWith(REVERT_ERROR);
+                    debtToken.getAuthorizedMintAgents.callAsync(),
+                ).to.eventually.deep.equal([]);
             });
-        });
 
-        describe("owner adds mint authorization", () => {
-            before(async () => {
-                await debtToken.addAuthorizedMintAgent.sendTransactionAsync(AUTHORIZED_MINT_AGENT, {
-                    from: CONTRACT_OWNER,
+            describe("non-owner adds mint authorization", () => {
+                it("should throw", async () => {
+                    await expect(
+                        debtToken.addAuthorizedMintAgent.sendTransactionAsync(
+                            UNAUTHORIZED_MINT_AGENT,
+                            {
+                                from: NON_CONTRACT_OWNER,
+                            },
+                        ),
+                    ).to.eventually.be.rejectedWith(REVERT_ERROR);
                 });
             });
 
-            it("should return agent as authorized", async () => {
+            describe("#addAuthorizedMintAgent", () => {
+                let txHash: string;
+
+                before(async () => {
+                    txHash = await debtToken.addAuthorizedMintAgent.sendTransactionAsync(
+                        AUTHORIZED_MINT_AGENT,
+                        { from: CONTRACT_OWNER },
+                    );
+                });
+
+                it("should emit event broadcasting mint authorization", async () => {
+                    const expectedLogEntry = Authorized(
+                        debtToken.address,
+                        AUTHORIZED_MINT_AGENT,
+                        "debt-token-creation",
+                    );
+                    const queryResult = await queryLogsForEvent(txHash, EventNames.Authorized);
+                    expect(queryResult).to.deep.equal(expectedLogEntry);
+                });
+
+                it("should return agent as authorized to mint", async () => {
+                    await expect(
+                        debtToken.getAuthorizedMintAgents.callAsync(),
+                    ).to.eventually.deep.equal([AUTHORIZED_MINT_AGENT]);
+                });
+            });
+
+            describe("#revokeMintAgentAuthorization", () => {
+                let txHash: string;
+
+                before(async () => {
+                    txHash = await debtToken.revokeMintAgentAuthorization.sendTransactionAsync(
+                        AUTHORIZED_MINT_AGENT,
+                        { from: CONTRACT_OWNER },
+                    );
+                });
+
+                it("should emit event broadcasting revoking mint authorization", async () => {
+                    const expectedLogEntry = AuthorizationRevoked(
+                        debtToken.address,
+                        AUTHORIZED_MINT_AGENT,
+                        "debt-token-creation",
+                    );
+                    const queryResult = await queryLogsForEvent(
+                        txHash,
+                        EventNames.AuthorizationRevoked,
+                    );
+                    expect(queryResult).to.deep.equal(expectedLogEntry);
+                });
+
+                it("should not list agent as authorized", async () => {
+                    const authorizedAgents = await debtToken.getAuthorizedMintAgents.callAsync();
+                    await expect(authorizedAgents.includes(AUTHORIZED_MINT_AGENT)).to.be.false;
+                });
+            });
+        });
+
+        describe("Token URI", () => {
+            it("should initialize with no authorizations", async () => {
                 await expect(
-                    debtToken.getAuthorizedMintAgents.callAsync(),
-                ).to.eventually.deep.equal([AUTHORIZED_MINT_AGENT]);
+                    debtToken.getAuthorizedTokenURIAgents.callAsync(),
+                ).to.eventually.deep.equal([]);
+            });
+
+            describe("non-owner adds uri authorization", () => {
+                it("should throw", async () => {
+                    await expect(
+                        debtToken.addAuthorizedTokenURIAgent.sendTransactionAsync(
+                            UNAUTHORIZED_URI_AGENT,
+                            {
+                                from: NON_CONTRACT_OWNER,
+                            },
+                        ),
+                    ).to.eventually.be.rejectedWith(REVERT_ERROR);
+                });
+            });
+
+            describe("#addAuthorizedTokenURIAgent", () => {
+                let txHash: string;
+
+                before(async () => {
+                    txHash = await debtToken.addAuthorizedTokenURIAgent.sendTransactionAsync(
+                        AUTHORIZED_URI_AGENT,
+                        { from: CONTRACT_OWNER },
+                    );
+                });
+
+                it("should emit event broadcasting uri authorization", async () => {
+                    const expectedLogEntry = Authorized(
+                        debtToken.address,
+                        AUTHORIZED_URI_AGENT,
+                        "debt-token-uri",
+                    );
+                    const queryResult = await queryLogsForEvent(txHash, EventNames.Authorized);
+                    expect(queryResult).to.deep.equal(expectedLogEntry);
+                });
+
+                it("should return agent as authorized to set token uri", async () => {
+                    await expect(
+                        debtToken.getAuthorizedTokenURIAgents.callAsync(),
+                    ).to.eventually.deep.equal([AUTHORIZED_URI_AGENT]);
+                });
+            });
+
+            describe("#revokeTokenURIAuthorization", () => {
+                let txHash: string;
+
+                before(async () => {
+                    txHash = await debtToken.revokeTokenURIAuthorization.sendTransactionAsync(
+                        AUTHORIZED_URI_AGENT,
+                        { from: CONTRACT_OWNER },
+                    );
+                });
+
+                it("should emit event broadcasting revoking uri authorization", async () => {
+                    const expectedLogEntry = AuthorizationRevoked(
+                        debtToken.address,
+                        AUTHORIZED_URI_AGENT,
+                        "debt-token-uri",
+                    );
+                    const queryResult = await queryLogsForEvent(
+                        txHash,
+                        EventNames.AuthorizationRevoked,
+                    );
+                    expect(queryResult).to.deep.equal(expectedLogEntry);
+                });
+
+                it("should not list agent as authorized", async () => {
+                    const authorizedAgents = await debtToken.getAuthorizedTokenURIAgents.callAsync();
+                    await expect(authorizedAgents.includes(AUTHORIZED_URI_AGENT)).to.be.false;
+                });
             });
         });
     });
 
     describe("Minting", () => {
+        before(async () => {
+            await debtToken.addAuthorizedMintAgent.sendTransactionAsync(AUTHORIZED_MINT_AGENT, {
+                from: CONTRACT_OWNER,
+            });
+        });
+
         describe("unauthorized agent tries to mint debt token", () => {
             it("should throw", async () => {
                 await expect(
