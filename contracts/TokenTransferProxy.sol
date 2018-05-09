@@ -38,6 +38,8 @@ contract TokenTransferProxy is Pausable, PermissionEvents {
 
     PermissionsLib.Permissions internal tokenTransferPermissions;
 
+    string public constant CONTEXT = "token-transfer-proxy";
+
     /**
      * Add address to list of agents authorized to initiate `transferFrom` calls
      */
@@ -45,7 +47,7 @@ contract TokenTransferProxy is Pausable, PermissionEvents {
         public
         onlyOwner
     {
-        tokenTransferPermissions.authorize(_agent);
+        tokenTransferPermissions.authorize(_agent, CONTEXT);
     }
 
     /**
@@ -55,7 +57,7 @@ contract TokenTransferProxy is Pausable, PermissionEvents {
         public
         onlyOwner
     {
-        tokenTransferPermissions.revokeAuthorization(_agent);
+        tokenTransferPermissions.revokeAuthorization(_agent, CONTEXT);
     }
 
     /**

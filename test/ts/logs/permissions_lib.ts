@@ -1,20 +1,38 @@
 import * as ABIDecoder from "abi-decoder";
-import * as LogUtils from "./log_utils";
+import { generateParam } from "./log_utils";
+import { Address, SolidityType } from "../../../types/common";
 
-import { Address } from "../../../types/common";
+export enum EventNames {
+    Authorized = "Authorized",
+    AuthorizationRevoked = "AuthorizationRevoked",
+}
 
-export function Authorized(contract: Address, agent: Address): ABIDecoder.DecodedLog {
+export function Authorized(
+    contract: Address,
+    agent: Address,
+    callingContext: string,
+): ABIDecoder.DecodedLog {
     return {
         address: contract,
-        events: LogUtils.getParams([["agent", agent]]),
-        name: "Authorized",
+        events: [
+            generateParam("agent", SolidityType.address, agent),
+            generateParam("callingContext", SolidityType.string, callingContext),
+        ],
+        name: EventNames.Authorized,
     };
 }
 
-export function AuthorizationRevoked(contract: Address, agent: Address): ABIDecoder.DecodedLog {
+export function AuthorizationRevoked(
+    contract: Address,
+    agent: Address,
+    callingContext: string,
+): ABIDecoder.DecodedLog {
     return {
         address: contract,
-        events: LogUtils.getParams([["agent", agent]]),
-        name: "AuthorizationRevoked",
+        events: [
+            generateParam("agent", SolidityType.address, agent),
+            generateParam("callingContext", SolidityType.string, callingContext),
+        ],
+        name: EventNames.AuthorizationRevoked,
     };
 }

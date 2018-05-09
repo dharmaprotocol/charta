@@ -26,8 +26,8 @@ pragma solidity 0.4.18;
  *  https://blog.aragon.one/library-driven-development-in-solidity-2bebcaf88736
  */
 contract PermissionEvents {
-    event Authorized(address indexed agent);
-    event AuthorizationRevoked(address indexed agent);
+    event Authorized(address indexed agent, string callingContext);
+    event AuthorizationRevoked(address indexed agent, string callingContext);
 }
 
 
@@ -36,8 +36,8 @@ library PermissionsLib {
     // TODO(kayvon): remove these events and inherit from PermissionEvents when libraries are
     // capable of inheritance.
     // See relevant github issue here: https://github.com/ethereum/solidity/issues/891
-    event Authorized(address indexed agent);
-    event AuthorizationRevoked(address indexed agent);
+    event Authorized(address indexed agent, string callingContext);
+    event AuthorizationRevoked(address indexed agent, string callingContext);
 
     struct Permissions {
         mapping (address => bool) authorized;
@@ -45,7 +45,11 @@ library PermissionsLib {
         address[] authorizedAgents;
     }
 
-    function authorize(Permissions storage self, address agent)
+    function authorize(
+        Permissions storage self,
+        address agent,
+        string callingContext
+    )
         internal
     {
         require(isNotAuthorized(self, agent));
@@ -53,10 +57,14 @@ library PermissionsLib {
         self.authorized[agent] = true;
         self.authorizedAgents.push(agent);
         self.agentToIndex[agent] = self.authorizedAgents.length - 1;
-        Authorized(agent);
+        Authorized(agent, callingContext);
     }
 
-    function revokeAuthorization(Permissions storage self, address agent)
+    function revokeAuthorization(
+        Permissions storage self,
+        address agent,
+        string callingContext
+    )
         internal
     {
         /* We only want to do work in the case where the agent whose
@@ -82,7 +90,7 @@ library PermissionsLib {
         delete self.authorizedAgents[indexOfAgentToMove];
         self.authorizedAgents.length -= 1;
 
-        AuthorizationRevoked(agent);
+        AuthorizationRevoked(agent, callingContext);
     }
 
     function isAuthorized(Permissions storage self, address agent)

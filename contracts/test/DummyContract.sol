@@ -27,20 +27,23 @@ contract DummyContract is PermissionEvents {
     PermissionsLib.Permissions private firstPermissionSet;
     PermissionsLib.Permissions private secondPermissionSet;
 
+    string public constant FIRST_SET = "dummy-contract-first-set";
+    string public constant SECOND_SET = "dummy-contract-second-set";
+
     function authorizeInFirstSet(address agent) public {
-        firstPermissionSet.authorize(agent);
+        firstPermissionSet.authorize(agent, FIRST_SET);
     }
 
     function authorizeInSecondSet(address agent) public {
-        secondPermissionSet.authorize(agent);
+        secondPermissionSet.authorize(agent, SECOND_SET);
     }
 
     function revokeInFirstSet(address agent) public {
-        firstPermissionSet.revokeAuthorization(agent);
+        firstPermissionSet.revokeAuthorization(agent, FIRST_SET);
     }
 
     function revokeInSecondSet(address agent) public {
-        secondPermissionSet.revokeAuthorization(agent);
+        secondPermissionSet.revokeAuthorization(agent, SECOND_SET);
     }
 
     function isAuthorizedInFirstSet(address agent) public constant returns (bool) {
