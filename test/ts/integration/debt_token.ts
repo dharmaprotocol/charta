@@ -20,7 +20,6 @@ import { DebtRegistryContract } from "../../../types/generated/debt_registry";
 import { DebtTokenContract } from "../../../types/generated/debt_token";
 import { DharmaMultiSigWalletContract } from "../../../types/generated/dharma_multi_sig_wallet";
 import { DebtKernelContract } from "../../../types/generated/debt_kernel";
-import { RepaymentRouterContract } from "../../../types/generated/repayment_router";
 
 // Types
 import { Address } from "../../../types/common";
@@ -85,7 +84,6 @@ contract("Debt Token (Integration Tests)", (ACCOUNTS) => {
     let debtToken: DebtTokenContract;
     let debtKernel: DebtKernelContract;
     let multiSig: DharmaMultiSigWalletContract;
-    let repaymentRouter: RepaymentRouterContract;
 
     const debtEntries = _.map(TOKEN_OWNERS, (tokenOwner: Address, i: number) => {
         return new DebtRegistryEntry({
