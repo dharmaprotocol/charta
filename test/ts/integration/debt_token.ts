@@ -119,6 +119,17 @@ contract("Debt Token (Integration Tests)", (ACCOUNTS) => {
         );
     }
 
+    async function revokeMintAuthorization(agent: Address): Promise<string> {
+        return multiSigExecuteAfterTimelock(
+            web3,
+            multiSig,
+            debtToken,
+            "revokeMintAgentAuthorization",
+            ACCOUNTS,
+            [agent],
+        );
+    }
+
     async function pauseDebtTokenContract(): Promise<string> {
         return multiSigExecutePauseImmediately(web3, multiSig, debtToken, "pause", ACCOUNTS);
     }
@@ -173,14 +184,7 @@ contract("Debt Token (Integration Tests)", (ACCOUNTS) => {
 
         describe("owner revokes mint authorization", () => {
             before(async () => {
-                await multiSigExecuteAfterTimelock(
-                    web3,
-                    multiSig,
-                    debtToken,
-                    "revokeMintAgentAuthorization",
-                    ACCOUNTS,
-                    [AUTHORIZED_MINT_AGENT],
-                );
+                await revokeMintAuthorization(AUTHORIZED_MINT_AGENT);
             });
 
             it("should not return agent as authorized", async () => {
