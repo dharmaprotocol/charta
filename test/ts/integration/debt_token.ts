@@ -51,18 +51,13 @@ contract("Debt Token (Integration Tests)", (ACCOUNTS) => {
     const TOKEN_OWNER_1 = ACCOUNTS[4];
     const TOKEN_OWNER_2 = ACCOUNTS[5];
     const TOKEN_OWNER_3 = ACCOUNTS[6];
-    const TOKEN_OWNERS = [TOKEN_OWNER_1, TOKEN_OWNER_1, TOKEN_OWNER_2, TOKEN_OWNER_3];
 
-    const UNDERWRITER_1 = ACCOUNTS[7];
-    const UNDERWRITER_2 = ACCOUNTS[8];
-    const UNDERWRITER_3 = ACCOUNTS[9];
-    const UNDERWRITERS = [UNDERWRITER_1, UNDERWRITER_1, UNDERWRITER_2, UNDERWRITER_3];
+    const UNDERWRITER = ACCOUNTS[7];
+    const BROKER = ACCOUNTS[8];
+    const DEBTOR = ACCOUNTS[9];
 
-    const BROKER = ACCOUNTS[10];
-    const DEBTOR = ACCOUNTS[11];
-
-    const MOCK_REPAYMENT_ROUTER_ADDRESS = ACCOUNTS[12];
-    const MOCK_TERMS_CONTRACT_ADDRESS = ACCOUNTS[13];
+    const MOCK_REPAYMENT_ROUTER_ADDRESS = ACCOUNTS[10];
+    const MOCK_TERMS_CONTRACT_ADDRESS = ACCOUNTS[11];
 
     const INDEX_0 = new BigNumber(0);
     const INDEX_1 = new BigNumber(1);
@@ -72,24 +67,25 @@ contract("Debt Token (Integration Tests)", (ACCOUNTS) => {
 
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
 
-    let debtRegistry: DebtRegistryContract;
-    let debtToken: DebtTokenContract;
-    let debtKernel: DebtKernelContract;
-    let multiSig: DharmaMultiSigWalletContract;
+    const [DEBT_ENTRY_1, DEBT_ENTRY_2, DEBT_ENTRY_3, DEBT_ENTRY_4] = [
+        TOKEN_OWNER_1,
+        TOKEN_OWNER_1,
+        TOKEN_OWNER_2,
+        TOKEN_OWNER_3,
+    ].map(generateDebtEntry);
 
-    const debtEntries = _.map(TOKEN_OWNERS, (tokenOwner: Address, i: number) => {
+    function generateDebtEntry(creditor: Address): DebtRegistryEntry {
         return new DebtRegistryEntry({
-            beneficiary: tokenOwner,
+            beneficiary: creditor,
             debtor: DEBTOR,
             termsContract: MOCK_TERMS_CONTRACT_ADDRESS,
-            termsContractParameters: ARBITRARY_TERMS_CONTRACT_PARAMS[i],
-            underwriter: UNDERWRITERS[i],
+            termsContractParameters: generateRandom32ByteString(),
+            underwriter: UNDERWRITER,
             underwriterRiskRating: Units.underwriterRiskRatingFixedPoint(3.4),
             version: MOCK_REPAYMENT_ROUTER_ADDRESS,
         });
-    });
+    }
 
-    const [DEBT_ENTRY_1, DEBT_ENTRY_2, DEBT_ENTRY_3, DEBT_ENTRY_4] = debtEntries;
     function generateRandom32ByteString(): string {
         return web3.sha3(Math.random().toString(36));
     }
@@ -137,6 +133,11 @@ contract("Debt Token (Integration Tests)", (ACCOUNTS) => {
     async function unpauseDebtTokenContract(): Promise<string> {
         return multiSigExecuteAfterTimelock(web3, multiSig, debtToken, "unpause", ACCOUNTS);
     }
+
+    let debtRegistry: DebtRegistryContract;
+    let debtToken: DebtTokenContract;
+    let debtKernel: DebtKernelContract;
+    let multiSig: DharmaMultiSigWalletContract;
 
     before(async () => {
         multiSig = await DharmaMultiSigWalletContract.deployed(web3, TX_DEFAULTS);
