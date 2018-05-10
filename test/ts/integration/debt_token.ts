@@ -70,13 +70,6 @@ contract("Debt Token (Integration Tests)", (ACCOUNTS) => {
 
     const NONEXISTENT_TOKEN_ID = new BigNumber(13);
 
-    const ARBITRARY_TERMS_CONTRACT_PARAMS = [
-        web3.sha3("#1: arbitrary terms contract param string"),
-        web3.sha3("#2: arbitrary terms contract param string"),
-        web3.sha3("#3: arbitrary terms contract param string"),
-        web3.sha3("#4: arbitrary terms contract param string"),
-    ];
-
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
 
     let debtRegistry: DebtRegistryContract;
@@ -97,6 +90,9 @@ contract("Debt Token (Integration Tests)", (ACCOUNTS) => {
     });
 
     const [DEBT_ENTRY_1, DEBT_ENTRY_2, DEBT_ENTRY_3, DEBT_ENTRY_4] = debtEntries;
+    function generateRandom32ByteString(): string {
+        return web3.sha3(Math.random().toString(36));
+    }
 
     async function mintDebtToken(entry: DebtRegistryEntry, sender: Address): Promise<string> {
         return debtToken.create.sendTransactionAsync(
