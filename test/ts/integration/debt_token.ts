@@ -348,7 +348,7 @@ contract("Debt Token (Integration Tests)", (ACCOUNTS) => {
         });
     });
 
-    describe("authorized mint agent mints an additional two debt tokens ", () => {
+    describe("authorized mint agent mints an additional two debt tokens", () => {
         before(async () => {
             await authorizeMintAgent(AUTHORIZED_MINT_AGENT);
             await mintDebtToken(DEBT_ENTRY_3, AUTHORIZED_MINT_AGENT);
