@@ -13,7 +13,7 @@ import {
 } from "../test_utils/multisig";
 import { BigNumberSetup } from "../test_utils/bignumber_setup";
 import ChaiSetup from "../test_utils/chai_setup";
-import { REVERT_ERROR, NULL_ADDRESS } from "../test_utils/constants";
+import { NULL_ADDRESS, REVERT_ERROR } from "../test_utils/constants";
 
 // Wrappers
 import { DebtRegistryContract } from "../../../types/generated/debt_registry";
