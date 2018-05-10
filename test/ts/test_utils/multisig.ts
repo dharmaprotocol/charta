@@ -174,7 +174,7 @@ export async function multiSigExecutePauseImmediately(
     accounts: Address[],
     args: any[] = [],
     txData?: TxData,
-): Promise<void> {
+): Promise<string> {
     const web3Utils = new Web3Utils(web3);
 
     const transactionId = await submitAndConfirmMultiSigTransaction(
@@ -186,7 +186,9 @@ export async function multiSigExecutePauseImmediately(
         txData,
     );
 
-    await multiSig.executePauseTransactionImmediately.sendTransactionAsync(transactionId);
+    const txHash = await multiSig.executePauseTransactionImmediately.sendTransactionAsync(
+        transactionId,
+    );
 
     const transaction = await multiSig.transactions.callAsync(transactionId);
 
@@ -195,4 +197,6 @@ export async function multiSigExecutePauseImmediately(
     if (!executedSuccessfully) {
         throw new Error(`Multisig transaction with ID #${transactionId} failed to execute.`);
     }
+
+    return txHash;
 }
