@@ -13,7 +13,7 @@ import {
 } from "../test_utils/multisig";
 import { BigNumberSetup } from "../test_utils/bignumber_setup";
 import ChaiSetup from "../test_utils/chai_setup";
-import { REVERT_ERROR } from "../test_utils/constants";
+import { REVERT_ERROR, NULL_ADDRESS } from "../test_utils/constants";
 
 // Wrappers
 import { DebtRegistryContract } from "../../../types/generated/debt_registry";
@@ -69,7 +69,6 @@ contract("Debt Token (Integration Tests)", (ACCOUNTS) => {
     const INDEX_2 = new BigNumber(2);
 
     const NONEXISTENT_TOKEN_ID = new BigNumber(13);
-    const NULL_ADDRESS = "0x0000000000000000000000000000000000000000";
 
     const ARBITRARY_TERMS_CONTRACT_PARAMS = [
         web3.sha3("#1: arbitrary terms contract param string"),
