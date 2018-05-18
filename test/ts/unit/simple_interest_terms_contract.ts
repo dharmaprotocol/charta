@@ -339,6 +339,11 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
                     termLengthUnits,
                 });
 
+                await mockRegistry.mockDoesEntryExist.sendTransactionAsync(
+                    ARBITRARY_AGREEMENT_ID,
+                    true,
+                );
+
                 await mockRegistry.mockGetBeneficiaryReturnValueFor.sendTransactionAsync(
                     ARBITRARY_AGREEMENT_ID,
                     BENEFICIARY,
@@ -411,9 +416,9 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
             const NON_EXISTENT_AGREEMENT_ID = web3.sha3("this agreement id doesn't exist!");
 
             before(async () => {
-                await mockRegistry.mockGetBeneficiaryReturnValueFor.sendTransactionAsync(
+                await mockRegistry.mockDoesEntryExist.sendTransactionAsync(
                     NON_EXISTENT_AGREEMENT_ID,
-                    NULL_ADDRESS, // no beneficiary indicates non-existent debt agreement.
+                    false,
                 );
 
                 await router.repay.sendTransactionAsync(
@@ -449,6 +454,11 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
             });
 
             before(async () => {
+                await mockRegistry.mockDoesEntryExist.sendTransactionAsync(
+                    EXTANT_AGREEMENT_ID,
+                    true,
+                );
+
                 await mockRegistry.mockGetBeneficiaryReturnValueFor.sendTransactionAsync(
                     EXTANT_AGREEMENT_ID,
                     BENEFICIARY,
