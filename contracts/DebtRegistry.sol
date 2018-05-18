@@ -83,13 +83,22 @@ contract DebtRegistry is Pausable, PermissionEvents {
     }
 
     modifier onlyExtantEntry(bytes32 issuanceHash) {
-        require(registry[issuanceHash].beneficiary != address(0));
+        require(doesEntryExist(issuanceHash));
         _;
     }
 
     modifier nonNullBeneficiary(address beneficiary) {
         require(beneficiary != address(0));
         _;
+    }
+
+    /* Ensures an entry with the specified issuance hash exists within the debt registry. */
+    function doesEntryExist(bytes32 issuanceHash)
+        public
+        view
+        returns (bool exists)
+    {
+        return registry[issuanceHash].beneficiary != address(0);
     }
 
     /**
