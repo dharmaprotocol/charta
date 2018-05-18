@@ -233,6 +233,7 @@ contract DebtRegistry is Pausable, PermissionEvents {
     function getBeneficiary(bytes32 issuanceHash)
         public
         view
+        onlyExtantEntry(issuanceHash)
         returns(address)
     {
         return registry[issuanceHash].beneficiary;
@@ -244,6 +245,7 @@ contract DebtRegistry is Pausable, PermissionEvents {
     function getTermsContract(bytes32 issuanceHash)
         public
         view
+        onlyExtantEntry(issuanceHash)
         returns (address)
     {
         return registry[issuanceHash].termsContract;
@@ -268,6 +270,7 @@ contract DebtRegistry is Pausable, PermissionEvents {
     function getTerms(bytes32 issuanceHash)
         public
         view
+        onlyExtantEntry(issuanceHash)
         returns(address, bytes32)
     {
         return (
@@ -282,6 +285,7 @@ contract DebtRegistry is Pausable, PermissionEvents {
     function getIssuanceBlockTimestamp(bytes32 issuanceHash)
         public
         view
+        onlyExtantEntry(issuanceHash)
         returns (uint timestamp)
     {
         return registry[issuanceHash].issuanceBlockTimestamp;
