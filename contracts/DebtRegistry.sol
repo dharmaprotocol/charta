@@ -209,7 +209,10 @@ contract DebtRegistry is Pausable, PermissionEvents {
     }
 
     /**
-     * Returns the parameters of a debt issuance in the registry
+     * Returns the parameters of a debt issuance in the registry.
+     *
+     * TODO(kayvon): protect this function with our `onlyExtantEntry` modifier once the restriction
+     * on the size of the call stack has been addressed.
      */
     function get(bytes32 issuanceHash)
         public
