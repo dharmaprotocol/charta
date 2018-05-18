@@ -556,10 +556,29 @@ contract("Debt Registry (Unit Tests)", async (ACCOUNTS) => {
             });
 
             describe("Queries tied to non-existent debt agreements", () => {
-                it("should throw when querying for TermsContractParameters", async () => {
-                    const NON_EXISTENT_AGREEMENT_ID = web3.sha3("this agreement id does not exist");
+                const NON_EXISTENT_AGREEMENT_ID = web3.sha3("this agreement id does not exist");
+
+                it("should throw when querying for beneficiary", async () => {
+                    await expect(
+                        registry.getBeneficiary.callAsync(NON_EXISTENT_AGREEMENT_ID),
+                    ).to.eventually.be.rejectedWith(REVERT_ERROR);
+                });
+
+                it("should throw when querying for the terms contract", async () => {
+                    await expect(
+                        registry.getTermsContract.callAsync(NON_EXISTENT_AGREEMENT_ID),
+                    ).to.eventually.be.rejectedWith(REVERT_ERROR);
+                });
+
+                it("should throw when querying for the terms contract params", async () => {
                     await expect(
                         registry.getTermsContractParameters.callAsync(NON_EXISTENT_AGREEMENT_ID),
+                    ).to.eventually.be.rejectedWith(REVERT_ERROR);
+                });
+
+                it("should throw when querying for the issuance block timestamp", async () => {
+                    await expect(
+                        registry.getIssuanceBlockTimestamp.callAsync(NON_EXISTENT_AGREEMENT_ID),
                     ).to.eventually.be.rejectedWith(REVERT_ERROR);
                 });
             });
