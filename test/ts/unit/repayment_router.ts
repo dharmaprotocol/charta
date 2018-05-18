@@ -86,9 +86,9 @@ contract("Repayment Router (Unit Tests)", async (ACCOUNTS) => {
             let errorLog: ABIDecoder.DecodedLog;
 
             before(async () => {
-                await mockRegistry.mockGetBeneficiaryReturnValueFor.sendTransactionAsync(
+                await mockRegistry.mockDoesEntryExist.sendTransactionAsync(
                     ARBITRARY_AGREEMENT_ID,
-                    NULL_ADDRESS,
+                    false,
                 );
 
                 const txHash = await router.repay.sendTransactionAsync(
@@ -136,6 +136,11 @@ contract("Repayment Router (Unit Tests)", async (ACCOUNTS) => {
 
         describe("called for issued debt agreement", () => {
             before(async () => {
+                await mockRegistry.mockDoesEntryExist.sendTransactionAsync(
+                    ARBITRARY_AGREEMENT_ID,
+                    true,
+                );
+
                 await mockRegistry.mockGetBeneficiaryReturnValueFor.sendTransactionAsync(
                     ARBITRARY_AGREEMENT_ID,
                     BENEFICIARY,
