@@ -44,7 +44,7 @@ const NAMES_OF_CONTRACTS_OWNED_BY_MULTISIG = [
  *
  * @type {String}
  */
-export const KOVAN_WETH_ADDRESS = "0xd0a1e359811322d97991e03f863a0c30c2cf029c";
+const KOVAN_WETH_ADDRESS = "0xd0a1e359811322d97991e03f863a0c30c2cf029c";
 
 /**
  * A list of the top 50 tokens by market cap, according to etherscan.io/tokens.
@@ -360,8 +360,10 @@ module.exports = {
     THRESHOLD,
     TIMELOCK_IN_SECONDS,
     LIVE_NETWORK_ID,
+    KOVAN_NETWORK_ID,
     DUMMY_TOKEN_SUPPLY,
     DUMMY_TOKEN_DECIMALS,
+    KOVAN_WETH_ADDRESS,
     TOKEN_LIST,
     NAMES_OF_CONTRACTS_OWNED_BY_MULTISIG,
     TOKEN_URI_OPERATOR,
