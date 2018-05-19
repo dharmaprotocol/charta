@@ -5,7 +5,7 @@ async function generateDummyTokens(network, DummyToken) {
         CONSTANTS.TOKEN_LIST.map(async (token) => {
             const { name, symbol, decimals } = token;
 
-            let address: string;
+            let address;
 
             // HACK: Though we usually want to deploy dummy token contracts
             // onto non-live networks, there is a canonical WETH instance
