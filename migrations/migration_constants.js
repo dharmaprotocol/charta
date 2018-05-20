@@ -8,6 +8,7 @@ const SIGNATORIES = [OWNER_ONE, OWNER_TWO, OWNER_THREE, OWNER_FOUR, OWNER_FIVE];
 const THRESHOLD = 1 / 2; // 50%
 const TIMELOCK_IN_SECONDS = 60 * 60 * 24 * 7; // 7 Days
 const LIVE_NETWORK_ID = "live";
+const KOVAN_NETWORK_ID = "kovan";
 const DUMMY_TOKEN_SUPPLY = 10 ** 27;
 const DUMMY_TOKEN_DECIMALS = 18;
 
@@ -34,6 +35,16 @@ const NAMES_OF_CONTRACTS_OWNED_BY_MULTISIG = [
     "TokenRegistry",
     "ContractRegistry",
 ];
+
+/**
+ * Given that the Canonical WETH has an instance deployed onto Kovan
+ * and there are numerous tools that can be used to interact with WETH,
+ * even in a testnet context, we store its address so we can use it
+ * in our migrations.
+ *
+ * @type {String}
+ */
+const KOVAN_WETH_ADDRESS = "0xd0a1e359811322d97991e03f863a0c30c2cf029c";
 
 /**
  * A list of the top 50 tokens by market cap, according to etherscan.io/tokens.
@@ -349,8 +360,10 @@ module.exports = {
     THRESHOLD,
     TIMELOCK_IN_SECONDS,
     LIVE_NETWORK_ID,
+    KOVAN_NETWORK_ID,
     DUMMY_TOKEN_SUPPLY,
     DUMMY_TOKEN_DECIMALS,
+    KOVAN_WETH_ADDRESS,
     TOKEN_LIST,
     NAMES_OF_CONTRACTS_OWNED_BY_MULTISIG,
     TOKEN_URI_OPERATOR,

@@ -1,21 +1,33 @@
 const CONSTANTS = require("./migration_constants");
 
-async function generateDummyTokens(DummyToken) {
+async function generateDummyTokens(network, DummyToken) {
     return Promise.all(
         CONSTANTS.TOKEN_LIST.map(async (token) => {
             const { name, symbol, decimals } = token;
 
-            const dummyToken = await DummyToken.new(
-                name,
-                symbol,
-                decimals,
-                CONSTANTS.DUMMY_TOKEN_SUPPLY,
-            );
+            let address;
+
+            // HACK: Though we usually want to deploy dummy token contracts
+            // onto non-live networks, there is a canonical WETH instance
+            // deployed on the Kovan network that it is preferrable for us
+            // to use for testing purposes.
+            if (network === CONSTANTS.KOVAN_NETWORK_ID && symbol === "WETH") {
+                address = CONSTANTS.KOVAN_WETH_ADDRESS;
+            } else {
+                const dummyToken = await DummyToken.new(
+                    name,
+                    symbol,
+                    decimals,
+                    CONSTANTS.DUMMY_TOKEN_SUPPLY,
+                );
+
+                address = dummyToken.address;
+            }
 
             return {
                 name,
                 symbol,
-                address: dummyToken.address,
+                address,
                 decimals,
             };
         }),
@@ -33,7 +45,7 @@ async function configureTokenRegistry(network, accounts, TokenRegistry, DummyTok
             break;
 
         default:
-            tokens = await generateDummyTokens(DummyToken);
+            tokens = await generateDummyTokens(network, DummyToken);
     }
 
     await Promise.all(
