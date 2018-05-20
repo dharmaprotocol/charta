@@ -54,6 +54,12 @@ const KOVAN_WETH_ADDRESS = "0xd0a1e359811322d97991e03f863a0c30c2cf029c";
  */
 const TOKEN_LIST = [
     {
+        address: "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359",
+        name: "Dai Stablecoin",
+        symbol: "DAI",
+        decimals: 18,
+    },
+    {
         address: "0xe94327d07fc17907b4db788e5adf2ed424addff6",
         name: "Augur REP",
         symbol: "REP",
