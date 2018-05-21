@@ -439,7 +439,7 @@ export const DeprecatedERC721 =
       "absolutePath": "zeppelin-solidity/contracts/token/ERC721/DeprecatedERC721.sol",
       "exportedSymbols": {
         "DeprecatedERC721": [
-          8930
+          9327
         ]
       }
     },
@@ -453,45 +453,45 @@ export const DeprecatedERC721 =
             ".18"
           ]
         },
-        "id": 8906,
+        "id": 9303,
         "name": "PragmaDirective",
-        "src": "0:24:37"
+        "src": "0:24:38"
       },
       {
         "attributes": {
-          "SourceUnit": 8985,
+          "SourceUnit": 9382,
           "absolutePath": "zeppelin-solidity/contracts/token/ERC721/ERC721.sol",
           "file": "./ERC721.sol",
-          "scope": 8931,
+          "scope": 9328,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 8907,
+        "id": 9304,
         "name": "ImportDirective",
-        "src": "26:22:37"
+        "src": "26:22:38"
       },
       {
         "attributes": {
           "contractDependencies": [
-            8957,
-            8977,
-            8984,
-            9091
+            9354,
+            9374,
+            9381,
+            9488
           ],
           "contractKind": "contract",
           "documentation": "@title ERC-721 methods shipped in OpenZeppelin v1.7.0, removed in the latest version of the standard\n@dev Only use this interface for compatibility with previously deployed contracts\n@dev Use ERC721 for interacting with new contracts which are standard-compliant",
           "fullyImplemented": false,
           "linearizedBaseContracts": [
-            8930,
-            8984,
-            8977,
-            8957,
-            9091
+            9327,
+            9381,
+            9374,
+            9354,
+            9488
           ],
           "name": "DeprecatedERC721",
-          "scope": 8931
+          "scope": 9328
         },
         "children": [
           {
@@ -505,17 +505,17 @@ export const DeprecatedERC721 =
                 "attributes": {
                   "contractScope": null,
                   "name": "ERC721",
-                  "referencedDeclaration": 8984,
+                  "referencedDeclaration": 9381,
                   "type": "contract ERC721"
                 },
-                "id": 8908,
+                "id": 9305,
                 "name": "UserDefinedTypeName",
-                "src": "359:6:37"
+                "src": "359:6:38"
               }
             ],
-            "id": 8909,
+            "id": 9306,
             "name": "InheritanceSpecifier",
-            "src": "359:6:37"
+            "src": "359:6:38"
           },
           {
             "attributes": {
@@ -528,7 +528,7 @@ export const DeprecatedERC721 =
               ],
               "name": "takeOwnership",
               "payable": false,
-              "scope": 8930,
+              "scope": 9327,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -540,7 +540,7 @@ export const DeprecatedERC721 =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 8914,
+                      "scope": 9311,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -553,19 +553,19 @@ export const DeprecatedERC721 =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 8910,
+                        "id": 9307,
                         "name": "ElementaryTypeName",
-                        "src": "393:7:37"
+                        "src": "393:7:38"
                       }
                     ],
-                    "id": 8911,
+                    "id": 9308,
                     "name": "VariableDeclaration",
-                    "src": "393:16:37"
+                    "src": "393:16:38"
                   }
                 ],
-                "id": 8912,
+                "id": 9309,
                 "name": "ParameterList",
-                "src": "392:18:37"
+                "src": "392:18:38"
               },
               {
                 "attributes": {
@@ -574,14 +574,14 @@ export const DeprecatedERC721 =
                   ]
                 },
                 "children": [],
-                "id": 8913,
+                "id": 9310,
                 "name": "ParameterList",
-                "src": "417:0:37"
+                "src": "417:0:38"
               }
             ],
-            "id": 8914,
+            "id": 9311,
             "name": "FunctionDefinition",
-            "src": "370:48:37"
+            "src": "370:48:38"
           },
           {
             "attributes": {
@@ -594,7 +594,7 @@ export const DeprecatedERC721 =
               ],
               "name": "transfer",
               "payable": false,
-              "scope": 8930,
+              "scope": 9327,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -606,7 +606,7 @@ export const DeprecatedERC721 =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 8921,
+                      "scope": 9318,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -619,20 +619,20 @@ export const DeprecatedERC721 =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 8915,
+                        "id": 9312,
                         "name": "ElementaryTypeName",
-                        "src": "439:7:37"
+                        "src": "439:7:38"
                       }
                     ],
-                    "id": 8916,
+                    "id": 9313,
                     "name": "VariableDeclaration",
-                    "src": "439:11:37"
+                    "src": "439:11:38"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 8921,
+                      "scope": 9318,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -645,19 +645,19 @@ export const DeprecatedERC721 =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 8917,
+                        "id": 9314,
                         "name": "ElementaryTypeName",
-                        "src": "452:7:37"
+                        "src": "452:7:38"
                       }
                     ],
-                    "id": 8918,
+                    "id": 9315,
                     "name": "VariableDeclaration",
-                    "src": "452:16:37"
+                    "src": "452:16:38"
                   }
                 ],
-                "id": 8919,
+                "id": 9316,
                 "name": "ParameterList",
-                "src": "438:31:37"
+                "src": "438:31:38"
               },
               {
                 "attributes": {
@@ -666,14 +666,14 @@ export const DeprecatedERC721 =
                   ]
                 },
                 "children": [],
-                "id": 8920,
+                "id": 9317,
                 "name": "ParameterList",
-                "src": "476:0:37"
+                "src": "476:0:38"
               }
             ],
-            "id": 8921,
+            "id": 9318,
             "name": "FunctionDefinition",
-            "src": "421:56:37"
+            "src": "421:56:38"
           },
           {
             "attributes": {
@@ -686,7 +686,7 @@ export const DeprecatedERC721 =
               ],
               "name": "tokensOf",
               "payable": false,
-              "scope": 8930,
+              "scope": 9327,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -698,7 +698,7 @@ export const DeprecatedERC721 =
                     "attributes": {
                       "constant": false,
                       "name": "_owner",
-                      "scope": 8929,
+                      "scope": 9326,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -711,19 +711,19 @@ export const DeprecatedERC721 =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 8922,
+                        "id": 9319,
                         "name": "ElementaryTypeName",
-                        "src": "498:7:37"
+                        "src": "498:7:38"
                       }
                     ],
-                    "id": 8923,
+                    "id": 9320,
                     "name": "VariableDeclaration",
-                    "src": "498:14:37"
+                    "src": "498:14:38"
                   }
                 ],
-                "id": 8924,
+                "id": 9321,
                 "name": "ParameterList",
-                "src": "497:16:37"
+                "src": "497:16:38"
               },
               {
                 "children": [
@@ -731,7 +731,7 @@ export const DeprecatedERC721 =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 8929,
+                      "scope": 9326,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256[] memory",
@@ -750,39 +750,39 @@ export const DeprecatedERC721 =
                               "name": "uint256",
                               "type": "uint256"
                             },
-                            "id": 8925,
+                            "id": 9322,
                             "name": "ElementaryTypeName",
-                            "src": "535:7:37"
+                            "src": "535:7:38"
                           }
                         ],
-                        "id": 8926,
+                        "id": 9323,
                         "name": "ArrayTypeName",
-                        "src": "535:9:37"
+                        "src": "535:9:38"
                       }
                     ],
-                    "id": 8927,
+                    "id": 9324,
                     "name": "VariableDeclaration",
-                    "src": "535:9:37"
+                    "src": "535:9:38"
                   }
                 ],
-                "id": 8928,
+                "id": 9325,
                 "name": "ParameterList",
-                "src": "534:11:37"
+                "src": "534:11:38"
               }
             ],
-            "id": 8929,
+            "id": 9326,
             "name": "FunctionDefinition",
-            "src": "480:66:37"
+            "src": "480:66:38"
           }
         ],
-        "id": 8930,
+        "id": 9327,
         "name": "ContractDefinition",
-        "src": "330:218:37"
+        "src": "330:218:38"
       }
     ],
-    "id": 8931,
+    "id": 9328,
     "name": "SourceUnit",
-    "src": "0:550:37"
+    "src": "0:550:38"
   },
   "compiler": {
     "name": "solc",
@@ -790,5 +790,5 @@ export const DeprecatedERC721 =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-05-01T21:37:41.255Z"
+  "updatedAt": "2018-05-21T18:00:40.703Z"
 }
