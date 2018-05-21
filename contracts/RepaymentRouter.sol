@@ -64,7 +64,7 @@ contract RepaymentRouter is Pausable {
 
     /**
      * Given an agreement id (synonymous to 'issuanceHash' in the debt registry), routes a repayment
-     * of a given ERC20 token  to the debt's current beneficiary, and reports the repayment
+     * of a given ERC20 token to the debt's current beneficiary, and reports the repayment
      * to the debt's associated terms contract.
      */
     function repay(
@@ -79,14 +79,13 @@ contract RepaymentRouter is Pausable {
         require(tokenAddress != address(0));
         require(amount > 0);
 
-        // Get registry entry and check if entry is valid
-        address beneficiary = debtRegistry.getBeneficiary(agreementId);
-        if (beneficiary == address(0)) {
+        // Ensure agreement exists.
+        if (!debtRegistry.doesEntryExist(agreementId)) {
             LogError(uint8(Errors.DEBT_AGREEMENT_NONEXISTENT), agreementId);
             return 0;
         }
 
-        // Check payer has sufficient balance and has granted router sufficient allowance
+        // Check payer has sufficient balance and has granted router sufficient allowance.
         if (ERC20(tokenAddress).balanceOf(msg.sender) < amount ||
             ERC20(tokenAddress).allowance(msg.sender, tokenTransferProxy) < amount) {
             LogError(uint8(Errors.PAYER_BALANCE_OR_ALLOWANCE_INSUFFICIENT), agreementId);
@@ -95,6 +94,7 @@ contract RepaymentRouter is Pausable {
 
         // Notify terms contract
         address termsContract = debtRegistry.getTermsContract(agreementId);
+        address beneficiary = debtRegistry.getBeneficiary(agreementId);
         if (!TermsContract(termsContract).registerRepayment(
             agreementId,
             msg.sender,

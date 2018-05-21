@@ -83,13 +83,22 @@ contract DebtRegistry is Pausable, PermissionEvents {
     }
 
     modifier onlyExtantEntry(bytes32 issuanceHash) {
-        require(registry[issuanceHash].beneficiary != address(0));
+        require(doesEntryExist(issuanceHash));
         _;
     }
 
     modifier nonNullBeneficiary(address beneficiary) {
         require(beneficiary != address(0));
         _;
+    }
+
+    /* Ensures an entry with the specified issuance hash exists within the debt registry. */
+    function doesEntryExist(bytes32 issuanceHash)
+        public
+        view
+        returns (bool exists)
+    {
+        return registry[issuanceHash].beneficiary != address(0);
     }
 
     /**
@@ -209,7 +218,10 @@ contract DebtRegistry is Pausable, PermissionEvents {
     }
 
     /**
-     * Returns the parameters of a debt issuance in the registry
+     * Returns the parameters of a debt issuance in the registry.
+     *
+     * TODO(kayvon): protect this function with our `onlyExtantEntry` modifier once the restriction
+     * on the size of the call stack has been addressed.
      */
     function get(bytes32 issuanceHash)
         public
@@ -233,6 +245,7 @@ contract DebtRegistry is Pausable, PermissionEvents {
     function getBeneficiary(bytes32 issuanceHash)
         public
         view
+        onlyExtantEntry(issuanceHash)
         returns(address)
     {
         return registry[issuanceHash].beneficiary;
@@ -244,6 +257,7 @@ contract DebtRegistry is Pausable, PermissionEvents {
     function getTermsContract(bytes32 issuanceHash)
         public
         view
+        onlyExtantEntry(issuanceHash)
         returns (address)
     {
         return registry[issuanceHash].termsContract;
@@ -268,6 +282,7 @@ contract DebtRegistry is Pausable, PermissionEvents {
     function getTerms(bytes32 issuanceHash)
         public
         view
+        onlyExtantEntry(issuanceHash)
         returns(address, bytes32)
     {
         return (
@@ -282,6 +297,7 @@ contract DebtRegistry is Pausable, PermissionEvents {
     function getIssuanceBlockTimestamp(bytes32 issuanceHash)
         public
         view
+        onlyExtantEntry(issuanceHash)
         returns (uint timestamp)
     {
         return registry[issuanceHash].issuanceBlockTimestamp;

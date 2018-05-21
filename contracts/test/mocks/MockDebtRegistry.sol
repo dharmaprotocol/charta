@@ -72,6 +72,15 @@ contract MockDebtRegistry is MockContract {
         return address(getMockReturnValue("getBeneficiary", issuanceHash));
     }
 
+    function doesEntryExist(bytes32 issuanceHash) public returns (bool) {
+        bytes32 mockReturnValue = getMockReturnValue("doesEntryExist", issuanceHash);
+        return mockReturnValue == bytes32(0) ? false : true;
+    }
+
+    function mockDoesEntryExist(bytes32 issuanceHash, bool exists) public {
+        mockReturnValue("doesEntryExist", issuanceHash, exists ? bytes32(1) : bytes32(0));
+    }
+
     function mockInsertReturnValue(bytes32 issuanceHash) public {
         mockReturnValue("insert", DEFAULT_SIGNATURE_ARGS, issuanceHash);
     }
@@ -203,7 +212,7 @@ contract MockDebtRegistry is MockContract {
             "getTermsContract",
             "getTermsContractParameters",
             "getIssuanceBlockTimestamp",
-            "",
+            "doesEntryExist",
             ""
         ];
     }
