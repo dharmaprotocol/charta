@@ -30,7 +30,7 @@ contract TokenRegistry is Ownable {
         // The name of the given token, e.g. "Canonical Wrapped Ether"
         string name;
         // The number of digits that come after the decimal place when displaying token value.
-        uint numDecimals;
+        uint8 numDecimals;
     }
 
     /**
@@ -40,7 +40,7 @@ contract TokenRegistry is Ownable {
         string _symbol,
         address _tokenAddress,
         string _tokenName,
-        uint _numDecimals
+        uint8 _numDecimals
     )
         public onlyOwner
     {
@@ -134,7 +134,7 @@ contract TokenRegistry is Ownable {
      *   getNumDecimalsFromSymbol("REP");
      *   => 18
      */
-    function getNumDecimalsFromSymbol(string _symbol) public view returns (uint) {
+    function getNumDecimalsFromSymbol(string _symbol) public view returns (uint8) {
         bytes32 symbolHash = keccak256(_symbol);
 
         TokenAttributes storage attributes = symbolHashToTokenAttributes[symbolHash];
@@ -150,7 +150,7 @@ contract TokenRegistry is Ownable {
      *   getNumDecimalsByIndex(1);
      *   => 18
      */
-    function getNumDecimalsByIndex(uint _index) public view returns (uint) {
+    function getNumDecimalsByIndex(uint _index) public view returns (uint8) {
         string memory symbol = getTokenSymbolByIndex(_index);
 
         uint numDecimals = getNumDecimalsFromSymbol(symbol);
@@ -219,7 +219,7 @@ contract TokenRegistry is Ownable {
             address,
             string,
             string,
-            uint
+            uint8
         )
     {
         string memory symbol = getTokenSymbolByIndex(_index);
