@@ -153,9 +153,7 @@ contract TokenRegistry is Ownable {
     function getNumDecimalsByIndex(uint _index) public view returns (uint8) {
         string memory symbol = getTokenSymbolByIndex(_index);
 
-        uint numDecimals = getNumDecimalsFromSymbol(symbol);
-
-        return numDecimals;
+        return getNumDecimalsFromSymbol(symbol);
     }
 
     /**
