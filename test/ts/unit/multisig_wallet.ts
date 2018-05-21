@@ -30,9 +30,29 @@ const MultiSigWallet = artifacts.require("MultiSigWallet");
 contract("Multisig Wallet (Unit Tests)", (ACCOUNTS) => {
     let wallet: MultiSigWalletContract;
 
+    const CONTRACT_OWNER = ACCOUNTS[0];
+    const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
+
     before(async () => {
-        const walletTruffle = await MultiSigWallet.new(); // truffle
+        const walletTruffle = await MultiSigWallet.new([CONTRACT_OWNER], new BigNumber(1), {
+            from: CONTRACT_OWNER,
+        }); // truffle
         const walletWeb3 = web3.eth.contract(walletTruffle.abi).at(walletTruffle.address); // web3
-        wallet = new MultiSigWalletContract(walletWeb3, {}); // typed
+        wallet = new MultiSigWalletContract(walletWeb3, TX_DEFAULTS); // typed
+    });
+
+    describe("#getTransactionIds", () => {
+        describe("from > to", () => {
+            it("should throw", async () => {
+                await expect(
+                    wallet.getTransactionIds.callAsync(
+                        new BigNumber(5),
+                        new BigNumber(4),
+                        true,
+                        true,
+                    ),
+                ).to.eventually.be.rejectedWith(REVERT_ERROR);
+            });
+        });
     });
 });
