@@ -45,10 +45,10 @@ contract DebtRegistry is Pausable, PermissionEvents {
         uint issuanceBlockTimestamp;
     }
 
-    // Primary registry mapping issuance hashes to their corresponding entries
+    // Primary registry mapping agreement IDs to their corresponding entries
     mapping (bytes32 => Entry) internal registry;
 
-    // Maps debtor addresses to a list of their debts' issuance hashes
+    // Maps debtor addresses to a list of their debts' agreement IDs
     mapping (address => bytes32[]) internal debtorToDebts;
 
     PermissionsLib.Permissions internal entryInsertPermissions;
@@ -92,7 +92,7 @@ contract DebtRegistry is Pausable, PermissionEvents {
         _;
     }
 
-    /* Ensures an entry with the specified issuance hash exists within the debt registry. */
+    /* Ensures an entry with the specified agreement ID exists within the debt registry. */
     function doesEntryExist(bytes32 agreementId)
         public
         view
@@ -327,7 +327,7 @@ contract DebtRegistry is Pausable, PermissionEvents {
 
     /**
      * Returns the list of debt agreements a debtor is party to,
-     * with each debt agreement listed by issuance hash.
+     * with each debt agreement listed by agreement ID.
      */
     function getDebtorsDebts(address debtor)
         public
