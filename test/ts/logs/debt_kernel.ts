@@ -4,24 +4,24 @@ import * as ABIDecoder from "abi-decoder";
 import { BigNumber } from "bignumber.js";
 import * as LogUtils from "./log_utils";
 
-export function LogDebtIssuance(contract: Address, issuanceHash: Bytes32): ABIDecoder.DecodedLog {
+export function LogDebtIssuance(contract: Address, agreementId: Bytes32): ABIDecoder.DecodedLog {
     return {
         address: contract,
-        events: LogUtils.getParams([["_issuanceHash", issuanceHash]]),
+        events: LogUtils.getParams([["_agreementId", agreementId]]),
         name: "LogDebtIssuance",
     };
 }
 
 export function LogTermBegin(
     contract: Address,
-    issuanceHash: Bytes32,
+    agreementId: Bytes32,
     unixTimestampSec: number,
     blockNumber: number,
 ): ABIDecoder.DecodedLog {
     return {
         address: contract,
         events: LogUtils.getParams([
-            ["_issuanceHash", issuanceHash],
+            ["_agreementId", agreementId],
             ["_unixTimestampSec", new BigNumber(unixTimestampSec)],
             ["_blockNumber", new BigNumber(blockNumber)],
         ]),
@@ -31,7 +31,7 @@ export function LogTermBegin(
 
 export function LogDebtOrderFilled(
     contract: Address,
-    issuanceHash: Bytes32,
+    agreementId: Bytes32,
     principal: BigNumber,
     principalToken: Address,
     underwriter: Address,
@@ -42,7 +42,7 @@ export function LogDebtOrderFilled(
     return {
         address: contract,
         events: LogUtils.getParams([
-            ["_issuanceHash", issuanceHash],
+            ["_agreementId", agreementId],
             ["_principal", principal],
             ["_principalToken", principalToken],
             ["_underwriter", underwriter],
@@ -56,15 +56,12 @@ export function LogDebtOrderFilled(
 
 export function LogIssuanceCancelled(
     contract: Address,
-    issuanceHash: Bytes32,
+    agreementId: Bytes32,
     cancelledBy: Address,
 ): ABIDecoder.DecodedLog {
     return {
         address: contract,
-        events: LogUtils.getParams([
-            ["_issuanceHash", issuanceHash],
-            ["_cancelledBy", cancelledBy],
-        ]),
+        events: LogUtils.getParams([["_agreementId", agreementId], ["_cancelledBy", cancelledBy]]),
         name: "LogIssuanceCancelled",
     };
 }

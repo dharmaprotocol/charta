@@ -10,7 +10,7 @@ export function LogInsertEntry(contract: Address, entry: DebtRegistryEntry): ABI
     return {
         address: contract,
         events: LogUtils.getParams([
-            ["issuanceHash", entry.getIssuanceHash()],
+            ["agreementId", entry.getIssuanceHash()],
             ["beneficiary", entry.getBeneficiary()],
             ["underwriter", entry.getUnderwriter()],
             ["underwriterRiskRating", entry.getUnderwriterRiskRating()],
@@ -23,14 +23,14 @@ export function LogInsertEntry(contract: Address, entry: DebtRegistryEntry): ABI
 
 export function LogModifyEntryBeneficiary(
     contract: Address,
-    issuanceHash: Bytes32,
+    agreementId: Bytes32,
     previousBeneficiary: Address,
     newBeneficiary: Address,
 ): ABIDecoder.DecodedLog {
     return {
         address: contract,
         events: LogUtils.getParams([
-            ["issuanceHash", issuanceHash],
+            ["agreementId", agreementId],
             ["previousBeneficiary", previousBeneficiary],
             ["newBeneficiary", newBeneficiary],
         ]),

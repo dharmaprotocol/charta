@@ -33,7 +33,7 @@ contract MockDebtRegistry is MockContract {
         uint _salt
     )
         public
-        returns (bytes32 _issuanceHash)
+        returns (bytes32 _agreementId)
     {
         bytes32 argsSignature = keccak256(
             _version,
@@ -48,120 +48,120 @@ contract MockDebtRegistry is MockContract {
 
         functionCalledWithArgs("insert", argsSignature);
 
-        bytes32 issuanceHash = getMockReturnValue("insert", DEFAULT_SIGNATURE_ARGS);
+        bytes32 agreementId = getMockReturnValue("insert", DEFAULT_SIGNATURE_ARGS);
 
-        mockGetBeneficiaryReturnValueFor(issuanceHash, _beneficiary);
+        mockGetBeneficiaryReturnValueFor(agreementId, _beneficiary);
 
-        return issuanceHash;
+        return agreementId;
     }
 
-    function modifyBeneficiary(bytes32 issuanceHash, address newBeneficiary)
+    function modifyBeneficiary(bytes32 agreementId, address newBeneficiary)
         public
     {
         functionCalledWithArgs("modifyBeneficiary",
-            keccak256(issuanceHash, newBeneficiary));
+            keccak256(agreementId, newBeneficiary));
 
-        mockGetBeneficiaryReturnValueFor(issuanceHash, newBeneficiary);
+        mockGetBeneficiaryReturnValueFor(agreementId, newBeneficiary);
     }
 
-    function getBeneficiary(bytes32 issuanceHash)
+    function getBeneficiary(bytes32 agreementId)
         public
         view
         returns (address _mockBeneficiary)
     {
-        return address(getMockReturnValue("getBeneficiary", issuanceHash));
+        return address(getMockReturnValue("getBeneficiary", agreementId));
     }
 
-    function doesEntryExist(bytes32 issuanceHash) public returns (bool) {
-        bytes32 mockReturnValue = getMockReturnValue("doesEntryExist", issuanceHash);
+    function doesEntryExist(bytes32 agreementId) public returns (bool) {
+        bytes32 mockReturnValue = getMockReturnValue("doesEntryExist", agreementId);
         return mockReturnValue == bytes32(0) ? false : true;
     }
 
-    function mockDoesEntryExist(bytes32 issuanceHash, bool exists) public {
-        mockReturnValue("doesEntryExist", issuanceHash, exists ? bytes32(1) : bytes32(0));
+    function mockDoesEntryExist(bytes32 agreementId, bool exists) public {
+        mockReturnValue("doesEntryExist", agreementId, exists ? bytes32(1) : bytes32(0));
     }
 
-    function mockInsertReturnValue(bytes32 issuanceHash) public {
-        mockReturnValue("insert", DEFAULT_SIGNATURE_ARGS, issuanceHash);
+    function mockInsertReturnValue(bytes32 agreementId) public {
+        mockReturnValue("insert", DEFAULT_SIGNATURE_ARGS, agreementId);
     }
 
-    function mockGetBeneficiaryReturnValueFor(bytes32 issuanceHash, address beneficiary)
+    function mockGetBeneficiaryReturnValueFor(bytes32 agreementId, address beneficiary)
         public
     {
-        mockReturnValue("getBeneficiary", issuanceHash, bytes32(beneficiary));
+        mockReturnValue("getBeneficiary", agreementId, bytes32(beneficiary));
     }
 
-    function getTerms(bytes32 issuanceHash)
+    function getTerms(bytes32 agreementId)
         public
         view
         returns (address _termsContract, bytes32 _termsContractParameters)
     {
         return (
-            address(getMockReturnValue("getTerms_termsContract", issuanceHash)),
-            getMockReturnValue("getTerms_termsContractParameters", issuanceHash)
+            address(getMockReturnValue("getTerms_termsContract", agreementId)),
+            getMockReturnValue("getTerms_termsContractParameters", agreementId)
         );
     }
 
     function mockGetTermsReturnValueFor(
-        bytes32 issuanceHash,
+        bytes32 agreementId,
         address termsContract,
         bytes32 termsContractParameters
     )
         public
     {
-        mockReturnValue("getTerms_termsContract", issuanceHash, bytes32(termsContract));
-        mockReturnValue("getTerms_termsContractParameters", issuanceHash, termsContractParameters);
+        mockReturnValue("getTerms_termsContract", agreementId, bytes32(termsContract));
+        mockReturnValue("getTerms_termsContractParameters", agreementId, termsContractParameters);
     }
 
-    function getTermsContract(bytes32 issuanceHash)
+    function getTermsContract(bytes32 agreementId)
         public
         view
         returns (address _termsContract)
     {
-        return address(getMockReturnValue("getTermsContract", issuanceHash));
+        return address(getMockReturnValue("getTermsContract", agreementId));
     }
 
-    function getIssuanceBlockTimestamp(bytes32 issuanceHash)
+    function getIssuanceBlockTimestamp(bytes32 agreementId)
         public
         view
         returns (uint timestamp)
     {
-        return uint(getMockReturnValue("getIssuanceBlockTimestamp", issuanceHash));
+        return uint(getMockReturnValue("getIssuanceBlockTimestamp", agreementId));
     }
 
     function mockGetIssuanceBlockTimestamp(
-        bytes32 issuanceHash,
+        bytes32 agreementId,
         uint timestamp
     )
         public
     {
-        mockReturnValue("getIssuanceBlockTimestamp", issuanceHash, bytes32(timestamp));
+        mockReturnValue("getIssuanceBlockTimestamp", agreementId, bytes32(timestamp));
     }
 
-    function getTermsContractParameters(bytes32 issuanceHash)
+    function getTermsContractParameters(bytes32 agreementId)
         public
         view
         returns (bytes32)
     {
-        return getMockReturnValue("getTermsContractParameters", issuanceHash);
+        return getMockReturnValue("getTermsContractParameters", agreementId);
     }
 
     function mockGetTermsContractParameters(
-        bytes32 issuanceHash,
+        bytes32 agreementId,
         bytes32 params
     )
         public
     {
-        mockReturnValue("getTermsContractParameters", issuanceHash, params);
+        mockReturnValue("getTermsContractParameters", agreementId, params);
     }
 
     function mockGetTermsContractReturnValueFor(
-        bytes32 issuanceHash,
+        bytes32 agreementId,
         address termsContract
     )
         public
     {
-        mockReturnValue("getTermsContract", issuanceHash, bytes32(termsContract));
+        mockReturnValue("getTermsContract", agreementId, bytes32(termsContract));
     }
 
     function wasInsertCalledWith(
@@ -190,13 +190,13 @@ contract MockDebtRegistry is MockContract {
         ));
     }
 
-    function wasModifyBeneficiaryCalledWith(bytes32 issuanceHash, address newBeneficiary)
+    function wasModifyBeneficiaryCalledWith(bytes32 agreementId, address newBeneficiary)
         public
         view
         returns (bool _wasCalled)
     {
         return wasFunctionCalledWithArgs("modifyBeneficiary",
-            keccak256(issuanceHash, newBeneficiary));
+            keccak256(agreementId, newBeneficiary));
     }
 
     function getFunctionList()
