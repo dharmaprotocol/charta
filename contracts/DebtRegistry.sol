@@ -58,7 +58,7 @@ contract DebtRegistry is Pausable, PermissionEvents {
     string public constant EDIT_CONTEXT = "debt-registry-edit";
 
     event LogInsertEntry(
-        bytes32 indexed issuanceHash,
+        bytes32 indexed agreementId,
         address indexed beneficiary,
         address indexed underwriter,
         uint underwriterRiskRating,
@@ -67,7 +67,7 @@ contract DebtRegistry is Pausable, PermissionEvents {
     );
 
     event LogModifyEntryBeneficiary(
-        bytes32 indexed issuanceHash,
+        bytes32 indexed agreementId,
         address indexed previousBeneficiary,
         address indexed newBeneficiary
     );
@@ -82,8 +82,8 @@ contract DebtRegistry is Pausable, PermissionEvents {
         _;
     }
 
-    modifier onlyExtantEntry(bytes32 issuanceHash) {
-        require(doesEntryExist(issuanceHash));
+    modifier onlyExtantEntry(bytes32 agreementId) {
+        require(doesEntryExist(agreementId));
         _;
     }
 
@@ -93,12 +93,12 @@ contract DebtRegistry is Pausable, PermissionEvents {
     }
 
     /* Ensures an entry with the specified issuance hash exists within the debt registry. */
-    function doesEntryExist(bytes32 issuanceHash)
+    function doesEntryExist(bytes32 agreementId)
         public
         view
         returns (bool exists)
     {
-        return registry[issuanceHash].beneficiary != address(0);
+        return registry[agreementId].beneficiary != address(0);
     }
 
     /**
@@ -119,7 +119,7 @@ contract DebtRegistry is Pausable, PermissionEvents {
         onlyAuthorizedToInsert
         whenNotPaused
         nonNullBeneficiary(_beneficiary)
-        returns (bytes32 _issuanceHash)
+        returns (bytes32 _agreementId)
     {
         Entry memory entry = Entry(
             _version,
@@ -131,15 +131,15 @@ contract DebtRegistry is Pausable, PermissionEvents {
             block.timestamp
         );
 
-        bytes32 issuanceHash = _getIssuanceHash(entry, _debtor, _salt);
+        bytes32 agreementId = _getAgreementId(entry, _debtor, _salt);
 
-        require(registry[issuanceHash].beneficiary == address(0));
+        require(registry[agreementId].beneficiary == address(0));
 
-        registry[issuanceHash] = entry;
-        debtorToDebts[_debtor].push(issuanceHash);
+        registry[agreementId] = entry;
+        debtorToDebts[_debtor].push(agreementId);
 
         LogInsertEntry(
-            issuanceHash,
+            agreementId,
             entry.beneficiary,
             entry.underwriter,
             entry.underwriterRiskRating,
@@ -147,7 +147,7 @@ contract DebtRegistry is Pausable, PermissionEvents {
             entry.termsContractParameters
         );
 
-        return issuanceHash;
+        return agreementId;
     }
 
     /**
@@ -155,19 +155,19 @@ contract DebtRegistry is Pausable, PermissionEvents {
      * is authorized to make 'modifyBeneficiary' mutations to
      * the registry.
      */
-    function modifyBeneficiary(bytes32 issuanceHash, address newBeneficiary)
+    function modifyBeneficiary(bytes32 agreementId, address newBeneficiary)
         public
         onlyAuthorizedToEdit
         whenNotPaused
-        onlyExtantEntry(issuanceHash)
+        onlyExtantEntry(agreementId)
         nonNullBeneficiary(newBeneficiary)
     {
-        address previousBeneficiary = registry[issuanceHash].beneficiary;
+        address previousBeneficiary = registry[agreementId].beneficiary;
 
-        registry[issuanceHash].beneficiary = newBeneficiary;
+        registry[agreementId].beneficiary = newBeneficiary;
 
         LogModifyEntryBeneficiary(
-            issuanceHash,
+            agreementId,
             previousBeneficiary,
             newBeneficiary
         );
@@ -223,84 +223,84 @@ contract DebtRegistry is Pausable, PermissionEvents {
      * TODO(kayvon): protect this function with our `onlyExtantEntry` modifier once the restriction
      * on the size of the call stack has been addressed.
      */
-    function get(bytes32 issuanceHash)
+    function get(bytes32 agreementId)
         public
         view
         returns(address, address, address, uint, address, bytes32, uint)
     {
         return (
-            registry[issuanceHash].version,
-            registry[issuanceHash].beneficiary,
-            registry[issuanceHash].underwriter,
-            registry[issuanceHash].underwriterRiskRating,
-            registry[issuanceHash].termsContract,
-            registry[issuanceHash].termsContractParameters,
-            registry[issuanceHash].issuanceBlockTimestamp
+            registry[agreementId].version,
+            registry[agreementId].beneficiary,
+            registry[agreementId].underwriter,
+            registry[agreementId].underwriterRiskRating,
+            registry[agreementId].termsContract,
+            registry[agreementId].termsContractParameters,
+            registry[agreementId].issuanceBlockTimestamp
         );
     }
 
     /**
      * Returns the beneficiary of a given issuance
      */
-    function getBeneficiary(bytes32 issuanceHash)
+    function getBeneficiary(bytes32 agreementId)
         public
         view
-        onlyExtantEntry(issuanceHash)
+        onlyExtantEntry(agreementId)
         returns(address)
     {
-        return registry[issuanceHash].beneficiary;
+        return registry[agreementId].beneficiary;
     }
 
     /**
      * Returns the terms contract address of a given issuance
      */
-    function getTermsContract(bytes32 issuanceHash)
+    function getTermsContract(bytes32 agreementId)
         public
         view
-        onlyExtantEntry(issuanceHash)
+        onlyExtantEntry(agreementId)
         returns (address)
     {
-        return registry[issuanceHash].termsContract;
+        return registry[agreementId].termsContract;
     }
 
     /**
      * Returns the terms contract parameters of a given issuance
      */
-    function getTermsContractParameters(bytes32 issuanceHash)
+    function getTermsContractParameters(bytes32 agreementId)
         public
         view
-        onlyExtantEntry(issuanceHash)
+        onlyExtantEntry(agreementId)
         returns (bytes32)
     {
-        return registry[issuanceHash].termsContractParameters;
+        return registry[agreementId].termsContractParameters;
     }
 
     /**
      * Returns a tuple of the terms contract and its associated parameters
      * for a given issuance
      */
-    function getTerms(bytes32 issuanceHash)
+    function getTerms(bytes32 agreementId)
         public
         view
-        onlyExtantEntry(issuanceHash)
+        onlyExtantEntry(agreementId)
         returns(address, bytes32)
     {
         return (
-            registry[issuanceHash].termsContract,
-            registry[issuanceHash].termsContractParameters
+            registry[agreementId].termsContract,
+            registry[agreementId].termsContractParameters
         );
     }
 
     /**
      * Returns the timestamp of the block at which a debt agreement was issued.
      */
-    function getIssuanceBlockTimestamp(bytes32 issuanceHash)
+    function getIssuanceBlockTimestamp(bytes32 agreementId)
         public
         view
-        onlyExtantEntry(issuanceHash)
+        onlyExtantEntry(agreementId)
         returns (uint timestamp)
     {
-        return registry[issuanceHash].issuanceBlockTimestamp;
+        return registry[agreementId].issuanceBlockTimestamp;
     }
 
     /**
@@ -338,9 +338,10 @@ contract DebtRegistry is Pausable, PermissionEvents {
     }
 
     /**
-     * Helper function for computing the hash of a given issuance.
+     * Helper function for computing the hash of a given issuance,
+     * and, in turn, its agreementId
      */
-    function _getIssuanceHash(Entry _entry, address _debtor, uint _salt)
+    function _getAgreementId(Entry _entry, address _debtor, uint _salt)
         internal
         pure
         returns(bytes32)

@@ -63,7 +63,7 @@ contract RepaymentRouter is Pausable {
     }
 
     /**
-     * Given an agreement id (synonymous to 'issuanceHash' in the debt registry), routes a repayment
+     * Given an agreement id, routes a repayment
      * of a given ERC20 token to the debt's current beneficiary, and reports the repayment
      * to the debt's associated terms contract.
      */

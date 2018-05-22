@@ -77,7 +77,7 @@ contract DebtKernel is Pausable {
     mapping (bytes32 => bool) public debtOrderCancelled;
 
     event LogDebtOrderFilled(
-        bytes32 indexed _issuanceHash,
+        bytes32 indexed _agreementId,
         uint _principal,
         address _principalToken,
         address indexed _underwriter,
@@ -87,7 +87,7 @@ contract DebtKernel is Pausable {
     );
 
     event LogIssuanceCancelled(
-        bytes32 indexed _issuanceHash,
+        bytes32 indexed _agreementId,
         address indexed _cancelledBy
     );
 
@@ -109,7 +109,7 @@ contract DebtKernel is Pausable {
         address termsContract;
         bytes32 termsContractParameters;
         uint salt;
-        bytes32 issuanceHash;
+        bytes32 agreementId;
     }
 
     struct DebtOrder {
@@ -161,7 +161,7 @@ contract DebtKernel is Pausable {
     )
         public
         whenNotPaused
-        returns (bytes32 _issuanceHash)
+        returns (bytes32 _agreementId)
     {
         DebtOrder memory debtOrder = getDebtOrder(orderAddresses, orderValues, orderBytes32);
 
@@ -188,7 +188,7 @@ contract DebtKernel is Pausable {
             require(
                 TermsContract(debtOrder.issuance.termsContract)
                     .registerTermStart(
-                        debtOrder.issuance.issuanceHash,
+                        debtOrder.issuance.agreementId,
                         debtOrder.issuance.debtor
                     )
             );
@@ -225,7 +225,7 @@ contract DebtKernel is Pausable {
         }
 
         LogDebtOrderFilled(
-            debtOrder.issuance.issuanceHash,
+            debtOrder.issuance.agreementId,
             debtOrder.principalAmount,
             debtOrder.principalToken,
             debtOrder.issuance.underwriter,
@@ -234,7 +234,7 @@ contract DebtKernel is Pausable {
             debtOrder.relayerFee
         );
 
-        return debtOrder.issuance.issuanceHash;
+        return debtOrder.issuance.agreementId;
     }
 
     /**
@@ -266,9 +266,9 @@ contract DebtKernel is Pausable {
             termsContractParameters
         );
 
-        issuanceCancelled[issuance.issuanceHash] = true;
+        issuanceCancelled[issuance.agreementId] = true;
 
-        LogIssuanceCancelled(issuance.issuanceHash, msg.sender);
+        LogIssuanceCancelled(issuance.agreementId, msg.sender);
     }
 
     /**
@@ -302,7 +302,7 @@ contract DebtKernel is Pausable {
      */
     function issueDebtAgreement(address beneficiary, Issuance issuance)
         internal
-        returns (bytes32 _issuanceHash)
+        returns (bytes32 _agreementId)
     {
         // Mint debt token and finalize debt agreement
         uint tokenId = debtToken.create(
@@ -316,9 +316,9 @@ contract DebtKernel is Pausable {
             issuance.salt
         );
 
-        assert(tokenId == uint(issuance.issuanceHash));
+        assert(tokenId == uint(issuance.agreementId));
 
-        return issuance.issuanceHash;
+        return issuance.agreementId;
     }
 
     /**
@@ -423,13 +423,13 @@ contract DebtKernel is Pausable {
         }
 
         // Invariant: debt order's issuance must not already be minted as debt token
-        if (debtToken.exists(uint(debtOrder.issuance.issuanceHash))) {
+        if (debtToken.exists(uint(debtOrder.issuance.agreementId))) {
             LogError(uint8(Errors.DEBT_ISSUED), debtOrder.debtOrderHash);
             return false;
         }
 
         // Invariant: debt order's issuance must not have been cancelled
-        if (issuanceCancelled[debtOrder.issuance.issuanceHash]) {
+        if (issuanceCancelled[debtOrder.issuance.agreementId]) {
             LogError(uint8(Errors.ISSUANCE_CANCELLED), debtOrder.debtOrderHash);
             return false;
         }
@@ -512,7 +512,7 @@ contract DebtKernel is Pausable {
             underwriterRiskRating: underwriterRiskRating,
             salt: salt,
             termsContractParameters: termsContractParameters,
-            issuanceHash: getIssuanceHash(
+            agreementId: getAgreementId(
                 version,
                 debtor,
                 underwriter,
@@ -564,7 +564,7 @@ contract DebtKernel is Pausable {
     /**
      * Helper function that returns an issuance's hash
      */
-    function getIssuanceHash(
+    function getAgreementId(
         address version,
         address debtor,
         address underwriter,
@@ -575,7 +575,7 @@ contract DebtKernel is Pausable {
     )
         internal
         pure
-        returns (bytes32 _issuanceHash)
+        returns (bytes32 _agreementId)
     {
         return keccak256(
             version,
@@ -598,7 +598,7 @@ contract DebtKernel is Pausable {
     {
         return keccak256(
             address(this),
-            debtOrder.issuance.issuanceHash,
+            debtOrder.issuance.agreementId,
             debtOrder.underwriterFee,
             debtOrder.principalAmount,
             debtOrder.principalToken,
@@ -616,7 +616,7 @@ contract DebtKernel is Pausable {
     {
         return keccak256(
             address(this),
-            debtOrder.issuance.issuanceHash,
+            debtOrder.issuance.agreementId,
             debtOrder.underwriterFee,
             debtOrder.principalAmount,
             debtOrder.principalToken,
