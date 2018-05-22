@@ -31,6 +31,7 @@ contract("Multisig Wallet (Unit Tests)", (ACCOUNTS) => {
     let wallet: MultiSigWalletContract;
 
     const CONTRACT_OWNER = ACCOUNTS[0];
+    const DESTINATION = ACCOUNTS[1];
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
 
     before(async () => {
@@ -43,7 +44,7 @@ contract("Multisig Wallet (Unit Tests)", (ACCOUNTS) => {
 
     describe("#getTransactionIds", () => {
         describe("from > to", () => {
-            it("should throw", async () => {
+            it("should throw REVERT_ERROR", async () => {
                 await expect(
                     wallet.getTransactionIds.callAsync(
                         new BigNumber(5),
@@ -52,6 +53,47 @@ contract("Multisig Wallet (Unit Tests)", (ACCOUNTS) => {
                         true,
                     ),
                 ).to.eventually.be.rejectedWith(REVERT_ERROR);
+            });
+        });
+        describe("from <= to", () => {
+            before(async () => {
+                await wallet.submitTransaction.sendTransactionAsync(
+                    DESTINATION,
+                    Units.ether(1),
+                    web3.sha3("give me data or give me death"),
+                );
+            });
+
+            it("should return the empty array", async () => {
+                await expect(
+                    wallet.getTransactionIds.callAsync(
+                        new BigNumber(0),
+                        new BigNumber(0),
+                        true,
+                        true,
+                    ),
+                ).to.eventually.deep.equal([]);
+            });
+
+            it("should return an array of length one", async () => {
+                const result = await wallet.getTransactionIds.callAsync(
+                    new BigNumber(0),
+                    new BigNumber(1),
+                    true,
+                    true,
+                );
+                expect(result.length).to.bignumber.equal(new BigNumber(1));
+            });
+
+            it("should throw INVALID_OPCODE", async () => {
+                await expect(
+                    wallet.getTransactionIds.callAsync(
+                        new BigNumber(0),
+                        new BigNumber(2),
+                        true,
+                        true,
+                    ),
+                ).to.eventually.be.rejectedWith(INVALID_OPCODE);
             });
         });
     });
