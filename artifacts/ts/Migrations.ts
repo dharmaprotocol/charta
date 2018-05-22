@@ -220,7 +220,7 @@ export const Migrations =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10471,
+                                  "referencedDeclaration": 10473,
                                   "type": "msg",
                                   "value": "msg"
                                 },
@@ -357,7 +357,7 @@ export const Migrations =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10471,
+                                  "referencedDeclaration": 10473,
                                   "type": "msg",
                                   "value": "msg"
                                 },
@@ -817,5 +817,5 @@ export const Migrations =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-05-21T18:06:16.751Z"
+  "updatedAt": "2018-05-22T06:24:48.582Z"
 }

@@ -250,7 +250,7 @@ export const MockERC20Token =
       "absolutePath": "/Users/nadavhollander/Documents/Dharma/Development/charta/contracts/test/mocks/MockERC20Token.sol",
       "exportedSymbols": {
         "MockERC20Token": [
-          6402
+          6398
         ]
       }
     },
@@ -263,54 +263,54 @@ export const MockERC20Token =
             ".18"
           ]
         },
-        "id": 6186,
+        "id": 6182,
         "name": "PragmaDirective",
         "src": "584:23:20"
       },
       {
         "attributes": {
-          "SourceUnit": 5518,
+          "SourceUnit": 5514,
           "absolutePath": "/Users/nadavhollander/Documents/Dharma/Development/charta/contracts/test/mocks/MockContract.sol",
           "file": "./MockContract.sol",
-          "scope": 6403,
+          "scope": 6399,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 6187,
+        "id": 6183,
         "name": "ImportDirective",
         "src": "609:28:20"
       },
       {
         "attributes": {
-          "SourceUnit": 8929,
+          "SourceUnit": 8931,
           "absolutePath": "zeppelin-solidity/contracts/token/ERC20/ERC20.sol",
           "file": "zeppelin-solidity/contracts/token/ERC20/ERC20.sol",
-          "scope": 6403,
+          "scope": 6399,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 6188,
+        "id": 6184,
         "name": "ImportDirective",
         "src": "638:59:20"
       },
       {
         "attributes": {
           "contractDependencies": [
-            5517
+            5513
           ],
           "contractKind": "contract",
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            6402,
-            5517
+            6398,
+            5513
           ],
           "name": "MockERC20Token",
-          "scope": 6403
+          "scope": 6399
         },
         "children": [
           {
@@ -324,15 +324,15 @@ export const MockERC20Token =
                 "attributes": {
                   "contractScope": null,
                   "name": "MockContract",
-                  "referencedDeclaration": 5517,
+                  "referencedDeclaration": 5513,
                   "type": "contract MockContract"
                 },
-                "id": 6189,
+                "id": 6185,
                 "name": "UserDefinedTypeName",
                 "src": "727:12:20"
               }
             ],
-            "id": 6190,
+            "id": 6186,
             "name": "InheritanceSpecifier",
             "src": "727:12:20"
           },
@@ -346,7 +346,7 @@ export const MockERC20Token =
               ],
               "name": "transfer",
               "payable": false,
-              "scope": 6402,
+              "scope": 6398,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -358,7 +358,7 @@ export const MockERC20Token =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 6210,
+                      "scope": 6206,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -371,12 +371,12 @@ export const MockERC20Token =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 6191,
+                        "id": 6187,
                         "name": "ElementaryTypeName",
                         "src": "773:7:20"
                       }
                     ],
-                    "id": 6192,
+                    "id": 6188,
                     "name": "VariableDeclaration",
                     "src": "773:11:20"
                   },
@@ -384,7 +384,7 @@ export const MockERC20Token =
                     "attributes": {
                       "constant": false,
                       "name": "_amount",
-                      "scope": 6210,
+                      "scope": 6206,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -397,17 +397,17 @@ export const MockERC20Token =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 6193,
+                        "id": 6189,
                         "name": "ElementaryTypeName",
                         "src": "794:4:20"
                       }
                     ],
-                    "id": 6194,
+                    "id": 6190,
                     "name": "VariableDeclaration",
                     "src": "794:12:20"
                   }
                 ],
-                "id": 6195,
+                "id": 6191,
                 "name": "ParameterList",
                 "src": "763:49:20"
               },
@@ -417,7 +417,7 @@ export const MockERC20Token =
                     "attributes": {
                       "constant": false,
                       "name": "_success",
-                      "scope": 6210,
+                      "scope": 6206,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -430,17 +430,17 @@ export const MockERC20Token =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 6196,
+                        "id": 6192,
                         "name": "ElementaryTypeName",
                         "src": "845:4:20"
                       }
                     ],
-                    "id": 6197,
+                    "id": 6193,
                     "name": "VariableDeclaration",
                     "src": "845:13:20"
                   }
                 ],
-                "id": 6198,
+                "id": 6194,
                 "name": "ParameterList",
                 "src": "844:15:20"
               },
@@ -478,11 +478,11 @@ export const MockERC20Token =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5493,
+                              "referencedDeclaration": 5489,
                               "type": "function (string memory,bytes32)",
                               "value": "functionCalledWithArgs"
                             },
-                            "id": 6199,
+                            "id": 6195,
                             "name": "Identifier",
                             "src": "874:22:20"
                           },
@@ -499,7 +499,7 @@ export const MockERC20Token =
                               "type": "literal_string \"transfer\"",
                               "value": "transfer"
                             },
-                            "id": 6200,
+                            "id": 6196,
                             "name": "Literal",
                             "src": "897:10:20"
                           },
@@ -533,11 +533,11 @@ export const MockERC20Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6363,
+                                  "referencedDeclaration": 6359,
                                   "type": "function (address,uint256) pure returns (bytes32)",
                                   "value": "getTransferArgsSignature"
                                 },
-                                "id": 6201,
+                                "id": 6197,
                                 "name": "Identifier",
                                 "src": "909:24:20"
                               },
@@ -547,11 +547,11 @@ export const MockERC20Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6192,
+                                  "referencedDeclaration": 6188,
                                   "type": "address",
                                   "value": "_to"
                                 },
-                                "id": 6202,
+                                "id": 6198,
                                 "name": "Identifier",
                                 "src": "947:3:20"
                               },
@@ -561,32 +561,32 @@ export const MockERC20Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6194,
+                                  "referencedDeclaration": 6190,
                                   "type": "uint256",
                                   "value": "_amount"
                                 },
-                                "id": 6203,
+                                "id": 6199,
                                 "name": "Identifier",
                                 "src": "964:7:20"
                               }
                             ],
-                            "id": 6204,
+                            "id": 6200,
                             "name": "FunctionCall",
                             "src": "909:72:20"
                           }
                         ],
-                        "id": 6205,
+                        "id": 6201,
                         "name": "FunctionCall",
                         "src": "874:108:20"
                       }
                     ],
-                    "id": 6206,
+                    "id": 6202,
                     "name": "ExpressionStatement",
                     "src": "874:108:20"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 6198
+                      "functionReturnParameters": 6194
                     },
                     "children": [
                       {
@@ -602,22 +602,22 @@ export const MockERC20Token =
                           "type": "bool",
                           "value": "true"
                         },
-                        "id": 6207,
+                        "id": 6203,
                         "name": "Literal",
                         "src": "1000:4:20"
                       }
                     ],
-                    "id": 6208,
+                    "id": 6204,
                     "name": "Return",
                     "src": "993:11:20"
                   }
                 ],
-                "id": 6209,
+                "id": 6205,
                 "name": "Block",
                 "src": "864:147:20"
               }
             ],
-            "id": 6210,
+            "id": 6206,
             "name": "FunctionDefinition",
             "src": "746:265:20"
           },
@@ -631,7 +631,7 @@ export const MockERC20Token =
               ],
               "name": "wasTransferCalledWith",
               "payable": false,
-              "scope": 6402,
+              "scope": 6398,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -643,7 +643,7 @@ export const MockERC20Token =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 6228,
+                      "scope": 6224,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -656,12 +656,12 @@ export const MockERC20Token =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 6211,
+                        "id": 6207,
                         "name": "ElementaryTypeName",
                         "src": "1057:7:20"
                       }
                     ],
-                    "id": 6212,
+                    "id": 6208,
                     "name": "VariableDeclaration",
                     "src": "1057:11:20"
                   },
@@ -669,7 +669,7 @@ export const MockERC20Token =
                     "attributes": {
                       "constant": false,
                       "name": "_amount",
-                      "scope": 6228,
+                      "scope": 6224,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -682,17 +682,17 @@ export const MockERC20Token =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 6213,
+                        "id": 6209,
                         "name": "ElementaryTypeName",
                         "src": "1078:4:20"
                       }
                     ],
-                    "id": 6214,
+                    "id": 6210,
                     "name": "VariableDeclaration",
                     "src": "1078:12:20"
                   }
                 ],
-                "id": 6215,
+                "id": 6211,
                 "name": "ParameterList",
                 "src": "1047:49:20"
               },
@@ -702,7 +702,7 @@ export const MockERC20Token =
                     "attributes": {
                       "constant": false,
                       "name": "wasCalled",
-                      "scope": 6228,
+                      "scope": 6224,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -715,17 +715,17 @@ export const MockERC20Token =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 6216,
+                        "id": 6212,
                         "name": "ElementaryTypeName",
                         "src": "1142:4:20"
                       }
                     ],
-                    "id": 6217,
+                    "id": 6213,
                     "name": "VariableDeclaration",
                     "src": "1142:14:20"
                   }
                 ],
-                "id": 6218,
+                "id": 6214,
                 "name": "ParameterList",
                 "src": "1141:16:20"
               },
@@ -733,7 +733,7 @@ export const MockERC20Token =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 6218
+                      "functionReturnParameters": 6214
                     },
                     "children": [
                       {
@@ -766,11 +766,11 @@ export const MockERC20Token =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5509,
+                              "referencedDeclaration": 5505,
                               "type": "function (string memory,bytes32) view returns (bool)",
                               "value": "wasFunctionCalledWithArgs"
                             },
-                            "id": 6219,
+                            "id": 6215,
                             "name": "Identifier",
                             "src": "1179:25:20"
                           },
@@ -787,7 +787,7 @@ export const MockERC20Token =
                               "type": "literal_string \"transfer\"",
                               "value": "transfer"
                             },
-                            "id": 6220,
+                            "id": 6216,
                             "name": "Literal",
                             "src": "1205:10:20"
                           },
@@ -821,11 +821,11 @@ export const MockERC20Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6363,
+                                  "referencedDeclaration": 6359,
                                   "type": "function (address,uint256) pure returns (bytes32)",
                                   "value": "getTransferArgsSignature"
                                 },
-                                "id": 6221,
+                                "id": 6217,
                                 "name": "Identifier",
                                 "src": "1217:24:20"
                               },
@@ -835,11 +835,11 @@ export const MockERC20Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6212,
+                                  "referencedDeclaration": 6208,
                                   "type": "address",
                                   "value": "_to"
                                 },
-                                "id": 6222,
+                                "id": 6218,
                                 "name": "Identifier",
                                 "src": "1255:3:20"
                               },
@@ -849,36 +849,36 @@ export const MockERC20Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6214,
+                                  "referencedDeclaration": 6210,
                                   "type": "uint256",
                                   "value": "_amount"
                                 },
-                                "id": 6223,
+                                "id": 6219,
                                 "name": "Identifier",
                                 "src": "1272:7:20"
                               }
                             ],
-                            "id": 6224,
+                            "id": 6220,
                             "name": "FunctionCall",
                             "src": "1217:72:20"
                           }
                         ],
-                        "id": 6225,
+                        "id": 6221,
                         "name": "FunctionCall",
                         "src": "1179:111:20"
                       }
                     ],
-                    "id": 6226,
+                    "id": 6222,
                     "name": "Return",
                     "src": "1172:118:20"
                   }
                 ],
-                "id": 6227,
+                "id": 6223,
                 "name": "Block",
                 "src": "1162:135:20"
               }
             ],
-            "id": 6228,
+            "id": 6224,
             "name": "FunctionDefinition",
             "src": "1017:280:20"
           },
@@ -892,7 +892,7 @@ export const MockERC20Token =
               ],
               "name": "transferFrom",
               "payable": false,
-              "scope": 6402,
+              "scope": 6398,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -904,7 +904,7 @@ export const MockERC20Token =
                     "attributes": {
                       "constant": false,
                       "name": "_from",
-                      "scope": 6251,
+                      "scope": 6247,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -917,12 +917,12 @@ export const MockERC20Token =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 6229,
+                        "id": 6225,
                         "name": "ElementaryTypeName",
                         "src": "1334:7:20"
                       }
                     ],
-                    "id": 6230,
+                    "id": 6226,
                     "name": "VariableDeclaration",
                     "src": "1334:13:20"
                   },
@@ -930,7 +930,7 @@ export const MockERC20Token =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 6251,
+                      "scope": 6247,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -943,12 +943,12 @@ export const MockERC20Token =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 6231,
+                        "id": 6227,
                         "name": "ElementaryTypeName",
                         "src": "1357:7:20"
                       }
                     ],
-                    "id": 6232,
+                    "id": 6228,
                     "name": "VariableDeclaration",
                     "src": "1357:11:20"
                   },
@@ -956,7 +956,7 @@ export const MockERC20Token =
                     "attributes": {
                       "constant": false,
                       "name": "_amount",
-                      "scope": 6251,
+                      "scope": 6247,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -969,17 +969,17 @@ export const MockERC20Token =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 6233,
+                        "id": 6229,
                         "name": "ElementaryTypeName",
                         "src": "1378:4:20"
                       }
                     ],
-                    "id": 6234,
+                    "id": 6230,
                     "name": "VariableDeclaration",
                     "src": "1378:12:20"
                   }
                 ],
-                "id": 6235,
+                "id": 6231,
                 "name": "ParameterList",
                 "src": "1324:72:20"
               },
@@ -989,7 +989,7 @@ export const MockERC20Token =
                     "attributes": {
                       "constant": false,
                       "name": "_success",
-                      "scope": 6251,
+                      "scope": 6247,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -1002,17 +1002,17 @@ export const MockERC20Token =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 6236,
+                        "id": 6232,
                         "name": "ElementaryTypeName",
                         "src": "1429:4:20"
                       }
                     ],
-                    "id": 6237,
+                    "id": 6233,
                     "name": "VariableDeclaration",
                     "src": "1429:13:20"
                   }
                 ],
-                "id": 6238,
+                "id": 6234,
                 "name": "ParameterList",
                 "src": "1428:15:20"
               },
@@ -1050,11 +1050,11 @@ export const MockERC20Token =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5493,
+                              "referencedDeclaration": 5489,
                               "type": "function (string memory,bytes32)",
                               "value": "functionCalledWithArgs"
                             },
-                            "id": 6239,
+                            "id": 6235,
                             "name": "Identifier",
                             "src": "1458:22:20"
                           },
@@ -1071,7 +1071,7 @@ export const MockERC20Token =
                               "type": "literal_string \"transferFrom\"",
                               "value": "transferFrom"
                             },
-                            "id": 6240,
+                            "id": 6236,
                             "name": "Literal",
                             "src": "1481:14:20"
                           },
@@ -1109,11 +1109,11 @@ export const MockERC20Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6381,
+                                  "referencedDeclaration": 6377,
                                   "type": "function (address,address,uint256) pure returns (bytes32)",
                                   "value": "getTransferFromArgsSignature"
                                 },
-                                "id": 6241,
+                                "id": 6237,
                                 "name": "Identifier",
                                 "src": "1497:28:20"
                               },
@@ -1123,11 +1123,11 @@ export const MockERC20Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6230,
+                                  "referencedDeclaration": 6226,
                                   "type": "address",
                                   "value": "_from"
                                 },
-                                "id": 6242,
+                                "id": 6238,
                                 "name": "Identifier",
                                 "src": "1539:5:20"
                               },
@@ -1137,11 +1137,11 @@ export const MockERC20Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6232,
+                                  "referencedDeclaration": 6228,
                                   "type": "address",
                                   "value": "_to"
                                 },
-                                "id": 6243,
+                                "id": 6239,
                                 "name": "Identifier",
                                 "src": "1558:3:20"
                               },
@@ -1151,32 +1151,32 @@ export const MockERC20Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6234,
+                                  "referencedDeclaration": 6230,
                                   "type": "uint256",
                                   "value": "_amount"
                                 },
-                                "id": 6244,
+                                "id": 6240,
                                 "name": "Identifier",
                                 "src": "1575:7:20"
                               }
                             ],
-                            "id": 6245,
+                            "id": 6241,
                             "name": "FunctionCall",
                             "src": "1497:95:20"
                           }
                         ],
-                        "id": 6246,
+                        "id": 6242,
                         "name": "FunctionCall",
                         "src": "1458:135:20"
                       }
                     ],
-                    "id": 6247,
+                    "id": 6243,
                     "name": "ExpressionStatement",
                     "src": "1458:135:20"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 6238
+                      "functionReturnParameters": 6234
                     },
                     "children": [
                       {
@@ -1192,22 +1192,22 @@ export const MockERC20Token =
                           "type": "bool",
                           "value": "true"
                         },
-                        "id": 6248,
+                        "id": 6244,
                         "name": "Literal",
                         "src": "1611:4:20"
                       }
                     ],
-                    "id": 6249,
+                    "id": 6245,
                     "name": "Return",
                     "src": "1604:11:20"
                   }
                 ],
-                "id": 6250,
+                "id": 6246,
                 "name": "Block",
                 "src": "1448:174:20"
               }
             ],
-            "id": 6251,
+            "id": 6247,
             "name": "FunctionDefinition",
             "src": "1303:319:20"
           },
@@ -1221,7 +1221,7 @@ export const MockERC20Token =
               ],
               "name": "wasTransferFromCalledWith",
               "payable": false,
-              "scope": 6402,
+              "scope": 6398,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -1233,7 +1233,7 @@ export const MockERC20Token =
                     "attributes": {
                       "constant": false,
                       "name": "_from",
-                      "scope": 6272,
+                      "scope": 6268,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1246,12 +1246,12 @@ export const MockERC20Token =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 6252,
+                        "id": 6248,
                         "name": "ElementaryTypeName",
                         "src": "1672:7:20"
                       }
                     ],
-                    "id": 6253,
+                    "id": 6249,
                     "name": "VariableDeclaration",
                     "src": "1672:13:20"
                   },
@@ -1259,7 +1259,7 @@ export const MockERC20Token =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 6272,
+                      "scope": 6268,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1272,12 +1272,12 @@ export const MockERC20Token =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 6254,
+                        "id": 6250,
                         "name": "ElementaryTypeName",
                         "src": "1695:7:20"
                       }
                     ],
-                    "id": 6255,
+                    "id": 6251,
                     "name": "VariableDeclaration",
                     "src": "1695:11:20"
                   },
@@ -1285,7 +1285,7 @@ export const MockERC20Token =
                     "attributes": {
                       "constant": false,
                       "name": "_amount",
-                      "scope": 6272,
+                      "scope": 6268,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1298,17 +1298,17 @@ export const MockERC20Token =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 6256,
+                        "id": 6252,
                         "name": "ElementaryTypeName",
                         "src": "1716:4:20"
                       }
                     ],
-                    "id": 6257,
+                    "id": 6253,
                     "name": "VariableDeclaration",
                     "src": "1716:12:20"
                   }
                 ],
-                "id": 6258,
+                "id": 6254,
                 "name": "ParameterList",
                 "src": "1662:72:20"
               },
@@ -1318,7 +1318,7 @@ export const MockERC20Token =
                     "attributes": {
                       "constant": false,
                       "name": "wasCalled",
-                      "scope": 6272,
+                      "scope": 6268,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -1331,17 +1331,17 @@ export const MockERC20Token =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 6259,
+                        "id": 6255,
                         "name": "ElementaryTypeName",
                         "src": "1780:4:20"
                       }
                     ],
-                    "id": 6260,
+                    "id": 6256,
                     "name": "VariableDeclaration",
                     "src": "1780:14:20"
                   }
                 ],
-                "id": 6261,
+                "id": 6257,
                 "name": "ParameterList",
                 "src": "1779:16:20"
               },
@@ -1349,7 +1349,7 @@ export const MockERC20Token =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 6261
+                      "functionReturnParameters": 6257
                     },
                     "children": [
                       {
@@ -1382,11 +1382,11 @@ export const MockERC20Token =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5509,
+                              "referencedDeclaration": 5505,
                               "type": "function (string memory,bytes32) view returns (bool)",
                               "value": "wasFunctionCalledWithArgs"
                             },
-                            "id": 6262,
+                            "id": 6258,
                             "name": "Identifier",
                             "src": "1817:25:20"
                           },
@@ -1403,7 +1403,7 @@ export const MockERC20Token =
                               "type": "literal_string \"transferFrom\"",
                               "value": "transferFrom"
                             },
-                            "id": 6263,
+                            "id": 6259,
                             "name": "Literal",
                             "src": "1843:14:20"
                           },
@@ -1441,11 +1441,11 @@ export const MockERC20Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6381,
+                                  "referencedDeclaration": 6377,
                                   "type": "function (address,address,uint256) pure returns (bytes32)",
                                   "value": "getTransferFromArgsSignature"
                                 },
-                                "id": 6264,
+                                "id": 6260,
                                 "name": "Identifier",
                                 "src": "1859:28:20"
                               },
@@ -1455,11 +1455,11 @@ export const MockERC20Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6253,
+                                  "referencedDeclaration": 6249,
                                   "type": "address",
                                   "value": "_from"
                                 },
-                                "id": 6265,
+                                "id": 6261,
                                 "name": "Identifier",
                                 "src": "1901:5:20"
                               },
@@ -1469,11 +1469,11 @@ export const MockERC20Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6255,
+                                  "referencedDeclaration": 6251,
                                   "type": "address",
                                   "value": "_to"
                                 },
-                                "id": 6266,
+                                "id": 6262,
                                 "name": "Identifier",
                                 "src": "1920:3:20"
                               },
@@ -1483,36 +1483,36 @@ export const MockERC20Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6257,
+                                  "referencedDeclaration": 6253,
                                   "type": "uint256",
                                   "value": "_amount"
                                 },
-                                "id": 6267,
+                                "id": 6263,
                                 "name": "Identifier",
                                 "src": "1937:7:20"
                               }
                             ],
-                            "id": 6268,
+                            "id": 6264,
                             "name": "FunctionCall",
                             "src": "1859:95:20"
                           }
                         ],
-                        "id": 6269,
+                        "id": 6265,
                         "name": "FunctionCall",
                         "src": "1817:138:20"
                       }
                     ],
-                    "id": 6270,
+                    "id": 6266,
                     "name": "Return",
                     "src": "1810:145:20"
                   }
                 ],
-                "id": 6271,
+                "id": 6267,
                 "name": "Block",
                 "src": "1800:162:20"
               }
             ],
-            "id": 6272,
+            "id": 6268,
             "name": "FunctionDefinition",
             "src": "1628:334:20"
           },
@@ -1526,7 +1526,7 @@ export const MockERC20Token =
               ],
               "name": "balanceOf",
               "payable": false,
-              "scope": 6402,
+              "scope": 6398,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -1538,7 +1538,7 @@ export const MockERC20Token =
                     "attributes": {
                       "constant": false,
                       "name": "_owner",
-                      "scope": 6289,
+                      "scope": 6285,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1551,17 +1551,17 @@ export const MockERC20Token =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 6273,
+                        "id": 6269,
                         "name": "ElementaryTypeName",
                         "src": "2010:7:20"
                       }
                     ],
-                    "id": 6274,
+                    "id": 6270,
                     "name": "VariableDeclaration",
                     "src": "2010:14:20"
                   }
                 ],
-                "id": 6275,
+                "id": 6271,
                 "name": "ParameterList",
                 "src": "2009:16:20"
               },
@@ -1571,7 +1571,7 @@ export const MockERC20Token =
                     "attributes": {
                       "constant": false,
                       "name": "_balance",
-                      "scope": 6289,
+                      "scope": 6285,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1584,17 +1584,17 @@ export const MockERC20Token =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 6276,
+                        "id": 6272,
                         "name": "ElementaryTypeName",
                         "src": "2046:4:20"
                       }
                     ],
-                    "id": 6277,
+                    "id": 6273,
                     "name": "VariableDeclaration",
                     "src": "2046:13:20"
                   }
                 ],
-                "id": 6278,
+                "id": 6274,
                 "name": "ParameterList",
                 "src": "2045:15:20"
               },
@@ -1602,7 +1602,7 @@ export const MockERC20Token =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 6278
+                      "functionReturnParameters": 6274
                     },
                     "children": [
                       {
@@ -1635,7 +1635,7 @@ export const MockERC20Token =
                               "type": "type(uint256)",
                               "value": "uint"
                             },
-                            "id": 6279,
+                            "id": 6275,
                             "name": "ElementaryTypeNameExpression",
                             "src": "2078:4:20"
                           },
@@ -1669,11 +1669,11 @@ export const MockERC20Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5397,
+                                  "referencedDeclaration": 5393,
                                   "type": "function (string memory,bytes32) view returns (bytes32)",
                                   "value": "getMockReturnValue"
                                 },
-                                "id": 6280,
+                                "id": 6276,
                                 "name": "Identifier",
                                 "src": "2083:18:20"
                               },
@@ -1690,7 +1690,7 @@ export const MockERC20Token =
                                   "type": "literal_string \"balanceOf\"",
                                   "value": "balanceOf"
                                 },
-                                "id": 6281,
+                                "id": 6277,
                                 "name": "Literal",
                                 "src": "2102:11:20"
                               },
@@ -1720,11 +1720,11 @@ export const MockERC20Token =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10465,
+                                      "referencedDeclaration": 10467,
                                       "type": "function () pure returns (bytes32)",
                                       "value": "keccak256"
                                     },
-                                    "id": 6282,
+                                    "id": 6278,
                                     "name": "Identifier",
                                     "src": "2115:9:20"
                                   },
@@ -1734,41 +1734,41 @@ export const MockERC20Token =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 6274,
+                                      "referencedDeclaration": 6270,
                                       "type": "address",
                                       "value": "_owner"
                                     },
-                                    "id": 6283,
+                                    "id": 6279,
                                     "name": "Identifier",
                                     "src": "2125:6:20"
                                   }
                                 ],
-                                "id": 6284,
+                                "id": 6280,
                                 "name": "FunctionCall",
                                 "src": "2115:17:20"
                               }
                             ],
-                            "id": 6285,
+                            "id": 6281,
                             "name": "FunctionCall",
                             "src": "2083:50:20"
                           }
                         ],
-                        "id": 6286,
+                        "id": 6282,
                         "name": "FunctionCall",
                         "src": "2078:56:20"
                       }
                     ],
-                    "id": 6287,
+                    "id": 6283,
                     "name": "Return",
                     "src": "2071:63:20"
                   }
                 ],
-                "id": 6288,
+                "id": 6284,
                 "name": "Block",
                 "src": "2061:80:20"
               }
             ],
-            "id": 6289,
+            "id": 6285,
             "name": "FunctionDefinition",
             "src": "1991:150:20"
           },
@@ -1782,7 +1782,7 @@ export const MockERC20Token =
               ],
               "name": "mockBalanceOfFor",
               "payable": false,
-              "scope": 6402,
+              "scope": 6398,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -1794,7 +1794,7 @@ export const MockERC20Token =
                     "attributes": {
                       "constant": false,
                       "name": "_owner",
-                      "scope": 6307,
+                      "scope": 6303,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1807,12 +1807,12 @@ export const MockERC20Token =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 6290,
+                        "id": 6286,
                         "name": "ElementaryTypeName",
                         "src": "2173:7:20"
                       }
                     ],
-                    "id": 6291,
+                    "id": 6287,
                     "name": "VariableDeclaration",
                     "src": "2173:14:20"
                   },
@@ -1820,7 +1820,7 @@ export const MockERC20Token =
                     "attributes": {
                       "constant": false,
                       "name": "_balance",
-                      "scope": 6307,
+                      "scope": 6303,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1833,17 +1833,17 @@ export const MockERC20Token =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 6292,
+                        "id": 6288,
                         "name": "ElementaryTypeName",
                         "src": "2189:4:20"
                       }
                     ],
-                    "id": 6293,
+                    "id": 6289,
                     "name": "VariableDeclaration",
                     "src": "2189:13:20"
                   }
                 ],
-                "id": 6294,
+                "id": 6290,
                 "name": "ParameterList",
                 "src": "2172:31:20"
               },
@@ -1854,7 +1854,7 @@ export const MockERC20Token =
                   ]
                 },
                 "children": [],
-                "id": 6295,
+                "id": 6291,
                 "name": "ParameterList",
                 "src": "2211:0:20"
               },
@@ -1896,11 +1896,11 @@ export const MockERC20Token =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5381,
+                              "referencedDeclaration": 5377,
                               "type": "function (string memory,bytes32,bytes32)",
                               "value": "mockReturnValue"
                             },
-                            "id": 6296,
+                            "id": 6292,
                             "name": "Identifier",
                             "src": "2221:15:20"
                           },
@@ -1917,7 +1917,7 @@ export const MockERC20Token =
                               "type": "literal_string \"balanceOf\"",
                               "value": "balanceOf"
                             },
-                            "id": 6297,
+                            "id": 6293,
                             "name": "Literal",
                             "src": "2237:11:20"
                           },
@@ -1947,11 +1947,11 @@ export const MockERC20Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10465,
+                                  "referencedDeclaration": 10467,
                                   "type": "function () pure returns (bytes32)",
                                   "value": "keccak256"
                                 },
-                                "id": 6298,
+                                "id": 6294,
                                 "name": "Identifier",
                                 "src": "2250:9:20"
                               },
@@ -1961,16 +1961,16 @@ export const MockERC20Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6291,
+                                  "referencedDeclaration": 6287,
                                   "type": "address",
                                   "value": "_owner"
                                 },
-                                "id": 6299,
+                                "id": 6295,
                                 "name": "Identifier",
                                 "src": "2260:6:20"
                               }
                             ],
-                            "id": 6300,
+                            "id": 6296,
                             "name": "FunctionCall",
                             "src": "2250:17:20"
                           },
@@ -2004,7 +2004,7 @@ export const MockERC20Token =
                                   "type": "type(bytes32)",
                                   "value": "bytes32"
                                 },
-                                "id": 6301,
+                                "id": 6297,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "2269:7:20"
                               },
@@ -2014,36 +2014,36 @@ export const MockERC20Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6293,
+                                  "referencedDeclaration": 6289,
                                   "type": "uint256",
                                   "value": "_balance"
                                 },
-                                "id": 6302,
+                                "id": 6298,
                                 "name": "Identifier",
                                 "src": "2277:8:20"
                               }
                             ],
-                            "id": 6303,
+                            "id": 6299,
                             "name": "FunctionCall",
                             "src": "2269:17:20"
                           }
                         ],
-                        "id": 6304,
+                        "id": 6300,
                         "name": "FunctionCall",
                         "src": "2221:66:20"
                       }
                     ],
-                    "id": 6305,
+                    "id": 6301,
                     "name": "ExpressionStatement",
                     "src": "2221:66:20"
                   }
                 ],
-                "id": 6306,
+                "id": 6302,
                 "name": "Block",
                 "src": "2211:83:20"
               }
             ],
-            "id": 6307,
+            "id": 6303,
             "name": "FunctionDefinition",
             "src": "2147:147:20"
           },
@@ -2057,7 +2057,7 @@ export const MockERC20Token =
               ],
               "name": "allowance",
               "payable": false,
-              "scope": 6402,
+              "scope": 6398,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -2069,7 +2069,7 @@ export const MockERC20Token =
                     "attributes": {
                       "constant": false,
                       "name": "_owner",
-                      "scope": 6327,
+                      "scope": 6323,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2082,12 +2082,12 @@ export const MockERC20Token =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 6308,
+                        "id": 6304,
                         "name": "ElementaryTypeName",
                         "src": "2342:7:20"
                       }
                     ],
-                    "id": 6309,
+                    "id": 6305,
                     "name": "VariableDeclaration",
                     "src": "2342:14:20"
                   },
@@ -2095,7 +2095,7 @@ export const MockERC20Token =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 6327,
+                      "scope": 6323,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2108,17 +2108,17 @@ export const MockERC20Token =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 6310,
+                        "id": 6306,
                         "name": "ElementaryTypeName",
                         "src": "2358:7:20"
                       }
                     ],
-                    "id": 6311,
+                    "id": 6307,
                     "name": "VariableDeclaration",
                     "src": "2358:11:20"
                   }
                 ],
-                "id": 6312,
+                "id": 6308,
                 "name": "ParameterList",
                 "src": "2341:29:20"
               },
@@ -2128,7 +2128,7 @@ export const MockERC20Token =
                     "attributes": {
                       "constant": false,
                       "name": "_allowance",
-                      "scope": 6327,
+                      "scope": 6323,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2141,17 +2141,17 @@ export const MockERC20Token =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 6313,
+                        "id": 6309,
                         "name": "ElementaryTypeName",
                         "src": "2391:4:20"
                       }
                     ],
-                    "id": 6314,
+                    "id": 6310,
                     "name": "VariableDeclaration",
                     "src": "2391:15:20"
                   }
                 ],
-                "id": 6315,
+                "id": 6311,
                 "name": "ParameterList",
                 "src": "2390:17:20"
               },
@@ -2159,7 +2159,7 @@ export const MockERC20Token =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 6315
+                      "functionReturnParameters": 6311
                     },
                     "children": [
                       {
@@ -2192,7 +2192,7 @@ export const MockERC20Token =
                               "type": "type(uint256)",
                               "value": "uint"
                             },
-                            "id": 6316,
+                            "id": 6312,
                             "name": "ElementaryTypeNameExpression",
                             "src": "2425:4:20"
                           },
@@ -2226,11 +2226,11 @@ export const MockERC20Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5397,
+                                  "referencedDeclaration": 5393,
                                   "type": "function (string memory,bytes32) view returns (bytes32)",
                                   "value": "getMockReturnValue"
                                 },
-                                "id": 6317,
+                                "id": 6313,
                                 "name": "Identifier",
                                 "src": "2430:18:20"
                               },
@@ -2247,7 +2247,7 @@ export const MockERC20Token =
                                   "type": "literal_string \"allowance\"",
                                   "value": "allowance"
                                 },
-                                "id": 6318,
+                                "id": 6314,
                                 "name": "Literal",
                                 "src": "2449:11:20"
                               },
@@ -2281,11 +2281,11 @@ export const MockERC20Token =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10465,
+                                      "referencedDeclaration": 10467,
                                       "type": "function () pure returns (bytes32)",
                                       "value": "keccak256"
                                     },
-                                    "id": 6319,
+                                    "id": 6315,
                                     "name": "Identifier",
                                     "src": "2462:9:20"
                                   },
@@ -2295,11 +2295,11 @@ export const MockERC20Token =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 6309,
+                                      "referencedDeclaration": 6305,
                                       "type": "address",
                                       "value": "_owner"
                                     },
-                                    "id": 6320,
+                                    "id": 6316,
                                     "name": "Identifier",
                                     "src": "2472:6:20"
                                   },
@@ -2309,41 +2309,41 @@ export const MockERC20Token =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 6311,
+                                      "referencedDeclaration": 6307,
                                       "type": "address",
                                       "value": "_to"
                                     },
-                                    "id": 6321,
+                                    "id": 6317,
                                     "name": "Identifier",
                                     "src": "2480:3:20"
                                   }
                                 ],
-                                "id": 6322,
+                                "id": 6318,
                                 "name": "FunctionCall",
                                 "src": "2462:22:20"
                               }
                             ],
-                            "id": 6323,
+                            "id": 6319,
                             "name": "FunctionCall",
                             "src": "2430:55:20"
                           }
                         ],
-                        "id": 6324,
+                        "id": 6320,
                         "name": "FunctionCall",
                         "src": "2425:61:20"
                       }
                     ],
-                    "id": 6325,
+                    "id": 6321,
                     "name": "Return",
                     "src": "2418:68:20"
                   }
                 ],
-                "id": 6326,
+                "id": 6322,
                 "name": "Block",
                 "src": "2408:85:20"
               }
             ],
-            "id": 6327,
+            "id": 6323,
             "name": "FunctionDefinition",
             "src": "2323:170:20"
           },
@@ -2357,7 +2357,7 @@ export const MockERC20Token =
               ],
               "name": "mockAllowanceFor",
               "payable": false,
-              "scope": 6402,
+              "scope": 6398,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -2369,7 +2369,7 @@ export const MockERC20Token =
                     "attributes": {
                       "constant": false,
                       "name": "_owner",
-                      "scope": 6348,
+                      "scope": 6344,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2382,12 +2382,12 @@ export const MockERC20Token =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 6328,
+                        "id": 6324,
                         "name": "ElementaryTypeName",
                         "src": "2525:7:20"
                       }
                     ],
-                    "id": 6329,
+                    "id": 6325,
                     "name": "VariableDeclaration",
                     "src": "2525:14:20"
                   },
@@ -2395,7 +2395,7 @@ export const MockERC20Token =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 6348,
+                      "scope": 6344,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2408,12 +2408,12 @@ export const MockERC20Token =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 6330,
+                        "id": 6326,
                         "name": "ElementaryTypeName",
                         "src": "2541:7:20"
                       }
                     ],
-                    "id": 6331,
+                    "id": 6327,
                     "name": "VariableDeclaration",
                     "src": "2541:11:20"
                   },
@@ -2421,7 +2421,7 @@ export const MockERC20Token =
                     "attributes": {
                       "constant": false,
                       "name": "_allowance",
-                      "scope": 6348,
+                      "scope": 6344,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2434,17 +2434,17 @@ export const MockERC20Token =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 6332,
+                        "id": 6328,
                         "name": "ElementaryTypeName",
                         "src": "2554:4:20"
                       }
                     ],
-                    "id": 6333,
+                    "id": 6329,
                     "name": "VariableDeclaration",
                     "src": "2554:15:20"
                   }
                 ],
-                "id": 6334,
+                "id": 6330,
                 "name": "ParameterList",
                 "src": "2524:46:20"
               },
@@ -2455,7 +2455,7 @@ export const MockERC20Token =
                   ]
                 },
                 "children": [],
-                "id": 6335,
+                "id": 6331,
                 "name": "ParameterList",
                 "src": "2578:0:20"
               },
@@ -2497,11 +2497,11 @@ export const MockERC20Token =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5381,
+                              "referencedDeclaration": 5377,
                               "type": "function (string memory,bytes32,bytes32)",
                               "value": "mockReturnValue"
                             },
-                            "id": 6336,
+                            "id": 6332,
                             "name": "Identifier",
                             "src": "2588:15:20"
                           },
@@ -2518,7 +2518,7 @@ export const MockERC20Token =
                               "type": "literal_string \"allowance\"",
                               "value": "allowance"
                             },
-                            "id": 6337,
+                            "id": 6333,
                             "name": "Literal",
                             "src": "2604:11:20"
                           },
@@ -2552,11 +2552,11 @@ export const MockERC20Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10465,
+                                  "referencedDeclaration": 10467,
                                   "type": "function () pure returns (bytes32)",
                                   "value": "keccak256"
                                 },
-                                "id": 6338,
+                                "id": 6334,
                                 "name": "Identifier",
                                 "src": "2617:9:20"
                               },
@@ -2566,11 +2566,11 @@ export const MockERC20Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6329,
+                                  "referencedDeclaration": 6325,
                                   "type": "address",
                                   "value": "_owner"
                                 },
-                                "id": 6339,
+                                "id": 6335,
                                 "name": "Identifier",
                                 "src": "2627:6:20"
                               },
@@ -2580,16 +2580,16 @@ export const MockERC20Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6331,
+                                  "referencedDeclaration": 6327,
                                   "type": "address",
                                   "value": "_to"
                                 },
-                                "id": 6340,
+                                "id": 6336,
                                 "name": "Identifier",
                                 "src": "2635:3:20"
                               }
                             ],
-                            "id": 6341,
+                            "id": 6337,
                             "name": "FunctionCall",
                             "src": "2617:22:20"
                           },
@@ -2623,7 +2623,7 @@ export const MockERC20Token =
                                   "type": "type(bytes32)",
                                   "value": "bytes32"
                                 },
-                                "id": 6342,
+                                "id": 6338,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "2641:7:20"
                               },
@@ -2633,36 +2633,36 @@ export const MockERC20Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6333,
+                                  "referencedDeclaration": 6329,
                                   "type": "uint256",
                                   "value": "_allowance"
                                 },
-                                "id": 6343,
+                                "id": 6339,
                                 "name": "Identifier",
                                 "src": "2649:10:20"
                               }
                             ],
-                            "id": 6344,
+                            "id": 6340,
                             "name": "FunctionCall",
                             "src": "2641:19:20"
                           }
                         ],
-                        "id": 6345,
+                        "id": 6341,
                         "name": "FunctionCall",
                         "src": "2588:73:20"
                       }
                     ],
-                    "id": 6346,
+                    "id": 6342,
                     "name": "ExpressionStatement",
                     "src": "2588:73:20"
                   }
                 ],
-                "id": 6347,
+                "id": 6343,
                 "name": "Block",
                 "src": "2578:90:20"
               }
             ],
-            "id": 6348,
+            "id": 6344,
             "name": "FunctionDefinition",
             "src": "2499:169:20"
           },
@@ -2676,7 +2676,7 @@ export const MockERC20Token =
               ],
               "name": "getTransferArgsSignature",
               "payable": false,
-              "scope": 6402,
+              "scope": 6398,
               "stateMutability": "pure",
               "superFunction": null,
               "visibility": "internal"
@@ -2688,7 +2688,7 @@ export const MockERC20Token =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 6363,
+                      "scope": 6359,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2701,12 +2701,12 @@ export const MockERC20Token =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 6349,
+                        "id": 6345,
                         "name": "ElementaryTypeName",
                         "src": "2717:7:20"
                       }
                     ],
-                    "id": 6350,
+                    "id": 6346,
                     "name": "VariableDeclaration",
                     "src": "2717:11:20"
                   },
@@ -2714,7 +2714,7 @@ export const MockERC20Token =
                     "attributes": {
                       "constant": false,
                       "name": "_amount",
-                      "scope": 6363,
+                      "scope": 6359,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2727,17 +2727,17 @@ export const MockERC20Token =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 6351,
+                        "id": 6347,
                         "name": "ElementaryTypeName",
                         "src": "2738:4:20"
                       }
                     ],
-                    "id": 6352,
+                    "id": 6348,
                     "name": "VariableDeclaration",
                     "src": "2738:12:20"
                   }
                 ],
-                "id": 6353,
+                "id": 6349,
                 "name": "ParameterList",
                 "src": "2707:49:20"
               },
@@ -2747,7 +2747,7 @@ export const MockERC20Token =
                     "attributes": {
                       "constant": false,
                       "name": "args",
-                      "scope": 6363,
+                      "scope": 6359,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -2760,17 +2760,17 @@ export const MockERC20Token =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 6354,
+                        "id": 6350,
                         "name": "ElementaryTypeName",
                         "src": "2804:7:20"
                       }
                     ],
-                    "id": 6355,
+                    "id": 6351,
                     "name": "VariableDeclaration",
                     "src": "2804:12:20"
                   }
                 ],
-                "id": 6356,
+                "id": 6352,
                 "name": "ParameterList",
                 "src": "2803:14:20"
               },
@@ -2778,7 +2778,7 @@ export const MockERC20Token =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 6356
+                      "functionReturnParameters": 6352
                     },
                     "children": [
                       {
@@ -2811,11 +2811,11 @@ export const MockERC20Token =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10465,
+                              "referencedDeclaration": 10467,
                               "type": "function () pure returns (bytes32)",
                               "value": "keccak256"
                             },
-                            "id": 6357,
+                            "id": 6353,
                             "name": "Identifier",
                             "src": "2839:9:20"
                           },
@@ -2825,11 +2825,11 @@ export const MockERC20Token =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 6350,
+                              "referencedDeclaration": 6346,
                               "type": "address",
                               "value": "_to"
                             },
-                            "id": 6358,
+                            "id": 6354,
                             "name": "Identifier",
                             "src": "2862:3:20"
                           },
@@ -2839,31 +2839,31 @@ export const MockERC20Token =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 6352,
+                              "referencedDeclaration": 6348,
                               "type": "uint256",
                               "value": "_amount"
                             },
-                            "id": 6359,
+                            "id": 6355,
                             "name": "Identifier",
                             "src": "2879:7:20"
                           }
                         ],
-                        "id": 6360,
+                        "id": 6356,
                         "name": "FunctionCall",
                         "src": "2839:57:20"
                       }
                     ],
-                    "id": 6361,
+                    "id": 6357,
                     "name": "Return",
                     "src": "2832:64:20"
                   }
                 ],
-                "id": 6362,
+                "id": 6358,
                 "name": "Block",
                 "src": "2822:81:20"
               }
             ],
-            "id": 6363,
+            "id": 6359,
             "name": "FunctionDefinition",
             "src": "2674:229:20"
           },
@@ -2877,7 +2877,7 @@ export const MockERC20Token =
               ],
               "name": "getTransferFromArgsSignature",
               "payable": false,
-              "scope": 6402,
+              "scope": 6398,
               "stateMutability": "pure",
               "superFunction": null,
               "visibility": "internal"
@@ -2889,7 +2889,7 @@ export const MockERC20Token =
                     "attributes": {
                       "constant": false,
                       "name": "_from",
-                      "scope": 6381,
+                      "scope": 6377,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2902,12 +2902,12 @@ export const MockERC20Token =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 6364,
+                        "id": 6360,
                         "name": "ElementaryTypeName",
                         "src": "2956:7:20"
                       }
                     ],
-                    "id": 6365,
+                    "id": 6361,
                     "name": "VariableDeclaration",
                     "src": "2956:13:20"
                   },
@@ -2915,7 +2915,7 @@ export const MockERC20Token =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 6381,
+                      "scope": 6377,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2928,12 +2928,12 @@ export const MockERC20Token =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 6366,
+                        "id": 6362,
                         "name": "ElementaryTypeName",
                         "src": "2979:7:20"
                       }
                     ],
-                    "id": 6367,
+                    "id": 6363,
                     "name": "VariableDeclaration",
                     "src": "2979:11:20"
                   },
@@ -2941,7 +2941,7 @@ export const MockERC20Token =
                     "attributes": {
                       "constant": false,
                       "name": "_amount",
-                      "scope": 6381,
+                      "scope": 6377,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2954,17 +2954,17 @@ export const MockERC20Token =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 6368,
+                        "id": 6364,
                         "name": "ElementaryTypeName",
                         "src": "3000:4:20"
                       }
                     ],
-                    "id": 6369,
+                    "id": 6365,
                     "name": "VariableDeclaration",
                     "src": "3000:12:20"
                   }
                 ],
-                "id": 6370,
+                "id": 6366,
                 "name": "ParameterList",
                 "src": "2946:72:20"
               },
@@ -2974,7 +2974,7 @@ export const MockERC20Token =
                     "attributes": {
                       "constant": false,
                       "name": "argsSignature",
-                      "scope": 6381,
+                      "scope": 6377,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -2987,17 +2987,17 @@ export const MockERC20Token =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 6371,
+                        "id": 6367,
                         "name": "ElementaryTypeName",
                         "src": "3066:7:20"
                       }
                     ],
-                    "id": 6372,
+                    "id": 6368,
                     "name": "VariableDeclaration",
                     "src": "3066:21:20"
                   }
                 ],
-                "id": 6373,
+                "id": 6369,
                 "name": "ParameterList",
                 "src": "3065:23:20"
               },
@@ -3005,7 +3005,7 @@ export const MockERC20Token =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 6373
+                      "functionReturnParameters": 6369
                     },
                     "children": [
                       {
@@ -3042,11 +3042,11 @@ export const MockERC20Token =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10465,
+                              "referencedDeclaration": 10467,
                               "type": "function () pure returns (bytes32)",
                               "value": "keccak256"
                             },
-                            "id": 6374,
+                            "id": 6370,
                             "name": "Identifier",
                             "src": "3110:9:20"
                           },
@@ -3056,11 +3056,11 @@ export const MockERC20Token =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 6365,
+                              "referencedDeclaration": 6361,
                               "type": "address",
                               "value": "_from"
                             },
-                            "id": 6375,
+                            "id": 6371,
                             "name": "Identifier",
                             "src": "3133:5:20"
                           },
@@ -3070,11 +3070,11 @@ export const MockERC20Token =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 6367,
+                              "referencedDeclaration": 6363,
                               "type": "address",
                               "value": "_to"
                             },
-                            "id": 6376,
+                            "id": 6372,
                             "name": "Identifier",
                             "src": "3152:3:20"
                           },
@@ -3084,31 +3084,31 @@ export const MockERC20Token =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 6369,
+                              "referencedDeclaration": 6365,
                               "type": "uint256",
                               "value": "_amount"
                             },
-                            "id": 6377,
+                            "id": 6373,
                             "name": "Identifier",
                             "src": "3169:7:20"
                           }
                         ],
-                        "id": 6378,
+                        "id": 6374,
                         "name": "FunctionCall",
                         "src": "3110:76:20"
                       }
                     ],
-                    "id": 6379,
+                    "id": 6375,
                     "name": "Return",
                     "src": "3103:83:20"
                   }
                 ],
-                "id": 6380,
+                "id": 6376,
                 "name": "Block",
                 "src": "3093:100:20"
               }
             ],
-            "id": 6381,
+            "id": 6377,
             "name": "FunctionDefinition",
             "src": "2909:284:20"
           },
@@ -3122,9 +3122,9 @@ export const MockERC20Token =
               ],
               "name": "getFunctionList",
               "payable": false,
-              "scope": 6402,
+              "scope": 6398,
               "stateMutability": "nonpayable",
-              "superFunction": 5516,
+              "superFunction": 5512,
               "visibility": "internal"
             },
             "children": [
@@ -3135,7 +3135,7 @@ export const MockERC20Token =
                   ]
                 },
                 "children": [],
-                "id": 6382,
+                "id": 6378,
                 "name": "ParameterList",
                 "src": "3223:2:20"
               },
@@ -3145,7 +3145,7 @@ export const MockERC20Token =
                     "attributes": {
                       "constant": false,
                       "name": "functionNames",
-                      "scope": 6401,
+                      "scope": 6397,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory[10] memory",
@@ -3163,7 +3163,7 @@ export const MockERC20Token =
                               "name": "string",
                               "type": "string storage pointer"
                             },
-                            "id": 6383,
+                            "id": 6379,
                             "name": "ElementaryTypeName",
                             "src": "3260:6:20"
                           },
@@ -3180,22 +3180,22 @@ export const MockERC20Token =
                               "type": "int_const 10",
                               "value": "10"
                             },
-                            "id": 6384,
+                            "id": 6380,
                             "name": "Literal",
                             "src": "3267:2:20"
                           }
                         ],
-                        "id": 6385,
+                        "id": 6381,
                         "name": "ArrayTypeName",
                         "src": "3260:10:20"
                       }
                     ],
-                    "id": 6386,
+                    "id": 6382,
                     "name": "VariableDeclaration",
                     "src": "3260:24:20"
                   }
                 ],
-                "id": 6387,
+                "id": 6383,
                 "name": "ParameterList",
                 "src": "3259:26:20"
               },
@@ -3203,7 +3203,7 @@ export const MockERC20Token =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 6387
+                      "functionReturnParameters": 6383
                     },
                     "children": [
                       {
@@ -3230,7 +3230,7 @@ export const MockERC20Token =
                               "type": "literal_string \"transfer\"",
                               "value": "transfer"
                             },
-                            "id": 6388,
+                            "id": 6384,
                             "name": "Literal",
                             "src": "3308:10:20"
                           },
@@ -3247,7 +3247,7 @@ export const MockERC20Token =
                               "type": "literal_string \"transferFrom\"",
                               "value": "transferFrom"
                             },
-                            "id": 6389,
+                            "id": 6385,
                             "name": "Literal",
                             "src": "3320:14:20"
                           },
@@ -3264,7 +3264,7 @@ export const MockERC20Token =
                               "type": "literal_string \"allowance\"",
                               "value": "allowance"
                             },
-                            "id": 6390,
+                            "id": 6386,
                             "name": "Literal",
                             "src": "3336:11:20"
                           },
@@ -3281,7 +3281,7 @@ export const MockERC20Token =
                               "type": "literal_string \"balanceOf\"",
                               "value": "balanceOf"
                             },
-                            "id": 6391,
+                            "id": 6387,
                             "name": "Literal",
                             "src": "3349:11:20"
                           },
@@ -3298,7 +3298,7 @@ export const MockERC20Token =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 6392,
+                            "id": 6388,
                             "name": "Literal",
                             "src": "3362:2:20"
                           },
@@ -3315,7 +3315,7 @@ export const MockERC20Token =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 6393,
+                            "id": 6389,
                             "name": "Literal",
                             "src": "3366:2:20"
                           },
@@ -3332,7 +3332,7 @@ export const MockERC20Token =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 6394,
+                            "id": 6390,
                             "name": "Literal",
                             "src": "3370:2:20"
                           },
@@ -3349,7 +3349,7 @@ export const MockERC20Token =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 6395,
+                            "id": 6391,
                             "name": "Literal",
                             "src": "3374:2:20"
                           },
@@ -3366,7 +3366,7 @@ export const MockERC20Token =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 6396,
+                            "id": 6392,
                             "name": "Literal",
                             "src": "3378:2:20"
                           },
@@ -3383,37 +3383,37 @@ export const MockERC20Token =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 6397,
+                            "id": 6393,
                             "name": "Literal",
                             "src": "3382:2:20"
                           }
                         ],
-                        "id": 6398,
+                        "id": 6394,
                         "name": "TupleExpression",
                         "src": "3307:78:20"
                       }
                     ],
-                    "id": 6399,
+                    "id": 6395,
                     "name": "Return",
                     "src": "3300:85:20"
                   }
                 ],
-                "id": 6400,
+                "id": 6396,
                 "name": "Block",
                 "src": "3290:102:20"
               }
             ],
-            "id": 6401,
+            "id": 6397,
             "name": "FunctionDefinition",
             "src": "3199:193:20"
           }
         ],
-        "id": 6402,
+        "id": 6398,
         "name": "ContractDefinition",
         "src": "700:2694:20"
       }
     ],
-    "id": 6403,
+    "id": 6399,
     "name": "SourceUnit",
     "src": "584:2811:20"
   },
@@ -3434,5 +3434,5 @@ export const MockERC20Token =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-05-21T18:05:01.070Z"
+  "updatedAt": "2018-05-22T06:04:17.381Z"
 }

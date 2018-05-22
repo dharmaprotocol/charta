@@ -19,8 +19,9 @@ module.exports = {
             host: "localhost",
             port: 8547,
             network_id: "1",
+            from: "0xd4915e172a195f5f3e343a4196e8bda3fc94aee8",
             gas: 4000000,
-            gasPrice: 10000000000, // 10 GWei, as per https://ethgasstation.info/
+            gasPrice: 22000000000, // 15 GWei, as per https://ethgasstation.info/
         },
     },
     test_directory: "transpiled/test",

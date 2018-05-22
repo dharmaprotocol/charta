@@ -293,7 +293,7 @@ export const MockERC721Token =
       "absolutePath": "/Users/nadavhollander/Documents/Dharma/Development/charta/contracts/test/mocks/MockERC721Token.sol",
       "exportedSymbols": {
         "MockERC721Token": [
-          6777
+          6773
         ]
       }
     },
@@ -306,39 +306,39 @@ export const MockERC721Token =
             ".18"
           ]
         },
-        "id": 6525,
+        "id": 6521,
         "name": "PragmaDirective",
         "src": "584:23:22"
       },
       {
         "attributes": {
-          "SourceUnit": 5518,
+          "SourceUnit": 5514,
           "absolutePath": "/Users/nadavhollander/Documents/Dharma/Development/charta/contracts/test/mocks/MockContract.sol",
           "file": "./MockContract.sol",
-          "scope": 6778,
+          "scope": 6774,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 6526,
+        "id": 6522,
         "name": "ImportDirective",
         "src": "609:28:22"
       },
       {
         "attributes": {
           "contractDependencies": [
-            5517
+            5513
           ],
           "contractKind": "contract",
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            6777,
-            5517
+            6773,
+            5513
           ],
           "name": "MockERC721Token",
-          "scope": 6778
+          "scope": 6774
         },
         "children": [
           {
@@ -352,15 +352,15 @@ export const MockERC721Token =
                 "attributes": {
                   "contractScope": null,
                   "name": "MockContract",
-                  "referencedDeclaration": 5517,
+                  "referencedDeclaration": 5513,
                   "type": "contract MockContract"
                 },
-                "id": 6527,
+                "id": 6523,
                 "name": "UserDefinedTypeName",
                 "src": "668:12:22"
               }
             ],
-            "id": 6528,
+            "id": 6524,
             "name": "InheritanceSpecifier",
             "src": "668:12:22"
           },
@@ -374,7 +374,7 @@ export const MockERC721Token =
               ],
               "name": "transfer",
               "payable": false,
-              "scope": 6777,
+              "scope": 6773,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -386,7 +386,7 @@ export const MockERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 6548,
+                      "scope": 6544,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -399,12 +399,12 @@ export const MockERC721Token =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 6529,
+                        "id": 6525,
                         "name": "ElementaryTypeName",
                         "src": "714:7:22"
                       }
                     ],
-                    "id": 6530,
+                    "id": 6526,
                     "name": "VariableDeclaration",
                     "src": "714:11:22"
                   },
@@ -412,7 +412,7 @@ export const MockERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 6548,
+                      "scope": 6544,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -425,17 +425,17 @@ export const MockERC721Token =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 6531,
+                        "id": 6527,
                         "name": "ElementaryTypeName",
                         "src": "735:4:22"
                       }
                     ],
-                    "id": 6532,
+                    "id": 6528,
                     "name": "VariableDeclaration",
                     "src": "735:13:22"
                   }
                 ],
-                "id": 6533,
+                "id": 6529,
                 "name": "ParameterList",
                 "src": "704:50:22"
               },
@@ -445,7 +445,7 @@ export const MockERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "_success",
-                      "scope": 6548,
+                      "scope": 6544,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -458,17 +458,17 @@ export const MockERC721Token =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 6534,
+                        "id": 6530,
                         "name": "ElementaryTypeName",
                         "src": "787:4:22"
                       }
                     ],
-                    "id": 6535,
+                    "id": 6531,
                     "name": "VariableDeclaration",
                     "src": "787:13:22"
                   }
                 ],
-                "id": 6536,
+                "id": 6532,
                 "name": "ParameterList",
                 "src": "786:15:22"
               },
@@ -506,11 +506,11 @@ export const MockERC721Token =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5493,
+                              "referencedDeclaration": 5489,
                               "type": "function (string memory,bytes32)",
                               "value": "functionCalledWithArgs"
                             },
-                            "id": 6537,
+                            "id": 6533,
                             "name": "Identifier",
                             "src": "816:22:22"
                           },
@@ -527,7 +527,7 @@ export const MockERC721Token =
                               "type": "literal_string \"transfer\"",
                               "value": "transfer"
                             },
-                            "id": 6538,
+                            "id": 6534,
                             "name": "Literal",
                             "src": "839:10:22"
                           },
@@ -561,11 +561,11 @@ export const MockERC721Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6738,
+                                  "referencedDeclaration": 6734,
                                   "type": "function (address,uint256) pure returns (bytes32)",
                                   "value": "getTransferArgsSignature"
                                 },
-                                "id": 6539,
+                                "id": 6535,
                                 "name": "Identifier",
                                 "src": "851:24:22"
                               },
@@ -575,11 +575,11 @@ export const MockERC721Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6530,
+                                  "referencedDeclaration": 6526,
                                   "type": "address",
                                   "value": "_to"
                                 },
-                                "id": 6540,
+                                "id": 6536,
                                 "name": "Identifier",
                                 "src": "889:3:22"
                               },
@@ -589,32 +589,32 @@ export const MockERC721Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6532,
+                                  "referencedDeclaration": 6528,
                                   "type": "uint256",
                                   "value": "_tokenId"
                                 },
-                                "id": 6541,
+                                "id": 6537,
                                 "name": "Identifier",
                                 "src": "906:8:22"
                               }
                             ],
-                            "id": 6542,
+                            "id": 6538,
                             "name": "FunctionCall",
                             "src": "851:73:22"
                           }
                         ],
-                        "id": 6543,
+                        "id": 6539,
                         "name": "FunctionCall",
                         "src": "816:109:22"
                       }
                     ],
-                    "id": 6544,
+                    "id": 6540,
                     "name": "ExpressionStatement",
                     "src": "816:109:22"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 6536
+                      "functionReturnParameters": 6532
                     },
                     "children": [
                       {
@@ -630,22 +630,22 @@ export const MockERC721Token =
                           "type": "bool",
                           "value": "true"
                         },
-                        "id": 6545,
+                        "id": 6541,
                         "name": "Literal",
                         "src": "943:4:22"
                       }
                     ],
-                    "id": 6546,
+                    "id": 6542,
                     "name": "Return",
                     "src": "936:11:22"
                   }
                 ],
-                "id": 6547,
+                "id": 6543,
                 "name": "Block",
                 "src": "806:148:22"
               }
             ],
-            "id": 6548,
+            "id": 6544,
             "name": "FunctionDefinition",
             "src": "687:267:22"
           },
@@ -659,7 +659,7 @@ export const MockERC721Token =
               ],
               "name": "wasTransferCalledWith",
               "payable": false,
-              "scope": 6777,
+              "scope": 6773,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -671,7 +671,7 @@ export const MockERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 6566,
+                      "scope": 6562,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -684,12 +684,12 @@ export const MockERC721Token =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 6549,
+                        "id": 6545,
                         "name": "ElementaryTypeName",
                         "src": "1000:7:22"
                       }
                     ],
-                    "id": 6550,
+                    "id": 6546,
                     "name": "VariableDeclaration",
                     "src": "1000:11:22"
                   },
@@ -697,7 +697,7 @@ export const MockERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 6566,
+                      "scope": 6562,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -710,17 +710,17 @@ export const MockERC721Token =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 6551,
+                        "id": 6547,
                         "name": "ElementaryTypeName",
                         "src": "1021:4:22"
                       }
                     ],
-                    "id": 6552,
+                    "id": 6548,
                     "name": "VariableDeclaration",
                     "src": "1021:13:22"
                   }
                 ],
-                "id": 6553,
+                "id": 6549,
                 "name": "ParameterList",
                 "src": "990:50:22"
               },
@@ -730,7 +730,7 @@ export const MockERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "wasCalled",
-                      "scope": 6566,
+                      "scope": 6562,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -743,17 +743,17 @@ export const MockERC721Token =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 6554,
+                        "id": 6550,
                         "name": "ElementaryTypeName",
                         "src": "1086:4:22"
                       }
                     ],
-                    "id": 6555,
+                    "id": 6551,
                     "name": "VariableDeclaration",
                     "src": "1086:14:22"
                   }
                 ],
-                "id": 6556,
+                "id": 6552,
                 "name": "ParameterList",
                 "src": "1085:16:22"
               },
@@ -761,7 +761,7 @@ export const MockERC721Token =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 6556
+                      "functionReturnParameters": 6552
                     },
                     "children": [
                       {
@@ -794,11 +794,11 @@ export const MockERC721Token =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5509,
+                              "referencedDeclaration": 5505,
                               "type": "function (string memory,bytes32) view returns (bool)",
                               "value": "wasFunctionCalledWithArgs"
                             },
-                            "id": 6557,
+                            "id": 6553,
                             "name": "Identifier",
                             "src": "1123:25:22"
                           },
@@ -815,7 +815,7 @@ export const MockERC721Token =
                               "type": "literal_string \"transfer\"",
                               "value": "transfer"
                             },
-                            "id": 6558,
+                            "id": 6554,
                             "name": "Literal",
                             "src": "1149:10:22"
                           },
@@ -849,11 +849,11 @@ export const MockERC721Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6738,
+                                  "referencedDeclaration": 6734,
                                   "type": "function (address,uint256) pure returns (bytes32)",
                                   "value": "getTransferArgsSignature"
                                 },
-                                "id": 6559,
+                                "id": 6555,
                                 "name": "Identifier",
                                 "src": "1161:24:22"
                               },
@@ -863,11 +863,11 @@ export const MockERC721Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6550,
+                                  "referencedDeclaration": 6546,
                                   "type": "address",
                                   "value": "_to"
                                 },
-                                "id": 6560,
+                                "id": 6556,
                                 "name": "Identifier",
                                 "src": "1199:3:22"
                               },
@@ -877,36 +877,36 @@ export const MockERC721Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6552,
+                                  "referencedDeclaration": 6548,
                                   "type": "uint256",
                                   "value": "_tokenId"
                                 },
-                                "id": 6561,
+                                "id": 6557,
                                 "name": "Identifier",
                                 "src": "1216:8:22"
                               }
                             ],
-                            "id": 6562,
+                            "id": 6558,
                             "name": "FunctionCall",
                             "src": "1161:73:22"
                           }
                         ],
-                        "id": 6563,
+                        "id": 6559,
                         "name": "FunctionCall",
                         "src": "1123:112:22"
                       }
                     ],
-                    "id": 6564,
+                    "id": 6560,
                     "name": "Return",
                     "src": "1116:119:22"
                   }
                 ],
-                "id": 6565,
+                "id": 6561,
                 "name": "Block",
                 "src": "1106:136:22"
               }
             ],
-            "id": 6566,
+            "id": 6562,
             "name": "FunctionDefinition",
             "src": "960:282:22"
           },
@@ -920,7 +920,7 @@ export const MockERC721Token =
               ],
               "name": "transferFrom",
               "payable": false,
-              "scope": 6777,
+              "scope": 6773,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -932,7 +932,7 @@ export const MockERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "_from",
-                      "scope": 6589,
+                      "scope": 6585,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -945,12 +945,12 @@ export const MockERC721Token =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 6567,
+                        "id": 6563,
                         "name": "ElementaryTypeName",
                         "src": "1279:7:22"
                       }
                     ],
-                    "id": 6568,
+                    "id": 6564,
                     "name": "VariableDeclaration",
                     "src": "1279:13:22"
                   },
@@ -958,7 +958,7 @@ export const MockERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 6589,
+                      "scope": 6585,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -971,12 +971,12 @@ export const MockERC721Token =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 6569,
+                        "id": 6565,
                         "name": "ElementaryTypeName",
                         "src": "1302:7:22"
                       }
                     ],
-                    "id": 6570,
+                    "id": 6566,
                     "name": "VariableDeclaration",
                     "src": "1302:11:22"
                   },
@@ -984,7 +984,7 @@ export const MockERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 6589,
+                      "scope": 6585,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -997,17 +997,17 @@ export const MockERC721Token =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 6571,
+                        "id": 6567,
                         "name": "ElementaryTypeName",
                         "src": "1323:4:22"
                       }
                     ],
-                    "id": 6572,
+                    "id": 6568,
                     "name": "VariableDeclaration",
                     "src": "1323:13:22"
                   }
                 ],
-                "id": 6573,
+                "id": 6569,
                 "name": "ParameterList",
                 "src": "1269:73:22"
               },
@@ -1017,7 +1017,7 @@ export const MockERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "_success",
-                      "scope": 6589,
+                      "scope": 6585,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -1030,17 +1030,17 @@ export const MockERC721Token =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 6574,
+                        "id": 6570,
                         "name": "ElementaryTypeName",
                         "src": "1375:4:22"
                       }
                     ],
-                    "id": 6575,
+                    "id": 6571,
                     "name": "VariableDeclaration",
                     "src": "1375:13:22"
                   }
                 ],
-                "id": 6576,
+                "id": 6572,
                 "name": "ParameterList",
                 "src": "1374:15:22"
               },
@@ -1078,11 +1078,11 @@ export const MockERC721Token =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5493,
+                              "referencedDeclaration": 5489,
                               "type": "function (string memory,bytes32)",
                               "value": "functionCalledWithArgs"
                             },
-                            "id": 6577,
+                            "id": 6573,
                             "name": "Identifier",
                             "src": "1404:22:22"
                           },
@@ -1099,7 +1099,7 @@ export const MockERC721Token =
                               "type": "literal_string \"transferFrom\"",
                               "value": "transferFrom"
                             },
-                            "id": 6578,
+                            "id": 6574,
                             "name": "Literal",
                             "src": "1427:14:22"
                           },
@@ -1137,11 +1137,11 @@ export const MockERC721Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6756,
+                                  "referencedDeclaration": 6752,
                                   "type": "function (address,address,uint256) pure returns (bytes32)",
                                   "value": "getTransferFromArgsSignature"
                                 },
-                                "id": 6579,
+                                "id": 6575,
                                 "name": "Identifier",
                                 "src": "1443:28:22"
                               },
@@ -1151,11 +1151,11 @@ export const MockERC721Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6568,
+                                  "referencedDeclaration": 6564,
                                   "type": "address",
                                   "value": "_from"
                                 },
-                                "id": 6580,
+                                "id": 6576,
                                 "name": "Identifier",
                                 "src": "1485:5:22"
                               },
@@ -1165,11 +1165,11 @@ export const MockERC721Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6570,
+                                  "referencedDeclaration": 6566,
                                   "type": "address",
                                   "value": "_to"
                                 },
-                                "id": 6581,
+                                "id": 6577,
                                 "name": "Identifier",
                                 "src": "1504:3:22"
                               },
@@ -1179,32 +1179,32 @@ export const MockERC721Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6572,
+                                  "referencedDeclaration": 6568,
                                   "type": "uint256",
                                   "value": "_tokenId"
                                 },
-                                "id": 6582,
+                                "id": 6578,
                                 "name": "Identifier",
                                 "src": "1521:8:22"
                               }
                             ],
-                            "id": 6583,
+                            "id": 6579,
                             "name": "FunctionCall",
                             "src": "1443:96:22"
                           }
                         ],
-                        "id": 6584,
+                        "id": 6580,
                         "name": "FunctionCall",
                         "src": "1404:136:22"
                       }
                     ],
-                    "id": 6585,
+                    "id": 6581,
                     "name": "ExpressionStatement",
                     "src": "1404:136:22"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 6576
+                      "functionReturnParameters": 6572
                     },
                     "children": [
                       {
@@ -1220,22 +1220,22 @@ export const MockERC721Token =
                           "type": "bool",
                           "value": "true"
                         },
-                        "id": 6586,
+                        "id": 6582,
                         "name": "Literal",
                         "src": "1558:4:22"
                       }
                     ],
-                    "id": 6587,
+                    "id": 6583,
                     "name": "Return",
                     "src": "1551:11:22"
                   }
                 ],
-                "id": 6588,
+                "id": 6584,
                 "name": "Block",
                 "src": "1394:175:22"
               }
             ],
-            "id": 6589,
+            "id": 6585,
             "name": "FunctionDefinition",
             "src": "1248:321:22"
           },
@@ -1249,7 +1249,7 @@ export const MockERC721Token =
               ],
               "name": "wasTransferFromCalledWith",
               "payable": false,
-              "scope": 6777,
+              "scope": 6773,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -1261,7 +1261,7 @@ export const MockERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "_from",
-                      "scope": 6610,
+                      "scope": 6606,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1274,12 +1274,12 @@ export const MockERC721Token =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 6590,
+                        "id": 6586,
                         "name": "ElementaryTypeName",
                         "src": "1619:7:22"
                       }
                     ],
-                    "id": 6591,
+                    "id": 6587,
                     "name": "VariableDeclaration",
                     "src": "1619:13:22"
                   },
@@ -1287,7 +1287,7 @@ export const MockERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 6610,
+                      "scope": 6606,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1300,12 +1300,12 @@ export const MockERC721Token =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 6592,
+                        "id": 6588,
                         "name": "ElementaryTypeName",
                         "src": "1642:7:22"
                       }
                     ],
-                    "id": 6593,
+                    "id": 6589,
                     "name": "VariableDeclaration",
                     "src": "1642:11:22"
                   },
@@ -1313,7 +1313,7 @@ export const MockERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 6610,
+                      "scope": 6606,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1326,17 +1326,17 @@ export const MockERC721Token =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 6594,
+                        "id": 6590,
                         "name": "ElementaryTypeName",
                         "src": "1663:4:22"
                       }
                     ],
-                    "id": 6595,
+                    "id": 6591,
                     "name": "VariableDeclaration",
                     "src": "1663:13:22"
                   }
                 ],
-                "id": 6596,
+                "id": 6592,
                 "name": "ParameterList",
                 "src": "1609:73:22"
               },
@@ -1346,7 +1346,7 @@ export const MockERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "wasCalled",
-                      "scope": 6610,
+                      "scope": 6606,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -1359,17 +1359,17 @@ export const MockERC721Token =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 6597,
+                        "id": 6593,
                         "name": "ElementaryTypeName",
                         "src": "1728:4:22"
                       }
                     ],
-                    "id": 6598,
+                    "id": 6594,
                     "name": "VariableDeclaration",
                     "src": "1728:14:22"
                   }
                 ],
-                "id": 6599,
+                "id": 6595,
                 "name": "ParameterList",
                 "src": "1727:16:22"
               },
@@ -1377,7 +1377,7 @@ export const MockERC721Token =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 6599
+                      "functionReturnParameters": 6595
                     },
                     "children": [
                       {
@@ -1410,11 +1410,11 @@ export const MockERC721Token =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5509,
+                              "referencedDeclaration": 5505,
                               "type": "function (string memory,bytes32) view returns (bool)",
                               "value": "wasFunctionCalledWithArgs"
                             },
-                            "id": 6600,
+                            "id": 6596,
                             "name": "Identifier",
                             "src": "1765:25:22"
                           },
@@ -1431,7 +1431,7 @@ export const MockERC721Token =
                               "type": "literal_string \"transferFrom\"",
                               "value": "transferFrom"
                             },
-                            "id": 6601,
+                            "id": 6597,
                             "name": "Literal",
                             "src": "1791:14:22"
                           },
@@ -1469,11 +1469,11 @@ export const MockERC721Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6756,
+                                  "referencedDeclaration": 6752,
                                   "type": "function (address,address,uint256) pure returns (bytes32)",
                                   "value": "getTransferFromArgsSignature"
                                 },
-                                "id": 6602,
+                                "id": 6598,
                                 "name": "Identifier",
                                 "src": "1807:28:22"
                               },
@@ -1483,11 +1483,11 @@ export const MockERC721Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6591,
+                                  "referencedDeclaration": 6587,
                                   "type": "address",
                                   "value": "_from"
                                 },
-                                "id": 6603,
+                                "id": 6599,
                                 "name": "Identifier",
                                 "src": "1849:5:22"
                               },
@@ -1497,11 +1497,11 @@ export const MockERC721Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6593,
+                                  "referencedDeclaration": 6589,
                                   "type": "address",
                                   "value": "_to"
                                 },
-                                "id": 6604,
+                                "id": 6600,
                                 "name": "Identifier",
                                 "src": "1868:3:22"
                               },
@@ -1511,36 +1511,36 @@ export const MockERC721Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6595,
+                                  "referencedDeclaration": 6591,
                                   "type": "uint256",
                                   "value": "_tokenId"
                                 },
-                                "id": 6605,
+                                "id": 6601,
                                 "name": "Identifier",
                                 "src": "1885:8:22"
                               }
                             ],
-                            "id": 6606,
+                            "id": 6602,
                             "name": "FunctionCall",
                             "src": "1807:96:22"
                           }
                         ],
-                        "id": 6607,
+                        "id": 6603,
                         "name": "FunctionCall",
                         "src": "1765:139:22"
                       }
                     ],
-                    "id": 6608,
+                    "id": 6604,
                     "name": "Return",
                     "src": "1758:146:22"
                   }
                 ],
-                "id": 6609,
+                "id": 6605,
                 "name": "Block",
                 "src": "1748:163:22"
               }
             ],
-            "id": 6610,
+            "id": 6606,
             "name": "FunctionDefinition",
             "src": "1575:336:22"
           },
@@ -1554,7 +1554,7 @@ export const MockERC721Token =
               ],
               "name": "balanceOf",
               "payable": false,
-              "scope": 6777,
+              "scope": 6773,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -1566,7 +1566,7 @@ export const MockERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "_owner",
-                      "scope": 6627,
+                      "scope": 6623,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1579,17 +1579,17 @@ export const MockERC721Token =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 6611,
+                        "id": 6607,
                         "name": "ElementaryTypeName",
                         "src": "1936:7:22"
                       }
                     ],
-                    "id": 6612,
+                    "id": 6608,
                     "name": "VariableDeclaration",
                     "src": "1936:14:22"
                   }
                 ],
-                "id": 6613,
+                "id": 6609,
                 "name": "ParameterList",
                 "src": "1935:16:22"
               },
@@ -1599,7 +1599,7 @@ export const MockERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "_balance",
-                      "scope": 6627,
+                      "scope": 6623,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1612,17 +1612,17 @@ export const MockERC721Token =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 6614,
+                        "id": 6610,
                         "name": "ElementaryTypeName",
                         "src": "1973:4:22"
                       }
                     ],
-                    "id": 6615,
+                    "id": 6611,
                     "name": "VariableDeclaration",
                     "src": "1973:13:22"
                   }
                 ],
-                "id": 6616,
+                "id": 6612,
                 "name": "ParameterList",
                 "src": "1972:15:22"
               },
@@ -1630,7 +1630,7 @@ export const MockERC721Token =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 6616
+                      "functionReturnParameters": 6612
                     },
                     "children": [
                       {
@@ -1663,7 +1663,7 @@ export const MockERC721Token =
                               "type": "type(uint256)",
                               "value": "uint"
                             },
-                            "id": 6617,
+                            "id": 6613,
                             "name": "ElementaryTypeNameExpression",
                             "src": "2005:4:22"
                           },
@@ -1697,11 +1697,11 @@ export const MockERC721Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5397,
+                                  "referencedDeclaration": 5393,
                                   "type": "function (string memory,bytes32) view returns (bytes32)",
                                   "value": "getMockReturnValue"
                                 },
-                                "id": 6618,
+                                "id": 6614,
                                 "name": "Identifier",
                                 "src": "2010:18:22"
                               },
@@ -1718,7 +1718,7 @@ export const MockERC721Token =
                                   "type": "literal_string \"balanceOf\"",
                                   "value": "balanceOf"
                                 },
-                                "id": 6619,
+                                "id": 6615,
                                 "name": "Literal",
                                 "src": "2029:11:22"
                               },
@@ -1748,11 +1748,11 @@ export const MockERC721Token =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10465,
+                                      "referencedDeclaration": 10467,
                                       "type": "function () pure returns (bytes32)",
                                       "value": "keccak256"
                                     },
-                                    "id": 6620,
+                                    "id": 6616,
                                     "name": "Identifier",
                                     "src": "2042:9:22"
                                   },
@@ -1762,41 +1762,41 @@ export const MockERC721Token =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 6612,
+                                      "referencedDeclaration": 6608,
                                       "type": "address",
                                       "value": "_owner"
                                     },
-                                    "id": 6621,
+                                    "id": 6617,
                                     "name": "Identifier",
                                     "src": "2052:6:22"
                                   }
                                 ],
-                                "id": 6622,
+                                "id": 6618,
                                 "name": "FunctionCall",
                                 "src": "2042:17:22"
                               }
                             ],
-                            "id": 6623,
+                            "id": 6619,
                             "name": "FunctionCall",
                             "src": "2010:50:22"
                           }
                         ],
-                        "id": 6624,
+                        "id": 6620,
                         "name": "FunctionCall",
                         "src": "2005:56:22"
                       }
                     ],
-                    "id": 6625,
+                    "id": 6621,
                     "name": "Return",
                     "src": "1998:63:22"
                   }
                 ],
-                "id": 6626,
+                "id": 6622,
                 "name": "Block",
                 "src": "1988:80:22"
               }
             ],
-            "id": 6627,
+            "id": 6623,
             "name": "FunctionDefinition",
             "src": "1917:151:22"
           },
@@ -1810,7 +1810,7 @@ export const MockERC721Token =
               ],
               "name": "mockBalanceOfFor",
               "payable": false,
-              "scope": 6777,
+              "scope": 6773,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -1822,7 +1822,7 @@ export const MockERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "_owner",
-                      "scope": 6645,
+                      "scope": 6641,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1835,12 +1835,12 @@ export const MockERC721Token =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 6628,
+                        "id": 6624,
                         "name": "ElementaryTypeName",
                         "src": "2100:7:22"
                       }
                     ],
-                    "id": 6629,
+                    "id": 6625,
                     "name": "VariableDeclaration",
                     "src": "2100:14:22"
                   },
@@ -1848,7 +1848,7 @@ export const MockERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "_balance",
-                      "scope": 6645,
+                      "scope": 6641,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1861,17 +1861,17 @@ export const MockERC721Token =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 6630,
+                        "id": 6626,
                         "name": "ElementaryTypeName",
                         "src": "2116:4:22"
                       }
                     ],
-                    "id": 6631,
+                    "id": 6627,
                     "name": "VariableDeclaration",
                     "src": "2116:13:22"
                   }
                 ],
-                "id": 6632,
+                "id": 6628,
                 "name": "ParameterList",
                 "src": "2099:31:22"
               },
@@ -1882,7 +1882,7 @@ export const MockERC721Token =
                   ]
                 },
                 "children": [],
-                "id": 6633,
+                "id": 6629,
                 "name": "ParameterList",
                 "src": "2138:0:22"
               },
@@ -1924,11 +1924,11 @@ export const MockERC721Token =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5381,
+                              "referencedDeclaration": 5377,
                               "type": "function (string memory,bytes32,bytes32)",
                               "value": "mockReturnValue"
                             },
-                            "id": 6634,
+                            "id": 6630,
                             "name": "Identifier",
                             "src": "2148:15:22"
                           },
@@ -1945,7 +1945,7 @@ export const MockERC721Token =
                               "type": "literal_string \"balanceOf\"",
                               "value": "balanceOf"
                             },
-                            "id": 6635,
+                            "id": 6631,
                             "name": "Literal",
                             "src": "2164:11:22"
                           },
@@ -1975,11 +1975,11 @@ export const MockERC721Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10465,
+                                  "referencedDeclaration": 10467,
                                   "type": "function () pure returns (bytes32)",
                                   "value": "keccak256"
                                 },
-                                "id": 6636,
+                                "id": 6632,
                                 "name": "Identifier",
                                 "src": "2177:9:22"
                               },
@@ -1989,16 +1989,16 @@ export const MockERC721Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6629,
+                                  "referencedDeclaration": 6625,
                                   "type": "address",
                                   "value": "_owner"
                                 },
-                                "id": 6637,
+                                "id": 6633,
                                 "name": "Identifier",
                                 "src": "2187:6:22"
                               }
                             ],
-                            "id": 6638,
+                            "id": 6634,
                             "name": "FunctionCall",
                             "src": "2177:17:22"
                           },
@@ -2032,7 +2032,7 @@ export const MockERC721Token =
                                   "type": "type(bytes32)",
                                   "value": "bytes32"
                                 },
-                                "id": 6639,
+                                "id": 6635,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "2196:7:22"
                               },
@@ -2042,36 +2042,36 @@ export const MockERC721Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6631,
+                                  "referencedDeclaration": 6627,
                                   "type": "uint256",
                                   "value": "_balance"
                                 },
-                                "id": 6640,
+                                "id": 6636,
                                 "name": "Identifier",
                                 "src": "2204:8:22"
                               }
                             ],
-                            "id": 6641,
+                            "id": 6637,
                             "name": "FunctionCall",
                             "src": "2196:17:22"
                           }
                         ],
-                        "id": 6642,
+                        "id": 6638,
                         "name": "FunctionCall",
                         "src": "2148:66:22"
                       }
                     ],
-                    "id": 6643,
+                    "id": 6639,
                     "name": "ExpressionStatement",
                     "src": "2148:66:22"
                   }
                 ],
-                "id": 6644,
+                "id": 6640,
                 "name": "Block",
                 "src": "2138:83:22"
               }
             ],
-            "id": 6645,
+            "id": 6641,
             "name": "FunctionDefinition",
             "src": "2074:147:22"
           },
@@ -2085,7 +2085,7 @@ export const MockERC721Token =
               ],
               "name": "ownerOf",
               "payable": false,
-              "scope": 6777,
+              "scope": 6773,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -2097,7 +2097,7 @@ export const MockERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 6662,
+                      "scope": 6658,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2110,17 +2110,17 @@ export const MockERC721Token =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 6646,
+                        "id": 6642,
                         "name": "ElementaryTypeName",
                         "src": "2244:4:22"
                       }
                     ],
-                    "id": 6647,
+                    "id": 6643,
                     "name": "VariableDeclaration",
                     "src": "2244:13:22"
                   }
                 ],
-                "id": 6648,
+                "id": 6644,
                 "name": "ParameterList",
                 "src": "2243:15:22"
               },
@@ -2130,7 +2130,7 @@ export const MockERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "_owner",
-                      "scope": 6662,
+                      "scope": 6658,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2143,17 +2143,17 @@ export const MockERC721Token =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 6649,
+                        "id": 6645,
                         "name": "ElementaryTypeName",
                         "src": "2280:7:22"
                       }
                     ],
-                    "id": 6650,
+                    "id": 6646,
                     "name": "VariableDeclaration",
                     "src": "2280:14:22"
                   }
                 ],
-                "id": 6651,
+                "id": 6647,
                 "name": "ParameterList",
                 "src": "2279:16:22"
               },
@@ -2161,7 +2161,7 @@ export const MockERC721Token =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 6651
+                      "functionReturnParameters": 6647
                     },
                     "children": [
                       {
@@ -2194,7 +2194,7 @@ export const MockERC721Token =
                               "type": "type(address)",
                               "value": "address"
                             },
-                            "id": 6652,
+                            "id": 6648,
                             "name": "ElementaryTypeNameExpression",
                             "src": "2313:7:22"
                           },
@@ -2228,11 +2228,11 @@ export const MockERC721Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5397,
+                                  "referencedDeclaration": 5393,
                                   "type": "function (string memory,bytes32) view returns (bytes32)",
                                   "value": "getMockReturnValue"
                                 },
-                                "id": 6653,
+                                "id": 6649,
                                 "name": "Identifier",
                                 "src": "2321:18:22"
                               },
@@ -2249,7 +2249,7 @@ export const MockERC721Token =
                                   "type": "literal_string \"ownerOf\"",
                                   "value": "ownerOf"
                                 },
-                                "id": 6654,
+                                "id": 6650,
                                 "name": "Literal",
                                 "src": "2340:9:22"
                               },
@@ -2279,11 +2279,11 @@ export const MockERC721Token =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10465,
+                                      "referencedDeclaration": 10467,
                                       "type": "function () pure returns (bytes32)",
                                       "value": "keccak256"
                                     },
-                                    "id": 6655,
+                                    "id": 6651,
                                     "name": "Identifier",
                                     "src": "2351:9:22"
                                   },
@@ -2293,41 +2293,41 @@ export const MockERC721Token =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 6647,
+                                      "referencedDeclaration": 6643,
                                       "type": "uint256",
                                       "value": "_tokenId"
                                     },
-                                    "id": 6656,
+                                    "id": 6652,
                                     "name": "Identifier",
                                     "src": "2361:8:22"
                                   }
                                 ],
-                                "id": 6657,
+                                "id": 6653,
                                 "name": "FunctionCall",
                                 "src": "2351:19:22"
                               }
                             ],
-                            "id": 6658,
+                            "id": 6654,
                             "name": "FunctionCall",
                             "src": "2321:50:22"
                           }
                         ],
-                        "id": 6659,
+                        "id": 6655,
                         "name": "FunctionCall",
                         "src": "2313:59:22"
                       }
                     ],
-                    "id": 6660,
+                    "id": 6656,
                     "name": "Return",
                     "src": "2306:66:22"
                   }
                 ],
-                "id": 6661,
+                "id": 6657,
                 "name": "Block",
                 "src": "2296:83:22"
               }
             ],
-            "id": 6662,
+            "id": 6658,
             "name": "FunctionDefinition",
             "src": "2227:152:22"
           },
@@ -2341,7 +2341,7 @@ export const MockERC721Token =
               ],
               "name": "mockOwnerOfFor",
               "payable": false,
-              "scope": 6777,
+              "scope": 6773,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -2353,7 +2353,7 @@ export const MockERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 6680,
+                      "scope": 6676,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2366,12 +2366,12 @@ export const MockERC721Token =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 6663,
+                        "id": 6659,
                         "name": "ElementaryTypeName",
                         "src": "2409:4:22"
                       }
                     ],
-                    "id": 6664,
+                    "id": 6660,
                     "name": "VariableDeclaration",
                     "src": "2409:13:22"
                   },
@@ -2379,7 +2379,7 @@ export const MockERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "_owner",
-                      "scope": 6680,
+                      "scope": 6676,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2392,17 +2392,17 @@ export const MockERC721Token =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 6665,
+                        "id": 6661,
                         "name": "ElementaryTypeName",
                         "src": "2424:7:22"
                       }
                     ],
-                    "id": 6666,
+                    "id": 6662,
                     "name": "VariableDeclaration",
                     "src": "2424:14:22"
                   }
                 ],
-                "id": 6667,
+                "id": 6663,
                 "name": "ParameterList",
                 "src": "2408:31:22"
               },
@@ -2413,7 +2413,7 @@ export const MockERC721Token =
                   ]
                 },
                 "children": [],
-                "id": 6668,
+                "id": 6664,
                 "name": "ParameterList",
                 "src": "2447:0:22"
               },
@@ -2455,11 +2455,11 @@ export const MockERC721Token =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5381,
+                              "referencedDeclaration": 5377,
                               "type": "function (string memory,bytes32,bytes32)",
                               "value": "mockReturnValue"
                             },
-                            "id": 6669,
+                            "id": 6665,
                             "name": "Identifier",
                             "src": "2457:15:22"
                           },
@@ -2476,7 +2476,7 @@ export const MockERC721Token =
                               "type": "literal_string \"ownerOf\"",
                               "value": "ownerOf"
                             },
-                            "id": 6670,
+                            "id": 6666,
                             "name": "Literal",
                             "src": "2473:9:22"
                           },
@@ -2506,11 +2506,11 @@ export const MockERC721Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10465,
+                                  "referencedDeclaration": 10467,
                                   "type": "function () pure returns (bytes32)",
                                   "value": "keccak256"
                                 },
-                                "id": 6671,
+                                "id": 6667,
                                 "name": "Identifier",
                                 "src": "2484:9:22"
                               },
@@ -2520,16 +2520,16 @@ export const MockERC721Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6664,
+                                  "referencedDeclaration": 6660,
                                   "type": "uint256",
                                   "value": "_tokenId"
                                 },
-                                "id": 6672,
+                                "id": 6668,
                                 "name": "Identifier",
                                 "src": "2494:8:22"
                               }
                             ],
-                            "id": 6673,
+                            "id": 6669,
                             "name": "FunctionCall",
                             "src": "2484:19:22"
                           },
@@ -2563,7 +2563,7 @@ export const MockERC721Token =
                                   "type": "type(bytes32)",
                                   "value": "bytes32"
                                 },
-                                "id": 6674,
+                                "id": 6670,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "2505:7:22"
                               },
@@ -2573,36 +2573,36 @@ export const MockERC721Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6666,
+                                  "referencedDeclaration": 6662,
                                   "type": "address",
                                   "value": "_owner"
                                 },
-                                "id": 6675,
+                                "id": 6671,
                                 "name": "Identifier",
                                 "src": "2513:6:22"
                               }
                             ],
-                            "id": 6676,
+                            "id": 6672,
                             "name": "FunctionCall",
                             "src": "2505:15:22"
                           }
                         ],
-                        "id": 6677,
+                        "id": 6673,
                         "name": "FunctionCall",
                         "src": "2457:64:22"
                       }
                     ],
-                    "id": 6678,
+                    "id": 6674,
                     "name": "ExpressionStatement",
                     "src": "2457:64:22"
                   }
                 ],
-                "id": 6679,
+                "id": 6675,
                 "name": "Block",
                 "src": "2447:81:22"
               }
             ],
-            "id": 6680,
+            "id": 6676,
             "name": "FunctionDefinition",
             "src": "2385:143:22"
           },
@@ -2616,7 +2616,7 @@ export const MockERC721Token =
               ],
               "name": "getApproved",
               "payable": false,
-              "scope": 6777,
+              "scope": 6773,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -2628,7 +2628,7 @@ export const MockERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 6697,
+                      "scope": 6693,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2641,17 +2641,17 @@ export const MockERC721Token =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 6681,
+                        "id": 6677,
                         "name": "ElementaryTypeName",
                         "src": "2555:4:22"
                       }
                     ],
-                    "id": 6682,
+                    "id": 6678,
                     "name": "VariableDeclaration",
                     "src": "2555:13:22"
                   }
                 ],
-                "id": 6683,
+                "id": 6679,
                 "name": "ParameterList",
                 "src": "2554:15:22"
               },
@@ -2661,7 +2661,7 @@ export const MockERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "_approved",
-                      "scope": 6697,
+                      "scope": 6693,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2674,17 +2674,17 @@ export const MockERC721Token =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 6684,
+                        "id": 6680,
                         "name": "ElementaryTypeName",
                         "src": "2591:7:22"
                       }
                     ],
-                    "id": 6685,
+                    "id": 6681,
                     "name": "VariableDeclaration",
                     "src": "2591:17:22"
                   }
                 ],
-                "id": 6686,
+                "id": 6682,
                 "name": "ParameterList",
                 "src": "2590:19:22"
               },
@@ -2692,7 +2692,7 @@ export const MockERC721Token =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 6686
+                      "functionReturnParameters": 6682
                     },
                     "children": [
                       {
@@ -2725,7 +2725,7 @@ export const MockERC721Token =
                               "type": "type(address)",
                               "value": "address"
                             },
-                            "id": 6687,
+                            "id": 6683,
                             "name": "ElementaryTypeNameExpression",
                             "src": "2627:7:22"
                           },
@@ -2759,11 +2759,11 @@ export const MockERC721Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5397,
+                                  "referencedDeclaration": 5393,
                                   "type": "function (string memory,bytes32) view returns (bytes32)",
                                   "value": "getMockReturnValue"
                                 },
-                                "id": 6688,
+                                "id": 6684,
                                 "name": "Identifier",
                                 "src": "2635:18:22"
                               },
@@ -2780,7 +2780,7 @@ export const MockERC721Token =
                                   "type": "literal_string \"getApproved\"",
                                   "value": "getApproved"
                                 },
-                                "id": 6689,
+                                "id": 6685,
                                 "name": "Literal",
                                 "src": "2654:13:22"
                               },
@@ -2810,11 +2810,11 @@ export const MockERC721Token =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10465,
+                                      "referencedDeclaration": 10467,
                                       "type": "function () pure returns (bytes32)",
                                       "value": "keccak256"
                                     },
-                                    "id": 6690,
+                                    "id": 6686,
                                     "name": "Identifier",
                                     "src": "2669:9:22"
                                   },
@@ -2824,41 +2824,41 @@ export const MockERC721Token =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 6682,
+                                      "referencedDeclaration": 6678,
                                       "type": "uint256",
                                       "value": "_tokenId"
                                     },
-                                    "id": 6691,
+                                    "id": 6687,
                                     "name": "Identifier",
                                     "src": "2679:8:22"
                                   }
                                 ],
-                                "id": 6692,
+                                "id": 6688,
                                 "name": "FunctionCall",
                                 "src": "2669:19:22"
                               }
                             ],
-                            "id": 6693,
+                            "id": 6689,
                             "name": "FunctionCall",
                             "src": "2635:54:22"
                           }
                         ],
-                        "id": 6694,
+                        "id": 6690,
                         "name": "FunctionCall",
                         "src": "2627:63:22"
                       }
                     ],
-                    "id": 6695,
+                    "id": 6691,
                     "name": "Return",
                     "src": "2620:70:22"
                   }
                 ],
-                "id": 6696,
+                "id": 6692,
                 "name": "Block",
                 "src": "2610:87:22"
               }
             ],
-            "id": 6697,
+            "id": 6693,
             "name": "FunctionDefinition",
             "src": "2534:163:22"
           },
@@ -2872,7 +2872,7 @@ export const MockERC721Token =
               ],
               "name": "mockGetApprovedFor",
               "payable": false,
-              "scope": 6777,
+              "scope": 6773,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -2884,7 +2884,7 @@ export const MockERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 6715,
+                      "scope": 6711,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2897,12 +2897,12 @@ export const MockERC721Token =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 6698,
+                        "id": 6694,
                         "name": "ElementaryTypeName",
                         "src": "2731:4:22"
                       }
                     ],
-                    "id": 6699,
+                    "id": 6695,
                     "name": "VariableDeclaration",
                     "src": "2731:13:22"
                   },
@@ -2910,7 +2910,7 @@ export const MockERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "_approved",
-                      "scope": 6715,
+                      "scope": 6711,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2923,17 +2923,17 @@ export const MockERC721Token =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 6700,
+                        "id": 6696,
                         "name": "ElementaryTypeName",
                         "src": "2746:7:22"
                       }
                     ],
-                    "id": 6701,
+                    "id": 6697,
                     "name": "VariableDeclaration",
                     "src": "2746:17:22"
                   }
                 ],
-                "id": 6702,
+                "id": 6698,
                 "name": "ParameterList",
                 "src": "2730:34:22"
               },
@@ -2944,7 +2944,7 @@ export const MockERC721Token =
                   ]
                 },
                 "children": [],
-                "id": 6703,
+                "id": 6699,
                 "name": "ParameterList",
                 "src": "2772:0:22"
               },
@@ -2986,11 +2986,11 @@ export const MockERC721Token =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5381,
+                              "referencedDeclaration": 5377,
                               "type": "function (string memory,bytes32,bytes32)",
                               "value": "mockReturnValue"
                             },
-                            "id": 6704,
+                            "id": 6700,
                             "name": "Identifier",
                             "src": "2782:15:22"
                           },
@@ -3007,7 +3007,7 @@ export const MockERC721Token =
                               "type": "literal_string \"getApproved\"",
                               "value": "getApproved"
                             },
-                            "id": 6705,
+                            "id": 6701,
                             "name": "Literal",
                             "src": "2798:13:22"
                           },
@@ -3037,11 +3037,11 @@ export const MockERC721Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10465,
+                                  "referencedDeclaration": 10467,
                                   "type": "function () pure returns (bytes32)",
                                   "value": "keccak256"
                                 },
-                                "id": 6706,
+                                "id": 6702,
                                 "name": "Identifier",
                                 "src": "2813:9:22"
                               },
@@ -3051,16 +3051,16 @@ export const MockERC721Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6699,
+                                  "referencedDeclaration": 6695,
                                   "type": "uint256",
                                   "value": "_tokenId"
                                 },
-                                "id": 6707,
+                                "id": 6703,
                                 "name": "Identifier",
                                 "src": "2823:8:22"
                               }
                             ],
-                            "id": 6708,
+                            "id": 6704,
                             "name": "FunctionCall",
                             "src": "2813:19:22"
                           },
@@ -3094,7 +3094,7 @@ export const MockERC721Token =
                                   "type": "type(bytes32)",
                                   "value": "bytes32"
                                 },
-                                "id": 6709,
+                                "id": 6705,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "2834:7:22"
                               },
@@ -3104,36 +3104,36 @@ export const MockERC721Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6701,
+                                  "referencedDeclaration": 6697,
                                   "type": "address",
                                   "value": "_approved"
                                 },
-                                "id": 6710,
+                                "id": 6706,
                                 "name": "Identifier",
                                 "src": "2842:9:22"
                               }
                             ],
-                            "id": 6711,
+                            "id": 6707,
                             "name": "FunctionCall",
                             "src": "2834:18:22"
                           }
                         ],
-                        "id": 6712,
+                        "id": 6708,
                         "name": "FunctionCall",
                         "src": "2782:71:22"
                       }
                     ],
-                    "id": 6713,
+                    "id": 6709,
                     "name": "ExpressionStatement",
                     "src": "2782:71:22"
                   }
                 ],
-                "id": 6714,
+                "id": 6710,
                 "name": "Block",
                 "src": "2772:88:22"
               }
             ],
-            "id": 6715,
+            "id": 6711,
             "name": "FunctionDefinition",
             "src": "2703:157:22"
           },
@@ -3147,7 +3147,7 @@ export const MockERC721Token =
               ],
               "name": "implementsERC721",
               "payable": false,
-              "scope": 6777,
+              "scope": 6773,
               "stateMutability": "pure",
               "superFunction": null,
               "visibility": "public"
@@ -3160,7 +3160,7 @@ export const MockERC721Token =
                   ]
                 },
                 "children": [],
-                "id": 6716,
+                "id": 6712,
                 "name": "ParameterList",
                 "src": "2891:2:22"
               },
@@ -3170,7 +3170,7 @@ export const MockERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "_implementsERC721",
-                      "scope": 6723,
+                      "scope": 6719,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -3183,17 +3183,17 @@ export const MockERC721Token =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 6717,
+                        "id": 6713,
                         "name": "ElementaryTypeName",
                         "src": "2915:4:22"
                       }
                     ],
-                    "id": 6718,
+                    "id": 6714,
                     "name": "VariableDeclaration",
                     "src": "2915:22:22"
                   }
                 ],
-                "id": 6719,
+                "id": 6715,
                 "name": "ParameterList",
                 "src": "2914:24:22"
               },
@@ -3201,7 +3201,7 @@ export const MockERC721Token =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 6719
+                      "functionReturnParameters": 6715
                     },
                     "children": [
                       {
@@ -3217,22 +3217,22 @@ export const MockERC721Token =
                           "type": "bool",
                           "value": "true"
                         },
-                        "id": 6720,
+                        "id": 6716,
                         "name": "Literal",
                         "src": "2956:4:22"
                       }
                     ],
-                    "id": 6721,
+                    "id": 6717,
                     "name": "Return",
                     "src": "2949:11:22"
                   }
                 ],
-                "id": 6722,
+                "id": 6718,
                 "name": "Block",
                 "src": "2939:28:22"
               }
             ],
-            "id": 6723,
+            "id": 6719,
             "name": "FunctionDefinition",
             "src": "2866:101:22"
           },
@@ -3246,7 +3246,7 @@ export const MockERC721Token =
               ],
               "name": "getTransferArgsSignature",
               "payable": false,
-              "scope": 6777,
+              "scope": 6773,
               "stateMutability": "pure",
               "superFunction": null,
               "visibility": "internal"
@@ -3258,7 +3258,7 @@ export const MockERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 6738,
+                      "scope": 6734,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -3271,12 +3271,12 @@ export const MockERC721Token =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 6724,
+                        "id": 6720,
                         "name": "ElementaryTypeName",
                         "src": "3016:7:22"
                       }
                     ],
-                    "id": 6725,
+                    "id": 6721,
                     "name": "VariableDeclaration",
                     "src": "3016:11:22"
                   },
@@ -3284,7 +3284,7 @@ export const MockERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 6738,
+                      "scope": 6734,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -3297,17 +3297,17 @@ export const MockERC721Token =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 6726,
+                        "id": 6722,
                         "name": "ElementaryTypeName",
                         "src": "3037:4:22"
                       }
                     ],
-                    "id": 6727,
+                    "id": 6723,
                     "name": "VariableDeclaration",
                     "src": "3037:13:22"
                   }
                 ],
-                "id": 6728,
+                "id": 6724,
                 "name": "ParameterList",
                 "src": "3006:50:22"
               },
@@ -3317,7 +3317,7 @@ export const MockERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "args",
-                      "scope": 6738,
+                      "scope": 6734,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -3330,17 +3330,17 @@ export const MockERC721Token =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 6729,
+                        "id": 6725,
                         "name": "ElementaryTypeName",
                         "src": "3104:7:22"
                       }
                     ],
-                    "id": 6730,
+                    "id": 6726,
                     "name": "VariableDeclaration",
                     "src": "3104:12:22"
                   }
                 ],
-                "id": 6731,
+                "id": 6727,
                 "name": "ParameterList",
                 "src": "3103:14:22"
               },
@@ -3348,7 +3348,7 @@ export const MockERC721Token =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 6731
+                      "functionReturnParameters": 6727
                     },
                     "children": [
                       {
@@ -3381,11 +3381,11 @@ export const MockERC721Token =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10465,
+                              "referencedDeclaration": 10467,
                               "type": "function () pure returns (bytes32)",
                               "value": "keccak256"
                             },
-                            "id": 6732,
+                            "id": 6728,
                             "name": "Identifier",
                             "src": "3139:9:22"
                           },
@@ -3395,11 +3395,11 @@ export const MockERC721Token =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 6725,
+                              "referencedDeclaration": 6721,
                               "type": "address",
                               "value": "_to"
                             },
-                            "id": 6733,
+                            "id": 6729,
                             "name": "Identifier",
                             "src": "3162:3:22"
                           },
@@ -3409,31 +3409,31 @@ export const MockERC721Token =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 6727,
+                              "referencedDeclaration": 6723,
                               "type": "uint256",
                               "value": "_tokenId"
                             },
-                            "id": 6734,
+                            "id": 6730,
                             "name": "Identifier",
                             "src": "3179:8:22"
                           }
                         ],
-                        "id": 6735,
+                        "id": 6731,
                         "name": "FunctionCall",
                         "src": "3139:58:22"
                       }
                     ],
-                    "id": 6736,
+                    "id": 6732,
                     "name": "Return",
                     "src": "3132:65:22"
                   }
                 ],
-                "id": 6737,
+                "id": 6733,
                 "name": "Block",
                 "src": "3122:82:22"
               }
             ],
-            "id": 6738,
+            "id": 6734,
             "name": "FunctionDefinition",
             "src": "2973:231:22"
           },
@@ -3447,7 +3447,7 @@ export const MockERC721Token =
               ],
               "name": "getTransferFromArgsSignature",
               "payable": false,
-              "scope": 6777,
+              "scope": 6773,
               "stateMutability": "pure",
               "superFunction": null,
               "visibility": "internal"
@@ -3459,7 +3459,7 @@ export const MockERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "_from",
-                      "scope": 6756,
+                      "scope": 6752,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -3472,12 +3472,12 @@ export const MockERC721Token =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 6739,
+                        "id": 6735,
                         "name": "ElementaryTypeName",
                         "src": "3257:7:22"
                       }
                     ],
-                    "id": 6740,
+                    "id": 6736,
                     "name": "VariableDeclaration",
                     "src": "3257:13:22"
                   },
@@ -3485,7 +3485,7 @@ export const MockERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 6756,
+                      "scope": 6752,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -3498,12 +3498,12 @@ export const MockERC721Token =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 6741,
+                        "id": 6737,
                         "name": "ElementaryTypeName",
                         "src": "3280:7:22"
                       }
                     ],
-                    "id": 6742,
+                    "id": 6738,
                     "name": "VariableDeclaration",
                     "src": "3280:11:22"
                   },
@@ -3511,7 +3511,7 @@ export const MockERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 6756,
+                      "scope": 6752,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -3524,17 +3524,17 @@ export const MockERC721Token =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 6743,
+                        "id": 6739,
                         "name": "ElementaryTypeName",
                         "src": "3301:4:22"
                       }
                     ],
-                    "id": 6744,
+                    "id": 6740,
                     "name": "VariableDeclaration",
                     "src": "3301:13:22"
                   }
                 ],
-                "id": 6745,
+                "id": 6741,
                 "name": "ParameterList",
                 "src": "3247:73:22"
               },
@@ -3544,7 +3544,7 @@ export const MockERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "argsSignature",
-                      "scope": 6756,
+                      "scope": 6752,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -3557,17 +3557,17 @@ export const MockERC721Token =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 6746,
+                        "id": 6742,
                         "name": "ElementaryTypeName",
                         "src": "3368:7:22"
                       }
                     ],
-                    "id": 6747,
+                    "id": 6743,
                     "name": "VariableDeclaration",
                     "src": "3368:21:22"
                   }
                 ],
-                "id": 6748,
+                "id": 6744,
                 "name": "ParameterList",
                 "src": "3367:23:22"
               },
@@ -3575,7 +3575,7 @@ export const MockERC721Token =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 6748
+                      "functionReturnParameters": 6744
                     },
                     "children": [
                       {
@@ -3612,11 +3612,11 @@ export const MockERC721Token =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10465,
+                              "referencedDeclaration": 10467,
                               "type": "function () pure returns (bytes32)",
                               "value": "keccak256"
                             },
-                            "id": 6749,
+                            "id": 6745,
                             "name": "Identifier",
                             "src": "3412:9:22"
                           },
@@ -3626,11 +3626,11 @@ export const MockERC721Token =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 6740,
+                              "referencedDeclaration": 6736,
                               "type": "address",
                               "value": "_from"
                             },
-                            "id": 6750,
+                            "id": 6746,
                             "name": "Identifier",
                             "src": "3435:5:22"
                           },
@@ -3640,11 +3640,11 @@ export const MockERC721Token =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 6742,
+                              "referencedDeclaration": 6738,
                               "type": "address",
                               "value": "_to"
                             },
-                            "id": 6751,
+                            "id": 6747,
                             "name": "Identifier",
                             "src": "3454:3:22"
                           },
@@ -3654,31 +3654,31 @@ export const MockERC721Token =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 6744,
+                              "referencedDeclaration": 6740,
                               "type": "uint256",
                               "value": "_tokenId"
                             },
-                            "id": 6752,
+                            "id": 6748,
                             "name": "Identifier",
                             "src": "3471:8:22"
                           }
                         ],
-                        "id": 6753,
+                        "id": 6749,
                         "name": "FunctionCall",
                         "src": "3412:77:22"
                       }
                     ],
-                    "id": 6754,
+                    "id": 6750,
                     "name": "Return",
                     "src": "3405:84:22"
                   }
                 ],
-                "id": 6755,
+                "id": 6751,
                 "name": "Block",
                 "src": "3395:101:22"
               }
             ],
-            "id": 6756,
+            "id": 6752,
             "name": "FunctionDefinition",
             "src": "3210:286:22"
           },
@@ -3692,9 +3692,9 @@ export const MockERC721Token =
               ],
               "name": "getFunctionList",
               "payable": false,
-              "scope": 6777,
+              "scope": 6773,
               "stateMutability": "nonpayable",
-              "superFunction": 5516,
+              "superFunction": 5512,
               "visibility": "internal"
             },
             "children": [
@@ -3705,7 +3705,7 @@ export const MockERC721Token =
                   ]
                 },
                 "children": [],
-                "id": 6757,
+                "id": 6753,
                 "name": "ParameterList",
                 "src": "3526:2:22"
               },
@@ -3715,7 +3715,7 @@ export const MockERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "functionNames",
-                      "scope": 6776,
+                      "scope": 6772,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory[10] memory",
@@ -3733,7 +3733,7 @@ export const MockERC721Token =
                               "name": "string",
                               "type": "string storage pointer"
                             },
-                            "id": 6758,
+                            "id": 6754,
                             "name": "ElementaryTypeName",
                             "src": "3563:6:22"
                           },
@@ -3750,22 +3750,22 @@ export const MockERC721Token =
                               "type": "int_const 10",
                               "value": "10"
                             },
-                            "id": 6759,
+                            "id": 6755,
                             "name": "Literal",
                             "src": "3570:2:22"
                           }
                         ],
-                        "id": 6760,
+                        "id": 6756,
                         "name": "ArrayTypeName",
                         "src": "3563:10:22"
                       }
                     ],
-                    "id": 6761,
+                    "id": 6757,
                     "name": "VariableDeclaration",
                     "src": "3563:24:22"
                   }
                 ],
-                "id": 6762,
+                "id": 6758,
                 "name": "ParameterList",
                 "src": "3562:26:22"
               },
@@ -3773,7 +3773,7 @@ export const MockERC721Token =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 6762
+                      "functionReturnParameters": 6758
                     },
                     "children": [
                       {
@@ -3800,7 +3800,7 @@ export const MockERC721Token =
                               "type": "literal_string \"transfer\"",
                               "value": "transfer"
                             },
-                            "id": 6763,
+                            "id": 6759,
                             "name": "Literal",
                             "src": "3611:10:22"
                           },
@@ -3817,7 +3817,7 @@ export const MockERC721Token =
                               "type": "literal_string \"transferFrom\"",
                               "value": "transferFrom"
                             },
-                            "id": 6764,
+                            "id": 6760,
                             "name": "Literal",
                             "src": "3623:14:22"
                           },
@@ -3834,7 +3834,7 @@ export const MockERC721Token =
                               "type": "literal_string \"ownerOf\"",
                               "value": "ownerOf"
                             },
-                            "id": 6765,
+                            "id": 6761,
                             "name": "Literal",
                             "src": "3639:9:22"
                           },
@@ -3851,7 +3851,7 @@ export const MockERC721Token =
                               "type": "literal_string \"balanceOf\"",
                               "value": "balanceOf"
                             },
-                            "id": 6766,
+                            "id": 6762,
                             "name": "Literal",
                             "src": "3650:11:22"
                           },
@@ -3868,7 +3868,7 @@ export const MockERC721Token =
                               "type": "literal_string \"getApproved\"",
                               "value": "getApproved"
                             },
-                            "id": 6767,
+                            "id": 6763,
                             "name": "Literal",
                             "src": "3663:13:22"
                           },
@@ -3885,7 +3885,7 @@ export const MockERC721Token =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 6768,
+                            "id": 6764,
                             "name": "Literal",
                             "src": "3678:2:22"
                           },
@@ -3902,7 +3902,7 @@ export const MockERC721Token =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 6769,
+                            "id": 6765,
                             "name": "Literal",
                             "src": "3682:2:22"
                           },
@@ -3919,7 +3919,7 @@ export const MockERC721Token =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 6770,
+                            "id": 6766,
                             "name": "Literal",
                             "src": "3686:2:22"
                           },
@@ -3936,7 +3936,7 @@ export const MockERC721Token =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 6771,
+                            "id": 6767,
                             "name": "Literal",
                             "src": "3690:2:22"
                           },
@@ -3953,37 +3953,37 @@ export const MockERC721Token =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 6772,
+                            "id": 6768,
                             "name": "Literal",
                             "src": "3694:2:22"
                           }
                         ],
-                        "id": 6773,
+                        "id": 6769,
                         "name": "TupleExpression",
                         "src": "3610:87:22"
                       }
                     ],
-                    "id": 6774,
+                    "id": 6770,
                     "name": "Return",
                     "src": "3603:94:22"
                   }
                 ],
-                "id": 6775,
+                "id": 6771,
                 "name": "Block",
                 "src": "3593:111:22"
               }
             ],
-            "id": 6776,
+            "id": 6772,
             "name": "FunctionDefinition",
             "src": "3502:202:22"
           }
         ],
-        "id": 6777,
+        "id": 6773,
         "name": "ContractDefinition",
         "src": "640:3066:22"
       }
     ],
-    "id": 6778,
+    "id": 6774,
     "name": "SourceUnit",
     "src": "584:3123:22"
   },
@@ -4004,5 +4004,5 @@ export const MockERC721Token =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-05-21T18:05:01.079Z"
+  "updatedAt": "2018-05-22T06:04:17.386Z"
 }
