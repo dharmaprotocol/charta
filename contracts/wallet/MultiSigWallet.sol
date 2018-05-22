@@ -354,6 +354,8 @@ contract MultiSigWallet {
         view
         returns (uint[] _transactionIds)
     {
+        require(from <= to);
+
         uint[] memory transactionIdsTemp = new uint[](transactionCount);
         uint count = 0;
         uint i;
