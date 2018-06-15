@@ -1,4 +1,6 @@
-const { TOKEN_URI_OPERATOR } = require("./migration_constants");
+import { BigNumber } from "bignumber.js/bignumber";
+
+const CONSTANTS = require("./migration_constants");
 
 const tokensToAdd = [
     {
@@ -53,20 +55,42 @@ const tokensToAdd = [
 
 module.exports = (deployer, network, accounts) => {
     const TokenRegistry = artifacts.require("TokenRegistry");
+    const DharmaMultiSigWalletContract = artifacts.require("DharmaMultiSigWalletContract");
 
-    const TX_DEFAULTS = { from: accounts[0], gas: 4000000 };
+    const TX_DEFAULTS = { from: CONSTANTS.SIGNATORIES[0], gas: 4000000 };
 
     return deployer.then(async () => {
         const registry = await TokenRegistry.deployed();
 
+        const wallet = await DharmaMultiSigWalletContract.deployed();
+
+        const methodName = "setTokenAttributes";
+
         await Promise.all(
-            tokensToAdd.map((tokenAttributes) => {
-                return registry.setTokenAttributes.sendTransactionAsync(
+            tokensToAdd.map(async (tokenAttributes) => {
+                const args = [
                     tokenAttributes.symbol,
                     tokenAttributes.address,
                     tokenAttributes.name,
                     tokenAttributes.decimals
-                , TX_DEFAULTS);
+                ];
+
+                // Encode the transaction.
+                const encodedTransaction = await registry.web3ContractInstance[methodName].getData.apply(
+                    null,
+                    args,
+                );
+
+                // Submit the transaction.
+                const txHash = await wallet.submitTransaction.sendTransactionAsync(
+                    registry.address,
+                    // Ether value - 0.
+                    new BigNumber(0),
+                    encodedTransaction,
+                    TX_DEFAULTS,
+                );
+                
+                console.log(tokenAttributes.symbol, txHash);
             })
         );
     });
