@@ -1,4 +1,4 @@
-import { BigNumber } from "bignumber.js/bignumber";
+const BigNumber = require("bignumber.js");
 
 const CONSTANTS = require("./migration_constants");
 
@@ -55,13 +55,12 @@ const tokensToAdd = [
 
 module.exports = (deployer, network, accounts) => {
     const TokenRegistry = artifacts.require("TokenRegistry");
-    const DharmaMultiSigWalletContract = artifacts.require("DharmaMultiSigWalletContract");
+    const DharmaMultiSigWalletContract = artifacts.require("DharmaMultiSigWallet");
 
     const TX_DEFAULTS = { from: CONSTANTS.SIGNATORIES[0], gas: 4000000 };
 
     return deployer.then(async () => {
         const registry = await TokenRegistry.deployed();
-
         const wallet = await DharmaMultiSigWalletContract.deployed();
 
         const methodName = "setTokenAttributes";
@@ -76,7 +75,7 @@ module.exports = (deployer, network, accounts) => {
                 ];
 
                 // Encode the transaction.
-                const encodedTransaction = await registry.web3ContractInstance[methodName].getData.apply(
+                const encodedTransaction = await registry[methodName].getData.apply(
                     null,
                     args,
                 );
@@ -89,7 +88,7 @@ module.exports = (deployer, network, accounts) => {
                     encodedTransaction,
                     TX_DEFAULTS,
                 );
-                
+
                 console.log(tokenAttributes.symbol, txHash);
             })
         );
