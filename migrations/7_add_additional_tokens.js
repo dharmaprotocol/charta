@@ -2,6 +2,7 @@ const BigNumber = require("bignumber.js");
 
 const CONSTANTS = require("./migration_constants");
 
+// A list of new tokens to add.
 const tokensToAdd = [
     {
         address: "0x1776e1f26f98b1a5df9cd347953a26dd3cb46671",
@@ -54,19 +55,28 @@ const tokensToAdd = [
 ];
 
 module.exports = (deployer, network, accounts) => {
+    // Get the contract artifacts.
     const TokenRegistry = artifacts.require("TokenRegistry");
     const DharmaMultiSigWalletContract = artifacts.require("DharmaMultiSigWallet");
 
-    const TX_DEFAULTS = { from: CONSTANTS.SIGNATORIES[0], gas: 4000000 };
+    // Define who will send the transaction -- signatory for production, else ACCOUNTS[0].
+    let senderAddress;
+    if (network !== CONSTANTS.LIVE_NETWORK_ID) {
+        senderAddress = accounts[0];
+    } else {
+        senderAddress = CONSTANTS.SIGNATORIES[0];
+    }
+
+    const txData = { from: senderAddress, gas: 4000000 };
 
     return deployer.then(async () => {
+        // Get the contracts.
         const registry = await TokenRegistry.deployed();
         const wallet = await DharmaMultiSigWalletContract.deployed();
 
-        const methodName = "setTokenAttributes";
-
         await Promise.all(
             tokensToAdd.map(async (tokenAttributes) => {
+                // Define the arguments for invoking the `setTokenAttributes` function.
                 const args = [
                     tokenAttributes.symbol,
                     tokenAttributes.address,
@@ -75,21 +85,22 @@ module.exports = (deployer, network, accounts) => {
                 ];
 
                 // Encode the transaction.
-                const encodedTransaction = await registry[methodName].getData.apply(
+                const encodedTransaction = await registry.contract.setTokenAttributes.getData.apply(
                     null,
                     args,
                 );
 
                 // Submit the transaction.
-                const txHash = await wallet.submitTransaction.sendTransactionAsync(
+                const result = await wallet.submitTransaction(
                     registry.address,
                     // Ether value - 0.
                     new BigNumber(0),
                     encodedTransaction,
-                    TX_DEFAULTS,
+                    txData,
                 );
 
-                console.log(tokenAttributes.symbol, txHash);
+                // Report the transaction hash, so that it can be confirmed.
+                console.log(tokenAttributes.symbol, result.tx);
             })
         );
     });
