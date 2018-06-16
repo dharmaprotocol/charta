@@ -47,10 +47,10 @@ const tokensToAdd = [
         decimals: new BigNumber(6),
     },
     {
-        address: "0xd7a6e1007d28c7073b71e17450b4b88347bd6cf9",
-        name: "EuropeanUnion Token",
+        address: "0xabdf147870235fcfc34153828c769a70b3fae01f",
+        name: "Tether EUR",
         symbol: "EURT",
-        decimals: new BigNumber(18),
+        decimals: new BigNumber(6),
     },
 ];
 
