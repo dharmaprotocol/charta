@@ -11,6 +11,7 @@ const LIVE_NETWORK_ID = "live";
 const KOVAN_NETWORK_ID = "kovan";
 const DUMMY_TOKEN_SUPPLY = 10 ** 27;
 const DUMMY_TOKEN_DECIMALS = 18;
+const NUM_INITIAL_BALANCE_HOLDERS = 11;
 
 /**
  * The secure address that is allowed to set DebtToken URIs.
@@ -372,5 +373,6 @@ module.exports = {
     KOVAN_WETH_ADDRESS,
     TOKEN_LIST,
     NAMES_OF_CONTRACTS_OWNED_BY_MULTISIG,
+    NUM_INITIAL_BALANCE_HOLDERS,
     TOKEN_URI_OPERATOR,
 };

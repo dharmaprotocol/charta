@@ -1,6 +1,6 @@
 const CONSTANTS = require("./migration_constants");
 
-async function generateDummyTokens(network, DummyToken) {
+async function generateDummyTokens(network, DummyToken, initialTokenHolders) {
     return Promise.all(
         CONSTANTS.TOKEN_LIST.map(async (token) => {
             const { name, symbol, decimals } = token;
@@ -19,6 +19,7 @@ async function generateDummyTokens(network, DummyToken) {
                     symbol,
                     decimals,
                     CONSTANTS.DUMMY_TOKEN_SUPPLY,
+                    initialTokenHolders,
                 );
 
                 address = dummyToken.address;
@@ -36,6 +37,8 @@ async function generateDummyTokens(network, DummyToken) {
 
 async function configureTokenRegistry(network, accounts, TokenRegistry, DummyToken) {
     const OWNER = accounts[0];
+    const initialTokenHolders = accounts.slice(0, CONSTANTS.NUM_INITIAL_BALANCE_HOLDERS);
+
     const tokenRegistry = await TokenRegistry.deployed();
     let tokens;
 
@@ -45,7 +48,7 @@ async function configureTokenRegistry(network, accounts, TokenRegistry, DummyTok
             break;
 
         default:
-            tokens = await generateDummyTokens(network, DummyToken);
+            tokens = await generateDummyTokens(network, DummyToken, initialTokenHolders);
     }
 
     await Promise.all(
