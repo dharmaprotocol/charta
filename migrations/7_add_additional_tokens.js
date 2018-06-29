@@ -11,24 +11,6 @@ const tokensToAdd = [
         decimals: new BigNumber(18),
     },
     {
-        address: "0x0947b0e6d821378805c9598291385ce7c791a6b2",
-        name: "Lendingblock",
-        symbol: "LEND",
-        decimals: new BigNumber(18),
-    },
-    {
-        address: "0xec97494ee4d697e7ab3d7682062bf564ceb9d08a",
-        name: "LSToken",
-        symbol: "LST",
-        decimals: new BigNumber(18),
-    },
-    {
-        address: "0x623b925b0a57a24ea8de301f2e3e692ce903f0c3",
-        name: "MOVI",
-        symbol: "MoviToken",
-        decimals: new BigNumber(18),
-    },
-    {
         address: "0x42d6622dece394b54999fbd73d108123806f6a18",
         name: "SPANK",
         symbol: "SPANK",
@@ -44,12 +26,6 @@ const tokensToAdd = [
         address: "0xdac17f958d2ee523a2206206994597c13d831ec7",
         name: "Tether USD",
         symbol: "USDT",
-        decimals: new BigNumber(6),
-    },
-    {
-        address: "0xabdf147870235fcfc34153828c769a70b3fae01f",
-        name: "Tether EUR",
-        symbol: "EURT",
         decimals: new BigNumber(6),
     },
 ];
