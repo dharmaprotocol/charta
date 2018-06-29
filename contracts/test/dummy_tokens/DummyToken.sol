@@ -14,14 +14,22 @@ contract DummyToken is MintableToken {
         string _name,
         string _symbol,
         uint _decimals,
-        uint _totalSupply)
+        uint _totalSupply,
+        address[] _initialBalanceHolders)
         public
     {
         name = _name;
         symbol = _symbol;
         decimals = _decimals;
         totalSupply_ = _totalSupply;
-        balances[msg.sender] = _totalSupply;
+
+        uint numInitialBalanceHolders = _initialBalanceHolders.length;
+
+        // Distribute the total supply evenly among the initial balance holders
+        for (uint i = 0; i < numInitialBalanceHolders; i++) {
+            address account = _initialBalanceHolders[i];
+            balances[account] = totalSupply_ / numInitialBalanceHolders;
+        }
     }
 
     function setBalance(address _target, uint _value) public onlyOwner {
