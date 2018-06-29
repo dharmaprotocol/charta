@@ -27,16 +27,10 @@ contract DummyToken is MintableToken {
 
         uint numInitialBalanceHolders = _initialBalanceHolders.length;
 
-        // Set the last initial balance holder's balance to the total supply
-        address supplyHolder = _initialBalanceHolders[numInitialBalanceHolders - 1];
-        balances[supplyHolder] = _totalSupply;
-
-        // For every other balance holder, distribute tokens and increase the total supply appropriately
-        for (uint i = 0; i < numInitialBalanceHolders - 1; i++) {
-            totalSupply_.add(TOKENS_PER_ACCOUNT);
-
+        // Distribute the total supply evenly among the initial balance holders
+        for (uint i = 0; i < numInitialBalanceHolders; i++) {
             address account = _initialBalanceHolders[i];
-            balances[account] = TOKENS_PER_ACCOUNT;
+            balances[account] = totalSupply_ / numInitialBalanceHolders;
         }
     }
 

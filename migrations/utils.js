@@ -37,7 +37,6 @@ async function generateDummyTokens(network, DummyToken, initialTokenHolders) {
 
 async function configureTokenRegistry(network, accounts, TokenRegistry, DummyToken) {
     const OWNER = accounts[0];
-    const initialTokenHolders = accounts.slice(0, CONSTANTS.NUM_INITIAL_BALANCE_HOLDERS);
 
     const tokenRegistry = await TokenRegistry.deployed();
     let tokens;
@@ -47,7 +46,12 @@ async function configureTokenRegistry(network, accounts, TokenRegistry, DummyTok
             tokens = CONSTANTS.TOKEN_LIST;
             break;
 
+        case CONSTANTS.KOVAN_NETWORK_ID:
+            tokens = await generateDummyTokens(network, DummyToken, accounts);
+            break;
+
         default:
+            const initialTokenHolders = accounts.slice(0, CONSTANTS.NUM_INITIAL_BALANCE_HOLDERS);
             tokens = await generateDummyTokens(network, DummyToken, initialTokenHolders);
     }
 

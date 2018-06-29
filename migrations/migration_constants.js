@@ -9,9 +9,9 @@ const THRESHOLD = 1 / 2; // 50%
 const TIMELOCK_IN_SECONDS = 60 * 60 * 24 * 7; // 7 Days
 const LIVE_NETWORK_ID = "live";
 const KOVAN_NETWORK_ID = "kovan";
-const DUMMY_TOKEN_SUPPLY = 10 ** 27;
+const DUMMY_TOKEN_SUPPLY = 1000 * 10 ** 18;
 const DUMMY_TOKEN_DECIMALS = 18;
-const NUM_INITIAL_BALANCE_HOLDERS = 11;
+const NUM_INITIAL_BALANCE_HOLDERS = 10;
 
 /**
  * The secure address that is allowed to set DebtToken URIs.
