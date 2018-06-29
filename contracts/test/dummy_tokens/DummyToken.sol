@@ -10,8 +10,6 @@ contract DummyToken is MintableToken {
     string public symbol;
     uint public decimals;
 
-    uint public constant TOKENS_PER_ACCOUNT = 100 * 10 ** 18;
-
     function DummyToken(
         string _name,
         string _symbol,
