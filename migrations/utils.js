@@ -1,5 +1,10 @@
 const CONSTANTS = require("./migration_constants");
 
+/**
+ * Generates DummyTokens given the list of tokens in constants.
+ * Divides the total supply of tokens evenly among the initial token holders.
+ * See CONSTANTS for the token list, the total supply, and the number of initial token holders.
+ */
 async function generateDummyTokens(network, DummyToken, initialTokenHolders) {
     return Promise.all(
         CONSTANTS.TOKEN_LIST.map(async (token) => {
