@@ -285,7 +285,7 @@ export const ERC721BasicToken =
       "absolutePath": "zeppelin-solidity/contracts/token/ERC721/ERC721BasicToken.sol",
       "exportedSymbols": {
         "ERC721BasicToken": [
-          10073
+          10100
         ]
       }
     },
@@ -299,84 +299,84 @@ export const ERC721BasicToken =
             ".18"
           ]
         },
-        "id": 9492,
+        "id": 9519,
         "name": "PragmaDirective",
         "src": "0:24:41"
       },
       {
         "attributes": {
-          "SourceUnit": 9491,
+          "SourceUnit": 9518,
           "absolutePath": "zeppelin-solidity/contracts/token/ERC721/ERC721Basic.sol",
           "file": "./ERC721Basic.sol",
-          "scope": 10074,
+          "scope": 10101,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 9493,
+        "id": 9520,
         "name": "ImportDirective",
         "src": "26:27:41"
       },
       {
         "attributes": {
-          "SourceUnit": 10091,
+          "SourceUnit": 10118,
           "absolutePath": "zeppelin-solidity/contracts/token/ERC721/ERC721Receiver.sol",
           "file": "./ERC721Receiver.sol",
-          "scope": 10074,
+          "scope": 10101,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 9494,
+        "id": 9521,
         "name": "ImportDirective",
         "src": "54:30:41"
       },
       {
         "attributes": {
-          "SourceUnit": 8736,
+          "SourceUnit": 8763,
           "absolutePath": "zeppelin-solidity/contracts/math/SafeMath.sol",
           "file": "../../math/SafeMath.sol",
-          "scope": 10074,
+          "scope": 10101,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 9495,
+        "id": 9522,
         "name": "ImportDirective",
         "src": "85:33:41"
       },
       {
         "attributes": {
-          "SourceUnit": 8578,
+          "SourceUnit": 8605,
           "absolutePath": "zeppelin-solidity/contracts/AddressUtils.sol",
           "file": "../../AddressUtils.sol",
-          "scope": 10074,
+          "scope": 10101,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 9496,
+        "id": 9523,
         "name": "ImportDirective",
         "src": "119:32:41"
       },
       {
         "attributes": {
           "contractDependencies": [
-            9490
+            9517
           ],
           "contractKind": "contract",
           "documentation": "@title ERC721 Non-Fungible Token Standard basic implementation\n@dev see https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md",
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            10073,
-            9490
+            10100,
+            9517
           ],
           "name": "ERC721BasicToken",
-          "scope": 10074
+          "scope": 10101
         },
         "children": [
           {
@@ -390,15 +390,15 @@ export const ERC721BasicToken =
                 "attributes": {
                   "contractScope": null,
                   "name": "ERC721Basic",
-                  "referencedDeclaration": 9490,
+                  "referencedDeclaration": 9517,
                   "type": "contract ERC721Basic"
                 },
-                "id": 9497,
+                "id": 9524,
                 "name": "UserDefinedTypeName",
                 "src": "329:11:41"
               }
             ],
-            "id": 9498,
+            "id": 9525,
             "name": "InheritanceSpecifier",
             "src": "329:11:41"
           },
@@ -408,10 +408,10 @@ export const ERC721BasicToken =
                 "attributes": {
                   "contractScope": null,
                   "name": "SafeMath",
-                  "referencedDeclaration": 8735,
+                  "referencedDeclaration": 8762,
                   "type": "library SafeMath"
                 },
-                "id": 9499,
+                "id": 9526,
                 "name": "UserDefinedTypeName",
                 "src": "351:8:41"
               },
@@ -420,12 +420,12 @@ export const ERC721BasicToken =
                   "name": "uint256",
                   "type": "uint256"
                 },
-                "id": 9500,
+                "id": 9527,
                 "name": "ElementaryTypeName",
                 "src": "364:7:41"
               }
             ],
-            "id": 9501,
+            "id": 9528,
             "name": "UsingForDirective",
             "src": "345:27:41"
           },
@@ -435,10 +435,10 @@ export const ERC721BasicToken =
                 "attributes": {
                   "contractScope": null,
                   "name": "AddressUtils",
-                  "referencedDeclaration": 8577,
+                  "referencedDeclaration": 8604,
                   "type": "library AddressUtils"
                 },
-                "id": 9502,
+                "id": 9529,
                 "name": "UserDefinedTypeName",
                 "src": "381:12:41"
               },
@@ -447,12 +447,12 @@ export const ERC721BasicToken =
                   "name": "address",
                   "type": "address"
                 },
-                "id": 9503,
+                "id": 9530,
                 "name": "ElementaryTypeName",
                 "src": "398:7:41"
               }
             ],
-            "id": 9504,
+            "id": 9531,
             "name": "UsingForDirective",
             "src": "375:31:41"
           },
@@ -460,7 +460,7 @@ export const ERC721BasicToken =
             "attributes": {
               "constant": true,
               "name": "ERC721_RECEIVED",
-              "scope": 10073,
+              "scope": 10100,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "bytes4",
@@ -472,7 +472,7 @@ export const ERC721BasicToken =
                   "name": "bytes4",
                   "type": "bytes4"
                 },
-                "id": 9505,
+                "id": 9532,
                 "name": "ElementaryTypeName",
                 "src": "571:6:41"
               },
@@ -489,12 +489,12 @@ export const ERC721BasicToken =
                   "type": "int_const 4038714810",
                   "value": "0xf0b9e5ba"
                 },
-                "id": 9506,
+                "id": 9533,
                 "name": "Literal",
                 "src": "605:10:41"
               }
             ],
-            "id": 9507,
+            "id": 9534,
             "name": "VariableDeclaration",
             "src": "571:44:41"
           },
@@ -502,7 +502,7 @@ export const ERC721BasicToken =
             "attributes": {
               "constant": false,
               "name": "tokenOwner",
-              "scope": 10073,
+              "scope": 10100,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(uint256 => address)",
@@ -520,7 +520,7 @@ export const ERC721BasicToken =
                       "name": "uint256",
                       "type": "uint256"
                     },
-                    "id": 9508,
+                    "id": 9535,
                     "name": "ElementaryTypeName",
                     "src": "666:7:41"
                   },
@@ -529,17 +529,17 @@ export const ERC721BasicToken =
                       "name": "address",
                       "type": "address"
                     },
-                    "id": 9509,
+                    "id": 9536,
                     "name": "ElementaryTypeName",
                     "src": "677:7:41"
                   }
                 ],
-                "id": 9510,
+                "id": 9537,
                 "name": "Mapping",
                 "src": "657:28:41"
               }
             ],
-            "id": 9511,
+            "id": 9538,
             "name": "VariableDeclaration",
             "src": "657:48:41"
           },
@@ -547,7 +547,7 @@ export const ERC721BasicToken =
             "attributes": {
               "constant": false,
               "name": "tokenApprovals",
-              "scope": 10073,
+              "scope": 10100,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(uint256 => address)",
@@ -565,7 +565,7 @@ export const ERC721BasicToken =
                       "name": "uint256",
                       "type": "uint256"
                     },
-                    "id": 9512,
+                    "id": 9539,
                     "name": "ElementaryTypeName",
                     "src": "766:7:41"
                   },
@@ -574,17 +574,17 @@ export const ERC721BasicToken =
                       "name": "address",
                       "type": "address"
                     },
-                    "id": 9513,
+                    "id": 9540,
                     "name": "ElementaryTypeName",
                     "src": "777:7:41"
                   }
                 ],
-                "id": 9514,
+                "id": 9541,
                 "name": "Mapping",
                 "src": "757:28:41"
               }
             ],
-            "id": 9515,
+            "id": 9542,
             "name": "VariableDeclaration",
             "src": "757:52:41"
           },
@@ -592,7 +592,7 @@ export const ERC721BasicToken =
             "attributes": {
               "constant": false,
               "name": "ownedTokensCount",
-              "scope": 10073,
+              "scope": 10100,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(address => uint256)",
@@ -610,7 +610,7 @@ export const ERC721BasicToken =
                       "name": "address",
                       "type": "address"
                     },
-                    "id": 9516,
+                    "id": 9543,
                     "name": "ElementaryTypeName",
                     "src": "872:7:41"
                   },
@@ -619,17 +619,17 @@ export const ERC721BasicToken =
                       "name": "uint256",
                       "type": "uint256"
                     },
-                    "id": 9517,
+                    "id": 9544,
                     "name": "ElementaryTypeName",
                     "src": "883:7:41"
                   }
                 ],
-                "id": 9518,
+                "id": 9545,
                 "name": "Mapping",
                 "src": "863:28:41"
               }
             ],
-            "id": 9519,
+            "id": 9546,
             "name": "VariableDeclaration",
             "src": "863:54:41"
           },
@@ -637,7 +637,7 @@ export const ERC721BasicToken =
             "attributes": {
               "constant": false,
               "name": "operatorApprovals",
-              "scope": 10073,
+              "scope": 10100,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(address => mapping(address => bool))",
@@ -655,7 +655,7 @@ export const ERC721BasicToken =
                       "name": "address",
                       "type": "address"
                     },
-                    "id": 9520,
+                    "id": 9547,
                     "name": "ElementaryTypeName",
                     "src": "977:7:41"
                   },
@@ -669,7 +669,7 @@ export const ERC721BasicToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 9521,
+                        "id": 9548,
                         "name": "ElementaryTypeName",
                         "src": "997:7:41"
                       },
@@ -678,22 +678,22 @@ export const ERC721BasicToken =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 9522,
+                        "id": 9549,
                         "name": "ElementaryTypeName",
                         "src": "1008:4:41"
                       }
                     ],
-                    "id": 9523,
+                    "id": 9550,
                     "name": "Mapping",
                     "src": "988:25:41"
                   }
                 ],
-                "id": 9524,
+                "id": 9551,
                 "name": "Mapping",
                 "src": "968:46:41"
               }
             ],
-            "id": 9525,
+            "id": 9552,
             "name": "VariableDeclaration",
             "src": "968:73:41"
           },
@@ -709,7 +709,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 9540,
+                      "scope": 9567,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -722,17 +722,17 @@ export const ERC721BasicToken =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 9526,
+                        "id": 9553,
                         "name": "ElementaryTypeName",
                         "src": "1229:7:41"
                       }
                     ],
-                    "id": 9527,
+                    "id": 9554,
                     "name": "VariableDeclaration",
                     "src": "1229:16:41"
                   }
                 ],
-                "id": 9528,
+                "id": 9555,
                 "name": "ParameterList",
                 "src": "1228:18:41"
               },
@@ -766,11 +766,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10476,
+                              "referencedDeclaration": 10503,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 9529,
+                            "id": 9556,
                             "name": "Identifier",
                             "src": "1253:7:41"
                           },
@@ -813,13 +813,13 @@ export const ERC721BasicToken =
                                         }
                                       ],
                                       "overloadedDeclarations": [
-                                        9598
+                                        9625
                                       ],
-                                      "referencedDeclaration": 9598,
+                                      "referencedDeclaration": 9625,
                                       "type": "function (uint256) view returns (address)",
                                       "value": "ownerOf"
                                     },
-                                    "id": 9530,
+                                    "id": 9557,
                                     "name": "Identifier",
                                     "src": "1261:7:41"
                                   },
@@ -829,16 +829,16 @@ export const ERC721BasicToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 9527,
+                                      "referencedDeclaration": 9554,
                                       "type": "uint256",
                                       "value": "_tokenId"
                                     },
-                                    "id": 9531,
+                                    "id": 9558,
                                     "name": "Identifier",
                                     "src": "1269:8:41"
                                   }
                                 ],
-                                "id": 9532,
+                                "id": 9559,
                                 "name": "FunctionCall",
                                 "src": "1261:17:41"
                               },
@@ -860,46 +860,46 @@ export const ERC721BasicToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10473,
+                                      "referencedDeclaration": 10500,
                                       "type": "msg",
                                       "value": "msg"
                                     },
-                                    "id": 9533,
+                                    "id": 9560,
                                     "name": "Identifier",
                                     "src": "1282:3:41"
                                   }
                                 ],
-                                "id": 9534,
+                                "id": 9561,
                                 "name": "MemberAccess",
                                 "src": "1282:10:41"
                               }
                             ],
-                            "id": 9535,
+                            "id": 9562,
                             "name": "BinaryOperation",
                             "src": "1261:31:41"
                           }
                         ],
-                        "id": 9536,
+                        "id": 9563,
                         "name": "FunctionCall",
                         "src": "1253:40:41"
                       }
                     ],
-                    "id": 9537,
+                    "id": 9564,
                     "name": "ExpressionStatement",
                     "src": "1253:40:41"
                   },
                   {
-                    "id": 9538,
+                    "id": 9565,
                     "name": "PlaceholderStatement",
                     "src": "1299:1:41"
                   }
                 ],
-                "id": 9539,
+                "id": 9566,
                 "name": "Block",
                 "src": "1247:58:41"
               }
             ],
-            "id": 9540,
+            "id": 9567,
             "name": "ModifierDefinition",
             "src": "1208:97:41"
           },
@@ -915,7 +915,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 9554,
+                      "scope": 9581,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -928,17 +928,17 @@ export const ERC721BasicToken =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 9541,
+                        "id": 9568,
                         "name": "ElementaryTypeName",
                         "src": "1484:7:41"
                       }
                     ],
-                    "id": 9542,
+                    "id": 9569,
                     "name": "VariableDeclaration",
                     "src": "1484:16:41"
                   }
                 ],
-                "id": 9543,
+                "id": 9570,
                 "name": "ParameterList",
                 "src": "1483:18:41"
               },
@@ -972,11 +972,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10476,
+                              "referencedDeclaration": 10503,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 9544,
+                            "id": 9571,
                             "name": "Identifier",
                             "src": "1508:7:41"
                           },
@@ -1010,11 +1010,11 @@ export const ERC721BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9868,
+                                  "referencedDeclaration": 9895,
                                   "type": "function (address,uint256) view returns (bool)",
                                   "value": "isApprovedOrOwner"
                                 },
-                                "id": 9545,
+                                "id": 9572,
                                 "name": "Identifier",
                                 "src": "1516:17:41"
                               },
@@ -1036,16 +1036,16 @@ export const ERC721BasicToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10473,
+                                      "referencedDeclaration": 10500,
                                       "type": "msg",
                                       "value": "msg"
                                     },
-                                    "id": 9546,
+                                    "id": 9573,
                                     "name": "Identifier",
                                     "src": "1534:3:41"
                                   }
                                 ],
-                                "id": 9547,
+                                "id": 9574,
                                 "name": "MemberAccess",
                                 "src": "1534:10:41"
                               },
@@ -1055,41 +1055,41 @@ export const ERC721BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9542,
+                                  "referencedDeclaration": 9569,
                                   "type": "uint256",
                                   "value": "_tokenId"
                                 },
-                                "id": 9548,
+                                "id": 9575,
                                 "name": "Identifier",
                                 "src": "1546:8:41"
                               }
                             ],
-                            "id": 9549,
+                            "id": 9576,
                             "name": "FunctionCall",
                             "src": "1516:39:41"
                           }
                         ],
-                        "id": 9550,
+                        "id": 9577,
                         "name": "FunctionCall",
                         "src": "1508:48:41"
                       }
                     ],
-                    "id": 9551,
+                    "id": 9578,
                     "name": "ExpressionStatement",
                     "src": "1508:48:41"
                   },
                   {
-                    "id": 9552,
+                    "id": 9579,
                     "name": "PlaceholderStatement",
                     "src": "1562:1:41"
                   }
                 ],
-                "id": 9553,
+                "id": 9580,
                 "name": "Block",
                 "src": "1502:66:41"
               }
             ],
-            "id": 9554,
+            "id": 9581,
             "name": "ModifierDefinition",
             "src": "1463:105:41"
           },
@@ -1103,9 +1103,9 @@ export const ERC721BasicToken =
               ],
               "name": "balanceOf",
               "payable": false,
-              "scope": 10073,
+              "scope": 10100,
               "stateMutability": "view",
-              "superFunction": 9416,
+              "superFunction": 9443,
               "visibility": "public"
             },
             "children": [
@@ -1115,7 +1115,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_owner",
-                      "scope": 9574,
+                      "scope": 9601,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1128,17 +1128,17 @@ export const ERC721BasicToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 9555,
+                        "id": 9582,
                         "name": "ElementaryTypeName",
                         "src": "1775:7:41"
                       }
                     ],
-                    "id": 9556,
+                    "id": 9583,
                     "name": "VariableDeclaration",
                     "src": "1775:14:41"
                   }
                 ],
-                "id": 9557,
+                "id": 9584,
                 "name": "ParameterList",
                 "src": "1774:16:41"
               },
@@ -1148,7 +1148,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 9574,
+                      "scope": 9601,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1161,17 +1161,17 @@ export const ERC721BasicToken =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 9558,
+                        "id": 9585,
                         "name": "ElementaryTypeName",
                         "src": "1812:7:41"
                       }
                     ],
-                    "id": 9559,
+                    "id": 9586,
                     "name": "VariableDeclaration",
                     "src": "1812:7:41"
                   }
                 ],
-                "id": 9560,
+                "id": 9587,
                 "name": "ParameterList",
                 "src": "1811:9:41"
               },
@@ -1205,11 +1205,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10476,
+                              "referencedDeclaration": 10503,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 9561,
+                            "id": 9588,
                             "name": "Identifier",
                             "src": "1827:7:41"
                           },
@@ -1234,11 +1234,11 @@ export const ERC721BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9556,
+                                  "referencedDeclaration": 9583,
                                   "type": "address",
                                   "value": "_owner"
                                 },
-                                "id": 9562,
+                                "id": 9589,
                                 "name": "Identifier",
                                 "src": "1835:6:41"
                               },
@@ -1272,7 +1272,7 @@ export const ERC721BasicToken =
                                       "type": "type(address)",
                                       "value": "address"
                                     },
-                                    "id": 9563,
+                                    "id": 9590,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "1845:7:41"
                                   },
@@ -1289,33 +1289,33 @@ export const ERC721BasicToken =
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 9564,
+                                    "id": 9591,
                                     "name": "Literal",
                                     "src": "1853:1:41"
                                   }
                                 ],
-                                "id": 9565,
+                                "id": 9592,
                                 "name": "FunctionCall",
                                 "src": "1845:10:41"
                               }
                             ],
-                            "id": 9566,
+                            "id": 9593,
                             "name": "BinaryOperation",
                             "src": "1835:20:41"
                           }
                         ],
-                        "id": 9567,
+                        "id": 9594,
                         "name": "FunctionCall",
                         "src": "1827:29:41"
                       }
                     ],
-                    "id": 9568,
+                    "id": 9595,
                     "name": "ExpressionStatement",
                     "src": "1827:29:41"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 9560
+                      "functionReturnParameters": 9587
                     },
                     "children": [
                       {
@@ -1334,11 +1334,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9519,
+                              "referencedDeclaration": 9546,
                               "type": "mapping(address => uint256)",
                               "value": "ownedTokensCount"
                             },
-                            "id": 9569,
+                            "id": 9596,
                             "name": "Identifier",
                             "src": "1869:16:41"
                           },
@@ -1348,31 +1348,31 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9556,
+                              "referencedDeclaration": 9583,
                               "type": "address",
                               "value": "_owner"
                             },
-                            "id": 9570,
+                            "id": 9597,
                             "name": "Identifier",
                             "src": "1886:6:41"
                           }
                         ],
-                        "id": 9571,
+                        "id": 9598,
                         "name": "IndexAccess",
                         "src": "1869:24:41"
                       }
                     ],
-                    "id": 9572,
+                    "id": 9599,
                     "name": "Return",
                     "src": "1862:31:41"
                   }
                 ],
-                "id": 9573,
+                "id": 9600,
                 "name": "Block",
                 "src": "1821:77:41"
               }
             ],
-            "id": 9574,
+            "id": 9601,
             "name": "FunctionDefinition",
             "src": "1756:142:41"
           },
@@ -1386,9 +1386,9 @@ export const ERC721BasicToken =
               ],
               "name": "ownerOf",
               "payable": false,
-              "scope": 10073,
+              "scope": 10100,
               "stateMutability": "view",
-              "superFunction": 9423,
+              "superFunction": 9450,
               "visibility": "public"
             },
             "children": [
@@ -1398,7 +1398,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 9598,
+                      "scope": 9625,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1411,17 +1411,17 @@ export const ERC721BasicToken =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 9575,
+                        "id": 9602,
                         "name": "ElementaryTypeName",
                         "src": "2124:7:41"
                       }
                     ],
-                    "id": 9576,
+                    "id": 9603,
                     "name": "VariableDeclaration",
                     "src": "2124:16:41"
                   }
                 ],
-                "id": 9577,
+                "id": 9604,
                 "name": "ParameterList",
                 "src": "2123:18:41"
               },
@@ -1431,7 +1431,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 9598,
+                      "scope": 9625,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1444,17 +1444,17 @@ export const ERC721BasicToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 9578,
+                        "id": 9605,
                         "name": "ElementaryTypeName",
                         "src": "2163:7:41"
                       }
                     ],
-                    "id": 9579,
+                    "id": 9606,
                     "name": "VariableDeclaration",
                     "src": "2163:7:41"
                   }
                 ],
-                "id": 9580,
+                "id": 9607,
                 "name": "ParameterList",
                 "src": "2162:9:41"
               },
@@ -1463,7 +1463,7 @@ export const ERC721BasicToken =
                   {
                     "attributes": {
                       "assignments": [
-                        9582
+                        9609
                       ]
                     },
                     "children": [
@@ -1471,7 +1471,7 @@ export const ERC721BasicToken =
                         "attributes": {
                           "constant": false,
                           "name": "owner",
-                          "scope": 9598,
+                          "scope": 9625,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "address",
@@ -1484,12 +1484,12 @@ export const ERC721BasicToken =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 9581,
+                            "id": 9608,
                             "name": "ElementaryTypeName",
                             "src": "2178:7:41"
                           }
                         ],
-                        "id": 9582,
+                        "id": 9609,
                         "name": "VariableDeclaration",
                         "src": "2178:13:41"
                       },
@@ -1509,11 +1509,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9511,
+                              "referencedDeclaration": 9538,
                               "type": "mapping(uint256 => address)",
                               "value": "tokenOwner"
                             },
-                            "id": 9583,
+                            "id": 9610,
                             "name": "Identifier",
                             "src": "2194:10:41"
                           },
@@ -1523,21 +1523,21 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9576,
+                              "referencedDeclaration": 9603,
                               "type": "uint256",
                               "value": "_tokenId"
                             },
-                            "id": 9584,
+                            "id": 9611,
                             "name": "Identifier",
                             "src": "2205:8:41"
                           }
                         ],
-                        "id": 9585,
+                        "id": 9612,
                         "name": "IndexAccess",
                         "src": "2194:20:41"
                       }
                     ],
-                    "id": 9586,
+                    "id": 9613,
                     "name": "VariableDeclarationStatement",
                     "src": "2178:36:41"
                   },
@@ -1569,11 +1569,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10476,
+                              "referencedDeclaration": 10503,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 9587,
+                            "id": 9614,
                             "name": "Identifier",
                             "src": "2220:7:41"
                           },
@@ -1598,11 +1598,11 @@ export const ERC721BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9582,
+                                  "referencedDeclaration": 9609,
                                   "type": "address",
                                   "value": "owner"
                                 },
-                                "id": 9588,
+                                "id": 9615,
                                 "name": "Identifier",
                                 "src": "2228:5:41"
                               },
@@ -1636,7 +1636,7 @@ export const ERC721BasicToken =
                                       "type": "type(address)",
                                       "value": "address"
                                     },
-                                    "id": 9589,
+                                    "id": 9616,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "2237:7:41"
                                   },
@@ -1653,33 +1653,33 @@ export const ERC721BasicToken =
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 9590,
+                                    "id": 9617,
                                     "name": "Literal",
                                     "src": "2245:1:41"
                                   }
                                 ],
-                                "id": 9591,
+                                "id": 9618,
                                 "name": "FunctionCall",
                                 "src": "2237:10:41"
                               }
                             ],
-                            "id": 9592,
+                            "id": 9619,
                             "name": "BinaryOperation",
                             "src": "2228:19:41"
                           }
                         ],
-                        "id": 9593,
+                        "id": 9620,
                         "name": "FunctionCall",
                         "src": "2220:28:41"
                       }
                     ],
-                    "id": 9594,
+                    "id": 9621,
                     "name": "ExpressionStatement",
                     "src": "2220:28:41"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 9580
+                      "functionReturnParameters": 9607
                     },
                     "children": [
                       {
@@ -1688,26 +1688,26 @@ export const ERC721BasicToken =
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 9582,
+                          "referencedDeclaration": 9609,
                           "type": "address",
                           "value": "owner"
                         },
-                        "id": 9595,
+                        "id": 9622,
                         "name": "Identifier",
                         "src": "2261:5:41"
                       }
                     ],
-                    "id": 9596,
+                    "id": 9623,
                     "name": "Return",
                     "src": "2254:12:41"
                   }
                 ],
-                "id": 9597,
+                "id": 9624,
                 "name": "Block",
                 "src": "2172:99:41"
               }
             ],
-            "id": 9598,
+            "id": 9625,
             "name": "FunctionDefinition",
             "src": "2107:164:41"
           },
@@ -1721,9 +1721,9 @@ export const ERC721BasicToken =
               ],
               "name": "exists",
               "payable": false,
-              "scope": 10073,
+              "scope": 10100,
               "stateMutability": "view",
-              "superFunction": 9430,
+              "superFunction": 9457,
               "visibility": "public"
             },
             "children": [
@@ -1733,7 +1733,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 9618,
+                      "scope": 9645,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1746,17 +1746,17 @@ export const ERC721BasicToken =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 9599,
+                        "id": 9626,
                         "name": "ElementaryTypeName",
                         "src": "2461:7:41"
                       }
                     ],
-                    "id": 9600,
+                    "id": 9627,
                     "name": "VariableDeclaration",
                     "src": "2461:16:41"
                   }
                 ],
-                "id": 9601,
+                "id": 9628,
                 "name": "ParameterList",
                 "src": "2460:18:41"
               },
@@ -1766,7 +1766,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 9618,
+                      "scope": 9645,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -1779,17 +1779,17 @@ export const ERC721BasicToken =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 9602,
+                        "id": 9629,
                         "name": "ElementaryTypeName",
                         "src": "2500:4:41"
                       }
                     ],
-                    "id": 9603,
+                    "id": 9630,
                     "name": "VariableDeclaration",
                     "src": "2500:4:41"
                   }
                 ],
-                "id": 9604,
+                "id": 9631,
                 "name": "ParameterList",
                 "src": "2499:6:41"
               },
@@ -1798,7 +1798,7 @@ export const ERC721BasicToken =
                   {
                     "attributes": {
                       "assignments": [
-                        9606
+                        9633
                       ]
                     },
                     "children": [
@@ -1806,7 +1806,7 @@ export const ERC721BasicToken =
                         "attributes": {
                           "constant": false,
                           "name": "owner",
-                          "scope": 9618,
+                          "scope": 9645,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "address",
@@ -1819,12 +1819,12 @@ export const ERC721BasicToken =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 9605,
+                            "id": 9632,
                             "name": "ElementaryTypeName",
                             "src": "2512:7:41"
                           }
                         ],
-                        "id": 9606,
+                        "id": 9633,
                         "name": "VariableDeclaration",
                         "src": "2512:13:41"
                       },
@@ -1844,11 +1844,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9511,
+                              "referencedDeclaration": 9538,
                               "type": "mapping(uint256 => address)",
                               "value": "tokenOwner"
                             },
-                            "id": 9607,
+                            "id": 9634,
                             "name": "Identifier",
                             "src": "2528:10:41"
                           },
@@ -1858,27 +1858,27 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9600,
+                              "referencedDeclaration": 9627,
                               "type": "uint256",
                               "value": "_tokenId"
                             },
-                            "id": 9608,
+                            "id": 9635,
                             "name": "Identifier",
                             "src": "2539:8:41"
                           }
                         ],
-                        "id": 9609,
+                        "id": 9636,
                         "name": "IndexAccess",
                         "src": "2528:20:41"
                       }
                     ],
-                    "id": 9610,
+                    "id": 9637,
                     "name": "VariableDeclarationStatement",
                     "src": "2512:36:41"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 9604
+                      "functionReturnParameters": 9631
                     },
                     "children": [
                       {
@@ -1902,11 +1902,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9606,
+                              "referencedDeclaration": 9633,
                               "type": "address",
                               "value": "owner"
                             },
-                            "id": 9611,
+                            "id": 9638,
                             "name": "Identifier",
                             "src": "2561:5:41"
                           },
@@ -1940,7 +1940,7 @@ export const ERC721BasicToken =
                                   "type": "type(address)",
                                   "value": "address"
                                 },
-                                "id": 9612,
+                                "id": 9639,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "2570:7:41"
                               },
@@ -1957,32 +1957,32 @@ export const ERC721BasicToken =
                                   "type": "int_const 0",
                                   "value": "0"
                                 },
-                                "id": 9613,
+                                "id": 9640,
                                 "name": "Literal",
                                 "src": "2578:1:41"
                               }
                             ],
-                            "id": 9614,
+                            "id": 9641,
                             "name": "FunctionCall",
                             "src": "2570:10:41"
                           }
                         ],
-                        "id": 9615,
+                        "id": 9642,
                         "name": "BinaryOperation",
                         "src": "2561:19:41"
                       }
                     ],
-                    "id": 9616,
+                    "id": 9643,
                     "name": "Return",
                     "src": "2554:26:41"
                   }
                 ],
-                "id": 9617,
+                "id": 9644,
                 "name": "Block",
                 "src": "2506:79:41"
               }
             ],
-            "id": 9618,
+            "id": 9645,
             "name": "FunctionDefinition",
             "src": "2445:140:41"
           },
@@ -1996,9 +1996,9 @@ export const ERC721BasicToken =
               ],
               "name": "approve",
               "payable": false,
-              "scope": 10073,
+              "scope": 10100,
               "stateMutability": "nonpayable",
-              "superFunction": 9437,
+              "superFunction": 9464,
               "visibility": "public"
             },
             "children": [
@@ -2008,7 +2008,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 9678,
+                      "scope": 9705,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2021,12 +2021,12 @@ export const ERC721BasicToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 9619,
+                        "id": 9646,
                         "name": "ElementaryTypeName",
                         "src": "3015:7:41"
                       }
                     ],
-                    "id": 9620,
+                    "id": 9647,
                     "name": "VariableDeclaration",
                     "src": "3015:11:41"
                   },
@@ -2034,7 +2034,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 9678,
+                      "scope": 9705,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2047,17 +2047,17 @@ export const ERC721BasicToken =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 9621,
+                        "id": 9648,
                         "name": "ElementaryTypeName",
                         "src": "3028:7:41"
                       }
                     ],
-                    "id": 9622,
+                    "id": 9649,
                     "name": "VariableDeclaration",
                     "src": "3028:16:41"
                   }
                 ],
-                "id": 9623,
+                "id": 9650,
                 "name": "ParameterList",
                 "src": "3014:31:41"
               },
@@ -2068,7 +2068,7 @@ export const ERC721BasicToken =
                   ]
                 },
                 "children": [],
-                "id": 9624,
+                "id": 9651,
                 "name": "ParameterList",
                 "src": "3053:0:41"
               },
@@ -2077,7 +2077,7 @@ export const ERC721BasicToken =
                   {
                     "attributes": {
                       "assignments": [
-                        9626
+                        9653
                       ]
                     },
                     "children": [
@@ -2085,7 +2085,7 @@ export const ERC721BasicToken =
                         "attributes": {
                           "constant": false,
                           "name": "owner",
-                          "scope": 9678,
+                          "scope": 9705,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "address",
@@ -2098,12 +2098,12 @@ export const ERC721BasicToken =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 9625,
+                            "id": 9652,
                             "name": "ElementaryTypeName",
                             "src": "3059:7:41"
                           }
                         ],
-                        "id": 9626,
+                        "id": 9653,
                         "name": "VariableDeclaration",
                         "src": "3059:13:41"
                       },
@@ -2131,13 +2131,13 @@ export const ERC721BasicToken =
                                 }
                               ],
                               "overloadedDeclarations": [
-                                9598
+                                9625
                               ],
-                              "referencedDeclaration": 9598,
+                              "referencedDeclaration": 9625,
                               "type": "function (uint256) view returns (address)",
                               "value": "ownerOf"
                             },
-                            "id": 9627,
+                            "id": 9654,
                             "name": "Identifier",
                             "src": "3075:7:41"
                           },
@@ -2147,21 +2147,21 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9622,
+                              "referencedDeclaration": 9649,
                               "type": "uint256",
                               "value": "_tokenId"
                             },
-                            "id": 9628,
+                            "id": 9655,
                             "name": "Identifier",
                             "src": "3083:8:41"
                           }
                         ],
-                        "id": 9629,
+                        "id": 9656,
                         "name": "FunctionCall",
                         "src": "3075:17:41"
                       }
                     ],
-                    "id": 9630,
+                    "id": 9657,
                     "name": "VariableDeclarationStatement",
                     "src": "3059:33:41"
                   },
@@ -2193,11 +2193,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10476,
+                              "referencedDeclaration": 10503,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 9631,
+                            "id": 9658,
                             "name": "Identifier",
                             "src": "3098:7:41"
                           },
@@ -2222,11 +2222,11 @@ export const ERC721BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9620,
+                                  "referencedDeclaration": 9647,
                                   "type": "address",
                                   "value": "_to"
                                 },
-                                "id": 9632,
+                                "id": 9659,
                                 "name": "Identifier",
                                 "src": "3106:3:41"
                               },
@@ -2236,26 +2236,26 @@ export const ERC721BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9626,
+                                  "referencedDeclaration": 9653,
                                   "type": "address",
                                   "value": "owner"
                                 },
-                                "id": 9633,
+                                "id": 9660,
                                 "name": "Identifier",
                                 "src": "3113:5:41"
                               }
                             ],
-                            "id": 9634,
+                            "id": 9661,
                             "name": "BinaryOperation",
                             "src": "3106:12:41"
                           }
                         ],
-                        "id": 9635,
+                        "id": 9662,
                         "name": "FunctionCall",
                         "src": "3098:21:41"
                       }
                     ],
-                    "id": 9636,
+                    "id": 9663,
                     "name": "ExpressionStatement",
                     "src": "3098:21:41"
                   },
@@ -2287,11 +2287,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10476,
+                              "referencedDeclaration": 10503,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 9637,
+                            "id": 9664,
                             "name": "Identifier",
                             "src": "3125:7:41"
                           },
@@ -2343,16 +2343,16 @@ export const ERC721BasicToken =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 10473,
+                                          "referencedDeclaration": 10500,
                                           "type": "msg",
                                           "value": "msg"
                                         },
-                                        "id": 9638,
+                                        "id": 9665,
                                         "name": "Identifier",
                                         "src": "3133:3:41"
                                       }
                                     ],
-                                    "id": 9639,
+                                    "id": 9666,
                                     "name": "MemberAccess",
                                     "src": "3133:10:41"
                                   },
@@ -2362,16 +2362,16 @@ export const ERC721BasicToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 9626,
+                                      "referencedDeclaration": 9653,
                                       "type": "address",
                                       "value": "owner"
                                     },
-                                    "id": 9640,
+                                    "id": 9667,
                                     "name": "Identifier",
                                     "src": "3147:5:41"
                                   }
                                 ],
-                                "id": 9641,
+                                "id": 9668,
                                 "name": "BinaryOperation",
                                 "src": "3133:19:41"
                               },
@@ -2403,13 +2403,13 @@ export const ERC721BasicToken =
                                         }
                                       ],
                                       "overloadedDeclarations": [
-                                        9737
+                                        9764
                                       ],
-                                      "referencedDeclaration": 9737,
+                                      "referencedDeclaration": 9764,
                                       "type": "function (address,address) view returns (bool)",
                                       "value": "isApprovedForAll"
                                     },
-                                    "id": 9642,
+                                    "id": 9669,
                                     "name": "Identifier",
                                     "src": "3156:16:41"
                                   },
@@ -2419,11 +2419,11 @@ export const ERC721BasicToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 9626,
+                                      "referencedDeclaration": 9653,
                                       "type": "address",
                                       "value": "owner"
                                     },
-                                    "id": 9643,
+                                    "id": 9670,
                                     "name": "Identifier",
                                     "src": "3173:5:41"
                                   },
@@ -2445,36 +2445,36 @@ export const ERC721BasicToken =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 10473,
+                                          "referencedDeclaration": 10500,
                                           "type": "msg",
                                           "value": "msg"
                                         },
-                                        "id": 9644,
+                                        "id": 9671,
                                         "name": "Identifier",
                                         "src": "3180:3:41"
                                       }
                                     ],
-                                    "id": 9645,
+                                    "id": 9672,
                                     "name": "MemberAccess",
                                     "src": "3180:10:41"
                                   }
                                 ],
-                                "id": 9646,
+                                "id": 9673,
                                 "name": "FunctionCall",
                                 "src": "3156:35:41"
                               }
                             ],
-                            "id": 9647,
+                            "id": 9674,
                             "name": "BinaryOperation",
                             "src": "3133:58:41"
                           }
                         ],
-                        "id": 9648,
+                        "id": 9675,
                         "name": "FunctionCall",
                         "src": "3125:67:41"
                       }
                     ],
-                    "id": 9649,
+                    "id": 9676,
                     "name": "ExpressionStatement",
                     "src": "3125:67:41"
                   },
@@ -2537,13 +2537,13 @@ export const ERC721BasicToken =
                                         }
                                       ],
                                       "overloadedDeclarations": [
-                                        9690
+                                        9717
                                       ],
-                                      "referencedDeclaration": 9690,
+                                      "referencedDeclaration": 9717,
                                       "type": "function (uint256) view returns (address)",
                                       "value": "getApproved"
                                     },
-                                    "id": 9650,
+                                    "id": 9677,
                                     "name": "Identifier",
                                     "src": "3203:11:41"
                                   },
@@ -2553,16 +2553,16 @@ export const ERC721BasicToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 9622,
+                                      "referencedDeclaration": 9649,
                                       "type": "uint256",
                                       "value": "_tokenId"
                                     },
-                                    "id": 9651,
+                                    "id": 9678,
                                     "name": "Identifier",
                                     "src": "3215:8:41"
                                   }
                                 ],
-                                "id": 9652,
+                                "id": 9679,
                                 "name": "FunctionCall",
                                 "src": "3203:21:41"
                               },
@@ -2596,7 +2596,7 @@ export const ERC721BasicToken =
                                       "type": "type(address)",
                                       "value": "address"
                                     },
-                                    "id": 9653,
+                                    "id": 9680,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "3228:7:41"
                                   },
@@ -2613,17 +2613,17 @@ export const ERC721BasicToken =
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 9654,
+                                    "id": 9681,
                                     "name": "Literal",
                                     "src": "3236:1:41"
                                   }
                                 ],
-                                "id": 9655,
+                                "id": 9682,
                                 "name": "FunctionCall",
                                 "src": "3228:10:41"
                               }
                             ],
-                            "id": 9656,
+                            "id": 9683,
                             "name": "BinaryOperation",
                             "src": "3203:35:41"
                           },
@@ -2648,11 +2648,11 @@ export const ERC721BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9620,
+                                  "referencedDeclaration": 9647,
                                   "type": "address",
                                   "value": "_to"
                                 },
-                                "id": 9657,
+                                "id": 9684,
                                 "name": "Identifier",
                                 "src": "3242:3:41"
                               },
@@ -2686,7 +2686,7 @@ export const ERC721BasicToken =
                                       "type": "type(address)",
                                       "value": "address"
                                     },
-                                    "id": 9658,
+                                    "id": 9685,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "3249:7:41"
                                   },
@@ -2703,22 +2703,22 @@ export const ERC721BasicToken =
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 9659,
+                                    "id": 9686,
                                     "name": "Literal",
                                     "src": "3257:1:41"
                                   }
                                 ],
-                                "id": 9660,
+                                "id": 9687,
                                 "name": "FunctionCall",
                                 "src": "3249:10:41"
                               }
                             ],
-                            "id": 9661,
+                            "id": 9688,
                             "name": "BinaryOperation",
                             "src": "3242:17:41"
                           }
                         ],
-                        "id": 9662,
+                        "id": 9689,
                         "name": "BinaryOperation",
                         "src": "3203:56:41"
                       },
@@ -2753,11 +2753,11 @@ export const ERC721BasicToken =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 9515,
+                                          "referencedDeclaration": 9542,
                                           "type": "mapping(uint256 => address)",
                                           "value": "tokenApprovals"
                                         },
-                                        "id": 9663,
+                                        "id": 9690,
                                         "name": "Identifier",
                                         "src": "3269:14:41"
                                       },
@@ -2767,16 +2767,16 @@ export const ERC721BasicToken =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 9622,
+                                          "referencedDeclaration": 9649,
                                           "type": "uint256",
                                           "value": "_tokenId"
                                         },
-                                        "id": 9664,
+                                        "id": 9691,
                                         "name": "Identifier",
                                         "src": "3284:8:41"
                                       }
                                     ],
-                                    "id": 9665,
+                                    "id": 9692,
                                     "name": "IndexAccess",
                                     "src": "3269:24:41"
                                   },
@@ -2786,21 +2786,21 @@ export const ERC721BasicToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 9620,
+                                      "referencedDeclaration": 9647,
                                       "type": "address",
                                       "value": "_to"
                                     },
-                                    "id": 9666,
+                                    "id": 9693,
                                     "name": "Identifier",
                                     "src": "3296:3:41"
                                   }
                                 ],
-                                "id": 9667,
+                                "id": 9694,
                                 "name": "Assignment",
                                 "src": "3269:30:41"
                               }
                             ],
-                            "id": 9668,
+                            "id": 9695,
                             "name": "ExpressionStatement",
                             "src": "3269:30:41"
                           },
@@ -2840,11 +2840,11 @@ export const ERC721BasicToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 9401,
+                                      "referencedDeclaration": 9428,
                                       "type": "function (address,address,uint256)",
                                       "value": "Approval"
                                     },
-                                    "id": 9669,
+                                    "id": 9696,
                                     "name": "Identifier",
                                     "src": "3307:8:41"
                                   },
@@ -2854,11 +2854,11 @@ export const ERC721BasicToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 9626,
+                                      "referencedDeclaration": 9653,
                                       "type": "address",
                                       "value": "owner"
                                     },
-                                    "id": 9670,
+                                    "id": 9697,
                                     "name": "Identifier",
                                     "src": "3316:5:41"
                                   },
@@ -2868,11 +2868,11 @@ export const ERC721BasicToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 9620,
+                                      "referencedDeclaration": 9647,
                                       "type": "address",
                                       "value": "_to"
                                     },
-                                    "id": 9671,
+                                    "id": 9698,
                                     "name": "Identifier",
                                     "src": "3323:3:41"
                                   },
@@ -2882,41 +2882,41 @@ export const ERC721BasicToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 9622,
+                                      "referencedDeclaration": 9649,
                                       "type": "uint256",
                                       "value": "_tokenId"
                                     },
-                                    "id": 9672,
+                                    "id": 9699,
                                     "name": "Identifier",
                                     "src": "3328:8:41"
                                   }
                                 ],
-                                "id": 9673,
+                                "id": 9700,
                                 "name": "FunctionCall",
                                 "src": "3307:30:41"
                               }
                             ],
-                            "id": 9674,
+                            "id": 9701,
                             "name": "ExpressionStatement",
                             "src": "3307:30:41"
                           }
                         ],
-                        "id": 9675,
+                        "id": 9702,
                         "name": "Block",
                         "src": "3261:83:41"
                       }
                     ],
-                    "id": 9676,
+                    "id": 9703,
                     "name": "IfStatement",
                     "src": "3199:145:41"
                   }
                 ],
-                "id": 9677,
+                "id": 9704,
                 "name": "Block",
                 "src": "3053:295:41"
               }
             ],
-            "id": 9678,
+            "id": 9705,
             "name": "FunctionDefinition",
             "src": "2998:350:41"
           },
@@ -2930,9 +2930,9 @@ export const ERC721BasicToken =
               ],
               "name": "getApproved",
               "payable": false,
-              "scope": 10073,
+              "scope": 10100,
               "stateMutability": "view",
-              "superFunction": 9444,
+              "superFunction": 9471,
               "visibility": "public"
             },
             "children": [
@@ -2942,7 +2942,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 9690,
+                      "scope": 9717,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2955,17 +2955,17 @@ export const ERC721BasicToken =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 9679,
+                        "id": 9706,
                         "name": "ElementaryTypeName",
                         "src": "3598:7:41"
                       }
                     ],
-                    "id": 9680,
+                    "id": 9707,
                     "name": "VariableDeclaration",
                     "src": "3598:16:41"
                   }
                 ],
-                "id": 9681,
+                "id": 9708,
                 "name": "ParameterList",
                 "src": "3597:18:41"
               },
@@ -2975,7 +2975,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 9690,
+                      "scope": 9717,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2988,17 +2988,17 @@ export const ERC721BasicToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 9682,
+                        "id": 9709,
                         "name": "ElementaryTypeName",
                         "src": "3637:7:41"
                       }
                     ],
-                    "id": 9683,
+                    "id": 9710,
                     "name": "VariableDeclaration",
                     "src": "3637:7:41"
                   }
                 ],
-                "id": 9684,
+                "id": 9711,
                 "name": "ParameterList",
                 "src": "3636:9:41"
               },
@@ -3006,7 +3006,7 @@ export const ERC721BasicToken =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 9684
+                      "functionReturnParameters": 9711
                     },
                     "children": [
                       {
@@ -3025,11 +3025,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9515,
+                              "referencedDeclaration": 9542,
                               "type": "mapping(uint256 => address)",
                               "value": "tokenApprovals"
                             },
-                            "id": 9685,
+                            "id": 9712,
                             "name": "Identifier",
                             "src": "3659:14:41"
                           },
@@ -3039,31 +3039,31 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9680,
+                              "referencedDeclaration": 9707,
                               "type": "uint256",
                               "value": "_tokenId"
                             },
-                            "id": 9686,
+                            "id": 9713,
                             "name": "Identifier",
                             "src": "3674:8:41"
                           }
                         ],
-                        "id": 9687,
+                        "id": 9714,
                         "name": "IndexAccess",
                         "src": "3659:24:41"
                       }
                     ],
-                    "id": 9688,
+                    "id": 9715,
                     "name": "Return",
                     "src": "3652:31:41"
                   }
                 ],
-                "id": 9689,
+                "id": 9716,
                 "name": "Block",
                 "src": "3646:42:41"
               }
             ],
-            "id": 9690,
+            "id": 9717,
             "name": "FunctionDefinition",
             "src": "3577:111:41"
           },
@@ -3077,9 +3077,9 @@ export const ERC721BasicToken =
               ],
               "name": "setApprovalForAll",
               "payable": false,
-              "scope": 10073,
+              "scope": 10100,
               "stateMutability": "nonpayable",
-              "superFunction": 9451,
+              "superFunction": 9478,
               "visibility": "public"
             },
             "children": [
@@ -3089,7 +3089,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 9721,
+                      "scope": 9748,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -3102,12 +3102,12 @@ export const ERC721BasicToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 9691,
+                        "id": 9718,
                         "name": "ElementaryTypeName",
                         "src": "3996:7:41"
                       }
                     ],
-                    "id": 9692,
+                    "id": 9719,
                     "name": "VariableDeclaration",
                     "src": "3996:11:41"
                   },
@@ -3115,7 +3115,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_approved",
-                      "scope": 9721,
+                      "scope": 9748,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -3128,17 +3128,17 @@ export const ERC721BasicToken =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 9693,
+                        "id": 9720,
                         "name": "ElementaryTypeName",
                         "src": "4009:4:41"
                       }
                     ],
-                    "id": 9694,
+                    "id": 9721,
                     "name": "VariableDeclaration",
                     "src": "4009:14:41"
                   }
                 ],
-                "id": 9695,
+                "id": 9722,
                 "name": "ParameterList",
                 "src": "3995:29:41"
               },
@@ -3149,7 +3149,7 @@ export const ERC721BasicToken =
                   ]
                 },
                 "children": [],
-                "id": 9696,
+                "id": 9723,
                 "name": "ParameterList",
                 "src": "4032:0:41"
               },
@@ -3183,11 +3183,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10476,
+                              "referencedDeclaration": 10503,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 9697,
+                            "id": 9724,
                             "name": "Identifier",
                             "src": "4038:7:41"
                           },
@@ -3212,11 +3212,11 @@ export const ERC721BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9692,
+                                  "referencedDeclaration": 9719,
                                   "type": "address",
                                   "value": "_to"
                                 },
-                                "id": 9698,
+                                "id": 9725,
                                 "name": "Identifier",
                                 "src": "4046:3:41"
                               },
@@ -3238,31 +3238,31 @@ export const ERC721BasicToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10473,
+                                      "referencedDeclaration": 10500,
                                       "type": "msg",
                                       "value": "msg"
                                     },
-                                    "id": 9699,
+                                    "id": 9726,
                                     "name": "Identifier",
                                     "src": "4053:3:41"
                                   }
                                 ],
-                                "id": 9700,
+                                "id": 9727,
                                 "name": "MemberAccess",
                                 "src": "4053:10:41"
                               }
                             ],
-                            "id": 9701,
+                            "id": 9728,
                             "name": "BinaryOperation",
                             "src": "4046:17:41"
                           }
                         ],
-                        "id": 9702,
+                        "id": 9729,
                         "name": "FunctionCall",
                         "src": "4038:26:41"
                       }
                     ],
-                    "id": 9703,
+                    "id": 9730,
                     "name": "ExpressionStatement",
                     "src": "4038:26:41"
                   },
@@ -3305,11 +3305,11 @@ export const ERC721BasicToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 9525,
+                                      "referencedDeclaration": 9552,
                                       "type": "mapping(address => mapping(address => bool))",
                                       "value": "operatorApprovals"
                                     },
-                                    "id": 9704,
+                                    "id": 9731,
                                     "name": "Identifier",
                                     "src": "4070:17:41"
                                   },
@@ -3331,21 +3331,21 @@ export const ERC721BasicToken =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 10473,
+                                          "referencedDeclaration": 10500,
                                           "type": "msg",
                                           "value": "msg"
                                         },
-                                        "id": 9705,
+                                        "id": 9732,
                                         "name": "Identifier",
                                         "src": "4088:3:41"
                                       }
                                     ],
-                                    "id": 9706,
+                                    "id": 9733,
                                     "name": "MemberAccess",
                                     "src": "4088:10:41"
                                   }
                                 ],
-                                "id": 9708,
+                                "id": 9735,
                                 "name": "IndexAccess",
                                 "src": "4070:29:41"
                               },
@@ -3355,16 +3355,16 @@ export const ERC721BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9692,
+                                  "referencedDeclaration": 9719,
                                   "type": "address",
                                   "value": "_to"
                                 },
-                                "id": 9707,
+                                "id": 9734,
                                 "name": "Identifier",
                                 "src": "4100:3:41"
                               }
                             ],
-                            "id": 9709,
+                            "id": 9736,
                             "name": "IndexAccess",
                             "src": "4070:34:41"
                           },
@@ -3374,21 +3374,21 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9694,
+                              "referencedDeclaration": 9721,
                               "type": "bool",
                               "value": "_approved"
                             },
-                            "id": 9710,
+                            "id": 9737,
                             "name": "Identifier",
                             "src": "4107:9:41"
                           }
                         ],
-                        "id": 9711,
+                        "id": 9738,
                         "name": "Assignment",
                         "src": "4070:46:41"
                       }
                     ],
-                    "id": 9712,
+                    "id": 9739,
                     "name": "ExpressionStatement",
                     "src": "4070:46:41"
                   },
@@ -3428,11 +3428,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9409,
+                              "referencedDeclaration": 9436,
                               "type": "function (address,address,bool)",
                               "value": "ApprovalForAll"
                             },
-                            "id": 9713,
+                            "id": 9740,
                             "name": "Identifier",
                             "src": "4122:14:41"
                           },
@@ -3454,16 +3454,16 @@ export const ERC721BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10473,
+                                  "referencedDeclaration": 10500,
                                   "type": "msg",
                                   "value": "msg"
                                 },
-                                "id": 9714,
+                                "id": 9741,
                                 "name": "Identifier",
                                 "src": "4137:3:41"
                               }
                             ],
-                            "id": 9715,
+                            "id": 9742,
                             "name": "MemberAccess",
                             "src": "4137:10:41"
                           },
@@ -3473,11 +3473,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9692,
+                              "referencedDeclaration": 9719,
                               "type": "address",
                               "value": "_to"
                             },
-                            "id": 9716,
+                            "id": 9743,
                             "name": "Identifier",
                             "src": "4149:3:41"
                           },
@@ -3487,31 +3487,31 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9694,
+                              "referencedDeclaration": 9721,
                               "type": "bool",
                               "value": "_approved"
                             },
-                            "id": 9717,
+                            "id": 9744,
                             "name": "Identifier",
                             "src": "4154:9:41"
                           }
                         ],
-                        "id": 9718,
+                        "id": 9745,
                         "name": "FunctionCall",
                         "src": "4122:42:41"
                       }
                     ],
-                    "id": 9719,
+                    "id": 9746,
                     "name": "ExpressionStatement",
                     "src": "4122:42:41"
                   }
                 ],
-                "id": 9720,
+                "id": 9747,
                 "name": "Block",
                 "src": "4032:137:41"
               }
             ],
-            "id": 9721,
+            "id": 9748,
             "name": "FunctionDefinition",
             "src": "3969:200:41"
           },
@@ -3525,9 +3525,9 @@ export const ERC721BasicToken =
               ],
               "name": "isApprovedForAll",
               "payable": false,
-              "scope": 10073,
+              "scope": 10100,
               "stateMutability": "view",
-              "superFunction": 9460,
+              "superFunction": 9487,
               "visibility": "public"
             },
             "children": [
@@ -3537,7 +3537,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_owner",
-                      "scope": 9737,
+                      "scope": 9764,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -3550,12 +3550,12 @@ export const ERC721BasicToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 9722,
+                        "id": 9749,
                         "name": "ElementaryTypeName",
                         "src": "4504:7:41"
                       }
                     ],
-                    "id": 9723,
+                    "id": 9750,
                     "name": "VariableDeclaration",
                     "src": "4504:14:41"
                   },
@@ -3563,7 +3563,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_operator",
-                      "scope": 9737,
+                      "scope": 9764,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -3576,17 +3576,17 @@ export const ERC721BasicToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 9724,
+                        "id": 9751,
                         "name": "ElementaryTypeName",
                         "src": "4520:7:41"
                       }
                     ],
-                    "id": 9725,
+                    "id": 9752,
                     "name": "VariableDeclaration",
                     "src": "4520:17:41"
                   }
                 ],
-                "id": 9726,
+                "id": 9753,
                 "name": "ParameterList",
                 "src": "4503:35:41"
               },
@@ -3596,7 +3596,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 9737,
+                      "scope": 9764,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -3609,17 +3609,17 @@ export const ERC721BasicToken =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 9727,
+                        "id": 9754,
                         "name": "ElementaryTypeName",
                         "src": "4560:4:41"
                       }
                     ],
-                    "id": 9728,
+                    "id": 9755,
                     "name": "VariableDeclaration",
                     "src": "4560:4:41"
                   }
                 ],
-                "id": 9729,
+                "id": 9756,
                 "name": "ParameterList",
                 "src": "4559:6:41"
               },
@@ -3627,7 +3627,7 @@ export const ERC721BasicToken =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 9729
+                      "functionReturnParameters": 9756
                     },
                     "children": [
                       {
@@ -3656,11 +3656,11 @@ export const ERC721BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9525,
+                                  "referencedDeclaration": 9552,
                                   "type": "mapping(address => mapping(address => bool))",
                                   "value": "operatorApprovals"
                                 },
-                                "id": 9730,
+                                "id": 9757,
                                 "name": "Identifier",
                                 "src": "4579:17:41"
                               },
@@ -3670,16 +3670,16 @@ export const ERC721BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9723,
+                                  "referencedDeclaration": 9750,
                                   "type": "address",
                                   "value": "_owner"
                                 },
-                                "id": 9731,
+                                "id": 9758,
                                 "name": "Identifier",
                                 "src": "4597:6:41"
                               }
                             ],
-                            "id": 9732,
+                            "id": 9759,
                             "name": "IndexAccess",
                             "src": "4579:25:41"
                           },
@@ -3689,31 +3689,31 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9725,
+                              "referencedDeclaration": 9752,
                               "type": "address",
                               "value": "_operator"
                             },
-                            "id": 9733,
+                            "id": 9760,
                             "name": "Identifier",
                             "src": "4605:9:41"
                           }
                         ],
-                        "id": 9734,
+                        "id": 9761,
                         "name": "IndexAccess",
                         "src": "4579:36:41"
                       }
                     ],
-                    "id": 9735,
+                    "id": 9762,
                     "name": "Return",
                     "src": "4572:43:41"
                   }
                 ],
-                "id": 9736,
+                "id": 9763,
                 "name": "Block",
                 "src": "4566:54:41"
               }
             ],
-            "id": 9737,
+            "id": 9764,
             "name": "FunctionDefinition",
             "src": "4478:142:41"
           },
@@ -3724,9 +3724,9 @@ export const ERC721BasicToken =
               "isConstructor": false,
               "name": "transferFrom",
               "payable": false,
-              "scope": 10073,
+              "scope": 10100,
               "stateMutability": "nonpayable",
-              "superFunction": 9469,
+              "superFunction": 9496,
               "visibility": "public"
             },
             "children": [
@@ -3736,7 +3736,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_from",
-                      "scope": 9787,
+                      "scope": 9814,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -3749,12 +3749,12 @@ export const ERC721BasicToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 9738,
+                        "id": 9765,
                         "name": "ElementaryTypeName",
                         "src": "5064:7:41"
                       }
                     ],
-                    "id": 9739,
+                    "id": 9766,
                     "name": "VariableDeclaration",
                     "src": "5064:13:41"
                   },
@@ -3762,7 +3762,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 9787,
+                      "scope": 9814,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -3775,12 +3775,12 @@ export const ERC721BasicToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 9740,
+                        "id": 9767,
                         "name": "ElementaryTypeName",
                         "src": "5079:7:41"
                       }
                     ],
-                    "id": 9741,
+                    "id": 9768,
                     "name": "VariableDeclaration",
                     "src": "5079:11:41"
                   },
@@ -3788,7 +3788,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 9787,
+                      "scope": 9814,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -3801,17 +3801,17 @@ export const ERC721BasicToken =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 9742,
+                        "id": 9769,
                         "name": "ElementaryTypeName",
                         "src": "5092:7:41"
                       }
                     ],
-                    "id": 9743,
+                    "id": 9770,
                     "name": "VariableDeclaration",
                     "src": "5092:16:41"
                   }
                 ],
-                "id": 9744,
+                "id": 9771,
                 "name": "ParameterList",
                 "src": "5063:46:41"
               },
@@ -3822,7 +3822,7 @@ export const ERC721BasicToken =
                   ]
                 },
                 "children": [],
-                "id": 9748,
+                "id": 9775,
                 "name": "ParameterList",
                 "src": "5139:0:41"
               },
@@ -3834,11 +3834,11 @@ export const ERC721BasicToken =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 9554,
+                      "referencedDeclaration": 9581,
                       "type": "modifier (uint256)",
                       "value": "canTransfer"
                     },
-                    "id": 9745,
+                    "id": 9772,
                     "name": "Identifier",
                     "src": "5117:11:41"
                   },
@@ -3848,16 +3848,16 @@ export const ERC721BasicToken =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 9743,
+                      "referencedDeclaration": 9770,
                       "type": "uint256",
                       "value": "_tokenId"
                     },
-                    "id": 9746,
+                    "id": 9773,
                     "name": "Identifier",
                     "src": "5129:8:41"
                   }
                 ],
-                "id": 9747,
+                "id": 9774,
                 "name": "ModifierInvocation",
                 "src": "5117:21:41"
               },
@@ -3891,11 +3891,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10476,
+                              "referencedDeclaration": 10503,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 9749,
+                            "id": 9776,
                             "name": "Identifier",
                             "src": "5145:7:41"
                           },
@@ -3920,11 +3920,11 @@ export const ERC721BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9739,
+                                  "referencedDeclaration": 9766,
                                   "type": "address",
                                   "value": "_from"
                                 },
-                                "id": 9750,
+                                "id": 9777,
                                 "name": "Identifier",
                                 "src": "5153:5:41"
                               },
@@ -3958,7 +3958,7 @@ export const ERC721BasicToken =
                                       "type": "type(address)",
                                       "value": "address"
                                     },
-                                    "id": 9751,
+                                    "id": 9778,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "5162:7:41"
                                   },
@@ -3975,27 +3975,27 @@ export const ERC721BasicToken =
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 9752,
+                                    "id": 9779,
                                     "name": "Literal",
                                     "src": "5170:1:41"
                                   }
                                 ],
-                                "id": 9753,
+                                "id": 9780,
                                 "name": "FunctionCall",
                                 "src": "5162:10:41"
                               }
                             ],
-                            "id": 9754,
+                            "id": 9781,
                             "name": "BinaryOperation",
                             "src": "5153:19:41"
                           }
                         ],
-                        "id": 9755,
+                        "id": 9782,
                         "name": "FunctionCall",
                         "src": "5145:28:41"
                       }
                     ],
-                    "id": 9756,
+                    "id": 9783,
                     "name": "ExpressionStatement",
                     "src": "5145:28:41"
                   },
@@ -4027,11 +4027,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10476,
+                              "referencedDeclaration": 10503,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 9757,
+                            "id": 9784,
                             "name": "Identifier",
                             "src": "5179:7:41"
                           },
@@ -4056,11 +4056,11 @@ export const ERC721BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9741,
+                                  "referencedDeclaration": 9768,
                                   "type": "address",
                                   "value": "_to"
                                 },
-                                "id": 9758,
+                                "id": 9785,
                                 "name": "Identifier",
                                 "src": "5187:3:41"
                               },
@@ -4094,7 +4094,7 @@ export const ERC721BasicToken =
                                       "type": "type(address)",
                                       "value": "address"
                                     },
-                                    "id": 9759,
+                                    "id": 9786,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "5194:7:41"
                                   },
@@ -4111,27 +4111,27 @@ export const ERC721BasicToken =
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 9760,
+                                    "id": 9787,
                                     "name": "Literal",
                                     "src": "5202:1:41"
                                   }
                                 ],
-                                "id": 9761,
+                                "id": 9788,
                                 "name": "FunctionCall",
                                 "src": "5194:10:41"
                               }
                             ],
-                            "id": 9762,
+                            "id": 9789,
                             "name": "BinaryOperation",
                             "src": "5187:17:41"
                           }
                         ],
-                        "id": 9763,
+                        "id": 9790,
                         "name": "FunctionCall",
                         "src": "5179:26:41"
                       }
                     ],
-                    "id": 9764,
+                    "id": 9791,
                     "name": "ExpressionStatement",
                     "src": "5179:26:41"
                   },
@@ -4167,11 +4167,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9964,
+                              "referencedDeclaration": 9991,
                               "type": "function (address,uint256)",
                               "value": "clearApproval"
                             },
-                            "id": 9765,
+                            "id": 9792,
                             "name": "Identifier",
                             "src": "5212:13:41"
                           },
@@ -4181,11 +4181,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9739,
+                              "referencedDeclaration": 9766,
                               "type": "address",
                               "value": "_from"
                             },
-                            "id": 9766,
+                            "id": 9793,
                             "name": "Identifier",
                             "src": "5226:5:41"
                           },
@@ -4195,21 +4195,21 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9743,
+                              "referencedDeclaration": 9770,
                               "type": "uint256",
                               "value": "_tokenId"
                             },
-                            "id": 9767,
+                            "id": 9794,
                             "name": "Identifier",
                             "src": "5233:8:41"
                           }
                         ],
-                        "id": 9768,
+                        "id": 9795,
                         "name": "FunctionCall",
                         "src": "5212:30:41"
                       }
                     ],
-                    "id": 9769,
+                    "id": 9796,
                     "name": "ExpressionStatement",
                     "src": "5212:30:41"
                   },
@@ -4245,11 +4245,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10034,
+                              "referencedDeclaration": 10061,
                               "type": "function (address,uint256)",
                               "value": "removeTokenFrom"
                             },
-                            "id": 9770,
+                            "id": 9797,
                             "name": "Identifier",
                             "src": "5248:15:41"
                           },
@@ -4259,11 +4259,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9739,
+                              "referencedDeclaration": 9766,
                               "type": "address",
                               "value": "_from"
                             },
-                            "id": 9771,
+                            "id": 9798,
                             "name": "Identifier",
                             "src": "5264:5:41"
                           },
@@ -4273,21 +4273,21 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9743,
+                              "referencedDeclaration": 9770,
                               "type": "uint256",
                               "value": "_tokenId"
                             },
-                            "id": 9772,
+                            "id": 9799,
                             "name": "Identifier",
                             "src": "5271:8:41"
                           }
                         ],
-                        "id": 9773,
+                        "id": 9800,
                         "name": "FunctionCall",
                         "src": "5248:32:41"
                       }
                     ],
-                    "id": 9774,
+                    "id": 9801,
                     "name": "ExpressionStatement",
                     "src": "5248:32:41"
                   },
@@ -4323,11 +4323,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9999,
+                              "referencedDeclaration": 10026,
                               "type": "function (address,uint256)",
                               "value": "addTokenTo"
                             },
-                            "id": 9775,
+                            "id": 9802,
                             "name": "Identifier",
                             "src": "5286:10:41"
                           },
@@ -4337,11 +4337,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9741,
+                              "referencedDeclaration": 9768,
                               "type": "address",
                               "value": "_to"
                             },
-                            "id": 9776,
+                            "id": 9803,
                             "name": "Identifier",
                             "src": "5297:3:41"
                           },
@@ -4351,21 +4351,21 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9743,
+                              "referencedDeclaration": 9770,
                               "type": "uint256",
                               "value": "_tokenId"
                             },
-                            "id": 9777,
+                            "id": 9804,
                             "name": "Identifier",
                             "src": "5302:8:41"
                           }
                         ],
-                        "id": 9778,
+                        "id": 9805,
                         "name": "FunctionCall",
                         "src": "5286:25:41"
                       }
                     ],
-                    "id": 9779,
+                    "id": 9806,
                     "name": "ExpressionStatement",
                     "src": "5286:25:41"
                   },
@@ -4405,11 +4405,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9393,
+                              "referencedDeclaration": 9420,
                               "type": "function (address,address,uint256)",
                               "value": "Transfer"
                             },
-                            "id": 9780,
+                            "id": 9807,
                             "name": "Identifier",
                             "src": "5322:8:41"
                           },
@@ -4419,11 +4419,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9739,
+                              "referencedDeclaration": 9766,
                               "type": "address",
                               "value": "_from"
                             },
-                            "id": 9781,
+                            "id": 9808,
                             "name": "Identifier",
                             "src": "5331:5:41"
                           },
@@ -4433,11 +4433,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9741,
+                              "referencedDeclaration": 9768,
                               "type": "address",
                               "value": "_to"
                             },
-                            "id": 9782,
+                            "id": 9809,
                             "name": "Identifier",
                             "src": "5338:3:41"
                           },
@@ -4447,31 +4447,31 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9743,
+                              "referencedDeclaration": 9770,
                               "type": "uint256",
                               "value": "_tokenId"
                             },
-                            "id": 9783,
+                            "id": 9810,
                             "name": "Identifier",
                             "src": "5343:8:41"
                           }
                         ],
-                        "id": 9784,
+                        "id": 9811,
                         "name": "FunctionCall",
                         "src": "5322:30:41"
                       }
                     ],
-                    "id": 9785,
+                    "id": 9812,
                     "name": "ExpressionStatement",
                     "src": "5322:30:41"
                   }
                 ],
-                "id": 9786,
+                "id": 9813,
                 "name": "Block",
                 "src": "5139:218:41"
               }
             ],
-            "id": 9787,
+            "id": 9814,
             "name": "FunctionDefinition",
             "src": "5042:315:41"
           },
@@ -4482,9 +4482,9 @@ export const ERC721BasicToken =
               "isConstructor": false,
               "name": "safeTransferFrom",
               "payable": false,
-              "scope": 10073,
+              "scope": 10100,
               "stateMutability": "nonpayable",
-              "superFunction": 9478,
+              "superFunction": 9505,
               "visibility": "public"
             },
             "children": [
@@ -4494,7 +4494,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_from",
-                      "scope": 9807,
+                      "scope": 9834,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -4507,12 +4507,12 @@ export const ERC721BasicToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 9788,
+                        "id": 9815,
                         "name": "ElementaryTypeName",
                         "src": "5990:7:41"
                       }
                     ],
-                    "id": 9789,
+                    "id": 9816,
                     "name": "VariableDeclaration",
                     "src": "5990:13:41"
                   },
@@ -4520,7 +4520,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 9807,
+                      "scope": 9834,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -4533,12 +4533,12 @@ export const ERC721BasicToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 9790,
+                        "id": 9817,
                         "name": "ElementaryTypeName",
                         "src": "6005:7:41"
                       }
                     ],
-                    "id": 9791,
+                    "id": 9818,
                     "name": "VariableDeclaration",
                     "src": "6005:11:41"
                   },
@@ -4546,7 +4546,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 9807,
+                      "scope": 9834,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -4559,17 +4559,17 @@ export const ERC721BasicToken =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 9792,
+                        "id": 9819,
                         "name": "ElementaryTypeName",
                         "src": "6018:7:41"
                       }
                     ],
-                    "id": 9793,
+                    "id": 9820,
                     "name": "VariableDeclaration",
                     "src": "6018:16:41"
                   }
                 ],
-                "id": 9794,
+                "id": 9821,
                 "name": "ParameterList",
                 "src": "5989:46:41"
               },
@@ -4580,7 +4580,7 @@ export const ERC721BasicToken =
                   ]
                 },
                 "children": [],
-                "id": 9798,
+                "id": 9825,
                 "name": "ParameterList",
                 "src": "6065:0:41"
               },
@@ -4592,11 +4592,11 @@ export const ERC721BasicToken =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 9554,
+                      "referencedDeclaration": 9581,
                       "type": "modifier (uint256)",
                       "value": "canTransfer"
                     },
-                    "id": 9795,
+                    "id": 9822,
                     "name": "Identifier",
                     "src": "6043:11:41"
                   },
@@ -4606,16 +4606,16 @@ export const ERC721BasicToken =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 9793,
+                      "referencedDeclaration": 9820,
                       "type": "uint256",
                       "value": "_tokenId"
                     },
-                    "id": 9796,
+                    "id": 9823,
                     "name": "Identifier",
                     "src": "6055:8:41"
                   }
                 ],
-                "id": 9797,
+                "id": 9824,
                 "name": "ModifierInvocation",
                 "src": "6043:21:41"
               },
@@ -4659,14 +4659,14 @@ export const ERC721BasicToken =
                                 }
                               ],
                               "overloadedDeclarations": [
-                                9807,
-                                9837
+                                9834,
+                                9864
                               ],
-                              "referencedDeclaration": 9837,
+                              "referencedDeclaration": 9864,
                               "type": "function (address,address,uint256,bytes memory)",
                               "value": "safeTransferFrom"
                             },
-                            "id": 9799,
+                            "id": 9826,
                             "name": "Identifier",
                             "src": "6071:16:41"
                           },
@@ -4676,11 +4676,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9789,
+                              "referencedDeclaration": 9816,
                               "type": "address",
                               "value": "_from"
                             },
-                            "id": 9800,
+                            "id": 9827,
                             "name": "Identifier",
                             "src": "6088:5:41"
                           },
@@ -4690,11 +4690,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9791,
+                              "referencedDeclaration": 9818,
                               "type": "address",
                               "value": "_to"
                             },
-                            "id": 9801,
+                            "id": 9828,
                             "name": "Identifier",
                             "src": "6095:3:41"
                           },
@@ -4704,11 +4704,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9793,
+                              "referencedDeclaration": 9820,
                               "type": "uint256",
                               "value": "_tokenId"
                             },
-                            "id": 9802,
+                            "id": 9829,
                             "name": "Identifier",
                             "src": "6100:8:41"
                           },
@@ -4725,27 +4725,27 @@ export const ERC721BasicToken =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 9803,
+                            "id": 9830,
                             "name": "Literal",
                             "src": "6110:2:41"
                           }
                         ],
-                        "id": 9804,
+                        "id": 9831,
                         "name": "FunctionCall",
                         "src": "6071:42:41"
                       }
                     ],
-                    "id": 9805,
+                    "id": 9832,
                     "name": "ExpressionStatement",
                     "src": "6071:42:41"
                   }
                 ],
-                "id": 9806,
+                "id": 9833,
                 "name": "Block",
                 "src": "6065:53:41"
               }
             ],
-            "id": 9807,
+            "id": 9834,
             "name": "FunctionDefinition",
             "src": "5964:154:41"
           },
@@ -4756,9 +4756,9 @@ export const ERC721BasicToken =
               "isConstructor": false,
               "name": "safeTransferFrom",
               "payable": false,
-              "scope": 10073,
+              "scope": 10100,
               "stateMutability": "nonpayable",
-              "superFunction": 9489,
+              "superFunction": 9516,
               "visibility": "public"
             },
             "children": [
@@ -4768,7 +4768,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_from",
-                      "scope": 9837,
+                      "scope": 9864,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -4781,12 +4781,12 @@ export const ERC721BasicToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 9808,
+                        "id": 9835,
                         "name": "ElementaryTypeName",
                         "src": "6820:7:41"
                       }
                     ],
-                    "id": 9809,
+                    "id": 9836,
                     "name": "VariableDeclaration",
                     "src": "6820:13:41"
                   },
@@ -4794,7 +4794,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 9837,
+                      "scope": 9864,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -4807,12 +4807,12 @@ export const ERC721BasicToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 9810,
+                        "id": 9837,
                         "name": "ElementaryTypeName",
                         "src": "6835:7:41"
                       }
                     ],
-                    "id": 9811,
+                    "id": 9838,
                     "name": "VariableDeclaration",
                     "src": "6835:11:41"
                   },
@@ -4820,7 +4820,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 9837,
+                      "scope": 9864,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -4833,12 +4833,12 @@ export const ERC721BasicToken =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 9812,
+                        "id": 9839,
                         "name": "ElementaryTypeName",
                         "src": "6848:7:41"
                       }
                     ],
-                    "id": 9813,
+                    "id": 9840,
                     "name": "VariableDeclaration",
                     "src": "6848:16:41"
                   },
@@ -4846,7 +4846,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_data",
-                      "scope": 9837,
+                      "scope": 9864,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes memory",
@@ -4859,17 +4859,17 @@ export const ERC721BasicToken =
                           "name": "bytes",
                           "type": "bytes storage pointer"
                         },
-                        "id": 9814,
+                        "id": 9841,
                         "name": "ElementaryTypeName",
                         "src": "6866:5:41"
                       }
                     ],
-                    "id": 9815,
+                    "id": 9842,
                     "name": "VariableDeclaration",
                     "src": "6866:11:41"
                   }
                 ],
-                "id": 9816,
+                "id": 9843,
                 "name": "ParameterList",
                 "src": "6819:59:41"
               },
@@ -4880,7 +4880,7 @@ export const ERC721BasicToken =
                   ]
                 },
                 "children": [],
-                "id": 9820,
+                "id": 9847,
                 "name": "ParameterList",
                 "src": "6908:0:41"
               },
@@ -4892,11 +4892,11 @@ export const ERC721BasicToken =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 9554,
+                      "referencedDeclaration": 9581,
                       "type": "modifier (uint256)",
                       "value": "canTransfer"
                     },
-                    "id": 9817,
+                    "id": 9844,
                     "name": "Identifier",
                     "src": "6886:11:41"
                   },
@@ -4906,16 +4906,16 @@ export const ERC721BasicToken =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 9813,
+                      "referencedDeclaration": 9840,
                       "type": "uint256",
                       "value": "_tokenId"
                     },
-                    "id": 9818,
+                    "id": 9845,
                     "name": "Identifier",
                     "src": "6898:8:41"
                   }
                 ],
-                "id": 9819,
+                "id": 9846,
                 "name": "ModifierInvocation",
                 "src": "6886:21:41"
               },
@@ -4955,13 +4955,13 @@ export const ERC721BasicToken =
                                 }
                               ],
                               "overloadedDeclarations": [
-                                9787
+                                9814
                               ],
-                              "referencedDeclaration": 9787,
+                              "referencedDeclaration": 9814,
                               "type": "function (address,address,uint256)",
                               "value": "transferFrom"
                             },
-                            "id": 9821,
+                            "id": 9848,
                             "name": "Identifier",
                             "src": "6914:12:41"
                           },
@@ -4971,11 +4971,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9809,
+                              "referencedDeclaration": 9836,
                               "type": "address",
                               "value": "_from"
                             },
-                            "id": 9822,
+                            "id": 9849,
                             "name": "Identifier",
                             "src": "6927:5:41"
                           },
@@ -4985,11 +4985,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9811,
+                              "referencedDeclaration": 9838,
                               "type": "address",
                               "value": "_to"
                             },
-                            "id": 9823,
+                            "id": 9850,
                             "name": "Identifier",
                             "src": "6934:3:41"
                           },
@@ -4999,21 +4999,21 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9813,
+                              "referencedDeclaration": 9840,
                               "type": "uint256",
                               "value": "_tokenId"
                             },
-                            "id": 9824,
+                            "id": 9851,
                             "name": "Identifier",
                             "src": "6939:8:41"
                           }
                         ],
-                        "id": 9825,
+                        "id": 9852,
                         "name": "FunctionCall",
                         "src": "6914:34:41"
                       }
                     ],
-                    "id": 9826,
+                    "id": 9853,
                     "name": "ExpressionStatement",
                     "src": "6914:34:41"
                   },
@@ -5045,11 +5045,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10476,
+                              "referencedDeclaration": 10503,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 9827,
+                            "id": 9854,
                             "name": "Identifier",
                             "src": "6954:7:41"
                           },
@@ -5091,11 +5091,11 @@ export const ERC721BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10072,
+                                  "referencedDeclaration": 10099,
                                   "type": "function (address,address,uint256,bytes memory) returns (bool)",
                                   "value": "checkAndCallSafeTransfer"
                                 },
-                                "id": 9828,
+                                "id": 9855,
                                 "name": "Identifier",
                                 "src": "6962:24:41"
                               },
@@ -5105,11 +5105,11 @@ export const ERC721BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9809,
+                                  "referencedDeclaration": 9836,
                                   "type": "address",
                                   "value": "_from"
                                 },
-                                "id": 9829,
+                                "id": 9856,
                                 "name": "Identifier",
                                 "src": "6987:5:41"
                               },
@@ -5119,11 +5119,11 @@ export const ERC721BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9811,
+                                  "referencedDeclaration": 9838,
                                   "type": "address",
                                   "value": "_to"
                                 },
-                                "id": 9830,
+                                "id": 9857,
                                 "name": "Identifier",
                                 "src": "6994:3:41"
                               },
@@ -5133,11 +5133,11 @@ export const ERC721BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9813,
+                                  "referencedDeclaration": 9840,
                                   "type": "uint256",
                                   "value": "_tokenId"
                                 },
-                                "id": 9831,
+                                "id": 9858,
                                 "name": "Identifier",
                                 "src": "6999:8:41"
                               },
@@ -5147,36 +5147,36 @@ export const ERC721BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9815,
+                                  "referencedDeclaration": 9842,
                                   "type": "bytes memory",
                                   "value": "_data"
                                 },
-                                "id": 9832,
+                                "id": 9859,
                                 "name": "Identifier",
                                 "src": "7009:5:41"
                               }
                             ],
-                            "id": 9833,
+                            "id": 9860,
                             "name": "FunctionCall",
                             "src": "6962:53:41"
                           }
                         ],
-                        "id": 9834,
+                        "id": 9861,
                         "name": "FunctionCall",
                         "src": "6954:62:41"
                       }
                     ],
-                    "id": 9835,
+                    "id": 9862,
                     "name": "ExpressionStatement",
                     "src": "6954:62:41"
                   }
                 ],
-                "id": 9836,
+                "id": 9863,
                 "name": "Block",
                 "src": "6908:113:41"
               }
             ],
-            "id": 9837,
+            "id": 9864,
             "name": "FunctionDefinition",
             "src": "6794:227:41"
           },
@@ -5190,7 +5190,7 @@ export const ERC721BasicToken =
               ],
               "name": "isApprovedOrOwner",
               "payable": false,
-              "scope": 10073,
+              "scope": 10100,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "internal"
@@ -5202,7 +5202,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_spender",
-                      "scope": 9868,
+                      "scope": 9895,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -5215,12 +5215,12 @@ export const ERC721BasicToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 9838,
+                        "id": 9865,
                         "name": "ElementaryTypeName",
                         "src": "7395:7:41"
                       }
                     ],
-                    "id": 9839,
+                    "id": 9866,
                     "name": "VariableDeclaration",
                     "src": "7395:16:41"
                   },
@@ -5228,7 +5228,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 9868,
+                      "scope": 9895,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -5241,17 +5241,17 @@ export const ERC721BasicToken =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 9840,
+                        "id": 9867,
                         "name": "ElementaryTypeName",
                         "src": "7413:7:41"
                       }
                     ],
-                    "id": 9841,
+                    "id": 9868,
                     "name": "VariableDeclaration",
                     "src": "7413:16:41"
                   }
                 ],
-                "id": 9842,
+                "id": 9869,
                 "name": "ParameterList",
                 "src": "7394:36:41"
               },
@@ -5261,7 +5261,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 9868,
+                      "scope": 9895,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -5274,17 +5274,17 @@ export const ERC721BasicToken =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 9843,
+                        "id": 9870,
                         "name": "ElementaryTypeName",
                         "src": "7454:4:41"
                       }
                     ],
-                    "id": 9844,
+                    "id": 9871,
                     "name": "VariableDeclaration",
                     "src": "7454:4:41"
                   }
                 ],
-                "id": 9845,
+                "id": 9872,
                 "name": "ParameterList",
                 "src": "7453:6:41"
               },
@@ -5293,7 +5293,7 @@ export const ERC721BasicToken =
                   {
                     "attributes": {
                       "assignments": [
-                        9847
+                        9874
                       ]
                     },
                     "children": [
@@ -5301,7 +5301,7 @@ export const ERC721BasicToken =
                         "attributes": {
                           "constant": false,
                           "name": "owner",
-                          "scope": 9868,
+                          "scope": 9895,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "address",
@@ -5314,12 +5314,12 @@ export const ERC721BasicToken =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 9846,
+                            "id": 9873,
                             "name": "ElementaryTypeName",
                             "src": "7466:7:41"
                           }
                         ],
-                        "id": 9847,
+                        "id": 9874,
                         "name": "VariableDeclaration",
                         "src": "7466:13:41"
                       },
@@ -5347,13 +5347,13 @@ export const ERC721BasicToken =
                                 }
                               ],
                               "overloadedDeclarations": [
-                                9598
+                                9625
                               ],
-                              "referencedDeclaration": 9598,
+                              "referencedDeclaration": 9625,
                               "type": "function (uint256) view returns (address)",
                               "value": "ownerOf"
                             },
-                            "id": 9848,
+                            "id": 9875,
                             "name": "Identifier",
                             "src": "7482:7:41"
                           },
@@ -5363,27 +5363,27 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9841,
+                              "referencedDeclaration": 9868,
                               "type": "uint256",
                               "value": "_tokenId"
                             },
-                            "id": 9849,
+                            "id": 9876,
                             "name": "Identifier",
                             "src": "7490:8:41"
                           }
                         ],
-                        "id": 9850,
+                        "id": 9877,
                         "name": "FunctionCall",
                         "src": "7482:17:41"
                       }
                     ],
-                    "id": 9851,
+                    "id": 9878,
                     "name": "VariableDeclarationStatement",
                     "src": "7466:33:41"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 9845
+                      "functionReturnParameters": 9872
                     },
                     "children": [
                       {
@@ -5437,11 +5437,11 @@ export const ERC721BasicToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 9839,
+                                      "referencedDeclaration": 9866,
                                       "type": "address",
                                       "value": "_spender"
                                     },
-                                    "id": 9852,
+                                    "id": 9879,
                                     "name": "Identifier",
                                     "src": "7512:8:41"
                                   },
@@ -5451,16 +5451,16 @@ export const ERC721BasicToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 9847,
+                                      "referencedDeclaration": 9874,
                                       "type": "address",
                                       "value": "owner"
                                     },
-                                    "id": 9853,
+                                    "id": 9880,
                                     "name": "Identifier",
                                     "src": "7524:5:41"
                                   }
                                 ],
-                                "id": 9854,
+                                "id": 9881,
                                 "name": "BinaryOperation",
                                 "src": "7512:17:41"
                               },
@@ -5503,13 +5503,13 @@ export const ERC721BasicToken =
                                             }
                                           ],
                                           "overloadedDeclarations": [
-                                            9690
+                                            9717
                                           ],
-                                          "referencedDeclaration": 9690,
+                                          "referencedDeclaration": 9717,
                                           "type": "function (uint256) view returns (address)",
                                           "value": "getApproved"
                                         },
-                                        "id": 9855,
+                                        "id": 9882,
                                         "name": "Identifier",
                                         "src": "7533:11:41"
                                       },
@@ -5519,16 +5519,16 @@ export const ERC721BasicToken =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 9841,
+                                          "referencedDeclaration": 9868,
                                           "type": "uint256",
                                           "value": "_tokenId"
                                         },
-                                        "id": 9856,
+                                        "id": 9883,
                                         "name": "Identifier",
                                         "src": "7545:8:41"
                                       }
                                     ],
-                                    "id": 9857,
+                                    "id": 9884,
                                     "name": "FunctionCall",
                                     "src": "7533:21:41"
                                   },
@@ -5538,21 +5538,21 @@ export const ERC721BasicToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 9839,
+                                      "referencedDeclaration": 9866,
                                       "type": "address",
                                       "value": "_spender"
                                     },
-                                    "id": 9858,
+                                    "id": 9885,
                                     "name": "Identifier",
                                     "src": "7558:8:41"
                                   }
                                 ],
-                                "id": 9859,
+                                "id": 9886,
                                 "name": "BinaryOperation",
                                 "src": "7533:33:41"
                               }
                             ],
-                            "id": 9860,
+                            "id": 9887,
                             "name": "BinaryOperation",
                             "src": "7512:54:41"
                           },
@@ -5584,13 +5584,13 @@ export const ERC721BasicToken =
                                     }
                                   ],
                                   "overloadedDeclarations": [
-                                    9737
+                                    9764
                                   ],
-                                  "referencedDeclaration": 9737,
+                                  "referencedDeclaration": 9764,
                                   "type": "function (address,address) view returns (bool)",
                                   "value": "isApprovedForAll"
                                 },
-                                "id": 9861,
+                                "id": 9888,
                                 "name": "Identifier",
                                 "src": "7570:16:41"
                               },
@@ -5600,11 +5600,11 @@ export const ERC721BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9847,
+                                  "referencedDeclaration": 9874,
                                   "type": "address",
                                   "value": "owner"
                                 },
-                                "id": 9862,
+                                "id": 9889,
                                 "name": "Identifier",
                                 "src": "7587:5:41"
                               },
@@ -5614,36 +5614,36 @@ export const ERC721BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9839,
+                                  "referencedDeclaration": 9866,
                                   "type": "address",
                                   "value": "_spender"
                                 },
-                                "id": 9863,
+                                "id": 9890,
                                 "name": "Identifier",
                                 "src": "7594:8:41"
                               }
                             ],
-                            "id": 9864,
+                            "id": 9891,
                             "name": "FunctionCall",
                             "src": "7570:33:41"
                           }
                         ],
-                        "id": 9865,
+                        "id": 9892,
                         "name": "BinaryOperation",
                         "src": "7512:91:41"
                       }
                     ],
-                    "id": 9866,
+                    "id": 9893,
                     "name": "Return",
                     "src": "7505:98:41"
                   }
                 ],
-                "id": 9867,
+                "id": 9894,
                 "name": "Block",
                 "src": "7460:148:41"
               }
             ],
-            "id": 9868,
+            "id": 9895,
             "name": "FunctionDefinition",
             "src": "7368:240:41"
           },
@@ -5657,7 +5657,7 @@ export const ERC721BasicToken =
               ],
               "name": "_mint",
               "payable": false,
-              "scope": 10073,
+              "scope": 10100,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "internal"
@@ -5669,7 +5669,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 9897,
+                      "scope": 9924,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -5682,12 +5682,12 @@ export const ERC721BasicToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 9869,
+                        "id": 9896,
                         "name": "ElementaryTypeName",
                         "src": "7872:7:41"
                       }
                     ],
-                    "id": 9870,
+                    "id": 9897,
                     "name": "VariableDeclaration",
                     "src": "7872:11:41"
                   },
@@ -5695,7 +5695,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 9897,
+                      "scope": 9924,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -5708,17 +5708,17 @@ export const ERC721BasicToken =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 9871,
+                        "id": 9898,
                         "name": "ElementaryTypeName",
                         "src": "7885:7:41"
                       }
                     ],
-                    "id": 9872,
+                    "id": 9899,
                     "name": "VariableDeclaration",
                     "src": "7885:16:41"
                   }
                 ],
-                "id": 9873,
+                "id": 9900,
                 "name": "ParameterList",
                 "src": "7871:31:41"
               },
@@ -5729,7 +5729,7 @@ export const ERC721BasicToken =
                   ]
                 },
                 "children": [],
-                "id": 9874,
+                "id": 9901,
                 "name": "ParameterList",
                 "src": "7912:0:41"
               },
@@ -5763,11 +5763,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10476,
+                              "referencedDeclaration": 10503,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 9875,
+                            "id": 9902,
                             "name": "Identifier",
                             "src": "7918:7:41"
                           },
@@ -5792,11 +5792,11 @@ export const ERC721BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9870,
+                                  "referencedDeclaration": 9897,
                                   "type": "address",
                                   "value": "_to"
                                 },
-                                "id": 9876,
+                                "id": 9903,
                                 "name": "Identifier",
                                 "src": "7926:3:41"
                               },
@@ -5830,7 +5830,7 @@ export const ERC721BasicToken =
                                       "type": "type(address)",
                                       "value": "address"
                                     },
-                                    "id": 9877,
+                                    "id": 9904,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "7933:7:41"
                                   },
@@ -5847,27 +5847,27 @@ export const ERC721BasicToken =
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 9878,
+                                    "id": 9905,
                                     "name": "Literal",
                                     "src": "7941:1:41"
                                   }
                                 ],
-                                "id": 9879,
+                                "id": 9906,
                                 "name": "FunctionCall",
                                 "src": "7933:10:41"
                               }
                             ],
-                            "id": 9880,
+                            "id": 9907,
                             "name": "BinaryOperation",
                             "src": "7926:17:41"
                           }
                         ],
-                        "id": 9881,
+                        "id": 9908,
                         "name": "FunctionCall",
                         "src": "7918:26:41"
                       }
                     ],
-                    "id": 9882,
+                    "id": 9909,
                     "name": "ExpressionStatement",
                     "src": "7918:26:41"
                   },
@@ -5903,11 +5903,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9999,
+                              "referencedDeclaration": 10026,
                               "type": "function (address,uint256)",
                               "value": "addTokenTo"
                             },
-                            "id": 9883,
+                            "id": 9910,
                             "name": "Identifier",
                             "src": "7950:10:41"
                           },
@@ -5917,11 +5917,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9870,
+                              "referencedDeclaration": 9897,
                               "type": "address",
                               "value": "_to"
                             },
-                            "id": 9884,
+                            "id": 9911,
                             "name": "Identifier",
                             "src": "7961:3:41"
                           },
@@ -5931,21 +5931,21 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9872,
+                              "referencedDeclaration": 9899,
                               "type": "uint256",
                               "value": "_tokenId"
                             },
-                            "id": 9885,
+                            "id": 9912,
                             "name": "Identifier",
                             "src": "7966:8:41"
                           }
                         ],
-                        "id": 9886,
+                        "id": 9913,
                         "name": "FunctionCall",
                         "src": "7950:25:41"
                       }
                     ],
-                    "id": 9887,
+                    "id": 9914,
                     "name": "ExpressionStatement",
                     "src": "7950:25:41"
                   },
@@ -5985,11 +5985,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9393,
+                              "referencedDeclaration": 9420,
                               "type": "function (address,address,uint256)",
                               "value": "Transfer"
                             },
-                            "id": 9888,
+                            "id": 9915,
                             "name": "Identifier",
                             "src": "7981:8:41"
                           },
@@ -6023,7 +6023,7 @@ export const ERC721BasicToken =
                                   "type": "type(address)",
                                   "value": "address"
                                 },
-                                "id": 9889,
+                                "id": 9916,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "7990:7:41"
                               },
@@ -6040,12 +6040,12 @@ export const ERC721BasicToken =
                                   "type": "int_const 0",
                                   "value": "0"
                                 },
-                                "id": 9890,
+                                "id": 9917,
                                 "name": "Literal",
                                 "src": "7998:1:41"
                               }
                             ],
-                            "id": 9891,
+                            "id": 9918,
                             "name": "FunctionCall",
                             "src": "7990:10:41"
                           },
@@ -6055,11 +6055,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9870,
+                              "referencedDeclaration": 9897,
                               "type": "address",
                               "value": "_to"
                             },
-                            "id": 9892,
+                            "id": 9919,
                             "name": "Identifier",
                             "src": "8002:3:41"
                           },
@@ -6069,31 +6069,31 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9872,
+                              "referencedDeclaration": 9899,
                               "type": "uint256",
                               "value": "_tokenId"
                             },
-                            "id": 9893,
+                            "id": 9920,
                             "name": "Identifier",
                             "src": "8007:8:41"
                           }
                         ],
-                        "id": 9894,
+                        "id": 9921,
                         "name": "FunctionCall",
                         "src": "7981:35:41"
                       }
                     ],
-                    "id": 9895,
+                    "id": 9922,
                     "name": "ExpressionStatement",
                     "src": "7981:35:41"
                   }
                 ],
-                "id": 9896,
+                "id": 9923,
                 "name": "Block",
                 "src": "7912:109:41"
               }
             ],
-            "id": 9897,
+            "id": 9924,
             "name": "FunctionDefinition",
             "src": "7857:164:41"
           },
@@ -6107,7 +6107,7 @@ export const ERC721BasicToken =
               ],
               "name": "_burn",
               "payable": false,
-              "scope": 10073,
+              "scope": 10100,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "internal"
@@ -6119,7 +6119,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_owner",
-                      "scope": 9923,
+                      "scope": 9950,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -6132,12 +6132,12 @@ export const ERC721BasicToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 9898,
+                        "id": 9925,
                         "name": "ElementaryTypeName",
                         "src": "8223:7:41"
                       }
                     ],
-                    "id": 9899,
+                    "id": 9926,
                     "name": "VariableDeclaration",
                     "src": "8223:14:41"
                   },
@@ -6145,7 +6145,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 9923,
+                      "scope": 9950,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -6158,17 +6158,17 @@ export const ERC721BasicToken =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 9900,
+                        "id": 9927,
                         "name": "ElementaryTypeName",
                         "src": "8239:7:41"
                       }
                     ],
-                    "id": 9901,
+                    "id": 9928,
                     "name": "VariableDeclaration",
                     "src": "8239:16:41"
                   }
                 ],
-                "id": 9902,
+                "id": 9929,
                 "name": "ParameterList",
                 "src": "8222:34:41"
               },
@@ -6179,7 +6179,7 @@ export const ERC721BasicToken =
                   ]
                 },
                 "children": [],
-                "id": 9903,
+                "id": 9930,
                 "name": "ParameterList",
                 "src": "8266:0:41"
               },
@@ -6217,11 +6217,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9964,
+                              "referencedDeclaration": 9991,
                               "type": "function (address,uint256)",
                               "value": "clearApproval"
                             },
-                            "id": 9904,
+                            "id": 9931,
                             "name": "Identifier",
                             "src": "8272:13:41"
                           },
@@ -6231,11 +6231,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9899,
+                              "referencedDeclaration": 9926,
                               "type": "address",
                               "value": "_owner"
                             },
-                            "id": 9905,
+                            "id": 9932,
                             "name": "Identifier",
                             "src": "8286:6:41"
                           },
@@ -6245,21 +6245,21 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9901,
+                              "referencedDeclaration": 9928,
                               "type": "uint256",
                               "value": "_tokenId"
                             },
-                            "id": 9906,
+                            "id": 9933,
                             "name": "Identifier",
                             "src": "8294:8:41"
                           }
                         ],
-                        "id": 9907,
+                        "id": 9934,
                         "name": "FunctionCall",
                         "src": "8272:31:41"
                       }
                     ],
-                    "id": 9908,
+                    "id": 9935,
                     "name": "ExpressionStatement",
                     "src": "8272:31:41"
                   },
@@ -6295,11 +6295,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10034,
+                              "referencedDeclaration": 10061,
                               "type": "function (address,uint256)",
                               "value": "removeTokenFrom"
                             },
-                            "id": 9909,
+                            "id": 9936,
                             "name": "Identifier",
                             "src": "8309:15:41"
                           },
@@ -6309,11 +6309,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9899,
+                              "referencedDeclaration": 9926,
                               "type": "address",
                               "value": "_owner"
                             },
-                            "id": 9910,
+                            "id": 9937,
                             "name": "Identifier",
                             "src": "8325:6:41"
                           },
@@ -6323,21 +6323,21 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9901,
+                              "referencedDeclaration": 9928,
                               "type": "uint256",
                               "value": "_tokenId"
                             },
-                            "id": 9911,
+                            "id": 9938,
                             "name": "Identifier",
                             "src": "8333:8:41"
                           }
                         ],
-                        "id": 9912,
+                        "id": 9939,
                         "name": "FunctionCall",
                         "src": "8309:33:41"
                       }
                     ],
-                    "id": 9913,
+                    "id": 9940,
                     "name": "ExpressionStatement",
                     "src": "8309:33:41"
                   },
@@ -6377,11 +6377,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9393,
+                              "referencedDeclaration": 9420,
                               "type": "function (address,address,uint256)",
                               "value": "Transfer"
                             },
-                            "id": 9914,
+                            "id": 9941,
                             "name": "Identifier",
                             "src": "8348:8:41"
                           },
@@ -6391,11 +6391,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9899,
+                              "referencedDeclaration": 9926,
                               "type": "address",
                               "value": "_owner"
                             },
-                            "id": 9915,
+                            "id": 9942,
                             "name": "Identifier",
                             "src": "8357:6:41"
                           },
@@ -6429,7 +6429,7 @@ export const ERC721BasicToken =
                                   "type": "type(address)",
                                   "value": "address"
                                 },
-                                "id": 9916,
+                                "id": 9943,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "8365:7:41"
                               },
@@ -6446,12 +6446,12 @@ export const ERC721BasicToken =
                                   "type": "int_const 0",
                                   "value": "0"
                                 },
-                                "id": 9917,
+                                "id": 9944,
                                 "name": "Literal",
                                 "src": "8373:1:41"
                               }
                             ],
-                            "id": 9918,
+                            "id": 9945,
                             "name": "FunctionCall",
                             "src": "8365:10:41"
                           },
@@ -6461,31 +6461,31 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9901,
+                              "referencedDeclaration": 9928,
                               "type": "uint256",
                               "value": "_tokenId"
                             },
-                            "id": 9919,
+                            "id": 9946,
                             "name": "Identifier",
                             "src": "8377:8:41"
                           }
                         ],
-                        "id": 9920,
+                        "id": 9947,
                         "name": "FunctionCall",
                         "src": "8348:38:41"
                       }
                     ],
-                    "id": 9921,
+                    "id": 9948,
                     "name": "ExpressionStatement",
                     "src": "8348:38:41"
                   }
                 ],
-                "id": 9922,
+                "id": 9949,
                 "name": "Block",
                 "src": "8266:125:41"
               }
             ],
-            "id": 9923,
+            "id": 9950,
             "name": "FunctionDefinition",
             "src": "8208:183:41"
           },
@@ -6499,7 +6499,7 @@ export const ERC721BasicToken =
               ],
               "name": "clearApproval",
               "payable": false,
-              "scope": 10073,
+              "scope": 10100,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "internal"
@@ -6511,7 +6511,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_owner",
-                      "scope": 9964,
+                      "scope": 9991,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -6524,12 +6524,12 @@ export const ERC721BasicToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 9924,
+                        "id": 9951,
                         "name": "ElementaryTypeName",
                         "src": "8676:7:41"
                       }
                     ],
-                    "id": 9925,
+                    "id": 9952,
                     "name": "VariableDeclaration",
                     "src": "8676:14:41"
                   },
@@ -6537,7 +6537,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 9964,
+                      "scope": 9991,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -6550,17 +6550,17 @@ export const ERC721BasicToken =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 9926,
+                        "id": 9953,
                         "name": "ElementaryTypeName",
                         "src": "8692:7:41"
                       }
                     ],
-                    "id": 9927,
+                    "id": 9954,
                     "name": "VariableDeclaration",
                     "src": "8692:16:41"
                   }
                 ],
-                "id": 9928,
+                "id": 9955,
                 "name": "ParameterList",
                 "src": "8675:34:41"
               },
@@ -6571,7 +6571,7 @@ export const ERC721BasicToken =
                   ]
                 },
                 "children": [],
-                "id": 9929,
+                "id": 9956,
                 "name": "ParameterList",
                 "src": "8719:0:41"
               },
@@ -6605,11 +6605,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10476,
+                              "referencedDeclaration": 10503,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 9930,
+                            "id": 9957,
                             "name": "Identifier",
                             "src": "8725:7:41"
                           },
@@ -6652,13 +6652,13 @@ export const ERC721BasicToken =
                                         }
                                       ],
                                       "overloadedDeclarations": [
-                                        9598
+                                        9625
                                       ],
-                                      "referencedDeclaration": 9598,
+                                      "referencedDeclaration": 9625,
                                       "type": "function (uint256) view returns (address)",
                                       "value": "ownerOf"
                                     },
-                                    "id": 9931,
+                                    "id": 9958,
                                     "name": "Identifier",
                                     "src": "8733:7:41"
                                   },
@@ -6668,16 +6668,16 @@ export const ERC721BasicToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 9927,
+                                      "referencedDeclaration": 9954,
                                       "type": "uint256",
                                       "value": "_tokenId"
                                     },
-                                    "id": 9932,
+                                    "id": 9959,
                                     "name": "Identifier",
                                     "src": "8741:8:41"
                                   }
                                 ],
-                                "id": 9933,
+                                "id": 9960,
                                 "name": "FunctionCall",
                                 "src": "8733:17:41"
                               },
@@ -6687,26 +6687,26 @@ export const ERC721BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9925,
+                                  "referencedDeclaration": 9952,
                                   "type": "address",
                                   "value": "_owner"
                                 },
-                                "id": 9934,
+                                "id": 9961,
                                 "name": "Identifier",
                                 "src": "8754:6:41"
                               }
                             ],
-                            "id": 9935,
+                            "id": 9962,
                             "name": "BinaryOperation",
                             "src": "8733:27:41"
                           }
                         ],
-                        "id": 9936,
+                        "id": 9963,
                         "name": "FunctionCall",
                         "src": "8725:36:41"
                       }
                     ],
-                    "id": 9937,
+                    "id": 9964,
                     "name": "ExpressionStatement",
                     "src": "8725:36:41"
                   },
@@ -6746,11 +6746,11 @@ export const ERC721BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9515,
+                                  "referencedDeclaration": 9542,
                                   "type": "mapping(uint256 => address)",
                                   "value": "tokenApprovals"
                                 },
-                                "id": 9938,
+                                "id": 9965,
                                 "name": "Identifier",
                                 "src": "8771:14:41"
                               },
@@ -6760,16 +6760,16 @@ export const ERC721BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9927,
+                                  "referencedDeclaration": 9954,
                                   "type": "uint256",
                                   "value": "_tokenId"
                                 },
-                                "id": 9939,
+                                "id": 9966,
                                 "name": "Identifier",
                                 "src": "8786:8:41"
                               }
                             ],
-                            "id": 9940,
+                            "id": 9967,
                             "name": "IndexAccess",
                             "src": "8771:24:41"
                           },
@@ -6803,7 +6803,7 @@ export const ERC721BasicToken =
                                   "type": "type(address)",
                                   "value": "address"
                                 },
-                                "id": 9941,
+                                "id": 9968,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "8799:7:41"
                               },
@@ -6820,17 +6820,17 @@ export const ERC721BasicToken =
                                   "type": "int_const 0",
                                   "value": "0"
                                 },
-                                "id": 9942,
+                                "id": 9969,
                                 "name": "Literal",
                                 "src": "8807:1:41"
                               }
                             ],
-                            "id": 9943,
+                            "id": 9970,
                             "name": "FunctionCall",
                             "src": "8799:10:41"
                           }
                         ],
-                        "id": 9944,
+                        "id": 9971,
                         "name": "BinaryOperation",
                         "src": "8771:38:41"
                       },
@@ -6865,11 +6865,11 @@ export const ERC721BasicToken =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 9515,
+                                          "referencedDeclaration": 9542,
                                           "type": "mapping(uint256 => address)",
                                           "value": "tokenApprovals"
                                         },
-                                        "id": 9945,
+                                        "id": 9972,
                                         "name": "Identifier",
                                         "src": "8819:14:41"
                                       },
@@ -6879,16 +6879,16 @@ export const ERC721BasicToken =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 9927,
+                                          "referencedDeclaration": 9954,
                                           "type": "uint256",
                                           "value": "_tokenId"
                                         },
-                                        "id": 9946,
+                                        "id": 9973,
                                         "name": "Identifier",
                                         "src": "8834:8:41"
                                       }
                                     ],
-                                    "id": 9947,
+                                    "id": 9974,
                                     "name": "IndexAccess",
                                     "src": "8819:24:41"
                                   },
@@ -6922,7 +6922,7 @@ export const ERC721BasicToken =
                                           "type": "type(address)",
                                           "value": "address"
                                         },
-                                        "id": 9948,
+                                        "id": 9975,
                                         "name": "ElementaryTypeNameExpression",
                                         "src": "8846:7:41"
                                       },
@@ -6939,22 +6939,22 @@ export const ERC721BasicToken =
                                           "type": "int_const 0",
                                           "value": "0"
                                         },
-                                        "id": 9949,
+                                        "id": 9976,
                                         "name": "Literal",
                                         "src": "8854:1:41"
                                       }
                                     ],
-                                    "id": 9950,
+                                    "id": 9977,
                                     "name": "FunctionCall",
                                     "src": "8846:10:41"
                                   }
                                 ],
-                                "id": 9951,
+                                "id": 9978,
                                 "name": "Assignment",
                                 "src": "8819:37:41"
                               }
                             ],
-                            "id": 9952,
+                            "id": 9979,
                             "name": "ExpressionStatement",
                             "src": "8819:37:41"
                           },
@@ -6994,11 +6994,11 @@ export const ERC721BasicToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 9401,
+                                      "referencedDeclaration": 9428,
                                       "type": "function (address,address,uint256)",
                                       "value": "Approval"
                                     },
-                                    "id": 9953,
+                                    "id": 9980,
                                     "name": "Identifier",
                                     "src": "8864:8:41"
                                   },
@@ -7008,11 +7008,11 @@ export const ERC721BasicToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 9925,
+                                      "referencedDeclaration": 9952,
                                       "type": "address",
                                       "value": "_owner"
                                     },
-                                    "id": 9954,
+                                    "id": 9981,
                                     "name": "Identifier",
                                     "src": "8873:6:41"
                                   },
@@ -7046,7 +7046,7 @@ export const ERC721BasicToken =
                                           "type": "type(address)",
                                           "value": "address"
                                         },
-                                        "id": 9955,
+                                        "id": 9982,
                                         "name": "ElementaryTypeNameExpression",
                                         "src": "8881:7:41"
                                       },
@@ -7063,12 +7063,12 @@ export const ERC721BasicToken =
                                           "type": "int_const 0",
                                           "value": "0"
                                         },
-                                        "id": 9956,
+                                        "id": 9983,
                                         "name": "Literal",
                                         "src": "8889:1:41"
                                       }
                                     ],
-                                    "id": 9957,
+                                    "id": 9984,
                                     "name": "FunctionCall",
                                     "src": "8881:10:41"
                                   },
@@ -7078,41 +7078,41 @@ export const ERC721BasicToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 9927,
+                                      "referencedDeclaration": 9954,
                                       "type": "uint256",
                                       "value": "_tokenId"
                                     },
-                                    "id": 9958,
+                                    "id": 9985,
                                     "name": "Identifier",
                                     "src": "8893:8:41"
                                   }
                                 ],
-                                "id": 9959,
+                                "id": 9986,
                                 "name": "FunctionCall",
                                 "src": "8864:38:41"
                               }
                             ],
-                            "id": 9960,
+                            "id": 9987,
                             "name": "ExpressionStatement",
                             "src": "8864:38:41"
                           }
                         ],
-                        "id": 9961,
+                        "id": 9988,
                         "name": "Block",
                         "src": "8811:98:41"
                       }
                     ],
-                    "id": 9962,
+                    "id": 9989,
                     "name": "IfStatement",
                     "src": "8767:142:41"
                   }
                 ],
-                "id": 9963,
+                "id": 9990,
                 "name": "Block",
                 "src": "8719:194:41"
               }
             ],
-            "id": 9964,
+            "id": 9991,
             "name": "FunctionDefinition",
             "src": "8653:260:41"
           },
@@ -7126,7 +7126,7 @@ export const ERC721BasicToken =
               ],
               "name": "addTokenTo",
               "payable": false,
-              "scope": 10073,
+              "scope": 10100,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "internal"
@@ -7138,7 +7138,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 9999,
+                      "scope": 10026,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -7151,12 +7151,12 @@ export const ERC721BasicToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 9965,
+                        "id": 9992,
                         "name": "ElementaryTypeName",
                         "src": "9192:7:41"
                       }
                     ],
-                    "id": 9966,
+                    "id": 9993,
                     "name": "VariableDeclaration",
                     "src": "9192:11:41"
                   },
@@ -7164,7 +7164,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 9999,
+                      "scope": 10026,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -7177,17 +7177,17 @@ export const ERC721BasicToken =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 9967,
+                        "id": 9994,
                         "name": "ElementaryTypeName",
                         "src": "9205:7:41"
                       }
                     ],
-                    "id": 9968,
+                    "id": 9995,
                     "name": "VariableDeclaration",
                     "src": "9205:16:41"
                   }
                 ],
-                "id": 9969,
+                "id": 9996,
                 "name": "ParameterList",
                 "src": "9191:31:41"
               },
@@ -7198,7 +7198,7 @@ export const ERC721BasicToken =
                   ]
                 },
                 "children": [],
-                "id": 9970,
+                "id": 9997,
                 "name": "ParameterList",
                 "src": "9232:0:41"
               },
@@ -7232,11 +7232,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10476,
+                              "referencedDeclaration": 10503,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 9971,
+                            "id": 9998,
                             "name": "Identifier",
                             "src": "9238:7:41"
                           },
@@ -7271,11 +7271,11 @@ export const ERC721BasicToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 9511,
+                                      "referencedDeclaration": 9538,
                                       "type": "mapping(uint256 => address)",
                                       "value": "tokenOwner"
                                     },
-                                    "id": 9972,
+                                    "id": 9999,
                                     "name": "Identifier",
                                     "src": "9246:10:41"
                                   },
@@ -7285,16 +7285,16 @@ export const ERC721BasicToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 9968,
+                                      "referencedDeclaration": 9995,
                                       "type": "uint256",
                                       "value": "_tokenId"
                                     },
-                                    "id": 9973,
+                                    "id": 10000,
                                     "name": "Identifier",
                                     "src": "9257:8:41"
                                   }
                                 ],
-                                "id": 9974,
+                                "id": 10001,
                                 "name": "IndexAccess",
                                 "src": "9246:20:41"
                               },
@@ -7328,7 +7328,7 @@ export const ERC721BasicToken =
                                       "type": "type(address)",
                                       "value": "address"
                                     },
-                                    "id": 9975,
+                                    "id": 10002,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "9270:7:41"
                                   },
@@ -7345,27 +7345,27 @@ export const ERC721BasicToken =
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 9976,
+                                    "id": 10003,
                                     "name": "Literal",
                                     "src": "9278:1:41"
                                   }
                                 ],
-                                "id": 9977,
+                                "id": 10004,
                                 "name": "FunctionCall",
                                 "src": "9270:10:41"
                               }
                             ],
-                            "id": 9978,
+                            "id": 10005,
                             "name": "BinaryOperation",
                             "src": "9246:34:41"
                           }
                         ],
-                        "id": 9979,
+                        "id": 10006,
                         "name": "FunctionCall",
                         "src": "9238:43:41"
                       }
                     ],
-                    "id": 9980,
+                    "id": 10007,
                     "name": "ExpressionStatement",
                     "src": "9238:43:41"
                   },
@@ -7398,11 +7398,11 @@ export const ERC721BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9511,
+                                  "referencedDeclaration": 9538,
                                   "type": "mapping(uint256 => address)",
                                   "value": "tokenOwner"
                                 },
-                                "id": 9981,
+                                "id": 10008,
                                 "name": "Identifier",
                                 "src": "9287:10:41"
                               },
@@ -7412,16 +7412,16 @@ export const ERC721BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9968,
+                                  "referencedDeclaration": 9995,
                                   "type": "uint256",
                                   "value": "_tokenId"
                                 },
-                                "id": 9982,
+                                "id": 10009,
                                 "name": "Identifier",
                                 "src": "9298:8:41"
                               }
                             ],
-                            "id": 9983,
+                            "id": 10010,
                             "name": "IndexAccess",
                             "src": "9287:20:41"
                           },
@@ -7431,21 +7431,21 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9966,
+                              "referencedDeclaration": 9993,
                               "type": "address",
                               "value": "_to"
                             },
-                            "id": 9984,
+                            "id": 10011,
                             "name": "Identifier",
                             "src": "9310:3:41"
                           }
                         ],
-                        "id": 9985,
+                        "id": 10012,
                         "name": "Assignment",
                         "src": "9287:26:41"
                       }
                     ],
-                    "id": 9986,
+                    "id": 10013,
                     "name": "ExpressionStatement",
                     "src": "9287:26:41"
                   },
@@ -7478,11 +7478,11 @@ export const ERC721BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9519,
+                                  "referencedDeclaration": 9546,
                                   "type": "mapping(address => uint256)",
                                   "value": "ownedTokensCount"
                                 },
-                                "id": 9987,
+                                "id": 10014,
                                 "name": "Identifier",
                                 "src": "9319:16:41"
                               },
@@ -7492,16 +7492,16 @@ export const ERC721BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9966,
+                                  "referencedDeclaration": 9993,
                                   "type": "address",
                                   "value": "_to"
                                 },
-                                "id": 9988,
+                                "id": 10015,
                                 "name": "Identifier",
                                 "src": "9336:3:41"
                               }
                             ],
-                            "id": 9989,
+                            "id": 10016,
                             "name": "IndexAccess",
                             "src": "9319:21:41"
                           },
@@ -7533,7 +7533,7 @@ export const ERC721BasicToken =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "add",
-                                  "referencedDeclaration": 8734,
+                                  "referencedDeclaration": 8761,
                                   "type": "function (uint256,uint256) pure returns (uint256)"
                                 },
                                 "children": [
@@ -7553,11 +7553,11 @@ export const ERC721BasicToken =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 9519,
+                                          "referencedDeclaration": 9546,
                                           "type": "mapping(address => uint256)",
                                           "value": "ownedTokensCount"
                                         },
-                                        "id": 9990,
+                                        "id": 10017,
                                         "name": "Identifier",
                                         "src": "9343:16:41"
                                       },
@@ -7567,21 +7567,21 @@ export const ERC721BasicToken =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 9966,
+                                          "referencedDeclaration": 9993,
                                           "type": "address",
                                           "value": "_to"
                                         },
-                                        "id": 9991,
+                                        "id": 10018,
                                         "name": "Identifier",
                                         "src": "9360:3:41"
                                       }
                                     ],
-                                    "id": 9992,
+                                    "id": 10019,
                                     "name": "IndexAccess",
                                     "src": "9343:21:41"
                                   }
                                 ],
-                                "id": 9993,
+                                "id": 10020,
                                 "name": "MemberAccess",
                                 "src": "9343:25:41"
                               },
@@ -7598,32 +7598,32 @@ export const ERC721BasicToken =
                                   "type": "int_const 1",
                                   "value": "1"
                                 },
-                                "id": 9994,
+                                "id": 10021,
                                 "name": "Literal",
                                 "src": "9369:1:41"
                               }
                             ],
-                            "id": 9995,
+                            "id": 10022,
                             "name": "FunctionCall",
                             "src": "9343:28:41"
                           }
                         ],
-                        "id": 9996,
+                        "id": 10023,
                         "name": "Assignment",
                         "src": "9319:52:41"
                       }
                     ],
-                    "id": 9997,
+                    "id": 10024,
                     "name": "ExpressionStatement",
                     "src": "9319:52:41"
                   }
                 ],
-                "id": 9998,
+                "id": 10025,
                 "name": "Block",
                 "src": "9232:144:41"
               }
             ],
-            "id": 9999,
+            "id": 10026,
             "name": "FunctionDefinition",
             "src": "9172:204:41"
           },
@@ -7637,7 +7637,7 @@ export const ERC721BasicToken =
               ],
               "name": "removeTokenFrom",
               "payable": false,
-              "scope": 10073,
+              "scope": 10100,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "internal"
@@ -7649,7 +7649,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_from",
-                      "scope": 10034,
+                      "scope": 10061,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -7662,12 +7662,12 @@ export const ERC721BasicToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 10000,
+                        "id": 10027,
                         "name": "ElementaryTypeName",
                         "src": "9676:7:41"
                       }
                     ],
-                    "id": 10001,
+                    "id": 10028,
                     "name": "VariableDeclaration",
                     "src": "9676:13:41"
                   },
@@ -7675,7 +7675,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 10034,
+                      "scope": 10061,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -7688,17 +7688,17 @@ export const ERC721BasicToken =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 10002,
+                        "id": 10029,
                         "name": "ElementaryTypeName",
                         "src": "9691:7:41"
                       }
                     ],
-                    "id": 10003,
+                    "id": 10030,
                     "name": "VariableDeclaration",
                     "src": "9691:16:41"
                   }
                 ],
-                "id": 10004,
+                "id": 10031,
                 "name": "ParameterList",
                 "src": "9675:33:41"
               },
@@ -7709,7 +7709,7 @@ export const ERC721BasicToken =
                   ]
                 },
                 "children": [],
-                "id": 10005,
+                "id": 10032,
                 "name": "ParameterList",
                 "src": "9718:0:41"
               },
@@ -7743,11 +7743,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10476,
+                              "referencedDeclaration": 10503,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 10006,
+                            "id": 10033,
                             "name": "Identifier",
                             "src": "9724:7:41"
                           },
@@ -7790,13 +7790,13 @@ export const ERC721BasicToken =
                                         }
                                       ],
                                       "overloadedDeclarations": [
-                                        9598
+                                        9625
                                       ],
-                                      "referencedDeclaration": 9598,
+                                      "referencedDeclaration": 9625,
                                       "type": "function (uint256) view returns (address)",
                                       "value": "ownerOf"
                                     },
-                                    "id": 10007,
+                                    "id": 10034,
                                     "name": "Identifier",
                                     "src": "9732:7:41"
                                   },
@@ -7806,16 +7806,16 @@ export const ERC721BasicToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10003,
+                                      "referencedDeclaration": 10030,
                                       "type": "uint256",
                                       "value": "_tokenId"
                                     },
-                                    "id": 10008,
+                                    "id": 10035,
                                     "name": "Identifier",
                                     "src": "9740:8:41"
                                   }
                                 ],
-                                "id": 10009,
+                                "id": 10036,
                                 "name": "FunctionCall",
                                 "src": "9732:17:41"
                               },
@@ -7825,26 +7825,26 @@ export const ERC721BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10001,
+                                  "referencedDeclaration": 10028,
                                   "type": "address",
                                   "value": "_from"
                                 },
-                                "id": 10010,
+                                "id": 10037,
                                 "name": "Identifier",
                                 "src": "9753:5:41"
                               }
                             ],
-                            "id": 10011,
+                            "id": 10038,
                             "name": "BinaryOperation",
                             "src": "9732:26:41"
                           }
                         ],
-                        "id": 10012,
+                        "id": 10039,
                         "name": "FunctionCall",
                         "src": "9724:35:41"
                       }
                     ],
-                    "id": 10013,
+                    "id": 10040,
                     "name": "ExpressionStatement",
                     "src": "9724:35:41"
                   },
@@ -7877,11 +7877,11 @@ export const ERC721BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9519,
+                                  "referencedDeclaration": 9546,
                                   "type": "mapping(address => uint256)",
                                   "value": "ownedTokensCount"
                                 },
-                                "id": 10014,
+                                "id": 10041,
                                 "name": "Identifier",
                                 "src": "9765:16:41"
                               },
@@ -7891,16 +7891,16 @@ export const ERC721BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10001,
+                                  "referencedDeclaration": 10028,
                                   "type": "address",
                                   "value": "_from"
                                 },
-                                "id": 10015,
+                                "id": 10042,
                                 "name": "Identifier",
                                 "src": "9782:5:41"
                               }
                             ],
-                            "id": 10016,
+                            "id": 10043,
                             "name": "IndexAccess",
                             "src": "9765:23:41"
                           },
@@ -7932,7 +7932,7 @@ export const ERC721BasicToken =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "sub",
-                                  "referencedDeclaration": 8710,
+                                  "referencedDeclaration": 8737,
                                   "type": "function (uint256,uint256) pure returns (uint256)"
                                 },
                                 "children": [
@@ -7952,11 +7952,11 @@ export const ERC721BasicToken =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 9519,
+                                          "referencedDeclaration": 9546,
                                           "type": "mapping(address => uint256)",
                                           "value": "ownedTokensCount"
                                         },
-                                        "id": 10017,
+                                        "id": 10044,
                                         "name": "Identifier",
                                         "src": "9791:16:41"
                                       },
@@ -7966,21 +7966,21 @@ export const ERC721BasicToken =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 10001,
+                                          "referencedDeclaration": 10028,
                                           "type": "address",
                                           "value": "_from"
                                         },
-                                        "id": 10018,
+                                        "id": 10045,
                                         "name": "Identifier",
                                         "src": "9808:5:41"
                                       }
                                     ],
-                                    "id": 10019,
+                                    "id": 10046,
                                     "name": "IndexAccess",
                                     "src": "9791:23:41"
                                   }
                                 ],
-                                "id": 10020,
+                                "id": 10047,
                                 "name": "MemberAccess",
                                 "src": "9791:27:41"
                               },
@@ -7997,22 +7997,22 @@ export const ERC721BasicToken =
                                   "type": "int_const 1",
                                   "value": "1"
                                 },
-                                "id": 10021,
+                                "id": 10048,
                                 "name": "Literal",
                                 "src": "9819:1:41"
                               }
                             ],
-                            "id": 10022,
+                            "id": 10049,
                             "name": "FunctionCall",
                             "src": "9791:30:41"
                           }
                         ],
-                        "id": 10023,
+                        "id": 10050,
                         "name": "Assignment",
                         "src": "9765:56:41"
                       }
                     ],
-                    "id": 10024,
+                    "id": 10051,
                     "name": "ExpressionStatement",
                     "src": "9765:56:41"
                   },
@@ -8045,11 +8045,11 @@ export const ERC721BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9511,
+                                  "referencedDeclaration": 9538,
                                   "type": "mapping(uint256 => address)",
                                   "value": "tokenOwner"
                                 },
-                                "id": 10025,
+                                "id": 10052,
                                 "name": "Identifier",
                                 "src": "9827:10:41"
                               },
@@ -8059,16 +8059,16 @@ export const ERC721BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10003,
+                                  "referencedDeclaration": 10030,
                                   "type": "uint256",
                                   "value": "_tokenId"
                                 },
-                                "id": 10026,
+                                "id": 10053,
                                 "name": "Identifier",
                                 "src": "9838:8:41"
                               }
                             ],
-                            "id": 10027,
+                            "id": 10054,
                             "name": "IndexAccess",
                             "src": "9827:20:41"
                           },
@@ -8102,7 +8102,7 @@ export const ERC721BasicToken =
                                   "type": "type(address)",
                                   "value": "address"
                                 },
-                                "id": 10028,
+                                "id": 10055,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "9850:7:41"
                               },
@@ -8119,32 +8119,32 @@ export const ERC721BasicToken =
                                   "type": "int_const 0",
                                   "value": "0"
                                 },
-                                "id": 10029,
+                                "id": 10056,
                                 "name": "Literal",
                                 "src": "9858:1:41"
                               }
                             ],
-                            "id": 10030,
+                            "id": 10057,
                             "name": "FunctionCall",
                             "src": "9850:10:41"
                           }
                         ],
-                        "id": 10031,
+                        "id": 10058,
                         "name": "Assignment",
                         "src": "9827:33:41"
                       }
                     ],
-                    "id": 10032,
+                    "id": 10059,
                     "name": "ExpressionStatement",
                     "src": "9827:33:41"
                   }
                 ],
-                "id": 10033,
+                "id": 10060,
                 "name": "Block",
                 "src": "9718:147:41"
               }
             ],
-            "id": 10034,
+            "id": 10061,
             "name": "FunctionDefinition",
             "src": "9651:214:41"
           },
@@ -8158,7 +8158,7 @@ export const ERC721BasicToken =
               ],
               "name": "checkAndCallSafeTransfer",
               "payable": false,
-              "scope": 10073,
+              "scope": 10100,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "internal"
@@ -8170,7 +8170,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_from",
-                      "scope": 10072,
+                      "scope": 10099,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -8183,12 +8183,12 @@ export const ERC721BasicToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 10035,
+                        "id": 10062,
                         "name": "ElementaryTypeName",
                         "src": "10402:7:41"
                       }
                     ],
-                    "id": 10036,
+                    "id": 10063,
                     "name": "VariableDeclaration",
                     "src": "10402:13:41"
                   },
@@ -8196,7 +8196,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 10072,
+                      "scope": 10099,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -8209,12 +8209,12 @@ export const ERC721BasicToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 10037,
+                        "id": 10064,
                         "name": "ElementaryTypeName",
                         "src": "10417:7:41"
                       }
                     ],
-                    "id": 10038,
+                    "id": 10065,
                     "name": "VariableDeclaration",
                     "src": "10417:11:41"
                   },
@@ -8222,7 +8222,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 10072,
+                      "scope": 10099,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -8235,12 +8235,12 @@ export const ERC721BasicToken =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 10039,
+                        "id": 10066,
                         "name": "ElementaryTypeName",
                         "src": "10430:7:41"
                       }
                     ],
-                    "id": 10040,
+                    "id": 10067,
                     "name": "VariableDeclaration",
                     "src": "10430:16:41"
                   },
@@ -8248,7 +8248,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_data",
-                      "scope": 10072,
+                      "scope": 10099,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes memory",
@@ -8261,17 +8261,17 @@ export const ERC721BasicToken =
                           "name": "bytes",
                           "type": "bytes storage pointer"
                         },
-                        "id": 10041,
+                        "id": 10068,
                         "name": "ElementaryTypeName",
                         "src": "10448:5:41"
                       }
                     ],
-                    "id": 10042,
+                    "id": 10069,
                     "name": "VariableDeclaration",
                     "src": "10448:11:41"
                   }
                 ],
-                "id": 10043,
+                "id": 10070,
                 "name": "ParameterList",
                 "src": "10401:59:41"
               },
@@ -8281,7 +8281,7 @@ export const ERC721BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 10072,
+                      "scope": 10099,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -8294,17 +8294,17 @@ export const ERC721BasicToken =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 10044,
+                        "id": 10071,
                         "name": "ElementaryTypeName",
                         "src": "10479:4:41"
                       }
                     ],
-                    "id": 10045,
+                    "id": 10072,
                     "name": "VariableDeclaration",
                     "src": "10479:4:41"
                   }
                 ],
-                "id": 10046,
+                "id": 10073,
                 "name": "ParameterList",
                 "src": "10478:6:41"
               },
@@ -8355,7 +8355,7 @@ export const ERC721BasicToken =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "isContract",
-                                  "referencedDeclaration": 8576,
+                                  "referencedDeclaration": 8603,
                                   "type": "function (address) view returns (bool)"
                                 },
                                 "children": [
@@ -8365,26 +8365,26 @@ export const ERC721BasicToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10038,
+                                      "referencedDeclaration": 10065,
                                       "type": "address",
                                       "value": "_to"
                                     },
-                                    "id": 10047,
+                                    "id": 10074,
                                     "name": "Identifier",
                                     "src": "10496:3:41"
                                   }
                                 ],
-                                "id": 10048,
+                                "id": 10075,
                                 "name": "MemberAccess",
                                 "src": "10496:14:41"
                               }
                             ],
-                            "id": 10049,
+                            "id": 10076,
                             "name": "FunctionCall",
                             "src": "10496:16:41"
                           }
                         ],
-                        "id": 10050,
+                        "id": 10077,
                         "name": "UnaryOperation",
                         "src": "10495:17:41"
                       },
@@ -8392,7 +8392,7 @@ export const ERC721BasicToken =
                         "children": [
                           {
                             "attributes": {
-                              "functionReturnParameters": 10046
+                              "functionReturnParameters": 10073
                             },
                             "children": [
                               {
@@ -8408,29 +8408,29 @@ export const ERC721BasicToken =
                                   "type": "bool",
                                   "value": "true"
                                 },
-                                "id": 10051,
+                                "id": 10078,
                                 "name": "Literal",
                                 "src": "10529:4:41"
                               }
                             ],
-                            "id": 10052,
+                            "id": 10079,
                             "name": "Return",
                             "src": "10522:11:41"
                           }
                         ],
-                        "id": 10053,
+                        "id": 10080,
                         "name": "Block",
                         "src": "10514:26:41"
                       }
                     ],
-                    "id": 10054,
+                    "id": 10081,
                     "name": "IfStatement",
                     "src": "10491:49:41"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        10056
+                        10083
                       ]
                     },
                     "children": [
@@ -8438,7 +8438,7 @@ export const ERC721BasicToken =
                         "attributes": {
                           "constant": false,
                           "name": "retval",
-                          "scope": 10072,
+                          "scope": 10099,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bytes4",
@@ -8451,12 +8451,12 @@ export const ERC721BasicToken =
                               "name": "bytes4",
                               "type": "bytes4"
                             },
-                            "id": 10055,
+                            "id": 10082,
                             "name": "ElementaryTypeName",
                             "src": "10545:6:41"
                           }
                         ],
-                        "id": 10056,
+                        "id": 10083,
                         "name": "VariableDeclaration",
                         "src": "10545:13:41"
                       },
@@ -8496,7 +8496,7 @@ export const ERC721BasicToken =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "onERC721Received",
-                              "referencedDeclaration": 10089,
+                              "referencedDeclaration": 10116,
                               "type": "function (address,uint256,bytes memory) external returns (bytes4)"
                             },
                             "children": [
@@ -8526,11 +8526,11 @@ export const ERC721BasicToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10090,
+                                      "referencedDeclaration": 10117,
                                       "type": "type(contract ERC721Receiver)",
                                       "value": "ERC721Receiver"
                                     },
-                                    "id": 10057,
+                                    "id": 10084,
                                     "name": "Identifier",
                                     "src": "10561:14:41"
                                   },
@@ -8540,21 +8540,21 @@ export const ERC721BasicToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10038,
+                                      "referencedDeclaration": 10065,
                                       "type": "address",
                                       "value": "_to"
                                     },
-                                    "id": 10058,
+                                    "id": 10085,
                                     "name": "Identifier",
                                     "src": "10576:3:41"
                                   }
                                 ],
-                                "id": 10059,
+                                "id": 10086,
                                 "name": "FunctionCall",
                                 "src": "10561:19:41"
                               }
                             ],
-                            "id": 10060,
+                            "id": 10087,
                             "name": "MemberAccess",
                             "src": "10561:36:41"
                           },
@@ -8564,11 +8564,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10036,
+                              "referencedDeclaration": 10063,
                               "type": "address",
                               "value": "_from"
                             },
-                            "id": 10061,
+                            "id": 10088,
                             "name": "Identifier",
                             "src": "10598:5:41"
                           },
@@ -8578,11 +8578,11 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10040,
+                              "referencedDeclaration": 10067,
                               "type": "uint256",
                               "value": "_tokenId"
                             },
-                            "id": 10062,
+                            "id": 10089,
                             "name": "Identifier",
                             "src": "10605:8:41"
                           },
@@ -8592,27 +8592,27 @@ export const ERC721BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10042,
+                              "referencedDeclaration": 10069,
                               "type": "bytes memory",
                               "value": "_data"
                             },
-                            "id": 10063,
+                            "id": 10090,
                             "name": "Identifier",
                             "src": "10615:5:41"
                           }
                         ],
-                        "id": 10064,
+                        "id": 10091,
                         "name": "FunctionCall",
                         "src": "10561:60:41"
                       }
                     ],
-                    "id": 10065,
+                    "id": 10092,
                     "name": "VariableDeclarationStatement",
                     "src": "10545:76:41"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 10046
+                      "functionReturnParameters": 10073
                     },
                     "children": [
                       {
@@ -8647,11 +8647,11 @@ export const ERC721BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10056,
+                                  "referencedDeclaration": 10083,
                                   "type": "bytes4",
                                   "value": "retval"
                                 },
-                                "id": 10066,
+                                "id": 10093,
                                 "name": "Identifier",
                                 "src": "10635:6:41"
                               },
@@ -8661,46 +8661,46 @@ export const ERC721BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9507,
+                                  "referencedDeclaration": 9534,
                                   "type": "bytes4",
                                   "value": "ERC721_RECEIVED"
                                 },
-                                "id": 10067,
+                                "id": 10094,
                                 "name": "Identifier",
                                 "src": "10645:15:41"
                               }
                             ],
-                            "id": 10068,
+                            "id": 10095,
                             "name": "BinaryOperation",
                             "src": "10635:25:41"
                           }
                         ],
-                        "id": 10069,
+                        "id": 10096,
                         "name": "TupleExpression",
                         "src": "10634:27:41"
                       }
                     ],
-                    "id": 10070,
+                    "id": 10097,
                     "name": "Return",
                     "src": "10627:34:41"
                   }
                 ],
-                "id": 10071,
+                "id": 10098,
                 "name": "Block",
                 "src": "10485:181:41"
               }
             ],
-            "id": 10072,
+            "id": 10099,
             "name": "FunctionDefinition",
             "src": "10368:298:41"
           }
         ],
-        "id": 10073,
+        "id": 10100,
         "name": "ContractDefinition",
         "src": "300:10368:41"
       }
     ],
-    "id": 10074,
+    "id": 10101,
     "name": "SourceUnit",
     "src": "0:10669:41"
   },
@@ -8710,5 +8710,5 @@ export const ERC721BasicToken =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-05-22T05:49:38.854Z"
+  "updatedAt": "2018-07-02T23:10:02.104Z"
 }
