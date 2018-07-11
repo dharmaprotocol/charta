@@ -12,6 +12,7 @@ import { TermsContract } from "./ts/TermsContract";
 import { Collateralizer } from "./ts/Collateralizer";
 import { ERC721Receiver } from "./ts/ERC721Receiver";
 import { MockERC721Receiver } from "./ts/MockERC721Receiver";
+import { ContractRegistry } from "./ts/ContractRegistry";
 
 export {
     DebtRegistry,
@@ -28,4 +29,5 @@ export {
     Collateralizer,
     ERC721Receiver,
     MockERC721Receiver,
+    ContractRegistry,
 };
