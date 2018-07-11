@@ -13,7 +13,9 @@ contract CrowdfundingContractRegistry {
     /**
      * Creates and stores the address of a new CrowdfundingContract
      */
-    function createCrowdfundingContract() {
+    function createCrowdfundingContract()
+        external
+    {
         CrowdfundingContract crowdfundingContract = new CrowdfundingContract();
         crowdfundingContracts.push(crowdfundingContract);
     }
