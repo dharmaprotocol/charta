@@ -7,7 +7,6 @@ import "zeppelin-solidity/contracts/token/ERC20/ERC20.sol";
 pragma solidity ^0.4.18;
 
 import "./Controlled.sol";
-import "./TokenController.sol";
 
 contract ApproveAndCallFallBack {
     function receiveApproval(address from, uint256 _amount, address _token, bytes _data) public;
@@ -330,11 +329,6 @@ contract CrowdfundingContract is Controlled {
                return false;
            }
 
-           // Alerts the token controller of the transfer
-           if (isContract(controller)) {
-               require(TokenController(controller).onTransfer(_from, _to, _amount));
-           }
-
            // First update the balance array with the new value for the address
            //  sending the tokens
            updateValueAtNow(balances[_from], previousBalanceFrom - _amount);
@@ -371,11 +365,6 @@ contract CrowdfundingContract is Controlled {
         //  already 0 to mitigate the race condition described here:
         //  https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729
         require((_amount == 0) || (allowed[msg.sender][_spender] == 0));
-
-        // Alerts the token controller of the approve function call
-        if (isContract(controller)) {
-            require(TokenController(controller).onApprove(msg.sender, _spender, _amount));
-        }
 
         allowed[msg.sender][_spender] = _amount;
         Approval(msg.sender, _spender, _amount);
