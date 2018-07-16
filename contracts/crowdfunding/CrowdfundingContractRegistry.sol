@@ -1,13 +1,9 @@
 pragma solidity 0.4.18;
 
 import "./CrowdfundingContract.sol";
+import "./Controlled.sol";
 
 contract CrowdfundingContractRegistry {
-    function CrowdfundingContractRegistry(
-    ) {
-        owner = msg.sender;
-    }
-
     /**
      * Creates a new CrowdfundingContract
      */
@@ -20,9 +16,9 @@ contract CrowdfundingContractRegistry {
         bool _transfersEnabled
     )
         external
-        returns address crowdfundingContract
+        returns (address crowdfundingContract)
     {
-        CrowdfundingContract crowdfundingContract =
+        crowdfundingContract =
             new CrowdfundingContract(
                 _tokenName,
                 _decimalUnits,
@@ -31,7 +27,7 @@ contract CrowdfundingContractRegistry {
                 _transfersEnabled
             );
 
-        crowdfundingContract.changeController(_owner);
+        Controlled(crowdfundingContract).changeController(_owner);
 
         return crowdfundingContract;
     }

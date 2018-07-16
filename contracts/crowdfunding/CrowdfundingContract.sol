@@ -1,10 +1,8 @@
 pragma solidity 0.4.18;
 
 // External dependencies.
-import "zeppelin-solidity/contracts/math/SafeMath.sol";
 import "zeppelin-solidity/contracts/token/ERC20/ERC20.sol";
-
-pragma solidity ^0.4.18;
+import "zeppelin-solidity/contracts/math/SafeMath.sol";
 
 import "./Controlled.sol";
 
@@ -22,10 +20,10 @@ contract CrowdfundingContract is Controlled {
     struct  Checkpoint {
 
         // `fromBlock` is the block number that the value was generated from
-        uint128 fromBlock;
+        uint fromBlock;
 
         // `value` is the amount of tokens at a specific block number
-        uint128 value;
+        uint value;
     }
 
     string public name;                //The Token's name: e.g. DigixDAO Tokens
@@ -85,7 +83,6 @@ contract CrowdfundingContract is Controlled {
         transfersEnabled = _transfersEnabled;
 
         creationBlock = block.number;
-        totalWithdrawalAllowancePerToken = 0;
     }
 
 ///////////////////
@@ -161,6 +158,7 @@ contract CrowdfundingContract is Controlled {
     function getNumberOfRepaymentsMade(
     )
         public
+        view
         returns (uint numberOfRepaymentsMade)
     {
         return withdrawalAllowances.length;
@@ -174,9 +172,12 @@ contract CrowdfundingContract is Controlled {
         address account,
         uint start,
         uint end
+
+    )
         public
+        view
         returns (uint withdrawalAllowance)
-    ) {
+    {
         // make sure the start and end indices are valid
         require(start >= 0);
 
@@ -189,7 +190,7 @@ contract CrowdfundingContract is Controlled {
         uint totalWithdrawals = getTotalWithdrawals(account, start, end);
 
         // return the difference of the total allowance and total withdrawals
-        uint withdrawalAllowance = totalWithdrawalAllowance - totalWithdrawals;
+        return totalWithdrawalAllowance - totalWithdrawals;
     }
 
     /**
@@ -200,22 +201,22 @@ contract CrowdfundingContract is Controlled {
         address account,
         uint start,
         uint end
+    )
         public
+        view
         returns (uint totalWithdrawalAllowance)
-    ) {
-        uint totalWithdrawalAllowance = 0;
-
-        for (uint i=start; i++; i <= end) {
-            uint allowanceCheckpoint = withdrawalAllowances[i];
+    {
+        for (uint i = start; i <= end; i++) {
+            Checkpoint storage allowanceCheckpoint = withdrawalAllowances[i];
 
             uint allowance = allowanceCheckpoint.value;
             uint blockNumber = allowanceCheckpoint.fromBlock;
 
             uint balanceAtBlockNumber = balanceOfAt(account, blockNumber);
-            totalWithdrawalAllowance += allowance.mul(balanceAtRepaymentBlock);
+            totalWithdrawalAllowance += allowance.mul(balanceAtBlockNumber);
         }
 
-        return totalWithdrawalAllowance
+        return totalWithdrawalAllowance;
     }
 
     /**
@@ -226,9 +227,11 @@ contract CrowdfundingContract is Controlled {
         address account,
         uint start,
         uint end
+    )
         public
+        view
         returns (uint totalWithdrawals)
-    ) {
+    {
         uint startBlockNumber = withdrawalAllowances[start].fromBlock;
 
         // we must consider all withdrawals made up to and including the block of the next repayment,
@@ -236,7 +239,7 @@ contract CrowdfundingContract is Controlled {
         uint endBlockNumber = end + 1 < withdrawalAllowances.length ?
             withdrawalAllowances[end + 1].fromBlock : block.number;
 
-        Checkpoint memory accountWithdrawals = withdrawals[account];
+        Checkpoint[] storage accountWithdrawals = withdrawals[account];
 
         // find the earliest withdrawal at block greater than startBlockNumber
         uint min = 0;
@@ -244,7 +247,7 @@ contract CrowdfundingContract is Controlled {
         while (max > min) {
             uint mid = (max + min) / 2;
 
-            if (checkpoints[mid].fromBlock <= startBlockNumber) {
+            if (accountWithdrawals[mid].fromBlock <= startBlockNumber) {
                 min = mid + 1;
             } else {
                 max = mid;
@@ -253,10 +256,8 @@ contract CrowdfundingContract is Controlled {
 
         uint withdrawalIndex = min;
 
-        uint totalWithdrawals = 0;
-
         // add subsequent withdrawals up to and including the endBlockNumber
-        for (uint i=withdrawalIndex; i++; i < accountWithdrawals.length) {
+        for (uint i = withdrawalIndex; i < accountWithdrawals.length; i++) {
             uint currentBlockNumber = accountWithdrawals[i].fromBlock;
 
             if (currentBlockNumber >  endBlockNumber) {
@@ -419,19 +420,8 @@ contract CrowdfundingContract is Controlled {
     function balanceOfAt(address _owner, uint _blockNumber) public constant
         returns (uint) {
 
-        // These next few lines are used when the balance of the token is
-        //  requested before a check point was ever created for this token, it
-        //  requires that the `parentToken.balanceOfAt` be queried at the
-        //  genesis block for that token as this contains initial balance of
-        //  this token
-        if ((balances[_owner].length == 0)
-            || (balances[_owner][0].fromBlock > _blockNumber)) {
-            if (address(parentToken) != 0) {
-                return parentToken.balanceOfAt(_owner, min(_blockNumber, parentSnapShotBlock));
-            } else {
-                // Has no parent
-                return 0;
-            }
+        if ((balances[_owner].length == 0) || (balances[_owner][0].fromBlock > _blockNumber)) {
+            return 0;
 
         // This will return the expected balance during normal situations
         } else {
@@ -444,14 +434,9 @@ contract CrowdfundingContract is Controlled {
     /// @return The total amount of tokens at `_blockNumber`
     function totalSupplyAt(uint _blockNumber) public constant returns(uint) {
 
-        // These next few lines are used when the totalSupply of the token is
-        //  requested before a check point was ever created for this token, it
-        //  requires that the `parentToken.totalSupplyAt` be queried at the
-        //  genesis block for this token as that contains totalSupply of this
-        //  token at this block number.
-        if ((totalSupplyHistory.length == 0)
-            || (totalSupplyHistory[0].fromBlock > _blockNumber)) {
-                return 0;
+        if ((totalSupplyHistory.length == 0) || (totalSupplyHistory[0].fromBlock > _blockNumber)) {
+            return 0;
+
         // This will return the expected totalSupply during normal situations
         } else {
             return getValueAt(totalSupplyHistory, _blockNumber);
@@ -528,11 +513,11 @@ contract CrowdfundingContract is Controlled {
         if ((checkpoints.length == 0)
         || (checkpoints[checkpoints.length -1].fromBlock < block.number)) {
                Checkpoint storage newCheckPoint = checkpoints[ checkpoints.length++ ];
-               newCheckPoint.fromBlock =  uint128(block.number);
-               newCheckPoint.value = uint128(_value);
+               newCheckPoint.fromBlock =  uint(block.number);
+               newCheckPoint.value = uint(_value);
            } else {
                Checkpoint storage oldCheckPoint = checkpoints[checkpoints.length-1];
-               oldCheckPoint.value = uint128(_value);
+               oldCheckPoint.value = uint(_value);
            }
     }
 
@@ -567,7 +552,7 @@ contract CrowdfundingContract is Controlled {
             return;
         }
 
-        MiniMeToken token = MiniMeToken(_token);
+        CrowdfundingContract token = CrowdfundingContract(_token);
         uint balance = token.balanceOf(this);
         token.transfer(controller, balance);
         ClaimedTokens(_token, controller, balance);
