@@ -40,6 +40,7 @@
     "lint"
   ],
   "dependencies": {
+    "minimetoken": "^0.2.0",
     "zeppelin-solidity": "1.8.0"
   },
   "devDependencies": {
