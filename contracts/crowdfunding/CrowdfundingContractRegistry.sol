@@ -3,18 +3,35 @@ pragma solidity 0.4.18;
 import "./CrowdfundingContract.sol";
 
 contract CrowdfundingContractRegistry {
-    function CrowdfundingContractRegistry() {
+    function CrowdfundingContractRegistry(
+    ) {
         owner = msg.sender;
     }
 
     /**
-     * Creates and stores the address of a new CrowdfundingContract
+     * Creates a new CrowdfundingContract
      */
-    function createCrowdfundingContract(address _repaymentToken, uint _tokenSupply, address _owner)
+    function createCrowdfundingContract(
+        address _owner,
+        string _tokenName,
+        uint8 _decimalUnits,
+        string _tokenSymbol,
+        address _repaymentToken,
+        bool _transfersEnabled
+    )
         external
         returns address crowdfundingContract
     {
-        CrowdfundingContract crowdfundingContract = new CrowdfundingContract(_repaymentToken, _tokenSupply, _owner);
+        CrowdfundingContract crowdfundingContract =
+            new CrowdfundingContract(
+                _tokenName,
+                _decimalUnits,
+                _tokenSymbol,
+                _repaymentToken,
+                _transfersEnabled
+            );
+
+        crowdfundingContract.changeController(_owner);
 
         return crowdfundingContract;
     }
