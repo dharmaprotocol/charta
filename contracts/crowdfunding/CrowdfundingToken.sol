@@ -11,7 +11,7 @@ contract ApproveAndCallFallBack {
 }
 
 /// Much structure taken from Giveth's MiniMeToken: https://github.com/Giveth/minime
-contract CrowdfundingContract is Controlled {
+contract CrowdfundingToken is Controlled {
     using SafeMath for uint;
 
     /// @dev `Checkpoint` is the structure that attaches a block number to a
@@ -64,12 +64,12 @@ contract CrowdfundingContract is Controlled {
 // Constructor
 ////////////////
 
-    /// @notice Constructor to create a CrowdfundingContract
+    /// @notice Constructor to create a CrowdfundingToken
     /// @param _tokenName Name of the new token
     /// @param _decimalUnits Number of decimals of the new token
     /// @param _tokenSymbol Token Symbol for the new token
     /// @param _transfersEnabled If true, tokens will be able to be transferred
-    function CrowdfundingContract(
+    function CrowdfundingToken(
         string _tokenName,
         uint8 _decimalUnits,
         string _tokenSymbol,
@@ -86,7 +86,7 @@ contract CrowdfundingContract is Controlled {
     }
 
 ///////////////////
-// CrowdfundingContract Methods
+// CrowdfundingToken Methods
 ///////////////////
 
     /**
@@ -552,7 +552,7 @@ contract CrowdfundingContract is Controlled {
             return;
         }
 
-        CrowdfundingContract token = CrowdfundingContract(_token);
+        CrowdfundingToken token = CrowdfundingToken(_token);
         uint balance = token.balanceOf(this);
         token.transfer(controller, balance);
         ClaimedTokens(_token, controller, balance);

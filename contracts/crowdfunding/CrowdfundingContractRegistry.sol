@@ -1,13 +1,13 @@
 pragma solidity 0.4.18;
 
-import "./CrowdfundingContract.sol";
+import "./CrowdfundingToken.sol";
 import "./Controlled.sol";
 
-contract CrowdfundingContractRegistry {
+contract CrowdfundingTokenRegistry {
     /**
-     * Creates a new CrowdfundingContract
+     * Creates a new CrowdfundingToken
      */
-    function createCrowdfundingContract(
+    function createCrowdfundingToken(
         address _owner,
         string _tokenName,
         uint8 _decimalUnits,
@@ -19,7 +19,7 @@ contract CrowdfundingContractRegistry {
         returns (address crowdfundingContract)
     {
         crowdfundingContract =
-            new CrowdfundingContract(
+            new CrowdfundingToken(
                 _tokenName,
                 _decimalUnits,
                 _tokenSymbol,
