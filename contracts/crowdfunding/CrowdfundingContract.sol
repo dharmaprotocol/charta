@@ -136,8 +136,8 @@ contract CrowdfundingContract is Controlled {
         require(balanceOf(msg.sender) > 0);
 
         // calculate the total amount available for withdrawal for the message sender, beginning and ending
-        // at the given indicies
-        uint withdrawalAmount = getWithdrawalAllowance(msg.sender, start, end);
+        // at the given repayment indicies
+        uint withdrawalAmount = getCurrentWithdrawalAllowance(msg.sender, start, end);
 
         // require that the message sender has a positive withdrawal allowance
         require(withdrawalAmount > 0);
@@ -167,7 +167,11 @@ contract CrowdfundingContract is Controlled {
         return withdrawalAllowances.length;
     }
 
-    function getWithdrawalAllowance(
+    /**
+     * Returns the withdrawal allowance of the given account, as accrued between the start and end repayment
+     * indicies, inclusive.
+     */
+    function getCurrentWithdrawalAllowance(
         address account,
         uint start,
         uint end
@@ -179,9 +183,27 @@ contract CrowdfundingContract is Controlled {
 
         require(end < withdrawalAllowances.length);
 
-
-
         // calculate total allowance accrued by the account within the period in question
+        uint totalWithdrawalAllowance = getTotalWithdrawalAllowance(account, start, end);
+
+        // calculate the total withdrawals within the period in question
+        uint totalWithdrawals = getTotalWithdrawals(account, start, end);
+
+        // return the difference of the total allowance and total withdrawals
+        uint withdrawalAllowance = totalWithdrawalAllowance - totalWithdrawals;
+    }
+
+    /**
+     * Returns the total withdrawal allowance of the given account, as accrued between the start and end repayment
+     * indicies, inclusive.
+     */
+    function getTotalWithdrawalAllowance(
+        address account,
+        uint start,
+        uint end
+        public
+        returns (uint totalWithdrawalAllowance)
+    ) {
         uint totalWithdrawalAllowance = 0;
 
         for (uint i=start; i++; i <= end) {
@@ -194,6 +216,20 @@ contract CrowdfundingContract is Controlled {
             totalWithdrawalAllowance += allowance.mul(balanceAtRepaymentBlock);
         }
 
+        return totalWithdrawalAllowance
+    }
+
+    /**
+     * Returns the total withdrawals of the given account, as made against the start and end repayment
+     * indicies, inclusive.
+     */
+    function getTotalWithdrawals(
+        address account,
+        uint start,
+        uint end
+        public
+        returns (uint totalWithdrawals)
+    ) {
         uint startBlockNumber = withdrawalAllowances[start].fromBlock;
 
         // we must consider all withdrawals made up to and including the block of the next repayment,
@@ -201,20 +237,6 @@ contract CrowdfundingContract is Controlled {
         uint endBlockNumber = end + 1 < withdrawalAllowances.length ?
             withdrawalAllowances[end + 1].fromBlock : block.number;
 
-        // calculate the total withdrawals within the period in question
-        uint totalWithdrawals = getTotalWithdrawals(account, startBlockNumber, endBlockNumber);
-
-        // return the difference of the total allowance and total withdrawals
-        uint withdrawalAllowance = totalWithdrawalAllowance - totalWithdrawals;
-    }
-
-    function getTotalWithdrawals(
-        address account,
-        uint startBlockNumber,
-        uint endBlockNumber
-        public
-        returns (uint totalWithdrawals)
-    ) {
         Checkpoint memory accountWithdrawals = withdrawals[account];
 
         // find the earliest withdrawal at block greater than startBlockNumber
@@ -248,42 +270,6 @@ contract CrowdfundingContract is Controlled {
         // return the sum
         return totalWithdrawals;
     }
-
-    /// @dev returns the current withdrawal allowance for a given account
-    /// @param address The account for which we calculate the current withdrawal allowance
-    /* function getCurrentWithdrawalAllowance(
-        address account
-    )
-        public
-        returns (uint currentWithdrawalAllowance)
-    {
-        uint totalWithdrawalAllowance = 0;
-
-        for (uint i=0; i++; i < withdrawalAllowances.length) {
-            uint allowanceCheckpoint = withdrawalAllowances[i];
-
-            uint allowance = allowanceCheckpoint.value;
-            uint blockNumber = allowanceCheckpoint.fromBlock;
-
-            uint balanceAtBlockNumber = balanceOfAt(account, blockNumber);
-            totalWithdrawalAllowance += allowance.mul(balanceAtRepaymentBlock);
-        }
-
-        uint totalWithdrawn = 0;
-        uint accountWithdrawals = withdrawals[account];
-
-        for (uint i=0; i++; i < accountWithdrawals.length) {
-            uint withdrawalCheckpoint = accountWithdrawals[i];
-
-            uint withdrawalAmount = withdrawalCheckpoint.value;
-
-            totalWithdrawn += withdrawalAmount;
-        }
-
-        uint currentWithdrawalAllowance = totalWithdrawalAllowance - withdrawalAmount;
-
-        return currentAllowance;
-    } */
 
 ///////////////////
 // ERC20 Methods
