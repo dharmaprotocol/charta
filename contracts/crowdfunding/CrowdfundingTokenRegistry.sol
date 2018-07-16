@@ -16,9 +16,9 @@ contract CrowdfundingTokenRegistry {
         bool _transfersEnabled
     )
         external
-        returns (address crowdfundingContract)
+        returns (address crowdfundingToken)
     {
-        crowdfundingContract =
+        crowdfundingToken =
             new CrowdfundingToken(
                 _tokenName,
                 _decimalUnits,
@@ -27,8 +27,8 @@ contract CrowdfundingTokenRegistry {
                 _transfersEnabled
             );
 
-        Controlled(crowdfundingContract).changeController(_owner);
+        Controlled(crowdfundingToken).changeController(_owner);
 
-        return crowdfundingContract;
+        return crowdfundingToken;
     }
 }
