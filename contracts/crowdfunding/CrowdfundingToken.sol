@@ -32,7 +32,7 @@ contract CrowdfundingToken is Controlled {
 
     // the underlying Dharma Debt Token
     address debtToken;
-    bytes32 agreementId;
+    uint agreementId;
     address debtRegistry;
 
     // the token in which repayment to crowdfunding token holders are denominated
@@ -70,12 +70,22 @@ contract CrowdfundingToken is Controlled {
     /// @param _tokenSymbol Token Symbol for the new token
     /// @param _transfersEnabled If true, tokens will be able to be transferred
     function CrowdfundingToken(
+        address _owner,
+        address _debtToken,
+        uint _agreementId,
+        address _debtRegistry,
         string _tokenName,
         uint8 _decimalUnits,
         string _tokenSymbol,
         address _repaymentToken,
         bool _transfersEnabled
-    ) public {
+    )
+        public
+        Controlled(_owner)
+    {
+        debtToken = _debtToken;
+        agreementId = _agreementId;
+        debtRegistry = _debtRegistry;
         name = _tokenName;
         decimals = _decimalUnits;
         symbol = _tokenSymbol;
@@ -88,22 +98,6 @@ contract CrowdfundingToken is Controlled {
 ///////////////////
 // CrowdfundingToken Methods
 ///////////////////
-
-    /**
-     * Registers the debt token to be used by this contract
-     */
-    function registerDebtToken(
-        address _debtToken,
-        bytes32 _agreementId,
-        address _debtRegistry
-    )
-        external
-        onlyController
-    {
-        debtToken = _debtToken;
-        agreementId = _agreementId;
-        debtRegistry = _debtRegistry;
-    }
 
     /**
      * Registers a repayment amount and block
