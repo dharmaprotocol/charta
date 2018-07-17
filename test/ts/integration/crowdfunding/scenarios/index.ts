@@ -1,14 +1,14 @@
 import { BigNumber } from "bignumber.js";
-import * as Units from "../../../../test_utils/units";
+import * as Units from "../../../test_utils/units";
 
 import {
     SimpleInterestContractTerms,
     SimpleInterestParameters,
-} from "../../../../factories/terms_contract_parameters";
-import { DummyTokenContract } from "../../../../../../types/generated/dummy_token";
-import { SignedDebtOrder } from "../../../../../../types/kernel/debt_order";
+} from "../../../factories/terms_contract_parameters";
+import { DummyTokenContract } from "../../../../../types/generated/dummy_token";
+import { SignedDebtOrder } from "../../../../../types/kernel/debt_order";
 
-export const DEFAULT_REGISTER_TERM_START_ARGS = {
+export const DEFAULT_CREATE_CROWDFUNDING_TOKEN_ARGS = {
     principalAmount: Units.ether(1),
     interestRateFixedPoint: Units.interestRateFixedPoint(2.5),
     amortizationUnitType: new BigNumber(1),
@@ -35,6 +35,29 @@ export const DEFAULT_REGISTER_REPAYMENT_ARGS = {
     succeeds: true,
     reverts: false,
 };
+
+export interface CreateCrowdfundingTokenScenario {
+    // The test's description
+    description: string;
+    // The debt order's principal amount.
+    principalAmount: BigNumber;
+    // The debt order's interest rate (in fixed point).
+    interestRateFixedPoint: BigNumber;
+    // The index for amortization type, e.g. 0 for hourly, for debt order.
+    amortizationUnitType: BigNumber;
+    // The number of units of the given amortization type, e.g. 4 hours, for the debt order.
+    termLengthUnits: BigNumber;
+    // Given some contract terms, returns a packed version to be used in the scenario.
+    termsContractParameters: (terms: SimpleInterestContractTerms) => string;
+    // True if registry tracks token with principal token's index.
+    principalTokenInRegistry: boolean;
+    // True if the scenario does not revert and the terms contract is started.
+    succeeds: boolean;
+    // True if the transaction reverts during the scenario.
+    reverts: boolean;
+    // True if registerTermStart is called by the debt kernel upon an order being filled.
+    invokedByDebtKernel: boolean;
+}
 
 export interface RegisterRepaymentScenario {
     // The test's description
@@ -64,29 +87,6 @@ export interface RegisterRepaymentScenario {
     reverts: boolean;
     // True if the repayment makes a payment on behalf of the debtor in the scenario.
     repayFromRouter: boolean;
-}
-
-export interface RegisterTermStartScenario {
-    // The test's description
-    description: string;
-    // The debt order's principal amount.
-    principalAmount: BigNumber;
-    // The debt order's interest rate (in fixed point).
-    interestRateFixedPoint: BigNumber;
-    // The index for amortization type, e.g. 0 for hourly, for debt order.
-    amortizationUnitType: BigNumber;
-    // The number of units of the given amortization type, e.g. 4 hours, for the debt order.
-    termLengthUnits: BigNumber;
-    // Given some contract terms, returns a packed version to be used in the scenario.
-    termsContractParameters: (terms: SimpleInterestContractTerms) => string;
-    // True if registry tracks token with principal token's index.
-    principalTokenInRegistry: boolean;
-    // True if the scenario does not revert and the terms contract is started.
-    succeeds: boolean;
-    // True if the transaction reverts during the scenario.
-    reverts: boolean;
-    // True if registerTermStart is called by the debt kernel upon an order being filled.
-    invokedByDebtKernel: boolean;
 }
 
 export interface UnpackParametersFromBytesScenario {
