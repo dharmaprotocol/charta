@@ -3,21 +3,21 @@ import * as ABIDecoder from "abi-decoder";
 import * as chai from "chai";
 import * as Web3 from "web3";
 
-import { MockERC20TokenContract } from "../../../types/generated/mock_e_r_c20_token";
+import { MockERC20TokenContract } from "../../../../types/generated/mock_e_r_c20_token";
 
-import { ContractRegistryContract } from "../../../types/generated/contract_registry";
-import { DebtTokenContract } from "../../../types/generated/debt_token";
-import { DebtRegistryContract } from "../../../types/generated/debt_registry";
+import { ContractRegistryContract } from "../../../../types/generated/contract_registry";
+import { DebtTokenContract } from "../../../../types/generated/debt_token";
+import { DebtRegistryContract } from "../../../../types/generated/debt_registry";
 
-import { CrowdfundingTokenContract } from "../../../types/generated/crowdfunding_token";
-import { CrowdfundingTokenRegistryContract } from "../../../types/generated/crowdfunding_token_registry";
+import { CrowdfundingTokenContract } from "../../../../types/generated/crowdfunding_token";
+import { CrowdfundingTokenRegistryContract } from "../../../../types/generated/crowdfunding_token_registry";
 
 // Utils
-import { Web3Utils } from "../../../utils/web3_utils";
+import { Web3Utils } from "../../../../utils/web3_utils";
 
 // Test utils
-import ChaiSetup from "../test_utils/chai_setup";
-import { sendTransaction } from "../test_utils/send_transactions";
+import ChaiSetup from "../../test_utils/chai_setup";
+import { sendTransaction } from "../../test_utils/send_transactions";
 
 // Set up Chai
 ChaiSetup.configure();
@@ -28,7 +28,7 @@ const web3Utils = new Web3Utils(web3);
 const crowdfundingTokenArtifact = artifacts.require("CrowdfundingToken");
 const crowdfundingTokenRegistryArtifact = artifacts.require("CrowdfundingTokenRegistry");
 
-contract("Crowdfunding Token Registry (Unit Tests)", async (ACCOUNTS) => {
+contract("Crowdfunding Token Registry (Integration Tests)", async (ACCOUNTS) => {
     const CONTRACT_OWNER = ACCOUNTS[0];
     const CROWDFUNDING_TOKEN_CONTRACT_OWNER = ACCOUNTS[1];
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
