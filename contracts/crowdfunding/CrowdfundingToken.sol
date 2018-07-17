@@ -4,6 +4,8 @@ pragma solidity 0.4.18;
 import "zeppelin-solidity/contracts/token/ERC20/ERC20.sol";
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
 
+import "../ContractRegistry.sol";
+
 import "./Controlled.sol";
 
 contract ApproveAndCallFallBack {
@@ -33,10 +35,10 @@ contract CrowdfundingToken is Controlled {
     // the underlying Dharma Debt Token
     address debtToken;
     uint agreementId;
-    address debtRegistry;
+    ContractRegistry contractRegistry;
 
-    // the token in which repayment to crowdfunding token holders are denominated
-    address repaymentToken;
+    // the TokenRegistry index of the token in which repayment to crowdfunding token holders are denominated
+    uint repaymentTokenIndex;
 
     Checkpoint[] withdrawalAllowances;
 
@@ -73,11 +75,11 @@ contract CrowdfundingToken is Controlled {
         address _owner,
         address _debtToken,
         uint _agreementId,
-        address _debtRegistry,
+        address _contractRegistry,
         string _tokenName,
         uint8 _decimalUnits,
         string _tokenSymbol,
-        address _repaymentToken,
+        uint _repaymentTokenIndex,
         bool _transfersEnabled
     )
         public
@@ -85,11 +87,11 @@ contract CrowdfundingToken is Controlled {
     {
         debtToken = _debtToken;
         agreementId = _agreementId;
-        debtRegistry = _debtRegistry;
+        contractRegistry = ContractRegistry(_contractRegistry);
         name = _tokenName;
         decimals = _decimalUnits;
         symbol = _tokenSymbol;
-        repaymentToken = _repaymentToken;
+        repaymentTokenIndex = _repaymentTokenIndex;
         transfersEnabled = _transfersEnabled;
 
         creationBlock = block.number;
@@ -133,6 +135,8 @@ contract CrowdfundingToken is Controlled {
         require(withdrawalAmount > 0);
 
         // ensure contract has enough balance to make repayment transfer
+        address repaymentToken = contractRegistry.tokenRegistry().getTokenAddressByIndex(repaymentTokenIndex);
+
         require(ERC20(repaymentToken).balanceOf(this) >= withdrawalAmount);
 
         // transfer the total available amount to the message sender
