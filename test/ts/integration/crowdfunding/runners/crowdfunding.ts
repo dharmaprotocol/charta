@@ -21,6 +21,7 @@ import { DebtOrderFactory } from "../../../factories/debt_order_factory";
 
 // Utils
 import { Web3Utils } from "../../../../../utils/web3_utils";
+import { sendTransaction } from "../../../test_utils/send_transactions";
 
 const DEFAULT_GAS_AMOUNT = 4712388;
 
@@ -170,6 +171,38 @@ export abstract class CrowdfundingRunner {
             tokenTransferProxy.address,
             creditorBalanceAndAllowance,
             { from: creditor },
+        );
+    }
+
+    protected async transferDebtTokenToCrowdfundingTokenRegistry(
+        scenario: CreateCrowdfundingTokenScenario,
+    ) {
+        const { CREDITOR_1 } = this.accounts;
+        const {
+            crowdfundingTokenRegistry,
+            debtTokenContract,
+            dummyTokenRegistryContract,
+        } = this.contracts;
+
+        const principalTokenIndex = await dummyTokenRegistryContract.getTokenIndexBySymbol.callAsync(
+            "REP",
+        );
+        const nonExistentTokenIndex = new BigNumber(99);
+
+        const from = CREDITOR_1;
+        const to = crowdfundingTokenRegistry.address;
+        const tokenID = new BigNumber(this.agreementId);
+        const data = scenario.principalTokenInRegistry
+            ? principalTokenIndex
+            : nonExistentTokenIndex;
+
+        // Because typescript cannot handle overloaded functions, we use this helper utility
+        sendTransaction(
+            debtTokenContract.web3ContractInstance,
+            "safeTransferFrom",
+            "address,address,uint256,bytes",
+            [from, to, tokenID, data],
+            { from },
         );
     }
 }
