@@ -17,53 +17,15 @@ import { CollateralizedSimpleInterestTermsContractRunner } from "./collateralize
 import { CollateralLocked } from "../../../../logs/collateralized_contract";
 
 export class RegisterTermStartRunner extends CollateralizedSimpleInterestTermsContractRunner {
-    public testScenario(scenario: RegisterTermStartScenario) {
-        let txHash: string;
+    protected txHash: string;
 
+    public testScenario(scenario: RegisterTermStartScenario) {
         describe(scenario.description, () => {
             before(async () => {
-                await this.setupDebtOrder(scenario);
-
-                // Reset the collateralizer contract's balance for each example.
-                await this.contracts.dummyZRXToken.setBalance.sendTransactionAsync(
-                    this.contracts.collateralizerContract.address,
-                    new BigNumber(0),
-                    {
-                        from: this.accounts.CONTRACT_OWNER,
-                    },
-                );
-
-                await this.contracts.dummyZRXToken.setBalance.sendTransactionAsync(
-                    this.accounts.DEBTOR_1,
-                    scenario.collateralTokenBalance,
-                    {
-                        from: this.accounts.CONTRACT_OWNER,
-                    },
-                );
-
-                await this.contracts.dummyZRXToken.approve.sendTransactionAsync(
-                    this.contracts.tokenTransferProxy.address,
-                    scenario.collateralTokenAllowance,
-                    { from: this.accounts.DEBTOR_1 },
-                );
-
-                if (!scenario.permissionToCollateralize) {
-                    await this.contracts.collateralizerContract.revokeCollateralizeAuthorization.sendTransactionAsync(
-                        this.contracts.collateralizedSimpleInterestTermsContract.address,
-                        { from: this.accounts.CONTRACT_OWNER },
-                    );
-                }
-
-                if (scenario.invokedByDebtKernel && !scenario.reverts) {
-                    const latestBlockTime = await this.web3Utils.getLatestBlockTime();
-
-                    // Fill the debt order, thereby invoking registerTermsStart from the debt kernel.
-                    txHash = await this.fillDebtOrder();
-                }
+                await this.setupBeforeTest(scenario);
 
                 // Setup ABI decoder in order to decode logs.
-                ABIDecoder.addABI(this.contracts.collateralizedSimpleInterestTermsContract.abi);
-                ABIDecoder.addABI(this.contracts.collateralizerContract.abi);
+                this.setupABI();
             });
 
             after(async () => {
@@ -94,7 +56,10 @@ export class RegisterTermStartRunner extends CollateralizedSimpleInterestTermsCo
                         scenario.termLengthUnits,
                     );
 
-                    const returnedLog = await this.getLogs(txHash, "LogSimpleInterestTermStart");
+                    const returnedLog = await this.getLogs(
+                        this.txHash,
+                        "LogSimpleInterestTermStart",
+                    );
                     expect(returnedLog).to.deep.equal(expectedLog);
                 });
 
@@ -108,7 +73,7 @@ export class RegisterTermStartRunner extends CollateralizedSimpleInterestTermsCo
                         scenario.collateralAmount,
                     );
 
-                    const returnedLog = await this.getLogs(txHash, "CollateralLocked");
+                    const returnedLog = await this.getLogs(this.txHash, "CollateralLocked");
 
                     expect(returnedLog).to.deep.equal(expectedLog);
                 });
@@ -146,7 +111,7 @@ export class RegisterTermStartRunner extends CollateralizedSimpleInterestTermsCo
                 } else {
                     it("should not emit a LogSimpleInterestTermStart event", async () => {
                         const returnedLog = await this.getLogs(
-                            txHash,
+                            this.txHash,
                             "LogSimpleInterestTermStart",
                         );
 
@@ -157,7 +122,57 @@ export class RegisterTermStartRunner extends CollateralizedSimpleInterestTermsCo
         });
     }
 
-    private registerTermsStart() {
+    protected async setupBeforeTest(scenario: RegisterTermStartScenario) {
+        await this.setupDebtOrder(scenario);
+
+        await this.setupBalancesAndAuthorization(scenario);
+
+        if (scenario.invokedByDebtKernel && !scenario.reverts) {
+            const latestBlockTime = await this.web3Utils.getLatestBlockTime();
+
+            // Fill the debt order, thereby invoking registerTermsStart from the debt kernel.
+            this.txHash = await this.fillDebtOrder();
+        }
+    }
+
+    protected async setupBalancesAndAuthorization(scenario: RegisterTermStartScenario) {
+        // Reset the collateralizer contract's balance for each example.
+        await this.contracts.dummyZRXToken.setBalance.sendTransactionAsync(
+            this.contracts.collateralizerContract.address,
+            new BigNumber(0),
+            {
+                from: this.accounts.CONTRACT_OWNER,
+            },
+        );
+
+        await this.contracts.dummyZRXToken.setBalance.sendTransactionAsync(
+            this.accounts.DEBTOR_1,
+            scenario.collateralTokenBalance,
+            {
+                from: this.accounts.CONTRACT_OWNER,
+            },
+        );
+
+        await this.contracts.dummyZRXToken.approve.sendTransactionAsync(
+            this.contracts.tokenTransferProxy.address,
+            scenario.collateralTokenAllowance,
+            { from: this.accounts.DEBTOR_1 },
+        );
+
+        if (!scenario.permissionToCollateralize) {
+            await this.contracts.collateralizerContract.revokeCollateralizeAuthorization.sendTransactionAsync(
+                this.contracts.collateralizedSimpleInterestTermsContract.address,
+                { from: this.accounts.CONTRACT_OWNER },
+            );
+        }
+    }
+
+    protected setupABI() {
+        ABIDecoder.addABI(this.contracts.collateralizedSimpleInterestTermsContract.abi);
+        ABIDecoder.addABI(this.contracts.collateralizerContract.abi);
+    }
+
+    protected registerTermsStart() {
         const { DEBTOR_1, UNDERWRITER } = this.accounts;
         const { collateralizedSimpleInterestTermsContract } = this.contracts;
 
