@@ -7,7 +7,7 @@ import * as moment from "moment";
 import * as Web3 from "web3";
 
 // Scenario runners
-import { RegisterRepaymentScenario, RegisterTermStartScenario } from "../scenarios";
+import { CreateCrowdfundingTokenScenario } from "../scenarios";
 
 import { TestAccounts, TestContracts } from "./";
 
@@ -42,9 +42,7 @@ export abstract class CrowdfundingRunner {
         this.contracts = testContracts;
     }
 
-    public abstract testScenario(
-        scenario: RegisterRepaymentScenario | RegisterTermStartScenario,
-    ): void;
+    public abstract testScenario(scenario: CreateCrowdfundingTokenScenario): void;
 
     protected async getLogs(
         txHash: string,
@@ -72,9 +70,7 @@ export abstract class CrowdfundingRunner {
         );
     }
 
-    protected async setupDebtOrder(
-        scenario: RegisterRepaymentScenario | RegisterTermStartScenario,
-    ) {
+    protected async setupDebtOrder(scenario: CreateCrowdfundingTokenScenario) {
         const {
             simpleInterestTermsContract,
             kernel,
