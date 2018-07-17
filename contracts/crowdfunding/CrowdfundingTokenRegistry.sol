@@ -56,6 +56,8 @@ contract CrowdfundingTokenRegistry is ERC721Receiver {
 
         uint repaymentTokenIndex = bytesToUint(_data);
 
+        // TODO: require that the repaymentTokenIndex is within bounds?
+
         // create a CrowdfundingToken to wrap the DebtToken
         address crowdfundingToken = createCrowdfundingToken(
             _from,
