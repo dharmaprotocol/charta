@@ -1,7 +1,5 @@
 // External libraries
-import { RegisterRepaymentRunner } from "./register_repayment";
-import { RegisterTermStartRunner } from "./register_term_start";
-import { UnpackParametersFromBytesRunner } from "./unpack_parameters_from_bytes";
+import { CreateCrowdfundingTokenRunner } from "./create_crowdfunding_token";
 
 // Wrappers
 import { DummyTokenContract } from "../../../../../types/generated/dummy_token";
@@ -11,23 +9,25 @@ import { SimpleInterestTermsContractContract } from "../../../../../types/genera
 import { RepaymentRouterContract } from "../../../../../types/generated/repayment_router";
 import { TokenRegistryContract } from "../../../../../types/generated/token_registry";
 import { DebtTokenContract } from "../../../../../types/generated/debt_token";
+import { CrowdfundingTokenRegistryContract } from "../../../../../types/generated/crowdfunding_token_registry";
 
 export interface TestAccounts {
-    UNDERWRITER: string;
     CONTRACT_OWNER: string;
-    DEBTOR_1: string;
     CREDITOR_1: string;
+    DEBTOR_1: string;
     RELAYER: string;
+    UNDERWRITER: string;
 }
 
 export interface TestContracts {
-    tokenTransferProxy: TokenTransferProxyContract;
-    kernel: DebtKernelContract;
-    dummyREPToken: DummyTokenContract;
-    simpleInterestTermsContract: SimpleInterestTermsContractContract;
-    repaymentRouter: RepaymentRouterContract;
-    dummyTokenRegistryContract: TokenRegistryContract;
+    crowdfundingTokenRegistry: CrowdfundingTokenRegistryContract;
     debtTokenContract: DebtTokenContract;
+    dummyREPToken: DummyTokenContract;
+    dummyTokenRegistryContract: TokenRegistryContract;
+    kernel: DebtKernelContract;
+    repaymentRouter: RepaymentRouterContract;
+    simpleInterestTermsContract: SimpleInterestTermsContractContract;
+    tokenTransferProxy: TokenTransferProxyContract;
 }
 
-export { RegisterRepaymentRunner, RegisterTermStartRunner, UnpackParametersFromBytesRunner };
+export { CreateCrowdfundingTokenRunner };
