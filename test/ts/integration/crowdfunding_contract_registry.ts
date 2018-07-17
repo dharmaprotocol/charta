@@ -3,26 +3,30 @@ import * as ABIDecoder from "abi-decoder";
 import * as chai from "chai";
 import * as Web3 from "web3";
 
-import { MockDebtRegistryContract } from "../../../types/generated/mock_debt_registry";
-// import { MockDebtTokenContract } from "../../../types/generated/mock_debt_token";
 import { MockERC20TokenContract } from "../../../types/generated/mock_e_r_c20_token";
 
+import { ContractRegistryContract } from "../../../types/generated/contract_registry";
 import { DebtTokenContract } from "../../../types/generated/debt_token";
+import { DebtRegistryContract } from "../../../types/generated/debt_registry";
 
 import { CrowdfundingTokenContract } from "../../../types/generated/crowdfunding_token";
 import { CrowdfundingTokenRegistryContract } from "../../../types/generated/crowdfunding_token_registry";
 
-import ChaiSetup from "../test_utils/chai_setup";
+// Utils
+import { Web3Utils } from "../../../utils/web3_utils";
 
+// Test utils
+import ChaiSetup from "../test_utils/chai_setup";
 import { sendTransaction } from "../test_utils/send_transactions";
 
 // Set up Chai
 ChaiSetup.configure();
 const expect = chai.expect;
 
+const web3Utils = new Web3Utils(web3);
+
 const crowdfundingTokenArtifact = artifacts.require("CrowdfundingToken");
 const crowdfundingTokenRegistryArtifact = artifacts.require("CrowdfundingTokenRegistry");
-const debtTokenContract = artifacts.require("DebtToken");
 
 contract("Crowdfunding Token Registry (Unit Tests)", async (ACCOUNTS) => {
     const CONTRACT_OWNER = ACCOUNTS[0];
@@ -30,27 +34,28 @@ contract("Crowdfunding Token Registry (Unit Tests)", async (ACCOUNTS) => {
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
     const TOKEN_SYMBOL = "CFT";
 
-    let mockDebtRegistry: MockDebtRegistryContract;
-    // let mockDebtToken: MockDebtTokenContract;
     let mockToken: MockERC20TokenContract;
 
+    let contractRegistry: ContractRegistryContract;
     let crowdfundingTokenRegistry: CrowdfundingTokenRegistryContract;
     let debtToken: DebtTokenContract;
-
-    // let debtTokenWeb3ContractInstance: Web3.ContractInstance;
+    let debtRegistry: DebtRegistryContract;
 
     before(async () => {
-        mockDebtRegistry = await MockDebtRegistryContract.deployed(web3, TX_DEFAULTS);
-        // mockDebtToken = await MockDebtTokenContract.deployed(web3, TX_DEFAULTS);
+        // wait for necessary dependecies to be deployed
         mockToken = await MockERC20TokenContract.deployed(web3, TX_DEFAULTS);
 
-        const crowdfundingTokenRegistryTruffle = await crowdfundingTokenRegistryArtifact.new({
-            from: CONTRACT_OWNER,
-        });
+        contractRegistry = await ContractRegistryContract.deployed(web3, TX_DEFAULTS);
+        debtToken = await DebtTokenContract.deployed(web3, TX_DEFAULTS);
+        debtRegistry = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
 
-        // debtTokenWeb3ContractInstance = await debtTokenContract.new(mockDebtRegistry.address, {
-        //     from: CONTRACT_OWNER,
-        // });
+        // deploy the CrowdfundingTokenRegistry contract
+        const crowdfundingTokenRegistryTruffle = await crowdfundingTokenRegistryArtifact.new(
+            contractRegistry.address,
+            {
+                from: CONTRACT_OWNER,
+            },
+        );
 
         const crowdfundingTokenRegistryAsWeb3Contract = web3.eth
             .contract(crowdfundingTokenRegistryArtifact.abi)
@@ -61,30 +66,23 @@ contract("Crowdfunding Token Registry (Unit Tests)", async (ACCOUNTS) => {
             TX_DEFAULTS,
         );
 
-        // // The typings we use ingest vanilla Web3 contracts, so we convert the
-        // // contract instance deployed by truffle into a Web3 contract instance
-        // const debtTokenWeb3Contract = web3.eth
-        //     .contract(debtTokenWeb3ContractInstance.abi)
-        //     .at(debtTokenWeb3ContractInstance.address);
-        //
-        // debtToken = new DebtTokenContract(debtTokenWeb3Contract, TX_DEFAULTS);
-
-        debtToken = await DebtTokenContract.deployed(web3, TX_DEFAULTS);
-
         ABIDecoder.addABI(crowdfundingTokenRegistry.abi);
-        ABIDecoder.addABI(debtTokenContract.abi);
     });
 
     after(() => {
         ABIDecoder.removeABI(crowdfundingTokenRegistry.abi);
     });
 
+    describe("constructor", () => {
+        it("should return a CrowdfundingTokenRegistry", async () => {
+            await expect(
+                web3Utils.doesContractExistAtAddressAsync(crowdfundingTokenRegistry.address),
+            ).to.eventually.be.true;
+        });
+    });
+
     describe("#createCrowdfundingToken", () => {
         describe("successfully", () => {
-            // let txHash: string;
-            // let receipt: Web3.TransactionReceipt;
-            // let block: Web3.BlockWithoutTransactionData;
-
             // const safelyTransferWithData = async (
             //     from: string,
             //     to: string,
@@ -101,23 +99,20 @@ contract("Crowdfunding Token Registry (Unit Tests)", async (ACCOUNTS) => {
             // };
 
             before(async () => {
-                debtToken.safeTransferFrom.sendTransactionAsync(
-                    CONTRACT_OWNER,
-                    crowdfundingTokenRegistry.address,
-                    "hi",
-                    { from: CONTRACT_OWNER },
-                );
-
+                // debtToken.safeTransferFrom.sendTransactionAsync(
+                //     CONTRACT_OWNER,
+                //     crowdfundingTokenRegistry.address,
+                //     new BigNumber(),
+                //     { from: CONTRACT_OWNER },
+                // );
+                //
                 // await safelyTransferWithData(
                 //     CONTRACT_OWNER,
                 //     crowdfundingTokenRegistry.address,
                 //     tokenID,
                 //     mockToken.address,
                 // );
-
-                // // TODO: figure out how to get agreementId
-                // const agreementId = new BigNumber(web3.sha3("Temporary value"));
-
+                // TODO: figure out how to get agreementId
                 // txHash = await crowdfundingTokenRegistry.createCrowdfundingToken.sendTransactionAsync(
                 //     CROWDFUNDING_TOKEN_CONTRACT_OWNER,
                 //     mockDebtToken.address,
@@ -126,25 +121,9 @@ contract("Crowdfunding Token Registry (Unit Tests)", async (ACCOUNTS) => {
                 //     mockToken.address,
                 //     { from: CONTRACT_OWNER },
                 // );
-                //
-                // receipt = await web3.eth.getTransactionReceipt(txHash);
-                // block = await web3.eth.getBlock(receipt.blockNumber);
-            });
-
-            it("emits an event announcing the new address", async () => {
-                const expectedLogEntry = ContractAddressUpdated(
-                    ROWDFUNDING_TOKEN_CONTRACT_OWNER,
-                    "Dharma Crowdfunding Token",
-                    18,
-                    TOKEN_SYMBOL,
-                    mockToken.address,
-                    true,
-                );
-                const resultingLog = await queryLogsForEvent(
-                    txHash,
-                    EventNames.ContractAddressUpdated,
-                );
-                expect(resultingLog).to.deep.equal(expectedLogEntry);
+                // generate debt token
+                // fill debt token
+                // transfer debt token to CrowdfundingTokenRegistry
             });
         });
     });
