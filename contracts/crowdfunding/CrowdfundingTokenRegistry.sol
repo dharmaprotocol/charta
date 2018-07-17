@@ -29,8 +29,7 @@ contract CrowdfundingTokenRegistry is ERC721Receiver {
         uint _agreementId
     );
 
-    // Dharma Protocol ContractRegistry
-    ContractRegistry contractRegistry;
+    address contractRegistry;
 
     // Mapping of Dharma DebtToken agreementId to address of CrowdfundingToken
     mapping (uint => address) crowdfundingTokens;
@@ -40,7 +39,7 @@ contract CrowdfundingTokenRegistry is ERC721Receiver {
     )
         public
     {
-        contractRegistry = ContractRegistry(_contractRegistry);
+        contractRegistry = _contractRegistry;
     }
 
     /**
@@ -52,19 +51,18 @@ contract CrowdfundingTokenRegistry is ERC721Receiver {
     {
         // TODO: assert that the received ERC-721 is a DebtToken
 
-        // require that _data only contains a single address
-        require(_data.length == 20);
+        // require that _data only contains a single uint
+        require(_data.length == 32);
 
-        // TODO: investigate if repaymentToken address can be (easily) obtained from DebtRegistry entry
-        address repaymentToken = bytesToAddress(_data);
+        uint repaymentTokenIndex = bytesToUint(_data);
 
         // create a CrowdfundingToken to wrap the DebtToken
         address crowdfundingToken = createCrowdfundingToken(
             _from,
             msg.sender,
             _tokenId,
-            contractRegistry.debtRegistry(),
-            repaymentToken
+            contractRegistry,
+            repaymentTokenIndex
         );
 
         // add the CrowdfundingToken to the registry
@@ -86,8 +84,8 @@ contract CrowdfundingTokenRegistry is ERC721Receiver {
         address _owner,
         address _debtToken,
         uint _agreementId,
-        address _debtRegistry,
-        address _repaymentToken
+        address _contractRegistry,
+        uint _repaymentTokenIndex
     )
         internal
         returns (address crowdfundingToken)
@@ -98,11 +96,11 @@ contract CrowdfundingTokenRegistry is ERC721Receiver {
                 _owner,
                 _debtToken,
                 _agreementId,
-                _debtRegistry,
+                _contractRegistry,
                 TOKEN_NAME,
                 DECIMAL_UNITS,
                 TOKEN_SYMBOL,
-                _repaymentToken,
+                _repaymentTokenIndex,
                 TRANSFERS_ENABLED
             );
 
@@ -112,15 +110,15 @@ contract CrowdfundingTokenRegistry is ERC721Receiver {
         return crowdfundingToken;
     }
 
-    function bytesToAddress(
+    function bytesToUint(
         bytes bys
     )
         private
         pure
-        returns (address addr)
+        returns (uint unsigned_int)
     {
         assembly {
-          addr := mload(add(bys,20))
+          unsigned_int := mload(add(bys,32))
         }
     }
 }
