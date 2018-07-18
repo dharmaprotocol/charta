@@ -116,7 +116,7 @@ contract("Crowdfunding Token Registry (Integration Tests)", async (ACCOUNTS) => 
     });
 
     describe("#createCrowdfundingTokenRunner", () => {
-        describe("Successful create CrowdfundingToken", () => {
+        describe("Successfully create CrowdfundingToken", () => {
             SUCCESSFUL_CREATE_CROWDFUNDING_TOKEN_SCENARIOS.forEach(
                 createCrowdfundingTokenRunner.testScenario,
             );
