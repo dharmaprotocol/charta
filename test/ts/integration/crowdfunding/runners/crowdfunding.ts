@@ -192,17 +192,22 @@ export abstract class CrowdfundingRunner {
         const from = CREDITOR_1;
         const to = crowdfundingTokenRegistry.address;
         const tokenID = new BigNumber(this.agreementId);
-        const data = scenario.principalTokenInRegistry
+        const tokenIndex = scenario.principalTokenInRegistry
             ? principalTokenIndex
             : nonExistentTokenIndex;
+        const data = `0x${tokenIndex.toNumber().toString(16)}`;
 
         // Because typescript cannot handle overloaded functions, we use this helper utility
         sendTransaction(
+            web3,
             debtTokenContract.web3ContractInstance,
             "safeTransferFrom",
             "address,address,uint256,bytes",
             [from, to, tokenID, data],
-            { from },
+            {
+                from,
+                to: debtTokenContract.web3ContractInstance.address,
+            },
         );
     }
 }

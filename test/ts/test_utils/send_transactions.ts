@@ -51,17 +51,19 @@ function findMethod(abi: Web3.AbiDefinition[], name: string, inputTypes: string)
  * @return            the hash of the transaction.
  */
 export function sendTransaction(
+    web3: Web3,
     contract: Web3.ContractInstance,
     methodName: string,
     inputTypes: string,
     inputVals: any[],
-    txData: TxData = {},
-): Promise<string> {
+    txData: Web3.TxData,
+): string {
     const abiMethod = findMethod(contract.abi, methodName, inputTypes);
     const encodedData = ethjsABI.encodeMethod(abiMethod, inputVals);
 
-    return contract.sendTransaction({
+    return web3.eth.sendTransaction({
         data: encodedData,
+        gas: 4000000,
         ...txData,
     });
 }
