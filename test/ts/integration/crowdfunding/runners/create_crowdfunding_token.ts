@@ -1,8 +1,10 @@
 // External libraries
 import * as ABIDecoder from "abi-decoder";
 import { expect } from "chai";
+import { BigNumber } from "bignumber.js";
 
 // Test Utils
+import { Web3Utils } from "../../../../../utils/web3_utils";
 import { REVERT_ERROR } from "../../../test_utils/constants";
 
 // Scenario runners
@@ -13,6 +15,8 @@ import { LogSimpleInterestTermStart } from "../../../logs/simple_interest_terms_
 
 // Runners
 import { CrowdfundingRunner } from "./crowdfunding";
+
+const web3Utils = new Web3Utils(web3);
 
 export class CreateCrowdfundingTokenRunner extends CrowdfundingRunner {
     public testScenario(scenario: CreateCrowdfundingTokenScenario) {
@@ -38,9 +42,32 @@ export class CreateCrowdfundingTokenRunner extends CrowdfundingRunner {
             });
 
             if (scenario.succeeds) {
-                it("should register the resulting CrowdfundingToken");
+                let agreementId: BigNumber;
+                let crowdfundingTokenAddress: string;
 
-                it("should transfer ownership of the DebtToken to the CrowdfundingToken");
+                before(async () => {
+                    const { crowdfundingTokenRegistry } = this.contracts;
+
+                    agreementId = new BigNumber(this.agreementId);
+
+                    crowdfundingTokenAddress = await crowdfundingTokenRegistry.crowdfundingTokens.callAsync(
+                        agreementId,
+                    );
+                });
+
+                it("should deploy and register a CrowdfundingToken", async () => {
+                    await expect(
+                        web3Utils.doesContractExistAtAddressAsync(crowdfundingTokenAddress),
+                    ).to.eventually.be.true;
+                });
+
+                it("should transfer ownership of the DebtToken to the CrowdfundingToken", async () => {
+                    const { debtTokenContract } = this.contracts;
+
+                    await expect(
+                        debtTokenContract.ownerOf.callAsync(agreementId),
+                    ).to.eventually.equal(crowdfundingTokenAddress);
+                });
             }
         });
     }
