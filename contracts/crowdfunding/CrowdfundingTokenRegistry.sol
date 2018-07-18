@@ -25,7 +25,7 @@ contract CrowdfundingTokenRegistry is ERC721Receiver {
     address contractRegistry;
 
     // Mapping of Dharma DebtToken agreementId to address of CrowdfundingToken
-    mapping (uint => address) crowdfundingTokens;
+    mapping (uint => address) public crowdfundingTokens;
 
     function CrowdfundingTokenRegistry(
         address _contractRegistry
