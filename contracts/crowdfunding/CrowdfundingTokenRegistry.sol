@@ -10,14 +10,6 @@ import "./CrowdfundingToken.sol";
 import "./Controlled.sol";
 
 contract CrowdfundingTokenRegistry is ERC721Receiver {
-    // TODO: make sure magic value and function signature are still valid
-
-    /**
-     * @dev Magic value to be returned upon successful reception of an NFT
-     *  Equals to `bytes4(keccak256("onERC721Received(address,uint256,bytes)"))`
-     */
-    bytes4 constant ERC721_RECEIVED = 0xf0b9e5ba;
-
     uint8 constant DECIMAL_UNITS = 18;
     bool constant TRANSFERS_ENABLED = true;
     string constant TOKEN_NAME = "Dharma Crowdfunding Token";
@@ -26,7 +18,8 @@ contract CrowdfundingTokenRegistry is ERC721Receiver {
     event LogCreateAndRegisterCrowdfundingToken(
         address _owner,
         address _debtToken,
-        uint _agreementId
+        uint _agreementId,
+        uint _repaymentTokenIndex
     );
 
     address contractRegistry;
@@ -51,9 +44,6 @@ contract CrowdfundingTokenRegistry is ERC721Receiver {
     {
         // TODO: assert that the received ERC-721 is a DebtToken
 
-        // require that _data only contains a single uint
-        require(_data.length == 32);
-
         uint repaymentTokenIndex = bytesToUint(_data);
 
         // TODO: require that the repaymentTokenIndex is within bounds?
@@ -73,7 +63,8 @@ contract CrowdfundingTokenRegistry is ERC721Receiver {
         LogCreateAndRegisterCrowdfundingToken(
             _from,
             msg.sender,
-            _tokenId
+            _tokenId,
+            repaymentTokenIndex
         );
 
         return ERC721_RECEIVED;
@@ -107,7 +98,7 @@ contract CrowdfundingTokenRegistry is ERC721Receiver {
             );
 
         // transfer ownership of the DebtToken to the CrowdfundingToken
-        DebtToken(_debtToken).safeTransferFrom(this, crowdfundingToken, _agreementId);
+        DebtToken(_debtToken).safeTransferFrom(address(this), crowdfundingToken, _agreementId);
 
         return crowdfundingToken;
     }
