@@ -449,7 +449,9 @@ contract("CollateralizedSimpleInterestTermsContract (Unit Tests)", async (ACCOUN
                 });
 
                 it("should generated an agreementToCollateralizer entry in Collateralizer", async () => {
-                    // const address = await collateralizer.agreementToCollateralizer.callAsync(ARBITRARY_AGREEMENT_ID);
+                    const address = await collateralizer.agreementToCollateralizer.callAsync(
+                        ARBITRARY_AGREEMENT_ID,
+                    );
                 });
             });
         });
