@@ -1,5 +1,3 @@
-import { BigNumber } from "bignumber.js";
-
 // Scenarios
 import { CreateCrowdfundingTokenScenario, DEFAULT_CREATE_CROWDFUNDING_TOKEN_ARGS } from "./";
 
