@@ -2,6 +2,7 @@ pragma solidity 0.4.18;
 
 // External dependencies.
 import "zeppelin-solidity/contracts/token/ERC20/ERC20.sol";
+import "zeppelin-solidity/contracts/token/ERC721/ERC721Receiver.sol";
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
 
 import "../ContractRegistry.sol";
@@ -13,7 +14,7 @@ contract ApproveAndCallFallBack {
 }
 
 /// Much structure taken from Giveth's MiniMeToken: https://github.com/Giveth/minime
-contract CrowdfundingToken is Controlled {
+contract CrowdfundingToken is Controlled, ERC721Receiver {
     using SafeMath for uint;
 
     /// @dev `Checkpoint` is the structure that attaches a block number to a
@@ -554,6 +555,23 @@ contract CrowdfundingToken is Controlled {
         uint balance = token.balanceOf(this);
         token.transfer(controller, balance);
         ClaimedTokens(_token, controller, balance);
+    }
+
+//////////
+// ERC721Receiver Method
+//////////
+
+    function onERC721Received(
+        address,
+        uint256,
+        bytes
+    )
+        public
+        returns(bytes4)
+    {
+        // TODO: reject if not Dharma DebtToken
+
+        return ERC721_RECEIVED;
     }
 
 ////////////////
