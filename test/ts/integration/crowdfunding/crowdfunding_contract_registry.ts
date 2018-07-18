@@ -1,53 +1,78 @@
-import { BigNumber } from "bignumber.js";
-import * as ABIDecoder from "abi-decoder";
-import * as chai from "chai";
-import * as Web3 from "web3";
-
-import { MockERC20TokenContract } from "../../../../types/generated/mock_e_r_c20_token";
-
-import { ContractRegistryContract } from "../../../../types/generated/contract_registry";
-import { DebtTokenContract } from "../../../../types/generated/debt_token";
-import { DebtRegistryContract } from "../../../../types/generated/debt_registry";
-
-import { CrowdfundingTokenContract } from "../../../../types/generated/crowdfunding_token";
-import { CrowdfundingTokenRegistryContract } from "../../../../types/generated/crowdfunding_token_registry";
-
-// Utils
-import { Web3Utils } from "../../../../utils/web3_utils";
-
-// Test utils
+// Test Utils
+import { BigNumberSetup } from "../../test_utils/bignumber_setup";
 import ChaiSetup from "../../test_utils/chai_setup";
-import { sendTransaction } from "../../test_utils/send_transactions";
+
+// Wrappers
+import { DebtKernelContract } from "../../../../types/generated/debt_kernel";
+import { DebtRegistryContract } from "../../../../types/generated/debt_registry";
+import { DebtTokenContract } from "../../../../types/generated/debt_token";
+import { DummyTokenContract } from "../../../../types/generated/dummy_token";
+import { RepaymentRouterContract } from "../../../../types/generated/repayment_router";
+import { SimpleInterestTermsContractContract } from "../../../../types/generated/simple_interest_terms_contract";
+import { TokenRegistryContract } from "../../../../types/generated/token_registry";
+import { TokenTransferProxyContract } from "../../../../types/generated/token_transfer_proxy";
+import { CrowdfundingTokenRegistryContract } from "../../../../types/generated/crowdfunding_token_registry";
+import { ContractRegistryContract } from "../../../../types/generated/contract_registry";
+
+// Configure BigNumber exponentiation
+BigNumberSetup.configure();
 
 // Set up Chai
 ChaiSetup.configure();
-const expect = chai.expect;
 
-const web3Utils = new Web3Utils(web3);
+// Scenarios
+import { SUCCESSFUL_CREATE_CROWDFUNDING_TOKEN_SCENARIOS } from "./scenarios/successful_create_crowdfunding_token";
 
-const crowdfundingTokenArtifact = artifacts.require("CrowdfundingToken");
+// Scenario Runners
+import { CreateCrowdfundingTokenRunner } from "./runners";
+
 const crowdfundingTokenRegistryArtifact = artifacts.require("CrowdfundingTokenRegistry");
 
 contract("Crowdfunding Token Registry (Integration Tests)", async (ACCOUNTS) => {
-    const CONTRACT_OWNER = ACCOUNTS[0];
-    const CROWDFUNDING_TOKEN_CONTRACT_OWNER = ACCOUNTS[1];
-    const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
-    const TOKEN_SYMBOL = "CFT";
-
-    let mockToken: MockERC20TokenContract;
-
-    let contractRegistry: ContractRegistryContract;
+    let kernel: DebtKernelContract;
+    let repaymentRouter: RepaymentRouterContract;
+    let simpleInterestTermsContract: SimpleInterestTermsContractContract;
+    let tokenTransferProxy: TokenTransferProxyContract;
+    let debtTokenContract: DebtTokenContract;
+    let debtRegistryContract: DebtRegistryContract;
+    let dummyTokenRegistryContract: TokenRegistryContract;
     let crowdfundingTokenRegistry: CrowdfundingTokenRegistryContract;
-    let debtToken: DebtTokenContract;
-    let debtRegistry: DebtRegistryContract;
+    let contractRegistry: ContractRegistryContract;
+
+    let dummyREPToken: DummyTokenContract;
+
+    const CONTRACT_OWNER = ACCOUNTS[0];
+    const DEBTOR_1 = ACCOUNTS[5];
+    const CREDITOR_1 = ACCOUNTS[8];
+    const UNDERWRITER = ACCOUNTS[11];
+    const RELAYER = ACCOUNTS[12];
+
+    const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4712388 };
+
+    const createCrowdfundingTokenRunner = new CreateCrowdfundingTokenRunner(web3);
 
     before(async () => {
-        // wait for necessary dependecies to be deployed
-        mockToken = await MockERC20TokenContract.deployed(web3, TX_DEFAULTS);
+        dummyTokenRegistryContract = await TokenRegistryContract.deployed(web3, TX_DEFAULTS);
+
+        const dummyREPTokenAddress = await dummyTokenRegistryContract.getTokenAddressBySymbol.callAsync(
+            "REP",
+        );
+
+        dummyREPToken = await DummyTokenContract.at(dummyREPTokenAddress, web3, TX_DEFAULTS);
 
         contractRegistry = await ContractRegistryContract.deployed(web3, TX_DEFAULTS);
-        debtToken = await DebtTokenContract.deployed(web3, TX_DEFAULTS);
-        debtRegistry = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
+
+        debtTokenContract = await DebtTokenContract.deployed(web3, TX_DEFAULTS);
+        debtRegistryContract = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
+        simpleInterestTermsContract = await SimpleInterestTermsContractContract.deployed(
+            web3,
+            TX_DEFAULTS,
+        );
+        tokenTransferProxy = await TokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
+
+        kernel = await DebtKernelContract.deployed(web3, TX_DEFAULTS);
+
+        repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
 
         // deploy the CrowdfundingTokenRegistry contract
         const crowdfundingTokenRegistryTruffle = await crowdfundingTokenRegistryArtifact.new(
@@ -65,66 +90,36 @@ contract("Crowdfunding Token Registry (Integration Tests)", async (ACCOUNTS) => 
             crowdfundingTokenRegistryAsWeb3Contract,
             TX_DEFAULTS,
         );
-
-        ABIDecoder.addABI(crowdfundingTokenRegistry.abi);
     });
 
-    after(() => {
-        ABIDecoder.removeABI(crowdfundingTokenRegistry.abi);
+    before(() => {
+        const testAccounts = {
+            UNDERWRITER,
+            CONTRACT_OWNER,
+            DEBTOR_1,
+            CREDITOR_1,
+            RELAYER,
+        };
+
+        const testContracts = {
+            debtTokenContract,
+            dummyREPToken,
+            dummyTokenRegistryContract,
+            kernel,
+            repaymentRouter,
+            simpleInterestTermsContract,
+            tokenTransferProxy,
+            crowdfundingTokenRegistry,
+        };
+
+        createCrowdfundingTokenRunner.initialize(testAccounts, testContracts);
     });
 
-    describe("constructor", () => {
-        it("should return a CrowdfundingTokenRegistry", async () => {
-            await expect(
-                web3Utils.doesContractExistAtAddressAsync(crowdfundingTokenRegistry.address),
-            ).to.eventually.be.true;
-        });
-    });
-
-    describe("#createCrowdfundingToken", () => {
-        describe("successfully", () => {
-            // const safelyTransferWithData = async (
-            //     from: string,
-            //     to: string,
-            //     tokenID: BigNumber,
-            //     data: string,
-            // ) => {
-            //     return sendTransaction(
-            //         debtTokenWeb3ContractInstance,
-            //         "safeTransferFrom",
-            //         "address,address,uint256,bytes",
-            //         [from, to, tokenID, data],
-            //         { from },
-            //     );
-            // };
-
-            before(async () => {
-                // debtToken.safeTransferFrom.sendTransactionAsync(
-                //     CONTRACT_OWNER,
-                //     crowdfundingTokenRegistry.address,
-                //     new BigNumber(),
-                //     { from: CONTRACT_OWNER },
-                // );
-                //
-                // await safelyTransferWithData(
-                //     CONTRACT_OWNER,
-                //     crowdfundingTokenRegistry.address,
-                //     tokenID,
-                //     mockToken.address,
-                // );
-                // TODO: figure out how to get agreementId
-                // txHash = await crowdfundingTokenRegistry.createCrowdfundingToken.sendTransactionAsync(
-                //     CROWDFUNDING_TOKEN_CONTRACT_OWNER,
-                //     mockDebtToken.address,
-                //     agreementId,
-                //     mockDebtRegistry.address,
-                //     mockToken.address,
-                //     { from: CONTRACT_OWNER },
-                // );
-                // generate debt token
-                // fill debt token
-                // transfer debt token to CrowdfundingTokenRegistry
-            });
+    describe("#createCrowdfundingTokenRunner", () => {
+        describe("Successful create CrowdfundingToken", () => {
+            SUCCESSFUL_CREATE_CROWDFUNDING_TOKEN_SCENARIOS.forEach(
+                createCrowdfundingTokenRunner.testScenario,
+            );
         });
     });
 });
