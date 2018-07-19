@@ -103,12 +103,12 @@ export abstract class CrowdfundingRunner {
 
         const defaultOrderParams = {
             creditor: CREDITOR_1,
-            creditorFee: Units.ether(0.002),
+            creditorFee: Units.ether(0.0),
             debtKernelContract: kernel.address,
             debtOrderVersion: kernel.address,
             debtTokenContract: debtTokenContract.address,
             debtor: DEBTOR_1,
-            debtorFee: Units.ether(0.001),
+            debtorFee: Units.ether(0.0),
             expirationTimestampInSec: new BigNumber(
                 moment
                     .unix(latestBlockTime)
@@ -120,11 +120,11 @@ export abstract class CrowdfundingRunner {
             principalAmount: scenario.principalAmount,
             principalTokenAddress: dummyREPToken.address,
             relayer: RELAYER,
-            relayerFee: Units.ether(0.0015),
+            relayerFee: Units.ether(0.0),
             termsContract: simpleInterestTermsContract.address,
             termsContractParameters,
             underwriter: UNDERWRITER,
-            underwriterFee: Units.ether(0.0015),
+            underwriterFee: Units.ether(0.0),
             underwriterRiskRating: Units.underwriterRiskRatingFixedPoint(1.35),
         };
 
