@@ -193,7 +193,7 @@ contract CrowdfundingToken is Controlled, ERC721Receiver {
         uint totalWithdrawals = getTotalWithdrawals(account, start, end);
 
         // return the difference of the total allowance and total withdrawals
-        return totalWithdrawalAllowance - totalWithdrawals;
+        return totalWithdrawalAllowance.sub(totalWithdrawals);
     }
 
     /**
@@ -216,7 +216,7 @@ contract CrowdfundingToken is Controlled, ERC721Receiver {
             uint blockNumber = allowanceCheckpoint.fromBlock;
 
             uint balanceAtBlockNumber = balanceOfAt(account, blockNumber);
-            totalWithdrawalAllowance += allowance.mul(balanceAtBlockNumber);
+            totalWithdrawalAllowance = totalWithdrawalAllowance.add(allowance.mul(balanceAtBlockNumber));
         }
 
         return totalWithdrawalAllowance;
@@ -272,7 +272,7 @@ contract CrowdfundingToken is Controlled, ERC721Receiver {
                 break;
             }
 
-            totalWithdrawals += accountWithdrawals[i].value;
+            totalWithdrawals = totalWithdrawals.add(accountWithdrawals[i].value);
         }
 
         // return the sum
