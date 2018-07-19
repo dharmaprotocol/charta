@@ -111,10 +111,9 @@ contract CrowdfundingToken is Controlled, ERC721Receiver {
         external
         onlyController
     {
-        // TODO: handle case where totalSupply() == 0
-        // cases:
-        // 1. reject this function
-        // 2. mint some number of token at genesis, distribute appropriately
+        // if tokens have not yet been minted, we reject the repayment because we would not
+        // be able to divide the repayment into withdrawal allowances
+        require(totalSupply() > 0);
 
         uint withdrawalAllowancePerToken = _repaymentAmount.div(totalSupply());
         updateValueAtNow(withdrawalAllowances, withdrawalAllowancePerToken);
@@ -456,7 +455,6 @@ contract CrowdfundingToken is Controlled, ERC721Receiver {
 // Generate and destroy tokens
 ////////////////
 
-    /// TODO: How do we want to handle token generation?
     /// @notice Generates `_amount` tokens that are assigned to `_owner`
     /// @param _owner The address that will be assigned the new tokens
     /// @param _amount The quantity of tokens generated
@@ -579,8 +577,6 @@ contract CrowdfundingToken is Controlled, ERC721Receiver {
         public
         returns(bytes4)
     {
-        // TODO: reject if not Dharma DebtToken
-
         return ERC721_RECEIVED;
     }
 
