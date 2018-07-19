@@ -5,6 +5,7 @@ import "zeppelin-solidity/contracts/token/ERC721/ERC721Receiver.sol";
 import "../ContractRegistry.sol";
 import "../DebtRegistry.sol";
 import "../DebtToken.sol";
+import "../TokenRegistry.sol";
 
 import "./CrowdfundingToken.sol";
 import "./Controlled.sol";
@@ -22,17 +23,17 @@ contract CrowdfundingTokenRegistry is ERC721Receiver {
         uint _repaymentTokenIndex
     );
 
-    address contractRegistry;
+    address contractRegistryAddress;
 
     // Mapping of Dharma DebtToken agreementId to address of CrowdfundingToken
     mapping (uint => address) public crowdfundingTokens;
 
     function CrowdfundingTokenRegistry(
-        address _contractRegistry
+        address _contractRegistryAddress
     )
         public
     {
-        contractRegistry = _contractRegistry;
+        contractRegistryAddress = _contractRegistryAddress;
     }
 
     /**
@@ -42,18 +43,22 @@ contract CrowdfundingTokenRegistry is ERC721Receiver {
         public
         returns (bytes4)
     {
-        // TODO: assert that the received ERC-721 is a DebtToken
+        ContractRegistry contractRegistry = ContractRegistry(contractRegistryAddress);
+
+        // require that the received ERC-721 is a DebtToken
+        require(msg.sender == address(contractRegistry.debtToken()));
 
         uint repaymentTokenIndex = bytesToUint(_data);
 
-        // TODO: require that the repaymentTokenIndex is within bounds?
+        // require that the given repaymentTokenIndex maps to a token in the registry
+        require(contractRegistry.tokenRegistry().getTokenAddressByIndex(repaymentTokenIndex) != address(0));
 
         // create a CrowdfundingToken to wrap the DebtToken
         address crowdfundingToken = createCrowdfundingToken(
             _from,
             msg.sender,
             _tokenId,
-            contractRegistry,
+            contractRegistryAddress,
             repaymentTokenIndex
         );
 
@@ -77,7 +82,7 @@ contract CrowdfundingTokenRegistry is ERC721Receiver {
         address _owner,
         address _debtToken,
         uint _agreementId,
-        address _contractRegistry,
+        address _contractRegistryAddress,
         uint _repaymentTokenIndex
     )
         internal
@@ -89,7 +94,7 @@ contract CrowdfundingTokenRegistry is ERC721Receiver {
                 _owner,
                 _debtToken,
                 _agreementId,
-                _contractRegistry,
+                _contractRegistryAddress,
                 TOKEN_NAME,
                 DECIMAL_UNITS,
                 TOKEN_SYMBOL,
