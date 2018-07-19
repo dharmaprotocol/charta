@@ -9,7 +9,7 @@ import {
 import { DummyTokenContract } from "../../../../../types/generated/dummy_token";
 import { SignedDebtOrder } from "../../../../../types/kernel/debt_order";
 
-export const DEFAULT_CREATE_CROWDFUNDING_TOKEN_ARGS: CreateCrowdfundingTokenScenario = {
+export const DEFAULT_CREATE_CROWDFUNDING_TOKEN_ARGS = {
     description: "default description",
     principalAmount: Units.ether(1),
     interestRateFixedPoint: Units.interestRateFixedPoint(2.5),
@@ -23,7 +23,7 @@ export const DEFAULT_CREATE_CROWDFUNDING_TOKEN_ARGS: CreateCrowdfundingTokenScen
         SimpleInterestParameters.pack(terms),
 };
 
-export const DEFAULT_WITHDRAW_ON_CROWDFUNDING_TOKEN_ARGS: WithdrawOnCrowdfundingTokenScenario = _.merge(
+export const DEFAULT_WITHDRAW_ON_CROWDFUNDING_TOKEN_ARGS = _.merge(
     DEFAULT_CREATE_CROWDFUNDING_TOKEN_ARGS,
     {
         repaymentAmount: Units.ether(0.25),
