@@ -104,14 +104,15 @@ contract CrowdfundingTokenRegistry is ERC721Receiver {
     }
 
     function bytesToUint(
-        bytes bys
+        bytes b
     )
         private
         pure
         returns (uint unsigned_int)
     {
-        assembly {
-          unsigned_int := mload(add(bys,32))
+        for(uint i = 0; i < b.length; i++){
+            unsigned_int = unsigned_int + uint(b[i]) * (2 ** (8 * (b.length - (i+1))));
         }
+        return unsigned_int;
     }
 }
