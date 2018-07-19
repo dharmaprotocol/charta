@@ -21,6 +21,7 @@ import { DebtOrderFactory } from "../../../factories/debt_order_factory";
 
 // Utils
 import { Web3Utils } from "../../../../../utils/web3_utils";
+import { UNLIMITED_PROXY_TOKEN_TRANSFER_ALLOWANCE } from "../../../test_utils/constants";
 import { sendTransaction } from "../../../test_utils/send_transactions";
 
 const DEFAULT_GAS_AMOUNT = 4712388;
@@ -159,17 +160,15 @@ export abstract class CrowdfundingRunner {
             from: debtor,
         });
 
-        const creditorBalanceAndAllowance = debtOrder
-            .getPrincipalAmount()
-            .plus(debtOrder.getCreditorFee());
+        const creditorBalance = debtOrder.getPrincipalAmount().plus(debtOrder.getCreditorFee());
 
-        await token.setBalance.sendTransactionAsync(creditor, creditorBalanceAndAllowance, {
+        await token.setBalance.sendTransactionAsync(creditor, creditorBalance, {
             from: CONTRACT_OWNER,
         });
 
         await token.approve.sendTransactionAsync(
             tokenTransferProxy.address,
-            creditorBalanceAndAllowance,
+            UNLIMITED_PROXY_TOKEN_TRANSFER_ALLOWANCE,
             { from: creditor },
         );
     }
