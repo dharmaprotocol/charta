@@ -2,6 +2,7 @@
 import * as ABIDecoder from "abi-decoder";
 import { expect } from "chai";
 import { BigNumber } from "bignumber.js";
+BigNumber.config({ DECIMAL_PLACES: 0, ROUNDING_MODE: BigNumber.ROUND_DOWN });
 
 // Wrappers
 import { CrowdfundingTokenContract } from "../../../../../types/generated/crowdfunding_token";
@@ -26,6 +27,11 @@ export class WithdrawOnCrowdfundingTokenRunner extends CrowdfundingRunner {
 
     public testScenario(scenario: WithdrawOnCrowdfundingTokenScenario) {
         describe(scenario.description, () => {
+            let tokenHolders: string[];
+            let startRepaymentIndex: BigNumber;
+            let endRepaymentIndex: BigNumber;
+            let initialWithdrawalAllowances: BigNumber[];
+
             before(async () => {
                 await this.setupDebtOrder(scenario);
 
@@ -40,13 +46,27 @@ export class WithdrawOnCrowdfundingTokenRunner extends CrowdfundingRunner {
                     await this.findCrowdfundingToken();
 
                     // Mint and distrbute tokens
-                    await this.mintTokens();
+                    await this.mintTokens(scenario);
 
-                    // make a repayment to the DebtToken
-                    await this.makeRepayment(scenario);
+                    for (let i = 0; i < scenario.repaymentAmounts.length; i++) {
+                        const repaymentAmount = scenario.repaymentAmounts[i];
 
-                    // register the repayment with the CrowdfundingToken
-                    await this.registerRepayment(scenario);
+                        // Make a repayment to the DebtToken
+                        await this.makeRepayment(repaymentAmount);
+
+                        // Register the repayment with the CrowdfundingToken
+                        await this.registerRepayment(repaymentAmount);
+                    }
+
+                    const { TOKEN_HOLDER_1, TOKEN_HOLDER_2, TOKEN_HOLDER_3 } = this.accounts;
+
+                    tokenHolders = [TOKEN_HOLDER_1, TOKEN_HOLDER_2, TOKEN_HOLDER_3];
+
+                    startRepaymentIndex = new BigNumber(0);
+
+                    endRepaymentIndex = new BigNumber(scenario.repaymentAmounts.length - 1);
+
+                    initialWithdrawalAllowances = this.getInitialWithdrawalAllowances(scenario);
                 }
 
                 // Setup ABI decoder in order to decode logs
@@ -59,64 +79,73 @@ export class WithdrawOnCrowdfundingTokenRunner extends CrowdfundingRunner {
             });
 
             if (scenario.succeeds) {
-                it("should return the correct current withdrawal allowance");
+                it("should return the correct current withdrawal allowance", async () => {
+                    initialWithdrawalAllowances.forEach(async (withdrawalAllowance, index) => {
+                        const tokenHolder = tokenHolders[index];
 
-                it("should allow the token owner to withdraw up to their current withdrawal allowance", async () => {
-                    // TODO: add multiple token holders logic to scenarios
+                        const returnedWithdrawalAllowance = await this.crowdfundingToken.getCurrentWithdrawalAllowance.callAsync(
+                            tokenHolder,
+                            startRepaymentIndex,
+                            endRepaymentIndex,
+                        );
 
-                    const { DEBTOR_1 } = this.accounts;
+                        expect(returnedWithdrawalAllowance).to.bignumber.equal(withdrawalAllowance);
+                    });
+                });
+
+                it("should allow the token owner to withdraw their current withdrawal allowance", async () => {
                     const { dummyREPToken } = this.contracts;
 
-                    // TODO: add logic around calculating withdrawal allowance
-                    const withdrawalAllowance = scenario.repaymentAmount;
+                    initialWithdrawalAllowances.forEach(async (withdrawalAllowance, index) => {
+                        const tokenHolder = tokenHolders[index];
 
-                    const balanceBeforeWithdrawal = await dummyREPToken.balanceOf.callAsync(
-                        DEBTOR_1,
-                    );
+                        const balanceBeforeWithdrawal = await dummyREPToken.balanceOf.callAsync(
+                            tokenHolder,
+                        );
 
-                    await this.crowdfundingToken.withdraw.sendTransactionAsync(
-                        new BigNumber(0),
-                        new BigNumber(0),
-                        {
-                            from: DEBTOR_1,
-                        },
-                    );
+                        await this.crowdfundingToken.withdraw.sendTransactionAsync(
+                            startRepaymentIndex,
+                            endRepaymentIndex,
+                            {
+                                from: tokenHolder,
+                            },
+                        );
 
-                    const balanceAfterWithdrawal = await dummyREPToken.balanceOf.callAsync(
-                        DEBTOR_1,
-                    );
+                        const balanceAfterWithdrawal = await dummyREPToken.balanceOf.callAsync(
+                            tokenHolder,
+                        );
 
-                    expect(balanceAfterWithdrawal.minus(withdrawalAllowance)).to.bignumber.equal(
-                        balanceBeforeWithdrawal,
-                    );
+                        expect(
+                            balanceAfterWithdrawal.minus(withdrawalAllowance),
+                        ).to.bignumber.equal(balanceBeforeWithdrawal);
+                    });
                 });
             }
         });
     }
 
-    protected async makeRepayment(scenario: WithdrawOnCrowdfundingTokenScenario) {
+    protected async makeRepayment(repaymentAmount: BigNumber) {
         const { CONTRACT_OWNER, CREDITOR_1 } = this.accounts;
         const { dummyREPToken, repaymentRouter } = this.contracts;
 
-        await dummyREPToken.setBalance.sendTransactionAsync(CREDITOR_1, scenario.repaymentAmount, {
+        await dummyREPToken.setBalance.sendTransactionAsync(CREDITOR_1, repaymentAmount, {
             from: CONTRACT_OWNER,
         });
 
         await repaymentRouter.repay.sendTransactionAsync(
             this.agreementId,
-            scenario.repaymentAmount,
+            repaymentAmount,
             dummyREPToken.address,
             { from: CREDITOR_1 },
         );
     }
 
-    protected async registerRepayment(scenario: WithdrawOnCrowdfundingTokenScenario) {
+    protected async registerRepayment(repaymentAmount: BigNumber) {
         const { CREDITOR_1 } = this.accounts;
 
-        await this.crowdfundingToken.registerRepayment.sendTransactionAsync(
-            scenario.repaymentAmount,
-            { from: CREDITOR_1 },
-        );
+        await this.crowdfundingToken.registerRepayment.sendTransactionAsync(repaymentAmount, {
+            from: CREDITOR_1,
+        });
     }
 
     protected async findCrowdfundingToken() {
@@ -139,14 +168,35 @@ export class WithdrawOnCrowdfundingTokenRunner extends CrowdfundingRunner {
         );
     }
 
-    protected async mintTokens() {
-        const { CREDITOR_1, DEBTOR_1 } = this.accounts;
+    protected async mintTokens(scenario: WithdrawOnCrowdfundingTokenScenario) {
+        const { CREDITOR_1, TOKEN_HOLDER_1, TOKEN_HOLDER_2, TOKEN_HOLDER_3 } = this.accounts;
 
-        // TODO: add mint logic to scenarios
-        const mintAmount = new BigNumber(1000);
+        const tokenHolders = [TOKEN_HOLDER_1, TOKEN_HOLDER_2, TOKEN_HOLDER_3];
 
-        await this.crowdfundingToken.generateTokens.sendTransactionAsync(DEBTOR_1, mintAmount, {
-            from: CREDITOR_1,
+        scenario.tokenDistribution.forEach(async (tokenAmount, index) => {
+            await this.crowdfundingToken.generateTokens.sendTransactionAsync(
+                tokenHolders[index],
+                tokenAmount,
+                {
+                    from: CREDITOR_1,
+                },
+            );
         });
+    }
+
+    protected getInitialWithdrawalAllowances(scenario: WithdrawOnCrowdfundingTokenScenario) {
+        const { repaymentAmounts, tokenDistribution } = scenario;
+
+        const totalRepaymentAmount = this.getBigNumberArraySum(repaymentAmounts);
+
+        const totalSupply = this.getBigNumberArraySum(tokenDistribution);
+
+        return tokenDistribution.map((tokenAmount) =>
+            totalRepaymentAmount.times(tokenAmount).div(totalSupply),
+        );
+    }
+
+    protected getBigNumberArraySum(array: BigNumber[]) {
+        return array.reduce((total, num) => total.plus(num), new BigNumber(0));
     }
 }
