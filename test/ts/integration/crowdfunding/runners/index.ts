@@ -18,6 +18,9 @@ export interface TestAccounts {
     DEBTOR_1: string;
     RELAYER: string;
     UNDERWRITER: string;
+    TOKEN_HOLDER_1: string;
+    TOKEN_HOLDER_2: string;
+    TOKEN_HOLDER_3: string;
 }
 
 export interface TestContracts {

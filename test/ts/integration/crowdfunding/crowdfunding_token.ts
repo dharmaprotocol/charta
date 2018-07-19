@@ -47,6 +47,9 @@ contract("Crowdfunding Token (Integration Tests)", async (ACCOUNTS) => {
     const CREDITOR_1 = ACCOUNTS[8];
     const UNDERWRITER = ACCOUNTS[11];
     const RELAYER = ACCOUNTS[12];
+    const TOKEN_HOLDER_1 = ACCOUNTS[13];
+    const TOKEN_HOLDER_2 = ACCOUNTS[14];
+    const TOKEN_HOLDER_3 = ACCOUNTS[15];
 
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4712388 };
 
@@ -100,6 +103,9 @@ contract("Crowdfunding Token (Integration Tests)", async (ACCOUNTS) => {
             DEBTOR_1,
             CREDITOR_1,
             RELAYER,
+            TOKEN_HOLDER_1,
+            TOKEN_HOLDER_2,
+            TOKEN_HOLDER_3,
         };
 
         const testContracts = {
