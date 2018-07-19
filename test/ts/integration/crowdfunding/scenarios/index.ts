@@ -26,7 +26,8 @@ export const DEFAULT_CREATE_CROWDFUNDING_TOKEN_ARGS = {
 export const DEFAULT_WITHDRAW_ON_CROWDFUNDING_TOKEN_ARGS = _.merge(
     DEFAULT_CREATE_CROWDFUNDING_TOKEN_ARGS,
     {
-        repaymentAmount: Units.ether(0.25),
+        repaymentAmounts: [Units.ether(0.25)],
+        tokenDistribution: [new BigNumber(1000)],
     },
 );
 
@@ -54,6 +55,8 @@ export interface CreateCrowdfundingTokenScenario {
 }
 
 export interface WithdrawOnCrowdfundingTokenScenario extends CreateCrowdfundingTokenScenario {
-    // The amount that the CrowdfundingToken issuer repays.
-    repaymentAmount: BigNumber;
+    // The repayments made by the CrowdfundingToken issuer.
+    repaymentAmounts: BigNumber[];
+    // The distribution of CrowdfundingTokens
+    tokenDistribution: BigNumber[];
 }
