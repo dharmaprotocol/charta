@@ -111,6 +111,11 @@ contract CrowdfundingToken is Controlled, ERC721Receiver {
         external
         onlyController
     {
+        // TODO: handle case where totalSupply() == 0
+        // cases:
+        // 1. reject this function
+        // 2. mint some number of token at genesis, distribute appropriately
+
         uint withdrawalAllowancePerToken = _repaymentAmount.div(totalSupply());
         updateValueAtNow(withdrawalAllowances, withdrawalAllowancePerToken);
     }
@@ -231,14 +236,19 @@ contract CrowdfundingToken is Controlled, ERC721Receiver {
         view
         returns (uint totalWithdrawals)
     {
+        Checkpoint[] storage accountWithdrawals = withdrawals[account];
+
+        // if no withdrawals have been made, return 0
+        if (accountWithdrawals.length == 0) {
+            return 0;
+        }
+
         uint startBlockNumber = withdrawalAllowances[start].fromBlock;
 
         // we must consider all withdrawals made up to and including the block of the next repayment,
         // or the current block, if end is the last repayment
         uint endBlockNumber = end + 1 < withdrawalAllowances.length ?
             withdrawalAllowances[end + 1].fromBlock : block.number;
-
-        Checkpoint[] storage accountWithdrawals = withdrawals[account];
 
         // find the earliest withdrawal at block greater than startBlockNumber
         uint min = 0;
