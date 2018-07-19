@@ -1,5 +1,6 @@
 // External libraries
-import { CreateCrowdfundingTokenRunner } from "./create_crowdfunding_token";
+export { CreateCrowdfundingTokenRunner } from "./create_crowdfunding_token";
+export { WithdrawOnCrowdfundingTokenRunner } from "./withdraw_on_crowdfunding_token";
 
 // Wrappers
 import { DummyTokenContract } from "../../../../../types/generated/dummy_token";
@@ -29,5 +30,3 @@ export interface TestContracts {
     simpleInterestTermsContract: SimpleInterestTermsContractContract;
     tokenTransferProxy: TokenTransferProxyContract;
 }
-
-export { CreateCrowdfundingTokenRunner };
