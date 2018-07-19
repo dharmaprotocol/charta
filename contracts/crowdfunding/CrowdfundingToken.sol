@@ -41,7 +41,7 @@ contract CrowdfundingToken is Controlled, ERC721Receiver {
     // the TokenRegistry index of the token in which repayment to crowdfunding token holders are denominated
     uint repaymentTokenIndex;
 
-    Checkpoint[] withdrawalAllowances;
+    Checkpoint[] public repayments;
 
     // keeps track of how much has been withdrawn from each address
     mapping (address => Checkpoint[]) withdrawals;
@@ -115,8 +115,7 @@ contract CrowdfundingToken is Controlled, ERC721Receiver {
         // be able to divide the repayment into withdrawal allowances
         require(totalSupply() > 0);
 
-        uint withdrawalAllowancePerToken = _repaymentAmount.div(totalSupply());
-        updateValueAtNow(withdrawalAllowances, withdrawalAllowancePerToken);
+        updateValueAtNow(repayments, _repaymentAmount);
     }
 
     /**
@@ -164,7 +163,7 @@ contract CrowdfundingToken is Controlled, ERC721Receiver {
         view
         returns (uint numberOfRepaymentsMade)
     {
-        return withdrawalAllowances.length;
+        return repayments.length;
     }
 
     /**
@@ -184,7 +183,7 @@ contract CrowdfundingToken is Controlled, ERC721Receiver {
         // make sure the start and end indices are valid
         require(start >= 0);
 
-        require(end < withdrawalAllowances.length);
+        require(end < repayments.length);
 
         // calculate total allowance accrued by the account within the period in question
         uint totalWithdrawalAllowance = getTotalWithdrawalAllowance(account, start, end);
@@ -210,13 +209,16 @@ contract CrowdfundingToken is Controlled, ERC721Receiver {
         returns (uint totalWithdrawalAllowance)
     {
         for (uint i = start; i <= end; i++) {
-            Checkpoint storage allowanceCheckpoint = withdrawalAllowances[i];
+            Checkpoint storage repaymentCheckpoint = repayments[i];
 
-            uint allowance = allowanceCheckpoint.value;
-            uint blockNumber = allowanceCheckpoint.fromBlock;
+            uint repaymentAmount = repaymentCheckpoint.value;
+            uint blockNumber = repaymentCheckpoint.fromBlock;
 
             uint balanceAtBlockNumber = balanceOfAt(account, blockNumber);
-            totalWithdrawalAllowance = totalWithdrawalAllowance.add(allowance.mul(balanceAtBlockNumber));
+            uint totalSupplyAtBlockNumber = totalSupplyAt(blockNumber);
+
+            totalWithdrawalAllowance = totalWithdrawalAllowance
+                .add(repaymentAmount.mul(balanceAtBlockNumber).div(totalSupplyAtBlockNumber));
         }
 
         return totalWithdrawalAllowance;
@@ -242,12 +244,12 @@ contract CrowdfundingToken is Controlled, ERC721Receiver {
             return 0;
         }
 
-        uint startBlockNumber = withdrawalAllowances[start].fromBlock;
+        uint startBlockNumber = repayments[start].fromBlock;
 
         // we must consider all withdrawals made up to and including the block of the next repayment,
         // or the current block, if end is the last repayment
-        uint endBlockNumber = end + 1 < withdrawalAllowances.length ?
-            withdrawalAllowances[end + 1].fromBlock : block.number;
+        uint endBlockNumber = end + 1 < repayments.length ?
+            repayments[end + 1].fromBlock : block.number;
 
         // find the earliest withdrawal at block greater than startBlockNumber
         uint min = 0;
