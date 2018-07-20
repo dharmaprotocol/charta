@@ -191,16 +191,7 @@ export class WithdrawOnCrowdfundingTokenRunner extends CrowdfundingRunner {
                             const { TOKEN_HOLDER_1, TOKEN_HOLDER_2 } = this.accounts;
                             const { tokenDistribution } = scenario;
 
-                            // Enable transfer
-                            await this.crowdfundingToken.approve.sendTransactionAsync(
-                                TOKEN_HOLDER_1,
-                                numTokensTransferred,
-                                { from: TOKEN_HOLDER_1 },
-                            );
-
-                            // Transfer tokens
-                            await this.crowdfundingToken.transferFrom.sendTransactionAsync(
-                                TOKEN_HOLDER_1,
+                            await this.crowdfundingToken.transfer.sendTransactionAsync(
                                 TOKEN_HOLDER_2,
                                 numTokensTransferred,
                                 { from: TOKEN_HOLDER_1 },
