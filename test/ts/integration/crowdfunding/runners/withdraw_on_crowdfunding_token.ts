@@ -1,6 +1,7 @@
 // External libraries
 import * as ABIDecoder from "abi-decoder";
 import { expect } from "chai";
+import * as Units from "../../../test_utils/units";
 import { BigNumber } from "bignumber.js";
 BigNumber.config({ DECIMAL_PLACES: 0, ROUNDING_MODE: BigNumber.ROUND_DOWN });
 
@@ -32,7 +33,7 @@ export class WithdrawOnCrowdfundingTokenRunner extends CrowdfundingRunner {
             let endRepaymentIndex: BigNumber;
             let initialWithdrawalAllowances: BigNumber[];
 
-            before(async () => {
+            beforeEach(async () => {
                 await this.setupDebtOrder(scenario);
 
                 if (scenario.invokedByDebtKernel && !scenario.reverts) {
@@ -73,7 +74,7 @@ export class WithdrawOnCrowdfundingTokenRunner extends CrowdfundingRunner {
                 ABIDecoder.addABI(this.crowdfundingToken.abi);
             });
 
-            after(() => {
+            afterEach(() => {
                 // Tear down ABIDecoder before next set of tests
                 ABIDecoder.removeABI(this.crowdfundingToken.abi);
             });
@@ -83,7 +84,7 @@ export class WithdrawOnCrowdfundingTokenRunner extends CrowdfundingRunner {
                     initialWithdrawalAllowances.forEach(async (withdrawalAllowance, index) => {
                         const tokenHolder = tokenHolders[index];
 
-                        const returnedWithdrawalAllowance = await this.crowdfundingToken.getCurrentWithdrawalAllowance.callAsync(
+                        const returnedWithdrawalAllowance = await this.crowdfundingToken.getTotalWithdrawalAllowance.callAsync(
                             tokenHolder,
                             startRepaymentIndex,
                             endRepaymentIndex,
@@ -120,6 +121,133 @@ export class WithdrawOnCrowdfundingTokenRunner extends CrowdfundingRunner {
                         ).to.bignumber.equal(balanceBeforeWithdrawal);
                     });
                 });
+
+                describe("when an additional repayment is made", () => {
+                    const additionalRepaymentAmount = Units.ether(0.45);
+                    const additionalRepaymentIndex = new BigNumber(
+                        scenario.repaymentAmounts.length,
+                    );
+
+                    beforeEach(async () => {
+                        // Make a repayment to the DebtToken
+                        await this.makeRepayment(additionalRepaymentAmount);
+
+                        // Register the repayment with the CrowdfundingToken
+                        await this.registerRepayment(additionalRepaymentAmount);
+                    });
+
+                    it("should adjust the withdrawal allowance if there is outstanding allowance and \
+                        another repayment is made", async () => {
+                        const { TOKEN_HOLDER_1 } = this.accounts;
+                        const { tokenDistribution } = scenario;
+
+                        const startingBalance = await this.contracts.dummyREPToken.balanceOf.callAsync(
+                            TOKEN_HOLDER_1,
+                        );
+
+                        // withdraw against the first repayment
+                        await this.crowdfundingToken.withdraw.sendTransactionAsync(
+                            startRepaymentIndex,
+                            startRepaymentIndex,
+                            {
+                                from: TOKEN_HOLDER_1,
+                            },
+                        );
+
+                        // withdraw against the remaining repayments
+                        await this.crowdfundingToken.withdraw.sendTransactionAsync(
+                            startRepaymentIndex.add(1),
+                            additionalRepaymentIndex,
+                            {
+                                from: TOKEN_HOLDER_1,
+                            },
+                        );
+
+                        const totalSupply = this.getBigNumberArraySum(tokenDistribution);
+
+                        const additionalWithdrawalAllowance = additionalRepaymentAmount
+                            .times(tokenDistribution[0])
+                            .div(totalSupply);
+
+                        const balanceAfterWithdrawals = await this.contracts.dummyREPToken.balanceOf.callAsync(
+                            TOKEN_HOLDER_1,
+                        );
+
+                        expect(balanceAfterWithdrawals.minus(startingBalance)).to.bignumber.equal(
+                            initialWithdrawalAllowances[0].add(additionalWithdrawalAllowance),
+                        );
+                    });
+                });
+
+                if (scenario.tokenDistribution.length > 1) {
+                    describe("when tokens are transferred in between repayments", () => {
+                        const additionalRepaymentAmount = Units.ether(0.45);
+                        const additionalRepaymentIndex = new BigNumber(
+                            scenario.repaymentAmounts.length,
+                        );
+                        const numTokensTransferred = new BigNumber(365);
+
+                        beforeEach(async () => {
+                            const { TOKEN_HOLDER_1, TOKEN_HOLDER_2 } = this.accounts;
+                            const { tokenDistribution } = scenario;
+
+                            // Enable transfer
+                            await this.crowdfundingToken.approve.sendTransactionAsync(
+                                TOKEN_HOLDER_1,
+                                numTokensTransferred,
+                                { from: TOKEN_HOLDER_1 },
+                            );
+
+                            // Transfer tokens
+                            await this.crowdfundingToken.transferFrom.sendTransactionAsync(
+                                TOKEN_HOLDER_1,
+                                TOKEN_HOLDER_2,
+                                numTokensTransferred,
+                                { from: TOKEN_HOLDER_1 },
+                            );
+
+                            // Make a repayment to the DebtToken
+                            await this.makeRepayment(additionalRepaymentAmount);
+
+                            // Register the repayment with the CrowdfundingToken
+                            await this.registerRepayment(additionalRepaymentAmount);
+                        });
+
+                        it("should adjust the withdrawal allowances", async () => {
+                            const { TOKEN_HOLDER_1, TOKEN_HOLDER_2 } = this.accounts;
+                            const { tokenDistribution } = scenario;
+
+                            const totalSupply = this.getBigNumberArraySum(tokenDistribution);
+
+                            const expectedTokenHolder1Allowance = additionalRepaymentAmount
+                                .times(tokenDistribution[0].minus(numTokensTransferred))
+                                .div(totalSupply);
+
+                            const expectedTokenHolder2Allowance = additionalRepaymentAmount
+                                .times(tokenDistribution[1].plus(numTokensTransferred))
+                                .div(totalSupply);
+
+                            const returnedTokenHolder1WithdrawalAllowance = await this.crowdfundingToken.getTotalWithdrawalAllowance.callAsync(
+                                TOKEN_HOLDER_1,
+                                additionalRepaymentIndex,
+                                additionalRepaymentIndex,
+                            );
+
+                            const returnedTokenHolder2WithdrawalAllowance = await this.crowdfundingToken.getTotalWithdrawalAllowance.callAsync(
+                                TOKEN_HOLDER_2,
+                                additionalRepaymentIndex,
+                                additionalRepaymentIndex,
+                            );
+
+                            expect(returnedTokenHolder1WithdrawalAllowance).to.bignumber.equal(
+                                expectedTokenHolder1Allowance,
+                            );
+                            expect(returnedTokenHolder2WithdrawalAllowance).to.bignumber.equal(
+                                expectedTokenHolder2Allowance,
+                            );
+                        });
+                    });
+                }
             }
         });
     }
