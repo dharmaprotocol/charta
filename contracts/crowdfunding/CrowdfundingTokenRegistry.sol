@@ -11,10 +11,10 @@ import "./CrowdfundingToken.sol";
 import "./Controlled.sol";
 
 contract CrowdfundingTokenRegistry is ERC721Receiver {
-    uint8 constant DECIMAL_UNITS = 18;
-    bool constant TRANSFERS_ENABLED = true;
-    string constant TOKEN_NAME = "Dharma Crowdfunding Token";
-    string constant TOKEN_SYMBOL = "DFT";
+    uint8 constant public DECIMAL_UNITS = 18;
+    bool constant public TRANSFERS_ENABLED = true;
+    string constant public TOKEN_NAME = "Dharma Crowdfunding Token";
+    string constant public TOKEN_SYMBOL = "DFT";
 
     event LogCreateAndRegisterCrowdfundingToken(
         address _owner,
@@ -37,7 +37,7 @@ contract CrowdfundingTokenRegistry is ERC721Receiver {
     }
 
     /**
-     * Triggers the creation of a CrowdfundingToken
+     * Transfer a Dharma DebtToken to the CrowdfundingTokenRegistry to trigger the creation of a CrowdfundingToken
      */
     function onERC721Received(address _from, uint256 _tokenId, bytes _data)
         public
@@ -111,7 +111,7 @@ contract CrowdfundingTokenRegistry is ERC721Receiver {
     function bytesToUint(
         bytes b
     )
-        private
+        internal
         pure
         returns (uint unsigned_int)
     {
