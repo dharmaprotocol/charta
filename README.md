@@ -4,6 +4,43 @@
 
 > 'Charta' is the latin word for 'letter or document'.  We loosely appropriate this term as a codename for the smart contracts comprising the business logic of Dharma protocol.
 
+# Dharma Crowdfunding MVP
+Send repayments to arbitrarily many recipients. Crowdfund debt. Issue bonds.
+
+This overview assumes the reader has working knowledge of the Dharma Protocol.  For a primer on the protocol, visit <insert link>.
+
+### CrowdfundingToken
+#### contracts/crowdfunding/CrowdfundingToken.sol
+The Dharma CrowdfundingToken enables a single debtor to make repayments to multiple creditors.  
+
+- The CrowdfundingToken is an ERC-20 token.
+- The CrowdfundingToken itself owns a Dharma DebtToken.  
+- The repayments made to the DebtToken are thus sent to the ERC-20 token contract.  
+- Owners of the CrowdfundingToken are entitled to a withdraw a portion of each repayment made to the contract.
+- Each withdrawal amount is proportionate to the number of tokens owned by a given address divided by the total supply of tokens at the time of the repayment
+-- withdrawalAllowance = repaymentAmount * (tokensOwned / totalSupply)
+
+### CrowdfundingTokenRegistry
+#### contracts/crowdfunding/CrowdfundingTokenRegistry.sol
+The CrowdfundingTokenRegistry is a smart contract that deploys and keeps track of CrowdfundingTokens.
+
+### How to Crowdfund on Dharma Protocol
+1. The issuer wanting to crowdfund creates a DebtToken with no principal and itself as both the creditor and debtor.
+2. The issuer transfers the DebtToken to the CrowdfundingTokenRegistry.
+3. On receipt of the DebtToken, the CrowdfundingTokenRegistry deploys a new CrowdfundingToken and passes the DebtToken on to the CrowdfundingToken.
+-- The original owner of the DebtToken--in this case the issuer--is the owner of the new CrowdfundingToken contract
+-- The CrowdfundingTokenRegistry keeps track of the CrowdfundingToken based on the agreementId of the DebtToken it owns.
+4. The issuer mints, distributes, and/or sells tokens of the CrowdfundingToken as they see fit.
+5. The issuer makes repayments on their debt and registers the repayment with the CrowdfundingToken
+-- The repayment is routed to the CrowdfundingToken.
+6. The token holders make withdrawals of the repayment from the CrowdfundingToken proportionate to their ownership of the CrowdfundingToken at the time the repayment was registered.
+
+### Future Work
+- A custom TermsContract to meet the needs of a specific crowdfunding use case
+-- Combining repayment and registering repayment into a single transaction
+- Automating the process of purchasing CrowdfundingTokens
+
+------------
 
 [Dharma](https://dharma.io) is a protocol for generic tokenized debt issuance and fundraising on blockchains supporting requisite smart contract functionality (i.e. EVM blockchains).  For a full description of the protocol's mechanics, a thorough overview can be found in the [Dharma Protocol Whitepaper](https://whitepaper.dharma.io/).  This repository contains the core contracts that compromise the business logic for issuing and administering debt crypto-assets on-chain.
 
