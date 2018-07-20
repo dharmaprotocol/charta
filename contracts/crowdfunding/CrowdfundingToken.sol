@@ -43,8 +43,9 @@ contract CrowdfundingToken is Controlled, ERC721Receiver {
 
     Checkpoint[] public repayments;
 
-    // keeps track of how much has been withdrawn from each address
-    mapping (address => Checkpoint[]) withdrawals;
+    // keeps track of how much has been withdrawn from each address;
+    // the inner mapping is of repayment index to whether or not the repayment index has been withdrawn against
+    mapping (address => mapping (uint => bool)) public withdrawals;
 
     // `creationBlock` is the block number that the Clone Token was created
     uint public creationBlock;
@@ -133,7 +134,7 @@ contract CrowdfundingToken is Controlled, ERC721Receiver {
 
         // calculate the total amount available for withdrawal for the message sender, beginning and ending
         // at the given repayment indicies
-        uint withdrawalAmount = getCurrentWithdrawalAllowance(msg.sender, start, end);
+        uint withdrawalAmount = getTotalWithdrawalAllowance(msg.sender, start, end);
 
         // require that the message sender has a positive withdrawal allowance
         require(withdrawalAmount > 0);
@@ -150,7 +151,10 @@ contract CrowdfundingToken is Controlled, ERC721Receiver {
                 withdrawalAmount
             )
         ) {
-            updateValueAtNow(withdrawals[msg.sender], withdrawalAmount);
+            // mark the repayment indices as withdrawn against
+            for (uint i = start; i <= end; i++) {
+                withdrawals[msg.sender][i] = true;
+            }
         }
     }
 
@@ -167,35 +171,6 @@ contract CrowdfundingToken is Controlled, ERC721Receiver {
     }
 
     /**
-     * Returns the withdrawal allowance of the given account, as accrued between the start and end repayment
-     * indicies, inclusive.
-     */
-    function getCurrentWithdrawalAllowance(
-        address account,
-        uint start,
-        uint end
-
-    )
-        public
-        view
-        returns (uint withdrawalAllowance)
-    {
-        // make sure the start and end indices are valid
-        require(start >= 0);
-
-        require(end < repayments.length);
-
-        // calculate total allowance accrued by the account within the period in question
-        uint totalWithdrawalAllowance = getTotalWithdrawalAllowance(account, start, end);
-
-        // calculate the total withdrawals within the period in question
-        uint totalWithdrawals = getTotalWithdrawals(account, start, end);
-
-        // return the difference of the total allowance and total withdrawals
-        return totalWithdrawalAllowance.sub(totalWithdrawals);
-    }
-
-    /**
      * Returns the total withdrawal allowance of the given account, as accrued between the start and end repayment
      * indicies, inclusive.
      */
@@ -208,7 +183,18 @@ contract CrowdfundingToken is Controlled, ERC721Receiver {
         view
         returns (uint totalWithdrawalAllowance)
     {
+        require(start >= 0);
+
+        require(end < repayments.length);
+
+        mapping (uint => bool) accountWithdrawals = withdrawals[account];
+
         for (uint i = start; i <= end; i++) {
+            // if the account has already withdrawn against this repayment index, continue
+            if (accountWithdrawals[i]) {
+                continue;
+            }
+
             Checkpoint storage repaymentCheckpoint = repayments[i];
 
             uint repaymentAmount = repaymentCheckpoint.value;
@@ -222,63 +208,6 @@ contract CrowdfundingToken is Controlled, ERC721Receiver {
         }
 
         return totalWithdrawalAllowance;
-    }
-
-    /**
-     * Returns the total withdrawals of the given account, as made against the start and end repayment
-     * indicies, inclusive.
-     */
-    function getTotalWithdrawals(
-        address account,
-        uint start,
-        uint end
-    )
-        public
-        view
-        returns (uint totalWithdrawals)
-    {
-        Checkpoint[] storage accountWithdrawals = withdrawals[account];
-
-        // if no withdrawals have been made, return 0
-        if (accountWithdrawals.length == 0) {
-            return 0;
-        }
-
-        uint startBlockNumber = repayments[start].fromBlock;
-
-        // we must consider all withdrawals made up to and including the block of the next repayment,
-        // or the current block, if end is the last repayment
-        uint endBlockNumber = end + 1 < repayments.length ?
-            repayments[end + 1].fromBlock : block.number;
-
-        // find the earliest withdrawal at block greater than startBlockNumber
-        uint min = 0;
-        uint max = accountWithdrawals.length - 1;
-        while (max > min) {
-            uint mid = (max + min) / 2;
-
-            if (accountWithdrawals[mid].fromBlock <= startBlockNumber) {
-                min = mid + 1;
-            } else {
-                max = mid;
-            }
-        }
-
-        uint withdrawalIndex = min;
-
-        // add subsequent withdrawals up to and including the endBlockNumber
-        for (uint i = withdrawalIndex; i < accountWithdrawals.length; i++) {
-            uint currentBlockNumber = accountWithdrawals[i].fromBlock;
-
-            if (currentBlockNumber >  endBlockNumber) {
-                break;
-            }
-
-            totalWithdrawals = totalWithdrawals.add(accountWithdrawals[i].value);
-        }
-
-        // return the sum
-        return totalWithdrawals;
     }
 
 ///////////////////
