@@ -47,9 +47,6 @@ contract CrowdfundingToken is Controlled, ERC721Receiver {
     // the inner mapping is of repayment index to whether or not the repayment index has been withdrawn against
     mapping (address => mapping (uint => bool)) public withdrawals;
 
-    // `creationBlock` is the block number that the Clone Token was created
-    uint public creationBlock;
-
     // `balances` is the map that tracks the balance of each address, in this
     //  contract when the balance changes the block number that the change
     //  occurred is also included in the map
@@ -95,8 +92,6 @@ contract CrowdfundingToken is Controlled, ERC721Receiver {
         symbol = _tokenSymbol;
         repaymentTokenIndex = _repaymentTokenIndex;
         transfersEnabled = _transfersEnabled;
-
-        creationBlock = block.number;
     }
 
 ///////////////////
