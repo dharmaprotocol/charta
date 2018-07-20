@@ -34,12 +34,12 @@ contract CrowdfundingToken is Controlled, ERC721Receiver {
     string public symbol;              //An identifier: e.g. REP
 
     // the underlying Dharma Debt Token
-    address debtToken;
-    uint agreementId;
-    ContractRegistry contractRegistry;
+    address public debtToken;
+    uint public agreementId;
+    ContractRegistry public contractRegistry;
 
     // the TokenRegistry index of the token in which repayment to crowdfunding token holders are denominated
-    uint repaymentTokenIndex;
+    uint public repaymentTokenIndex;
 
     Checkpoint[] public repayments;
 
@@ -129,7 +129,7 @@ contract CrowdfundingToken is Controlled, ERC721Receiver {
 
         // calculate the total amount available for withdrawal for the message sender, beginning and ending
         // at the given repayment indicies
-        uint withdrawalAmount = getTotalWithdrawalAllowance(msg.sender, start, end);
+        uint withdrawalAmount = getWithdrawalAllowance(msg.sender, start, end);
 
         // require that the message sender has a positive withdrawal allowance
         require(withdrawalAmount > 0);
@@ -169,7 +169,7 @@ contract CrowdfundingToken is Controlled, ERC721Receiver {
      * Returns the total withdrawal allowance of the given account, as accrued between the start and end repayment
      * indicies, inclusive.
      */
-    function getTotalWithdrawalAllowance(
+    function getWithdrawalAllowance(
         address account,
         uint start,
         uint end
@@ -511,7 +511,6 @@ contract CrowdfundingToken is Controlled, ERC721Receiver {
 ////////////////
     event ClaimedTokens(address indexed _token, address indexed _controller, uint _amount);
     event Transfer(address indexed _from, address indexed _to, uint256 _amount);
-    event NewCloneToken(address indexed _cloneToken, uint _snapshotBlock);
     event Approval(
         address indexed _owner,
         address indexed _spender,

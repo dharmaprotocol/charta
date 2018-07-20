@@ -84,7 +84,7 @@ export class WithdrawOnCrowdfundingTokenRunner extends CrowdfundingRunner {
                     initialWithdrawalAllowances.forEach(async (withdrawalAllowance, index) => {
                         const tokenHolder = tokenHolders[index];
 
-                        const returnedWithdrawalAllowance = await this.crowdfundingToken.getTotalWithdrawalAllowance.callAsync(
+                        const returnedWithdrawalAllowance = await this.crowdfundingToken.getWithdrawalAllowance.callAsync(
                             tokenHolder,
                             startRepaymentIndex,
                             endRepaymentIndex,
@@ -218,13 +218,13 @@ export class WithdrawOnCrowdfundingTokenRunner extends CrowdfundingRunner {
                                 .times(tokenDistribution[1].plus(numTokensTransferred))
                                 .div(totalSupply);
 
-                            const returnedTokenHolder1WithdrawalAllowance = await this.crowdfundingToken.getTotalWithdrawalAllowance.callAsync(
+                            const returnedTokenHolder1WithdrawalAllowance = await this.crowdfundingToken.getWithdrawalAllowance.callAsync(
                                 TOKEN_HOLDER_1,
                                 additionalRepaymentIndex,
                                 additionalRepaymentIndex,
                             );
 
-                            const returnedTokenHolder2WithdrawalAllowance = await this.crowdfundingToken.getTotalWithdrawalAllowance.callAsync(
+                            const returnedTokenHolder2WithdrawalAllowance = await this.crowdfundingToken.getWithdrawalAllowance.callAsync(
                                 TOKEN_HOLDER_2,
                                 additionalRepaymentIndex,
                                 additionalRepaymentIndex,
