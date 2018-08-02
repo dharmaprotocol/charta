@@ -360,6 +360,30 @@ const TOKEN_LIST = [
         symbol: "ICN",
         decimals: 18,
     },
+    {
+        address: "0x1776e1f26f98b1a5df9cd347953a26dd3cb46671",
+        symbol: "NMR",
+        name: "Numeraire",
+        decimals: 18,
+    },
+    {
+        address: "0x42d6622dece394b54999fbd73d108123806f6a18",
+        symbol: "SPANK",
+        name: "SPANK",
+        decimals: 18,
+    },
+    {
+        address: "0x8dd5fbce2f6a956c3022ba3663759011dd51e73e",
+        symbol: "TUSD",
+        name: "TrueUSD",
+        decimals: 18,
+    },
+    {
+        address: "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        symbol: "USDT",
+        name: "Tether USD",
+        decimals: 6,
+    },
 ];
 
 module.exports = {
