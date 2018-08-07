@@ -24,7 +24,7 @@ import { Web3Utils } from "../../../../../../utils/web3_utils";
 
 const DEFAULT_GAS_AMOUNT = 4712388;
 
-export abstract class CollateralizedSimpleInterestTermsContractRunner {
+export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
     protected accounts: TestAccounts;
     protected contracts: TestContracts;
     protected debtOrder: SignedDebtOrder;
@@ -77,7 +77,7 @@ export abstract class CollateralizedSimpleInterestTermsContractRunner {
         scenario: RegisterRepaymentScenario | RegisterTermStartScenario,
     ) {
         const {
-            collateralizedSimpleInterestTermsContract,
+            erc721CollateralizedSimpleInterestTermsContract,
             kernel,
             repaymentRouter,
             debtTokenContract,
@@ -136,7 +136,7 @@ export abstract class CollateralizedSimpleInterestTermsContractRunner {
             principalTokenAddress: dummyREPToken.address,
             relayer: RELAYER,
             relayerFee: Units.ether(0.0015),
-            termsContract: collateralizedSimpleInterestTermsContract.address,
+            termsContract: erc721CollateralizedSimpleInterestTermsContract.address,
             termsContractParameters,
             underwriter: UNDERWRITER,
             underwriterFee: Units.ether(0.0015),

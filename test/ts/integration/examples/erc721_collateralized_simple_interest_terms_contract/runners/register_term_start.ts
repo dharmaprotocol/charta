@@ -2,21 +2,17 @@
 import * as ABIDecoder from "abi-decoder";
 import { BigNumber } from "bignumber.js";
 import { expect } from "chai";
-
 // Test Utils
 import { REVERT_ERROR } from "../../../../test_utils/constants";
-
 // Scenario runners
 import { RegisterTermStartScenario } from "../scenarios";
-
 // Logs
 import { LogSimpleInterestTermStart } from "../../../../logs/simple_interest_terms_contract";
-
-// Runners
-import { CollateralizedSimpleInterestTermsContractRunner } from "./erc_721_collateralized_simple_interest_terms_contract";
 import { CollateralLocked } from "../../../../logs/collateralized_contract";
+// Runners
+import { ERC721CollateralizedSimpleInterestTermsContractRunner } from "./erc_721_collateralized_simple_interest_terms_contract";
 
-export class RegisterTermStartRunner extends CollateralizedSimpleInterestTermsContractRunner {
+export class RegisterTermStartRunner extends ERC721CollateralizedSimpleInterestTermsContractRunner {
     public testScenario(scenario: RegisterTermStartScenario) {
         let txHash: string;
 
@@ -49,7 +45,7 @@ export class RegisterTermStartRunner extends CollateralizedSimpleInterestTermsCo
 
                 if (!scenario.permissionToCollateralize) {
                     await this.contracts.collateralizerContract.revokeCollateralizeAuthorization.sendTransactionAsync(
-                        this.contracts.collateralizedSimpleInterestTermsContract.address,
+                        this.contracts.erc721CollateralizedSimpleInterestTermsContract.address,
                         { from: this.accounts.CONTRACT_OWNER },
                     );
                 }
@@ -62,30 +58,30 @@ export class RegisterTermStartRunner extends CollateralizedSimpleInterestTermsCo
                 }
 
                 // Setup ABI decoder in order to decode logs.
-                ABIDecoder.addABI(this.contracts.collateralizedSimpleInterestTermsContract.abi);
+                ABIDecoder.addABI(this.contracts.erc721CollateralizedSimpleInterestTermsContract.abi);
                 ABIDecoder.addABI(this.contracts.collateralizerContract.abi);
             });
 
             after(async () => {
                 if (!scenario.permissionToCollateralize) {
                     await this.contracts.collateralizerContract.addAuthorizedCollateralizeAgent.sendTransactionAsync(
-                        this.contracts.collateralizedSimpleInterestTermsContract.address,
+                        this.contracts.erc721CollateralizedSimpleInterestTermsContract.address,
                         { from: this.accounts.CONTRACT_OWNER },
                     );
                 }
 
                 // Tear down ABIDecoder before next set of tests
-                ABIDecoder.removeABI(this.contracts.collateralizedSimpleInterestTermsContract.abi);
+                ABIDecoder.removeABI(this.contracts.erc721CollateralizedSimpleInterestTermsContract.abi);
                 ABIDecoder.removeABI(this.contracts.collateralizerContract.abi);
             });
 
             if (scenario.succeeds) {
                 it("should emit a LogSimpleInterestTermStart event", async () => {
-                    const { collateralizedSimpleInterestTermsContract } = this.contracts;
+                    const { erc721CollateralizedSimpleInterestTermsContract } = this.contracts;
                     const debtOrder = this.debtOrder;
 
                     const expectedLog = LogSimpleInterestTermStart(
-                        collateralizedSimpleInterestTermsContract.address,
+                        erc721CollateralizedSimpleInterestTermsContract.address,
                         this.agreementId,
                         debtOrder.getPrincipalTokenAddress(),
                         debtOrder.getPrincipalAmount(),
@@ -159,9 +155,9 @@ export class RegisterTermStartRunner extends CollateralizedSimpleInterestTermsCo
 
     private registerTermsStart() {
         const { DEBTOR_1, UNDERWRITER } = this.accounts;
-        const { collateralizedSimpleInterestTermsContract } = this.contracts;
+        const { erc721CollateralizedSimpleInterestTermsContract } = this.contracts;
 
-        return collateralizedSimpleInterestTermsContract.registerTermStart.sendTransactionAsync(
+        return erc721CollateralizedSimpleInterestTermsContract.registerTermStart.sendTransactionAsync(
             this.agreementId,
             DEBTOR_1,
             { from: UNDERWRITER },

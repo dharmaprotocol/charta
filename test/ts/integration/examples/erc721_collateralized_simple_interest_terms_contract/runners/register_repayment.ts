@@ -2,25 +2,20 @@
 import * as ABIDecoder from "abi-decoder";
 import { expect } from "chai";
 import { BigNumber } from "bignumber.js";
-
 // Test Utils
 import { REVERT_ERROR } from "../../../../test_utils/constants";
-
 // Scenario runners
 import { RegisterRepaymentScenario } from "../scenarios";
-
 // Wrappers
 import { DummyTokenContract } from "../../../../../../types/generated/dummy_token";
-
 // Logs
 import { LogRegisterRepayment } from "../../../../logs/simple_interest_terms_contract";
-
 // Runners
-import { CollateralizedSimpleInterestTermsContractRunner } from "./erc_721_collateralized_simple_interest_terms_contract";
+import { ERC721CollateralizedSimpleInterestTermsContractRunner } from "./erc_721_collateralized_simple_interest_terms_contract";
 
 const DEFAULT_GAS_AMOUNT = 4712388;
 
-export class RegisterRepaymentRunner extends CollateralizedSimpleInterestTermsContractRunner {
+export class RegisterRepaymentRunner extends ERC721CollateralizedSimpleInterestTermsContractRunner {
     public testScenario(scenario: RegisterRepaymentScenario) {
         let txHash: string;
         let dummyREPToken: DummyTokenContract;
@@ -52,7 +47,7 @@ export class RegisterRepaymentRunner extends CollateralizedSimpleInterestTermsCo
 
                 const {
                     tokenTransferProxy,
-                    collateralizedSimpleInterestTermsContract,
+                    erc721CollateralizedSimpleInterestTermsContract,
                 } = this.contracts;
 
                 // Fill a debt order, against which to test repayments.
@@ -72,16 +67,16 @@ export class RegisterRepaymentRunner extends CollateralizedSimpleInterestTermsCo
                     { from: DEBTOR_1 },
                 );
 
-                repaidAmountBefore = await this.contracts.collateralizedSimpleInterestTermsContract.getValueRepaidToDate.callAsync(
+                repaidAmountBefore = await this.contracts.erc721CollateralizedSimpleInterestTermsContract.getValueRepaidToDate.callAsync(
                     this.agreementId,
                 );
 
                 // Setup ABI decoder in order to decode logs
-                ABIDecoder.addABI(collateralizedSimpleInterestTermsContract.abi);
+                ABIDecoder.addABI(erc721CollateralizedSimpleInterestTermsContract.abi);
             });
 
             after(() => {
-                ABIDecoder.removeABI(this.contracts.collateralizedSimpleInterestTermsContract.abi);
+                ABIDecoder.removeABI(this.contracts.erc721CollateralizedSimpleInterestTermsContract.abi);
             });
 
             if (scenario.reverts) {
@@ -113,11 +108,11 @@ export class RegisterRepaymentRunner extends CollateralizedSimpleInterestTermsCo
 
             if (scenario.succeeds) {
                 it("should record the repayment", async () => {
-                    const { collateralizedSimpleInterestTermsContract } = this.contracts;
+                    const { erc721CollateralizedSimpleInterestTermsContract } = this.contracts;
                     const agreementId = this.agreementId;
 
                     await expect(
-                        collateralizedSimpleInterestTermsContract.getValueRepaidToDate.callAsync(
+                        erc721CollateralizedSimpleInterestTermsContract.getValueRepaidToDate.callAsync(
                             agreementId,
                         ),
                     ).to.eventually.bignumber.equal(
@@ -131,7 +126,7 @@ export class RegisterRepaymentRunner extends CollateralizedSimpleInterestTermsCo
                     const returnedLog = await this.getLogs(txHash, "LogRegisterRepayment");
 
                     const expectedLog = LogRegisterRepayment(
-                        this.contracts.collateralizedSimpleInterestTermsContract.address,
+                        this.contracts.erc721CollateralizedSimpleInterestTermsContract.address,
                         this.agreementId,
                         DEBTOR_1,
                         CREDITOR_1,
@@ -144,11 +139,11 @@ export class RegisterRepaymentRunner extends CollateralizedSimpleInterestTermsCo
             } else {
                 // A repayment should never be recorded if the scenario fails.
                 it("should not record a repayment", async () => {
-                    const { collateralizedSimpleInterestTermsContract } = this.contracts;
+                    const { erc721CollateralizedSimpleInterestTermsContract } = this.contracts;
                     const agreementId = this.agreementId;
 
                     await expect(
-                        collateralizedSimpleInterestTermsContract.getValueRepaidToDate.callAsync(
+                        erc721CollateralizedSimpleInterestTermsContract.getValueRepaidToDate.callAsync(
                             agreementId,
                         ),
                     ).to.eventually.bignumber.equal(repaidAmountBefore);
@@ -169,10 +164,10 @@ export class RegisterRepaymentRunner extends CollateralizedSimpleInterestTermsCo
 
     // Calls registerRepayment() directly on the terms contract.
     private registerRepayment(amount: BigNumber) {
-        const { collateralizedSimpleInterestTermsContract } = this.contracts;
+        const { erc721CollateralizedSimpleInterestTermsContract } = this.contracts;
         const { DEBTOR_1, CREDITOR_1 } = this.accounts;
 
-        return collateralizedSimpleInterestTermsContract.registerRepayment.sendTransactionAsync(
+        return erc721CollateralizedSimpleInterestTermsContract.registerRepayment.sendTransactionAsync(
             this.agreementId,
             DEBTOR_1,
             CREDITOR_1,

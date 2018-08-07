@@ -1,31 +1,22 @@
 // Test Utils
 import { BigNumberSetup } from "../../../test_utils/bignumber_setup";
 import ChaiSetup from "../../../test_utils/chai_setup";
-
 // Wrappers
 import { DebtKernelContract } from "../../../../../types/generated/debt_kernel";
 import { DebtRegistryContract } from "../../../../../types/generated/debt_registry";
 import { DebtTokenContract } from "../../../../../types/generated/debt_token";
 import { DummyTokenContract } from "../../../../../types/generated/dummy_token";
 import { RepaymentRouterContract } from "../../../../../types/generated/repayment_router";
-import { CollateralizedSimpleInterestTermsContractContract } from "../../../../../types/generated/collateralized_simple_interest_terms_contract";
+import { ERC721CollateralizedSimpleInterestTermsContractContract } from "../../../../../types/generated/e_r_c721_collateralized_simple_interest_terms_contract";
 import { TokenRegistryContract } from "../../../../../types/generated/token_registry";
 import { TokenTransferProxyContract } from "../../../../../types/generated/token_transfer_proxy";
 import { CollateralizerContract } from "../../../../../types/generated/collateralizer";
-
-// Configure BigNumber exponentiation
-BigNumberSetup.configure();
-
-// Set up Chai
-ChaiSetup.configure();
-
 // Scenarios
 import { SUCCESSFUL_REGISTER_REPAYMENT_SCENARIOS } from "./scenarios/successful_register_repayment";
 import { UNSUCCESSFUL_REGISTER_REPAYMENT_SCENARIOS } from "./scenarios/unsuccessful_register_repayment";
 import { SUCCESSFUL_REGISTER_TERM_START_SCENARIOS } from "./scenarios/successful_register_term_start";
 import { UNSUCCESSFUL_REGISTER_TERM_START_SCENARIOS } from "./scenarios/unsuccessful_register_term_start";
 import { UNPACK_PARAMETERS_FROM_BYTES_SCENARIOS } from "./scenarios/unpack_parameters_from_bytes";
-
 // Scenario Runners
 import {
     RegisterRepaymentRunner,
@@ -33,10 +24,17 @@ import {
     UnpackParametersFromBytesRunner,
 } from "./runners";
 
+// Configure BigNumber exponentiation
+BigNumberSetup.configure();
+
+// Set up Chai
+ChaiSetup.configure();
+
+
 contract("Collateralized Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) => {
     let kernel: DebtKernelContract;
     let repaymentRouter: RepaymentRouterContract;
-    let collateralizedSimpleInterestTermsContract: CollateralizedSimpleInterestTermsContractContract;
+    let erc721CollateralizedSimpleInterestTermsContract: ERC721CollateralizedSimpleInterestTermsContractContract;
     let tokenTransferProxy: TokenTransferProxyContract;
     let debtTokenContract: DebtTokenContract;
     let debtRegistryContract: DebtRegistryContract;
@@ -74,7 +72,7 @@ contract("Collateralized Simple Interest Terms Contract (Integration Tests)", as
         debtTokenContract = await DebtTokenContract.deployed(web3, TX_DEFAULTS);
         debtRegistryContract = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
 
-        collateralizedSimpleInterestTermsContract = await CollateralizedSimpleInterestTermsContractContract.deployed(
+        erc721CollateralizedSimpleInterestTermsContract = await ERC721CollateralizedSimpleInterestTermsContractContract.deployed(
             web3,
             TX_DEFAULTS,
         );
@@ -101,7 +99,7 @@ contract("Collateralized Simple Interest Terms Contract (Integration Tests)", as
             kernel,
             dummyREPToken,
             dummyZRXToken,
-            collateralizedSimpleInterestTermsContract,
+            erc721CollateralizedSimpleInterestTermsContract,
             repaymentRouter,
             dummyTokenRegistryContract,
             debtTokenContract,
@@ -109,7 +107,7 @@ contract("Collateralized Simple Interest Terms Contract (Integration Tests)", as
 
         registerRepaymentRunner.initialize(testAccounts, testContracts);
         registerTermStartRunner.initialize(testAccounts, testContracts);
-        unpackParametersFromBytes.initialize(collateralizedSimpleInterestTermsContract);
+        unpackParametersFromBytes.initialize(erc721CollateralizedSimpleInterestTermsContract);
     });
 
     describe("#registerTermStart", () => {
