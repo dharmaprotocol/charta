@@ -19,11 +19,7 @@ import { DebtOrderFactory } from "../../../../factories/debt_order_factory";
 import { Web3Utils } from "../../../../../../utils/web3_utils";
 import { MintableERC721TokenContract } from "../../../../../../types/generated/mintable_e_r_c721_token";
 
-const erc721Token = artifacts.require("MintableERC721Token");
-
 const DEFAULT_GAS_AMOUNT = 4712388;
-
-const mintableERC721Token = artifacts.require("MintableERC721Token");
 
 export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
     protected accounts: TestAccounts;
@@ -97,17 +93,15 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
         const nonExistentTokenIndex = new BigNumber(99);
 
         // Mint a new token for the debtor.
-        const token: MintableERC721TokenContract = await mintableERC721Token.new({
+        const exampleToken = await MintableERC721TokenContract.deployed(web3, {
             from: this.accounts.CONTRACT_OWNER,
             gas: DEFAULT_GAS_AMOUNT,
         });
-
-        const tokenContract =
-            web3.eth.contract(token.abi).at(token.address);
-
-        const exampleToken = new MintableERC721TokenContract(tokenContract, { from: this.accounts.CONTRACT_OWNER, gas: DEFAULT_GAS_AMOUNT});
-        const txHash = await exampleToken.mint.sendTransactionAsync(this.accounts.DEBTOR_1, new BigNumber(0));
-        const tokenId = new BigNumber(0);
+        const tokenId = new BigNumber(await exampleToken.totalSupply.callAsync());
+        const txHash = await exampleToken.mint.sendTransactionAsync(this.accounts.DEBTOR_1, tokenId, {
+            from: this.accounts.CONTRACT_OWNER,
+            gas: DEFAULT_GAS_AMOUNT,
+        });
 
         const termsContractParameters = CollateralizedSimpleInterestTermsParameters.pack(
             {
