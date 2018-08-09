@@ -19,6 +19,7 @@ const defaultArgs = {
     //      Collateral Token Index: 2
     //      Collateral Amount: 1 ether
     //      Grace Period: 1 Day
+
     termsContractParameters: "0x00000000000000000000000000000000000000200000000de0b6b3a764000001",
 };
 

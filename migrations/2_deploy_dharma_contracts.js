@@ -1,9 +1,6 @@
-const CONSTANTS = require("./migration_constants");
-const { generateParamsForDharmaMultiSigWallet, configureTokenRegistry } = require("./utils");
+const {generateParamsForDharmaMultiSigWallet, configureTokenRegistry} = require("./utils");
 
 module.exports = (deployer, network, accounts) => {
-    const OWNER = accounts[0];
-
     // Import the Dharma contracts.
     const PermissionsLib = artifacts.require("PermissionsLib");
     const DebtRegistry = artifacts.require("DebtRegistry");
@@ -15,6 +12,7 @@ module.exports = (deployer, network, accounts) => {
     const TokenRegistry = artifacts.require("TokenRegistry");
     const ContractRegistry = artifacts.require("ContractRegistry");
     const Collateralizer = artifacts.require("Collateralizer");
+    const ERC721Collateralizer = artifacts.require("ERC721Collateralizer");
 
     const {
         signatories,
@@ -29,7 +27,13 @@ module.exports = (deployer, network, accounts) => {
 
     // Deploy our Permissions library and link it to the contracts in our protocol that depend on it.
     deployer.deploy(PermissionsLib);
-    deployer.link(PermissionsLib, [DebtRegistry, TokenTransferProxy, Collateralizer, DebtToken]);
+    deployer.link(PermissionsLib, [
+        DebtRegistry,
+        TokenTransferProxy,
+        Collateralizer,
+        ERC721Collateralizer,
+        DebtToken,
+    ]);
 
     return deployer.deploy(DebtRegistry).then(async () => {
         await deployer.deploy(DebtToken, DebtRegistry.address);
@@ -48,8 +52,16 @@ module.exports = (deployer, network, accounts) => {
             TokenTransferProxy.address,
         );
         await deployer.deploy(
+            ERC721Collateralizer,
+            DebtKernel.address,
+            DebtRegistry.address,
+            TokenRegistry.address,
+            TokenTransferProxy.address,
+        );
+        await deployer.deploy(
             ContractRegistry,
             Collateralizer.address,
+            ERC721Collateralizer.address,
             DebtKernel.address,
             DebtRegistry.address,
             DebtToken.address,

@@ -14,6 +14,11 @@ export interface CollateralizedContractTerms {
     gracePeriodInDays: BigNumber;
 }
 
+export interface ERC721CollateralizedContractTerms {
+    erc721TokenAddress: string;
+    tokenId: BigNumber;
+}
+
 class TermsContractParameters {
     public static bitShiftLeft(target: BigNumber, numPlaces: number): BigNumber {
         const binaryTargetString = target.toString(2);

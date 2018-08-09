@@ -93,15 +93,15 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
         const nonExistentTokenIndex = new BigNumber(99);
 
         // Mint a new token for the debtor.
-        const exampleToken = await MintableERC721TokenContract.deployed(web3, {
-            from: this.accounts.CONTRACT_OWNER,
-            gas: DEFAULT_GAS_AMOUNT,
-        });
-        const tokenId = new BigNumber(await exampleToken.totalSupply.callAsync());
-        const txHash = await exampleToken.mint.sendTransactionAsync(this.accounts.DEBTOR_1, tokenId, {
-            from: this.accounts.CONTRACT_OWNER,
-            gas: DEFAULT_GAS_AMOUNT,
-        });
+        // const exampleToken = await MintableERC721TokenContract.deployed(web3, {
+        //     from: this.accounts.CONTRACT_OWNER,
+        //     gas: DEFAULT_GAS_AMOUNT,
+        // });
+        // const tokenId = new BigNumber(await exampleToken.totalSupply.callAsync());
+        // const txHash = await exampleToken.mint.sendTransactionAsync(this.accounts.DEBTOR_1, tokenId, {
+        //     from: this.accounts.CONTRACT_OWNER,
+        //     gas: DEFAULT_GAS_AMOUNT,
+        // });
 
         const termsContractParameters = CollateralizedSimpleInterestTermsParameters.pack(
             {

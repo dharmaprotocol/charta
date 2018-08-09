@@ -6,12 +6,11 @@ import { UnpackParametersFromBytesRunner } from "./unpack_parameters_from_bytes"
 import { DummyTokenContract } from "../../../../../../types/generated/dummy_token";
 import { DebtKernelContract } from "../../../../../../types/generated/debt_kernel";
 import { TokenTransferProxyContract } from "../../../../../../types/generated/token_transfer_proxy";
-import { CollateralizedSimpleInterestTermsContractContract } from "../../../../../../types/generated/collateralized_simple_interest_terms_contract";
 import { RepaymentRouterContract } from "../../../../../../types/generated/repayment_router";
 import { TokenRegistryContract } from "../../../../../../types/generated/token_registry";
 import { DebtTokenContract } from "../../../../../../types/generated/debt_token";
-import { CollateralizerContract } from "../../../../../../types/generated/collateralizer";
 import { ERC721CollateralizedSimpleInterestTermsContractContract } from "../../../../../../types/generated/e_r_c721_collateralized_simple_interest_terms_contract";
+import { ERC721CollateralizerContract } from "../../../../../../types/generated/e_r_c721_collateralizer";
 
 export interface TestAccounts {
     UNDERWRITER: string;
@@ -22,7 +21,7 @@ export interface TestAccounts {
 }
 
 export interface TestContracts {
-    collateralizerContract: CollateralizerContract;
+    erc721CollateralizerContract: ERC721CollateralizerContract;
     tokenTransferProxy: TokenTransferProxyContract;
     kernel: DebtKernelContract;
     dummyREPToken: DummyTokenContract;

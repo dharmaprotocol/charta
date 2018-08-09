@@ -18,16 +18,42 @@
 
 pragma solidity 0.4.18;
 
-import "./CollateralizedSimpleInterestTermsContract.sol";
+import "./SimpleInterestTermsContract.sol";
 
 
 /**
  * Example collateralized terms contract using ERC721 collateral, for usage in simple interest debt
  * agreements.
  */
-contract ERC721CollateralizedSimpleInterestTermsContract is CollateralizedSimpleInterestTermsContract {
+contract ERC721CollateralizedSimpleInterestTermsContract is SimpleInterestTermsContract {
 
     function ERC721CollateralizedSimpleInterestTermsContract(
         address contractRegistry
-    ) public CollateralizedSimpleInterestTermsContract(contractRegistry) {}
+    ) public SimpleInterestTermsContract(contractRegistry) {}
+
+    function registerTermStart(
+        bytes32 agreementId,
+        address debtor
+    )
+    public
+    onlyDebtKernel
+    returns (bool _success)
+    {
+        bool registered = super.registerTermStart(agreementId, debtor);
+        bool collateralized = contractRegistry.erc721Collateralizer().collateralize(agreementId, debtor);
+
+        return registered && collateralized;
+    }
+
+    function getTermEndTimestamp(
+        bytes32 _agreementId
+    )
+    public
+    view
+    returns (uint)
+    {
+        SimpleInterestParams memory params = unpackParamsForAgreementID(_agreementId);
+
+        return params.termEndUnixTimestamp;
+    }
 }

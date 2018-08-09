@@ -7,10 +7,10 @@ import { DebtRegistryContract } from "../../../../../types/generated/debt_regist
 import { DebtTokenContract } from "../../../../../types/generated/debt_token";
 import { DummyTokenContract } from "../../../../../types/generated/dummy_token";
 import { RepaymentRouterContract } from "../../../../../types/generated/repayment_router";
-import { ERC721CollateralizedSimpleInterestTermsContractContract } from "../../../../../types/generated/e_r_c721_collateralized_simple_interest_terms_contract";
+import { ERC721CollateralizedSimpleInterestTermsContractContract, } from "../../../../../types/generated/e_r_c721_collateralized_simple_interest_terms_contract";
 import { TokenRegistryContract } from "../../../../../types/generated/token_registry";
 import { TokenTransferProxyContract } from "../../../../../types/generated/token_transfer_proxy";
-import { CollateralizerContract } from "../../../../../types/generated/collateralizer";
+import { ERC721CollateralizerContract } from "../../../../../types/generated/e_r_c721_collateralizer";
 // Scenarios
 import { SUCCESSFUL_REGISTER_REPAYMENT_SCENARIOS } from "./scenarios/successful_register_repayment";
 import { UNSUCCESSFUL_REGISTER_REPAYMENT_SCENARIOS } from "./scenarios/unsuccessful_register_repayment";
@@ -30,7 +30,6 @@ BigNumberSetup.configure();
 // Set up Chai
 ChaiSetup.configure();
 
-
 contract("Collateralized Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) => {
     let kernel: DebtKernelContract;
     let repaymentRouter: RepaymentRouterContract;
@@ -39,7 +38,7 @@ contract("Collateralized Simple Interest Terms Contract (Integration Tests)", as
     let debtTokenContract: DebtTokenContract;
     let debtRegistryContract: DebtRegistryContract;
     let dummyTokenRegistryContract: TokenRegistryContract;
-    let collateralizerContract: CollateralizerContract;
+    let erc721CollateralizerContract: ERC721CollateralizerContract;
 
     let dummyREPToken: DummyTokenContract;
     let dummyZRXToken: DummyTokenContract;
@@ -72,12 +71,13 @@ contract("Collateralized Simple Interest Terms Contract (Integration Tests)", as
         debtTokenContract = await DebtTokenContract.deployed(web3, TX_DEFAULTS);
         debtRegistryContract = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
 
-        erc721CollateralizedSimpleInterestTermsContract = await ERC721CollateralizedSimpleInterestTermsContractContract.deployed(
-            web3,
-            TX_DEFAULTS,
-        );
+        erc721CollateralizedSimpleInterestTermsContract =
+            await ERC721CollateralizedSimpleInterestTermsContractContract.deployed(
+                web3,
+                TX_DEFAULTS,
+            );
 
-        collateralizerContract = await CollateralizerContract.deployed(web3, TX_DEFAULTS);
+        erc721CollateralizerContract = await ERC721CollateralizerContract.deployed(web3, TX_DEFAULTS);
 
         tokenTransferProxy = await TokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
 
@@ -94,7 +94,7 @@ contract("Collateralized Simple Interest Terms Contract (Integration Tests)", as
         };
 
         const testContracts = {
-            collateralizerContract,
+            erc721CollateralizerContract,
             tokenTransferProxy,
             kernel,
             dummyREPToken,

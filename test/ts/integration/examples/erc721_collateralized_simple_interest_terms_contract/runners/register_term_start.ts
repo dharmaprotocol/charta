@@ -22,7 +22,7 @@ export class RegisterTermStartRunner extends ERC721CollateralizedSimpleInterestT
 
                 // Reset the collateralizer contract's balance for each example.
                 await this.contracts.dummyZRXToken.setBalance.sendTransactionAsync(
-                    this.contracts.collateralizerContract.address,
+                    this.contracts.erc721CollateralizerContract.address,
                     new BigNumber(0),
                     {
                         from: this.accounts.CONTRACT_OWNER,
@@ -44,10 +44,11 @@ export class RegisterTermStartRunner extends ERC721CollateralizedSimpleInterestT
                 );
 
                 if (!scenario.permissionToCollateralize) {
-                    await this.contracts.collateralizerContract.revokeCollateralizeAuthorization.sendTransactionAsync(
-                        this.contracts.erc721CollateralizedSimpleInterestTermsContract.address,
-                        { from: this.accounts.CONTRACT_OWNER },
-                    );
+                    await this.contracts.erc721CollateralizerContract.revokeCollateralizeAuthorization
+                        .sendTransactionAsync(
+                            this.contracts.erc721CollateralizedSimpleInterestTermsContract.address,
+                            { from: this.accounts.CONTRACT_OWNER },
+                        );
                 }
 
                 if (scenario.invokedByDebtKernel && !scenario.reverts) {
@@ -59,12 +60,12 @@ export class RegisterTermStartRunner extends ERC721CollateralizedSimpleInterestT
 
                 // Setup ABI decoder in order to decode logs.
                 ABIDecoder.addABI(this.contracts.erc721CollateralizedSimpleInterestTermsContract.abi);
-                ABIDecoder.addABI(this.contracts.collateralizerContract.abi);
+                ABIDecoder.addABI(this.contracts.erc721CollateralizerContract.abi);
             });
 
             after(async () => {
                 if (!scenario.permissionToCollateralize) {
-                    await this.contracts.collateralizerContract.addAuthorizedCollateralizeAgent.sendTransactionAsync(
+                    await this.contracts.erc721CollateralizerContract.addAuthorizedCollateralizeAgent.sendTransactionAsync(
                         this.contracts.erc721CollateralizedSimpleInterestTermsContract.address,
                         { from: this.accounts.CONTRACT_OWNER },
                     );
@@ -72,7 +73,7 @@ export class RegisterTermStartRunner extends ERC721CollateralizedSimpleInterestT
 
                 // Tear down ABIDecoder before next set of tests
                 ABIDecoder.removeABI(this.contracts.erc721CollateralizedSimpleInterestTermsContract.abi);
-                ABIDecoder.removeABI(this.contracts.collateralizerContract.abi);
+                ABIDecoder.removeABI(this.contracts.erc721CollateralizerContract.abi);
             });
 
             if (scenario.succeeds) {
@@ -95,10 +96,10 @@ export class RegisterTermStartRunner extends ERC721CollateralizedSimpleInterestT
                 });
 
                 it("should emit a CollateralLocked event", async () => {
-                    const { collateralizerContract } = this.contracts;
+                    const { erc721CollateralizerContract } = this.contracts;
 
                     const expectedLog = CollateralLocked(
-                        collateralizerContract.address,
+                        erc721CollateralizerContract.address,
                         this.agreementId,
                         this.contracts.dummyZRXToken.address,
                         scenario.collateralAmount,
@@ -121,7 +122,7 @@ export class RegisterTermStartRunner extends ERC721CollateralizedSimpleInterestT
 
                 it("should increment the collateralizer balance by the collateral amount", async () => {
                     const balance = await this.contracts.dummyZRXToken.balanceOf.callAsync(
-                        this.contracts.collateralizerContract.address,
+                        this.contracts.erc721CollateralizerContract.address,
                     );
 
                     expect(balance.toString()).to.equal(scenario.collateralAmount.toString());

@@ -3,6 +3,7 @@ pragma solidity 0.4.18;
 import "zeppelin-solidity/contracts/ownership/Ownable.sol";
 
 import "./Collateralizer.sol";
+import "./ERC721Collateralizer.sol";
 import "./DebtKernel.sol";
 import "./DebtRegistry.sol";
 import "./DebtToken.sol";
@@ -21,6 +22,7 @@ contract ContractRegistry is Ownable {
 
     enum ContractType {
         Collateralizer,
+        ERC721Collateralizer,
         DebtKernel,
         DebtRegistry,
         DebtToken,
@@ -30,6 +32,7 @@ contract ContractRegistry is Ownable {
     }
 
     Collateralizer public collateralizer;
+    ERC721Collateralizer public erc721Collateralizer;
     DebtKernel public debtKernel;
     DebtRegistry public  debtRegistry;
     DebtToken public debtToken;
@@ -39,6 +42,7 @@ contract ContractRegistry is Ownable {
 
     function ContractRegistry(
         address _collateralizer,
+        address _erc721Collateralizer,
         address _debtKernel,
         address _debtRegistry,
         address _debtToken,
@@ -49,6 +53,7 @@ contract ContractRegistry is Ownable {
         public
     {
         collateralizer = Collateralizer(_collateralizer);
+        erc721Collateralizer = ERC721Collateralizer(_erc721Collateralizer);
         debtKernel = DebtKernel(_debtKernel);
         debtRegistry = DebtRegistry(_debtRegistry);
         debtToken = DebtToken(_debtToken);
@@ -70,6 +75,10 @@ contract ContractRegistry is Ownable {
             oldAddress = address(collateralizer);
             validateNewAddress(newAddress, oldAddress);
             collateralizer = Collateralizer(newAddress);
+        } else if (contractType == ContractType.ERC721Collateralizer) {
+            oldAddress = address(erc721Collateralizer);
+            validateNewAddress(newAddress, oldAddress);
+            erc721Collateralizer = ERC721Collateralizer(newAddress);
         } else if (contractType == ContractType.DebtKernel) {
             oldAddress = address(debtKernel);
             validateNewAddress(newAddress, oldAddress);

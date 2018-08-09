@@ -33,6 +33,7 @@ const NAMES_OF_CONTRACTS_OWNED_BY_MULTISIG = [
     "TokenTransferProxy",
     "RepaymentRouter",
     "Collateralizer",
+    "ERC721Collateralizer",
     "TokenRegistry",
     "ContractRegistry",
 ];
