@@ -9,6 +9,7 @@ import "./DebtRegistry.sol";
 import "./DebtToken.sol";
 import "./RepaymentRouter.sol";
 import "./TokenRegistry.sol";
+import "./ERC721TokenRegistry.sol";
 import "./TokenTransferProxy.sol";
 
 
@@ -28,6 +29,7 @@ contract ContractRegistry is Ownable {
         DebtToken,
         RepaymentRouter,
         TokenRegistry,
+        ERC721TokenRegistry,
         TokenTransferProxy
     }
 
@@ -38,6 +40,7 @@ contract ContractRegistry is Ownable {
     DebtToken public debtToken;
     RepaymentRouter public repaymentRouter;
     TokenRegistry public tokenRegistry;
+    ERC721TokenRegistry public erc721TokenRegistry;
     TokenTransferProxy public tokenTransferProxy;
 
     function ContractRegistry(
@@ -48,6 +51,7 @@ contract ContractRegistry is Ownable {
         address _debtToken,
         address _repaymentRouter,
         address _tokenRegistry,
+        address _erc721tokenRegistry,
         address _tokenTransferProxy
     )
         public
@@ -59,6 +63,7 @@ contract ContractRegistry is Ownable {
         debtToken = DebtToken(_debtToken);
         repaymentRouter = RepaymentRouter(_repaymentRouter);
         tokenRegistry = TokenRegistry(_tokenRegistry);
+        erc721TokenRegistry = ERC721TokenRegistry(_erc721tokenRegistry);
         tokenTransferProxy = TokenTransferProxy(_tokenTransferProxy);
     }
 
@@ -97,6 +102,10 @@ contract ContractRegistry is Ownable {
             repaymentRouter = RepaymentRouter(newAddress);
         } else if (contractType == ContractType.TokenRegistry) {
             oldAddress = address(tokenRegistry);
+            validateNewAddress(newAddress, oldAddress);
+            tokenRegistry = TokenRegistry(newAddress);
+        } else if (contractType == ContractType.ERC721TokenRegistry) {
+            oldAddress = address(erc721TokenRegistry);
             validateNewAddress(newAddress, oldAddress);
             tokenRegistry = TokenRegistry(newAddress);
         } else if (contractType == ContractType.TokenTransferProxy) {

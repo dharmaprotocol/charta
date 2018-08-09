@@ -10,6 +10,7 @@ module.exports = (deployer, network, accounts) => {
     const TokenTransferProxy = artifacts.require("TokenTransferProxy");
     const DharmaMultiSigWallet = artifacts.require("DharmaMultiSigWallet");
     const TokenRegistry = artifacts.require("TokenRegistry");
+    const ERC721TokenRegistry = artifacts.require("ERC721TokenRegistry");
     const ContractRegistry = artifacts.require("ContractRegistry");
     const Collateralizer = artifacts.require("Collateralizer");
     const ERC721Collateralizer = artifacts.require("ERC721Collateralizer");
@@ -44,6 +45,10 @@ module.exports = (deployer, network, accounts) => {
             const DummyToken = artifacts.require("DummyToken");
             await configureTokenRegistry(network, accounts, TokenRegistry, DummyToken);
         });
+        await deployer.deploy(ERC721TokenRegistry).then(async () => {
+            // const DummyToken = artifacts.require("DummyToken");
+            // await configureTokenRegistry(network, accounts, ERC721TokenRegistry, DummyToken);
+        });
         await deployer.deploy(
             Collateralizer,
             DebtKernel.address,
@@ -67,6 +72,7 @@ module.exports = (deployer, network, accounts) => {
             DebtToken.address,
             RepaymentRouter.address,
             TokenRegistry.address,
+            ERC721TokenRegistry.address,
             TokenTransferProxy.address,
         );
     });
