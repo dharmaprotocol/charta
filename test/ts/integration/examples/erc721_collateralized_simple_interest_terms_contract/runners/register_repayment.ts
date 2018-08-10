@@ -29,20 +29,6 @@ export class RegisterRepaymentRunner extends ERC721CollateralizedSimpleInterestT
                 dummyZRXToken = this.contracts.dummyZRXToken;
                 dummyREPToken = this.contracts.dummyREPToken;
 
-                await this.contracts.dummyZRXToken.setBalance.sendTransactionAsync(
-                    this.accounts.DEBTOR_1,
-                    scenario.collateralTokenBalance,
-                    {
-                        from: this.accounts.CONTRACT_OWNER,
-                    },
-                );
-
-                await this.contracts.dummyZRXToken.approve.sendTransactionAsync(
-                    this.contracts.tokenTransferProxy.address,
-                    scenario.collateralTokenAllowance,
-                    { from: this.accounts.DEBTOR_1 },
-                );
-
                 const { CONTRACT_OWNER, DEBTOR_1 } = this.accounts;
 
                 const {

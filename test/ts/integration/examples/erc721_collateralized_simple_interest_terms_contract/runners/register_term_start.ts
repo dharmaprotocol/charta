@@ -20,39 +20,16 @@ export class RegisterTermStartRunner extends ERC721CollateralizedSimpleInterestT
             before(async () => {
                 await this.setupDebtOrder(scenario);
 
-                // Reset the collateralizer contract's balance for each example.
-                await this.contracts.dummyZRXToken.setBalance.sendTransactionAsync(
-                    this.contracts.erc721CollateralizerContract.address,
-                    new BigNumber(0),
-                    {
-                        from: this.accounts.CONTRACT_OWNER,
-                    },
-                );
-
-                await this.contracts.dummyZRXToken.setBalance.sendTransactionAsync(
-                    this.accounts.DEBTOR_1,
-                    scenario.collateralTokenBalance,
-                    {
-                        from: this.accounts.CONTRACT_OWNER,
-                    },
-                );
-
-                await this.contracts.dummyZRXToken.approve.sendTransactionAsync(
-                    this.contracts.tokenTransferProxy.address,
-                    scenario.collateralTokenAllowance,
-                    { from: this.accounts.DEBTOR_1 },
-                );
-
-                if (!scenario.permissionToCollateralize) {
-                    await this.contracts.erc721CollateralizerContract.revokeCollateralizeAuthorization
-                        .sendTransactionAsync(
-                            this.contracts.erc721CollateralizedSimpleInterestTermsContract.address,
-                            { from: this.accounts.CONTRACT_OWNER },
-                        );
-                }
+                // if (!scenario.permissionToCollateralize) {
+                //     await this.contracts.erc721CollateralizerContract.revokeCollateralizeAuthorization
+                //         .sendTransactionAsync(
+                //             this.contracts.erc721CollateralizedSimpleInterestTermsContract.address,
+                //             { from: this.accounts.CONTRACT_OWNER },
+                //         );
+                // }
 
                 if (scenario.invokedByDebtKernel && !scenario.reverts) {
-                    const latestBlockTime = await this.web3Utils.getLatestBlockTime();
+                    // const latestBlockTime = await this.web3Utils.getLatestBlockTime();
 
                     // Fill the debt order, thereby invoking registerTermsStart from the debt kernel.
                     txHash = await this.fillDebtOrder();
@@ -64,12 +41,12 @@ export class RegisterTermStartRunner extends ERC721CollateralizedSimpleInterestT
             });
 
             after(async () => {
-                if (!scenario.permissionToCollateralize) {
-                    await this.contracts.erc721CollateralizerContract.addAuthorizedCollateralizeAgent.sendTransactionAsync(
-                        this.contracts.erc721CollateralizedSimpleInterestTermsContract.address,
-                        { from: this.accounts.CONTRACT_OWNER },
-                    );
-                }
+                // if (!scenario.permissionToCollateralize) {
+                //     await this.contracts.erc721CollateralizerContract.addAuthorizedCollateralizeAgent.sendTransactionAsync(
+                //         this.contracts.erc721CollateralizedSimpleInterestTermsContract.address,
+                //         { from: this.accounts.CONTRACT_OWNER },
+                //     );
+                // }
 
                 // Tear down ABIDecoder before next set of tests
                 ABIDecoder.removeABI(this.contracts.erc721CollateralizedSimpleInterestTermsContract.abi);
@@ -101,31 +78,13 @@ export class RegisterTermStartRunner extends ERC721CollateralizedSimpleInterestT
                     const expectedLog = CollateralLocked(
                         erc721CollateralizerContract.address,
                         this.agreementId,
-                        this.contracts.dummyZRXToken.address,
-                        scenario.collateralAmount,
+                        this.contracts.erc721TokenContract.address,
+                        scenario.collateralId,
                     );
 
                     const returnedLog = await this.getLogs(txHash, "CollateralLocked");
 
-                    expect(returnedLog).to.deep.equal(expectedLog);
-                });
-
-                it("should decrement the balance for the debtor by the collateral amount", async () => {
-                    const balance = await this.contracts.dummyZRXToken.balanceOf.callAsync(
-                        this.accounts.DEBTOR_1,
-                    );
-
-                    expect(balance.toString()).to.equal(
-                        scenario.collateralTokenBalance.sub(scenario.collateralAmount).toString(),
-                    );
-                });
-
-                it("should increment the collateralizer balance by the collateral amount", async () => {
-                    const balance = await this.contracts.dummyZRXToken.balanceOf.callAsync(
-                        this.contracts.erc721CollateralizerContract.address,
-                    );
-
-                    expect(balance.toString()).to.equal(scenario.collateralAmount.toString());
+                    expect(expectedLog).to.deep.equal(returnedLog);
                 });
             } else {
                 if (scenario.reverts) {

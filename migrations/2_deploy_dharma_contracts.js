@@ -58,7 +58,7 @@ module.exports = (deployer, network, accounts) => {
             ERC721Collateralizer,
             DebtKernel.address,
             DebtRegistry.address,
-            TokenRegistry.address,
+            ERC721TokenRegistry.address,
             TokenTransferProxy.address,
         );
         await deployer.deploy(

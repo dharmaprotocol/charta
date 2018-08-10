@@ -5,19 +5,19 @@ import { expect } from "chai";
 import { UnpackParametersFromBytesScenario } from "../scenarios/index";
 
 // Wrappers
-import { CollateralizedSimpleInterestTermsContractContract } from "../../../../../../types/generated/collateralized_simple_interest_terms_contract";
+import { ERC721CollateralizedSimpleInterestTermsContractContract } from "../../../../../../types/generated/e_r_c721_collateralized_simple_interest_terms_contract";
 
 // This is testing a "pure" function, and so it does
 // not need the setup provided in CollateralizedSimpleInterestTermsContractRunner.
 export class UnpackParametersFromBytesRunner {
-    private collateralizedSimpleInterestTermsContract: CollateralizedSimpleInterestTermsContractContract;
+    private collateralizedSimpleInterestTermsContract: ERC721CollateralizedSimpleInterestTermsContractContract;
 
     constructor() {
         this.testScenario = this.testScenario.bind(this);
     }
 
     public initialize(
-        collateralizedSimpleInterestTermsContract: CollateralizedSimpleInterestTermsContractContract,
+        collateralizedSimpleInterestTermsContract: ERC721CollateralizedSimpleInterestTermsContractContract,
     ) {
         this.collateralizedSimpleInterestTermsContract = collateralizedSimpleInterestTermsContract;
     }

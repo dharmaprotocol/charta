@@ -24,7 +24,7 @@ import { Web3Utils } from "../../../../../utils/web3_utils";
 import { CollateralSeized } from "../../../logs/collateralized_contract";
 
 // Factories
-import { CollateralizedSimpleInterestTermsParameters } from "../../../factories/terms_contract_parameters";
+import { ERC721CollateralizedSimpleInterestTermsParameters } from "../../../factories/terms_contract_parameters";
 
 export class SeizeCollateralRunner {
     private web3Utils: Web3Utils;
@@ -90,10 +90,9 @@ export class SeizeCollateralRunner {
 
                 // 2.  Packing that index and other collateralization parameters
                 //      into a terms contract parameter string.
-                const termsContractParameters = CollateralizedSimpleInterestTermsParameters.pack({
+                const termsContractParameters = ERC721CollateralizedSimpleInterestTermsParameters.pack({
                     collateralTokenIndex: new BigNumber(0),
-                    collateralAmount: scenario.collateralAmount,
-                    gracePeriodInDays: scenario.gracePeriodInDays,
+                    tokenId: new BigNumber(0),
                 });
 
                 // 2. Mocking the terms of the debt agreement to correspond to the

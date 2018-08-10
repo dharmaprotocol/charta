@@ -14,12 +14,6 @@ export const UNSUCCESSFUL_REGISTER_TERM_START_SCENARIOS: RegisterTermStartScenar
         invokedByDebtKernel: false,
         reverts: true,
     },
-    // {
-    //      TODO: Haven't been able to get permission revoking to work.
-    //     description: "when collateralize permissions are revoked from the terms contract",
-    //     permissionToCollateralize: false,
-    //     reverts: true,
-    // },
     {
         description: "when the amortization unit type is 5",
         ...defaultArgs,
@@ -42,25 +36,6 @@ export const UNSUCCESSFUL_REGISTER_TERM_START_SCENARIOS: RegisterTermStartScenar
         description: "when there is no token at the given token index in the collateral parameters",
         ...defaultArgs,
         collateralTokenInRegistry: false,
-        reverts: true,
-    },
-    {
-        description: "when the collateralized amount is 0",
-        ...defaultArgs,
-        collateralAmount: new BigNumber(0),
-        reverts: true,
-    },
-    {
-        description:
-            "when the token proxy allowance granted by the debtor is less than the collateral amount",
-        ...defaultArgs,
-        collateralTokenAllowance: new BigNumber(0),
-        reverts: true,
-    },
-    {
-        description: "when the debtor's token balance is less than the collateral amount",
-        ...defaultArgs,
-        collateralTokenBalance: new BigNumber(0),
         reverts: true,
     },
 ];

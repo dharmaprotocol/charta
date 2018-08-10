@@ -8,14 +8,14 @@ export function CollateralLocked(
     contract: Address,
     agreementID: Bytes32,
     token: Address,
-    amount: UInt,
+    tokenId: UInt,
 ): ABIDecoder.DecodedLog {
     return {
         address: contract,
         events: LogUtils.getParams([
             ["agreementID", agreementID],
             ["token", token],
-            ["amount", amount],
+            ["tokenID", tokenId],
         ]),
         name: "CollateralLocked",
     };

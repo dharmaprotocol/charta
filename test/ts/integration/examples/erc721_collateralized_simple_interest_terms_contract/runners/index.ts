@@ -11,6 +11,8 @@ import { TokenRegistryContract } from "../../../../../../types/generated/token_r
 import { DebtTokenContract } from "../../../../../../types/generated/debt_token";
 import { ERC721CollateralizedSimpleInterestTermsContractContract } from "../../../../../../types/generated/e_r_c721_collateralized_simple_interest_terms_contract";
 import { ERC721CollateralizerContract } from "../../../../../../types/generated/e_r_c721_collateralizer";
+import { MintableERC721TokenContract } from "../../../../../../types/generated/mintable_e_r_c721_token";
+import { ERC721TokenRegistryContract } from "../../../../../../types/generated/e_r_c721_token_registry";
 
 export interface TestAccounts {
     UNDERWRITER: string;
@@ -30,6 +32,8 @@ export interface TestContracts {
     repaymentRouter: RepaymentRouterContract;
     dummyTokenRegistryContract: TokenRegistryContract;
     debtTokenContract: DebtTokenContract;
+    erc721TokenContract: MintableERC721TokenContract;
+    erc721TokenRegistry: ERC721TokenRegistryContract;
 }
 
 export { RegisterRepaymentRunner, RegisterTermStartRunner, UnpackParametersFromBytesRunner };

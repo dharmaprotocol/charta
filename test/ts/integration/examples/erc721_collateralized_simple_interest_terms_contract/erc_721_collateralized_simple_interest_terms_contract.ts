@@ -23,6 +23,10 @@ import {
     RegisterTermStartRunner,
     UnpackParametersFromBytesRunner,
 } from "./runners";
+import { MintableERC721TokenContract } from "../../../../../types/generated/mintable_e_r_c721_token";
+import { DharmaMultiSigWalletContract } from "../../../../../types/generated/dharma_multi_sig_wallet";
+import { ERC721TokenRegistryContract } from "../../../../../types/generated/e_r_c721_token_registry";
+import { multiSigExecuteAfterTimelock } from "../../../test_utils/multisig";
 
 // Configure BigNumber exponentiation
 BigNumberSetup.configure();
@@ -85,6 +89,26 @@ contract("Collateralized Simple Interest Terms Contract (Integration Tests)", as
 
         repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
 
+        // Set up a mintable ERC721 token.
+        const erc721TokenContract = await MintableERC721TokenContract.deployed(web3, TX_DEFAULTS);
+        const tokenAddress = erc721TokenContract.address;
+        const tokenName = await erc721TokenContract.name.callAsync();
+        const tokenSymbol = await erc721TokenContract.symbol.callAsync();
+
+        console.log(tokenAddress, tokenName, tokenSymbol);
+
+        // Add the mintable token to the registry.
+        const erc721TokenRegistry = await ERC721TokenRegistryContract.deployed(web3, TX_DEFAULTS);
+        const multiSig = await DharmaMultiSigWalletContract.deployed(web3, TX_DEFAULTS);
+        await multiSigExecuteAfterTimelock(
+            web3,
+            multiSig,
+            erc721TokenRegistry,
+            "setTokenAttributes",
+            ACCOUNTS,
+            [tokenSymbol, tokenAddress, tokenName],
+        );
+
         const testAccounts = {
             UNDERWRITER,
             CONTRACT_OWNER,
@@ -103,6 +127,8 @@ contract("Collateralized Simple Interest Terms Contract (Integration Tests)", as
             repaymentRouter,
             dummyTokenRegistryContract,
             debtTokenContract,
+            erc721TokenRegistry,
+            erc721TokenContract,
         };
 
         registerRepaymentRunner.initialize(testAccounts, testContracts, ACCOUNTS);

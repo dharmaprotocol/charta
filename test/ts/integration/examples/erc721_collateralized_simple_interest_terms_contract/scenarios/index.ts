@@ -15,12 +15,9 @@ export const DEFAULT_REGISTER_TERM_START_ARGS = {
     amortizationUnitType: new BigNumber(1),
     termLengthUnits: new BigNumber(4),
     // Parameters for collateralization.
-    collateralAmount: Units.ether(0.005),
     collateralToken: "REP",
-    gracePeriodInDays: new BigNumber(20),
+    collateralId: new BigNumber(0),
     // Misc parameters.
-    collateralTokenAllowance: Units.ether(0.005),
-    collateralTokenBalance: Units.ether(0.005),
     debtorFee: Units.ether(0.001),
     invokedByDebtKernel: true,
     permissionToCollateralize: true,
@@ -40,12 +37,8 @@ export const DEFAULT_REGISTER_REPAYMENT_ARGS = {
     repaymentAmount: Units.ether(1.29),
     debtorFee: Units.ether(0.001),
     // Parameters for collateralization.
-    collateralAmount: Units.ether(0.005),
-    collateralToken: "REP",
-    gracePeriodInDays: new BigNumber(20),
-    // Misc parameters.
-    collateralTokenAllowance: Units.ether(0.005),
-    collateralTokenBalance: Units.ether(0.005),
+    collateralToken: "MET",
+    collateralId: new BigNumber(0),
     repaymentToken: (principalToken: DummyTokenContract, otherToken: DummyTokenContract) =>
         principalToken,
     debtOrder: (debtOrder: SignedDebtOrder) => debtOrder,
@@ -78,11 +71,8 @@ export interface RegisterRepaymentScenario {
     debtOrder: (debtOrder: SignedDebtOrder) => SignedDebtOrder;
     debtorFee: BigNumber;
     // Collateralization parameters.
-    collateralAmount: BigNumber;
+    collateralId: BigNumber;
     collateralToken: string;
-    gracePeriodInDays: BigNumber;
-    collateralTokenAllowance: BigNumber;
-    collateralTokenBalance: BigNumber;
     // True if the index associated with the principal token is in the token registry
     principalTokenInRegistry: boolean;
     // True if the index associated with the collateral token is in the token registry
@@ -112,11 +102,8 @@ export interface RegisterTermStartScenario {
     permissionToCollateralize: boolean;
     debtorFee: BigNumber;
     // Collateralization parameters.
-    collateralAmount: BigNumber;
+    collateralId: BigNumber;
     collateralToken: string;
-    gracePeriodInDays: BigNumber;
-    collateralTokenAllowance: BigNumber;
-    collateralTokenBalance: BigNumber;
     // True if the index associated with the principal token is in the token registry
     principalTokenInRegistry: boolean;
     // True if the index associated with the collateral token is in the token registry

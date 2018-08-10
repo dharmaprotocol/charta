@@ -15,7 +15,7 @@ export interface CollateralizedContractTerms {
 }
 
 export interface ERC721CollateralizedContractTerms {
-    erc721TokenAddress: string;
+    collateralTokenIndex: BigNumber;
     tokenId: BigNumber;
 }
 
@@ -79,6 +79,33 @@ export class CollateralizedSimpleInterestTermsParameters extends TermsContractPa
 
         const packedCollateralParameters =
             encodedCollateralToken + encodedCollateralAmount + encodedGracePeriodInDays;
+
+        if (contractTerms) {
+            const packedTermsParameters = SimpleInterestParameters.pack(contractTerms);
+            return `${packedTermsParameters.substr(0, 39)}${packedCollateralParameters.padStart(
+                27,
+                "0",
+            )}`;
+        } else {
+            return `0x${packedCollateralParameters.padStart(64, "0")}`;
+        }
+    }
+}
+
+export class ERC721CollateralizedSimpleInterestTermsParameters extends TermsContractParameters {
+    public static pack(
+        collateralTerms: ERC721CollateralizedContractTerms,
+        // Optionally, get the full contract terms parameters string by providing the contract terms.
+        contractTerms?: SimpleInterestContractTerms,
+    ): string {
+        const encodedCollateralToken = collateralTerms.collateralTokenIndex
+            .toString(16)
+            .padStart(2, "0");
+        const encodedTokenId = collateralTerms.tokenId
+            .toString(16)
+            .padStart(23, "0");
+
+        const packedCollateralParameters = encodedCollateralToken + encodedTokenId;
 
         if (contractTerms) {
             const packedTermsParameters = SimpleInterestParameters.pack(contractTerms);

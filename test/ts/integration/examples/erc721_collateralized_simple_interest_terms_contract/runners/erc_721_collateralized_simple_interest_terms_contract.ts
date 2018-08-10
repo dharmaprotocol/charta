@@ -13,14 +13,13 @@ import { TestAccounts, TestContracts } from "./";
 import { SignedDebtOrder } from "../../../../../../types/kernel/debt_order";
 import { DummyTokenContract } from "../../../../../../types/generated/dummy_token";
 // Factories
-import { CollateralizedSimpleInterestTermsParameters } from "../../../../factories/terms_contract_parameters";
+import {
+    ERC721CollateralizedSimpleInterestTermsParameters
+} from "../../../../factories/terms_contract_parameters";
 import { DebtOrderFactory } from "../../../../factories/debt_order_factory";
 // Utils
 import { Web3Utils } from "../../../../../../utils/web3_utils";
-import { MintableERC721TokenContract } from "../../../../../../types/generated/mintable_e_r_c721_token";
 import { ERC721TokenRegistryContract } from "../../../../../../types/generated/e_r_c721_token_registry";
-import { multiSigExecuteAfterTimelock } from "../../../../test_utils/multisig";
-import { DharmaMultiSigWalletContract } from "../../../../../../types/generated/dharma_multi_sig_wallet";
 import { Address } from "../../../../../../types/common";
 
 const DEFAULT_GAS_AMOUNT = 4712388;
@@ -93,9 +92,6 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
         const principalTokenIndex = await dummyTokenRegistryContract.getTokenIndexBySymbol.callAsync(
             "REP",
         );
-        const collateralTokenIndex = await dummyTokenRegistryContract.getTokenIndexBySymbol.callAsync(
-            "ZRX",
-        );
         const nonExistentTokenIndex = new BigNumber(99);
 
         const txDefaults = {
@@ -104,47 +100,33 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
         };
 
         // Set up a mintable ERC721 token.
-        const exampleToken = await MintableERC721TokenContract.deployed(web3, txDefaults);
-        const tokenAddress = exampleToken.address;
-        const tokenName = await exampleToken.name.callAsync();
-        const tokenSymbol = await exampleToken.symbol.callAsync();
+        const erc721Token = this.contracts.erc721TokenContract;
+        const tokenAddress = erc721Token.address;
+        const tokenName = await erc721Token.name.callAsync();
+        const tokenSymbol = await erc721Token.symbol.callAsync();
 
         console.log(tokenAddress, tokenName, tokenSymbol);
 
         // Add the mintable token to the registry.
         const tokenRegistry = await ERC721TokenRegistryContract.deployed(web3, txDefaults);
-        const multiSig = await DharmaMultiSigWalletContract.deployed(web3, txDefaults);
-        await multiSigExecuteAfterTimelock(
-            web3,
-            multiSig,
-            tokenRegistry,
-            "setTokenAttributes",
-            this.allAccounts,
-            [tokenSymbol, tokenAddress, tokenName],
-        );
-
-        await this.web3Utils.mineBlock();
 
         // Get the index of the token.
         const tokenIndex = await tokenRegistry.getTokenIndexBySymbol.callAsync(tokenSymbol);
         console.log("tokenIndex", tokenIndex);
 
         // Mint a new ERC721 token for the debtor.
-        const tokenId = new BigNumber(await exampleToken.totalSupply.callAsync());
-        await exampleToken.mint.sendTransactionAsync(this.accounts.DEBTOR_1, tokenId, {
+        const tokenId = new BigNumber(await erc721Token.totalSupply.callAsync());
+        await erc721Token.mint.sendTransactionAsync(this.accounts.DEBTOR_1, tokenId, {
             from: this.accounts.CONTRACT_OWNER,
             gas: DEFAULT_GAS_AMOUNT,
         });
 
         await this.web3Utils.mineBlock();
 
-        const termsContractParameters = CollateralizedSimpleInterestTermsParameters.pack(
+        const termsContractParameters = ERC721CollateralizedSimpleInterestTermsParameters.pack(
             {
-                collateralAmount: scenario.collateralAmount,
-                collateralTokenIndex: scenario.collateralTokenInRegistry
-                    ? collateralTokenIndex
-                    : nonExistentTokenIndex,
-                gracePeriodInDays: scenario.gracePeriodInDays,
+                collateralTokenIndex: tokenIndex,
+                tokenId,
             },
             {
                 principalTokenIndex: scenario.principalTokenInRegistry
