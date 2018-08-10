@@ -4,7 +4,7 @@ import "zeppelin-solidity/contracts/ownership/Ownable.sol";
 
 
 /**
- * The TokenRegistry is a basic registry mapping token symbols
+ * The ERC721TokenRegistry is a basic registry mapping token symbols
  * to their known, deployed addresses on the current blockchain.
  *
  * Note that the TokenRegistry does *not* mediate any of the
@@ -23,14 +23,12 @@ contract ERC721TokenRegistry is Ownable {
     uint8 public tokenSymbolListLength;
 
     struct TokenAttributes {
-        // The ERC20 contract address.
+        // The ERC721 contract address.
         address tokenAddress;
         // The index in `tokenSymbolList` where the token's symbol can be found.
         uint tokenIndex;
         // The name of the given token, e.g. "Canonical Wrapped Ether"
         string name;
-        // The number of digits that come after the decimal place when displaying token value.
-        uint8 numDecimals;
     }
 
     /**
@@ -39,8 +37,7 @@ contract ERC721TokenRegistry is Ownable {
     function setTokenAttributes(
         string _symbol,
         address _tokenAddress,
-        string _tokenName,
-        uint8 _numDecimals
+        string _tokenName
     )
     public onlyOwner
     {
@@ -52,7 +49,6 @@ contract ERC721TokenRegistry is Ownable {
         if (attributes.tokenAddress == address(0)) {
             // The token has not yet been added to the registry.
             attributes.tokenAddress = _tokenAddress;
-            attributes.numDecimals = _numDecimals;
             attributes.name = _tokenName;
             attributes.tokenIndex = tokenSymbolListLength;
 
@@ -61,7 +57,6 @@ contract ERC721TokenRegistry is Ownable {
         } else {
             // The token has already been added to the registry; update attributes.
             attributes.tokenAddress = _tokenAddress;
-            attributes.numDecimals = _numDecimals;
             attributes.name = _tokenName;
         }
 
@@ -127,36 +122,6 @@ contract ERC721TokenRegistry is Ownable {
     }
 
     /**
-     * Given the symbol for a token, returns the number of decimals as provided in
-     * the associated TokensAttribute struct.
-     *
-     * Example:
-     *   getNumDecimalsFromSymbol("REP");
-     *   => 18
-     */
-    function getNumDecimalsFromSymbol(string _symbol) public view returns (uint8) {
-        bytes32 symbolHash = keccak256(_symbol);
-
-        TokenAttributes storage attributes = symbolHashToTokenAttributes[symbolHash];
-
-        return attributes.numDecimals;
-    }
-
-    /**
-     * Given the index for a token in the registry, returns the number of decimals as provided in
-     * the associated TokensAttribute struct.
-     *
-     * Example:
-     *   getNumDecimalsByIndex(1);
-     *   => 18
-     */
-    function getNumDecimalsByIndex(uint _index) public view returns (uint8) {
-        string memory symbol = getTokenSymbolByIndex(_index);
-
-        return getNumDecimalsFromSymbol(symbol);
-    }
-
-    /**
      * Given the index for a token in the registry, returns the name of the token as provided in
      * the associated TokensAttribute struct.
      *
@@ -172,22 +137,13 @@ contract ERC721TokenRegistry is Ownable {
         return tokenName;
     }
 
-    /**
-     * Given the symbol for a token in the registry, returns a tuple containing the token's address,
-     * the token's index in the registry, the token's name, and the number of decimals.
-     *
-     * Example:
-     *   getTokenAttributesBySymbol("WETH");
-     *   => ["0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", 1, "Canonical Wrapped Ether", 18]
-     */
     function getTokenAttributesBySymbol(string _symbol)
     public
     view
     returns (
         address,
         uint,
-        string,
-        uint
+        string
     )
     {
         bytes32 symbolHash = keccak256(_symbol);
@@ -195,29 +151,19 @@ contract ERC721TokenRegistry is Ownable {
         TokenAttributes storage attributes = symbolHashToTokenAttributes[symbolHash];
 
         return (
-        attributes.tokenAddress,
-        attributes.tokenIndex,
-        attributes.name,
-        attributes.numDecimals
+            attributes.tokenAddress,
+            attributes.tokenIndex,
+            attributes.name
         );
     }
 
-    /**
-     * Given the index for a token in the registry, returns a tuple containing the token's address,
-     * the token's symbol, the token's name, and the number of decimals.
-     *
-     * Example:
-     *   getTokenAttributesByIndex(1);
-     *   => ["0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", "WETH", "Canonical Wrapped Ether", 18]
-     */
     function getTokenAttributesByIndex(uint _index)
     public
     view
     returns (
         address,
         string,
-        string,
-        uint8
+        string
     )
     {
         string memory symbol = getTokenSymbolByIndex(_index);
@@ -227,10 +173,9 @@ contract ERC721TokenRegistry is Ownable {
         TokenAttributes storage attributes = symbolHashToTokenAttributes[symbolHash];
 
         return (
-        attributes.tokenAddress,
-        symbol,
-        attributes.name,
-        attributes.numDecimals
+            attributes.tokenAddress,
+            symbol,
+            attributes.name
         );
     }
 }
