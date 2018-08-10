@@ -45,10 +45,8 @@ module.exports = (deployer, network, accounts) => {
             const DummyToken = artifacts.require("DummyToken");
             await configureTokenRegistry(network, accounts, TokenRegistry, DummyToken);
         });
-        await deployer.deploy(ERC721TokenRegistry).then(async () => {
-            // const DummyToken = artifacts.require("DummyToken");
-            // await configureTokenRegistry(network, accounts, ERC721TokenRegistry, DummyToken);
-        });
+        await deployer.deploy(ERC721TokenRegistry);
+
         await deployer.deploy(
             Collateralizer,
             DebtKernel.address,

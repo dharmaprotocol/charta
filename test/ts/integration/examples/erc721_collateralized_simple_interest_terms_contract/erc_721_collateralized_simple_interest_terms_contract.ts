@@ -105,8 +105,8 @@ contract("Collateralized Simple Interest Terms Contract (Integration Tests)", as
             debtTokenContract,
         };
 
-        registerRepaymentRunner.initialize(testAccounts, testContracts);
-        registerTermStartRunner.initialize(testAccounts, testContracts);
+        registerRepaymentRunner.initialize(testAccounts, testContracts, ACCOUNTS);
+        registerTermStartRunner.initialize(testAccounts, testContracts, ACCOUNTS);
         unpackParametersFromBytes.initialize(erc721CollateralizedSimpleInterestTermsContract);
     });
 
