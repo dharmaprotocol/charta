@@ -1614,31 +1614,39 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
             tokenID: BigNumber,
             data: string,
         ) => {
-            return await sendTransaction(
-                debtTokenWeb3ContractInstance,
+            return sendTransaction(
+                web3,
+                debtToken.web3ContractInstance,
                 "safeTransferFrom",
                 "address,address,uint256,bytes",
                 [from, to, tokenID, data],
-                { from: from },
+                {
+                    from,
+                    to: debtToken.web3ContractInstance.address,
+                },
             );
         };
 
         const safelyTransferWithoutData = async (from: string, to: string, tokenID: BigNumber) => {
-            return await sendTransaction(
-                debtTokenWeb3ContractInstance,
+            return sendTransaction(
+                web3,
+                debtToken.web3ContractInstance,
                 "safeTransferFrom",
                 "address,address,uint256",
                 [from, to, tokenID],
-                { from: from },
+                {
+                    from,
+                    to: debtToken.web3ContractInstance.address,
+                },
             );
         };
 
         const shouldSafelyTransfer = async (to?: string) => {
             describe("with data", () => {
-                it("should call `onERC721Received`", async function() {
+                it("should call `onERC721Received`", () => {
                     const data = "0x42";
                     const tokenID = debtEntries[0].getTokenId();
-                    await safelyTransferWithData(
+                    safelyTransferWithData(
                         TOKEN_OWNER_1,
                         to ? to : receiver.address,
                         tokenID,
@@ -1654,13 +1662,9 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
                 });
             });
             describe("without data", () => {
-                it("should call `onERC721Received`", async function() {
+                it("should call `onERC721Received`", () => {
                     const tokenID = debtEntries[0].getTokenId();
-                    await safelyTransferWithoutData(
-                        TOKEN_OWNER_1,
-                        to ? to : receiver.address,
-                        tokenID,
-                    );
+                    safelyTransferWithoutData(TOKEN_OWNER_1, to ? to : receiver.address, tokenID);
                     expect(
                         receiver.wasOnERC721ReceivedCalledWith.callAsync(
                             TOKEN_OWNER_1,
@@ -1674,7 +1678,7 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
 
         const shouldNotSafelyTransfer = async (toReceiver: boolean = true) => {
             describe("with data", () => {
-                it("should revert", async function() {
+                it("should revert", () => {
                     const data = "0x42";
                     const tokenID = debtEntries[0].getTokenId();
                     expect(
@@ -1684,11 +1688,11 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
                             tokenID,
                             data,
                         ),
-                    ).to.eventually.be.rejectedWith(REVERT_ERROR);
+                    ).to.be.rejectedWith(REVERT_ERROR);
                 });
             });
             describe("without data", () => {
-                it("should revert", async function() {
+                it("should revert", () => {
                     const tokenID = debtEntries[0].getTokenId();
                     expect(
                         safelyTransferWithoutData(
@@ -1696,7 +1700,7 @@ contract("Debt Token (Unit Tests)", (ACCOUNTS) => {
                             toReceiver ? receiver.address : mockRegistry.address,
                             tokenID,
                         ),
-                    ).to.eventually.be.rejectedWith(REVERT_ERROR);
+                    ).to.be.rejectedWith(REVERT_ERROR);
                 });
             });
         };
