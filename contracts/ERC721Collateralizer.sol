@@ -356,19 +356,12 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         pure
         returns (uint, uint)
     {
-        // The first byte of the 108 reserved bits represents the collateral token.
         bytes32 collateralTokenIndexShifted =
-        parameters & 0x0000000000000000000000000000000000000ff0000000000000000000000000;
-        // The subsequent 92 bits represents the collateral amount, as denominated in the above token.
+            parameters & 0x0000000000000000000000000000000000000fffffffffffff00000000000000;
         bytes32 tokenIdShifted =
-//        parameters & 0x000000000000000000000000000000000000000fffffffffffffffffffffff00;
-        parameters & 0x00000000000000000000000000000000000000000000000000000000000000ff;
+            parameters & 0x00000000000000000000000000000000000000000000000000ffffffffffffff;
 
-        // We bit-shift these values, respectively, 100 bits and 8 bits right using
-        // mathematical operations, so that their 32 byte integer counterparts
-        // correspond to the intended values packed in the 32 byte string
-        uint collateralTokenIndex = uint(collateralTokenIndexShifted) / 2 ** 100;
-//        uint256 tokenID = uint(tokenIdShifted) / 2 ** 8;
+        uint collateralTokenIndex = uint(collateralTokenIndexShifted) / 2 ** 56;
 
         return (
             collateralTokenIndex,
