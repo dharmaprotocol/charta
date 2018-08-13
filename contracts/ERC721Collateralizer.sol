@@ -139,36 +139,22 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         // Ensure that the collateralizer is the owner of this token ID.
         require(erc721token.ownerOf(collateralTokenID) == collateralizer);
 
-        // The token must be approved for transfer by the custodian.
-        require(erc721token.getApproved(collateralTokenID) == custodian);
+        // The token must be approved for transfer by the proxy.
+        require(erc721token.getApproved(collateralTokenID) == address(tokenTransferProxy));
 
         // store collaterallizer in mapping, effectively demarcating that the
         // agreement is now collateralized.
         agreementToCollateralizer[agreementId] = collateralizer;
 
-        // the collateral must be successfully transferred to this contract, via a proxy.
-        //        require(tokenTransferProxy.transferFrom(
-        //                erc20token,
-        //                collateralizer,
-        //                custodian,
-        //                collateralAmount
-        //            ));
-
-
-        erc721token.transferFrom(
+        // Transfer the collateral asset to this contract, via a proxy.
+        tokenTransferProxy.erc721TransferFrom(
+            collateralTokenAddress,
             collateralizer,
             custodian,
             collateralTokenID
         );
 
-//        tokenTransferProxy.erc721SafeTransferFrom(
-//            collateralTokenAddress,
-//            collateralizer,
-//            custodian,
-//            collateralTokenID
-//        );
-
-        // emit event that collateral has been secured.
+        // Emit an event that collateral has been secured.
         CollateralLocked(agreementId, collateralTokenAddress, collateralTokenID);
 
         return true;
@@ -265,9 +251,9 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
 
         // Fetch all relevant collateralization parameters
         (
-        collateralTokenAddress,
-        collateralTokenID,
-        termsContract
+            collateralTokenAddress,
+            collateralTokenID,
+            termsContract
         ) = retrieveCollateralParameters(agreementId);
 
         //        // Ensure a valid form of collateral is tied to this agreement id
@@ -344,7 +330,7 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
     function getAuthorizedCollateralizeAgents()
         public
         view
-    returns (address[])
+        returns (address[])
     {
         return collateralizationPermissions.getAuthorizedAgents();
     }
@@ -368,7 +354,7 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
     function unpackCollateralParametersFromBytes(bytes32 parameters)
         public
         pure
-    returns (uint, uint)
+        returns (uint, uint)
     {
         // The first byte of the 108 reserved bits represents the collateral token.
         bytes32 collateralTokenIndexShifted =
@@ -393,7 +379,7 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
     function timestampAdjustedForGracePeriod(uint gracePeriodInDays)
         public
         view
-    returns (uint)
+        returns (uint)
     {
         return block.timestamp.sub(
             SECONDS_IN_DAY.mul(gracePeriodInDays)
@@ -403,11 +389,11 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
     function retrieveCollateralParameters(bytes32 agreementId)
         internal
         view
-    returns (
-        address _collateralTokenAddress,
-        uint256 _tokenID,
-        TermsContract _termsContract
-    )
+        returns (
+            address _collateralTokenAddress,
+            uint256 _tokenID,
+            TermsContract _termsContract
+        )
     {
         address termsContractAddress;
         bytes32 termsContractParameters;

@@ -89,7 +89,7 @@ contract TokenTransferProxy is Pausable, PermissionEvents {
         return ERC20(_token).transferFrom(_from, _to, _amount);
     }
 
-    function erc721SafeTransferFrom(
+    function erc721TransferFrom(
         address _token,
         address _from,
         address _to,
@@ -99,6 +99,6 @@ contract TokenTransferProxy is Pausable, PermissionEvents {
     {
         // TODO: Require token permission.
 
-        ERC721(_token).safeTransferFrom(_from, _to, _tokenId);
+        ERC721(_token).transferFrom(_from, _to, _tokenId);
     }
 }

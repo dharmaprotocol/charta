@@ -160,9 +160,9 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
         await erc721Token.approve.sendTransactionAsync(
             this.contracts.tokenTransferProxy.address, tokenId, { from: DEBTOR_1 },
         );
-        await erc721Token.approve.sendTransactionAsync(
-            collateralizer.address, tokenId, { from: DEBTOR_1 },
-        );
+        // await erc721Token.approve.sendTransactionAsync(
+        //     collateralizer.address, tokenId, { from: DEBTOR_1 },
+        // );
 
         console.log(
             (await collateralizer.unpackCollateralParametersFromBytes.callAsync(termsContractParameters))
