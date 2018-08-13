@@ -129,6 +129,8 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
                 : indexWithoutToken.toNumber(),
         );
 
+        console.log("Using token ID", tokenId);
+
         const termsContractParameters = ERC721CollateralizedSimpleInterestTermsParameters.pack(
             {
                 collateralTokenIndex:
@@ -149,7 +151,19 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
         );
 
         console.log("given", termsContractParameters);
+
+        console.log("debtor", DEBTOR_1);
+        console.log("owner", await erc721Token.ownerOf.callAsync(tokenId));
+
         const collateralizer = await ERC721CollateralizerContract.deployed(web3, txDefaults);
+        // The debtor grants approval to the collateralizer.
+        await erc721Token.approve.sendTransactionAsync(
+            this.contracts.tokenTransferProxy.address, tokenId, { from: DEBTOR_1 },
+        );
+        await erc721Token.approve.sendTransactionAsync(
+            collateralizer.address, tokenId, { from: DEBTOR_1 },
+        );
+
         console.log(
             (await collateralizer.unpackCollateralParametersFromBytes.callAsync(termsContractParameters))
                 .map((val: BigNumber) => val.toNumber()),
