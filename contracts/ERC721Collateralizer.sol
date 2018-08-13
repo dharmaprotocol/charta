@@ -100,9 +100,9 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         bytes32 agreementId,
         address collateralizer
     )
-    public
-    onlyAuthorizedToCollateralize
-    whenNotPaused
+        public
+        onlyAuthorizedToCollateralize
+        whenNotPaused
     returns (bool _success)
     {
         // The address of the ERC721 contract that mints this token.
@@ -118,40 +118,33 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         collateralTokenID,
         termsContract
         ) = retrieveCollateralParameters(agreementId);
-        //
-        //        require(termsContract == msg.sender);
-        //        require(collateralAmount > 0);
+
+        require(termsContract == msg.sender);
         require(collateralTokenAddress != address(0));
 
         /*
-        Ensure that the agreement has not already been collateralized.
+            Ensure that the agreement has not already been collateralized.
 
-        If the agreement has already been collateralized, this check will fail
-        because any valid collateralization must have some sort of valid
-        address associated with it as a collateralizer.  Given that it is impossible
-        to send transactions from address 0x0, this check will only fail
-        when the agreement is already collateralized.
+            If the agreement has already been collateralized, this check will fail
+            because any valid collateralization must have some sort of valid
+            address associated with it as a collateralizer.  Given that it is impossible
+            to send transactions from address 0x0, this check will only fail
+            when the agreement is already collateralized.
         */
-        //        require(agreementToCollateralizer[agreementId] == address(0));
-        //
+        require(agreementToCollateralizer[agreementId] == address(0));
+
         ERC721 erc721token = ERC721(collateralTokenAddress);
         address custodian = address(this);
 
-        /*
-        The collateralizer must have sufficient balance equal to or greater
-        than the amount being put up for collateral.
-        */
-        //        require(erc20token.balanceOf(collateralizer) >= collateralAmount);
+        // Ensure that the collateralizer is the owner of this token ID.
+        require(erc721token.ownerOf(collateralTokenID) == collateralizer);
 
-        /*
-        The proxy must have an allowance granted by the collateralizer equal
-        to or greater than the amount being put up for collateral.
-        */
-        //        require(erc20token.allowance(collateralizer, tokenTransferProxy) >= collateralAmount);
+        // The token must be approved for transfer by the custodian.
+        require(erc721token.getApproved(collateralTokenID) == custodian);
 
         // store collaterallizer in mapping, effectively demarcating that the
         // agreement is now collateralized.
-        //        agreementToCollateralizer[agreementId] = collateralizer;
+        agreementToCollateralizer[agreementId] = collateralizer;
 
         // the collateral must be successfully transferred to this contract, via a proxy.
         //        require(tokenTransferProxy.transferFrom(

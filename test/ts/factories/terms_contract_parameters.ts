@@ -111,12 +111,7 @@ export class ERC721CollateralizedSimpleInterestTermsParameters extends TermsCont
 
         const encodedTokenId = collateralTerms.tokenId.toString(16).padStart(25, "0");
 
-        console.log(
-            "got",
-            collateralTerms.tokenId,
-            "transformed to",
-            encodedTokenId,
-        );
+        console.log("got", collateralTerms.tokenId, "transformed to", encodedTokenId);
 
         const packedCollateralParameters = encodedCollateralToken + encodedTokenId;
 
