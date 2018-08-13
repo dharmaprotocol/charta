@@ -100,10 +100,10 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         bytes32 agreementId,
         address collateralizer
     )
-    public
-    onlyAuthorizedToCollateralize
-    whenNotPaused
-    returns (bool _success)
+        public
+        onlyAuthorizedToCollateralize
+        whenNotPaused
+        returns (bool _success)
     {
         // The address of the ERC721 contract that mints this token.
         address collateralTokenAddress;
@@ -121,7 +121,7 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
 //
 //        require(termsContract == msg.sender);
 //        require(collateralAmount > 0);
-//        require(collateralToken != address(0));
+        require(collateralTokenAddress != address(0));
 
         /*
         Ensure that the agreement has not already been collateralized.
@@ -134,7 +134,7 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         */
 //        require(agreementToCollateralizer[agreementId] == address(0));
 //
-//        ERC721 erc721token = ERC721(collateralToken);
+        ERC721 erc721token = ERC721(collateralTokenAddress);
 //        address custodian = address(this);
 
         /*

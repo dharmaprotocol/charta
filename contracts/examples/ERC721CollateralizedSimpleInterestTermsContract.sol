@@ -35,9 +35,9 @@ contract ERC721CollateralizedSimpleInterestTermsContract is SimpleInterestTermsC
         bytes32 agreementId,
         address debtor
     )
-    public
-    onlyDebtKernel
-    returns (bool _success)
+        public
+        onlyDebtKernel
+        returns (bool _success)
     {
         bool registered = super.registerTermStart(agreementId, debtor);
         bool collateralized = contractRegistry.erc721Collateralizer().collateralize(agreementId, debtor);
@@ -48,9 +48,9 @@ contract ERC721CollateralizedSimpleInterestTermsContract is SimpleInterestTermsC
     function getTermEndTimestamp(
         bytes32 _agreementId
     )
-    public
-    view
-    returns (uint)
+        public
+        view
+        returns (uint)
     {
         SimpleInterestParams memory params = unpackParamsForAgreementID(_agreementId);
 

@@ -53,9 +53,10 @@ export class RegisterRepaymentRunner extends ERC721CollateralizedSimpleInterestT
                     { from: DEBTOR_1 },
                 );
 
-                repaidAmountBefore = await this.contracts.erc721CollateralizedSimpleInterestTermsContract.getValueRepaidToDate.callAsync(
-                    this.agreementId,
-                );
+                repaidAmountBefore = await this.contracts
+                    .erc721CollateralizedSimpleInterestTermsContract.getValueRepaidToDate.callAsync(
+                        this.agreementId,
+                    );
 
                 // Setup ABI decoder in order to decode logs
                 ABIDecoder.addABI(erc721CollateralizedSimpleInterestTermsContract.abi);
@@ -159,7 +160,7 @@ export class RegisterRepaymentRunner extends ERC721CollateralizedSimpleInterestT
             CREDITOR_1,
             amount,
             this.debtOrder.getPrincipalTokenAddress(),
-            { from: DEBTOR_1 },
+            { from: this.accounts.UNDERWRITER },
         );
     }
 

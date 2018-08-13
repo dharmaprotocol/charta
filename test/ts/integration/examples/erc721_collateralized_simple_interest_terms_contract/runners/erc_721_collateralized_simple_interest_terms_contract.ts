@@ -13,14 +13,13 @@ import { TestAccounts, TestContracts } from "./";
 import { SignedDebtOrder } from "../../../../../../types/kernel/debt_order";
 import { DummyTokenContract } from "../../../../../../types/generated/dummy_token";
 // Factories
-import {
-    ERC721CollateralizedSimpleInterestTermsParameters
-} from "../../../../factories/terms_contract_parameters";
+import { ERC721CollateralizedSimpleInterestTermsParameters } from "../../../../factories/terms_contract_parameters";
 import { DebtOrderFactory } from "../../../../factories/debt_order_factory";
 // Utils
 import { Web3Utils } from "../../../../../../utils/web3_utils";
 import { ERC721TokenRegistryContract } from "../../../../../../types/generated/e_r_c721_token_registry";
 import { Address } from "../../../../../../types/common";
+import { ERC721CollateralizerContract } from "../../../../../../types/generated/e_r_c721_collateralizer";
 
 const DEFAULT_GAS_AMOUNT = 4712388;
 
@@ -112,6 +111,7 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
 
         // Get the index of the token.
         const tokenIndex = await tokenRegistry.getTokenIndexBySymbol.callAsync(tokenSymbol);
+        const indexWithoutToken = await tokenRegistry.tokenSymbolListLength.callAsync();
         console.log("tokenIndex", tokenIndex);
 
         // Mint a new ERC721 token for the debtor.
@@ -123,9 +123,18 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
 
         await this.web3Utils.mineBlock();
 
+        console.log("Using token index",
+            scenario.collateralTokenInRegistry
+                ? tokenIndex.toNumber()
+                : indexWithoutToken.toNumber(),
+        );
+
         const termsContractParameters = ERC721CollateralizedSimpleInterestTermsParameters.pack(
             {
-                collateralTokenIndex: tokenIndex,
+                collateralTokenIndex:
+                    scenario.collateralTokenInRegistry
+                        ? tokenIndex
+                        : indexWithoutToken,
                 tokenId,
             },
             {
@@ -137,6 +146,13 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
                 amortizationUnitType: scenario.amortizationUnitType,
                 termLengthUnits: scenario.termLengthUnits,
             },
+        );
+
+        console.log("given", termsContractParameters);
+        const collateralizer = await ERC721CollateralizerContract.deployed(web3, txDefaults);
+        console.log(
+            (await collateralizer.unpackCollateralParametersFromBytes.callAsync(termsContractParameters))
+                .map((val: BigNumber) => val.toNumber()),
         );
 
         const latestBlockTime = await this.web3Utils.getLatestBlockTime();

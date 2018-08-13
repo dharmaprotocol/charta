@@ -20,13 +20,13 @@ export class RegisterTermStartRunner extends ERC721CollateralizedSimpleInterestT
             before(async () => {
                 await this.setupDebtOrder(scenario);
 
-                // if (!scenario.permissionToCollateralize) {
-                //     await this.contracts.erc721CollateralizerContract.revokeCollateralizeAuthorization
-                //         .sendTransactionAsync(
-                //             this.contracts.erc721CollateralizedSimpleInterestTermsContract.address,
-                //             { from: this.accounts.CONTRACT_OWNER },
-                //         );
-                // }
+                if (!scenario.permissionToCollateralize) {
+                    await this.contracts.erc721CollateralizerContract.revokeCollateralizeAuthorization
+                        .sendTransactionAsync(
+                            this.contracts.erc721CollateralizedSimpleInterestTermsContract.address,
+                            { from: this.accounts.CONTRACT_OWNER },
+                        );
+                }
 
                 if (scenario.invokedByDebtKernel && !scenario.reverts) {
                     // const latestBlockTime = await this.web3Utils.getLatestBlockTime();
@@ -41,12 +41,12 @@ export class RegisterTermStartRunner extends ERC721CollateralizedSimpleInterestT
             });
 
             after(async () => {
-                // if (!scenario.permissionToCollateralize) {
-                //     await this.contracts.erc721CollateralizerContract.addAuthorizedCollateralizeAgent.sendTransactionAsync(
-                //         this.contracts.erc721CollateralizedSimpleInterestTermsContract.address,
-                //         { from: this.accounts.CONTRACT_OWNER },
-                //     );
-                // }
+                if (!scenario.permissionToCollateralize) {
+                    await this.contracts.erc721CollateralizerContract.addAuthorizedCollateralizeAgent.sendTransactionAsync(
+                        this.contracts.erc721CollateralizedSimpleInterestTermsContract.address,
+                        { from: this.accounts.CONTRACT_OWNER },
+                    );
+                }
 
                 // Tear down ABIDecoder before next set of tests
                 ABIDecoder.removeABI(this.contracts.erc721CollateralizedSimpleInterestTermsContract.abi);
