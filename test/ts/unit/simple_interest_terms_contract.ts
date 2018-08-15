@@ -77,10 +77,12 @@ contract("SimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
 
         const contractRegistryTruffle = await contractRegistryArtifact.new(
             MOCK_COLLATERALIZER_ADDRESS,
+            MOCK_COLLATERALIZER_ADDRESS,
             MOCK_DEBT_KERNEL_ADDRESS,
             mockRegistry.address,
             MOCK_DEBT_TOKEN_ADDRESS,
             repaymentRouterTruffle.address,
+            mockTokenRegistry.address,
             mockTokenRegistry.address,
             mockTokenTransferProxy.address,
             { from: CONTRACT_OWNER },

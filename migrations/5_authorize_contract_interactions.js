@@ -42,8 +42,6 @@ module.exports = (deployer, network, accounts) => {
 
         // Authorize collateralizer to make `transferFrom` calls on the token transfer proxy.
         await proxy.addAuthorizedTransferAgent(collateralizer.address);
-        // Authorize ERC721 collateralizer to make `transferFrom` calls on the token transfer proxy.
-        await proxy.addAuthorizedTransferAgent(erc721Collateralizer.address);
 
         // Authorize the collateralized simple interest terms contract to invoke `collateralize`.
         await collateralizer.addAuthorizedCollateralizeAgent(

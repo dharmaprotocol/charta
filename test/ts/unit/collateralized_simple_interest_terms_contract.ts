@@ -110,7 +110,10 @@ contract("CollateralizedSimpleInterestTermsContract (Unit Tests)", async (ACCOUN
 
         collateralizer = new CollateralizerContract(collateralizerWeb3Contract, TX_DEFAULTS);
 
-        erc721Collateralizer = new ERC721CollateralizerContract(erc721CollateralizerWeb3Contract, TX_DEFAULTS);
+        erc721Collateralizer = new ERC721CollateralizerContract(
+            erc721CollateralizerWeb3Contract,
+            TX_DEFAULTS,
+        );
 
         const contractRegistryTruffle = await contractRegistryArtifact.new(
             collateralizer.address,
