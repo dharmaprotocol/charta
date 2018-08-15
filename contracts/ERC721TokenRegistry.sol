@@ -27,7 +27,7 @@ contract ERC721TokenRegistry is Ownable {
         address tokenAddress;
         // The index in `tokenSymbolList` where the token's symbol can be found.
         uint tokenIndex;
-        // The name of the given token, e.g. "Canonical Wrapped Ether"
+        // The name of the given token, e.g. "Cryptokitties"
         string name;
     }
 
@@ -39,7 +39,7 @@ contract ERC721TokenRegistry is Ownable {
         address _tokenAddress,
         string _tokenName
     )
-    public onlyOwner
+        public onlyOwner
     {
         bytes32 symbolHash = keccak256(_symbol);
 
@@ -78,10 +78,6 @@ contract ERC721TokenRegistry is Ownable {
     /**
      * Given the known index of a token within the registry's symbol list,
      * returns the address of the token mapped to the symbol at that index.
-     *
-     * This is a useful utility for compactly encoding the address of a token into a
-     * TermsContractParameters string -- by encoding a token by its index in a
-     * a 256 slot array, we can represent a token by a 1 byte uint instead of a 20 byte address.
      */
     function getTokenAddressByIndex(uint _index) public view returns (address) {
         string storage symbol = tokenSymbolList[_index];
@@ -127,7 +123,7 @@ contract ERC721TokenRegistry is Ownable {
      *
      * Example:
      *   getTokenNameByIndex(1);
-     *   => "Canonical Wrapped Ether"
+     *   => "Cryptokitties"
      */
     function getTokenNameByIndex(uint _index) public view returns (string) {
         string memory symbol = getTokenSymbolByIndex(_index);
@@ -138,8 +134,8 @@ contract ERC721TokenRegistry is Ownable {
     }
 
     function getTokenAttributesBySymbol(string _symbol)
-    public
-    view
+        public
+        view
     returns (
         address,
         uint,
@@ -158,8 +154,8 @@ contract ERC721TokenRegistry is Ownable {
     }
 
     function getTokenAttributesByIndex(uint _index)
-    public
-    view
+        public
+        view
     returns (
         address,
         string,
