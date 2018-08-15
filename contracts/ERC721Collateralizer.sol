@@ -24,7 +24,6 @@ import "zeppelin-solidity/contracts/token/ERC721/ERC721.sol";
 import "./TermsContract.sol";
 import "./DebtRegistry.sol";
 import "./ERC721TokenRegistry.sol";
-import "./TokenTransferProxy.sol";
 import {PermissionsLib, PermissionEvents} from "./libraries/PermissionsLib.sol";
 
 
@@ -40,7 +39,6 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
 
     DebtRegistry public debtRegistry;
     ERC721TokenRegistry public tokenRegistry;
-    TokenTransferProxy public tokenTransferProxy;
 
     // Collateralizer here refers to the owner of the asset that is being collateralized.
     mapping(bytes32 => address) public agreementToCollateralizer;
@@ -81,13 +79,11 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
     function ERC721Collateralizer(
         address _debtKernel,
         address _debtRegistry,
-        address _tokenRegistry,
-        address _tokenTransferProxy
+        address _tokenRegistry
     ) public {
         debtKernelAddress = _debtKernel;
         debtRegistry = DebtRegistry(_debtRegistry);
         tokenRegistry = ERC721TokenRegistry(_tokenRegistry);
-        tokenTransferProxy = TokenTransferProxy(_tokenTransferProxy);
     }
 
     /**
@@ -114,9 +110,9 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
 
         // Fetch all relevant collateralization parameters
         (
-        collateralTokenAddress,
-        collateralTokenID,
-        termsContract
+            collateralTokenAddress,
+            collateralTokenID,
+            termsContract
         ) = retrieveCollateralParameters(agreementId);
 
         require(termsContract == msg.sender);
@@ -140,19 +136,14 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         require(erc721token.ownerOf(collateralTokenID) == collateralizer);
 
         // The token must be approved for transfer by the proxy.
-        require(erc721token.getApproved(collateralTokenID) == address(tokenTransferProxy));
+        require(erc721token.getApproved(collateralTokenID) == custodian);
 
         // store collaterallizer in mapping, effectively demarcating that the
         // agreement is now collateralized.
         agreementToCollateralizer[agreementId] = collateralizer;
 
-        // Transfer the collateral asset to this contract, via a proxy.
-        tokenTransferProxy.erc721TransferFrom(
-            collateralTokenAddress,
-            collateralizer,
-            custodian,
-            collateralTokenID
-        );
+        // Transfer the collateral asset to this contract/
+        erc721token.transferFrom(collateralizer, custodian, collateralTokenID);
 
         // Emit an event that collateral has been secured.
         CollateralLocked(agreementId, collateralTokenAddress, collateralTokenID);
@@ -170,8 +161,8 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
     function returnCollateral(
         bytes32 agreementId
     )
-    public
-    whenNotPaused
+        public
+        whenNotPaused
     {
         // The token in which collateral is denominated
         address collateralTokenAddress;
@@ -182,42 +173,38 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
 
         // Fetch all relevant collateralization parameters.
         (
-        collateralTokenAddress,
-        collateralTokenID,
-        termsContract
+            collateralTokenAddress,
+            collateralTokenID,
+            termsContract
         ) = retrieveCollateralParameters(agreementId);
 
         // Ensure a valid form of collateral is tied to this agreement id
-        //        require(collateralAmount > 0);
-        //        require(collateralToken != address(0));
-        //
-        //        // Withdrawal can only occur if the collateral has yet to be withdrawn.
-        //        // When we withdraw collateral, we reset the collateral agreement
-        //        // in a gas-efficient manner by resetting the address of the collateralizer to 0
-        //        require(agreementToCollateralizer[agreementId] != address(0));
-        //
-        //        // Ensure that the debt is not in a state of default
-        //        require(
-        //            termsContract.getExpectedRepaymentValue(
-        //                agreementId,
-        //                termsContract.getTermEndTimestamp(agreementId)
-        //            ) <= termsContract.getValueRepaidToDate(agreementId)
-        //        );
-        //
-        //        // determine collateralizer of the collateral.
+        require(collateralTokenAddress != address(0));
+
+        // Withdrawal can only occur if the collateral has yet to be withdrawn.
+        // When we withdraw collateral, we reset the collateral agreement
+        // in a gas-efficient manner by resetting the address of the collateralizer to 0
+        require(agreementToCollateralizer[agreementId] != address(0));
+
+        // Ensure that the debt is not in a state of default
+        require(
+            termsContract.getExpectedRepaymentValue(
+                agreementId,
+                termsContract.getTermEndTimestamp(agreementId)
+            ) <= termsContract.getValueRepaidToDate(agreementId)
+        );
+
+        // determine collateralizer of the collateral.
         address collateralizer = agreementToCollateralizer[agreementId];
-        //
-        //        // Mark agreement's collateral as withdrawn by setting the agreement's
-        //        // collateralizer to 0x0.
-        //        delete agreementToCollateralizer[agreementId];
-        //
-        //        // transfer the collateral this contract was holding in escrow back to collateralizer.
-        //        require(
-        //            ERC20(collateralToken).transfer(
-        //                collateralizer,
-        //                collateralAmount
-        //            )
-        //        );
+
+        // Mark agreement's collateral as withdrawn by setting the agreement's
+        // collateralizer to 0x0.
+        delete agreementToCollateralizer[agreementId];
+
+        ERC721 collateralToken = ERC721(collateralTokenAddress);
+
+        // transfer the collateral this contract was holding in escrow back to collateralizer.
+        collateralToken.transferFrom(address(this), collateralizer, collateralTokenID);
 
         // log the return event.
         CollateralReturned(
@@ -238,8 +225,8 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
     function seizeCollateral(
         bytes32 agreementId
     )
-    public
-    whenNotPaused
+        public
+        whenNotPaused
     {
 
         // The token in which collateral is denominated
@@ -256,42 +243,33 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
             termsContract
         ) = retrieveCollateralParameters(agreementId);
 
-        //        // Ensure a valid form of collateral is tied to this agreement id
-        //        require(collateralAmount > 0);
-        //        require(collateralToken != address(0));
-        //
-        //        // Seizure can only occur if the collateral has yet to be withdrawn.
-        //        // When we withdraw collateral, we reset the collateral agreement
-        //        // in a gas-efficient manner by resetting the address of the collateralizer to 0
-        //        require(agreementToCollateralizer[agreementId] != address(0));
-        //
-        //        // Ensure debt is in a state of default when we account for the
-        //        // specified "grace period".  We do this by checking whether the
-        //        // *current* value repaid to-date exceeds the expected repayment value
-        //        // at the point of time at which the grace period would begin if it ended
-        //        // now.  This crucially relies on the assumption that both expected repayment value
-        //        /// and value repaid to date monotonically increase over time
-        //        require(
-        //            termsContract.getExpectedRepaymentValue(
-        //                agreementId,
-        //                timestampAdjustedForGracePeriod(gracePeriodInDays)
-        //            ) > termsContract.getValueRepaidToDate(agreementId)
-        //        );
-        //
-        //        // Mark agreement's collateral as withdrawn by setting the agreement's
-        //        // collateralizer to 0x0.
-        //        delete agreementToCollateralizer[agreementId];
-        //
-        //        // determine beneficiary of the seized collateral.
+        // Ensure a valid form of collateral is tied to this agreement id
+        require(collateralTokenAddress != address(0));
+
+        // Seizure can only occur if the collateral has yet to be withdrawn.
+        // When we withdraw collateral, we reset the collateral agreement
+        // in a gas-efficient manner by resetting the address of the collateralizer to 0
+        require(agreementToCollateralizer[agreementId] != address(0));
+
+        // Ensure debt is in a state of default.
+        require(
+            termsContract.getExpectedRepaymentValue(
+                agreementId,
+                block.timestamp
+            ) > termsContract.getValueRepaidToDate(agreementId)
+        );
+
+        // Mark agreement's collateral as withdrawn by setting the agreement's
+        // collateralizer to 0x0.
+        delete agreementToCollateralizer[agreementId];
+
+        // determine beneficiary of the seized collateral.
         address beneficiary = debtRegistry.getBeneficiary(agreementId);
-        //
-        //        // transfer the collateral this contract was holding in escrow to beneficiary.
-        //        require(
-        //            ERC20(collateralToken).transfer(
-        //                beneficiary,
-        //                collateralAmount
-        //            )
-        //        );
+
+        ERC721 collateralToken = ERC721(collateralTokenAddress);
+
+        // transfer the collateral this contract was holding in escrow to beneficiary.
+        collateralToken.transferFrom(address(this), beneficiary, collateralTokenID);
 
         // log the seizure event.
         CollateralSeized(
@@ -366,16 +344,6 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         return (
             collateralTokenIndex,
             uint(tokenIdShifted)
-        );
-    }
-
-    function timestampAdjustedForGracePeriod(uint gracePeriodInDays)
-        public
-        view
-        returns (uint)
-    {
-        return block.timestamp.sub(
-            SECONDS_IN_DAY.mul(gracePeriodInDays)
         );
     }
 

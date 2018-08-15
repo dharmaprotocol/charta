@@ -59,7 +59,6 @@ module.exports = (deployer, network, accounts) => {
             DebtKernel.address,
             DebtRegistry.address,
             ERC721TokenRegistry.address,
-            TokenTransferProxy.address,
         );
         await deployer.deploy(
             ContractRegistry,

@@ -22,7 +22,6 @@ import "./DebtRegistry.sol";
 import { PermissionsLib, PermissionEvents } from "./libraries/PermissionsLib.sol";
 import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
 import "zeppelin-solidity/contracts/token/ERC20/ERC20.sol";
-import "zeppelin-solidity/contracts/token/ERC721/ERC721.sol";
 
 
 /**
@@ -87,18 +86,5 @@ contract TokenTransferProxy is Pausable, PermissionEvents {
         require(tokenTransferPermissions.isAuthorized(msg.sender));
 
         return ERC20(_token).transferFrom(_from, _to, _amount);
-    }
-
-    function erc721TransferFrom(
-        address _token,
-        address _from,
-        address _to,
-        uint _tokenId
-    )
-        public
-    {
-        // TODO: Require token permission.
-
-        ERC721(_token).transferFrom(_from, _to, _tokenId);
     }
 }

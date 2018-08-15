@@ -34,7 +34,7 @@ BigNumberSetup.configure();
 // Set up Chai
 ChaiSetup.configure();
 
-contract("Collateralized Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) => {
+contract("ERC721 Collateralized Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) => {
     let kernel: DebtKernelContract;
     let repaymentRouter: RepaymentRouterContract;
     let erc721CollateralizedSimpleInterestTermsContract: ERC721CollateralizedSimpleInterestTermsContractContract;
