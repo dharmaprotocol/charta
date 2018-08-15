@@ -82,7 +82,7 @@ contract("ERC721 Collateralized Simple Interest Terms Contract (Integration Test
         debtTokenContract = await DebtTokenContract.deployed(web3, TX_DEFAULTS);
         debtRegistryContract = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
 
-        erc721CollateralizedSimpleInterestTermsContract = await TermsContract.deployed(web3, TX_DEFAULTS,);
+        erc721CollateralizedSimpleInterestTermsContract = await TermsContract.deployed(web3, TX_DEFAULTS);
 
         erc721CollateralizerContract = await ERC721CollateralizerContract.deployed(web3, TX_DEFAULTS);
 
