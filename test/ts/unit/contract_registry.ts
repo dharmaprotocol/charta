@@ -1,7 +1,6 @@
 import { BigNumber } from "bignumber.js";
 import * as ABIDecoder from "abi-decoder";
 import * as chai from "chai";
-import * as Web3 from "web3";
 
 import { MockDebtRegistryContract } from "../../../types/generated/mock_debt_registry";
 import { DebtKernelContract } from "../../../types/generated/debt_kernel";
@@ -11,6 +10,7 @@ import { RepaymentRouterContract } from "../../../types/generated/repayment_rout
 import { MockTokenRegistryContract } from "../../../types/generated/mock_token_registry";
 import { CollateralizerContract } from "../../../types/generated/collateralizer";
 import { ContractRegistryContract } from "../../../types/generated/contract_registry";
+import { ERC721CollateralizerContract } from "../../../types/generated/e_r_c721_collateralizer";
 
 import { ContractAddressUpdated, EventNames } from "../logs/contract_registry";
 import { queryLogsForEvent } from "../logs/log_utils";
@@ -23,7 +23,6 @@ ChaiSetup.configure();
 const expect = chai.expect;
 
 const contractRegistryArtifact = artifacts.require("ContractRegistry");
-const debtRegistryArtifact = artifacts.require("MockDebtRegistry");
 
 contract("Contract Registry (Unit Tests)", async (ACCOUNTS) => {
     const CONTRACT_OWNER = ACCOUNTS[0];
@@ -39,6 +38,7 @@ contract("Contract Registry (Unit Tests)", async (ACCOUNTS) => {
     let mockTokenTransferProxy: MockTokenTransferProxyContract;
     let mockTokenRegistry: MockTokenRegistryContract;
     let collateralizer: CollateralizerContract;
+    let erc721Collateralizer: ERC721CollateralizerContract;
 
     let contractRegistry: ContractRegistryContract;
 
@@ -50,13 +50,16 @@ contract("Contract Registry (Unit Tests)", async (ACCOUNTS) => {
         mockDebtToken = await MockDebtTokenContract.deployed(web3, TX_DEFAULTS);
         repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
         collateralizer = await CollateralizerContract.deployed(web3, TX_DEFAULTS);
+        erc721Collateralizer = await ERC721CollateralizerContract.deployed(web3, TX_DEFAULTS);
 
         const contractRegistryTruffle = await contractRegistryArtifact.new(
             collateralizer.address,
+            erc721Collateralizer.address,
             debtKernel.address,
             mockDebtRegistry.address,
             mockDebtToken.address,
             repaymentRouter.address,
+            mockTokenRegistry.address,
             mockTokenRegistry.address,
             mockTokenTransferProxy.address,
             { from: CONTRACT_OWNER },

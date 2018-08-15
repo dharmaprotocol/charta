@@ -22,6 +22,7 @@ import ChaiSetup from "../test_utils/chai_setup";
 import { REVERT_ERROR } from "../test_utils/constants";
 import { LogSimpleInterestTermStart } from "../logs/simple_interest_terms_contract";
 import { SimpleInterestParameters } from "../factories/terms_contract_parameters";
+import { ERC721CollateralizerContract } from "../../../types/generated/e_r_c721_collateralizer";
 
 // Set up Chai
 ChaiSetup.configure();
@@ -37,6 +38,7 @@ const collateralizedSimpleInterestTermsContract = artifacts.require(
 const contractRegistryArtifact = artifacts.require("ContractRegistry");
 const mockTokenContract = artifacts.require("MockERC20Token");
 const collateralizerContract = artifacts.require("Collateralizer");
+const erc721CollateralizerContract = artifacts.require("ERC721Collateralizer");
 
 // Token at index 8. 1 ether principal, 2.5% interest rate, over 4 weeks.
 // Collateral Token Index: 0
@@ -48,6 +50,7 @@ const termsParamsWithCollateral =
 contract("CollateralizedSimpleInterestTermsContract (Unit Tests)", async (ACCOUNTS) => {
     let termsContract: CollateralizedSimpleInterestTermsContractContract;
     let collateralizer: CollateralizerContract;
+    let erc721Collateralizer: ERC721CollateralizerContract;
     let router: RepaymentRouterContract;
     let mockToken: MockERC20TokenContract;
     let mockDebtRegistry: MockDebtRegistryContract;
@@ -89,18 +92,34 @@ contract("CollateralizedSimpleInterestTermsContract (Unit Tests)", async (ACCOUN
             { from: CONTRACT_OWNER },
         );
 
+        const erc721CollateralizerTruffe = await erc721CollateralizerContract.new(
+            MOCK_DEBT_KERNEL_ADDRESS,
+            mockDebtRegistry.address,
+            mockTokenRegistry.address,
+            mockTokenTransferProxy.address,
+            { from: CONTRACT_OWNER },
+        );
+
         const collateralizerWeb3Contract = web3.eth
             .contract(collateralizerContract.abi)
             .at(collateralizerContractTruffle.address);
 
+        const erc721CollateralizerWeb3Contract = web3.eth
+            .contract(erc721CollateralizerContract.abi)
+            .at(erc721CollateralizerTruffe.address);
+
         collateralizer = new CollateralizerContract(collateralizerWeb3Contract, TX_DEFAULTS);
+
+        erc721Collateralizer = new ERC721CollateralizerContract(erc721CollateralizerWeb3Contract, TX_DEFAULTS);
 
         const contractRegistryTruffle = await contractRegistryArtifact.new(
             collateralizer.address,
+            erc721Collateralizer.address,
             MOCK_DEBT_KERNEL_ADDRESS,
             mockDebtRegistry.address,
             MOCK_DEBT_TOKEN_ADDRESS,
             repaymentRouterTruffle.address,
+            mockTokenRegistry.address,
             mockTokenRegistry.address,
             mockTokenTransferProxy.address,
             { from: CONTRACT_OWNER },
