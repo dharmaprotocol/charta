@@ -101,9 +101,9 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         whenNotPaused
     returns (bool _success)
     {
-        // The address of the ERC721 contract that mints this token.
+        // The address of the ERC721 contract.
         address collateralTokenAddress;
-        // The ID of the token in the ERC721 contract's mapping.
+        // The token ID, associating the collateral token and the given ERC721 contract.
         uint256 collateralTokenID;
         // The terms contract according to which this asset is being collateralized.
         TermsContract termsContract;
@@ -135,14 +135,14 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         // Ensure that the collateralizer is the owner of this token ID.
         require(erc721token.ownerOf(collateralTokenID) == collateralizer);
 
-        // The token must be approved for transfer by the proxy.
+        // The token must be approved for transfer by this contract.
         require(erc721token.getApproved(collateralTokenID) == custodian);
 
-        // store collaterallizer in mapping, effectively demarcating that the
+        // Store collaterallizer in mapping, effectively demarcating that the
         // agreement is now collateralized.
         agreementToCollateralizer[agreementId] = collateralizer;
 
-        // Transfer the collateral asset to this contract/
+        // Transfer the collateral asset to this contract.
         erc721token.transferFrom(collateralizer, custodian, collateralTokenID);
 
         // Emit an event that collateral has been secured.
@@ -164,9 +164,9 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         public
         whenNotPaused
     {
-        // The token in which collateral is denominated
+        // The address of the ERC721 contract.
         address collateralTokenAddress;
-        // The amount being put up for collateral
+        // The token ID, associating the collateral token and the given ERC721 contract.
         uint256 collateralTokenID;
         // The terms contract according to which this asset is being collateralized.
         TermsContract termsContract;
@@ -178,15 +178,15 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
             termsContract
         ) = retrieveCollateralParameters(agreementId);
 
-        // Ensure a valid form of collateral is tied to this agreement id
+        // Ensure a valid form of collateral is tied to this agreement id.
         require(collateralTokenAddress != address(0));
 
         // Withdrawal can only occur if the collateral has yet to be withdrawn.
         // When we withdraw collateral, we reset the collateral agreement
-        // in a gas-efficient manner by resetting the address of the collateralizer to 0
+        // in a gas-efficient manner by resetting the address of the collateralizer to 0.
         require(agreementToCollateralizer[agreementId] != address(0));
 
-        // Ensure that the debt is not in a state of default
+        // Ensure that the debt is not in a state of default.
         require(
             termsContract.getExpectedRepaymentValue(
                 agreementId,
@@ -194,7 +194,7 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
             ) <= termsContract.getValueRepaidToDate(agreementId)
         );
 
-        // determine collateralizer of the collateral.
+        // Determine collateralizer of the collateral.
         address collateralizer = agreementToCollateralizer[agreementId];
 
         // Mark agreement's collateral as withdrawn by setting the agreement's
@@ -203,10 +203,10 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
 
         ERC721 collateralToken = ERC721(collateralTokenAddress);
 
-        // transfer the collateral this contract was holding in escrow back to collateralizer.
+        // Transfer the collateral this contract was holding in escrow back to collateralizer.
         collateralToken.transferFrom(address(this), collateralizer, collateralTokenID);
 
-        // log the return event.
+        // Log the return event.
         CollateralReturned(
             agreementId,
             collateralizer,
@@ -229,26 +229,26 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         whenNotPaused
     {
 
-        // The token in which collateral is denominated
+        // The address of the ERC721 contract.
         address collateralTokenAddress;
-        // The amount being put up for collateral
+        // The token ID, associating the collateral token and the given ERC721 contract.
         uint256 collateralTokenID;
         // The terms contract according to which this asset is being collateralized.
         TermsContract termsContract;
 
-        // Fetch all relevant collateralization parameters
+        // Fetch all relevant collateralization parameters.
         (
             collateralTokenAddress,
             collateralTokenID,
             termsContract
         ) = retrieveCollateralParameters(agreementId);
 
-        // Ensure a valid form of collateral is tied to this agreement id
+        // Ensure a valid form of collateral is tied to this agreement id.
         require(collateralTokenAddress != address(0));
 
         // Seizure can only occur if the collateral has yet to be withdrawn.
         // When we withdraw collateral, we reset the collateral agreement
-        // in a gas-efficient manner by resetting the address of the collateralizer to 0
+        // in a gas-efficient manner by resetting the address of the collateralizer to 0.
         require(agreementToCollateralizer[agreementId] != address(0));
 
         // Ensure debt is in a state of default.
@@ -263,15 +263,15 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         // collateralizer to 0x0.
         delete agreementToCollateralizer[agreementId];
 
-        // determine beneficiary of the seized collateral.
+        // Determine beneficiary of the collateral to be seized.
         address beneficiary = debtRegistry.getBeneficiary(agreementId);
 
         ERC721 collateralToken = ERC721(collateralTokenAddress);
 
-        // transfer the collateral this contract was holding in escrow to beneficiary.
+        // Transfer the collateral this contract was holding in escrow to beneficiary.
         collateralToken.transferFrom(address(this), beneficiary, collateralTokenID);
 
-        // log the seizure event.
+        // Log the seizure event.
         CollateralSeized(
             agreementId,
             beneficiary,
@@ -316,18 +316,6 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
     /**
      * Unpacks collateralization-specific parameters from their tightly-packed
      * representation in a terms contract parameter string.
-     *
-     * For collateralized terms contracts, we reserve the lowest order 108 bits
-     * of the terms contract parameters for parameters relevant to collateralization.
-     *
-     * Contracts that inherit from the Collateralized terms contract
-     * can encode whichever parameter schema they please in the remaining
-     * space of the terms contract parameters.
-     * The 108 bits are encoded as follows (from higher order bits to lower order bits):
-     *
-     * 8 bits - Collateral Token Index
-     *            (encoded by its unsigned integer index in the ERC721TokenRegistry contract)
-     * 92 bits - Collateral Token ID (encoded as an unsigned integer)
      */
     function unpackCollateralParametersFromBytes(bytes32 parameters)
         public
@@ -339,6 +327,7 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         bytes32 tokenIdShifted =
             parameters & 0x00000000000000000000000000000000000000000000000000ffffffffffffff;
 
+        // Shift the token index value 14 places to the right.
         uint collateralTokenIndex = uint(collateralTokenIndexShifted) / 2 ** 56;
 
         return (
@@ -359,19 +348,19 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         address termsContractAddress;
         bytes32 termsContractParameters;
 
-        // Pull the terms contract and associated parameters for the agreement
+        // Pull the terms contract and associated parameters for the agreement.
         (termsContractAddress, termsContractParameters) = debtRegistry.getTerms(agreementId);
 
         uint collateralTokenIndex;
         uint256 tokenID;
 
-        // Unpack terms contract parameters in order to get collateralization-specific params
+        // Unpack terms contract parameters in order to get collateralization-specific params.
         (
             collateralTokenIndex,
             tokenID,
         ) = unpackCollateralParametersFromBytes(termsContractParameters);
 
-        // Resolve address of token associated with this agreement in token registry
+        // Resolve address of token associated with this agreement in token registry.
         address collateralTokenAddress = tokenRegistry.getTokenAddressByIndex(collateralTokenIndex);
 
         return (
