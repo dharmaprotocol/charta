@@ -3,11 +3,9 @@ pragma solidity 0.4.18;
 import "zeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 import "../ERC165.sol";
 
+
 contract MintableERC721Token is ERC721Token, ERC165 {
-    function MintableERC721Token()
-    public
-    ERC721Token("MintableERC721Token", "MET")
-    {}
+    function MintableERC721Token() public ERC721Token("MintableERC721Token", "MET") {}
 
     function mint(address _to, uint _tokenId) public {
         _mint(_to, _tokenId);
@@ -18,9 +16,9 @@ contract MintableERC721Token is ERC721Token, ERC165 {
      * Returns true for ERC721, false otherwise
      */
     function supportsInterface(bytes4 interfaceID)
-    external
-    view
-    returns (bool _isSupported)
+        external
+        view
+        returns (bool _isSupported)
     {
         return interfaceID == 0x80ac58cd; // ERC721
     }
@@ -28,8 +26,7 @@ contract MintableERC721Token is ERC721Token, ERC165 {
     /**
      * Support deprecated ERC721 method
      */
-    function transfer(address _to, uint _tokenId)
-    public
+    function transfer(address _to, uint _tokenId) public
     {
         safeTransferFrom(msg.sender, _to, _tokenId);
     }
