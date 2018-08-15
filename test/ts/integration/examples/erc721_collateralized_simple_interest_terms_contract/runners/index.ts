@@ -9,7 +9,9 @@ import { TokenTransferProxyContract } from "../../../../../../types/generated/to
 import { RepaymentRouterContract } from "../../../../../../types/generated/repayment_router";
 import { TokenRegistryContract } from "../../../../../../types/generated/token_registry";
 import { DebtTokenContract } from "../../../../../../types/generated/debt_token";
-import { ERC721CollateralizedSimpleInterestTermsContractContract } from "../../../../../../types/generated/e_r_c721_collateralized_simple_interest_terms_contract";
+import {
+    ERC721CollateralizedSimpleInterestTermsContractContract as TermsContract,
+} from "../../../../../../types/generated/e_r_c721_collateralized_simple_interest_terms_contract";
 import { ERC721CollateralizerContract } from "../../../../../../types/generated/e_r_c721_collateralizer";
 import { MintableERC721TokenContract } from "../../../../../../types/generated/mintable_e_r_c721_token";
 import { ERC721TokenRegistryContract } from "../../../../../../types/generated/e_r_c721_token_registry";
@@ -28,7 +30,7 @@ export interface TestContracts {
     kernel: DebtKernelContract;
     dummyREPToken: DummyTokenContract;
     dummyZRXToken: DummyTokenContract;
-    erc721CollateralizedSimpleInterestTermsContract: ERC721CollateralizedSimpleInterestTermsContractContract;
+    erc721CollateralizedSimpleInterestTermsContract: TermsContract;
     repaymentRouter: RepaymentRouterContract;
     dummyTokenRegistryContract: TokenRegistryContract;
     debtTokenContract: DebtTokenContract;
