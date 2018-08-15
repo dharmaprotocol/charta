@@ -1,6 +1,5 @@
 // External libraries
 import * as ABIDecoder from "abi-decoder";
-import { BigNumber } from "bignumber.js";
 import { expect } from "chai";
 // Test Utils
 import { REVERT_ERROR } from "../../../../test_utils/constants";
@@ -10,9 +9,11 @@ import { RegisterTermStartScenario } from "../scenarios";
 import { LogSimpleInterestTermStart } from "../../../../logs/simple_interest_terms_contract";
 import { ERC721CollateralLocked } from "../../../../logs/collateralized_contract";
 // Runners
-import { ERC721CollateralizedSimpleInterestTermsContractRunner } from "./erc_721_collateralized_simple_interest_terms_contract";
+import {
+    ERC721CollateralizedSimpleInterestTermsContractRunner as Runner,
+} from "./erc_721_collateralized_simple_interest_terms_contract";
 
-export class RegisterTermStartRunner extends ERC721CollateralizedSimpleInterestTermsContractRunner {
+export class RegisterTermStartRunner extends Runner {
     public testScenario(scenario: RegisterTermStartScenario) {
         let txHash: string;
 

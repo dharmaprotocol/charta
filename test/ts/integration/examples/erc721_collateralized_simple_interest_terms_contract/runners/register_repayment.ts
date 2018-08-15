@@ -11,11 +11,13 @@ import { DummyTokenContract } from "../../../../../../types/generated/dummy_toke
 // Logs
 import { LogRegisterRepayment } from "../../../../logs/simple_interest_terms_contract";
 // Runners
-import { ERC721CollateralizedSimpleInterestTermsContractRunner } from "./erc_721_collateralized_simple_interest_terms_contract";
+import {
+    ERC721CollateralizedSimpleInterestTermsContractRunner as Runner,
+} from "./erc_721_collateralized_simple_interest_terms_contract";
 
 const DEFAULT_GAS_AMOUNT = 4712388;
 
-export class RegisterRepaymentRunner extends ERC721CollateralizedSimpleInterestTermsContractRunner {
+export class RegisterRepaymentRunner extends Runner {
     public testScenario(scenario: RegisterRepaymentScenario) {
         let txHash: string;
         let dummyREPToken: DummyTokenContract;
