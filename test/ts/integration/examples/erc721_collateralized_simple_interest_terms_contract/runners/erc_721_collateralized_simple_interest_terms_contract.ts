@@ -32,7 +32,7 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
 
     protected web3Utils: Web3Utils;
 
-    constructor(web3: Web3) {
+    protected constructor(web3: Web3) {
         this.web3Utils = new Web3Utils(web3);
 
         this.testScenario = this.testScenario.bind(this);
@@ -44,7 +44,7 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
         this.allAccounts = allAccounts;
     }
 
-    public abstract testScenario(
+    public testScenario(
         scenario: RegisterRepaymentScenario | RegisterTermStartScenario,
     ): void;
 
@@ -100,11 +100,7 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
 
         // Set up a mintable ERC721 token.
         const erc721Token = this.contracts.erc721TokenContract;
-        const tokenAddress = erc721Token.address;
-        const tokenName = await erc721Token.name.callAsync();
         const tokenSymbol = await erc721Token.symbol.callAsync();
-
-        console.log(tokenAddress, tokenName, tokenSymbol);
 
         // Add the mintable token to the registry.
         const tokenRegistry = await ERC721TokenRegistryContract.deployed(web3, txDefaults);
@@ -112,7 +108,6 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
         // Get the index of the token.
         const tokenIndex = await tokenRegistry.getTokenIndexBySymbol.callAsync(tokenSymbol);
         const indexWithoutToken = await tokenRegistry.tokenSymbolListLength.callAsync();
-        console.log("tokenIndex", tokenIndex);
 
         // Mint a new ERC721 token for the debtor.
         const tokenId = new BigNumber(await erc721Token.totalSupply.callAsync());
@@ -122,14 +117,6 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
         });
 
         await this.web3Utils.mineBlock();
-
-        console.log("Using token index",
-            scenario.collateralTokenInRegistry
-                ? tokenIndex.toNumber()
-                : indexWithoutToken.toNumber(),
-        );
-
-        console.log("Using token ID", tokenId);
 
         const termsContractParameters = ERC721CollateralizedSimpleInterestTermsParameters.pack(
             {
@@ -150,20 +137,10 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
             },
         );
 
-        console.log("given", termsContractParameters);
-
-        console.log("debtor", DEBTOR_1);
-        console.log("owner", await erc721Token.ownerOf.callAsync(tokenId));
-
         const collateralizer = await ERC721CollateralizerContract.deployed(web3, txDefaults);
         // The debtor grants approval to the collateralizer.
         await erc721Token.approve.sendTransactionAsync(
             collateralizer.address, tokenId, { from: DEBTOR_1 },
-        );
-
-        console.log(
-            (await collateralizer.unpackCollateralParametersFromBytes.callAsync(termsContractParameters))
-                .map((val: BigNumber) => val.toNumber()),
         );
 
         const latestBlockTime = await this.web3Utils.getLatestBlockTime();

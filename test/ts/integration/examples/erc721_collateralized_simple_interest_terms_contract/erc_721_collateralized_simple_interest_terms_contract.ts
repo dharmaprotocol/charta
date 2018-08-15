@@ -1,31 +1,38 @@
 // Test Utils
 import { BigNumberSetup } from "../../../test_utils/bignumber_setup";
 import ChaiSetup from "../../../test_utils/chai_setup";
+
 // Wrappers
 import { DebtKernelContract } from "../../../../../types/generated/debt_kernel";
 import { DebtRegistryContract } from "../../../../../types/generated/debt_registry";
 import { DebtTokenContract } from "../../../../../types/generated/debt_token";
 import { DummyTokenContract } from "../../../../../types/generated/dummy_token";
+import { ERC721CollateralizerContract } from "../../../../../types/generated/e_r_c721_collateralizer";
+import {
+    ERC721CollateralizedSimpleInterestTermsContractContract as TermsContract,
+} from "../../../../../types/generated/e_r_c721_collateralized_simple_interest_terms_contract";
 import { RepaymentRouterContract } from "../../../../../types/generated/repayment_router";
-import { ERC721CollateralizedSimpleInterestTermsContractContract, } from "../../../../../types/generated/e_r_c721_collateralized_simple_interest_terms_contract";
 import { TokenRegistryContract } from "../../../../../types/generated/token_registry";
 import { TokenTransferProxyContract } from "../../../../../types/generated/token_transfer_proxy";
-import { ERC721CollateralizerContract } from "../../../../../types/generated/e_r_c721_collateralizer";
+import { MintableERC721TokenContract } from "../../../../../types/generated/mintable_e_r_c721_token";
+import { DharmaMultiSigWalletContract } from "../../../../../types/generated/dharma_multi_sig_wallet";
+import { ERC721TokenRegistryContract } from "../../../../../types/generated/e_r_c721_token_registry";
+
 // Scenarios
 import { SUCCESSFUL_REGISTER_REPAYMENT_SCENARIOS } from "./scenarios/successful_register_repayment";
 import { UNSUCCESSFUL_REGISTER_REPAYMENT_SCENARIOS } from "./scenarios/unsuccessful_register_repayment";
 import { SUCCESSFUL_REGISTER_TERM_START_SCENARIOS } from "./scenarios/successful_register_term_start";
 import { UNSUCCESSFUL_REGISTER_TERM_START_SCENARIOS } from "./scenarios/unsuccessful_register_term_start";
 import { UNPACK_PARAMETERS_FROM_BYTES_SCENARIOS } from "./scenarios/unpack_parameters_from_bytes";
+
 // Scenario Runners
 import {
     RegisterRepaymentRunner,
     RegisterTermStartRunner,
     UnpackParametersFromBytesRunner,
 } from "./runners";
-import { MintableERC721TokenContract } from "../../../../../types/generated/mintable_e_r_c721_token";
-import { DharmaMultiSigWalletContract } from "../../../../../types/generated/dharma_multi_sig_wallet";
-import { ERC721TokenRegistryContract } from "../../../../../types/generated/e_r_c721_token_registry";
+
+// Utils
 import { multiSigExecuteAfterTimelock } from "../../../test_utils/multisig";
 
 // Configure BigNumber exponentiation
@@ -37,7 +44,7 @@ ChaiSetup.configure();
 contract("ERC721 Collateralized Simple Interest Terms Contract (Integration Tests)", async (ACCOUNTS) => {
     let kernel: DebtKernelContract;
     let repaymentRouter: RepaymentRouterContract;
-    let erc721CollateralizedSimpleInterestTermsContract: ERC721CollateralizedSimpleInterestTermsContractContract;
+    let erc721CollateralizedSimpleInterestTermsContract: TermsContract;
     let tokenTransferProxy: TokenTransferProxyContract;
     let debtTokenContract: DebtTokenContract;
     let debtRegistryContract: DebtRegistryContract;
@@ -75,11 +82,7 @@ contract("ERC721 Collateralized Simple Interest Terms Contract (Integration Test
         debtTokenContract = await DebtTokenContract.deployed(web3, TX_DEFAULTS);
         debtRegistryContract = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
 
-        erc721CollateralizedSimpleInterestTermsContract =
-            await ERC721CollateralizedSimpleInterestTermsContractContract.deployed(
-                web3,
-                TX_DEFAULTS,
-            );
+        erc721CollateralizedSimpleInterestTermsContract = await TermsContract.deployed(web3, TX_DEFAULTS,);
 
         erc721CollateralizerContract = await ERC721CollateralizerContract.deployed(web3, TX_DEFAULTS);
 
@@ -94,8 +97,6 @@ contract("ERC721 Collateralized Simple Interest Terms Contract (Integration Test
         const tokenAddress = erc721TokenContract.address;
         const tokenName = await erc721TokenContract.name.callAsync();
         const tokenSymbol = await erc721TokenContract.symbol.callAsync();
-
-        console.log(tokenAddress, tokenName, tokenSymbol);
 
         // Add the mintable token to the registry.
         const erc721TokenRegistry = await ERC721TokenRegistryContract.deployed(web3, TX_DEFAULTS);

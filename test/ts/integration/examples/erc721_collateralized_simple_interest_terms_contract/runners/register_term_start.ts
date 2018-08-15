@@ -8,7 +8,7 @@ import { REVERT_ERROR } from "../../../../test_utils/constants";
 import { RegisterTermStartScenario } from "../scenarios";
 // Logs
 import { LogSimpleInterestTermStart } from "../../../../logs/simple_interest_terms_contract";
-import { CollateralLocked } from "../../../../logs/collateralized_contract";
+import { ERC721CollateralLocked } from "../../../../logs/collateralized_contract";
 // Runners
 import { ERC721CollateralizedSimpleInterestTermsContractRunner } from "./erc_721_collateralized_simple_interest_terms_contract";
 
@@ -75,7 +75,7 @@ export class RegisterTermStartRunner extends ERC721CollateralizedSimpleInterestT
                 it("should emit a CollateralLocked event", async () => {
                     const { erc721CollateralizerContract } = this.contracts;
 
-                    const expectedLog = CollateralLocked(
+                    const expectedLog = ERC721CollateralLocked(
                         erc721CollateralizerContract.address,
                         this.agreementId,
                         this.contracts.erc721TokenContract.address,
