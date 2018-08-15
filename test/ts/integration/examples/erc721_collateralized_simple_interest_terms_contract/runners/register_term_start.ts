@@ -43,10 +43,11 @@ export class RegisterTermStartRunner extends Runner {
 
             after(async () => {
                 if (!scenario.permissionToCollateralize) {
-                    await this.contracts.erc721CollateralizerContract.addAuthorizedCollateralizeAgent.sendTransactionAsync(
-                        this.contracts.erc721CollateralizedSimpleInterestTermsContract.address,
-                        { from: this.accounts.CONTRACT_OWNER },
-                    );
+                    await this.contracts.erc721CollateralizerContract
+                        .addAuthorizedCollateralizeAgent.sendTransactionAsync(
+                            this.contracts.erc721CollateralizedSimpleInterestTermsContract.address,
+                            { from: this.accounts.CONTRACT_OWNER },
+                        );
                 }
 
                 // Tear down ABIDecoder before next set of tests
