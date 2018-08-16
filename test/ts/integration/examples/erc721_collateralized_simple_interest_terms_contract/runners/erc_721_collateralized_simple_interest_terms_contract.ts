@@ -6,7 +6,11 @@ import * as Units from "../../../../test_utils/units";
 import * as moment from "moment";
 import * as Web3 from "web3";
 // Scenario runners
-import { RegisterRepaymentScenario, RegisterTermStartScenario, ReturnCollateralScenario } from "../scenarios";
+import {
+    RegisterRepaymentScenario,
+    RegisterTermStartScenario,
+    ReturnCollateralScenario,
+} from "../scenarios";
 
 import { TestAccounts, TestContracts } from "./";
 // Wrappers
@@ -44,8 +48,10 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
         this.allAccounts = allAccounts;
     }
 
-    public testScenario(
-        scenario: RegisterRepaymentScenario | RegisterTermStartScenario | ReturnCollateralScenario,
+    public abstract testScenario(
+        scenario: RegisterRepaymentScenario |
+            RegisterTermStartScenario |
+            ReturnCollateralScenario,
     ): void;
 
     protected async getLogs(
@@ -75,7 +81,7 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
     }
 
     protected async setupDebtOrder(
-        scenario: RegisterRepaymentScenario | RegisterTermStartScenario,
+        scenario: RegisterRepaymentScenario | RegisterTermStartScenario | ReturnCollateralScenario,
     ) {
         const {
             erc721CollateralizedSimpleInterestTermsContract,
