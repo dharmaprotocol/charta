@@ -42,7 +42,6 @@ export const DEFAULT_RETURN_COLLATERAL_ARGS = {
     repaymentToken: (principalToken: DummyTokenContract, otherToken: DummyTokenContract) =>
         principalToken,
     debtOrder: (debtOrder: SignedDebtOrder) => debtOrder,
-    repayFromRouter: true,
     principalTokenInRegistry: true,
     collateralTokenInRegistry: true,
     succeeds: true,
@@ -137,9 +136,7 @@ export interface ReturnCollateralScenario {
     succeeds: boolean;
     // True if the transaction is reverted.
     reverts: boolean;
-    // True if the repayment makes a payment on behalf of the debtor in the scenario.
-    repayFromRouter: boolean;
-};
+}
 
 export interface RegisterTermStartScenario {
     // The test's description

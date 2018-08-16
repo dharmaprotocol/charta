@@ -163,7 +163,7 @@ contract("ERC721 Collateralized Simple Interest Terms Contract (Integration Test
             SUCCESSFUL_REGISTER_REPAYMENT_SCENARIOS.forEach(registerRepaymentRunner.testScenario);
         });
     });
-    
+
     describe("Returning collateral", () => {
         describe("Successful return of collateral", () => {
             SUCCESSFUL_RETURN_COLLATERAL_SCENARIOS.forEach(returnCollateralRunner.testScenario);
