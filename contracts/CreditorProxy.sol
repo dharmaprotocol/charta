@@ -53,7 +53,7 @@ contract CreditorProxy is Pausable {
         whenNotPaused
         returns (bool result)
     {
-        if (!creditor) {
+        if (creditor == 0) {
             LogError(uint8(Errors.CREDITOR_MISSING));
             return false;
         }

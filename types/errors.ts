@@ -15,3 +15,7 @@ export const enum RepaymentRouterErrorCodes {
     PAYER_BALANCE_OR_ALLOWANCE_INSUFFICIENT,
     REPAYMENT_REJECTED_BY_TERMS_CONTRACT,
 }
+
+export const enum CreditorProxyErrorCodes {
+    CREDITOR_MISSING,
+}
