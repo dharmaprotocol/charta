@@ -6,7 +6,7 @@ import * as Units from "../../../../test_utils/units";
 import * as moment from "moment";
 import * as Web3 from "web3";
 // Scenario runners
-import { RegisterRepaymentScenario, RegisterTermStartScenario } from "../scenarios";
+import { RegisterRepaymentScenario, RegisterTermStartScenario, ReturnCollateralScenario } from "../scenarios";
 
 import { TestAccounts, TestContracts } from "./";
 // Wrappers
@@ -45,7 +45,7 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
     }
 
     public testScenario(
-        scenario: RegisterRepaymentScenario | RegisterTermStartScenario,
+        scenario: RegisterRepaymentScenario | RegisterTermStartScenario | ReturnCollateralScenario,
     ): void;
 
     protected async getLogs(

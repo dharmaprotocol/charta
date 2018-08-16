@@ -75,3 +75,22 @@ export function CollateralSeized(
         name: "CollateralSeized",
     };
 }
+
+export function ERC721CollateralReturned(
+    contract: Address,
+    agreementID: Bytes32,
+    collateralizer: Address,
+    token: Address,
+    tokenId: UInt,
+): ABIDecoder.DecodedLog {
+    return {
+        address: contract,
+        events: LogUtils.getParams([
+            ["agreementID", agreementID],
+            ["collateralizer", collateralizer],
+            ["token", token],
+            ["tokenID", tokenId],
+        ]),
+        name: "CollateralReturned",
+    };
+}

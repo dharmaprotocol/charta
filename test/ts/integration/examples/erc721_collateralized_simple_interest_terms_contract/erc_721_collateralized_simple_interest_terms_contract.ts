@@ -34,6 +34,9 @@ import {
 
 // Utils
 import { multiSigExecuteAfterTimelock } from "../../../test_utils/multisig";
+import { SUCCESSFUL_RETURN_COLLATERAL_SCENARIOS } from "./scenarios/successful_return_collateral";
+import { ReturnCollateralRunner } from "./runners/return_collateral";
+import { UNSUCCESSFUL_RETURN_COLLATERAL_SCENARIOS } from "./scenarios/unsuccessful_return_collateral";
 
 // Configure BigNumber exponentiation
 BigNumberSetup.configure();
@@ -64,6 +67,7 @@ contract("ERC721 Collateralized Simple Interest Terms Contract (Integration Test
 
     const registerRepaymentRunner = new RegisterRepaymentRunner(web3);
     const registerTermStartRunner = new RegisterTermStartRunner(web3);
+    const returnCollateralRunner = new ReturnCollateralRunner(web3);
     const unpackParametersFromBytes = new UnpackParametersFromBytesRunner();
 
     before(async () => {
@@ -134,6 +138,7 @@ contract("ERC721 Collateralized Simple Interest Terms Contract (Integration Test
 
         registerRepaymentRunner.initialize(testAccounts, testContracts, ACCOUNTS);
         registerTermStartRunner.initialize(testAccounts, testContracts, ACCOUNTS);
+        returnCollateralRunner.initialize(testAccounts, testContracts, ACCOUNTS);
         unpackParametersFromBytes.initialize(erc721CollateralizedSimpleInterestTermsContract);
     });
 
@@ -156,6 +161,16 @@ contract("ERC721 Collateralized Simple Interest Terms Contract (Integration Test
 
         describe("Successful register repayment", () => {
             SUCCESSFUL_REGISTER_REPAYMENT_SCENARIOS.forEach(registerRepaymentRunner.testScenario);
+        });
+    });
+    
+    describe("Returning collateral", () => {
+        describe("Successful return of collateral", () => {
+            SUCCESSFUL_RETURN_COLLATERAL_SCENARIOS.forEach(returnCollateralRunner.testScenario);
+        });
+
+        describe("Unsuccessful attempt to return collateral", () => {
+            UNSUCCESSFUL_RETURN_COLLATERAL_SCENARIOS.forEach(returnCollateralRunner.testScenario);
         });
     });
 
