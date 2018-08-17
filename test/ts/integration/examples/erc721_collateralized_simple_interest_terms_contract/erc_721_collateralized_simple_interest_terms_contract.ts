@@ -23,20 +23,23 @@ import { SUCCESSFUL_REGISTER_REPAYMENT_SCENARIOS } from "./scenarios/successful_
 import { UNSUCCESSFUL_REGISTER_REPAYMENT_SCENARIOS } from "./scenarios/unsuccessful_register_repayment";
 import { SUCCESSFUL_REGISTER_TERM_START_SCENARIOS } from "./scenarios/successful_register_term_start";
 import { UNSUCCESSFUL_REGISTER_TERM_START_SCENARIOS } from "./scenarios/unsuccessful_register_term_start";
+import { UNSUCCESSFUL_SEIZE_COLLATERAL_SCENARIOS } from "./scenarios/unsuccessful_seize_collateral";
 import { UNPACK_PARAMETERS_FROM_BYTES_SCENARIOS } from "./scenarios/unpack_parameters_from_bytes";
+import { SUCCESSFUL_RETURN_COLLATERAL_SCENARIOS } from "./scenarios/successful_return_collateral";
+import { UNSUCCESSFUL_RETURN_COLLATERAL_SCENARIOS } from "./scenarios/unsuccessful_return_collateral";
+import { SUCCESSFUL_SEIZE_COLLATERAL_SCENARIOS } from "./scenarios/successful_seize_collateral";
 
 // Scenario Runners
 import {
     RegisterRepaymentRunner,
     RegisterTermStartRunner,
+    ReturnCollateralRunner,
+    SeizeCollateralRunner,
     UnpackParametersFromBytesRunner,
 } from "./runners";
 
 // Utils
 import { multiSigExecuteAfterTimelock } from "../../../test_utils/multisig";
-import { SUCCESSFUL_RETURN_COLLATERAL_SCENARIOS } from "./scenarios/successful_return_collateral";
-import { ReturnCollateralRunner } from "./runners/return_collateral";
-import { UNSUCCESSFUL_RETURN_COLLATERAL_SCENARIOS } from "./scenarios/unsuccessful_return_collateral";
 
 // Configure BigNumber exponentiation
 BigNumberSetup.configure();
@@ -68,6 +71,7 @@ contract("ERC721 Collateralized Simple Interest Terms Contract (Integration Test
     const registerRepaymentRunner = new RegisterRepaymentRunner(web3);
     const registerTermStartRunner = new RegisterTermStartRunner(web3);
     const returnCollateralRunner = new ReturnCollateralRunner(web3);
+    const seizeCollateralRunner = new SeizeCollateralRunner(web3);
     const unpackParametersFromBytes = new UnpackParametersFromBytesRunner();
 
     before(async () => {
@@ -139,6 +143,7 @@ contract("ERC721 Collateralized Simple Interest Terms Contract (Integration Test
         registerRepaymentRunner.initialize(testAccounts, testContracts, ACCOUNTS);
         registerTermStartRunner.initialize(testAccounts, testContracts, ACCOUNTS);
         returnCollateralRunner.initialize(testAccounts, testContracts, ACCOUNTS);
+        seizeCollateralRunner.initialize(testAccounts, testContracts, ACCOUNTS);
         unpackParametersFromBytes.initialize(erc721CollateralizedSimpleInterestTermsContract);
     });
 
@@ -171,6 +176,16 @@ contract("ERC721 Collateralized Simple Interest Terms Contract (Integration Test
 
         describe("Unsuccessful attempt to return collateral", () => {
             UNSUCCESSFUL_RETURN_COLLATERAL_SCENARIOS.forEach(returnCollateralRunner.testScenario);
+        });
+    });
+
+    describe("Seizing collateral", () => {
+        describe("Successful seizure of collateral", () => {
+            SUCCESSFUL_SEIZE_COLLATERAL_SCENARIOS.forEach(seizeCollateralRunner.testScenario);
+        });
+
+        describe("Unsuccessful attempt to seize collateral", () => {
+            UNSUCCESSFUL_SEIZE_COLLATERAL_SCENARIOS.forEach(seizeCollateralRunner.testScenario);
         });
     });
 

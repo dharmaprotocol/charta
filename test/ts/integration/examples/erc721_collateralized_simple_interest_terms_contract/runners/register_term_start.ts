@@ -1,6 +1,8 @@
 // External libraries
 import * as ABIDecoder from "abi-decoder";
+import * as Web3 from "web3";
 import { expect } from "chai";
+
 // Test Utils
 import { REVERT_ERROR } from "../../../../test_utils/constants";
 // Scenario runners
@@ -14,6 +16,10 @@ import {
 } from "./erc_721_collateralized_simple_interest_terms_contract";
 
 export class RegisterTermStartRunner extends Runner {
+    constructor(web3: Web3) {
+        super(web3);
+    }
+
     public testScenario(scenario: RegisterTermStartScenario) {
         let txHash: string;
 

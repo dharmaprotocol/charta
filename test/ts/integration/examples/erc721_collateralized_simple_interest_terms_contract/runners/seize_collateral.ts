@@ -5,10 +5,10 @@ import { BigNumber } from "bignumber.js";
 import { expect } from "chai";
 
 // Scenarios
-import { ReturnCollateralScenario } from "../scenarios";
+import { SeizeCollateralScenario } from "../scenarios";
 
 // Logs
-import { ERC721CollateralReturned } from "../../../../logs/collateralized_contract";
+import { ERC721CollateralSeized } from "../../../../logs/collateralized_contract";
 
 // Runners
 import {
@@ -21,12 +21,12 @@ import { DummyTokenContract } from "../../../../../../types/generated/dummy_toke
 // Test utils
 import { REVERT_ERROR } from "../../../../test_utils/constants";
 
-export class ReturnCollateralRunner extends Runner {
+export class SeizeCollateralRunner extends Runner {
     constructor(web3: Web3) {
         super(web3);
     }
 
-    public testScenario(scenario: ReturnCollateralScenario) {
+    public testScenario(scenario: SeizeCollateralScenario) {
         let txHash: string;
         let dummyREPToken: DummyTokenContract;
         let dummyZRXToken: DummyTokenContract;
@@ -65,6 +65,10 @@ export class ReturnCollateralRunner extends Runner {
                     );
                 }
 
+                if (scenario.secondsSinceFill) {
+                    await this.web3Utils.increaseTime(scenario.secondsSinceFill);
+                }
+                
                 // Setup ABI decoder in order to decode logs
                 ABIDecoder.addABI(this.contracts.erc721CollateralizerContract.abi);
             });
@@ -75,7 +79,7 @@ export class ReturnCollateralRunner extends Runner {
 
             if (scenario.reverts) {
                 it("should revert the transaction", async () => {
-                    const transaction = this.contracts.erc721CollateralizerContract.returnCollateral
+                    const transaction = this.contracts.erc721CollateralizerContract.seizeCollateral
                         .sendTransactionAsync(this.agreementId);
 
                     await expect(transaction).to.eventually.be.rejectedWith(REVERT_ERROR);
@@ -83,28 +87,28 @@ export class ReturnCollateralRunner extends Runner {
             } else {
                 // If the scenario does not revert, we can call the function and get the txHash.
                 before(async () => {
-                    txHash = await this.contracts.erc721CollateralizerContract.returnCollateral
+                    txHash = await this.contracts.erc721CollateralizerContract.seizeCollateral
                         .sendTransactionAsync(this.agreementId);
                 });
             }
 
             if (scenario.succeeds) {
-                it("should return the collateral to the debtor", async () => {
-                    const { DEBTOR_1 } = this.accounts;
+                it("should transfer the collateral to the creditor", async () => {
+                    const { CREDITOR_1 } = this.accounts;
 
                     const owner = await this.contracts.erc721TokenContract.ownerOf.callAsync(scenario.collateralId);
-                    expect(owner).to.equal(DEBTOR_1);
+                    expect(owner).to.equal(CREDITOR_1);
                 });
 
-                it("should emit a CollateralReturned event", async () => {
-                    const { DEBTOR_1 } = this.accounts;
+                it("should emit a CollateralSeized event", async () => {
+                    const { CREDITOR_1 } = this.accounts;
 
-                    const returnedLog = await this.getLogs(txHash, "CollateralReturned");
+                    const returnedLog = await this.getLogs(txHash, "CollateralSeized");
 
-                    const expectedLog = ERC721CollateralReturned(
+                    const expectedLog = ERC721CollateralSeized(
                         this.contracts.erc721CollateralizerContract.address,
                         this.agreementId,
-                        DEBTOR_1,
+                        CREDITOR_1,
                         this.contracts.erc721TokenContract.address,
                         scenario.collateralId,
                     );

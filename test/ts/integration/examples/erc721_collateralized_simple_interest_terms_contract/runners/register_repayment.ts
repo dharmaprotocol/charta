@@ -1,5 +1,6 @@
 // External libraries
 import * as ABIDecoder from "abi-decoder";
+import * as Web3 from "web3";
 import { expect } from "chai";
 import { BigNumber } from "bignumber.js";
 // Test Utils
@@ -18,6 +19,10 @@ import {
 const DEFAULT_GAS_AMOUNT = 4712388;
 
 export class RegisterRepaymentRunner extends Runner {
+    constructor(web3: Web3) {
+        super(web3);
+    }
+
     public testScenario(scenario: RegisterRepaymentScenario) {
         let txHash: string;
         let dummyREPToken: DummyTokenContract;
