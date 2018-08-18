@@ -8,9 +8,14 @@ module.exports = (deployer, network, accounts) => {
         "ERC721CollateralizedSimpleInterestTermsContract",
     );
     const IncompatibleTermsContract = artifacts.require("IncompatibleTermsContract");
+    const ERC721Collateralizer = artifacts.require("ERC721Collateralizer");
 
     deployer.deploy(IncompatibleTermsContract);
     deployer.deploy(SimpleInterestTermsContract, ContractRegistry.address);
     deployer.deploy(CollateralizedSimpleInterestTermsContract, ContractRegistry.address);
-    deployer.deploy(ERC721CollateralizedSimpleInterestTermsContract, ContractRegistry.address);
+    deployer.deploy(
+        ERC721CollateralizedSimpleInterestTermsContract,
+        ContractRegistry.address,
+        ERC721Collateralizer.address,
+    );
 };

@@ -30,8 +30,11 @@ contract ERC721CollateralizedSimpleInterestTermsContract is SimpleInterestTermsC
     ERC721Collateralizer public erc721Collateralizer;
 
     function ERC721CollateralizedSimpleInterestTermsContract(
-        address _contractRegistry
-    ) public SimpleInterestTermsContract(_contractRegistry) {}
+        address _contractRegistry,
+        address _erc721Collateralizer
+    ) public SimpleInterestTermsContract(_contractRegistry) {
+        erc721Collateralizer = ERC721Collateralizer(_erc721Collateralizer);
+    }
 
     function registerTermStart(
         bytes32 agreementId,
