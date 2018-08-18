@@ -3,13 +3,11 @@ pragma solidity 0.4.18;
 import "zeppelin-solidity/contracts/ownership/Ownable.sol";
 
 import "./Collateralizer.sol";
-import "./ERC721Collateralizer.sol";
 import "./DebtKernel.sol";
 import "./DebtRegistry.sol";
 import "./DebtToken.sol";
 import "./RepaymentRouter.sol";
 import "./TokenRegistry.sol";
-import "./ERC721TokenRegistry.sol";
 import "./TokenTransferProxy.sol";
 
 
@@ -23,47 +21,39 @@ contract ContractRegistry is Ownable {
 
     enum ContractType {
         Collateralizer,
-        ERC721Collateralizer,
         DebtKernel,
         DebtRegistry,
         DebtToken,
         RepaymentRouter,
         TokenRegistry,
-        ERC721TokenRegistry,
         TokenTransferProxy
     }
 
     Collateralizer public collateralizer;
-    ERC721Collateralizer public erc721Collateralizer;
     DebtKernel public debtKernel;
     DebtRegistry public  debtRegistry;
     DebtToken public debtToken;
     RepaymentRouter public repaymentRouter;
     TokenRegistry public tokenRegistry;
-    ERC721TokenRegistry public erc721TokenRegistry;
     TokenTransferProxy public tokenTransferProxy;
 
     function ContractRegistry(
         address _collateralizer,
-        address _erc721Collateralizer,
         address _debtKernel,
         address _debtRegistry,
         address _debtToken,
         address _repaymentRouter,
         address _tokenRegistry,
-        address _erc721tokenRegistry,
         address _tokenTransferProxy
     )
         public
     {
         collateralizer = Collateralizer(_collateralizer);
-        erc721Collateralizer = ERC721Collateralizer(_erc721Collateralizer);
         debtKernel = DebtKernel(_debtKernel);
         debtRegistry = DebtRegistry(_debtRegistry);
         debtToken = DebtToken(_debtToken);
         repaymentRouter = RepaymentRouter(_repaymentRouter);
         tokenRegistry = TokenRegistry(_tokenRegistry);
-        erc721TokenRegistry = ERC721TokenRegistry(_erc721tokenRegistry);
         tokenTransferProxy = TokenTransferProxy(_tokenTransferProxy);
     }
 
@@ -80,10 +70,6 @@ contract ContractRegistry is Ownable {
             oldAddress = address(collateralizer);
             validateNewAddress(newAddress, oldAddress);
             collateralizer = Collateralizer(newAddress);
-        } else if (contractType == ContractType.ERC721Collateralizer) {
-            oldAddress = address(erc721Collateralizer);
-            validateNewAddress(newAddress, oldAddress);
-            erc721Collateralizer = ERC721Collateralizer(newAddress);
         } else if (contractType == ContractType.DebtKernel) {
             oldAddress = address(debtKernel);
             validateNewAddress(newAddress, oldAddress);
@@ -102,10 +88,6 @@ contract ContractRegistry is Ownable {
             repaymentRouter = RepaymentRouter(newAddress);
         } else if (contractType == ContractType.TokenRegistry) {
             oldAddress = address(tokenRegistry);
-            validateNewAddress(newAddress, oldAddress);
-            tokenRegistry = TokenRegistry(newAddress);
-        } else if (contractType == ContractType.ERC721TokenRegistry) {
-            oldAddress = address(erc721TokenRegistry);
             validateNewAddress(newAddress, oldAddress);
             tokenRegistry = TokenRegistry(newAddress);
         } else if (contractType == ContractType.TokenTransferProxy) {

@@ -63,13 +63,11 @@ module.exports = (deployer, network, accounts) => {
         await deployer.deploy(
             ContractRegistry,
             Collateralizer.address,
-            ERC721Collateralizer.address,
             DebtKernel.address,
             DebtRegistry.address,
             DebtToken.address,
             RepaymentRouter.address,
             TokenRegistry.address,
-            ERC721TokenRegistry.address,
             TokenTransferProxy.address,
         );
     });

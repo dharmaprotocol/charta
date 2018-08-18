@@ -1,6 +1,7 @@
 import { BigNumber } from "bignumber.js";
 import * as ABIDecoder from "abi-decoder";
 import * as chai from "chai";
+import * as Web3 from "web3";
 
 import { MockDebtRegistryContract } from "../../../types/generated/mock_debt_registry";
 import { DebtKernelContract } from "../../../types/generated/debt_kernel";
@@ -10,8 +11,6 @@ import { RepaymentRouterContract } from "../../../types/generated/repayment_rout
 import { MockTokenRegistryContract } from "../../../types/generated/mock_token_registry";
 import { CollateralizerContract } from "../../../types/generated/collateralizer";
 import { ContractRegistryContract } from "../../../types/generated/contract_registry";
-import { ERC721CollateralizerContract } from "../../../types/generated/e_r_c721_collateralizer";
-import { ERC721TokenRegistryContract } from "../../../types/generated/e_r_c721_token_registry";
 
 import { ContractAddressUpdated, EventNames } from "../logs/contract_registry";
 import { queryLogsForEvent } from "../logs/log_utils";
@@ -24,6 +23,7 @@ ChaiSetup.configure();
 const expect = chai.expect;
 
 const contractRegistryArtifact = artifacts.require("ContractRegistry");
+const debtRegistryArtifact = artifacts.require("MockDebtRegistry");
 
 contract("Contract Registry (Unit Tests)", async (ACCOUNTS) => {
     const CONTRACT_OWNER = ACCOUNTS[0];
@@ -39,8 +39,6 @@ contract("Contract Registry (Unit Tests)", async (ACCOUNTS) => {
     let mockTokenTransferProxy: MockTokenTransferProxyContract;
     let mockTokenRegistry: MockTokenRegistryContract;
     let collateralizer: CollateralizerContract;
-    let erc721Collateralizer: ERC721CollateralizerContract;
-    let erc721TokenRegistry: ERC721TokenRegistryContract;
 
     let contractRegistry: ContractRegistryContract;
 
@@ -52,18 +50,14 @@ contract("Contract Registry (Unit Tests)", async (ACCOUNTS) => {
         mockDebtToken = await MockDebtTokenContract.deployed(web3, TX_DEFAULTS);
         repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
         collateralizer = await CollateralizerContract.deployed(web3, TX_DEFAULTS);
-        erc721Collateralizer = await ERC721CollateralizerContract.deployed(web3, TX_DEFAULTS);
-        erc721TokenRegistry = await ERC721TokenRegistryContract.deployed(web3, TX_DEFAULTS);
 
         const contractRegistryTruffle = await contractRegistryArtifact.new(
             collateralizer.address,
-            erc721Collateralizer.address,
             debtKernel.address,
             mockDebtRegistry.address,
             mockDebtToken.address,
             repaymentRouter.address,
             mockTokenRegistry.address,
-            erc721TokenRegistry.address,
             mockTokenTransferProxy.address,
             { from: CONTRACT_OWNER },
         );
@@ -125,7 +119,7 @@ contract("Contract Registry (Unit Tests)", async (ACCOUNTS) => {
     describe("#updateAddress", () => {
         describe("successfully", () => {
             let txHash: string;
-            const DEBT_REGISTRY_ENUM_RAW_VALUE = new BigNumber(3);
+            const DEBT_REGISTRY_ENUM_RAW_VALUE = new BigNumber(2);
 
             before(async () => {
                 txHash = await contractRegistry.updateAddress.sendTransactionAsync(
@@ -157,7 +151,7 @@ contract("Contract Registry (Unit Tests)", async (ACCOUNTS) => {
         });
 
         describe("unsuccessfully", () => {
-            const DEBT_TOKEN_ENUM_RAW_VALUE = new BigNumber(4);
+            const DEBT_TOKEN_ENUM_RAW_VALUE = new BigNumber(3);
 
             it("reverts if an account other than the owner sends the transaction", async () => {
                 await expect(
@@ -192,7 +186,7 @@ contract("Contract Registry (Unit Tests)", async (ACCOUNTS) => {
             it("throws invalid opcode if the contract type specified is invalid", async () => {
                 await expect(
                     contractRegistry.updateAddress.sendTransactionAsync(
-                        new BigNumber(9), // invalid value.
+                        new BigNumber(7), // invalid value.
                         NEW_DEBT_TOKEN_ADDRESS,
                         { from: CONTRACT_OWNER },
                     ),
