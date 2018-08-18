@@ -19,6 +19,7 @@
 pragma solidity 0.4.18;
 
 import "./SimpleInterestTermsContract.sol";
+import "../ERC721Collateralizer.sol";
 
 
 /**
@@ -26,10 +27,11 @@ import "./SimpleInterestTermsContract.sol";
  * agreements.
  */
 contract ERC721CollateralizedSimpleInterestTermsContract is SimpleInterestTermsContract {
+    ERC721Collateralizer public erc721Collateralizer;
 
     function ERC721CollateralizedSimpleInterestTermsContract(
-        address contractRegistry
-    ) public SimpleInterestTermsContract(contractRegistry) {}
+        address _contractRegistry
+    ) public SimpleInterestTermsContract(_contractRegistry) {}
 
     function registerTermStart(
         bytes32 agreementId,
