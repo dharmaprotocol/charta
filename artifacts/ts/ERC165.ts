@@ -27,13 +27,13 @@ export const ERC165 =
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "/*\n\n  Copyright 2017 Dharma Labs Inc.\n\n  Licensed under the Apache License, Version 2.0 (the \"License\");\n  you may not use this file except in compliance with the License.\n  You may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\n  Unless required by applicable law or agreed to in writing, software\n  distributed under the License is distributed on an \"AS IS\" BASIS,\n  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n  See the License for the specific language governing permissions and\n  limitations under the License.\n\n*/\n\npragma solidity 0.4.18;\n\n\n/**\n * ERC165 interface required by ERC721 non-fungible token.\n *\n * https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md\n * https://github.com/ethereum/EIPs/blob/master/EIPS/eip-165.md\n */\ninterface ERC165 {\n    /// @notice Query if a contract implements an interface\n    /// @param interfaceID The interface identifier, as specified in ERC-165\n    /// @dev Interface identification is specified in ERC-165. This function\n    ///  uses less than 30,000 gas.\n    /// @return `true` if the contract implements `interfaceID` and\n    ///  `interfaceID` is not 0xffffffff, `false` otherwise\n    function supportsInterface(bytes4 interfaceID) external view returns (bool);\n}\n",
-  "sourcePath": "/Users/kayvon/dharma/charta/contracts/ERC165.sol",
+  "sourcePath": "/Users/graemeboy/Dharma/charta/contracts/ERC165.sol",
   "ast": {
     "attributes": {
-      "absolutePath": "/Users/kayvon/dharma/charta/contracts/ERC165.sol",
+      "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/ERC165.sol",
       "exportedSymbols": {
         "ERC165": [
-          2982
+          3052
         ]
       }
     },
@@ -46,7 +46,7 @@ export const ERC165 =
             ".18"
           ]
         },
-        "id": 2974,
+        "id": 3044,
         "name": "PragmaDirective",
         "src": "584:23:5"
       },
@@ -62,10 +62,10 @@ export const ERC165 =
           "documentation": "ERC165 interface required by ERC721 non-fungible token.\n * https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md\nhttps://github.com/ethereum/EIPs/blob/master/EIPS/eip-165.md",
           "fullyImplemented": false,
           "linearizedBaseContracts": [
-            2982
+            3052
           ],
           "name": "ERC165",
-          "scope": 2983
+          "scope": 3053
         },
         "children": [
           {
@@ -79,7 +79,7 @@ export const ERC165 =
               ],
               "name": "supportsInterface",
               "payable": false,
-              "scope": 2982,
+              "scope": 3052,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "external"
@@ -91,7 +91,7 @@ export const ERC165 =
                     "attributes": {
                       "constant": false,
                       "name": "interfaceID",
-                      "scope": 2981,
+                      "scope": 3051,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes4",
@@ -104,17 +104,17 @@ export const ERC165 =
                           "name": "bytes4",
                           "type": "bytes4"
                         },
-                        "id": 2975,
+                        "id": 3045,
                         "name": "ElementaryTypeName",
                         "src": "1236:6:5"
                       }
                     ],
-                    "id": 2976,
+                    "id": 3046,
                     "name": "VariableDeclaration",
                     "src": "1236:18:5"
                   }
                 ],
-                "id": 2977,
+                "id": 3047,
                 "name": "ParameterList",
                 "src": "1235:20:5"
               },
@@ -124,7 +124,7 @@ export const ERC165 =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 2981,
+                      "scope": 3051,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -137,32 +137,32 @@ export const ERC165 =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 2978,
+                        "id": 3048,
                         "name": "ElementaryTypeName",
                         "src": "1279:4:5"
                       }
                     ],
-                    "id": 2979,
+                    "id": 3049,
                     "name": "VariableDeclaration",
                     "src": "1279:4:5"
                   }
                 ],
-                "id": 2980,
+                "id": 3050,
                 "name": "ParameterList",
                 "src": "1278:6:5"
               }
             ],
-            "id": 2981,
+            "id": 3051,
             "name": "FunctionDefinition",
             "src": "1209:76:5"
           }
         ],
-        "id": 2982,
+        "id": 3052,
         "name": "ContractDefinition",
         "src": "808:479:5"
       }
     ],
-    "id": 2983,
+    "id": 3053,
     "name": "SourceUnit",
     "src": "584:704:5"
   },
@@ -172,5 +172,5 @@ export const ERC165 =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-07-02T23:10:02.043Z"
+  "updatedAt": "2018-08-17T19:19:33.704Z"
 }
