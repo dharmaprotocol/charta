@@ -45,7 +45,7 @@ contract ERC721CollateralizedSimpleInterestTermsContract is SimpleInterestTermsC
         returns (bool _success)
     {
         bool registered = super.registerTermStart(agreementId, debtor);
-        bool collateralized = contractRegistry.erc721Collateralizer().collateralize(agreementId, debtor);
+        bool collateralized = erc721Collateralizer.collateralize(agreementId, debtor);
 
         return registered && collateralized;
     }
