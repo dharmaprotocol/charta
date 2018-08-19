@@ -117,7 +117,11 @@ export class CreditOrder extends SignableMessage {
         signatories: CreditOrderSignatories,
     ): Promise<SignedCreditOrder> {
         const creditorSignature = signatories.creditor
-            ? await this.getSignature(web3, signatories.creditor, this.getCreditorCommitment().getHash())
+            ? await this.getSignature(
+                  web3,
+                  signatories.creditor,
+                  this.getCreditorCommitment().getHash(),
+              )
             : NULL_SIGNATURE;
 
         const debtorSignature = signatories.debtor
