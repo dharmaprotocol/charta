@@ -3,7 +3,7 @@ import * as Web3 from "web3";
 import ethUtil = require("ethereumjs-util");
 
 import * as solidity from "../../utils/solidity";
-import { Address, Bytes32, UInt } from "../common";
+import { Address, Bytes32 } from "../common";
 import { CreditorCommitmentParams } from "./schema";
 import { ECDSASignature, SignableMessage } from "../kernel/signable_message";
 
@@ -47,7 +47,7 @@ export class CreditorCommitment extends SignableMessage {
     }
 
     public getPrincipalToken(): Address {
-        return this.params.principalTokenAddress;
+        return this.params.principalToken;
     }
 
     public getPrincipalAmount(): BigNumber {

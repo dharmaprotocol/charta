@@ -6,7 +6,7 @@ import * as LogUtils from "./log_utils";
 export function LogCreditOrderFilled(
     contract: Address,
     creditor: Address,
-    creditorNonce: Uint,
+    creditorNonce: UInt,
     agreementId: Bytes32,
 ): ABIDecoder.DecodedLog {
     return {
@@ -23,7 +23,7 @@ export function LogCreditOrderFilled(
 export function LogCreditOrderCancelled(
     contract: Address,
     creditor: Address,
-    creditorNonce: Uint,
+    creditorNonce: UInt,
 ): ABIDecoder.DecodedLog {
     return {
         address: contract,
@@ -32,10 +32,17 @@ export function LogCreditOrderCancelled(
     };
 }
 
-export function LogError(contract: Address, errorId: UInt): ABIDecoder.DecodedLog {
+export function LogError(
+    contract: Address,
+    errorId: UInt,
+    creditorCommitmentHash: Bytes32,
+): ABIDecoder.DecodedLog {
     return {
         address: contract,
-        events: LogUtils.getParams([["_errorId", errorId]], ["uint8"]),
+        events: LogUtils.getParams(
+            [["_errorId", errorId], ["_creditorCommitmentHash", creditorCommitmentHash]],
+            ["uint8", "bytes32"],
+        ),
         name: "LogError",
     };
 }

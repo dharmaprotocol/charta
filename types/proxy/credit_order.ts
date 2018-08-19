@@ -3,7 +3,7 @@ import * as Web3 from "web3";
 import ethUtil = require("ethereumjs-util");
 
 import * as solidity from "../../utils/solidity";
-import { Address, Bytes32, Uint } from "../common";
+import { Address, Bytes32 } from "../common";
 import { CreditorCommitment } from "./creditor_commitment";
 import { CreditOrderParams } from "./schema";
 import { ECDSASignature, SignableMessage } from "../kernel/signable_message";
@@ -37,31 +37,31 @@ export class CreditOrder extends SignableMessage {
         return this.params.relayer;
     }
 
-    public getCreditorFee(): Uint {
+    public getCreditorFee(): BigNumber {
         return this.params.creditorFee;
     }
 
-    public getDebtorFee(): Uint {
+    public getDebtorFee(): BigNumber {
         return this.params.debtorFee;
     }
 
-    public getRelayerFee(): Uint {
+    public getRelayerFee(): BigNumber {
         return this.params.relayerFee;
     }
 
-    public getUnderwriterFee(): Uint {
+    public getUnderwriterFee(): BigNumber {
         return this.params.underwriterFee;
     }
 
-    public getUnderwriterRiskRating(): Uint {
+    public getUnderwriterRiskRating(): BigNumber {
         return this.params.underwriterRiskRating;
     }
 
-    public getOrderExpiration(): Uint {
-        return this.params.orderExpriationTimeStampInSec;
+    public getOrderExpiration(): BigNumber {
+        return this.params.orderExpirationTimestampInSec;
     }
 
-    public getSalt(): Uint {
+    public getSalt(): BigNumber {
         return this.params.salt;
     }
 
@@ -82,13 +82,17 @@ export class CreditOrder extends SignableMessage {
             this.getCreditorCommitment().getRepaymentVersion(),
             this.getDebtor(),
             this.getCreditorCommitment().getUnderwriter(),
-            this.getCreditorCommitment().getTermsContractAddress(),
+            this.getCreditorCommitment().getTermsContract(),
             this.getUnderwriterRiskRating(),
             this.getSalt(),
             this.getCreditorCommitment().getTermsContractParameters(),
         ]);
         const hashHex = ethUtil.bufferToHex(hash);
         return hashHex;
+    }
+
+    public getCreditorCommitmentHash(): Bytes32 {
+        return this.getCreditorCommitment().getHash();
     }
 
     public getCreditOrderHash(): Bytes32 {
@@ -182,8 +186,10 @@ export class SignedCreditOrder extends CreditOrder {
             this.getDebtor(),
             this.getCreditorCommitment().getUnderwriter(),
             this.getCreditorCommitment().getTermsContract(),
-            this.getCreditorCommitment().getPrincipalTokenAddress(),
+            this.getCreditorCommitment().getPrincipalToken(),
             this.getRelayer(),
+            this.getCreditorCommitment().getKernelVersion(),
+            this.getCreditorCommitment().getCreditor(),
         ];
     }
 
@@ -197,6 +203,10 @@ export class SignedCreditOrder extends CreditOrder {
             this.getCreditorFee(),
             this.getDebtorFee(),
             this.getOrderExpiration(),
+            this.getCreditorCommitment().getMinimumRiskRating(),
+            this.getCreditorCommitment().getNonce(),
+            this.getCreditorCommitment().getMaximumCreditorFee(),
+            this.getCreditorCommitment().getCommitmentExpiration(),
         ];
     }
 

@@ -27,7 +27,7 @@ export class CreditOrderFactory {
             principalToken: params.principalToken,
             principalAmount: params.principalAmount,
             minimumRiskRating: params.minimumRiskRating,
-            maxumumCreditorFee: params.maxumumCreditorFee,
+            maximumCreditorFee: params.maxumumCreditorFee,
             commitmentExpirationTimestampInSec: params.commitmentExpirationTimestampInSec,
             nonce: params.nonce,
         });

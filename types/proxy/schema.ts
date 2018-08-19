@@ -1,5 +1,5 @@
 import { BigNumber } from "bignumber.js";
-import { Address, Bytes32, UInt } from "../common";
+import { Address, Bytes32 } from "../common";
 import { CreditorCommitment } from "./creditor_commitment";
 
 export interface CreditorCommitmentParams {
@@ -10,22 +10,22 @@ export interface CreditorCommitmentParams {
     termsContract: Address;
     termsContractParameters: Bytes32;
     principalToken: Address;
-    principalAmount: Uint;
-    minimumRiskRating: Uint;
-    maxumumCreditorFee: Uint;
-    commitmentExpirationTimestampInSec: Uint;
-    nonce: Uint;
+    principalAmount: BigNumber;
+    minimumRiskRating: BigNumber;
+    maximumCreditorFee: BigNumber;
+    commitmentExpirationTimestampInSec: BigNumber;
+    nonce: BigNumber;
 }
 
 export interface CreditOrderParams {
     creditorCommitment: CreditorCommitment;
     debtor: Address;
     relayer: Address;
-    creditorFee: Uint;
-    debtorFee: Uint;
-    relayerFee: Uint;
-    underwriterFee: Uint;
-    underwriterRiskRating: Uint;
-    orderExpirationTimestampInSec: Uint;
-    salt: Uint;
+    creditorFee: BigNumber;
+    debtorFee: BigNumber;
+    relayerFee: BigNumber;
+    underwriterFee: BigNumber;
+    underwriterRiskRating: BigNumber;
+    orderExpirationTimestampInSec: BigNumber;
+    salt: BigNumber;
 }
