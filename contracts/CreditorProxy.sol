@@ -107,16 +107,22 @@ contract CreditorProxy is Pausable {
      * issuance in which they're involved from being used in
      * a future debt order.
      */
-    function cancelCreditorCommitment(CreditorCommitment creditorCommitment)
+
+    function cancelCreditorCommitment(address[6] orderAddresses, bytes32 termsContractParameters, uint[5] orderValues)
         public
         whenNotPaused
     {
+        CreditorCommitment memory creditorCommitment = getCreditorCommitment(
+            orderAddresses,
+            termsContractParameters,
+            orderValues);
         require(msg.sender == creditorCommitment.creditor);
 
         creditOrderCancelled[keccak256(creditorCommitment.creditor, creditorCommitment.nonce)] = true;
 
         LogCreditOrderCancelled(msg.sender, creditorCommitment.nonce);
     }
+
 
     /*
      * Submit debt order to DebtKernel if it is consensual with creditor's request
@@ -204,9 +210,14 @@ contract CreditorProxy is Pausable {
         );
 
         // cancel credit order if fillDebtOrder succeeded
+
         if (creditOrderAgreementId != NULL_ISSUANCE_HASH) {
-            cancelCreditorCommitment(creditOrder.creditorCommitment);
+            creditOrderCancelled[keccak256(
+                creditOrder.creditorCommitment.creditor,
+                creditOrder.creditorCommitment.nonce
+            )] = true;
         }
+
 
         return creditOrderAgreementId;
     }
@@ -220,39 +231,29 @@ contract CreditorProxy is Pausable {
      * except missing debtor address
      */
 
-    function getCreditorCommitment(
-        address kernelVersion,
-        address repaymentVersion,
-        address creditor,
-        address underwriter,
-        address termsContract,
-        bytes32 termsContractParameters,
-        address principalToken,
-        uint principalAmount,
-        uint minRiskRating,
-        uint maxCreditorFee,
-        uint commitmentExpirationTimestampInSec,
-        uint nonce
-    )
+    function getCreditorCommitment(address[6] orderAddresses, bytes32 termsContractParameters, uint[5] orderValues)
         internal
         view
         returns (CreditorCommitment _creditorCommitment)
     {
         CreditorCommitment memory creditorCommitment = CreditorCommitment({
-            kernelVersion: kernelVersion,
-            repaymentVersion: repaymentVersion,
-            creditor: creditor,
-            underwriter: underwriter,
-            termsContract: termsContract,
+            kernelVersion: orderAddresses[0],
+            repaymentVersion: orderAddresses[1],
+            creditor: orderAddresses[2],
+            underwriter: orderAddresses[3],
+            termsContract: orderAddresses[4],
             termsContractParameters: termsContractParameters,
-            principalToken: principalToken,
-            principalAmount: principalAmount,
-            minRiskRating: minRiskRating,
-            maxCreditorFee: maxCreditorFee,
-            commitmentExpirationTimestampInSec: commitmentExpirationTimestampInSec,
-            nonce: nonce,
+            principalToken: orderAddresses[5],
+            principalAmount: orderValues[0],
+            minRiskRating: orderValues[1],
+            maxCreditorFee: orderValues[2],
+            commitmentExpirationTimestampInSec: orderValues[3],
+            nonce: orderValues[4],
             creditorCommitmentHash: bytes32(0)
         });
+
+        creditorCommitment.creditorCommitmentHash = getCreditorCommitmentHash(creditorCommitment);
+
         return creditorCommitment;
     }
 
@@ -267,18 +268,22 @@ contract CreditorProxy is Pausable {
     {
         CreditOrder memory creditOrder = CreditOrder({
             creditorCommitment: getCreditorCommitment(
-                orderAddresses[6],
-                orderAddresses[0],
-                orderAddresses[7],
-                orderAddresses[1],
-                orderAddresses[3],
+                [
+                    orderAddresses[6],
+                    orderAddresses[0],
+                    orderAddresses[7],
+                    orderAddresses[1],
+                    orderAddresses[3],
+                    orderAddresses[4]
+                ],
                 orderBytes32[0],
-                orderAddresses[4],
-                orderValues[2],
-                orderValues[8],
-                orderValues[9],
-                orderValues[11],
-                orderValues[9]
+                [
+                    orderValues[2],
+                    orderValues[8],
+                    orderValues[9],
+                    orderValues[11],
+                    orderValues[9]
+                ]
             ),
             debtor: orderAddresses[1],
             relayer: orderAddresses[5],
@@ -291,8 +296,6 @@ contract CreditorProxy is Pausable {
             salt: orderValues[2]
         });
 
-        creditOrder.creditorCommitment.creditorCommitmentHash =
-            getCreditorCommitmentHash(creditOrder.creditorCommitment);
 
         return creditOrder;
     }
@@ -312,7 +315,7 @@ contract CreditorProxy is Pausable {
         if (creditOrderCancelled[keccak256(
                 creditOrder.creditorCommitment.creditor,
                 creditOrder.creditorCommitment.nonce
-            )]) {
+        )]) {
             LogError(uint8(Errors.ORDER_CANCELLED), creditOrder.creditorCommitment.creditorCommitmentHash);
             return false;
         }
