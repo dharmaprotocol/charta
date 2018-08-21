@@ -320,21 +320,25 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
     function unpackCollateralParametersFromBytes(bytes32 parameters)
         public
         pure
-        returns (uint, uint)
+        returns (bool, uint, uint)
     {
         // Here we get the index of the ERC721 contract within the ERC721TokenRegistry.
         // In its raw form it will be "shifted" 14 characters to the left (I.E. it has 14 "0"s after
         // the actual value), so we still need to unshift it.
+        bytes32 isEnumerableShifted =
+            parameters & 0x0000000000000000000000000000000000000f00000000000000000000000000;
         bytes32 collateralContractIndexShifted =
-            parameters & 0x0000000000000000000000000000000000000fffffffffffff00000000000000;
+            parameters & 0x00000000000000000000000000000000000000ffffffffffff00000000000000;
         // Get the index of the ERC721 token relative to the ERC721 contract.
         bytes32 tokenIndex =
             parameters & 0x00000000000000000000000000000000000000000000000000ffffffffffffff;
 
         // Shift the contract index value 14 places to the right.
-        uint collateralContractIndex = uint(collateralContractIndexShifted) / 2 ** 56;
+        uint isEnumerable = uint(collateralContractIndexShifted) / 2 ** 56;
+        uint collateralContractIndex = uint(collateralContractIndexShifted) / 2 ** 52;
 
         return (
+            isEnumerable > 0,
             collateralContractIndex,
             uint(tokenIndex)
         );
@@ -355,11 +359,13 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         // Pull the terms contract and associated parameters for the agreement.
         (termsContractAddress, termsContractParameters) = debtRegistry.getTerms(agreementId);
 
+        bool isEnumerable;
         uint collateralContractIndex;
         uint256 tokenIndex;
 
         // Unpack terms contract parameters in order to get collateralization-specific params.
         (
+            isEnumerable,
             collateralContractIndex,
             tokenIndex,
         ) = unpackCollateralParametersFromBytes(termsContractParameters);
