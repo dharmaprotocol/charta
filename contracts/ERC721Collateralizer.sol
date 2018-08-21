@@ -52,23 +52,23 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
     event CollateralLocked(
         bytes32 indexed agreementID,
         // The address of the ERC721 contract for the token.
-        address indexed token,
-        // The ID of the token in the ERC721 contract.
-        uint256 tokenID
+        address indexed erc721Contract,
+        // The index of the token in the Enumerable ERC721 contract.
+        uint256 tokenIndex
     );
 
     event CollateralReturned(
         bytes32 indexed agreementID,
         address indexed collateralizer,
-        address token,
-        uint256 tokenID
+        address erc721Contract,
+        uint256 tokenIndex
     );
 
     event CollateralSeized(
         bytes32 indexed agreementID,
         address indexed beneficiary,
-        address token,
-        uint256 tokenID
+        address erc721Contract,
+        uint256 tokenIndex
     );
 
     modifier onlyAuthorizedToCollateralize() {
@@ -103,15 +103,15 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
     {
         // The address of the ERC721 contract.
         address collateralTokenAddress;
-        // The token ID, associating the collateral token and the given ERC721 contract.
-        uint256 collateralTokenID;
+        // The token index, associating the collateral token and the given ERC721 contract.
+        uint256 collateralTokenIndex;
         // The terms contract according to which this asset is being collateralized.
         TermsContract termsContract;
 
         // Fetch all relevant collateralization parameters
         (
             collateralTokenAddress,
-            collateralTokenID,
+            collateralTokenIndex,
             termsContract
         ) = retrieveCollateralParameters(agreementId);
 
@@ -131,6 +131,7 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
 
         ERC721 erc721token = ERC721(collateralTokenAddress);
         address custodian = address(this);
+        uint collateralTokenID = erc721token.tokenByIndex(collateralTokenIndex);
 
         // Ensure that the collateralizer is the owner of this token ID.
         require(erc721token.ownerOf(collateralTokenID) == collateralizer);
@@ -166,15 +167,15 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
     {
         // The address of the ERC721 contract.
         address collateralTokenAddress;
-        // The token ID, associating the collateral token and the given ERC721 contract.
-        uint256 collateralTokenID;
+        // The token index, associating the collateral token and the given ERC721 contract.
+        uint256 collateralTokenIndex;
         // The terms contract according to which this asset is being collateralized.
         TermsContract termsContract;
 
         // Fetch all relevant collateralization parameters.
         (
             collateralTokenAddress,
-            collateralTokenID,
+            collateralTokenIndex,
             termsContract
         ) = retrieveCollateralParameters(agreementId);
 
@@ -196,15 +197,14 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
 
         // Determine collateralizer of the collateral.
         address collateralizer = agreementToCollateralizer[agreementId];
-
         // Mark agreement's collateral as withdrawn by setting the agreement's
         // collateralizer to 0x0.
         delete agreementToCollateralizer[agreementId];
-
-        ERC721 collateralToken = ERC721(collateralTokenAddress);
+        ERC721 erc721token = ERC721(collateralTokenAddress);
+        uint collateralTokenID = erc721token.tokenByIndex(collateralTokenIndex);
 
         // Transfer the collateral this contract was holding in escrow back to collateralizer.
-        collateralToken.transferFrom(address(this), collateralizer, collateralTokenID);
+        erc721token.transferFrom(address(this), collateralizer, collateralTokenID);
 
         // Log the return event.
         CollateralReturned(
@@ -231,15 +231,15 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
 
         // The address of the ERC721 contract.
         address collateralTokenAddress;
-        // The token ID, associating the collateral token and the given ERC721 contract.
-        uint256 collateralTokenID;
+        // The token index, associating the collateral token and the given ERC721 contract.
+        uint256 collateralTokenIndex;
         // The terms contract according to which this asset is being collateralized.
         TermsContract termsContract;
 
         // Fetch all relevant collateralization parameters.
         (
             collateralTokenAddress,
-            collateralTokenID,
+            collateralTokenIndex,
             termsContract
         ) = retrieveCollateralParameters(agreementId);
 
@@ -265,11 +265,11 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
 
         // Determine beneficiary of the collateral to be seized.
         address beneficiary = debtRegistry.getBeneficiary(agreementId);
-
-        ERC721 collateralToken = ERC721(collateralTokenAddress);
+        ERC721 erc721token = ERC721(collateralTokenAddress);
+        uint collateralTokenID = erc721token.tokenByIndex(collateralTokenIndex);
 
         // Transfer the collateral this contract was holding in escrow to beneficiary.
-        collateralToken.transferFrom(address(this), beneficiary, collateralTokenID);
+        erc721token.transferFrom(address(this), beneficiary, collateralTokenID);
 
         // Log the seizure event.
         CollateralSeized(
@@ -322,17 +322,21 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         pure
         returns (uint, uint)
     {
-        bytes32 collateralTokenIndexShifted =
+        // Here we get the index of the ERC721 contract within the ERC721TokenRegistry.
+        // In its raw form it will be "shifted" 14 characters to the left (I.E. it has 14 "0"s after
+        // the actual value), so we still need to unshift it.
+        bytes32 collateralContractIndexShifted =
             parameters & 0x0000000000000000000000000000000000000fffffffffffff00000000000000;
-        bytes32 tokenIdShifted =
+        // Get the index of the ERC721 token relative to the ERC721 contract.
+        bytes32 tokenIndex =
             parameters & 0x00000000000000000000000000000000000000000000000000ffffffffffffff;
 
-        // Shift the token index value 14 places to the right.
-        uint collateralTokenIndex = uint(collateralTokenIndexShifted) / 2 ** 56;
+        // Shift the contract index value 14 places to the right.
+        uint collateralContractIndex = uint(collateralContractIndexShifted) / 2 ** 56;
 
         return (
-            collateralTokenIndex,
-            uint(tokenIdShifted)
+            collateralContractIndex,
+            uint(tokenIndex)
         );
     }
 
@@ -341,7 +345,7 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         view
         returns (
             address _collateralTokenAddress,
-            uint256 _tokenID,
+            uint256 _tokenIndex,
             TermsContract _termsContract
         )
     {
@@ -351,21 +355,21 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         // Pull the terms contract and associated parameters for the agreement.
         (termsContractAddress, termsContractParameters) = debtRegistry.getTerms(agreementId);
 
-        uint collateralTokenIndex;
-        uint256 tokenID;
+        uint collateralContractIndex;
+        uint256 tokenIndex;
 
         // Unpack terms contract parameters in order to get collateralization-specific params.
         (
-            collateralTokenIndex,
-            tokenID,
+            collateralContractIndex,
+            tokenIndex,
         ) = unpackCollateralParametersFromBytes(termsContractParameters);
 
-        // Resolve address of token associated with this agreement in token registry.
-        address collateralTokenAddress = tokenRegistry.getTokenAddressByIndex(collateralTokenIndex);
+        // Resolve address of ERC721 contract associated with this agreement in token registry.
+        address collateralTokenAddress = tokenRegistry.getTokenAddressByIndex(collateralContractIndex);
 
         return (
             collateralTokenAddress,
-            tokenID,
+            tokenIndex,
             TermsContract(termsContractAddress)
         );
     }
