@@ -102,8 +102,7 @@ export class ERC721CollateralizedSimpleInterestTermsParameters extends TermsCont
             .toString(16)
             .padStart(13, "0");
 
-        const encodedTokenIndex = collateralTerms.tokenIndex.toString(16)
-            .padStart(14, "0");
+        const encodedTokenIndex = collateralTerms.tokenIndex.toString(16).padStart(14, "0");
 
         const packedCollateralParameters = encodedCollateralToken + encodedTokenIndex;
 
