@@ -112,12 +112,12 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
         const tokenRegistry = await ERC721TokenRegistryContract.deployed(web3, txDefaults);
 
         // Get the index of the token.
-        const tokenIndex = await tokenRegistry.getTokenIndexBySymbol.callAsync(tokenSymbol);
+        const erc721ContractIndex = await tokenRegistry.getTokenIndexBySymbol.callAsync(tokenSymbol);
         const indexWithoutToken = await tokenRegistry.tokenSymbolListLength.callAsync();
 
         // Mint a new ERC721 token for the debtor.
-        const tokenId = new BigNumber(await erc721Token.totalSupply.callAsync());
-        await erc721Token.mint.sendTransactionAsync(this.accounts.DEBTOR_1, tokenId, {
+        const tokenIndex = new BigNumber(await erc721Token.totalSupply.callAsync());
+        await erc721Token.mint.sendTransactionAsync(this.accounts.DEBTOR_1, tokenIndex, {
             from: this.accounts.CONTRACT_OWNER,
             gas: DEFAULT_GAS_AMOUNT,
         });
@@ -126,11 +126,11 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
 
         const termsContractParameters = ERC721CollateralizedSimpleInterestTermsParameters.pack(
             {
-                collateralTokenIndex:
+                erc721ContractIndex:
                     scenario.collateralTokenInRegistry
-                        ? tokenIndex
+                        ? erc721ContractIndex
                         : indexWithoutToken,
-                tokenId,
+                tokenIndex,
             },
             {
                 principalTokenIndex: scenario.principalTokenInRegistry
@@ -146,7 +146,7 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
         const collateralizer = await ERC721CollateralizerContract.deployed(web3, txDefaults);
         // The debtor grants approval to the collateralizer.
         await erc721Token.approve.sendTransactionAsync(
-            collateralizer.address, tokenId, { from: DEBTOR_1 },
+            collateralizer.address, tokenIndex, { from: DEBTOR_1 },
         );
 
         const latestBlockTime = await this.web3Utils.getLatestBlockTime();
