@@ -53,8 +53,8 @@ contract("ERC721Collateralizer (Unit Tests)", async (ACCOUNTS) => {
             describe(`when given a token index of ${index} and a token id of ${id}`, () => {
                 it (`returns [${index}, ${id}]`, async () => {
                     const params = ERC721CollateralizedSimpleInterestTermsParameters.pack({
-                        collateralTokenIndex: new BigNumber(index),
-                        tokenId: new BigNumber(id),
+                        erc721ContractIndex: new BigNumber(index),
+                        tokenIndex: new BigNumber(id),
                     });
 
                     const result = (await collateralizer.unpackCollateralParametersFromBytes.callAsync(params))
