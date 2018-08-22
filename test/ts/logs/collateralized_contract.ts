@@ -32,7 +32,7 @@ export function ERC721CollateralLocked(
         events: LogUtils.getParams([
             ["agreementID", agreementID],
             ["erc721Contract", erc721Contract],
-            ["tokenId", tokenId],
+            ["tokenID", tokenId],
         ]),
         name: "CollateralLocked",
     };
@@ -89,7 +89,7 @@ export function ERC721CollateralReturned(
             ["agreementID", agreementID],
             ["collateralizer", collateralizer],
             ["erc721Contract", erc721Contract],
-            ["tokenId", tokenId],
+            ["tokenID", tokenId],
         ]),
         name: "CollateralReturned",
     };
@@ -108,7 +108,7 @@ export function ERC721CollateralSeized(
             ["agreementID", agreementID],
             ["beneficiary", beneficiary],
             ["erc721Contract", erc721Contract],
-            ["tokenId", tokenId],
+            ["tokenID", tokenId],
         ]),
         name: "CollateralSeized",
     };

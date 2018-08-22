@@ -54,21 +54,21 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         // The address of the ERC721 contract for the token.
         address indexed erc721Contract,
         // The id of the token associated with the ERC721 contract.
-        uint256 tokenId
+        uint256 tokenID
     );
 
     event CollateralReturned(
         bytes32 indexed agreementID,
         address indexed collateralizer,
         address erc721Contract,
-        uint256 tokenId
+        uint256 tokenID
     );
 
     event CollateralSeized(
         bytes32 indexed agreementID,
         address indexed beneficiary,
         address erc721Contract,
-        uint256 tokenId
+        uint256 tokenID
     );
 
     modifier onlyAuthorizedToCollateralize() {
