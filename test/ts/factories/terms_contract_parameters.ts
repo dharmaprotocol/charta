@@ -100,7 +100,7 @@ export class ERC721CollateralizedSimpleInterestTermsParameters extends TermsCont
         // Optionally, get the full contract terms parameters string by providing the contract terms.
         contractTerms?: SimpleInterestContractTerms,
     ): string {
-        const encodedIsEnumerable = collateralTerms.isEnumerable.toString(16).padStart(1, "0");
+        const encodedIsEnumerable = collateralTerms.isEnumerable.toString(16);
         const encodedCollateralToken = collateralTerms.erc721ContractIndex
             .toString(16)
             .padStart(12, "0");
