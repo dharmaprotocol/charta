@@ -96,10 +96,11 @@ contract CreditorProxy is Pausable {
         uint salt;
     }
 
-    function CreditorProxy(address tokenTransferProxyAddress)
+    function CreditorProxy(address tokenTransferProxyAddress, debtTokenAddress)
         public
     {
         TOKEN_TRANSFER_PROXY = tokenTransferProxyAddress;
+        debtToken = DebtToken(debtTokenAddress);
     }
 
     /**
@@ -210,13 +211,15 @@ contract CreditorProxy is Pausable {
         );
 
         // cancel credit order if fillDebtOrder succeeded
-
         if (creditOrderAgreementId != NULL_ISSUANCE_HASH) {
             creditOrderCancelled[keccak256(
                 creditOrder.creditorCommitment.creditor,
                 creditOrder.creditorCommitment.nonce
             )] = true;
         }
+
+        // transfer debt token to real creditor
+        require(debtToken.transfer(creditOrder.creditor, creditOrderAggreementId));
 
 
         return creditOrderAgreementId;
@@ -272,7 +275,7 @@ contract CreditorProxy is Pausable {
                     orderAddresses[6],
                     orderAddresses[0],
                     orderAddresses[7],
-                    orderAddresses[1],
+                    orderAddresses[2],
                     orderAddresses[3],
                     orderAddresses[4]
                 ],
@@ -280,7 +283,7 @@ contract CreditorProxy is Pausable {
                 [
                     orderValues[2],
                     orderValues[8],
-                    orderValues[9],
+                    orderValues[10],
                     orderValues[11],
                     orderValues[9]
                 ]
@@ -293,7 +296,7 @@ contract CreditorProxy is Pausable {
             underwriterFee: orderValues[3],
             underwriterRiskRating: orderValues[0],
             orderExpirationTimestampInSec: orderValues[7],
-            salt: orderValues[2]
+            salt: orderValues[1]
         });
 
 
