@@ -17,7 +17,8 @@ export interface CollateralizedContractTerms {
 export interface ERC721CollateralizedContractTerms {
     isEnumerable: BigNumber;
     erc721ContractIndex: BigNumber;
-    tokenIndex: BigNumber;
+    // Can be an ID or an index.
+    tokenReference: BigNumber;
 }
 
 class TermsContractParameters {
@@ -99,16 +100,15 @@ export class ERC721CollateralizedSimpleInterestTermsParameters extends TermsCont
         // Optionally, get the full contract terms parameters string by providing the contract terms.
         contractTerms?: SimpleInterestContractTerms,
     ): string {
-        const encodedIsEnumerable = collateralTerms.isEnumerable
-            .toString(16)
-            .padStart(1, "0");
+        const encodedIsEnumerable = collateralTerms.isEnumerable.toString(16).padStart(1, "0");
         const encodedCollateralToken = collateralTerms.erc721ContractIndex
             .toString(16)
             .padStart(12, "0");
 
-        const encodedTokenIndex = collateralTerms.tokenIndex.toString(16).padStart(14, "0");
+        const encodedTokenIndex = collateralTerms.tokenReference.toString(16).padStart(14, "0");
 
-        const packedCollateralParameters = encodedIsEnumerable + encodedCollateralToken + encodedTokenIndex;
+        const packedCollateralParameters =
+            encodedIsEnumerable + encodedCollateralToken + encodedTokenIndex;
 
         if (contractTerms) {
             const packedTermsParameters = SimpleInterestParameters.pack(contractTerms);

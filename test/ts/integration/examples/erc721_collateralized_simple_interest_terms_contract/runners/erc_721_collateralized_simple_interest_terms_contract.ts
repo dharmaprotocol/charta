@@ -131,7 +131,7 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
                     scenario.collateralTokenInRegistry
                         ? erc721ContractIndex
                         : indexWithoutToken,
-                tokenIndex,
+                tokenReference: tokenIndex,
             },
             {
                 principalTokenIndex: scenario.principalTokenInRegistry

@@ -322,25 +322,25 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         pure
         returns (bool, uint, uint)
     {
+        bytes32 isEnumerableShifted =
+            parameters & 0x0000000000000000000000000000000000000f00000000000000000000000000;
         // Here we get the index of the ERC721 contract within the ERC721TokenRegistry.
         // In its raw form it will be "shifted" 14 characters to the left (I.E. it has 14 "0"s after
         // the actual value), so we still need to unshift it.
-        bytes32 isEnumerableShifted =
-            parameters & 0x0000000000000000000000000000000000000f00000000000000000000000000;
         bytes32 collateralContractIndexShifted =
             parameters & 0x00000000000000000000000000000000000000ffffffffffff00000000000000;
         // Get the index of the ERC721 token relative to the ERC721 contract.
-        bytes32 tokenIndex =
+        bytes32 tokenRef =
             parameters & 0x00000000000000000000000000000000000000000000000000ffffffffffffff;
 
+        uint isEnumerable = uint(isEnumerableShifted) / 2 ** 104;
         // Shift the contract index value 14 places to the right.
-        uint isEnumerable = uint(collateralContractIndexShifted) / 2 ** 56;
-        uint collateralContractIndex = uint(collateralContractIndexShifted) / 2 ** 52;
+        uint collateralContractIndex = uint(collateralContractIndexShifted) / 2 ** 56;
 
         return (
-            isEnumerable > 0,
+            isEnumerable == 1,
             collateralContractIndex,
-            uint(tokenIndex)
+            uint(tokenRef)
         );
     }
 
