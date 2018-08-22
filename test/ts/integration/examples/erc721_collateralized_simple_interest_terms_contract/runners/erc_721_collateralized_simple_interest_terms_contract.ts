@@ -126,11 +126,12 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
 
         const termsContractParameters = ERC721CollateralizedSimpleInterestTermsParameters.pack(
             {
+                isEnumerable: new BigNumber(1),
                 erc721ContractIndex:
                     scenario.collateralTokenInRegistry
                         ? erc721ContractIndex
                         : indexWithoutToken,
-                tokenIndex,
+                tokenReference: tokenIndex,
             },
             {
                 principalTokenIndex: scenario.principalTokenInRegistry
