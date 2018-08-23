@@ -19,10 +19,6 @@ import { RepaymentRouterContract } from "../../../types/generated/repayment_rout
 
 import { CreditorProxyErrorCodes } from "../../../types/errors";
 import { CreditOrder, SignedCreditOrder } from "../../../types/proxy/credit_order";
-import {
-    CreditorCommitment,
-    SignedCreditorCommitment,
-} from "../../../types/proxy/creditor_commitment";
 
 import { BigNumberSetup } from "../test_utils/bignumber_setup";
 import ChaiSetup from "../test_utils/chai_setup";
@@ -131,37 +127,29 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
 
         defaultOrderParams = {
             kernelVersion: kernel.address,
-            repaymentVersion: repaymentRouter.address,
             creditor: CREDITOR_1,
+            repaymentRouterVersion: repaymentRouter.address,
+            debtor: DEBTOR_1,
             underwriter: UNDERWRITER,
             termsContract: mockTermsContract.address,
-            termsContractParameters: TERMS_CONTRACT_PARAMETERS,
             principalToken: mockPrincipalToken.address,
-            principalAmount: Units.ether(1),
-            minimumRiskRating: Units.underwriterRiskRatingFixedPoint(1),
-            maximumCreditorFee: Units.ether(0.005),
-            commitmentExpirationTimestampInSec: new BigNumber(
-                moment
-                    .unix(latestBlockTime)
-                    .add(30, "days")
-                    .unix(),
-            ),
-            nonce: new BigNumber(0),
-
-            debtor: DEBTOR_1,
             relayer: RELAYER,
+
+            underwriterRiskRating: Units.underwriterRiskRatingFixedPoint(1),
+            salt: new BigNumber("0xabc123"),
+            principalAmount: Units.ether(1),
+            underwriterFee: Units.ether(0.0015),
+            relayerFee: Units.ether(0.0015),
             creditorFee: Units.ether(0.002),
             debtorFee: Units.ether(0.001),
-            relayerFee: Units.ether(0.0015),
-            underwriterFee: Units.ether(0.0015),
-            underwriterRiskRating: Units.underwriterRiskRatingFixedPoint(1.5),
-            orderExpirationTimestampInSec: new BigNumber(
+            expirationTimestampInSec: new BigNumber(
                 moment
                     .unix(latestBlockTime)
                     .add(30, "days")
                     .unix(),
             ),
-            salt: "abc123",
+
+            termsContractParameters: TERMS_CONTRACT_PARAMETERS,
             orderSignatories: { debtor: DEBTOR_1, creditor: CREDITOR_1, underwriter: UNDERWRITER },
         };
 
@@ -179,7 +167,6 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
 
     describe("#fillCreditOrder", () => {
         let creditOrder: SignedCreditOrder;
-        let creditorCommitment: CreditorCommitment;
         let creditor: string;
 
         const testShouldReturnError = async (
@@ -222,23 +209,23 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
 
                     await mockDebtToken.reset.sendTransactionAsync();
                     await mockDebtToken.mockCreateReturnValue.sendTransactionAsync(
-                        new BigNumber(creditOrder.getIssuanceHash()),
+                        new BigNumber(creditOrder.getAgreementId()),
                     );
 
                     await mockPrincipalToken.reset.sendTransactionAsync();
                     await mockPrincipalToken.mockBalanceOfFor.sendTransactionAsync(
-                        creditorCommitment.getCreditor(),
-                        creditorCommitment.getPrincipalAmount().plus(creditOrder.getCreditorFee()),
+                        creditOrder.getCreditor(),
+                        creditOrder.getPrincipalAmount().plus(creditOrder.getCreditorFee()),
                     );
                     await mockPrincipalToken.mockAllowanceFor.sendTransactionAsync(
-                        creditorCommitment.getCreditor(),
+                        creditOrder.getCreditor(),
                         mockTokenTransferProxy.address,
-                        creditorCommitment.getPrincipalAmount().plus(creditOrder.getCreditorFee()),
+                        creditOrder.getPrincipalAmount().plus(creditOrder.getCreditorFee()),
                     );
 
                     await mockTermsContract.reset.sendTransactionAsync();
                     await mockTermsContract.mockRegisterTermStartReturnValue.sendTransactionAsync(
-                        creditOrder.getIssuanceHash(),
+                        creditOrder.getAgreementId(),
                         creditOrder.getDebtor(),
                         true,
                     );
@@ -258,15 +245,13 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
                 });
 
                 it("should transfer principal + creditor fees from creditor", async () => {
-                    if (creditorCommitment.getPrincipalAmount().greaterThan(0)) {
+                    if (creditOrder.getPrincipalAmount().greaterThan(0)) {
                         await expect(
                             mockTokenTransferProxy.wasTransferFromCalledWith.callAsync(
                                 mockPrincipalToken.address,
                                 creditor,
                                 creditorProxy.address,
-                                creditorCommitment
-                                    .getPrincipalAmount()
-                                    .minus(creditOrder.getDebtorFee()),
+                                creditOrder.getPrincipalAmount().minus(creditOrder.getDebtorFee()),
                             ),
                         );
                     }
@@ -279,7 +264,6 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
         describe("User fills valid, consentual credit order", () => {
             testOrderFill(CONTRACT_OWNER, async () => {
                 creditOrder = await orderFactory.generateCreditOrder();
-                creditorCommitment = creditOrder.getCreditorCommitment();
             });
         });
     });

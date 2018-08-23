@@ -1,9 +1,5 @@
 import * as _ from "lodash";
 import { CreditOrder, SignedCreditOrder } from "../../../types/proxy/credit_order";
-import {
-    CreditorCommitment,
-    SignedCreditorCommitment,
-} from "../../../types/proxy/creditor_commitment";
 
 export class CreditOrderFactory {
     private defaultParams: { [key: string]: any };
@@ -17,32 +13,24 @@ export class CreditOrderFactory {
 
         Object.assign(params, modifications);
 
-        const creditorCommitment = new CreditorCommitment({
+        const creditOrder = new CreditOrder({
             kernelVersion: params.kernelVersion,
-            repaymentVersion: params.repaymentVersion,
             creditor: params.creditor,
+            repaymentRouterVersion: params.repaymentRouterVersion,
+            debtor: params.debtor,
             underwriter: params.underwriter,
             termsContract: params.termsContract,
-            termsContractParameters: params.termsContractParameters,
             principalToken: params.principalToken,
-            principalAmount: params.principalAmount,
-            minimumRiskRating: params.minimumRiskRating,
-            maximumCreditorFee: params.maxumumCreditorFee,
-            commitmentExpirationTimestampInSec: params.commitmentExpirationTimestampInSec,
-            nonce: params.nonce,
-        });
-
-        const creditOrder = new CreditOrder({
-            creditorCommitment: creditorCommitment,
-            debtor: params.debtor,
             relayer: params.relayer,
+            underwriterRiskRating: params.underwriterRiskRating,
+            salt: params.salt,
+            principalAmount: params.principalAmount,
+            underwriterFee: params.underwriterFee,
+            relayerFee: params.relayerFee,
             creditorFee: params.creditorFee,
             debtorFee: params.debtorFee,
-            relayerFee: params.relayerFee,
-            underwriterFee: params.underwriterFee,
-            underwriterRiskRating: params.underwriterRiskRating,
-            orderExpirationTimestampInSec: params.orderExpirationTimestampInSec,
-            salt: params.salt,
+            expirationTimestampInSec: params.expirationTimestampInSec,
+            termsContractParameters: params.termsContractParameters,
         });
 
         return creditOrder.getSignedCreditOrder(web3, params.orderSignatories);
