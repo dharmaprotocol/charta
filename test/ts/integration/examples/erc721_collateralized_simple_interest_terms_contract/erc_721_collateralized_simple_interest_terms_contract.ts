@@ -127,7 +127,7 @@ contract("ERC721 Collateralized Simple Interest Terms Contract (Integration Test
             erc721TokenRegistry,
             "setTokenAttributes",
             ACCOUNTS,
-            ["CKC", cryptoKittyContract.address, "CryptoKitties"],
+            ["CK", cryptoKittyContract.address, "CryptoKitties"],
         );
 
         const testAccounts = {
@@ -140,6 +140,7 @@ contract("ERC721 Collateralized Simple Interest Terms Contract (Integration Test
 
         const testContracts = {
             erc721CollateralizerContract,
+            cryptoKittyContract,
             tokenTransferProxy,
             kernel,
             dummyREPToken,

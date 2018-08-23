@@ -104,38 +104,59 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
             gas: DEFAULT_GAS_AMOUNT,
         };
 
-        // Set up a mintable ERC721 token.
-        const erc721Token = this.contracts.erc721TokenContract;
-        const tokenSymbol = await erc721Token.symbol.callAsync();
+        const collateralizer = await ERC721CollateralizerContract.deployed(web3, txDefaults);
 
-        // Add the mintable token to the registry.
+        let tokenSymbol;
+        let isEnumerable;
+        let erc721Token;
+        let tokenReference;
+
+        if (scenario.isCryptoKitty) {
+            isEnumerable = new BigNumber(0);
+            erc721Token = this.contracts.cryptoKittyContract;
+
+            tokenReference = new BigNumber(1);
+
+            // Mint a new CryptoKitty for the debtor.
+            await erc721Token.createPromoKitty
+                .sendTransactionAsync(
+                    new BigNumber(448793),
+                    this.accounts.DEBTOR_1,
+                    {
+                        ...txDefaults,
+                        from: this.accounts.CONTRACT_OWNER,
+                    },
+                );
+        } else {
+            isEnumerable = new BigNumber(1);
+            erc721Token = this.contracts.erc721TokenContract;
+
+            // Mint a new ERC721 token for the debtor.
+            tokenReference = new BigNumber(await erc721Token.totalSupply.callAsync());
+            await erc721Token.mint.sendTransactionAsync(this.accounts.DEBTOR_1, tokenReference, {
+                from: this.accounts.CONTRACT_OWNER,
+                gas: DEFAULT_GAS_AMOUNT,
+            });
+        }
+
+        tokenSymbol = await erc721Token.symbol.callAsync();
+
         const tokenRegistry = await ERC721TokenRegistryContract.deployed(web3, txDefaults);
 
         // Get the index of the token.
         const erc721ContractIndex = await tokenRegistry.getTokenIndexBySymbol.callAsync(tokenSymbol);
         const indexWithoutToken = await tokenRegistry.tokenSymbolListLength.callAsync();
 
-        // Mint a new ERC721 token for the debtor.
-        const tokenIndex = new BigNumber(await erc721Token.totalSupply.callAsync());
-        await erc721Token.mint.sendTransactionAsync(this.accounts.DEBTOR_1, tokenIndex, {
-            from: this.accounts.CONTRACT_OWNER,
-            gas: DEFAULT_GAS_AMOUNT,
-        });
-
-        if (scenario.isCryptoKitty) {
-            // STUB.
-        }
-
         await this.web3Utils.mineBlock();
 
         const termsContractParameters = ERC721CollateralizedSimpleInterestTermsParameters.pack(
             {
-                isEnumerable: new BigNumber(1),
+                isEnumerable,
                 erc721ContractIndex:
                     scenario.collateralTokenInRegistry
                         ? erc721ContractIndex
                         : indexWithoutToken,
-                tokenReference: tokenIndex,
+                tokenReference,
             },
             {
                 principalTokenIndex: scenario.principalTokenInRegistry
@@ -148,10 +169,14 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
             },
         );
 
-        const collateralizer = await ERC721CollateralizerContract.deployed(web3, txDefaults);
         // The debtor grants approval to the collateralizer.
         await erc721Token.approve.sendTransactionAsync(
-            collateralizer.address, tokenIndex, { from: DEBTOR_1 },
+            collateralizer.address,
+            tokenReference,
+            {
+                ...txDefaults,
+                from: this.accounts.DEBTOR_1,
+            },
         );
 
         const latestBlockTime = await this.web3Utils.getLatestBlockTime();
@@ -171,7 +196,11 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
                     .unix(),
             ),
             issuanceVersion: repaymentRouter.address,
-            orderSignatories: { debtor: DEBTOR_1, creditor: CREDITOR_1, underwriter: UNDERWRITER },
+            orderSignatories: {
+                debtor: DEBTOR_1,
+                creditor: CREDITOR_1,
+                underwriter: UNDERWRITER,
+            },
             principalAmount: scenario.principalAmount,
             principalTokenAddress: dummyREPToken.address,
             relayer: RELAYER,
@@ -184,8 +213,8 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
         };
 
         const orderFactory = new DebtOrderFactory(defaultOrderParams);
-
         const debtOrder = await orderFactory.generateDebtOrder();
+
         const agreementId = debtOrder.getIssuanceCommitment().getHash();
 
         this.debtOrder = debtOrder;
