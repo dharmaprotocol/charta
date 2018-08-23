@@ -135,6 +135,7 @@ export class ReturnCollateralRunner extends Runner {
                     const {
                         erc721TokenContract,
                         cryptoKittyContract,
+                        erc721CollateralizerContract,
                     } = this.contracts;
 
                     const contract = scenario.isCryptoKitty
@@ -142,8 +143,7 @@ export class ReturnCollateralRunner extends Runner {
                         : erc721TokenContract;
 
                     const owner = await contract.ownerOf.callAsync(scenario.collateralId);
-
-                    expect(owner).to.equal(this.contracts.erc721CollateralizerContract.address);
+                    expect(owner).to.equal(erc721CollateralizerContract.address);
                 });
             }
         });

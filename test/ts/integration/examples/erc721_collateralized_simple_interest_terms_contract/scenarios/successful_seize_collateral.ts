@@ -26,6 +26,6 @@ export const SUCCESSFUL_SEIZE_COLLATERAL_SCENARIOS: SeizeCollateralScenario[] = 
         ...DEFAULT_UNSUCCESSFUL_SEIZE_ARGS,
         description: "when the collateral was a CryptoKitty",
         isCryptoKitty: true,
-        collateralId: new BigNumber(3),
+        collateralId: new BigNumber(4),
     },
 ];

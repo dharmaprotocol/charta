@@ -106,7 +106,7 @@ export class SeizeCollateralRunner extends Runner {
                         : erc721TokenContract;
 
                     const owner = await contract.ownerOf.callAsync(scenario.collateralId);
-                    
+
                     expect(owner).to.equal(CREDITOR_1);
                 });
 
