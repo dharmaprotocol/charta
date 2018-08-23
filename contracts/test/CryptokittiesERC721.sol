@@ -1,4 +1,4 @@
-pragma solidity ^0.4.11;
+pragma solidity 0.4.18;
 
 /**
     The following contract code, titled KittyCore, was written by Cryptokitties and published
