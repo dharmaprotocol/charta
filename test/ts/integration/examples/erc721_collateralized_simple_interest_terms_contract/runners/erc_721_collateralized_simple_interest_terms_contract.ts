@@ -106,15 +106,23 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
 
         const collateralizer = await ERC721CollateralizerContract.deployed(web3, txDefaults);
 
+        // The symbol of the ERC721 to use as collateral, e.g. "CK" for CryptoKitties.
         let tokenSymbol;
+        // "1" if the collateral contract implements the Enumerable extension, otherwise "0".
         let isEnumerable;
+        // An instance of the collateral ERC721 contract.
         let erc721Token;
+        // The token's ID or token index, associated with the collateral ERC721 contract.
         let tokenReference;
 
         if (scenario.isCryptoKitty) {
+            // CryptoKitties does not implement the Enumerable extension, hence we encode a
+            // "0" to flag this in the terms contract params.
             isEnumerable = new BigNumber(0);
             erc721Token = this.contracts.cryptoKittyContract;
 
+            // The ID of the token will be an increment from the total supply, since
+            // the zeroth CryptoKitty is a special reserved "uncat".
             tokenReference = (await erc721Token.totalSupply.callAsync()).add(1);
 
             // Mint a new CryptoKitty for the debtor.
@@ -128,6 +136,8 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
                     },
                 );
         } else {
+            // This contract does implement the Enumerable extension, so we flag that with "1"
+            // in the terms contract parameters.
             isEnumerable = new BigNumber(1);
             erc721Token = this.contracts.erc721TokenContract;
 
@@ -141,9 +151,8 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
 
         tokenSymbol = await erc721Token.symbol.callAsync();
 
-        const tokenRegistry = await ERC721TokenRegistryContract.deployed(web3, txDefaults);
-
         // Get the index of the token.
+        const tokenRegistry = await ERC721TokenRegistryContract.deployed(web3, txDefaults);
         const erc721ContractIndex = await tokenRegistry.getTokenIndexBySymbol.callAsync(tokenSymbol);
         const indexWithoutToken = await tokenRegistry.tokenSymbolListLength.callAsync();
 
