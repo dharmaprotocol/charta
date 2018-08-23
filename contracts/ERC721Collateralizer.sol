@@ -378,6 +378,11 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         );
     }
 
+    /**
+     * Unpacks the terms contract parameters, and uses those parameters to retrieve specific
+     * values that are pertinent to this collateralizer -- such as the address of the collateral
+     * token and the token's ID, which are not encoded in the terms contract parameters.
+     */
     function retrieveCollateralParameters(bytes32 agreementId)
         internal
         view
@@ -409,6 +414,9 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         address collateralTokenAddress = tokenRegistry.getTokenAddressByIndex(collateralContractIndex);
         ERC721 erc721token = ERC721(collateralTokenAddress);
 
+        // If the contract implements the Enumerable extension, then we can use the token reference
+        // parameters as an index to the token. Otherwise, we assume that the token reference parameter
+        // refers to the token id itself.
         if (isEnumerable) {
             collateralTokenID = erc721token.tokenByIndex(collateralTokenRef);
         } else {
