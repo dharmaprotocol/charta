@@ -13,7 +13,13 @@ const DUMMY_TOKEN_SUPPLY = 1000 * 10 ** 18;
 const DUMMY_TOKEN_DECIMALS = 18;
 const NUM_INITIAL_BALANCE_HOLDERS = 10;
 
-// The address of the CryptoKitties ERC721 contract.
+/**
+ * The address of the CryptoKitties ERC721 contract.
+ *
+ * Retrieved August 23, 2018 from: https://etherscan.io/address/0x06012c8cf97bead5deae237070f9587f8e7a266d
+ *
+ * @type {string}
+ */
 const CRYPTOKITTIES_CONTRACT = "0x06012c8cf97BEaD5deAe237070F9587f8E7A266d";
 
 /**

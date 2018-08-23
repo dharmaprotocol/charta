@@ -52,6 +52,8 @@ module.exports = (deployer, network, accounts) => {
             ERC721Collateralizer,
             ContractRegistry.address,
             ERC721TokenRegistry.address,
+            // Includes the CryptoKitties address for specific workarounds for that non-standard
+            // contract.
             cryptoKittiesContractAddress
         );
 
