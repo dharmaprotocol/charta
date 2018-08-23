@@ -365,6 +365,7 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         bytes32 tokenRef =
             parameters & 0x00000000000000000000000000000000000000000000000000ffffffffffffff;
 
+        // Shift the flag 26 spaces to the right.
         uint isEnumerable = uint(isEnumerableShifted) / 2 ** 104;
         // Shift the contract index value 14 places to the right.
         uint collateralContractIndex = uint(collateralContractIndexShifted) / 2 ** 56;
