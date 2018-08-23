@@ -27,6 +27,8 @@ const TOKEN_URI_OPERATOR = "0x5d497982326f641e0b374585ff7c1c1be9878560";
  * A list of the contract names, representing the instances
  * that will be transferred to the multi-sig wallet.
  *
+ * NOTE: These do not include contracts related to ERC721 Collateral.
+ *
  * @type {string[]}
  */
 const NAMES_OF_CONTRACTS_OWNED_BY_MULTISIG = [
@@ -36,9 +38,7 @@ const NAMES_OF_CONTRACTS_OWNED_BY_MULTISIG = [
     "TokenTransferProxy",
     "RepaymentRouter",
     "Collateralizer",
-    "ERC721Collateralizer",
     "TokenRegistry",
-    "ERC721TokenRegistry",
     "ContractRegistry",
 ];
 

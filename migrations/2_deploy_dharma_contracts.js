@@ -1,5 +1,4 @@
 const {generateParamsForDharmaMultiSigWallet, configureTokenRegistry} = require("./utils");
-const { CRYPTOKITTIES_CONTRACT, LIVE_NETWORK_ID } = require("./migration_constants");
 
 module.exports = (deployer, network, accounts) => {
     // Import the Dharma contracts.
@@ -11,10 +10,8 @@ module.exports = (deployer, network, accounts) => {
     const TokenTransferProxy = artifacts.require("TokenTransferProxy");
     const DharmaMultiSigWallet = artifacts.require("DharmaMultiSigWallet");
     const TokenRegistry = artifacts.require("TokenRegistry");
-    const ERC721TokenRegistry = artifacts.require("ERC721TokenRegistry");
     const ContractRegistry = artifacts.require("ContractRegistry");
     const Collateralizer = artifacts.require("Collateralizer");
-    const ERC721Collateralizer = artifacts.require("ERC721Collateralizer");
 
     const {
         signatories,
@@ -33,7 +30,6 @@ module.exports = (deployer, network, accounts) => {
         DebtRegistry,
         TokenTransferProxy,
         Collateralizer,
-        ERC721Collateralizer,
         DebtToken,
     ]);
 
@@ -46,7 +42,6 @@ module.exports = (deployer, network, accounts) => {
             const DummyToken = artifacts.require("DummyToken");
             await configureTokenRegistry(network, accounts, TokenRegistry, DummyToken);
         });
-        await deployer.deploy(ERC721TokenRegistry);
 
         await deployer.deploy(
             Collateralizer,
@@ -55,16 +50,6 @@ module.exports = (deployer, network, accounts) => {
             TokenRegistry.address,
             TokenTransferProxy.address,
         );
-
-        let cryptoKittiesContractAddress;
-
-        if (network !== LIVE_NETWORK_ID) {
-            const KittyCore = artifacts.require("KittyCore");
-            await deployer.deploy(KittyCore);
-            cryptoKittiesContractAddress = KittyCore.address;
-        } else {
-            cryptoKittiesContractAddress = CRYPTOKITTIES_CONTRACT;
-        }
 
         await deployer.deploy(
             ContractRegistry,
@@ -75,13 +60,6 @@ module.exports = (deployer, network, accounts) => {
             RepaymentRouter.address,
             TokenRegistry.address,
             TokenTransferProxy.address,
-        );
-
-        await deployer.deploy(
-            ERC721Collateralizer,
-            ContractRegistry.address,
-            ERC721TokenRegistry.address,
-            cryptoKittiesContractAddress
         );
     });
 };
