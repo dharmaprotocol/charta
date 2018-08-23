@@ -371,6 +371,7 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         uint collateralContractIndex = uint(collateralContractIndexShifted) / 2 ** 56;
 
         return (
+            // Since we want to return a boolean, we return whether or not the flag is equal to 1.
             isEnumerable == 1,
             collateralContractIndex,
             uint(tokenRef)
