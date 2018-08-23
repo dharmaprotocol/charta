@@ -122,6 +122,10 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
             gas: DEFAULT_GAS_AMOUNT,
         });
 
+        if (scenario.isCryptoKitty) {
+            // STUB.
+        }
+
         await this.web3Utils.mineBlock();
 
         const termsContractParameters = ERC721CollateralizedSimpleInterestTermsParameters.pack(
