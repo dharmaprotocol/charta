@@ -87,19 +87,6 @@ contract CreditorProxy is Pausable {
         bytes32 creditorCommitmentHash;
     }
 
-    struct CreditOrder {
-        CreditorCommitment creditorCommitment;
-        address debtor;
-        address relayer;
-        uint creditorFee;
-        uint debtorFee;
-        uint relayerFee;
-        uint underwriterFee;
-        uint underwriterRiskRating;
-        uint orderExpirationTimestampInSec;
-        uint salt;
-    }
-
     function CreditorProxy(address[3] addresses)
         public
     {
@@ -108,17 +95,17 @@ contract CreditorProxy is Pausable {
         debtKernel = DebtKernel(addresses[2]);
     }
 
+
     /**
      * Allows creditor to prevent a credit
      * issuance in which they're involved from being used in
      * a future debt order.
      */
-
-    function cancelCreditorCommitment(bytes32 creditorCommitmentHash)
+    function cancelCreditorCommitment(address creditor, bytes32 creditorCommitmentHash)
         public
         whenNotPaused
     {
-        require(msg.sender == creditorCommitment.creditor);
+        require(msg.sender == creditor);
         creditOrderCancelled[creditorCommitmentHash] = true;
     }
 
@@ -144,7 +131,7 @@ contract CreditorProxy is Pausable {
             creditor, orderAddresses, orderValues, orderBytes32
         );
 
-        if (!assertNoReplay(creditorCommitment)) { 
+        if (!assertNoReplay(creditorCommitment.creditorCommitmentHash)) { 
             return NULL_ISSUANCE_HASH; 
         }
 
@@ -186,7 +173,7 @@ contract CreditorProxy is Pausable {
         }
 
         // transfer debt token to real creditor
-        require(debtToken.transfer(creditor, creditOrderAggreementId));
+        debtToken.transferFrom(address(this), creditor, uint256(creditOrderAgreementId));
 
         return creditOrderAgreementId;
     }
@@ -203,8 +190,8 @@ contract CreditorProxy is Pausable {
     function getCreditorCommitment(
         address creditor,
         address[6] orderAddresses,
-        bytes32 termsContractParameters,
-        uint[8] orderValues
+        uint[8] orderValues,
+        bytes32[1] termsContractParameters
     )
         internal
         view
@@ -217,7 +204,7 @@ contract CreditorProxy is Pausable {
             underwriter: orderAddresses[2],
             underwriterRiskRating: orderValues[0],
             termsContract: orderAddresses[3],
-            termsContractParameters: termsContractParameters,
+            termsContractParameters: termsContractParameters[0],
             salt: orderValues[2],
             commitmentExpirationTimestampInSec: orderValues[7],
             creditorCommitmentHash: bytes32(0)
@@ -228,13 +215,15 @@ contract CreditorProxy is Pausable {
         return creditorCommitment;
     }
 
-    function assertNoReplay(bytes32[1] creditorCommitmentHash)
+
+    function assertNoReplay(bytes32 creditorCommitmentHash)
         internal
         returns (bool _issuanceMatches)
     {
         // creditorOrder not canceled
-        if (creditOrderCancelled[creditorCommitmentHash]) { return false; }
-
+        if (creditOrderCancelled[creditorCommitmentHash]) {
+            return false;
+        }
         return true;
     }
 
@@ -260,6 +249,7 @@ contract CreditorProxy is Pausable {
         );
     }
 
+
     /**
      * Given a hashed message, a signer's address, and a signature, returns
      * whether the signature is valid.
@@ -283,6 +273,7 @@ contract CreditorProxy is Pausable {
         );
     }
 
+
     /**
      * Assert that the creditor has a sufficient token balance and has
      * granted the token transfer proxy contract sufficient allowance to suffice for the principal
@@ -296,14 +287,13 @@ contract CreditorProxy is Pausable {
         internal
         returns (bool _isBalanceAndAllowanceSufficient)
     {
-
         if (getBalance(principalToken, creditor) < totalCreditorPayment ||
             getAllowance(principalToken, creditor) < totalCreditorPayment) {
             return false;
         }
-
         return true;
     }
+
 
     /**
      * Helper function for querying an address' balance on a given token.
@@ -320,6 +310,7 @@ contract CreditorProxy is Pausable {
         return ERC20(token).balanceOf.gas(EXTERNAL_QUERY_GAS_LIMIT)(owner);
     }
 
+
     /**
      * Helper function for querying an address' allowance to the 0x transfer proxy.
      */
@@ -334,6 +325,7 @@ contract CreditorProxy is Pausable {
         // Limit gas to prevent reentrancy.
         return ERC20(token).allowance.gas(EXTERNAL_QUERY_GAS_LIMIT)(owner, TOKEN_TRANSFER_PROXY);
     }
+
 
     /**
      * Helper function transfers a specified amount of tokens between two parties
