@@ -590,7 +590,7 @@ contract KittyOwnership is KittyBase, KittiesERC721 {
         uint256 _tokenId
     )
     external
-//    whenNotPaused
+    // whenNotPaused
     {
         // Only an owner can grant transfer approval.
         require(_owns(msg.sender, _tokenId));
@@ -615,7 +615,7 @@ contract KittyOwnership is KittyBase, KittiesERC721 {
         uint256 _tokenId
     )
     external
-//    whenNotPaused
+    // whenNotPaused
     {
         // Safety check to prevent against an unexpected 0x0 default.
         require(_to != address(0));

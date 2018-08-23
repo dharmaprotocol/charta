@@ -47,6 +47,8 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
 
     uint public constant SECONDS_IN_DAY = 24 * 60 * 60;
 
+    address public cryptoKittiesContract;
+
     string public constant CONTEXT = "ERC721Collateralizer";
 
     event CollateralLocked(
@@ -79,11 +81,13 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
     function ERC721Collateralizer(
         address _debtKernel,
         address _debtRegistry,
-        address _tokenRegistry
+        address _tokenRegistry,
+        address _cryptoKittiesContract
     ) public {
         debtKernelAddress = _debtKernel;
         debtRegistry = DebtRegistry(_debtRegistry);
         tokenRegistry = ERC721TokenRegistry(_tokenRegistry);
+        cryptoKittiesContract = _cryptoKittiesContract;
     }
 
     /**
@@ -196,13 +200,21 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
 
         // Determine collateralizer of the collateral.
         address collateralizer = agreementToCollateralizer[agreementId];
-        // Mark agreement's collateral as withdrawn by setting the agreement's
-        // collateralizer to 0x0.
-        delete agreementToCollateralizer[agreementId];
         ERC721 erc721token = ERC721(collateralTokenAddress);
+
+        // Apply a hack for CryptoKitties, granting transfer approval to itself.
+        if (cryptoKittiesContract == collateralTokenAddress) {
+            erc721token.approve(address(this), collateralTokenID);
+        }
 
         // Transfer the collateral this contract was holding in escrow back to collateralizer.
         erc721token.transferFrom(address(this), collateralizer, collateralTokenID);
+
+        require(erc721token.ownerOf(collateralTokenID) == collateralizer);
+
+        // Mark agreement's collateral as withdrawn by setting the agreement's
+        // collateralizer to 0x0.
+        delete agreementToCollateralizer[agreementId];
 
         // Log the return event.
         CollateralReturned(
