@@ -67,13 +67,6 @@ module.exports = (deployer, network, accounts) => {
         }
 
         await deployer.deploy(
-            ERC721Collateralizer,
-            DebtKernel.address,
-            DebtRegistry.address,
-            ERC721TokenRegistry.address,
-            cryptoKittiesContractAddress
-        );
-        await deployer.deploy(
             ContractRegistry,
             Collateralizer.address,
             DebtKernel.address,
@@ -82,6 +75,13 @@ module.exports = (deployer, network, accounts) => {
             RepaymentRouter.address,
             TokenRegistry.address,
             TokenTransferProxy.address,
+        );
+
+        await deployer.deploy(
+            ERC721Collateralizer,
+            ContractRegistry.address,
+            ERC721TokenRegistry.address,
+            cryptoKittiesContractAddress
         );
     });
 };

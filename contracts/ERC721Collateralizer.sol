@@ -23,7 +23,9 @@ import "zeppelin-solidity/contracts/token/ERC721/ERC721.sol";
 
 import "./TermsContract.sol";
 import "./DebtRegistry.sol";
+import "./ContractRegistry.sol";
 import "./ERC721TokenRegistry.sol";
+
 import {PermissionsLib, PermissionEvents} from "./libraries/PermissionsLib.sol";
 
 
@@ -34,8 +36,6 @@ import {PermissionsLib, PermissionEvents} from "./libraries/PermissionsLib.sol";
 contract ERC721Collateralizer is Pausable, PermissionEvents {
     using PermissionsLib for PermissionsLib.Permissions;
     using SafeMath for uint;
-
-    address public debtKernelAddress;
 
     DebtRegistry public debtRegistry;
     ERC721TokenRegistry public tokenRegistry;
@@ -81,14 +81,17 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
     }
 
     function ERC721Collateralizer(
-        address _debtKernel,
-        address _debtRegistry,
+        address _contractRegistry,
         address _tokenRegistry,
         address _cryptoKittiesContract
     ) public {
-        debtKernelAddress = _debtKernel;
-        debtRegistry = DebtRegistry(_debtRegistry);
+        ContractRegistry contractRegistry = ContractRegistry(_contractRegistry);
+
+        // Get the DebtRegistry contract from the ContractRegistry.
+        debtRegistry = contractRegistry.debtRegistry();
+        // Instantiate a special token registry for ERC721s.
         tokenRegistry = ERC721TokenRegistry(_tokenRegistry);
+        // Keep track of the CryptoKitties contract, for specific workarounds.
         cryptoKittiesContract = _cryptoKittiesContract;
     }
 
