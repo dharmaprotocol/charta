@@ -13,6 +13,9 @@ const DUMMY_TOKEN_SUPPLY = 1000 * 10 ** 18;
 const DUMMY_TOKEN_DECIMALS = 18;
 const NUM_INITIAL_BALANCE_HOLDERS = 10;
 
+// The address of the CryptoKitties ERC721 contract.
+const CRYPTOKITTIES_CONTRACT = "0x06012c8cf97BEaD5deAe237070F9587f8E7A266d";
+
 /**
  * The secure address that is allowed to set DebtToken URIs.
  *
@@ -401,4 +404,5 @@ module.exports = {
     NAMES_OF_CONTRACTS_OWNED_BY_MULTISIG,
     NUM_INITIAL_BALANCE_HOLDERS,
     TOKEN_URI_OPERATOR,
+    CRYPTOKITTIES_CONTRACT,
 };

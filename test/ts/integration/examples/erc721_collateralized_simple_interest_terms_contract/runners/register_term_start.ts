@@ -2,7 +2,6 @@
 import * as ABIDecoder from "abi-decoder";
 import * as Web3 from "web3";
 import { expect } from "chai";
-
 // Test Utils
 import { REVERT_ERROR } from "../../../../test_utils/constants";
 // Scenario runners
@@ -11,9 +10,7 @@ import { RegisterTermStartScenario } from "../scenarios";
 import { LogSimpleInterestTermStart } from "../../../../logs/simple_interest_terms_contract";
 import { ERC721CollateralLocked } from "../../../../logs/collateralized_contract";
 // Runners
-import {
-    ERC721CollateralizedSimpleInterestTermsContractRunner as Runner,
-} from "./erc_721_collateralized_simple_interest_terms_contract";
+import { ERC721CollateralizedSimpleInterestTermsContractRunner as Runner, } from "./erc_721_collateralized_simple_interest_terms_contract";
 
 export class RegisterTermStartRunner extends Runner {
     constructor(web3: Web3) {
@@ -36,8 +33,6 @@ export class RegisterTermStartRunner extends Runner {
                 }
 
                 if (scenario.invokedByDebtKernel && !scenario.reverts) {
-                    // const latestBlockTime = await this.web3Utils.getLatestBlockTime();
-
                     // Fill the debt order, thereby invoking registerTermsStart from the debt kernel.
                     txHash = await this.fillDebtOrder();
                 }
@@ -81,12 +76,16 @@ export class RegisterTermStartRunner extends Runner {
                 });
 
                 it("should emit a CollateralLocked event", async () => {
-                    const { erc721CollateralizerContract } = this.contracts;
+                    const { erc721CollateralizerContract, erc721TokenContract, cryptoKittyContract } = this.contracts;
+
+                    const contractAddress = scenario.isCryptoKitty
+                        ? cryptoKittyContract.address
+                        : erc721TokenContract.address;
 
                     const expectedLog = ERC721CollateralLocked(
                         erc721CollateralizerContract.address,
                         this.agreementId,
-                        this.contracts.erc721TokenContract.address,
+                        contractAddress,
                         scenario.collateralId,
                     );
 

@@ -15,6 +15,7 @@ import { ERC721CollateralizedSimpleInterestTermsContractContract as TermsContrac
 import { ERC721CollateralizerContract } from "../../../../../../types/generated/e_r_c721_collateralizer";
 import { MintableERC721TokenContract } from "../../../../../../types/generated/mintable_e_r_c721_token";
 import { ERC721TokenRegistryContract } from "../../../../../../types/generated/e_r_c721_token_registry";
+import { KittyCoreContract } from "../../../../../../types/generated/kitty_core";
 
 export interface TestAccounts {
     UNDERWRITER: string;
@@ -26,6 +27,7 @@ export interface TestAccounts {
 
 export interface TestContracts {
     erc721CollateralizerContract: ERC721CollateralizerContract;
+    cryptoKittyContract: KittyCoreContract;
     tokenTransferProxy: TokenTransferProxyContract;
     kernel: DebtKernelContract;
     dummyREPToken: DummyTokenContract;

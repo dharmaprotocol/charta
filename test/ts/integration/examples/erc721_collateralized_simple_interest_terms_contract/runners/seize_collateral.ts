@@ -96,20 +96,40 @@ export class SeizeCollateralRunner extends Runner {
                 it("should transfer the collateral to the creditor", async () => {
                     const { CREDITOR_1 } = this.accounts;
 
-                    const owner = await this.contracts.erc721TokenContract.ownerOf.callAsync(scenario.collateralId);
+                    const {
+                        erc721TokenContract,
+                        cryptoKittyContract,
+                    } = this.contracts;
+
+                    const contract = scenario.isCryptoKitty
+                        ? cryptoKittyContract
+                        : erc721TokenContract;
+
+                    const owner = await contract.ownerOf.callAsync(scenario.collateralId);
+
                     expect(owner).to.equal(CREDITOR_1);
                 });
 
                 it("should emit a CollateralSeized event", async () => {
                     const { CREDITOR_1 } = this.accounts;
 
+                    const {
+                        erc721TokenContract,
+                        cryptoKittyContract,
+                        erc721CollateralizerContract,
+                    } = this.contracts;
+
+                    const contract = scenario.isCryptoKitty
+                        ? cryptoKittyContract
+                        : erc721TokenContract;
+
                     const returnedLog = await this.getLogs(txHash, "CollateralSeized");
 
                     const expectedLog = ERC721CollateralSeized(
-                        this.contracts.erc721CollateralizerContract.address,
+                        erc721CollateralizerContract.address,
                         this.agreementId,
                         CREDITOR_1,
-                        this.contracts.erc721TokenContract.address,
+                        contract.address,
                         scenario.collateralId,
                     );
 
@@ -117,7 +137,16 @@ export class SeizeCollateralRunner extends Runner {
                 });
             } else {
                 it("should keep ownership of the collateral", async () => {
-                    const owner = await this.contracts.erc721TokenContract.ownerOf.callAsync(scenario.collateralId);
+                    const {
+                        erc721TokenContract,
+                        cryptoKittyContract,
+                    } = this.contracts;
+
+                    const contract = scenario.isCryptoKitty
+                        ? cryptoKittyContract
+                        : erc721TokenContract;
+
+                    const owner = await contract.ownerOf.callAsync(scenario.collateralId);
 
                     expect(owner).to.equal(this.contracts.erc721CollateralizerContract.address);
                 });
