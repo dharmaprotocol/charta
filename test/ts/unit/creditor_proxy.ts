@@ -75,6 +75,7 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
 
     const reset = async () => {
         mockTokenTransferProxy = await MockTokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
+        mockDebtToken = await MockDebtTokenContract.deployed(web3, TX_DEFAULTS);
 
         /*
         In our test environment, we want to interact with the contract being
@@ -91,11 +92,13 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
          */
 
         // Step 1: Instantiate a truffle instance of the contract.
-        const creditorProxyContractInstance = await creditorProxyContract.new(
-            mockTokenTransferProxy.address,
-        );
         const kernelContractInstance = await debtKernelContract.new(mockTokenTransferProxy.address);
         const mockTermsContractInstance = await mockTermsContractArtifacts.new();
+        const creditorProxyContractInstance = await creditorProxyContract.new(
+            mockTokenTransferProxy.address,
+            mockDebtToken.address,
+            kernelContractInstance.address,
+        );
 
         // Step 2: Instantiate a web3 instance of the contract.
         const creditorProxyWeb3ContractInstance = web3.eth
@@ -120,7 +123,6 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
         // commitments
         repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
 
-        mockDebtToken = await MockDebtTokenContract.deployed(web3, TX_DEFAULTS);
         mockPrincipalToken = await MockERC20TokenContract.deployed(web3, TX_DEFAULTS);
 
         const latestBlockTime = await web3Utils.getLatestBlockTime();
@@ -136,7 +138,7 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
             relayer: RELAYER,
 
             underwriterRiskRating: Units.underwriterRiskRatingFixedPoint(1),
-            salt: new BigNumber("0xabc123"),
+            salt: new BigNumber("abc123", 16),
             principalAmount: Units.ether(1),
             underwriterFee: Units.ether(0.0015),
             relayerFee: Units.ether(0.0015),
@@ -177,6 +179,7 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
             signaturesV?: number[],
         ) => {
             const txHash = await creditorProxy.fillCreditOrder.sendTransactionAsync(
+                creditor,
                 order.getOrderAddresses(),
                 order.getOrderValues(),
                 order.getOrderBytes32(),
@@ -199,7 +202,7 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
             await mockPrincipalToken.reset.sendTransactionAsync();
         };
 
-        const testOrderFill = async (filler: string, setupCreditOrder: () => Promise<void>) => {
+        const testOrderFill = (filler: string, setupCreditOrder: () => Promise<void>) => {
             return () => {
                 let creditor = CREDITOR_1;
                 let orderFilledLog: ABIDecoder.DecodedLog;
@@ -231,6 +234,7 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
                     );
 
                     const txHash = await creditorProxy.fillCreditOrder.sendTransactionAsync(
+                        creditor,
                         creditOrder.getOrderAddresses(),
                         creditOrder.getOrderValues(),
                         creditOrder.getOrderBytes32(),
@@ -261,11 +265,12 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
             };
         };
 
-        describe("User fills valid, consentual credit order", () => {
+        describe(
+            "User fills valid, consentual credit order",
             testOrderFill(CONTRACT_OWNER, async () => {
                 creditOrder = await orderFactory.generateCreditOrder();
-            });
-        });
+            }),
+        );
     });
 
     describe("#cancelCreditIssuance", () => {});

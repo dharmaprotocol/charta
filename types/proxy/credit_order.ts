@@ -152,6 +152,10 @@ export class CreditOrder extends SignableMessage {
         return hashHex;
     }
 
+    public getHash(): Bytes32 {
+        return this.getCreditorCommitmentHash();
+    }
+
     public async getSignedCreditOrder(
         web3: Web3,
         signatories: CreditOrderSignatories,
