@@ -40,8 +40,8 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
     DebtRegistry public debtRegistry;
     ERC721TokenRegistry public tokenRegistry;
 
-    // We store the address of the CryptoKitties contract in order to find a workaround for a
-    // minor issue, since its contract does not comply with the ERC721 standard.
+    // We store the address of the CryptoKitties contract, in order to work around a minor issue
+    // relating to transfers, since its contract does not comply with the ERC721 standard.
     address public cryptoKittiesContract;
 
     // Collateralizer here refers to the owner of the asset that is being collateralized.
