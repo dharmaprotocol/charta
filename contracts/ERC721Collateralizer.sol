@@ -32,6 +32,9 @@ import {PermissionsLib, PermissionEvents} from "./libraries/PermissionsLib.sol";
 /**
   * Contains functionality for collateralizing NFTs, by transferring them from
   * a debtor address to this contract as a custodian.
+  *
+  * The `collateralize` method in this contract can only be called by a trusted TermsContract,
+  * specified by the contract's owner.
   */
 contract ERC721Collateralizer is Pausable, PermissionEvents {
     using PermissionsLib for PermissionsLib.Permissions;
