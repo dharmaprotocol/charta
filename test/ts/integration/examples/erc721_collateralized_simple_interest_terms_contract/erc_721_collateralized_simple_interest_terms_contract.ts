@@ -40,6 +40,7 @@ import {
 
 // Utils
 import { multiSigExecuteAfterTimelock } from "../../../test_utils/multisig";
+import { KittyCoreContract } from "../../../../../types/generated/kitty_core";
 
 // Configure BigNumber exponentiation
 BigNumberSetup.configure();
@@ -102,6 +103,8 @@ contract("ERC721 Collateralized Simple Interest Terms Contract (Integration Test
 
         // Set up a mintable ERC721 token.
         const erc721TokenContract = await MintableERC721TokenContract.deployed(web3, TX_DEFAULTS);
+        const cryptoKittyContract = await KittyCoreContract.deployed(web3, TX_DEFAULTS);
+
         const tokenAddress = erc721TokenContract.address;
         const tokenName = await erc721TokenContract.name.callAsync();
         const tokenSymbol = await erc721TokenContract.symbol.callAsync();
@@ -116,6 +119,15 @@ contract("ERC721 Collateralized Simple Interest Terms Contract (Integration Test
             "setTokenAttributes",
             ACCOUNTS,
             [tokenSymbol, tokenAddress, tokenName],
+        );
+
+        await multiSigExecuteAfterTimelock(
+            web3,
+            multiSig,
+            erc721TokenRegistry,
+            "setTokenAttributes",
+            ACCOUNTS,
+            ["CKC", cryptoKittyContract.address, "CryptoKitties"],
         );
 
         const testAccounts = {
