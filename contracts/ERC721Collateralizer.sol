@@ -187,9 +187,6 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
             termsContract
         ) = retrieveCollateralParameters(agreementId);
 
-        // Ensure a valid form of collateral is tied to this agreement id.
-        require(collateralTokenAddress != address(0));
-
         // Withdrawal can only occur if the collateral has yet to be withdrawn.
         // When we withdraw collateral, we reset the collateral agreement
         // in a gas-efficient manner by resetting the address of the collateralizer to 0.
@@ -260,9 +257,6 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
             collateralTokenID,
             termsContract
         ) = retrieveCollateralParameters(agreementId);
-
-        // Ensure a valid form of collateral is tied to this agreement id.
-        require(collateralTokenAddress != address(0));
 
         // Seizure can only occur if the collateral has yet to be withdrawn.
         // When we withdraw collateral, we reset the collateral agreement
