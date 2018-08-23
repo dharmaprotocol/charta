@@ -195,6 +195,10 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         // in a gas-efficient manner by resetting the address of the collateralizer to 0.
         require(agreementToCollateralizer[agreementId] != address(0));
 
+        // Mark agreement's collateral as withdrawn by setting the agreement's
+        // collateralizer to 0x0.
+        delete agreementToCollateralizer[agreementId];
+
         // Ensure that the debt is not in a state of default.
         require(
             termsContract.getExpectedRepaymentValue(
@@ -219,10 +223,6 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
 
         // Ensure that transfer has succeeded.
         require(erc721token.ownerOf(collateralTokenID) == collateralizer);
-
-        // Mark agreement's collateral as withdrawn by setting the agreement's
-        // collateralizer to 0x0.
-        delete agreementToCollateralizer[agreementId];
 
         // Log the return event.
         CollateralReturned(
@@ -266,6 +266,10 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         // in a gas-efficient manner by resetting the address of the collateralizer to 0.
         require(agreementToCollateralizer[agreementId] != address(0));
 
+        // Mark agreement's collateral as withdrawn by setting the agreement's
+        // collateralizer to 0x0.
+        delete agreementToCollateralizer[agreementId];
+
         // Ensure debt is in a state of default.
         require(
             termsContract.getExpectedRepaymentValue(
@@ -290,10 +294,6 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
 
         // Ensure that transfer has succeeded.
         require(erc721token.ownerOf(collateralTokenID) == beneficiary);
-
-        // Mark agreement's collateral as withdrawn by setting the agreement's
-        // collateralizer to 0x0.
-        delete agreementToCollateralizer[agreementId];
 
         // Log the seizure event.
         CollateralSeized(
@@ -381,7 +381,7 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
      * token and the token's ID, which are not encoded in the terms contract parameters.
      */
     function retrieveCollateralParameters(bytes32 agreementId)
-        internal
+        public
         view
         returns (
             address _collateralTokenAddress,
