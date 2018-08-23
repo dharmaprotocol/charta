@@ -205,6 +205,8 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
 
         // Determine collateralizer of the collateral.
         address collateralizer = agreementToCollateralizer[agreementId];
+
+        // Instantiate an instance of the token, in order to initiate a transfer.
         ERC721 erc721token = ERC721(collateralTokenAddress);
 
         // Apply a hack for CryptoKitties, granting transfer approval to itself.
@@ -277,6 +279,8 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
 
         // Determine beneficiary of the collateral to be seized.
         address beneficiary = debtRegistry.getBeneficiary(agreementId);
+
+        // Instantiate an instance of the token, in order to initiate a transfer.
         ERC721 erc721token = ERC721(collateralTokenAddress);
 
         // Apply a hack for CryptoKitties, granting transfer approval to itself.
