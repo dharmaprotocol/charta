@@ -132,7 +132,16 @@ export class ReturnCollateralRunner extends Runner {
                 });
             } else {
                 it("should keep ownership of the collateral", async () => {
-                    const owner = await this.contracts.erc721TokenContract.ownerOf.callAsync(scenario.collateralId);
+                    const {
+                        erc721TokenContract,
+                        cryptoKittyContract,
+                    } = this.contracts;
+
+                    const contract = scenario.isCryptoKitty
+                        ? cryptoKittyContract
+                        : erc721TokenContract;
+
+                    const owner = await contract.ownerOf.callAsync(scenario.collateralId);
 
                     expect(owner).to.equal(this.contracts.erc721CollateralizerContract.address);
                 });

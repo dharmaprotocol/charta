@@ -1,4 +1,5 @@
 const {generateParamsForDharmaMultiSigWallet, configureTokenRegistry} = require("./utils");
+const { CRYPTOKITTIES_CONTRACT, LIVE_NETWORK_ID } = require("./migration_constants");
 
 module.exports = (deployer, network, accounts) => {
     // Import the Dharma contracts.
@@ -54,11 +55,23 @@ module.exports = (deployer, network, accounts) => {
             TokenRegistry.address,
             TokenTransferProxy.address,
         );
+
+        let cryptoKittiesContractAddress;
+
+        if (network !== LIVE_NETWORK_ID) {
+            const KittyCore = artifacts.require("KittyCore");
+            await deployer.deploy(KittyCore);
+            cryptoKittiesContractAddress = KittyCore.address;
+        } else {
+            cryptoKittiesContractAddress = CRYPTOKITTIES_CONTRACT;
+        }
+
         await deployer.deploy(
             ERC721Collateralizer,
             DebtKernel.address,
             DebtRegistry.address,
             ERC721TokenRegistry.address,
+            cryptoKittiesContractAddress
         );
         await deployer.deploy(
             ContractRegistry,

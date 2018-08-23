@@ -210,6 +210,7 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         // Transfer the collateral this contract was holding in escrow back to collateralizer.
         erc721token.transferFrom(address(this), collateralizer, collateralTokenID);
 
+        // Ensure that transfer has succeeded.
         require(erc721token.ownerOf(collateralTokenID) == collateralizer);
 
         // Mark agreement's collateral as withdrawn by setting the agreement's
@@ -269,16 +270,24 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
             ) > termsContract.getValueRepaidToDate(agreementId)
         );
 
-        // Mark agreement's collateral as withdrawn by setting the agreement's
-        // collateralizer to 0x0.
-        delete agreementToCollateralizer[agreementId];
-
         // Determine beneficiary of the collateral to be seized.
         address beneficiary = debtRegistry.getBeneficiary(agreementId);
         ERC721 erc721token = ERC721(collateralTokenAddress);
 
+        // Apply a hack for CryptoKitties, granting transfer approval to itself.
+        if (cryptoKittiesContract == collateralTokenAddress) {
+            erc721token.approve(address(this), collateralTokenID);
+        }
+
         // Transfer the collateral this contract was holding in escrow to beneficiary.
         erc721token.transferFrom(address(this), beneficiary, collateralTokenID);
+
+        // Ensure that transfer has succeeded.
+        require(erc721token.ownerOf(collateralTokenID) == beneficiary);
+
+        // Mark agreement's collateral as withdrawn by setting the agreement's
+        // collateralizer to 0x0.
+        delete agreementToCollateralizer[agreementId];
 
         // Log the seizure event.
         CollateralSeized(
