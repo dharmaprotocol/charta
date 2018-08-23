@@ -40,14 +40,16 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
     DebtRegistry public debtRegistry;
     ERC721TokenRegistry public tokenRegistry;
 
+    // We store the address of the CryptoKitties contract in order to find a workaround for a
+    // minor issue, since its contract does not comply with the ERC721 standard.
+    address public cryptoKittiesContract;
+
     // Collateralizer here refers to the owner of the asset that is being collateralized.
     mapping(bytes32 => address) public agreementToCollateralizer;
 
     PermissionsLib.Permissions internal collateralizationPermissions;
 
     uint public constant SECONDS_IN_DAY = 24 * 60 * 60;
-
-    address public cryptoKittiesContract;
 
     string public constant CONTEXT = "ERC721Collateralizer";
 
