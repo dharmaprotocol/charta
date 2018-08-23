@@ -349,6 +349,11 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         pure
         returns (bool, uint, uint)
     {
+        // We use use a flag, 0 or 1, to specify whether the given collateral token's contract
+        // implements the Enumerable extension. If so, we can refer to a token by its index instead
+        // of its ID to conserve space. To retrieve the flag, we take only the value of the specific
+        // parameter that encodes it, and then shift that value 26 places to the right - thereby
+        // ignoring all other parameters.
         bytes32 isEnumerableShifted =
             parameters & 0x0000000000000000000000000000000000000f00000000000000000000000000;
         // Here we get the index of the ERC721 contract within the ERC721TokenRegistry.
@@ -356,7 +361,7 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         // the actual value), so we still need to unshift it.
         bytes32 collateralContractIndexShifted =
             parameters & 0x00000000000000000000000000000000000000ffffffffffff00000000000000;
-        // Get the index of the ERC721 token relative to the ERC721 contract.
+        // We get the id or index of the ERC721 token associated with the ERC721 contract.
         bytes32 tokenRef =
             parameters & 0x00000000000000000000000000000000000000000000000000ffffffffffffff;
 
