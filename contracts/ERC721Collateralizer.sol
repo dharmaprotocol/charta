@@ -209,7 +209,7 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         // Instantiate an instance of the token, in order to initiate a transfer.
         ERC721 erc721token = ERC721(collateralTokenAddress);
 
-        // Apply a hack for CryptoKitties, granting transfer approval to itself.
+        // Apply a hack for CryptoKitties, granting transfer approval to this contract itself.
         if (cryptoKittiesContract == collateralTokenAddress) {
             erc721token.approve(address(this), collateralTokenID);
         }
@@ -283,7 +283,7 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         // Instantiate an instance of the token, in order to initiate a transfer.
         ERC721 erc721token = ERC721(collateralTokenAddress);
 
-        // Apply a hack for CryptoKitties, granting transfer approval to itself.
+        // Apply a hack for CryptoKitties, granting transfer approval to this contract itself.
         if (cryptoKittiesContract == collateralTokenAddress) {
             erc721token.approve(address(this), collateralTokenID);
         }
