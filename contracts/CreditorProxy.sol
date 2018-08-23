@@ -27,6 +27,12 @@ import "zeppelin-solidity/contracts/math/SafeMath.sol";
 import "zeppelin-solidity/contracts/token/ERC20/ERC20.sol";
 
 
+/**
+ * The CreditorProxy is a thin wrapper around the DebtKernel
+ * It implements creditor-driven loans as specified by DIP-1
+ *
+ * Author: Bo Henderson <bohendo>
+ */
 contract CreditorProxy is Pausable {
     using SafeMath for uint;
 
