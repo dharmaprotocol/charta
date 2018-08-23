@@ -92,20 +92,39 @@ export class ReturnCollateralRunner extends Runner {
                 it("should return the collateral to the debtor", async () => {
                     const { DEBTOR_1 } = this.accounts;
 
-                    const owner = await this.contracts.erc721TokenContract.ownerOf.callAsync(scenario.collateralId);
+                    const {
+                        erc721TokenContract,
+                        cryptoKittyContract,
+                    } = this.contracts;
+
+                    const contract = scenario.isCryptoKitty
+                        ? cryptoKittyContract
+                        : erc721TokenContract;
+
+                    const owner = await contract.ownerOf.callAsync(scenario.collateralId);
                     expect(owner).to.equal(DEBTOR_1);
                 });
 
                 it("should emit a CollateralReturned event", async () => {
                     const { DEBTOR_1 } = this.accounts;
 
+                    const {
+                        erc721CollateralizerContract,
+                        erc721TokenContract,
+                        cryptoKittyContract,
+                    } = this.contracts;
+
+                    const contractAddress = scenario.isCryptoKitty
+                        ? cryptoKittyContract.address
+                        : erc721TokenContract.address;
+
                     const returnedLog = await this.getLogs(txHash, "CollateralReturned");
 
                     const expectedLog = ERC721CollateralReturned(
-                        this.contracts.erc721CollateralizerContract.address,
+                        erc721CollateralizerContract.address,
                         this.agreementId,
                         DEBTOR_1,
-                        this.contracts.erc721TokenContract.address,
+                        contractAddress,
                         scenario.collateralId,
                     );
 

@@ -115,7 +115,7 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
             isEnumerable = new BigNumber(0);
             erc721Token = this.contracts.cryptoKittyContract;
 
-            tokenReference = new BigNumber(1);
+            tokenReference = (await erc721Token.totalSupply.callAsync()).add(1);
 
             // Mint a new CryptoKitty for the debtor.
             await erc721Token.createPromoKitty
