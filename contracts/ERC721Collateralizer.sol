@@ -135,13 +135,11 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         // Ensure that the collateralizer is the owner of this token ID.
         require(erc721token.ownerOf(collateralTokenID) == collateralizer);
 
-        // The token must be approved for transfer by this contract.
-        // NOTE: The cryptokitties contract does not have `getApproved`.
-        // require(erc721token.getApproved(collateralTokenID) == custodian);
-
         // Transfer the collateral asset to this contract.
-        // NOTE: Usually this would come after setting the agreement id.
         erc721token.transferFrom(collateralizer, custodian, collateralTokenID);
+
+        // Ensure that this contract is in fact the owner of the collateral.
+        require(erc721token.ownerOf(collateralTokenID) == custodian);
 
         // Store collaterallizer in mapping, effectively demarcating that the
         // agreement is now collateralized.
