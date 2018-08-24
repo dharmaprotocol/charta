@@ -3,21 +3,14 @@ import * as ABIDecoder from "abi-decoder";
 import * as Web3 from "web3";
 import { BigNumber } from "bignumber.js";
 import { expect } from "chai";
-
 // Scenarios
 import { ReturnCollateralScenario } from "../scenarios";
-
 // Logs
 import { ERC721CollateralReturned } from "../../../../logs/collateralized_contract";
-
 // Runners
-import {
-    ERC721CollateralizedSimpleInterestTermsContractRunner as Runner,
-} from "./erc_721_collateralized_simple_interest_terms_contract";
-
+import { ERC721CollateralizedSimpleInterestTermsContractRunner as Runner, } from "./erc_721_collateralized_simple_interest_terms_contract";
 // Types
 import { DummyTokenContract } from "../../../../../../types/generated/dummy_token";
-
 // Test utils
 import { REVERT_ERROR } from "../../../../test_utils/constants";
 
@@ -92,14 +85,7 @@ export class ReturnCollateralRunner extends Runner {
                 it("should return the collateral to the debtor", async () => {
                     const { DEBTOR_1 } = this.accounts;
 
-                    const {
-                        erc721TokenContract,
-                        cryptoKittyContract,
-                    } = this.contracts;
-
-                    const contract = scenario.isCryptoKitty
-                        ? cryptoKittyContract
-                        : erc721TokenContract;
+                    const contract = this.collateralContract(scenario);
 
                     const owner = await contract.ownerOf.callAsync(scenario.collateralId);
                     expect(owner).to.equal(DEBTOR_1);
@@ -107,16 +93,9 @@ export class ReturnCollateralRunner extends Runner {
 
                 it("should emit a CollateralReturned event", async () => {
                     const { DEBTOR_1 } = this.accounts;
+                    const { erc721CollateralizerContract } = this.contracts;
 
-                    const {
-                        erc721CollateralizerContract,
-                        erc721TokenContract,
-                        cryptoKittyContract,
-                    } = this.contracts;
-
-                    const contractAddress = scenario.isCryptoKitty
-                        ? cryptoKittyContract.address
-                        : erc721TokenContract.address;
+                    const contract = this.collateralContract(scenario);
 
                     const returnedLog = await this.getLogs(txHash, "CollateralReturned");
 
@@ -124,7 +103,7 @@ export class ReturnCollateralRunner extends Runner {
                         erc721CollateralizerContract.address,
                         this.agreementId,
                         DEBTOR_1,
-                        contractAddress,
+                        contract.address,
                         scenario.collateralId,
                     );
 
@@ -132,15 +111,9 @@ export class ReturnCollateralRunner extends Runner {
                 });
             } else {
                 it("should keep ownership of the collateral", async () => {
-                    const {
-                        erc721TokenContract,
-                        cryptoKittyContract,
-                        erc721CollateralizerContract,
-                    } = this.contracts;
+                    const { erc721CollateralizerContract } = this.contracts;
 
-                    const contract = scenario.isCryptoKitty
-                        ? cryptoKittyContract
-                        : erc721TokenContract;
+                    const contract = this.collateralContract(scenario);
 
                     const owner = await contract.ownerOf.callAsync(scenario.collateralId);
                     expect(owner).to.equal(erc721CollateralizerContract.address);

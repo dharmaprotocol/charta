@@ -96,14 +96,7 @@ export class SeizeCollateralRunner extends Runner {
                 it("should transfer the collateral to the creditor", async () => {
                     const { CREDITOR_1 } = this.accounts;
 
-                    const {
-                        erc721TokenContract,
-                        cryptoKittyContract,
-                    } = this.contracts;
-
-                    const contract = scenario.isCryptoKitty
-                        ? cryptoKittyContract
-                        : erc721TokenContract;
+                    const contract = this.collateralContract(scenario);
 
                     const owner = await contract.ownerOf.callAsync(scenario.collateralId);
 
@@ -113,15 +106,9 @@ export class SeizeCollateralRunner extends Runner {
                 it("should emit a CollateralSeized event", async () => {
                     const { CREDITOR_1 } = this.accounts;
 
-                    const {
-                        erc721TokenContract,
-                        cryptoKittyContract,
-                        erc721CollateralizerContract,
-                    } = this.contracts;
+                    const { erc721CollateralizerContract } = this.contracts;
 
-                    const contract = scenario.isCryptoKitty
-                        ? cryptoKittyContract
-                        : erc721TokenContract;
+                    const contract = this.collateralContract(scenario);
 
                     const returnedLog = await this.getLogs(txHash, "CollateralSeized");
 
@@ -137,14 +124,7 @@ export class SeizeCollateralRunner extends Runner {
                 });
             } else {
                 it("should keep ownership of the collateral", async () => {
-                    const {
-                        erc721TokenContract,
-                        cryptoKittyContract,
-                    } = this.contracts;
-
-                    const contract = scenario.isCryptoKitty
-                        ? cryptoKittyContract
-                        : erc721TokenContract;
+                    const contract = this.collateralContract(scenario);
 
                     const owner = await contract.ownerOf.callAsync(scenario.collateralId);
 

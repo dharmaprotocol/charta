@@ -267,4 +267,19 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
             { from: creditor },
         );
     }
+
+    protected collateralContract(
+        scenario: RegisterRepaymentScenario |
+            RegisterTermStartScenario |
+            ReturnCollateralScenario,
+    ) {
+        const {
+            erc721TokenContract,
+            cryptoKittyContract,
+        } = this.contracts;
+
+        return scenario.isCryptoKitty
+            ? cryptoKittyContract
+            : erc721TokenContract;
+    }
 }
