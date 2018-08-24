@@ -23,8 +23,8 @@ import "../ERC721Collateralizer.sol";
 
 
 /**
- * Example collateralized terms contract using ERC721 collateral, for usage in simple interest debt
- * agreements.
+ * A Terms Contract that can be used for debt agreements where the collateral token is a
+ * non-fungible ERC721 token. It contains functionality for simple interest loans.
  */
 contract ERC721CollateralizedSimpleInterestTermsContract is SimpleInterestTermsContract {
     ERC721Collateralizer public erc721Collateralizer;
@@ -36,6 +36,11 @@ contract ERC721CollateralizedSimpleInterestTermsContract is SimpleInterestTermsC
         erc721Collateralizer = ERC721Collateralizer(_erc721Collateralizer);
     }
 
+    /**
+     * This method is called by the DebtKernel when an Debt Order is filled. Here, we use it
+     * as a hook to collateralize the debtor's ERC721 asset, and to call the same method on the
+     * parent contract - which registers that the debt agreement has begun.
+     */
     function registerTermStart(
         bytes32 agreementId,
         address debtor
@@ -50,6 +55,10 @@ contract ERC721CollateralizedSimpleInterestTermsContract is SimpleInterestTermsC
         return registered && collateralized;
     }
 
+    /**
+     * A method that returns a Unix timestamp representing the end of the debt agreement's term.
+     * contract.
+     */
     function getTermEndTimestamp(
         bytes32 _agreementId
     )
