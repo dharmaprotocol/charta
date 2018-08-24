@@ -104,33 +104,68 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
             gas: DEFAULT_GAS_AMOUNT,
         };
 
-        // Set up a mintable ERC721 token.
-        const erc721Token = this.contracts.erc721TokenContract;
-        const tokenSymbol = await erc721Token.symbol.callAsync();
+        const collateralizer = await ERC721CollateralizerContract.deployed(web3, txDefaults);
 
-        // Add the mintable token to the registry.
-        const tokenRegistry = await ERC721TokenRegistryContract.deployed(web3, txDefaults);
+        // The symbol of the ERC721 to use as collateral, e.g. "CK" for CryptoKitties.
+        let tokenSymbol;
+        // "1" if the collateral contract implements the Enumerable extension, otherwise "0".
+        let isEnumerable;
+        // An instance of the collateral ERC721 contract.
+        let erc721Token;
+        // The token's ID or token index, associated with the collateral ERC721 contract.
+        let tokenReference;
+
+        if (scenario.isCryptoKitty) {
+            // CryptoKitties does not implement the Enumerable extension, hence we encode a
+            // "0" to flag this in the terms contract params.
+            isEnumerable = new BigNumber(0);
+            erc721Token = this.contracts.cryptoKittyContract;
+
+            // The ID of the token will be an increment from the total supply, since
+            // the zeroth CryptoKitty is a special reserved "uncat".
+            tokenReference = (await erc721Token.totalSupply.callAsync()).add(1);
+
+            // Mint a new CryptoKitty for the debtor.
+            await erc721Token.createPromoKitty
+                .sendTransactionAsync(
+                    new BigNumber(448793),
+                    this.accounts.DEBTOR_1,
+                    {
+                        ...txDefaults,
+                        from: this.accounts.CONTRACT_OWNER,
+                    },
+                );
+        } else {
+            // This contract does implement the Enumerable extension, so we flag that with "1"
+            // in the terms contract parameters.
+            isEnumerable = new BigNumber(1);
+            erc721Token = this.contracts.erc721TokenContract;
+
+            // Mint a new ERC721 token for the debtor.
+            tokenReference = new BigNumber(await erc721Token.totalSupply.callAsync());
+            await erc721Token.mint.sendTransactionAsync(this.accounts.DEBTOR_1, tokenReference, {
+                from: this.accounts.CONTRACT_OWNER,
+                gas: DEFAULT_GAS_AMOUNT,
+            });
+        }
+
+        tokenSymbol = await erc721Token.symbol.callAsync();
 
         // Get the index of the token.
-        const tokenIndex = await tokenRegistry.getTokenIndexBySymbol.callAsync(tokenSymbol);
+        const tokenRegistry = await ERC721TokenRegistryContract.deployed(web3, txDefaults);
+        const erc721ContractIndex = await tokenRegistry.getTokenIndexBySymbol.callAsync(tokenSymbol);
         const indexWithoutToken = await tokenRegistry.tokenSymbolListLength.callAsync();
-
-        // Mint a new ERC721 token for the debtor.
-        const tokenId = new BigNumber(await erc721Token.totalSupply.callAsync());
-        await erc721Token.mint.sendTransactionAsync(this.accounts.DEBTOR_1, tokenId, {
-            from: this.accounts.CONTRACT_OWNER,
-            gas: DEFAULT_GAS_AMOUNT,
-        });
 
         await this.web3Utils.mineBlock();
 
         const termsContractParameters = ERC721CollateralizedSimpleInterestTermsParameters.pack(
             {
-                collateralTokenIndex:
+                isEnumerable,
+                erc721ContractIndex:
                     scenario.collateralTokenInRegistry
-                        ? tokenIndex
+                        ? erc721ContractIndex
                         : indexWithoutToken,
-                tokenId,
+                tokenReference,
             },
             {
                 principalTokenIndex: scenario.principalTokenInRegistry
@@ -143,10 +178,14 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
             },
         );
 
-        const collateralizer = await ERC721CollateralizerContract.deployed(web3, txDefaults);
         // The debtor grants approval to the collateralizer.
         await erc721Token.approve.sendTransactionAsync(
-            collateralizer.address, tokenId, { from: DEBTOR_1 },
+            collateralizer.address,
+            tokenReference,
+            {
+                ...txDefaults,
+                from: this.accounts.DEBTOR_1,
+            },
         );
 
         const latestBlockTime = await this.web3Utils.getLatestBlockTime();
@@ -166,7 +205,11 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
                     .unix(),
             ),
             issuanceVersion: repaymentRouter.address,
-            orderSignatories: { debtor: DEBTOR_1, creditor: CREDITOR_1, underwriter: UNDERWRITER },
+            orderSignatories: {
+                debtor: DEBTOR_1,
+                creditor: CREDITOR_1,
+                underwriter: UNDERWRITER,
+            },
             principalAmount: scenario.principalAmount,
             principalTokenAddress: dummyREPToken.address,
             relayer: RELAYER,
@@ -179,8 +222,8 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
         };
 
         const orderFactory = new DebtOrderFactory(defaultOrderParams);
-
         const debtOrder = await orderFactory.generateDebtOrder();
+
         const agreementId = debtOrder.getIssuanceCommitment().getHash();
 
         this.debtOrder = debtOrder;
@@ -223,5 +266,20 @@ export abstract class ERC721CollateralizedSimpleInterestTermsContractRunner {
             creditorBalanceAndAllowance,
             { from: creditor },
         );
+    }
+
+    protected collateralContract(
+        scenario: RegisterRepaymentScenario |
+            RegisterTermStartScenario |
+            ReturnCollateralScenario,
+    ) {
+        const {
+            erc721TokenContract,
+            cryptoKittyContract,
+        } = this.contracts;
+
+        return scenario.isCryptoKitty
+            ? cryptoKittyContract
+            : erc721TokenContract;
     }
 }

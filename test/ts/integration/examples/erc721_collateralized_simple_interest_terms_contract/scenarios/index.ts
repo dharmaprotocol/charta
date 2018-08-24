@@ -24,6 +24,7 @@ export const DEFAULT_REGISTER_TERM_START_ARGS = {
     principalTokenInRegistry: true,
     collateralTokenInRegistry: true,
     succeeds: true,
+    isCryptoKitty: false,
     reverts: false,
     termsContractParameters: (terms: SimpleInterestContractTerms) =>
         SimpleInterestParameters.pack(terms),
@@ -44,6 +45,7 @@ export const DEFAULT_RETURN_COLLATERAL_ARGS = {
     debtOrder: (debtOrder: SignedDebtOrder) => debtOrder,
     principalTokenInRegistry: true,
     collateralTokenInRegistry: true,
+    isCryptoKitty: false,
     succeeds: true,
     reverts: false,
 };
@@ -63,6 +65,7 @@ export const DEFAULT_SEIZE_COLLATERAL_ARGS = {
     debtOrder: (debtOrder: SignedDebtOrder) => debtOrder,
     principalTokenInRegistry: true,
     collateralTokenInRegistry: true,
+    isCryptoKitty: false,
     secondsSinceFill: 0,
     succeeds: true,
     reverts: false,
@@ -84,6 +87,7 @@ export const DEFAULT_REGISTER_REPAYMENT_ARGS = {
     repayFromRouter: true,
     principalTokenInRegistry: true,
     collateralTokenInRegistry: true,
+    isCryptoKitty: false,
     succeeds: true,
     reverts: false,
 };
@@ -120,6 +124,7 @@ export interface RegisterRepaymentScenario {
     succeeds: boolean;
     // True if the transaction is reverted.
     reverts: boolean;
+    isCryptoKitty: boolean;
     // True if the repayment makes a payment on behalf of the debtor in the scenario.
     repayFromRouter: boolean;
 }
@@ -154,6 +159,7 @@ export interface ReturnCollateralScenario {
     collateralTokenInRegistry: boolean;
     // True if repayment gets logged.
     succeeds: boolean;
+    isCryptoKitty: boolean;
     // True if the transaction is reverted.
     reverts: boolean;
 }
@@ -188,6 +194,7 @@ export interface SeizeCollateralScenario {
     collateralTokenInRegistry: boolean;
     // True if repayment gets logged.
     succeeds: boolean;
+    isCryptoKitty: boolean;
     secondsSinceFill: number;
     // True if the transaction is reverted.
     reverts: boolean;
@@ -220,6 +227,7 @@ export interface RegisterTermStartScenario {
     succeeds: boolean;
     // True if the transaction reverts during the scenario.
     reverts: boolean;
+    isCryptoKitty: boolean;
     // True if registerTermStart is called by the debt kernel upon an order being filled.
     invokedByDebtKernel: boolean;
 }

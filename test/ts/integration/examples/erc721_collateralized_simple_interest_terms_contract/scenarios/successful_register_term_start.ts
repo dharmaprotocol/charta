@@ -39,4 +39,10 @@ export const SUCCESSFUL_REGISTER_TERM_START_SCENARIOS: RegisterTermStartScenario
         amortizationUnitType: new BigNumber(4),
         collateralId: new BigNumber(5),
     },
+    {
+        description: "when a CryptoKitty is used for collateral",
+        ...DEFAULT_REGISTER_TERM_START_ARGS,
+        isCryptoKitty: true,
+        collateralId: new BigNumber(1),
+    },
 ];

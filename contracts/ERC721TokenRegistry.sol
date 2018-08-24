@@ -19,15 +19,15 @@ import "zeppelin-solidity/contracts/ownership/Ownable.sol";
  */
 contract ERC721TokenRegistry is Ownable {
     mapping (bytes32 => TokenAttributes) public symbolHashToTokenAttributes;
-    string[256] public tokenSymbolList;
-    uint8 public tokenSymbolListLength;
+    string[4294967296] public tokenSymbolList;
+    uint32 public tokenSymbolListLength;
 
     struct TokenAttributes {
         // The ERC721 contract address.
         address tokenAddress;
         // The index in `tokenSymbolList` where the token's symbol can be found.
         uint tokenIndex;
-        // The name of the given token, e.g. "Cryptokitties"
+        // The name of the given token, e.g. "CryptoKitties"
         string name;
     }
 
@@ -123,7 +123,7 @@ contract ERC721TokenRegistry is Ownable {
      *
      * Example:
      *   getTokenNameByIndex(1);
-     *   => "Cryptokitties"
+     *   => "CryptoKitties"
      */
     function getTokenNameByIndex(uint _index) public view returns (string) {
         string memory symbol = getTokenSymbolByIndex(_index);
@@ -133,14 +133,22 @@ contract ERC721TokenRegistry is Ownable {
         return tokenName;
     }
 
+    /**
+     * Given the symbol for a token in the registry, returns a tuple containing the token's address,
+     * the token's index in the registry, and the token's name.
+     *
+     * Example:
+     *   getTokenAttributesBySymbol("CK");
+     *   => ["0x06012c8cf97BEaD5deAe237070F9587f8E7A266d", 1, "CryptoKitties"]
+     */
     function getTokenAttributesBySymbol(string _symbol)
         public
         view
-    returns (
-        address,
-        uint,
-        string
-    )
+        returns (
+            address,
+            uint,
+            string
+        )
     {
         bytes32 symbolHash = keccak256(_symbol);
 
@@ -153,14 +161,22 @@ contract ERC721TokenRegistry is Ownable {
         );
     }
 
+    /**
+     * Given the index for a token in the registry, returns a tuple containing the token's address,
+     * the token's symbol, and the token's name.
+     *
+     * Example:
+     *   getTokenAttributesByIndex(1);
+     *   => ["0x06012c8cf97BEaD5deAe237070F9587f8E7A266d", "CK", "CryptoKitties"]
+     */
     function getTokenAttributesByIndex(uint _index)
         public
         view
-    returns (
-        address,
-        string,
-        string
-    )
+        returns (
+            address,
+            string,
+            string
+        )
     {
         string memory symbol = getTokenSymbolByIndex(_index);
 

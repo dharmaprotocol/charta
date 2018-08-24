@@ -24,14 +24,14 @@ export function CollateralLocked(
 export function ERC721CollateralLocked(
     contract: Address,
     agreementID: Bytes32,
-    token: Address,
+    erc721Contract: Address,
     tokenId: UInt,
 ): ABIDecoder.DecodedLog {
     return {
         address: contract,
         events: LogUtils.getParams([
             ["agreementID", agreementID],
-            ["token", token],
+            ["erc721Contract", erc721Contract],
             ["tokenID", tokenId],
         ]),
         name: "CollateralLocked",
@@ -80,7 +80,7 @@ export function ERC721CollateralReturned(
     contract: Address,
     agreementID: Bytes32,
     collateralizer: Address,
-    token: Address,
+    erc721Contract: Address,
     tokenId: UInt,
 ): ABIDecoder.DecodedLog {
     return {
@@ -88,7 +88,7 @@ export function ERC721CollateralReturned(
         events: LogUtils.getParams([
             ["agreementID", agreementID],
             ["collateralizer", collateralizer],
-            ["token", token],
+            ["erc721Contract", erc721Contract],
             ["tokenID", tokenId],
         ]),
         name: "CollateralReturned",
@@ -99,7 +99,7 @@ export function ERC721CollateralSeized(
     contract: Address,
     agreementID: Bytes32,
     beneficiary: Address,
-    token: Address,
+    erc721Contract: Address,
     tokenId: UInt,
 ): ABIDecoder.DecodedLog {
     return {
@@ -107,7 +107,7 @@ export function ERC721CollateralSeized(
         events: LogUtils.getParams([
             ["agreementID", agreementID],
             ["beneficiary", beneficiary],
-            ["token", token],
+            ["erc721Contract", erc721Contract],
             ["tokenID", tokenId],
         ]),
         name: "CollateralSeized",

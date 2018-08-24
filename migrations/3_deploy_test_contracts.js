@@ -4,7 +4,6 @@ module.exports = (deployer, network, accounts) => {
     const PermissionsLib = artifacts.require("PermissionsLib");
     const DummyContract = artifacts.require("DummyContract");
     const ERC721Token = artifacts.require("ERC721Token");
-    const MintableERC721Token = artifacts.require("MintableERC721Token");
     const MockERC721Token = artifacts.require("MockERC721Token");
     const MockDebtRegistry = artifacts.require("MockDebtRegistry");
     const MockERC20Token = artifacts.require("MockERC20Token");
@@ -19,7 +18,6 @@ module.exports = (deployer, network, accounts) => {
         deployer.link(PermissionsLib, DummyContract);
         deployer.deploy(DummyContract);
         deployer.deploy(ERC721Token);
-        deployer.deploy(MintableERC721Token);
         deployer.deploy(MockDebtRegistry);
         deployer.deploy(MockERC20Token);
         deployer.deploy(MockERC721Token);

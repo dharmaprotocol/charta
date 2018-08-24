@@ -2,7 +2,6 @@
 import * as chai from "chai";
 
 import { BigNumber } from "bignumber.js";
-
 // Utils
 import { BigNumberSetup } from "../../test_utils/bignumber_setup";
 import ChaiSetup from "../../test_utils/chai_setup";
@@ -24,43 +23,47 @@ contract("ERC721Collateralizer (Unit Tests)", async (ACCOUNTS) => {
     let collateralizer: ERC721CollateralizerContract;
 
     before(async () => {
-       collateralizer = await ERC721CollateralizerContract.deployed(web3, TX_DEFAULTS);
+        collateralizer = await ERC721CollateralizerContract.deployed(web3, TX_DEFAULTS);
     });
 
     describe("#unpackCollateralParametersFromBytes", () => {
         // A list of sets of progressively greater ids and indexes.
         const examples = [
-            [0, 0],
-            [0, 1],
-            [1, 0],
-            [10, 10],
-            [21, 32],
-            [221, 322],
-            [1231, 2342],
-            [75231, 32342],
-            [275231, 432342],
-            [3275231, 5432342],
-            [65675231, 32132342],
-            [65675231, 32132342],
-            [656752311, 132132342],
-            [2656752311, 4132132342],
+            [1, 0, 0],
+            [1, 0, 1],
+            [0, 1, 0],
+            [1, 10, 10],
+            [1, 21, 32],
+            [0, 221, 322],
+            [1, 1231, 2342],
+            [1, 75231, 32342],
+            [1, 275231, 432342],
+            [0, 3275231, 5432342],
+            [1, 65675231, 32132342],
+            [0, 65675231, 32132342],
+            [1, 656752311, 132132342],
+            [1, 2656752311, 4132132342],
         ];
 
         examples.forEach((example) => {
-            const index = example[0];
-            const id = example[1];
+            const isEnumerableInt = example[0];
+            const isEnumerableBool = isEnumerableInt === 1;
+            const index = example[1];
+            const id = example[2];
 
-            describe(`when given a token index of ${index} and a token id of ${id}`, () => {
-                it (`returns [${index}, ${id}]`, async () => {
+            describe(`when given isEnumerable of ${isEnumerableInt}, a token index
+             of ${index} and a token id of ${id}`, () => {
+                it(`returns [${isEnumerableBool}, ${index}, ${id}]`, async () => {
                     const params = ERC721CollateralizedSimpleInterestTermsParameters.pack({
-                        collateralTokenIndex: new BigNumber(index),
-                        tokenId: new BigNumber(id),
+                        isEnumerable: new BigNumber(isEnumerableInt),
+                        erc721ContractIndex: new BigNumber(index),
+                        tokenReference: new BigNumber(id),
                     });
 
-                    const result = (await collateralizer.unpackCollateralParametersFromBytes.callAsync(params))
-                        .map((val: BigNumber) => val.toNumber());
-
-                    expect(result).to.deep.equal([index, id]);
+                    const result = await collateralizer.unpackCollateralParametersFromBytes.callAsync(params);
+                    expect(
+                        [result[0], result[1].toNumber(), result[2].toNumber()],
+                    ).to.deep.equal([isEnumerableBool, index, id]);
                 });
             });
         });

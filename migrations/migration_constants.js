@@ -14,6 +14,15 @@ const DUMMY_TOKEN_DECIMALS = 18;
 const NUM_INITIAL_BALANCE_HOLDERS = 10;
 
 /**
+ * The address of the CryptoKitties ERC721 contract.
+ *
+ * Retrieved August 23, 2018 from: https://etherscan.io/address/0x06012c8cf97bead5deae237070f9587f8e7a266d
+ *
+ * @type {string}
+ */
+const CRYPTOKITTIES_CONTRACT = "0x06012c8cf97BEaD5deAe237070F9587f8E7A266d";
+
+/**
  * The secure address that is allowed to set DebtToken URIs.
  *
  * @type {string}
@@ -24,6 +33,8 @@ const TOKEN_URI_OPERATOR = "0x5d497982326f641e0b374585ff7c1c1be9878560";
  * A list of the contract names, representing the instances
  * that will be transferred to the multi-sig wallet.
  *
+ * NOTE: These do not include contracts related to ERC721 Collateral.
+ *
  * @type {string[]}
  */
 const NAMES_OF_CONTRACTS_OWNED_BY_MULTISIG = [
@@ -33,9 +44,7 @@ const NAMES_OF_CONTRACTS_OWNED_BY_MULTISIG = [
     "TokenTransferProxy",
     "RepaymentRouter",
     "Collateralizer",
-    "ERC721Collateralizer",
     "TokenRegistry",
-    "ERC721TokenRegistry",
     "ContractRegistry",
 ];
 
@@ -401,4 +410,5 @@ module.exports = {
     NAMES_OF_CONTRACTS_OWNED_BY_MULTISIG,
     NUM_INITIAL_BALANCE_HOLDERS,
     TOKEN_URI_OPERATOR,
+    CRYPTOKITTIES_CONTRACT,
 };
