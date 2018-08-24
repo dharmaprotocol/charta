@@ -195,6 +195,9 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         // in a gas-efficient manner by resetting the address of the collateralizer to 0.
         require(agreementToCollateralizer[agreementId] != address(0));
 
+        // Determine collateralizer of the collateral.
+        address collateralizer = agreementToCollateralizer[agreementId];
+
         // Mark agreement's collateral as withdrawn by setting the agreement's
         // collateralizer to 0x0.
         delete agreementToCollateralizer[agreementId];
@@ -206,9 +209,6 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
                 termsContract.getTermEndTimestamp(agreementId)
             ) <= termsContract.getValueRepaidToDate(agreementId)
         );
-
-        // Determine collateralizer of the collateral.
-        address collateralizer = agreementToCollateralizer[agreementId];
 
         // Instantiate an instance of the token, in order to initiate a transfer.
         ERC721 erc721token = ERC721(collateralTokenAddress);
