@@ -19,8 +19,8 @@ import "zeppelin-solidity/contracts/ownership/Ownable.sol";
  */
 contract ERC721TokenRegistry is Ownable {
     mapping (bytes32 => TokenAttributes) public symbolHashToTokenAttributes;
-    string[] public tokenSymbolList;
-    uint public tokenSymbolListLength;
+    string[4294967296] public tokenSymbolList;
+    uint32 public tokenSymbolListLength;
 
     struct TokenAttributes {
         // The ERC721 contract address.
