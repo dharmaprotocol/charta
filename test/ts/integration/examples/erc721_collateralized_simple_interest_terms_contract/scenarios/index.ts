@@ -7,33 +7,33 @@ import { SimpleInterestContractTerms } from "../../../../factories/terms_contrac
 import { DummyTokenContract } from "../../../../../../types/generated/dummy_token";
 import { SignedDebtOrder } from "../../../../../../types/kernel/debt_order";
 
-export const DEFAULT_REGISTER_TERM_START_ARGS = {
+const DEFAULT_SCENARIO_TERMS = {
     // Simple terms parameters.
     principalAmount: Units.ether(1),
     interestRateFixedPoint: Units.interestRateFixedPoint(2.5),
     amortizationUnitType: new BigNumber(1),
     termLengthUnits: new BigNumber(4),
+    debtorFee: Units.ether(0.001),
+    // Misc. params
+    succeeds: true,
+    reverts: false,
+    isCryptoKitty: false,
+    principalTokenInRegistry: true,
+    collateralTokenInRegistry: true,
+};
+
+export const DEFAULT_REGISTER_TERM_START_ARGS = {
+    ...DEFAULT_SCENARIO_TERMS,
     // Parameters for collateralization.
     collateralToken: "REP",
     collateralId: new BigNumber(0),
-    // Misc parameters.
-    debtorFee: Units.ether(0.001),
     invokedByDebtKernel: true,
     permissionToCollateralize: true,
-    principalTokenInRegistry: true,
-    collateralTokenInRegistry: true,
-    succeeds: true,
-    isCryptoKitty: false,
-    reverts: false,
 };
 
 export const DEFAULT_RETURN_COLLATERAL_ARGS = {
-    principalAmount: Units.ether(1),
-    interestRateFixedPoint: Units.interestRateFixedPoint(2.5),
-    amortizationUnitType: new BigNumber(1),
-    termLengthUnits: new BigNumber(4),
+    ...DEFAULT_SCENARIO_TERMS,
     repaymentAmount: Units.ether(1.29),
-    debtorFee: Units.ether(0.001),
     // Parameters for collateralization.
     collateralToken: "MET",
     collateralId: new BigNumber(0),
@@ -42,39 +42,23 @@ export const DEFAULT_RETURN_COLLATERAL_ARGS = {
     debtOrder: (debtOrder: SignedDebtOrder) => debtOrder,
     principalTokenInRegistry: true,
     collateralTokenInRegistry: true,
-    isCryptoKitty: false,
-    succeeds: true,
-    reverts: false,
 };
 
 export const DEFAULT_SEIZE_COLLATERAL_ARGS = {
-    principalAmount: Units.ether(1),
-    interestRateFixedPoint: Units.interestRateFixedPoint(2.5),
-    amortizationUnitType: new BigNumber(1),
-    termLengthUnits: new BigNumber(4),
+    ...DEFAULT_SCENARIO_TERMS,
     repaymentAmount: Units.ether(1.29),
-    debtorFee: Units.ether(0.001),
     // Parameters for collateralization.
     collateralToken: "MET",
     collateralId: new BigNumber(0),
     repaymentToken: (principalToken: DummyTokenContract, otherToken: DummyTokenContract) =>
         principalToken,
     debtOrder: (debtOrder: SignedDebtOrder) => debtOrder,
-    principalTokenInRegistry: true,
-    collateralTokenInRegistry: true,
-    isCryptoKitty: false,
     secondsSinceFill: 0,
-    succeeds: true,
-    reverts: false,
 };
 
 export const DEFAULT_REGISTER_REPAYMENT_ARGS = {
-    principalAmount: Units.ether(1),
-    interestRateFixedPoint: Units.interestRateFixedPoint(2.5),
-    amortizationUnitType: new BigNumber(1),
-    termLengthUnits: new BigNumber(4),
+    ...DEFAULT_SCENARIO_TERMS,
     repaymentAmount: Units.ether(1.29),
-    debtorFee: Units.ether(0.001),
     // Parameters for collateralization.
     collateralToken: "MET",
     collateralId: new BigNumber(0),
@@ -82,11 +66,6 @@ export const DEFAULT_REGISTER_REPAYMENT_ARGS = {
         principalToken,
     debtOrder: (debtOrder: SignedDebtOrder) => debtOrder,
     repayFromRouter: true,
-    principalTokenInRegistry: true,
-    collateralTokenInRegistry: true,
-    isCryptoKitty: false,
-    succeeds: true,
-    reverts: false,
 };
 
 interface BaseScenario {
