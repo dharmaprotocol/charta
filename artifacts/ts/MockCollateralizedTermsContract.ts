@@ -5732,5 +5732,5 @@ export const MockCollateralizedTermsContract =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-17T19:19:44.570Z"
+  "updatedAt": "2018-08-24T23:27:49.730Z"
 }

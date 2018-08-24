@@ -4608,5 +4608,5 @@ export const MockDebtToken =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-17T19:19:44.564Z"
+  "updatedAt": "2018-08-24T23:27:49.728Z"
 }

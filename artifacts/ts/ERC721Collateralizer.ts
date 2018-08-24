@@ -8376,5 +8376,5 @@ export const ERC721Collateralizer =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-17T19:19:45.644Z"
+  "updatedAt": "2018-08-24T23:27:49.709Z"
 }
