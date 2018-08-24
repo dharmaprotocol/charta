@@ -19,7 +19,10 @@ import "zeppelin-solidity/contracts/ownership/Ownable.sol";
  */
 contract ERC721TokenRegistry is Ownable {
     mapping (bytes32 => TokenAttributes) public symbolHashToTokenAttributes;
-    string[4294967296] public tokenSymbolList;
+    // Solidity prevents us from declaring a dynamically sized string array (since a string is
+    // itself an array, and 2D arrays are not supported), and so here we specify the maximum
+    // size of the tokenSymbolList.
+    string[4294967295] public tokenSymbolList;
     uint32 public tokenSymbolListLength;
 
     struct TokenAttributes {
