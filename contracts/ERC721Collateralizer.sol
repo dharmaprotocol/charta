@@ -152,7 +152,7 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         erc721token.transferFrom(debtor, custodian, collateralTokenID);
 
         // Ensure that this contract is in fact the owner of the collateral.
-        require(erc721token.ownerOf(collateralTokenID) == custodian);
+        assert(erc721token.ownerOf(collateralTokenID) == custodian);
 
         // Store debtor in mapping, effectively demarcating that the agreement is now collateralized.
         agreementToDebtor[agreementId] = debtor;
@@ -220,7 +220,7 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         erc721token.transferFrom(address(this), debtor, collateralTokenID);
 
         // Ensure that transfer has succeeded.
-        require(erc721token.ownerOf(collateralTokenID) == debtor);
+        assert(erc721token.ownerOf(collateralTokenID) == debtor);
 
         // Log the return event.
         CollateralReturned(
@@ -290,7 +290,7 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         erc721token.transferFrom(address(this), beneficiary, collateralTokenID);
 
         // Ensure that transfer has succeeded.
-        require(erc721token.ownerOf(collateralTokenID) == beneficiary);
+        assert(erc721token.ownerOf(collateralTokenID) == beneficiary);
 
         // Log the seizure event.
         CollateralSeized(
