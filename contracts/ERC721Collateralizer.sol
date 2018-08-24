@@ -352,7 +352,7 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         // parameter that encodes it, and then shift that value 26 places to the right - thereby
         // ignoring all other parameters.
         bytes32 isEnumerableShifted =
-            parameters & 0x0000000000000000000000000000000000000f00000000000000000000000000;
+            parameters & 0x0000000000000000000000000000000000000100000000000000000000000000;
         // Here we get the index of the ERC721 contract within the ERC721TokenRegistry.
         // In its raw form it will be "shifted" 14 characters to the left (I.E. it has 14 "0"s after
         // the actual value), so we still need to unshift it.
