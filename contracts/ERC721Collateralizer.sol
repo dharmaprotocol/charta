@@ -47,8 +47,8 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
     // relating to transfers, since its contract does not comply with the ERC721 standard.
     address public cryptoKittiesContract;
 
-    // Collateralizer here refers to the owner of the asset that is being collateralized.
-    mapping(bytes32 => address) public agreementToCollateralizer;
+    // Debtor here refers to the owner of the asset that is being collateralized.
+    mapping(bytes32 => address) public agreementToDebtor;
 
     PermissionsLib.Permissions internal collateralizationPermissions;
 
@@ -139,7 +139,7 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
             to send transactions from address 0x0, this check will only fail
             when the agreement is already collateralized.
         */
-        require(agreementToCollateralizer[agreementId] == address(0));
+        require(agreementToDebtor[agreementId] == address(0));
 
         ERC721 erc721token = ERC721(collateralTokenAddress);
         address custodian = address(this);
@@ -155,7 +155,7 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
 
         // Store collaterallizer in mapping, effectively demarcating that the
         // agreement is now collateralized.
-        agreementToCollateralizer[agreementId] = collateralizer;
+        agreementToDebtor[agreementId] = collateralizer;
 
         // Emit an event that collateral has been secured.
         CollateralLocked(agreementId, collateralTokenAddress, collateralTokenID);
@@ -193,14 +193,14 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         // Withdrawal can only occur if the collateral has yet to be withdrawn.
         // When we withdraw collateral, we reset the collateral agreement
         // in a gas-efficient manner by resetting the address of the collateralizer to 0.
-        require(agreementToCollateralizer[agreementId] != address(0));
+        require(agreementToDebtor[agreementId] != address(0));
 
         // Determine collateralizer of the collateral.
-        address collateralizer = agreementToCollateralizer[agreementId];
+        address collateralizer = agreementToDebtor[agreementId];
 
         // Mark agreement's collateral as withdrawn by setting the agreement's
         // collateralizer to 0x0.
-        delete agreementToCollateralizer[agreementId];
+        delete agreementToDebtor[agreementId];
 
         // Ensure that the debt is not in a state of default.
         require(
@@ -264,11 +264,11 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         // Seizure can only occur if the collateral has yet to be withdrawn.
         // When we withdraw collateral, we reset the collateral agreement
         // in a gas-efficient manner by resetting the address of the collateralizer to 0.
-        require(agreementToCollateralizer[agreementId] != address(0));
+        require(agreementToDebtor[agreementId] != address(0));
 
         // Mark agreement's collateral as withdrawn by setting the agreement's
         // collateralizer to 0x0.
-        delete agreementToCollateralizer[agreementId];
+        delete agreementToDebtor[agreementId];
 
         // Ensure debt is in a state of default.
         require(
