@@ -145,9 +145,6 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         ERC721 erc721token = ERC721(collateralTokenAddress);
         address custodian = address(this);
 
-        // Ensure that the debtor is the owner of this token ID.
-        require(erc721token.ownerOf(collateralTokenID) == debtor);
-
         // Transfer the collateral asset to this contract.
         erc721token.transferFrom(debtor, custodian, collateralTokenID);
 
