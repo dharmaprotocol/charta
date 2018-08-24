@@ -142,6 +142,9 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         */
         require(agreementToDebtor[agreementId] == address(0));
 
+        // Store debtor in mapping, effectively demarcating that the agreement is now collateralized.
+        agreementToDebtor[agreementId] = debtor;
+
         ERC721 erc721token = ERC721(collateralTokenAddress);
         address custodian = address(this);
 
@@ -150,9 +153,6 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
 
         // Ensure that this contract is in fact the owner of the collateral.
         assert(erc721token.ownerOf(collateralTokenID) == custodian);
-
-        // Store debtor in mapping, effectively demarcating that the agreement is now collateralized.
-        agreementToDebtor[agreementId] = debtor;
 
         // Emit an event that collateral has been secured.
         CollateralLocked(agreementId, collateralTokenAddress, collateralTokenID);
@@ -342,30 +342,31 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
     {
         // We use use a flag, 0 or 1, to specify whether the given collateral token's contract
         // implements the Enumerable extension. If so, we can refer to a token by its index instead
-        // of its ID to conserve space. To retrieve the flag, we take only the value of the specific
-        // parameter that encodes it, and then shift that value 26 places to the right - thereby
-        // ignoring all other parameters.
-        bytes32 isEnumerableShifted =
-            parameters & 0x0000000000000000000000000000000000000100000000000000000000000000;
+        // of its ID to conserve space.
+        bytes32 isEnumerable =
+            parameters & 0x0000000000000000000000000000000000000000000000000000000000000001;
         // Here we get the index of the ERC721 contract within the ERC721TokenRegistry.
-        // In its raw form it will be "shifted" 14 characters to the left (I.E. it has 14 "0"s after
+        // In its raw form it will be "shifted" 15 characters to the left (I.E. it has 15 "0"s after
         // the actual value), so we still need to unshift it.
         bytes32 collateralContractIndexShifted =
-            parameters & 0x00000000000000000000000000000000000000ffffffffffff00000000000000;
+            parameters & 0x0000000000000000000000000000000000000ffffffffffff000000000000000;
         // We get the id or index of the ERC721 token associated with the ERC721 contract.
-        bytes32 tokenRef =
-            parameters & 0x00000000000000000000000000000000000000000000000000ffffffffffffff;
+        // To retrieve this token reference, we take only the value of the specific
+        // parameters that encode it, and then shift that value 1 place to the right - thereby
+        // ignoring all other parameters.
+        bytes32 tokenRefShifted =
+            parameters & 0x0000000000000000000000000000000000000000000000000ffffffffffffff0;
 
-        // Shift the flag 26 spaces to the right.
-        uint isEnumerable = uint(isEnumerableShifted) / 2 ** 104;
-        // Shift the contract index value 14 places to the right.
-        uint collateralContractIndex = uint(collateralContractIndexShifted) / 2 ** 56;
+        // Shift the contract index value 15 places to the right.
+        uint collateralContractIndex = uint(collateralContractIndexShifted) / 2 ** 60;
+        // Shift the token ref 1 space to the right.
+        uint tokenRef = uint(tokenRefShifted) / 2 ** 4;
 
         return (
             // Since we want to return a boolean, we return whether or not the flag is equal to 1.
-            isEnumerable == 1,
+            uint(isEnumerable) == 1,
             collateralContractIndex,
-            uint(tokenRef)
+            tokenRef
         );
     }
 
