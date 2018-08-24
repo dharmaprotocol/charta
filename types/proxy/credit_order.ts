@@ -105,6 +105,17 @@ export class CreditOrder extends SignableMessage {
             this.getSalt(),
         ]);
         const hashHex = ethUtil.bufferToHex(hash);
+        console.log(
+            this.getCreditor(),
+            this.getRepaymentRouterVersion(),
+            this.getCreditorFee().toString(),
+            this.getUnderwriter(),
+            this.getUnderwriterRiskRating().toString(),
+            this.getTermsContract(),
+            this.getTermsContractParameters(),
+            this.getExpiration().toString(),
+            this.getSalt().toString(),
+        );
         return hashHex;
     }
 

@@ -37,13 +37,9 @@ contract CreditorProxy is Pausable {
     using SafeMath for uint;
 
     enum Errors {
-        CREDITOR_MISSING,
-
-        // Order submitted does not match what creditor agreed upon
-        ORDER_INVALID_NON_CONSENSUAL,
-
-        // Order cancelled by the creditor
-        ORDER_CANCELLED
+        CREDIT_ORDER_CANCELLED,
+        CREDIT_ORDER_NON_CONSENSUAL,
+        CREDITOR_BALANCE_OR_ALLOWANCE_INSUFFICIENT
     }
 
     DebtToken public debtToken;
@@ -63,6 +59,13 @@ contract CreditorProxy is Pausable {
         uint indexed _creditorNonce
     );
 
+    event LogDebug(
+        bytes32 arg1,
+        bytes32 arg2,
+        bytes32 arg3,
+        bytes32 arg4
+    );
+
     event LogCreditOrderFilled(
         address indexed _creditor,
         uint indexed _creditorNonce,
@@ -71,7 +74,20 @@ contract CreditorProxy is Pausable {
 
     event LogError(
         uint8 indexed _errorId,
+        address indexed _creditor,
         bytes32 indexed _creditorCommitmentHash
+    );
+
+    event LogCreditorCommitment(
+        address creditor,
+        address repaymentVersion,
+        uint creditorFee,
+        address underwriter,
+        uint underwriterRiskRating,
+        address termsContract,
+        bytes32 termsContractParameters,
+        uint commitmentExpirationTimestampInSec,
+        uint salt
     );
 
     struct CreditorCommitment {
@@ -82,8 +98,8 @@ contract CreditorProxy is Pausable {
         uint underwriterRiskRating;
         address termsContract;
         bytes32 termsContractParameters;
-        uint salt;
         uint commitmentExpirationTimestampInSec;
+        uint salt;
         bytes32 creditorCommitmentHash;
     }
 
@@ -127,11 +143,13 @@ contract CreditorProxy is Pausable {
     whenNotPaused
     returns (bytes32 _agreementId)
     {
+
         CreditorCommitment memory creditorCommitment = getCreditorCommitment(
             creditor, orderAddresses, orderValues, orderBytes32
         );
 
         if (!assertNoReplay(creditorCommitment.creditorCommitmentHash)) { 
+            LogError(uint8(Errors.CREDIT_ORDER_CANCELLED), creditor, creditorCommitment.creditorCommitmentHash);
             return NULL_ISSUANCE_HASH; 
         }
 
@@ -142,22 +160,33 @@ contract CreditorProxy is Pausable {
             signaturesR[1],
             signaturesS[1]
         )) {
+            LogError(uint8(Errors.CREDIT_ORDER_NON_CONSENSUAL), creditor, creditorCommitment.creditorCommitmentHash);
             return NULL_ISSUANCE_HASH;
         }
 
         uint totalCreditorPayment = orderValues[2].add(creditorCommitment.creditorFee);
 
         if (!assertExternalBalanceAndAllowanceInvariants(creditor, orderAddresses[4], totalCreditorPayment)) {
+            LogError(
+                uint8(Errors.CREDITOR_BALANCE_OR_ALLOWANCE_INSUFFICIENT),
+                creditor,
+                creditorCommitment.creditorCommitmentHash
+            );
             return NULL_ISSUANCE_HASH;
         }
 
         // Transfer principal to creditorProxy
         if (totalCreditorPayment > 0) {
-            require(transferTokensFrom(orderAddresses[4], creditor, address(this), totalCreditorPayment));
+            require(transferTokensFrom(
+                orderAddresses[4],
+                creditor,
+                address(this),
+                totalCreditorPayment
+            ));
         }
 
         // Fill debt order as creditor
-        bytes32 creditOrderAgreementId = debtKernel.fillDebtOrder(
+        bytes32 agreementId = debtKernel.fillDebtOrder(
             address(this),
             orderAddresses,
             orderValues,
@@ -168,14 +197,16 @@ contract CreditorProxy is Pausable {
         );
 
         // cancel credit order if fillDebtOrder succeeded
-        if (creditOrderAgreementId != NULL_ISSUANCE_HASH) {
+        if (agreementId != NULL_ISSUANCE_HASH) {
             creditOrderCancelled[creditorCommitment.creditorCommitmentHash] = true;
         }
 
         // transfer debt token to real creditor
-        debtToken.transferFrom(address(this), creditor, uint256(creditOrderAgreementId));
+        debtToken.transferFrom(address(this), creditor, uint256(agreementId));
 
-        return creditOrderAgreementId;
+        LogCreditOrderFilled(creditor, orderValues[1], agreementId);
+
+        return agreementId;
     }
 
     ////////////////////////
@@ -205,8 +236,8 @@ contract CreditorProxy is Pausable {
             underwriterRiskRating: orderValues[0],
             termsContract: orderAddresses[3],
             termsContractParameters: termsContractParameters[0],
-            salt: orderValues[2],
             commitmentExpirationTimestampInSec: orderValues[7],
+            salt: orderValues[1],
             creditorCommitmentHash: bytes32(0)
         });
 
@@ -236,6 +267,20 @@ contract CreditorProxy is Pausable {
     view
     returns (bytes32 _creditorMessageHash)
     {
+        /*
+        LogCreditorCommitment(
+            creditorCommitment.creditor,
+            creditorCommitment.repaymentVersion,
+            creditorCommitment.creditorFee,
+            creditorCommitment.underwriter,
+            creditorCommitment.underwriterRiskRating,
+            creditorCommitment.termsContract,
+            creditorCommitment.termsContractParameters,
+            creditorCommitment.commitmentExpirationTimestampInSec,
+            creditorCommitment.salt
+        );
+       */
+
         return keccak256(
             creditorCommitment.creditor,
             creditorCommitment.repaymentVersion,
@@ -289,8 +334,34 @@ contract CreditorProxy is Pausable {
     {
         if (getBalance(principalToken, creditor) < totalCreditorPayment ||
             getAllowance(principalToken, creditor) < totalCreditorPayment) {
+
+            if (getAllowance(principalToken, creditor) < totalCreditorPayment) {
+                LogDebug(
+                    bytes32(getBalance(principalToken, creditor)),
+                    bytes32(getAllowance(principalToken, creditor)),
+                    bytes32(totalCreditorPayment),
+                    bytes32(2)
+                );
+            }
+
+            if (getBalance(principalToken, creditor) < totalCreditorPayment) {
+                LogDebug(
+                    bytes32(getBalance(principalToken, creditor)),
+                    bytes32(getAllowance(principalToken, creditor)),
+                    bytes32(totalCreditorPayment),
+                    bytes32(3)
+                );
+            }
+
             return false;
         }
+
+        LogDebug(
+            bytes32(getBalance(principalToken, creditor)),
+            bytes32(getBalance(principalToken, creditor)),
+            bytes32(totalCreditorPayment),
+            bytes32(1)
+        );
         return true;
     }
 
