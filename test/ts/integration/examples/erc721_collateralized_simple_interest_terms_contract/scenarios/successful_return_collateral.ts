@@ -4,7 +4,6 @@ import * as _ from "lodash";
 import * as Units from "../../../../test_utils/units";
 
 import { DEFAULT_RETURN_COLLATERAL_ARGS, ReturnCollateralScenario } from "./";
-import { DEFAULT_REGISTER_TERM_START_ARGS } from "./index";
 
 const greaterRepaymentAmount = _.clone(DEFAULT_RETURN_COLLATERAL_ARGS.repaymentAmount)
     .add(Units.ether(1));

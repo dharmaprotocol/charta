@@ -1,10 +1,9 @@
+// External libraries
 import { BigNumber } from "bignumber.js";
 import * as Units from "../../../../test_utils/units";
-
-import {
-    SimpleInterestContractTerms,
-    SimpleInterestParameters,
-} from "../../../../factories/terms_contract_parameters";
+// Terms
+import { SimpleInterestContractTerms } from "../../../../factories/terms_contract_parameters";
+// Types
 import { DummyTokenContract } from "../../../../../../types/generated/dummy_token";
 import { SignedDebtOrder } from "../../../../../../types/kernel/debt_order";
 
@@ -26,8 +25,6 @@ export const DEFAULT_REGISTER_TERM_START_ARGS = {
     succeeds: true,
     isCryptoKitty: false,
     reverts: false,
-    termsContractParameters: (terms: SimpleInterestContractTerms) =>
-        SimpleInterestParameters.pack(terms),
 };
 
 export const DEFAULT_RETURN_COLLATERAL_ARGS = {
@@ -92,7 +89,7 @@ export const DEFAULT_REGISTER_REPAYMENT_ARGS = {
     reverts: false,
 };
 
-export interface RegisterRepaymentScenario {
+interface BaseScenario {
     // The test's description
     description: string;
     // The debt order's principal amount.
@@ -103,15 +100,6 @@ export interface RegisterRepaymentScenario {
     amortizationUnitType: BigNumber;
     // The number of units of the given amortization type, e.g. 4 hours, for the debt order.
     termLengthUnits: BigNumber;
-    // The amount that the payer is attempting to repay.
-    repaymentAmount: BigNumber;
-    // The token used for repayments.
-    repaymentToken: (
-        principalToken: DummyTokenContract,
-        otherToken: DummyTokenContract,
-    ) => DummyTokenContract;
-    // The debt order to use in this scenario.
-    debtOrder: (debtOrder: SignedDebtOrder) => SignedDebtOrder;
     debtorFee: BigNumber;
     // Collateralization parameters.
     collateralId: BigNumber;
@@ -122,26 +110,26 @@ export interface RegisterRepaymentScenario {
     collateralTokenInRegistry: boolean;
     // True if repayment gets logged.
     succeeds: boolean;
+    isCryptoKitty: boolean;
     // True if the transaction is reverted.
     reverts: boolean;
-    isCryptoKitty: boolean;
+}
+
+export interface RegisterRepaymentScenario extends BaseScenario {
+    // The token used for repayments.
+    repaymentToken: (
+        principalToken: DummyTokenContract,
+        otherToken: DummyTokenContract,
+    ) => DummyTokenContract;
+    // The amount that the payer is attempting to repay.
+    repaymentAmount: BigNumber;
+    // The debt order to use in this scenario.
+    debtOrder: (debtOrder: SignedDebtOrder) => SignedDebtOrder;
     // True if the repayment makes a payment on behalf of the debtor in the scenario.
     repayFromRouter: boolean;
 }
 
-export interface ReturnCollateralScenario {
-    // The test's description
-    description: string;
-    // The debt order's principal amount.
-    principalAmount: BigNumber;
-    // The debt order's interest rate (in fixed point).
-    interestRateFixedPoint: BigNumber;
-    // The index for amortization type, e.g. 0 for hourly, for debt order.
-    amortizationUnitType: BigNumber;
-    // The number of units of the given amortization type, e.g. 4 hours, for the debt order.
-    termLengthUnits: BigNumber;
-    // The amount that the payer is attempting to repay.
-    repaymentAmount: BigNumber;
+export interface ReturnCollateralScenario extends BaseScenario {
     // The token used for repayments.
     repaymentToken: (
         principalToken: DummyTokenContract,
@@ -149,34 +137,11 @@ export interface ReturnCollateralScenario {
     ) => DummyTokenContract;
     // The debt order to use in this scenario.
     debtOrder: (debtOrder: SignedDebtOrder) => SignedDebtOrder;
-    debtorFee: BigNumber;
-    // Collateralization parameters.
-    collateralId: BigNumber;
-    collateralToken: string;
-    // True if the index associated with the principal token is in the token registry
-    principalTokenInRegistry: boolean;
-    // True if the index associated with the collateral token is in the token registry
-    collateralTokenInRegistry: boolean;
-    // True if repayment gets logged.
-    succeeds: boolean;
-    isCryptoKitty: boolean;
-    // True if the transaction is reverted.
-    reverts: boolean;
+    // The amount that the payer is attempting to repay.
+    repaymentAmount: BigNumber;
 }
 
-export interface SeizeCollateralScenario {
-    // The test's description
-    description: string;
-    // The debt order's principal amount.
-    principalAmount: BigNumber;
-    // The debt order's interest rate (in fixed point).
-    interestRateFixedPoint: BigNumber;
-    // The index for amortization type, e.g. 0 for hourly, for debt order.
-    amortizationUnitType: BigNumber;
-    // The number of units of the given amortization type, e.g. 4 hours, for the debt order.
-    termLengthUnits: BigNumber;
-    // The amount that the payer is attempting to repay.
-    repaymentAmount: BigNumber;
+export interface SeizeCollateralScenario extends BaseScenario {
     // The token used for repayments.
     repaymentToken: (
         principalToken: DummyTokenContract,
@@ -184,50 +149,14 @@ export interface SeizeCollateralScenario {
     ) => DummyTokenContract;
     // The debt order to use in this scenario.
     debtOrder: (debtOrder: SignedDebtOrder) => SignedDebtOrder;
-    debtorFee: BigNumber;
-    // Collateralization parameters.
-    collateralId: BigNumber;
-    collateralToken: string;
-    // True if the index associated with the principal token is in the token registry
-    principalTokenInRegistry: boolean;
-    // True if the index associated with the collateral token is in the token registry
-    collateralTokenInRegistry: boolean;
-    // True if repayment gets logged.
-    succeeds: boolean;
-    isCryptoKitty: boolean;
+    // The amount that the payer is attempting to repay.
+    repaymentAmount: BigNumber;
     secondsSinceFill: number;
-    // True if the transaction is reverted.
-    reverts: boolean;
 }
 
-export interface RegisterTermStartScenario {
-    // The test's description
-    description: string;
-    // The debt order's principal amount.
-    principalAmount: BigNumber;
-    // The debt order's interest rate (in fixed point).
-    interestRateFixedPoint: BigNumber;
-    // The index for amortization type, e.g. 0 for hourly, for debt order.
-    amortizationUnitType: BigNumber;
-    // The number of units of the given amortization type, e.g. 4 hours, for the debt order.
-    termLengthUnits: BigNumber;
-    // Given some contract terms, returns a packed version to be used in the scenario.
-    termsContractParameters: (terms: SimpleInterestContractTerms) => string;
+export interface RegisterTermStartScenario extends BaseScenario {
     // True if the terms contract gets granted permission to call `collateralize` on the Collateralizer contract.
     permissionToCollateralize: boolean;
-    debtorFee: BigNumber;
-    // Collateralization parameters.
-    collateralId: BigNumber;
-    collateralToken: string;
-    // True if the index associated with the principal token is in the token registry
-    principalTokenInRegistry: boolean;
-    // True if the index associated with the collateral token is in the token registry
-    collateralTokenInRegistry: boolean;
-    // True if the scenario does not revert and the terms contract is started.
-    succeeds: boolean;
-    // True if the transaction reverts during the scenario.
-    reverts: boolean;
-    isCryptoKitty: boolean;
     // True if registerTermStart is called by the debt kernel upon an order being filled.
     invokedByDebtKernel: boolean;
 }
