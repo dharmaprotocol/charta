@@ -30,10 +30,11 @@ import {PermissionsLib, PermissionEvents} from "./libraries/PermissionsLib.sol";
 
 
 /**
-  * Contains functionality for collateralizing NFTs, by transferring them from
-  * a debtor address to this contract as a custodian.
+  * Contains functionality for collateralizing NFTs, including a `collateralize` method for
+  * transferring a debtor's asset to this contract, as well as methods for returning
+  * or seizing collateral depending on the state of the underlying debt agreement.
   *
-  * The `collateralize` method in this contract can only be called by a trusted TermsContract,
+  * NOTE: The `collateralize` method in this contract can only be called by a trusted TermsContract,
   * specified by the contract's owner.
   */
 contract ERC721Collateralizer is Pausable, PermissionEvents {
@@ -66,7 +67,7 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
 
     event CollateralReturned(
         bytes32 indexed agreementID,
-        address indexed collateralizer,
+        address indexed debtor,
         address erc721Contract,
         uint256 tokenID
     );
@@ -111,7 +112,7 @@ contract ERC721Collateralizer is Pausable, PermissionEvents {
         public
         onlyAuthorizedToCollateralize
         whenNotPaused
-    returns (bool _success)
+        returns (bool _success)
     {
         // The address of the ERC721 contract.
         address collateralTokenAddress;
