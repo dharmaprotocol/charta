@@ -48,22 +48,15 @@ contract CreditorProxy is Pausable {
     // solhint-disable-next-line var-name-mixedcase
     address public TOKEN_TRANSFER_PROXY;
     bytes32 constant public NULL_ISSUANCE_HASH = bytes32(0);
-
     uint16 constant public EXTERNAL_QUERY_GAS_LIMIT = 8000;
 
-    mapping (address => uint) public creditorNonce;
     mapping (bytes32 => bool) public creditOrderCancelled;
+
+    //event LogDebug(bytes32 arg1, bytes32 arg2, bytes32 arg3, bytes32 arg4);
 
     event LogCreditOrderCancelled(
         address indexed _creditor,
         uint indexed _creditorNonce
-    );
-
-    event LogDebug(
-        bytes32 arg1,
-        bytes32 arg2,
-        bytes32 arg3,
-        bytes32 arg4
     );
 
     event LogCreditOrderFilled(
@@ -76,18 +69,6 @@ contract CreditorProxy is Pausable {
         uint8 indexed _errorId,
         address indexed _creditor,
         bytes32 indexed _creditorCommitmentHash
-    );
-
-    event LogCreditorCommitment(
-        address creditor,
-        address repaymentVersion,
-        uint creditorFee,
-        address underwriter,
-        uint underwriterRiskRating,
-        address termsContract,
-        bytes32 termsContractParameters,
-        uint commitmentExpirationTimestampInSec,
-        uint salt
     );
 
     struct CreditorCommitment {
@@ -103,21 +84,20 @@ contract CreditorProxy is Pausable {
         bytes32 creditorCommitmentHash;
     }
 
-    function CreditorProxy(address[3] addresses)
+    function CreditorProxy(address _tokenTransferProxy, address _debtToken, address _debtKernel)
         public
     {
-        TOKEN_TRANSFER_PROXY = addresses[0];
-        debtToken = DebtToken(addresses[1]);
-        debtKernel = DebtKernel(addresses[2]);
+        TOKEN_TRANSFER_PROXY = _tokenTransferProxy;
+        debtToken = DebtToken(_debtToken);
+        debtKernel = DebtKernel(_debtKernel);
     }
-
 
     /**
      * Allows creditor to prevent a credit
      * issuance in which they're involved from being used in
      * a future debt order.
      */
-    function cancelCreditorCommitment(address creditor, bytes32 creditorCommitmentHash)
+    function cancelCreditOrder(address creditor, bytes32 creditorCommitmentHash)
         public
         whenNotPaused
     {
@@ -136,14 +116,13 @@ contract CreditorProxy is Pausable {
         uint[8] orderValues, // rr, salt, pa, uwFee, rFee, cFee, dFee, expTime
         bytes32[1] orderBytes32, // tcParams
         uint8[3] signaturesV, // debtV, credV, uwV
-        bytes32[3] signaturesR, //
-        bytes32[3] signaturesS //
+        bytes32[3] signaturesR,
+        bytes32[3] signaturesS
     )
     public
     whenNotPaused
     returns (bytes32 _agreementId)
     {
-
         CreditorCommitment memory creditorCommitment = getCreditorCommitment(
             creditor, orderAddresses, orderValues, orderBytes32
         );
@@ -202,7 +181,7 @@ contract CreditorProxy is Pausable {
         }
 
         // transfer debt token to real creditor
-        debtToken.transferFrom(address(this), creditor, uint256(agreementId));
+        debtToken.transfer(creditor, uint256(agreementId));
 
         LogCreditOrderFilled(creditor, orderValues[1], agreementId);
 
@@ -213,11 +192,11 @@ contract CreditorProxy is Pausable {
     // INTERNAL FUNCTIONS //
     ////////////////////////
 
+
     /*
      * Checks if creditor's debt order matches debt order submited by debtor/relayer
      * except missing debtor address
      */
-
     function getCreditorCommitment(
         address creditor,
         address[6] orderAddresses,
@@ -240,9 +219,7 @@ contract CreditorProxy is Pausable {
             salt: orderValues[1],
             creditorCommitmentHash: bytes32(0)
         });
-
         creditorCommitment.creditorCommitmentHash = getCreditorCommitmentHash(creditorCommitment);
-
         return creditorCommitment;
     }
 
@@ -267,20 +244,6 @@ contract CreditorProxy is Pausable {
     view
     returns (bytes32 _creditorMessageHash)
     {
-        /*
-        LogCreditorCommitment(
-            creditorCommitment.creditor,
-            creditorCommitment.repaymentVersion,
-            creditorCommitment.creditorFee,
-            creditorCommitment.underwriter,
-            creditorCommitment.underwriterRiskRating,
-            creditorCommitment.termsContract,
-            creditorCommitment.termsContractParameters,
-            creditorCommitment.commitmentExpirationTimestampInSec,
-            creditorCommitment.salt
-        );
-       */
-
         return keccak256(
             creditorCommitment.creditor,
             creditorCommitment.repaymentVersion,
@@ -334,34 +297,13 @@ contract CreditorProxy is Pausable {
     {
         if (getBalance(principalToken, creditor) < totalCreditorPayment ||
             getAllowance(principalToken, creditor) < totalCreditorPayment) {
-
-            if (getAllowance(principalToken, creditor) < totalCreditorPayment) {
-                LogDebug(
-                    bytes32(getBalance(principalToken, creditor)),
-                    bytes32(getAllowance(principalToken, creditor)),
-                    bytes32(totalCreditorPayment),
-                    bytes32(2)
-                );
-            }
-
-            if (getBalance(principalToken, creditor) < totalCreditorPayment) {
-                LogDebug(
-                    bytes32(getBalance(principalToken, creditor)),
-                    bytes32(getAllowance(principalToken, creditor)),
-                    bytes32(totalCreditorPayment),
-                    bytes32(3)
-                );
-            }
-
             return false;
         }
 
-        LogDebug(
-            bytes32(getBalance(principalToken, creditor)),
-            bytes32(getBalance(principalToken, creditor)),
-            bytes32(totalCreditorPayment),
-            bytes32(1)
-        );
+        if (getAllowance(principalToken, address(this)) < totalCreditorPayment) {
+            require(setAllowance(principalToken, totalCreditorPayment));
+        }
+
         return true;
     }
 
@@ -395,6 +337,23 @@ contract CreditorProxy is Pausable {
     {
         // Limit gas to prevent reentrancy.
         return ERC20(token).allowance.gas(EXTERNAL_QUERY_GAS_LIMIT)(owner, TOKEN_TRANSFER_PROXY);
+    }
+
+    /**
+     * Helper function for setting this address' allowance to the 0x transfer proxy.
+     */
+    function setAllowance(
+        address token,
+        uint amount
+    )
+        internal
+        returns (bool _success)
+    {
+        // Limit gas to prevent reentrancy.
+        return ERC20(token).approve.gas(EXTERNAL_QUERY_GAS_LIMIT)(
+            TOKEN_TRANSFER_PROXY,
+            amount
+        );
     }
 
 

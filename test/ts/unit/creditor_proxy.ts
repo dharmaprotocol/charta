@@ -8,6 +8,7 @@ import * as Web3 from "web3";
 import * as Units from "../test_utils/units";
 
 import { LogError, LogCreditOrderFilled, LogCreditOrderCancelled } from "../logs/creditor_proxy";
+import { LogDebtOrderFilled } from "../logs/creditor_proxy";
 
 import { CreditorProxyContract } from "../../../types/generated/creditor_proxy";
 import { DebtKernelContract } from "../../../types/generated/debt_kernel";
@@ -120,6 +121,10 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
             TX_DEFAULTS,
         );
 
+        await kernel.setDebtToken.sendTransactionAsync(mockDebtToken.address, {
+            from: CONTRACT_OWNER,
+        });
+
         // Load current Repayment Router for use as a version address in the Issuance
         // commitments
         repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
@@ -206,10 +211,15 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
         const testOrderFill = (filler: string, setupCreditOrder: () => Promise<void>) => {
             return () => {
                 let creditor = CREDITOR_1;
-                let orderFilledLog: ABIDecoder.DecodedLog;
+                let debtOrderFilledLog: ABIDecoder.DecodedLog;
+                let creditOrderFilledLog: ABIDecoder.DecodedLog;
 
                 before(async () => {
                     await setupCreditOrder();
+
+                    const creditorPayment = creditOrder
+                        .getPrincipalAmount()
+                        .plus(creditOrder.getCreditorFee());
 
                     await mockDebtToken.reset.sendTransactionAsync();
                     await mockDebtToken.mockCreateReturnValue.sendTransactionAsync(
@@ -219,12 +229,22 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
                     await mockPrincipalToken.reset.sendTransactionAsync();
                     await mockPrincipalToken.mockBalanceOfFor.sendTransactionAsync(
                         creditOrder.getCreditor(),
-                        creditOrder.getPrincipalAmount().plus(creditOrder.getCreditorFee()),
+                        creditorPayment,
                     );
+                    await mockPrincipalToken.mockBalanceOfFor.sendTransactionAsync(
+                        creditorProxy.address,
+                        creditorPayment,
+                    );
+
                     await mockPrincipalToken.mockAllowanceFor.sendTransactionAsync(
                         creditOrder.getCreditor(),
                         mockTokenTransferProxy.address,
-                        creditOrder.getPrincipalAmount().plus(creditOrder.getCreditorFee()),
+                        creditorPayment,
+                    );
+                    await mockPrincipalToken.mockAllowanceFor.sendTransactionAsync(
+                        creditorProxy.address,
+                        mockTokenTransferProxy.address,
+                        creditorPayment,
                     );
 
                     await mockTermsContract.reset.sendTransactionAsync();
@@ -246,33 +266,24 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
                     );
 
                     const receipt = await web3.eth.getTransactionReceipt(txHash);
-                    [orderFilledLog] = _.compact(ABIDecoder.decodeLogs(receipt.logs));
+                    [debtOrderFilledLog, creditOrderFilledLog] = _.compact(
+                        ABIDecoder.decodeLogs(receipt.logs),
+                    );
                 });
 
-                it("should emit order submitted log", () => {
-                    console.log(
-                        `creditor commitment hash: ${creditOrder.getCreditorCommitmentHash()}`,
-                    );
-                    expect(orderFilledLog).to.deep.equal(
+                it("should emit creditOrderFilled Log", () => {
+                    expect(creditOrderFilledLog).to.deep.equal(
                         LogCreditOrderFilled(
                             creditorProxy.address,
                             creditor,
                             creditOrder.getSalt(),
-                            NULL_ISSUANCE_HASH,
+                            creditOrder.getAgreementId(),
                         ),
                     );
                 });
 
                 it("should transfer principal + creditor fees to creditorProxy", async () => {
                     if (creditOrder.getPrincipalAmount().greaterThan(0)) {
-                        console.log(`token address = ${mockPrincipalToken.address}`);
-                        console.log(`creditor address = ${creditor}`);
-                        console.log(`proxy address = ${creditorProxy.address}`);
-                        console.log(
-                            `principal plus creditor fee = ${creditOrder
-                                .getPrincipalAmount()
-                                .plus(creditOrder.getCreditorFee())}`,
-                        );
                         await expect(
                             mockTokenTransferProxy.wasTransferFromCalledWith.callAsync(
                                 mockPrincipalToken.address,
