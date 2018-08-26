@@ -8,7 +8,7 @@ import * as Web3 from "web3";
 import * as Units from "../test_utils/units";
 
 import { LogError, LogCreditOrderFilled, LogCreditOrderCancelled } from "../logs/creditor_proxy";
-import { LogDebtOrderFilled } from "../logs/creditor_proxy";
+import { LogDebtOrderFilled } from "../logs/debt_kernel";
 
 import { CreditorProxyContract } from "../../../types/generated/creditor_proxy";
 import { DebtKernelContract } from "../../../types/generated/debt_kernel";
@@ -271,17 +271,6 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
                     );
                 });
 
-                it("should emit creditOrderFilled Log", () => {
-                    expect(creditOrderFilledLog).to.deep.equal(
-                        LogCreditOrderFilled(
-                            creditorProxy.address,
-                            creditor,
-                            creditOrder.getSalt(),
-                            creditOrder.getAgreementId(),
-                        ),
-                    );
-                });
-
                 it("should transfer principal + creditor fees to creditorProxy", async () => {
                     if (creditOrder.getPrincipalAmount().greaterThan(0)) {
                         await expect(
@@ -294,9 +283,29 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
                         ).to.eventually.be.true;
                     }
                 });
-                it("should fill debt order as creditor", () => {});
-                it("should cancel credit order to prevent replay attacks", () => {});
-                it("should transfer a newly minted debt token to the creditor", async () => {});
+
+                it("should call the kernel's fillDebtOrder", () => {
+                });
+
+                it("should transfer a newly minted debt token to the creditor", async () => {
+                    await expect(
+                        mockDebtToken.wasTransferCalledWith.callAsync(
+                            creditOrder.getCreditor(),
+                            new BigNumber(creditOrder.getAgreementId()),
+                        ),
+                    ).to.eventually.be.true;
+                });
+
+                it("should emit creditOrderFilled Log", () => {
+                    expect(creditOrderFilledLog).to.deep.equal(
+                        LogCreditOrderFilled(
+                            creditorProxy.address,
+                            creditor,
+                            creditOrder.getSalt(),
+                            creditOrder.getAgreementId(),
+                        ),
+                    );
+                });
             };
         };
 
