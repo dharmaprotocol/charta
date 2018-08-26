@@ -8,10 +8,10 @@ import * as Web3 from "web3";
 import * as Units from "../test_utils/units";
 
 import { LogError, LogCreditOrderFilled, LogCreditOrderCancelled } from "../logs/creditor_proxy";
-import { LogDebtOrderFilled } from "../logs/debt_kernel";
+//import { LogDebtOrderFilled } from "../logs/debt_kernel";
 
 import { CreditorProxyContract } from "../../../types/generated/creditor_proxy";
-import { DebtKernelContract } from "../../../types/generated/debt_kernel";
+import { MockDebtKernelContract } from "../../../types/generated/mock_debt_kernel";
 import { MockDebtTokenContract } from "../../../types/generated/mock_debt_token";
 import { MockERC20TokenContract } from "../../../types/generated/mock_e_r_c20_token";
 import { MockTokenTransferProxyContract } from "../../../types/generated/mock_token_transfer_proxy";
@@ -39,18 +39,18 @@ const expect = chai.expect;
 const web3Utils = new Web3Utils(web3);
 
 const creditorProxyContract = artifacts.require("CreditorProxy");
-const debtKernelContract = artifacts.require("DebtKernel");
+const mockDebtKernelContract = artifacts.require("MockDebtKernel");
 const mockDebtTokenContract = artifacts.require("MockDebtToken");
 const mockTermsContractArtifacts = artifacts.require("MockTermsContract");
 
 contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
     let creditorProxy: CreditorProxyContract;
-    let kernel: DebtKernelContract;
-    let repaymentRouter: RepaymentRouterContract;
+    let mockDebtKernel: MockDebtKernelContract;
     let mockDebtToken: MockDebtTokenContract;
     let mockPrincipalToken: MockERC20TokenContract;
     let mockTokenTransferProxy: MockTokenTransferProxyContract;
     let mockTermsContract: MockTermsContractContract;
+    let repaymentRouter: RepaymentRouterContract;
 
     let orderFactory: CreditOrderFactory;
     let defaultOrderParams: { [key: string]: any };
@@ -94,36 +94,35 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
          */
 
         // Step 1: Instantiate a truffle instance of the contract.
-        const kernelContractInstance = await debtKernelContract.new(mockTokenTransferProxy.address);
+        const mockDebtKernelContractInstance = await mockDebtKernelContract.new();
         const mockTermsContractInstance = await mockTermsContractArtifacts.new();
         const creditorProxyContractInstance = await creditorProxyContract.new(
             mockTokenTransferProxy.address,
             mockDebtToken.address,
-            kernelContractInstance.address,
+            mockDebtKernelContractInstance.address,
         );
 
         // Step 2: Instantiate a web3 instance of the contract.
-        const creditorProxyWeb3ContractInstance = web3.eth
-            .contract(creditorProxyContract.abi)
-            .at(creditorProxyContractInstance.address);
-        const kernelWeb3ContractInstance = web3.eth
-            .contract(debtKernelContract.abi)
-            .at(kernelContractInstance.address);
+        const mockDebtKernelWeb3ContractInstance = web3.eth
+            .contract(mockDebtKernelContract.abi)
+            .at(mockDebtKernelContractInstance.address);
         const mockTermsContractWeb3ContractInstance = web3.eth
             .contract(mockTermsContractArtifacts.abi)
             .at(mockTermsContractInstance.address);
+        const creditorProxyWeb3ContractInstance = web3.eth
+            .contract(creditorProxyContract.abi)
+            .at(creditorProxyContractInstance.address);
 
         // Step 3: Instantiate a statically-typed version of the contract.
-        creditorProxy = new CreditorProxyContract(creditorProxyWeb3ContractInstance, TX_DEFAULTS);
-        kernel = new DebtKernelContract(kernelWeb3ContractInstance, TX_DEFAULTS);
+        mockDebtKernel = new MockDebtKernelContract(
+            mockDebtKernelWeb3ContractInstance,
+            TX_DEFAULTS,
+        );
         mockTermsContract = new MockTermsContractContract(
             mockTermsContractWeb3ContractInstance,
             TX_DEFAULTS,
         );
-
-        await kernel.setDebtToken.sendTransactionAsync(mockDebtToken.address, {
-            from: CONTRACT_OWNER,
-        });
+        creditorProxy = new CreditorProxyContract(creditorProxyWeb3ContractInstance, TX_DEFAULTS);
 
         // Load current Repayment Router for use as a version address in the Issuance
         // commitments
@@ -134,7 +133,7 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
         const latestBlockTime = await web3Utils.getLatestBlockTime();
 
         defaultOrderParams = {
-            kernelVersion: kernel.address,
+            kernelVersion: mockDebtKernel.address,
             creditor: CREDITOR_1,
             repaymentRouterVersion: repaymentRouter.address,
             debtor: DEBTOR_1,
@@ -165,8 +164,6 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
 
         // Setup ABI decoder in order to decode logs
         ABIDecoder.addABI(creditorProxyContract.abi);
-        ABIDecoder.addABI(debtKernelContract.abi);
-        ABIDecoder.addABI(mockDebtTokenContract.abi);
     };
 
     before(reset);
@@ -198,7 +195,7 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
             const [errorLog] = _.compact(ABIDecoder.decodeLogs(receipt.logs));
 
             expect(errorLog).to.deep.equal(
-                LogError(kernel.address, errorCode, order.getCreditorCommitmentHash()),
+                LogError(creditorProxy.address, errorCode, order.getCreditorCommitmentHash()),
             );
         };
 
@@ -211,7 +208,6 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
         const testOrderFill = (filler: string, setupCreditOrder: () => Promise<void>) => {
             return () => {
                 let creditor = CREDITOR_1;
-                let debtOrderFilledLog: ABIDecoder.DecodedLog;
                 let creditOrderFilledLog: ABIDecoder.DecodedLog;
 
                 before(async () => {
@@ -266,9 +262,7 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
                     );
 
                     const receipt = await web3.eth.getTransactionReceipt(txHash);
-                    [debtOrderFilledLog, creditOrderFilledLog] = _.compact(
-                        ABIDecoder.decodeLogs(receipt.logs),
-                    );
+                    [creditOrderFilledLog] = _.compact(ABIDecoder.decodeLogs(receipt.logs));
                 });
 
                 it("should transfer principal + creditor fees to creditorProxy", async () => {
@@ -284,7 +278,18 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
                     }
                 });
 
-                it("should call the kernel's fillDebtOrder", () => {
+                it("should call the kernel's fillDebtOrder", async () => {
+                    await expect(
+                        mockDebtKernel.wasFillDebtOrderCalledWith.callAsync(
+                            creditOrder.getCreditor(),
+                            creditOrder.getOrderAddresses(),
+                            creditOrder.getOrderValues(),
+                            creditOrder.getOrderBytes32(),
+                            creditOrder.getSignaturesV(),
+                            creditOrder.getSignaturesR(),
+                            creditOrder.getSignaturesS(),
+                        ),
+                    ).to.eventually.be.true;
                 });
 
                 it("should transfer a newly minted debt token to the creditor", async () => {
