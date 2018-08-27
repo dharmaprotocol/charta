@@ -22,7 +22,6 @@ import "./MockContract.sol";
 
 
 contract MockDebtKernel is MockContract {
-    /*
     function fillDebtOrder(
         address creditor,
         address[6] orderAddresses,
@@ -33,7 +32,7 @@ contract MockDebtKernel is MockContract {
         bytes32[3] signaturesS
     )
         public
-        returns (uint _agreementId)
+        returns (bytes32 _agreementId)
     {
         bytes32 argsSignature = keccak256(
             creditor,
@@ -47,7 +46,8 @@ contract MockDebtKernel is MockContract {
 
         functionCalledWithArgs("fillDebtOrder", argsSignature);
 
-        return uint(getMockReturnValue("fillDebtOrder", DEFAULT_SIGNATURE_ARGS));
+        bytes32 agreementId = getMockReturnValue("fillDebtOrder", DEFAULT_SIGNATURE_ARGS);
+        return agreementId;
     }
 
     function mockCreateReturnValue(uint _agreementId)
@@ -79,7 +79,26 @@ contract MockDebtKernel is MockContract {
             signaturesS[0]
         ));
     }
-    */
+
+function getFunctionList()
+        internal
+        returns (string[10] functionNames)
+    {
+        return [
+            "fillDebtOrder",
+            "wasFillDebtOrderCalledWith",
+            "mockCreateReturnValue",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ];
+    }
+
+    /*
     function hello(
     )
         public
@@ -88,4 +107,5 @@ contract MockDebtKernel is MockContract {
     {
         return bytes32(12345);
     }
+    */
 }
