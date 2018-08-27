@@ -10,6 +10,7 @@ module.exports = (deployer, network, accounts) => {
     const ERC721TokenRegistry = artifacts.require("ERC721TokenRegistry");
     const ERC721Collateralizer = artifacts.require("ERC721Collateralizer");
     const PermissionsLib = artifacts.require("PermissionsLib");
+    const DebtToken = artifacts.require("DebtToken");
 
     // Terms contracts.
     const ERC721CollateralizedSimpleInterestTermsContract = artifacts.require(
@@ -83,28 +84,54 @@ module.exports = (deployer, network, accounts) => {
          ********************************/
 
         if (network !== LIVE_NETWORK_ID) {
-            // Get and registry a mintable ERC721 for test purposes.
+            // Get and register ERC721s for test purposes.
+
             const mintableToken = await MintableERC721Token.deployed();
-            const mintableTokenAddress = mintableToken.address;
-            const mintableTokenSymbol = await mintableToken.symbol();
-            const mintableTokenName = await mintableToken.name();
+            const cryptoKittiesToken = await KittyCore.deployed();
+            const debtToken = await DebtToken.deployed();
 
-            await tokenRegistry.setTokenAttributes(
-                mintableTokenSymbol,
-                mintableTokenAddress,
-                mintableTokenName,
-                { from: CONTRACT_OWNER }
+            const developmentTokens = [
+                mintableToken,
+                cryptoKittiesToken,
+                debtToken,
+            ];
+
+            console.log(`Deploying ${developmentTokens.length} ERC721 Token Contracts`);
+
+            // Synchronously register all tokens using CONTRACT_OWNER before transferring
+            // ownership to the multi-sig wallet.
+            await Promise.all(
+                developmentTokens.map((tokenContract) => {
+                    return new Promise(async (resolve) => {
+                        const tokenAddress = tokenContract.address;
+                        const tokenSymbol = await tokenContract.symbol();
+                        const tokenName = await tokenContract.name();
+
+                        // Log progress for debugging during migrations.
+                        console.log(`\t... Deploying ERC721 (${tokenSymbol}):`, tokenAddress);
+
+                        await tokenRegistry.setTokenAttributes(
+                            tokenSymbol,
+                            tokenAddress,
+                            tokenName,
+                            { from: CONTRACT_OWNER },
+                        );
+
+                        resolve();
+                    });
+                }),
             );
+        } else {
+            // Use live ERC721 contract data
+            ERC721_CONTRACT_DATA.map(async (contractData) => {
+                await tokenRegistry.setTokenAttributes(
+                    contractData.symbol,
+                    contractData.address,
+                    contractData.name,
+                    { from: CONTRACT_OWNER }
+                );
+            });
         }
-
-        ERC721_CONTRACT_DATA.map(async (contractData) => {
-            await tokenRegistry.setTokenAttributes(
-                contractData.symbol,
-                contractData.address,
-                contractData.name,
-                { from: CONTRACT_OWNER }
-            );
-        });
 
         /**********************
          * Contract Ownership *
