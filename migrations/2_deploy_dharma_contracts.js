@@ -9,6 +9,8 @@ module.exports = (deployer, network, accounts) => {
     const DebtRegistry = artifacts.require("DebtRegistry");
     const DebtToken = artifacts.require("DebtToken");
     const DebtKernel = artifacts.require("DebtKernel");
+    // Credit proxy edit
+    const CreditorProxy = artifacts.require("CreditorProxy");
     const RepaymentRouter = artifacts.require("RepaymentRouter");
     const TokenTransferProxy = artifacts.require("TokenTransferProxy");
     const DharmaMultiSigWallet = artifacts.require("DharmaMultiSigWallet");
@@ -36,6 +38,7 @@ module.exports = (deployer, network, accounts) => {
         await deployer.deploy(TokenTransferProxy);
         await deployer.deploy(RepaymentRouter, DebtRegistry.address, TokenTransferProxy.address);
         await deployer.deploy(DebtKernel, TokenTransferProxy.address);
+        await deployer.deploy(CreditorProxy, TokenTransferProxy.address);
         await deployer.deploy(TokenRegistry).then(async () => {
             const DummyToken = artifacts.require("DummyToken");
             await configureTokenRegistry(network, accounts, TokenRegistry, DummyToken);

@@ -4,6 +4,7 @@ module.exports = (deployer, network, accounts) => {
     const DebtRegistry = artifacts.require("DebtRegistry");
     const DebtToken = artifacts.require("DebtToken");
     const DebtKernel = artifacts.require("DebtKernel");
+    const CreditorProxy = artifacts.require("CreditorProxy");
     const TokenTransferProxy = artifacts.require("TokenTransferProxy");
     const RepaymentRouter = artifacts.require("RepaymentRouter");
     const Collateralizer = artifacts.require("Collateralizer");
@@ -16,6 +17,7 @@ module.exports = (deployer, network, accounts) => {
         const token = await DebtToken.deployed();
         const kernel = await DebtKernel.deployed();
         const proxy = await TokenTransferProxy.deployed();
+        const creditorProxy = await CreditorProxy.deployed();
         const router = await RepaymentRouter.deployed();
         const collateralizer = await Collateralizer.deployed();
         const collateralizedSimpleInterestTermsContract = await CollateralizedSimpleInterestTermsContract.deployed();
@@ -29,6 +31,12 @@ module.exports = (deployer, network, accounts) => {
 
         // Set kernel to point at current debt token contract
         await kernel.setDebtToken(token.address);
+
+        // Set creditor proxy to point at current debt token contract
+        await creditorProxy.setDebtToken(token.address);
+        
+        // Set creditor proxy to point at current debt kernel
+        await creditorProxy.setDebtKernel(kernel.address);
 
         // Authorize kernel to make `transferFrom` calls on the token transfer proxy
         await proxy.addAuthorizedTransferAgent(kernel.address);
