@@ -1,20 +1,43 @@
 {
-  "compilerOptions": {
-    "outDir": "./dist/",
-    "declaration": true,
-    "declarationDir": "./dist/types",
-    "sourceMap": true,
-    "noImplicitAny": false,
-    "lib": ["es2015", "es2016", "es2017"],
-    "module": "commonjs",
-    "baseUrl": ".",
-    "rootDir": ".",
-    "target": "es6",
-    "types": []
-  },
-  "include": [
-    "node_modules/web3-typescript-typings/index.d.ts",
-    "artifacts/*.ts",
-    "artifacts/ts/*.ts"
-  ]
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "declaration": true,
+        "declarationDir": "./dist/types",
+        "sourceMap": true,
+        "noImplicitAny": false,
+        "lib": [
+            "es2015",
+            "es2016",
+            "es2017"
+        ],
+        "module": "commonjs",
+        "baseUrl": ".",
+        "rootDir": ".",
+        "target": "es6",
+        "types": []
+    },
+    "files": [
+        "node_modules/web3-typescript-typings/index.d.ts",
+        "artifacts/index.ts",
+        "artifacts/ts/DebtKernel",
+        "artifacts/ts/DebtRegistry",
+        "artifacts/ts/RepaymentRouter",
+        "artifacts/ts/TokenTransferProxy",
+        "artifacts/ts/ContractRegistry",
+        "artifacts/ts/TermsContract",
+        "artifacts/ts/DebtToken",
+        "artifacts/ts/TokenRegistry",
+        "artifacts/ts/Collateralizer",
+        "artifacts/ts/SimpleInterestTermsContract",
+        "artifacts/ts/CollateralizedSimpleInterestTermsContract",
+        "artifacts/ts/ERC20",
+        "artifacts/ts/DummyToken",
+        "artifacts/ts/ERC721CollateralizedSimpleInterestTermsContract",
+        "artifacts/ts/ERC721Collateralizer",
+        "artifacts/ts/ERC721TokenRegistry",
+        "artifacts/ts/MintableERC721Token",
+        "artifacts/ts/ERC721Receiver",
+        "artifacts/ts/MockERC721Receiver",
+        "artifacts/ts/KittyCore"
+    ]
 }
