@@ -8,7 +8,7 @@ import * as Web3 from "web3";
 import * as Units from "../test_utils/units";
 
 import { LogError, LogCreditOrderFilled, LogCreditOrderCancelled } from "../logs/creditor_proxy";
-import { LogDebtOrderFilled } from "../logs/creditor_proxy";
+import { LogCreditOrderFilled } from "../logs/creditor_proxy";
 
 import { CreditorProxyContract } from "../../../types/generated/creditor_proxy";
 import { DebtKernelContract } from "../../../types/generated/debt_kernel";
