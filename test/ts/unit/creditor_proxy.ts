@@ -7,7 +7,7 @@ import * as moment from "moment";
 import * as Web3 from "web3";
 import * as Units from "../test_utils/units";
 
-import { LogError, LogCreditOrderFilled, LogCreditOrderCancelled } from "../logs/creditor_proxy";
+import { LogCreditOrderCancelled, LogCreditOrderFilled, LogError } from "../logs/creditor_proxy";
 
 import { CreditorProxyContract } from "../../../types/generated/creditor_proxy";
 import { MockDebtKernelContract } from "../../../types/generated/mock_debt_kernel";
@@ -169,7 +169,7 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
 
     before(reset);
 
-    describe("Initialization & Upgrades", async () => {});
+    // describe("Initialization & Upgrades", async () => {});
 
     describe("#fillCreditOrder", () => {
         let creditOrder: SignedCreditOrder;
@@ -326,5 +326,5 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
         );
     });
 
-    describe("#cancelCreditIssuance", () => {});
+    // describe("#cancelCreditIssuance", () => {});
 });
