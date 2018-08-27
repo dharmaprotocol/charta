@@ -96,6 +96,7 @@ module.exports = (deployer, network, accounts) => {
                 debtToken,
             ];
 
+            // Log progress for debugging during migrations.
             console.log(`Deploying ${developmentTokens.length} ERC721 Token Contracts`);
 
             // Synchronously register all tokens using CONTRACT_OWNER before transferring
