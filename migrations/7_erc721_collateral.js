@@ -1,4 +1,4 @@
-const { CRYPTOKITTIES_CONTRACT, LIVE_NETWORK_ID } = require("./migration_constants");
+const { CRYPTOKITTIES_CONTRACT, ERC721_CONTRACT_DATA, LIVE_NETWORK_ID } = require("./migration_constants");
 
 module.exports = (deployer, network, accounts) => {
     // Constants
@@ -63,6 +63,8 @@ module.exports = (deployer, network, accounts) => {
             ERC721Collateralizer.address,
         );
 
+        const tokenRegistry = await ERC721TokenRegistry.deployed();
+
         /*************************
          * Contract Interactions *
          ************************/
@@ -76,6 +78,34 @@ module.exports = (deployer, network, accounts) => {
             erc721CollateralizedSimpleInterestTermsContract.address
         );
 
+        /********************************
+         *  Initial Registry Contents   *
+         ********************************/
+
+        if (network !== LIVE_NETWORK_ID) {
+            // Get and registry a mintable ERC721 for test purposes.
+            const mintableToken = await MintableERC721Token.deployed();
+            const mintableTokenAddress = mintableToken.address;
+            const mintableTokenSymbol = await mintableToken.symbol();
+            const mintableTokenName = await mintableToken.name();
+
+            await tokenRegistry.setTokenAttributes(
+                mintableTokenSymbol,
+                mintableTokenAddress,
+                mintableTokenName,
+                { from: CONTRACT_OWNER }
+            );
+        }
+
+        ERC721_CONTRACT_DATA.map(async (contractData) => {
+            await tokenRegistry.setTokenAttributes(
+                contractData.symbol,
+                contractData.address,
+                contractData.name,
+                { from: CONTRACT_OWNER }
+            );
+        });
+
         /**********************
          * Contract Ownership *
          **********************/
@@ -85,8 +115,6 @@ module.exports = (deployer, network, accounts) => {
         * to the multi-sig wallet.
         */
         const wallet = await DharmaMultiSigWallet.deployed();
-
-        const tokenRegistry = await ERC721TokenRegistry.deployed();
 
         await tokenRegistry.transferOwnership(wallet.address, { from: CONTRACT_OWNER });
         await erc721Collateralizer.transferOwnership(wallet.address, { from: CONTRACT_OWNER });

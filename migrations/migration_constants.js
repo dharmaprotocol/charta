@@ -4,7 +4,7 @@ const fs = require("fs");
 const dataDir = `${projectRoot()}/data`;
 
 const ERC20_TOKEN_LIST = readJsonSync(`${dataDir}/erc20_tokens.json`);
-const ERC721_CONTRACT_ADDRESSES = readJsonSync(`${dataDir}/erc721_addresses.json`);
+const ERC721_CONTRACT_DATA = readJsonSync(`${dataDir}/erc721_contracts.json`);
 
 const OWNER_ONE = "0x5d497982326f641e0b374585ff7c1c1be9878560";
 const OWNER_TWO = "0x8f8c5ebde485dfcb64d8e6d1dea833b2d43fb9de";
@@ -79,7 +79,7 @@ module.exports = {
     NUM_INITIAL_BALANCE_HOLDERS,
     TOKEN_URI_OPERATOR,
     TOKEN_LIST: ERC20_TOKEN_LIST,
-    ERC721_CONTRACT_ADDRESSES,
+    ERC721_CONTRACT_DATA,
     CRYPTOKITTIES_CONTRACT: CRYPTOKITTIES_CONTRACT_ADDRESS,
 };
 
