@@ -84,12 +84,34 @@ contract CreditorProxy is Pausable {
         bytes32 creditorCommitmentHash;
     }
 
-    function CreditorProxy(address _tokenTransferProxy, address _debtToken, address _debtKernel)
+    function CreditorProxy(address _tokenTransferProxy)
         public
     {
         TOKEN_TRANSFER_PROXY = _tokenTransferProxy;
-        debtToken = DebtToken(_debtToken);
-        debtKernel = DebtKernel(_debtKernel);
+    }
+
+    /**
+     * Allows contract owner to set the currently used debt token contract.
+     * Function exists to maximize upgradeability of individual modules
+     * in the entire system.
+     */
+    function setDebtToken(address debtTokenAddress)
+        public
+        onlyOwner
+    {
+        debtToken = DebtToken(debtTokenAddress);
+    }
+
+    /**
+     * Allows contract owner to set the currently used debt kernel contract.
+     * Function exists to maximize upgradeability of individual modules
+     * in the entire system.
+     */
+    function setDebtKernel(address debtKernelAddress)
+        public
+        onlyOwner
+    {
+        debtKernel = DebtKernel(debtKernelAddress);
     }
 
     /**
