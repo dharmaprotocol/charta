@@ -97,8 +97,6 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
         const mockTermsContractInstance = await mockTermsContractArtifacts.new();
         const creditorProxyContractInstance = await creditorProxyContract.new(
             mockTokenTransferProxy.address,
-            mockDebtToken.address,
-            mockDebtKernelContractInstance.address,
         );
 
         // Step 2: Instantiate a web3 instance of the contract.
@@ -128,6 +126,10 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
         repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
 
         mockPrincipalToken = await MockERC20TokenContract.deployed(web3, TX_DEFAULTS);
+
+        // Setup proxy's internal variables
+        await creditorProxy.setDebtKernel.sendTransactionAsync(mockDebtKernel.address);
+        await creditorProxy.setDebtToken.sendTransactionAsync(mockDebtToken.address);
 
         const latestBlockTime = await web3Utils.getLatestBlockTime();
 
@@ -171,7 +173,6 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
 
     describe("#fillCreditOrder", () => {
         let creditOrder: SignedCreditOrder;
-        let creditor: string;
 
         const testShouldReturnError = async (
             order: SignedCreditOrder,
@@ -181,7 +182,7 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
             signaturesV?: number[],
         ) => {
             const txHash = await creditorProxy.fillCreditOrder.sendTransactionAsync(
-                creditor,
+                order.getCreditor(),
                 order.getOrderAddresses(),
                 order.getOrderValues(),
                 order.getOrderBytes32(),
@@ -206,7 +207,6 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
 
         const testOrderFill = (filler: string, setupCreditOrder: () => Promise<void>) => {
             return () => {
-                let creditor = CREDITOR_1;
                 let creditOrderFilledLog: ABIDecoder.DecodedLog;
 
                 before(async () => {
@@ -249,8 +249,13 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
                         true,
                     );
 
+                    await mockDebtKernel.reset.sendTransactionAsync();
+                    await mockDebtKernel.mockCreateReturnValue.sendTransactionAsync(
+                        creditOrder.getAgreementId(),
+                    );
+
                     const txHash = await creditorProxy.fillCreditOrder.sendTransactionAsync(
-                        creditor,
+                        creditOrder.getCreditor(),
                         creditOrder.getOrderAddresses(),
                         creditOrder.getOrderValues(),
                         creditOrder.getOrderBytes32(),
@@ -269,7 +274,7 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
                         await expect(
                             mockTokenTransferProxy.wasTransferFromCalledWith.callAsync(
                                 mockPrincipalToken.address,
-                                creditor,
+                                creditOrder.getCreditor(),
                                 creditorProxy.address,
                                 creditOrder.getPrincipalAmount().plus(creditOrder.getCreditorFee()),
                             ),
@@ -280,7 +285,7 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
                 it("should call the kernel's fillDebtOrder", async () => {
                     await expect(
                         mockDebtKernel.wasFillDebtOrderCalledWith.callAsync(
-                            creditOrder.getCreditor(),
+                            creditorProxy.address,
                             creditOrder.getOrderAddresses(),
                             creditOrder.getOrderValues(),
                             creditOrder.getOrderBytes32(),
@@ -304,7 +309,7 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
                     expect(creditOrderFilledLog).to.deep.equal(
                         LogCreditOrderFilled(
                             creditorProxy.address,
-                            creditor,
+                            creditOrder.getCreditor(),
                             creditOrder.getSalt(),
                             creditOrder.getAgreementId(),
                         ),

@@ -22,6 +22,13 @@ import "./MockContract.sol";
 
 
 contract MockDebtKernel is MockContract {
+
+    function mockCreateReturnValue(uint _agreementId)
+        public
+    {
+        mockReturnValue("fillDebtOrder", DEFAULT_SIGNATURE_ARGS, bytes32(_agreementId));
+    }
+
     function fillDebtOrder(
         address creditor,
         address[6] orderAddresses,
@@ -36,24 +43,15 @@ contract MockDebtKernel is MockContract {
     {
         bytes32 argsSignature = keccak256(
             creditor,
-            orderAddresses[0],
-            orderValues[0],
-            orderBytes32[0],
-            signaturesV[0],
-            signaturesR[0],
-            signaturesS[0]
+            orderAddresses,
+            orderValues,
+            orderBytes32,
+            signaturesV,
+            signaturesR,
+            signaturesS
         );
-
         functionCalledWithArgs("fillDebtOrder", argsSignature);
-
-        bytes32 agreementId = getMockReturnValue("fillDebtOrder", DEFAULT_SIGNATURE_ARGS);
-        return agreementId;
-    }
-
-    function mockCreateReturnValue(uint _agreementId)
-        public
-    {
-        mockReturnValue("fillDebtOrder", DEFAULT_SIGNATURE_ARGS, bytes32(_agreementId));
+        return getMockReturnValue("fillDebtOrder", DEFAULT_SIGNATURE_ARGS);
     }
 
     function wasFillDebtOrderCalledWith(
@@ -69,25 +67,26 @@ contract MockDebtKernel is MockContract {
         view
         returns (bool wasCalled)
     {
-        return wasFunctionCalledWithArgs("fillDebtOrder", keccak256(
+        bytes32 argsSignature = keccak256(
             creditor,
-            orderAddresses[0],
-            orderValues[0],
-            orderBytes32[0],
-            signaturesV[0],
-            signaturesR[0],
-            signaturesS[0]
-        ));
+            orderAddresses,
+            orderValues,
+            orderBytes32,
+            signaturesV,
+            signaturesR,
+            signaturesS
+        );
+        return wasFunctionCalledWithArgs("fillDebtOrder", argsSignature);
     }
 
-function getFunctionList()
+    function getFunctionList()
         internal
         returns (string[10] functionNames)
     {
         return [
+            "mockCreateReturnValue",
             "fillDebtOrder",
             "wasFillDebtOrderCalledWith",
-            "mockCreateReturnValue",
             "",
             "",
             "",
@@ -97,15 +96,4 @@ function getFunctionList()
             ""
         ];
     }
-
-    /*
-    function hello(
-    )
-        public
-        pure
-        returns(bytes32 _world)
-    {
-        return bytes32(12345);
-    }
-    */
 }
