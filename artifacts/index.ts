@@ -26,7 +26,9 @@ export { Collateralizer } from "./ts/Collateralizer";
 // A abstract terms contract for simple interest loans.
 export { SimpleInterestTermsContract } from "./ts/SimpleInterestTermsContract";
 // A terms contract for creating ERC20-collateralized simple interest terms debt agreements.
-export { CollateralizedSimpleInterestTermsContract } from "./ts/CollateralizedSimpleInterestTermsContract";
+export {
+    CollateralizedSimpleInterestTermsContract,
+} from "./ts/CollateralizedSimpleInterestTermsContract";
 // A wrapper for the ERC20 token standard.
 export { ERC20 } from "./ts/ERC20";
 // Used for creating test ERC20 tokens during development and on test networks like Kovan.
@@ -36,7 +38,9 @@ export { DummyToken } from "./ts/DummyToken";
  *  ERC721 Collateral Contracts *
  ********************************/
 // A terms contract for creating ERC721-collateralized simple interest debt agreements.
-export { ERC721CollateralizedSimpleInterestTermsContract } from "./ts/ERC721CollateralizedSimpleInterestTermsContract";
+export {
+    ERC721CollateralizedSimpleInterestTermsContract,
+} from "./ts/ERC721CollateralizedSimpleInterestTermsContract";
 // A contract to store (or "lock") ERC721 assets that are used in debt agreements.
 export { ERC721Collateralizer } from "./ts/ERC721Collateralizer";
 // A contract used to reference the addresses of various ERC721 contracts.
