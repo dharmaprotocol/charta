@@ -1,5 +1,4 @@
 // Test Utils
-import { BigNumberSetup } from "../../../test_utils/bignumber_setup";
 import ChaiSetup from "../../../test_utils/chai_setup";
 
 // Wrappers
@@ -41,9 +40,6 @@ import {
 // Utils
 import { multiSigExecuteAfterTimelock } from "../../../test_utils/multisig";
 import { KittyCoreContract } from "../../../../../types/generated/kitty_core";
-
-// Configure BigNumber exponentiation
-BigNumberSetup.configure();
 
 // Set up Chai
 ChaiSetup.configure();
@@ -101,34 +97,9 @@ contract("ERC721 Collateralized Simple Interest Terms Contract (Integration Test
 
         repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
 
-        // Set up a mintable ERC721 token.
         const erc721TokenContract = await MintableERC721TokenContract.deployed(web3, TX_DEFAULTS);
         const cryptoKittyContract = await KittyCoreContract.deployed(web3, TX_DEFAULTS);
-
-        const tokenAddress = erc721TokenContract.address;
-        const tokenName = await erc721TokenContract.name.callAsync();
-        const tokenSymbol = await erc721TokenContract.symbol.callAsync();
-
-        // Add the mintable token to the registry.
         const erc721TokenRegistry = await ERC721TokenRegistryContract.deployed(web3, TX_DEFAULTS);
-        const multiSig = await DharmaMultiSigWalletContract.deployed(web3, TX_DEFAULTS);
-        await multiSigExecuteAfterTimelock(
-            web3,
-            multiSig,
-            erc721TokenRegistry,
-            "setTokenAttributes",
-            ACCOUNTS,
-            [tokenSymbol, tokenAddress, tokenName],
-        );
-
-        await multiSigExecuteAfterTimelock(
-            web3,
-            multiSig,
-            erc721TokenRegistry,
-            "setTokenAttributes",
-            ACCOUNTS,
-            ["CK", cryptoKittyContract.address, "CryptoKitties"],
-        );
 
         const testAccounts = {
             UNDERWRITER,

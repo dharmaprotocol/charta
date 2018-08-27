@@ -1,0 +1,12 @@
+[
+    {
+        "name": "CryptoKitties",
+        "symbol": "CK",
+        "address": "0x06012c8cf97BEaD5deAe237070F9587f8E7A266d"
+    },
+    {
+        "name": "Dharma Debt Token",
+        "symbol": "DDT",
+        "address": "0xf7b3fc555c458c46d288ffd049ddbfb09f706df7"
+    }
+]
