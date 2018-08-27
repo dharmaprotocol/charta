@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-// The location of data files, especially relate to token and contract addresses.
+// The location of data files, especially related to token and contract addresses.
 const dataDir = `${projectRoot()}/data`;
 
 const ERC20_TOKEN_LIST = readJsonSync(`${dataDir}/erc20_tokens.json`);
