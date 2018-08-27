@@ -47,6 +47,9 @@ module.exports = (deployer, network, accounts) => {
         // Authorize collateralizer to make `transferFrom` calls on the token transfer proxy.
         await proxy.addAuthorizedTransferAgent(collateralizer.address);
 
+        // Authorize creditor proxy to make `transferFrom` calls on the token transfer proxy.
+        await proxy.addAuthorizedTransferAgent(creditorProxy.address);
+
         // Authorize the collateralized simple interest terms contract to invoke `collateralize`.
         await collateralizer.addAuthorizedCollateralizeAgent(collateralizedSimpleInterestTermsContract.address);
 
