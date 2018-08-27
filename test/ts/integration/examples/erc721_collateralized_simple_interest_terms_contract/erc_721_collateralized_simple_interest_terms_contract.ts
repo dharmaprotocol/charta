@@ -1,6 +1,4 @@
 // Test Utils
-import { BigNumber } from "bignumber.js";
-import { BigNumberSetup } from "../../../test_utils/bignumber_setup";
 import ChaiSetup from "../../../test_utils/chai_setup";
 
 // Wrappers
@@ -42,9 +40,6 @@ import {
 // Utils
 import { multiSigExecuteAfterTimelock } from "../../../test_utils/multisig";
 import { KittyCoreContract } from "../../../../../types/generated/kitty_core";
-
-// Configure BigNumber exponentiation
-BigNumberSetup.configure();
 
 // Set up Chai
 ChaiSetup.configure();
