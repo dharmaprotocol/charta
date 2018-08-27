@@ -69,8 +69,6 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
 
     let dummyREPToken: DummyTokenContract;
 
-    let incompatibleTermsContractAddress: string;
-
     let defaultOrderParams: { [key: string]: any };
     let orderFactory: CreditOrderFactory;
 
@@ -97,9 +95,6 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
         );
 
         dummyREPToken = await DummyTokenContract.at(dummyREPTokenAddress, web3, TX_DEFAULTS);
-
-        //const incompatibleTermsContract = await IncompatibleTermsContractContract.deployed( web3, TX_DEFAULTS,);
-        //incompatibleTermsContractAddress = incompatibleTermsContract.address;
 
         debtTokenContract = await DebtTokenContract.deployed(web3, TX_DEFAULTS);
         debtRegistryContract = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
@@ -157,7 +152,6 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
 
         // Setup ABI decoder in order to decode logs
         ABIDecoder.addABI(creditorProxyContract.abi);
-        //ABIDecoder.addABI(debtKernelContract.abi);
         ABIDecoder.addABI(debtTokenContract.abi);
         ABIDecoder.addABI(debtRegistryContract.abi);
     };
@@ -168,8 +162,6 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
         // Tear down ABIDecoder before next set of tests
         ABIDecoder.removeABI(creditorProxyContract.abi);
     });
-
-    describe("Initialization & Upgrades", async () => {});
 
     describe("#fillDebtOrder", () => {
         let creditOrder: SignedCreditOrder;
@@ -301,27 +293,26 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                     logs = _.compact(ABIDecoder.decodeLogs(receipt.logs));
                 });
 
-                it("should transfer principal + creditor fee to itself", async () => {
-                    //await expect();
-                });
-
-                it("should transfer debt token to creditor", async () => {
-                    /*
-                    console.log(JSON.stringify(logs, null, 2));
-                    await expect(
-                        debtTokenContract.ownerOf.callAsync(new BigNumber(creditOrder.getHash())),
-                    ).to.eventually.equal(creditOrder.getCreditor());
-                    */
-                });
-
-                it("should emit LogCreditOrderFilled", async () => {
-                    console.log(JSON.stringify(logs, null, 2));
-                    console.log(
-                        `principalToken: ${
-                            principalToken.address
-                        } vs ${creditOrder.getPrincipalToken()}`,
+                it("should deduct principal + creditor fee from creditor account", async () => {
+                    const balance = await principalToken.balanceOf.callAsync(
+                        creditOrder.getCreditor(),
                     );
-                    expect(logs[1]).to.deep.equal(
+                    const expectedBalance =
+                        creditorBalanceBefore -
+                        creditOrder.getPrincipalAmount().plus(creditOrder.getCreditorFee());
+                    expect(balance.toString()).to.equal(expectedBalance.toString());
+                });
+
+                it("should transfer newly minted debt token to creditor", async () => {
+                    await expect(
+                        debtTokenContract.ownerOf.callAsync(
+                            new BigNumber(creditOrder.getAgreementId()),
+                        ),
+                    ).to.eventually.equal(creditOrder.getCreditor());
+                });
+
+                it("should emit creditOrderFilled log", async () => {
+                    expect(logs[9]).to.deep.equal(
                         LogCreditOrderFilled(
                             creditorProxy.address,
                             creditOrder.getCreditor(),
@@ -334,7 +325,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
         };
 
         describe(
-            "..with valid credit order",
+            "..with valid, consentual credit order",
             testOrderFill(CONTRACT_OWNER, async () => {
                 creditOrder = await orderFactory.generateCreditOrder();
             }),
