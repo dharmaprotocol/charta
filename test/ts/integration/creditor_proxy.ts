@@ -8,10 +8,6 @@ import { BigNumber } from "bignumber.js";
 
 // Test Utils
 import * as Units from "../test_utils/units";
-import {
-    multiSigExecuteAfterTimelock,
-    multiSigExecutePauseImmediately,
-} from "../test_utils/multisig";
 import ChaiSetup from "../test_utils/chai_setup";
 import { BigNumberSetup } from "../test_utils/bignumber_setup";
 import { Web3Utils } from "../../../utils/web3_utils";
@@ -20,8 +16,6 @@ import { Web3Utils } from "../../../utils/web3_utils";
 import { SignedCreditOrder } from "../../../types/proxy/credit_order";
 
 // Logs
-import { LogTransfer } from "../logs/debt_token";
-import { LogInsertEntry } from "../logs/debt_registry";
 import { LogCreditOrderFilled, LogError } from "../logs/creditor_proxy";
 
 // Factories
@@ -30,18 +24,15 @@ import { CreditOrderFactory } from "../factories/credit_order_factory";
 
 // Wrappers
 import { CreditorProxyContract } from "../../../types/generated/creditor_proxy";
-import { DebtKernelContract } from "../../../types/generated/debt_kernel";
 import { CreditorProxyErrorCodes } from "../../../types/errors";
+import { DebtKernelContract } from "../../../types/generated/debt_kernel";
 import { DebtRegistryContract } from "../../../types/generated/debt_registry";
-import { DebtRegistryEntry } from "../../../types/registry/entry";
 import { DebtTokenContract } from "../../../types/generated/debt_token";
 import { DummyTokenContract } from "../../../types/generated/dummy_token";
-import { IncompatibleTermsContractContract } from "../../../types/generated/incompatible_terms_contract";
 import { RepaymentRouterContract } from "../../../types/generated/repayment_router";
 import { SimpleInterestTermsContractContract } from "../../../types/generated/simple_interest_terms_contract";
 import { TokenRegistryContract } from "../../../types/generated/token_registry";
 import { TokenTransferProxyContract } from "../../../types/generated/token_transfer_proxy";
-import { DharmaMultiSigWalletContract } from "../../../types/generated/dharma_multi_sig_wallet";
 
 // Constants
 import { REVERT_ERROR } from "../test_utils/constants";
@@ -72,8 +63,6 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
     let defaultOrderParams: { [key: string]: any };
     let orderFactory: CreditOrderFactory;
 
-    let multiSig: DharmaMultiSigWalletContract;
-
     const CONTRACT_OWNER = ACCOUNTS[0];
     const ATTACKER = ACCOUNTS[1];
     const DEBTOR_1 = ACCOUNTS[2];
@@ -89,28 +78,21 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
 
     const reset = async () => {
         const dummyTokenRegistryContract = await TokenRegistryContract.deployed(web3, TX_DEFAULTS);
-
         const dummyREPTokenAddress = await dummyTokenRegistryContract.getTokenAddressBySymbol.callAsync(
             "REP",
         );
-
         dummyREPToken = await DummyTokenContract.at(dummyREPTokenAddress, web3, TX_DEFAULTS);
 
         debtTokenContract = await DebtTokenContract.deployed(web3, TX_DEFAULTS);
         debtRegistryContract = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
+        tokenTransferProxy = await TokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
+        creditorProxy = await CreditorProxyContract.deployed(web3, TX_DEFAULTS);
+        kernel = await DebtKernelContract.deployed(web3, TX_DEFAULTS);
+        repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
         simpleInterestTermsContract = await SimpleInterestTermsContractContract.deployed(
             web3,
             TX_DEFAULTS,
         );
-        tokenTransferProxy = await TokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
-
-        creditorProxy = await CreditorProxyContract.deployed(web3, TX_DEFAULTS);
-
-        kernel = await DebtKernelContract.deployed(web3, TX_DEFAULTS);
-
-        multiSig = await DharmaMultiSigWalletContract.deployed(web3, TX_DEFAULTS);
-
-        repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
 
         const termsContractParameters = SimpleInterestParameters.pack({
             principalTokenIndex: new BigNumber(0), // Our migrations set REP up to be at index 0 of the registry
@@ -202,6 +184,9 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
             const creditor = creditOrder.getCreditor();
 
             const debtorBalanceAndAllowance = new BigNumber(0);
+            const creditorBalanceAndAllowance = creditOrder
+                .getPrincipalAmount()
+                .plus(creditOrder.getCreditorFee());
 
             await token.setBalance.sendTransactionAsync(debtor, debtorBalanceAndAllowance, {
                 from: CONTRACT_OWNER,
@@ -213,10 +198,6 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                     from: debtor,
                 },
             );
-
-            const creditorBalanceAndAllowance = creditOrder
-                .getPrincipalAmount()
-                .plus(creditOrder.getCreditorFee());
 
             await token.setBalance.sendTransactionAsync(creditor, creditorBalanceAndAllowance, {
                 from: CONTRACT_OWNER,
@@ -297,9 +278,9 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                     const balance = await principalToken.balanceOf.callAsync(
                         creditOrder.getCreditor(),
                     );
-                    const expectedBalance =
-                        creditorBalanceBefore -
-                        creditOrder.getPrincipalAmount().plus(creditOrder.getCreditorFee());
+                    const expectedBalance = creditorBalanceBefore.minus(
+                        creditOrder.getPrincipalAmount().plus(creditOrder.getCreditorFee()),
+                    );
                     expect(balance.toString()).to.equal(expectedBalance.toString());
                 });
 
@@ -312,11 +293,11 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                 });
 
                 it("should emit creditOrderFilled log", async () => {
-                    expect(logs[9]).to.deep.equal(
+                    expect(logs[logs.length - 1]).to.deep.equal(
                         LogCreditOrderFilled(
                             creditorProxy.address,
                             creditOrder.getCreditor(),
-                            creditOrder.getSalt(),
+                            creditOrder.getCreditorCommitmentHash(),
                             creditOrder.getAgreementId(),
                         ),
                     );
