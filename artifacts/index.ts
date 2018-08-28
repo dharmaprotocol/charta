@@ -45,6 +45,8 @@ export {
 export { ERC721Collateralizer } from "./ts/ERC721Collateralizer";
 // A contract used to reference the addresses of various ERC721 contracts.
 export { ERC721TokenRegistry } from "./ts/ERC721TokenRegistry";
+// The ERC721 token standard.
+export { ERC721Token } from "./ts/ERC721Token";
 // An ERC721 contract with the ability to mint tokens -- for test purposes.
 export { MintableERC721Token } from "./ts/MintableERC721Token";
 

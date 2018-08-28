@@ -36,6 +36,7 @@
         "artifacts/ts/ERC721Collateralizer.ts",
         "artifacts/ts/ERC721TokenRegistry.ts",
         "artifacts/ts/MintableERC721Token.ts",
+        "artifacts/ts/ERC721Token.ts",
         "artifacts/ts/ERC721Receiver.ts",
         "artifacts/ts/MockERC721Receiver.ts",
         "artifacts/ts/KittyCore.ts"
