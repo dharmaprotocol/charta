@@ -10,6 +10,7 @@
     "contracts",
     "migrations",
     "scripts",
+    "token_registry_data",
     "tsconfig.dist.json",
     "truffle.js"
   ],

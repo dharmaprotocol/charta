@@ -101,8 +101,23 @@ function readJsonSync(path) {
  * @returns {string} root
  */
 function projectRoot() {
-    // The "main" directory here will be node_modules/truffle/build,
-    // and so we split that to find the directory above node_modules, which is
-    // the project root.
-    return process.mainModule.paths[0].split('node_modules')[0].slice(0, -1);
+    // HACK: Depending on the env, there are a few places where the current directory could be,
+    // including in the node_modules in dharma.js or a transpiled files directory. So
+    // we want to check some enumerated locations (either 1 or 2 directories up) for the project
+    // root, and throw an error if we can't find that root.
+
+    const currentDir = __dirname;
+    // We'll first try one directory up, from the migrations directory.
+    const firstOption = `${currentDir}/..`;
+    // Second, we'll try two directories up, for example from the transpiled/migrations directory.
+    const secondOption = `${currentDir}/../..`;
+
+    // The package.json file is always in the root.
+    if (fs.existsSync(`${firstOption}/package.json`)) {
+        return firstOption;
+    } else if (fs.existsSync(`${secondOption}/package.json`)) {
+        return secondOption;
+    } else {
+        throw new Error("Could not find root directory.");
+    }
 }
