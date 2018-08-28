@@ -38,12 +38,17 @@ export function LogCreditOrderFilled(
 export function LogError(
     contract: Address,
     errorId: UInt,
+    creditor: Address,
     creditorCommitmentHash: Bytes32,
 ): ABIDecoder.DecodedLog {
     return {
         address: contract,
         events: LogUtils.getParams(
-            [["_errorId", errorId], ["_creditorCommitmentHash", creditorCommitmentHash]],
+            [
+                ["_errorId", errorId],
+                ["_creditor", creditor],
+                ["_creditorCommitmentHash", creditorCommitmentHash],
+            ],
             ["uint8", "bytes32"],
         ),
         name: "LogError",
