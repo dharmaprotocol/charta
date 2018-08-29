@@ -1237,9 +1237,9 @@ export const MintableERC721Token =
     "70": {
       "events": {},
       "links": {},
-      "address": "0x9f70c4e43b925e59a2b1a2c0414ff4cd15f6d48e"
+      "address": "0x9d814b542c068f686d83054d00be407df13c2a97"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-26T18:11:49.142Z"
+  "updatedAt": "2018-08-29T22:07:31.755Z"
 }

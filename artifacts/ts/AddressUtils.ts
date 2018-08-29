@@ -288,5 +288,5 @@ export const AddressUtils =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-26T18:11:36.266Z"
+  "updatedAt": "2018-08-29T22:07:18.438Z"
 }

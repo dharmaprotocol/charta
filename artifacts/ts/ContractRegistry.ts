@@ -4776,9 +4776,9 @@ export const ContractRegistry =
         }
       },
       "links": {},
-      "address": "0x92b73f8b955f64fd89e7b7d5eeeedeada4f3eeb4"
+      "address": "0x19cb6c7981564a4fdaab74d0d552bf837b9782a6"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-26T18:11:49.140Z"
+  "updatedAt": "2018-08-29T22:07:31.748Z"
 }

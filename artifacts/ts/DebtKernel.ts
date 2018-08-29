@@ -17811,9 +17811,9 @@ export const DebtKernel =
         }
       },
       "links": {},
-      "address": "0x62fb8f46b990c6a55e469fa03448041a3c283c0b"
+      "address": "0x384cdafd4dddd1b7f9210534a16931e60809b658"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-26T18:11:48.473Z"
+  "updatedAt": "2018-08-29T22:07:30.883Z"
 }
