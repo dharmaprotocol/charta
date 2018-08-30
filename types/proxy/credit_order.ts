@@ -4,22 +4,22 @@ import ethUtil = require("ethereumjs-util");
 
 import * as solidity from "../../utils/solidity";
 import { Address, Bytes32 } from "../common";
-import { CreditOrderParams } from "./schema";
+import { DebtOfferParams } from "./schema";
 import { ECDSASignature, SignableMessage } from "../kernel/signable_message";
 
 const NULL_ADDRESS = "0x0000000000000000000000000000000000000000";
 const NULL_SIGNATURE = { r: "0x0", s: "0x0", v: 0 };
 
-export interface CreditOrderSignatories {
+export interface DebtOfferSignatories {
     creditor?: Address;
     debtor?: Address;
     underwriter?: Address;
 }
 
-export class CreditOrder extends SignableMessage {
-    public params: CreditOrderParams;
+export class DebtOffer extends SignableMessage {
+    public params: DebtOfferParams;
 
-    constructor(params: CreditOrderParams) {
+    constructor(params: DebtOfferParams) {
         super();
         this.params = params;
     }
@@ -156,10 +156,10 @@ export class CreditOrder extends SignableMessage {
         return this.getCreditorCommitmentHash();
     }
 
-    public async getSignedCreditOrder(
+    public async getSignedDebtOffer(
         web3: Web3,
-        signatories: CreditOrderSignatories,
-    ): Promise<SignedCreditOrder> {
+        signatories: DebtOfferSignatories,
+    ): Promise<SignedDebtOffer> {
         const creditorSignature = signatories.creditor
             ? await this.getSignature(web3, signatories.creditor, this.getCreditorCommitmentHash())
             : NULL_SIGNATURE;
@@ -174,7 +174,7 @@ export class CreditOrder extends SignableMessage {
               )
             : NULL_SIGNATURE;
 
-        return new SignedCreditOrder(
+        return new SignedDebtOffer(
             this,
             creditorSignature,
             debtorSignature,
@@ -183,18 +183,18 @@ export class CreditOrder extends SignableMessage {
     }
 }
 
-export class SignedCreditOrder extends CreditOrder {
+export class SignedDebtOffer extends DebtOffer {
     private creditorSignature: ECDSASignature;
     private debtorSignature: ECDSASignature;
     private underwriterSignature: ECDSASignature;
 
     constructor(
-        creditOrder: CreditOrder,
+        debtOffer: DebtOffer,
         creditorSignature: ECDSASignature,
         debtorSignature: ECDSASignature,
         underwriterSignature: ECDSASignature,
     ) {
-        super(creditOrder.params);
+        super(debtOffer.params);
         this.creditorSignature = creditorSignature;
         this.debtorSignature = debtorSignature;
         this.underwriterSignature = underwriterSignature;

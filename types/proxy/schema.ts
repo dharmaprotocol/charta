@@ -1,7 +1,7 @@
 import { BigNumber } from "bignumber.js";
 import { Address, Bytes32 } from "../common";
 
-export interface CreditOrderParams {
+export interface DebtOfferParams {
     kernelVersion: Address;
     creditor: Address;
     repaymentRouterVersion: Address;

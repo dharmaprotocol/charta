@@ -1,19 +1,19 @@
 import * as _ from "lodash";
-import { CreditOrder, SignedCreditOrder } from "../../../types/proxy/credit_order";
+import { DebtOffer, SignedDebtOffer } from "../../../types/proxy/debt_offer";
 
-export class CreditOrderFactory {
+export class DebtOfferFactory {
     private defaultParams: { [key: string]: any };
 
     constructor(defaultParams: { [key: string]: any }) {
         this.defaultParams = defaultParams;
     }
 
-    public async generateCreditOrder(modifications = {}): Promise<SignedCreditOrder> {
+    public async generateDebtOffer(modifications = {}): Promise<SignedDebtOffer> {
         const params = _.clone(this.defaultParams);
 
         Object.assign(params, modifications);
 
-        const creditOrder = new CreditOrder({
+        const debtOffer = new DebtOffer({
             kernelVersion: params.kernelVersion,
             creditor: params.creditor,
             repaymentRouterVersion: params.repaymentRouterVersion,
@@ -33,6 +33,6 @@ export class CreditOrderFactory {
             termsContractParameters: params.termsContractParameters,
         });
 
-        return creditOrder.getSignedCreditOrder(web3, params.orderSignatories);
+        return debtOffer.getSignedDebtOffer(web3, params.orderSignatories);
     }
 }

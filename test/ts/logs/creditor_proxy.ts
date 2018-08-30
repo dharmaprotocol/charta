@@ -3,7 +3,7 @@ import { Address, Bytes32, UInt } from "../../../types/common";
 import * as ABIDecoder from "abi-decoder";
 import * as LogUtils from "./log_utils";
 
-export function LogCreditOrderCancelled(
+export function LogDebtOfferCancelled(
     contract: Address,
     creditor: Address,
     creditorCommitmentHash: Bytes32,
@@ -14,11 +14,11 @@ export function LogCreditOrderCancelled(
             ["_creditor", creditor],
             ["_creditorCommitmentHash", creditorCommitmentHash],
         ]),
-        name: "LogCreditOrderCancelled",
+        name: "LogDebtOfferCancelled",
     };
 }
 
-export function LogCreditOrderFilled(
+export function LogDebtOfferFilled(
     contract: Address,
     creditor: Address,
     creditorCommitmentHash: Bytes32,
@@ -31,7 +31,7 @@ export function LogCreditOrderFilled(
             ["_creditorCommitmentHash", creditorCommitmentHash],
             ["_agreementId", agreementId],
         ]),
-        name: "LogCreditOrderFilled",
+        name: "LogDebtOfferFilled",
     };
 }
 
