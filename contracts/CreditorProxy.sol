@@ -34,9 +34,9 @@ contract CreditorProxy is Pausable {
     using SafeMath for uint;
 
     enum Errors {
-        CREDIT_ORDER_CANCELLED,
-        CREDIT_ORDER_FILLED,
-        CREDIT_ORDER_NON_CONSENSUAL,
+        DEBT_OFFER_CANCELLED,
+        DEBT_OFFER_FILLED,
+        DEBT_OFFER_NON_CONSENSUAL,
         CREDITOR_BALANCE_OR_ALLOWANCE_INSUFFICIENT
     }
 
@@ -73,7 +73,8 @@ contract CreditorProxy is Pausable {
 
     /*
      * Submit debt order to DebtKernel if it is consensual with creditor's request
-     * Creditor signature in arguments is external creditor and not relevant to Debt Kernel
+     * Creditor signature in arguments is only used internally,
+     * It will not be verified by the Debt Kernel
      */
     function fillDebtOffer(
         address creditor,
@@ -101,12 +102,12 @@ contract CreditorProxy is Pausable {
         );
 
         if (debtOfferFilled[creditorCommitmentHash]) {
-            LogError(uint8(Errors.CREDIT_ORDER_FILLED), creditor, creditorCommitmentHash);
+            LogError(uint8(Errors.DEBT_OFFER_FILLED), creditor, creditorCommitmentHash);
             return NULL_ISSUANCE_HASH;
         }
 
         if (debtOfferCancelled[creditorCommitmentHash]) {
-            LogError(uint8(Errors.CREDIT_ORDER_CANCELLED), creditor, creditorCommitmentHash);
+            LogError(uint8(Errors.DEBT_OFFER_CANCELLED), creditor, creditorCommitmentHash);
             return NULL_ISSUANCE_HASH; 
         }
 
@@ -118,7 +119,7 @@ contract CreditorProxy is Pausable {
             signaturesS[1]
         )) {
             LogError(
-                uint8(Errors.CREDIT_ORDER_NON_CONSENSUAL),
+                uint8(Errors.DEBT_OFFER_NON_CONSENSUAL),
                 creditor,
                 creditorCommitmentHash
             );
@@ -126,7 +127,7 @@ contract CreditorProxy is Pausable {
         }
 
         // principal amount + creditor fee
-        uint totalCreditorPayment = orderVales[2].add(orderVales[5]);
+        uint totalCreditorPayment = orderValues[2].add(orderValues[5]);
 
         if (!assertExternalBalanceAndAllowanceInvariants(
             creditor,
@@ -175,9 +176,7 @@ contract CreditorProxy is Pausable {
     }
 
     /**
-     * Allows creditor to prevent a credit
-     * issuance in which they're involved from being used in
-     * a future debt order.
+     * Allows creditor to prevent a debt offer from being used in the future
      */
     function cancelDebtOffer(address creditor, bytes32 creditorCommitmentHash)
         public
@@ -225,9 +224,8 @@ contract CreditorProxy is Pausable {
 
 
     /**
-     * Assert that the creditor has a sufficient token balance and has
-     * granted the token transfer proxy contract sufficient allowance to suffice for the principal
-     * and creditor fee.
+     * Assert that the creditor has a sufficient token balance and has granted the token transfer
+     * proxy contract sufficient allowance to suffice for the principal and creditor fee.
      */
     function assertExternalBalanceAndAllowanceInvariants(
         address creditor,
@@ -305,7 +303,7 @@ contract CreditorProxy is Pausable {
     }
 
     /**
-     * Helper function for setting this address' allowance to the 0x transfer proxy.
+     * Helper function for approving this address' allowance to the 0x transfer proxy.
      */
     function setAllowance(
         address token,
@@ -322,7 +320,7 @@ contract CreditorProxy is Pausable {
     }
 
     /**
-     * Helper function transfers a specified amount of tokens between two parties
+     * Helper function for transfering a specified amount of tokens between two parties
      * using the token transfer proxy contract.
      */
     function transferTokensFrom(
