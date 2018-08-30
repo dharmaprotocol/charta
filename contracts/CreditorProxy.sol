@@ -196,20 +196,7 @@ contract CreditorProxy is Pausable {
     ////////////////////////
 
     /**
-            [
-                creditor,
-                orderAddresses[0], // repayment router version
-                orderAddresses[2], // underwriter
-                orderAddresses[3] // termsContract
-            ],
-            [
-                orderValues[5], // creditor fee
-                orderValues[0], // underwriterRiskRating
-                orderValues[7], // commitmentExpirationTimestampInSec
-                orderValues[1] // salt
-            ],
-            orderBytes32[0], // termsContractParameters
-
+     * Returns the messaged signed by the creditor to indicate their commitment
      */
     function getCreditorCommitmentHash(
         address[4] commitmentAddresses,

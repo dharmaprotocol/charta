@@ -172,7 +172,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                 LogError(
                     creditorProxy.address,
                     errorCode,
-                    order.getCreditor,
+                    order.getCreditor(),
                     order.getCreditorCommitmentHash(),
                 ),
             );
