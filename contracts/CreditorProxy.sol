@@ -18,7 +18,7 @@
 
 pragma solidity 0.4.18;
 
-import "./ContractRegistry";
+import "./ContractRegistry.sol";
 import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
 import "zeppelin-solidity/contracts/token/ERC20/ERC20.sol";
@@ -89,16 +89,20 @@ contract CreditorProxy is Pausable {
         whenNotPaused
         returns (bytes32 _agreementId)
     {
-        creditorCommitmentHash = getCreditorCommitmentHash(
-            creditor,
-            orderAddresses[0], // repayment router version
-            orderValues[5], // creditor fee
-            orderAddresses[2], // underwriter
-            orderValues[0], // underwriterRiskRating
-            orderAddresses[3], // termsContract
-            orderBytes32[0], // termsContractParameters
-            orderValues[7], // commitmentExpirationTimestampInSec
-            orderValues[1] // salt
+        bytes32 creditorCommitmentHash = getCreditorCommitmentHash(
+            [
+                creditor,
+                orderAddresses[0], // repayment router version
+                orderAddresses[2], // underwriter
+                orderAddresses[3] // termsContract
+            ],
+            [
+                orderValues[5], // creditor fee
+                orderValues[0], // underwriterRiskRating
+                orderValues[7], // commitmentExpirationTimestampInSec
+                orderValues[1] // salt
+            ],
+            orderBytes32[0] // termsContractParameters
         );
 
         if (debtOfferFilled[creditorCommitmentHash]) {
@@ -192,33 +196,40 @@ contract CreditorProxy is Pausable {
     ////////////////////////
 
     /**
-     * Returns the messaged signed by the creditor to indicate their commitment
+            [
+                creditor,
+                orderAddresses[0], // repayment router version
+                orderAddresses[2], // underwriter
+                orderAddresses[3] // termsContract
+            ],
+            [
+                orderValues[5], // creditor fee
+                orderValues[0], // underwriterRiskRating
+                orderValues[7], // commitmentExpirationTimestampInSec
+                orderValues[1] // salt
+            ],
+            orderBytes32[0], // termsContractParameters
+
      */
     function getCreditorCommitmentHash(
-        address creditor,
-        address repaymentVersion,
-        uint creditorFee,
-        address underwriter,
-        uint underwriterRiskRating,
-        address termsContract,
-        bytes32 termsContractParameters,
-        uint commitmentExpirationTimestampInSec,
-        uint salt
+        address[4] commitmentAddresses,
+        uint[4] commitmentValues,
+        bytes32 termsContractParameters
     )
         internal
         pure
         returns (bytes32 _creditorCommitmentHash)
     {
         return keccak256(
-            creditor,
-            repaymentVersion,
-            creditorFee,
-            underwriter,
-            underwriterRiskRating,
-            termsContract,
+            commitmentAddresses[0], // creditor
+            commitmentAddresses[1], // repayment router version
+            commitmentValues[0], // creditor fee
+            commitmentAddresses[2], // underwriter
+            commitmentValues[1], // underwriterRiskRating
+            commitmentAddresses[3], // termsContract
             termsContractParameters,
-            commitmentExpirationTimestampInSec,
-            salt
+            commitmentValues[2], // commitmentExpirationTimestampInSec
+            commitmentValues[3] // salt
         );
     }
 
