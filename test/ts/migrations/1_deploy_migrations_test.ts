@@ -24,9 +24,8 @@ contract("Migration #1: Deploying Migrations Contract", async (ACCOUNTS) => {
 
     describe("Deployment", () => {
         it("should deploy the `MigrationsContract` contract to the current network", async () => {
-            await expect(
-                web3Utils.doesContractExistAtAddressAsync(migrations.address)
-            ).to.eventually.be.true;
+            await expect(web3Utils.doesContractExistAtAddressAsync(migrations.address)).to
+                .eventually.be.true;
         });
     });
 });
