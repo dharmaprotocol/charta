@@ -141,9 +141,9 @@ contract CreditorProxy is Pausable {
         bytes32[3] signaturesR,
         bytes32[3] signaturesS
     )
-    public
-    whenNotPaused
-    returns (bytes32 _agreementId)
+        public
+        whenNotPaused
+        returns (bytes32 _agreementId)
     {
         CreditorCommitment memory creditorCommitment = getCreditorCommitment(
             creditor, orderAddresses, orderValues, orderBytes32
