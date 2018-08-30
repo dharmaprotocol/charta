@@ -1,3 +1,4 @@
+const CONSTANTS = require('./migration_constants');
 module.exports = (deployer, network, accounts) => {
     const CreditorProxy = artifacts.require("CreditorProxy");
     const ContractRegistry = artifacts.require("ContractRegistry");
@@ -23,7 +24,21 @@ module.exports = (deployer, network, accounts) => {
 
         await wallet.confirmTransaction(txId, { from: accounts[1] });
         await wallet.confirmTransaction(txId, { from: accounts[2] });
-        await wallet.executeTransaction(txId);
 
+        // time travel?!
+        if (network === 'development') {
+            await web3.currentProvider.sendAsync({
+                jsonrpc: '2.0',
+                method: 'evm_increaseTime',
+                params: CONSTANTS.TIMELOCK_IN_SECONDS,
+                id: 0
+            }, async () => {
+                await wallet.executeTransaction(txId);
+            });
+        } else {
+            setTimeout(async () => {
+                await wallet.executeTransaction(txId);
+            }, CONSTANTS.TIMELOCK_IN_SECONDS);
+        }
     });
 }
