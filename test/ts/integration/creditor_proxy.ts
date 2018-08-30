@@ -13,14 +13,14 @@ import { BigNumberSetup } from "../test_utils/bignumber_setup";
 import { Web3Utils } from "../../../utils/web3_utils";
 
 // Types
-import { SignedCreditOrder } from "../../../types/proxy/credit_order";
+import { SignedDebtOffer } from "../../../types/proxy/debt_offer";
 
 // Logs
-import { LogCreditOrderFilled, LogError } from "../logs/creditor_proxy";
+import { LogDebtOfferFilled, LogError } from "../logs/creditor_proxy";
 
 // Factories
 import { SimpleInterestParameters } from "../factories/terms_contract_parameters";
-import { CreditOrderFactory } from "../factories/credit_order_factory";
+import { DebtOfferFactory } from "../factories/debt_offer_factory";
 
 // Wrappers
 import { CreditorProxyContract } from "../../../types/generated/creditor_proxy";
@@ -61,7 +61,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
     let dummyREPToken: DummyTokenContract;
 
     let defaultOrderParams: { [key: string]: any };
-    let orderFactory: CreditOrderFactory;
+    let orderFactory: DebtOfferFactory;
 
     const CONTRACT_OWNER = ACCOUNTS[0];
     const ATTACKER = ACCOUNTS[1];
@@ -130,7 +130,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
             orderSignatories: { debtor: DEBTOR_1, creditor: CREDITOR_1, underwriter: UNDERWRITER },
         };
 
-        orderFactory = new CreditOrderFactory(defaultOrderParams);
+        orderFactory = new DebtOfferFactory(defaultOrderParams);
 
         // Setup ABI decoder in order to decode logs
         ABIDecoder.addABI(creditorProxyContract.abi);
@@ -145,17 +145,17 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
         ABIDecoder.removeABI(creditorProxyContract.abi);
     });
 
-    describe("#fillDebtOrder", () => {
-        let creditOrder: SignedCreditOrder;
+    describe("#fillDebtOffer", () => {
+        let debtOffer: SignedDebtOffer;
 
         const testShouldReturnError = async (
-            order: SignedCreditOrder,
+            order: SignedDebtOffer,
             errorCode: number,
             signaturesR?: string[],
             signaturesS?: string[],
             signaturesV?: number[],
         ) => {
-            const txHash = await creditorProxy.fillCreditOrder.sendTransactionAsync(
+            const txHash = await creditorProxy.fillDebtOffer.sendTransactionAsync(
                 order.getCreditor(),
                 order.getOrderAddresses(),
                 order.getOrderValues(),
@@ -169,24 +169,29 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
             const [errorLog] = _.compact(ABIDecoder.decodeLogs(receipt.logs));
 
             expect(errorLog).to.deep.equal(
-                LogError(creditorProxy.address, errorCode, order.getCreditorCommitmentHash()),
+                LogError(
+                    creditorProxy.address,
+                    errorCode,
+                    order.getCreditor,
+                    order.getCreditorCommitmentHash(),
+                ),
             );
         };
 
         const setupBalancesAndAllowances = async (): Promise<[BigNumber, BigNumber]> => {
             const token = await DummyTokenContract.at(
-                creditOrder.getPrincipalToken(),
+                debtOffer.getPrincipalToken(),
                 web3,
                 TX_DEFAULTS,
             );
 
-            const debtor = creditOrder.getDebtor();
-            const creditor = creditOrder.getCreditor();
+            const debtor = debtOffer.getDebtor();
+            const creditor = debtOffer.getCreditor();
 
             const debtorBalanceAndAllowance = new BigNumber(0);
-            const creditorBalanceAndAllowance = creditOrder
+            const creditorBalanceAndAllowance = debtOffer
                 .getPrincipalAmount()
-                .plus(creditOrder.getCreditorFee());
+                .plus(debtOffer.getCreditorFee());
 
             await token.setBalance.sendTransactionAsync(debtor, debtorBalanceAndAllowance, {
                 from: CONTRACT_OWNER,
@@ -212,21 +217,19 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
         };
 
         const getAgentBalances = async (principalToken: DummyTokenContract) => {
-            const debtorBalance = await principalToken.balanceOf.callAsync(creditOrder.getDebtor());
+            const debtorBalance = await principalToken.balanceOf.callAsync(debtOffer.getDebtor());
             const creditorBalance = await principalToken.balanceOf.callAsync(
-                creditOrder.getCreditor(),
+                debtOffer.getCreditor(),
             );
             const underwriterBalance = await principalToken.balanceOf.callAsync(
-                creditOrder.getUnderwriter(),
+                debtOffer.getUnderwriter(),
             );
-            const relayerBalance = await principalToken.balanceOf.callAsync(
-                creditOrder.getRelayer(),
-            );
+            const relayerBalance = await principalToken.balanceOf.callAsync(debtOffer.getRelayer());
 
             return [debtorBalance, creditorBalance, underwriterBalance, relayerBalance];
         };
 
-        const testOrderFill = (filler: string, setupCreditOrder: () => Promise<void>) => {
+        const testOrderFill = (filler: string, setupDebtOffer: () => Promise<void>) => {
             return () => {
                 let principalToken: DummyTokenContract;
 
@@ -241,11 +244,11 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                 let logs: ABIDecoder.DecodedLog[];
 
                 before(async () => {
-                    await setupCreditOrder();
+                    await setupDebtOffer();
                     await setupBalancesAndAllowances();
 
                     principalToken = await DummyTokenContract.at(
-                        creditOrder.getPrincipalToken(),
+                        debtOffer.getPrincipalToken(),
                         web3,
                         TX_DEFAULTS,
                     );
@@ -257,14 +260,14 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                         relayerBalanceBefore,
                     ] = await getAgentBalances(principalToken);
 
-                    const txHash = await creditorProxy.fillCreditOrder.sendTransactionAsync(
-                        creditOrder.getCreditor(),
-                        creditOrder.getOrderAddresses(),
-                        creditOrder.getOrderValues(),
-                        creditOrder.getOrderBytes32(),
-                        creditOrder.getSignaturesV(),
-                        creditOrder.getSignaturesR(),
-                        creditOrder.getSignaturesS(),
+                    const txHash = await creditorProxy.fillDebtOffer.sendTransactionAsync(
+                        debtOffer.getCreditor(),
+                        debtOffer.getOrderAddresses(),
+                        debtOffer.getOrderValues(),
+                        debtOffer.getOrderBytes32(),
+                        debtOffer.getSignaturesV(),
+                        debtOffer.getSignaturesR(),
+                        debtOffer.getSignaturesS(),
                         { from: filler },
                     );
 
@@ -276,10 +279,10 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
 
                 it("should deduct principal + creditor fee from creditor account", async () => {
                     const balance = await principalToken.balanceOf.callAsync(
-                        creditOrder.getCreditor(),
+                        debtOffer.getCreditor(),
                     );
                     const expectedBalance = creditorBalanceBefore.minus(
-                        creditOrder.getPrincipalAmount().plus(creditOrder.getCreditorFee()),
+                        debtOffer.getPrincipalAmount().plus(debtOffer.getCreditorFee()),
                     );
                     expect(balance.toString()).to.equal(expectedBalance.toString());
                 });
@@ -287,18 +290,18 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                 it("should transfer newly minted debt token to creditor", async () => {
                     await expect(
                         debtTokenContract.ownerOf.callAsync(
-                            new BigNumber(creditOrder.getAgreementId()),
+                            new BigNumber(debtOffer.getAgreementId()),
                         ),
-                    ).to.eventually.equal(creditOrder.getCreditor());
+                    ).to.eventually.equal(debtOffer.getCreditor());
                 });
 
-                it("should emit creditOrderFilled log", async () => {
+                it("should emit debtOfferFilled log", async () => {
                     expect(logs[logs.length - 1]).to.deep.equal(
-                        LogCreditOrderFilled(
+                        LogDebtOfferFilled(
                             creditorProxy.address,
-                            creditOrder.getCreditor(),
-                            creditOrder.getCreditorCommitmentHash(),
-                            creditOrder.getAgreementId(),
+                            debtOffer.getCreditor(),
+                            debtOffer.getCreditorCommitmentHash(),
+                            debtOffer.getAgreementId(),
                         ),
                     );
                 });
@@ -308,7 +311,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
         describe(
             "..with valid, consentual credit order",
             testOrderFill(CONTRACT_OWNER, async () => {
-                creditOrder = await orderFactory.generateCreditOrder();
+                debtOffer = await orderFactory.generateDebtOffer();
             }),
         );
     });
