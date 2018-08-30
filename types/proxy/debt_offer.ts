@@ -174,12 +174,7 @@ export class DebtOffer extends SignableMessage {
               )
             : NULL_SIGNATURE;
 
-        return new SignedDebtOffer(
-            this,
-            creditorSignature,
-            debtorSignature,
-            underwriterSignature,
-        );
+        return new SignedDebtOffer(this, creditorSignature, debtorSignature, underwriterSignature);
     }
 }
 
