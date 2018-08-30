@@ -23,7 +23,7 @@ import "./MockContract.sol";
 
 contract MockDebtKernel is MockContract {
 
-    function mockCreateReturnValue(uint _agreementId)
+    function mockCreateReturnValue(bytes32 _agreementId)
         public
     {
         mockReturnValue("fillDebtOrder", DEFAULT_SIGNATURE_ARGS, bytes32(_agreementId));

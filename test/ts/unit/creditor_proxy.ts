@@ -310,7 +310,7 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
                         LogCreditOrderFilled(
                             creditorProxy.address,
                             creditOrder.getCreditor(),
-                            creditOrder.getSalt(),
+                            creditOrder.getCreditorCommitmentHash(),
                             creditOrder.getAgreementId(),
                         ),
                     );

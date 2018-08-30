@@ -9,7 +9,6 @@ module.exports = (deployer, network, accounts) => {
     const DebtRegistry = artifacts.require("DebtRegistry");
     const DebtToken = artifacts.require("DebtToken");
     const DebtKernel = artifacts.require("DebtKernel");
-    // Credit proxy edit
     const CreditorProxy = artifacts.require("CreditorProxy");
     const RepaymentRouter = artifacts.require("RepaymentRouter");
     const TokenTransferProxy = artifacts.require("TokenTransferProxy");

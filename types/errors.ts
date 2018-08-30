@@ -17,5 +17,7 @@ export const enum RepaymentRouterErrorCodes {
 }
 
 export const enum CreditorProxyErrorCodes {
-    CREDITOR_MISSING,
+    CREDIT_ORDER_CANCELLED,
+    CREDIT_ORDER_NON_CONSENSUAL,
+    CREDITOR_BALANCE_OR_ALLOWANCE_INSUFFICIENT,
 }
