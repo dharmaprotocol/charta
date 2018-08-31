@@ -8,6 +8,10 @@ import { BigNumber } from "bignumber.js";
 
 // Test Utils
 import * as Units from "../test_utils/units";
+import {
+    multiSigExecuteAfterTimelock,
+    multiSigExecutePauseImmediately,
+} from "../test_utils/multisig";
 import ChaiSetup from "../test_utils/chai_setup";
 import { BigNumberSetup } from "../test_utils/bignumber_setup";
 import { Web3Utils } from "../../../utils/web3_utils";
@@ -24,6 +28,7 @@ import { DebtOfferFactory } from "../factories/debt_offer_factory";
 
 // Wrappers
 import { CreditorProxyContract } from "../../../types/generated/creditor_proxy";
+import { ContractRegistryContract } from "../../../types/generated/contract_registry";
 import { CreditorProxyErrorCodes } from "../../../types/errors";
 import { DebtKernelContract } from "../../../types/generated/debt_kernel";
 import { DebtRegistryContract } from "../../../types/generated/debt_registry";
@@ -33,6 +38,7 @@ import { RepaymentRouterContract } from "../../../types/generated/repayment_rout
 import { SimpleInterestTermsContractContract } from "../../../types/generated/simple_interest_terms_contract";
 import { TokenRegistryContract } from "../../../types/generated/token_registry";
 import { TokenTransferProxyContract } from "../../../types/generated/token_transfer_proxy";
+import { DharmaMultiSigWalletContract } from "../../../types/generated/dharma_multi_sig_wallet";
 
 // Constants
 import { REVERT_ERROR } from "../test_utils/constants";
@@ -49,8 +55,9 @@ const web3Utils = new Web3Utils(web3);
 
 const creditorProxyContract = artifacts.require("CreditorProxy");
 
-contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
+contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
     let creditorProxy: CreditorProxyContract;
+    let contractRegistry: ContractRegistryContract;
     let kernel: DebtKernelContract;
     let repaymentRouter: RepaymentRouterContract;
     let simpleInterestTermsContract: SimpleInterestTermsContractContract;
@@ -60,8 +67,10 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
 
     let dummyREPToken: DummyTokenContract;
 
-    let defaultOrderParams: { [key: string]: any };
+    let defaultOfferParams: { [key: string]: any };
     let orderFactory: DebtOfferFactory;
+
+    let multiSig: DharmaMultiSigWalletContract;
 
     const CONTRACT_OWNER = ACCOUNTS[0];
     const ATTACKER = ACCOUNTS[1];
@@ -87,7 +96,9 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
         debtRegistryContract = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
         tokenTransferProxy = await TokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
         creditorProxy = await CreditorProxyContract.deployed(web3, TX_DEFAULTS);
+        contractRegistry = await ContractRegistryContract.deployed(web3, TX_DEFAULTS);
         kernel = await DebtKernelContract.deployed(web3, TX_DEFAULTS);
+        multiSig = await DharmaMultiSigWalletContract.deployed(web3, TX_DEFAULTS);
         repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
         simpleInterestTermsContract = await SimpleInterestTermsContractContract.deployed(
             web3,
@@ -104,7 +115,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
 
         const latestBlockTime = await web3Utils.getLatestBlockTime();
 
-        defaultOrderParams = {
+        defaultOfferParams = {
             kernelVersion: kernel.address,
             creditor: CREDITOR_1,
             repaymentRouterVersion: repaymentRouter.address,
@@ -114,7 +125,6 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
             principalToken: dummyREPToken.address,
             relayer: RELAYER,
             underwriterRiskRating: Units.underwriterRiskRatingFixedPoint(1.35),
-            salt: new BigNumber("abc123", 16),
             principalAmount: Units.ether(1),
             underwriterFee: Units.ether(0.0015),
             relayerFee: Units.ether(0.0015),
@@ -130,7 +140,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
             orderSignatories: { debtor: DEBTOR_1, creditor: CREDITOR_1, underwriter: UNDERWRITER },
         };
 
-        orderFactory = new DebtOfferFactory(defaultOrderParams);
+        orderFactory = new DebtOfferFactory(defaultOfferParams);
 
         // Setup ABI decoder in order to decode logs
         ABIDecoder.addABI(creditorProxyContract.abi);
@@ -143,6 +153,14 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
     after(() => {
         // Tear down ABIDecoder before next set of tests
         ABIDecoder.removeABI(creditorProxyContract.abi);
+    });
+
+    describe("Initialization & Upgrades", async () => {
+        it("points to correct contract registry", async () => {
+            expect(creditorProxy.contractRegistry.callAsync()).to.eventually.equal(
+                contractRegistry.address,
+            );
+        });
     });
 
     describe("#fillDebtOffer", () => {
@@ -225,11 +243,20 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                 debtOffer.getUnderwriter(),
             );
             const relayerBalance = await principalToken.balanceOf.callAsync(debtOffer.getRelayer());
+            const creditorProxyBalance = await principalToken.balanceOf.callAsync(
+                creditorProxy.address,
+            );
 
-            return [debtorBalance, creditorBalance, underwriterBalance, relayerBalance];
+            return [
+                debtorBalance,
+                creditorBalance,
+                underwriterBalance,
+                relayerBalance,
+                creditorProxyBalance,
+            ];
         };
 
-        const testOrderFill = (filler: string, setupDebtOffer: () => Promise<void>) => {
+        const testOfferFill = (filler: string, setupDebtOffer: () => Promise<void>) => {
             return () => {
                 let principalToken: DummyTokenContract;
 
@@ -237,6 +264,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                 let creditorBalanceBefore: BigNumber;
                 let underwriterBalanceBefore: BigNumber;
                 let relayerBalanceBefore: BigNumber;
+                let creditorProxyBalanceBefore: BigNumber;
 
                 let receipt: Web3.TransactionReceipt;
                 let block: Web3.BlockWithoutTransactionData;
@@ -258,6 +286,7 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                         creditorBalanceBefore,
                         underwriterBalanceBefore,
                         relayerBalanceBefore,
+                        creditorProxyBalanceBefore,
                     ] = await getAgentBalances(principalToken);
 
                     const txHash = await creditorProxy.fillDebtOffer.sendTransactionAsync(
@@ -295,24 +324,217 @@ contract("Debt Kernel (Integration Tests)", async (ACCOUNTS) => {
                     ).to.eventually.equal(debtOffer.getCreditor());
                 });
 
-                it("should emit debtOfferFilled log", async () => {
-                    expect(logs[logs.length - 1]).to.deep.equal(
-                        LogDebtOfferFilled(
-                            creditorProxy.address,
-                            debtOffer.getCreditor(),
-                            debtOffer.getCreditorCommitmentHash(),
-                            debtOffer.getAgreementId(),
-                        ),
-                    );
+                it("creditor proxy balance should not change", async () => {
+                    const balance = await principalToken.balanceOf.callAsync(creditorProxy.address);
+                    expect(balance.toString()).to.equal(creditorProxyBalanceBefore.toString());
+                });
+
+                describe("Logs Emitted:", () => {
+                    it("should emit approval log allowing the transfer of the creditor proxy's principal", async () => {});
+
+                    it("should emit transfer log from creditor to creditor proxy", async () => {});
+
+                    it("should emit registry insert log", async () => {});
+
+                    it("should emit debt token transfer log", async () => {});
+
+                    it("should emit transfer log from creditor to debtor (if principal - debtor fee > 0)", async () => {});
+
+                    it("should emit transfer log from creditor to underwriter (if present)", async () => {});
+
+                    it("should emit transfer log from kernel to relayer (if present)", async () => {});
+
+                    it("should emit debt order filled log", () => {});
+
+                    it("should emit debt token transfer log", async () => {});
+
+                    it("should emit debt offer filled log", async () => {
+                        expect(logs[logs.length - 1]).to.deep.equal(
+                            LogDebtOfferFilled(
+                                creditorProxy.address,
+                                debtOffer.getCreditor(),
+                                debtOffer.getCreditorCommitmentHash(),
+                                debtOffer.getAgreementId(),
+                            ),
+                        );
+                    });
                 });
             };
         };
 
-        describe(
-            "..with valid, consentual credit order",
-            testOrderFill(CONTRACT_OWNER, async () => {
+        before(reset);
+
+        describe("User fills valid, consentual debt offer", () => {
+            describe("...and creditor proxy is paused by owner via multi-sig", async () => {
+                before(async () => {
+                    debtOffer = await orderFactory.generateDebtOffer();
+                    await multiSigExecutePauseImmediately(
+                        web3,
+                        multiSig,
+                        creditorProxy,
+                        "pause",
+                        ACCOUNTS,
+                    );
+                });
+                after(async () => {
+                    await multiSigExecuteAfterTimelock(
+                        web3,
+                        multiSig,
+                        creditorProxy,
+                        "unpause",
+                        ACCOUNTS,
+                    );
+                });
+                it("should throw", async () => {
+                    await expect(
+                        creditorProxy.fillDebtOffer.sendTransactionAsync(
+                            debtOffer.getCreditor(),
+                            debtOffer.getOrderAddresses(),
+                            debtOffer.getOrderValues(),
+                            debtOffer.getOrderBytes32(),
+                            debtOffer.getSignaturesV(),
+                            debtOffer.getSignaturesR(),
+                            debtOffer.getSignaturesS(),
+                        ),
+                    ).to.eventually.be.rejectedWith(REVERT_ERROR);
+                });
+            });
+
+            describe(
+                "...with valid params",
+                testOfferFill(CONTRACT_OWNER, async () => {
+                    debtOffer = await orderFactory.generateDebtOffer();
+                }),
+            );
+
+            describe(
+                "...with no principal and no creditor / debtor fees",
+                testOfferFill(CONTRACT_OWNER, async () => {
+                    debtOffer = await orderFactory.generateDebtOffer({
+                        creditorFee: new BigNumber(0),
+                        debtorFee: new BigNumber(0),
+                        principalAmount: new BigNumber(0),
+                        relayer: NULL_ADDRESS,
+                        relayerFee: new BigNumber(0),
+                        underwriter: NULL_ADDRESS,
+                        underwriterFee: new BigNumber(0),
+                        underwriterRiskRating: new BigNumber(0),
+                    });
+                }),
+            );
+
+            describe(
+                "...with no principal and nonzero creditor fee",
+                testOfferFill(CONTRACT_OWNER, async () => {
+                    debtOffer = await orderFactory.generateDebtOffer({
+                        creditorFee: Units.ether(0.002),
+                        debtorFee: new BigNumber(0),
+                        principalAmount: new BigNumber(0),
+                        relayer: NULL_ADDRESS,
+                        relayerFee: new BigNumber(0),
+                        underwriter: UNDERWRITER,
+                        underwriterFee: Units.ether(0.002),
+                    });
+                }),
+            );
+
+            describe(
+                "...when creditor and debtor are same address",
+                testOfferFill(CONTRACT_OWNER, async () => {
+                    debtOffer = await orderFactory.generateDebtOffer({
+                        creditor: CREDITOR_1,
+                        creditorFee: new BigNumber(0),
+                        debtor: CREDITOR_1,
+                        debtorFee: new BigNumber(0),
+                        orderSignatories: {
+                            creditor: CREDITOR_1,
+                            debtor: CREDITOR_1,
+                        },
+                        principalAmount: new BigNumber(0),
+                        relayer: NULL_ADDRESS,
+                        relayerFee: new BigNumber(0),
+                        underwriter: NULL_ADDRESS,
+                        underwriterFee: new BigNumber(0),
+                        underwriterRiskRating: new BigNumber(0),
+                    });
+                }),
+            );
+        });
+
+        describe("User fills invalid debt order", () => {
+            describe("...when creditor has not granted the transfer proxy sufficient allowance", () => {
+                it("should return CREDITOR_BALANCE_OR_ALLOWANCE_INSUFFICIENT error", async () => {});
+            });
+
+            describe("...when creditor does not have sufficient balance", () => {
+                it("should return CREDITOR_BALANCE_OR_ALLOWANCE_INSUFFICIENT error", async () => {});
+            });
+
+            describe("...when debt offer has already been filled", () => {
+                it("should return DEBT_OFFER_ALREADY_FILLED error", async () => {});
+            });
+
+            describe("...when debt offer has been cancelled", () => {
+                it("should return DEBT_OFFER_CANCELLED error", async () => {});
+            });
+
+            describe("...when debt kernel returns NULL_ISSUANCE_HASH", () => {
+                it("should throw", async () => {});
+            });
+        });
+
+        describe("User fills valid, nonconsensual debt offer", () => {
+            let mismatchedOffer: SignedDebtOffer;
+
+            before(async () => {
                 debtOffer = await orderFactory.generateDebtOffer();
-            }),
-        );
+                await setupBalancesAndAllowances();
+            });
+
+            describe("...with mismatched issuance parameters", () => {
+                before(async () => {
+                    mismatchedOffer = await orderFactory.generateDebtOffer({
+                        salt: debtOffer.getSalt(),
+                        termsContract: MALICIOUS_TERMS_CONTRACTS,
+                    });
+                });
+
+                describe("creditor's signature commits to creditor address =/= offer's", async () => {
+                    it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {});
+                });
+
+                describe("creditor's signature commits to repayment router =/= offer's", async () => {
+                    it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {});
+                });
+
+                describe("creditor's signature commits to creditor fee =/= offer's", async () => {
+                    it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {});
+                });
+
+                describe("creditor's signature commits to underwriter =/= offer's", async () => {
+                    it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {});
+                });
+
+                describe("creditor's signature commits to risk rating =/= offer's", async () => {
+                    it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {});
+                });
+
+                describe("creditor's signature commits to terms contract =/= offer's", async () => {
+                    it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {});
+                });
+
+                describe("creditor's signature commits to terms parameters =/= offer's", async () => {
+                    it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {});
+                });
+
+                describe("creditor's signature commits to expiration =/= offer's", async () => {
+                    it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {});
+                });
+
+                describe("creditor's signature commits to salt =/= offer's", async () => {
+                    it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {});
+                });
+            });
+        });
     });
 });

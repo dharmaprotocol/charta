@@ -40,5 +40,7 @@ module.exports = (deployer, network, accounts) => {
                 await wallet.executeTransaction(txId);
             }, CONSTANTS.TIMELOCK_IN_SECONDS);
         }
+
+        await creditorProxy.transferOwnership(wallet.address, { from: accounts[0] });
     });
 }
