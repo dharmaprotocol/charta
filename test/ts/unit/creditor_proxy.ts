@@ -135,7 +135,6 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
             principalToken: mockPrincipalToken.address,
             relayer: RELAYER,
             underwriterRiskRating: Units.underwriterRiskRatingFixedPoint(1),
-            salt: new BigNumber("abc123", 16),
             principalAmount: Units.ether(1),
             underwriterFee: Units.ether(0.0015),
             relayerFee: Units.ether(0.0015),
@@ -164,6 +163,16 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
             await expect(creditorProxy.contractRegistry.callAsync()).to.eventually.equal(
                 contractRegistry.address,
             );
+        });
+    });
+
+    describe("#cancelDebtOffer", () => {
+        describe("user who is not the creditor cancelled debt order", () => {
+            it("should throw", async () => {});
+        });
+        describe("creditor cancels issuance", () => {
+            it("should emit debt offer cancelled log", async () => {});
+            it("should return the debt offer as cancelled", async () => {});
         });
     });
 
@@ -312,13 +321,120 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
             };
         };
 
-        describe(
-            "User fills valid, consentual debt offer",
-            testOrderFill(CONTRACT_OWNER, async () => {
-                debtOffer = await orderFactory.generateDebtOffer();
-            }),
-        );
-    });
+        describe("User fills valid, consentual debt offer", () => {
+            describe(
+                "...with underwriter and relayer",
+                testOrderFill(CONTRACT_OWNER, async () => {
+                    debtOffer = await orderFactory.generateDebtOffer({});
+                }),
+            );
 
-    // describe("#cancelCreditIssuance", () => {});
+            describe(
+                "...with neither underwriter nor relayer",
+                testOrderFill(CONTRACT_OWNER, async () => {
+                    debtOffer = await orderFactory.generateDebtOffer({});
+                }),
+            );
+
+            describe(
+                "...with underwriter and no relayer",
+                testOrderFill(CONTRACT_OWNER, async () => {
+                    debtOffer = await orderFactory.generateDebtOffer({});
+                }),
+            );
+
+            describe(
+                "...with no principal and no creditor / debtor fees",
+                testOrderFill(CONTRACT_OWNER, async () => {
+                    debtOffer = await orderFactory.generateDebtOffer({});
+                }),
+            );
+
+            describe(
+                "...with no principal and nonzero creditor fee",
+                testOrderFill(CONTRACT_OWNER, async () => {
+                    debtOffer = await orderFactory.generateDebtOffer({});
+                }),
+            );
+
+            describe(
+                "...when creditor and debtor are same address",
+                testOrderFill(CONTRACT_OWNER, async () => {
+                    debtOffer = await orderFactory.generateDebtOffer({});
+                }),
+            );
+        });
+
+        describe("User fills invalid debt offer", () => {
+            describe("...when transfer proxy has insufficient allowance", () => {
+                it("should return CREDITOR_BALANCE_OR_ALLOWANCE_INSUFFICIENT error", async () => {});
+            });
+
+            describe("...when creditor has insufficient balance", () => {
+                it("should return CREDITOR_BALANCE_OR_ALLOWANCE_INSUFFICIENT error", async () => {});
+            });
+
+            describe("...when debt offer has already been filled", () => {
+                it("should return DEBT_OFFER_FILLED error", async () => {});
+            });
+
+            describe("...when debt offer has been cancelled", () => {
+                it("should return DEBT_OFFER_CANCELLED error", async () => {});
+            });
+
+            describe("...when debt kernel returns null issuance hash", () => {
+                it("should throw", async () => {});
+            });
+        });
+
+        describe("User fills nonconsensual debt offer", () => {
+            describe("...when submitted by debtor *without* debtor signature attached", async () => {
+                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {});
+            });
+
+            describe("...when submitted by underwriter *without* underwriter signature attached", async () => {
+                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {});
+            });
+
+            describe("...when submitted by creditor *without* creditor signature attached", async () => {
+                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {});
+            });
+
+            describe("creditor's signature commits to creditor address =/= order's", async () => {
+                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {});
+            });
+
+            describe("creditor's signature commits to repayment router =/= order's", async () => {
+                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {});
+            });
+
+            describe("creditor's signature commits to creditor fee =/= order's", async () => {
+                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {});
+            });
+
+            describe("creditor's signature commits to underwriter =/= order's", async () => {
+                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {});
+            });
+
+            describe("creditor's signature commits to risk rating =/= order's", async () => {
+                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {});
+            });
+
+            describe("creditor's signature commits to terms contract =/= order's", async () => {
+                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {});
+            });
+
+            describe("creditor's signature commits to terms parameters =/= order's", async () => {
+                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {});
+            });
+
+            describe("creditor's signature commits to expiration =/= order's", async () => {
+                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {});
+            });
+
+            describe("creditor's signature commits to salt =/= order's", async () => {
+                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {});
+            });
+        });
+    });
 });

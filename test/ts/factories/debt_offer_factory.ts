@@ -1,3 +1,4 @@
+import BigNumber from "bignumber.js";
 import * as _ from "lodash";
 import { DebtOffer, SignedDebtOffer } from "../../../types/proxy/debt_offer";
 
@@ -12,6 +13,14 @@ export class DebtOfferFactory {
         const params = _.clone(this.defaultParams);
 
         Object.assign(params, modifications);
+
+        if (!params.salt) {
+            params.salt = new BigNumber(
+                Math.random()
+                    .toString()
+                    .substring(2),
+            );
+        }
 
         const debtOffer = new DebtOffer({
             kernelVersion: params.kernelVersion,
