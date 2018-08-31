@@ -51,7 +51,7 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
     let repaymentRouter: RepaymentRouterContract;
 
     let orderFactory: DebtOfferFactory;
-    let defaultOrderParams: { [key: string]: any };
+    let defaultOfferParams: { [key: string]: any };
 
     const CONTRACT_OWNER = ACCOUNTS[0];
     const ATTACKER = ACCOUNTS[1];
@@ -125,7 +125,7 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
         creditorProxy = new CreditorProxyContract(creditorProxyWeb3ContractInstance, TX_DEFAULTS);
 
         const latestBlockTime = await web3Utils.getLatestBlockTime();
-        defaultOrderParams = {
+        defaultOfferParams = {
             kernelVersion: mockDebtKernel.address,
             creditor: CREDITOR_1,
             repaymentRouterVersion: repaymentRouter.address,
@@ -150,7 +150,7 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
             orderSignatories: { debtor: DEBTOR_1, creditor: CREDITOR_1, underwriter: UNDERWRITER },
         };
 
-        orderFactory = new DebtOfferFactory(defaultOrderParams);
+        orderFactory = new DebtOfferFactory(defaultOfferParams);
 
         // Setup ABI decoder in order to decode logs
         ABIDecoder.addABI(creditorProxyArtifact.abi);
@@ -261,7 +261,7 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
             await mockPrincipalToken.reset.sendTransactionAsync();
         };
 
-        const testOrderFill = (filler: string, setupDebtOffer: () => Promise<void>) => {
+        const testOfferFill = (filler: string, setupDebtOffer: () => Promise<void>) => {
             return () => {
                 let debtOfferFilledLog: ABIDecoder.DecodedLog;
 
@@ -368,52 +368,142 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
         };
 
         describe("User fills valid, consentual debt offer", () => {
-            describe(
+            describe.only(
                 "...with underwriter and relayer",
-                testOrderFill(CONTRACT_OWNER, async () => {
+                testOfferFill(CONTRACT_OWNER, async () => {
                     debtOffer = await orderFactory.generateDebtOffer({});
                 }),
             );
 
             describe(
                 "...with neither underwriter nor relayer",
-                testOrderFill(CONTRACT_OWNER, async () => {
-                    debtOffer = await orderFactory.generateDebtOffer({});
+                testOfferFill(CONTRACT_OWNER, async () => {
+                    debtOffer = await orderFactory.generateDebtOffer({
+                        creditorFee: new BigNumber(0),
+                        debtorFee: new BigNumber(0),
+                        relayer: NULL_ADDRESS,
+                        relayerFee: new BigNumber(0),
+                        underwriter: NULL_ADDRESS,
+                        underwriterFee: new BigNumber(0),
+                        underwriterRiskRating: new BigNumber(0),
+                    });
                 }),
             );
 
             describe(
-                "...with underwriter and no relayer",
-                testOrderFill(CONTRACT_OWNER, async () => {
-                    debtOffer = await orderFactory.generateDebtOffer({});
+                "...with underwriter but no relayer",
+                testOfferFill(CONTRACT_OWNER, async () => {
+                    debtOffer = await orderFactory.generateDebtOffer({
+                        relayer: NULL_ADDRESS,
+                        relayerFee: new BigNumber(0),
+                        underwriterFee: defaultOfferParams.creditorFee.plus(
+                            defaultOfferParams.debtorFee,
+                        ),
+                    });
+                }),
+            );
+
+            describe(
+                "...with relayer but no underwriter",
+                testOfferFill(CONTRACT_OWNER, async () => {
+                    debtOffer = await orderFactory.generateDebtOffer({
+                        creditorFee: defaultOfferParams.relayerFee.dividedBy(2),
+                        debtorFee: defaultOfferParams.relayerFee.dividedBy(2),
+                        underwriter: NULL_ADDRESS,
+                        underwriterFee: new BigNumber(0),
+                        underwriterRiskRating: new BigNumber(0),
+                    });
                 }),
             );
 
             describe(
                 "...with no principal and no creditor / debtor fees",
-                testOrderFill(CONTRACT_OWNER, async () => {
-                    debtOffer = await orderFactory.generateDebtOffer({});
+                testOfferFill(CONTRACT_OWNER, async () => {
+                    debtOffer = await orderFactory.generateDebtOffer({
+                        creditorFee: new BigNumber(0),
+                        debtorFee: new BigNumber(0),
+                        principalAmount: new BigNumber(0),
+                        relayer: NULL_ADDRESS,
+                        relayerFee: new BigNumber(0),
+                        underwriter: NULL_ADDRESS,
+                        underwriterFee: new BigNumber(0),
+                        underwriterRiskRating: new BigNumber(0),
+                    });
                 }),
             );
 
             describe(
                 "...with no principal and nonzero creditor fee",
-                testOrderFill(CONTRACT_OWNER, async () => {
-                    debtOffer = await orderFactory.generateDebtOffer({});
+                testOfferFill(CONTRACT_OWNER, async () => {
+                    debtOffer = await orderFactory.generateDebtOffer({
+                        creditorFee: Units.ether(0.002),
+                        debtorFee: new BigNumber(0),
+                        principalAmount: new BigNumber(0),
+                        relayer: NULL_ADDRESS,
+                        relayerFee: new BigNumber(0),
+                        underwriter: UNDERWRITER,
+                        underwriterFee: Units.ether(0.002),
+                    });
                 }),
             );
 
             describe(
                 "...when creditor and debtor are same address",
-                testOrderFill(CONTRACT_OWNER, async () => {
-                    debtOffer = await orderFactory.generateDebtOffer({});
+                testOfferFill(CONTRACT_OWNER, async () => {
+                    debtOffer = await orderFactory.generateDebtOffer({
+                        creditor: CREDITOR_1,
+                        creditorFee: new BigNumber(0),
+                        debtor: CREDITOR_1,
+                        debtorFee: new BigNumber(0),
+                        orderSignatories: {
+                            creditor: CREDITOR_1,
+                            debtor: CREDITOR_1,
+                        },
+                        principalAmount: new BigNumber(0),
+                        relayer: NULL_ADDRESS,
+                        relayerFee: new BigNumber(0),
+                        underwriter: NULL_ADDRESS,
+                        underwriterFee: new BigNumber(0),
+                        underwriterRiskRating: new BigNumber(0),
+                    });
                 }),
             );
         });
 
         describe("User fills invalid debt offer", () => {
-            describe("...when transfer proxy has insufficient allowance", () => {
-                it("should return CREDITOR_BALANCE_OR_ALLOWANCE_INSUFFICIENT error", async () => {});
+            describe("...when creditor has granted transfer proxy insufficient allowance", () => {
+                before(async () => {
+                    const creditorPayment = debtOffer
+                        .getPrincipalAmount()
+                        .plus(debtOffer.getCreditorFee());
+                    await mockPrincipalToken.reset.sendTransactionAsync();
+                    await mockPrincipalToken.mockBalanceOfFor.sendTransactionAsync(
+                        debtOffer.getCreditor(),
+                        creditorPayment,
+                    );
+                    await mockPrincipalToken.mockBalanceOfFor.sendTransactionAsync(
+                        creditorProxy.address,
+                        creditorPayment,
+                    );
+                    await mockPrincipalToken.mockAllowanceFor.sendTransactionAsync(
+                        debtOffer.getCreditor(),
+                        mockTokenTransferProxy.address,
+                        creditorPayment.minus(Units.ether(0.01)),
+                    );
+                    await mockPrincipalToken.mockAllowanceFor.sendTransactionAsync(
+                        creditorProxy.address,
+                        mockTokenTransferProxy.address,
+                        creditorPayment,
+                    );
+                    debtOffer = await orderFactory.generateDebtOffer();
+                });
+
+                it("should return CREDITOR_BALANCE_OR_ALLOWANCE_INSUFFICIENT error", async () => {
+                    await testShouldReturnError(
+                        debtOffer,
+                        CreditorProxyErrorCodes.CREDITOR_BALANCE_OR_ALLOWANCE_INSUFFICIENT,
+                    );
+                });
             });
 
             describe("...when creditor has insufficient balance", () => {

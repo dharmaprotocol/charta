@@ -49,7 +49,7 @@ export function LogError(
                 ["_creditor", creditor],
                 ["_creditorCommitmentHash", creditorCommitmentHash],
             ],
-            ["uint8", "bytes32"],
+            ["uint8", "address", "bytes32"],
         ),
         name: "LogError",
     };
