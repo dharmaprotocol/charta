@@ -35,7 +35,7 @@ contract CreditorProxy is Pausable {
 
     enum Errors {
         DEBT_OFFER_CANCELLED,
-        DEBT_OFFER_FILLED,
+        DEBT_OFFER_ALREADY_FILLED,
         DEBT_OFFER_NON_CONSENSUAL,
         CREDITOR_BALANCE_OR_ALLOWANCE_INSUFFICIENT
     }
@@ -107,7 +107,7 @@ contract CreditorProxy is Pausable {
         );
 
         if (debtOfferFilled[creditorCommitmentHash]) {
-            LogError(uint8(Errors.DEBT_OFFER_FILLED), creditor, creditorCommitmentHash);
+            LogError(uint8(Errors.DEBT_OFFER_ALREADY_FILLED), creditor, creditorCommitmentHash);
             return NULL_ISSUANCE_HASH;
         }
 
