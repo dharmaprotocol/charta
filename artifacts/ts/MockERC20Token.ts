@@ -3430,9 +3430,9 @@ export const MockERC20Token =
     "70": {
       "events": {},
       "links": {},
-      "address": "0x7541fa794f94a7115bd9b575b0eecaaa0069ea93"
+      "address": "0xd6bb6140b900e7bfdd57ba48cfd375382b0c488c"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-29T22:07:29.825Z"
+  "updatedAt": "2018-08-31T00:08:12.249Z"
 }

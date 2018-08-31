@@ -52526,5 +52526,5 @@ export const KittyAuction =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-29T22:07:18.275Z"
+  "updatedAt": "2018-08-31T00:08:12.091Z"
 }

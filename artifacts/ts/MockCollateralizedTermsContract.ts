@@ -5728,9 +5728,9 @@ export const MockCollateralizedTermsContract =
     "70": {
       "events": {},
       "links": {},
-      "address": "0x54e3965cebb013068738ce587c63b4184508ba35"
+      "address": "0x9578e59c7512959cf42ff72e4df3184ea14ae802"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-29T22:07:29.880Z"
+  "updatedAt": "2018-08-31T00:08:12.252Z"
 }

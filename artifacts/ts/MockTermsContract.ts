@@ -3400,9 +3400,9 @@ export const MockTermsContract =
     "70": {
       "events": {},
       "links": {},
-      "address": "0x7692386b12b3d661515e4a58b98262507778fba5"
+      "address": "0x5b9a1976db5999d3965f26b9bfa28ff32d4974b9"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-29T22:07:29.884Z"
+  "updatedAt": "2018-08-31T00:08:12.290Z"
 }

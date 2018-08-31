@@ -2970,5 +2970,5 @@ export const PermissionEvents =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-29T22:07:18.058Z"
+  "updatedAt": "2018-08-31T00:08:11.917Z"
 }
