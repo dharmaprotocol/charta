@@ -292,11 +292,6 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
                         mockTokenTransferProxy.address,
                         creditorPayment,
                     );
-                    await mockPrincipalToken.mockAllowanceFor.sendTransactionAsync(
-                        creditorProxy.address,
-                        mockTokenTransferProxy.address,
-                        creditorPayment,
-                    );
 
                     await mockDebtKernel.reset.sendTransactionAsync();
                     await mockDebtKernel.mockCreateReturnValue.sendTransactionAsync(
@@ -316,6 +311,15 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
 
                     const receipt = await web3.eth.getTransactionReceipt(txHash);
                     [debtOfferFilledLog] = _.compact(ABIDecoder.decodeLogs(receipt.logs));
+                });
+
+                it("should approve the transfer proxy to transfer the principal", async () => {
+                    await expect(
+                        mockPrincipalToken.wasApproveCalledWith.callAsync(
+                            mockTokenTransferProxy.address,
+                            debtOffer.getPrincipalAmount().plus(debtOffer.getCreditorFee()),
+                        ),
+                    ).to.eventually.be.true;
                 });
 
                 it("should transfer principal + creditor fees to creditorProxy", async () => {
