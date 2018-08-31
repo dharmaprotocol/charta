@@ -167,12 +167,58 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
     });
 
     describe("#cancelDebtOffer", () => {
+        let debtOffer: SignedDebtOffer;
+
         describe("user who is not the creditor cancelled debt order", () => {
-            it("should throw", async () => {});
+            before(async () => {
+                debtOffer = await orderFactory.generateDebtOffer();
+            });
+            it("should throw", async () => {
+                await expect(
+                    creditorProxy.cancelDebtOffer.sendTransactionAsync(
+                        debtOffer.getCommitmentAddresses(),
+                        debtOffer.getCommitmentValues(),
+                        debtOffer.getCommitmentBytes32(),
+                        { from: ATTACKER },
+                    ),
+                ).to.eventually.be.rejectedWith(REVERT_ERROR);
+            });
         });
+
         describe("creditor cancels issuance", () => {
-            it("should emit debt offer cancelled log", async () => {});
-            it("should return the debt offer as cancelled", async () => {});
+            let debtOfferCancelledLog: ABIDecoder.DecodedLog;
+
+            before(async () => {
+                debtOffer = await orderFactory.generateDebtOffer();
+
+                const txHash = await creditorProxy.cancelDebtOffer.sendTransactionAsync(
+                    debtOffer.getCommitmentAddresses(),
+                    debtOffer.getCommitmentValues(),
+                    debtOffer.getCommitmentBytes32(),
+                    { from: debtOffer.getCreditor() },
+                );
+
+                const receipt = await web3.eth.getTransactionReceipt(txHash);
+                [debtOfferCancelledLog] = _.compact(ABIDecoder.decodeLogs(receipt.logs));
+            });
+
+            it("should emit debt offer cancelled log", async () => {
+                expect(debtOfferCancelledLog).to.deep.equal(
+                    LogDebtOfferCancelled(
+                        creditorProxy.address,
+                        debtOffer.getCreditor(),
+                        debtOffer.getCreditorCommitmentHash(),
+                    ),
+                );
+            });
+
+            it("should return the debt offer as cancelled", async () => {
+                await expect(
+                    creditorProxy.debtOfferCancelled.callAsync(
+                        debtOffer.getCreditorCommitmentHash(),
+                    ),
+                ).to.eventually.be.true;
+            });
         });
     });
 
