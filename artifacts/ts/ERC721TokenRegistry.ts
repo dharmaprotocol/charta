@@ -4163,6 +4163,29 @@ export const ERC721TokenRegistry =
     "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
   },
   "networks": {
+    "42": {
+      "events": {
+        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x309d7ed18765fb72dc68d31621d9601cbb96c57e"
+    },
     "70": {
       "events": {
         "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
@@ -4188,5 +4211,5 @@ export const ERC721TokenRegistry =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-31T00:08:11.905Z"
+  "updatedAt": "2018-08-31T01:06:37.107Z"
 }

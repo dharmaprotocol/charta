@@ -51684,5 +51684,5 @@ export const GeneScienceInterface =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-31T00:08:11.974Z"
+  "updatedAt": "2018-08-31T01:05:16.632Z"
 }

@@ -1443,6 +1443,11 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
     "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
   },
   "networks": {
+    "42": {
+      "events": {},
+      "links": {},
+      "address": "0xeef7d84ab274d3d288e26538893fb3768bff7d12"
+    },
     "70": {
       "events": {},
       "links": {},
@@ -1450,5 +1455,5 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-31T00:08:11.913Z"
+  "updatedAt": "2018-08-31T01:06:37.104Z"
 }

@@ -828,5 +828,5 @@ export const Migrations =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-31T00:08:24.244Z"
+  "updatedAt": "2018-08-31T01:06:37.165Z"
 }

@@ -5147,5 +5147,5 @@ export const TokenRegistry =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-31T00:08:11.915Z"
+  "updatedAt": "2018-08-31T01:05:16.563Z"
 }

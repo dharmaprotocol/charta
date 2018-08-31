@@ -5201,5 +5201,5 @@ export const DharmaMultiSigWallet =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-31T00:08:12.297Z"
+  "updatedAt": "2018-08-31T01:06:37.167Z"
 }

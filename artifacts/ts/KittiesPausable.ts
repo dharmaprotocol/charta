@@ -51725,5 +51725,5 @@ export const KittiesPausable =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-31T00:08:12.051Z"
+  "updatedAt": "2018-08-31T01:05:16.700Z"
 }

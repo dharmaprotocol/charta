@@ -5404,5 +5404,5 @@ export const ERC721Token =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-31T00:08:12.347Z"
+  "updatedAt": "2018-08-31T01:05:17.080Z"
 }
