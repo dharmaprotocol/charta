@@ -42,6 +42,6 @@ export class DebtOfferFactory {
             termsContractParameters: params.termsContractParameters,
         });
 
-        return debtOffer.getSignedDebtOffer(web3, params.orderSignatories);
+        return debtOffer.getSignedDebtOffer(web3, params.offerSignatories);
     }
 }

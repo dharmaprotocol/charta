@@ -84,9 +84,9 @@ contract MockDebtKernel is MockContract {
         returns (string[10] functionNames)
     {
         return [
-            "mockCreateReturnValue",
             "fillDebtOrder",
-            "wasFillDebtOrderCalledWith",
+            "",
+            "",
             "",
             "",
             "",
