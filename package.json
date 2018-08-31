@@ -26,7 +26,7 @@
     "lint-sol": "solhint contracts/*.sol contracts/libraries/*.sol contracts/examples/*.sol contracts/test/**/.sol",
     "lint": "npm run lint-ts; npm run lint-sol",
     "compile": "truffle compile --all",
-    "migrate": "truffle migrate",
+    "migrate": "truffle migrate --reset",
     "prettify": "prettier --write test/ts/**/*.ts types/**/*.ts types/*.ts artifacts/*.ts",
     "prepublishOnly": "npm run dist",
     "test": "npm run compile; npm run generate-typings; npm run transpile; npm run migrate; truffle test",
