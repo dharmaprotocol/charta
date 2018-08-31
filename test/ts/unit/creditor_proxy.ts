@@ -260,6 +260,36 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
             await mockPrincipalToken.reset.sendTransactionAsync();
         };
 
+        const setupMocks = async () => {
+            const creditorPayment = debtOffer.getPrincipalAmount().plus(debtOffer.getCreditorFee());
+
+            await mockDebtToken.reset.sendTransactionAsync();
+            await mockDebtToken.mockCreateReturnValue.sendTransactionAsync(
+                new BigNumber(debtOffer.getAgreementId()),
+            );
+
+            await mockPrincipalToken.reset.sendTransactionAsync();
+            await mockPrincipalToken.mockBalanceOfFor.sendTransactionAsync(
+                debtOffer.getCreditor(),
+                creditorPayment,
+            );
+            await mockPrincipalToken.mockBalanceOfFor.sendTransactionAsync(
+                creditorProxy.address,
+                creditorPayment,
+            );
+
+            await mockPrincipalToken.mockAllowanceFor.sendTransactionAsync(
+                debtOffer.getCreditor(),
+                mockTokenTransferProxy.address,
+                creditorPayment,
+            );
+
+            await mockDebtKernel.reset.sendTransactionAsync();
+            await mockDebtKernel.mockCreateReturnValue.sendTransactionAsync(
+                debtOffer.getAgreementId(),
+            );
+        };
+
         const testOfferFill = (filler: string, setupDebtOffer: () => Promise<void>) => {
             return () => {
                 let debtOfferFilledLog: ABIDecoder.DecodedLog;
@@ -267,35 +297,7 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
                 before(async () => {
                     await setupDebtOffer();
 
-                    const creditorPayment = debtOffer
-                        .getPrincipalAmount()
-                        .plus(debtOffer.getCreditorFee());
-
-                    await mockDebtToken.reset.sendTransactionAsync();
-                    await mockDebtToken.mockCreateReturnValue.sendTransactionAsync(
-                        new BigNumber(debtOffer.getAgreementId()),
-                    );
-
-                    await mockPrincipalToken.reset.sendTransactionAsync();
-                    await mockPrincipalToken.mockBalanceOfFor.sendTransactionAsync(
-                        debtOffer.getCreditor(),
-                        creditorPayment,
-                    );
-                    await mockPrincipalToken.mockBalanceOfFor.sendTransactionAsync(
-                        creditorProxy.address,
-                        creditorPayment,
-                    );
-
-                    await mockPrincipalToken.mockAllowanceFor.sendTransactionAsync(
-                        debtOffer.getCreditor(),
-                        mockTokenTransferProxy.address,
-                        creditorPayment,
-                    );
-
-                    await mockDebtKernel.reset.sendTransactionAsync();
-                    await mockDebtKernel.mockCreateReturnValue.sendTransactionAsync(
-                        debtOffer.getAgreementId(),
-                    );
+                    await setupMocks();
 
                     const txHash = await creditorProxy.fillDebtOffer.sendTransactionAsync(
                         debtOffer.getCreditor(),
@@ -437,31 +439,17 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
         describe("User fills invalid debt offer", () => {
             describe("...when creditor has granted transfer proxy insufficient allowance", () => {
                 before(async () => {
-                    const creditorPayment = debtOffer
-                        .getPrincipalAmount()
-                        .plus(debtOffer.getCreditorFee());
-                    await mockPrincipalToken.reset.sendTransactionAsync();
-                    await mockPrincipalToken.mockBalanceOfFor.sendTransactionAsync(
-                        debtOffer.getCreditor(),
-                        creditorPayment,
-                    );
-                    await mockPrincipalToken.mockBalanceOfFor.sendTransactionAsync(
-                        creditorProxy.address,
-                        creditorPayment,
-                    );
+                    debtOffer = await offerFactory.generateDebtOffer();
+                    await setupMocks();
                     await mockPrincipalToken.mockAllowanceFor.sendTransactionAsync(
                         debtOffer.getCreditor(),
                         mockTokenTransferProxy.address,
-                        creditorPayment.minus(Units.ether(0.01)),
+                        debtOffer
+                            .getPrincipalAmount()
+                            .plus(debtOffer.getCreditorFee())
+                            .minus(Units.ether(0.01)),
                     );
-                    await mockPrincipalToken.mockAllowanceFor.sendTransactionAsync(
-                        creditorProxy.address,
-                        mockTokenTransferProxy.address,
-                        creditorPayment,
-                    );
-                    debtOffer = await orderFactory.generateDebtOffer();
                 });
-
                 it("should return CREDITOR_BALANCE_OR_ALLOWANCE_INSUFFICIENT error", async () => {
                     await testShouldReturnError(
                         debtOffer,
@@ -471,19 +459,90 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
             });
 
             describe("...when creditor has insufficient balance", () => {
-                it("should return CREDITOR_BALANCE_OR_ALLOWANCE_INSUFFICIENT error", async () => {});
+                before(async () => {
+                    debtOffer = await offerFactory.generateDebtOffer();
+                    await setupMocks();
+                    await mockPrincipalToken.mockBalanceOfFor.sendTransactionAsync(
+                        debtOffer.getCreditor(),
+                        debtOffer
+                            .getPrincipalAmount()
+                            .plus(debtOffer.getCreditorFee())
+                            .minus(Units.ether(0.01)),
+                    );
+                });
+                it("should return CREDITOR_BALANCE_OR_ALLOWANCE_INSUFFICIENT error", async () => {
+                    await testShouldReturnError(
+                        debtOffer,
+                        CreditorProxyErrorCodes.CREDITOR_BALANCE_OR_ALLOWANCE_INSUFFICIENT,
+                    );
+                });
             });
 
             describe("...when debt offer has already been filled", () => {
-                it("should return DEBT_OFFER_FILLED error", async () => {});
+                before(async () => {
+                    debtOffer = await offerFactory.generateDebtOffer();
+                    await setupMocks();
+                    await creditorProxy.fillDebtOffer.sendTransactionAsync(
+                        debtOffer.getCreditor(),
+                        debtOffer.getOrderAddresses(),
+                        debtOffer.getOrderValues(),
+                        debtOffer.getOrderBytes32(),
+                        debtOffer.getSignaturesV(),
+                        debtOffer.getSignaturesR(),
+                        debtOffer.getSignaturesS(),
+                        { from: CONTRACT_OWNER },
+                    );
+                });
+                it("should return DEBT_OFFER_FILLED error", async () => {
+                    await testShouldReturnError(
+                        debtOffer,
+                        CreditorProxyErrorCodes.DEBT_OFFER_ALREADY_FILLED,
+                    );
+                });
             });
 
             describe("...when debt offer has been cancelled", () => {
-                it("should return DEBT_OFFER_CANCELLED error", async () => {});
+                before(async () => {
+                    debtOffer = await offerFactory.generateDebtOffer();
+                    await setupMocks();
+                    await creditorProxy.cancelDebtOffer.sendTransactionAsync(
+                        debtOffer.getCommitmentAddresses(),
+                        debtOffer.getCommitmentValues(),
+                        debtOffer.getCommitmentBytes32(),
+                        { from: debtOffer.getCreditor() },
+                    );
+                });
+                it("should return DEBT_OFFER_CANCELLED error", async () => {
+                    await testShouldReturnError(
+                        debtOffer,
+                        CreditorProxyErrorCodes.DEBT_OFFER_CANCELLED,
+                    );
+                });
             });
 
             describe("...when debt kernel returns null issuance hash", () => {
-                it("should throw", async () => {});
+                before(async () => {
+                    debtOffer = await offerFactory.generateDebtOffer();
+                    await setupMocks();
+                    await mockDebtKernel.reset.sendTransactionAsync();
+                    await mockDebtKernel.mockCreateReturnValue.sendTransactionAsync(
+                        NULL_ISSUANCE_HASH,
+                    );
+                });
+                it("should throw", async () => {
+                    expect(
+                        creditorProxy.fillDebtOffer.sendTransactionAsync(
+                            debtOffer.getCreditor(),
+                            debtOffer.getOrderAddresses(),
+                            debtOffer.getOrderValues(),
+                            debtOffer.getOrderBytes32(),
+                            debtOffer.getSignaturesV(),
+                            debtOffer.getSignaturesR(),
+                            debtOffer.getSignaturesS(),
+                            { from: CONTRACT_OWNER },
+                        ),
+                    ).to.eventually.be.rejectedWith(REVERT_ERROR);
+                });
             });
         });
 
