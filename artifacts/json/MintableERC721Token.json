@@ -1233,6 +1233,11 @@
     "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
   },
   "networks": {
+    "42": {
+      "events": {},
+      "links": {},
+      "address": "0x91ab1498428910eab1021a95c5a478af9814fb4b"
+    },
     "70": {
       "events": {},
       "links": {},
@@ -1240,5 +1245,5 @@
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-31T01:00:30.295Z"
+  "updatedAt": "2018-08-31T01:06:37.110Z"
 }

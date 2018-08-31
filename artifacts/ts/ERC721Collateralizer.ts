@@ -9356,6 +9356,151 @@ export const ERC721Collateralizer =
     "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
   },
   "networks": {
+    "42": {
+      "events": {
+        "0x38f12634ebefbe7f6767652aae05e220f95e0ca8ef8353c9c9c5ae439a592aec": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "agreementID",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "name": "erc721Contract",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "tokenID",
+              "type": "uint256"
+            }
+          ],
+          "name": "CollateralLocked",
+          "type": "event"
+        },
+        "0x2621540e2b91ca10330d6a7cbd6fb8cab2396f91c4935ad76b1183770819fa1f": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "agreementID",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "name": "debtor",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "erc721Contract",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "tokenID",
+              "type": "uint256"
+            }
+          ],
+          "name": "CollateralReturned",
+          "type": "event"
+        },
+        "0x50d195a4b80a950617a8e0e18ac9dd4c0236ac72d5e12355d881443823870d39": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "agreementID",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "name": "beneficiary",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "erc721Contract",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "tokenID",
+              "type": "uint256"
+            }
+          ],
+          "name": "CollateralSeized",
+          "type": "event"
+        },
+        "0x571925c699f9072cec76b6c6c000571cc8d0bb5c47e5819202e2e9496c6508b5": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "agent",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "callingContext",
+              "type": "string"
+            }
+          ],
+          "name": "Authorized",
+          "type": "event"
+        },
+        "0x0814e4ee85854cea446b4a27a460e5ffb41516230dbc02f226c07907e432241c": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "agent",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "callingContext",
+              "type": "string"
+            }
+          ],
+          "name": "AuthorizationRevoked",
+          "type": "event"
+        },
+        "0x6985a02210a168e66602d3235cb6db0e70f92b3ba4d376a33c0f3d9434bff625": {
+          "anonymous": false,
+          "inputs": [],
+          "name": "Pause",
+          "type": "event"
+        },
+        "0x7805862f689e2f13df9f062ff482ad3ad112aca9e0847911ed832e158c525b33": {
+          "anonymous": false,
+          "inputs": [],
+          "name": "Unpause",
+          "type": "event"
+        },
+        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x6114e5c837b6bc774399190a5368019ed332c54b"
+    },
     "70": {
       "events": {
         "0x38f12634ebefbe7f6767652aae05e220f95e0ca8ef8353c9c9c5ae439a592aec": {
@@ -9503,5 +9648,5 @@ export const ERC721Collateralizer =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-31T01:00:29.875Z"
+  "updatedAt": "2018-08-31T01:06:37.116Z"
 }

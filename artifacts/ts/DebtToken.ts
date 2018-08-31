@@ -6342,5 +6342,5 @@ export const DebtToken =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-31T01:00:29.863Z"
+  "updatedAt": "2018-08-31T01:06:37.125Z"
 }

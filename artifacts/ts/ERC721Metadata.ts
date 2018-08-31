@@ -1055,5 +1055,5 @@ export const ERC721Metadata =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-31T01:00:30.388Z"
+  "updatedAt": "2018-08-31T01:05:17.070Z"
 }

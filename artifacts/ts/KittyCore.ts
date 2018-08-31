@@ -52744,6 +52744,11 @@ export const KittyCore =
     "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
   },
   "networks": {
+    "42": {
+      "events": {},
+      "links": {},
+      "address": "0xea57c693d9a923cf4398eba61ccfea43574471a3"
+    },
     "70": {
       "events": {},
       "links": {},
@@ -52751,5 +52756,5 @@ export const KittyCore =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-31T01:00:30.257Z"
+  "updatedAt": "2018-08-31T01:06:37.185Z"
 }
