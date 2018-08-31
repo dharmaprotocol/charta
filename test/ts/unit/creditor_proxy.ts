@@ -227,9 +227,9 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
         const testShouldReturnError = async (
             offer: SignedDebtOffer,
             errorCode: number,
+            signaturesV?: number[],
             signaturesR?: string[],
             signaturesS?: string[],
-            signaturesV?: number[],
         ) => {
             const txHash = await creditorProxy.fillDebtOffer.sendTransactionAsync(
                 offer.getCreditor(),
@@ -547,52 +547,167 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
         });
 
         describe("User fills nonconsensual debt offer", () => {
-            describe("...when submitted by debtor *without* debtor signature attached", async () => {
-                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {});
-            });
-
-            describe("...when submitted by underwriter *without* underwriter signature attached", async () => {
-                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {});
+            let mismatchedDebtOffer: SignedDebtOffer;
+            before(async () => {
+                debtOffer = await offerFactory.generateDebtOffer();
+                await setupMocks();
             });
 
             describe("...when submitted by creditor *without* creditor signature attached", async () => {
-                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {});
+                it("throw or something, this doesn't work", async () => {});
             });
 
             describe("creditor's signature commits to creditor address =/= offer's", async () => {
-                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {});
+                before(async () => {
+                    mismatchedDebtOffer = await offerFactory.generateDebtOffer({
+                        creditor: CREDITOR_2,
+                    });
+                });
+                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {
+                    await testShouldReturnError(
+                        mismatchedDebtOffer,
+                        CreditorProxyErrorCodes.DEBT_OFFER_NON_CONSENSUAL,
+                        debtOffer.getSignaturesV(),
+                        debtOffer.getSignaturesR(),
+                        debtOffer.getSignaturesS(),
+                    );
+                });
             });
 
             describe("creditor's signature commits to repayment router =/= offer's", async () => {
-                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {});
+                before(async () => {
+                    mismatchedDebtOffer = await offerFactory.generateDebtOffer({
+                        repaymentRouterVersion: ATTACKER,
+                    });
+                });
+                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {
+                    await testShouldReturnError(
+                        mismatchedDebtOffer,
+                        CreditorProxyErrorCodes.DEBT_OFFER_NON_CONSENSUAL,
+                        debtOffer.getSignaturesV(),
+                        debtOffer.getSignaturesR(),
+                        debtOffer.getSignaturesS(),
+                    );
+                });
             });
 
             describe("creditor's signature commits to creditor fee =/= offer's", async () => {
-                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {});
+                before(async () => {
+                    mismatchedDebtOffer = await offerFactory.generateDebtOffer({
+                        creditorFee: new BigNumber(0),
+                    });
+                });
+                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {
+                    await testShouldReturnError(
+                        mismatchedDebtOffer,
+                        CreditorProxyErrorCodes.DEBT_OFFER_NON_CONSENSUAL,
+                        debtOffer.getSignaturesV(),
+                        debtOffer.getSignaturesR(),
+                        debtOffer.getSignaturesS(),
+                    );
+                });
             });
 
             describe("creditor's signature commits to underwriter =/= offer's", async () => {
-                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {});
+                before(async () => {
+                    mismatchedDebtOffer = await offerFactory.generateDebtOffer({
+                        underwriter: ATTACKER,
+                    });
+                });
+                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {
+                    await testShouldReturnError(
+                        mismatchedDebtOffer,
+                        CreditorProxyErrorCodes.DEBT_OFFER_NON_CONSENSUAL,
+                        debtOffer.getSignaturesV(),
+                        debtOffer.getSignaturesR(),
+                        debtOffer.getSignaturesS(),
+                    );
+                });
             });
 
             describe("creditor's signature commits to risk rating =/= offer's", async () => {
-                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {});
+                before(async () => {
+                    mismatchedDebtOffer = await offerFactory.generateDebtOffer({
+                        underwriterRiskRating: new BigNumber(0),
+                    });
+                });
+                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {
+                    await testShouldReturnError(
+                        mismatchedDebtOffer,
+                        CreditorProxyErrorCodes.DEBT_OFFER_NON_CONSENSUAL,
+                        debtOffer.getSignaturesV(),
+                        debtOffer.getSignaturesR(),
+                        debtOffer.getSignaturesS(),
+                    );
+                });
             });
 
             describe("creditor's signature commits to terms contract =/= offer's", async () => {
-                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {});
+                before(async () => {
+                    mismatchedDebtOffer = await offerFactory.generateDebtOffer({
+                        termsContract: ATTACKER,
+                    });
+                });
+                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {
+                    await testShouldReturnError(
+                        mismatchedDebtOffer,
+                        CreditorProxyErrorCodes.DEBT_OFFER_NON_CONSENSUAL,
+                        debtOffer.getSignaturesV(),
+                        debtOffer.getSignaturesR(),
+                        debtOffer.getSignaturesS(),
+                    );
+                });
             });
 
             describe("creditor's signature commits to terms parameters =/= offer's", async () => {
-                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {});
+                before(async () => {
+                    mismatchedDebtOffer = await offerFactory.generateDebtOffer({
+                        termsContractParameters: web3.sha3("mismatched terms contract parameters"),
+                    });
+                });
+                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {
+                    await testShouldReturnError(
+                        mismatchedDebtOffer,
+                        CreditorProxyErrorCodes.DEBT_OFFER_NON_CONSENSUAL,
+                        debtOffer.getSignaturesV(),
+                        debtOffer.getSignaturesR(),
+                        debtOffer.getSignaturesS(),
+                    );
+                });
             });
 
             describe("creditor's signature commits to expiration =/= offer's", async () => {
-                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {});
+                before(async () => {
+                    mismatchedDebtOffer = await offerFactory.generateDebtOffer({
+                        expirationTimestampInSec: new BigNumber(0),
+                    });
+                });
+                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {
+                    await testShouldReturnError(
+                        mismatchedDebtOffer,
+                        CreditorProxyErrorCodes.DEBT_OFFER_NON_CONSENSUAL,
+                        debtOffer.getSignaturesV(),
+                        debtOffer.getSignaturesR(),
+                        debtOffer.getSignaturesS(),
+                    );
+                });
             });
 
             describe("creditor's signature commits to salt =/= offer's", async () => {
-                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {});
+                before(async () => {
+                    mismatchedDebtOffer = await offerFactory.generateDebtOffer({
+                        salt: new BigNumber(0),
+                    });
+                });
+                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {
+                    await testShouldReturnError(
+                        mismatchedDebtOffer,
+                        CreditorProxyErrorCodes.DEBT_OFFER_NON_CONSENSUAL,
+                        debtOffer.getSignaturesV(),
+                        debtOffer.getSignaturesR(),
+                        debtOffer.getSignaturesS(),
+                    );
+                });
             });
         });
     });
