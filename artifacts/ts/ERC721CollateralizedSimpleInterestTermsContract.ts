@@ -1450,5 +1450,5 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-30T23:59:19.295Z"
+  "updatedAt": "2018-08-31T00:08:11.913Z"
 }

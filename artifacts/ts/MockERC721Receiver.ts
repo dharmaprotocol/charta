@@ -1854,5 +1854,5 @@ export const MockERC721Receiver =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-30T23:59:17.532Z"
+  "updatedAt": "2018-08-31T00:08:12.253Z"
 }

@@ -1779,5 +1779,5 @@ export const DummyContract =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-30T23:59:17.521Z"
+  "updatedAt": "2018-08-31T00:08:12.211Z"
 }
