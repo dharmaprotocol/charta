@@ -554,7 +554,16 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
             });
 
             describe("...when submitted by creditor *without* creditor signature attached", async () => {
-                it("throw or something, this doesn't work", async () => {});
+                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {
+                    await testShouldReturnError(
+                        debtOffer,
+                        CreditorProxyErrorCodes.DEBT_OFFER_NON_CONSENSUAL,
+                        [debtOffer.getSignaturesV()[0], null, debtOffer.getSignaturesV()[2]],
+                        [debtOffer.getSignaturesR()[0], null, debtOffer.getSignaturesR()[2]],
+                        [debtOffer.getSignaturesS()[0], null, debtOffer.getSignaturesS()[2]],
+                        debtOffer.getCreditor(),
+                    );
+                });
             });
 
             describe("creditor's signature commits to creditor address =/= offer's", async () => {
