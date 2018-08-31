@@ -235,6 +235,28 @@ export class SignedDebtOffer extends DebtOffer {
         return [this.getTermsContractParameters()];
     }
 
+    public getCommitmentAddresses(): Address[] {
+        return [
+            this.getCreditor(),
+            this.getRepaymentRouterVersion(),
+            this.getUnderwriter(),
+            this.getTermsContract(),
+        ];
+    }
+
+    public getCommitmentValues(): BigNumber[] {
+        return [
+            this.getCreditorFee(),
+            this.getUnderwriterRiskRating(),
+            this.getExpiration(),
+            this.getSalt(),
+        ];
+    }
+
+    public getCommitmentBytes32(): Bytes32[] {
+        return [this.getTermsContractParameters()];
+    }
+
     public getSignaturesR(): Bytes32[] {
         return [this.debtorSignature.r, this.creditorSignature.r, this.underwriterSignature.r];
     }

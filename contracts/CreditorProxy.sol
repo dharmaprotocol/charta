@@ -89,6 +89,7 @@ contract CreditorProxy is Pausable {
         whenNotPaused
         returns (bytes32 _agreementId)
     {
+
         bytes32 creditorCommitmentHash = getCreditorCommitmentHash(
             [
                 creditor,
@@ -102,7 +103,7 @@ contract CreditorProxy is Pausable {
                 orderValues[7], // commitmentExpirationTimestampInSec
                 orderValues[1] // salt
             ],
-            orderBytes32[0] // termsContractParameters
+            orderBytes32 // termsContractParameters
         );
 
         if (debtOfferFilled[creditorCommitmentHash]) {
@@ -182,13 +183,23 @@ contract CreditorProxy is Pausable {
     /**
      * Allows creditor to prevent a debt offer from being used in the future
      */
-    function cancelDebtOffer(address creditor, bytes32 creditorCommitmentHash)
+    function cancelDebtOffer(
+        address[4] commitmentAddresses,
+        uint[4] commitmentValues,
+        bytes32[1] termsContractParameters
+    )
         public
         whenNotPaused
     {
-        require(msg.sender == creditor);
+        // sender must be the creditor
+        require(msg.sender == commitmentAddresses[0]);
+        bytes32 creditorCommitmentHash = getCreditorCommitmentHash(
+            commitmentAddresses,
+            commitmentValues,
+            termsContractParameters
+        );
         debtOfferCancelled[creditorCommitmentHash] = true;
-        LogDebtOfferCancelled(creditor, creditorCommitmentHash);
+        LogDebtOfferCancelled(commitmentAddresses[0], creditorCommitmentHash);
     }
 
     ////////////////////////
@@ -201,7 +212,7 @@ contract CreditorProxy is Pausable {
     function getCreditorCommitmentHash(
         address[4] commitmentAddresses,
         uint[4] commitmentValues,
-        bytes32 termsContractParameters
+        bytes32[1] termsContractParameters
     )
         internal
         pure
@@ -214,7 +225,7 @@ contract CreditorProxy is Pausable {
             commitmentAddresses[2], // underwriter
             commitmentValues[1], // underwriterRiskRating
             commitmentAddresses[3], // termsContract
-            termsContractParameters,
+            termsContractParameters[0],
             commitmentValues[2], // commitmentExpirationTimestampInSec
             commitmentValues[3] // salt
         );
