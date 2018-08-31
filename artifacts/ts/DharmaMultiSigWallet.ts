@@ -5197,9 +5197,9 @@ export const DharmaMultiSigWallet =
     "70": {
       "events": {},
       "links": {},
-      "address": "0x5549c4ecb416f33461b662e4c4ab1bf10c703126"
+      "address": "0xcee0678d64873aec65128d73e821f08dbccef8e6"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-29T22:07:31.766Z"
+  "updatedAt": "2018-08-30T23:59:19.306Z"
 }

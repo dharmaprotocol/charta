@@ -10518,9 +10518,9 @@ export const SimpleInterestTermsContract =
     "70": {
       "events": {},
       "links": {},
-      "address": "0x1cb72cc4e012d80ceaf238a0007be6ab7a0e1719"
+      "address": "0x6c522202cb7b4a84f36724ed6dcbd5c76b651cf2"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-29T22:07:30.069Z"
+  "updatedAt": "2018-08-30T23:59:17.775Z"
 }

@@ -52747,9 +52747,9 @@ export const KittyCore =
     "70": {
       "events": {},
       "links": {},
-      "address": "0x7fe0163123dd88039c7bc0b72ba15dc3cec53d2b"
+      "address": "0x6a340b3fcaec7945048ada799feee749c8b26d67"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-29T22:07:31.782Z"
+  "updatedAt": "2018-08-30T23:59:19.319Z"
 }

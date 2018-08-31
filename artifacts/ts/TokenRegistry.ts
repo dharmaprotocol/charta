@@ -5143,9 +5143,9 @@ export const TokenRegistry =
         }
       },
       "links": {},
-      "address": "0xf21ef0271ebcbd144616c43b90dc578665264a2c"
+      "address": "0x46932ccff78c057911983cd003a85991982df639"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-29T22:07:30.871Z"
+  "updatedAt": "2018-08-30T23:59:18.559Z"
 }

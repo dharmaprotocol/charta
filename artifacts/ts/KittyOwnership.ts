@@ -52206,5 +52206,5 @@ export const KittyOwnership =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-29T22:07:18.377Z"
+  "updatedAt": "2018-08-30T23:59:06.233Z"
 }
