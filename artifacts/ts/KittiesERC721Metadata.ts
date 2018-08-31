@@ -51670,5 +51670,5 @@ export const KittiesERC721Metadata =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-30T23:59:06.016Z"
+  "updatedAt": "2018-08-31T00:08:12.014Z"
 }
