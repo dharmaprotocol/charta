@@ -52751,5 +52751,5 @@ export const KittyCore =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-31T00:08:12.157Z"
+  "updatedAt": "2018-08-31T01:00:30.257Z"
 }

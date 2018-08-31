@@ -1597,5 +1597,5 @@ export const MockTokenRegistry =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-31T00:08:12.287Z"
+  "updatedAt": "2018-08-31T01:00:30.361Z"
 }

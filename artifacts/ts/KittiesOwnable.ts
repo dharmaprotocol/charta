@@ -51677,5 +51677,5 @@ export const KittiesOwnable =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-31T00:08:12.033Z"
+  "updatedAt": "2018-08-31T01:00:30.158Z"
 }

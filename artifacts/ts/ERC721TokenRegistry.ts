@@ -4188,5 +4188,5 @@ export const ERC721TokenRegistry =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-31T00:08:11.905Z"
+  "updatedAt": "2018-08-31T01:00:29.866Z"
 }
