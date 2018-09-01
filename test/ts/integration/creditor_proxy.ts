@@ -600,19 +600,84 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
 
         describe("User fills invalid debt order", () => {
             describe("...when creditor has not granted the transfer proxy sufficient allowance", () => {
-                it("should return CREDITOR_BALANCE_OR_ALLOWANCE_INSUFFICIENT error", async () => {});
+                before(async () => {
+                    debtOffer = await orderFactory.generateDebtOffer();
+                    await setupBalancesAndAllowances();
+
+                    const token = await DummyTokenContract.at(
+                        debtOffer.getPrincipalToken(),
+                        web3,
+                        TX_DEFAULTS,
+                    );
+                    await token.approve.sendTransactionAsync(
+                        tokenTransferProxy.address,
+                        debtOffer.getPrincipalAmount().plus(debtOffer.getCreditorFee().minus(1)),
+                        { from: debtOffer.getCreditor() },
+                    );
+                });
+
+                it("should return CREDITOR_BALANCE_OR_ALLOWANCE_INSUFFICIENT error", async () => {
+                    await testShouldReturnError(
+                        debtOffer,
+                        CreditorProxyErrorCodes.CREDITOR_BALANCE_OR_ALLOWANCE_INSUFFICIENT,
+                    );
+                });
             });
 
             describe("...when creditor does not have sufficient balance", () => {
-                it("should return CREDITOR_BALANCE_OR_ALLOWANCE_INSUFFICIENT error", async () => {});
+                before(async () => {
+                    debtOffer = await orderFactory.generateDebtOffer();
+
+                    const token = await DummyTokenContract.at(
+                        debtOffer.getPrincipalToken(),
+                        web3,
+                        TX_DEFAULTS,
+                    );
+                    await token.setBalance.sendTransactionAsync(
+                        debtOffer.getCreditor(),
+                        debtOffer.getPrincipalAmount().plus(debtOffer.getCreditorFee().minus(1)),
+                        { from: CONTRACT_OWNER },
+                    );
+                });
+
+                it("should return CREDITOR_BALANCE_OR_ALLOWANCE_INSUFFICIENT error", async () => {
+                    await testShouldReturnError(
+                        debtOffer,
+                        CreditorProxyErrorCodes.CREDITOR_BALANCE_OR_ALLOWANCE_INSUFFICIENT,
+                    );
+                });
             });
 
             describe("...when debt offer has already been filled", () => {
-                it("should return DEBT_OFFER_ALREADY_FILLED error", async () => {});
+                before(async () => {
+                    debtOffer = await orderFactory.generateDebtOffer();
+                    await setupBalancesAndAllowances();
+
+                    await creditorProxy.fillDebtOffer.sendTransactionAsync(
+                        debtOffer.getCreditor(),
+                        debtOffer.getOrderAddresses(),
+                        debtOffer.getOrderValues(),
+                        debtOffer.getOrderBytes32(),
+                        debtOffer.getSignaturesV(),
+                        debtOffer.getSignaturesR(),
+                        debtOffer.getSignaturesS(),
+                    );
+                });
+                it("should return DEBT_OFFER_ALREADY_FILLED error", async () => {
+                    await testShouldReturnError(
+                        debtOffer,
+                        CreditorProxyErrorCodes.DEBT_OFFER_ALREADY_FILLED,
+                    );
+                });
             });
 
             describe("...when debt offer has been cancelled", () => {
-                it("should return DEBT_OFFER_CANCELLED error", async () => {});
+                it("should return DEBT_OFFER_CANCELLED error", async () => {
+                    await testShouldReturnError(
+                        debtOffer,
+                        CreditorProxyErrorCodes.DEBT_OFFER_CANCELLED,
+                    );
+                });
             });
 
             describe("...when debt kernel returns NULL_ISSUANCE_HASH", () => {
