@@ -40,6 +40,7 @@ const web3Utils = new Web3Utils(web3);
 const contractRegistryArtifact = artifacts.require("ContractRegistry");
 const creditorProxyArtifact = artifacts.require("CreditorProxy");
 const mockDebtKernelArtifact = artifacts.require("MockDebtKernel");
+const mockERC20TokenArtifact = artifacts.require("MockERC20Token");
 
 contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
     let contractRegistry: ContractRegistryContract;
@@ -153,6 +154,7 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
         offerFactory = new DebtOfferFactory(defaultOfferParams);
 
         ABIDecoder.addABI(creditorProxyArtifact.abi);
+        ABIDecoder.addABI(mockERC20TokenArtifact.abi);
     };
 
     before(reset);
@@ -314,7 +316,6 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
                     [debtOfferFilledLog] = _.compact(ABIDecoder.decodeLogs(receipt.logs));
                 });
 
-                /*
                 it("should approve the transfer proxy to transfer the principal", async () => {
                     await expect(
                         mockPrincipalToken.wasApproveCalledWith.callAsync(
@@ -323,7 +324,6 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
                         ),
                     ).to.eventually.be.true;
                 });
-                */
 
                 it("should transfer principal + creditor fees to creditorProxy", async () => {
                     if (debtOffer.getPrincipalAmount().greaterThan(0)) {
