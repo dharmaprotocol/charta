@@ -57,8 +57,9 @@ const expect = chai.expect;
 // Set up utils
 const web3Utils = new Web3Utils(web3);
 
-const creditorProxyContract = artifacts.require("CreditorProxy");
-const debtTokenContract = artifacts.require("DebtToken");
+const creditorProxyArtifacts = artifacts.require("CreditorProxy");
+const debtTokenArtifacts = artifacts.require("DebtToken");
+const debtKernelArtifacts = artifacts.require("DebtKernel");
 
 contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
     let creditorProxy: CreditorProxyContract;
@@ -149,16 +150,17 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
         offerFactory = new DebtOfferFactory(defaultOfferParams);
 
         // Setup ABI decoder in order to decode logs
-        ABIDecoder.addABI(creditorProxyContract.abi);
-        ABIDecoder.addABI(debtTokenContract.abi);
+        ABIDecoder.addABI(creditorProxyArtifacts.abi);
+        ABIDecoder.addABI(debtTokenArtifacts.abi);
         ABIDecoder.addABI(debtRegistryContract.abi);
+        ABIDecoder.addABI(debtKernelArtifacts.abi);
     };
 
     before(reset);
 
     after(() => {
         // Tear down ABIDecoder before next set of tests
-        ABIDecoder.removeABI(creditorProxyContract.abi);
+        ABIDecoder.removeABI(creditorProxyArtifacts.abi);
     });
 
     describe("Initialization & Upgrades", async () => {
@@ -447,7 +449,6 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
                         }
                     });
 
-                    /*
                     it("should emit debt order filled log", () => {
                         expect(logs.shift()).to.deep.equal(
                             LogDebtOrderFilled(
@@ -462,7 +463,6 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
                             ),
                         );
                     });
-                    */
 
                     it("should emit modify benefeciary log", async () => {
                         expect(logs.shift()).to.deep.equal(
