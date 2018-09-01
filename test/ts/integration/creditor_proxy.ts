@@ -20,6 +20,9 @@ import { Web3Utils } from "../../../utils/web3_utils";
 import { SignedDebtOffer } from "../../../types/proxy/debt_offer";
 
 // Logs
+import { LogApproval, LogTransfer } from "../logs/debt_token";
+import { LogInsertEntry, LogModifyEntryBeneficiary } from "../logs/debt_registry";
+import { LogDebtOrderFilled } from "../logs/debt_kernel";
 import { LogDebtOfferFilled, LogError } from "../logs/creditor_proxy";
 
 // Factories
@@ -32,6 +35,7 @@ import { ContractRegistryContract } from "../../../types/generated/contract_regi
 import { CreditorProxyErrorCodes } from "../../../types/errors";
 import { DebtKernelContract } from "../../../types/generated/debt_kernel";
 import { DebtRegistryContract } from "../../../types/generated/debt_registry";
+import { DebtRegistryEntry } from "../../../types/registry/entry";
 import { DebtTokenContract } from "../../../types/generated/debt_token";
 import { DummyTokenContract } from "../../../types/generated/dummy_token";
 import { RepaymentRouterContract } from "../../../types/generated/repayment_router";
@@ -54,6 +58,7 @@ const expect = chai.expect;
 const web3Utils = new Web3Utils(web3);
 
 const creditorProxyContract = artifacts.require("CreditorProxy");
+const debtTokenContract = artifacts.require("DebtToken");
 
 contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
     let creditorProxy: CreditorProxyContract;
@@ -324,32 +329,164 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
                     ).to.eventually.equal(debtOffer.getCreditor());
                 });
 
-                it("creditor proxy balance should not change", async () => {
+                it("should not change the creditor proxy balance", async () => {
                     const balance = await principalToken.balanceOf.callAsync(creditorProxy.address);
                     expect(balance.toString()).to.equal(creditorProxyBalanceBefore.toString());
                 });
 
                 describe("Logs Emitted:", () => {
-                    it("should emit approval log allowing the transfer of the creditor proxy's principal", async () => {});
+                    it("should emit approval log allowing transfer proxy to tranfer by creditor proxy", async () => {
+                        if (
+                            debtOffer
+                                .getPrincipalAmount()
+                                .plus(debtOffer.getCreditorFee())
+                                .gt(0)
+                        ) {
+                            await expect(logs.shift()).to.deep.equal(
+                                LogApproval(
+                                    debtOffer.getPrincipalToken(),
+                                    creditorProxy.address,
+                                    tokenTransferProxy.address,
+                                    debtOffer.getPrincipalAmount().plus(debtOffer.getCreditorFee()),
+                                ),
+                            );
+                        }
+                    });
 
-                    it("should emit transfer log from creditor to creditor proxy", async () => {});
+                    it("should emit transfer log from creditor to creditor proxy", async () => {
+                        if (
+                            debtOffer
+                                .getPrincipalAmount()
+                                .plus(debtOffer.getCreditorFee())
+                                .gt(0)
+                        ) {
+                            expect(logs.shift()).to.deep.equal(
+                                LogTransfer(
+                                    debtOffer.getPrincipalToken(),
+                                    debtOffer.getCreditor(),
+                                    creditorProxy.address,
+                                    debtOffer.getPrincipalAmount().plus(debtOffer.getCreditorFee()),
+                                ),
+                            );
+                        }
+                    });
 
-                    it("should emit registry insert log", async () => {});
+                    it("should emit registry insert log", async () => {
+                        await expect(logs.shift()).to.deep.equal(
+                            LogInsertEntry(
+                                debtRegistryContract.address,
+                                new DebtRegistryEntry(
+                                    {
+                                        beneficiary: creditorProxy.address,
+                                        debtor: debtOffer.getDebtor(),
+                                        termsContract: debtOffer.getTermsContract(),
+                                        termsContractParameters: debtOffer.getTermsContractParameters(),
+                                        underwriter: debtOffer.getUnderwriter(),
+                                        underwriterRiskRating: debtOffer.getUnderwriterRiskRating(),
+                                        version: debtOffer.getRepaymentRouterVersion(),
+                                    },
+                                    debtOffer.getSalt(),
+                                ),
+                            ),
+                        );
+                    });
 
-                    it("should emit debt token transfer log", async () => {});
+                    it("should emit debt token transfer log", async () => {
+                        expect(logs.shift()).to.deep.equal(
+                            LogTransfer(
+                                debtTokenContract.address,
+                                NULL_ADDRESS,
+                                creditorProxy.address,
+                                new BigNumber(debtOffer.getAgreementId()),
+                            ),
+                        );
+                    });
 
-                    it("should emit transfer log from creditor to debtor (if principal - debtor fee > 0)", async () => {});
+                    it("should emit transfer log from creditor proxy to debtor (if principal - debtor fee > 0)", async () => {
+                        if (
+                            debtOffer
+                                .getPrincipalAmount()
+                                .minus(debtOffer.getDebtorFee())
+                                .gt(0)
+                        ) {
+                            expect(logs.shift()).to.deep.equal(
+                                LogTransfer(
+                                    debtOffer.getPrincipalToken(),
+                                    creditorProxy.address,
+                                    debtOffer.getDebtor(),
+                                    debtOffer.getPrincipalAmount().minus(debtOffer.getDebtorFee()),
+                                ),
+                            );
+                        }
+                    });
 
-                    it("should emit transfer log from creditor to underwriter (if present)", async () => {});
+                    it("should emit transfer log from creditor proxy to underwriter (if present)", async () => {
+                        if (debtOffer.getUnderwriter() !== NULL_ADDRESS) {
+                            await expect(logs.shift()).to.deep.equal(
+                                LogTransfer(
+                                    debtOffer.getPrincipalToken(),
+                                    creditorProxy.address,
+                                    debtOffer.getUnderwriter(),
+                                    debtOffer.getUnderwriterFee(),
+                                ),
+                            );
+                        }
+                    });
 
-                    it("should emit transfer log from kernel to relayer (if present)", async () => {});
+                    it("should emit transfer log from creditor proxy to relayer (if present)", async () => {
+                        if (debtOffer.getRelayer() !== NULL_ADDRESS) {
+                            await expect(logs.shift()).to.deep.equal(
+                                LogTransfer(
+                                    debtOffer.getPrincipalToken(),
+                                    creditorProxy.address,
+                                    debtOffer.getRelayer(),
+                                    debtOffer.getRelayerFee(),
+                                ),
+                            );
+                        }
+                    });
 
-                    it("should emit debt order filled log", () => {});
+                    /*
+                    it("should emit debt order filled log", () => {
+                        expect(logs.shift()).to.deep.equal(
+                            LogDebtOrderFilled(
+                                kernel.address,
+                                debtOffer.getAgreementId(),
+                                debtOffer.getPrincipalAmount(),
+                                debtOffer.getPrincipalToken(),
+                                debtOffer.getUnderwriter(),
+                                debtOffer.getUnderwriterFee(),
+                                debtOffer.getRelayer(),
+                                debtOffer.getRelayerFee(),
+                            ),
+                        );
+                    });
+                    */
 
-                    it("should emit debt token transfer log", async () => {});
+                    it("should emit modify benefeciary log", async () => {
+                        expect(logs.shift()).to.deep.equal(
+                            LogModifyEntryBeneficiary(
+                                debtRegistryContract.address,
+                                debtOffer.getAgreementId(),
+                                creditorProxy.address,
+                                debtOffer.getCreditor(),
+                            ),
+                        );
+                    });
+
+                    it("should emit transfer log from creditor proxy to creditor", async () => {
+                        await expect(logs.shift()).to.deep.equal(
+                            LogTransfer(
+                                debtTokenContract.address,
+                                creditorProxy.address,
+                                debtOffer.getCreditor(),
+                                new BigNumber(debtOffer.getAgreementId()),
+                            ),
+                        );
+                    });
 
                     it("should emit debt offer filled log", async () => {
-                        expect(logs[logs.length - 1]).to.deep.equal(
+                        expect(logs.shift()).to.deep.equal(
                             LogDebtOfferFilled(
                                 creditorProxy.address,
                                 debtOffer.getCreditor(),
