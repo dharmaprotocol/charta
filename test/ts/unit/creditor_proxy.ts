@@ -561,7 +561,6 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
                         [debtOffer.getSignaturesV()[0], null, debtOffer.getSignaturesV()[2]],
                         [debtOffer.getSignaturesR()[0], null, debtOffer.getSignaturesR()[2]],
                         [debtOffer.getSignaturesS()[0], null, debtOffer.getSignaturesS()[2]],
-                        debtOffer.getCreditor(),
                     );
                 });
             });
