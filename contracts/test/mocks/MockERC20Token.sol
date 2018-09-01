@@ -99,8 +99,7 @@ contract MockERC20Token is MockContract {
 
     function approve(address _to, uint _allowance) public returns (bool _success)
     {
-        // TODO why does the following revert?!
-        // functionCalledWithArgs("approve", keccak256(_to, _allowance));
+        functionCalledWithArgs("approve", keccak256(_to, _allowance));
         return true;
     }
 

@@ -321,8 +321,7 @@ contract CreditorProxy is Pausable {
         internal
         returns (bool _success)
     {
-        // Limit gas to prevent reentrancy.
-        return ERC20(token).approve.gas(EXTERNAL_QUERY_GAS_LIMIT * 3)(
+        return ERC20(token).approve(
             address(contractRegistry.tokenTransferProxy()),
             amount
         );

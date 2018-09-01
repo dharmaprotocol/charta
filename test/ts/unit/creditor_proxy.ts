@@ -279,7 +279,6 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
                 creditorProxy.address,
                 creditorPayment,
             );
-
             await mockPrincipalToken.mockAllowanceFor.sendTransactionAsync(
                 debtOffer.getCreditor(),
                 mockTokenTransferProxy.address,
@@ -317,12 +316,14 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
                 });
 
                 it("should approve the transfer proxy to transfer the principal", async () => {
-                    await expect(
-                        mockPrincipalToken.wasApproveCalledWith.callAsync(
-                            mockTokenTransferProxy.address,
-                            debtOffer.getPrincipalAmount().plus(debtOffer.getCreditorFee()),
-                        ),
-                    ).to.eventually.be.true;
+                    if (debtOffer.getPrincipalAmount().greaterThan(0)) {
+                        await expect(
+                            mockPrincipalToken.wasApproveCalledWith.callAsync(
+                                mockTokenTransferProxy.address,
+                                debtOffer.getPrincipalAmount().plus(debtOffer.getCreditorFee()),
+                            ),
+                        ).to.eventually.be.true;
+                    }
                 });
 
                 it("should transfer principal + creditor fees to creditorProxy", async () => {
