@@ -25,7 +25,7 @@ cp artifacts/json/* build/contracts/
 truffle compile --all
 
 # Deploy contracts onto development network
-truffle migrate --network development
+truffle migrate --reset --network development
 
 # Replace production artifacts with newly generated json artifacts
 rm artifacts/json/*
