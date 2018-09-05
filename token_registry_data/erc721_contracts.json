@@ -8,5 +8,255 @@
         "name": "Dharma Debt Token",
         "symbol": "DDT",
         "address": "0xf7b3fc555c458c46d288ffd049ddbfb09f706df7"
+    },
+    {
+        "address": "0x8c9b261faef3b3c2e64ab5e58e04615f8c788099",
+        "name": "LucidSight-MLB-NFT",
+        "symbol": "MLBCB"
+    },
+    {
+        "address": "0x5caebd3b32e210e85ce3e9d51638b9c445481567",
+        "name": "WarRiders",
+        "symbol": "WR"
+    },
+    {
+        "address": "0xaee0d7153ca6ee29ad56949d41aafcce788db555",
+        "name": "Coinbase Wallet Crypto Swag",
+        "symbol": "CBWCS"
+    },
+    {
+        "address": "0x6EbeAf8e8E946F0716E6533A6f2cefc83f60e8Ab",
+        "name": "Gods Unchained",
+        "symbol": "GODS"
+    },
+    {
+        "address": "0x86e4dc25259ee2191cd8ae40e1865b9f0319646c",
+        "name": "CryptoRome-Land-NFT",
+        "symbol": "CRLAND"
+    },
+    {
+        "address": "0xdf5d68d54433661b1e5e90a547237ffb0adf6ec2",
+        "name": " Arcona Digital Land",
+        "symbol": "ARDL"
+    },
+    {
+        "address": "0x4201db13824a50a11f931169b2f0bca9cac23614",
+        "name": "Age of Dragon",
+        "symbol": "AOD"
+    },
+    {
+        "address": "0x959e104e1a4db6317fa58f8295f586e1a978c297",
+        "name": "Estate",
+        "symbol": "EST"
+    },
+    {
+        "address": "0x5e03da98f8257a9e0c64b3ae430aa870725dcf97",
+        "name": "Bitizen item",
+        "symbol": "ITMT"
+    },
+    {
+        "address": "0x772da237fc93ded712e5823b497db5991cc6951e",
+        "name": "EverDragons",
+        "symbol": "ED"
+    },
+    {
+        "address": "0x15820072729d045ec5232ba3bd060ec5df38e09a",
+        "name": "Tavern NFT",
+        "symbol": "Tavern"
+    },
+    {
+        "address": "0x0b762b6df5940c6b55e21143142286c74299e174",
+        "name": "CryptoCards",
+        "symbol": "CARD"
+    },
+    {
+        "address": "0xd112f302969901fedd28756efe8170b80c746ccc",
+        "name": "CryptoPony",
+        "symbol": "CP"
+    },
+    {
+        "address": "0x5d00d312e171be5342067c09bae883f9bcb2003b",
+        "name": "EtheremonMonster",
+        "symbol": "EMONA"
+    },
+    {
+        "address": "0xf766b3e7073f5a6483e27de20ea6f59b30b28f87",
+        "name": "Ether Kingdoms Items",
+        "symbol": "IMPi"
+    },
+    {
+        "address": "0x952b7bdb382768f342f2a17c5df71221ea11f8d2",
+        "name": "WeNFT",
+        "symbol": "WFT"
+    },
+    {
+        "address": "0xaaf401585b72c678afc09036510d3ef759bdaf7e",
+        "name": "Mokens",
+        "symbol": "MKN"
+    },
+    {
+        "address": "0x9f2a7b5e6280727cd6c8486f5f96e5f76164f2df",
+        "name": "On-Chain Verification",
+        "symbol": "YES"
+    },
+    {
+        "address": "0x5c7b19f83ac93d8268da02cc06cb61089d6d952a",
+        "name": "Bitizen Lambo",
+        "symbol": "LAMBO"
+    },
+    {
+        "address": "0x995020804986274763df9deb0296b754f2659ca1",
+        "name": "Ether Tulips",
+        "symbol": "ETHT"
+    },
+    {
+        "address": "0xa98ad92a642570b83b369c4eb70efefe638bc895",
+        "name": "Fishbank",
+        "symbol": "FISH"
+    },
+    {
+        "address": "0x87d598064c736dd0c712d329afcfaa0ccc1921a1",
+        "name": "CryptoFighters",
+        "symbol": "CF"
+    },
+    {
+        "address": "0xe58af3dcbe423c1e330f9d6e61cd47cb530239ac",
+        "name": "StaryFox",
+        "symbol": "SF"
+    },
+    {
+        "address": "0xce2a2a0e723a3c4ab225eda39bea1b64a8804784",
+        "name": "LianPaoTu",
+        "symbol": "LPT"
+    },
+    {
+        "address": "0x18a60cc53101d8aae343acc9357d347bc79c6549",
+        "name": "Coinbase Trophies",
+        "symbol": "CBT"
+    },
+    {
+        "address": "0x3bcbd2093e991363b98cf0f51d40fecd94a55a0d",
+        "name": "DopeRaider",
+        "symbol": "DOPR"
+    },
+    {
+        "address": "0x8853b05833029e3cf8d3cbb592f9784fa43d2a79",
+        "name": "Codex Record",
+        "symbol": "CR"
+    },
+    {
+        "address": "0x45d0178c8941e4c84266a655970bebddfa4147c3",
+        "name": "TacoIncomeToken",
+        "symbol": "TIT"
+    },
+    {
+        "address": "0xbfde6246df72d3ca86419628cac46a9d2b60393c",
+        "name": "EtheremonAdventure",
+        "symbol": "EMOND"
+    },
+    {
+        "address": "0x48dfc5c1aad5109adeb12bec5adcead554aeec6a",
+        "name": "WeNFT",
+        "symbol": "WFT"
+    },
+    {
+        "address": "0x0d8ea73e86b2e1efc8ab065e6874ec3aa1277695",
+        "name": "HodlEarthToken",
+        "symbol": "HEAR"
+    },
+    {
+        "address": "0x3eabd96bb1db0c78261858e5a3d94425471238ab",
+        "name": "testTC1",
+        "symbol": "testTC1"
+    },
+    {
+        "address": "0x06012c8cf97bead5deae237070f9587f8e7a266d",
+        "name": "CryptoKitties",
+        "symbol": "CK"
+    },
+    {
+        "address": "0xe264d16bcba50925d0e1a90398596ec010306e14",
+        "name": "Su Squares",
+        "symbol": "SU"
+    },
+    {
+        "address": "0x8a8ec4cedf933dc983724c235fd4f4754ffbe6fc",
+        "name": "HodlEarthToken",
+        "symbol": "HEAR"
+    },
+    {
+        "address": "0x24eeec21f12537b468dbf78535a13f124774ba85",
+        "name": "Land of AOD",
+        "symbol": "LOD"
+    },
+    {
+        "address": "0x1bbc9c79e7bdfd5a384e1121d169cf89e59d170b",
+        "name": "Hedgie",
+        "symbol": "HDG"
+    },
+    {
+        "address": "0xe3f2f807ba194ea0221b9109fb14da600c9e1eb6",
+        "name": "emojisan.github.io",
+        "symbol": "EMJS"
+    },
+    {
+        "address": "0xcef41878db032586c835ee0890484399402a64f6",
+        "name": "MillionEtherHomePage",
+        "symbol": "MEH"
+    },
+    {
+        "address": "0xf9b6e3e9ae83dcadd2bdd422fa810ffd34492264",
+        "name": "Nifties",
+        "symbol": "NIFTIES"
+    },
+    {
+        "address": "0x7f737b66921d18b008dc9c3a9b933a3bf559f1bc",
+        "name": "Interface Token",
+        "symbol": "TOKN"
+    },
+    {
+        "address": "0x425492e8c742c2cfb87eb2eb96b5eb9d6f6e6b56",
+        "name": "TapKeys",
+        "symbol": "TTK"
+    },
+    {
+        "address": "0xb52511f49f3ed76ad1f77998985ee452f29ba0fd",
+        "name": "ENS NIFTY",
+        "symbol": "ENS-NFT"
+    },
+    {
+        "address": "0xebe2e5b17344ea58e5324c8bff4f093e4cf1fbac",
+        "name": "TOY Tokens",
+        "symbol": "TOY"
+    },
+    {
+        "address": "0xbef1d5bffe34fd5076153ab715aeefce8d1e22bc",
+        "name": "Kicker",
+        "symbol": "KCK"
+    },
+    {
+        "address": "0xfbeef911dc5821886e1dda71586d90ed28174b7d",
+        "name": "KnownOriginDigitalAsset",
+        "symbol": "KODA"
+    },
+    {
+        "address": "0x8ac926d0086ae6dd2aa984cf21c579a9aa037b27",
+        "name": "WorldOfBlockchain",
+        "symbol": "WOB"
+    },
+    {
+        "address": "0x3fa9bdcbd17bd75d1dec10d52c65f41503e344f2",
+        "name": "testTC",
+        "symbol": "testTC"
+    },
+    {
+        "address": "0x4f1a2d9d1cb092074d87b8d74771738564288927",
+        "name": "NaviAddress",
+        "symbol": "NAVIADDRESS"
+    },
+    {
+        "address": "0x016c51edb11c6931aacfd1769a67e892f67a5404",
+        "name": "CryptoRome-Land-NFT",
+        "symbol": "CRLAND"
     }
 ]
