@@ -130,11 +130,6 @@
         "symbol": "LPT"
     },
     {
-        "address": "0x18a60cc53101d8aae343acc9357d347bc79c6549",
-        "name": "Coinbase Trophies",
-        "symbol": "CBT"
-    },
-    {
         "address": "0x3bcbd2093e991363b98cf0f51d40fecd94a55a0d",
         "name": "DopeRaider",
         "symbol": "DOPR"
@@ -168,11 +163,6 @@
         "address": "0x3eabd96bb1db0c78261858e5a3d94425471238ab",
         "name": "testTC1",
         "symbol": "testTC1"
-    },
-    {
-        "address": "0x06012c8cf97bead5deae237070f9587f8e7a266d",
-        "name": "CryptoKitties",
-        "symbol": "CK"
     },
     {
         "address": "0xe264d16bcba50925d0e1a90398596ec010306e14",
