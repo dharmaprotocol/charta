@@ -337,6 +337,14 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
                     expect(balance.toString()).to.equal(creditorProxyBalanceBefore.toString());
                 });
 
+                it("should transfer principal - debtor fee to debtor via debt kernel", async () => {
+                    const balance = await principalToken.balanceOf.callAsync(debtOffer.getDebtor());
+                    const expectedBalance = debtorBalanceBefore.plus(
+                        debtOffer.getPrincipalAmount().minus(debtOffer.getDebtorFee()),
+                    );
+                    expect(balance.toString()).to.equal(expectedBalance.toString());
+                });
+
                 describe("Logs Emitted:", () => {
                     it("should emit approval log allowing transfer proxy to tranfer by creditor proxy", async () => {
                         if (
