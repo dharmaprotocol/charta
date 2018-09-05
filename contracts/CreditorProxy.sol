@@ -294,7 +294,7 @@ contract CreditorProxy is Pausable {
     }
 
     /**
-     * Helper function for querying an address' allowance to the 0x transfer proxy.
+     * Helper function for querying an address' allowance to the Dharma Protocol transfer proxy.
      */
     function getAllowance(
         address token,
@@ -312,7 +312,7 @@ contract CreditorProxy is Pausable {
     }
 
     /**
-     * Helper function for approving this address' allowance to the 0x transfer proxy.
+     * Helper function for approving this address' allowance to Dharma Protocol transfer proxy.
      */
     function setAllowance(
         address token,

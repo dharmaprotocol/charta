@@ -375,7 +375,7 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
             };
         };
 
-        describe("User fills valid, consentual debt offer", () => {
+        describe("User fills valid, consensual debt offer", () => {
             describe(
                 "...with underwriter and relayer",
                 testOfferFill(CONTRACT_OWNER, async () => {
