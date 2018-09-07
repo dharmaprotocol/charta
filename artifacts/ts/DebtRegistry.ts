@@ -8161,9 +8161,9 @@ export const DebtRegistry =
         }
       },
       "links": {},
-      "address": "0x068eb0bf68cc315fcee8a3b300ec47d9ec2941da"
+      "address": "0x7b217e90c64afe84b673d68bc9140d9a9e8be0f4"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-31T01:05:16.528Z"
+  "updatedAt": "2018-09-07T18:09:51.049Z"
 }

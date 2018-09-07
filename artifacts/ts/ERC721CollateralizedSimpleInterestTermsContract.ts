@@ -1451,9 +1451,9 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
     "70": {
       "events": {},
       "links": {},
-      "address": "0x4cdebc242c01acb8005c407da805b879ea2c9cb4"
+      "address": "0x82015ccf72e005ff7d3085d9132429337f864346"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-31T01:06:37.104Z"
+  "updatedAt": "2018-09-07T18:09:51.957Z"
 }
