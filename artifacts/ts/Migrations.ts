@@ -824,9 +824,9 @@ export const Migrations =
     "70": {
       "events": {},
       "links": {},
-      "address": "0xfe71c8a98a9f3de3c82d1b68e26736da64cd45d3"
+      "address": "0xd2cfa9e63cfd9db9de8b553d047722645caf9f27"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-31T01:06:37.165Z"
+  "updatedAt": "2018-09-07T18:09:51.964Z"
 }

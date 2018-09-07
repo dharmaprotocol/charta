@@ -1682,9 +1682,9 @@ export const TokenTransferProxy =
         }
       },
       "links": {},
-      "address": "0xde2cd7794e9b25ab511debb19e28ef3c016381e4"
+      "address": "0x7b79a84b92b41a4626fa85a8c2db9b09df063caf"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-31T01:05:16.559Z"
+  "updatedAt": "2018-09-07T18:09:51.052Z"
 }

@@ -1340,9 +1340,9 @@ export const CollateralizedSimpleInterestTermsContract =
     "70": {
       "events": {},
       "links": {},
-      "address": "0x89d0849e73f02129f7b500e388299e884f43b43a"
+      "address": "0xcdc99b9c5f3048b307315a9eacb8cbd57449dae4"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-08-31T01:05:16.560Z"
+  "updatedAt": "2018-09-07T18:09:50.738Z"
 }
