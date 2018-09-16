@@ -40,7 +40,9 @@ module.exports = (deployer, network, accounts) => {
         await proxy.addAuthorizedTransferAgent(collateralizer.address);
 
         // Authorize the collateralized simple interest terms contract to invoke `collateralize`.
-        await collateralizer.addAuthorizedCollateralizeAgent(collateralizedSimpleInterestTermsContract.address);
+        await collateralizer.addAuthorizedCollateralizeAgent(
+            collateralizedSimpleInterestTermsContract.address
+        );
 
         // Authorize the token-uri operator to set token URIs on `DebtToken`.
         await token.addAuthorizedTokenURIAgent(TOKEN_URI_OPERATOR);

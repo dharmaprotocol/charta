@@ -14,6 +14,13 @@ export interface CollateralizedContractTerms {
     gracePeriodInDays: BigNumber;
 }
 
+export interface ERC721CollateralizedContractTerms {
+    isEnumerable: BigNumber;
+    erc721ContractIndex: BigNumber;
+    // Can be an ID or an index.
+    tokenReference: BigNumber;
+}
+
 class TermsContractParameters {
     public static bitShiftLeft(target: BigNumber, numPlaces: number): BigNumber {
         const binaryTargetString = target.toString(2);
@@ -74,6 +81,34 @@ export class CollateralizedSimpleInterestTermsParameters extends TermsContractPa
 
         const packedCollateralParameters =
             encodedCollateralToken + encodedCollateralAmount + encodedGracePeriodInDays;
+
+        if (contractTerms) {
+            const packedTermsParameters = SimpleInterestParameters.pack(contractTerms);
+            return `${packedTermsParameters.substr(0, 39)}${packedCollateralParameters.padStart(
+                27,
+                "0",
+            )}`;
+        } else {
+            return `0x${packedCollateralParameters.padStart(64, "0")}`;
+        }
+    }
+}
+
+export class ERC721CollateralizedSimpleInterestTermsParameters extends TermsContractParameters {
+    public static pack(
+        collateralTerms: ERC721CollateralizedContractTerms,
+        // Optionally, get the full contract terms parameters string by providing the contract terms.
+        contractTerms?: SimpleInterestContractTerms,
+    ): string {
+        const encodedIsEnumerable = collateralTerms.isEnumerable.toString(16);
+        const encodedCollateralToken = collateralTerms.erc721ContractIndex
+            .toString(16)
+            .padStart(12, "0");
+
+        const encodedTokenIndex = collateralTerms.tokenReference.toString(16).padStart(14, "0");
+
+        const packedCollateralParameters =
+            encodedCollateralToken + encodedTokenIndex + encodedIsEnumerable;
 
         if (contractTerms) {
             const packedTermsParameters = SimpleInterestParameters.pack(contractTerms);
