@@ -9,7 +9,7 @@ module.exports = (deployer, network, accounts) => {
 
     return deployer.then(async () => {
         const registry = await ContractRegistry.deployed();
-        const proxy = await TokenTransferProxy.deployed();
+        const transferProxy = await TokenTransferProxy.deployed();
         const wallet = await DharmaMultiSigWallet.deployed();
 
         await deployer.deploy(CreditorProxy, registry.address);
@@ -19,7 +19,7 @@ module.exports = (deployer, network, accounts) => {
         let data = web3.sha3('addAuthorizedTransferAgent(address)').substring(0,10);
         data += web3.padLeft(creditorProxy.address.substring(2), 64);
 
-        let receipt = await wallet.submitTransaction(proxy.address, 0, data);
+        let receipt = await wallet.submitTransaction(transferProxy.address, 0, data);
         const txId = receipt.logs[0].args.transactionId;
 
         await wallet.confirmTransaction(txId, { from: accounts[1] });
@@ -38,7 +38,7 @@ module.exports = (deployer, network, accounts) => {
         } else {
             setTimeout(async () => {
                 await wallet.executeTransaction(txId);
-            }, CONSTANTS.TIMELOCK_IN_SECONDS);
+            }, CONSTANTS.TIMELOCK_IN_SECONDS * 1000);
         }
 
         await creditorProxy.transferOwnership(wallet.address, { from: accounts[0] });
