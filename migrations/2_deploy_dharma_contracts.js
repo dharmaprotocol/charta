@@ -1,9 +1,6 @@
-const CONSTANTS = require("./migration_constants");
-const { generateParamsForDharmaMultiSigWallet, configureTokenRegistry } = require("./utils");
+const {generateParamsForDharmaMultiSigWallet, configureTokenRegistry} = require("./utils");
 
 module.exports = (deployer, network, accounts) => {
-    const OWNER = accounts[0];
-
     // Import the Dharma contracts.
     const PermissionsLib = artifacts.require("PermissionsLib");
     const DebtRegistry = artifacts.require("DebtRegistry");
@@ -29,7 +26,12 @@ module.exports = (deployer, network, accounts) => {
 
     // Deploy our Permissions library and link it to the contracts in our protocol that depend on it.
     deployer.deploy(PermissionsLib);
-    deployer.link(PermissionsLib, [DebtRegistry, TokenTransferProxy, Collateralizer, DebtToken]);
+    deployer.link(PermissionsLib, [
+        DebtRegistry,
+        TokenTransferProxy,
+        Collateralizer,
+        DebtToken,
+    ]);
 
     return deployer.deploy(DebtRegistry).then(async () => {
         await deployer.deploy(DebtToken, DebtRegistry.address);
@@ -40,6 +42,7 @@ module.exports = (deployer, network, accounts) => {
             const DummyToken = artifacts.require("DummyToken");
             await configureTokenRegistry(network, accounts, TokenRegistry, DummyToken);
         });
+
         await deployer.deploy(
             Collateralizer,
             DebtKernel.address,
@@ -47,6 +50,7 @@ module.exports = (deployer, network, accounts) => {
             TokenRegistry.address,
             TokenTransferProxy.address,
         );
+
         await deployer.deploy(
             ContractRegistry,
             Collateralizer.address,

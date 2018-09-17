@@ -25,7 +25,7 @@ import { TokenTransferProxyContract } from "../../../types/generated/token_trans
 
 import { NULL_ADDRESS } from "../test_utils/constants";
 
-contract("Migration #2: Deploying Creditor Proxy Contract", async (ACCOUNTS) => {
+contract("Migration #8: Deploy Creditor Proxy", async (ACCOUNTS) => {
     const CONTRACT_OWNER = ACCOUNTS[0];
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
 

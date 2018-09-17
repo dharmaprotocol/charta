@@ -134,7 +134,7 @@ contract CreditorProxy is Pausable {
         // principal amount + creditor fee
         uint totalCreditorPayment = orderValues[2].add(orderValues[5]);
 
-        if (!assertExternalBalanceAndAllowanceInvariants(
+        if (!hasSufficientBalanceAndAllowance(
             creditor,
             orderAddresses[4],
             totalCreditorPayment
@@ -236,7 +236,7 @@ contract CreditorProxy is Pausable {
      * Assert that the creditor has a sufficient token balance and has granted the token transfer
      * proxy contract sufficient allowance to suffice for the principal and creditor fee.
      */
-    function assertExternalBalanceAndAllowanceInvariants(
+    function hasSufficientBalanceAndAllowance(
         address creditor,
         address principalToken,
         uint totalCreditorPayment
@@ -294,7 +294,7 @@ contract CreditorProxy is Pausable {
     }
 
     /**
-     * Helper function for querying an address' allowance to the Dharma Protocol transfer proxy.
+     * Helper function for querying an address' allowance to Dharma's token transfer proxy.
      */
     function getAllowance(
         address token,
@@ -312,7 +312,7 @@ contract CreditorProxy is Pausable {
     }
 
     /**
-     * Helper function for approving this address' allowance to Dharma Protocol transfer proxy.
+     * Helper function for approving this address' allowance to Dharma's token transfer proxy.
      */
     function setAllowance(
         address token,

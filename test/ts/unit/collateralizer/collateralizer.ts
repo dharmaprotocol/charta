@@ -40,7 +40,7 @@ BigNumberSetup.configure();
 
 const collateralizer = artifacts.require("Collateralizer");
 
-contract("CollateralizedContract (Unit Tests)", async (ACCOUNTS) => {
+contract("Collateralizer Contract (Unit Tests)", async (ACCOUNTS) => {
     let collateralizerContract: CollateralizerContract;
     let tokenRegistry: TokenRegistryContract;
     let mockToken: MockERC20TokenContract;

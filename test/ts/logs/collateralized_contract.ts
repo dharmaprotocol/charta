@@ -21,6 +21,23 @@ export function CollateralLocked(
     };
 }
 
+export function ERC721CollateralLocked(
+    contract: Address,
+    agreementID: Bytes32,
+    erc721Contract: Address,
+    tokenId: UInt,
+): ABIDecoder.DecodedLog {
+    return {
+        address: contract,
+        events: LogUtils.getParams([
+            ["agreementID", agreementID],
+            ["erc721Contract", erc721Contract],
+            ["tokenID", tokenId],
+        ]),
+        name: "CollateralLocked",
+    };
+}
+
 export function CollateralReturned(
     contract: Address,
     agreementID: Bytes32,
@@ -54,6 +71,44 @@ export function CollateralSeized(
             ["beneficiary", beneficiary],
             ["token", token],
             ["amount", amount],
+        ]),
+        name: "CollateralSeized",
+    };
+}
+
+export function ERC721CollateralReturned(
+    contract: Address,
+    agreementID: Bytes32,
+    debtor: Address,
+    erc721Contract: Address,
+    tokenId: UInt,
+): ABIDecoder.DecodedLog {
+    return {
+        address: contract,
+        events: LogUtils.getParams([
+            ["agreementID", agreementID],
+            ["debtor", debtor],
+            ["erc721Contract", erc721Contract],
+            ["tokenID", tokenId],
+        ]),
+        name: "CollateralReturned",
+    };
+}
+
+export function ERC721CollateralSeized(
+    contract: Address,
+    agreementID: Bytes32,
+    beneficiary: Address,
+    erc721Contract: Address,
+    tokenId: UInt,
+): ABIDecoder.DecodedLog {
+    return {
+        address: contract,
+        events: LogUtils.getParams([
+            ["agreementID", agreementID],
+            ["beneficiary", beneficiary],
+            ["erc721Contract", erc721Contract],
+            ["tokenID", tokenId],
         ]),
         name: "CollateralSeized",
     };

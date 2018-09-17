@@ -3,9 +3,10 @@ const CONSTANTS = require("./migration_constants");
 module.exports = (deployer, network, accounts) => {
     const PermissionsLib = artifacts.require("PermissionsLib");
     const DummyContract = artifacts.require("DummyContract");
+    const ERC721Token = artifacts.require("ERC721Token");
+    const MockERC721Token = artifacts.require("MockERC721Token");
     const MockDebtRegistry = artifacts.require("MockDebtRegistry");
     const MockERC20Token = artifacts.require("MockERC20Token");
-    const MockERC721Token = artifacts.require("MockERC721Token");
     const MockERC721Receiver = artifacts.require("MockERC721Receiver");
     const MockDebtToken = artifacts.require("MockDebtToken");
     const MockTermsContract = artifacts.require("MockTermsContract");
@@ -16,6 +17,7 @@ module.exports = (deployer, network, accounts) => {
     if (network !== CONSTANTS.LIVE_NETWORK_ID) {
         deployer.link(PermissionsLib, DummyContract);
         deployer.deploy(DummyContract);
+        deployer.deploy(ERC721Token);
         deployer.deploy(MockDebtRegistry);
         deployer.deploy(MockERC20Token);
         deployer.deploy(MockERC721Token);
