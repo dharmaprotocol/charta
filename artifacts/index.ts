@@ -50,6 +50,11 @@ export { ERC721Token } from "./ts/ERC721Token";
 // An ERC721 contract with the ability to mint tokens -- for test purposes.
 export { MintableERC721Token } from "./ts/MintableERC721Token";
 
+/************************************
+ *  Creditor-Driven Loan Contracts  *
+ ************************************/
+export { CreditorProxy } from "./ts/CreditorProxy";
+
 /********************
  *  Misc. Contracts *
  ********************/
