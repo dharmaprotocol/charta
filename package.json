@@ -1,6 +1,6 @@
 {
   "name": "@dharmaprotocol/contracts",
-  "version": "0.1.14",
+  "version": "0.1.16",
   "main": "dist/artifacts/index.js",
   "typings": "dist/types/artifacts/index.d.ts",
   "files": [
