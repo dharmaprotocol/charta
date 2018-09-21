@@ -39,6 +39,7 @@
         "artifacts/ts/ERC721Token.ts",
         "artifacts/ts/ERC721Receiver.ts",
         "artifacts/ts/MockERC721Receiver.ts",
-        "artifacts/ts/KittyCore.ts"
+        "artifacts/ts/KittyCore.ts",
+        "artifacts/ts/CreditorProxy.ts"
     ]
 }
