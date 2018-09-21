@@ -83,8 +83,8 @@ export const BasicToken =
   ],
   "bytecode": "0x6060604052341561000f57600080fd5b6104008061001e6000396000f300606060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806318160ddd1461005c57806370a0823114610085578063a9059cbb146100d2575b600080fd5b341561006757600080fd5b61006f61012c565b6040518082815260200191505060405180910390f35b341561009057600080fd5b6100bc600480803573ffffffffffffffffffffffffffffffffffffffff16906020019091905050610136565b6040518082815260200191505060405180910390f35b34156100dd57600080fd5b610112600480803573ffffffffffffffffffffffffffffffffffffffff1690602001909190803590602001909190505061017e565b604051808215151515815260200191505060405180910390f35b6000600154905090565b60008060008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020549050919050565b60008073ffffffffffffffffffffffffffffffffffffffff168373ffffffffffffffffffffffffffffffffffffffff16141515156101bb57600080fd5b6000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002054821115151561020857600080fd5b610259826000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205461039d90919063ffffffff16565b6000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020819055506102ec826000808673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020546103b690919063ffffffff16565b6000808573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020819055508273ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef846040518082815260200191505060405180910390a36001905092915050565b60008282111515156103ab57fe5b818303905092915050565b60008082840190508381101515156103ca57fe5b80915050929150505600a165627a7a7230582057c587c2e7e020568205be871cf9bfe29127587e0812350b876875a8430134c60029",
   "deployedBytecode": "0x606060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806318160ddd1461005c57806370a0823114610085578063a9059cbb146100d2575b600080fd5b341561006757600080fd5b61006f61012c565b6040518082815260200191505060405180910390f35b341561009057600080fd5b6100bc600480803573ffffffffffffffffffffffffffffffffffffffff16906020019091905050610136565b6040518082815260200191505060405180910390f35b34156100dd57600080fd5b610112600480803573ffffffffffffffffffffffffffffffffffffffff1690602001909190803590602001909190505061017e565b604051808215151515815260200191505060405180910390f35b6000600154905090565b60008060008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020549050919050565b60008073ffffffffffffffffffffffffffffffffffffffff168373ffffffffffffffffffffffffffffffffffffffff16141515156101bb57600080fd5b6000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002054821115151561020857600080fd5b610259826000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205461039d90919063ffffffff16565b6000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020819055506102ec826000808673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020546103b690919063ffffffff16565b6000808573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020819055508273ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef846040518082815260200191505060405180910390a36001905092915050565b60008282111515156103ab57fe5b818303905092915050565b60008082840190508381101515156103ca57fe5b80915050929150505600a165627a7a7230582057c587c2e7e020568205be871cf9bfe29127587e0812350b876875a8430134c60029",
-  "sourceMap": "180:1119:38:-;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "180:1119:38:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;371:83;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1189:107;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;608:379;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;371:83;415:7;437:12;;430:19;;371:83;:::o;1189:107::-;1245:15;1275:8;:16;1284:6;1275:16;;;;;;;;;;;;;;;;1268:23;;1189:107;;;:::o;608:379::-;671:4;706:1;691:17;;:3;:17;;;;683:26;;;;;;;;733:8;:20;742:10;733:20;;;;;;;;;;;;;;;;723:6;:30;;715:39;;;;;;;;847:32;872:6;847:8;:20;856:10;847:20;;;;;;;;;;;;;;;;:24;;:32;;;;:::i;:::-;824:8;:20;833:10;824:20;;;;;;;;;;;;;;;:55;;;;901:25;919:6;901:8;:13;910:3;901:13;;;;;;;;;;;;;;;;:17;;:25;;;;:::i;:::-;885:8;:13;894:3;885:13;;;;;;;;;;;;;;;:41;;;;953:3;932:33;;941:10;932:33;;;958:6;932:33;;;;;;;;;;;;;;;;;;978:4;971:11;;608:379;;;;:::o;835:110:36:-;893:7;920:1;915;:6;;908:14;;;;;;939:1;935;:5;928:12;;835:110;;;;:::o;1007:129::-;1065:7;1080:9;1096:1;1092;:5;1080:17;;1115:1;1110;:6;;1103:14;;;;;;1130:1;1123:8;;1007:129;;;;;:::o",
+  "sourceMap": "180:1119:40:-;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "180:1119:40:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;371:83;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1189:107;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;608:379;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;371:83;415:7;437:12;;430:19;;371:83;:::o;1189:107::-;1245:15;1275:8;:16;1284:6;1275:16;;;;;;;;;;;;;;;;1268:23;;1189:107;;;:::o;608:379::-;671:4;706:1;691:17;;:3;:17;;;;683:26;;;;;;;;733:8;:20;742:10;733:20;;;;;;;;;;;;;;;;723:6;:30;;715:39;;;;;;;;847:32;872:6;847:8;:20;856:10;847:20;;;;;;;;;;;;;;;;:24;;:32;;;;:::i;:::-;824:8;:20;833:10;824:20;;;;;;;;;;;;;;;:55;;;;901:25;919:6;901:8;:13;910:3;901:13;;;;;;;;;;;;;;;;:17;;:25;;;;:::i;:::-;885:8;:13;894:3;885:13;;;;;;;;;;;;;;;:41;;;;953:3;932:33;;941:10;932:33;;;958:6;932:33;;;;;;;;;;;;;;;;;;978:4;971:11;;608:379;;;;:::o;835:110:38:-;893:7;920:1;915;:6;;908:14;;;;;;939:1;935;:5;928:12;;835:110;;;;:::o;1007:129::-;1065:7;1080:9;1096:1;1092;:5;1080:17;;1115:1;1110;:6;;1103:14;;;;;;1130:1;1123:8;;1007:129;;;;;:::o",
   "source": "pragma solidity ^0.4.18;\n\n\nimport \"./ERC20Basic.sol\";\nimport \"../../math/SafeMath.sol\";\n\n\n/**\n * @title Basic token\n * @dev Basic version of StandardToken, with no allowances.\n */\ncontract BasicToken is ERC20Basic {\n  using SafeMath for uint256;\n\n  mapping(address => uint256) balances;\n\n  uint256 totalSupply_;\n\n  /**\n  * @dev total number of tokens in existence\n  */\n  function totalSupply() public view returns (uint256) {\n    return totalSupply_;\n  }\n\n  /**\n  * @dev transfer token for a specified address\n  * @param _to The address to transfer to.\n  * @param _value The amount to be transferred.\n  */\n  function transfer(address _to, uint256 _value) public returns (bool) {\n    require(_to != address(0));\n    require(_value <= balances[msg.sender]);\n\n    // SafeMath.sub will throw if there is not enough balance.\n    balances[msg.sender] = balances[msg.sender].sub(_value);\n    balances[_to] = balances[_to].add(_value);\n    Transfer(msg.sender, _to, _value);\n    return true;\n  }\n\n  /**\n  * @dev Gets the balance of the specified address.\n  * @param _owner The address to query the the balance of.\n  * @return An uint256 representing the amount owned by the passed address.\n  */\n  function balanceOf(address _owner) public view returns (uint256 balance) {\n    return balances[_owner];\n  }\n\n}\n",
   "sourcePath": "zeppelin-solidity/contracts/token/ERC20/BasicToken.sol",
   "ast": {
@@ -92,7 +92,7 @@ export const BasicToken =
       "absolutePath": "zeppelin-solidity/contracts/token/ERC20/BasicToken.sol",
       "exportedSymbols": {
         "BasicToken": [
-          13498
+          14232
         ]
       }
     },
@@ -106,54 +106,54 @@ export const BasicToken =
             ".18"
           ]
         },
-        "id": 13404,
+        "id": 14138,
         "name": "PragmaDirective",
-        "src": "0:24:38"
+        "src": "0:24:40"
       },
       {
         "attributes": {
-          "SourceUnit": 13574,
+          "SourceUnit": 14308,
           "absolutePath": "zeppelin-solidity/contracts/token/ERC20/ERC20Basic.sol",
           "file": "./ERC20Basic.sol",
-          "scope": 13499,
+          "scope": 14233,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 13405,
+        "id": 14139,
         "name": "ImportDirective",
-        "src": "27:26:38"
+        "src": "27:26:40"
       },
       {
         "attributes": {
-          "SourceUnit": 13347,
+          "SourceUnit": 14081,
           "absolutePath": "zeppelin-solidity/contracts/math/SafeMath.sol",
           "file": "../../math/SafeMath.sol",
-          "scope": 13499,
+          "scope": 14233,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 13406,
+        "id": 14140,
         "name": "ImportDirective",
-        "src": "54:33:38"
+        "src": "54:33:40"
       },
       {
         "attributes": {
           "contractDependencies": [
-            13573
+            14307
           ],
           "contractKind": "contract",
           "documentation": "@title Basic token\n@dev Basic version of StandardToken, with no allowances.",
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            13498,
-            13573
+            14232,
+            14307
           ],
           "name": "BasicToken",
-          "scope": 13499
+          "scope": 14233
         },
         "children": [
           {
@@ -167,17 +167,17 @@ export const BasicToken =
                 "attributes": {
                   "contractScope": null,
                   "name": "ERC20Basic",
-                  "referencedDeclaration": 13573,
+                  "referencedDeclaration": 14307,
                   "type": "contract ERC20Basic"
                 },
-                "id": 13407,
+                "id": 14141,
                 "name": "UserDefinedTypeName",
-                "src": "203:10:38"
+                "src": "203:10:40"
               }
             ],
-            "id": 13408,
+            "id": 14142,
             "name": "InheritanceSpecifier",
-            "src": "203:10:38"
+            "src": "203:10:40"
           },
           {
             "children": [
@@ -185,32 +185,32 @@ export const BasicToken =
                 "attributes": {
                   "contractScope": null,
                   "name": "SafeMath",
-                  "referencedDeclaration": 13346,
+                  "referencedDeclaration": 14080,
                   "type": "library SafeMath"
                 },
-                "id": 13409,
+                "id": 14143,
                 "name": "UserDefinedTypeName",
-                "src": "224:8:38"
+                "src": "224:8:40"
               },
               {
                 "attributes": {
                   "name": "uint256",
                   "type": "uint256"
                 },
-                "id": 13410,
+                "id": 14144,
                 "name": "ElementaryTypeName",
-                "src": "237:7:38"
+                "src": "237:7:40"
               }
             ],
-            "id": 13411,
+            "id": 14145,
             "name": "UsingForDirective",
-            "src": "218:27:38"
+            "src": "218:27:40"
           },
           {
             "attributes": {
               "constant": false,
               "name": "balances",
-              "scope": 13498,
+              "scope": 14232,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(address => uint256)",
@@ -228,34 +228,34 @@ export const BasicToken =
                       "name": "address",
                       "type": "address"
                     },
-                    "id": 13412,
+                    "id": 14146,
                     "name": "ElementaryTypeName",
-                    "src": "257:7:38"
+                    "src": "257:7:40"
                   },
                   {
                     "attributes": {
                       "name": "uint256",
                       "type": "uint256"
                     },
-                    "id": 13413,
+                    "id": 14147,
                     "name": "ElementaryTypeName",
-                    "src": "268:7:38"
+                    "src": "268:7:40"
                   }
                 ],
-                "id": 13414,
+                "id": 14148,
                 "name": "Mapping",
-                "src": "249:27:38"
+                "src": "249:27:40"
               }
             ],
-            "id": 13415,
+            "id": 14149,
             "name": "VariableDeclaration",
-            "src": "249:36:38"
+            "src": "249:36:40"
           },
           {
             "attributes": {
               "constant": false,
               "name": "totalSupply_",
-              "scope": 13498,
+              "scope": 14232,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "uint256",
@@ -268,14 +268,14 @@ export const BasicToken =
                   "name": "uint256",
                   "type": "uint256"
                 },
-                "id": 13416,
+                "id": 14150,
                 "name": "ElementaryTypeName",
-                "src": "290:7:38"
+                "src": "290:7:40"
               }
             ],
-            "id": 13417,
+            "id": 14151,
             "name": "VariableDeclaration",
-            "src": "290:20:38"
+            "src": "290:20:40"
           },
           {
             "attributes": {
@@ -287,9 +287,9 @@ export const BasicToken =
               ],
               "name": "totalSupply",
               "payable": false,
-              "scope": 13498,
+              "scope": 14232,
               "stateMutability": "view",
-              "superFunction": 13548,
+              "superFunction": 14282,
               "visibility": "public"
             },
             "children": [
@@ -300,9 +300,9 @@ export const BasicToken =
                   ]
                 },
                 "children": [],
-                "id": 13418,
+                "id": 14152,
                 "name": "ParameterList",
-                "src": "391:2:38"
+                "src": "391:2:40"
               },
               {
                 "children": [
@@ -310,7 +310,7 @@ export const BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 13425,
+                      "scope": 14159,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -323,25 +323,25 @@ export const BasicToken =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 13419,
+                        "id": 14153,
                         "name": "ElementaryTypeName",
-                        "src": "415:7:38"
+                        "src": "415:7:40"
                       }
                     ],
-                    "id": 13420,
+                    "id": 14154,
                     "name": "VariableDeclaration",
-                    "src": "415:7:38"
+                    "src": "415:7:40"
                   }
                 ],
-                "id": 13421,
+                "id": 14155,
                 "name": "ParameterList",
-                "src": "414:9:38"
+                "src": "414:9:40"
               },
               {
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 13421
+                      "functionReturnParameters": 14155
                     },
                     "children": [
                       {
@@ -350,28 +350,28 @@ export const BasicToken =
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 13417,
+                          "referencedDeclaration": 14151,
                           "type": "uint256",
                           "value": "totalSupply_"
                         },
-                        "id": 13422,
+                        "id": 14156,
                         "name": "Identifier",
-                        "src": "437:12:38"
+                        "src": "437:12:40"
                       }
                     ],
-                    "id": 13423,
+                    "id": 14157,
                     "name": "Return",
-                    "src": "430:19:38"
+                    "src": "430:19:40"
                   }
                 ],
-                "id": 13424,
+                "id": 14158,
                 "name": "Block",
-                "src": "424:30:38"
+                "src": "424:30:40"
               }
             ],
-            "id": 13425,
+            "id": 14159,
             "name": "FunctionDefinition",
-            "src": "371:83:38"
+            "src": "371:83:40"
           },
           {
             "attributes": {
@@ -383,9 +383,9 @@ export const BasicToken =
               ],
               "name": "transfer",
               "payable": false,
-              "scope": 13498,
+              "scope": 14232,
               "stateMutability": "nonpayable",
-              "superFunction": 13564,
+              "superFunction": 14298,
               "visibility": "public"
             },
             "children": [
@@ -395,7 +395,7 @@ export const BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 13485,
+                      "scope": 14219,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -408,20 +408,20 @@ export const BasicToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 13426,
+                        "id": 14160,
                         "name": "ElementaryTypeName",
-                        "src": "626:7:38"
+                        "src": "626:7:40"
                       }
                     ],
-                    "id": 13427,
+                    "id": 14161,
                     "name": "VariableDeclaration",
-                    "src": "626:11:38"
+                    "src": "626:11:40"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "_value",
-                      "scope": 13485,
+                      "scope": 14219,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -434,19 +434,19 @@ export const BasicToken =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 13428,
+                        "id": 14162,
                         "name": "ElementaryTypeName",
-                        "src": "639:7:38"
+                        "src": "639:7:40"
                       }
                     ],
-                    "id": 13429,
+                    "id": 14163,
                     "name": "VariableDeclaration",
-                    "src": "639:14:38"
+                    "src": "639:14:40"
                   }
                 ],
-                "id": 13430,
+                "id": 14164,
                 "name": "ParameterList",
-                "src": "625:29:38"
+                "src": "625:29:40"
               },
               {
                 "children": [
@@ -454,7 +454,7 @@ export const BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 13485,
+                      "scope": 14219,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -467,19 +467,19 @@ export const BasicToken =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 13431,
+                        "id": 14165,
                         "name": "ElementaryTypeName",
-                        "src": "671:4:38"
+                        "src": "671:4:40"
                       }
                     ],
-                    "id": 13432,
+                    "id": 14166,
                     "name": "VariableDeclaration",
-                    "src": "671:4:38"
+                    "src": "671:4:40"
                   }
                 ],
-                "id": 13433,
+                "id": 14167,
                 "name": "ParameterList",
-                "src": "670:6:38"
+                "src": "670:6:40"
               },
               {
                 "children": [
@@ -511,13 +511,13 @@ export const BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15087,
+                              "referencedDeclaration": 15821,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 13434,
+                            "id": 14168,
                             "name": "Identifier",
-                            "src": "683:7:38"
+                            "src": "683:7:40"
                           },
                           {
                             "attributes": {
@@ -540,13 +540,13 @@ export const BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13427,
+                                  "referencedDeclaration": 14161,
                                   "type": "address",
                                   "value": "_to"
                                 },
-                                "id": 13435,
+                                "id": 14169,
                                 "name": "Identifier",
-                                "src": "691:3:38"
+                                "src": "691:3:40"
                               },
                               {
                                 "attributes": {
@@ -578,9 +578,9 @@ export const BasicToken =
                                       "type": "type(address)",
                                       "value": "address"
                                     },
-                                    "id": 13436,
+                                    "id": 14170,
                                     "name": "ElementaryTypeNameExpression",
-                                    "src": "698:7:38"
+                                    "src": "698:7:40"
                                   },
                                   {
                                     "attributes": {
@@ -595,29 +595,29 @@ export const BasicToken =
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 13437,
+                                    "id": 14171,
                                     "name": "Literal",
-                                    "src": "706:1:38"
+                                    "src": "706:1:40"
                                   }
                                 ],
-                                "id": 13438,
+                                "id": 14172,
                                 "name": "FunctionCall",
-                                "src": "698:10:38"
+                                "src": "698:10:40"
                               }
                             ],
-                            "id": 13439,
+                            "id": 14173,
                             "name": "BinaryOperation",
-                            "src": "691:17:38"
+                            "src": "691:17:40"
                           }
                         ],
-                        "id": 13440,
+                        "id": 14174,
                         "name": "FunctionCall",
-                        "src": "683:26:38"
+                        "src": "683:26:40"
                       }
                     ],
-                    "id": 13441,
+                    "id": 14175,
                     "name": "ExpressionStatement",
-                    "src": "683:26:38"
+                    "src": "683:26:40"
                   },
                   {
                     "children": [
@@ -647,13 +647,13 @@ export const BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15087,
+                              "referencedDeclaration": 15821,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 13442,
+                            "id": 14176,
                             "name": "Identifier",
-                            "src": "715:7:38"
+                            "src": "715:7:40"
                           },
                           {
                             "attributes": {
@@ -676,13 +676,13 @@ export const BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13429,
+                                  "referencedDeclaration": 14163,
                                   "type": "uint256",
                                   "value": "_value"
                                 },
-                                "id": 13443,
+                                "id": 14177,
                                 "name": "Identifier",
-                                "src": "723:6:38"
+                                "src": "723:6:40"
                               },
                               {
                                 "attributes": {
@@ -700,13 +700,13 @@ export const BasicToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 13415,
+                                      "referencedDeclaration": 14149,
                                       "type": "mapping(address => uint256)",
                                       "value": "balances"
                                     },
-                                    "id": 13444,
+                                    "id": 14178,
                                     "name": "Identifier",
-                                    "src": "733:8:38"
+                                    "src": "733:8:40"
                                   },
                                   {
                                     "attributes": {
@@ -726,38 +726,38 @@ export const BasicToken =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 15084,
+                                          "referencedDeclaration": 15818,
                                           "type": "msg",
                                           "value": "msg"
                                         },
-                                        "id": 13445,
+                                        "id": 14179,
                                         "name": "Identifier",
-                                        "src": "742:3:38"
+                                        "src": "742:3:40"
                                       }
                                     ],
-                                    "id": 13446,
+                                    "id": 14180,
                                     "name": "MemberAccess",
-                                    "src": "742:10:38"
+                                    "src": "742:10:40"
                                   }
                                 ],
-                                "id": 13447,
+                                "id": 14181,
                                 "name": "IndexAccess",
-                                "src": "733:20:38"
+                                "src": "733:20:40"
                               }
                             ],
-                            "id": 13448,
+                            "id": 14182,
                             "name": "BinaryOperation",
-                            "src": "723:30:38"
+                            "src": "723:30:40"
                           }
                         ],
-                        "id": 13449,
+                        "id": 14183,
                         "name": "FunctionCall",
-                        "src": "715:39:38"
+                        "src": "715:39:40"
                       }
                     ],
-                    "id": 13450,
+                    "id": 14184,
                     "name": "ExpressionStatement",
-                    "src": "715:39:38"
+                    "src": "715:39:40"
                   },
                   {
                     "children": [
@@ -788,13 +788,13 @@ export const BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13415,
+                                  "referencedDeclaration": 14149,
                                   "type": "mapping(address => uint256)",
                                   "value": "balances"
                                 },
-                                "id": 13451,
+                                "id": 14185,
                                 "name": "Identifier",
-                                "src": "824:8:38"
+                                "src": "824:8:40"
                               },
                               {
                                 "attributes": {
@@ -814,23 +814,23 @@ export const BasicToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15084,
+                                      "referencedDeclaration": 15818,
                                       "type": "msg",
                                       "value": "msg"
                                     },
-                                    "id": 13452,
+                                    "id": 14186,
                                     "name": "Identifier",
-                                    "src": "833:3:38"
+                                    "src": "833:3:40"
                                   }
                                 ],
-                                "id": 13453,
+                                "id": 14187,
                                 "name": "MemberAccess",
-                                "src": "833:10:38"
+                                "src": "833:10:40"
                               }
                             ],
-                            "id": 13454,
+                            "id": 14188,
                             "name": "IndexAccess",
-                            "src": "824:20:38"
+                            "src": "824:20:40"
                           },
                           {
                             "attributes": {
@@ -860,7 +860,7 @@ export const BasicToken =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "sub",
-                                  "referencedDeclaration": 13321,
+                                  "referencedDeclaration": 14055,
                                   "type": "function (uint256,uint256) pure returns (uint256)"
                                 },
                                 "children": [
@@ -880,13 +880,13 @@ export const BasicToken =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 13415,
+                                          "referencedDeclaration": 14149,
                                           "type": "mapping(address => uint256)",
                                           "value": "balances"
                                         },
-                                        "id": 13455,
+                                        "id": 14189,
                                         "name": "Identifier",
-                                        "src": "847:8:38"
+                                        "src": "847:8:40"
                                       },
                                       {
                                         "attributes": {
@@ -906,28 +906,28 @@ export const BasicToken =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 15084,
+                                              "referencedDeclaration": 15818,
                                               "type": "msg",
                                               "value": "msg"
                                             },
-                                            "id": 13456,
+                                            "id": 14190,
                                             "name": "Identifier",
-                                            "src": "856:3:38"
+                                            "src": "856:3:40"
                                           }
                                         ],
-                                        "id": 13457,
+                                        "id": 14191,
                                         "name": "MemberAccess",
-                                        "src": "856:10:38"
+                                        "src": "856:10:40"
                                       }
                                     ],
-                                    "id": 13458,
+                                    "id": 14192,
                                     "name": "IndexAccess",
-                                    "src": "847:20:38"
+                                    "src": "847:20:40"
                                   }
                                 ],
-                                "id": 13459,
+                                "id": 14193,
                                 "name": "MemberAccess",
-                                "src": "847:24:38"
+                                "src": "847:24:40"
                               },
                               {
                                 "attributes": {
@@ -935,28 +935,28 @@ export const BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13429,
+                                  "referencedDeclaration": 14163,
                                   "type": "uint256",
                                   "value": "_value"
                                 },
-                                "id": 13460,
+                                "id": 14194,
                                 "name": "Identifier",
-                                "src": "872:6:38"
+                                "src": "872:6:40"
                               }
                             ],
-                            "id": 13461,
+                            "id": 14195,
                             "name": "FunctionCall",
-                            "src": "847:32:38"
+                            "src": "847:32:40"
                           }
                         ],
-                        "id": 13462,
+                        "id": 14196,
                         "name": "Assignment",
-                        "src": "824:55:38"
+                        "src": "824:55:40"
                       }
                     ],
-                    "id": 13463,
+                    "id": 14197,
                     "name": "ExpressionStatement",
-                    "src": "824:55:38"
+                    "src": "824:55:40"
                   },
                   {
                     "children": [
@@ -987,13 +987,13 @@ export const BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13415,
+                                  "referencedDeclaration": 14149,
                                   "type": "mapping(address => uint256)",
                                   "value": "balances"
                                 },
-                                "id": 13464,
+                                "id": 14198,
                                 "name": "Identifier",
-                                "src": "885:8:38"
+                                "src": "885:8:40"
                               },
                               {
                                 "attributes": {
@@ -1001,18 +1001,18 @@ export const BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13427,
+                                  "referencedDeclaration": 14161,
                                   "type": "address",
                                   "value": "_to"
                                 },
-                                "id": 13465,
+                                "id": 14199,
                                 "name": "Identifier",
-                                "src": "894:3:38"
+                                "src": "894:3:40"
                               }
                             ],
-                            "id": 13466,
+                            "id": 14200,
                             "name": "IndexAccess",
-                            "src": "885:13:38"
+                            "src": "885:13:40"
                           },
                           {
                             "attributes": {
@@ -1042,7 +1042,7 @@ export const BasicToken =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "add",
-                                  "referencedDeclaration": 13345,
+                                  "referencedDeclaration": 14079,
                                   "type": "function (uint256,uint256) pure returns (uint256)"
                                 },
                                 "children": [
@@ -1062,13 +1062,13 @@ export const BasicToken =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 13415,
+                                          "referencedDeclaration": 14149,
                                           "type": "mapping(address => uint256)",
                                           "value": "balances"
                                         },
-                                        "id": 13467,
+                                        "id": 14201,
                                         "name": "Identifier",
-                                        "src": "901:8:38"
+                                        "src": "901:8:40"
                                       },
                                       {
                                         "attributes": {
@@ -1076,23 +1076,23 @@ export const BasicToken =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 13427,
+                                          "referencedDeclaration": 14161,
                                           "type": "address",
                                           "value": "_to"
                                         },
-                                        "id": 13468,
+                                        "id": 14202,
                                         "name": "Identifier",
-                                        "src": "910:3:38"
+                                        "src": "910:3:40"
                                       }
                                     ],
-                                    "id": 13469,
+                                    "id": 14203,
                                     "name": "IndexAccess",
-                                    "src": "901:13:38"
+                                    "src": "901:13:40"
                                   }
                                 ],
-                                "id": 13470,
+                                "id": 14204,
                                 "name": "MemberAccess",
-                                "src": "901:17:38"
+                                "src": "901:17:40"
                               },
                               {
                                 "attributes": {
@@ -1100,28 +1100,28 @@ export const BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13429,
+                                  "referencedDeclaration": 14163,
                                   "type": "uint256",
                                   "value": "_value"
                                 },
-                                "id": 13471,
+                                "id": 14205,
                                 "name": "Identifier",
-                                "src": "919:6:38"
+                                "src": "919:6:40"
                               }
                             ],
-                            "id": 13472,
+                            "id": 14206,
                             "name": "FunctionCall",
-                            "src": "901:25:38"
+                            "src": "901:25:40"
                           }
                         ],
-                        "id": 13473,
+                        "id": 14207,
                         "name": "Assignment",
-                        "src": "885:41:38"
+                        "src": "885:41:40"
                       }
                     ],
-                    "id": 13474,
+                    "id": 14208,
                     "name": "ExpressionStatement",
-                    "src": "885:41:38"
+                    "src": "885:41:40"
                   },
                   {
                     "children": [
@@ -1159,13 +1159,13 @@ export const BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13572,
+                              "referencedDeclaration": 14306,
                               "type": "function (address,address,uint256)",
                               "value": "Transfer"
                             },
-                            "id": 13475,
+                            "id": 14209,
                             "name": "Identifier",
-                            "src": "932:8:38"
+                            "src": "932:8:40"
                           },
                           {
                             "attributes": {
@@ -1185,18 +1185,18 @@ export const BasicToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15084,
+                                  "referencedDeclaration": 15818,
                                   "type": "msg",
                                   "value": "msg"
                                 },
-                                "id": 13476,
+                                "id": 14210,
                                 "name": "Identifier",
-                                "src": "941:3:38"
+                                "src": "941:3:40"
                               }
                             ],
-                            "id": 13477,
+                            "id": 14211,
                             "name": "MemberAccess",
-                            "src": "941:10:38"
+                            "src": "941:10:40"
                           },
                           {
                             "attributes": {
@@ -1204,13 +1204,13 @@ export const BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13427,
+                              "referencedDeclaration": 14161,
                               "type": "address",
                               "value": "_to"
                             },
-                            "id": 13478,
+                            "id": 14212,
                             "name": "Identifier",
-                            "src": "953:3:38"
+                            "src": "953:3:40"
                           },
                           {
                             "attributes": {
@@ -1218,27 +1218,27 @@ export const BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13429,
+                              "referencedDeclaration": 14163,
                               "type": "uint256",
                               "value": "_value"
                             },
-                            "id": 13479,
+                            "id": 14213,
                             "name": "Identifier",
-                            "src": "958:6:38"
+                            "src": "958:6:40"
                           }
                         ],
-                        "id": 13480,
+                        "id": 14214,
                         "name": "FunctionCall",
-                        "src": "932:33:38"
+                        "src": "932:33:40"
                       }
                     ],
-                    "id": 13481,
+                    "id": 14215,
                     "name": "ExpressionStatement",
-                    "src": "932:33:38"
+                    "src": "932:33:40"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 13433
+                      "functionReturnParameters": 14167
                     },
                     "children": [
                       {
@@ -1254,24 +1254,24 @@ export const BasicToken =
                           "type": "bool",
                           "value": "true"
                         },
-                        "id": 13482,
+                        "id": 14216,
                         "name": "Literal",
-                        "src": "978:4:38"
+                        "src": "978:4:40"
                       }
                     ],
-                    "id": 13483,
+                    "id": 14217,
                     "name": "Return",
-                    "src": "971:11:38"
+                    "src": "971:11:40"
                   }
                 ],
-                "id": 13484,
+                "id": 14218,
                 "name": "Block",
-                "src": "677:310:38"
+                "src": "677:310:40"
               }
             ],
-            "id": 13485,
+            "id": 14219,
             "name": "FunctionDefinition",
-            "src": "608:379:38"
+            "src": "608:379:40"
           },
           {
             "attributes": {
@@ -1283,9 +1283,9 @@ export const BasicToken =
               ],
               "name": "balanceOf",
               "payable": false,
-              "scope": 13498,
+              "scope": 14232,
               "stateMutability": "view",
-              "superFunction": 13555,
+              "superFunction": 14289,
               "visibility": "public"
             },
             "children": [
@@ -1295,7 +1295,7 @@ export const BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "_owner",
-                      "scope": 13497,
+                      "scope": 14231,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1308,19 +1308,19 @@ export const BasicToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 13486,
+                        "id": 14220,
                         "name": "ElementaryTypeName",
-                        "src": "1208:7:38"
+                        "src": "1208:7:40"
                       }
                     ],
-                    "id": 13487,
+                    "id": 14221,
                     "name": "VariableDeclaration",
-                    "src": "1208:14:38"
+                    "src": "1208:14:40"
                   }
                 ],
-                "id": 13488,
+                "id": 14222,
                 "name": "ParameterList",
-                "src": "1207:16:38"
+                "src": "1207:16:40"
               },
               {
                 "children": [
@@ -1328,7 +1328,7 @@ export const BasicToken =
                     "attributes": {
                       "constant": false,
                       "name": "balance",
-                      "scope": 13497,
+                      "scope": 14231,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1341,25 +1341,25 @@ export const BasicToken =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 13489,
+                        "id": 14223,
                         "name": "ElementaryTypeName",
-                        "src": "1245:7:38"
+                        "src": "1245:7:40"
                       }
                     ],
-                    "id": 13490,
+                    "id": 14224,
                     "name": "VariableDeclaration",
-                    "src": "1245:15:38"
+                    "src": "1245:15:40"
                   }
                 ],
-                "id": 13491,
+                "id": 14225,
                 "name": "ParameterList",
-                "src": "1244:17:38"
+                "src": "1244:17:40"
               },
               {
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 13491
+                      "functionReturnParameters": 14225
                     },
                     "children": [
                       {
@@ -1378,13 +1378,13 @@ export const BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13415,
+                              "referencedDeclaration": 14149,
                               "type": "mapping(address => uint256)",
                               "value": "balances"
                             },
-                            "id": 13492,
+                            "id": 14226,
                             "name": "Identifier",
-                            "src": "1275:8:38"
+                            "src": "1275:8:40"
                           },
                           {
                             "attributes": {
@@ -1392,43 +1392,43 @@ export const BasicToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13487,
+                              "referencedDeclaration": 14221,
                               "type": "address",
                               "value": "_owner"
                             },
-                            "id": 13493,
+                            "id": 14227,
                             "name": "Identifier",
-                            "src": "1284:6:38"
+                            "src": "1284:6:40"
                           }
                         ],
-                        "id": 13494,
+                        "id": 14228,
                         "name": "IndexAccess",
-                        "src": "1275:16:38"
+                        "src": "1275:16:40"
                       }
                     ],
-                    "id": 13495,
+                    "id": 14229,
                     "name": "Return",
-                    "src": "1268:23:38"
+                    "src": "1268:23:40"
                   }
                 ],
-                "id": 13496,
+                "id": 14230,
                 "name": "Block",
-                "src": "1262:34:38"
+                "src": "1262:34:40"
               }
             ],
-            "id": 13497,
+            "id": 14231,
             "name": "FunctionDefinition",
-            "src": "1189:107:38"
+            "src": "1189:107:40"
           }
         ],
-        "id": 13498,
+        "id": 14232,
         "name": "ContractDefinition",
-        "src": "180:1119:38"
+        "src": "180:1119:40"
       }
     ],
-    "id": 13499,
+    "id": 14233,
     "name": "SourceUnit",
-    "src": "0:1300:38"
+    "src": "0:1300:40"
   },
   "compiler": {
     "name": "solc",
@@ -1436,5 +1436,5 @@ export const BasicToken =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-07T18:09:37.708Z"
+  "updatedAt": "2018-09-21T17:50:41.142Z"
 }
