@@ -59,7 +59,7 @@ contract("Migration #5: Authorizing Contract Interactions", async (ACCOUNTS) => 
         });
 
         it(
-            "should authorize only the kernel, repayment router, and collateralizer " +
+            "should first authorize the kernel, repayment router, and collateralizer " +
                 "to make `transferFrom` calls on the token transfer proxy",
             async () => {
                 const proxy = await TokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
@@ -68,7 +68,7 @@ contract("Migration #5: Authorizing Contract Interactions", async (ACCOUNTS) => 
 
                 const approved = await proxy.getAuthorizedTransferAgents.callAsync();
 
-                expect(approved).to.deep.eq([
+                expect(approved.slice(0, 3)).to.deep.eq([
                     kernel.address,
                     repaymentRouter.address,
                     collateralizer.address,

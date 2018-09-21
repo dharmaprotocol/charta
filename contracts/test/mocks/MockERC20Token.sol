@@ -95,6 +95,19 @@ contract MockERC20Token is MockContract {
         mockReturnValue("balanceOf", keccak256(_owner), bytes32(_balance));
     }
 
+    /* `approve` */
+
+    function approve(address _to, uint _allowance) public returns (bool _success)
+    {
+        functionCalledWithArgs("approve", keccak256(_to, _allowance));
+        return true;
+    }
+
+    function wasApproveCalledWith(address _to, uint _allowance) public view returns (bool wasCalled)
+    {
+        return wasFunctionCalledWithArgs("approve", keccak256(_to, _allowance));
+    }
+
     /* `allowance` */
 
     function allowance(address _owner, address _to) public view returns(uint _allowance) {
@@ -139,6 +152,6 @@ contract MockERC20Token is MockContract {
         internal
         returns (string[10] functionNames)
     {
-        return ["transfer", "transferFrom", "allowance", "balanceOf", "", "", "", "", "", ""];
+        return ["transfer", "transferFrom", "allowance", "balanceOf", "approve", "", "", "", "", ""];
     }
 }
