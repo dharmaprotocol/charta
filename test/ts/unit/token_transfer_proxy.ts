@@ -3,6 +3,7 @@ import * as chai from "chai";
 import * as _ from "lodash";
 import * as Units from "../test_utils/units";
 
+import { CreditorProxyContract } from "../../../types/generated/creditor_proxy";
 import { DebtKernelContract } from "../../../types/generated/debt_kernel";
 import { RepaymentRouterContract } from "../../../types/generated/repayment_router";
 import { TokenTransferProxyContract } from "../../../types/generated/token_transfer_proxy";
@@ -26,6 +27,7 @@ const expect = chai.expect;
 BigNumberSetup.configure();
 
 contract("Token Transfer Proxy (Unit Tests)", async (ACCOUNTS) => {
+    let creditorProxy: CreditorProxyContract;
     let proxy: TokenTransferProxyContract;
     let kernel: DebtKernelContract;
     let repaymentRouter: RepaymentRouterContract;
@@ -49,14 +51,16 @@ contract("Token Transfer Proxy (Unit Tests)", async (ACCOUNTS) => {
         mockToken = await MockERC20TokenContract.deployed(web3, TX_DEFAULTS);
         collateralizer = await CollateralizerContract.deployed(web3, TX_DEFAULTS);
         multiSig = await DharmaMultiSigWalletContract.deployed(web3, TX_DEFAULTS);
+        creditorProxy = await CreditorProxyContract.deployed(web3, TX_DEFAULTS);
     });
 
     describe("Initialization", () => {
-        it("should list the kernel and repayment router as authorized transfer agents", async () => {
+        it("should list the kernel, repayment router, and creditor proxy as authorized transfer agents", async () => {
             await expect(proxy.getAuthorizedTransferAgents.callAsync()).to.eventually.deep.equal([
                 kernel.address,
                 repaymentRouter.address,
                 collateralizer.address,
+                creditorProxy.address,
             ]);
         });
     });
@@ -109,6 +113,7 @@ contract("Token Transfer Proxy (Unit Tests)", async (ACCOUNTS) => {
                     kernel.address,
                     repaymentRouter.address,
                     collateralizer.address,
+                    creditorProxy.address,
                     AGENT,
                 ]);
             });
@@ -147,6 +152,7 @@ contract("Token Transfer Proxy (Unit Tests)", async (ACCOUNTS) => {
                     kernel.address,
                     repaymentRouter.address,
                     collateralizer.address,
+                    creditorProxy.address,
                 ]);
             });
 
