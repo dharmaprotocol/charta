@@ -46,11 +46,6 @@ contract("Migration #8: Deploy Creditor Proxy", async (ACCOUNTS) => {
             await expect(web3Utils.doesContractExistAtAddressAsync(creditorProxy.address)).to
                 .eventually.be.true;
         });
-
-        it("should authorize the creditor proxy to make `transferFrom` calls on the token transfer proxy", async () => {
-            const approved = await tokenTransferProxy.getAuthorizedTransferAgents.callAsync();
-            expect(approved[approved.length - 1]).to.eq(creditorProxy.address);
-        });
     });
 
     describe("#CreditorProxy", () => {
