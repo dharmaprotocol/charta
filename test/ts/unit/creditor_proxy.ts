@@ -330,9 +330,9 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
                         const creditorProxyBalance = await mockPrincipalToken.balanceOf.callAsync(
                             creditorProxy.address,
                         );
-                        const expectedBalance = await debtOffer.getPrincipalAmount().plus(
-                            debtOffer.getCreditorFee(),
-                        );
+                        const expectedBalance = await debtOffer
+                            .getPrincipalAmount()
+                            .plus(debtOffer.getCreditorFee());
 
                         expect(creditorProxyBalance.toString()).to.eq(expectedBalance.toString());
                     }
