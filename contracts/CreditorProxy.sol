@@ -250,15 +250,26 @@ contract CreditorProxy is Pausable {
         internal
         returns (bool _isBalanceAndAllowanceSufficient)
     {
-        if (getBalance(principalToken, creditor) < totalCreditorPayment ||
-            getAllowance(principalToken, creditor) < totalCreditorPayment) {
+        // The allowance that this contract has for a creditor's tokens.
+        uint proxyAllowance = getAllowance(principalToken, creditor, address(this));
+        uint creditorBalance = getBalance(principalToken, creditor);
+
+        if (creditorBalance < totalCreditorPayment || proxyAllowance < totalCreditorPayment) {
             return false;
         }
 
-        // ensure the token transfer proxy can transfer tokens from the creditor proxy
-        if (getAllowance(principalToken, address(this)) < totalCreditorPayment) {
-            require(setAllowance(principalToken, totalCreditorPayment));
+        // The allowance that the token transfer proxy has for this contract's tokens.
+        uint tokenTransferAllowance = getAllowance(
+            principalToken,
+            address(this),
+            contractRegistry.tokenTransferProxy()
+        );
+
+        // Ensure the token transfer proxy can transfer tokens from the creditor proxy
+        if (tokenTransferAllowance < totalCreditorPayment) {
+            require(setTokenTransferAllowance(principalToken, totalCreditorPayment));
         }
+
         return true;
     }
 
@@ -305,7 +316,8 @@ contract CreditorProxy is Pausable {
      */
     function getAllowance(
         address token,
-        address owner
+        address owner,
+        address granter
     )
         internal
         view
@@ -314,14 +326,14 @@ contract CreditorProxy is Pausable {
         // Limit gas to prevent reentrancy.
         return ERC20(token).allowance.gas(EXTERNAL_QUERY_GAS_LIMIT)(
             owner,
-            address(this)
+            granter
         );
     }
 
     /**
      * Helper function for approving this address' allowance to Dharma's token transfer proxy.
      */
-    function setAllowance(
+    function setTokenTransferAllowance(
         address token,
         uint amount
     )
