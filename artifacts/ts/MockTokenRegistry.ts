@@ -142,7 +142,7 @@ export const MockTokenRegistry =
       "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/test/mocks/MockTokenRegistry.sol",
       "exportedSymbols": {
         "MockTokenRegistry": [
-          12426
+          12423
         ]
       }
     },
@@ -155,39 +155,39 @@ export const MockTokenRegistry =
             ".18"
           ]
         },
-        "id": 12332,
+        "id": 12329,
         "name": "PragmaDirective",
         "src": "584:23:31"
       },
       {
         "attributes": {
-          "SourceUnit": 10678,
+          "SourceUnit": 10675,
           "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/test/mocks/MockContract.sol",
           "file": "./MockContract.sol",
-          "scope": 12427,
+          "scope": 12424,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 12333,
+        "id": 12330,
         "name": "ImportDirective",
         "src": "609:28:31"
       },
       {
         "attributes": {
           "contractDependencies": [
-            10677
+            10674
           ],
           "contractKind": "contract",
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            12426,
-            10677
+            12423,
+            10674
           ],
           "name": "MockTokenRegistry",
-          "scope": 12427
+          "scope": 12424
         },
         "children": [
           {
@@ -201,15 +201,15 @@ export const MockTokenRegistry =
                 "attributes": {
                   "contractScope": null,
                   "name": "MockContract",
-                  "referencedDeclaration": 10677,
+                  "referencedDeclaration": 10674,
                   "type": "contract MockContract"
                 },
-                "id": 12334,
+                "id": 12331,
                 "name": "UserDefinedTypeName",
                 "src": "670:12:31"
               }
             ],
-            "id": 12335,
+            "id": 12332,
             "name": "InheritanceSpecifier",
             "src": "670:12:31"
           },
@@ -223,7 +223,7 @@ export const MockTokenRegistry =
               ],
               "name": "getTokenAddressBySymbol",
               "payable": false,
-              "scope": 12426,
+              "scope": 12423,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -235,7 +235,7 @@ export const MockTokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "symbol",
-                      "scope": 12352,
+                      "scope": 12349,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory",
@@ -248,17 +248,17 @@ export const MockTokenRegistry =
                           "name": "string",
                           "type": "string storage pointer"
                         },
-                        "id": 12336,
+                        "id": 12333,
                         "name": "ElementaryTypeName",
                         "src": "722:6:31"
                       }
                     ],
-                    "id": 12337,
+                    "id": 12334,
                     "name": "VariableDeclaration",
                     "src": "722:13:31"
                   }
                 ],
-                "id": 12338,
+                "id": 12335,
                 "name": "ParameterList",
                 "src": "721:15:31"
               },
@@ -268,7 +268,7 @@ export const MockTokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 12352,
+                      "scope": 12349,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -281,17 +281,17 @@ export const MockTokenRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 12339,
+                        "id": 12336,
                         "name": "ElementaryTypeName",
                         "src": "782:7:31"
                       }
                     ],
-                    "id": 12340,
+                    "id": 12337,
                     "name": "VariableDeclaration",
                     "src": "782:7:31"
                   }
                 ],
-                "id": 12341,
+                "id": 12338,
                 "name": "ParameterList",
                 "src": "781:9:31"
               },
@@ -299,7 +299,7 @@ export const MockTokenRegistry =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 12341
+                      "functionReturnParameters": 12338
                     },
                     "children": [
                       {
@@ -332,7 +332,7 @@ export const MockTokenRegistry =
                               "type": "type(address)",
                               "value": "address"
                             },
-                            "id": 12342,
+                            "id": 12339,
                             "name": "ElementaryTypeNameExpression",
                             "src": "812:7:31"
                           },
@@ -366,11 +366,11 @@ export const MockTokenRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10557,
+                                  "referencedDeclaration": 10554,
                                   "type": "function (string memory,bytes32) view returns (bytes32)",
                                   "value": "getMockReturnValue"
                                 },
-                                "id": 12343,
+                                "id": 12340,
                                 "name": "Identifier",
                                 "src": "820:18:31"
                               },
@@ -387,7 +387,7 @@ export const MockTokenRegistry =
                                   "type": "literal_string \"getTokenAddressBySymbol\"",
                                   "value": "getTokenAddressBySymbol"
                                 },
-                                "id": 12344,
+                                "id": 12341,
                                 "name": "Literal",
                                 "src": "839:25:31"
                               },
@@ -417,11 +417,11 @@ export const MockTokenRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15812,
+                                      "referencedDeclaration": 15809,
                                       "type": "function () pure returns (bytes32)",
                                       "value": "keccak256"
                                     },
-                                    "id": 12345,
+                                    "id": 12342,
                                     "name": "Identifier",
                                     "src": "866:9:31"
                                   },
@@ -431,41 +431,41 @@ export const MockTokenRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 12337,
+                                      "referencedDeclaration": 12334,
                                       "type": "string memory",
                                       "value": "symbol"
                                     },
-                                    "id": 12346,
+                                    "id": 12343,
                                     "name": "Identifier",
                                     "src": "876:6:31"
                                   }
                                 ],
-                                "id": 12347,
+                                "id": 12344,
                                 "name": "FunctionCall",
                                 "src": "866:17:31"
                               }
                             ],
-                            "id": 12348,
+                            "id": 12345,
                             "name": "FunctionCall",
                             "src": "820:64:31"
                           }
                         ],
-                        "id": 12349,
+                        "id": 12346,
                         "name": "FunctionCall",
                         "src": "812:73:31"
                       }
                     ],
-                    "id": 12350,
+                    "id": 12347,
                     "name": "Return",
                     "src": "805:80:31"
                   }
                 ],
-                "id": 12351,
+                "id": 12348,
                 "name": "Block",
                 "src": "795:97:31"
               }
             ],
-            "id": 12352,
+            "id": 12349,
             "name": "FunctionDefinition",
             "src": "689:203:31"
           },
@@ -479,7 +479,7 @@ export const MockTokenRegistry =
               ],
               "name": "getTokenAddressByIndex",
               "payable": false,
-              "scope": 12426,
+              "scope": 12423,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -491,7 +491,7 @@ export const MockTokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "index",
-                      "scope": 12369,
+                      "scope": 12366,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -504,17 +504,17 @@ export const MockTokenRegistry =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 12353,
+                        "id": 12350,
                         "name": "ElementaryTypeName",
                         "src": "930:4:31"
                       }
                     ],
-                    "id": 12354,
+                    "id": 12351,
                     "name": "VariableDeclaration",
                     "src": "930:10:31"
                   }
                 ],
-                "id": 12355,
+                "id": 12352,
                 "name": "ParameterList",
                 "src": "929:12:31"
               },
@@ -524,7 +524,7 @@ export const MockTokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 12369,
+                      "scope": 12366,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -537,17 +537,17 @@ export const MockTokenRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 12356,
+                        "id": 12353,
                         "name": "ElementaryTypeName",
                         "src": "987:7:31"
                       }
                     ],
-                    "id": 12357,
+                    "id": 12354,
                     "name": "VariableDeclaration",
                     "src": "987:7:31"
                   }
                 ],
-                "id": 12358,
+                "id": 12355,
                 "name": "ParameterList",
                 "src": "986:9:31"
               },
@@ -555,7 +555,7 @@ export const MockTokenRegistry =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 12358
+                      "functionReturnParameters": 12355
                     },
                     "children": [
                       {
@@ -588,7 +588,7 @@ export const MockTokenRegistry =
                               "type": "type(address)",
                               "value": "address"
                             },
-                            "id": 12359,
+                            "id": 12356,
                             "name": "ElementaryTypeNameExpression",
                             "src": "1017:7:31"
                           },
@@ -622,11 +622,11 @@ export const MockTokenRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10557,
+                                  "referencedDeclaration": 10554,
                                   "type": "function (string memory,bytes32) view returns (bytes32)",
                                   "value": "getMockReturnValue"
                                 },
-                                "id": 12360,
+                                "id": 12357,
                                 "name": "Identifier",
                                 "src": "1025:18:31"
                               },
@@ -643,7 +643,7 @@ export const MockTokenRegistry =
                                   "type": "literal_string \"getTokenAddressByIndex\"",
                                   "value": "getTokenAddressByIndex"
                                 },
-                                "id": 12361,
+                                "id": 12358,
                                 "name": "Literal",
                                 "src": "1044:24:31"
                               },
@@ -673,11 +673,11 @@ export const MockTokenRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15812,
+                                      "referencedDeclaration": 15809,
                                       "type": "function () pure returns (bytes32)",
                                       "value": "keccak256"
                                     },
-                                    "id": 12362,
+                                    "id": 12359,
                                     "name": "Identifier",
                                     "src": "1070:9:31"
                                   },
@@ -687,41 +687,41 @@ export const MockTokenRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 12354,
+                                      "referencedDeclaration": 12351,
                                       "type": "uint256",
                                       "value": "index"
                                     },
-                                    "id": 12363,
+                                    "id": 12360,
                                     "name": "Identifier",
                                     "src": "1080:5:31"
                                   }
                                 ],
-                                "id": 12364,
+                                "id": 12361,
                                 "name": "FunctionCall",
                                 "src": "1070:16:31"
                               }
                             ],
-                            "id": 12365,
+                            "id": 12362,
                             "name": "FunctionCall",
                             "src": "1025:62:31"
                           }
                         ],
-                        "id": 12366,
+                        "id": 12363,
                         "name": "FunctionCall",
                         "src": "1017:71:31"
                       }
                     ],
-                    "id": 12367,
+                    "id": 12364,
                     "name": "Return",
                     "src": "1010:78:31"
                   }
                 ],
-                "id": 12368,
+                "id": 12365,
                 "name": "Block",
                 "src": "1000:95:31"
               }
             ],
-            "id": 12369,
+            "id": 12366,
             "name": "FunctionDefinition",
             "src": "898:197:31"
           },
@@ -735,7 +735,7 @@ export const MockTokenRegistry =
               ],
               "name": "mockGetTokenAddressBySymbol",
               "payable": false,
-              "scope": 12426,
+              "scope": 12423,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -747,7 +747,7 @@ export const MockTokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "symbol",
-                      "scope": 12387,
+                      "scope": 12384,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory",
@@ -760,12 +760,12 @@ export const MockTokenRegistry =
                           "name": "string",
                           "type": "string storage pointer"
                         },
-                        "id": 12370,
+                        "id": 12367,
                         "name": "ElementaryTypeName",
                         "src": "1138:6:31"
                       }
                     ],
-                    "id": 12371,
+                    "id": 12368,
                     "name": "VariableDeclaration",
                     "src": "1138:13:31"
                   },
@@ -773,7 +773,7 @@ export const MockTokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "token",
-                      "scope": 12387,
+                      "scope": 12384,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -786,17 +786,17 @@ export const MockTokenRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 12372,
+                        "id": 12369,
                         "name": "ElementaryTypeName",
                         "src": "1153:7:31"
                       }
                     ],
-                    "id": 12373,
+                    "id": 12370,
                     "name": "VariableDeclaration",
                     "src": "1153:13:31"
                   }
                 ],
-                "id": 12374,
+                "id": 12371,
                 "name": "ParameterList",
                 "src": "1137:30:31"
               },
@@ -807,7 +807,7 @@ export const MockTokenRegistry =
                   ]
                 },
                 "children": [],
-                "id": 12375,
+                "id": 12372,
                 "name": "ParameterList",
                 "src": "1187:0:31"
               },
@@ -849,11 +849,11 @@ export const MockTokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10541,
+                              "referencedDeclaration": 10538,
                               "type": "function (string memory,bytes32,bytes32)",
                               "value": "mockReturnValue"
                             },
-                            "id": 12376,
+                            "id": 12373,
                             "name": "Identifier",
                             "src": "1197:15:31"
                           },
@@ -870,7 +870,7 @@ export const MockTokenRegistry =
                               "type": "literal_string \"getTokenAddressBySymbol\"",
                               "value": "getTokenAddressBySymbol"
                             },
-                            "id": 12377,
+                            "id": 12374,
                             "name": "Literal",
                             "src": "1213:25:31"
                           },
@@ -900,11 +900,11 @@ export const MockTokenRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15812,
+                                  "referencedDeclaration": 15809,
                                   "type": "function () pure returns (bytes32)",
                                   "value": "keccak256"
                                 },
-                                "id": 12378,
+                                "id": 12375,
                                 "name": "Identifier",
                                 "src": "1240:9:31"
                               },
@@ -914,16 +914,16 @@ export const MockTokenRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12371,
+                                  "referencedDeclaration": 12368,
                                   "type": "string memory",
                                   "value": "symbol"
                                 },
-                                "id": 12379,
+                                "id": 12376,
                                 "name": "Identifier",
                                 "src": "1250:6:31"
                               }
                             ],
-                            "id": 12380,
+                            "id": 12377,
                             "name": "FunctionCall",
                             "src": "1240:17:31"
                           },
@@ -957,7 +957,7 @@ export const MockTokenRegistry =
                                   "type": "type(bytes32)",
                                   "value": "bytes32"
                                 },
-                                "id": 12381,
+                                "id": 12378,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "1259:7:31"
                               },
@@ -967,36 +967,36 @@ export const MockTokenRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12373,
+                                  "referencedDeclaration": 12370,
                                   "type": "address",
                                   "value": "token"
                                 },
-                                "id": 12382,
+                                "id": 12379,
                                 "name": "Identifier",
                                 "src": "1267:5:31"
                               }
                             ],
-                            "id": 12383,
+                            "id": 12380,
                             "name": "FunctionCall",
                             "src": "1259:14:31"
                           }
                         ],
-                        "id": 12384,
+                        "id": 12381,
                         "name": "FunctionCall",
                         "src": "1197:77:31"
                       }
                     ],
-                    "id": 12385,
+                    "id": 12382,
                     "name": "ExpressionStatement",
                     "src": "1197:77:31"
                   }
                 ],
-                "id": 12386,
+                "id": 12383,
                 "name": "Block",
                 "src": "1187:94:31"
               }
             ],
-            "id": 12387,
+            "id": 12384,
             "name": "FunctionDefinition",
             "src": "1101:180:31"
           },
@@ -1010,7 +1010,7 @@ export const MockTokenRegistry =
               ],
               "name": "mockGetTokenAddressByIndex",
               "payable": false,
-              "scope": 12426,
+              "scope": 12423,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -1022,7 +1022,7 @@ export const MockTokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "index",
-                      "scope": 12405,
+                      "scope": 12402,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1035,12 +1035,12 @@ export const MockTokenRegistry =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 12388,
+                        "id": 12385,
                         "name": "ElementaryTypeName",
                         "src": "1323:4:31"
                       }
                     ],
-                    "id": 12389,
+                    "id": 12386,
                     "name": "VariableDeclaration",
                     "src": "1323:10:31"
                   },
@@ -1048,7 +1048,7 @@ export const MockTokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "token",
-                      "scope": 12405,
+                      "scope": 12402,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1061,17 +1061,17 @@ export const MockTokenRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 12390,
+                        "id": 12387,
                         "name": "ElementaryTypeName",
                         "src": "1335:7:31"
                       }
                     ],
-                    "id": 12391,
+                    "id": 12388,
                     "name": "VariableDeclaration",
                     "src": "1335:13:31"
                   }
                 ],
-                "id": 12392,
+                "id": 12389,
                 "name": "ParameterList",
                 "src": "1322:27:31"
               },
@@ -1082,7 +1082,7 @@ export const MockTokenRegistry =
                   ]
                 },
                 "children": [],
-                "id": 12393,
+                "id": 12390,
                 "name": "ParameterList",
                 "src": "1369:0:31"
               },
@@ -1124,11 +1124,11 @@ export const MockTokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10541,
+                              "referencedDeclaration": 10538,
                               "type": "function (string memory,bytes32,bytes32)",
                               "value": "mockReturnValue"
                             },
-                            "id": 12394,
+                            "id": 12391,
                             "name": "Identifier",
                             "src": "1379:15:31"
                           },
@@ -1145,7 +1145,7 @@ export const MockTokenRegistry =
                               "type": "literal_string \"getTokenAddressByIndex\"",
                               "value": "getTokenAddressByIndex"
                             },
-                            "id": 12395,
+                            "id": 12392,
                             "name": "Literal",
                             "src": "1395:24:31"
                           },
@@ -1175,11 +1175,11 @@ export const MockTokenRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15812,
+                                  "referencedDeclaration": 15809,
                                   "type": "function () pure returns (bytes32)",
                                   "value": "keccak256"
                                 },
-                                "id": 12396,
+                                "id": 12393,
                                 "name": "Identifier",
                                 "src": "1421:9:31"
                               },
@@ -1189,16 +1189,16 @@ export const MockTokenRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12389,
+                                  "referencedDeclaration": 12386,
                                   "type": "uint256",
                                   "value": "index"
                                 },
-                                "id": 12397,
+                                "id": 12394,
                                 "name": "Identifier",
                                 "src": "1431:5:31"
                               }
                             ],
-                            "id": 12398,
+                            "id": 12395,
                             "name": "FunctionCall",
                             "src": "1421:16:31"
                           },
@@ -1232,7 +1232,7 @@ export const MockTokenRegistry =
                                   "type": "type(bytes32)",
                                   "value": "bytes32"
                                 },
-                                "id": 12399,
+                                "id": 12396,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "1439:7:31"
                               },
@@ -1242,36 +1242,36 @@ export const MockTokenRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12391,
+                                  "referencedDeclaration": 12388,
                                   "type": "address",
                                   "value": "token"
                                 },
-                                "id": 12400,
+                                "id": 12397,
                                 "name": "Identifier",
                                 "src": "1447:5:31"
                               }
                             ],
-                            "id": 12401,
+                            "id": 12398,
                             "name": "FunctionCall",
                             "src": "1439:14:31"
                           }
                         ],
-                        "id": 12402,
+                        "id": 12399,
                         "name": "FunctionCall",
                         "src": "1379:75:31"
                       }
                     ],
-                    "id": 12403,
+                    "id": 12400,
                     "name": "ExpressionStatement",
                     "src": "1379:75:31"
                   }
                 ],
-                "id": 12404,
+                "id": 12401,
                 "name": "Block",
                 "src": "1369:92:31"
               }
             ],
-            "id": 12405,
+            "id": 12402,
             "name": "FunctionDefinition",
             "src": "1287:174:31"
           },
@@ -1285,9 +1285,9 @@ export const MockTokenRegistry =
               ],
               "name": "getFunctionList",
               "payable": false,
-              "scope": 12426,
+              "scope": 12423,
               "stateMutability": "nonpayable",
-              "superFunction": 10676,
+              "superFunction": 10673,
               "visibility": "internal"
             },
             "children": [
@@ -1298,7 +1298,7 @@ export const MockTokenRegistry =
                   ]
                 },
                 "children": [],
-                "id": 12406,
+                "id": 12403,
                 "name": "ParameterList",
                 "src": "1491:2:31"
               },
@@ -1308,7 +1308,7 @@ export const MockTokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "functionNames",
-                      "scope": 12425,
+                      "scope": 12422,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory[10] memory",
@@ -1326,7 +1326,7 @@ export const MockTokenRegistry =
                               "name": "string",
                               "type": "string storage pointer"
                             },
-                            "id": 12407,
+                            "id": 12404,
                             "name": "ElementaryTypeName",
                             "src": "1528:6:31"
                           },
@@ -1343,22 +1343,22 @@ export const MockTokenRegistry =
                               "type": "int_const 10",
                               "value": "10"
                             },
-                            "id": 12408,
+                            "id": 12405,
                             "name": "Literal",
                             "src": "1535:2:31"
                           }
                         ],
-                        "id": 12409,
+                        "id": 12406,
                         "name": "ArrayTypeName",
                         "src": "1528:10:31"
                       }
                     ],
-                    "id": 12410,
+                    "id": 12407,
                     "name": "VariableDeclaration",
                     "src": "1528:24:31"
                   }
                 ],
-                "id": 12411,
+                "id": 12408,
                 "name": "ParameterList",
                 "src": "1527:26:31"
               },
@@ -1366,7 +1366,7 @@ export const MockTokenRegistry =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 12411
+                      "functionReturnParameters": 12408
                     },
                     "children": [
                       {
@@ -1393,7 +1393,7 @@ export const MockTokenRegistry =
                               "type": "literal_string \"getTokenAddressBySymbol\"",
                               "value": "getTokenAddressBySymbol"
                             },
-                            "id": 12412,
+                            "id": 12409,
                             "name": "Literal",
                             "src": "1576:25:31"
                           },
@@ -1410,7 +1410,7 @@ export const MockTokenRegistry =
                               "type": "literal_string \"getTokenAddressByIndex\"",
                               "value": "getTokenAddressByIndex"
                             },
-                            "id": 12413,
+                            "id": 12410,
                             "name": "Literal",
                             "src": "1603:24:31"
                           },
@@ -1427,7 +1427,7 @@ export const MockTokenRegistry =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 12414,
+                            "id": 12411,
                             "name": "Literal",
                             "src": "1629:2:31"
                           },
@@ -1444,7 +1444,7 @@ export const MockTokenRegistry =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 12415,
+                            "id": 12412,
                             "name": "Literal",
                             "src": "1633:2:31"
                           },
@@ -1461,7 +1461,7 @@ export const MockTokenRegistry =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 12416,
+                            "id": 12413,
                             "name": "Literal",
                             "src": "1637:2:31"
                           },
@@ -1478,7 +1478,7 @@ export const MockTokenRegistry =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 12417,
+                            "id": 12414,
                             "name": "Literal",
                             "src": "1641:2:31"
                           },
@@ -1495,7 +1495,7 @@ export const MockTokenRegistry =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 12418,
+                            "id": 12415,
                             "name": "Literal",
                             "src": "1645:2:31"
                           },
@@ -1512,7 +1512,7 @@ export const MockTokenRegistry =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 12419,
+                            "id": 12416,
                             "name": "Literal",
                             "src": "1649:2:31"
                           },
@@ -1529,7 +1529,7 @@ export const MockTokenRegistry =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 12420,
+                            "id": 12417,
                             "name": "Literal",
                             "src": "1653:2:31"
                           },
@@ -1546,37 +1546,37 @@ export const MockTokenRegistry =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 12421,
+                            "id": 12418,
                             "name": "Literal",
                             "src": "1657:2:31"
                           }
                         ],
-                        "id": 12422,
+                        "id": 12419,
                         "name": "TupleExpression",
                         "src": "1575:85:31"
                       }
                     ],
-                    "id": 12423,
+                    "id": 12420,
                     "name": "Return",
                     "src": "1568:92:31"
                   }
                 ],
-                "id": 12424,
+                "id": 12421,
                 "name": "Block",
                 "src": "1558:109:31"
               }
             ],
-            "id": 12425,
+            "id": 12422,
             "name": "FunctionDefinition",
             "src": "1467:200:31"
           }
         ],
-        "id": 12426,
+        "id": 12423,
         "name": "ContractDefinition",
         "src": "640:1029:31"
       }
     ],
-    "id": 12427,
+    "id": 12424,
     "name": "SourceUnit",
     "src": "584:1086:31"
   },
@@ -1593,9 +1593,9 @@ export const MockTokenRegistry =
     "70": {
       "events": {},
       "links": {},
-      "address": "0x1cb72cc4e012d80ceaf238a0007be6ab7a0e1719"
+      "address": "0x97b76b276dcd55fb5401651e79957b23d3fb0bd0"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-21T17:50:41.130Z"
+  "updatedAt": "2018-09-25T20:05:00.836Z"
 }

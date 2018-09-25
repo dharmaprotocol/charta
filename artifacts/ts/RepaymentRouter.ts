@@ -222,7 +222,7 @@ export const RepaymentRouter =
       "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/RepaymentRouter.sol",
       "exportedSymbols": {
         "RepaymentRouter": [
-          4692
+          4689
         ]
       }
     },
@@ -235,16 +235,61 @@ export const RepaymentRouter =
             ".18"
           ]
         },
-        "id": 4501,
+        "id": 4498,
         "name": "PragmaDirective",
         "src": "584:23:10"
       },
       {
         "attributes": {
-          "SourceUnit": 3144,
+          "SourceUnit": 3141,
           "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/DebtRegistry.sol",
           "file": "./DebtRegistry.sol",
-          "scope": 4693,
+          "scope": 4690,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 4499,
+        "name": "ImportDirective",
+        "src": "609:28:10"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 4740,
+          "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/TermsContract.sol",
+          "file": "./TermsContract.sol",
+          "scope": 4690,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 4500,
+        "name": "ImportDirective",
+        "src": "638:29:10"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 5189,
+          "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/TokenTransferProxy.sol",
+          "file": "./TokenTransferProxy.sol",
+          "scope": 4690,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 4501,
+        "name": "ImportDirective",
+        "src": "668:34:10"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 14273,
+          "absolutePath": "zeppelin-solidity/contracts/token/ERC20/ERC20.sol",
+          "file": "zeppelin-solidity/contracts/token/ERC20/ERC20.sol",
+          "scope": 4690,
           "symbolAliases": [
             null
           ],
@@ -252,14 +297,14 @@ export const RepaymentRouter =
         },
         "id": 4502,
         "name": "ImportDirective",
-        "src": "609:28:10"
+        "src": "703:59:10"
       },
       {
         "attributes": {
-          "SourceUnit": 4743,
-          "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/TermsContract.sol",
-          "file": "./TermsContract.sol",
-          "scope": 4693,
+          "SourceUnit": 13980,
+          "absolutePath": "zeppelin-solidity/contracts/lifecycle/Pausable.sol",
+          "file": "zeppelin-solidity/contracts/lifecycle/Pausable.sol",
+          "scope": 4690,
           "symbolAliases": [
             null
           ],
@@ -267,69 +312,24 @@ export const RepaymentRouter =
         },
         "id": 4503,
         "name": "ImportDirective",
-        "src": "638:29:10"
-      },
-      {
-        "attributes": {
-          "SourceUnit": 5192,
-          "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/TokenTransferProxy.sol",
-          "file": "./TokenTransferProxy.sol",
-          "scope": 4693,
-          "symbolAliases": [
-            null
-          ],
-          "unitAlias": ""
-        },
-        "id": 4504,
-        "name": "ImportDirective",
-        "src": "668:34:10"
-      },
-      {
-        "attributes": {
-          "SourceUnit": 14276,
-          "absolutePath": "zeppelin-solidity/contracts/token/ERC20/ERC20.sol",
-          "file": "zeppelin-solidity/contracts/token/ERC20/ERC20.sol",
-          "scope": 4693,
-          "symbolAliases": [
-            null
-          ],
-          "unitAlias": ""
-        },
-        "id": 4505,
-        "name": "ImportDirective",
-        "src": "703:59:10"
-      },
-      {
-        "attributes": {
-          "SourceUnit": 13983,
-          "absolutePath": "zeppelin-solidity/contracts/lifecycle/Pausable.sol",
-          "file": "zeppelin-solidity/contracts/lifecycle/Pausable.sol",
-          "scope": 4693,
-          "symbolAliases": [
-            null
-          ],
-          "unitAlias": ""
-        },
-        "id": 4506,
-        "name": "ImportDirective",
         "src": "763:60:10"
       },
       {
         "attributes": {
           "contractDependencies": [
-            13982,
-            14136
+            13979,
+            14133
           ],
           "contractKind": "contract",
           "documentation": "The RepaymentRouter routes allowers payers to make repayments on any\ngiven debt agreement in any given token by routing the payments to\nthe debt agreement's beneficiary.  Additionally, the router acts\nas a trusted oracle to the debt agreement's terms contract, informing\nit of exactly what payments have been made in what quantity and in what token.\n * Authors: Jaynti Kanani -- Github: jdkanani, Nadav Hollander -- Github: nadavhollander",
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            4692,
-            13982,
-            14136
+            4689,
+            13979,
+            14133
           ],
           "name": "RepaymentRouter",
-          "scope": 4693
+          "scope": 4690
         },
         "children": [
           {
@@ -343,15 +343,15 @@ export const RepaymentRouter =
                 "attributes": {
                   "contractScope": null,
                   "name": "Pausable",
-                  "referencedDeclaration": 13982,
+                  "referencedDeclaration": 13979,
                   "type": "contract Pausable"
                 },
-                "id": 4507,
+                "id": 4504,
                 "name": "UserDefinedTypeName",
                 "src": "1319:8:10"
               }
             ],
-            "id": 4508,
+            "id": 4505,
             "name": "InheritanceSpecifier",
             "src": "1319:8:10"
           },
@@ -359,7 +359,7 @@ export const RepaymentRouter =
             "attributes": {
               "constant": false,
               "name": "debtRegistry",
-              "scope": 4692,
+              "scope": 4689,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "contract DebtRegistry",
@@ -371,15 +371,15 @@ export const RepaymentRouter =
                 "attributes": {
                   "contractScope": null,
                   "name": "DebtRegistry",
-                  "referencedDeclaration": 3143,
+                  "referencedDeclaration": 3140,
                   "type": "contract DebtRegistry"
                 },
-                "id": 4509,
+                "id": 4506,
                 "name": "UserDefinedTypeName",
                 "src": "1334:12:10"
               }
             ],
-            "id": 4510,
+            "id": 4507,
             "name": "VariableDeclaration",
             "src": "1334:32:10"
           },
@@ -387,7 +387,7 @@ export const RepaymentRouter =
             "attributes": {
               "constant": false,
               "name": "tokenTransferProxy",
-              "scope": 4692,
+              "scope": 4689,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "contract TokenTransferProxy",
@@ -399,15 +399,15 @@ export const RepaymentRouter =
                 "attributes": {
                   "contractScope": null,
                   "name": "TokenTransferProxy",
-                  "referencedDeclaration": 5191,
+                  "referencedDeclaration": 5188,
                   "type": "contract TokenTransferProxy"
                 },
-                "id": 4511,
+                "id": 4508,
                 "name": "UserDefinedTypeName",
                 "src": "1372:18:10"
               }
             ],
-            "id": 4512,
+            "id": 4509,
             "name": "VariableDeclaration",
             "src": "1372:44:10"
           },
@@ -421,7 +421,7 @@ export const RepaymentRouter =
                 "attributes": {
                   "name": "DEBT_AGREEMENT_NONEXISTENT"
                 },
-                "id": 4513,
+                "id": 4510,
                 "name": "EnumValue",
                 "src": "1445:26:10"
               },
@@ -429,7 +429,7 @@ export const RepaymentRouter =
                 "attributes": {
                   "name": "PAYER_BALANCE_OR_ALLOWANCE_INSUFFICIENT"
                 },
-                "id": 4514,
+                "id": 4511,
                 "name": "EnumValue",
                 "src": "1481:39:10"
               },
@@ -437,12 +437,12 @@ export const RepaymentRouter =
                 "attributes": {
                   "name": "REPAYMENT_REJECTED_BY_TERMS_CONTRACT"
                 },
-                "id": 4515,
+                "id": 4512,
                 "name": "EnumValue",
                 "src": "1530:36:10"
               }
             ],
-            "id": 4516,
+            "id": 4513,
             "name": "EnumDefinition",
             "src": "1423:149:10"
           },
@@ -459,7 +459,7 @@ export const RepaymentRouter =
                       "constant": false,
                       "indexed": true,
                       "name": "_agreementId",
-                      "scope": 4528,
+                      "scope": 4525,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -472,12 +472,12 @@ export const RepaymentRouter =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 4517,
+                        "id": 4514,
                         "name": "ElementaryTypeName",
                         "src": "1606:7:10"
                       }
                     ],
-                    "id": 4518,
+                    "id": 4515,
                     "name": "VariableDeclaration",
                     "src": "1606:28:10"
                   },
@@ -486,7 +486,7 @@ export const RepaymentRouter =
                       "constant": false,
                       "indexed": true,
                       "name": "_payer",
-                      "scope": 4528,
+                      "scope": 4525,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -499,12 +499,12 @@ export const RepaymentRouter =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 4519,
+                        "id": 4516,
                         "name": "ElementaryTypeName",
                         "src": "1644:7:10"
                       }
                     ],
-                    "id": 4520,
+                    "id": 4517,
                     "name": "VariableDeclaration",
                     "src": "1644:22:10"
                   },
@@ -513,7 +513,7 @@ export const RepaymentRouter =
                       "constant": false,
                       "indexed": true,
                       "name": "_beneficiary",
-                      "scope": 4528,
+                      "scope": 4525,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -526,12 +526,12 @@ export const RepaymentRouter =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 4521,
+                        "id": 4518,
                         "name": "ElementaryTypeName",
                         "src": "1676:7:10"
                       }
                     ],
-                    "id": 4522,
+                    "id": 4519,
                     "name": "VariableDeclaration",
                     "src": "1676:28:10"
                   },
@@ -540,7 +540,7 @@ export const RepaymentRouter =
                       "constant": false,
                       "indexed": false,
                       "name": "_amount",
-                      "scope": 4528,
+                      "scope": 4525,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -553,12 +553,12 @@ export const RepaymentRouter =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 4523,
+                        "id": 4520,
                         "name": "ElementaryTypeName",
                         "src": "1714:4:10"
                       }
                     ],
-                    "id": 4524,
+                    "id": 4521,
                     "name": "VariableDeclaration",
                     "src": "1714:12:10"
                   },
@@ -567,7 +567,7 @@ export const RepaymentRouter =
                       "constant": false,
                       "indexed": false,
                       "name": "_token",
-                      "scope": 4528,
+                      "scope": 4525,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -580,22 +580,22 @@ export const RepaymentRouter =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 4525,
+                        "id": 4522,
                         "name": "ElementaryTypeName",
                         "src": "1736:7:10"
                       }
                     ],
-                    "id": 4526,
+                    "id": 4523,
                     "name": "VariableDeclaration",
                     "src": "1736:14:10"
                   }
                 ],
-                "id": 4527,
+                "id": 4524,
                 "name": "ParameterList",
                 "src": "1596:160:10"
               }
             ],
-            "id": 4528,
+            "id": 4525,
             "name": "EventDefinition",
             "src": "1578:179:10"
           },
@@ -612,7 +612,7 @@ export const RepaymentRouter =
                       "constant": false,
                       "indexed": true,
                       "name": "_errorId",
-                      "scope": 4534,
+                      "scope": 4531,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint8",
@@ -625,12 +625,12 @@ export const RepaymentRouter =
                           "name": "uint8",
                           "type": "uint8"
                         },
-                        "id": 4529,
+                        "id": 4526,
                         "name": "ElementaryTypeName",
                         "src": "1778:5:10"
                       }
                     ],
-                    "id": 4530,
+                    "id": 4527,
                     "name": "VariableDeclaration",
                     "src": "1778:22:10"
                   },
@@ -639,7 +639,7 @@ export const RepaymentRouter =
                       "constant": false,
                       "indexed": true,
                       "name": "_agreementId",
-                      "scope": 4534,
+                      "scope": 4531,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -652,22 +652,22 @@ export const RepaymentRouter =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 4531,
+                        "id": 4528,
                         "name": "ElementaryTypeName",
                         "src": "1802:7:10"
                       }
                     ],
-                    "id": 4532,
+                    "id": 4529,
                     "name": "VariableDeclaration",
                     "src": "1802:28:10"
                   }
                 ],
-                "id": 4533,
+                "id": 4530,
                 "name": "ParameterList",
                 "src": "1777:54:10"
               }
             ],
-            "id": 4534,
+            "id": 4531,
             "name": "EventDefinition",
             "src": "1763:69:10"
           },
@@ -681,7 +681,7 @@ export const RepaymentRouter =
               ],
               "name": "RepaymentRouter",
               "payable": false,
-              "scope": 4692,
+              "scope": 4689,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -693,7 +693,7 @@ export const RepaymentRouter =
                     "attributes": {
                       "constant": false,
                       "name": "_debtRegistry",
-                      "scope": 4554,
+                      "scope": 4551,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -706,12 +706,12 @@ export const RepaymentRouter =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 4535,
+                        "id": 4532,
                         "name": "ElementaryTypeName",
                         "src": "1962:7:10"
                       }
                     ],
-                    "id": 4536,
+                    "id": 4533,
                     "name": "VariableDeclaration",
                     "src": "1962:21:10"
                   },
@@ -719,7 +719,7 @@ export const RepaymentRouter =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenTransferProxy",
-                      "scope": 4554,
+                      "scope": 4551,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -732,17 +732,17 @@ export const RepaymentRouter =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 4537,
+                        "id": 4534,
                         "name": "ElementaryTypeName",
                         "src": "1985:7:10"
                       }
                     ],
-                    "id": 4538,
+                    "id": 4535,
                     "name": "VariableDeclaration",
                     "src": "1985:27:10"
                   }
                 ],
-                "id": 4539,
+                "id": 4536,
                 "name": "ParameterList",
                 "src": "1961:52:10"
               },
@@ -753,7 +753,7 @@ export const RepaymentRouter =
                   ]
                 },
                 "children": [],
-                "id": 4540,
+                "id": 4537,
                 "name": "ParameterList",
                 "src": "2021:0:10"
               },
@@ -778,11 +778,11 @@ export const RepaymentRouter =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4510,
+                              "referencedDeclaration": 4507,
                               "type": "contract DebtRegistry",
                               "value": "debtRegistry"
                             },
-                            "id": 4541,
+                            "id": 4538,
                             "name": "Identifier",
                             "src": "2031:12:10"
                           },
@@ -812,11 +812,11 @@ export const RepaymentRouter =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3143,
+                                  "referencedDeclaration": 3140,
                                   "type": "type(contract DebtRegistry)",
                                   "value": "DebtRegistry"
                                 },
-                                "id": 4542,
+                                "id": 4539,
                                 "name": "Identifier",
                                 "src": "2046:12:10"
                               },
@@ -826,26 +826,26 @@ export const RepaymentRouter =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4536,
+                                  "referencedDeclaration": 4533,
                                   "type": "address",
                                   "value": "_debtRegistry"
                                 },
-                                "id": 4543,
+                                "id": 4540,
                                 "name": "Identifier",
                                 "src": "2059:13:10"
                               }
                             ],
-                            "id": 4544,
+                            "id": 4541,
                             "name": "FunctionCall",
                             "src": "2046:27:10"
                           }
                         ],
-                        "id": 4545,
+                        "id": 4542,
                         "name": "Assignment",
                         "src": "2031:42:10"
                       }
                     ],
-                    "id": 4546,
+                    "id": 4543,
                     "name": "ExpressionStatement",
                     "src": "2031:42:10"
                   },
@@ -868,11 +868,11 @@ export const RepaymentRouter =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4512,
+                              "referencedDeclaration": 4509,
                               "type": "contract TokenTransferProxy",
                               "value": "tokenTransferProxy"
                             },
-                            "id": 4547,
+                            "id": 4544,
                             "name": "Identifier",
                             "src": "2083:18:10"
                           },
@@ -902,11 +902,11 @@ export const RepaymentRouter =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5191,
+                                  "referencedDeclaration": 5188,
                                   "type": "type(contract TokenTransferProxy)",
                                   "value": "TokenTransferProxy"
                                 },
-                                "id": 4548,
+                                "id": 4545,
                                 "name": "Identifier",
                                 "src": "2104:18:10"
                               },
@@ -916,36 +916,36 @@ export const RepaymentRouter =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4538,
+                                  "referencedDeclaration": 4535,
                                   "type": "address",
                                   "value": "_tokenTransferProxy"
                                 },
-                                "id": 4549,
+                                "id": 4546,
                                 "name": "Identifier",
                                 "src": "2123:19:10"
                               }
                             ],
-                            "id": 4550,
+                            "id": 4547,
                             "name": "FunctionCall",
                             "src": "2104:39:10"
                           }
                         ],
-                        "id": 4551,
+                        "id": 4548,
                         "name": "Assignment",
                         "src": "2083:60:10"
                       }
                     ],
-                    "id": 4552,
+                    "id": 4549,
                     "name": "ExpressionStatement",
                     "src": "2083:60:10"
                   }
                 ],
-                "id": 4553,
+                "id": 4550,
                 "name": "Block",
                 "src": "2021:129:10"
               }
             ],
-            "id": 4554,
+            "id": 4551,
             "name": "FunctionDefinition",
             "src": "1936:214:10"
           },
@@ -956,7 +956,7 @@ export const RepaymentRouter =
               "isConstructor": false,
               "name": "repay",
               "payable": false,
-              "scope": 4692,
+              "scope": 4689,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -968,7 +968,7 @@ export const RepaymentRouter =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 4691,
+                      "scope": 4688,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -981,12 +981,12 @@ export const RepaymentRouter =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 4555,
+                        "id": 4552,
                         "name": "ElementaryTypeName",
                         "src": "2384:7:10"
                       }
                     ],
-                    "id": 4556,
+                    "id": 4553,
                     "name": "VariableDeclaration",
                     "src": "2384:19:10"
                   },
@@ -994,7 +994,7 @@ export const RepaymentRouter =
                     "attributes": {
                       "constant": false,
                       "name": "amount",
-                      "scope": 4691,
+                      "scope": 4688,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1007,12 +1007,12 @@ export const RepaymentRouter =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 4557,
+                        "id": 4554,
                         "name": "ElementaryTypeName",
                         "src": "2413:7:10"
                       }
                     ],
-                    "id": 4558,
+                    "id": 4555,
                     "name": "VariableDeclaration",
                     "src": "2413:14:10"
                   },
@@ -1020,7 +1020,7 @@ export const RepaymentRouter =
                     "attributes": {
                       "constant": false,
                       "name": "tokenAddress",
-                      "scope": 4691,
+                      "scope": 4688,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1033,17 +1033,17 @@ export const RepaymentRouter =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 4559,
+                        "id": 4556,
                         "name": "ElementaryTypeName",
                         "src": "2437:7:10"
                       }
                     ],
-                    "id": 4560,
+                    "id": 4557,
                     "name": "VariableDeclaration",
                     "src": "2437:20:10"
                   }
                 ],
-                "id": 4561,
+                "id": 4558,
                 "name": "ParameterList",
                 "src": "2374:89:10"
               },
@@ -1053,7 +1053,7 @@ export const RepaymentRouter =
                     "attributes": {
                       "constant": false,
                       "name": "_amountRepaid",
-                      "scope": 4691,
+                      "scope": 4688,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1066,17 +1066,17 @@ export const RepaymentRouter =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 4564,
+                        "id": 4561,
                         "name": "ElementaryTypeName",
                         "src": "2518:4:10"
                       }
                     ],
-                    "id": 4565,
+                    "id": 4562,
                     "name": "VariableDeclaration",
                     "src": "2518:18:10"
                   }
                 ],
-                "id": 4566,
+                "id": 4563,
                 "name": "ParameterList",
                 "src": "2517:20:10"
               },
@@ -1093,16 +1093,16 @@ export const RepaymentRouter =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13943,
+                      "referencedDeclaration": 13940,
                       "type": "modifier ()",
                       "value": "whenNotPaused"
                     },
-                    "id": 4562,
+                    "id": 4559,
                     "name": "Identifier",
                     "src": "2487:13:10"
                   }
                 ],
-                "id": 4563,
+                "id": 4560,
                 "name": "ModifierInvocation",
                 "src": "2487:13:10"
               },
@@ -1136,11 +1136,11 @@ export const RepaymentRouter =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15821,
+                              "referencedDeclaration": 15818,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 4567,
+                            "id": 4564,
                             "name": "Identifier",
                             "src": "2552:7:10"
                           },
@@ -1165,11 +1165,11 @@ export const RepaymentRouter =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4560,
+                                  "referencedDeclaration": 4557,
                                   "type": "address",
                                   "value": "tokenAddress"
                                 },
-                                "id": 4568,
+                                "id": 4565,
                                 "name": "Identifier",
                                 "src": "2560:12:10"
                               },
@@ -1203,7 +1203,7 @@ export const RepaymentRouter =
                                       "type": "type(address)",
                                       "value": "address"
                                     },
-                                    "id": 4569,
+                                    "id": 4566,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "2576:7:10"
                                   },
@@ -1220,27 +1220,27 @@ export const RepaymentRouter =
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 4570,
+                                    "id": 4567,
                                     "name": "Literal",
                                     "src": "2584:1:10"
                                   }
                                 ],
-                                "id": 4571,
+                                "id": 4568,
                                 "name": "FunctionCall",
                                 "src": "2576:10:10"
                               }
                             ],
-                            "id": 4572,
+                            "id": 4569,
                             "name": "BinaryOperation",
                             "src": "2560:26:10"
                           }
                         ],
-                        "id": 4573,
+                        "id": 4570,
                         "name": "FunctionCall",
                         "src": "2552:35:10"
                       }
                     ],
-                    "id": 4574,
+                    "id": 4571,
                     "name": "ExpressionStatement",
                     "src": "2552:35:10"
                   },
@@ -1272,11 +1272,11 @@ export const RepaymentRouter =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15821,
+                              "referencedDeclaration": 15818,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 4575,
+                            "id": 4572,
                             "name": "Identifier",
                             "src": "2597:7:10"
                           },
@@ -1301,11 +1301,11 @@ export const RepaymentRouter =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4558,
+                                  "referencedDeclaration": 4555,
                                   "type": "uint256",
                                   "value": "amount"
                                 },
-                                "id": 4576,
+                                "id": 4573,
                                 "name": "Identifier",
                                 "src": "2605:6:10"
                               },
@@ -1322,22 +1322,22 @@ export const RepaymentRouter =
                                   "type": "int_const 0",
                                   "value": "0"
                                 },
-                                "id": 4577,
+                                "id": 4574,
                                 "name": "Literal",
                                 "src": "2614:1:10"
                               }
                             ],
-                            "id": 4578,
+                            "id": 4575,
                             "name": "BinaryOperation",
                             "src": "2605:10:10"
                           }
                         ],
-                        "id": 4579,
+                        "id": 4576,
                         "name": "FunctionCall",
                         "src": "2597:19:10"
                       }
                     ],
-                    "id": 4580,
+                    "id": 4577,
                     "name": "ExpressionStatement",
                     "src": "2597:19:10"
                   },
@@ -1386,7 +1386,7 @@ export const RepaymentRouter =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "doesEntryExist",
-                                  "referencedDeclaration": 2755,
+                                  "referencedDeclaration": 2752,
                                   "type": "function (bytes32) view external returns (bool)"
                                 },
                                 "children": [
@@ -1396,16 +1396,16 @@ export const RepaymentRouter =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 4510,
+                                      "referencedDeclaration": 4507,
                                       "type": "contract DebtRegistry",
                                       "value": "debtRegistry"
                                     },
-                                    "id": 4581,
+                                    "id": 4578,
                                     "name": "Identifier",
                                     "src": "2668:12:10"
                                   }
                                 ],
-                                "id": 4582,
+                                "id": 4579,
                                 "name": "MemberAccess",
                                 "src": "2668:27:10"
                               },
@@ -1415,21 +1415,21 @@ export const RepaymentRouter =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4556,
+                                  "referencedDeclaration": 4553,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 4583,
+                                "id": 4580,
                                 "name": "Identifier",
                                 "src": "2696:11:10"
                               }
                             ],
-                            "id": 4584,
+                            "id": 4581,
                             "name": "FunctionCall",
                             "src": "2668:40:10"
                           }
                         ],
-                        "id": 4585,
+                        "id": 4582,
                         "name": "UnaryOperation",
                         "src": "2667:41:10"
                       },
@@ -1467,11 +1467,11 @@ export const RepaymentRouter =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 4534,
+                                      "referencedDeclaration": 4531,
                                       "type": "function (uint8,bytes32)",
                                       "value": "LogError"
                                     },
-                                    "id": 4586,
+                                    "id": 4583,
                                     "name": "Identifier",
                                     "src": "2724:8:10"
                                   },
@@ -1494,7 +1494,7 @@ export const RepaymentRouter =
                                         "attributes": {
                                           "argumentTypes": [
                                             {
-                                              "typeIdentifier": "t_enum$_Errors_$4516",
+                                              "typeIdentifier": "t_enum$_Errors_$4513",
                                               "typeString": "enum RepaymentRouter.Errors"
                                             }
                                           ],
@@ -1505,7 +1505,7 @@ export const RepaymentRouter =
                                           "type": "type(uint8)",
                                           "value": "uint8"
                                         },
-                                        "id": 4587,
+                                        "id": 4584,
                                         "name": "ElementaryTypeNameExpression",
                                         "src": "2733:5:10"
                                       },
@@ -1527,21 +1527,21 @@ export const RepaymentRouter =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 4516,
+                                              "referencedDeclaration": 4513,
                                               "type": "type(enum RepaymentRouter.Errors)",
                                               "value": "Errors"
                                             },
-                                            "id": 4588,
+                                            "id": 4585,
                                             "name": "Identifier",
                                             "src": "2739:6:10"
                                           }
                                         ],
-                                        "id": 4589,
+                                        "id": 4586,
                                         "name": "MemberAccess",
                                         "src": "2739:33:10"
                                       }
                                     ],
-                                    "id": 4590,
+                                    "id": 4587,
                                     "name": "FunctionCall",
                                     "src": "2733:40:10"
                                   },
@@ -1551,27 +1551,27 @@ export const RepaymentRouter =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 4556,
+                                      "referencedDeclaration": 4553,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 4591,
+                                    "id": 4588,
                                     "name": "Identifier",
                                     "src": "2775:11:10"
                                   }
                                 ],
-                                "id": 4592,
+                                "id": 4589,
                                 "name": "FunctionCall",
                                 "src": "2724:63:10"
                               }
                             ],
-                            "id": 4593,
+                            "id": 4590,
                             "name": "ExpressionStatement",
                             "src": "2724:63:10"
                           },
                           {
                             "attributes": {
-                              "functionReturnParameters": 4566
+                              "functionReturnParameters": 4563
                             },
                             "children": [
                               {
@@ -1587,22 +1587,22 @@ export const RepaymentRouter =
                                   "type": "int_const 0",
                                   "value": "0"
                                 },
-                                "id": 4594,
+                                "id": 4591,
                                 "name": "Literal",
                                 "src": "2808:1:10"
                               }
                             ],
-                            "id": 4595,
+                            "id": 4592,
                             "name": "Return",
                             "src": "2801:8:10"
                           }
                         ],
-                        "id": 4596,
+                        "id": 4593,
                         "name": "Block",
                         "src": "2710:110:10"
                       }
                     ],
-                    "id": 4597,
+                    "id": 4594,
                     "name": "IfStatement",
                     "src": "2663:157:10"
                   },
@@ -1669,7 +1669,7 @@ export const RepaymentRouter =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "balanceOf",
-                                      "referencedDeclaration": 14289,
+                                      "referencedDeclaration": 14286,
                                       "type": "function (address) view external returns (uint256)"
                                     },
                                     "children": [
@@ -1699,11 +1699,11 @@ export const RepaymentRouter =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 14275,
+                                              "referencedDeclaration": 14272,
                                               "type": "type(contract ERC20)",
                                               "value": "ERC20"
                                             },
-                                            "id": 4598,
+                                            "id": 4595,
                                             "name": "Identifier",
                                             "src": "2925:5:10"
                                           },
@@ -1713,21 +1713,21 @@ export const RepaymentRouter =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 4560,
+                                              "referencedDeclaration": 4557,
                                               "type": "address",
                                               "value": "tokenAddress"
                                             },
-                                            "id": 4599,
+                                            "id": 4596,
                                             "name": "Identifier",
                                             "src": "2931:12:10"
                                           }
                                         ],
-                                        "id": 4600,
+                                        "id": 4597,
                                         "name": "FunctionCall",
                                         "src": "2925:19:10"
                                       }
                                     ],
-                                    "id": 4601,
+                                    "id": 4598,
                                     "name": "MemberAccess",
                                     "src": "2925:29:10"
                                   },
@@ -1749,21 +1749,21 @@ export const RepaymentRouter =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 15818,
+                                          "referencedDeclaration": 15815,
                                           "type": "msg",
                                           "value": "msg"
                                         },
-                                        "id": 4602,
+                                        "id": 4599,
                                         "name": "Identifier",
                                         "src": "2955:3:10"
                                       }
                                     ],
-                                    "id": 4603,
+                                    "id": 4600,
                                     "name": "MemberAccess",
                                     "src": "2955:10:10"
                                   }
                                 ],
-                                "id": 4604,
+                                "id": 4601,
                                 "name": "FunctionCall",
                                 "src": "2925:41:10"
                               },
@@ -1773,16 +1773,16 @@ export const RepaymentRouter =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4558,
+                                  "referencedDeclaration": 4555,
                                   "type": "uint256",
                                   "value": "amount"
                                 },
-                                "id": 4605,
+                                "id": 4602,
                                 "name": "Identifier",
                                 "src": "2969:6:10"
                               }
                             ],
-                            "id": 4606,
+                            "id": 4603,
                             "name": "BinaryOperation",
                             "src": "2925:50:10"
                           },
@@ -1824,7 +1824,7 @@ export const RepaymentRouter =
                                           "typeString": "address"
                                         },
                                         {
-                                          "typeIdentifier": "t_contract$_TokenTransferProxy_$5191",
+                                          "typeIdentifier": "t_contract$_TokenTransferProxy_$5188",
                                           "typeString": "contract TokenTransferProxy"
                                         }
                                       ],
@@ -1833,7 +1833,7 @@ export const RepaymentRouter =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "allowance",
-                                      "referencedDeclaration": 14246,
+                                      "referencedDeclaration": 14243,
                                       "type": "function (address,address) view external returns (uint256)"
                                     },
                                     "children": [
@@ -1863,11 +1863,11 @@ export const RepaymentRouter =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 14275,
+                                              "referencedDeclaration": 14272,
                                               "type": "type(contract ERC20)",
                                               "value": "ERC20"
                                             },
-                                            "id": 4607,
+                                            "id": 4604,
                                             "name": "Identifier",
                                             "src": "2991:5:10"
                                           },
@@ -1877,21 +1877,21 @@ export const RepaymentRouter =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 4560,
+                                              "referencedDeclaration": 4557,
                                               "type": "address",
                                               "value": "tokenAddress"
                                             },
-                                            "id": 4608,
+                                            "id": 4605,
                                             "name": "Identifier",
                                             "src": "2997:12:10"
                                           }
                                         ],
-                                        "id": 4609,
+                                        "id": 4606,
                                         "name": "FunctionCall",
                                         "src": "2991:19:10"
                                       }
                                     ],
-                                    "id": 4610,
+                                    "id": 4607,
                                     "name": "MemberAccess",
                                     "src": "2991:29:10"
                                   },
@@ -1913,16 +1913,16 @@ export const RepaymentRouter =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 15818,
+                                          "referencedDeclaration": 15815,
                                           "type": "msg",
                                           "value": "msg"
                                         },
-                                        "id": 4611,
+                                        "id": 4608,
                                         "name": "Identifier",
                                         "src": "3021:3:10"
                                       }
                                     ],
-                                    "id": 4612,
+                                    "id": 4609,
                                     "name": "MemberAccess",
                                     "src": "3021:10:10"
                                   },
@@ -1932,16 +1932,16 @@ export const RepaymentRouter =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 4512,
+                                      "referencedDeclaration": 4509,
                                       "type": "contract TokenTransferProxy",
                                       "value": "tokenTransferProxy"
                                     },
-                                    "id": 4613,
+                                    "id": 4610,
                                     "name": "Identifier",
                                     "src": "3033:18:10"
                                   }
                                 ],
-                                "id": 4614,
+                                "id": 4611,
                                 "name": "FunctionCall",
                                 "src": "2991:61:10"
                               },
@@ -1951,21 +1951,21 @@ export const RepaymentRouter =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4558,
+                                  "referencedDeclaration": 4555,
                                   "type": "uint256",
                                   "value": "amount"
                                 },
-                                "id": 4615,
+                                "id": 4612,
                                 "name": "Identifier",
                                 "src": "3055:6:10"
                               }
                             ],
-                            "id": 4616,
+                            "id": 4613,
                             "name": "BinaryOperation",
                             "src": "2991:70:10"
                           }
                         ],
-                        "id": 4617,
+                        "id": 4614,
                         "name": "BinaryOperation",
                         "src": "2925:136:10"
                       },
@@ -2003,11 +2003,11 @@ export const RepaymentRouter =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 4534,
+                                      "referencedDeclaration": 4531,
                                       "type": "function (uint8,bytes32)",
                                       "value": "LogError"
                                     },
-                                    "id": 4618,
+                                    "id": 4615,
                                     "name": "Identifier",
                                     "src": "3077:8:10"
                                   },
@@ -2030,7 +2030,7 @@ export const RepaymentRouter =
                                         "attributes": {
                                           "argumentTypes": [
                                             {
-                                              "typeIdentifier": "t_enum$_Errors_$4516",
+                                              "typeIdentifier": "t_enum$_Errors_$4513",
                                               "typeString": "enum RepaymentRouter.Errors"
                                             }
                                           ],
@@ -2041,7 +2041,7 @@ export const RepaymentRouter =
                                           "type": "type(uint8)",
                                           "value": "uint8"
                                         },
-                                        "id": 4619,
+                                        "id": 4616,
                                         "name": "ElementaryTypeNameExpression",
                                         "src": "3086:5:10"
                                       },
@@ -2063,21 +2063,21 @@ export const RepaymentRouter =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 4516,
+                                              "referencedDeclaration": 4513,
                                               "type": "type(enum RepaymentRouter.Errors)",
                                               "value": "Errors"
                                             },
-                                            "id": 4620,
+                                            "id": 4617,
                                             "name": "Identifier",
                                             "src": "3092:6:10"
                                           }
                                         ],
-                                        "id": 4621,
+                                        "id": 4618,
                                         "name": "MemberAccess",
                                         "src": "3092:46:10"
                                       }
                                     ],
-                                    "id": 4622,
+                                    "id": 4619,
                                     "name": "FunctionCall",
                                     "src": "3086:53:10"
                                   },
@@ -2087,27 +2087,27 @@ export const RepaymentRouter =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 4556,
+                                      "referencedDeclaration": 4553,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 4623,
+                                    "id": 4620,
                                     "name": "Identifier",
                                     "src": "3141:11:10"
                                   }
                                 ],
-                                "id": 4624,
+                                "id": 4621,
                                 "name": "FunctionCall",
                                 "src": "3077:76:10"
                               }
                             ],
-                            "id": 4625,
+                            "id": 4622,
                             "name": "ExpressionStatement",
                             "src": "3077:76:10"
                           },
                           {
                             "attributes": {
-                              "functionReturnParameters": 4566
+                              "functionReturnParameters": 4563
                             },
                             "children": [
                               {
@@ -2123,29 +2123,29 @@ export const RepaymentRouter =
                                   "type": "int_const 0",
                                   "value": "0"
                                 },
-                                "id": 4626,
+                                "id": 4623,
                                 "name": "Literal",
                                 "src": "3174:1:10"
                               }
                             ],
-                            "id": 4627,
+                            "id": 4624,
                             "name": "Return",
                             "src": "3167:8:10"
                           }
                         ],
-                        "id": 4628,
+                        "id": 4625,
                         "name": "Block",
                         "src": "3063:123:10"
                       }
                     ],
-                    "id": 4629,
+                    "id": 4626,
                     "name": "IfStatement",
                     "src": "2921:265:10"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        4631
+                        4628
                       ]
                     },
                     "children": [
@@ -2153,7 +2153,7 @@ export const RepaymentRouter =
                         "attributes": {
                           "constant": false,
                           "name": "termsContract",
-                          "scope": 4691,
+                          "scope": 4688,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "address",
@@ -2166,12 +2166,12 @@ export const RepaymentRouter =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 4630,
+                            "id": 4627,
                             "name": "ElementaryTypeName",
                             "src": "3229:7:10"
                           }
                         ],
-                        "id": 4631,
+                        "id": 4628,
                         "name": "VariableDeclaration",
                         "src": "3229:21:10"
                       },
@@ -2203,7 +2203,7 @@ export const RepaymentRouter =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "getTermsContract",
-                              "referencedDeclaration": 3025,
+                              "referencedDeclaration": 3022,
                               "type": "function (bytes32) view external returns (address)"
                             },
                             "children": [
@@ -2213,16 +2213,16 @@ export const RepaymentRouter =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4510,
+                                  "referencedDeclaration": 4507,
                                   "type": "contract DebtRegistry",
                                   "value": "debtRegistry"
                                 },
-                                "id": 4632,
+                                "id": 4629,
                                 "name": "Identifier",
                                 "src": "3253:12:10"
                               }
                             ],
-                            "id": 4633,
+                            "id": 4630,
                             "name": "MemberAccess",
                             "src": "3253:29:10"
                           },
@@ -2232,28 +2232,28 @@ export const RepaymentRouter =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4556,
+                              "referencedDeclaration": 4553,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 4634,
+                            "id": 4631,
                             "name": "Identifier",
                             "src": "3283:11:10"
                           }
                         ],
-                        "id": 4635,
+                        "id": 4632,
                         "name": "FunctionCall",
                         "src": "3253:42:10"
                       }
                     ],
-                    "id": 4636,
+                    "id": 4633,
                     "name": "VariableDeclarationStatement",
                     "src": "3229:66:10"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        4638
+                        4635
                       ]
                     },
                     "children": [
@@ -2261,7 +2261,7 @@ export const RepaymentRouter =
                         "attributes": {
                           "constant": false,
                           "name": "beneficiary",
-                          "scope": 4691,
+                          "scope": 4688,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "address",
@@ -2274,12 +2274,12 @@ export const RepaymentRouter =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 4637,
+                            "id": 4634,
                             "name": "ElementaryTypeName",
                             "src": "3305:7:10"
                           }
                         ],
-                        "id": 4638,
+                        "id": 4635,
                         "name": "VariableDeclaration",
                         "src": "3305:19:10"
                       },
@@ -2311,7 +2311,7 @@ export const RepaymentRouter =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "getBeneficiary",
-                              "referencedDeclaration": 3009,
+                              "referencedDeclaration": 3006,
                               "type": "function (bytes32) view external returns (address)"
                             },
                             "children": [
@@ -2321,16 +2321,16 @@ export const RepaymentRouter =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4510,
+                                  "referencedDeclaration": 4507,
                                   "type": "contract DebtRegistry",
                                   "value": "debtRegistry"
                                 },
-                                "id": 4639,
+                                "id": 4636,
                                 "name": "Identifier",
                                 "src": "3327:12:10"
                               }
                             ],
-                            "id": 4640,
+                            "id": 4637,
                             "name": "MemberAccess",
                             "src": "3327:27:10"
                           },
@@ -2340,21 +2340,21 @@ export const RepaymentRouter =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4556,
+                              "referencedDeclaration": 4553,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 4641,
+                            "id": 4638,
                             "name": "Identifier",
                             "src": "3355:11:10"
                           }
                         ],
-                        "id": 4642,
+                        "id": 4639,
                         "name": "FunctionCall",
                         "src": "3327:40:10"
                       }
                     ],
-                    "id": 4643,
+                    "id": 4640,
                     "name": "VariableDeclarationStatement",
                     "src": "3305:62:10"
                   },
@@ -2419,7 +2419,7 @@ export const RepaymentRouter =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "registerRepayment",
-                                  "referencedDeclaration": 4718,
+                                  "referencedDeclaration": 4715,
                                   "type": "function (bytes32,address,address,uint256,address) external returns (bool)"
                                 },
                                 "children": [
@@ -2449,11 +2449,11 @@ export const RepaymentRouter =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 4742,
+                                          "referencedDeclaration": 4739,
                                           "type": "type(contract TermsContract)",
                                           "value": "TermsContract"
                                         },
-                                        "id": 4644,
+                                        "id": 4641,
                                         "name": "Identifier",
                                         "src": "3382:13:10"
                                       },
@@ -2463,21 +2463,21 @@ export const RepaymentRouter =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 4631,
+                                          "referencedDeclaration": 4628,
                                           "type": "address",
                                           "value": "termsContract"
                                         },
-                                        "id": 4645,
+                                        "id": 4642,
                                         "name": "Identifier",
                                         "src": "3396:13:10"
                                       }
                                     ],
-                                    "id": 4646,
+                                    "id": 4643,
                                     "name": "FunctionCall",
                                     "src": "3382:28:10"
                                   }
                                 ],
-                                "id": 4647,
+                                "id": 4644,
                                 "name": "MemberAccess",
                                 "src": "3382:46:10"
                               },
@@ -2487,11 +2487,11 @@ export const RepaymentRouter =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4556,
+                                  "referencedDeclaration": 4553,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 4648,
+                                "id": 4645,
                                 "name": "Identifier",
                                 "src": "3442:11:10"
                               },
@@ -2513,16 +2513,16 @@ export const RepaymentRouter =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15818,
+                                      "referencedDeclaration": 15815,
                                       "type": "msg",
                                       "value": "msg"
                                     },
-                                    "id": 4649,
+                                    "id": 4646,
                                     "name": "Identifier",
                                     "src": "3467:3:10"
                                   }
                                 ],
-                                "id": 4650,
+                                "id": 4647,
                                 "name": "MemberAccess",
                                 "src": "3467:10:10"
                               },
@@ -2532,11 +2532,11 @@ export const RepaymentRouter =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4638,
+                                  "referencedDeclaration": 4635,
                                   "type": "address",
                                   "value": "beneficiary"
                                 },
-                                "id": 4651,
+                                "id": 4648,
                                 "name": "Identifier",
                                 "src": "3491:11:10"
                               },
@@ -2546,11 +2546,11 @@ export const RepaymentRouter =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4558,
+                                  "referencedDeclaration": 4555,
                                   "type": "uint256",
                                   "value": "amount"
                                 },
-                                "id": 4652,
+                                "id": 4649,
                                 "name": "Identifier",
                                 "src": "3516:6:10"
                               },
@@ -2560,21 +2560,21 @@ export const RepaymentRouter =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4560,
+                                  "referencedDeclaration": 4557,
                                   "type": "address",
                                   "value": "tokenAddress"
                                 },
-                                "id": 4653,
+                                "id": 4650,
                                 "name": "Identifier",
                                 "src": "3536:12:10"
                               }
                             ],
-                            "id": 4654,
+                            "id": 4651,
                             "name": "FunctionCall",
                             "src": "3382:176:10"
                           }
                         ],
-                        "id": 4655,
+                        "id": 4652,
                         "name": "UnaryOperation",
                         "src": "3381:177:10"
                       },
@@ -2612,11 +2612,11 @@ export const RepaymentRouter =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 4534,
+                                      "referencedDeclaration": 4531,
                                       "type": "function (uint8,bytes32)",
                                       "value": "LogError"
                                     },
-                                    "id": 4656,
+                                    "id": 4653,
                                     "name": "Identifier",
                                     "src": "3574:8:10"
                                   },
@@ -2639,7 +2639,7 @@ export const RepaymentRouter =
                                         "attributes": {
                                           "argumentTypes": [
                                             {
-                                              "typeIdentifier": "t_enum$_Errors_$4516",
+                                              "typeIdentifier": "t_enum$_Errors_$4513",
                                               "typeString": "enum RepaymentRouter.Errors"
                                             }
                                           ],
@@ -2650,7 +2650,7 @@ export const RepaymentRouter =
                                           "type": "type(uint8)",
                                           "value": "uint8"
                                         },
-                                        "id": 4657,
+                                        "id": 4654,
                                         "name": "ElementaryTypeNameExpression",
                                         "src": "3583:5:10"
                                       },
@@ -2672,21 +2672,21 @@ export const RepaymentRouter =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 4516,
+                                              "referencedDeclaration": 4513,
                                               "type": "type(enum RepaymentRouter.Errors)",
                                               "value": "Errors"
                                             },
-                                            "id": 4658,
+                                            "id": 4655,
                                             "name": "Identifier",
                                             "src": "3589:6:10"
                                           }
                                         ],
-                                        "id": 4659,
+                                        "id": 4656,
                                         "name": "MemberAccess",
                                         "src": "3589:43:10"
                                       }
                                     ],
-                                    "id": 4660,
+                                    "id": 4657,
                                     "name": "FunctionCall",
                                     "src": "3583:50:10"
                                   },
@@ -2696,27 +2696,27 @@ export const RepaymentRouter =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 4556,
+                                      "referencedDeclaration": 4553,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 4661,
+                                    "id": 4658,
                                     "name": "Identifier",
                                     "src": "3635:11:10"
                                   }
                                 ],
-                                "id": 4662,
+                                "id": 4659,
                                 "name": "FunctionCall",
                                 "src": "3574:73:10"
                               }
                             ],
-                            "id": 4663,
+                            "id": 4660,
                             "name": "ExpressionStatement",
                             "src": "3574:73:10"
                           },
                           {
                             "attributes": {
-                              "functionReturnParameters": 4566
+                              "functionReturnParameters": 4563
                             },
                             "children": [
                               {
@@ -2732,22 +2732,22 @@ export const RepaymentRouter =
                                   "type": "int_const 0",
                                   "value": "0"
                                 },
-                                "id": 4664,
+                                "id": 4661,
                                 "name": "Literal",
                                 "src": "3668:1:10"
                               }
                             ],
-                            "id": 4665,
+                            "id": 4662,
                             "name": "Return",
                             "src": "3661:8:10"
                           }
                         ],
-                        "id": 4666,
+                        "id": 4663,
                         "name": "Block",
                         "src": "3560:120:10"
                       }
                     ],
-                    "id": 4667,
+                    "id": 4664,
                     "name": "IfStatement",
                     "src": "3377:303:10"
                   },
@@ -2779,11 +2779,11 @@ export const RepaymentRouter =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15821,
+                              "referencedDeclaration": 15818,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 4668,
+                            "id": 4665,
                             "name": "Identifier",
                             "src": "3729:7:10"
                           },
@@ -2827,7 +2827,7 @@ export const RepaymentRouter =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "transferFrom",
-                                  "referencedDeclaration": 5190,
+                                  "referencedDeclaration": 5187,
                                   "type": "function (address,address,address,uint256) external returns (bool)"
                                 },
                                 "children": [
@@ -2837,16 +2837,16 @@ export const RepaymentRouter =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 4512,
+                                      "referencedDeclaration": 4509,
                                       "type": "contract TokenTransferProxy",
                                       "value": "tokenTransferProxy"
                                     },
-                                    "id": 4669,
+                                    "id": 4666,
                                     "name": "Identifier",
                                     "src": "3737:18:10"
                                   }
                                 ],
-                                "id": 4670,
+                                "id": 4667,
                                 "name": "MemberAccess",
                                 "src": "3737:31:10"
                               },
@@ -2856,11 +2856,11 @@ export const RepaymentRouter =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4560,
+                                  "referencedDeclaration": 4557,
                                   "type": "address",
                                   "value": "tokenAddress"
                                 },
-                                "id": 4671,
+                                "id": 4668,
                                 "name": "Identifier",
                                 "src": "3782:12:10"
                               },
@@ -2882,16 +2882,16 @@ export const RepaymentRouter =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15818,
+                                      "referencedDeclaration": 15815,
                                       "type": "msg",
                                       "value": "msg"
                                     },
-                                    "id": 4672,
+                                    "id": 4669,
                                     "name": "Identifier",
                                     "src": "3808:3:10"
                                   }
                                 ],
-                                "id": 4673,
+                                "id": 4670,
                                 "name": "MemberAccess",
                                 "src": "3808:10:10"
                               },
@@ -2901,11 +2901,11 @@ export const RepaymentRouter =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4638,
+                                  "referencedDeclaration": 4635,
                                   "type": "address",
                                   "value": "beneficiary"
                                 },
-                                "id": 4674,
+                                "id": 4671,
                                 "name": "Identifier",
                                 "src": "3832:11:10"
                               },
@@ -2915,26 +2915,26 @@ export const RepaymentRouter =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4558,
+                                  "referencedDeclaration": 4555,
                                   "type": "uint256",
                                   "value": "amount"
                                 },
-                                "id": 4675,
+                                "id": 4672,
                                 "name": "Identifier",
                                 "src": "3857:6:10"
                               }
                             ],
-                            "id": 4676,
+                            "id": 4673,
                             "name": "FunctionCall",
                             "src": "3737:136:10"
                           }
                         ],
-                        "id": 4677,
+                        "id": 4674,
                         "name": "FunctionCall",
                         "src": "3729:145:10"
                       }
                     ],
-                    "id": 4678,
+                    "id": 4675,
                     "name": "ExpressionStatement",
                     "src": "3729:145:10"
                   },
@@ -2982,11 +2982,11 @@ export const RepaymentRouter =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4528,
+                              "referencedDeclaration": 4525,
                               "type": "function (bytes32,address,address,uint256,address)",
                               "value": "LogRepayment"
                             },
-                            "id": 4679,
+                            "id": 4676,
                             "name": "Identifier",
                             "src": "3920:12:10"
                           },
@@ -2996,11 +2996,11 @@ export const RepaymentRouter =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4556,
+                              "referencedDeclaration": 4553,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 4680,
+                            "id": 4677,
                             "name": "Identifier",
                             "src": "3933:11:10"
                           },
@@ -3022,16 +3022,16 @@ export const RepaymentRouter =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15818,
+                                  "referencedDeclaration": 15815,
                                   "type": "msg",
                                   "value": "msg"
                                 },
-                                "id": 4681,
+                                "id": 4678,
                                 "name": "Identifier",
                                 "src": "3946:3:10"
                               }
                             ],
-                            "id": 4682,
+                            "id": 4679,
                             "name": "MemberAccess",
                             "src": "3946:10:10"
                           },
@@ -3041,11 +3041,11 @@ export const RepaymentRouter =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4638,
+                              "referencedDeclaration": 4635,
                               "type": "address",
                               "value": "beneficiary"
                             },
-                            "id": 4683,
+                            "id": 4680,
                             "name": "Identifier",
                             "src": "3958:11:10"
                           },
@@ -3055,11 +3055,11 @@ export const RepaymentRouter =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4558,
+                              "referencedDeclaration": 4555,
                               "type": "uint256",
                               "value": "amount"
                             },
-                            "id": 4684,
+                            "id": 4681,
                             "name": "Identifier",
                             "src": "3971:6:10"
                           },
@@ -3069,27 +3069,27 @@ export const RepaymentRouter =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4560,
+                              "referencedDeclaration": 4557,
                               "type": "address",
                               "value": "tokenAddress"
                             },
-                            "id": 4685,
+                            "id": 4682,
                             "name": "Identifier",
                             "src": "3979:12:10"
                           }
                         ],
-                        "id": 4686,
+                        "id": 4683,
                         "name": "FunctionCall",
                         "src": "3920:72:10"
                       }
                     ],
-                    "id": 4687,
+                    "id": 4684,
                     "name": "ExpressionStatement",
                     "src": "3920:72:10"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 4566
+                      "functionReturnParameters": 4563
                     },
                     "children": [
                       {
@@ -3098,36 +3098,36 @@ export const RepaymentRouter =
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 4558,
+                          "referencedDeclaration": 4555,
                           "type": "uint256",
                           "value": "amount"
                         },
-                        "id": 4688,
+                        "id": 4685,
                         "name": "Identifier",
                         "src": "4010:6:10"
                       }
                     ],
-                    "id": 4689,
+                    "id": 4686,
                     "name": "Return",
                     "src": "4003:13:10"
                   }
                 ],
-                "id": 4690,
+                "id": 4687,
                 "name": "Block",
                 "src": "2542:1481:10"
               }
             ],
-            "id": 4691,
+            "id": 4688,
             "name": "FunctionDefinition",
             "src": "2360:1663:10"
           }
         ],
-        "id": 4692,
+        "id": 4689,
         "name": "ContractDefinition",
         "src": "1291:2734:10"
       }
     ],
-    "id": 4693,
+    "id": 4690,
     "name": "SourceUnit",
     "src": "584:3442:10"
   },
@@ -3386,9 +3386,9 @@ export const RepaymentRouter =
         }
       },
       "links": {},
-      "address": "0x384cdafd4dddd1b7f9210534a16931e60809b658"
+      "address": "0xa5a617fbd586ee4ac0b25a6ca5f7b2dd21e8e86d"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-21T17:50:40.664Z"
+  "updatedAt": "2018-09-25T20:05:01.879Z"
 }

@@ -393,7 +393,7 @@ export const CollateralizedSimpleInterestTermsContract =
       "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/examples/CollateralizedSimpleInterestTermsContract.sol",
       "exportedSymbols": {
         "CollateralizedSimpleInterestTermsContract": [
-          5258
+          5255
         ]
       }
     },
@@ -406,22 +406,22 @@ export const CollateralizedSimpleInterestTermsContract =
             ".18"
           ]
         },
-        "id": 5193,
+        "id": 5190,
         "name": "PragmaDirective",
         "src": "584:23:14"
       },
       {
         "attributes": {
-          "SourceUnit": 6038,
+          "SourceUnit": 6035,
           "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/examples/SimpleInterestTermsContract.sol",
           "file": "./SimpleInterestTermsContract.sol",
-          "scope": 5259,
+          "scope": 5256,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 5194,
+        "id": 5191,
         "name": "ImportDirective",
         "src": "609:43:14"
       },
@@ -430,32 +430,32 @@ export const CollateralizedSimpleInterestTermsContract =
           "SourceUnit": 615,
           "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/Collateralizer.sol",
           "file": "../Collateralizer.sol",
-          "scope": 5259,
+          "scope": 5256,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 5195,
+        "id": 5192,
         "name": "ImportDirective",
         "src": "653:31:14"
       },
       {
         "attributes": {
           "contractDependencies": [
-            4742,
-            6037
+            4739,
+            6034
           ],
           "contractKind": "contract",
           "documentation": "Example collateralized terms contract for usage in simple interest debt agreements\n * Authors: nadavhollander, saturnial, jdkanani, graemecode",
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            5258,
-            6037,
-            4742
+            5255,
+            6034,
+            4739
           ],
           "name": "CollateralizedSimpleInterestTermsContract",
-          "scope": 5259
+          "scope": 5256
         },
         "children": [
           {
@@ -469,15 +469,15 @@ export const CollateralizedSimpleInterestTermsContract =
                 "attributes": {
                   "contractScope": null,
                   "name": "SimpleInterestTermsContract",
-                  "referencedDeclaration": 6037,
+                  "referencedDeclaration": 6034,
                   "type": "contract SimpleInterestTermsContract"
                 },
-                "id": 5196,
+                "id": 5193,
                 "name": "UserDefinedTypeName",
                 "src": "898:27:14"
               }
             ],
-            "id": 5197,
+            "id": 5194,
             "name": "InheritanceSpecifier",
             "src": "898:27:14"
           },
@@ -488,7 +488,7 @@ export const CollateralizedSimpleInterestTermsContract =
               "isConstructor": true,
               "name": "CollateralizedSimpleInterestTermsContract",
               "payable": false,
-              "scope": 5258,
+              "scope": 5255,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -500,7 +500,7 @@ export const CollateralizedSimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "contractRegistry",
-                      "scope": 5206,
+                      "scope": 5203,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -513,17 +513,17 @@ export const CollateralizedSimpleInterestTermsContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 5198,
+                        "id": 5195,
                         "name": "ElementaryTypeName",
                         "src": "993:7:14"
                       }
                     ],
-                    "id": 5199,
+                    "id": 5196,
                     "name": "VariableDeclaration",
                     "src": "993:24:14"
                   }
                 ],
-                "id": 5200,
+                "id": 5197,
                 "name": "ParameterList",
                 "src": "983:40:14"
               },
@@ -534,7 +534,7 @@ export const CollateralizedSimpleInterestTermsContract =
                   ]
                 },
                 "children": [],
-                "id": 5204,
+                "id": 5201,
                 "name": "ParameterList",
                 "src": "1077:0:14"
               },
@@ -546,11 +546,11 @@ export const CollateralizedSimpleInterestTermsContract =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 6037,
+                      "referencedDeclaration": 6034,
                       "type": "type(contract SimpleInterestTermsContract)",
                       "value": "SimpleInterestTermsContract"
                     },
-                    "id": 5201,
+                    "id": 5198,
                     "name": "Identifier",
                     "src": "1031:27:14"
                   },
@@ -560,16 +560,16 @@ export const CollateralizedSimpleInterestTermsContract =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 5199,
+                      "referencedDeclaration": 5196,
                       "type": "address",
                       "value": "contractRegistry"
                     },
-                    "id": 5202,
+                    "id": 5199,
                     "name": "Identifier",
                     "src": "1059:16:14"
                   }
                 ],
-                "id": 5203,
+                "id": 5200,
                 "name": "ModifierInvocation",
                 "src": "1031:45:14"
               },
@@ -580,12 +580,12 @@ export const CollateralizedSimpleInterestTermsContract =
                   ]
                 },
                 "children": [],
-                "id": 5205,
+                "id": 5202,
                 "name": "Block",
                 "src": "1077:2:14"
               }
             ],
-            "id": 5206,
+            "id": 5203,
             "name": "FunctionDefinition",
             "src": "933:146:14"
           },
@@ -596,9 +596,9 @@ export const CollateralizedSimpleInterestTermsContract =
               "isConstructor": false,
               "name": "registerTermStart",
               "payable": false,
-              "scope": 5258,
+              "scope": 5255,
               "stateMutability": "nonpayable",
-              "superFunction": 5588,
+              "superFunction": 5585,
               "visibility": "public"
             },
             "children": [
@@ -608,7 +608,7 @@ export const CollateralizedSimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 5240,
+                      "scope": 5237,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -621,12 +621,12 @@ export const CollateralizedSimpleInterestTermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 5207,
+                        "id": 5204,
                         "name": "ElementaryTypeName",
                         "src": "1121:7:14"
                       }
                     ],
-                    "id": 5208,
+                    "id": 5205,
                     "name": "VariableDeclaration",
                     "src": "1121:19:14"
                   },
@@ -634,7 +634,7 @@ export const CollateralizedSimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "debtor",
-                      "scope": 5240,
+                      "scope": 5237,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -647,17 +647,17 @@ export const CollateralizedSimpleInterestTermsContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 5209,
+                        "id": 5206,
                         "name": "ElementaryTypeName",
                         "src": "1150:7:14"
                       }
                     ],
-                    "id": 5210,
+                    "id": 5207,
                     "name": "VariableDeclaration",
                     "src": "1150:14:14"
                   }
                 ],
-                "id": 5211,
+                "id": 5208,
                 "name": "ParameterList",
                 "src": "1111:59:14"
               },
@@ -667,7 +667,7 @@ export const CollateralizedSimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "_success",
-                      "scope": 5240,
+                      "scope": 5237,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -680,17 +680,17 @@ export const CollateralizedSimpleInterestTermsContract =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 5214,
+                        "id": 5211,
                         "name": "ElementaryTypeName",
                         "src": "1226:4:14"
                       }
                     ],
-                    "id": 5215,
+                    "id": 5212,
                     "name": "VariableDeclaration",
                     "src": "1226:13:14"
                   }
                 ],
-                "id": 5216,
+                "id": 5213,
                 "name": "ParameterList",
                 "src": "1225:15:14"
               },
@@ -707,16 +707,16 @@ export const CollateralizedSimpleInterestTermsContract =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 5482,
+                      "referencedDeclaration": 5479,
                       "type": "modifier ()",
                       "value": "onlyDebtKernel"
                     },
-                    "id": 5212,
+                    "id": 5209,
                     "name": "Identifier",
                     "src": "1194:14:14"
                   }
                 ],
-                "id": 5213,
+                "id": 5210,
                 "name": "ModifierInvocation",
                 "src": "1194:14:14"
               },
@@ -725,7 +725,7 @@ export const CollateralizedSimpleInterestTermsContract =
                   {
                     "attributes": {
                       "assignments": [
-                        5218
+                        5215
                       ]
                     },
                     "children": [
@@ -733,7 +733,7 @@ export const CollateralizedSimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "registered",
-                          "scope": 5240,
+                          "scope": 5237,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bool",
@@ -746,12 +746,12 @@ export const CollateralizedSimpleInterestTermsContract =
                               "name": "bool",
                               "type": "bool"
                             },
-                            "id": 5217,
+                            "id": 5214,
                             "name": "ElementaryTypeName",
                             "src": "1255:4:14"
                           }
                         ],
-                        "id": 5218,
+                        "id": 5215,
                         "name": "VariableDeclaration",
                         "src": "1255:15:14"
                       },
@@ -787,7 +787,7 @@ export const CollateralizedSimpleInterestTermsContract =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "registerTermStart",
-                              "referencedDeclaration": 5588,
+                              "referencedDeclaration": 5585,
                               "type": "function (bytes32,address) returns (bool)"
                             },
                             "children": [
@@ -797,16 +797,16 @@ export const CollateralizedSimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15892,
+                                  "referencedDeclaration": 15889,
                                   "type": "contract super CollateralizedSimpleInterestTermsContract",
                                   "value": "super"
                                 },
-                                "id": 5219,
+                                "id": 5216,
                                 "name": "Identifier",
                                 "src": "1273:5:14"
                               }
                             ],
-                            "id": 5220,
+                            "id": 5217,
                             "name": "MemberAccess",
                             "src": "1273:23:14"
                           },
@@ -816,11 +816,11 @@ export const CollateralizedSimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5208,
+                              "referencedDeclaration": 5205,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 5221,
+                            "id": 5218,
                             "name": "Identifier",
                             "src": "1297:11:14"
                           },
@@ -830,28 +830,28 @@ export const CollateralizedSimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5210,
+                              "referencedDeclaration": 5207,
                               "type": "address",
                               "value": "debtor"
                             },
-                            "id": 5222,
+                            "id": 5219,
                             "name": "Identifier",
                             "src": "1310:6:14"
                           }
                         ],
-                        "id": 5223,
+                        "id": 5220,
                         "name": "FunctionCall",
                         "src": "1273:44:14"
                       }
                     ],
-                    "id": 5224,
+                    "id": 5221,
                     "name": "VariableDeclarationStatement",
                     "src": "1255:62:14"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        5226
+                        5223
                       ]
                     },
                     "children": [
@@ -859,7 +859,7 @@ export const CollateralizedSimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "collateralized",
-                          "scope": 5240,
+                          "scope": 5237,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bool",
@@ -872,12 +872,12 @@ export const CollateralizedSimpleInterestTermsContract =
                               "name": "bool",
                               "type": "bool"
                             },
-                            "id": 5225,
+                            "id": 5222,
                             "name": "ElementaryTypeName",
                             "src": "1327:4:14"
                           }
                         ],
-                        "id": 5226,
+                        "id": 5223,
                         "name": "VariableDeclaration",
                         "src": "1327:19:14"
                       },
@@ -955,26 +955,26 @@ export const CollateralizedSimpleInterestTermsContract =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 5407,
+                                          "referencedDeclaration": 5404,
                                           "type": "contract ContractRegistry",
                                           "value": "contractRegistry"
                                         },
-                                        "id": 5227,
+                                        "id": 5224,
                                         "name": "Identifier",
                                         "src": "1349:16:14"
                                       }
                                     ],
-                                    "id": 5228,
+                                    "id": 5225,
                                     "name": "MemberAccess",
                                     "src": "1349:31:14"
                                   }
                                 ],
-                                "id": 5229,
+                                "id": 5226,
                                 "name": "FunctionCall",
                                 "src": "1349:33:14"
                               }
                             ],
-                            "id": 5230,
+                            "id": 5227,
                             "name": "MemberAccess",
                             "src": "1349:47:14"
                           },
@@ -984,11 +984,11 @@ export const CollateralizedSimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5208,
+                              "referencedDeclaration": 5205,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 5231,
+                            "id": 5228,
                             "name": "Identifier",
                             "src": "1397:11:14"
                           },
@@ -998,27 +998,27 @@ export const CollateralizedSimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5210,
+                              "referencedDeclaration": 5207,
                               "type": "address",
                               "value": "debtor"
                             },
-                            "id": 5232,
+                            "id": 5229,
                             "name": "Identifier",
                             "src": "1410:6:14"
                           }
                         ],
-                        "id": 5233,
+                        "id": 5230,
                         "name": "FunctionCall",
                         "src": "1349:68:14"
                       }
                     ],
-                    "id": 5234,
+                    "id": 5231,
                     "name": "VariableDeclarationStatement",
                     "src": "1327:90:14"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 5216
+                      "functionReturnParameters": 5213
                     },
                     "children": [
                       {
@@ -1042,11 +1042,11 @@ export const CollateralizedSimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5218,
+                              "referencedDeclaration": 5215,
                               "type": "bool",
                               "value": "registered"
                             },
-                            "id": 5235,
+                            "id": 5232,
                             "name": "Identifier",
                             "src": "1435:10:14"
                           },
@@ -1056,31 +1056,31 @@ export const CollateralizedSimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5226,
+                              "referencedDeclaration": 5223,
                               "type": "bool",
                               "value": "collateralized"
                             },
-                            "id": 5236,
+                            "id": 5233,
                             "name": "Identifier",
                             "src": "1449:14:14"
                           }
                         ],
-                        "id": 5237,
+                        "id": 5234,
                         "name": "BinaryOperation",
                         "src": "1435:28:14"
                       }
                     ],
-                    "id": 5238,
+                    "id": 5235,
                     "name": "Return",
                     "src": "1428:35:14"
                   }
                 ],
-                "id": 5239,
+                "id": 5236,
                 "name": "Block",
                 "src": "1245:225:14"
               }
             ],
-            "id": 5240,
+            "id": 5237,
             "name": "FunctionDefinition",
             "src": "1085:385:14"
           },
@@ -1094,9 +1094,9 @@ export const CollateralizedSimpleInterestTermsContract =
               ],
               "name": "getTermEndTimestamp",
               "payable": false,
-              "scope": 5258,
+              "scope": 5255,
               "stateMutability": "view",
-              "superFunction": 5796,
+              "superFunction": 5793,
               "visibility": "public"
             },
             "children": [
@@ -1106,7 +1106,7 @@ export const CollateralizedSimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "_agreementId",
-                      "scope": 5257,
+                      "scope": 5254,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -1119,17 +1119,17 @@ export const CollateralizedSimpleInterestTermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 5241,
+                        "id": 5238,
                         "name": "ElementaryTypeName",
                         "src": "1514:7:14"
                       }
                     ],
-                    "id": 5242,
+                    "id": 5239,
                     "name": "VariableDeclaration",
                     "src": "1514:20:14"
                   }
                 ],
-                "id": 5243,
+                "id": 5240,
                 "name": "ParameterList",
                 "src": "1504:36:14"
               },
@@ -1139,7 +1139,7 @@ export const CollateralizedSimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 5257,
+                      "scope": 5254,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1152,17 +1152,17 @@ export const CollateralizedSimpleInterestTermsContract =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 5244,
+                        "id": 5241,
                         "name": "ElementaryTypeName",
                         "src": "1586:4:14"
                       }
                     ],
-                    "id": 5245,
+                    "id": 5242,
                     "name": "VariableDeclaration",
                     "src": "1586:4:14"
                   }
                 ],
-                "id": 5246,
+                "id": 5243,
                 "name": "ParameterList",
                 "src": "1585:6:14"
               },
@@ -1171,7 +1171,7 @@ export const CollateralizedSimpleInterestTermsContract =
                   {
                     "attributes": {
                       "assignments": [
-                        5248
+                        5245
                       ]
                     },
                     "children": [
@@ -1179,7 +1179,7 @@ export const CollateralizedSimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "params",
-                          "scope": 5257,
+                          "scope": 5254,
                           "stateVariable": false,
                           "storageLocation": "memory",
                           "type": "struct SimpleInterestTermsContract.SimpleInterestParams memory",
@@ -1191,15 +1191,15 @@ export const CollateralizedSimpleInterestTermsContract =
                             "attributes": {
                               "contractScope": null,
                               "name": "SimpleInterestParams",
-                              "referencedDeclaration": 5366,
+                              "referencedDeclaration": 5363,
                               "type": "struct SimpleInterestTermsContract.SimpleInterestParams storage pointer"
                             },
-                            "id": 5247,
+                            "id": 5244,
                             "name": "UserDefinedTypeName",
                             "src": "1606:20:14"
                           }
                         ],
-                        "id": 5248,
+                        "id": 5245,
                         "name": "VariableDeclaration",
                         "src": "1606:34:14"
                       },
@@ -1229,11 +1229,11 @@ export const CollateralizedSimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5984,
+                              "referencedDeclaration": 5981,
                               "type": "function (bytes32) returns (struct SimpleInterestTermsContract.SimpleInterestParams memory)",
                               "value": "unpackParamsForAgreementID"
                             },
-                            "id": 5249,
+                            "id": 5246,
                             "name": "Identifier",
                             "src": "1643:26:14"
                           },
@@ -1243,27 +1243,27 @@ export const CollateralizedSimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5242,
+                              "referencedDeclaration": 5239,
                               "type": "bytes32",
                               "value": "_agreementId"
                             },
-                            "id": 5250,
+                            "id": 5247,
                             "name": "Identifier",
                             "src": "1670:12:14"
                           }
                         ],
-                        "id": 5251,
+                        "id": 5248,
                         "name": "FunctionCall",
                         "src": "1643:40:14"
                       }
                     ],
-                    "id": 5252,
+                    "id": 5249,
                     "name": "VariableDeclarationStatement",
                     "src": "1606:77:14"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 5246
+                      "functionReturnParameters": 5243
                     },
                     "children": [
                       {
@@ -1274,7 +1274,7 @@ export const CollateralizedSimpleInterestTermsContract =
                           "isPure": false,
                           "lValueRequested": false,
                           "member_name": "termEndUnixTimestamp",
-                          "referencedDeclaration": 5359,
+                          "referencedDeclaration": 5356,
                           "type": "uint256"
                         },
                         "children": [
@@ -1284,41 +1284,41 @@ export const CollateralizedSimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5248,
+                              "referencedDeclaration": 5245,
                               "type": "struct SimpleInterestTermsContract.SimpleInterestParams memory",
                               "value": "params"
                             },
-                            "id": 5253,
+                            "id": 5250,
                             "name": "Identifier",
                             "src": "1701:6:14"
                           }
                         ],
-                        "id": 5254,
+                        "id": 5251,
                         "name": "MemberAccess",
                         "src": "1701:27:14"
                       }
                     ],
-                    "id": 5255,
+                    "id": 5252,
                     "name": "Return",
                     "src": "1694:34:14"
                   }
                 ],
-                "id": 5256,
+                "id": 5253,
                 "name": "Block",
                 "src": "1596:139:14"
               }
             ],
-            "id": 5257,
+            "id": 5254,
             "name": "FunctionDefinition",
             "src": "1476:259:14"
           }
         ],
-        "id": 5258,
+        "id": 5255,
         "name": "ContractDefinition",
         "src": "844:893:14"
       }
     ],
-    "id": 5259,
+    "id": 5256,
     "name": "SourceUnit",
     "src": "584:1154:14"
   },
@@ -1340,9 +1340,9 @@ export const CollateralizedSimpleInterestTermsContract =
     "70": {
       "events": {},
       "links": {},
-      "address": "0xcdc99b9c5f3048b307315a9eacb8cbd57449dae4"
+      "address": "0x99ae034538832eaa3481b90369c4fe6817caf64f"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-21T17:50:40.674Z"
+  "updatedAt": "2018-09-25T20:05:01.561Z"
 }

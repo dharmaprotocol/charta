@@ -553,7 +553,7 @@ export const DebtRegistry =
       "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/DebtRegistry.sol",
       "exportedSymbols": {
         "DebtRegistry": [
-          3143
+          3140
         ]
       }
     },
@@ -566,80 +566,80 @@ export const DebtRegistry =
             ".18"
           ]
         },
-        "id": 2617,
+        "id": 2614,
         "name": "PragmaDirective",
         "src": "584:23:4"
       },
       {
         "attributes": {
-          "SourceUnit": 6257,
+          "SourceUnit": 6254,
           "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/libraries/PermissionsLib.sol",
           "file": "./libraries/PermissionsLib.sol",
-          "scope": 3144,
+          "scope": 3141,
           "symbolAliases": [
             {
-              "foreign": 2618,
+              "foreign": 2615,
               "local": null
             },
             {
-              "foreign": 2619,
+              "foreign": 2616,
               "local": null
             }
           ],
           "unitAlias": ""
         },
-        "id": 2620,
+        "id": 2617,
         "name": "ImportDirective",
         "src": "609:82:4"
       },
       {
         "attributes": {
-          "SourceUnit": 14081,
+          "SourceUnit": 14078,
           "absolutePath": "zeppelin-solidity/contracts/math/SafeMath.sol",
           "file": "zeppelin-solidity/contracts/math/SafeMath.sol",
-          "scope": 3144,
+          "scope": 3141,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 2621,
+        "id": 2618,
         "name": "ImportDirective",
         "src": "692:55:4"
       },
       {
         "attributes": {
-          "SourceUnit": 13983,
+          "SourceUnit": 13980,
           "absolutePath": "zeppelin-solidity/contracts/lifecycle/Pausable.sol",
           "file": "zeppelin-solidity/contracts/lifecycle/Pausable.sol",
-          "scope": 3144,
+          "scope": 3141,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 2622,
+        "id": 2619,
         "name": "ImportDirective",
         "src": "748:60:4"
       },
       {
         "attributes": {
           "contractDependencies": [
-            6052,
-            13982,
-            14136
+            6049,
+            13979,
+            14133
           ],
           "contractKind": "contract",
           "documentation": "The DebtRegistry stores the parameters and beneficiaries of all debt agreements in\nDharma protocol.  It authorizes a limited number of agents to\nperform mutations on it -- those agents can be changed at any\ntime by the contract's owner.\n * Author: Nadav Hollander -- Github: nadavhollander",
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            3143,
-            6052,
-            13982,
-            14136
+            3140,
+            6049,
+            13979,
+            14133
           ],
           "name": "DebtRegistry",
-          "scope": 3144
+          "scope": 3141
         },
         "children": [
           {
@@ -653,15 +653,15 @@ export const DebtRegistry =
                 "attributes": {
                   "contractScope": null,
                   "name": "Pausable",
-                  "referencedDeclaration": 13982,
+                  "referencedDeclaration": 13979,
                   "type": "contract Pausable"
                 },
-                "id": 2623,
+                "id": 2620,
                 "name": "UserDefinedTypeName",
                 "src": "1149:8:4"
               }
             ],
-            "id": 2624,
+            "id": 2621,
             "name": "InheritanceSpecifier",
             "src": "1149:8:4"
           },
@@ -676,15 +676,15 @@ export const DebtRegistry =
                 "attributes": {
                   "contractScope": null,
                   "name": "PermissionEvents",
-                  "referencedDeclaration": 6052,
+                  "referencedDeclaration": 6049,
                   "type": "contract PermissionEvents"
                 },
-                "id": 2625,
+                "id": 2622,
                 "name": "UserDefinedTypeName",
                 "src": "1159:16:4"
               }
             ],
-            "id": 2626,
+            "id": 2623,
             "name": "InheritanceSpecifier",
             "src": "1159:16:4"
           },
@@ -694,10 +694,10 @@ export const DebtRegistry =
                 "attributes": {
                   "contractScope": null,
                   "name": "SafeMath",
-                  "referencedDeclaration": 14080,
+                  "referencedDeclaration": 14077,
                   "type": "library SafeMath"
                 },
-                "id": 2627,
+                "id": 2624,
                 "name": "UserDefinedTypeName",
                 "src": "1188:8:4"
               },
@@ -706,12 +706,12 @@ export const DebtRegistry =
                   "name": "uint",
                   "type": "uint256"
                 },
-                "id": 2628,
+                "id": 2625,
                 "name": "ElementaryTypeName",
                 "src": "1201:4:4"
               }
             ],
-            "id": 2629,
+            "id": 2626,
             "name": "UsingForDirective",
             "src": "1182:24:4"
           },
@@ -721,10 +721,10 @@ export const DebtRegistry =
                 "attributes": {
                   "contractScope": null,
                   "name": "PermissionsLib",
-                  "referencedDeclaration": 6256,
+                  "referencedDeclaration": 6253,
                   "type": "library PermissionsLib"
                 },
-                "id": 2630,
+                "id": 2627,
                 "name": "UserDefinedTypeName",
                 "src": "1217:14:4"
               },
@@ -732,15 +732,15 @@ export const DebtRegistry =
                 "attributes": {
                   "contractScope": null,
                   "name": "PermissionsLib.Permissions",
-                  "referencedDeclaration": 6076,
+                  "referencedDeclaration": 6073,
                   "type": "struct PermissionsLib.Permissions storage pointer"
                 },
-                "id": 2631,
+                "id": 2628,
                 "name": "UserDefinedTypeName",
                 "src": "1236:26:4"
               }
             ],
-            "id": 2632,
+            "id": 2629,
             "name": "UsingForDirective",
             "src": "1211:52:4"
           },
@@ -748,7 +748,7 @@ export const DebtRegistry =
             "attributes": {
               "canonicalName": "DebtRegistry.Entry",
               "name": "Entry",
-              "scope": 3143,
+              "scope": 3140,
               "visibility": "public"
             },
             "children": [
@@ -756,7 +756,7 @@ export const DebtRegistry =
                 "attributes": {
                   "constant": false,
                   "name": "version",
-                  "scope": 2647,
+                  "scope": 2644,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "address",
@@ -769,12 +769,12 @@ export const DebtRegistry =
                       "name": "address",
                       "type": "address"
                     },
-                    "id": 2633,
+                    "id": 2630,
                     "name": "ElementaryTypeName",
                     "src": "1292:7:4"
                   }
                 ],
-                "id": 2634,
+                "id": 2631,
                 "name": "VariableDeclaration",
                 "src": "1292:15:4"
               },
@@ -782,7 +782,7 @@ export const DebtRegistry =
                 "attributes": {
                   "constant": false,
                   "name": "beneficiary",
-                  "scope": 2647,
+                  "scope": 2644,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "address",
@@ -795,12 +795,12 @@ export const DebtRegistry =
                       "name": "address",
                       "type": "address"
                     },
-                    "id": 2635,
+                    "id": 2632,
                     "name": "ElementaryTypeName",
                     "src": "1317:7:4"
                   }
                 ],
-                "id": 2636,
+                "id": 2633,
                 "name": "VariableDeclaration",
                 "src": "1317:19:4"
               },
@@ -808,7 +808,7 @@ export const DebtRegistry =
                 "attributes": {
                   "constant": false,
                   "name": "underwriter",
-                  "scope": 2647,
+                  "scope": 2644,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "address",
@@ -821,12 +821,12 @@ export const DebtRegistry =
                       "name": "address",
                       "type": "address"
                     },
-                    "id": 2637,
+                    "id": 2634,
                     "name": "ElementaryTypeName",
                     "src": "1346:7:4"
                   }
                 ],
-                "id": 2638,
+                "id": 2635,
                 "name": "VariableDeclaration",
                 "src": "1346:19:4"
               },
@@ -834,7 +834,7 @@ export const DebtRegistry =
                 "attributes": {
                   "constant": false,
                   "name": "underwriterRiskRating",
-                  "scope": 2647,
+                  "scope": 2644,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint256",
@@ -847,12 +847,12 @@ export const DebtRegistry =
                       "name": "uint",
                       "type": "uint256"
                     },
-                    "id": 2639,
+                    "id": 2636,
                     "name": "ElementaryTypeName",
                     "src": "1375:4:4"
                   }
                 ],
-                "id": 2640,
+                "id": 2637,
                 "name": "VariableDeclaration",
                 "src": "1375:26:4"
               },
@@ -860,7 +860,7 @@ export const DebtRegistry =
                 "attributes": {
                   "constant": false,
                   "name": "termsContract",
-                  "scope": 2647,
+                  "scope": 2644,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "address",
@@ -873,12 +873,12 @@ export const DebtRegistry =
                       "name": "address",
                       "type": "address"
                     },
-                    "id": 2641,
+                    "id": 2638,
                     "name": "ElementaryTypeName",
                     "src": "1411:7:4"
                   }
                 ],
-                "id": 2642,
+                "id": 2639,
                 "name": "VariableDeclaration",
                 "src": "1411:21:4"
               },
@@ -886,7 +886,7 @@ export const DebtRegistry =
                 "attributes": {
                   "constant": false,
                   "name": "termsContractParameters",
-                  "scope": 2647,
+                  "scope": 2644,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "bytes32",
@@ -899,12 +899,12 @@ export const DebtRegistry =
                       "name": "bytes32",
                       "type": "bytes32"
                     },
-                    "id": 2643,
+                    "id": 2640,
                     "name": "ElementaryTypeName",
                     "src": "1442:7:4"
                   }
                 ],
-                "id": 2644,
+                "id": 2641,
                 "name": "VariableDeclaration",
                 "src": "1442:31:4"
               },
@@ -912,7 +912,7 @@ export const DebtRegistry =
                 "attributes": {
                   "constant": false,
                   "name": "issuanceBlockTimestamp",
-                  "scope": 2647,
+                  "scope": 2644,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint256",
@@ -925,17 +925,17 @@ export const DebtRegistry =
                       "name": "uint",
                       "type": "uint256"
                     },
-                    "id": 2645,
+                    "id": 2642,
                     "name": "ElementaryTypeName",
                     "src": "1483:4:4"
                   }
                 ],
-                "id": 2646,
+                "id": 2643,
                 "name": "VariableDeclaration",
                 "src": "1483:27:4"
               }
             ],
-            "id": 2647,
+            "id": 2644,
             "name": "StructDefinition",
             "src": "1269:248:4"
           },
@@ -943,7 +943,7 @@ export const DebtRegistry =
             "attributes": {
               "constant": false,
               "name": "registry",
-              "scope": 3143,
+              "scope": 3140,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(bytes32 => struct DebtRegistry.Entry storage ref)",
@@ -961,7 +961,7 @@ export const DebtRegistry =
                       "name": "bytes32",
                       "type": "bytes32"
                     },
-                    "id": 2648,
+                    "id": 2645,
                     "name": "ElementaryTypeName",
                     "src": "1609:7:4"
                   },
@@ -969,20 +969,20 @@ export const DebtRegistry =
                     "attributes": {
                       "contractScope": null,
                       "name": "Entry",
-                      "referencedDeclaration": 2647,
+                      "referencedDeclaration": 2644,
                       "type": "struct DebtRegistry.Entry storage pointer"
                     },
-                    "id": 2649,
+                    "id": 2646,
                     "name": "UserDefinedTypeName",
                     "src": "1620:5:4"
                   }
                 ],
-                "id": 2650,
+                "id": 2647,
                 "name": "Mapping",
                 "src": "1600:26:4"
               }
             ],
-            "id": 2651,
+            "id": 2648,
             "name": "VariableDeclaration",
             "src": "1600:44:4"
           },
@@ -990,7 +990,7 @@ export const DebtRegistry =
             "attributes": {
               "constant": false,
               "name": "debtorToDebts",
-              "scope": 3143,
+              "scope": 3140,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(address => bytes32[] storage ref)",
@@ -1008,7 +1008,7 @@ export const DebtRegistry =
                       "name": "address",
                       "type": "address"
                     },
-                    "id": 2652,
+                    "id": 2649,
                     "name": "ElementaryTypeName",
                     "src": "1729:7:4"
                   },
@@ -1023,22 +1023,22 @@ export const DebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 2653,
+                        "id": 2650,
                         "name": "ElementaryTypeName",
                         "src": "1740:7:4"
                       }
                     ],
-                    "id": 2654,
+                    "id": 2651,
                     "name": "ArrayTypeName",
                     "src": "1740:9:4"
                   }
                 ],
-                "id": 2655,
+                "id": 2652,
                 "name": "Mapping",
                 "src": "1720:30:4"
               }
             ],
-            "id": 2656,
+            "id": 2653,
             "name": "VariableDeclaration",
             "src": "1720:53:4"
           },
@@ -1046,7 +1046,7 @@ export const DebtRegistry =
             "attributes": {
               "constant": false,
               "name": "entryInsertPermissions",
-              "scope": 3143,
+              "scope": 3140,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "struct PermissionsLib.Permissions storage ref",
@@ -1058,15 +1058,15 @@ export const DebtRegistry =
                 "attributes": {
                   "contractScope": null,
                   "name": "PermissionsLib.Permissions",
-                  "referencedDeclaration": 6076,
+                  "referencedDeclaration": 6073,
                   "type": "struct PermissionsLib.Permissions storage pointer"
                 },
-                "id": 2657,
+                "id": 2654,
                 "name": "UserDefinedTypeName",
                 "src": "1780:26:4"
               }
             ],
-            "id": 2658,
+            "id": 2655,
             "name": "VariableDeclaration",
             "src": "1780:58:4"
           },
@@ -1074,7 +1074,7 @@ export const DebtRegistry =
             "attributes": {
               "constant": false,
               "name": "entryEditPermissions",
-              "scope": 3143,
+              "scope": 3140,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "struct PermissionsLib.Permissions storage ref",
@@ -1086,15 +1086,15 @@ export const DebtRegistry =
                 "attributes": {
                   "contractScope": null,
                   "name": "PermissionsLib.Permissions",
-                  "referencedDeclaration": 6076,
+                  "referencedDeclaration": 6073,
                   "type": "struct PermissionsLib.Permissions storage pointer"
                 },
-                "id": 2659,
+                "id": 2656,
                 "name": "UserDefinedTypeName",
                 "src": "1844:26:4"
               }
             ],
-            "id": 2660,
+            "id": 2657,
             "name": "VariableDeclaration",
             "src": "1844:56:4"
           },
@@ -1102,7 +1102,7 @@ export const DebtRegistry =
             "attributes": {
               "constant": true,
               "name": "INSERT_CONTEXT",
-              "scope": 3143,
+              "scope": 3140,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "string memory",
@@ -1114,7 +1114,7 @@ export const DebtRegistry =
                   "name": "string",
                   "type": "string storage pointer"
                 },
-                "id": 2661,
+                "id": 2658,
                 "name": "ElementaryTypeName",
                 "src": "1907:6:4"
               },
@@ -1131,12 +1131,12 @@ export const DebtRegistry =
                   "type": "literal_string \"debt-registry-insert\"",
                   "value": "debt-registry-insert"
                 },
-                "id": 2662,
+                "id": 2659,
                 "name": "Literal",
                 "src": "1947:22:4"
               }
             ],
-            "id": 2663,
+            "id": 2660,
             "name": "VariableDeclaration",
             "src": "1907:62:4"
           },
@@ -1144,7 +1144,7 @@ export const DebtRegistry =
             "attributes": {
               "constant": true,
               "name": "EDIT_CONTEXT",
-              "scope": 3143,
+              "scope": 3140,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "string memory",
@@ -1156,7 +1156,7 @@ export const DebtRegistry =
                   "name": "string",
                   "type": "string storage pointer"
                 },
-                "id": 2664,
+                "id": 2661,
                 "name": "ElementaryTypeName",
                 "src": "1975:6:4"
               },
@@ -1173,12 +1173,12 @@ export const DebtRegistry =
                   "type": "literal_string \"debt-registry-edit\"",
                   "value": "debt-registry-edit"
                 },
-                "id": 2665,
+                "id": 2662,
                 "name": "Literal",
                 "src": "2013:20:4"
               }
             ],
-            "id": 2666,
+            "id": 2663,
             "name": "VariableDeclaration",
             "src": "1975:58:4"
           },
@@ -1195,7 +1195,7 @@ export const DebtRegistry =
                       "constant": false,
                       "indexed": true,
                       "name": "agreementId",
-                      "scope": 2680,
+                      "scope": 2677,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -1208,12 +1208,12 @@ export const DebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 2667,
+                        "id": 2664,
                         "name": "ElementaryTypeName",
                         "src": "2070:7:4"
                       }
                     ],
-                    "id": 2668,
+                    "id": 2665,
                     "name": "VariableDeclaration",
                     "src": "2070:27:4"
                   },
@@ -1222,7 +1222,7 @@ export const DebtRegistry =
                       "constant": false,
                       "indexed": true,
                       "name": "beneficiary",
-                      "scope": 2680,
+                      "scope": 2677,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1235,12 +1235,12 @@ export const DebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2669,
+                        "id": 2666,
                         "name": "ElementaryTypeName",
                         "src": "2107:7:4"
                       }
                     ],
-                    "id": 2670,
+                    "id": 2667,
                     "name": "VariableDeclaration",
                     "src": "2107:27:4"
                   },
@@ -1249,7 +1249,7 @@ export const DebtRegistry =
                       "constant": false,
                       "indexed": true,
                       "name": "underwriter",
-                      "scope": 2680,
+                      "scope": 2677,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1262,12 +1262,12 @@ export const DebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2671,
+                        "id": 2668,
                         "name": "ElementaryTypeName",
                         "src": "2144:7:4"
                       }
                     ],
-                    "id": 2672,
+                    "id": 2669,
                     "name": "VariableDeclaration",
                     "src": "2144:27:4"
                   },
@@ -1276,7 +1276,7 @@ export const DebtRegistry =
                       "constant": false,
                       "indexed": false,
                       "name": "underwriterRiskRating",
-                      "scope": 2680,
+                      "scope": 2677,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1289,12 +1289,12 @@ export const DebtRegistry =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 2673,
+                        "id": 2670,
                         "name": "ElementaryTypeName",
                         "src": "2181:4:4"
                       }
                     ],
-                    "id": 2674,
+                    "id": 2671,
                     "name": "VariableDeclaration",
                     "src": "2181:26:4"
                   },
@@ -1303,7 +1303,7 @@ export const DebtRegistry =
                       "constant": false,
                       "indexed": false,
                       "name": "termsContract",
-                      "scope": 2680,
+                      "scope": 2677,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1316,12 +1316,12 @@ export const DebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2675,
+                        "id": 2672,
                         "name": "ElementaryTypeName",
                         "src": "2217:7:4"
                       }
                     ],
-                    "id": 2676,
+                    "id": 2673,
                     "name": "VariableDeclaration",
                     "src": "2217:21:4"
                   },
@@ -1330,7 +1330,7 @@ export const DebtRegistry =
                       "constant": false,
                       "indexed": false,
                       "name": "termsContractParameters",
-                      "scope": 2680,
+                      "scope": 2677,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -1343,22 +1343,22 @@ export const DebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 2677,
+                        "id": 2674,
                         "name": "ElementaryTypeName",
                         "src": "2248:7:4"
                       }
                     ],
-                    "id": 2678,
+                    "id": 2675,
                     "name": "VariableDeclaration",
                     "src": "2248:31:4"
                   }
                 ],
-                "id": 2679,
+                "id": 2676,
                 "name": "ParameterList",
                 "src": "2060:225:4"
               }
             ],
-            "id": 2680,
+            "id": 2677,
             "name": "EventDefinition",
             "src": "2040:246:4"
           },
@@ -1375,7 +1375,7 @@ export const DebtRegistry =
                       "constant": false,
                       "indexed": true,
                       "name": "agreementId",
-                      "scope": 2688,
+                      "scope": 2685,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -1388,12 +1388,12 @@ export const DebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 2681,
+                        "id": 2678,
                         "name": "ElementaryTypeName",
                         "src": "2333:7:4"
                       }
                     ],
-                    "id": 2682,
+                    "id": 2679,
                     "name": "VariableDeclaration",
                     "src": "2333:27:4"
                   },
@@ -1402,7 +1402,7 @@ export const DebtRegistry =
                       "constant": false,
                       "indexed": true,
                       "name": "previousBeneficiary",
-                      "scope": 2688,
+                      "scope": 2685,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1415,12 +1415,12 @@ export const DebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2683,
+                        "id": 2680,
                         "name": "ElementaryTypeName",
                         "src": "2370:7:4"
                       }
                     ],
-                    "id": 2684,
+                    "id": 2681,
                     "name": "VariableDeclaration",
                     "src": "2370:35:4"
                   },
@@ -1429,7 +1429,7 @@ export const DebtRegistry =
                       "constant": false,
                       "indexed": true,
                       "name": "newBeneficiary",
-                      "scope": 2688,
+                      "scope": 2685,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1442,22 +1442,22 @@ export const DebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2685,
+                        "id": 2682,
                         "name": "ElementaryTypeName",
                         "src": "2415:7:4"
                       }
                     ],
-                    "id": 2686,
+                    "id": 2683,
                     "name": "VariableDeclaration",
                     "src": "2415:30:4"
                   }
                 ],
-                "id": 2687,
+                "id": 2684,
                 "name": "ParameterList",
                 "src": "2323:128:4"
               }
             ],
-            "id": 2688,
+            "id": 2685,
             "name": "EventDefinition",
             "src": "2292:160:4"
           },
@@ -1474,7 +1474,7 @@ export const DebtRegistry =
                   ]
                 },
                 "children": [],
-                "id": 2689,
+                "id": 2686,
                 "name": "ParameterList",
                 "src": "2489:2:4"
               },
@@ -1508,11 +1508,11 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15821,
+                              "referencedDeclaration": 15818,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 2690,
+                            "id": 2687,
                             "name": "Identifier",
                             "src": "2502:7:4"
                           },
@@ -1544,7 +1544,7 @@ export const DebtRegistry =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "isAuthorized",
-                                  "referencedDeclaration": 6227,
+                                  "referencedDeclaration": 6224,
                                   "type": "function (struct PermissionsLib.Permissions storage pointer,address) view returns (bool)"
                                 },
                                 "children": [
@@ -1554,16 +1554,16 @@ export const DebtRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2658,
+                                      "referencedDeclaration": 2655,
                                       "type": "struct PermissionsLib.Permissions storage ref",
                                       "value": "entryInsertPermissions"
                                     },
-                                    "id": 2691,
+                                    "id": 2688,
                                     "name": "Identifier",
                                     "src": "2510:22:4"
                                   }
                                 ],
-                                "id": 2692,
+                                "id": 2689,
                                 "name": "MemberAccess",
                                 "src": "2510:35:4"
                               },
@@ -1585,46 +1585,46 @@ export const DebtRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15818,
+                                      "referencedDeclaration": 15815,
                                       "type": "msg",
                                       "value": "msg"
                                     },
-                                    "id": 2693,
+                                    "id": 2690,
                                     "name": "Identifier",
                                     "src": "2546:3:4"
                                   }
                                 ],
-                                "id": 2694,
+                                "id": 2691,
                                 "name": "MemberAccess",
                                 "src": "2546:10:4"
                               }
                             ],
-                            "id": 2695,
+                            "id": 2692,
                             "name": "FunctionCall",
                             "src": "2510:47:4"
                           }
                         ],
-                        "id": 2696,
+                        "id": 2693,
                         "name": "FunctionCall",
                         "src": "2502:56:4"
                       }
                     ],
-                    "id": 2697,
+                    "id": 2694,
                     "name": "ExpressionStatement",
                     "src": "2502:56:4"
                   },
                   {
-                    "id": 2698,
+                    "id": 2695,
                     "name": "PlaceholderStatement",
                     "src": "2568:1:4"
                   }
                 ],
-                "id": 2699,
+                "id": 2696,
                 "name": "Block",
                 "src": "2492:84:4"
               }
             ],
-            "id": 2700,
+            "id": 2697,
             "name": "ModifierDefinition",
             "src": "2458:118:4"
           },
@@ -1641,7 +1641,7 @@ export const DebtRegistry =
                   ]
                 },
                 "children": [],
-                "id": 2701,
+                "id": 2698,
                 "name": "ParameterList",
                 "src": "2611:2:4"
               },
@@ -1675,11 +1675,11 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15821,
+                              "referencedDeclaration": 15818,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 2702,
+                            "id": 2699,
                             "name": "Identifier",
                             "src": "2624:7:4"
                           },
@@ -1711,7 +1711,7 @@ export const DebtRegistry =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "isAuthorized",
-                                  "referencedDeclaration": 6227,
+                                  "referencedDeclaration": 6224,
                                   "type": "function (struct PermissionsLib.Permissions storage pointer,address) view returns (bool)"
                                 },
                                 "children": [
@@ -1721,16 +1721,16 @@ export const DebtRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2660,
+                                      "referencedDeclaration": 2657,
                                       "type": "struct PermissionsLib.Permissions storage ref",
                                       "value": "entryEditPermissions"
                                     },
-                                    "id": 2703,
+                                    "id": 2700,
                                     "name": "Identifier",
                                     "src": "2632:20:4"
                                   }
                                 ],
-                                "id": 2704,
+                                "id": 2701,
                                 "name": "MemberAccess",
                                 "src": "2632:33:4"
                               },
@@ -1752,46 +1752,46 @@ export const DebtRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15818,
+                                      "referencedDeclaration": 15815,
                                       "type": "msg",
                                       "value": "msg"
                                     },
-                                    "id": 2705,
+                                    "id": 2702,
                                     "name": "Identifier",
                                     "src": "2666:3:4"
                                   }
                                 ],
-                                "id": 2706,
+                                "id": 2703,
                                 "name": "MemberAccess",
                                 "src": "2666:10:4"
                               }
                             ],
-                            "id": 2707,
+                            "id": 2704,
                             "name": "FunctionCall",
                             "src": "2632:45:4"
                           }
                         ],
-                        "id": 2708,
+                        "id": 2705,
                         "name": "FunctionCall",
                         "src": "2624:54:4"
                       }
                     ],
-                    "id": 2709,
+                    "id": 2706,
                     "name": "ExpressionStatement",
                     "src": "2624:54:4"
                   },
                   {
-                    "id": 2710,
+                    "id": 2707,
                     "name": "PlaceholderStatement",
                     "src": "2688:1:4"
                   }
                 ],
-                "id": 2711,
+                "id": 2708,
                 "name": "Block",
                 "src": "2614:82:4"
               }
             ],
-            "id": 2712,
+            "id": 2709,
             "name": "ModifierDefinition",
             "src": "2582:114:4"
           },
@@ -1807,7 +1807,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 2724,
+                      "scope": 2721,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -1820,17 +1820,17 @@ export const DebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 2713,
+                        "id": 2710,
                         "name": "ElementaryTypeName",
                         "src": "2727:7:4"
                       }
                     ],
-                    "id": 2714,
+                    "id": 2711,
                     "name": "VariableDeclaration",
                     "src": "2727:19:4"
                   }
                 ],
-                "id": 2715,
+                "id": 2712,
                 "name": "ParameterList",
                 "src": "2726:21:4"
               },
@@ -1864,11 +1864,11 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15821,
+                              "referencedDeclaration": 15818,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 2716,
+                            "id": 2713,
                             "name": "Identifier",
                             "src": "2758:7:4"
                           },
@@ -1898,11 +1898,11 @@ export const DebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2755,
+                                  "referencedDeclaration": 2752,
                                   "type": "function (bytes32) view returns (bool)",
                                   "value": "doesEntryExist"
                                 },
-                                "id": 2717,
+                                "id": 2714,
                                 "name": "Identifier",
                                 "src": "2766:14:4"
                               },
@@ -1912,41 +1912,41 @@ export const DebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2714,
+                                  "referencedDeclaration": 2711,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 2718,
+                                "id": 2715,
                                 "name": "Identifier",
                                 "src": "2781:11:4"
                               }
                             ],
-                            "id": 2719,
+                            "id": 2716,
                             "name": "FunctionCall",
                             "src": "2766:27:4"
                           }
                         ],
-                        "id": 2720,
+                        "id": 2717,
                         "name": "FunctionCall",
                         "src": "2758:36:4"
                       }
                     ],
-                    "id": 2721,
+                    "id": 2718,
                     "name": "ExpressionStatement",
                     "src": "2758:36:4"
                   },
                   {
-                    "id": 2722,
+                    "id": 2719,
                     "name": "PlaceholderStatement",
                     "src": "2804:1:4"
                   }
                 ],
-                "id": 2723,
+                "id": 2720,
                 "name": "Block",
                 "src": "2748:64:4"
               }
             ],
-            "id": 2724,
+            "id": 2721,
             "name": "ModifierDefinition",
             "src": "2702:110:4"
           },
@@ -1962,7 +1962,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "beneficiary",
-                      "scope": 2738,
+                      "scope": 2735,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1975,17 +1975,17 @@ export const DebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2725,
+                        "id": 2722,
                         "name": "ElementaryTypeName",
                         "src": "2846:7:4"
                       }
                     ],
-                    "id": 2726,
+                    "id": 2723,
                     "name": "VariableDeclaration",
                     "src": "2846:19:4"
                   }
                 ],
-                "id": 2727,
+                "id": 2724,
                 "name": "ParameterList",
                 "src": "2845:21:4"
               },
@@ -2019,11 +2019,11 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15821,
+                              "referencedDeclaration": 15818,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 2728,
+                            "id": 2725,
                             "name": "Identifier",
                             "src": "2877:7:4"
                           },
@@ -2048,11 +2048,11 @@ export const DebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2726,
+                                  "referencedDeclaration": 2723,
                                   "type": "address",
                                   "value": "beneficiary"
                                 },
-                                "id": 2729,
+                                "id": 2726,
                                 "name": "Identifier",
                                 "src": "2885:11:4"
                               },
@@ -2086,7 +2086,7 @@ export const DebtRegistry =
                                       "type": "type(address)",
                                       "value": "address"
                                     },
-                                    "id": 2730,
+                                    "id": 2727,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "2900:7:4"
                                   },
@@ -2103,42 +2103,42 @@ export const DebtRegistry =
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 2731,
+                                    "id": 2728,
                                     "name": "Literal",
                                     "src": "2908:1:4"
                                   }
                                 ],
-                                "id": 2732,
+                                "id": 2729,
                                 "name": "FunctionCall",
                                 "src": "2900:10:4"
                               }
                             ],
-                            "id": 2733,
+                            "id": 2730,
                             "name": "BinaryOperation",
                             "src": "2885:25:4"
                           }
                         ],
-                        "id": 2734,
+                        "id": 2731,
                         "name": "FunctionCall",
                         "src": "2877:34:4"
                       }
                     ],
-                    "id": 2735,
+                    "id": 2732,
                     "name": "ExpressionStatement",
                     "src": "2877:34:4"
                   },
                   {
-                    "id": 2736,
+                    "id": 2733,
                     "name": "PlaceholderStatement",
                     "src": "2921:1:4"
                   }
                 ],
-                "id": 2737,
+                "id": 2734,
                 "name": "Block",
                 "src": "2867:62:4"
               }
             ],
-            "id": 2738,
+            "id": 2735,
             "name": "ModifierDefinition",
             "src": "2818:111:4"
           },
@@ -2152,7 +2152,7 @@ export const DebtRegistry =
               ],
               "name": "doesEntryExist",
               "payable": false,
-              "scope": 3143,
+              "scope": 3140,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -2164,7 +2164,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 2755,
+                      "scope": 2752,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -2177,17 +2177,17 @@ export const DebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 2739,
+                        "id": 2736,
                         "name": "ElementaryTypeName",
                         "src": "3051:7:4"
                       }
                     ],
-                    "id": 2740,
+                    "id": 2737,
                     "name": "VariableDeclaration",
                     "src": "3051:19:4"
                   }
                 ],
-                "id": 2741,
+                "id": 2738,
                 "name": "ParameterList",
                 "src": "3050:21:4"
               },
@@ -2197,7 +2197,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "exists",
-                      "scope": 2755,
+                      "scope": 2752,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -2210,17 +2210,17 @@ export const DebtRegistry =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 2742,
+                        "id": 2739,
                         "name": "ElementaryTypeName",
                         "src": "3117:4:4"
                       }
                     ],
-                    "id": 2743,
+                    "id": 2740,
                     "name": "VariableDeclaration",
                     "src": "3117:11:4"
                   }
                 ],
-                "id": 2744,
+                "id": 2741,
                 "name": "ParameterList",
                 "src": "3116:13:4"
               },
@@ -2228,7 +2228,7 @@ export const DebtRegistry =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 2744
+                      "functionReturnParameters": 2741
                     },
                     "children": [
                       {
@@ -2254,7 +2254,7 @@ export const DebtRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "beneficiary",
-                              "referencedDeclaration": 2636,
+                              "referencedDeclaration": 2633,
                               "type": "address"
                             },
                             "children": [
@@ -2274,11 +2274,11 @@ export const DebtRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2651,
+                                      "referencedDeclaration": 2648,
                                       "type": "mapping(bytes32 => struct DebtRegistry.Entry storage ref)",
                                       "value": "registry"
                                     },
-                                    "id": 2745,
+                                    "id": 2742,
                                     "name": "Identifier",
                                     "src": "3151:8:4"
                                   },
@@ -2288,21 +2288,21 @@ export const DebtRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2740,
+                                      "referencedDeclaration": 2737,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 2746,
+                                    "id": 2743,
                                     "name": "Identifier",
                                     "src": "3160:11:4"
                                   }
                                 ],
-                                "id": 2747,
+                                "id": 2744,
                                 "name": "IndexAccess",
                                 "src": "3151:21:4"
                               }
                             ],
-                            "id": 2748,
+                            "id": 2745,
                             "name": "MemberAccess",
                             "src": "3151:33:4"
                           },
@@ -2336,7 +2336,7 @@ export const DebtRegistry =
                                   "type": "type(address)",
                                   "value": "address"
                                 },
-                                "id": 2749,
+                                "id": 2746,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "3188:7:4"
                               },
@@ -2353,32 +2353,32 @@ export const DebtRegistry =
                                   "type": "int_const 0",
                                   "value": "0"
                                 },
-                                "id": 2750,
+                                "id": 2747,
                                 "name": "Literal",
                                 "src": "3196:1:4"
                               }
                             ],
-                            "id": 2751,
+                            "id": 2748,
                             "name": "FunctionCall",
                             "src": "3188:10:4"
                           }
                         ],
-                        "id": 2752,
+                        "id": 2749,
                         "name": "BinaryOperation",
                         "src": "3151:47:4"
                       }
                     ],
-                    "id": 2753,
+                    "id": 2750,
                     "name": "Return",
                     "src": "3144:54:4"
                   }
                 ],
-                "id": 2754,
+                "id": 2751,
                 "name": "Block",
                 "src": "3134:71:4"
               }
             ],
-            "id": 2755,
+            "id": 2752,
             "name": "FunctionDefinition",
             "src": "3027:178:4"
           },
@@ -2389,7 +2389,7 @@ export const DebtRegistry =
               "isConstructor": false,
               "name": "insert",
               "payable": false,
-              "scope": 3143,
+              "scope": 3140,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -2401,7 +2401,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_version",
-                      "scope": 2845,
+                      "scope": 2842,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2414,12 +2414,12 @@ export const DebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2756,
+                        "id": 2753,
                         "name": "ElementaryTypeName",
                         "src": "3396:7:4"
                       }
                     ],
-                    "id": 2757,
+                    "id": 2754,
                     "name": "VariableDeclaration",
                     "src": "3396:16:4"
                   },
@@ -2427,7 +2427,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_beneficiary",
-                      "scope": 2845,
+                      "scope": 2842,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2440,12 +2440,12 @@ export const DebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2758,
+                        "id": 2755,
                         "name": "ElementaryTypeName",
                         "src": "3422:7:4"
                       }
                     ],
-                    "id": 2759,
+                    "id": 2756,
                     "name": "VariableDeclaration",
                     "src": "3422:20:4"
                   },
@@ -2453,7 +2453,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_debtor",
-                      "scope": 2845,
+                      "scope": 2842,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2466,12 +2466,12 @@ export const DebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2760,
+                        "id": 2757,
                         "name": "ElementaryTypeName",
                         "src": "3452:7:4"
                       }
                     ],
-                    "id": 2761,
+                    "id": 2758,
                     "name": "VariableDeclaration",
                     "src": "3452:15:4"
                   },
@@ -2479,7 +2479,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_underwriter",
-                      "scope": 2845,
+                      "scope": 2842,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2492,12 +2492,12 @@ export const DebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2762,
+                        "id": 2759,
                         "name": "ElementaryTypeName",
                         "src": "3477:7:4"
                       }
                     ],
-                    "id": 2763,
+                    "id": 2760,
                     "name": "VariableDeclaration",
                     "src": "3477:20:4"
                   },
@@ -2505,7 +2505,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_underwriterRiskRating",
-                      "scope": 2845,
+                      "scope": 2842,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2518,12 +2518,12 @@ export const DebtRegistry =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 2764,
+                        "id": 2761,
                         "name": "ElementaryTypeName",
                         "src": "3507:4:4"
                       }
                     ],
-                    "id": 2765,
+                    "id": 2762,
                     "name": "VariableDeclaration",
                     "src": "3507:27:4"
                   },
@@ -2531,7 +2531,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_termsContract",
-                      "scope": 2845,
+                      "scope": 2842,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2544,12 +2544,12 @@ export const DebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2766,
+                        "id": 2763,
                         "name": "ElementaryTypeName",
                         "src": "3544:7:4"
                       }
                     ],
-                    "id": 2767,
+                    "id": 2764,
                     "name": "VariableDeclaration",
                     "src": "3544:22:4"
                   },
@@ -2557,7 +2557,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_termsContractParameters",
-                      "scope": 2845,
+                      "scope": 2842,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -2570,12 +2570,12 @@ export const DebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 2768,
+                        "id": 2765,
                         "name": "ElementaryTypeName",
                         "src": "3576:7:4"
                       }
                     ],
-                    "id": 2769,
+                    "id": 2766,
                     "name": "VariableDeclaration",
                     "src": "3576:32:4"
                   },
@@ -2583,7 +2583,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_salt",
-                      "scope": 2845,
+                      "scope": 2842,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2596,17 +2596,17 @@ export const DebtRegistry =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 2770,
+                        "id": 2767,
                         "name": "ElementaryTypeName",
                         "src": "3618:4:4"
                       }
                     ],
-                    "id": 2771,
+                    "id": 2768,
                     "name": "VariableDeclaration",
                     "src": "3618:10:4"
                   }
                 ],
-                "id": 2772,
+                "id": 2769,
                 "name": "ParameterList",
                 "src": "3386:248:4"
               },
@@ -2616,7 +2616,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_agreementId",
-                      "scope": 2845,
+                      "scope": 2842,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -2629,17 +2629,17 @@ export const DebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 2780,
+                        "id": 2777,
                         "name": "ElementaryTypeName",
                         "src": "3761:7:4"
                       }
                     ],
-                    "id": 2781,
+                    "id": 2778,
                     "name": "VariableDeclaration",
                     "src": "3761:20:4"
                   }
                 ],
-                "id": 2782,
+                "id": 2779,
                 "name": "ParameterList",
                 "src": "3760:22:4"
               },
@@ -2656,16 +2656,16 @@ export const DebtRegistry =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 2700,
+                      "referencedDeclaration": 2697,
                       "type": "modifier ()",
                       "value": "onlyAuthorizedToInsert"
                     },
-                    "id": 2773,
+                    "id": 2770,
                     "name": "Identifier",
                     "src": "3658:22:4"
                   }
                 ],
-                "id": 2774,
+                "id": 2771,
                 "name": "ModifierInvocation",
                 "src": "3658:22:4"
               },
@@ -2682,16 +2682,16 @@ export const DebtRegistry =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13943,
+                      "referencedDeclaration": 13940,
                       "type": "modifier ()",
                       "value": "whenNotPaused"
                     },
-                    "id": 2775,
+                    "id": 2772,
                     "name": "Identifier",
                     "src": "3689:13:4"
                   }
                 ],
-                "id": 2776,
+                "id": 2773,
                 "name": "ModifierInvocation",
                 "src": "3689:13:4"
               },
@@ -2703,11 +2703,11 @@ export const DebtRegistry =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 2738,
+                      "referencedDeclaration": 2735,
                       "type": "modifier (address)",
                       "value": "nonNullBeneficiary"
                     },
-                    "id": 2777,
+                    "id": 2774,
                     "name": "Identifier",
                     "src": "3711:18:4"
                   },
@@ -2717,16 +2717,16 @@ export const DebtRegistry =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 2759,
+                      "referencedDeclaration": 2756,
                       "type": "address",
                       "value": "_beneficiary"
                     },
-                    "id": 2778,
+                    "id": 2775,
                     "name": "Identifier",
                     "src": "3730:12:4"
                   }
                 ],
-                "id": 2779,
+                "id": 2776,
                 "name": "ModifierInvocation",
                 "src": "3711:32:4"
               },
@@ -2735,7 +2735,7 @@ export const DebtRegistry =
                   {
                     "attributes": {
                       "assignments": [
-                        2784
+                        2781
                       ]
                     },
                     "children": [
@@ -2743,7 +2743,7 @@ export const DebtRegistry =
                         "attributes": {
                           "constant": false,
                           "name": "entry",
-                          "scope": 2845,
+                          "scope": 2842,
                           "stateVariable": false,
                           "storageLocation": "memory",
                           "type": "struct DebtRegistry.Entry memory",
@@ -2755,15 +2755,15 @@ export const DebtRegistry =
                             "attributes": {
                               "contractScope": null,
                               "name": "Entry",
-                              "referencedDeclaration": 2647,
+                              "referencedDeclaration": 2644,
                               "type": "struct DebtRegistry.Entry storage pointer"
                             },
-                            "id": 2783,
+                            "id": 2780,
                             "name": "UserDefinedTypeName",
                             "src": "3797:5:4"
                           }
                         ],
-                        "id": 2784,
+                        "id": 2781,
                         "name": "VariableDeclaration",
                         "src": "3797:18:4"
                       },
@@ -2817,11 +2817,11 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2647,
+                              "referencedDeclaration": 2644,
                               "type": "type(struct DebtRegistry.Entry storage pointer)",
                               "value": "Entry"
                             },
-                            "id": 2785,
+                            "id": 2782,
                             "name": "Identifier",
                             "src": "3818:5:4"
                           },
@@ -2831,11 +2831,11 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2757,
+                              "referencedDeclaration": 2754,
                               "type": "address",
                               "value": "_version"
                             },
-                            "id": 2786,
+                            "id": 2783,
                             "name": "Identifier",
                             "src": "3837:8:4"
                           },
@@ -2845,11 +2845,11 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2759,
+                              "referencedDeclaration": 2756,
                               "type": "address",
                               "value": "_beneficiary"
                             },
-                            "id": 2787,
+                            "id": 2784,
                             "name": "Identifier",
                             "src": "3859:12:4"
                           },
@@ -2859,11 +2859,11 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2763,
+                              "referencedDeclaration": 2760,
                               "type": "address",
                               "value": "_underwriter"
                             },
-                            "id": 2788,
+                            "id": 2785,
                             "name": "Identifier",
                             "src": "3885:12:4"
                           },
@@ -2873,11 +2873,11 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2765,
+                              "referencedDeclaration": 2762,
                               "type": "uint256",
                               "value": "_underwriterRiskRating"
                             },
-                            "id": 2789,
+                            "id": 2786,
                             "name": "Identifier",
                             "src": "3911:22:4"
                           },
@@ -2887,11 +2887,11 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2767,
+                              "referencedDeclaration": 2764,
                               "type": "address",
                               "value": "_termsContract"
                             },
-                            "id": 2790,
+                            "id": 2787,
                             "name": "Identifier",
                             "src": "3947:14:4"
                           },
@@ -2901,11 +2901,11 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2769,
+                              "referencedDeclaration": 2766,
                               "type": "bytes32",
                               "value": "_termsContractParameters"
                             },
-                            "id": 2791,
+                            "id": 2788,
                             "name": "Identifier",
                             "src": "3975:24:4"
                           },
@@ -2927,33 +2927,33 @@ export const DebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15810,
+                                  "referencedDeclaration": 15807,
                                   "type": "block",
                                   "value": "block"
                                 },
-                                "id": 2792,
+                                "id": 2789,
                                 "name": "Identifier",
                                 "src": "4013:5:4"
                               }
                             ],
-                            "id": 2793,
+                            "id": 2790,
                             "name": "MemberAccess",
                             "src": "4013:15:4"
                           }
                         ],
-                        "id": 2794,
+                        "id": 2791,
                         "name": "FunctionCall",
                         "src": "3818:220:4"
                       }
                     ],
-                    "id": 2795,
+                    "id": 2792,
                     "name": "VariableDeclarationStatement",
                     "src": "3797:241:4"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        2797
+                        2794
                       ]
                     },
                     "children": [
@@ -2961,7 +2961,7 @@ export const DebtRegistry =
                         "attributes": {
                           "constant": false,
                           "name": "agreementId",
-                          "scope": 2845,
+                          "scope": 2842,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bytes32",
@@ -2974,12 +2974,12 @@ export const DebtRegistry =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 2796,
+                            "id": 2793,
                             "name": "ElementaryTypeName",
                             "src": "4049:7:4"
                           }
                         ],
-                        "id": 2797,
+                        "id": 2794,
                         "name": "VariableDeclaration",
                         "src": "4049:19:4"
                       },
@@ -3002,7 +3002,7 @@ export const DebtRegistry =
                             "attributes": {
                               "argumentTypes": [
                                 {
-                                  "typeIdentifier": "t_struct$_Entry_$2647_memory_ptr",
+                                  "typeIdentifier": "t_struct$_Entry_$2644_memory_ptr",
                                   "typeString": "struct DebtRegistry.Entry memory"
                                 },
                                 {
@@ -3017,11 +3017,11 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3142,
+                              "referencedDeclaration": 3139,
                               "type": "function (struct DebtRegistry.Entry memory,address,uint256) pure returns (bytes32)",
                               "value": "_getAgreementId"
                             },
-                            "id": 2798,
+                            "id": 2795,
                             "name": "Identifier",
                             "src": "4071:15:4"
                           },
@@ -3031,11 +3031,11 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2784,
+                              "referencedDeclaration": 2781,
                               "type": "struct DebtRegistry.Entry memory",
                               "value": "entry"
                             },
-                            "id": 2799,
+                            "id": 2796,
                             "name": "Identifier",
                             "src": "4087:5:4"
                           },
@@ -3045,11 +3045,11 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2761,
+                              "referencedDeclaration": 2758,
                               "type": "address",
                               "value": "_debtor"
                             },
-                            "id": 2800,
+                            "id": 2797,
                             "name": "Identifier",
                             "src": "4094:7:4"
                           },
@@ -3059,21 +3059,21 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2771,
+                              "referencedDeclaration": 2768,
                               "type": "uint256",
                               "value": "_salt"
                             },
-                            "id": 2801,
+                            "id": 2798,
                             "name": "Identifier",
                             "src": "4103:5:4"
                           }
                         ],
-                        "id": 2802,
+                        "id": 2799,
                         "name": "FunctionCall",
                         "src": "4071:38:4"
                       }
                     ],
-                    "id": 2803,
+                    "id": 2800,
                     "name": "VariableDeclarationStatement",
                     "src": "4049:60:4"
                   },
@@ -3105,11 +3105,11 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15821,
+                              "referencedDeclaration": 15818,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 2804,
+                            "id": 2801,
                             "name": "Identifier",
                             "src": "4120:7:4"
                           },
@@ -3136,7 +3136,7 @@ export const DebtRegistry =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "beneficiary",
-                                  "referencedDeclaration": 2636,
+                                  "referencedDeclaration": 2633,
                                   "type": "address"
                                 },
                                 "children": [
@@ -3156,11 +3156,11 @@ export const DebtRegistry =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 2651,
+                                          "referencedDeclaration": 2648,
                                           "type": "mapping(bytes32 => struct DebtRegistry.Entry storage ref)",
                                           "value": "registry"
                                         },
-                                        "id": 2805,
+                                        "id": 2802,
                                         "name": "Identifier",
                                         "src": "4128:8:4"
                                       },
@@ -3170,21 +3170,21 @@ export const DebtRegistry =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 2797,
+                                          "referencedDeclaration": 2794,
                                           "type": "bytes32",
                                           "value": "agreementId"
                                         },
-                                        "id": 2806,
+                                        "id": 2803,
                                         "name": "Identifier",
                                         "src": "4137:11:4"
                                       }
                                     ],
-                                    "id": 2807,
+                                    "id": 2804,
                                     "name": "IndexAccess",
                                     "src": "4128:21:4"
                                   }
                                 ],
-                                "id": 2808,
+                                "id": 2805,
                                 "name": "MemberAccess",
                                 "src": "4128:33:4"
                               },
@@ -3218,7 +3218,7 @@ export const DebtRegistry =
                                       "type": "type(address)",
                                       "value": "address"
                                     },
-                                    "id": 2809,
+                                    "id": 2806,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "4165:7:4"
                                   },
@@ -3235,27 +3235,27 @@ export const DebtRegistry =
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 2810,
+                                    "id": 2807,
                                     "name": "Literal",
                                     "src": "4173:1:4"
                                   }
                                 ],
-                                "id": 2811,
+                                "id": 2808,
                                 "name": "FunctionCall",
                                 "src": "4165:10:4"
                               }
                             ],
-                            "id": 2812,
+                            "id": 2809,
                             "name": "BinaryOperation",
                             "src": "4128:47:4"
                           }
                         ],
-                        "id": 2813,
+                        "id": 2810,
                         "name": "FunctionCall",
                         "src": "4120:56:4"
                       }
                     ],
-                    "id": 2814,
+                    "id": 2811,
                     "name": "ExpressionStatement",
                     "src": "4120:56:4"
                   },
@@ -3288,11 +3288,11 @@ export const DebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2651,
+                                  "referencedDeclaration": 2648,
                                   "type": "mapping(bytes32 => struct DebtRegistry.Entry storage ref)",
                                   "value": "registry"
                                 },
-                                "id": 2815,
+                                "id": 2812,
                                 "name": "Identifier",
                                 "src": "4187:8:4"
                               },
@@ -3302,16 +3302,16 @@ export const DebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2797,
+                                  "referencedDeclaration": 2794,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 2816,
+                                "id": 2813,
                                 "name": "Identifier",
                                 "src": "4196:11:4"
                               }
                             ],
-                            "id": 2817,
+                            "id": 2814,
                             "name": "IndexAccess",
                             "src": "4187:21:4"
                           },
@@ -3321,21 +3321,21 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2784,
+                              "referencedDeclaration": 2781,
                               "type": "struct DebtRegistry.Entry memory",
                               "value": "entry"
                             },
-                            "id": 2818,
+                            "id": 2815,
                             "name": "Identifier",
                             "src": "4211:5:4"
                           }
                         ],
-                        "id": 2819,
+                        "id": 2816,
                         "name": "Assignment",
                         "src": "4187:29:4"
                       }
                     ],
-                    "id": 2820,
+                    "id": 2817,
                     "name": "ExpressionStatement",
                     "src": "4187:29:4"
                   },
@@ -3389,11 +3389,11 @@ export const DebtRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2656,
+                                      "referencedDeclaration": 2653,
                                       "type": "mapping(address => bytes32[] storage ref)",
                                       "value": "debtorToDebts"
                                     },
-                                    "id": 2821,
+                                    "id": 2818,
                                     "name": "Identifier",
                                     "src": "4226:13:4"
                                   },
@@ -3403,21 +3403,21 @@ export const DebtRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2761,
+                                      "referencedDeclaration": 2758,
                                       "type": "address",
                                       "value": "_debtor"
                                     },
-                                    "id": 2822,
+                                    "id": 2819,
                                     "name": "Identifier",
                                     "src": "4240:7:4"
                                   }
                                 ],
-                                "id": 2823,
+                                "id": 2820,
                                 "name": "IndexAccess",
                                 "src": "4226:22:4"
                               }
                             ],
-                            "id": 2824,
+                            "id": 2821,
                             "name": "MemberAccess",
                             "src": "4226:27:4"
                           },
@@ -3427,21 +3427,21 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2797,
+                              "referencedDeclaration": 2794,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 2825,
+                            "id": 2822,
                             "name": "Identifier",
                             "src": "4254:11:4"
                           }
                         ],
-                        "id": 2826,
+                        "id": 2823,
                         "name": "FunctionCall",
                         "src": "4226:40:4"
                       }
                     ],
-                    "id": 2827,
+                    "id": 2824,
                     "name": "ExpressionStatement",
                     "src": "4226:40:4"
                   },
@@ -3493,11 +3493,11 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2680,
+                              "referencedDeclaration": 2677,
                               "type": "function (bytes32,address,address,uint256,address,bytes32)",
                               "value": "LogInsertEntry"
                             },
-                            "id": 2828,
+                            "id": 2825,
                             "name": "Identifier",
                             "src": "4277:14:4"
                           },
@@ -3507,11 +3507,11 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2797,
+                              "referencedDeclaration": 2794,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 2829,
+                            "id": 2826,
                             "name": "Identifier",
                             "src": "4305:11:4"
                           },
@@ -3523,7 +3523,7 @@ export const DebtRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "beneficiary",
-                              "referencedDeclaration": 2636,
+                              "referencedDeclaration": 2633,
                               "type": "address"
                             },
                             "children": [
@@ -3533,16 +3533,16 @@ export const DebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2784,
+                                  "referencedDeclaration": 2781,
                                   "type": "struct DebtRegistry.Entry memory",
                                   "value": "entry"
                                 },
-                                "id": 2830,
+                                "id": 2827,
                                 "name": "Identifier",
                                 "src": "4330:5:4"
                               }
                             ],
-                            "id": 2831,
+                            "id": 2828,
                             "name": "MemberAccess",
                             "src": "4330:17:4"
                           },
@@ -3554,7 +3554,7 @@ export const DebtRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "underwriter",
-                              "referencedDeclaration": 2638,
+                              "referencedDeclaration": 2635,
                               "type": "address"
                             },
                             "children": [
@@ -3564,16 +3564,16 @@ export const DebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2784,
+                                  "referencedDeclaration": 2781,
                                   "type": "struct DebtRegistry.Entry memory",
                                   "value": "entry"
                                 },
-                                "id": 2832,
+                                "id": 2829,
                                 "name": "Identifier",
                                 "src": "4361:5:4"
                               }
                             ],
-                            "id": 2833,
+                            "id": 2830,
                             "name": "MemberAccess",
                             "src": "4361:17:4"
                           },
@@ -3585,7 +3585,7 @@ export const DebtRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "underwriterRiskRating",
-                              "referencedDeclaration": 2640,
+                              "referencedDeclaration": 2637,
                               "type": "uint256"
                             },
                             "children": [
@@ -3595,16 +3595,16 @@ export const DebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2784,
+                                  "referencedDeclaration": 2781,
                                   "type": "struct DebtRegistry.Entry memory",
                                   "value": "entry"
                                 },
-                                "id": 2834,
+                                "id": 2831,
                                 "name": "Identifier",
                                 "src": "4392:5:4"
                               }
                             ],
-                            "id": 2835,
+                            "id": 2832,
                             "name": "MemberAccess",
                             "src": "4392:27:4"
                           },
@@ -3616,7 +3616,7 @@ export const DebtRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "termsContract",
-                              "referencedDeclaration": 2642,
+                              "referencedDeclaration": 2639,
                               "type": "address"
                             },
                             "children": [
@@ -3626,16 +3626,16 @@ export const DebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2784,
+                                  "referencedDeclaration": 2781,
                                   "type": "struct DebtRegistry.Entry memory",
                                   "value": "entry"
                                 },
-                                "id": 2836,
+                                "id": 2833,
                                 "name": "Identifier",
                                 "src": "4433:5:4"
                               }
                             ],
-                            "id": 2837,
+                            "id": 2834,
                             "name": "MemberAccess",
                             "src": "4433:19:4"
                           },
@@ -3647,7 +3647,7 @@ export const DebtRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "termsContractParameters",
-                              "referencedDeclaration": 2644,
+                              "referencedDeclaration": 2641,
                               "type": "bytes32"
                             },
                             "children": [
@@ -3657,32 +3657,32 @@ export const DebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2784,
+                                  "referencedDeclaration": 2781,
                                   "type": "struct DebtRegistry.Entry memory",
                                   "value": "entry"
                                 },
-                                "id": 2838,
+                                "id": 2835,
                                 "name": "Identifier",
                                 "src": "4466:5:4"
                               }
                             ],
-                            "id": 2839,
+                            "id": 2836,
                             "name": "MemberAccess",
                             "src": "4466:29:4"
                           }
                         ],
-                        "id": 2840,
+                        "id": 2837,
                         "name": "FunctionCall",
                         "src": "4277:228:4"
                       }
                     ],
-                    "id": 2841,
+                    "id": 2838,
                     "name": "ExpressionStatement",
                     "src": "4277:228:4"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 2782
+                      "functionReturnParameters": 2779
                     },
                     "children": [
                       {
@@ -3691,26 +3691,26 @@ export const DebtRegistry =
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 2797,
+                          "referencedDeclaration": 2794,
                           "type": "bytes32",
                           "value": "agreementId"
                         },
-                        "id": 2842,
+                        "id": 2839,
                         "name": "Identifier",
                         "src": "4523:11:4"
                       }
                     ],
-                    "id": 2843,
+                    "id": 2840,
                     "name": "Return",
                     "src": "4516:18:4"
                   }
                 ],
-                "id": 2844,
+                "id": 2841,
                 "name": "Block",
                 "src": "3787:754:4"
               }
             ],
-            "id": 2845,
+            "id": 2842,
             "name": "FunctionDefinition",
             "src": "3371:1170:4"
           },
@@ -3721,7 +3721,7 @@ export const DebtRegistry =
               "isConstructor": false,
               "name": "modifyBeneficiary",
               "payable": false,
-              "scope": 3143,
+              "scope": 3140,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -3733,7 +3733,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 2883,
+                      "scope": 2880,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -3746,12 +3746,12 @@ export const DebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 2846,
+                        "id": 2843,
                         "name": "ElementaryTypeName",
                         "src": "4739:7:4"
                       }
                     ],
-                    "id": 2847,
+                    "id": 2844,
                     "name": "VariableDeclaration",
                     "src": "4739:19:4"
                   },
@@ -3759,7 +3759,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "newBeneficiary",
-                      "scope": 2883,
+                      "scope": 2880,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -3772,17 +3772,17 @@ export const DebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2848,
+                        "id": 2845,
                         "name": "ElementaryTypeName",
                         "src": "4760:7:4"
                       }
                     ],
-                    "id": 2849,
+                    "id": 2846,
                     "name": "VariableDeclaration",
                     "src": "4760:22:4"
                   }
                 ],
-                "id": 2850,
+                "id": 2847,
                 "name": "ParameterList",
                 "src": "4738:45:4"
               },
@@ -3793,7 +3793,7 @@ export const DebtRegistry =
                   ]
                 },
                 "children": [],
-                "id": 2861,
+                "id": 2858,
                 "name": "ParameterList",
                 "src": "4934:0:4"
               },
@@ -3810,16 +3810,16 @@ export const DebtRegistry =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 2712,
+                      "referencedDeclaration": 2709,
                       "type": "modifier ()",
                       "value": "onlyAuthorizedToEdit"
                     },
-                    "id": 2851,
+                    "id": 2848,
                     "name": "Identifier",
                     "src": "4807:20:4"
                   }
                 ],
-                "id": 2852,
+                "id": 2849,
                 "name": "ModifierInvocation",
                 "src": "4807:20:4"
               },
@@ -3836,16 +3836,16 @@ export const DebtRegistry =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13943,
+                      "referencedDeclaration": 13940,
                       "type": "modifier ()",
                       "value": "whenNotPaused"
                     },
-                    "id": 2853,
+                    "id": 2850,
                     "name": "Identifier",
                     "src": "4836:13:4"
                   }
                 ],
-                "id": 2854,
+                "id": 2851,
                 "name": "ModifierInvocation",
                 "src": "4836:13:4"
               },
@@ -3857,11 +3857,11 @@ export const DebtRegistry =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 2724,
+                      "referencedDeclaration": 2721,
                       "type": "modifier (bytes32)",
                       "value": "onlyExtantEntry"
                     },
-                    "id": 2855,
+                    "id": 2852,
                     "name": "Identifier",
                     "src": "4858:15:4"
                   },
@@ -3871,16 +3871,16 @@ export const DebtRegistry =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 2847,
+                      "referencedDeclaration": 2844,
                       "type": "bytes32",
                       "value": "agreementId"
                     },
-                    "id": 2856,
+                    "id": 2853,
                     "name": "Identifier",
                     "src": "4874:11:4"
                   }
                 ],
-                "id": 2857,
+                "id": 2854,
                 "name": "ModifierInvocation",
                 "src": "4858:28:4"
               },
@@ -3892,11 +3892,11 @@ export const DebtRegistry =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 2738,
+                      "referencedDeclaration": 2735,
                       "type": "modifier (address)",
                       "value": "nonNullBeneficiary"
                     },
-                    "id": 2858,
+                    "id": 2855,
                     "name": "Identifier",
                     "src": "4895:18:4"
                   },
@@ -3906,16 +3906,16 @@ export const DebtRegistry =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 2849,
+                      "referencedDeclaration": 2846,
                       "type": "address",
                       "value": "newBeneficiary"
                     },
-                    "id": 2859,
+                    "id": 2856,
                     "name": "Identifier",
                     "src": "4914:14:4"
                   }
                 ],
-                "id": 2860,
+                "id": 2857,
                 "name": "ModifierInvocation",
                 "src": "4895:34:4"
               },
@@ -3924,7 +3924,7 @@ export const DebtRegistry =
                   {
                     "attributes": {
                       "assignments": [
-                        2863
+                        2860
                       ]
                     },
                     "children": [
@@ -3932,7 +3932,7 @@ export const DebtRegistry =
                         "attributes": {
                           "constant": false,
                           "name": "previousBeneficiary",
-                          "scope": 2883,
+                          "scope": 2880,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "address",
@@ -3945,12 +3945,12 @@ export const DebtRegistry =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 2862,
+                            "id": 2859,
                             "name": "ElementaryTypeName",
                             "src": "4944:7:4"
                           }
                         ],
-                        "id": 2863,
+                        "id": 2860,
                         "name": "VariableDeclaration",
                         "src": "4944:27:4"
                       },
@@ -3962,7 +3962,7 @@ export const DebtRegistry =
                           "isPure": false,
                           "lValueRequested": false,
                           "member_name": "beneficiary",
-                          "referencedDeclaration": 2636,
+                          "referencedDeclaration": 2633,
                           "type": "address"
                         },
                         "children": [
@@ -3982,11 +3982,11 @@ export const DebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2651,
+                                  "referencedDeclaration": 2648,
                                   "type": "mapping(bytes32 => struct DebtRegistry.Entry storage ref)",
                                   "value": "registry"
                                 },
-                                "id": 2864,
+                                "id": 2861,
                                 "name": "Identifier",
                                 "src": "4974:8:4"
                               },
@@ -3996,26 +3996,26 @@ export const DebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2847,
+                                  "referencedDeclaration": 2844,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 2865,
+                                "id": 2862,
                                 "name": "Identifier",
                                 "src": "4983:11:4"
                               }
                             ],
-                            "id": 2866,
+                            "id": 2863,
                             "name": "IndexAccess",
                             "src": "4974:21:4"
                           }
                         ],
-                        "id": 2867,
+                        "id": 2864,
                         "name": "MemberAccess",
                         "src": "4974:33:4"
                       }
                     ],
-                    "id": 2868,
+                    "id": 2865,
                     "name": "VariableDeclarationStatement",
                     "src": "4944:63:4"
                   },
@@ -4040,7 +4040,7 @@ export const DebtRegistry =
                               "isPure": false,
                               "lValueRequested": true,
                               "member_name": "beneficiary",
-                              "referencedDeclaration": 2636,
+                              "referencedDeclaration": 2633,
                               "type": "address"
                             },
                             "children": [
@@ -4060,11 +4060,11 @@ export const DebtRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2651,
+                                      "referencedDeclaration": 2648,
                                       "type": "mapping(bytes32 => struct DebtRegistry.Entry storage ref)",
                                       "value": "registry"
                                     },
-                                    "id": 2869,
+                                    "id": 2866,
                                     "name": "Identifier",
                                     "src": "5018:8:4"
                                   },
@@ -4074,21 +4074,21 @@ export const DebtRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2847,
+                                      "referencedDeclaration": 2844,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 2870,
+                                    "id": 2867,
                                     "name": "Identifier",
                                     "src": "5027:11:4"
                                   }
                                 ],
-                                "id": 2871,
+                                "id": 2868,
                                 "name": "IndexAccess",
                                 "src": "5018:21:4"
                               }
                             ],
-                            "id": 2872,
+                            "id": 2869,
                             "name": "MemberAccess",
                             "src": "5018:33:4"
                           },
@@ -4098,21 +4098,21 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2849,
+                              "referencedDeclaration": 2846,
                               "type": "address",
                               "value": "newBeneficiary"
                             },
-                            "id": 2873,
+                            "id": 2870,
                             "name": "Identifier",
                             "src": "5054:14:4"
                           }
                         ],
-                        "id": 2874,
+                        "id": 2871,
                         "name": "Assignment",
                         "src": "5018:50:4"
                       }
                     ],
-                    "id": 2875,
+                    "id": 2872,
                     "name": "ExpressionStatement",
                     "src": "5018:50:4"
                   },
@@ -4152,11 +4152,11 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2688,
+                              "referencedDeclaration": 2685,
                               "type": "function (bytes32,address,address)",
                               "value": "LogModifyEntryBeneficiary"
                             },
-                            "id": 2876,
+                            "id": 2873,
                             "name": "Identifier",
                             "src": "5079:25:4"
                           },
@@ -4166,11 +4166,11 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2847,
+                              "referencedDeclaration": 2844,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 2877,
+                            "id": 2874,
                             "name": "Identifier",
                             "src": "5118:11:4"
                           },
@@ -4180,11 +4180,11 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2863,
+                              "referencedDeclaration": 2860,
                               "type": "address",
                               "value": "previousBeneficiary"
                             },
-                            "id": 2878,
+                            "id": 2875,
                             "name": "Identifier",
                             "src": "5143:19:4"
                           },
@@ -4194,31 +4194,31 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2849,
+                              "referencedDeclaration": 2846,
                               "type": "address",
                               "value": "newBeneficiary"
                             },
-                            "id": 2879,
+                            "id": 2876,
                             "name": "Identifier",
                             "src": "5176:14:4"
                           }
                         ],
-                        "id": 2880,
+                        "id": 2877,
                         "name": "FunctionCall",
                         "src": "5079:121:4"
                       }
                     ],
-                    "id": 2881,
+                    "id": 2878,
                     "name": "ExpressionStatement",
                     "src": "5079:121:4"
                   }
                 ],
-                "id": 2882,
+                "id": 2879,
                 "name": "Block",
                 "src": "4934:273:4"
               }
             ],
-            "id": 2883,
+            "id": 2880,
             "name": "FunctionDefinition",
             "src": "4712:495:4"
           },
@@ -4229,7 +4229,7 @@ export const DebtRegistry =
               "isConstructor": false,
               "name": "addAuthorizedInsertAgent",
               "payable": false,
-              "scope": 3143,
+              "scope": 3140,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -4241,7 +4241,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "agent",
-                      "scope": 2898,
+                      "scope": 2895,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -4254,17 +4254,17 @@ export const DebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2884,
+                        "id": 2881,
                         "name": "ElementaryTypeName",
                         "src": "5370:7:4"
                       }
                     ],
-                    "id": 2885,
+                    "id": 2882,
                     "name": "VariableDeclaration",
                     "src": "5370:13:4"
                   }
                 ],
-                "id": 2886,
+                "id": 2883,
                 "name": "ParameterList",
                 "src": "5369:15:4"
               },
@@ -4275,7 +4275,7 @@ export const DebtRegistry =
                   ]
                 },
                 "children": [],
-                "id": 2889,
+                "id": 2886,
                 "name": "ParameterList",
                 "src": "5422:0:4"
               },
@@ -4292,16 +4292,16 @@ export const DebtRegistry =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 14110,
+                      "referencedDeclaration": 14107,
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
-                    "id": 2887,
+                    "id": 2884,
                     "name": "Identifier",
                     "src": "5408:9:4"
                   }
                 ],
-                "id": 2888,
+                "id": 2885,
                 "name": "ModifierInvocation",
                 "src": "5408:9:4"
               },
@@ -4341,7 +4341,7 @@ export const DebtRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "authorize",
-                              "referencedDeclaration": 6126,
+                              "referencedDeclaration": 6123,
                               "type": "function (struct PermissionsLib.Permissions storage pointer,address,string memory)"
                             },
                             "children": [
@@ -4351,16 +4351,16 @@ export const DebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2658,
+                                  "referencedDeclaration": 2655,
                                   "type": "struct PermissionsLib.Permissions storage ref",
                                   "value": "entryInsertPermissions"
                                 },
-                                "id": 2890,
+                                "id": 2887,
                                 "name": "Identifier",
                                 "src": "5432:22:4"
                               }
                             ],
-                            "id": 2892,
+                            "id": 2889,
                             "name": "MemberAccess",
                             "src": "5432:32:4"
                           },
@@ -4370,11 +4370,11 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2885,
+                              "referencedDeclaration": 2882,
                               "type": "address",
                               "value": "agent"
                             },
-                            "id": 2893,
+                            "id": 2890,
                             "name": "Identifier",
                             "src": "5465:5:4"
                           },
@@ -4384,31 +4384,31 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2663,
+                              "referencedDeclaration": 2660,
                               "type": "string memory",
                               "value": "INSERT_CONTEXT"
                             },
-                            "id": 2894,
+                            "id": 2891,
                             "name": "Identifier",
                             "src": "5472:14:4"
                           }
                         ],
-                        "id": 2895,
+                        "id": 2892,
                         "name": "FunctionCall",
                         "src": "5432:55:4"
                       }
                     ],
-                    "id": 2896,
+                    "id": 2893,
                     "name": "ExpressionStatement",
                     "src": "5432:55:4"
                   }
                 ],
-                "id": 2897,
+                "id": 2894,
                 "name": "Block",
                 "src": "5422:72:4"
               }
             ],
-            "id": 2898,
+            "id": 2895,
             "name": "FunctionDefinition",
             "src": "5336:158:4"
           },
@@ -4419,7 +4419,7 @@ export const DebtRegistry =
               "isConstructor": false,
               "name": "addAuthorizedEditAgent",
               "payable": false,
-              "scope": 3143,
+              "scope": 3140,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -4431,7 +4431,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "agent",
-                      "scope": 2913,
+                      "scope": 2910,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -4444,17 +4444,17 @@ export const DebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2899,
+                        "id": 2896,
                         "name": "ElementaryTypeName",
                         "src": "5666:7:4"
                       }
                     ],
-                    "id": 2900,
+                    "id": 2897,
                     "name": "VariableDeclaration",
                     "src": "5666:13:4"
                   }
                 ],
-                "id": 2901,
+                "id": 2898,
                 "name": "ParameterList",
                 "src": "5665:15:4"
               },
@@ -4465,7 +4465,7 @@ export const DebtRegistry =
                   ]
                 },
                 "children": [],
-                "id": 2904,
+                "id": 2901,
                 "name": "ParameterList",
                 "src": "5718:0:4"
               },
@@ -4482,16 +4482,16 @@ export const DebtRegistry =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 14110,
+                      "referencedDeclaration": 14107,
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
-                    "id": 2902,
+                    "id": 2899,
                     "name": "Identifier",
                     "src": "5704:9:4"
                   }
                 ],
-                "id": 2903,
+                "id": 2900,
                 "name": "ModifierInvocation",
                 "src": "5704:9:4"
               },
@@ -4531,7 +4531,7 @@ export const DebtRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "authorize",
-                              "referencedDeclaration": 6126,
+                              "referencedDeclaration": 6123,
                               "type": "function (struct PermissionsLib.Permissions storage pointer,address,string memory)"
                             },
                             "children": [
@@ -4541,16 +4541,16 @@ export const DebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2660,
+                                  "referencedDeclaration": 2657,
                                   "type": "struct PermissionsLib.Permissions storage ref",
                                   "value": "entryEditPermissions"
                                 },
-                                "id": 2905,
+                                "id": 2902,
                                 "name": "Identifier",
                                 "src": "5728:20:4"
                               }
                             ],
-                            "id": 2907,
+                            "id": 2904,
                             "name": "MemberAccess",
                             "src": "5728:30:4"
                           },
@@ -4560,11 +4560,11 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2900,
+                              "referencedDeclaration": 2897,
                               "type": "address",
                               "value": "agent"
                             },
-                            "id": 2908,
+                            "id": 2905,
                             "name": "Identifier",
                             "src": "5759:5:4"
                           },
@@ -4574,31 +4574,31 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2666,
+                              "referencedDeclaration": 2663,
                               "type": "string memory",
                               "value": "EDIT_CONTEXT"
                             },
-                            "id": 2909,
+                            "id": 2906,
                             "name": "Identifier",
                             "src": "5766:12:4"
                           }
                         ],
-                        "id": 2910,
+                        "id": 2907,
                         "name": "FunctionCall",
                         "src": "5728:51:4"
                       }
                     ],
-                    "id": 2911,
+                    "id": 2908,
                     "name": "ExpressionStatement",
                     "src": "5728:51:4"
                   }
                 ],
-                "id": 2912,
+                "id": 2909,
                 "name": "Block",
                 "src": "5718:68:4"
               }
             ],
-            "id": 2913,
+            "id": 2910,
             "name": "FunctionDefinition",
             "src": "5634:152:4"
           },
@@ -4609,7 +4609,7 @@ export const DebtRegistry =
               "isConstructor": false,
               "name": "revokeInsertAgentAuthorization",
               "payable": false,
-              "scope": 3143,
+              "scope": 3140,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -4621,7 +4621,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "agent",
-                      "scope": 2928,
+                      "scope": 2925,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -4634,17 +4634,17 @@ export const DebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2914,
+                        "id": 2911,
                         "name": "ElementaryTypeName",
                         "src": "5960:7:4"
                       }
                     ],
-                    "id": 2915,
+                    "id": 2912,
                     "name": "VariableDeclaration",
                     "src": "5960:13:4"
                   }
                 ],
-                "id": 2916,
+                "id": 2913,
                 "name": "ParameterList",
                 "src": "5959:15:4"
               },
@@ -4655,7 +4655,7 @@ export const DebtRegistry =
                   ]
                 },
                 "children": [],
-                "id": 2919,
+                "id": 2916,
                 "name": "ParameterList",
                 "src": "6012:0:4"
               },
@@ -4672,16 +4672,16 @@ export const DebtRegistry =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 14110,
+                      "referencedDeclaration": 14107,
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
-                    "id": 2917,
+                    "id": 2914,
                     "name": "Identifier",
                     "src": "5998:9:4"
                   }
                 ],
-                "id": 2918,
+                "id": 2915,
                 "name": "ModifierInvocation",
                 "src": "5998:9:4"
               },
@@ -4721,7 +4721,7 @@ export const DebtRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "revokeAuthorization",
-                              "referencedDeclaration": 6212,
+                              "referencedDeclaration": 6209,
                               "type": "function (struct PermissionsLib.Permissions storage pointer,address,string memory)"
                             },
                             "children": [
@@ -4731,16 +4731,16 @@ export const DebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2658,
+                                  "referencedDeclaration": 2655,
                                   "type": "struct PermissionsLib.Permissions storage ref",
                                   "value": "entryInsertPermissions"
                                 },
-                                "id": 2920,
+                                "id": 2917,
                                 "name": "Identifier",
                                 "src": "6022:22:4"
                               }
                             ],
-                            "id": 2922,
+                            "id": 2919,
                             "name": "MemberAccess",
                             "src": "6022:42:4"
                           },
@@ -4750,11 +4750,11 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2915,
+                              "referencedDeclaration": 2912,
                               "type": "address",
                               "value": "agent"
                             },
-                            "id": 2923,
+                            "id": 2920,
                             "name": "Identifier",
                             "src": "6065:5:4"
                           },
@@ -4764,31 +4764,31 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2663,
+                              "referencedDeclaration": 2660,
                               "type": "string memory",
                               "value": "INSERT_CONTEXT"
                             },
-                            "id": 2924,
+                            "id": 2921,
                             "name": "Identifier",
                             "src": "6072:14:4"
                           }
                         ],
-                        "id": 2925,
+                        "id": 2922,
                         "name": "FunctionCall",
                         "src": "6022:65:4"
                       }
                     ],
-                    "id": 2926,
+                    "id": 2923,
                     "name": "ExpressionStatement",
                     "src": "6022:65:4"
                   }
                 ],
-                "id": 2927,
+                "id": 2924,
                 "name": "Block",
                 "src": "6012:82:4"
               }
             ],
-            "id": 2928,
+            "id": 2925,
             "name": "FunctionDefinition",
             "src": "5920:174:4"
           },
@@ -4799,7 +4799,7 @@ export const DebtRegistry =
               "isConstructor": false,
               "name": "revokeEditAgentAuthorization",
               "payable": false,
-              "scope": 3143,
+              "scope": 3140,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -4811,7 +4811,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "agent",
-                      "scope": 2943,
+                      "scope": 2940,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -4824,17 +4824,17 @@ export const DebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2929,
+                        "id": 2926,
                         "name": "ElementaryTypeName",
                         "src": "6277:7:4"
                       }
                     ],
-                    "id": 2930,
+                    "id": 2927,
                     "name": "VariableDeclaration",
                     "src": "6277:13:4"
                   }
                 ],
-                "id": 2931,
+                "id": 2928,
                 "name": "ParameterList",
                 "src": "6276:15:4"
               },
@@ -4845,7 +4845,7 @@ export const DebtRegistry =
                   ]
                 },
                 "children": [],
-                "id": 2934,
+                "id": 2931,
                 "name": "ParameterList",
                 "src": "6329:0:4"
               },
@@ -4862,16 +4862,16 @@ export const DebtRegistry =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 14110,
+                      "referencedDeclaration": 14107,
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
-                    "id": 2932,
+                    "id": 2929,
                     "name": "Identifier",
                     "src": "6315:9:4"
                   }
                 ],
-                "id": 2933,
+                "id": 2930,
                 "name": "ModifierInvocation",
                 "src": "6315:9:4"
               },
@@ -4911,7 +4911,7 @@ export const DebtRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "revokeAuthorization",
-                              "referencedDeclaration": 6212,
+                              "referencedDeclaration": 6209,
                               "type": "function (struct PermissionsLib.Permissions storage pointer,address,string memory)"
                             },
                             "children": [
@@ -4921,16 +4921,16 @@ export const DebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2660,
+                                  "referencedDeclaration": 2657,
                                   "type": "struct PermissionsLib.Permissions storage ref",
                                   "value": "entryEditPermissions"
                                 },
-                                "id": 2935,
+                                "id": 2932,
                                 "name": "Identifier",
                                 "src": "6339:20:4"
                               }
                             ],
-                            "id": 2937,
+                            "id": 2934,
                             "name": "MemberAccess",
                             "src": "6339:40:4"
                           },
@@ -4940,11 +4940,11 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2930,
+                              "referencedDeclaration": 2927,
                               "type": "address",
                               "value": "agent"
                             },
-                            "id": 2938,
+                            "id": 2935,
                             "name": "Identifier",
                             "src": "6380:5:4"
                           },
@@ -4954,31 +4954,31 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2666,
+                              "referencedDeclaration": 2663,
                               "type": "string memory",
                               "value": "EDIT_CONTEXT"
                             },
-                            "id": 2939,
+                            "id": 2936,
                             "name": "Identifier",
                             "src": "6387:12:4"
                           }
                         ],
-                        "id": 2940,
+                        "id": 2937,
                         "name": "FunctionCall",
                         "src": "6339:61:4"
                       }
                     ],
-                    "id": 2941,
+                    "id": 2938,
                     "name": "ExpressionStatement",
                     "src": "6339:61:4"
                   }
                 ],
-                "id": 2942,
+                "id": 2939,
                 "name": "Block",
                 "src": "6329:78:4"
               }
             ],
-            "id": 2943,
+            "id": 2940,
             "name": "FunctionDefinition",
             "src": "6239:168:4"
           },
@@ -4992,7 +4992,7 @@ export const DebtRegistry =
               ],
               "name": "get",
               "payable": false,
-              "scope": 3143,
+              "scope": 3140,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -5004,7 +5004,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 2993,
+                      "scope": 2990,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -5017,17 +5017,17 @@ export const DebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 2944,
+                        "id": 2941,
                         "name": "ElementaryTypeName",
                         "src": "6672:7:4"
                       }
                     ],
-                    "id": 2945,
+                    "id": 2942,
                     "name": "VariableDeclaration",
                     "src": "6672:19:4"
                   }
                 ],
-                "id": 2946,
+                "id": 2943,
                 "name": "ParameterList",
                 "src": "6671:21:4"
               },
@@ -5037,7 +5037,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 2993,
+                      "scope": 2990,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -5050,12 +5050,12 @@ export const DebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2947,
+                        "id": 2944,
                         "name": "ElementaryTypeName",
                         "src": "6737:7:4"
                       }
                     ],
-                    "id": 2948,
+                    "id": 2945,
                     "name": "VariableDeclaration",
                     "src": "6737:7:4"
                   },
@@ -5063,7 +5063,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 2993,
+                      "scope": 2990,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -5076,12 +5076,12 @@ export const DebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2949,
+                        "id": 2946,
                         "name": "ElementaryTypeName",
                         "src": "6746:7:4"
                       }
                     ],
-                    "id": 2950,
+                    "id": 2947,
                     "name": "VariableDeclaration",
                     "src": "6746:7:4"
                   },
@@ -5089,7 +5089,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 2993,
+                      "scope": 2990,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -5102,12 +5102,12 @@ export const DebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2951,
+                        "id": 2948,
                         "name": "ElementaryTypeName",
                         "src": "6755:7:4"
                       }
                     ],
-                    "id": 2952,
+                    "id": 2949,
                     "name": "VariableDeclaration",
                     "src": "6755:7:4"
                   },
@@ -5115,7 +5115,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 2993,
+                      "scope": 2990,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -5128,12 +5128,12 @@ export const DebtRegistry =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 2953,
+                        "id": 2950,
                         "name": "ElementaryTypeName",
                         "src": "6764:4:4"
                       }
                     ],
-                    "id": 2954,
+                    "id": 2951,
                     "name": "VariableDeclaration",
                     "src": "6764:4:4"
                   },
@@ -5141,7 +5141,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 2993,
+                      "scope": 2990,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -5154,12 +5154,12 @@ export const DebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2955,
+                        "id": 2952,
                         "name": "ElementaryTypeName",
                         "src": "6770:7:4"
                       }
                     ],
-                    "id": 2956,
+                    "id": 2953,
                     "name": "VariableDeclaration",
                     "src": "6770:7:4"
                   },
@@ -5167,7 +5167,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 2993,
+                      "scope": 2990,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -5180,12 +5180,12 @@ export const DebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 2957,
+                        "id": 2954,
                         "name": "ElementaryTypeName",
                         "src": "6779:7:4"
                       }
                     ],
-                    "id": 2958,
+                    "id": 2955,
                     "name": "VariableDeclaration",
                     "src": "6779:7:4"
                   },
@@ -5193,7 +5193,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 2993,
+                      "scope": 2990,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -5206,17 +5206,17 @@ export const DebtRegistry =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 2959,
+                        "id": 2956,
                         "name": "ElementaryTypeName",
                         "src": "6788:4:4"
                       }
                     ],
-                    "id": 2960,
+                    "id": 2957,
                     "name": "VariableDeclaration",
                     "src": "6788:4:4"
                   }
                 ],
-                "id": 2961,
+                "id": 2958,
                 "name": "ParameterList",
                 "src": "6736:57:4"
               },
@@ -5224,7 +5224,7 @@ export const DebtRegistry =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 2961
+                      "functionReturnParameters": 2958
                     },
                     "children": [
                       {
@@ -5246,7 +5246,7 @@ export const DebtRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "version",
-                              "referencedDeclaration": 2634,
+                              "referencedDeclaration": 2631,
                               "type": "address"
                             },
                             "children": [
@@ -5266,11 +5266,11 @@ export const DebtRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2651,
+                                      "referencedDeclaration": 2648,
                                       "type": "mapping(bytes32 => struct DebtRegistry.Entry storage ref)",
                                       "value": "registry"
                                     },
-                                    "id": 2962,
+                                    "id": 2959,
                                     "name": "Identifier",
                                     "src": "6829:8:4"
                                   },
@@ -5280,21 +5280,21 @@ export const DebtRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2945,
+                                      "referencedDeclaration": 2942,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 2963,
+                                    "id": 2960,
                                     "name": "Identifier",
                                     "src": "6838:11:4"
                                   }
                                 ],
-                                "id": 2964,
+                                "id": 2961,
                                 "name": "IndexAccess",
                                 "src": "6829:21:4"
                               }
                             ],
-                            "id": 2965,
+                            "id": 2962,
                             "name": "MemberAccess",
                             "src": "6829:29:4"
                           },
@@ -5306,7 +5306,7 @@ export const DebtRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "beneficiary",
-                              "referencedDeclaration": 2636,
+                              "referencedDeclaration": 2633,
                               "type": "address"
                             },
                             "children": [
@@ -5326,11 +5326,11 @@ export const DebtRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2651,
+                                      "referencedDeclaration": 2648,
                                       "type": "mapping(bytes32 => struct DebtRegistry.Entry storage ref)",
                                       "value": "registry"
                                     },
-                                    "id": 2966,
+                                    "id": 2963,
                                     "name": "Identifier",
                                     "src": "6872:8:4"
                                   },
@@ -5340,21 +5340,21 @@ export const DebtRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2945,
+                                      "referencedDeclaration": 2942,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 2967,
+                                    "id": 2964,
                                     "name": "Identifier",
                                     "src": "6881:11:4"
                                   }
                                 ],
-                                "id": 2968,
+                                "id": 2965,
                                 "name": "IndexAccess",
                                 "src": "6872:21:4"
                               }
                             ],
-                            "id": 2969,
+                            "id": 2966,
                             "name": "MemberAccess",
                             "src": "6872:33:4"
                           },
@@ -5366,7 +5366,7 @@ export const DebtRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "underwriter",
-                              "referencedDeclaration": 2638,
+                              "referencedDeclaration": 2635,
                               "type": "address"
                             },
                             "children": [
@@ -5386,11 +5386,11 @@ export const DebtRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2651,
+                                      "referencedDeclaration": 2648,
                                       "type": "mapping(bytes32 => struct DebtRegistry.Entry storage ref)",
                                       "value": "registry"
                                     },
-                                    "id": 2970,
+                                    "id": 2967,
                                     "name": "Identifier",
                                     "src": "6919:8:4"
                                   },
@@ -5400,21 +5400,21 @@ export const DebtRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2945,
+                                      "referencedDeclaration": 2942,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 2971,
+                                    "id": 2968,
                                     "name": "Identifier",
                                     "src": "6928:11:4"
                                   }
                                 ],
-                                "id": 2972,
+                                "id": 2969,
                                 "name": "IndexAccess",
                                 "src": "6919:21:4"
                               }
                             ],
-                            "id": 2973,
+                            "id": 2970,
                             "name": "MemberAccess",
                             "src": "6919:33:4"
                           },
@@ -5426,7 +5426,7 @@ export const DebtRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "underwriterRiskRating",
-                              "referencedDeclaration": 2640,
+                              "referencedDeclaration": 2637,
                               "type": "uint256"
                             },
                             "children": [
@@ -5446,11 +5446,11 @@ export const DebtRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2651,
+                                      "referencedDeclaration": 2648,
                                       "type": "mapping(bytes32 => struct DebtRegistry.Entry storage ref)",
                                       "value": "registry"
                                     },
-                                    "id": 2974,
+                                    "id": 2971,
                                     "name": "Identifier",
                                     "src": "6966:8:4"
                                   },
@@ -5460,21 +5460,21 @@ export const DebtRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2945,
+                                      "referencedDeclaration": 2942,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 2975,
+                                    "id": 2972,
                                     "name": "Identifier",
                                     "src": "6975:11:4"
                                   }
                                 ],
-                                "id": 2976,
+                                "id": 2973,
                                 "name": "IndexAccess",
                                 "src": "6966:21:4"
                               }
                             ],
-                            "id": 2977,
+                            "id": 2974,
                             "name": "MemberAccess",
                             "src": "6966:43:4"
                           },
@@ -5486,7 +5486,7 @@ export const DebtRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "termsContract",
-                              "referencedDeclaration": 2642,
+                              "referencedDeclaration": 2639,
                               "type": "address"
                             },
                             "children": [
@@ -5506,11 +5506,11 @@ export const DebtRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2651,
+                                      "referencedDeclaration": 2648,
                                       "type": "mapping(bytes32 => struct DebtRegistry.Entry storage ref)",
                                       "value": "registry"
                                     },
-                                    "id": 2978,
+                                    "id": 2975,
                                     "name": "Identifier",
                                     "src": "7023:8:4"
                                   },
@@ -5520,21 +5520,21 @@ export const DebtRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2945,
+                                      "referencedDeclaration": 2942,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 2979,
+                                    "id": 2976,
                                     "name": "Identifier",
                                     "src": "7032:11:4"
                                   }
                                 ],
-                                "id": 2980,
+                                "id": 2977,
                                 "name": "IndexAccess",
                                 "src": "7023:21:4"
                               }
                             ],
-                            "id": 2981,
+                            "id": 2978,
                             "name": "MemberAccess",
                             "src": "7023:35:4"
                           },
@@ -5546,7 +5546,7 @@ export const DebtRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "termsContractParameters",
-                              "referencedDeclaration": 2644,
+                              "referencedDeclaration": 2641,
                               "type": "bytes32"
                             },
                             "children": [
@@ -5566,11 +5566,11 @@ export const DebtRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2651,
+                                      "referencedDeclaration": 2648,
                                       "type": "mapping(bytes32 => struct DebtRegistry.Entry storage ref)",
                                       "value": "registry"
                                     },
-                                    "id": 2982,
+                                    "id": 2979,
                                     "name": "Identifier",
                                     "src": "7072:8:4"
                                   },
@@ -5580,21 +5580,21 @@ export const DebtRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2945,
+                                      "referencedDeclaration": 2942,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 2983,
+                                    "id": 2980,
                                     "name": "Identifier",
                                     "src": "7081:11:4"
                                   }
                                 ],
-                                "id": 2984,
+                                "id": 2981,
                                 "name": "IndexAccess",
                                 "src": "7072:21:4"
                               }
                             ],
-                            "id": 2985,
+                            "id": 2982,
                             "name": "MemberAccess",
                             "src": "7072:45:4"
                           },
@@ -5606,7 +5606,7 @@ export const DebtRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "issuanceBlockTimestamp",
-                              "referencedDeclaration": 2646,
+                              "referencedDeclaration": 2643,
                               "type": "uint256"
                             },
                             "children": [
@@ -5626,11 +5626,11 @@ export const DebtRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2651,
+                                      "referencedDeclaration": 2648,
                                       "type": "mapping(bytes32 => struct DebtRegistry.Entry storage ref)",
                                       "value": "registry"
                                     },
-                                    "id": 2986,
+                                    "id": 2983,
                                     "name": "Identifier",
                                     "src": "7131:8:4"
                                   },
@@ -5640,41 +5640,41 @@ export const DebtRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2945,
+                                      "referencedDeclaration": 2942,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 2987,
+                                    "id": 2984,
                                     "name": "Identifier",
                                     "src": "7140:11:4"
                                   }
                                 ],
-                                "id": 2988,
+                                "id": 2985,
                                 "name": "IndexAccess",
                                 "src": "7131:21:4"
                               }
                             ],
-                            "id": 2989,
+                            "id": 2986,
                             "name": "MemberAccess",
                             "src": "7131:44:4"
                           }
                         ],
-                        "id": 2990,
+                        "id": 2987,
                         "name": "TupleExpression",
                         "src": "6815:370:4"
                       }
                     ],
-                    "id": 2991,
+                    "id": 2988,
                     "name": "Return",
                     "src": "6808:377:4"
                   }
                 ],
-                "id": 2992,
+                "id": 2989,
                 "name": "Block",
                 "src": "6798:394:4"
               }
             ],
-            "id": 2993,
+            "id": 2990,
             "name": "FunctionDefinition",
             "src": "6659:533:4"
           },
@@ -5685,7 +5685,7 @@ export const DebtRegistry =
               "isConstructor": false,
               "name": "getBeneficiary",
               "payable": false,
-              "scope": 3143,
+              "scope": 3140,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -5697,7 +5697,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 3009,
+                      "scope": 3006,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -5710,17 +5710,17 @@ export const DebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 2994,
+                        "id": 2991,
                         "name": "ElementaryTypeName",
                         "src": "7289:7:4"
                       }
                     ],
-                    "id": 2995,
+                    "id": 2992,
                     "name": "VariableDeclaration",
                     "src": "7289:19:4"
                   }
                 ],
-                "id": 2996,
+                "id": 2993,
                 "name": "ParameterList",
                 "src": "7288:21:4"
               },
@@ -5730,7 +5730,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 3009,
+                      "scope": 3006,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -5743,17 +5743,17 @@ export const DebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3000,
+                        "id": 2997,
                         "name": "ElementaryTypeName",
                         "src": "7391:7:4"
                       }
                     ],
-                    "id": 3001,
+                    "id": 2998,
                     "name": "VariableDeclaration",
                     "src": "7391:7:4"
                   }
                 ],
-                "id": 3002,
+                "id": 2999,
                 "name": "ParameterList",
                 "src": "7390:9:4"
               },
@@ -5765,11 +5765,11 @@ export const DebtRegistry =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 2724,
+                      "referencedDeclaration": 2721,
                       "type": "modifier (bytes32)",
                       "value": "onlyExtantEntry"
                     },
-                    "id": 2997,
+                    "id": 2994,
                     "name": "Identifier",
                     "src": "7346:15:4"
                   },
@@ -5779,16 +5779,16 @@ export const DebtRegistry =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 2995,
+                      "referencedDeclaration": 2992,
                       "type": "bytes32",
                       "value": "agreementId"
                     },
-                    "id": 2998,
+                    "id": 2995,
                     "name": "Identifier",
                     "src": "7362:11:4"
                   }
                 ],
-                "id": 2999,
+                "id": 2996,
                 "name": "ModifierInvocation",
                 "src": "7346:28:4"
               },
@@ -5796,7 +5796,7 @@ export const DebtRegistry =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 3002
+                      "functionReturnParameters": 2999
                     },
                     "children": [
                       {
@@ -5807,7 +5807,7 @@ export const DebtRegistry =
                           "isPure": false,
                           "lValueRequested": false,
                           "member_name": "beneficiary",
-                          "referencedDeclaration": 2636,
+                          "referencedDeclaration": 2633,
                           "type": "address"
                         },
                         "children": [
@@ -5827,11 +5827,11 @@ export const DebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2651,
+                                  "referencedDeclaration": 2648,
                                   "type": "mapping(bytes32 => struct DebtRegistry.Entry storage ref)",
                                   "value": "registry"
                                 },
-                                "id": 3003,
+                                "id": 3000,
                                 "name": "Identifier",
                                 "src": "7421:8:4"
                               },
@@ -5841,36 +5841,36 @@ export const DebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2995,
+                                  "referencedDeclaration": 2992,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 3004,
+                                "id": 3001,
                                 "name": "Identifier",
                                 "src": "7430:11:4"
                               }
                             ],
-                            "id": 3005,
+                            "id": 3002,
                             "name": "IndexAccess",
                             "src": "7421:21:4"
                           }
                         ],
-                        "id": 3006,
+                        "id": 3003,
                         "name": "MemberAccess",
                         "src": "7421:33:4"
                       }
                     ],
-                    "id": 3007,
+                    "id": 3004,
                     "name": "Return",
                     "src": "7414:40:4"
                   }
                 ],
-                "id": 3008,
+                "id": 3005,
                 "name": "Block",
                 "src": "7404:57:4"
               }
             ],
-            "id": 3009,
+            "id": 3006,
             "name": "FunctionDefinition",
             "src": "7265:196:4"
           },
@@ -5881,7 +5881,7 @@ export const DebtRegistry =
               "isConstructor": false,
               "name": "getTermsContract",
               "payable": false,
-              "scope": 3143,
+              "scope": 3140,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -5893,7 +5893,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 3025,
+                      "scope": 3022,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -5906,17 +5906,17 @@ export const DebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 3010,
+                        "id": 3007,
                         "name": "ElementaryTypeName",
                         "src": "7571:7:4"
                       }
                     ],
-                    "id": 3011,
+                    "id": 3008,
                     "name": "VariableDeclaration",
                     "src": "7571:19:4"
                   }
                 ],
-                "id": 3012,
+                "id": 3009,
                 "name": "ParameterList",
                 "src": "7570:21:4"
               },
@@ -5926,7 +5926,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 3025,
+                      "scope": 3022,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -5939,17 +5939,17 @@ export const DebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3016,
+                        "id": 3013,
                         "name": "ElementaryTypeName",
                         "src": "7674:7:4"
                       }
                     ],
-                    "id": 3017,
+                    "id": 3014,
                     "name": "VariableDeclaration",
                     "src": "7674:7:4"
                   }
                 ],
-                "id": 3018,
+                "id": 3015,
                 "name": "ParameterList",
                 "src": "7673:9:4"
               },
@@ -5961,11 +5961,11 @@ export const DebtRegistry =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 2724,
+                      "referencedDeclaration": 2721,
                       "type": "modifier (bytes32)",
                       "value": "onlyExtantEntry"
                     },
-                    "id": 3013,
+                    "id": 3010,
                     "name": "Identifier",
                     "src": "7628:15:4"
                   },
@@ -5975,16 +5975,16 @@ export const DebtRegistry =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 3011,
+                      "referencedDeclaration": 3008,
                       "type": "bytes32",
                       "value": "agreementId"
                     },
-                    "id": 3014,
+                    "id": 3011,
                     "name": "Identifier",
                     "src": "7644:11:4"
                   }
                 ],
-                "id": 3015,
+                "id": 3012,
                 "name": "ModifierInvocation",
                 "src": "7628:28:4"
               },
@@ -5992,7 +5992,7 @@ export const DebtRegistry =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 3018
+                      "functionReturnParameters": 3015
                     },
                     "children": [
                       {
@@ -6003,7 +6003,7 @@ export const DebtRegistry =
                           "isPure": false,
                           "lValueRequested": false,
                           "member_name": "termsContract",
-                          "referencedDeclaration": 2642,
+                          "referencedDeclaration": 2639,
                           "type": "address"
                         },
                         "children": [
@@ -6023,11 +6023,11 @@ export const DebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2651,
+                                  "referencedDeclaration": 2648,
                                   "type": "mapping(bytes32 => struct DebtRegistry.Entry storage ref)",
                                   "value": "registry"
                                 },
-                                "id": 3019,
+                                "id": 3016,
                                 "name": "Identifier",
                                 "src": "7704:8:4"
                               },
@@ -6037,36 +6037,36 @@ export const DebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3011,
+                                  "referencedDeclaration": 3008,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 3020,
+                                "id": 3017,
                                 "name": "Identifier",
                                 "src": "7713:11:4"
                               }
                             ],
-                            "id": 3021,
+                            "id": 3018,
                             "name": "IndexAccess",
                             "src": "7704:21:4"
                           }
                         ],
-                        "id": 3022,
+                        "id": 3019,
                         "name": "MemberAccess",
                         "src": "7704:35:4"
                       }
                     ],
-                    "id": 3023,
+                    "id": 3020,
                     "name": "Return",
                     "src": "7697:42:4"
                   }
                 ],
-                "id": 3024,
+                "id": 3021,
                 "name": "Block",
                 "src": "7687:59:4"
               }
             ],
-            "id": 3025,
+            "id": 3022,
             "name": "FunctionDefinition",
             "src": "7545:201:4"
           },
@@ -6077,7 +6077,7 @@ export const DebtRegistry =
               "isConstructor": false,
               "name": "getTermsContractParameters",
               "payable": false,
-              "scope": 3143,
+              "scope": 3140,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -6089,7 +6089,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 3041,
+                      "scope": 3038,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -6102,17 +6102,17 @@ export const DebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 3026,
+                        "id": 3023,
                         "name": "ElementaryTypeName",
                         "src": "7869:7:4"
                       }
                     ],
-                    "id": 3027,
+                    "id": 3024,
                     "name": "VariableDeclaration",
                     "src": "7869:19:4"
                   }
                 ],
-                "id": 3028,
+                "id": 3025,
                 "name": "ParameterList",
                 "src": "7868:21:4"
               },
@@ -6122,7 +6122,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 3041,
+                      "scope": 3038,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -6135,17 +6135,17 @@ export const DebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 3032,
+                        "id": 3029,
                         "name": "ElementaryTypeName",
                         "src": "7972:7:4"
                       }
                     ],
-                    "id": 3033,
+                    "id": 3030,
                     "name": "VariableDeclaration",
                     "src": "7972:7:4"
                   }
                 ],
-                "id": 3034,
+                "id": 3031,
                 "name": "ParameterList",
                 "src": "7971:9:4"
               },
@@ -6157,11 +6157,11 @@ export const DebtRegistry =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 2724,
+                      "referencedDeclaration": 2721,
                       "type": "modifier (bytes32)",
                       "value": "onlyExtantEntry"
                     },
-                    "id": 3029,
+                    "id": 3026,
                     "name": "Identifier",
                     "src": "7926:15:4"
                   },
@@ -6171,16 +6171,16 @@ export const DebtRegistry =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 3027,
+                      "referencedDeclaration": 3024,
                       "type": "bytes32",
                       "value": "agreementId"
                     },
-                    "id": 3030,
+                    "id": 3027,
                     "name": "Identifier",
                     "src": "7942:11:4"
                   }
                 ],
-                "id": 3031,
+                "id": 3028,
                 "name": "ModifierInvocation",
                 "src": "7926:28:4"
               },
@@ -6188,7 +6188,7 @@ export const DebtRegistry =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 3034
+                      "functionReturnParameters": 3031
                     },
                     "children": [
                       {
@@ -6199,7 +6199,7 @@ export const DebtRegistry =
                           "isPure": false,
                           "lValueRequested": false,
                           "member_name": "termsContractParameters",
-                          "referencedDeclaration": 2644,
+                          "referencedDeclaration": 2641,
                           "type": "bytes32"
                         },
                         "children": [
@@ -6219,11 +6219,11 @@ export const DebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2651,
+                                  "referencedDeclaration": 2648,
                                   "type": "mapping(bytes32 => struct DebtRegistry.Entry storage ref)",
                                   "value": "registry"
                                 },
-                                "id": 3035,
+                                "id": 3032,
                                 "name": "Identifier",
                                 "src": "8002:8:4"
                               },
@@ -6233,36 +6233,36 @@ export const DebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3027,
+                                  "referencedDeclaration": 3024,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 3036,
+                                "id": 3033,
                                 "name": "Identifier",
                                 "src": "8011:11:4"
                               }
                             ],
-                            "id": 3037,
+                            "id": 3034,
                             "name": "IndexAccess",
                             "src": "8002:21:4"
                           }
                         ],
-                        "id": 3038,
+                        "id": 3035,
                         "name": "MemberAccess",
                         "src": "8002:45:4"
                       }
                     ],
-                    "id": 3039,
+                    "id": 3036,
                     "name": "Return",
                     "src": "7995:52:4"
                   }
                 ],
-                "id": 3040,
+                "id": 3037,
                 "name": "Block",
                 "src": "7985:69:4"
               }
             ],
-            "id": 3041,
+            "id": 3038,
             "name": "FunctionDefinition",
             "src": "7833:221:4"
           },
@@ -6273,7 +6273,7 @@ export const DebtRegistry =
               "isConstructor": false,
               "name": "getTerms",
               "payable": false,
-              "scope": 3143,
+              "scope": 3140,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -6285,7 +6285,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 3064,
+                      "scope": 3061,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -6298,17 +6298,17 @@ export const DebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 3042,
+                        "id": 3039,
                         "name": "ElementaryTypeName",
                         "src": "8197:7:4"
                       }
                     ],
-                    "id": 3043,
+                    "id": 3040,
                     "name": "VariableDeclaration",
                     "src": "8197:19:4"
                   }
                 ],
-                "id": 3044,
+                "id": 3041,
                 "name": "ParameterList",
                 "src": "8196:21:4"
               },
@@ -6318,7 +6318,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 3064,
+                      "scope": 3061,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -6331,12 +6331,12 @@ export const DebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3048,
+                        "id": 3045,
                         "name": "ElementaryTypeName",
                         "src": "8299:7:4"
                       }
                     ],
-                    "id": 3049,
+                    "id": 3046,
                     "name": "VariableDeclaration",
                     "src": "8299:7:4"
                   },
@@ -6344,7 +6344,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 3064,
+                      "scope": 3061,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -6357,17 +6357,17 @@ export const DebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 3050,
+                        "id": 3047,
                         "name": "ElementaryTypeName",
                         "src": "8308:7:4"
                       }
                     ],
-                    "id": 3051,
+                    "id": 3048,
                     "name": "VariableDeclaration",
                     "src": "8308:7:4"
                   }
                 ],
-                "id": 3052,
+                "id": 3049,
                 "name": "ParameterList",
                 "src": "8298:18:4"
               },
@@ -6379,11 +6379,11 @@ export const DebtRegistry =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 2724,
+                      "referencedDeclaration": 2721,
                       "type": "modifier (bytes32)",
                       "value": "onlyExtantEntry"
                     },
-                    "id": 3045,
+                    "id": 3042,
                     "name": "Identifier",
                     "src": "8254:15:4"
                   },
@@ -6393,16 +6393,16 @@ export const DebtRegistry =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 3043,
+                      "referencedDeclaration": 3040,
                       "type": "bytes32",
                       "value": "agreementId"
                     },
-                    "id": 3046,
+                    "id": 3043,
                     "name": "Identifier",
                     "src": "8270:11:4"
                   }
                 ],
-                "id": 3047,
+                "id": 3044,
                 "name": "ModifierInvocation",
                 "src": "8254:28:4"
               },
@@ -6410,7 +6410,7 @@ export const DebtRegistry =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 3052
+                      "functionReturnParameters": 3049
                     },
                     "children": [
                       {
@@ -6432,7 +6432,7 @@ export const DebtRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "termsContract",
-                              "referencedDeclaration": 2642,
+                              "referencedDeclaration": 2639,
                               "type": "address"
                             },
                             "children": [
@@ -6452,11 +6452,11 @@ export const DebtRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2651,
+                                      "referencedDeclaration": 2648,
                                       "type": "mapping(bytes32 => struct DebtRegistry.Entry storage ref)",
                                       "value": "registry"
                                     },
-                                    "id": 3053,
+                                    "id": 3050,
                                     "name": "Identifier",
                                     "src": "8352:8:4"
                                   },
@@ -6466,21 +6466,21 @@ export const DebtRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 3043,
+                                      "referencedDeclaration": 3040,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 3054,
+                                    "id": 3051,
                                     "name": "Identifier",
                                     "src": "8361:11:4"
                                   }
                                 ],
-                                "id": 3055,
+                                "id": 3052,
                                 "name": "IndexAccess",
                                 "src": "8352:21:4"
                               }
                             ],
-                            "id": 3056,
+                            "id": 3053,
                             "name": "MemberAccess",
                             "src": "8352:35:4"
                           },
@@ -6492,7 +6492,7 @@ export const DebtRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "termsContractParameters",
-                              "referencedDeclaration": 2644,
+                              "referencedDeclaration": 2641,
                               "type": "bytes32"
                             },
                             "children": [
@@ -6512,11 +6512,11 @@ export const DebtRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2651,
+                                      "referencedDeclaration": 2648,
                                       "type": "mapping(bytes32 => struct DebtRegistry.Entry storage ref)",
                                       "value": "registry"
                                     },
-                                    "id": 3057,
+                                    "id": 3054,
                                     "name": "Identifier",
                                     "src": "8401:8:4"
                                   },
@@ -6526,41 +6526,41 @@ export const DebtRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 3043,
+                                      "referencedDeclaration": 3040,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 3058,
+                                    "id": 3055,
                                     "name": "Identifier",
                                     "src": "8410:11:4"
                                   }
                                 ],
-                                "id": 3059,
+                                "id": 3056,
                                 "name": "IndexAccess",
                                 "src": "8401:21:4"
                               }
                             ],
-                            "id": 3060,
+                            "id": 3057,
                             "name": "MemberAccess",
                             "src": "8401:45:4"
                           }
                         ],
-                        "id": 3061,
+                        "id": 3058,
                         "name": "TupleExpression",
                         "src": "8338:118:4"
                       }
                     ],
-                    "id": 3062,
+                    "id": 3059,
                     "name": "Return",
                     "src": "8331:125:4"
                   }
                 ],
-                "id": 3063,
+                "id": 3060,
                 "name": "Block",
                 "src": "8321:142:4"
               }
             ],
-            "id": 3064,
+            "id": 3061,
             "name": "FunctionDefinition",
             "src": "8179:284:4"
           },
@@ -6571,7 +6571,7 @@ export const DebtRegistry =
               "isConstructor": false,
               "name": "getIssuanceBlockTimestamp",
               "payable": false,
-              "scope": 3143,
+              "scope": 3140,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -6583,7 +6583,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 3080,
+                      "scope": 3077,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -6596,17 +6596,17 @@ export const DebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 3065,
+                        "id": 3062,
                         "name": "ElementaryTypeName",
                         "src": "8600:7:4"
                       }
                     ],
-                    "id": 3066,
+                    "id": 3063,
                     "name": "VariableDeclaration",
                     "src": "8600:19:4"
                   }
                 ],
-                "id": 3067,
+                "id": 3064,
                 "name": "ParameterList",
                 "src": "8599:21:4"
               },
@@ -6616,7 +6616,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "timestamp",
-                      "scope": 3080,
+                      "scope": 3077,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -6629,17 +6629,17 @@ export const DebtRegistry =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 3071,
+                        "id": 3068,
                         "name": "ElementaryTypeName",
                         "src": "8703:4:4"
                       }
                     ],
-                    "id": 3072,
+                    "id": 3069,
                     "name": "VariableDeclaration",
                     "src": "8703:14:4"
                   }
                 ],
-                "id": 3073,
+                "id": 3070,
                 "name": "ParameterList",
                 "src": "8702:16:4"
               },
@@ -6651,11 +6651,11 @@ export const DebtRegistry =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 2724,
+                      "referencedDeclaration": 2721,
                       "type": "modifier (bytes32)",
                       "value": "onlyExtantEntry"
                     },
-                    "id": 3068,
+                    "id": 3065,
                     "name": "Identifier",
                     "src": "8657:15:4"
                   },
@@ -6665,16 +6665,16 @@ export const DebtRegistry =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 3066,
+                      "referencedDeclaration": 3063,
                       "type": "bytes32",
                       "value": "agreementId"
                     },
-                    "id": 3069,
+                    "id": 3066,
                     "name": "Identifier",
                     "src": "8673:11:4"
                   }
                 ],
-                "id": 3070,
+                "id": 3067,
                 "name": "ModifierInvocation",
                 "src": "8657:28:4"
               },
@@ -6682,7 +6682,7 @@ export const DebtRegistry =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 3073
+                      "functionReturnParameters": 3070
                     },
                     "children": [
                       {
@@ -6693,7 +6693,7 @@ export const DebtRegistry =
                           "isPure": false,
                           "lValueRequested": false,
                           "member_name": "issuanceBlockTimestamp",
-                          "referencedDeclaration": 2646,
+                          "referencedDeclaration": 2643,
                           "type": "uint256"
                         },
                         "children": [
@@ -6713,11 +6713,11 @@ export const DebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2651,
+                                  "referencedDeclaration": 2648,
                                   "type": "mapping(bytes32 => struct DebtRegistry.Entry storage ref)",
                                   "value": "registry"
                                 },
-                                "id": 3074,
+                                "id": 3071,
                                 "name": "Identifier",
                                 "src": "8740:8:4"
                               },
@@ -6727,36 +6727,36 @@ export const DebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3066,
+                                  "referencedDeclaration": 3063,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 3075,
+                                "id": 3072,
                                 "name": "Identifier",
                                 "src": "8749:11:4"
                               }
                             ],
-                            "id": 3076,
+                            "id": 3073,
                             "name": "IndexAccess",
                             "src": "8740:21:4"
                           }
                         ],
-                        "id": 3077,
+                        "id": 3074,
                         "name": "MemberAccess",
                         "src": "8740:44:4"
                       }
                     ],
-                    "id": 3078,
+                    "id": 3075,
                     "name": "Return",
                     "src": "8733:51:4"
                   }
                 ],
-                "id": 3079,
+                "id": 3076,
                 "name": "Block",
                 "src": "8723:68:4"
               }
             ],
-            "id": 3080,
+            "id": 3077,
             "name": "FunctionDefinition",
             "src": "8565:226:4"
           },
@@ -6770,7 +6770,7 @@ export const DebtRegistry =
               ],
               "name": "getAuthorizedInsertAgents",
               "payable": false,
-              "scope": 3143,
+              "scope": 3140,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -6783,7 +6783,7 @@ export const DebtRegistry =
                   ]
                 },
                 "children": [],
-                "id": 3081,
+                "id": 3078,
                 "name": "ParameterList",
                 "src": "8919:2:4"
               },
@@ -6793,7 +6793,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 3091,
+                      "scope": 3088,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address[] memory",
@@ -6812,22 +6812,22 @@ export const DebtRegistry =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 3082,
+                            "id": 3079,
                             "name": "ElementaryTypeName",
                             "src": "8966:7:4"
                           }
                         ],
-                        "id": 3083,
+                        "id": 3080,
                         "name": "ArrayTypeName",
                         "src": "8966:9:4"
                       }
                     ],
-                    "id": 3084,
+                    "id": 3081,
                     "name": "VariableDeclaration",
                     "src": "8966:9:4"
                   }
                 ],
-                "id": 3085,
+                "id": 3082,
                 "name": "ParameterList",
                 "src": "8965:11:4"
               },
@@ -6835,7 +6835,7 @@ export const DebtRegistry =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 3085
+                      "functionReturnParameters": 3082
                     },
                     "children": [
                       {
@@ -6866,7 +6866,7 @@ export const DebtRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "getAuthorizedAgents",
-                              "referencedDeclaration": 6255,
+                              "referencedDeclaration": 6252,
                               "type": "function (struct PermissionsLib.Permissions storage pointer) view returns (address[] memory)"
                             },
                             "children": [
@@ -6876,36 +6876,36 @@ export const DebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2658,
+                                  "referencedDeclaration": 2655,
                                   "type": "struct PermissionsLib.Permissions storage ref",
                                   "value": "entryInsertPermissions"
                                 },
-                                "id": 3086,
+                                "id": 3083,
                                 "name": "Identifier",
                                 "src": "8998:22:4"
                               }
                             ],
-                            "id": 3087,
+                            "id": 3084,
                             "name": "MemberAccess",
                             "src": "8998:42:4"
                           }
                         ],
-                        "id": 3088,
+                        "id": 3085,
                         "name": "FunctionCall",
                         "src": "8998:44:4"
                       }
                     ],
-                    "id": 3089,
+                    "id": 3086,
                     "name": "Return",
                     "src": "8991:51:4"
                   }
                 ],
-                "id": 3090,
+                "id": 3087,
                 "name": "Block",
                 "src": "8981:68:4"
               }
             ],
-            "id": 3091,
+            "id": 3088,
             "name": "FunctionDefinition",
             "src": "8885:164:4"
           },
@@ -6919,7 +6919,7 @@ export const DebtRegistry =
               ],
               "name": "getAuthorizedEditAgents",
               "payable": false,
-              "scope": 3143,
+              "scope": 3140,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -6932,7 +6932,7 @@ export const DebtRegistry =
                   ]
                 },
                 "children": [],
-                "id": 3092,
+                "id": 3089,
                 "name": "ParameterList",
                 "src": "9186:2:4"
               },
@@ -6942,7 +6942,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 3102,
+                      "scope": 3099,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address[] memory",
@@ -6961,22 +6961,22 @@ export const DebtRegistry =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 3093,
+                            "id": 3090,
                             "name": "ElementaryTypeName",
                             "src": "9233:7:4"
                           }
                         ],
-                        "id": 3094,
+                        "id": 3091,
                         "name": "ArrayTypeName",
                         "src": "9233:9:4"
                       }
                     ],
-                    "id": 3095,
+                    "id": 3092,
                     "name": "VariableDeclaration",
                     "src": "9233:9:4"
                   }
                 ],
-                "id": 3096,
+                "id": 3093,
                 "name": "ParameterList",
                 "src": "9232:11:4"
               },
@@ -6984,7 +6984,7 @@ export const DebtRegistry =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 3096
+                      "functionReturnParameters": 3093
                     },
                     "children": [
                       {
@@ -7015,7 +7015,7 @@ export const DebtRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "getAuthorizedAgents",
-                              "referencedDeclaration": 6255,
+                              "referencedDeclaration": 6252,
                               "type": "function (struct PermissionsLib.Permissions storage pointer) view returns (address[] memory)"
                             },
                             "children": [
@@ -7025,36 +7025,36 @@ export const DebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2660,
+                                  "referencedDeclaration": 2657,
                                   "type": "struct PermissionsLib.Permissions storage ref",
                                   "value": "entryEditPermissions"
                                 },
-                                "id": 3097,
+                                "id": 3094,
                                 "name": "Identifier",
                                 "src": "9265:20:4"
                               }
                             ],
-                            "id": 3098,
+                            "id": 3095,
                             "name": "MemberAccess",
                             "src": "9265:40:4"
                           }
                         ],
-                        "id": 3099,
+                        "id": 3096,
                         "name": "FunctionCall",
                         "src": "9265:42:4"
                       }
                     ],
-                    "id": 3100,
+                    "id": 3097,
                     "name": "Return",
                     "src": "9258:49:4"
                   }
                 ],
-                "id": 3101,
+                "id": 3098,
                 "name": "Block",
                 "src": "9248:66:4"
               }
             ],
-            "id": 3102,
+            "id": 3099,
             "name": "FunctionDefinition",
             "src": "9154:160:4"
           },
@@ -7068,7 +7068,7 @@ export const DebtRegistry =
               ],
               "name": "getDebtorsDebts",
               "payable": false,
-              "scope": 3143,
+              "scope": 3140,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -7080,7 +7080,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "debtor",
-                      "scope": 3115,
+                      "scope": 3112,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -7093,17 +7093,17 @@ export const DebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3103,
+                        "id": 3100,
                         "name": "ElementaryTypeName",
                         "src": "9482:7:4"
                       }
                     ],
-                    "id": 3104,
+                    "id": 3101,
                     "name": "VariableDeclaration",
                     "src": "9482:14:4"
                   }
                 ],
-                "id": 3105,
+                "id": 3102,
                 "name": "ParameterList",
                 "src": "9481:16:4"
               },
@@ -7113,7 +7113,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 3115,
+                      "scope": 3112,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32[] memory",
@@ -7132,22 +7132,22 @@ export const DebtRegistry =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 3106,
+                            "id": 3103,
                             "name": "ElementaryTypeName",
                             "src": "9542:7:4"
                           }
                         ],
-                        "id": 3107,
+                        "id": 3104,
                         "name": "ArrayTypeName",
                         "src": "9542:9:4"
                       }
                     ],
-                    "id": 3108,
+                    "id": 3105,
                     "name": "VariableDeclaration",
                     "src": "9542:9:4"
                   }
                 ],
-                "id": 3109,
+                "id": 3106,
                 "name": "ParameterList",
                 "src": "9541:11:4"
               },
@@ -7155,7 +7155,7 @@ export const DebtRegistry =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 3109
+                      "functionReturnParameters": 3106
                     },
                     "children": [
                       {
@@ -7174,11 +7174,11 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2656,
+                              "referencedDeclaration": 2653,
                               "type": "mapping(address => bytes32[] storage ref)",
                               "value": "debtorToDebts"
                             },
-                            "id": 3110,
+                            "id": 3107,
                             "name": "Identifier",
                             "src": "9574:13:4"
                           },
@@ -7188,31 +7188,31 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3104,
+                              "referencedDeclaration": 3101,
                               "type": "address",
                               "value": "debtor"
                             },
-                            "id": 3111,
+                            "id": 3108,
                             "name": "Identifier",
                             "src": "9588:6:4"
                           }
                         ],
-                        "id": 3112,
+                        "id": 3109,
                         "name": "IndexAccess",
                         "src": "9574:21:4"
                       }
                     ],
-                    "id": 3113,
+                    "id": 3110,
                     "name": "Return",
                     "src": "9567:28:4"
                   }
                 ],
-                "id": 3114,
+                "id": 3111,
                 "name": "Block",
                 "src": "9557:45:4"
               }
             ],
-            "id": 3115,
+            "id": 3112,
             "name": "FunctionDefinition",
             "src": "9457:145:4"
           },
@@ -7226,7 +7226,7 @@ export const DebtRegistry =
               ],
               "name": "_getAgreementId",
               "payable": false,
-              "scope": 3143,
+              "scope": 3140,
               "stateMutability": "pure",
               "superFunction": null,
               "visibility": "internal"
@@ -7238,7 +7238,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_entry",
-                      "scope": 3142,
+                      "scope": 3139,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "struct DebtRegistry.Entry memory",
@@ -7250,15 +7250,15 @@ export const DebtRegistry =
                         "attributes": {
                           "contractScope": null,
                           "name": "Entry",
-                          "referencedDeclaration": 2647,
+                          "referencedDeclaration": 2644,
                           "type": "struct DebtRegistry.Entry storage pointer"
                         },
-                        "id": 3116,
+                        "id": 3113,
                         "name": "UserDefinedTypeName",
                         "src": "9753:5:4"
                       }
                     ],
-                    "id": 3117,
+                    "id": 3114,
                     "name": "VariableDeclaration",
                     "src": "9753:12:4"
                   },
@@ -7266,7 +7266,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_debtor",
-                      "scope": 3142,
+                      "scope": 3139,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -7279,12 +7279,12 @@ export const DebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3118,
+                        "id": 3115,
                         "name": "ElementaryTypeName",
                         "src": "9767:7:4"
                       }
                     ],
-                    "id": 3119,
+                    "id": 3116,
                     "name": "VariableDeclaration",
                     "src": "9767:15:4"
                   },
@@ -7292,7 +7292,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_salt",
-                      "scope": 3142,
+                      "scope": 3139,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -7305,17 +7305,17 @@ export const DebtRegistry =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 3120,
+                        "id": 3117,
                         "name": "ElementaryTypeName",
                         "src": "9784:4:4"
                       }
                     ],
-                    "id": 3121,
+                    "id": 3118,
                     "name": "VariableDeclaration",
                     "src": "9784:10:4"
                   }
                 ],
-                "id": 3122,
+                "id": 3119,
                 "name": "ParameterList",
                 "src": "9752:43:4"
               },
@@ -7325,7 +7325,7 @@ export const DebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 3142,
+                      "scope": 3139,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -7338,17 +7338,17 @@ export const DebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 3123,
+                        "id": 3120,
                         "name": "ElementaryTypeName",
                         "src": "9842:7:4"
                       }
                     ],
-                    "id": 3124,
+                    "id": 3121,
                     "name": "VariableDeclaration",
                     "src": "9842:7:4"
                   }
                 ],
-                "id": 3125,
+                "id": 3122,
                 "name": "ParameterList",
                 "src": "9841:9:4"
               },
@@ -7356,7 +7356,7 @@ export const DebtRegistry =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 3125
+                      "functionReturnParameters": 3122
                     },
                     "children": [
                       {
@@ -7409,11 +7409,11 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15812,
+                              "referencedDeclaration": 15809,
                               "type": "function () pure returns (bytes32)",
                               "value": "keccak256"
                             },
-                            "id": 3126,
+                            "id": 3123,
                             "name": "Identifier",
                             "src": "9872:9:4"
                           },
@@ -7425,7 +7425,7 @@ export const DebtRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "version",
-                              "referencedDeclaration": 2634,
+                              "referencedDeclaration": 2631,
                               "type": "address"
                             },
                             "children": [
@@ -7435,16 +7435,16 @@ export const DebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3117,
+                                  "referencedDeclaration": 3114,
                                   "type": "struct DebtRegistry.Entry memory",
                                   "value": "_entry"
                                 },
-                                "id": 3127,
+                                "id": 3124,
                                 "name": "Identifier",
                                 "src": "9895:6:4"
                               }
                             ],
-                            "id": 3128,
+                            "id": 3125,
                             "name": "MemberAccess",
                             "src": "9895:14:4"
                           },
@@ -7454,11 +7454,11 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3119,
+                              "referencedDeclaration": 3116,
                               "type": "address",
                               "value": "_debtor"
                             },
-                            "id": 3129,
+                            "id": 3126,
                             "name": "Identifier",
                             "src": "9923:7:4"
                           },
@@ -7470,7 +7470,7 @@ export const DebtRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "underwriter",
-                              "referencedDeclaration": 2638,
+                              "referencedDeclaration": 2635,
                               "type": "address"
                             },
                             "children": [
@@ -7480,16 +7480,16 @@ export const DebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3117,
+                                  "referencedDeclaration": 3114,
                                   "type": "struct DebtRegistry.Entry memory",
                                   "value": "_entry"
                                 },
-                                "id": 3130,
+                                "id": 3127,
                                 "name": "Identifier",
                                 "src": "9944:6:4"
                               }
                             ],
-                            "id": 3131,
+                            "id": 3128,
                             "name": "MemberAccess",
                             "src": "9944:18:4"
                           },
@@ -7501,7 +7501,7 @@ export const DebtRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "underwriterRiskRating",
-                              "referencedDeclaration": 2640,
+                              "referencedDeclaration": 2637,
                               "type": "uint256"
                             },
                             "children": [
@@ -7511,16 +7511,16 @@ export const DebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3117,
+                                  "referencedDeclaration": 3114,
                                   "type": "struct DebtRegistry.Entry memory",
                                   "value": "_entry"
                                 },
-                                "id": 3132,
+                                "id": 3129,
                                 "name": "Identifier",
                                 "src": "9976:6:4"
                               }
                             ],
-                            "id": 3133,
+                            "id": 3130,
                             "name": "MemberAccess",
                             "src": "9976:28:4"
                           },
@@ -7532,7 +7532,7 @@ export const DebtRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "termsContract",
-                              "referencedDeclaration": 2642,
+                              "referencedDeclaration": 2639,
                               "type": "address"
                             },
                             "children": [
@@ -7542,16 +7542,16 @@ export const DebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3117,
+                                  "referencedDeclaration": 3114,
                                   "type": "struct DebtRegistry.Entry memory",
                                   "value": "_entry"
                                 },
-                                "id": 3134,
+                                "id": 3131,
                                 "name": "Identifier",
                                 "src": "10018:6:4"
                               }
                             ],
-                            "id": 3135,
+                            "id": 3132,
                             "name": "MemberAccess",
                             "src": "10018:20:4"
                           },
@@ -7563,7 +7563,7 @@ export const DebtRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "termsContractParameters",
-                              "referencedDeclaration": 2644,
+                              "referencedDeclaration": 2641,
                               "type": "bytes32"
                             },
                             "children": [
@@ -7573,16 +7573,16 @@ export const DebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3117,
+                                  "referencedDeclaration": 3114,
                                   "type": "struct DebtRegistry.Entry memory",
                                   "value": "_entry"
                                 },
-                                "id": 3136,
+                                "id": 3133,
                                 "name": "Identifier",
                                 "src": "10052:6:4"
                               }
                             ],
-                            "id": 3137,
+                            "id": 3134,
                             "name": "MemberAccess",
                             "src": "10052:30:4"
                           },
@@ -7592,41 +7592,41 @@ export const DebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3121,
+                              "referencedDeclaration": 3118,
                               "type": "uint256",
                               "value": "_salt"
                             },
-                            "id": 3138,
+                            "id": 3135,
                             "name": "Identifier",
                             "src": "10096:5:4"
                           }
                         ],
-                        "id": 3139,
+                        "id": 3136,
                         "name": "FunctionCall",
                         "src": "9872:239:4"
                       }
                     ],
-                    "id": 3140,
+                    "id": 3137,
                     "name": "Return",
                     "src": "9865:246:4"
                   }
                 ],
-                "id": 3141,
+                "id": 3138,
                 "name": "Block",
                 "src": "9855:263:4"
               }
             ],
-            "id": 3142,
+            "id": 3139,
             "name": "FunctionDefinition",
             "src": "9728:390:4"
           }
         ],
-        "id": 3143,
+        "id": 3140,
         "name": "ContractDefinition",
         "src": "1124:8996:4"
       }
     ],
-    "id": 3144,
+    "id": 3141,
     "name": "SourceUnit",
     "src": "584:9537:4"
   },
@@ -8161,9 +8161,9 @@ export const DebtRegistry =
         }
       },
       "links": {},
-      "address": "0x7b217e90c64afe84b673d68bc9140d9a9e8be0f4"
+      "address": "0x9b0a35ab859b90780a30256fd17d7a843151f65e"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-21T17:50:40.654Z"
+  "updatedAt": "2018-09-25T20:05:01.882Z"
 }

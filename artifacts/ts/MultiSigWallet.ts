@@ -545,7 +545,7 @@ export const MultiSigWallet =
       "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/wallet/MultiSigWallet.sol",
       "exportedSymbols": {
         "MultiSigWallet": [
-          13903
+          13900
         ]
       }
     },
@@ -558,7 +558,7 @@ export const MultiSigWallet =
             ".18"
           ]
         },
-        "id": 12915,
+        "id": 12912,
         "name": "PragmaDirective",
         "src": "0:23:35"
       },
@@ -574,10 +574,10 @@ export const MultiSigWallet =
           "documentation": "@title Multisignature wallet - Allows multiple parties to agree on transactions before execution.\n @author Stefan George - <stefan.george@consensys.net>",
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            13903
+            13900
           ],
           "name": "MultiSigWallet",
-          "scope": 13904
+          "scope": 13901
         },
         "children": [
           {
@@ -593,7 +593,7 @@ export const MultiSigWallet =
                       "constant": false,
                       "indexed": true,
                       "name": "sender",
-                      "scope": 12921,
+                      "scope": 12918,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -606,12 +606,12 @@ export const MultiSigWallet =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 12916,
+                        "id": 12913,
                         "name": "ElementaryTypeName",
                         "src": "266:7:35"
                       }
                     ],
-                    "id": 12917,
+                    "id": 12914,
                     "name": "VariableDeclaration",
                     "src": "266:22:35"
                   },
@@ -620,7 +620,7 @@ export const MultiSigWallet =
                       "constant": false,
                       "indexed": true,
                       "name": "transactionId",
-                      "scope": 12921,
+                      "scope": 12918,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -633,22 +633,22 @@ export const MultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 12918,
+                        "id": 12915,
                         "name": "ElementaryTypeName",
                         "src": "290:4:35"
                       }
                     ],
-                    "id": 12919,
+                    "id": 12916,
                     "name": "VariableDeclaration",
                     "src": "290:26:35"
                   }
                 ],
-                "id": 12920,
+                "id": 12917,
                 "name": "ParameterList",
                 "src": "265:52:35"
               }
             ],
-            "id": 12921,
+            "id": 12918,
             "name": "EventDefinition",
             "src": "247:71:35"
           },
@@ -665,7 +665,7 @@ export const MultiSigWallet =
                       "constant": false,
                       "indexed": true,
                       "name": "sender",
-                      "scope": 12927,
+                      "scope": 12924,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -678,12 +678,12 @@ export const MultiSigWallet =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 12922,
+                        "id": 12919,
                         "name": "ElementaryTypeName",
                         "src": "340:7:35"
                       }
                     ],
-                    "id": 12923,
+                    "id": 12920,
                     "name": "VariableDeclaration",
                     "src": "340:22:35"
                   },
@@ -692,7 +692,7 @@ export const MultiSigWallet =
                       "constant": false,
                       "indexed": true,
                       "name": "transactionId",
-                      "scope": 12927,
+                      "scope": 12924,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -705,22 +705,22 @@ export const MultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 12924,
+                        "id": 12921,
                         "name": "ElementaryTypeName",
                         "src": "364:4:35"
                       }
                     ],
-                    "id": 12925,
+                    "id": 12922,
                     "name": "VariableDeclaration",
                     "src": "364:26:35"
                   }
                 ],
-                "id": 12926,
+                "id": 12923,
                 "name": "ParameterList",
                 "src": "339:52:35"
               }
             ],
-            "id": 12927,
+            "id": 12924,
             "name": "EventDefinition",
             "src": "323:69:35"
           },
@@ -737,7 +737,7 @@ export const MultiSigWallet =
                       "constant": false,
                       "indexed": true,
                       "name": "transactionId",
-                      "scope": 12931,
+                      "scope": 12928,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -750,22 +750,22 @@ export const MultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 12928,
+                        "id": 12925,
                         "name": "ElementaryTypeName",
                         "src": "414:4:35"
                       }
                     ],
-                    "id": 12929,
+                    "id": 12926,
                     "name": "VariableDeclaration",
                     "src": "414:26:35"
                   }
                 ],
-                "id": 12930,
+                "id": 12927,
                 "name": "ParameterList",
                 "src": "413:28:35"
               }
             ],
-            "id": 12931,
+            "id": 12928,
             "name": "EventDefinition",
             "src": "397:45:35"
           },
@@ -782,7 +782,7 @@ export const MultiSigWallet =
                       "constant": false,
                       "indexed": true,
                       "name": "transactionId",
-                      "scope": 12935,
+                      "scope": 12932,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -795,22 +795,22 @@ export const MultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 12932,
+                        "id": 12929,
                         "name": "ElementaryTypeName",
                         "src": "463:4:35"
                       }
                     ],
-                    "id": 12933,
+                    "id": 12930,
                     "name": "VariableDeclaration",
                     "src": "463:26:35"
                   }
                 ],
-                "id": 12934,
+                "id": 12931,
                 "name": "ParameterList",
                 "src": "462:28:35"
               }
             ],
-            "id": 12935,
+            "id": 12932,
             "name": "EventDefinition",
             "src": "447:44:35"
           },
@@ -827,7 +827,7 @@ export const MultiSigWallet =
                       "constant": false,
                       "indexed": true,
                       "name": "transactionId",
-                      "scope": 12939,
+                      "scope": 12936,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -840,22 +840,22 @@ export const MultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 12936,
+                        "id": 12933,
                         "name": "ElementaryTypeName",
                         "src": "519:4:35"
                       }
                     ],
-                    "id": 12937,
+                    "id": 12934,
                     "name": "VariableDeclaration",
                     "src": "519:26:35"
                   }
                 ],
-                "id": 12938,
+                "id": 12935,
                 "name": "ParameterList",
                 "src": "518:28:35"
               }
             ],
-            "id": 12939,
+            "id": 12936,
             "name": "EventDefinition",
             "src": "496:51:35"
           },
@@ -872,7 +872,7 @@ export const MultiSigWallet =
                       "constant": false,
                       "indexed": true,
                       "name": "sender",
-                      "scope": 12945,
+                      "scope": 12942,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -885,12 +885,12 @@ export const MultiSigWallet =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 12940,
+                        "id": 12937,
                         "name": "ElementaryTypeName",
                         "src": "566:7:35"
                       }
                     ],
-                    "id": 12941,
+                    "id": 12938,
                     "name": "VariableDeclaration",
                     "src": "566:22:35"
                   },
@@ -899,7 +899,7 @@ export const MultiSigWallet =
                       "constant": false,
                       "indexed": false,
                       "name": "value",
-                      "scope": 12945,
+                      "scope": 12942,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -912,22 +912,22 @@ export const MultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 12942,
+                        "id": 12939,
                         "name": "ElementaryTypeName",
                         "src": "590:4:35"
                       }
                     ],
-                    "id": 12943,
+                    "id": 12940,
                     "name": "VariableDeclaration",
                     "src": "590:10:35"
                   }
                 ],
-                "id": 12944,
+                "id": 12941,
                 "name": "ParameterList",
                 "src": "565:36:35"
               }
             ],
-            "id": 12945,
+            "id": 12942,
             "name": "EventDefinition",
             "src": "552:50:35"
           },
@@ -944,7 +944,7 @@ export const MultiSigWallet =
                       "constant": false,
                       "indexed": true,
                       "name": "owner",
-                      "scope": 12949,
+                      "scope": 12946,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -957,22 +957,22 @@ export const MultiSigWallet =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 12946,
+                        "id": 12943,
                         "name": "ElementaryTypeName",
                         "src": "627:7:35"
                       }
                     ],
-                    "id": 12947,
+                    "id": 12944,
                     "name": "VariableDeclaration",
                     "src": "627:21:35"
                   }
                 ],
-                "id": 12948,
+                "id": 12945,
                 "name": "ParameterList",
                 "src": "626:23:35"
               }
             ],
-            "id": 12949,
+            "id": 12946,
             "name": "EventDefinition",
             "src": "607:43:35"
           },
@@ -989,7 +989,7 @@ export const MultiSigWallet =
                       "constant": false,
                       "indexed": true,
                       "name": "owner",
-                      "scope": 12953,
+                      "scope": 12950,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1002,22 +1002,22 @@ export const MultiSigWallet =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 12950,
+                        "id": 12947,
                         "name": "ElementaryTypeName",
                         "src": "674:7:35"
                       }
                     ],
-                    "id": 12951,
+                    "id": 12948,
                     "name": "VariableDeclaration",
                     "src": "674:21:35"
                   }
                 ],
-                "id": 12952,
+                "id": 12949,
                 "name": "ParameterList",
                 "src": "673:23:35"
               }
             ],
-            "id": 12953,
+            "id": 12950,
             "name": "EventDefinition",
             "src": "655:42:35"
           },
@@ -1034,7 +1034,7 @@ export const MultiSigWallet =
                       "constant": false,
                       "indexed": false,
                       "name": "required",
-                      "scope": 12957,
+                      "scope": 12954,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1047,22 +1047,22 @@ export const MultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 12954,
+                        "id": 12951,
                         "name": "ElementaryTypeName",
                         "src": "726:4:35"
                       }
                     ],
-                    "id": 12955,
+                    "id": 12952,
                     "name": "VariableDeclaration",
                     "src": "726:13:35"
                   }
                 ],
-                "id": 12956,
+                "id": 12953,
                 "name": "ParameterList",
                 "src": "725:15:35"
               }
             ],
-            "id": 12957,
+            "id": 12954,
             "name": "EventDefinition",
             "src": "702:39:35"
           },
@@ -1070,7 +1070,7 @@ export const MultiSigWallet =
             "attributes": {
               "constant": true,
               "name": "MAX_OWNER_COUNT",
-              "scope": 13903,
+              "scope": 13900,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "uint256",
@@ -1082,7 +1082,7 @@ export const MultiSigWallet =
                   "name": "uint",
                   "type": "uint256"
                 },
-                "id": 12958,
+                "id": 12955,
                 "name": "ElementaryTypeName",
                 "src": "780:4:35"
               },
@@ -1099,12 +1099,12 @@ export const MultiSigWallet =
                   "type": "int_const 50",
                   "value": "50"
                 },
-                "id": 12959,
+                "id": 12956,
                 "name": "Literal",
                 "src": "819:2:35"
               }
             ],
-            "id": 12960,
+            "id": 12957,
             "name": "VariableDeclaration",
             "src": "780:41:35"
           },
@@ -1112,7 +1112,7 @@ export const MultiSigWallet =
             "attributes": {
               "constant": false,
               "name": "transactions",
-              "scope": 13903,
+              "scope": 13900,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(uint256 => struct MultiSigWallet.Transaction storage ref)",
@@ -1130,7 +1130,7 @@ export const MultiSigWallet =
                       "name": "uint",
                       "type": "uint256"
                     },
-                    "id": 12961,
+                    "id": 12958,
                     "name": "ElementaryTypeName",
                     "src": "868:4:35"
                   },
@@ -1138,20 +1138,20 @@ export const MultiSigWallet =
                     "attributes": {
                       "contractScope": null,
                       "name": "Transaction",
-                      "referencedDeclaration": 12990,
+                      "referencedDeclaration": 12987,
                       "type": "struct MultiSigWallet.Transaction storage pointer"
                     },
-                    "id": 12962,
+                    "id": 12959,
                     "name": "UserDefinedTypeName",
                     "src": "876:11:35"
                   }
                 ],
-                "id": 12963,
+                "id": 12960,
                 "name": "Mapping",
                 "src": "859:29:35"
               }
             ],
-            "id": 12964,
+            "id": 12961,
             "name": "VariableDeclaration",
             "src": "859:49:35"
           },
@@ -1159,7 +1159,7 @@ export const MultiSigWallet =
             "attributes": {
               "constant": false,
               "name": "confirmations",
-              "scope": 13903,
+              "scope": 13900,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(uint256 => mapping(address => bool))",
@@ -1177,7 +1177,7 @@ export const MultiSigWallet =
                       "name": "uint",
                       "type": "uint256"
                     },
-                    "id": 12965,
+                    "id": 12962,
                     "name": "ElementaryTypeName",
                     "src": "923:4:35"
                   },
@@ -1191,7 +1191,7 @@ export const MultiSigWallet =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 12966,
+                        "id": 12963,
                         "name": "ElementaryTypeName",
                         "src": "940:7:35"
                       },
@@ -1200,22 +1200,22 @@ export const MultiSigWallet =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 12967,
+                        "id": 12964,
                         "name": "ElementaryTypeName",
                         "src": "951:4:35"
                       }
                     ],
-                    "id": 12968,
+                    "id": 12965,
                     "name": "Mapping",
                     "src": "931:25:35"
                   }
                 ],
-                "id": 12969,
+                "id": 12966,
                 "name": "Mapping",
                 "src": "914:43:35"
               }
             ],
-            "id": 12970,
+            "id": 12967,
             "name": "VariableDeclaration",
             "src": "914:64:35"
           },
@@ -1223,7 +1223,7 @@ export const MultiSigWallet =
             "attributes": {
               "constant": false,
               "name": "isOwner",
-              "scope": 13903,
+              "scope": 13900,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(address => bool)",
@@ -1241,7 +1241,7 @@ export const MultiSigWallet =
                       "name": "address",
                       "type": "address"
                     },
-                    "id": 12971,
+                    "id": 12968,
                     "name": "ElementaryTypeName",
                     "src": "993:7:35"
                   },
@@ -1250,17 +1250,17 @@ export const MultiSigWallet =
                       "name": "bool",
                       "type": "bool"
                     },
-                    "id": 12972,
+                    "id": 12969,
                     "name": "ElementaryTypeName",
                     "src": "1004:4:35"
                   }
                 ],
-                "id": 12973,
+                "id": 12970,
                 "name": "Mapping",
                 "src": "984:25:35"
               }
             ],
-            "id": 12974,
+            "id": 12971,
             "name": "VariableDeclaration",
             "src": "984:40:35"
           },
@@ -1268,7 +1268,7 @@ export const MultiSigWallet =
             "attributes": {
               "constant": false,
               "name": "owners",
-              "scope": 13903,
+              "scope": 13900,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "address[] storage ref",
@@ -1287,17 +1287,17 @@ export const MultiSigWallet =
                       "name": "address",
                       "type": "address"
                     },
-                    "id": 12975,
+                    "id": 12972,
                     "name": "ElementaryTypeName",
                     "src": "1030:7:35"
                   }
                 ],
-                "id": 12976,
+                "id": 12973,
                 "name": "ArrayTypeName",
                 "src": "1030:9:35"
               }
             ],
-            "id": 12977,
+            "id": 12974,
             "name": "VariableDeclaration",
             "src": "1030:23:35"
           },
@@ -1305,7 +1305,7 @@ export const MultiSigWallet =
             "attributes": {
               "constant": false,
               "name": "required",
-              "scope": 13903,
+              "scope": 13900,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "uint256",
@@ -1318,12 +1318,12 @@ export const MultiSigWallet =
                   "name": "uint",
                   "type": "uint256"
                 },
-                "id": 12978,
+                "id": 12975,
                 "name": "ElementaryTypeName",
                 "src": "1059:4:35"
               }
             ],
-            "id": 12979,
+            "id": 12976,
             "name": "VariableDeclaration",
             "src": "1059:20:35"
           },
@@ -1331,7 +1331,7 @@ export const MultiSigWallet =
             "attributes": {
               "constant": false,
               "name": "transactionCount",
-              "scope": 13903,
+              "scope": 13900,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "uint256",
@@ -1344,12 +1344,12 @@ export const MultiSigWallet =
                   "name": "uint",
                   "type": "uint256"
                 },
-                "id": 12980,
+                "id": 12977,
                 "name": "ElementaryTypeName",
                 "src": "1085:4:35"
               }
             ],
-            "id": 12981,
+            "id": 12978,
             "name": "VariableDeclaration",
             "src": "1085:28:35"
           },
@@ -1357,7 +1357,7 @@ export const MultiSigWallet =
             "attributes": {
               "canonicalName": "MultiSigWallet.Transaction",
               "name": "Transaction",
-              "scope": 13903,
+              "scope": 13900,
               "visibility": "public"
             },
             "children": [
@@ -1365,7 +1365,7 @@ export const MultiSigWallet =
                 "attributes": {
                   "constant": false,
                   "name": "destination",
-                  "scope": 12990,
+                  "scope": 12987,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "address",
@@ -1378,12 +1378,12 @@ export const MultiSigWallet =
                       "name": "address",
                       "type": "address"
                     },
-                    "id": 12982,
+                    "id": 12979,
                     "name": "ElementaryTypeName",
                     "src": "1149:7:35"
                   }
                 ],
-                "id": 12983,
+                "id": 12980,
                 "name": "VariableDeclaration",
                 "src": "1149:19:35"
               },
@@ -1391,7 +1391,7 @@ export const MultiSigWallet =
                 "attributes": {
                   "constant": false,
                   "name": "value",
-                  "scope": 12990,
+                  "scope": 12987,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint256",
@@ -1404,12 +1404,12 @@ export const MultiSigWallet =
                       "name": "uint",
                       "type": "uint256"
                     },
-                    "id": 12984,
+                    "id": 12981,
                     "name": "ElementaryTypeName",
                     "src": "1178:4:35"
                   }
                 ],
-                "id": 12985,
+                "id": 12982,
                 "name": "VariableDeclaration",
                 "src": "1178:10:35"
               },
@@ -1417,7 +1417,7 @@ export const MultiSigWallet =
                 "attributes": {
                   "constant": false,
                   "name": "data",
-                  "scope": 12990,
+                  "scope": 12987,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "bytes storage pointer",
@@ -1430,12 +1430,12 @@ export const MultiSigWallet =
                       "name": "bytes",
                       "type": "bytes storage pointer"
                     },
-                    "id": 12986,
+                    "id": 12983,
                     "name": "ElementaryTypeName",
                     "src": "1198:5:35"
                   }
                 ],
-                "id": 12987,
+                "id": 12984,
                 "name": "VariableDeclaration",
                 "src": "1198:10:35"
               },
@@ -1443,7 +1443,7 @@ export const MultiSigWallet =
                 "attributes": {
                   "constant": false,
                   "name": "executed",
-                  "scope": 12990,
+                  "scope": 12987,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "bool",
@@ -1456,17 +1456,17 @@ export const MultiSigWallet =
                       "name": "bool",
                       "type": "bool"
                     },
-                    "id": 12988,
+                    "id": 12985,
                     "name": "ElementaryTypeName",
                     "src": "1218:4:35"
                   }
                 ],
-                "id": 12989,
+                "id": 12986,
                 "name": "VariableDeclaration",
                 "src": "1218:13:35"
               }
             ],
-            "id": 12990,
+            "id": 12987,
             "name": "StructDefinition",
             "src": "1120:118:35"
           },
@@ -1483,7 +1483,7 @@ export const MultiSigWallet =
                   ]
                 },
                 "children": [],
-                "id": 12991,
+                "id": 12988,
                 "name": "ParameterList",
                 "src": "1296:2:35"
               },
@@ -1517,11 +1517,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15821,
+                              "referencedDeclaration": 15818,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 12992,
+                            "id": 12989,
                             "name": "Identifier",
                             "src": "1309:7:35"
                           },
@@ -1558,16 +1558,16 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15818,
+                                      "referencedDeclaration": 15815,
                                       "type": "msg",
                                       "value": "msg"
                                     },
-                                    "id": 12993,
+                                    "id": 12990,
                                     "name": "Identifier",
                                     "src": "1317:3:35"
                                   }
                                 ],
-                                "id": 12994,
+                                "id": 12991,
                                 "name": "MemberAccess",
                                 "src": "1317:10:35"
                               },
@@ -1590,7 +1590,7 @@ export const MultiSigWallet =
                                     "attributes": {
                                       "argumentTypes": [
                                         {
-                                          "typeIdentifier": "t_contract$_MultiSigWallet_$13903",
+                                          "typeIdentifier": "t_contract$_MultiSigWallet_$13900",
                                           "typeString": "contract MultiSigWallet"
                                         }
                                       ],
@@ -1601,7 +1601,7 @@ export const MultiSigWallet =
                                       "type": "type(address)",
                                       "value": "address"
                                     },
-                                    "id": 12995,
+                                    "id": 12992,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "1331:7:35"
                                   },
@@ -1611,46 +1611,46 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15963,
+                                      "referencedDeclaration": 15960,
                                       "type": "contract MultiSigWallet",
                                       "value": "this"
                                     },
-                                    "id": 12996,
+                                    "id": 12993,
                                     "name": "Identifier",
                                     "src": "1339:4:35"
                                   }
                                 ],
-                                "id": 12997,
+                                "id": 12994,
                                 "name": "FunctionCall",
                                 "src": "1331:13:35"
                               }
                             ],
-                            "id": 12998,
+                            "id": 12995,
                             "name": "BinaryOperation",
                             "src": "1317:27:35"
                           }
                         ],
-                        "id": 12999,
+                        "id": 12996,
                         "name": "FunctionCall",
                         "src": "1309:36:35"
                       }
                     ],
-                    "id": 13000,
+                    "id": 12997,
                     "name": "ExpressionStatement",
                     "src": "1309:36:35"
                   },
                   {
-                    "id": 13001,
+                    "id": 12998,
                     "name": "PlaceholderStatement",
                     "src": "1355:1:35"
                   }
                 ],
-                "id": 13002,
+                "id": 12999,
                 "name": "Block",
                 "src": "1299:64:35"
               }
             ],
-            "id": 13003,
+            "id": 13000,
             "name": "ModifierDefinition",
             "src": "1277:86:35"
           },
@@ -1666,7 +1666,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "owner",
-                      "scope": 13016,
+                      "scope": 13013,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1679,17 +1679,17 @@ export const MultiSigWallet =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 13004,
+                        "id": 13001,
                         "name": "ElementaryTypeName",
                         "src": "1396:7:35"
                       }
                     ],
-                    "id": 13005,
+                    "id": 13002,
                     "name": "VariableDeclaration",
                     "src": "1396:13:35"
                   }
                 ],
-                "id": 13006,
+                "id": 13003,
                 "name": "ParameterList",
                 "src": "1395:15:35"
               },
@@ -1723,11 +1723,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15821,
+                              "referencedDeclaration": 15818,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 13007,
+                            "id": 13004,
                             "name": "Identifier",
                             "src": "1421:7:35"
                           },
@@ -1759,11 +1759,11 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 12974,
+                                      "referencedDeclaration": 12971,
                                       "type": "mapping(address => bool)",
                                       "value": "isOwner"
                                     },
-                                    "id": 13008,
+                                    "id": 13005,
                                     "name": "Identifier",
                                     "src": "1430:7:35"
                                   },
@@ -1773,46 +1773,46 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 13005,
+                                      "referencedDeclaration": 13002,
                                       "type": "address",
                                       "value": "owner"
                                     },
-                                    "id": 13009,
+                                    "id": 13006,
                                     "name": "Identifier",
                                     "src": "1438:5:35"
                                   }
                                 ],
-                                "id": 13010,
+                                "id": 13007,
                                 "name": "IndexAccess",
                                 "src": "1430:14:35"
                               }
                             ],
-                            "id": 13011,
+                            "id": 13008,
                             "name": "UnaryOperation",
                             "src": "1429:15:35"
                           }
                         ],
-                        "id": 13012,
+                        "id": 13009,
                         "name": "FunctionCall",
                         "src": "1421:24:35"
                       }
                     ],
-                    "id": 13013,
+                    "id": 13010,
                     "name": "ExpressionStatement",
                     "src": "1421:24:35"
                   },
                   {
-                    "id": 13014,
+                    "id": 13011,
                     "name": "PlaceholderStatement",
                     "src": "1455:1:35"
                   }
                 ],
-                "id": 13015,
+                "id": 13012,
                 "name": "Block",
                 "src": "1411:52:35"
               }
             ],
-            "id": 13016,
+            "id": 13013,
             "name": "ModifierDefinition",
             "src": "1369:94:35"
           },
@@ -1828,7 +1828,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "owner",
-                      "scope": 13028,
+                      "scope": 13025,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1841,17 +1841,17 @@ export const MultiSigWallet =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 13017,
+                        "id": 13014,
                         "name": "ElementaryTypeName",
                         "src": "1490:7:35"
                       }
                     ],
-                    "id": 13018,
+                    "id": 13015,
                     "name": "VariableDeclaration",
                     "src": "1490:13:35"
                   }
                 ],
-                "id": 13019,
+                "id": 13016,
                 "name": "ParameterList",
                 "src": "1489:15:35"
               },
@@ -1885,11 +1885,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15821,
+                              "referencedDeclaration": 15818,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 13020,
+                            "id": 13017,
                             "name": "Identifier",
                             "src": "1515:7:35"
                           },
@@ -1909,11 +1909,11 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12974,
+                                  "referencedDeclaration": 12971,
                                   "type": "mapping(address => bool)",
                                   "value": "isOwner"
                                 },
-                                "id": 13021,
+                                "id": 13018,
                                 "name": "Identifier",
                                 "src": "1523:7:35"
                               },
@@ -1923,41 +1923,41 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13018,
+                                  "referencedDeclaration": 13015,
                                   "type": "address",
                                   "value": "owner"
                                 },
-                                "id": 13022,
+                                "id": 13019,
                                 "name": "Identifier",
                                 "src": "1531:5:35"
                               }
                             ],
-                            "id": 13023,
+                            "id": 13020,
                             "name": "IndexAccess",
                             "src": "1523:14:35"
                           }
                         ],
-                        "id": 13024,
+                        "id": 13021,
                         "name": "FunctionCall",
                         "src": "1515:23:35"
                       }
                     ],
-                    "id": 13025,
+                    "id": 13022,
                     "name": "ExpressionStatement",
                     "src": "1515:23:35"
                   },
                   {
-                    "id": 13026,
+                    "id": 13023,
                     "name": "PlaceholderStatement",
                     "src": "1548:1:35"
                   }
                 ],
-                "id": 13027,
+                "id": 13024,
                 "name": "Block",
                 "src": "1505:51:35"
               }
             ],
-            "id": 13028,
+            "id": 13025,
             "name": "ModifierDefinition",
             "src": "1469:87:35"
           },
@@ -1973,7 +1973,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "transactionId",
-                      "scope": 13043,
+                      "scope": 13040,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1986,17 +1986,17 @@ export const MultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 13029,
+                        "id": 13026,
                         "name": "ElementaryTypeName",
                         "src": "1589:4:35"
                       }
                     ],
-                    "id": 13030,
+                    "id": 13027,
                     "name": "VariableDeclaration",
                     "src": "1589:18:35"
                   }
                 ],
-                "id": 13031,
+                "id": 13028,
                 "name": "ParameterList",
                 "src": "1588:20:35"
               },
@@ -2030,11 +2030,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15821,
+                              "referencedDeclaration": 15818,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 13032,
+                            "id": 13029,
                             "name": "Identifier",
                             "src": "1619:7:35"
                           },
@@ -2061,7 +2061,7 @@ export const MultiSigWallet =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "destination",
-                                  "referencedDeclaration": 12983,
+                                  "referencedDeclaration": 12980,
                                   "type": "address"
                                 },
                                 "children": [
@@ -2081,11 +2081,11 @@ export const MultiSigWallet =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 12964,
+                                          "referencedDeclaration": 12961,
                                           "type": "mapping(uint256 => struct MultiSigWallet.Transaction storage ref)",
                                           "value": "transactions"
                                         },
-                                        "id": 13033,
+                                        "id": 13030,
                                         "name": "Identifier",
                                         "src": "1627:12:35"
                                       },
@@ -2095,21 +2095,21 @@ export const MultiSigWallet =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 13030,
+                                          "referencedDeclaration": 13027,
                                           "type": "uint256",
                                           "value": "transactionId"
                                         },
-                                        "id": 13034,
+                                        "id": 13031,
                                         "name": "Identifier",
                                         "src": "1640:13:35"
                                       }
                                     ],
-                                    "id": 13035,
+                                    "id": 13032,
                                     "name": "IndexAccess",
                                     "src": "1627:27:35"
                                   }
                                 ],
-                                "id": 13036,
+                                "id": 13033,
                                 "name": "MemberAccess",
                                 "src": "1627:39:35"
                               },
@@ -2126,37 +2126,37 @@ export const MultiSigWallet =
                                   "type": "int_const 0",
                                   "value": "0"
                                 },
-                                "id": 13037,
+                                "id": 13034,
                                 "name": "Literal",
                                 "src": "1670:1:35"
                               }
                             ],
-                            "id": 13038,
+                            "id": 13035,
                             "name": "BinaryOperation",
                             "src": "1627:44:35"
                           }
                         ],
-                        "id": 13039,
+                        "id": 13036,
                         "name": "FunctionCall",
                         "src": "1619:53:35"
                       }
                     ],
-                    "id": 13040,
+                    "id": 13037,
                     "name": "ExpressionStatement",
                     "src": "1619:53:35"
                   },
                   {
-                    "id": 13041,
+                    "id": 13038,
                     "name": "PlaceholderStatement",
                     "src": "1682:1:35"
                   }
                 ],
-                "id": 13042,
+                "id": 13039,
                 "name": "Block",
                 "src": "1609:81:35"
               }
             ],
-            "id": 13043,
+            "id": 13040,
             "name": "ModifierDefinition",
             "src": "1562:128:35"
           },
@@ -2172,7 +2172,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "transactionId",
-                      "scope": 13059,
+                      "scope": 13056,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2185,12 +2185,12 @@ export const MultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 13044,
+                        "id": 13041,
                         "name": "ElementaryTypeName",
                         "src": "1715:4:35"
                       }
                     ],
-                    "id": 13045,
+                    "id": 13042,
                     "name": "VariableDeclaration",
                     "src": "1715:18:35"
                   },
@@ -2198,7 +2198,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "owner",
-                      "scope": 13059,
+                      "scope": 13056,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2211,17 +2211,17 @@ export const MultiSigWallet =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 13046,
+                        "id": 13043,
                         "name": "ElementaryTypeName",
                         "src": "1735:7:35"
                       }
                     ],
-                    "id": 13047,
+                    "id": 13044,
                     "name": "VariableDeclaration",
                     "src": "1735:13:35"
                   }
                 ],
-                "id": 13048,
+                "id": 13045,
                 "name": "ParameterList",
                 "src": "1714:35:35"
               },
@@ -2255,11 +2255,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15821,
+                              "referencedDeclaration": 15818,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 13049,
+                            "id": 13046,
                             "name": "Identifier",
                             "src": "1760:7:35"
                           },
@@ -2289,11 +2289,11 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 12970,
+                                      "referencedDeclaration": 12967,
                                       "type": "mapping(uint256 => mapping(address => bool))",
                                       "value": "confirmations"
                                     },
-                                    "id": 13050,
+                                    "id": 13047,
                                     "name": "Identifier",
                                     "src": "1768:13:35"
                                   },
@@ -2303,16 +2303,16 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 13045,
+                                      "referencedDeclaration": 13042,
                                       "type": "uint256",
                                       "value": "transactionId"
                                     },
-                                    "id": 13051,
+                                    "id": 13048,
                                     "name": "Identifier",
                                     "src": "1782:13:35"
                                   }
                                 ],
-                                "id": 13052,
+                                "id": 13049,
                                 "name": "IndexAccess",
                                 "src": "1768:28:35"
                               },
@@ -2322,41 +2322,41 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13047,
+                                  "referencedDeclaration": 13044,
                                   "type": "address",
                                   "value": "owner"
                                 },
-                                "id": 13053,
+                                "id": 13050,
                                 "name": "Identifier",
                                 "src": "1797:5:35"
                               }
                             ],
-                            "id": 13054,
+                            "id": 13051,
                             "name": "IndexAccess",
                             "src": "1768:35:35"
                           }
                         ],
-                        "id": 13055,
+                        "id": 13052,
                         "name": "FunctionCall",
                         "src": "1760:44:35"
                       }
                     ],
-                    "id": 13056,
+                    "id": 13053,
                     "name": "ExpressionStatement",
                     "src": "1760:44:35"
                   },
                   {
-                    "id": 13057,
+                    "id": 13054,
                     "name": "PlaceholderStatement",
                     "src": "1814:1:35"
                   }
                 ],
-                "id": 13058,
+                "id": 13055,
                 "name": "Block",
                 "src": "1750:72:35"
               }
             ],
-            "id": 13059,
+            "id": 13056,
             "name": "ModifierDefinition",
             "src": "1696:126:35"
           },
@@ -2372,7 +2372,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "transactionId",
-                      "scope": 13076,
+                      "scope": 13073,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2385,12 +2385,12 @@ export const MultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 13060,
+                        "id": 13057,
                         "name": "ElementaryTypeName",
                         "src": "1850:4:35"
                       }
                     ],
-                    "id": 13061,
+                    "id": 13058,
                     "name": "VariableDeclaration",
                     "src": "1850:18:35"
                   },
@@ -2398,7 +2398,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "owner",
-                      "scope": 13076,
+                      "scope": 13073,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2411,17 +2411,17 @@ export const MultiSigWallet =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 13062,
+                        "id": 13059,
                         "name": "ElementaryTypeName",
                         "src": "1870:7:35"
                       }
                     ],
-                    "id": 13063,
+                    "id": 13060,
                     "name": "VariableDeclaration",
                     "src": "1870:13:35"
                   }
                 ],
-                "id": 13064,
+                "id": 13061,
                 "name": "ParameterList",
                 "src": "1849:35:35"
               },
@@ -2455,11 +2455,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15821,
+                              "referencedDeclaration": 15818,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 13065,
+                            "id": 13062,
                             "name": "Identifier",
                             "src": "1895:7:35"
                           },
@@ -2501,11 +2501,11 @@ export const MultiSigWallet =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 12970,
+                                          "referencedDeclaration": 12967,
                                           "type": "mapping(uint256 => mapping(address => bool))",
                                           "value": "confirmations"
                                         },
-                                        "id": 13066,
+                                        "id": 13063,
                                         "name": "Identifier",
                                         "src": "1904:13:35"
                                       },
@@ -2515,16 +2515,16 @@ export const MultiSigWallet =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 13061,
+                                          "referencedDeclaration": 13058,
                                           "type": "uint256",
                                           "value": "transactionId"
                                         },
-                                        "id": 13067,
+                                        "id": 13064,
                                         "name": "Identifier",
                                         "src": "1918:13:35"
                                       }
                                     ],
-                                    "id": 13068,
+                                    "id": 13065,
                                     "name": "IndexAccess",
                                     "src": "1904:28:35"
                                   },
@@ -2534,46 +2534,46 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 13063,
+                                      "referencedDeclaration": 13060,
                                       "type": "address",
                                       "value": "owner"
                                     },
-                                    "id": 13069,
+                                    "id": 13066,
                                     "name": "Identifier",
                                     "src": "1933:5:35"
                                   }
                                 ],
-                                "id": 13070,
+                                "id": 13067,
                                 "name": "IndexAccess",
                                 "src": "1904:35:35"
                               }
                             ],
-                            "id": 13071,
+                            "id": 13068,
                             "name": "UnaryOperation",
                             "src": "1903:36:35"
                           }
                         ],
-                        "id": 13072,
+                        "id": 13069,
                         "name": "FunctionCall",
                         "src": "1895:45:35"
                       }
                     ],
-                    "id": 13073,
+                    "id": 13070,
                     "name": "ExpressionStatement",
                     "src": "1895:45:35"
                   },
                   {
-                    "id": 13074,
+                    "id": 13071,
                     "name": "PlaceholderStatement",
                     "src": "1950:1:35"
                   }
                 ],
-                "id": 13075,
+                "id": 13072,
                 "name": "Block",
                 "src": "1885:73:35"
               }
             ],
-            "id": 13076,
+            "id": 13073,
             "name": "ModifierDefinition",
             "src": "1828:130:35"
           },
@@ -2589,7 +2589,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "transactionId",
-                      "scope": 13090,
+                      "scope": 13087,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2602,17 +2602,17 @@ export const MultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 13077,
+                        "id": 13074,
                         "name": "ElementaryTypeName",
                         "src": "1985:4:35"
                       }
                     ],
-                    "id": 13078,
+                    "id": 13075,
                     "name": "VariableDeclaration",
                     "src": "1985:18:35"
                   }
                 ],
-                "id": 13079,
+                "id": 13076,
                 "name": "ParameterList",
                 "src": "1984:20:35"
               },
@@ -2646,11 +2646,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15821,
+                              "referencedDeclaration": 15818,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 13080,
+                            "id": 13077,
                             "name": "Identifier",
                             "src": "2015:7:35"
                           },
@@ -2674,7 +2674,7 @@ export const MultiSigWallet =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "executed",
-                                  "referencedDeclaration": 12989,
+                                  "referencedDeclaration": 12986,
                                   "type": "bool"
                                 },
                                 "children": [
@@ -2694,11 +2694,11 @@ export const MultiSigWallet =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 12964,
+                                          "referencedDeclaration": 12961,
                                           "type": "mapping(uint256 => struct MultiSigWallet.Transaction storage ref)",
                                           "value": "transactions"
                                         },
-                                        "id": 13081,
+                                        "id": 13078,
                                         "name": "Identifier",
                                         "src": "2024:12:35"
                                       },
@@ -2708,51 +2708,51 @@ export const MultiSigWallet =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 13078,
+                                          "referencedDeclaration": 13075,
                                           "type": "uint256",
                                           "value": "transactionId"
                                         },
-                                        "id": 13082,
+                                        "id": 13079,
                                         "name": "Identifier",
                                         "src": "2037:13:35"
                                       }
                                     ],
-                                    "id": 13083,
+                                    "id": 13080,
                                     "name": "IndexAccess",
                                     "src": "2024:27:35"
                                   }
                                 ],
-                                "id": 13084,
+                                "id": 13081,
                                 "name": "MemberAccess",
                                 "src": "2024:36:35"
                               }
                             ],
-                            "id": 13085,
+                            "id": 13082,
                             "name": "UnaryOperation",
                             "src": "2023:37:35"
                           }
                         ],
-                        "id": 13086,
+                        "id": 13083,
                         "name": "FunctionCall",
                         "src": "2015:46:35"
                       }
                     ],
-                    "id": 13087,
+                    "id": 13084,
                     "name": "ExpressionStatement",
                     "src": "2015:46:35"
                   },
                   {
-                    "id": 13088,
+                    "id": 13085,
                     "name": "PlaceholderStatement",
                     "src": "2071:1:35"
                   }
                 ],
-                "id": 13089,
+                "id": 13086,
                 "name": "Block",
                 "src": "2005:74:35"
               }
             ],
-            "id": 13090,
+            "id": 13087,
             "name": "ModifierDefinition",
             "src": "1964:115:35"
           },
@@ -2768,7 +2768,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "_address",
-                      "scope": 13102,
+                      "scope": 13099,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2781,17 +2781,17 @@ export const MultiSigWallet =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 13091,
+                        "id": 13088,
                         "name": "ElementaryTypeName",
                         "src": "2102:7:35"
                       }
                     ],
-                    "id": 13092,
+                    "id": 13089,
                     "name": "VariableDeclaration",
                     "src": "2102:16:35"
                   }
                 ],
-                "id": 13093,
+                "id": 13090,
                 "name": "ParameterList",
                 "src": "2101:18:35"
               },
@@ -2825,11 +2825,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15821,
+                              "referencedDeclaration": 15818,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 13094,
+                            "id": 13091,
                             "name": "Identifier",
                             "src": "2130:7:35"
                           },
@@ -2854,11 +2854,11 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13092,
+                                  "referencedDeclaration": 13089,
                                   "type": "address",
                                   "value": "_address"
                                 },
-                                "id": 13095,
+                                "id": 13092,
                                 "name": "Identifier",
                                 "src": "2138:8:35"
                               },
@@ -2875,37 +2875,37 @@ export const MultiSigWallet =
                                   "type": "int_const 0",
                                   "value": "0"
                                 },
-                                "id": 13096,
+                                "id": 13093,
                                 "name": "Literal",
                                 "src": "2150:1:35"
                               }
                             ],
-                            "id": 13097,
+                            "id": 13094,
                             "name": "BinaryOperation",
                             "src": "2138:13:35"
                           }
                         ],
-                        "id": 13098,
+                        "id": 13095,
                         "name": "FunctionCall",
                         "src": "2130:22:35"
                       }
                     ],
-                    "id": 13099,
+                    "id": 13096,
                     "name": "ExpressionStatement",
                     "src": "2130:22:35"
                   },
                   {
-                    "id": 13100,
+                    "id": 13097,
                     "name": "PlaceholderStatement",
                     "src": "2162:1:35"
                   }
                 ],
-                "id": 13101,
+                "id": 13098,
                 "name": "Block",
                 "src": "2120:50:35"
               }
             ],
-            "id": 13102,
+            "id": 13099,
             "name": "ModifierDefinition",
             "src": "2085:85:35"
           },
@@ -2921,7 +2921,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "ownerCount",
-                      "scope": 13128,
+                      "scope": 13125,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2934,12 +2934,12 @@ export const MultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 13103,
+                        "id": 13100,
                         "name": "ElementaryTypeName",
                         "src": "2202:4:35"
                       }
                     ],
-                    "id": 13104,
+                    "id": 13101,
                     "name": "VariableDeclaration",
                     "src": "2202:15:35"
                   },
@@ -2947,7 +2947,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "_required",
-                      "scope": 13128,
+                      "scope": 13125,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2960,17 +2960,17 @@ export const MultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 13105,
+                        "id": 13102,
                         "name": "ElementaryTypeName",
                         "src": "2219:4:35"
                       }
                     ],
-                    "id": 13106,
+                    "id": 13103,
                     "name": "VariableDeclaration",
                     "src": "2219:14:35"
                   }
                 ],
-                "id": 13107,
+                "id": 13104,
                 "name": "ParameterList",
                 "src": "2201:33:35"
               },
@@ -3004,11 +3004,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15821,
+                              "referencedDeclaration": 15818,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 13108,
+                            "id": 13105,
                             "name": "Identifier",
                             "src": "2245:7:35"
                           },
@@ -3078,11 +3078,11 @@ export const MultiSigWallet =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 13104,
+                                              "referencedDeclaration": 13101,
                                               "type": "uint256",
                                               "value": "ownerCount"
                                             },
-                                            "id": 13109,
+                                            "id": 13106,
                                             "name": "Identifier",
                                             "src": "2253:10:35"
                                           },
@@ -3092,16 +3092,16 @@ export const MultiSigWallet =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 12960,
+                                              "referencedDeclaration": 12957,
                                               "type": "uint256",
                                               "value": "MAX_OWNER_COUNT"
                                             },
-                                            "id": 13110,
+                                            "id": 13107,
                                             "name": "Identifier",
                                             "src": "2267:15:35"
                                           }
                                         ],
-                                        "id": 13111,
+                                        "id": 13108,
                                         "name": "BinaryOperation",
                                         "src": "2253:29:35"
                                       },
@@ -3126,11 +3126,11 @@ export const MultiSigWallet =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 13106,
+                                              "referencedDeclaration": 13103,
                                               "type": "uint256",
                                               "value": "_required"
                                             },
-                                            "id": 13112,
+                                            "id": 13109,
                                             "name": "Identifier",
                                             "src": "2298:9:35"
                                           },
@@ -3140,21 +3140,21 @@ export const MultiSigWallet =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 13104,
+                                              "referencedDeclaration": 13101,
                                               "type": "uint256",
                                               "value": "ownerCount"
                                             },
-                                            "id": 13113,
+                                            "id": 13110,
                                             "name": "Identifier",
                                             "src": "2311:10:35"
                                           }
                                         ],
-                                        "id": 13114,
+                                        "id": 13111,
                                         "name": "BinaryOperation",
                                         "src": "2298:23:35"
                                       }
                                     ],
-                                    "id": 13115,
+                                    "id": 13112,
                                     "name": "BinaryOperation",
                                     "src": "2253:68:35"
                                   },
@@ -3179,11 +3179,11 @@ export const MultiSigWallet =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 13106,
+                                          "referencedDeclaration": 13103,
                                           "type": "uint256",
                                           "value": "_required"
                                         },
-                                        "id": 13116,
+                                        "id": 13113,
                                         "name": "Identifier",
                                         "src": "2337:9:35"
                                       },
@@ -3200,17 +3200,17 @@ export const MultiSigWallet =
                                           "type": "int_const 0",
                                           "value": "0"
                                         },
-                                        "id": 13117,
+                                        "id": 13114,
                                         "name": "Literal",
                                         "src": "2350:1:35"
                                       }
                                     ],
-                                    "id": 13118,
+                                    "id": 13115,
                                     "name": "BinaryOperation",
                                     "src": "2337:14:35"
                                   }
                                 ],
-                                "id": 13119,
+                                "id": 13116,
                                 "name": "BinaryOperation",
                                 "src": "2253:98:35"
                               },
@@ -3235,11 +3235,11 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 13104,
+                                      "referencedDeclaration": 13101,
                                       "type": "uint256",
                                       "value": "ownerCount"
                                     },
-                                    "id": 13120,
+                                    "id": 13117,
                                     "name": "Identifier",
                                     "src": "2367:10:35"
                                   },
@@ -3256,42 +3256,42 @@ export const MultiSigWallet =
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 13121,
+                                    "id": 13118,
                                     "name": "Literal",
                                     "src": "2381:1:35"
                                   }
                                 ],
-                                "id": 13122,
+                                "id": 13119,
                                 "name": "BinaryOperation",
                                 "src": "2367:15:35"
                               }
                             ],
-                            "id": 13123,
+                            "id": 13120,
                             "name": "BinaryOperation",
                             "src": "2253:129:35"
                           }
                         ],
-                        "id": 13124,
+                        "id": 13121,
                         "name": "FunctionCall",
                         "src": "2245:138:35"
                       }
                     ],
-                    "id": 13125,
+                    "id": 13122,
                     "name": "ExpressionStatement",
                     "src": "2245:138:35"
                   },
                   {
-                    "id": 13126,
+                    "id": 13123,
                     "name": "PlaceholderStatement",
                     "src": "2393:1:35"
                   }
                 ],
-                "id": 13127,
+                "id": 13124,
                 "name": "Block",
                 "src": "2235:166:35"
               }
             ],
-            "id": 13128,
+            "id": 13125,
             "name": "ModifierDefinition",
             "src": "2176:225:35"
           },
@@ -3305,7 +3305,7 @@ export const MultiSigWallet =
               ],
               "name": "",
               "payable": true,
-              "scope": 13903,
+              "scope": 13900,
               "stateMutability": "payable",
               "superFunction": null,
               "visibility": "public"
@@ -3318,7 +3318,7 @@ export const MultiSigWallet =
                   ]
                 },
                 "children": [],
-                "id": 13129,
+                "id": 13126,
                 "name": "ParameterList",
                 "src": "2471:2:35"
               },
@@ -3329,7 +3329,7 @@ export const MultiSigWallet =
                   ]
                 },
                 "children": [],
-                "id": 13130,
+                "id": 13127,
                 "name": "ParameterList",
                 "src": "2509:0:35"
               },
@@ -3373,16 +3373,16 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15818,
+                                  "referencedDeclaration": 15815,
                                   "type": "msg",
                                   "value": "msg"
                                 },
-                                "id": 13131,
+                                "id": 13128,
                                 "name": "Identifier",
                                 "src": "2523:3:35"
                               }
                             ],
-                            "id": 13132,
+                            "id": 13129,
                             "name": "MemberAccess",
                             "src": "2523:9:35"
                           },
@@ -3399,12 +3399,12 @@ export const MultiSigWallet =
                               "type": "int_const 0",
                               "value": "0"
                             },
-                            "id": 13133,
+                            "id": 13130,
                             "name": "Literal",
                             "src": "2535:1:35"
                           }
                         ],
-                        "id": 13134,
+                        "id": 13131,
                         "name": "BinaryOperation",
                         "src": "2523:13:35"
                       },
@@ -3440,11 +3440,11 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12945,
+                                  "referencedDeclaration": 12942,
                                   "type": "function (address,uint256)",
                                   "value": "Deposit"
                                 },
-                                "id": 13135,
+                                "id": 13132,
                                 "name": "Identifier",
                                 "src": "2550:7:35"
                               },
@@ -3466,16 +3466,16 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15818,
+                                      "referencedDeclaration": 15815,
                                       "type": "msg",
                                       "value": "msg"
                                     },
-                                    "id": 13136,
+                                    "id": 13133,
                                     "name": "Identifier",
                                     "src": "2558:3:35"
                                   }
                                 ],
-                                "id": 13137,
+                                "id": 13134,
                                 "name": "MemberAccess",
                                 "src": "2558:10:35"
                               },
@@ -3497,41 +3497,41 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15818,
+                                      "referencedDeclaration": 15815,
                                       "type": "msg",
                                       "value": "msg"
                                     },
-                                    "id": 13138,
+                                    "id": 13135,
                                     "name": "Identifier",
                                     "src": "2570:3:35"
                                   }
                                 ],
-                                "id": 13139,
+                                "id": 13136,
                                 "name": "MemberAccess",
                                 "src": "2570:9:35"
                               }
                             ],
-                            "id": 13140,
+                            "id": 13137,
                             "name": "FunctionCall",
                             "src": "2550:30:35"
                           }
                         ],
-                        "id": 13141,
+                        "id": 13138,
                         "name": "ExpressionStatement",
                         "src": "2550:30:35"
                       }
                     ],
-                    "id": 13142,
+                    "id": 13139,
                     "name": "IfStatement",
                     "src": "2519:61:35"
                   }
                 ],
-                "id": 13143,
+                "id": 13140,
                 "name": "Block",
                 "src": "2509:78:35"
               }
             ],
-            "id": 13144,
+            "id": 13141,
             "name": "FunctionDefinition",
             "src": "2463:124:35"
           },
@@ -3542,7 +3542,7 @@ export const MultiSigWallet =
               "isConstructor": true,
               "name": "MultiSigWallet",
               "payable": false,
-              "scope": 13903,
+              "scope": 13900,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -3554,7 +3554,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "_owners",
-                      "scope": 13202,
+                      "scope": 13199,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address[] memory",
@@ -3573,17 +3573,17 @@ export const MultiSigWallet =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 13145,
+                            "id": 13142,
                             "name": "ElementaryTypeName",
                             "src": "2854:7:35"
                           }
                         ],
-                        "id": 13146,
+                        "id": 13143,
                         "name": "ArrayTypeName",
                         "src": "2854:9:35"
                       }
                     ],
-                    "id": 13147,
+                    "id": 13144,
                     "name": "VariableDeclaration",
                     "src": "2854:17:35"
                   },
@@ -3591,7 +3591,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "_required",
-                      "scope": 13202,
+                      "scope": 13199,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -3604,17 +3604,17 @@ export const MultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 13148,
+                        "id": 13145,
                         "name": "ElementaryTypeName",
                         "src": "2873:4:35"
                       }
                     ],
-                    "id": 13149,
+                    "id": 13146,
                     "name": "VariableDeclaration",
                     "src": "2873:14:35"
                   }
                 ],
-                "id": 13150,
+                "id": 13147,
                 "name": "ParameterList",
                 "src": "2853:35:35"
               },
@@ -3625,7 +3625,7 @@ export const MultiSigWallet =
                   ]
                 },
                 "children": [],
-                "id": 13156,
+                "id": 13153,
                 "name": "ParameterList",
                 "src": "2960:0:35"
               },
@@ -3637,11 +3637,11 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13128,
+                      "referencedDeclaration": 13125,
                       "type": "modifier (uint256,uint256)",
                       "value": "validRequirement"
                     },
-                    "id": 13151,
+                    "id": 13148,
                     "name": "Identifier",
                     "src": "2912:16:35"
                   },
@@ -3663,16 +3663,16 @@ export const MultiSigWallet =
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 13147,
+                          "referencedDeclaration": 13144,
                           "type": "address[] memory",
                           "value": "_owners"
                         },
-                        "id": 13152,
+                        "id": 13149,
                         "name": "Identifier",
                         "src": "2929:7:35"
                       }
                     ],
-                    "id": 13153,
+                    "id": 13150,
                     "name": "MemberAccess",
                     "src": "2929:14:35"
                   },
@@ -3682,16 +3682,16 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13149,
+                      "referencedDeclaration": 13146,
                       "type": "uint256",
                       "value": "_required"
                     },
-                    "id": 13154,
+                    "id": 13151,
                     "name": "Identifier",
                     "src": "2945:9:35"
                   }
                 ],
-                "id": 13155,
+                "id": 13152,
                 "name": "ModifierInvocation",
                 "src": "2912:43:35"
               },
@@ -3702,7 +3702,7 @@ export const MultiSigWallet =
                       {
                         "attributes": {
                           "assignments": [
-                            13158
+                            13155
                           ]
                         },
                         "children": [
@@ -3710,7 +3710,7 @@ export const MultiSigWallet =
                             "attributes": {
                               "constant": false,
                               "name": "i",
-                              "scope": 13202,
+                              "scope": 13199,
                               "stateVariable": false,
                               "storageLocation": "default",
                               "type": "uint256",
@@ -3723,12 +3723,12 @@ export const MultiSigWallet =
                                   "name": "uint",
                                   "type": "uint256"
                                 },
-                                "id": 13157,
+                                "id": 13154,
                                 "name": "ElementaryTypeName",
                                 "src": "2975:4:35"
                               }
                             ],
-                            "id": 13158,
+                            "id": 13155,
                             "name": "VariableDeclaration",
                             "src": "2975:6:35"
                           },
@@ -3745,12 +3745,12 @@ export const MultiSigWallet =
                               "type": "int_const 0",
                               "value": "0"
                             },
-                            "id": 13159,
+                            "id": 13156,
                             "name": "Literal",
                             "src": "2982:1:35"
                           }
                         ],
-                        "id": 13160,
+                        "id": 13157,
                         "name": "VariableDeclarationStatement",
                         "src": "2975:8:35"
                       },
@@ -3775,11 +3775,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13158,
+                              "referencedDeclaration": 13155,
                               "type": "uint256",
                               "value": "i"
                             },
-                            "id": 13161,
+                            "id": 13158,
                             "name": "Identifier",
                             "src": "2985:1:35"
                           },
@@ -3801,21 +3801,21 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13147,
+                                  "referencedDeclaration": 13144,
                                   "type": "address[] memory",
                                   "value": "_owners"
                                 },
-                                "id": 13162,
+                                "id": 13159,
                                 "name": "Identifier",
                                 "src": "2987:7:35"
                               }
                             ],
-                            "id": 13163,
+                            "id": 13160,
                             "name": "MemberAccess",
                             "src": "2987:14:35"
                           }
                         ],
-                        "id": 13164,
+                        "id": 13161,
                         "name": "BinaryOperation",
                         "src": "2985:16:35"
                       },
@@ -3839,21 +3839,21 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13158,
+                                  "referencedDeclaration": 13155,
                                   "type": "uint256",
                                   "value": "i"
                                 },
-                                "id": 13165,
+                                "id": 13162,
                                 "name": "Identifier",
                                 "src": "3003:1:35"
                               }
                             ],
-                            "id": 13166,
+                            "id": 13163,
                             "name": "UnaryOperation",
                             "src": "3003:3:35"
                           }
                         ],
-                        "id": 13167,
+                        "id": 13164,
                         "name": "ExpressionStatement",
                         "src": "3003:3:35"
                       },
@@ -3887,11 +3887,11 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15821,
+                                      "referencedDeclaration": 15818,
                                       "type": "function (bool) pure",
                                       "value": "require"
                                     },
-                                    "id": 13168,
+                                    "id": 13165,
                                     "name": "Identifier",
                                     "src": "3022:7:35"
                                   },
@@ -3938,11 +3938,11 @@ export const MultiSigWallet =
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 12974,
+                                                  "referencedDeclaration": 12971,
                                                   "type": "mapping(address => bool)",
                                                   "value": "isOwner"
                                                 },
-                                                "id": 13169,
+                                                "id": 13166,
                                                 "name": "Identifier",
                                                 "src": "3031:7:35"
                                               },
@@ -3962,11 +3962,11 @@ export const MultiSigWallet =
                                                       "overloadedDeclarations": [
                                                         null
                                                       ],
-                                                      "referencedDeclaration": 13147,
+                                                      "referencedDeclaration": 13144,
                                                       "type": "address[] memory",
                                                       "value": "_owners"
                                                     },
-                                                    "id": 13170,
+                                                    "id": 13167,
                                                     "name": "Identifier",
                                                     "src": "3039:7:35"
                                                   },
@@ -3976,26 +3976,26 @@ export const MultiSigWallet =
                                                       "overloadedDeclarations": [
                                                         null
                                                       ],
-                                                      "referencedDeclaration": 13158,
+                                                      "referencedDeclaration": 13155,
                                                       "type": "uint256",
                                                       "value": "i"
                                                     },
-                                                    "id": 13171,
+                                                    "id": 13168,
                                                     "name": "Identifier",
                                                     "src": "3047:1:35"
                                                   }
                                                 ],
-                                                "id": 13172,
+                                                "id": 13169,
                                                 "name": "IndexAccess",
                                                 "src": "3039:10:35"
                                               }
                                             ],
-                                            "id": 13173,
+                                            "id": 13170,
                                             "name": "IndexAccess",
                                             "src": "3031:19:35"
                                           }
                                         ],
-                                        "id": 13174,
+                                        "id": 13171,
                                         "name": "UnaryOperation",
                                         "src": "3030:20:35"
                                       },
@@ -4030,11 +4030,11 @@ export const MultiSigWallet =
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 13147,
+                                                  "referencedDeclaration": 13144,
                                                   "type": "address[] memory",
                                                   "value": "_owners"
                                                 },
-                                                "id": 13175,
+                                                "id": 13172,
                                                 "name": "Identifier",
                                                 "src": "3054:7:35"
                                               },
@@ -4044,16 +4044,16 @@ export const MultiSigWallet =
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 13158,
+                                                  "referencedDeclaration": 13155,
                                                   "type": "uint256",
                                                   "value": "i"
                                                 },
-                                                "id": 13176,
+                                                "id": 13173,
                                                 "name": "Identifier",
                                                 "src": "3062:1:35"
                                               }
                                             ],
-                                            "id": 13177,
+                                            "id": 13174,
                                             "name": "IndexAccess",
                                             "src": "3054:10:35"
                                           },
@@ -4070,27 +4070,27 @@ export const MultiSigWallet =
                                               "type": "int_const 0",
                                               "value": "0"
                                             },
-                                            "id": 13178,
+                                            "id": 13175,
                                             "name": "Literal",
                                             "src": "3068:1:35"
                                           }
                                         ],
-                                        "id": 13179,
+                                        "id": 13176,
                                         "name": "BinaryOperation",
                                         "src": "3054:15:35"
                                       }
                                     ],
-                                    "id": 13180,
+                                    "id": 13177,
                                     "name": "BinaryOperation",
                                     "src": "3030:39:35"
                                   }
                                 ],
-                                "id": 13181,
+                                "id": 13178,
                                 "name": "FunctionCall",
                                 "src": "3022:48:35"
                               }
                             ],
-                            "id": 13182,
+                            "id": 13179,
                             "name": "ExpressionStatement",
                             "src": "3022:48:35"
                           },
@@ -4123,11 +4123,11 @@ export const MultiSigWallet =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 12974,
+                                          "referencedDeclaration": 12971,
                                           "type": "mapping(address => bool)",
                                           "value": "isOwner"
                                         },
-                                        "id": 13183,
+                                        "id": 13180,
                                         "name": "Identifier",
                                         "src": "3084:7:35"
                                       },
@@ -4147,11 +4147,11 @@ export const MultiSigWallet =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 13147,
+                                              "referencedDeclaration": 13144,
                                               "type": "address[] memory",
                                               "value": "_owners"
                                             },
-                                            "id": 13184,
+                                            "id": 13181,
                                             "name": "Identifier",
                                             "src": "3092:7:35"
                                           },
@@ -4161,21 +4161,21 @@ export const MultiSigWallet =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 13158,
+                                              "referencedDeclaration": 13155,
                                               "type": "uint256",
                                               "value": "i"
                                             },
-                                            "id": 13185,
+                                            "id": 13182,
                                             "name": "Identifier",
                                             "src": "3100:1:35"
                                           }
                                         ],
-                                        "id": 13186,
+                                        "id": 13183,
                                         "name": "IndexAccess",
                                         "src": "3092:10:35"
                                       }
                                     ],
-                                    "id": 13187,
+                                    "id": 13184,
                                     "name": "IndexAccess",
                                     "src": "3084:19:35"
                                   },
@@ -4192,27 +4192,27 @@ export const MultiSigWallet =
                                       "type": "bool",
                                       "value": "true"
                                     },
-                                    "id": 13188,
+                                    "id": 13185,
                                     "name": "Literal",
                                     "src": "3106:4:35"
                                   }
                                 ],
-                                "id": 13189,
+                                "id": 13186,
                                 "name": "Assignment",
                                 "src": "3084:26:35"
                               }
                             ],
-                            "id": 13190,
+                            "id": 13187,
                             "name": "ExpressionStatement",
                             "src": "3084:26:35"
                           }
                         ],
-                        "id": 13191,
+                        "id": 13188,
                         "name": "Block",
                         "src": "3008:113:35"
                       }
                     ],
-                    "id": 13192,
+                    "id": 13189,
                     "name": "ForStatement",
                     "src": "2970:151:35"
                   },
@@ -4235,11 +4235,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12977,
+                              "referencedDeclaration": 12974,
                               "type": "address[] storage ref",
                               "value": "owners"
                             },
-                            "id": 13193,
+                            "id": 13190,
                             "name": "Identifier",
                             "src": "3130:6:35"
                           },
@@ -4249,21 +4249,21 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13147,
+                              "referencedDeclaration": 13144,
                               "type": "address[] memory",
                               "value": "_owners"
                             },
-                            "id": 13194,
+                            "id": 13191,
                             "name": "Identifier",
                             "src": "3139:7:35"
                           }
                         ],
-                        "id": 13195,
+                        "id": 13192,
                         "name": "Assignment",
                         "src": "3130:16:35"
                       }
                     ],
-                    "id": 13196,
+                    "id": 13193,
                     "name": "ExpressionStatement",
                     "src": "3130:16:35"
                   },
@@ -4286,11 +4286,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12979,
+                              "referencedDeclaration": 12976,
                               "type": "uint256",
                               "value": "required"
                             },
-                            "id": 13197,
+                            "id": 13194,
                             "name": "Identifier",
                             "src": "3156:8:35"
                           },
@@ -4300,31 +4300,31 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13149,
+                              "referencedDeclaration": 13146,
                               "type": "uint256",
                               "value": "_required"
                             },
-                            "id": 13198,
+                            "id": 13195,
                             "name": "Identifier",
                             "src": "3167:9:35"
                           }
                         ],
-                        "id": 13199,
+                        "id": 13196,
                         "name": "Assignment",
                         "src": "3156:20:35"
                       }
                     ],
-                    "id": 13200,
+                    "id": 13197,
                     "name": "ExpressionStatement",
                     "src": "3156:20:35"
                   }
                 ],
-                "id": 13201,
+                "id": 13198,
                 "name": "Block",
                 "src": "2960:223:35"
               }
             ],
-            "id": 13202,
+            "id": 13199,
             "name": "FunctionDefinition",
             "src": "2830:353:35"
           },
@@ -4335,7 +4335,7 @@ export const MultiSigWallet =
               "isConstructor": false,
               "name": "addOwner",
               "payable": false,
-              "scope": 13903,
+              "scope": 13900,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -4347,7 +4347,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "owner",
-                      "scope": 13239,
+                      "scope": 13236,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -4360,17 +4360,17 @@ export const MultiSigWallet =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 13203,
+                        "id": 13200,
                         "name": "ElementaryTypeName",
                         "src": "3328:7:35"
                       }
                     ],
-                    "id": 13204,
+                    "id": 13201,
                     "name": "VariableDeclaration",
                     "src": "3328:13:35"
                   }
                 ],
-                "id": 13205,
+                "id": 13202,
                 "name": "ParameterList",
                 "src": "3327:15:35"
               },
@@ -4381,7 +4381,7 @@ export const MultiSigWallet =
                   ]
                 },
                 "children": [],
-                "id": 13221,
+                "id": 13218,
                 "name": "ParameterList",
                 "src": "3491:0:35"
               },
@@ -4398,16 +4398,16 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13003,
+                      "referencedDeclaration": 13000,
                       "type": "modifier ()",
                       "value": "onlyWallet"
                     },
-                    "id": 13206,
+                    "id": 13203,
                     "name": "Identifier",
                     "src": "3366:10:35"
                   }
                 ],
-                "id": 13207,
+                "id": 13204,
                 "name": "ModifierInvocation",
                 "src": "3366:10:35"
               },
@@ -4419,11 +4419,11 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13016,
+                      "referencedDeclaration": 13013,
                       "type": "modifier (address)",
                       "value": "ownerDoesNotExist"
                     },
-                    "id": 13208,
+                    "id": 13205,
                     "name": "Identifier",
                     "src": "3385:17:35"
                   },
@@ -4433,16 +4433,16 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13204,
+                      "referencedDeclaration": 13201,
                       "type": "address",
                       "value": "owner"
                     },
-                    "id": 13209,
+                    "id": 13206,
                     "name": "Identifier",
                     "src": "3403:5:35"
                   }
                 ],
-                "id": 13210,
+                "id": 13207,
                 "name": "ModifierInvocation",
                 "src": "3385:24:35"
               },
@@ -4454,11 +4454,11 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13102,
+                      "referencedDeclaration": 13099,
                       "type": "modifier (address)",
                       "value": "notNull"
                     },
-                    "id": 13211,
+                    "id": 13208,
                     "name": "Identifier",
                     "src": "3418:7:35"
                   },
@@ -4468,16 +4468,16 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13204,
+                      "referencedDeclaration": 13201,
                       "type": "address",
                       "value": "owner"
                     },
-                    "id": 13212,
+                    "id": 13209,
                     "name": "Identifier",
                     "src": "3426:5:35"
                   }
                 ],
-                "id": 13213,
+                "id": 13210,
                 "name": "ModifierInvocation",
                 "src": "3418:14:35"
               },
@@ -4489,11 +4489,11 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13128,
+                      "referencedDeclaration": 13125,
                       "type": "modifier (uint256,uint256)",
                       "value": "validRequirement"
                     },
-                    "id": 13214,
+                    "id": 13211,
                     "name": "Identifier",
                     "src": "3441:16:35"
                   },
@@ -4530,16 +4530,16 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12977,
+                              "referencedDeclaration": 12974,
                               "type": "address[] storage ref",
                               "value": "owners"
                             },
-                            "id": 13215,
+                            "id": 13212,
                             "name": "Identifier",
                             "src": "3458:6:35"
                           }
                         ],
-                        "id": 13216,
+                        "id": 13213,
                         "name": "MemberAccess",
                         "src": "3458:13:35"
                       },
@@ -4556,12 +4556,12 @@ export const MultiSigWallet =
                           "type": "int_const 1",
                           "value": "1"
                         },
-                        "id": 13217,
+                        "id": 13214,
                         "name": "Literal",
                         "src": "3474:1:35"
                       }
                     ],
-                    "id": 13218,
+                    "id": 13215,
                     "name": "BinaryOperation",
                     "src": "3458:17:35"
                   },
@@ -4571,16 +4571,16 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 12979,
+                      "referencedDeclaration": 12976,
                       "type": "uint256",
                       "value": "required"
                     },
-                    "id": 13219,
+                    "id": 13216,
                     "name": "Identifier",
                     "src": "3477:8:35"
                   }
                 ],
-                "id": 13220,
+                "id": 13217,
                 "name": "ModifierInvocation",
                 "src": "3441:45:35"
               },
@@ -4615,11 +4615,11 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12974,
+                                  "referencedDeclaration": 12971,
                                   "type": "mapping(address => bool)",
                                   "value": "isOwner"
                                 },
-                                "id": 13222,
+                                "id": 13219,
                                 "name": "Identifier",
                                 "src": "3501:7:35"
                               },
@@ -4629,16 +4629,16 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13204,
+                                  "referencedDeclaration": 13201,
                                   "type": "address",
                                   "value": "owner"
                                 },
-                                "id": 13223,
+                                "id": 13220,
                                 "name": "Identifier",
                                 "src": "3509:5:35"
                               }
                             ],
-                            "id": 13224,
+                            "id": 13221,
                             "name": "IndexAccess",
                             "src": "3501:14:35"
                           },
@@ -4655,17 +4655,17 @@ export const MultiSigWallet =
                               "type": "bool",
                               "value": "true"
                             },
-                            "id": 13225,
+                            "id": 13222,
                             "name": "Literal",
                             "src": "3518:4:35"
                           }
                         ],
-                        "id": 13226,
+                        "id": 13223,
                         "name": "Assignment",
                         "src": "3501:21:35"
                       }
                     ],
-                    "id": 13227,
+                    "id": 13224,
                     "name": "ExpressionStatement",
                     "src": "3501:21:35"
                   },
@@ -4709,16 +4709,16 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12977,
+                                  "referencedDeclaration": 12974,
                                   "type": "address[] storage ref",
                                   "value": "owners"
                                 },
-                                "id": 13228,
+                                "id": 13225,
                                 "name": "Identifier",
                                 "src": "3532:6:35"
                               }
                             ],
-                            "id": 13230,
+                            "id": 13227,
                             "name": "MemberAccess",
                             "src": "3532:11:35"
                           },
@@ -4728,21 +4728,21 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13204,
+                              "referencedDeclaration": 13201,
                               "type": "address",
                               "value": "owner"
                             },
-                            "id": 13231,
+                            "id": 13228,
                             "name": "Identifier",
                             "src": "3544:5:35"
                           }
                         ],
-                        "id": 13232,
+                        "id": 13229,
                         "name": "FunctionCall",
                         "src": "3532:18:35"
                       }
                     ],
-                    "id": 13233,
+                    "id": 13230,
                     "name": "ExpressionStatement",
                     "src": "3532:18:35"
                   },
@@ -4774,11 +4774,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12949,
+                              "referencedDeclaration": 12946,
                               "type": "function (address)",
                               "value": "OwnerAddition"
                             },
-                            "id": 13234,
+                            "id": 13231,
                             "name": "Identifier",
                             "src": "3560:13:35"
                           },
@@ -4788,31 +4788,31 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13204,
+                              "referencedDeclaration": 13201,
                               "type": "address",
                               "value": "owner"
                             },
-                            "id": 13235,
+                            "id": 13232,
                             "name": "Identifier",
                             "src": "3574:5:35"
                           }
                         ],
-                        "id": 13236,
+                        "id": 13233,
                         "name": "FunctionCall",
                         "src": "3560:20:35"
                       }
                     ],
-                    "id": 13237,
+                    "id": 13234,
                     "name": "ExpressionStatement",
                     "src": "3560:20:35"
                   }
                 ],
-                "id": 13238,
+                "id": 13235,
                 "name": "Block",
                 "src": "3491:96:35"
               }
             ],
-            "id": 13239,
+            "id": 13236,
             "name": "FunctionDefinition",
             "src": "3310:277:35"
           },
@@ -4823,7 +4823,7 @@ export const MultiSigWallet =
               "isConstructor": false,
               "name": "removeOwner",
               "payable": false,
-              "scope": 13903,
+              "scope": 13900,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -4835,7 +4835,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "owner",
-                      "scope": 13309,
+                      "scope": 13306,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -4848,17 +4848,17 @@ export const MultiSigWallet =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 13240,
+                        "id": 13237,
                         "name": "ElementaryTypeName",
                         "src": "3731:7:35"
                       }
                     ],
-                    "id": 13241,
+                    "id": 13238,
                     "name": "VariableDeclaration",
                     "src": "3731:13:35"
                   }
                 ],
-                "id": 13242,
+                "id": 13239,
                 "name": "ParameterList",
                 "src": "3730:15:35"
               },
@@ -4869,7 +4869,7 @@ export const MultiSigWallet =
                   ]
                 },
                 "children": [],
-                "id": 13248,
+                "id": 13245,
                 "name": "ParameterList",
                 "src": "3811:0:35"
               },
@@ -4886,16 +4886,16 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13003,
+                      "referencedDeclaration": 13000,
                       "type": "modifier ()",
                       "value": "onlyWallet"
                     },
-                    "id": 13243,
+                    "id": 13240,
                     "name": "Identifier",
                     "src": "3769:10:35"
                   }
                 ],
-                "id": 13244,
+                "id": 13241,
                 "name": "ModifierInvocation",
                 "src": "3769:10:35"
               },
@@ -4907,11 +4907,11 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13028,
+                      "referencedDeclaration": 13025,
                       "type": "modifier (address)",
                       "value": "ownerExists"
                     },
-                    "id": 13245,
+                    "id": 13242,
                     "name": "Identifier",
                     "src": "3788:11:35"
                   },
@@ -4921,16 +4921,16 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13241,
+                      "referencedDeclaration": 13238,
                       "type": "address",
                       "value": "owner"
                     },
-                    "id": 13246,
+                    "id": 13243,
                     "name": "Identifier",
                     "src": "3800:5:35"
                   }
                 ],
-                "id": 13247,
+                "id": 13244,
                 "name": "ModifierInvocation",
                 "src": "3788:18:35"
               },
@@ -4965,11 +4965,11 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12974,
+                                  "referencedDeclaration": 12971,
                                   "type": "mapping(address => bool)",
                                   "value": "isOwner"
                                 },
-                                "id": 13249,
+                                "id": 13246,
                                 "name": "Identifier",
                                 "src": "3821:7:35"
                               },
@@ -4979,16 +4979,16 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13241,
+                                  "referencedDeclaration": 13238,
                                   "type": "address",
                                   "value": "owner"
                                 },
-                                "id": 13250,
+                                "id": 13247,
                                 "name": "Identifier",
                                 "src": "3829:5:35"
                               }
                             ],
-                            "id": 13251,
+                            "id": 13248,
                             "name": "IndexAccess",
                             "src": "3821:14:35"
                           },
@@ -5005,17 +5005,17 @@ export const MultiSigWallet =
                               "type": "bool",
                               "value": "false"
                             },
-                            "id": 13252,
+                            "id": 13249,
                             "name": "Literal",
                             "src": "3838:5:35"
                           }
                         ],
-                        "id": 13253,
+                        "id": 13250,
                         "name": "Assignment",
                         "src": "3821:22:35"
                       }
                     ],
-                    "id": 13254,
+                    "id": 13251,
                     "name": "ExpressionStatement",
                     "src": "3821:22:35"
                   },
@@ -5024,7 +5024,7 @@ export const MultiSigWallet =
                       {
                         "attributes": {
                           "assignments": [
-                            13256
+                            13253
                           ]
                         },
                         "children": [
@@ -5032,7 +5032,7 @@ export const MultiSigWallet =
                             "attributes": {
                               "constant": false,
                               "name": "i",
-                              "scope": 13309,
+                              "scope": 13306,
                               "stateVariable": false,
                               "storageLocation": "default",
                               "type": "uint256",
@@ -5045,12 +5045,12 @@ export const MultiSigWallet =
                                   "name": "uint",
                                   "type": "uint256"
                                 },
-                                "id": 13255,
+                                "id": 13252,
                                 "name": "ElementaryTypeName",
                                 "src": "3858:4:35"
                               }
                             ],
-                            "id": 13256,
+                            "id": 13253,
                             "name": "VariableDeclaration",
                             "src": "3858:6:35"
                           },
@@ -5067,12 +5067,12 @@ export const MultiSigWallet =
                               "type": "int_const 0",
                               "value": "0"
                             },
-                            "id": 13257,
+                            "id": 13254,
                             "name": "Literal",
                             "src": "3865:1:35"
                           }
                         ],
-                        "id": 13258,
+                        "id": 13255,
                         "name": "VariableDeclarationStatement",
                         "src": "3858:8:35"
                       },
@@ -5097,11 +5097,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13256,
+                              "referencedDeclaration": 13253,
                               "type": "uint256",
                               "value": "i"
                             },
-                            "id": 13259,
+                            "id": 13256,
                             "name": "Identifier",
                             "src": "3868:1:35"
                           },
@@ -5138,16 +5138,16 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 12977,
+                                      "referencedDeclaration": 12974,
                                       "type": "address[] storage ref",
                                       "value": "owners"
                                     },
-                                    "id": 13260,
+                                    "id": 13257,
                                     "name": "Identifier",
                                     "src": "3870:6:35"
                                   }
                                 ],
-                                "id": 13261,
+                                "id": 13258,
                                 "name": "MemberAccess",
                                 "src": "3870:13:35"
                               },
@@ -5164,17 +5164,17 @@ export const MultiSigWallet =
                                   "type": "int_const 1",
                                   "value": "1"
                                 },
-                                "id": 13262,
+                                "id": 13259,
                                 "name": "Literal",
                                 "src": "3886:1:35"
                               }
                             ],
-                            "id": 13263,
+                            "id": 13260,
                             "name": "BinaryOperation",
                             "src": "3870:17:35"
                           }
                         ],
-                        "id": 13264,
+                        "id": 13261,
                         "name": "BinaryOperation",
                         "src": "3868:19:35"
                       },
@@ -5198,21 +5198,21 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13256,
+                                  "referencedDeclaration": 13253,
                                   "type": "uint256",
                                   "value": "i"
                                 },
-                                "id": 13265,
+                                "id": 13262,
                                 "name": "Identifier",
                                 "src": "3889:1:35"
                               }
                             ],
-                            "id": 13266,
+                            "id": 13263,
                             "name": "UnaryOperation",
                             "src": "3889:3:35"
                           }
                         ],
-                        "id": 13267,
+                        "id": 13264,
                         "name": "ExpressionStatement",
                         "src": "3889:3:35"
                       },
@@ -5252,11 +5252,11 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 12977,
+                                      "referencedDeclaration": 12974,
                                       "type": "address[] storage ref",
                                       "value": "owners"
                                     },
-                                    "id": 13268,
+                                    "id": 13265,
                                     "name": "Identifier",
                                     "src": "3910:6:35"
                                   },
@@ -5266,16 +5266,16 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 13256,
+                                      "referencedDeclaration": 13253,
                                       "type": "uint256",
                                       "value": "i"
                                     },
-                                    "id": 13269,
+                                    "id": 13266,
                                     "name": "Identifier",
                                     "src": "3917:1:35"
                                   }
                                 ],
-                                "id": 13270,
+                                "id": 13267,
                                 "name": "IndexAccess",
                                 "src": "3910:9:35"
                               },
@@ -5285,16 +5285,16 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13241,
+                                  "referencedDeclaration": 13238,
                                   "type": "address",
                                   "value": "owner"
                                 },
-                                "id": 13271,
+                                "id": 13268,
                                 "name": "Identifier",
                                 "src": "3923:5:35"
                               }
                             ],
-                            "id": 13272,
+                            "id": 13269,
                             "name": "BinaryOperation",
                             "src": "3910:18:35"
                           },
@@ -5329,11 +5329,11 @@ export const MultiSigWallet =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 12977,
+                                              "referencedDeclaration": 12974,
                                               "type": "address[] storage ref",
                                               "value": "owners"
                                             },
-                                            "id": 13273,
+                                            "id": 13270,
                                             "name": "Identifier",
                                             "src": "3948:6:35"
                                           },
@@ -5343,16 +5343,16 @@ export const MultiSigWallet =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 13256,
+                                              "referencedDeclaration": 13253,
                                               "type": "uint256",
                                               "value": "i"
                                             },
-                                            "id": 13274,
+                                            "id": 13271,
                                             "name": "Identifier",
                                             "src": "3955:1:35"
                                           }
                                         ],
-                                        "id": 13275,
+                                        "id": 13272,
                                         "name": "IndexAccess",
                                         "src": "3948:9:35"
                                       },
@@ -5372,11 +5372,11 @@ export const MultiSigWallet =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 12977,
+                                              "referencedDeclaration": 12974,
                                               "type": "address[] storage ref",
                                               "value": "owners"
                                             },
-                                            "id": 13276,
+                                            "id": 13273,
                                             "name": "Identifier",
                                             "src": "3960:6:35"
                                           },
@@ -5413,16 +5413,16 @@ export const MultiSigWallet =
                                                       "overloadedDeclarations": [
                                                         null
                                                       ],
-                                                      "referencedDeclaration": 12977,
+                                                      "referencedDeclaration": 12974,
                                                       "type": "address[] storage ref",
                                                       "value": "owners"
                                                     },
-                                                    "id": 13277,
+                                                    "id": 13274,
                                                     "name": "Identifier",
                                                     "src": "3967:6:35"
                                                   }
                                                 ],
-                                                "id": 13278,
+                                                "id": 13275,
                                                 "name": "MemberAccess",
                                                 "src": "3967:13:35"
                                               },
@@ -5439,47 +5439,47 @@ export const MultiSigWallet =
                                                   "type": "int_const 1",
                                                   "value": "1"
                                                 },
-                                                "id": 13279,
+                                                "id": 13276,
                                                 "name": "Literal",
                                                 "src": "3983:1:35"
                                               }
                                             ],
-                                            "id": 13280,
+                                            "id": 13277,
                                             "name": "BinaryOperation",
                                             "src": "3967:17:35"
                                           }
                                         ],
-                                        "id": 13281,
+                                        "id": 13278,
                                         "name": "IndexAccess",
                                         "src": "3960:25:35"
                                       }
                                     ],
-                                    "id": 13282,
+                                    "id": 13279,
                                     "name": "Assignment",
                                     "src": "3948:37:35"
                                   }
                                 ],
-                                "id": 13283,
+                                "id": 13280,
                                 "name": "ExpressionStatement",
                                 "src": "3948:37:35"
                               },
                               {
-                                "id": 13284,
+                                "id": 13281,
                                 "name": "Break",
                                 "src": "4003:5:35"
                               }
                             ],
-                            "id": 13285,
+                            "id": 13282,
                             "name": "Block",
                             "src": "3930:93:35"
                           }
                         ],
-                        "id": 13286,
+                        "id": 13283,
                         "name": "IfStatement",
                         "src": "3906:117:35"
                       }
                     ],
-                    "id": 13287,
+                    "id": 13284,
                     "name": "ForStatement",
                     "src": "3853:170:35"
                   },
@@ -5514,16 +5514,16 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12977,
+                                  "referencedDeclaration": 12974,
                                   "type": "address[] storage ref",
                                   "value": "owners"
                                 },
-                                "id": 13288,
+                                "id": 13285,
                                 "name": "Identifier",
                                 "src": "4032:6:35"
                               }
                             ],
-                            "id": 13290,
+                            "id": 13287,
                             "name": "MemberAccess",
                             "src": "4032:13:35"
                           },
@@ -5540,17 +5540,17 @@ export const MultiSigWallet =
                               "type": "int_const 1",
                               "value": "1"
                             },
-                            "id": 13291,
+                            "id": 13288,
                             "name": "Literal",
                             "src": "4049:1:35"
                           }
                         ],
-                        "id": 13292,
+                        "id": 13289,
                         "name": "Assignment",
                         "src": "4032:18:35"
                       }
                     ],
-                    "id": 13293,
+                    "id": 13290,
                     "name": "ExpressionStatement",
                     "src": "4032:18:35"
                   },
@@ -5580,11 +5580,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12979,
+                              "referencedDeclaration": 12976,
                               "type": "uint256",
                               "value": "required"
                             },
-                            "id": 13294,
+                            "id": 13291,
                             "name": "Identifier",
                             "src": "4064:8:35"
                           },
@@ -5606,21 +5606,21 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12977,
+                                  "referencedDeclaration": 12974,
                                   "type": "address[] storage ref",
                                   "value": "owners"
                                 },
-                                "id": 13295,
+                                "id": 13292,
                                 "name": "Identifier",
                                 "src": "4075:6:35"
                               }
                             ],
-                            "id": 13296,
+                            "id": 13293,
                             "name": "MemberAccess",
                             "src": "4075:13:35"
                           }
                         ],
-                        "id": 13297,
+                        "id": 13294,
                         "name": "BinaryOperation",
                         "src": "4064:24:35"
                       },
@@ -5652,11 +5652,11 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13392,
+                                  "referencedDeclaration": 13389,
                                   "type": "function (uint256)",
                                   "value": "changeRequirement"
                                 },
-                                "id": 13298,
+                                "id": 13295,
                                 "name": "Identifier",
                                 "src": "4102:17:35"
                               },
@@ -5678,31 +5678,31 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 12977,
+                                      "referencedDeclaration": 12974,
                                       "type": "address[] storage ref",
                                       "value": "owners"
                                     },
-                                    "id": 13299,
+                                    "id": 13296,
                                     "name": "Identifier",
                                     "src": "4120:6:35"
                                   }
                                 ],
-                                "id": 13300,
+                                "id": 13297,
                                 "name": "MemberAccess",
                                 "src": "4120:13:35"
                               }
                             ],
-                            "id": 13301,
+                            "id": 13298,
                             "name": "FunctionCall",
                             "src": "4102:32:35"
                           }
                         ],
-                        "id": 13302,
+                        "id": 13299,
                         "name": "ExpressionStatement",
                         "src": "4102:32:35"
                       }
                     ],
-                    "id": 13303,
+                    "id": 13300,
                     "name": "IfStatement",
                     "src": "4060:74:35"
                   },
@@ -5734,11 +5734,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12953,
+                              "referencedDeclaration": 12950,
                               "type": "function (address)",
                               "value": "OwnerRemoval"
                             },
-                            "id": 13304,
+                            "id": 13301,
                             "name": "Identifier",
                             "src": "4144:12:35"
                           },
@@ -5748,31 +5748,31 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13241,
+                              "referencedDeclaration": 13238,
                               "type": "address",
                               "value": "owner"
                             },
-                            "id": 13305,
+                            "id": 13302,
                             "name": "Identifier",
                             "src": "4157:5:35"
                           }
                         ],
-                        "id": 13306,
+                        "id": 13303,
                         "name": "FunctionCall",
                         "src": "4144:19:35"
                       }
                     ],
-                    "id": 13307,
+                    "id": 13304,
                     "name": "ExpressionStatement",
                     "src": "4144:19:35"
                   }
                 ],
-                "id": 13308,
+                "id": 13305,
                 "name": "Block",
                 "src": "3811:359:35"
               }
             ],
-            "id": 13309,
+            "id": 13306,
             "name": "FunctionDefinition",
             "src": "3710:460:35"
           },
@@ -5783,7 +5783,7 @@ export const MultiSigWallet =
               "isConstructor": false,
               "name": "replaceOwner",
               "payable": false,
-              "scope": 13903,
+              "scope": 13900,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -5795,7 +5795,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "owner",
-                      "scope": 13371,
+                      "scope": 13368,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -5808,12 +5808,12 @@ export const MultiSigWallet =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 13310,
+                        "id": 13307,
                         "name": "ElementaryTypeName",
                         "src": "4394:7:35"
                       }
                     ],
-                    "id": 13311,
+                    "id": 13308,
                     "name": "VariableDeclaration",
                     "src": "4394:13:35"
                   },
@@ -5821,7 +5821,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "newOwner",
-                      "scope": 13371,
+                      "scope": 13368,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -5834,17 +5834,17 @@ export const MultiSigWallet =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 13312,
+                        "id": 13309,
                         "name": "ElementaryTypeName",
                         "src": "4409:7:35"
                       }
                     ],
-                    "id": 13313,
+                    "id": 13310,
                     "name": "VariableDeclaration",
                     "src": "4409:16:35"
                   }
                 ],
-                "id": 13314,
+                "id": 13311,
                 "name": "ParameterList",
                 "src": "4393:33:35"
               },
@@ -5855,7 +5855,7 @@ export const MultiSigWallet =
                   ]
                 },
                 "children": [],
-                "id": 13323,
+                "id": 13320,
                 "name": "ParameterList",
                 "src": "4528:0:35"
               },
@@ -5872,16 +5872,16 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13003,
+                      "referencedDeclaration": 13000,
                       "type": "modifier ()",
                       "value": "onlyWallet"
                     },
-                    "id": 13315,
+                    "id": 13312,
                     "name": "Identifier",
                     "src": "4450:10:35"
                   }
                 ],
-                "id": 13316,
+                "id": 13313,
                 "name": "ModifierInvocation",
                 "src": "4450:10:35"
               },
@@ -5893,11 +5893,11 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13028,
+                      "referencedDeclaration": 13025,
                       "type": "modifier (address)",
                       "value": "ownerExists"
                     },
-                    "id": 13317,
+                    "id": 13314,
                     "name": "Identifier",
                     "src": "4469:11:35"
                   },
@@ -5907,16 +5907,16 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13311,
+                      "referencedDeclaration": 13308,
                       "type": "address",
                       "value": "owner"
                     },
-                    "id": 13318,
+                    "id": 13315,
                     "name": "Identifier",
                     "src": "4481:5:35"
                   }
                 ],
-                "id": 13319,
+                "id": 13316,
                 "name": "ModifierInvocation",
                 "src": "4469:18:35"
               },
@@ -5928,11 +5928,11 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13016,
+                      "referencedDeclaration": 13013,
                       "type": "modifier (address)",
                       "value": "ownerDoesNotExist"
                     },
-                    "id": 13320,
+                    "id": 13317,
                     "name": "Identifier",
                     "src": "4496:17:35"
                   },
@@ -5942,16 +5942,16 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13313,
+                      "referencedDeclaration": 13310,
                       "type": "address",
                       "value": "newOwner"
                     },
-                    "id": 13321,
+                    "id": 13318,
                     "name": "Identifier",
                     "src": "4514:8:35"
                   }
                 ],
-                "id": 13322,
+                "id": 13319,
                 "name": "ModifierInvocation",
                 "src": "4496:27:35"
               },
@@ -5962,7 +5962,7 @@ export const MultiSigWallet =
                       {
                         "attributes": {
                           "assignments": [
-                            13325
+                            13322
                           ]
                         },
                         "children": [
@@ -5970,7 +5970,7 @@ export const MultiSigWallet =
                             "attributes": {
                               "constant": false,
                               "name": "i",
-                              "scope": 13371,
+                              "scope": 13368,
                               "stateVariable": false,
                               "storageLocation": "default",
                               "type": "uint256",
@@ -5983,12 +5983,12 @@ export const MultiSigWallet =
                                   "name": "uint",
                                   "type": "uint256"
                                 },
-                                "id": 13324,
+                                "id": 13321,
                                 "name": "ElementaryTypeName",
                                 "src": "4543:4:35"
                               }
                             ],
-                            "id": 13325,
+                            "id": 13322,
                             "name": "VariableDeclaration",
                             "src": "4543:6:35"
                           },
@@ -6005,12 +6005,12 @@ export const MultiSigWallet =
                               "type": "int_const 0",
                               "value": "0"
                             },
-                            "id": 13326,
+                            "id": 13323,
                             "name": "Literal",
                             "src": "4550:1:35"
                           }
                         ],
-                        "id": 13327,
+                        "id": 13324,
                         "name": "VariableDeclarationStatement",
                         "src": "4543:8:35"
                       },
@@ -6035,11 +6035,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13325,
+                              "referencedDeclaration": 13322,
                               "type": "uint256",
                               "value": "i"
                             },
-                            "id": 13328,
+                            "id": 13325,
                             "name": "Identifier",
                             "src": "4553:1:35"
                           },
@@ -6061,21 +6061,21 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12977,
+                                  "referencedDeclaration": 12974,
                                   "type": "address[] storage ref",
                                   "value": "owners"
                                 },
-                                "id": 13329,
+                                "id": 13326,
                                 "name": "Identifier",
                                 "src": "4555:6:35"
                               }
                             ],
-                            "id": 13330,
+                            "id": 13327,
                             "name": "MemberAccess",
                             "src": "4555:13:35"
                           }
                         ],
-                        "id": 13331,
+                        "id": 13328,
                         "name": "BinaryOperation",
                         "src": "4553:15:35"
                       },
@@ -6099,21 +6099,21 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13325,
+                                  "referencedDeclaration": 13322,
                                   "type": "uint256",
                                   "value": "i"
                                 },
-                                "id": 13332,
+                                "id": 13329,
                                 "name": "Identifier",
                                 "src": "4570:1:35"
                               }
                             ],
-                            "id": 13333,
+                            "id": 13330,
                             "name": "UnaryOperation",
                             "src": "4570:3:35"
                           }
                         ],
-                        "id": 13334,
+                        "id": 13331,
                         "name": "ExpressionStatement",
                         "src": "4570:3:35"
                       },
@@ -6153,11 +6153,11 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 12977,
+                                      "referencedDeclaration": 12974,
                                       "type": "address[] storage ref",
                                       "value": "owners"
                                     },
-                                    "id": 13335,
+                                    "id": 13332,
                                     "name": "Identifier",
                                     "src": "4591:6:35"
                                   },
@@ -6167,16 +6167,16 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 13325,
+                                      "referencedDeclaration": 13322,
                                       "type": "uint256",
                                       "value": "i"
                                     },
-                                    "id": 13336,
+                                    "id": 13333,
                                     "name": "Identifier",
                                     "src": "4598:1:35"
                                   }
                                 ],
-                                "id": 13337,
+                                "id": 13334,
                                 "name": "IndexAccess",
                                 "src": "4591:9:35"
                               },
@@ -6186,16 +6186,16 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13311,
+                                  "referencedDeclaration": 13308,
                                   "type": "address",
                                   "value": "owner"
                                 },
-                                "id": 13338,
+                                "id": 13335,
                                 "name": "Identifier",
                                 "src": "4604:5:35"
                               }
                             ],
-                            "id": 13339,
+                            "id": 13336,
                             "name": "BinaryOperation",
                             "src": "4591:18:35"
                           },
@@ -6230,11 +6230,11 @@ export const MultiSigWallet =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 12977,
+                                              "referencedDeclaration": 12974,
                                               "type": "address[] storage ref",
                                               "value": "owners"
                                             },
-                                            "id": 13340,
+                                            "id": 13337,
                                             "name": "Identifier",
                                             "src": "4629:6:35"
                                           },
@@ -6244,16 +6244,16 @@ export const MultiSigWallet =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 13325,
+                                              "referencedDeclaration": 13322,
                                               "type": "uint256",
                                               "value": "i"
                                             },
-                                            "id": 13341,
+                                            "id": 13338,
                                             "name": "Identifier",
                                             "src": "4636:1:35"
                                           }
                                         ],
-                                        "id": 13342,
+                                        "id": 13339,
                                         "name": "IndexAccess",
                                         "src": "4629:9:35"
                                       },
@@ -6263,41 +6263,41 @@ export const MultiSigWallet =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 13313,
+                                          "referencedDeclaration": 13310,
                                           "type": "address",
                                           "value": "newOwner"
                                         },
-                                        "id": 13343,
+                                        "id": 13340,
                                         "name": "Identifier",
                                         "src": "4641:8:35"
                                       }
                                     ],
-                                    "id": 13344,
+                                    "id": 13341,
                                     "name": "Assignment",
                                     "src": "4629:20:35"
                                   }
                                 ],
-                                "id": 13345,
+                                "id": 13342,
                                 "name": "ExpressionStatement",
                                 "src": "4629:20:35"
                               },
                               {
-                                "id": 13346,
+                                "id": 13343,
                                 "name": "Break",
                                 "src": "4667:5:35"
                               }
                             ],
-                            "id": 13347,
+                            "id": 13344,
                             "name": "Block",
                             "src": "4611:76:35"
                           }
                         ],
-                        "id": 13348,
+                        "id": 13345,
                         "name": "IfStatement",
                         "src": "4587:100:35"
                       }
                     ],
-                    "id": 13349,
+                    "id": 13346,
                     "name": "ForStatement",
                     "src": "4538:149:35"
                   },
@@ -6330,11 +6330,11 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12974,
+                                  "referencedDeclaration": 12971,
                                   "type": "mapping(address => bool)",
                                   "value": "isOwner"
                                 },
-                                "id": 13350,
+                                "id": 13347,
                                 "name": "Identifier",
                                 "src": "4696:7:35"
                               },
@@ -6344,16 +6344,16 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13311,
+                                  "referencedDeclaration": 13308,
                                   "type": "address",
                                   "value": "owner"
                                 },
-                                "id": 13351,
+                                "id": 13348,
                                 "name": "Identifier",
                                 "src": "4704:5:35"
                               }
                             ],
-                            "id": 13352,
+                            "id": 13349,
                             "name": "IndexAccess",
                             "src": "4696:14:35"
                           },
@@ -6370,17 +6370,17 @@ export const MultiSigWallet =
                               "type": "bool",
                               "value": "false"
                             },
-                            "id": 13353,
+                            "id": 13350,
                             "name": "Literal",
                             "src": "4713:5:35"
                           }
                         ],
-                        "id": 13354,
+                        "id": 13351,
                         "name": "Assignment",
                         "src": "4696:22:35"
                       }
                     ],
-                    "id": 13355,
+                    "id": 13352,
                     "name": "ExpressionStatement",
                     "src": "4696:22:35"
                   },
@@ -6413,11 +6413,11 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12974,
+                                  "referencedDeclaration": 12971,
                                   "type": "mapping(address => bool)",
                                   "value": "isOwner"
                                 },
-                                "id": 13356,
+                                "id": 13353,
                                 "name": "Identifier",
                                 "src": "4728:7:35"
                               },
@@ -6427,16 +6427,16 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13313,
+                                  "referencedDeclaration": 13310,
                                   "type": "address",
                                   "value": "newOwner"
                                 },
-                                "id": 13357,
+                                "id": 13354,
                                 "name": "Identifier",
                                 "src": "4736:8:35"
                               }
                             ],
-                            "id": 13358,
+                            "id": 13355,
                             "name": "IndexAccess",
                             "src": "4728:17:35"
                           },
@@ -6453,17 +6453,17 @@ export const MultiSigWallet =
                               "type": "bool",
                               "value": "true"
                             },
-                            "id": 13359,
+                            "id": 13356,
                             "name": "Literal",
                             "src": "4748:4:35"
                           }
                         ],
-                        "id": 13360,
+                        "id": 13357,
                         "name": "Assignment",
                         "src": "4728:24:35"
                       }
                     ],
-                    "id": 13361,
+                    "id": 13358,
                     "name": "ExpressionStatement",
                     "src": "4728:24:35"
                   },
@@ -6495,11 +6495,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12953,
+                              "referencedDeclaration": 12950,
                               "type": "function (address)",
                               "value": "OwnerRemoval"
                             },
-                            "id": 13362,
+                            "id": 13359,
                             "name": "Identifier",
                             "src": "4762:12:35"
                           },
@@ -6509,21 +6509,21 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13311,
+                              "referencedDeclaration": 13308,
                               "type": "address",
                               "value": "owner"
                             },
-                            "id": 13363,
+                            "id": 13360,
                             "name": "Identifier",
                             "src": "4775:5:35"
                           }
                         ],
-                        "id": 13364,
+                        "id": 13361,
                         "name": "FunctionCall",
                         "src": "4762:19:35"
                       }
                     ],
-                    "id": 13365,
+                    "id": 13362,
                     "name": "ExpressionStatement",
                     "src": "4762:19:35"
                   },
@@ -6555,11 +6555,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12949,
+                              "referencedDeclaration": 12946,
                               "type": "function (address)",
                               "value": "OwnerAddition"
                             },
-                            "id": 13366,
+                            "id": 13363,
                             "name": "Identifier",
                             "src": "4791:13:35"
                           },
@@ -6569,31 +6569,31 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13313,
+                              "referencedDeclaration": 13310,
                               "type": "address",
                               "value": "newOwner"
                             },
-                            "id": 13367,
+                            "id": 13364,
                             "name": "Identifier",
                             "src": "4805:8:35"
                           }
                         ],
-                        "id": 13368,
+                        "id": 13365,
                         "name": "FunctionCall",
                         "src": "4791:23:35"
                       }
                     ],
-                    "id": 13369,
+                    "id": 13366,
                     "name": "ExpressionStatement",
                     "src": "4791:23:35"
                   }
                 ],
-                "id": 13370,
+                "id": 13367,
                 "name": "Block",
                 "src": "4528:293:35"
               }
             ],
-            "id": 13371,
+            "id": 13368,
             "name": "FunctionDefinition",
             "src": "4372:449:35"
           },
@@ -6604,7 +6604,7 @@ export const MultiSigWallet =
               "isConstructor": false,
               "name": "changeRequirement",
               "payable": false,
-              "scope": 13903,
+              "scope": 13900,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -6616,7 +6616,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "_required",
-                      "scope": 13392,
+                      "scope": 13389,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -6629,17 +6629,17 @@ export const MultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 13372,
+                        "id": 13369,
                         "name": "ElementaryTypeName",
                         "src": "5019:4:35"
                       }
                     ],
-                    "id": 13373,
+                    "id": 13370,
                     "name": "VariableDeclaration",
                     "src": "5019:14:35"
                   }
                 ],
-                "id": 13374,
+                "id": 13371,
                 "name": "ParameterList",
                 "src": "5018:16:35"
               },
@@ -6650,7 +6650,7 @@ export const MultiSigWallet =
                   ]
                 },
                 "children": [],
-                "id": 13382,
+                "id": 13379,
                 "name": "ParameterList",
                 "src": "5124:0:35"
               },
@@ -6667,16 +6667,16 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13003,
+                      "referencedDeclaration": 13000,
                       "type": "modifier ()",
                       "value": "onlyWallet"
                     },
-                    "id": 13375,
+                    "id": 13372,
                     "name": "Identifier",
                     "src": "5058:10:35"
                   }
                 ],
-                "id": 13376,
+                "id": 13373,
                 "name": "ModifierInvocation",
                 "src": "5058:10:35"
               },
@@ -6688,11 +6688,11 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13128,
+                      "referencedDeclaration": 13125,
                       "type": "modifier (uint256,uint256)",
                       "value": "validRequirement"
                     },
-                    "id": 13377,
+                    "id": 13374,
                     "name": "Identifier",
                     "src": "5077:16:35"
                   },
@@ -6714,16 +6714,16 @@ export const MultiSigWallet =
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 12977,
+                          "referencedDeclaration": 12974,
                           "type": "address[] storage ref",
                           "value": "owners"
                         },
-                        "id": 13378,
+                        "id": 13375,
                         "name": "Identifier",
                         "src": "5094:6:35"
                       }
                     ],
-                    "id": 13379,
+                    "id": 13376,
                     "name": "MemberAccess",
                     "src": "5094:13:35"
                   },
@@ -6733,16 +6733,16 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13373,
+                      "referencedDeclaration": 13370,
                       "type": "uint256",
                       "value": "_required"
                     },
-                    "id": 13380,
+                    "id": 13377,
                     "name": "Identifier",
                     "src": "5109:9:35"
                   }
                 ],
-                "id": 13381,
+                "id": 13378,
                 "name": "ModifierInvocation",
                 "src": "5077:42:35"
               },
@@ -6767,11 +6767,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12979,
+                              "referencedDeclaration": 12976,
                               "type": "uint256",
                               "value": "required"
                             },
-                            "id": 13383,
+                            "id": 13380,
                             "name": "Identifier",
                             "src": "5134:8:35"
                           },
@@ -6781,21 +6781,21 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13373,
+                              "referencedDeclaration": 13370,
                               "type": "uint256",
                               "value": "_required"
                             },
-                            "id": 13384,
+                            "id": 13381,
                             "name": "Identifier",
                             "src": "5145:9:35"
                           }
                         ],
-                        "id": 13385,
+                        "id": 13382,
                         "name": "Assignment",
                         "src": "5134:20:35"
                       }
                     ],
-                    "id": 13386,
+                    "id": 13383,
                     "name": "ExpressionStatement",
                     "src": "5134:20:35"
                   },
@@ -6827,11 +6827,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12957,
+                              "referencedDeclaration": 12954,
                               "type": "function (uint256)",
                               "value": "RequirementChange"
                             },
-                            "id": 13387,
+                            "id": 13384,
                             "name": "Identifier",
                             "src": "5164:17:35"
                           },
@@ -6841,31 +6841,31 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13373,
+                              "referencedDeclaration": 13370,
                               "type": "uint256",
                               "value": "_required"
                             },
-                            "id": 13388,
+                            "id": 13385,
                             "name": "Identifier",
                             "src": "5182:9:35"
                           }
                         ],
-                        "id": 13389,
+                        "id": 13386,
                         "name": "FunctionCall",
                         "src": "5164:28:35"
                       }
                     ],
-                    "id": 13390,
+                    "id": 13387,
                     "name": "ExpressionStatement",
                     "src": "5164:28:35"
                   }
                 ],
-                "id": 13391,
+                "id": 13388,
                 "name": "Block",
                 "src": "5124:75:35"
               }
             ],
-            "id": 13392,
+            "id": 13389,
             "name": "FunctionDefinition",
             "src": "4992:207:35"
           },
@@ -6879,7 +6879,7 @@ export const MultiSigWallet =
               ],
               "name": "submitTransaction",
               "payable": false,
-              "scope": 13903,
+              "scope": 13900,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -6891,7 +6891,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "destination",
-                      "scope": 13416,
+                      "scope": 13413,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -6904,12 +6904,12 @@ export const MultiSigWallet =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 13393,
+                        "id": 13390,
                         "name": "ElementaryTypeName",
                         "src": "5485:7:35"
                       }
                     ],
-                    "id": 13394,
+                    "id": 13391,
                     "name": "VariableDeclaration",
                     "src": "5485:19:35"
                   },
@@ -6917,7 +6917,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "value",
-                      "scope": 13416,
+                      "scope": 13413,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -6930,12 +6930,12 @@ export const MultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 13395,
+                        "id": 13392,
                         "name": "ElementaryTypeName",
                         "src": "5506:4:35"
                       }
                     ],
-                    "id": 13396,
+                    "id": 13393,
                     "name": "VariableDeclaration",
                     "src": "5506:10:35"
                   },
@@ -6943,7 +6943,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "data",
-                      "scope": 13416,
+                      "scope": 13413,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes memory",
@@ -6956,17 +6956,17 @@ export const MultiSigWallet =
                           "name": "bytes",
                           "type": "bytes storage pointer"
                         },
-                        "id": 13397,
+                        "id": 13394,
                         "name": "ElementaryTypeName",
                         "src": "5518:5:35"
                       }
                     ],
-                    "id": 13398,
+                    "id": 13395,
                     "name": "VariableDeclaration",
                     "src": "5518:10:35"
                   }
                 ],
-                "id": 13399,
+                "id": 13396,
                 "name": "ParameterList",
                 "src": "5484:45:35"
               },
@@ -6976,7 +6976,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "transactionId",
-                      "scope": 13416,
+                      "scope": 13413,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -6989,17 +6989,17 @@ export const MultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 13400,
+                        "id": 13397,
                         "name": "ElementaryTypeName",
                         "src": "5562:4:35"
                       }
                     ],
-                    "id": 13401,
+                    "id": 13398,
                     "name": "VariableDeclaration",
                     "src": "5562:18:35"
                   }
                 ],
-                "id": 13402,
+                "id": 13399,
                 "name": "ParameterList",
                 "src": "5561:20:35"
               },
@@ -7024,11 +7024,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13401,
+                              "referencedDeclaration": 13398,
                               "type": "uint256",
                               "value": "transactionId"
                             },
-                            "id": 13403,
+                            "id": 13400,
                             "name": "Identifier",
                             "src": "5596:13:35"
                           },
@@ -7066,11 +7066,11 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13628,
+                                  "referencedDeclaration": 13625,
                                   "type": "function (address,uint256,bytes memory) returns (uint256)",
                                   "value": "addTransaction"
                                 },
-                                "id": 13404,
+                                "id": 13401,
                                 "name": "Identifier",
                                 "src": "5612:14:35"
                               },
@@ -7080,11 +7080,11 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13394,
+                                  "referencedDeclaration": 13391,
                                   "type": "address",
                                   "value": "destination"
                                 },
-                                "id": 13405,
+                                "id": 13402,
                                 "name": "Identifier",
                                 "src": "5627:11:35"
                               },
@@ -7094,11 +7094,11 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13396,
+                                  "referencedDeclaration": 13393,
                                   "type": "uint256",
                                   "value": "value"
                                 },
-                                "id": 13406,
+                                "id": 13403,
                                 "name": "Identifier",
                                 "src": "5640:5:35"
                               },
@@ -7108,26 +7108,26 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13398,
+                                  "referencedDeclaration": 13395,
                                   "type": "bytes memory",
                                   "value": "data"
                                 },
-                                "id": 13407,
+                                "id": 13404,
                                 "name": "Identifier",
                                 "src": "5647:4:35"
                               }
                             ],
-                            "id": 13408,
+                            "id": 13405,
                             "name": "FunctionCall",
                             "src": "5612:40:35"
                           }
                         ],
-                        "id": 13409,
+                        "id": 13406,
                         "name": "Assignment",
                         "src": "5596:56:35"
                       }
                     ],
-                    "id": 13410,
+                    "id": 13407,
                     "name": "ExpressionStatement",
                     "src": "5596:56:35"
                   },
@@ -7159,11 +7159,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13453,
+                              "referencedDeclaration": 13450,
                               "type": "function (uint256)",
                               "value": "confirmTransaction"
                             },
-                            "id": 13411,
+                            "id": 13408,
                             "name": "Identifier",
                             "src": "5662:18:35"
                           },
@@ -7173,31 +7173,31 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13401,
+                              "referencedDeclaration": 13398,
                               "type": "uint256",
                               "value": "transactionId"
                             },
-                            "id": 13412,
+                            "id": 13409,
                             "name": "Identifier",
                             "src": "5681:13:35"
                           }
                         ],
-                        "id": 13413,
+                        "id": 13410,
                         "name": "FunctionCall",
                         "src": "5662:33:35"
                       }
                     ],
-                    "id": 13414,
+                    "id": 13411,
                     "name": "ExpressionStatement",
                     "src": "5662:33:35"
                   }
                 ],
-                "id": 13415,
+                "id": 13412,
                 "name": "Block",
                 "src": "5586:116:35"
               }
             ],
-            "id": 13416,
+            "id": 13413,
             "name": "FunctionDefinition",
             "src": "5458:244:35"
           },
@@ -7208,7 +7208,7 @@ export const MultiSigWallet =
               "isConstructor": false,
               "name": "confirmTransaction",
               "payable": false,
-              "scope": 13903,
+              "scope": 13900,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -7220,7 +7220,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "transactionId",
-                      "scope": 13453,
+                      "scope": 13450,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -7233,17 +7233,17 @@ export const MultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 13417,
+                        "id": 13414,
                         "name": "ElementaryTypeName",
                         "src": "5836:4:35"
                       }
                     ],
-                    "id": 13418,
+                    "id": 13415,
                     "name": "VariableDeclaration",
                     "src": "5836:18:35"
                   }
                 ],
-                "id": 13419,
+                "id": 13416,
                 "name": "ParameterList",
                 "src": "5835:20:35"
               },
@@ -7254,7 +7254,7 @@ export const MultiSigWallet =
                   ]
                 },
                 "children": [],
-                "id": 13432,
+                "id": 13429,
                 "name": "ParameterList",
                 "src": "5996:0:35"
               },
@@ -7266,11 +7266,11 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13028,
+                      "referencedDeclaration": 13025,
                       "type": "modifier (address)",
                       "value": "ownerExists"
                     },
-                    "id": 13420,
+                    "id": 13417,
                     "name": "Identifier",
                     "src": "5879:11:35"
                   },
@@ -7292,21 +7292,21 @@ export const MultiSigWallet =
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 15818,
+                          "referencedDeclaration": 15815,
                           "type": "msg",
                           "value": "msg"
                         },
-                        "id": 13421,
+                        "id": 13418,
                         "name": "Identifier",
                         "src": "5891:3:35"
                       }
                     ],
-                    "id": 13422,
+                    "id": 13419,
                     "name": "MemberAccess",
                     "src": "5891:10:35"
                   }
                 ],
-                "id": 13423,
+                "id": 13420,
                 "name": "ModifierInvocation",
                 "src": "5879:23:35"
               },
@@ -7318,11 +7318,11 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13043,
+                      "referencedDeclaration": 13040,
                       "type": "modifier (uint256)",
                       "value": "transactionExists"
                     },
-                    "id": 13424,
+                    "id": 13421,
                     "name": "Identifier",
                     "src": "5911:17:35"
                   },
@@ -7332,16 +7332,16 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13418,
+                      "referencedDeclaration": 13415,
                       "type": "uint256",
                       "value": "transactionId"
                     },
-                    "id": 13425,
+                    "id": 13422,
                     "name": "Identifier",
                     "src": "5929:13:35"
                   }
                 ],
-                "id": 13426,
+                "id": 13423,
                 "name": "ModifierInvocation",
                 "src": "5911:32:35"
               },
@@ -7353,11 +7353,11 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13076,
+                      "referencedDeclaration": 13073,
                       "type": "modifier (uint256,address)",
                       "value": "notConfirmed"
                     },
-                    "id": 13427,
+                    "id": 13424,
                     "name": "Identifier",
                     "src": "5952:12:35"
                   },
@@ -7367,11 +7367,11 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13418,
+                      "referencedDeclaration": 13415,
                       "type": "uint256",
                       "value": "transactionId"
                     },
-                    "id": 13428,
+                    "id": 13425,
                     "name": "Identifier",
                     "src": "5965:13:35"
                   },
@@ -7393,21 +7393,21 @@ export const MultiSigWallet =
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 15818,
+                          "referencedDeclaration": 15815,
                           "type": "msg",
                           "value": "msg"
                         },
-                        "id": 13429,
+                        "id": 13426,
                         "name": "Identifier",
                         "src": "5980:3:35"
                       }
                     ],
-                    "id": 13430,
+                    "id": 13427,
                     "name": "MemberAccess",
                     "src": "5980:10:35"
                   }
                 ],
-                "id": 13431,
+                "id": 13428,
                 "name": "ModifierInvocation",
                 "src": "5952:39:35"
               },
@@ -7452,11 +7452,11 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 12970,
+                                      "referencedDeclaration": 12967,
                                       "type": "mapping(uint256 => mapping(address => bool))",
                                       "value": "confirmations"
                                     },
-                                    "id": 13433,
+                                    "id": 13430,
                                     "name": "Identifier",
                                     "src": "6006:13:35"
                                   },
@@ -7466,16 +7466,16 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 13418,
+                                      "referencedDeclaration": 13415,
                                       "type": "uint256",
                                       "value": "transactionId"
                                     },
-                                    "id": 13434,
+                                    "id": 13431,
                                     "name": "Identifier",
                                     "src": "6020:13:35"
                                   }
                                 ],
-                                "id": 13437,
+                                "id": 13434,
                                 "name": "IndexAccess",
                                 "src": "6006:28:35"
                               },
@@ -7497,21 +7497,21 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15818,
+                                      "referencedDeclaration": 15815,
                                       "type": "msg",
                                       "value": "msg"
                                     },
-                                    "id": 13435,
+                                    "id": 13432,
                                     "name": "Identifier",
                                     "src": "6035:3:35"
                                   }
                                 ],
-                                "id": 13436,
+                                "id": 13433,
                                 "name": "MemberAccess",
                                 "src": "6035:10:35"
                               }
                             ],
-                            "id": 13438,
+                            "id": 13435,
                             "name": "IndexAccess",
                             "src": "6006:40:35"
                           },
@@ -7528,17 +7528,17 @@ export const MultiSigWallet =
                               "type": "bool",
                               "value": "true"
                             },
-                            "id": 13439,
+                            "id": 13436,
                             "name": "Literal",
                             "src": "6049:4:35"
                           }
                         ],
-                        "id": 13440,
+                        "id": 13437,
                         "name": "Assignment",
                         "src": "6006:47:35"
                       }
                     ],
-                    "id": 13441,
+                    "id": 13438,
                     "name": "ExpressionStatement",
                     "src": "6006:47:35"
                   },
@@ -7574,11 +7574,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12921,
+                              "referencedDeclaration": 12918,
                               "type": "function (address,uint256)",
                               "value": "Confirmation"
                             },
-                            "id": 13442,
+                            "id": 13439,
                             "name": "Identifier",
                             "src": "6063:12:35"
                           },
@@ -7600,16 +7600,16 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15818,
+                                  "referencedDeclaration": 15815,
                                   "type": "msg",
                                   "value": "msg"
                                 },
-                                "id": 13443,
+                                "id": 13440,
                                 "name": "Identifier",
                                 "src": "6076:3:35"
                               }
                             ],
-                            "id": 13444,
+                            "id": 13441,
                             "name": "MemberAccess",
                             "src": "6076:10:35"
                           },
@@ -7619,21 +7619,21 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13418,
+                              "referencedDeclaration": 13415,
                               "type": "uint256",
                               "value": "transactionId"
                             },
-                            "id": 13445,
+                            "id": 13442,
                             "name": "Identifier",
                             "src": "6088:13:35"
                           }
                         ],
-                        "id": 13446,
+                        "id": 13443,
                         "name": "FunctionCall",
                         "src": "6063:39:35"
                       }
                     ],
-                    "id": 13447,
+                    "id": 13444,
                     "name": "ExpressionStatement",
                     "src": "6063:39:35"
                   },
@@ -7665,11 +7665,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13547,
+                              "referencedDeclaration": 13544,
                               "type": "function (uint256)",
                               "value": "executeTransaction"
                             },
-                            "id": 13448,
+                            "id": 13445,
                             "name": "Identifier",
                             "src": "6112:18:35"
                           },
@@ -7679,31 +7679,31 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13418,
+                              "referencedDeclaration": 13415,
                               "type": "uint256",
                               "value": "transactionId"
                             },
-                            "id": 13449,
+                            "id": 13446,
                             "name": "Identifier",
                             "src": "6131:13:35"
                           }
                         ],
-                        "id": 13450,
+                        "id": 13447,
                         "name": "FunctionCall",
                         "src": "6112:33:35"
                       }
                     ],
-                    "id": 13451,
+                    "id": 13448,
                     "name": "ExpressionStatement",
                     "src": "6112:33:35"
                   }
                 ],
-                "id": 13452,
+                "id": 13449,
                 "name": "Block",
                 "src": "5996:156:35"
               }
             ],
-            "id": 13453,
+            "id": 13450,
             "name": "FunctionDefinition",
             "src": "5808:344:35"
           },
@@ -7714,7 +7714,7 @@ export const MultiSigWallet =
               "isConstructor": false,
               "name": "revokeConfirmation",
               "payable": false,
-              "scope": 13903,
+              "scope": 13900,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -7726,7 +7726,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "transactionId",
-                      "scope": 13486,
+                      "scope": 13483,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -7739,17 +7739,17 @@ export const MultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 13454,
+                        "id": 13451,
                         "name": "ElementaryTypeName",
                         "src": "6304:4:35"
                       }
                     ],
-                    "id": 13455,
+                    "id": 13452,
                     "name": "VariableDeclaration",
                     "src": "6304:18:35"
                   }
                 ],
-                "id": 13456,
+                "id": 13453,
                 "name": "ParameterList",
                 "src": "6303:20:35"
               },
@@ -7760,7 +7760,7 @@ export const MultiSigWallet =
                   ]
                 },
                 "children": [],
-                "id": 13469,
+                "id": 13466,
                 "name": "ParameterList",
                 "src": "6455:0:35"
               },
@@ -7772,11 +7772,11 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13028,
+                      "referencedDeclaration": 13025,
                       "type": "modifier (address)",
                       "value": "ownerExists"
                     },
-                    "id": 13457,
+                    "id": 13454,
                     "name": "Identifier",
                     "src": "6347:11:35"
                   },
@@ -7798,21 +7798,21 @@ export const MultiSigWallet =
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 15818,
+                          "referencedDeclaration": 15815,
                           "type": "msg",
                           "value": "msg"
                         },
-                        "id": 13458,
+                        "id": 13455,
                         "name": "Identifier",
                         "src": "6359:3:35"
                       }
                     ],
-                    "id": 13459,
+                    "id": 13456,
                     "name": "MemberAccess",
                     "src": "6359:10:35"
                   }
                 ],
-                "id": 13460,
+                "id": 13457,
                 "name": "ModifierInvocation",
                 "src": "6347:23:35"
               },
@@ -7824,11 +7824,11 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13059,
+                      "referencedDeclaration": 13056,
                       "type": "modifier (uint256,address)",
                       "value": "confirmed"
                     },
-                    "id": 13461,
+                    "id": 13458,
                     "name": "Identifier",
                     "src": "6379:9:35"
                   },
@@ -7838,11 +7838,11 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13455,
+                      "referencedDeclaration": 13452,
                       "type": "uint256",
                       "value": "transactionId"
                     },
-                    "id": 13462,
+                    "id": 13459,
                     "name": "Identifier",
                     "src": "6389:13:35"
                   },
@@ -7864,21 +7864,21 @@ export const MultiSigWallet =
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 15818,
+                          "referencedDeclaration": 15815,
                           "type": "msg",
                           "value": "msg"
                         },
-                        "id": 13463,
+                        "id": 13460,
                         "name": "Identifier",
                         "src": "6404:3:35"
                       }
                     ],
-                    "id": 13464,
+                    "id": 13461,
                     "name": "MemberAccess",
                     "src": "6404:10:35"
                   }
                 ],
-                "id": 13465,
+                "id": 13462,
                 "name": "ModifierInvocation",
                 "src": "6379:36:35"
               },
@@ -7890,11 +7890,11 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13090,
+                      "referencedDeclaration": 13087,
                       "type": "modifier (uint256)",
                       "value": "notExecuted"
                     },
-                    "id": 13466,
+                    "id": 13463,
                     "name": "Identifier",
                     "src": "6424:11:35"
                   },
@@ -7904,16 +7904,16 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13455,
+                      "referencedDeclaration": 13452,
                       "type": "uint256",
                       "value": "transactionId"
                     },
-                    "id": 13467,
+                    "id": 13464,
                     "name": "Identifier",
                     "src": "6436:13:35"
                   }
                 ],
-                "id": 13468,
+                "id": 13465,
                 "name": "ModifierInvocation",
                 "src": "6424:26:35"
               },
@@ -7958,11 +7958,11 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 12970,
+                                      "referencedDeclaration": 12967,
                                       "type": "mapping(uint256 => mapping(address => bool))",
                                       "value": "confirmations"
                                     },
-                                    "id": 13470,
+                                    "id": 13467,
                                     "name": "Identifier",
                                     "src": "6465:13:35"
                                   },
@@ -7972,16 +7972,16 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 13455,
+                                      "referencedDeclaration": 13452,
                                       "type": "uint256",
                                       "value": "transactionId"
                                     },
-                                    "id": 13471,
+                                    "id": 13468,
                                     "name": "Identifier",
                                     "src": "6479:13:35"
                                   }
                                 ],
-                                "id": 13474,
+                                "id": 13471,
                                 "name": "IndexAccess",
                                 "src": "6465:28:35"
                               },
@@ -8003,21 +8003,21 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15818,
+                                      "referencedDeclaration": 15815,
                                       "type": "msg",
                                       "value": "msg"
                                     },
-                                    "id": 13472,
+                                    "id": 13469,
                                     "name": "Identifier",
                                     "src": "6494:3:35"
                                   }
                                 ],
-                                "id": 13473,
+                                "id": 13470,
                                 "name": "MemberAccess",
                                 "src": "6494:10:35"
                               }
                             ],
-                            "id": 13475,
+                            "id": 13472,
                             "name": "IndexAccess",
                             "src": "6465:40:35"
                           },
@@ -8034,17 +8034,17 @@ export const MultiSigWallet =
                               "type": "bool",
                               "value": "false"
                             },
-                            "id": 13476,
+                            "id": 13473,
                             "name": "Literal",
                             "src": "6508:5:35"
                           }
                         ],
-                        "id": 13477,
+                        "id": 13474,
                         "name": "Assignment",
                         "src": "6465:48:35"
                       }
                     ],
-                    "id": 13478,
+                    "id": 13475,
                     "name": "ExpressionStatement",
                     "src": "6465:48:35"
                   },
@@ -8080,11 +8080,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12927,
+                              "referencedDeclaration": 12924,
                               "type": "function (address,uint256)",
                               "value": "Revocation"
                             },
-                            "id": 13479,
+                            "id": 13476,
                             "name": "Identifier",
                             "src": "6523:10:35"
                           },
@@ -8106,16 +8106,16 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15818,
+                                  "referencedDeclaration": 15815,
                                   "type": "msg",
                                   "value": "msg"
                                 },
-                                "id": 13480,
+                                "id": 13477,
                                 "name": "Identifier",
                                 "src": "6534:3:35"
                               }
                             ],
-                            "id": 13481,
+                            "id": 13478,
                             "name": "MemberAccess",
                             "src": "6534:10:35"
                           },
@@ -8125,31 +8125,31 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13455,
+                              "referencedDeclaration": 13452,
                               "type": "uint256",
                               "value": "transactionId"
                             },
-                            "id": 13482,
+                            "id": 13479,
                             "name": "Identifier",
                             "src": "6546:13:35"
                           }
                         ],
-                        "id": 13483,
+                        "id": 13480,
                         "name": "FunctionCall",
                         "src": "6523:37:35"
                       }
                     ],
-                    "id": 13484,
+                    "id": 13481,
                     "name": "ExpressionStatement",
                     "src": "6523:37:35"
                   }
                 ],
-                "id": 13485,
+                "id": 13482,
                 "name": "Block",
                 "src": "6455:112:35"
               }
             ],
-            "id": 13486,
+            "id": 13483,
             "name": "FunctionDefinition",
             "src": "6276:291:35"
           },
@@ -8160,7 +8160,7 @@ export const MultiSigWallet =
               "isConstructor": false,
               "name": "executeTransaction",
               "payable": false,
-              "scope": 13903,
+              "scope": 13900,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -8172,7 +8172,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "transactionId",
-                      "scope": 13547,
+                      "scope": 13544,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -8185,17 +8185,17 @@ export const MultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 13487,
+                        "id": 13484,
                         "name": "ElementaryTypeName",
                         "src": "6709:4:35"
                       }
                     ],
-                    "id": 13488,
+                    "id": 13485,
                     "name": "VariableDeclaration",
                     "src": "6709:18:35"
                   }
                 ],
-                "id": 13489,
+                "id": 13486,
                 "name": "ParameterList",
                 "src": "6708:20:35"
               },
@@ -8206,7 +8206,7 @@ export const MultiSigWallet =
                   ]
                 },
                 "children": [],
-                "id": 13502,
+                "id": 13499,
                 "name": "ParameterList",
                 "src": "6860:0:35"
               },
@@ -8218,11 +8218,11 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13028,
+                      "referencedDeclaration": 13025,
                       "type": "modifier (address)",
                       "value": "ownerExists"
                     },
-                    "id": 13490,
+                    "id": 13487,
                     "name": "Identifier",
                     "src": "6752:11:35"
                   },
@@ -8244,21 +8244,21 @@ export const MultiSigWallet =
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 15818,
+                          "referencedDeclaration": 15815,
                           "type": "msg",
                           "value": "msg"
                         },
-                        "id": 13491,
+                        "id": 13488,
                         "name": "Identifier",
                         "src": "6764:3:35"
                       }
                     ],
-                    "id": 13492,
+                    "id": 13489,
                     "name": "MemberAccess",
                     "src": "6764:10:35"
                   }
                 ],
-                "id": 13493,
+                "id": 13490,
                 "name": "ModifierInvocation",
                 "src": "6752:23:35"
               },
@@ -8270,11 +8270,11 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13059,
+                      "referencedDeclaration": 13056,
                       "type": "modifier (uint256,address)",
                       "value": "confirmed"
                     },
-                    "id": 13494,
+                    "id": 13491,
                     "name": "Identifier",
                     "src": "6784:9:35"
                   },
@@ -8284,11 +8284,11 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13488,
+                      "referencedDeclaration": 13485,
                       "type": "uint256",
                       "value": "transactionId"
                     },
-                    "id": 13495,
+                    "id": 13492,
                     "name": "Identifier",
                     "src": "6794:13:35"
                   },
@@ -8310,21 +8310,21 @@ export const MultiSigWallet =
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 15818,
+                          "referencedDeclaration": 15815,
                           "type": "msg",
                           "value": "msg"
                         },
-                        "id": 13496,
+                        "id": 13493,
                         "name": "Identifier",
                         "src": "6809:3:35"
                       }
                     ],
-                    "id": 13497,
+                    "id": 13494,
                     "name": "MemberAccess",
                     "src": "6809:10:35"
                   }
                 ],
-                "id": 13498,
+                "id": 13495,
                 "name": "ModifierInvocation",
                 "src": "6784:36:35"
               },
@@ -8336,11 +8336,11 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13090,
+                      "referencedDeclaration": 13087,
                       "type": "modifier (uint256)",
                       "value": "notExecuted"
                     },
-                    "id": 13499,
+                    "id": 13496,
                     "name": "Identifier",
                     "src": "6829:11:35"
                   },
@@ -8350,16 +8350,16 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13488,
+                      "referencedDeclaration": 13485,
                       "type": "uint256",
                       "value": "transactionId"
                     },
-                    "id": 13500,
+                    "id": 13497,
                     "name": "Identifier",
                     "src": "6841:13:35"
                   }
                 ],
-                "id": 13501,
+                "id": 13498,
                 "name": "ModifierInvocation",
                 "src": "6829:26:35"
               },
@@ -8396,11 +8396,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13590,
+                              "referencedDeclaration": 13587,
                               "type": "function (uint256) view returns (bool)",
                               "value": "isConfirmed"
                             },
-                            "id": 13503,
+                            "id": 13500,
                             "name": "Identifier",
                             "src": "6874:11:35"
                           },
@@ -8410,16 +8410,16 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13488,
+                              "referencedDeclaration": 13485,
                               "type": "uint256",
                               "value": "transactionId"
                             },
-                            "id": 13504,
+                            "id": 13501,
                             "name": "Identifier",
                             "src": "6886:13:35"
                           }
                         ],
-                        "id": 13505,
+                        "id": 13502,
                         "name": "FunctionCall",
                         "src": "6874:26:35"
                       },
@@ -8428,7 +8428,7 @@ export const MultiSigWallet =
                           {
                             "attributes": {
                               "assignments": [
-                                13507
+                                13504
                               ]
                             },
                             "children": [
@@ -8436,7 +8436,7 @@ export const MultiSigWallet =
                                 "attributes": {
                                   "constant": false,
                                   "name": "txn",
-                                  "scope": 13547,
+                                  "scope": 13544,
                                   "stateVariable": false,
                                   "storageLocation": "storage",
                                   "type": "struct MultiSigWallet.Transaction storage pointer",
@@ -8448,15 +8448,15 @@ export const MultiSigWallet =
                                     "attributes": {
                                       "contractScope": null,
                                       "name": "Transaction",
-                                      "referencedDeclaration": 12990,
+                                      "referencedDeclaration": 12987,
                                       "type": "struct MultiSigWallet.Transaction storage pointer"
                                     },
-                                    "id": 13506,
+                                    "id": 13503,
                                     "name": "UserDefinedTypeName",
                                     "src": "6916:11:35"
                                   }
                                 ],
-                                "id": 13507,
+                                "id": 13504,
                                 "name": "VariableDeclaration",
                                 "src": "6916:23:35"
                               },
@@ -8476,11 +8476,11 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 12964,
+                                      "referencedDeclaration": 12961,
                                       "type": "mapping(uint256 => struct MultiSigWallet.Transaction storage ref)",
                                       "value": "transactions"
                                     },
-                                    "id": 13508,
+                                    "id": 13505,
                                     "name": "Identifier",
                                     "src": "6942:12:35"
                                   },
@@ -8490,21 +8490,21 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 13488,
+                                      "referencedDeclaration": 13485,
                                       "type": "uint256",
                                       "value": "transactionId"
                                     },
-                                    "id": 13509,
+                                    "id": 13506,
                                     "name": "Identifier",
                                     "src": "6955:13:35"
                                   }
                                 ],
-                                "id": 13510,
+                                "id": 13507,
                                 "name": "IndexAccess",
                                 "src": "6942:27:35"
                               }
                             ],
-                            "id": 13511,
+                            "id": 13508,
                             "name": "VariableDeclarationStatement",
                             "src": "6916:53:35"
                           },
@@ -8529,7 +8529,7 @@ export const MultiSigWallet =
                                       "isPure": false,
                                       "lValueRequested": true,
                                       "member_name": "executed",
-                                      "referencedDeclaration": 12989,
+                                      "referencedDeclaration": 12986,
                                       "type": "bool"
                                     },
                                     "children": [
@@ -8539,16 +8539,16 @@ export const MultiSigWallet =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 13507,
+                                          "referencedDeclaration": 13504,
                                           "type": "struct MultiSigWallet.Transaction storage pointer",
                                           "value": "txn"
                                         },
-                                        "id": 13512,
+                                        "id": 13509,
                                         "name": "Identifier",
                                         "src": "6983:3:35"
                                       }
                                     ],
-                                    "id": 13514,
+                                    "id": 13511,
                                     "name": "MemberAccess",
                                     "src": "6983:12:35"
                                   },
@@ -8565,17 +8565,17 @@ export const MultiSigWallet =
                                       "type": "bool",
                                       "value": "true"
                                     },
-                                    "id": 13515,
+                                    "id": 13512,
                                     "name": "Literal",
                                     "src": "6998:4:35"
                                   }
                                 ],
-                                "id": 13516,
+                                "id": 13513,
                                 "name": "Assignment",
                                 "src": "6983:19:35"
                               }
                             ],
-                            "id": 13517,
+                            "id": 13514,
                             "name": "ExpressionStatement",
                             "src": "6983:19:35"
                           },
@@ -8653,7 +8653,7 @@ export const MultiSigWallet =
                                                   "isPure": false,
                                                   "lValueRequested": false,
                                                   "member_name": "destination",
-                                                  "referencedDeclaration": 12983,
+                                                  "referencedDeclaration": 12980,
                                                   "type": "address"
                                                 },
                                                 "children": [
@@ -8663,26 +8663,26 @@ export const MultiSigWallet =
                                                       "overloadedDeclarations": [
                                                         null
                                                       ],
-                                                      "referencedDeclaration": 13507,
+                                                      "referencedDeclaration": 13504,
                                                       "type": "struct MultiSigWallet.Transaction storage pointer",
                                                       "value": "txn"
                                                     },
-                                                    "id": 13518,
+                                                    "id": 13515,
                                                     "name": "Identifier",
                                                     "src": "7020:3:35"
                                                   }
                                                 ],
-                                                "id": 13519,
+                                                "id": 13516,
                                                 "name": "MemberAccess",
                                                 "src": "7020:15:35"
                                               }
                                             ],
-                                            "id": 13520,
+                                            "id": 13517,
                                             "name": "MemberAccess",
                                             "src": "7020:20:35"
                                           }
                                         ],
-                                        "id": 13521,
+                                        "id": 13518,
                                         "name": "MemberAccess",
                                         "src": "7020:26:35"
                                       },
@@ -8694,7 +8694,7 @@ export const MultiSigWallet =
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "value",
-                                          "referencedDeclaration": 12985,
+                                          "referencedDeclaration": 12982,
                                           "type": "uint256"
                                         },
                                         "children": [
@@ -8704,21 +8704,21 @@ export const MultiSigWallet =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 13507,
+                                              "referencedDeclaration": 13504,
                                               "type": "struct MultiSigWallet.Transaction storage pointer",
                                               "value": "txn"
                                             },
-                                            "id": 13522,
+                                            "id": 13519,
                                             "name": "Identifier",
                                             "src": "7047:3:35"
                                           }
                                         ],
-                                        "id": 13523,
+                                        "id": 13520,
                                         "name": "MemberAccess",
                                         "src": "7047:9:35"
                                       }
                                     ],
-                                    "id": 13524,
+                                    "id": 13521,
                                     "name": "FunctionCall",
                                     "src": "7020:37:35"
                                   },
@@ -8730,7 +8730,7 @@ export const MultiSigWallet =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "data",
-                                      "referencedDeclaration": 12987,
+                                      "referencedDeclaration": 12984,
                                       "type": "bytes storage ref"
                                     },
                                     "children": [
@@ -8740,21 +8740,21 @@ export const MultiSigWallet =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 13507,
+                                          "referencedDeclaration": 13504,
                                           "type": "struct MultiSigWallet.Transaction storage pointer",
                                           "value": "txn"
                                         },
-                                        "id": 13525,
+                                        "id": 13522,
                                         "name": "Identifier",
                                         "src": "7058:3:35"
                                       }
                                     ],
-                                    "id": 13526,
+                                    "id": 13523,
                                     "name": "MemberAccess",
                                     "src": "7058:8:35"
                                   }
                                 ],
-                                "id": 13527,
+                                "id": 13524,
                                 "name": "FunctionCall",
                                 "src": "7020:47:35"
                               },
@@ -8786,11 +8786,11 @@ export const MultiSigWallet =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 12935,
+                                          "referencedDeclaration": 12932,
                                           "type": "function (uint256)",
                                           "value": "Execution"
                                         },
-                                        "id": 13528,
+                                        "id": 13525,
                                         "name": "Identifier",
                                         "src": "7085:9:35"
                                       },
@@ -8800,21 +8800,21 @@ export const MultiSigWallet =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 13488,
+                                          "referencedDeclaration": 13485,
                                           "type": "uint256",
                                           "value": "transactionId"
                                         },
-                                        "id": 13529,
+                                        "id": 13526,
                                         "name": "Identifier",
                                         "src": "7095:13:35"
                                       }
                                     ],
-                                    "id": 13530,
+                                    "id": 13527,
                                     "name": "FunctionCall",
                                     "src": "7085:24:35"
                                   }
                                 ],
-                                "id": 13531,
+                                "id": 13528,
                                 "name": "ExpressionStatement",
                                 "src": "7085:24:35"
                               },
@@ -8848,11 +8848,11 @@ export const MultiSigWallet =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 12939,
+                                              "referencedDeclaration": 12936,
                                               "type": "function (uint256)",
                                               "value": "ExecutionFailure"
                                             },
-                                            "id": 13532,
+                                            "id": 13529,
                                             "name": "Identifier",
                                             "src": "7146:16:35"
                                           },
@@ -8862,21 +8862,21 @@ export const MultiSigWallet =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 13488,
+                                              "referencedDeclaration": 13485,
                                               "type": "uint256",
                                               "value": "transactionId"
                                             },
-                                            "id": 13533,
+                                            "id": 13530,
                                             "name": "Identifier",
                                             "src": "7163:13:35"
                                           }
                                         ],
-                                        "id": 13534,
+                                        "id": 13531,
                                         "name": "FunctionCall",
                                         "src": "7146:31:35"
                                       }
                                     ],
-                                    "id": 13535,
+                                    "id": 13532,
                                     "name": "ExpressionStatement",
                                     "src": "7146:31:35"
                                   },
@@ -8901,7 +8901,7 @@ export const MultiSigWallet =
                                               "isPure": false,
                                               "lValueRequested": true,
                                               "member_name": "executed",
-                                              "referencedDeclaration": 12989,
+                                              "referencedDeclaration": 12986,
                                               "type": "bool"
                                             },
                                             "children": [
@@ -8911,16 +8911,16 @@ export const MultiSigWallet =
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 13507,
+                                                  "referencedDeclaration": 13504,
                                                   "type": "struct MultiSigWallet.Transaction storage pointer",
                                                   "value": "txn"
                                                 },
-                                                "id": 13536,
+                                                "id": 13533,
                                                 "name": "Identifier",
                                                 "src": "7195:3:35"
                                               }
                                             ],
-                                            "id": 13538,
+                                            "id": 13535,
                                             "name": "MemberAccess",
                                             "src": "7195:12:35"
                                           },
@@ -8937,47 +8937,47 @@ export const MultiSigWallet =
                                               "type": "bool",
                                               "value": "false"
                                             },
-                                            "id": 13539,
+                                            "id": 13536,
                                             "name": "Literal",
                                             "src": "7210:5:35"
                                           }
                                         ],
-                                        "id": 13540,
+                                        "id": 13537,
                                         "name": "Assignment",
                                         "src": "7195:20:35"
                                       }
                                     ],
-                                    "id": 13541,
+                                    "id": 13538,
                                     "name": "ExpressionStatement",
                                     "src": "7195:20:35"
                                   }
                                 ],
-                                "id": 13542,
+                                "id": 13539,
                                 "name": "Block",
                                 "src": "7128:102:35"
                               }
                             ],
-                            "id": 13543,
+                            "id": 13540,
                             "name": "IfStatement",
                             "src": "7016:214:35"
                           }
                         ],
-                        "id": 13544,
+                        "id": 13541,
                         "name": "Block",
                         "src": "6902:338:35"
                       }
                     ],
-                    "id": 13545,
+                    "id": 13542,
                     "name": "IfStatement",
                     "src": "6870:370:35"
                   }
                 ],
-                "id": 13546,
+                "id": 13543,
                 "name": "Block",
                 "src": "6860:386:35"
               }
             ],
-            "id": 13547,
+            "id": 13544,
             "name": "FunctionDefinition",
             "src": "6681:565:35"
           },
@@ -8991,7 +8991,7 @@ export const MultiSigWallet =
               ],
               "name": "isConfirmed",
               "payable": false,
-              "scope": 13903,
+              "scope": 13900,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -9003,7 +9003,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "transactionId",
-                      "scope": 13590,
+                      "scope": 13587,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -9016,17 +9016,17 @@ export const MultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 13548,
+                        "id": 13545,
                         "name": "ElementaryTypeName",
                         "src": "7418:4:35"
                       }
                     ],
-                    "id": 13549,
+                    "id": 13546,
                     "name": "VariableDeclaration",
                     "src": "7418:18:35"
                   }
                 ],
-                "id": 13550,
+                "id": 13547,
                 "name": "ParameterList",
                 "src": "7417:20:35"
               },
@@ -9036,7 +9036,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 13590,
+                      "scope": 13587,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -9049,17 +9049,17 @@ export const MultiSigWallet =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 13551,
+                        "id": 13548,
                         "name": "ElementaryTypeName",
                         "src": "7483:4:35"
                       }
                     ],
-                    "id": 13552,
+                    "id": 13549,
                     "name": "VariableDeclaration",
                     "src": "7483:4:35"
                   }
                 ],
-                "id": 13553,
+                "id": 13550,
                 "name": "ParameterList",
                 "src": "7482:6:35"
               },
@@ -9068,7 +9068,7 @@ export const MultiSigWallet =
                   {
                     "attributes": {
                       "assignments": [
-                        13555
+                        13552
                       ]
                     },
                     "children": [
@@ -9076,7 +9076,7 @@ export const MultiSigWallet =
                         "attributes": {
                           "constant": false,
                           "name": "count",
-                          "scope": 13590,
+                          "scope": 13587,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -9089,12 +9089,12 @@ export const MultiSigWallet =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 13554,
+                            "id": 13551,
                             "name": "ElementaryTypeName",
                             "src": "7503:4:35"
                           }
                         ],
-                        "id": 13555,
+                        "id": 13552,
                         "name": "VariableDeclaration",
                         "src": "7503:10:35"
                       },
@@ -9111,12 +9111,12 @@ export const MultiSigWallet =
                           "type": "int_const 0",
                           "value": "0"
                         },
-                        "id": 13556,
+                        "id": 13553,
                         "name": "Literal",
                         "src": "7516:1:35"
                       }
                     ],
-                    "id": 13557,
+                    "id": 13554,
                     "name": "VariableDeclarationStatement",
                     "src": "7503:14:35"
                   },
@@ -9125,7 +9125,7 @@ export const MultiSigWallet =
                       {
                         "attributes": {
                           "assignments": [
-                            13559
+                            13556
                           ]
                         },
                         "children": [
@@ -9133,7 +9133,7 @@ export const MultiSigWallet =
                             "attributes": {
                               "constant": false,
                               "name": "i",
-                              "scope": 13590,
+                              "scope": 13587,
                               "stateVariable": false,
                               "storageLocation": "default",
                               "type": "uint256",
@@ -9146,12 +9146,12 @@ export const MultiSigWallet =
                                   "name": "uint",
                                   "type": "uint256"
                                 },
-                                "id": 13558,
+                                "id": 13555,
                                 "name": "ElementaryTypeName",
                                 "src": "7532:4:35"
                               }
                             ],
-                            "id": 13559,
+                            "id": 13556,
                             "name": "VariableDeclaration",
                             "src": "7532:6:35"
                           },
@@ -9168,12 +9168,12 @@ export const MultiSigWallet =
                               "type": "int_const 0",
                               "value": "0"
                             },
-                            "id": 13560,
+                            "id": 13557,
                             "name": "Literal",
                             "src": "7539:1:35"
                           }
                         ],
-                        "id": 13561,
+                        "id": 13558,
                         "name": "VariableDeclarationStatement",
                         "src": "7532:8:35"
                       },
@@ -9198,11 +9198,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13559,
+                              "referencedDeclaration": 13556,
                               "type": "uint256",
                               "value": "i"
                             },
-                            "id": 13562,
+                            "id": 13559,
                             "name": "Identifier",
                             "src": "7542:1:35"
                           },
@@ -9224,21 +9224,21 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12977,
+                                  "referencedDeclaration": 12974,
                                   "type": "address[] storage ref",
                                   "value": "owners"
                                 },
-                                "id": 13563,
+                                "id": 13560,
                                 "name": "Identifier",
                                 "src": "7544:6:35"
                               }
                             ],
-                            "id": 13564,
+                            "id": 13561,
                             "name": "MemberAccess",
                             "src": "7544:13:35"
                           }
                         ],
-                        "id": 13565,
+                        "id": 13562,
                         "name": "BinaryOperation",
                         "src": "7542:15:35"
                       },
@@ -9262,21 +9262,21 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13559,
+                                  "referencedDeclaration": 13556,
                                   "type": "uint256",
                                   "value": "i"
                                 },
-                                "id": 13566,
+                                "id": 13563,
                                 "name": "Identifier",
                                 "src": "7559:1:35"
                               }
                             ],
-                            "id": 13567,
+                            "id": 13564,
                             "name": "UnaryOperation",
                             "src": "7559:3:35"
                           }
                         ],
-                        "id": 13568,
+                        "id": 13565,
                         "name": "ExpressionStatement",
                         "src": "7559:3:35"
                       },
@@ -9313,11 +9313,11 @@ export const MultiSigWallet =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 12970,
+                                          "referencedDeclaration": 12967,
                                           "type": "mapping(uint256 => mapping(address => bool))",
                                           "value": "confirmations"
                                         },
-                                        "id": 13569,
+                                        "id": 13566,
                                         "name": "Identifier",
                                         "src": "7582:13:35"
                                       },
@@ -9327,16 +9327,16 @@ export const MultiSigWallet =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 13549,
+                                          "referencedDeclaration": 13546,
                                           "type": "uint256",
                                           "value": "transactionId"
                                         },
-                                        "id": 13570,
+                                        "id": 13567,
                                         "name": "Identifier",
                                         "src": "7596:13:35"
                                       }
                                     ],
-                                    "id": 13571,
+                                    "id": 13568,
                                     "name": "IndexAccess",
                                     "src": "7582:28:35"
                                   },
@@ -9356,11 +9356,11 @@ export const MultiSigWallet =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 12977,
+                                          "referencedDeclaration": 12974,
                                           "type": "address[] storage ref",
                                           "value": "owners"
                                         },
-                                        "id": 13572,
+                                        "id": 13569,
                                         "name": "Identifier",
                                         "src": "7611:6:35"
                                       },
@@ -9370,21 +9370,21 @@ export const MultiSigWallet =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 13559,
+                                          "referencedDeclaration": 13556,
                                           "type": "uint256",
                                           "value": "i"
                                         },
-                                        "id": 13573,
+                                        "id": 13570,
                                         "name": "Identifier",
                                         "src": "7618:1:35"
                                       }
                                     ],
-                                    "id": 13574,
+                                    "id": 13571,
                                     "name": "IndexAccess",
                                     "src": "7611:9:35"
                                   }
                                 ],
-                                "id": 13575,
+                                "id": 13572,
                                 "name": "IndexAccess",
                                 "src": "7582:39:35"
                               },
@@ -9407,11 +9407,11 @@ export const MultiSigWallet =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 13555,
+                                          "referencedDeclaration": 13552,
                                           "type": "uint256",
                                           "value": "count"
                                         },
-                                        "id": 13576,
+                                        "id": 13573,
                                         "name": "Identifier",
                                         "src": "7639:5:35"
                                       },
@@ -9428,22 +9428,22 @@ export const MultiSigWallet =
                                           "type": "int_const 1",
                                           "value": "1"
                                         },
-                                        "id": 13577,
+                                        "id": 13574,
                                         "name": "Literal",
                                         "src": "7648:1:35"
                                       }
                                     ],
-                                    "id": 13578,
+                                    "id": 13575,
                                     "name": "Assignment",
                                     "src": "7639:10:35"
                                   }
                                 ],
-                                "id": 13579,
+                                "id": 13576,
                                 "name": "ExpressionStatement",
                                 "src": "7639:10:35"
                               }
                             ],
-                            "id": 13580,
+                            "id": 13577,
                             "name": "IfStatement",
                             "src": "7578:71:35"
                           },
@@ -9473,11 +9473,11 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 13555,
+                                      "referencedDeclaration": 13552,
                                       "type": "uint256",
                                       "value": "count"
                                     },
-                                    "id": 13581,
+                                    "id": 13578,
                                     "name": "Identifier",
                                     "src": "7667:5:35"
                                   },
@@ -9487,22 +9487,22 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 12979,
+                                      "referencedDeclaration": 12976,
                                       "type": "uint256",
                                       "value": "required"
                                     },
-                                    "id": 13582,
+                                    "id": 13579,
                                     "name": "Identifier",
                                     "src": "7676:8:35"
                                   }
                                 ],
-                                "id": 13583,
+                                "id": 13580,
                                 "name": "BinaryOperation",
                                 "src": "7667:17:35"
                               },
                               {
                                 "attributes": {
-                                  "functionReturnParameters": 13553
+                                  "functionReturnParameters": 13550
                                 },
                                 "children": [
                                   {
@@ -9518,37 +9518,37 @@ export const MultiSigWallet =
                                       "type": "bool",
                                       "value": "true"
                                     },
-                                    "id": 13584,
+                                    "id": 13581,
                                     "name": "Literal",
                                     "src": "7709:4:35"
                                   }
                                 ],
-                                "id": 13585,
+                                "id": 13582,
                                 "name": "Return",
                                 "src": "7702:11:35"
                               }
                             ],
-                            "id": 13586,
+                            "id": 13583,
                             "name": "IfStatement",
                             "src": "7663:50:35"
                           }
                         ],
-                        "id": 13587,
+                        "id": 13584,
                         "name": "Block",
                         "src": "7564:160:35"
                       }
                     ],
-                    "id": 13588,
+                    "id": 13585,
                     "name": "ForStatement",
                     "src": "7527:197:35"
                   }
                 ],
-                "id": 13589,
+                "id": 13586,
                 "name": "Block",
                 "src": "7493:237:35"
               }
             ],
-            "id": 13590,
+            "id": 13587,
             "name": "FunctionDefinition",
             "src": "7397:333:35"
           },
@@ -9559,7 +9559,7 @@ export const MultiSigWallet =
               "isConstructor": false,
               "name": "addTransaction",
               "payable": false,
-              "scope": 13903,
+              "scope": 13900,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "internal"
@@ -9571,7 +9571,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "destination",
-                      "scope": 13628,
+                      "scope": 13625,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -9584,12 +9584,12 @@ export const MultiSigWallet =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 13591,
+                        "id": 13588,
                         "name": "ElementaryTypeName",
                         "src": "8087:7:35"
                       }
                     ],
-                    "id": 13592,
+                    "id": 13589,
                     "name": "VariableDeclaration",
                     "src": "8087:19:35"
                   },
@@ -9597,7 +9597,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "value",
-                      "scope": 13628,
+                      "scope": 13625,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -9610,12 +9610,12 @@ export const MultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 13593,
+                        "id": 13590,
                         "name": "ElementaryTypeName",
                         "src": "8108:4:35"
                       }
                     ],
-                    "id": 13594,
+                    "id": 13591,
                     "name": "VariableDeclaration",
                     "src": "8108:10:35"
                   },
@@ -9623,7 +9623,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "data",
-                      "scope": 13628,
+                      "scope": 13625,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes memory",
@@ -9636,17 +9636,17 @@ export const MultiSigWallet =
                           "name": "bytes",
                           "type": "bytes storage pointer"
                         },
-                        "id": 13595,
+                        "id": 13592,
                         "name": "ElementaryTypeName",
                         "src": "8120:5:35"
                       }
                     ],
-                    "id": 13596,
+                    "id": 13593,
                     "name": "VariableDeclaration",
                     "src": "8120:10:35"
                   }
                 ],
-                "id": 13597,
+                "id": 13594,
                 "name": "ParameterList",
                 "src": "8086:45:35"
               },
@@ -9656,7 +9656,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "transactionId",
-                      "scope": 13628,
+                      "scope": 13625,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -9669,17 +9669,17 @@ export const MultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 13601,
+                        "id": 13598,
                         "name": "ElementaryTypeName",
                         "src": "8195:4:35"
                       }
                     ],
-                    "id": 13602,
+                    "id": 13599,
                     "name": "VariableDeclaration",
                     "src": "8195:18:35"
                   }
                 ],
-                "id": 13603,
+                "id": 13600,
                 "name": "ParameterList",
                 "src": "8194:20:35"
               },
@@ -9691,11 +9691,11 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13102,
+                      "referencedDeclaration": 13099,
                       "type": "modifier (address)",
                       "value": "notNull"
                     },
-                    "id": 13598,
+                    "id": 13595,
                     "name": "Identifier",
                     "src": "8157:7:35"
                   },
@@ -9705,16 +9705,16 @@ export const MultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13592,
+                      "referencedDeclaration": 13589,
                       "type": "address",
                       "value": "destination"
                     },
-                    "id": 13599,
+                    "id": 13596,
                     "name": "Identifier",
                     "src": "8165:11:35"
                   }
                 ],
-                "id": 13600,
+                "id": 13597,
                 "name": "ModifierInvocation",
                 "src": "8157:20:35"
               },
@@ -9739,11 +9739,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13602,
+                              "referencedDeclaration": 13599,
                               "type": "uint256",
                               "value": "transactionId"
                             },
-                            "id": 13604,
+                            "id": 13601,
                             "name": "Identifier",
                             "src": "8229:13:35"
                           },
@@ -9753,21 +9753,21 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12981,
+                              "referencedDeclaration": 12978,
                               "type": "uint256",
                               "value": "transactionCount"
                             },
-                            "id": 13605,
+                            "id": 13602,
                             "name": "Identifier",
                             "src": "8245:16:35"
                           }
                         ],
-                        "id": 13606,
+                        "id": 13603,
                         "name": "Assignment",
                         "src": "8229:32:35"
                       }
                     ],
-                    "id": 13607,
+                    "id": 13604,
                     "name": "ExpressionStatement",
                     "src": "8229:32:35"
                   },
@@ -9800,11 +9800,11 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12964,
+                                  "referencedDeclaration": 12961,
                                   "type": "mapping(uint256 => struct MultiSigWallet.Transaction storage ref)",
                                   "value": "transactions"
                                 },
-                                "id": 13608,
+                                "id": 13605,
                                 "name": "Identifier",
                                 "src": "8271:12:35"
                               },
@@ -9814,16 +9814,16 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13602,
+                                  "referencedDeclaration": 13599,
                                   "type": "uint256",
                                   "value": "transactionId"
                                 },
-                                "id": 13609,
+                                "id": 13606,
                                 "name": "Identifier",
                                 "src": "8284:13:35"
                               }
                             ],
-                            "id": 13610,
+                            "id": 13607,
                             "name": "IndexAccess",
                             "src": "8271:27:35"
                           },
@@ -9851,11 +9851,11 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12990,
+                                  "referencedDeclaration": 12987,
                                   "type": "type(struct MultiSigWallet.Transaction storage pointer)",
                                   "value": "Transaction"
                                 },
-                                "id": 13611,
+                                "id": 13608,
                                 "name": "Identifier",
                                 "src": "8301:11:35"
                               },
@@ -9865,11 +9865,11 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13592,
+                                  "referencedDeclaration": 13589,
                                   "type": "address",
                                   "value": "destination"
                                 },
-                                "id": 13612,
+                                "id": 13609,
                                 "name": "Identifier",
                                 "src": "8340:11:35"
                               },
@@ -9879,11 +9879,11 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13594,
+                                  "referencedDeclaration": 13591,
                                   "type": "uint256",
                                   "value": "value"
                                 },
-                                "id": 13613,
+                                "id": 13610,
                                 "name": "Identifier",
                                 "src": "8372:5:35"
                               },
@@ -9893,11 +9893,11 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13596,
+                                  "referencedDeclaration": 13593,
                                   "type": "bytes memory",
                                   "value": "data"
                                 },
-                                "id": 13614,
+                                "id": 13611,
                                 "name": "Identifier",
                                 "src": "8397:4:35"
                               },
@@ -9914,22 +9914,22 @@ export const MultiSigWallet =
                                   "type": "bool",
                                   "value": "false"
                                 },
-                                "id": 13615,
+                                "id": 13612,
                                 "name": "Literal",
                                 "src": "8425:5:35"
                               }
                             ],
-                            "id": 13616,
+                            "id": 13613,
                             "name": "FunctionCall",
                             "src": "8301:140:35"
                           }
                         ],
-                        "id": 13617,
+                        "id": 13614,
                         "name": "Assignment",
                         "src": "8271:170:35"
                       }
                     ],
-                    "id": 13618,
+                    "id": 13615,
                     "name": "ExpressionStatement",
                     "src": "8271:170:35"
                   },
@@ -9952,11 +9952,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12981,
+                              "referencedDeclaration": 12978,
                               "type": "uint256",
                               "value": "transactionCount"
                             },
-                            "id": 13619,
+                            "id": 13616,
                             "name": "Identifier",
                             "src": "8451:16:35"
                           },
@@ -9973,17 +9973,17 @@ export const MultiSigWallet =
                               "type": "int_const 1",
                               "value": "1"
                             },
-                            "id": 13620,
+                            "id": 13617,
                             "name": "Literal",
                             "src": "8471:1:35"
                           }
                         ],
-                        "id": 13621,
+                        "id": 13618,
                         "name": "Assignment",
                         "src": "8451:21:35"
                       }
                     ],
-                    "id": 13622,
+                    "id": 13619,
                     "name": "ExpressionStatement",
                     "src": "8451:21:35"
                   },
@@ -10015,11 +10015,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12931,
+                              "referencedDeclaration": 12928,
                               "type": "function (uint256)",
                               "value": "Submission"
                             },
-                            "id": 13623,
+                            "id": 13620,
                             "name": "Identifier",
                             "src": "8482:10:35"
                           },
@@ -10029,31 +10029,31 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13602,
+                              "referencedDeclaration": 13599,
                               "type": "uint256",
                               "value": "transactionId"
                             },
-                            "id": 13624,
+                            "id": 13621,
                             "name": "Identifier",
                             "src": "8493:13:35"
                           }
                         ],
-                        "id": 13625,
+                        "id": 13622,
                         "name": "FunctionCall",
                         "src": "8482:25:35"
                       }
                     ],
-                    "id": 13626,
+                    "id": 13623,
                     "name": "ExpressionStatement",
                     "src": "8482:25:35"
                   }
                 ],
-                "id": 13627,
+                "id": 13624,
                 "name": "Block",
                 "src": "8219:295:35"
               }
             ],
-            "id": 13628,
+            "id": 13625,
             "name": "FunctionDefinition",
             "src": "8063:451:35"
           },
@@ -10067,7 +10067,7 @@ export const MultiSigWallet =
               ],
               "name": "getConfirmationCount",
               "payable": false,
-              "scope": 13903,
+              "scope": 13900,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -10079,7 +10079,40 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "transactionId",
-                      "scope": 13660,
+                      "scope": 13657,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint",
+                          "type": "uint256"
+                        },
+                        "id": 13626,
+                        "name": "ElementaryTypeName",
+                        "src": "8741:4:35"
+                      }
+                    ],
+                    "id": 13627,
+                    "name": "VariableDeclaration",
+                    "src": "8741:18:35"
+                  }
+                ],
+                "id": 13628,
+                "name": "ParameterList",
+                "src": "8740:20:35"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "count",
+                      "scope": 13657,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -10094,48 +10127,15 @@ export const MultiSigWallet =
                         },
                         "id": 13629,
                         "name": "ElementaryTypeName",
-                        "src": "8741:4:35"
+                        "src": "8806:4:35"
                       }
                     ],
                     "id": 13630,
                     "name": "VariableDeclaration",
-                    "src": "8741:18:35"
-                  }
-                ],
-                "id": 13631,
-                "name": "ParameterList",
-                "src": "8740:20:35"
-              },
-              {
-                "children": [
-                  {
-                    "attributes": {
-                      "constant": false,
-                      "name": "count",
-                      "scope": 13660,
-                      "stateVariable": false,
-                      "storageLocation": "default",
-                      "type": "uint256",
-                      "value": null,
-                      "visibility": "internal"
-                    },
-                    "children": [
-                      {
-                        "attributes": {
-                          "name": "uint",
-                          "type": "uint256"
-                        },
-                        "id": 13632,
-                        "name": "ElementaryTypeName",
-                        "src": "8806:4:35"
-                      }
-                    ],
-                    "id": 13633,
-                    "name": "VariableDeclaration",
                     "src": "8806:10:35"
                   }
                 ],
-                "id": 13634,
+                "id": 13631,
                 "name": "ParameterList",
                 "src": "8805:12:35"
               },
@@ -10146,7 +10146,7 @@ export const MultiSigWallet =
                       {
                         "attributes": {
                           "assignments": [
-                            13636
+                            13633
                           ]
                         },
                         "children": [
@@ -10154,7 +10154,7 @@ export const MultiSigWallet =
                             "attributes": {
                               "constant": false,
                               "name": "i",
-                              "scope": 13660,
+                              "scope": 13657,
                               "stateVariable": false,
                               "storageLocation": "default",
                               "type": "uint256",
@@ -10167,12 +10167,12 @@ export const MultiSigWallet =
                                   "name": "uint",
                                   "type": "uint256"
                                 },
-                                "id": 13635,
+                                "id": 13632,
                                 "name": "ElementaryTypeName",
                                 "src": "8837:4:35"
                               }
                             ],
-                            "id": 13636,
+                            "id": 13633,
                             "name": "VariableDeclaration",
                             "src": "8837:6:35"
                           },
@@ -10189,12 +10189,12 @@ export const MultiSigWallet =
                               "type": "int_const 0",
                               "value": "0"
                             },
-                            "id": 13637,
+                            "id": 13634,
                             "name": "Literal",
                             "src": "8844:1:35"
                           }
                         ],
-                        "id": 13638,
+                        "id": 13635,
                         "name": "VariableDeclarationStatement",
                         "src": "8837:8:35"
                       },
@@ -10219,11 +10219,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13636,
+                              "referencedDeclaration": 13633,
                               "type": "uint256",
                               "value": "i"
                             },
-                            "id": 13639,
+                            "id": 13636,
                             "name": "Identifier",
                             "src": "8847:1:35"
                           },
@@ -10245,21 +10245,21 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12977,
+                                  "referencedDeclaration": 12974,
                                   "type": "address[] storage ref",
                                   "value": "owners"
                                 },
-                                "id": 13640,
+                                "id": 13637,
                                 "name": "Identifier",
                                 "src": "8849:6:35"
                               }
                             ],
-                            "id": 13641,
+                            "id": 13638,
                             "name": "MemberAccess",
                             "src": "8849:13:35"
                           }
                         ],
-                        "id": 13642,
+                        "id": 13639,
                         "name": "BinaryOperation",
                         "src": "8847:15:35"
                       },
@@ -10283,21 +10283,21 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13636,
+                                  "referencedDeclaration": 13633,
                                   "type": "uint256",
                                   "value": "i"
                                 },
-                                "id": 13643,
+                                "id": 13640,
                                 "name": "Identifier",
                                 "src": "8864:1:35"
                               }
                             ],
-                            "id": 13644,
+                            "id": 13641,
                             "name": "UnaryOperation",
                             "src": "8864:3:35"
                           }
                         ],
-                        "id": 13645,
+                        "id": 13642,
                         "name": "ExpressionStatement",
                         "src": "8864:3:35"
                       },
@@ -10332,11 +10332,11 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 12970,
+                                      "referencedDeclaration": 12967,
                                       "type": "mapping(uint256 => mapping(address => bool))",
                                       "value": "confirmations"
                                     },
-                                    "id": 13646,
+                                    "id": 13643,
                                     "name": "Identifier",
                                     "src": "8885:13:35"
                                   },
@@ -10346,16 +10346,16 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 13630,
+                                      "referencedDeclaration": 13627,
                                       "type": "uint256",
                                       "value": "transactionId"
                                     },
-                                    "id": 13647,
+                                    "id": 13644,
                                     "name": "Identifier",
                                     "src": "8899:13:35"
                                   }
                                 ],
-                                "id": 13648,
+                                "id": 13645,
                                 "name": "IndexAccess",
                                 "src": "8885:28:35"
                               },
@@ -10375,11 +10375,11 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 12977,
+                                      "referencedDeclaration": 12974,
                                       "type": "address[] storage ref",
                                       "value": "owners"
                                     },
-                                    "id": 13649,
+                                    "id": 13646,
                                     "name": "Identifier",
                                     "src": "8914:6:35"
                                   },
@@ -10389,21 +10389,21 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 13636,
+                                      "referencedDeclaration": 13633,
                                       "type": "uint256",
                                       "value": "i"
                                     },
-                                    "id": 13650,
+                                    "id": 13647,
                                     "name": "Identifier",
                                     "src": "8921:1:35"
                                   }
                                 ],
-                                "id": 13651,
+                                "id": 13648,
                                 "name": "IndexAccess",
                                 "src": "8914:9:35"
                               }
                             ],
-                            "id": 13652,
+                            "id": 13649,
                             "name": "IndexAccess",
                             "src": "8885:39:35"
                           },
@@ -10426,11 +10426,11 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 13633,
+                                      "referencedDeclaration": 13630,
                                       "type": "uint256",
                                       "value": "count"
                                     },
-                                    "id": 13653,
+                                    "id": 13650,
                                     "name": "Identifier",
                                     "src": "8942:5:35"
                                   },
@@ -10447,37 +10447,37 @@ export const MultiSigWallet =
                                       "type": "int_const 1",
                                       "value": "1"
                                     },
-                                    "id": 13654,
+                                    "id": 13651,
                                     "name": "Literal",
                                     "src": "8951:1:35"
                                   }
                                 ],
-                                "id": 13655,
+                                "id": 13652,
                                 "name": "Assignment",
                                 "src": "8942:10:35"
                               }
                             ],
-                            "id": 13656,
+                            "id": 13653,
                             "name": "ExpressionStatement",
                             "src": "8942:10:35"
                           }
                         ],
-                        "id": 13657,
+                        "id": 13654,
                         "name": "IfStatement",
                         "src": "8881:71:35"
                       }
                     ],
-                    "id": 13658,
+                    "id": 13655,
                     "name": "ForStatement",
                     "src": "8832:120:35"
                   }
                 ],
-                "id": 13659,
+                "id": 13656,
                 "name": "Block",
                 "src": "8822:137:35"
               }
             ],
-            "id": 13660,
+            "id": 13657,
             "name": "FunctionDefinition",
             "src": "8711:248:35"
           },
@@ -10491,7 +10491,7 @@ export const MultiSigWallet =
               ],
               "name": "getTransactionCount",
               "payable": false,
-              "scope": 13903,
+              "scope": 13900,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -10503,7 +10503,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "pending",
-                      "scope": 13700,
+                      "scope": 13697,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -10516,12 +10516,12 @@ export const MultiSigWallet =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 13661,
+                        "id": 13658,
                         "name": "ElementaryTypeName",
                         "src": "9250:4:35"
                       }
                     ],
-                    "id": 13662,
+                    "id": 13659,
                     "name": "VariableDeclaration",
                     "src": "9250:12:35"
                   },
@@ -10529,7 +10529,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "executed",
-                      "scope": 13700,
+                      "scope": 13697,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -10542,17 +10542,17 @@ export const MultiSigWallet =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 13663,
+                        "id": 13660,
                         "name": "ElementaryTypeName",
                         "src": "9264:4:35"
                       }
                     ],
-                    "id": 13664,
+                    "id": 13661,
                     "name": "VariableDeclaration",
                     "src": "9264:13:35"
                   }
                 ],
-                "id": 13665,
+                "id": 13662,
                 "name": "ParameterList",
                 "src": "9249:29:35"
               },
@@ -10562,7 +10562,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "count",
-                      "scope": 13700,
+                      "scope": 13697,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -10575,17 +10575,17 @@ export const MultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 13666,
+                        "id": 13663,
                         "name": "ElementaryTypeName",
                         "src": "9324:4:35"
                       }
                     ],
-                    "id": 13667,
+                    "id": 13664,
                     "name": "VariableDeclaration",
                     "src": "9324:10:35"
                   }
                 ],
-                "id": 13668,
+                "id": 13665,
                 "name": "ParameterList",
                 "src": "9323:12:35"
               },
@@ -10596,7 +10596,7 @@ export const MultiSigWallet =
                       {
                         "attributes": {
                           "assignments": [
-                            13670
+                            13667
                           ]
                         },
                         "children": [
@@ -10604,7 +10604,7 @@ export const MultiSigWallet =
                             "attributes": {
                               "constant": false,
                               "name": "i",
-                              "scope": 13700,
+                              "scope": 13697,
                               "stateVariable": false,
                               "storageLocation": "default",
                               "type": "uint256",
@@ -10617,12 +10617,12 @@ export const MultiSigWallet =
                                   "name": "uint",
                                   "type": "uint256"
                                 },
-                                "id": 13669,
+                                "id": 13666,
                                 "name": "ElementaryTypeName",
                                 "src": "9355:4:35"
                               }
                             ],
-                            "id": 13670,
+                            "id": 13667,
                             "name": "VariableDeclaration",
                             "src": "9355:6:35"
                           },
@@ -10639,12 +10639,12 @@ export const MultiSigWallet =
                               "type": "int_const 0",
                               "value": "0"
                             },
-                            "id": 13671,
+                            "id": 13668,
                             "name": "Literal",
                             "src": "9362:1:35"
                           }
                         ],
-                        "id": 13672,
+                        "id": 13669,
                         "name": "VariableDeclarationStatement",
                         "src": "9355:8:35"
                       },
@@ -10669,11 +10669,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13670,
+                              "referencedDeclaration": 13667,
                               "type": "uint256",
                               "value": "i"
                             },
-                            "id": 13673,
+                            "id": 13670,
                             "name": "Identifier",
                             "src": "9365:1:35"
                           },
@@ -10683,16 +10683,16 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12981,
+                              "referencedDeclaration": 12978,
                               "type": "uint256",
                               "value": "transactionCount"
                             },
-                            "id": 13674,
+                            "id": 13671,
                             "name": "Identifier",
                             "src": "9367:16:35"
                           }
                         ],
-                        "id": 13675,
+                        "id": 13672,
                         "name": "BinaryOperation",
                         "src": "9365:18:35"
                       },
@@ -10716,21 +10716,21 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13670,
+                                  "referencedDeclaration": 13667,
                                   "type": "uint256",
                                   "value": "i"
                                 },
-                                "id": 13676,
+                                "id": 13673,
                                 "name": "Identifier",
                                 "src": "9385:1:35"
                               }
                             ],
-                            "id": 13677,
+                            "id": 13674,
                             "name": "UnaryOperation",
                             "src": "9385:3:35"
                           }
                         ],
-                        "id": 13678,
+                        "id": 13675,
                         "name": "ExpressionStatement",
                         "src": "9385:3:35"
                       },
@@ -10775,11 +10775,11 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 13662,
+                                      "referencedDeclaration": 13659,
                                       "type": "bool",
                                       "value": "pending"
                                     },
-                                    "id": 13679,
+                                    "id": 13676,
                                     "name": "Identifier",
                                     "src": "9409:7:35"
                                   },
@@ -10803,7 +10803,7 @@ export const MultiSigWallet =
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "executed",
-                                          "referencedDeclaration": 12989,
+                                          "referencedDeclaration": 12986,
                                           "type": "bool"
                                         },
                                         "children": [
@@ -10823,11 +10823,11 @@ export const MultiSigWallet =
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 12964,
+                                                  "referencedDeclaration": 12961,
                                                   "type": "mapping(uint256 => struct MultiSigWallet.Transaction storage ref)",
                                                   "value": "transactions"
                                                 },
-                                                "id": 13680,
+                                                "id": 13677,
                                                 "name": "Identifier",
                                                 "src": "9421:12:35"
                                               },
@@ -10837,31 +10837,31 @@ export const MultiSigWallet =
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 13670,
+                                                  "referencedDeclaration": 13667,
                                                   "type": "uint256",
                                                   "value": "i"
                                                 },
-                                                "id": 13681,
+                                                "id": 13678,
                                                 "name": "Identifier",
                                                 "src": "9434:1:35"
                                               }
                                             ],
-                                            "id": 13682,
+                                            "id": 13679,
                                             "name": "IndexAccess",
                                             "src": "9421:15:35"
                                           }
                                         ],
-                                        "id": 13683,
+                                        "id": 13680,
                                         "name": "MemberAccess",
                                         "src": "9421:24:35"
                                       }
                                     ],
-                                    "id": 13684,
+                                    "id": 13681,
                                     "name": "UnaryOperation",
                                     "src": "9420:25:35"
                                   }
                                 ],
-                                "id": 13685,
+                                "id": 13682,
                                 "name": "BinaryOperation",
                                 "src": "9409:36:35"
                               },
@@ -10886,11 +10886,11 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 13664,
+                                      "referencedDeclaration": 13661,
                                       "type": "bool",
                                       "value": "executed"
                                     },
-                                    "id": 13686,
+                                    "id": 13683,
                                     "name": "Identifier",
                                     "src": "9465:8:35"
                                   },
@@ -10902,7 +10902,7 @@ export const MultiSigWallet =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "executed",
-                                      "referencedDeclaration": 12989,
+                                      "referencedDeclaration": 12986,
                                       "type": "bool"
                                     },
                                     "children": [
@@ -10922,11 +10922,11 @@ export const MultiSigWallet =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 12964,
+                                              "referencedDeclaration": 12961,
                                               "type": "mapping(uint256 => struct MultiSigWallet.Transaction storage ref)",
                                               "value": "transactions"
                                             },
-                                            "id": 13687,
+                                            "id": 13684,
                                             "name": "Identifier",
                                             "src": "9477:12:35"
                                           },
@@ -10936,31 +10936,31 @@ export const MultiSigWallet =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 13670,
+                                              "referencedDeclaration": 13667,
                                               "type": "uint256",
                                               "value": "i"
                                             },
-                                            "id": 13688,
+                                            "id": 13685,
                                             "name": "Identifier",
                                             "src": "9490:1:35"
                                           }
                                         ],
-                                        "id": 13689,
+                                        "id": 13686,
                                         "name": "IndexAccess",
                                         "src": "9477:15:35"
                                       }
                                     ],
-                                    "id": 13690,
+                                    "id": 13687,
                                     "name": "MemberAccess",
                                     "src": "9477:24:35"
                                   }
                                 ],
-                                "id": 13691,
+                                "id": 13688,
                                 "name": "BinaryOperation",
                                 "src": "9465:36:35"
                               }
                             ],
-                            "id": 13692,
+                            "id": 13689,
                             "name": "BinaryOperation",
                             "src": "9409:92:35"
                           },
@@ -10983,11 +10983,11 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 13667,
+                                      "referencedDeclaration": 13664,
                                       "type": "uint256",
                                       "value": "count"
                                     },
-                                    "id": 13693,
+                                    "id": 13690,
                                     "name": "Identifier",
                                     "src": "9519:5:35"
                                   },
@@ -11004,37 +11004,37 @@ export const MultiSigWallet =
                                       "type": "int_const 1",
                                       "value": "1"
                                     },
-                                    "id": 13694,
+                                    "id": 13691,
                                     "name": "Literal",
                                     "src": "9528:1:35"
                                   }
                                 ],
-                                "id": 13695,
+                                "id": 13692,
                                 "name": "Assignment",
                                 "src": "9519:10:35"
                               }
                             ],
-                            "id": 13696,
+                            "id": 13693,
                             "name": "ExpressionStatement",
                             "src": "9519:10:35"
                           }
                         ],
-                        "id": 13697,
+                        "id": 13694,
                         "name": "IfStatement",
                         "src": "9402:127:35"
                       }
                     ],
-                    "id": 13698,
+                    "id": 13695,
                     "name": "ForStatement",
                     "src": "9350:179:35"
                   }
                 ],
-                "id": 13699,
+                "id": 13696,
                 "name": "Block",
                 "src": "9340:196:35"
               }
             ],
-            "id": 13700,
+            "id": 13697,
             "name": "FunctionDefinition",
             "src": "9221:315:35"
           },
@@ -11048,7 +11048,7 @@ export const MultiSigWallet =
               ],
               "name": "getOwners",
               "payable": false,
-              "scope": 13903,
+              "scope": 13900,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -11061,7 +11061,7 @@ export const MultiSigWallet =
                   ]
                 },
                 "children": [],
-                "id": 13701,
+                "id": 13698,
                 "name": "ParameterList",
                 "src": "9638:2:35"
               },
@@ -11071,7 +11071,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 13709,
+                      "scope": 13706,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address[] memory",
@@ -11090,22 +11090,22 @@ export const MultiSigWallet =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 13702,
+                            "id": 13699,
                             "name": "ElementaryTypeName",
                             "src": "9686:7:35"
                           }
                         ],
-                        "id": 13703,
+                        "id": 13700,
                         "name": "ArrayTypeName",
                         "src": "9686:9:35"
                       }
                     ],
-                    "id": 13704,
+                    "id": 13701,
                     "name": "VariableDeclaration",
                     "src": "9686:9:35"
                   }
                 ],
-                "id": 13705,
+                "id": 13702,
                 "name": "ParameterList",
                 "src": "9685:11:35"
               },
@@ -11113,7 +11113,7 @@ export const MultiSigWallet =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 13705
+                      "functionReturnParameters": 13702
                     },
                     "children": [
                       {
@@ -11122,26 +11122,26 @@ export const MultiSigWallet =
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 12977,
+                          "referencedDeclaration": 12974,
                           "type": "address[] storage ref",
                           "value": "owners"
                         },
-                        "id": 13706,
+                        "id": 13703,
                         "name": "Identifier",
                         "src": "9718:6:35"
                       }
                     ],
-                    "id": 13707,
+                    "id": 13704,
                     "name": "Return",
                     "src": "9711:13:35"
                   }
                 ],
-                "id": 13708,
+                "id": 13705,
                 "name": "Block",
                 "src": "9701:30:35"
               }
             ],
-            "id": 13709,
+            "id": 13706,
             "name": "FunctionDefinition",
             "src": "9620:111:35"
           },
@@ -11155,7 +11155,7 @@ export const MultiSigWallet =
               ],
               "name": "getConfirmations",
               "payable": false,
-              "scope": 13903,
+              "scope": 13900,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -11167,7 +11167,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "transactionId",
-                      "scope": 13796,
+                      "scope": 13793,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -11180,17 +11180,17 @@ export const MultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 13710,
+                        "id": 13707,
                         "name": "ElementaryTypeName",
                         "src": "9936:4:35"
                       }
                     ],
-                    "id": 13711,
+                    "id": 13708,
                     "name": "VariableDeclaration",
                     "src": "9936:18:35"
                   }
                 ],
-                "id": 13712,
+                "id": 13709,
                 "name": "ParameterList",
                 "src": "9935:20:35"
               },
@@ -11200,7 +11200,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "_confirmations",
-                      "scope": 13796,
+                      "scope": 13793,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address[] memory",
@@ -11219,22 +11219,22 @@ export const MultiSigWallet =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 13713,
+                            "id": 13710,
                             "name": "ElementaryTypeName",
                             "src": "10001:7:35"
                           }
                         ],
-                        "id": 13714,
+                        "id": 13711,
                         "name": "ArrayTypeName",
                         "src": "10001:9:35"
                       }
                     ],
-                    "id": 13715,
+                    "id": 13712,
                     "name": "VariableDeclaration",
                     "src": "10001:24:35"
                   }
                 ],
-                "id": 13716,
+                "id": 13713,
                 "name": "ParameterList",
                 "src": "10000:26:35"
               },
@@ -11243,7 +11243,7 @@ export const MultiSigWallet =
                   {
                     "attributes": {
                       "assignments": [
-                        13720
+                        13717
                       ]
                     },
                     "children": [
@@ -11251,7 +11251,7 @@ export const MultiSigWallet =
                         "attributes": {
                           "constant": false,
                           "name": "confirmationsTemp",
-                          "scope": 13796,
+                          "scope": 13793,
                           "stateVariable": false,
                           "storageLocation": "memory",
                           "type": "address[] memory",
@@ -11270,17 +11270,17 @@ export const MultiSigWallet =
                                   "name": "address",
                                   "type": "address"
                                 },
-                                "id": 13718,
+                                "id": 13715,
                                 "name": "ElementaryTypeName",
                                 "src": "10041:7:35"
                               }
                             ],
-                            "id": 13719,
+                            "id": 13716,
                             "name": "ArrayTypeName",
                             "src": "10041:9:35"
                           }
                         ],
-                        "id": 13720,
+                        "id": 13717,
                         "name": "VariableDeclaration",
                         "src": "10041:34:35"
                       },
@@ -11325,17 +11325,17 @@ export const MultiSigWallet =
                                       "name": "address",
                                       "type": "address"
                                     },
-                                    "id": 13721,
+                                    "id": 13718,
                                     "name": "ElementaryTypeName",
                                     "src": "10082:7:35"
                                   }
                                 ],
-                                "id": 13722,
+                                "id": 13719,
                                 "name": "ArrayTypeName",
                                 "src": "10082:9:35"
                               }
                             ],
-                            "id": 13723,
+                            "id": 13720,
                             "name": "NewExpression",
                             "src": "10078:13:35"
                           },
@@ -11357,33 +11357,33 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12977,
+                                  "referencedDeclaration": 12974,
                                   "type": "address[] storage ref",
                                   "value": "owners"
                                 },
-                                "id": 13724,
+                                "id": 13721,
                                 "name": "Identifier",
                                 "src": "10092:6:35"
                               }
                             ],
-                            "id": 13725,
+                            "id": 13722,
                             "name": "MemberAccess",
                             "src": "10092:13:35"
                           }
                         ],
-                        "id": 13726,
+                        "id": 13723,
                         "name": "FunctionCall",
                         "src": "10078:28:35"
                       }
                     ],
-                    "id": 13727,
+                    "id": 13724,
                     "name": "VariableDeclarationStatement",
                     "src": "10041:65:35"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        13729
+                        13726
                       ]
                     },
                     "children": [
@@ -11391,7 +11391,7 @@ export const MultiSigWallet =
                         "attributes": {
                           "constant": false,
                           "name": "count",
-                          "scope": 13796,
+                          "scope": 13793,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -11404,12 +11404,12 @@ export const MultiSigWallet =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 13728,
+                            "id": 13725,
                             "name": "ElementaryTypeName",
                             "src": "10116:4:35"
                           }
                         ],
-                        "id": 13729,
+                        "id": 13726,
                         "name": "VariableDeclaration",
                         "src": "10116:10:35"
                       },
@@ -11426,12 +11426,12 @@ export const MultiSigWallet =
                           "type": "int_const 0",
                           "value": "0"
                         },
-                        "id": 13730,
+                        "id": 13727,
                         "name": "Literal",
                         "src": "10129:1:35"
                       }
                     ],
-                    "id": 13731,
+                    "id": 13728,
                     "name": "VariableDeclarationStatement",
                     "src": "10116:14:35"
                   },
@@ -11447,7 +11447,7 @@ export const MultiSigWallet =
                         "attributes": {
                           "constant": false,
                           "name": "i",
-                          "scope": 13796,
+                          "scope": 13793,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -11460,17 +11460,17 @@ export const MultiSigWallet =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 13732,
+                            "id": 13729,
                             "name": "ElementaryTypeName",
                             "src": "10140:4:35"
                           }
                         ],
-                        "id": 13733,
+                        "id": 13730,
                         "name": "VariableDeclaration",
                         "src": "10140:6:35"
                       }
                     ],
-                    "id": 13734,
+                    "id": 13731,
                     "name": "VariableDeclarationStatement",
                     "src": "10140:6:35"
                   },
@@ -11495,11 +11495,11 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13733,
+                                  "referencedDeclaration": 13730,
                                   "type": "uint256",
                                   "value": "i"
                                 },
-                                "id": 13735,
+                                "id": 13732,
                                 "name": "Identifier",
                                 "src": "10161:1:35"
                               },
@@ -11516,17 +11516,17 @@ export const MultiSigWallet =
                                   "type": "int_const 0",
                                   "value": "0"
                                 },
-                                "id": 13736,
+                                "id": 13733,
                                 "name": "Literal",
                                 "src": "10163:1:35"
                               }
                             ],
-                            "id": 13737,
+                            "id": 13734,
                             "name": "Assignment",
                             "src": "10161:3:35"
                           }
                         ],
-                        "id": 13738,
+                        "id": 13735,
                         "name": "ExpressionStatement",
                         "src": "10161:3:35"
                       },
@@ -11551,11 +11551,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13733,
+                              "referencedDeclaration": 13730,
                               "type": "uint256",
                               "value": "i"
                             },
-                            "id": 13739,
+                            "id": 13736,
                             "name": "Identifier",
                             "src": "10166:1:35"
                           },
@@ -11577,21 +11577,21 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12977,
+                                  "referencedDeclaration": 12974,
                                   "type": "address[] storage ref",
                                   "value": "owners"
                                 },
-                                "id": 13740,
+                                "id": 13737,
                                 "name": "Identifier",
                                 "src": "10168:6:35"
                               }
                             ],
-                            "id": 13741,
+                            "id": 13738,
                             "name": "MemberAccess",
                             "src": "10168:13:35"
                           }
                         ],
-                        "id": 13742,
+                        "id": 13739,
                         "name": "BinaryOperation",
                         "src": "10166:15:35"
                       },
@@ -11615,21 +11615,21 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13733,
+                                  "referencedDeclaration": 13730,
                                   "type": "uint256",
                                   "value": "i"
                                 },
-                                "id": 13743,
+                                "id": 13740,
                                 "name": "Identifier",
                                 "src": "10183:1:35"
                               }
                             ],
-                            "id": 13744,
+                            "id": 13741,
                             "name": "UnaryOperation",
                             "src": "10183:3:35"
                           }
                         ],
-                        "id": 13745,
+                        "id": 13742,
                         "name": "ExpressionStatement",
                         "src": "10183:3:35"
                       },
@@ -11664,11 +11664,11 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 12970,
+                                      "referencedDeclaration": 12967,
                                       "type": "mapping(uint256 => mapping(address => bool))",
                                       "value": "confirmations"
                                     },
-                                    "id": 13746,
+                                    "id": 13743,
                                     "name": "Identifier",
                                     "src": "10204:13:35"
                                   },
@@ -11678,16 +11678,16 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 13711,
+                                      "referencedDeclaration": 13708,
                                       "type": "uint256",
                                       "value": "transactionId"
                                     },
-                                    "id": 13747,
+                                    "id": 13744,
                                     "name": "Identifier",
                                     "src": "10218:13:35"
                                   }
                                 ],
-                                "id": 13748,
+                                "id": 13745,
                                 "name": "IndexAccess",
                                 "src": "10204:28:35"
                               },
@@ -11707,11 +11707,11 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 12977,
+                                      "referencedDeclaration": 12974,
                                       "type": "address[] storage ref",
                                       "value": "owners"
                                     },
-                                    "id": 13749,
+                                    "id": 13746,
                                     "name": "Identifier",
                                     "src": "10233:6:35"
                                   },
@@ -11721,21 +11721,21 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 13733,
+                                      "referencedDeclaration": 13730,
                                       "type": "uint256",
                                       "value": "i"
                                     },
-                                    "id": 13750,
+                                    "id": 13747,
                                     "name": "Identifier",
                                     "src": "10240:1:35"
                                   }
                                 ],
-                                "id": 13751,
+                                "id": 13748,
                                 "name": "IndexAccess",
                                 "src": "10233:9:35"
                               }
                             ],
-                            "id": 13752,
+                            "id": 13749,
                             "name": "IndexAccess",
                             "src": "10204:39:35"
                           },
@@ -11770,11 +11770,11 @@ export const MultiSigWallet =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 13720,
+                                              "referencedDeclaration": 13717,
                                               "type": "address[] memory",
                                               "value": "confirmationsTemp"
                                             },
-                                            "id": 13753,
+                                            "id": 13750,
                                             "name": "Identifier",
                                             "src": "10263:17:35"
                                           },
@@ -11784,16 +11784,16 @@ export const MultiSigWallet =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 13729,
+                                              "referencedDeclaration": 13726,
                                               "type": "uint256",
                                               "value": "count"
                                             },
-                                            "id": 13754,
+                                            "id": 13751,
                                             "name": "Identifier",
                                             "src": "10281:5:35"
                                           }
                                         ],
-                                        "id": 13755,
+                                        "id": 13752,
                                         "name": "IndexAccess",
                                         "src": "10263:24:35"
                                       },
@@ -11813,11 +11813,11 @@ export const MultiSigWallet =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 12977,
+                                              "referencedDeclaration": 12974,
                                               "type": "address[] storage ref",
                                               "value": "owners"
                                             },
-                                            "id": 13756,
+                                            "id": 13753,
                                             "name": "Identifier",
                                             "src": "10290:6:35"
                                           },
@@ -11827,26 +11827,26 @@ export const MultiSigWallet =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 13733,
+                                              "referencedDeclaration": 13730,
                                               "type": "uint256",
                                               "value": "i"
                                             },
-                                            "id": 13757,
+                                            "id": 13754,
                                             "name": "Identifier",
                                             "src": "10297:1:35"
                                           }
                                         ],
-                                        "id": 13758,
+                                        "id": 13755,
                                         "name": "IndexAccess",
                                         "src": "10290:9:35"
                                       }
                                     ],
-                                    "id": 13759,
+                                    "id": 13756,
                                     "name": "Assignment",
                                     "src": "10263:36:35"
                                   }
                                 ],
-                                "id": 13760,
+                                "id": 13757,
                                 "name": "ExpressionStatement",
                                 "src": "10263:36:35"
                               },
@@ -11869,11 +11869,11 @@ export const MultiSigWallet =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 13729,
+                                          "referencedDeclaration": 13726,
                                           "type": "uint256",
                                           "value": "count"
                                         },
-                                        "id": 13761,
+                                        "id": 13758,
                                         "name": "Identifier",
                                         "src": "10317:5:35"
                                       },
@@ -11890,32 +11890,32 @@ export const MultiSigWallet =
                                           "type": "int_const 1",
                                           "value": "1"
                                         },
-                                        "id": 13762,
+                                        "id": 13759,
                                         "name": "Literal",
                                         "src": "10326:1:35"
                                       }
                                     ],
-                                    "id": 13763,
+                                    "id": 13760,
                                     "name": "Assignment",
                                     "src": "10317:10:35"
                                   }
                                 ],
-                                "id": 13764,
+                                "id": 13761,
                                 "name": "ExpressionStatement",
                                 "src": "10317:10:35"
                               }
                             ],
-                            "id": 13765,
+                            "id": 13762,
                             "name": "Block",
                             "src": "10245:97:35"
                           }
                         ],
-                        "id": 13766,
+                        "id": 13763,
                         "name": "IfStatement",
                         "src": "10200:142:35"
                       }
                     ],
-                    "id": 13767,
+                    "id": 13764,
                     "name": "ForStatement",
                     "src": "10156:186:35"
                   },
@@ -11938,11 +11938,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13715,
+                              "referencedDeclaration": 13712,
                               "type": "address[] memory",
                               "value": "_confirmations"
                             },
-                            "id": 13768,
+                            "id": 13765,
                             "name": "Identifier",
                             "src": "10351:14:35"
                           },
@@ -11987,17 +11987,17 @@ export const MultiSigWallet =
                                           "name": "address",
                                           "type": "address"
                                         },
-                                        "id": 13769,
+                                        "id": 13766,
                                         "name": "ElementaryTypeName",
                                         "src": "10372:7:35"
                                       }
                                     ],
-                                    "id": 13770,
+                                    "id": 13767,
                                     "name": "ArrayTypeName",
                                     "src": "10372:9:35"
                                   }
                                 ],
-                                "id": 13771,
+                                "id": 13768,
                                 "name": "NewExpression",
                                 "src": "10368:13:35"
                               },
@@ -12007,26 +12007,26 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13729,
+                                  "referencedDeclaration": 13726,
                                   "type": "uint256",
                                   "value": "count"
                                 },
-                                "id": 13772,
+                                "id": 13769,
                                 "name": "Identifier",
                                 "src": "10382:5:35"
                               }
                             ],
-                            "id": 13773,
+                            "id": 13770,
                             "name": "FunctionCall",
                             "src": "10368:20:35"
                           }
                         ],
-                        "id": 13774,
+                        "id": 13771,
                         "name": "Assignment",
                         "src": "10351:37:35"
                       }
                     ],
-                    "id": 13775,
+                    "id": 13772,
                     "name": "ExpressionStatement",
                     "src": "10351:37:35"
                   },
@@ -12051,11 +12051,11 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13733,
+                                  "referencedDeclaration": 13730,
                                   "type": "uint256",
                                   "value": "i"
                                 },
-                                "id": 13776,
+                                "id": 13773,
                                 "name": "Identifier",
                                 "src": "10403:1:35"
                               },
@@ -12072,17 +12072,17 @@ export const MultiSigWallet =
                                   "type": "int_const 0",
                                   "value": "0"
                                 },
-                                "id": 13777,
+                                "id": 13774,
                                 "name": "Literal",
                                 "src": "10405:1:35"
                               }
                             ],
-                            "id": 13778,
+                            "id": 13775,
                             "name": "Assignment",
                             "src": "10403:3:35"
                           }
                         ],
-                        "id": 13779,
+                        "id": 13776,
                         "name": "ExpressionStatement",
                         "src": "10403:3:35"
                       },
@@ -12107,11 +12107,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13733,
+                              "referencedDeclaration": 13730,
                               "type": "uint256",
                               "value": "i"
                             },
-                            "id": 13780,
+                            "id": 13777,
                             "name": "Identifier",
                             "src": "10408:1:35"
                           },
@@ -12121,16 +12121,16 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13729,
+                              "referencedDeclaration": 13726,
                               "type": "uint256",
                               "value": "count"
                             },
-                            "id": 13781,
+                            "id": 13778,
                             "name": "Identifier",
                             "src": "10410:5:35"
                           }
                         ],
-                        "id": 13782,
+                        "id": 13779,
                         "name": "BinaryOperation",
                         "src": "10408:7:35"
                       },
@@ -12154,21 +12154,21 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13733,
+                                  "referencedDeclaration": 13730,
                                   "type": "uint256",
                                   "value": "i"
                                 },
-                                "id": 13783,
+                                "id": 13780,
                                 "name": "Identifier",
                                 "src": "10417:1:35"
                               }
                             ],
-                            "id": 13784,
+                            "id": 13781,
                             "name": "UnaryOperation",
                             "src": "10417:3:35"
                           }
                         ],
-                        "id": 13785,
+                        "id": 13782,
                         "name": "ExpressionStatement",
                         "src": "10417:3:35"
                       },
@@ -12201,11 +12201,11 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 13715,
+                                      "referencedDeclaration": 13712,
                                       "type": "address[] memory",
                                       "value": "_confirmations"
                                     },
-                                    "id": 13786,
+                                    "id": 13783,
                                     "name": "Identifier",
                                     "src": "10434:14:35"
                                   },
@@ -12215,16 +12215,16 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 13733,
+                                      "referencedDeclaration": 13730,
                                       "type": "uint256",
                                       "value": "i"
                                     },
-                                    "id": 13787,
+                                    "id": 13784,
                                     "name": "Identifier",
                                     "src": "10449:1:35"
                                   }
                                 ],
-                                "id": 13788,
+                                "id": 13785,
                                 "name": "IndexAccess",
                                 "src": "10434:17:35"
                               },
@@ -12244,11 +12244,11 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 13720,
+                                      "referencedDeclaration": 13717,
                                       "type": "address[] memory",
                                       "value": "confirmationsTemp"
                                     },
-                                    "id": 13789,
+                                    "id": 13786,
                                     "name": "Identifier",
                                     "src": "10454:17:35"
                                   },
@@ -12258,41 +12258,41 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 13733,
+                                      "referencedDeclaration": 13730,
                                       "type": "uint256",
                                       "value": "i"
                                     },
-                                    "id": 13790,
+                                    "id": 13787,
                                     "name": "Identifier",
                                     "src": "10472:1:35"
                                   }
                                 ],
-                                "id": 13791,
+                                "id": 13788,
                                 "name": "IndexAccess",
                                 "src": "10454:20:35"
                               }
                             ],
-                            "id": 13792,
+                            "id": 13789,
                             "name": "Assignment",
                             "src": "10434:40:35"
                           }
                         ],
-                        "id": 13793,
+                        "id": 13790,
                         "name": "ExpressionStatement",
                         "src": "10434:40:35"
                       }
                     ],
-                    "id": 13794,
+                    "id": 13791,
                     "name": "ForStatement",
                     "src": "10398:76:35"
                   }
                 ],
-                "id": 13795,
+                "id": 13792,
                 "name": "Block",
                 "src": "10031:450:35"
               }
             ],
-            "id": 13796,
+            "id": 13793,
             "name": "FunctionDefinition",
             "src": "9910:571:35"
           },
@@ -12306,7 +12306,7 @@ export const MultiSigWallet =
               ],
               "name": "getTransactionIds",
               "payable": false,
-              "scope": 13903,
+              "scope": 13900,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -12318,7 +12318,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "from",
-                      "scope": 13902,
+                      "scope": 13899,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -12331,12 +12331,12 @@ export const MultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 13797,
+                        "id": 13794,
                         "name": "ElementaryTypeName",
                         "src": "10857:4:35"
                       }
                     ],
-                    "id": 13798,
+                    "id": 13795,
                     "name": "VariableDeclaration",
                     "src": "10857:9:35"
                   },
@@ -12344,7 +12344,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "to",
-                      "scope": 13902,
+                      "scope": 13899,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -12357,12 +12357,12 @@ export const MultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 13799,
+                        "id": 13796,
                         "name": "ElementaryTypeName",
                         "src": "10868:4:35"
                       }
                     ],
-                    "id": 13800,
+                    "id": 13797,
                     "name": "VariableDeclaration",
                     "src": "10868:7:35"
                   },
@@ -12370,7 +12370,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "pending",
-                      "scope": 13902,
+                      "scope": 13899,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -12383,12 +12383,12 @@ export const MultiSigWallet =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 13801,
+                        "id": 13798,
                         "name": "ElementaryTypeName",
                         "src": "10877:4:35"
                       }
                     ],
-                    "id": 13802,
+                    "id": 13799,
                     "name": "VariableDeclaration",
                     "src": "10877:12:35"
                   },
@@ -12396,7 +12396,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "executed",
-                      "scope": 13902,
+                      "scope": 13899,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -12409,17 +12409,17 @@ export const MultiSigWallet =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 13803,
+                        "id": 13800,
                         "name": "ElementaryTypeName",
                         "src": "10891:4:35"
                       }
                     ],
-                    "id": 13804,
+                    "id": 13801,
                     "name": "VariableDeclaration",
                     "src": "10891:13:35"
                   }
                 ],
-                "id": 13805,
+                "id": 13802,
                 "name": "ParameterList",
                 "src": "10856:49:35"
               },
@@ -12429,7 +12429,7 @@ export const MultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "_transactionIds",
-                      "scope": 13902,
+                      "scope": 13899,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256[] memory",
@@ -12448,22 +12448,22 @@ export const MultiSigWallet =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 13806,
+                            "id": 13803,
                             "name": "ElementaryTypeName",
                             "src": "10951:4:35"
                           }
                         ],
-                        "id": 13807,
+                        "id": 13804,
                         "name": "ArrayTypeName",
                         "src": "10951:6:35"
                       }
                     ],
-                    "id": 13808,
+                    "id": 13805,
                     "name": "VariableDeclaration",
                     "src": "10951:22:35"
                   }
                 ],
-                "id": 13809,
+                "id": 13806,
                 "name": "ParameterList",
                 "src": "10950:24:35"
               },
@@ -12497,11 +12497,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15821,
+                              "referencedDeclaration": 15818,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 13810,
+                            "id": 13807,
                             "name": "Identifier",
                             "src": "10989:7:35"
                           },
@@ -12526,11 +12526,11 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13798,
+                                  "referencedDeclaration": 13795,
                                   "type": "uint256",
                                   "value": "from"
                                 },
-                                "id": 13811,
+                                "id": 13808,
                                 "name": "Identifier",
                                 "src": "10997:4:35"
                               },
@@ -12540,33 +12540,33 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13800,
+                                  "referencedDeclaration": 13797,
                                   "type": "uint256",
                                   "value": "to"
                                 },
-                                "id": 13812,
+                                "id": 13809,
                                 "name": "Identifier",
                                 "src": "11005:2:35"
                               }
                             ],
-                            "id": 13813,
+                            "id": 13810,
                             "name": "BinaryOperation",
                             "src": "10997:10:35"
                           }
                         ],
-                        "id": 13814,
+                        "id": 13811,
                         "name": "FunctionCall",
                         "src": "10989:19:35"
                       }
                     ],
-                    "id": 13815,
+                    "id": 13812,
                     "name": "ExpressionStatement",
                     "src": "10989:19:35"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        13819
+                        13816
                       ]
                     },
                     "children": [
@@ -12574,7 +12574,7 @@ export const MultiSigWallet =
                         "attributes": {
                           "constant": false,
                           "name": "transactionIdsTemp",
-                          "scope": 13902,
+                          "scope": 13899,
                           "stateVariable": false,
                           "storageLocation": "memory",
                           "type": "uint256[] memory",
@@ -12593,17 +12593,17 @@ export const MultiSigWallet =
                                   "name": "uint",
                                   "type": "uint256"
                                 },
-                                "id": 13817,
+                                "id": 13814,
                                 "name": "ElementaryTypeName",
                                 "src": "11019:4:35"
                               }
                             ],
-                            "id": 13818,
+                            "id": 13815,
                             "name": "ArrayTypeName",
                             "src": "11019:6:35"
                           }
                         ],
-                        "id": 13819,
+                        "id": 13816,
                         "name": "VariableDeclaration",
                         "src": "11019:32:35"
                       },
@@ -12648,17 +12648,17 @@ export const MultiSigWallet =
                                       "name": "uint",
                                       "type": "uint256"
                                     },
-                                    "id": 13820,
+                                    "id": 13817,
                                     "name": "ElementaryTypeName",
                                     "src": "11058:4:35"
                                   }
                                 ],
-                                "id": 13821,
+                                "id": 13818,
                                 "name": "ArrayTypeName",
                                 "src": "11058:6:35"
                               }
                             ],
-                            "id": 13822,
+                            "id": 13819,
                             "name": "NewExpression",
                             "src": "11054:10:35"
                           },
@@ -12668,28 +12668,28 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12981,
+                              "referencedDeclaration": 12978,
                               "type": "uint256",
                               "value": "transactionCount"
                             },
-                            "id": 13823,
+                            "id": 13820,
                             "name": "Identifier",
                             "src": "11065:16:35"
                           }
                         ],
-                        "id": 13824,
+                        "id": 13821,
                         "name": "FunctionCall",
                         "src": "11054:28:35"
                       }
                     ],
-                    "id": 13825,
+                    "id": 13822,
                     "name": "VariableDeclarationStatement",
                     "src": "11019:63:35"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        13827
+                        13824
                       ]
                     },
                     "children": [
@@ -12697,7 +12697,7 @@ export const MultiSigWallet =
                         "attributes": {
                           "constant": false,
                           "name": "count",
-                          "scope": 13902,
+                          "scope": 13899,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -12710,12 +12710,12 @@ export const MultiSigWallet =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 13826,
+                            "id": 13823,
                             "name": "ElementaryTypeName",
                             "src": "11092:4:35"
                           }
                         ],
-                        "id": 13827,
+                        "id": 13824,
                         "name": "VariableDeclaration",
                         "src": "11092:10:35"
                       },
@@ -12732,12 +12732,12 @@ export const MultiSigWallet =
                           "type": "int_const 0",
                           "value": "0"
                         },
-                        "id": 13828,
+                        "id": 13825,
                         "name": "Literal",
                         "src": "11105:1:35"
                       }
                     ],
-                    "id": 13829,
+                    "id": 13826,
                     "name": "VariableDeclarationStatement",
                     "src": "11092:14:35"
                   },
@@ -12753,7 +12753,7 @@ export const MultiSigWallet =
                         "attributes": {
                           "constant": false,
                           "name": "i",
-                          "scope": 13902,
+                          "scope": 13899,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -12766,17 +12766,17 @@ export const MultiSigWallet =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 13830,
+                            "id": 13827,
                             "name": "ElementaryTypeName",
                             "src": "11116:4:35"
                           }
                         ],
-                        "id": 13831,
+                        "id": 13828,
                         "name": "VariableDeclaration",
                         "src": "11116:6:35"
                       }
                     ],
-                    "id": 13832,
+                    "id": 13829,
                     "name": "VariableDeclarationStatement",
                     "src": "11116:6:35"
                   },
@@ -12801,11 +12801,11 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13831,
+                                  "referencedDeclaration": 13828,
                                   "type": "uint256",
                                   "value": "i"
                                 },
-                                "id": 13833,
+                                "id": 13830,
                                 "name": "Identifier",
                                 "src": "11137:1:35"
                               },
@@ -12822,17 +12822,17 @@ export const MultiSigWallet =
                                   "type": "int_const 0",
                                   "value": "0"
                                 },
-                                "id": 13834,
+                                "id": 13831,
                                 "name": "Literal",
                                 "src": "11139:1:35"
                               }
                             ],
-                            "id": 13835,
+                            "id": 13832,
                             "name": "Assignment",
                             "src": "11137:3:35"
                           }
                         ],
-                        "id": 13836,
+                        "id": 13833,
                         "name": "ExpressionStatement",
                         "src": "11137:3:35"
                       },
@@ -12857,11 +12857,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13831,
+                              "referencedDeclaration": 13828,
                               "type": "uint256",
                               "value": "i"
                             },
-                            "id": 13837,
+                            "id": 13834,
                             "name": "Identifier",
                             "src": "11142:1:35"
                           },
@@ -12871,16 +12871,16 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12981,
+                              "referencedDeclaration": 12978,
                               "type": "uint256",
                               "value": "transactionCount"
                             },
-                            "id": 13838,
+                            "id": 13835,
                             "name": "Identifier",
                             "src": "11144:16:35"
                           }
                         ],
-                        "id": 13839,
+                        "id": 13836,
                         "name": "BinaryOperation",
                         "src": "11142:18:35"
                       },
@@ -12904,21 +12904,21 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13831,
+                                  "referencedDeclaration": 13828,
                                   "type": "uint256",
                                   "value": "i"
                                 },
-                                "id": 13840,
+                                "id": 13837,
                                 "name": "Identifier",
                                 "src": "11162:1:35"
                               }
                             ],
-                            "id": 13841,
+                            "id": 13838,
                             "name": "UnaryOperation",
                             "src": "11162:3:35"
                           }
                         ],
-                        "id": 13842,
+                        "id": 13839,
                         "name": "ExpressionStatement",
                         "src": "11162:3:35"
                       },
@@ -12963,11 +12963,11 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 13802,
+                                      "referencedDeclaration": 13799,
                                       "type": "bool",
                                       "value": "pending"
                                     },
-                                    "id": 13843,
+                                    "id": 13840,
                                     "name": "Identifier",
                                     "src": "11186:7:35"
                                   },
@@ -12991,7 +12991,7 @@ export const MultiSigWallet =
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "executed",
-                                          "referencedDeclaration": 12989,
+                                          "referencedDeclaration": 12986,
                                           "type": "bool"
                                         },
                                         "children": [
@@ -13011,11 +13011,11 @@ export const MultiSigWallet =
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 12964,
+                                                  "referencedDeclaration": 12961,
                                                   "type": "mapping(uint256 => struct MultiSigWallet.Transaction storage ref)",
                                                   "value": "transactions"
                                                 },
-                                                "id": 13844,
+                                                "id": 13841,
                                                 "name": "Identifier",
                                                 "src": "11198:12:35"
                                               },
@@ -13025,31 +13025,31 @@ export const MultiSigWallet =
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 13831,
+                                                  "referencedDeclaration": 13828,
                                                   "type": "uint256",
                                                   "value": "i"
                                                 },
-                                                "id": 13845,
+                                                "id": 13842,
                                                 "name": "Identifier",
                                                 "src": "11211:1:35"
                                               }
                                             ],
-                                            "id": 13846,
+                                            "id": 13843,
                                             "name": "IndexAccess",
                                             "src": "11198:15:35"
                                           }
                                         ],
-                                        "id": 13847,
+                                        "id": 13844,
                                         "name": "MemberAccess",
                                         "src": "11198:24:35"
                                       }
                                     ],
-                                    "id": 13848,
+                                    "id": 13845,
                                     "name": "UnaryOperation",
                                     "src": "11197:25:35"
                                   }
                                 ],
-                                "id": 13849,
+                                "id": 13846,
                                 "name": "BinaryOperation",
                                 "src": "11186:36:35"
                               },
@@ -13074,11 +13074,11 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 13804,
+                                      "referencedDeclaration": 13801,
                                       "type": "bool",
                                       "value": "executed"
                                     },
-                                    "id": 13850,
+                                    "id": 13847,
                                     "name": "Identifier",
                                     "src": "11242:8:35"
                                   },
@@ -13090,7 +13090,7 @@ export const MultiSigWallet =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "executed",
-                                      "referencedDeclaration": 12989,
+                                      "referencedDeclaration": 12986,
                                       "type": "bool"
                                     },
                                     "children": [
@@ -13110,11 +13110,11 @@ export const MultiSigWallet =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 12964,
+                                              "referencedDeclaration": 12961,
                                               "type": "mapping(uint256 => struct MultiSigWallet.Transaction storage ref)",
                                               "value": "transactions"
                                             },
-                                            "id": 13851,
+                                            "id": 13848,
                                             "name": "Identifier",
                                             "src": "11254:12:35"
                                           },
@@ -13124,31 +13124,31 @@ export const MultiSigWallet =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 13831,
+                                              "referencedDeclaration": 13828,
                                               "type": "uint256",
                                               "value": "i"
                                             },
-                                            "id": 13852,
+                                            "id": 13849,
                                             "name": "Identifier",
                                             "src": "11267:1:35"
                                           }
                                         ],
-                                        "id": 13853,
+                                        "id": 13850,
                                         "name": "IndexAccess",
                                         "src": "11254:15:35"
                                       }
                                     ],
-                                    "id": 13854,
+                                    "id": 13851,
                                     "name": "MemberAccess",
                                     "src": "11254:24:35"
                                   }
                                 ],
-                                "id": 13855,
+                                "id": 13852,
                                 "name": "BinaryOperation",
                                 "src": "11242:36:35"
                               }
                             ],
-                            "id": 13856,
+                            "id": 13853,
                             "name": "BinaryOperation",
                             "src": "11186:92:35"
                           },
@@ -13183,11 +13183,11 @@ export const MultiSigWallet =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 13819,
+                                              "referencedDeclaration": 13816,
                                               "type": "uint256[] memory",
                                               "value": "transactionIdsTemp"
                                             },
-                                            "id": 13857,
+                                            "id": 13854,
                                             "name": "Identifier",
                                             "src": "11310:18:35"
                                           },
@@ -13197,16 +13197,16 @@ export const MultiSigWallet =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 13827,
+                                              "referencedDeclaration": 13824,
                                               "type": "uint256",
                                               "value": "count"
                                             },
-                                            "id": 13858,
+                                            "id": 13855,
                                             "name": "Identifier",
                                             "src": "11329:5:35"
                                           }
                                         ],
-                                        "id": 13859,
+                                        "id": 13856,
                                         "name": "IndexAccess",
                                         "src": "11310:25:35"
                                       },
@@ -13216,21 +13216,21 @@ export const MultiSigWallet =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 13831,
+                                          "referencedDeclaration": 13828,
                                           "type": "uint256",
                                           "value": "i"
                                         },
-                                        "id": 13860,
+                                        "id": 13857,
                                         "name": "Identifier",
                                         "src": "11338:1:35"
                                       }
                                     ],
-                                    "id": 13861,
+                                    "id": 13858,
                                     "name": "Assignment",
                                     "src": "11310:29:35"
                                   }
                                 ],
-                                "id": 13862,
+                                "id": 13859,
                                 "name": "ExpressionStatement",
                                 "src": "11310:29:35"
                               },
@@ -13253,11 +13253,11 @@ export const MultiSigWallet =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 13827,
+                                          "referencedDeclaration": 13824,
                                           "type": "uint256",
                                           "value": "count"
                                         },
-                                        "id": 13863,
+                                        "id": 13860,
                                         "name": "Identifier",
                                         "src": "11357:5:35"
                                       },
@@ -13274,32 +13274,32 @@ export const MultiSigWallet =
                                           "type": "int_const 1",
                                           "value": "1"
                                         },
-                                        "id": 13864,
+                                        "id": 13861,
                                         "name": "Literal",
                                         "src": "11366:1:35"
                                       }
                                     ],
-                                    "id": 13865,
+                                    "id": 13862,
                                     "name": "Assignment",
                                     "src": "11357:10:35"
                                   }
                                 ],
-                                "id": 13866,
+                                "id": 13863,
                                 "name": "ExpressionStatement",
                                 "src": "11357:10:35"
                               }
                             ],
-                            "id": 13867,
+                            "id": 13864,
                             "name": "Block",
                             "src": "11292:90:35"
                           }
                         ],
-                        "id": 13868,
+                        "id": 13865,
                         "name": "IfStatement",
                         "src": "11179:203:35"
                       }
                     ],
-                    "id": 13869,
+                    "id": 13866,
                     "name": "ForStatement",
                     "src": "11132:250:35"
                   },
@@ -13322,11 +13322,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13808,
+                              "referencedDeclaration": 13805,
                               "type": "uint256[] memory",
                               "value": "_transactionIds"
                             },
-                            "id": 13870,
+                            "id": 13867,
                             "name": "Identifier",
                             "src": "11391:15:35"
                           },
@@ -13371,17 +13371,17 @@ export const MultiSigWallet =
                                           "name": "uint",
                                           "type": "uint256"
                                         },
-                                        "id": 13871,
+                                        "id": 13868,
                                         "name": "ElementaryTypeName",
                                         "src": "11413:4:35"
                                       }
                                     ],
-                                    "id": 13872,
+                                    "id": 13869,
                                     "name": "ArrayTypeName",
                                     "src": "11413:6:35"
                                   }
                                 ],
-                                "id": 13873,
+                                "id": 13870,
                                 "name": "NewExpression",
                                 "src": "11409:10:35"
                               },
@@ -13406,11 +13406,11 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 13800,
+                                      "referencedDeclaration": 13797,
                                       "type": "uint256",
                                       "value": "to"
                                     },
-                                    "id": 13874,
+                                    "id": 13871,
                                     "name": "Identifier",
                                     "src": "11420:2:35"
                                   },
@@ -13420,31 +13420,31 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 13798,
+                                      "referencedDeclaration": 13795,
                                       "type": "uint256",
                                       "value": "from"
                                     },
-                                    "id": 13875,
+                                    "id": 13872,
                                     "name": "Identifier",
                                     "src": "11425:4:35"
                                   }
                                 ],
-                                "id": 13876,
+                                "id": 13873,
                                 "name": "BinaryOperation",
                                 "src": "11420:9:35"
                               }
                             ],
-                            "id": 13877,
+                            "id": 13874,
                             "name": "FunctionCall",
                             "src": "11409:21:35"
                           }
                         ],
-                        "id": 13878,
+                        "id": 13875,
                         "name": "Assignment",
                         "src": "11391:39:35"
                       }
                     ],
-                    "id": 13879,
+                    "id": 13876,
                     "name": "ExpressionStatement",
                     "src": "11391:39:35"
                   },
@@ -13469,11 +13469,11 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13831,
+                                  "referencedDeclaration": 13828,
                                   "type": "uint256",
                                   "value": "i"
                                 },
-                                "id": 13880,
+                                "id": 13877,
                                 "name": "Identifier",
                                 "src": "11445:1:35"
                               },
@@ -13483,21 +13483,21 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13798,
+                                  "referencedDeclaration": 13795,
                                   "type": "uint256",
                                   "value": "from"
                                 },
-                                "id": 13881,
+                                "id": 13878,
                                 "name": "Identifier",
                                 "src": "11447:4:35"
                               }
                             ],
-                            "id": 13882,
+                            "id": 13879,
                             "name": "Assignment",
                             "src": "11445:6:35"
                           }
                         ],
-                        "id": 13883,
+                        "id": 13880,
                         "name": "ExpressionStatement",
                         "src": "11445:6:35"
                       },
@@ -13522,11 +13522,11 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13831,
+                              "referencedDeclaration": 13828,
                               "type": "uint256",
                               "value": "i"
                             },
-                            "id": 13884,
+                            "id": 13881,
                             "name": "Identifier",
                             "src": "11453:1:35"
                           },
@@ -13536,16 +13536,16 @@ export const MultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13800,
+                              "referencedDeclaration": 13797,
                               "type": "uint256",
                               "value": "to"
                             },
-                            "id": 13885,
+                            "id": 13882,
                             "name": "Identifier",
                             "src": "11455:2:35"
                           }
                         ],
-                        "id": 13886,
+                        "id": 13883,
                         "name": "BinaryOperation",
                         "src": "11453:4:35"
                       },
@@ -13569,21 +13569,21 @@ export const MultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13831,
+                                  "referencedDeclaration": 13828,
                                   "type": "uint256",
                                   "value": "i"
                                 },
-                                "id": 13887,
+                                "id": 13884,
                                 "name": "Identifier",
                                 "src": "11459:1:35"
                               }
                             ],
-                            "id": 13888,
+                            "id": 13885,
                             "name": "UnaryOperation",
                             "src": "11459:3:35"
                           }
                         ],
-                        "id": 13889,
+                        "id": 13886,
                         "name": "ExpressionStatement",
                         "src": "11459:3:35"
                       },
@@ -13616,11 +13616,11 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 13808,
+                                      "referencedDeclaration": 13805,
                                       "type": "uint256[] memory",
                                       "value": "_transactionIds"
                                     },
-                                    "id": 13890,
+                                    "id": 13887,
                                     "name": "Identifier",
                                     "src": "11476:15:35"
                                   },
@@ -13645,11 +13645,11 @@ export const MultiSigWallet =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 13831,
+                                          "referencedDeclaration": 13828,
                                           "type": "uint256",
                                           "value": "i"
                                         },
-                                        "id": 13891,
+                                        "id": 13888,
                                         "name": "Identifier",
                                         "src": "11492:1:35"
                                       },
@@ -13659,21 +13659,21 @@ export const MultiSigWallet =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 13798,
+                                          "referencedDeclaration": 13795,
                                           "type": "uint256",
                                           "value": "from"
                                         },
-                                        "id": 13892,
+                                        "id": 13889,
                                         "name": "Identifier",
                                         "src": "11496:4:35"
                                       }
                                     ],
-                                    "id": 13893,
+                                    "id": 13890,
                                     "name": "BinaryOperation",
                                     "src": "11492:8:35"
                                   }
                                 ],
-                                "id": 13894,
+                                "id": 13891,
                                 "name": "IndexAccess",
                                 "src": "11476:25:35"
                               },
@@ -13693,11 +13693,11 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 13819,
+                                      "referencedDeclaration": 13816,
                                       "type": "uint256[] memory",
                                       "value": "transactionIdsTemp"
                                     },
-                                    "id": 13895,
+                                    "id": 13892,
                                     "name": "Identifier",
                                     "src": "11504:18:35"
                                   },
@@ -13707,51 +13707,51 @@ export const MultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 13831,
+                                      "referencedDeclaration": 13828,
                                       "type": "uint256",
                                       "value": "i"
                                     },
-                                    "id": 13896,
+                                    "id": 13893,
                                     "name": "Identifier",
                                     "src": "11523:1:35"
                                   }
                                 ],
-                                "id": 13897,
+                                "id": 13894,
                                 "name": "IndexAccess",
                                 "src": "11504:21:35"
                               }
                             ],
-                            "id": 13898,
+                            "id": 13895,
                             "name": "Assignment",
                             "src": "11476:49:35"
                           }
                         ],
-                        "id": 13899,
+                        "id": 13896,
                         "name": "ExpressionStatement",
                         "src": "11476:49:35"
                       }
                     ],
-                    "id": 13900,
+                    "id": 13897,
                     "name": "ForStatement",
                     "src": "11440:85:35"
                   }
                 ],
-                "id": 13901,
+                "id": 13898,
                 "name": "Block",
                 "src": "10979:553:35"
               }
             ],
-            "id": 13902,
+            "id": 13899,
             "name": "FunctionDefinition",
             "src": "10830:702:35"
           }
         ],
-        "id": 13903,
+        "id": 13900,
         "name": "ContractDefinition",
         "src": "186:11348:35"
       }
     ],
-    "id": 13904,
+    "id": 13901,
     "name": "SourceUnit",
     "src": "0:11535:35"
   },
@@ -13772,5 +13772,5 @@ export const MultiSigWallet =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-21T17:50:41.138Z"
+  "updatedAt": "2018-09-25T20:04:49.246Z"
 }

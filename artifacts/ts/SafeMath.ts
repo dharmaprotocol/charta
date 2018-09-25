@@ -13,7 +13,7 @@ export const SafeMath =
       "absolutePath": "zeppelin-solidity/contracts/math/SafeMath.sol",
       "exportedSymbols": {
         "SafeMath": [
-          14080
+          14077
         ]
       }
     },
@@ -27,7 +27,7 @@ export const SafeMath =
             ".18"
           ]
         },
-        "id": 13984,
+        "id": 13981,
         "name": "PragmaDirective",
         "src": "0:24:38"
       },
@@ -43,10 +43,10 @@ export const SafeMath =
           "documentation": "@title SafeMath\n@dev Math operations with safety checks that throw on error",
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            14080
+            14077
           ],
           "name": "SafeMath",
-          "scope": 14081
+          "scope": 14078
         },
         "children": [
           {
@@ -59,7 +59,7 @@ export const SafeMath =
               ],
               "name": "mul",
               "payable": false,
-              "scope": 14080,
+              "scope": 14077,
               "stateMutability": "pure",
               "superFunction": null,
               "visibility": "internal"
@@ -71,7 +71,7 @@ export const SafeMath =
                     "attributes": {
                       "constant": false,
                       "name": "a",
-                      "scope": 14017,
+                      "scope": 14014,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -84,12 +84,12 @@ export const SafeMath =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 13985,
+                        "id": 13982,
                         "name": "ElementaryTypeName",
                         "src": "216:7:38"
                       }
                     ],
-                    "id": 13986,
+                    "id": 13983,
                     "name": "VariableDeclaration",
                     "src": "216:9:38"
                   },
@@ -97,7 +97,40 @@ export const SafeMath =
                     "attributes": {
                       "constant": false,
                       "name": "b",
-                      "scope": 14017,
+                      "scope": 14014,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 13984,
+                        "name": "ElementaryTypeName",
+                        "src": "227:7:38"
+                      }
+                    ],
+                    "id": 13985,
+                    "name": "VariableDeclaration",
+                    "src": "227:9:38"
+                  }
+                ],
+                "id": 13986,
+                "name": "ParameterList",
+                "src": "215:22:38"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 14014,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -112,48 +145,15 @@ export const SafeMath =
                         },
                         "id": 13987,
                         "name": "ElementaryTypeName",
-                        "src": "227:7:38"
+                        "src": "261:7:38"
                       }
                     ],
                     "id": 13988,
                     "name": "VariableDeclaration",
-                    "src": "227:9:38"
-                  }
-                ],
-                "id": 13989,
-                "name": "ParameterList",
-                "src": "215:22:38"
-              },
-              {
-                "children": [
-                  {
-                    "attributes": {
-                      "constant": false,
-                      "name": "",
-                      "scope": 14017,
-                      "stateVariable": false,
-                      "storageLocation": "default",
-                      "type": "uint256",
-                      "value": null,
-                      "visibility": "internal"
-                    },
-                    "children": [
-                      {
-                        "attributes": {
-                          "name": "uint256",
-                          "type": "uint256"
-                        },
-                        "id": 13990,
-                        "name": "ElementaryTypeName",
-                        "src": "261:7:38"
-                      }
-                    ],
-                    "id": 13991,
-                    "name": "VariableDeclaration",
                     "src": "261:7:38"
                   }
                 ],
-                "id": 13992,
+                "id": 13989,
                 "name": "ParameterList",
                 "src": "260:9:38"
               },
@@ -185,11 +185,11 @@ export const SafeMath =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13986,
+                              "referencedDeclaration": 13983,
                               "type": "uint256",
                               "value": "a"
                             },
-                            "id": 13993,
+                            "id": 13990,
                             "name": "Identifier",
                             "src": "280:1:38"
                           },
@@ -206,12 +206,12 @@ export const SafeMath =
                               "type": "int_const 0",
                               "value": "0"
                             },
-                            "id": 13994,
+                            "id": 13991,
                             "name": "Literal",
                             "src": "285:1:38"
                           }
                         ],
-                        "id": 13995,
+                        "id": 13992,
                         "name": "BinaryOperation",
                         "src": "280:6:38"
                       },
@@ -219,7 +219,7 @@ export const SafeMath =
                         "children": [
                           {
                             "attributes": {
-                              "functionReturnParameters": 13992
+                              "functionReturnParameters": 13989
                             },
                             "children": [
                               {
@@ -235,29 +235,29 @@ export const SafeMath =
                                   "type": "int_const 0",
                                   "value": "0"
                                 },
-                                "id": 13996,
+                                "id": 13993,
                                 "name": "Literal",
                                 "src": "303:1:38"
                               }
                             ],
-                            "id": 13997,
+                            "id": 13994,
                             "name": "Return",
                             "src": "296:8:38"
                           }
                         ],
-                        "id": 13998,
+                        "id": 13995,
                         "name": "Block",
                         "src": "288:23:38"
                       }
                     ],
-                    "id": 13999,
+                    "id": 13996,
                     "name": "IfStatement",
                     "src": "276:35:38"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        14001
+                        13998
                       ]
                     },
                     "children": [
@@ -265,7 +265,7 @@ export const SafeMath =
                         "attributes": {
                           "constant": false,
                           "name": "c",
-                          "scope": 14017,
+                          "scope": 14014,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -278,12 +278,12 @@ export const SafeMath =
                               "name": "uint256",
                               "type": "uint256"
                             },
-                            "id": 14000,
+                            "id": 13997,
                             "name": "ElementaryTypeName",
                             "src": "316:7:38"
                           }
                         ],
-                        "id": 14001,
+                        "id": 13998,
                         "name": "VariableDeclaration",
                         "src": "316:9:38"
                       },
@@ -308,11 +308,11 @@ export const SafeMath =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13986,
+                              "referencedDeclaration": 13983,
                               "type": "uint256",
                               "value": "a"
                             },
-                            "id": 14002,
+                            "id": 13999,
                             "name": "Identifier",
                             "src": "328:1:38"
                           },
@@ -322,21 +322,21 @@ export const SafeMath =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13988,
+                              "referencedDeclaration": 13985,
                               "type": "uint256",
                               "value": "b"
                             },
-                            "id": 14003,
+                            "id": 14000,
                             "name": "Identifier",
                             "src": "332:1:38"
                           }
                         ],
-                        "id": 14004,
+                        "id": 14001,
                         "name": "BinaryOperation",
                         "src": "328:5:38"
                       }
                     ],
-                    "id": 14005,
+                    "id": 14002,
                     "name": "VariableDeclarationStatement",
                     "src": "316:17:38"
                   },
@@ -368,11 +368,11 @@ export const SafeMath =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15809,
+                              "referencedDeclaration": 15806,
                               "type": "function (bool) pure",
                               "value": "assert"
                             },
-                            "id": 14006,
+                            "id": 14003,
                             "name": "Identifier",
                             "src": "339:6:38"
                           },
@@ -412,11 +412,11 @@ export const SafeMath =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 14001,
+                                      "referencedDeclaration": 13998,
                                       "type": "uint256",
                                       "value": "c"
                                     },
-                                    "id": 14007,
+                                    "id": 14004,
                                     "name": "Identifier",
                                     "src": "346:1:38"
                                   },
@@ -426,16 +426,16 @@ export const SafeMath =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 13986,
+                                      "referencedDeclaration": 13983,
                                       "type": "uint256",
                                       "value": "a"
                                     },
-                                    "id": 14008,
+                                    "id": 14005,
                                     "name": "Identifier",
                                     "src": "350:1:38"
                                   }
                                 ],
-                                "id": 14009,
+                                "id": 14006,
                                 "name": "BinaryOperation",
                                 "src": "346:5:38"
                               },
@@ -445,32 +445,32 @@ export const SafeMath =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13988,
+                                  "referencedDeclaration": 13985,
                                   "type": "uint256",
                                   "value": "b"
                                 },
-                                "id": 14010,
+                                "id": 14007,
                                 "name": "Identifier",
                                 "src": "355:1:38"
                               }
                             ],
-                            "id": 14011,
+                            "id": 14008,
                             "name": "BinaryOperation",
                             "src": "346:10:38"
                           }
                         ],
-                        "id": 14012,
+                        "id": 14009,
                         "name": "FunctionCall",
                         "src": "339:18:38"
                       }
                     ],
-                    "id": 14013,
+                    "id": 14010,
                     "name": "ExpressionStatement",
                     "src": "339:18:38"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 13992
+                      "functionReturnParameters": 13989
                     },
                     "children": [
                       {
@@ -479,26 +479,26 @@ export const SafeMath =
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 14001,
+                          "referencedDeclaration": 13998,
                           "type": "uint256",
                           "value": "c"
                         },
-                        "id": 14014,
+                        "id": 14011,
                         "name": "Identifier",
                         "src": "370:1:38"
                       }
                     ],
-                    "id": 14015,
+                    "id": 14012,
                     "name": "Return",
                     "src": "363:8:38"
                   }
                 ],
-                "id": 14016,
+                "id": 14013,
                 "name": "Block",
                 "src": "270:106:38"
               }
             ],
-            "id": 14017,
+            "id": 14014,
             "name": "FunctionDefinition",
             "src": "203:173:38"
           },
@@ -512,7 +512,7 @@ export const SafeMath =
               ],
               "name": "div",
               "payable": false,
-              "scope": 14080,
+              "scope": 14077,
               "stateMutability": "pure",
               "superFunction": null,
               "visibility": "internal"
@@ -524,7 +524,7 @@ export const SafeMath =
                     "attributes": {
                       "constant": false,
                       "name": "a",
-                      "scope": 14035,
+                      "scope": 14032,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -537,12 +537,12 @@ export const SafeMath =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 14018,
+                        "id": 14015,
                         "name": "ElementaryTypeName",
                         "src": "471:7:38"
                       }
                     ],
-                    "id": 14019,
+                    "id": 14016,
                     "name": "VariableDeclaration",
                     "src": "471:9:38"
                   },
@@ -550,7 +550,40 @@ export const SafeMath =
                     "attributes": {
                       "constant": false,
                       "name": "b",
-                      "scope": 14035,
+                      "scope": 14032,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 14017,
+                        "name": "ElementaryTypeName",
+                        "src": "482:7:38"
+                      }
+                    ],
+                    "id": 14018,
+                    "name": "VariableDeclaration",
+                    "src": "482:9:38"
+                  }
+                ],
+                "id": 14019,
+                "name": "ParameterList",
+                "src": "470:22:38"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 14032,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -565,48 +598,15 @@ export const SafeMath =
                         },
                         "id": 14020,
                         "name": "ElementaryTypeName",
-                        "src": "482:7:38"
+                        "src": "516:7:38"
                       }
                     ],
                     "id": 14021,
                     "name": "VariableDeclaration",
-                    "src": "482:9:38"
-                  }
-                ],
-                "id": 14022,
-                "name": "ParameterList",
-                "src": "470:22:38"
-              },
-              {
-                "children": [
-                  {
-                    "attributes": {
-                      "constant": false,
-                      "name": "",
-                      "scope": 14035,
-                      "stateVariable": false,
-                      "storageLocation": "default",
-                      "type": "uint256",
-                      "value": null,
-                      "visibility": "internal"
-                    },
-                    "children": [
-                      {
-                        "attributes": {
-                          "name": "uint256",
-                          "type": "uint256"
-                        },
-                        "id": 14023,
-                        "name": "ElementaryTypeName",
-                        "src": "516:7:38"
-                      }
-                    ],
-                    "id": 14024,
-                    "name": "VariableDeclaration",
                     "src": "516:7:38"
                   }
                 ],
-                "id": 14025,
+                "id": 14022,
                 "name": "ParameterList",
                 "src": "515:9:38"
               },
@@ -615,7 +615,7 @@ export const SafeMath =
                   {
                     "attributes": {
                       "assignments": [
-                        14027
+                        14024
                       ]
                     },
                     "children": [
@@ -623,7 +623,7 @@ export const SafeMath =
                         "attributes": {
                           "constant": false,
                           "name": "c",
-                          "scope": 14035,
+                          "scope": 14032,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -636,12 +636,12 @@ export const SafeMath =
                               "name": "uint256",
                               "type": "uint256"
                             },
-                            "id": 14026,
+                            "id": 14023,
                             "name": "ElementaryTypeName",
                             "src": "605:7:38"
                           }
                         ],
-                        "id": 14027,
+                        "id": 14024,
                         "name": "VariableDeclaration",
                         "src": "605:9:38"
                       },
@@ -666,11 +666,11 @@ export const SafeMath =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 14019,
+                              "referencedDeclaration": 14016,
                               "type": "uint256",
                               "value": "a"
                             },
-                            "id": 14028,
+                            "id": 14025,
                             "name": "Identifier",
                             "src": "617:1:38"
                           },
@@ -680,27 +680,27 @@ export const SafeMath =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 14021,
+                              "referencedDeclaration": 14018,
                               "type": "uint256",
                               "value": "b"
                             },
-                            "id": 14029,
+                            "id": 14026,
                             "name": "Identifier",
                             "src": "621:1:38"
                           }
                         ],
-                        "id": 14030,
+                        "id": 14027,
                         "name": "BinaryOperation",
                         "src": "617:5:38"
                       }
                     ],
-                    "id": 14031,
+                    "id": 14028,
                     "name": "VariableDeclarationStatement",
                     "src": "605:17:38"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 14025
+                      "functionReturnParameters": 14022
                     },
                     "children": [
                       {
@@ -709,26 +709,26 @@ export const SafeMath =
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 14027,
+                          "referencedDeclaration": 14024,
                           "type": "uint256",
                           "value": "c"
                         },
-                        "id": 14032,
+                        "id": 14029,
                         "name": "Identifier",
                         "src": "717:1:38"
                       }
                     ],
-                    "id": 14033,
+                    "id": 14030,
                     "name": "Return",
                     "src": "710:8:38"
                   }
                 ],
-                "id": 14034,
+                "id": 14031,
                 "name": "Block",
                 "src": "525:198:38"
               }
             ],
-            "id": 14035,
+            "id": 14032,
             "name": "FunctionDefinition",
             "src": "458:265:38"
           },
@@ -742,7 +742,7 @@ export const SafeMath =
               ],
               "name": "sub",
               "payable": false,
-              "scope": 14080,
+              "scope": 14077,
               "stateMutability": "pure",
               "superFunction": null,
               "visibility": "internal"
@@ -754,7 +754,7 @@ export const SafeMath =
                     "attributes": {
                       "constant": false,
                       "name": "a",
-                      "scope": 14055,
+                      "scope": 14052,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -767,12 +767,12 @@ export const SafeMath =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 14036,
+                        "id": 14033,
                         "name": "ElementaryTypeName",
                         "src": "848:7:38"
                       }
                     ],
-                    "id": 14037,
+                    "id": 14034,
                     "name": "VariableDeclaration",
                     "src": "848:9:38"
                   },
@@ -780,7 +780,40 @@ export const SafeMath =
                     "attributes": {
                       "constant": false,
                       "name": "b",
-                      "scope": 14055,
+                      "scope": 14052,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 14035,
+                        "name": "ElementaryTypeName",
+                        "src": "859:7:38"
+                      }
+                    ],
+                    "id": 14036,
+                    "name": "VariableDeclaration",
+                    "src": "859:9:38"
+                  }
+                ],
+                "id": 14037,
+                "name": "ParameterList",
+                "src": "847:22:38"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 14052,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -795,48 +828,15 @@ export const SafeMath =
                         },
                         "id": 14038,
                         "name": "ElementaryTypeName",
-                        "src": "859:7:38"
+                        "src": "893:7:38"
                       }
                     ],
                     "id": 14039,
                     "name": "VariableDeclaration",
-                    "src": "859:9:38"
-                  }
-                ],
-                "id": 14040,
-                "name": "ParameterList",
-                "src": "847:22:38"
-              },
-              {
-                "children": [
-                  {
-                    "attributes": {
-                      "constant": false,
-                      "name": "",
-                      "scope": 14055,
-                      "stateVariable": false,
-                      "storageLocation": "default",
-                      "type": "uint256",
-                      "value": null,
-                      "visibility": "internal"
-                    },
-                    "children": [
-                      {
-                        "attributes": {
-                          "name": "uint256",
-                          "type": "uint256"
-                        },
-                        "id": 14041,
-                        "name": "ElementaryTypeName",
-                        "src": "893:7:38"
-                      }
-                    ],
-                    "id": 14042,
-                    "name": "VariableDeclaration",
                     "src": "893:7:38"
                   }
                 ],
-                "id": 14043,
+                "id": 14040,
                 "name": "ParameterList",
                 "src": "892:9:38"
               },
@@ -870,11 +870,11 @@ export const SafeMath =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15809,
+                              "referencedDeclaration": 15806,
                               "type": "function (bool) pure",
                               "value": "assert"
                             },
-                            "id": 14044,
+                            "id": 14041,
                             "name": "Identifier",
                             "src": "908:6:38"
                           },
@@ -899,11 +899,11 @@ export const SafeMath =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 14039,
+                                  "referencedDeclaration": 14036,
                                   "type": "uint256",
                                   "value": "b"
                                 },
-                                "id": 14045,
+                                "id": 14042,
                                 "name": "Identifier",
                                 "src": "915:1:38"
                               },
@@ -913,32 +913,32 @@ export const SafeMath =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 14037,
+                                  "referencedDeclaration": 14034,
                                   "type": "uint256",
                                   "value": "a"
                                 },
-                                "id": 14046,
+                                "id": 14043,
                                 "name": "Identifier",
                                 "src": "920:1:38"
                               }
                             ],
-                            "id": 14047,
+                            "id": 14044,
                             "name": "BinaryOperation",
                             "src": "915:6:38"
                           }
                         ],
-                        "id": 14048,
+                        "id": 14045,
                         "name": "FunctionCall",
                         "src": "908:14:38"
                       }
                     ],
-                    "id": 14049,
+                    "id": 14046,
                     "name": "ExpressionStatement",
                     "src": "908:14:38"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 14043
+                      "functionReturnParameters": 14040
                     },
                     "children": [
                       {
@@ -962,11 +962,11 @@ export const SafeMath =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 14037,
+                              "referencedDeclaration": 14034,
                               "type": "uint256",
                               "value": "a"
                             },
-                            "id": 14050,
+                            "id": 14047,
                             "name": "Identifier",
                             "src": "935:1:38"
                           },
@@ -976,31 +976,31 @@ export const SafeMath =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 14039,
+                              "referencedDeclaration": 14036,
                               "type": "uint256",
                               "value": "b"
                             },
-                            "id": 14051,
+                            "id": 14048,
                             "name": "Identifier",
                             "src": "939:1:38"
                           }
                         ],
-                        "id": 14052,
+                        "id": 14049,
                         "name": "BinaryOperation",
                         "src": "935:5:38"
                       }
                     ],
-                    "id": 14053,
+                    "id": 14050,
                     "name": "Return",
                     "src": "928:12:38"
                   }
                 ],
-                "id": 14054,
+                "id": 14051,
                 "name": "Block",
                 "src": "902:43:38"
               }
             ],
-            "id": 14055,
+            "id": 14052,
             "name": "FunctionDefinition",
             "src": "835:110:38"
           },
@@ -1014,7 +1014,7 @@ export const SafeMath =
               ],
               "name": "add",
               "payable": false,
-              "scope": 14080,
+              "scope": 14077,
               "stateMutability": "pure",
               "superFunction": null,
               "visibility": "internal"
@@ -1026,7 +1026,7 @@ export const SafeMath =
                     "attributes": {
                       "constant": false,
                       "name": "a",
-                      "scope": 14079,
+                      "scope": 14076,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1039,12 +1039,12 @@ export const SafeMath =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 14056,
+                        "id": 14053,
                         "name": "ElementaryTypeName",
                         "src": "1020:7:38"
                       }
                     ],
-                    "id": 14057,
+                    "id": 14054,
                     "name": "VariableDeclaration",
                     "src": "1020:9:38"
                   },
@@ -1052,7 +1052,40 @@ export const SafeMath =
                     "attributes": {
                       "constant": false,
                       "name": "b",
-                      "scope": 14079,
+                      "scope": 14076,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 14055,
+                        "name": "ElementaryTypeName",
+                        "src": "1031:7:38"
+                      }
+                    ],
+                    "id": 14056,
+                    "name": "VariableDeclaration",
+                    "src": "1031:9:38"
+                  }
+                ],
+                "id": 14057,
+                "name": "ParameterList",
+                "src": "1019:22:38"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 14076,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1067,48 +1100,15 @@ export const SafeMath =
                         },
                         "id": 14058,
                         "name": "ElementaryTypeName",
-                        "src": "1031:7:38"
+                        "src": "1065:7:38"
                       }
                     ],
                     "id": 14059,
                     "name": "VariableDeclaration",
-                    "src": "1031:9:38"
-                  }
-                ],
-                "id": 14060,
-                "name": "ParameterList",
-                "src": "1019:22:38"
-              },
-              {
-                "children": [
-                  {
-                    "attributes": {
-                      "constant": false,
-                      "name": "",
-                      "scope": 14079,
-                      "stateVariable": false,
-                      "storageLocation": "default",
-                      "type": "uint256",
-                      "value": null,
-                      "visibility": "internal"
-                    },
-                    "children": [
-                      {
-                        "attributes": {
-                          "name": "uint256",
-                          "type": "uint256"
-                        },
-                        "id": 14061,
-                        "name": "ElementaryTypeName",
-                        "src": "1065:7:38"
-                      }
-                    ],
-                    "id": 14062,
-                    "name": "VariableDeclaration",
                     "src": "1065:7:38"
                   }
                 ],
-                "id": 14063,
+                "id": 14060,
                 "name": "ParameterList",
                 "src": "1064:9:38"
               },
@@ -1117,7 +1117,7 @@ export const SafeMath =
                   {
                     "attributes": {
                       "assignments": [
-                        14065
+                        14062
                       ]
                     },
                     "children": [
@@ -1125,7 +1125,7 @@ export const SafeMath =
                         "attributes": {
                           "constant": false,
                           "name": "c",
-                          "scope": 14079,
+                          "scope": 14076,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -1138,12 +1138,12 @@ export const SafeMath =
                               "name": "uint256",
                               "type": "uint256"
                             },
-                            "id": 14064,
+                            "id": 14061,
                             "name": "ElementaryTypeName",
                             "src": "1080:7:38"
                           }
                         ],
-                        "id": 14065,
+                        "id": 14062,
                         "name": "VariableDeclaration",
                         "src": "1080:9:38"
                       },
@@ -1168,11 +1168,11 @@ export const SafeMath =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 14057,
+                              "referencedDeclaration": 14054,
                               "type": "uint256",
                               "value": "a"
                             },
-                            "id": 14066,
+                            "id": 14063,
                             "name": "Identifier",
                             "src": "1092:1:38"
                           },
@@ -1182,21 +1182,21 @@ export const SafeMath =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 14059,
+                              "referencedDeclaration": 14056,
                               "type": "uint256",
                               "value": "b"
                             },
-                            "id": 14067,
+                            "id": 14064,
                             "name": "Identifier",
                             "src": "1096:1:38"
                           }
                         ],
-                        "id": 14068,
+                        "id": 14065,
                         "name": "BinaryOperation",
                         "src": "1092:5:38"
                       }
                     ],
-                    "id": 14069,
+                    "id": 14066,
                     "name": "VariableDeclarationStatement",
                     "src": "1080:17:38"
                   },
@@ -1228,11 +1228,11 @@ export const SafeMath =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15809,
+                              "referencedDeclaration": 15806,
                               "type": "function (bool) pure",
                               "value": "assert"
                             },
-                            "id": 14070,
+                            "id": 14067,
                             "name": "Identifier",
                             "src": "1103:6:38"
                           },
@@ -1257,11 +1257,11 @@ export const SafeMath =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 14065,
+                                  "referencedDeclaration": 14062,
                                   "type": "uint256",
                                   "value": "c"
                                 },
-                                "id": 14071,
+                                "id": 14068,
                                 "name": "Identifier",
                                 "src": "1110:1:38"
                               },
@@ -1271,32 +1271,32 @@ export const SafeMath =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 14057,
+                                  "referencedDeclaration": 14054,
                                   "type": "uint256",
                                   "value": "a"
                                 },
-                                "id": 14072,
+                                "id": 14069,
                                 "name": "Identifier",
                                 "src": "1115:1:38"
                               }
                             ],
-                            "id": 14073,
+                            "id": 14070,
                             "name": "BinaryOperation",
                             "src": "1110:6:38"
                           }
                         ],
-                        "id": 14074,
+                        "id": 14071,
                         "name": "FunctionCall",
                         "src": "1103:14:38"
                       }
                     ],
-                    "id": 14075,
+                    "id": 14072,
                     "name": "ExpressionStatement",
                     "src": "1103:14:38"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 14063
+                      "functionReturnParameters": 14060
                     },
                     "children": [
                       {
@@ -1305,36 +1305,36 @@ export const SafeMath =
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 14065,
+                          "referencedDeclaration": 14062,
                           "type": "uint256",
                           "value": "c"
                         },
-                        "id": 14076,
+                        "id": 14073,
                         "name": "Identifier",
                         "src": "1130:1:38"
                       }
                     ],
-                    "id": 14077,
+                    "id": 14074,
                     "name": "Return",
                     "src": "1123:8:38"
                   }
                 ],
-                "id": 14078,
+                "id": 14075,
                 "name": "Block",
                 "src": "1074:62:38"
               }
             ],
-            "id": 14079,
+            "id": 14076,
             "name": "FunctionDefinition",
             "src": "1007:129:38"
           }
         ],
-        "id": 14080,
+        "id": 14077,
         "name": "ContractDefinition",
         "src": "117:1021:38"
       }
     ],
-    "id": 14081,
+    "id": 14078,
     "name": "SourceUnit",
     "src": "0:1139:38"
   },
@@ -1344,5 +1344,5 @@ export const SafeMath =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-21T17:50:41.142Z"
+  "updatedAt": "2018-09-25T20:04:49.242Z"
 }

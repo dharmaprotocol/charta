@@ -13,7 +13,7 @@ export const AddressUtils =
       "absolutePath": "zeppelin-solidity/contracts/AddressUtils.sol",
       "exportedSymbols": {
         "AddressUtils": [
-          13922
+          13919
         ]
       }
     },
@@ -27,7 +27,7 @@ export const AddressUtils =
             ".18"
           ]
         },
-        "id": 13905,
+        "id": 13902,
         "name": "PragmaDirective",
         "src": "0:24:36"
       },
@@ -43,10 +43,10 @@ export const AddressUtils =
           "documentation": "Utility library of inline functions on addresses",
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            13922
+            13919
           ],
           "name": "AddressUtils",
-          "scope": 13923
+          "scope": 13920
         },
         "children": [
           {
@@ -59,7 +59,7 @@ export const AddressUtils =
               ],
               "name": "isContract",
               "payable": false,
-              "scope": 13922,
+              "scope": 13919,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "internal"
@@ -71,7 +71,7 @@ export const AddressUtils =
                     "attributes": {
                       "constant": false,
                       "name": "addr",
-                      "scope": 13921,
+                      "scope": 13918,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -84,17 +84,17 @@ export const AddressUtils =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 13906,
+                        "id": 13903,
                         "name": "ElementaryTypeName",
                         "src": "471:7:36"
                       }
                     ],
-                    "id": 13907,
+                    "id": 13904,
                     "name": "VariableDeclaration",
                     "src": "471:12:36"
                   }
                 ],
-                "id": 13908,
+                "id": 13905,
                 "name": "ParameterList",
                 "src": "470:14:36"
               },
@@ -104,7 +104,7 @@ export const AddressUtils =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 13921,
+                      "scope": 13918,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -117,17 +117,17 @@ export const AddressUtils =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 13909,
+                        "id": 13906,
                         "name": "ElementaryTypeName",
                         "src": "508:4:36"
                       }
                     ],
-                    "id": 13910,
+                    "id": 13907,
                     "name": "VariableDeclaration",
                     "src": "508:4:36"
                   }
                 ],
-                "id": 13911,
+                "id": 13908,
                 "name": "ParameterList",
                 "src": "507:6:36"
               },
@@ -145,7 +145,7 @@ export const AddressUtils =
                         "attributes": {
                           "constant": false,
                           "name": "size",
-                          "scope": 13921,
+                          "scope": 13918,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -158,17 +158,17 @@ export const AddressUtils =
                               "name": "uint256",
                               "type": "uint256"
                             },
-                            "id": 13912,
+                            "id": 13909,
                             "name": "ElementaryTypeName",
                             "src": "520:7:36"
                           }
                         ],
-                        "id": 13913,
+                        "id": 13910,
                         "name": "VariableDeclaration",
                         "src": "520:12:36"
                       }
                     ],
-                    "id": 13914,
+                    "id": 13911,
                     "name": "VariableDeclarationStatement",
                     "src": "520:12:36"
                   },
@@ -177,7 +177,7 @@ export const AddressUtils =
                       "externalReferences": [
                         {
                           "size": {
-                            "declaration": 13913,
+                            "declaration": 13910,
                             "isOffset": false,
                             "isSlot": false,
                             "src": "549:4:36",
@@ -186,7 +186,7 @@ export const AddressUtils =
                         },
                         {
                           "addr": {
-                            "declaration": 13907,
+                            "declaration": 13904,
                             "isOffset": false,
                             "isSlot": false,
                             "src": "569:4:36",
@@ -197,13 +197,13 @@ export const AddressUtils =
                       "operations": "{\n    size := extcodesize(addr)\n}"
                     },
                     "children": [],
-                    "id": 13915,
+                    "id": 13912,
                     "name": "InlineAssembly",
                     "src": "538:49:36"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 13911
+                      "functionReturnParameters": 13908
                     },
                     "children": [
                       {
@@ -227,11 +227,11 @@ export const AddressUtils =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13913,
+                              "referencedDeclaration": 13910,
                               "type": "uint256",
                               "value": "size"
                             },
-                            "id": 13916,
+                            "id": 13913,
                             "name": "Identifier",
                             "src": "588:4:36"
                           },
@@ -248,37 +248,37 @@ export const AddressUtils =
                               "type": "int_const 0",
                               "value": "0"
                             },
-                            "id": 13917,
+                            "id": 13914,
                             "name": "Literal",
                             "src": "595:1:36"
                           }
                         ],
-                        "id": 13918,
+                        "id": 13915,
                         "name": "BinaryOperation",
                         "src": "588:8:36"
                       }
                     ],
-                    "id": 13919,
+                    "id": 13916,
                     "name": "Return",
                     "src": "581:15:36"
                   }
                 ],
-                "id": 13920,
+                "id": 13917,
                 "name": "Block",
                 "src": "514:87:36"
               }
             ],
-            "id": 13921,
+            "id": 13918,
             "name": "FunctionDefinition",
             "src": "451:150:36"
           }
         ],
-        "id": 13922,
+        "id": 13919,
         "name": "ContractDefinition",
         "src": "86:518:36"
       }
     ],
-    "id": 13923,
+    "id": 13920,
     "name": "SourceUnit",
     "src": "0:605:36"
   },
@@ -288,5 +288,5 @@ export const AddressUtils =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-21T17:50:41.135Z"
+  "updatedAt": "2018-09-25T20:04:49.240Z"
 }
