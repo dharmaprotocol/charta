@@ -353,7 +353,7 @@ export const MockCollateralizedTermsContract =
       "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/test/mocks/MockCollateralizedTermsContract.sol",
       "exportedSymbols": {
         "MockCollateralizedTermsContract": [
-          10492
+          10489
         ]
       }
     },
@@ -366,22 +366,22 @@ export const MockCollateralizedTermsContract =
             ".18"
           ]
         },
-        "id": 10105,
+        "id": 10102,
         "name": "PragmaDirective",
         "src": "584:23:22"
       },
       {
         "attributes": {
-          "SourceUnit": 10678,
+          "SourceUnit": 10675,
           "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/test/mocks/MockContract.sol",
           "file": "./MockContract.sol",
-          "scope": 10493,
+          "scope": 10490,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 10106,
+        "id": 10103,
         "name": "ImportDirective",
         "src": "609:28:22"
       },
@@ -390,30 +390,30 @@ export const MockCollateralizedTermsContract =
           "SourceUnit": 615,
           "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/Collateralizer.sol",
           "file": "../../Collateralizer.sol",
-          "scope": 10493,
+          "scope": 10490,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 10107,
+        "id": 10104,
         "name": "ImportDirective",
         "src": "638:34:22"
       },
       {
         "attributes": {
           "contractDependencies": [
-            10677
+            10674
           ],
           "contractKind": "contract",
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            10492,
-            10677
+            10489,
+            10674
           ],
           "name": "MockCollateralizedTermsContract",
-          "scope": 10493
+          "scope": 10490
         },
         "children": [
           {
@@ -427,15 +427,15 @@ export const MockCollateralizedTermsContract =
                 "attributes": {
                   "contractScope": null,
                   "name": "MockContract",
-                  "referencedDeclaration": 10677,
+                  "referencedDeclaration": 10674,
                   "type": "contract MockContract"
                 },
-                "id": 10108,
+                "id": 10105,
                 "name": "UserDefinedTypeName",
                 "src": "719:12:22"
               }
             ],
-            "id": 10109,
+            "id": 10106,
             "name": "InheritanceSpecifier",
             "src": "719:12:22"
           },
@@ -445,10 +445,10 @@ export const MockCollateralizedTermsContract =
                 "attributes": {
                   "contractScope": null,
                   "name": "SafeMath",
-                  "referencedDeclaration": 14080,
+                  "referencedDeclaration": 14077,
                   "type": "library SafeMath"
                 },
-                "id": 10110,
+                "id": 10107,
                 "name": "UserDefinedTypeName",
                 "src": "744:8:22"
               },
@@ -457,12 +457,12 @@ export const MockCollateralizedTermsContract =
                   "name": "uint",
                   "type": "uint256"
                 },
-                "id": 10111,
+                "id": 10108,
                 "name": "ElementaryTypeName",
                 "src": "757:4:22"
               }
             ],
-            "id": 10112,
+            "id": 10109,
             "name": "UsingForDirective",
             "src": "738:24:22"
           },
@@ -470,7 +470,7 @@ export const MockCollateralizedTermsContract =
             "attributes": {
               "constant": false,
               "name": "amountRepaid",
-              "scope": 10492,
+              "scope": 10489,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(bytes32 => uint256)",
@@ -488,7 +488,7 @@ export const MockCollateralizedTermsContract =
                       "name": "bytes32",
                       "type": "bytes32"
                     },
-                    "id": 10113,
+                    "id": 10110,
                     "name": "ElementaryTypeName",
                     "src": "837:7:22"
                   },
@@ -497,17 +497,17 @@ export const MockCollateralizedTermsContract =
                       "name": "uint",
                       "type": "uint256"
                     },
-                    "id": 10114,
+                    "id": 10111,
                     "name": "ElementaryTypeName",
                     "src": "848:4:22"
                   }
                 ],
-                "id": 10115,
+                "id": 10112,
                 "name": "Mapping",
                 "src": "828:25:22"
               }
             ],
-            "id": 10116,
+            "id": 10113,
             "name": "VariableDeclaration",
             "src": "828:47:22"
           },
@@ -515,7 +515,7 @@ export const MockCollateralizedTermsContract =
             "attributes": {
               "constant": false,
               "name": "expectedValueRepaidAtTimestamp",
-              "scope": 10492,
+              "scope": 10489,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(bytes32 => mapping(uint256 => uint256))",
@@ -533,7 +533,7 @@ export const MockCollateralizedTermsContract =
                       "name": "bytes32",
                       "type": "bytes32"
                     },
-                    "id": 10117,
+                    "id": 10114,
                     "name": "ElementaryTypeName",
                     "src": "1002:7:22"
                   },
@@ -547,7 +547,7 @@ export const MockCollateralizedTermsContract =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 10118,
+                        "id": 10115,
                         "name": "ElementaryTypeName",
                         "src": "1022:4:22"
                       },
@@ -556,22 +556,22 @@ export const MockCollateralizedTermsContract =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 10119,
+                        "id": 10116,
                         "name": "ElementaryTypeName",
                         "src": "1030:4:22"
                       }
                     ],
-                    "id": 10120,
+                    "id": 10117,
                     "name": "Mapping",
                     "src": "1013:22:22"
                   }
                 ],
-                "id": 10121,
+                "id": 10118,
                 "name": "Mapping",
                 "src": "993:43:22"
               }
             ],
-            "id": 10122,
+            "id": 10119,
             "name": "VariableDeclaration",
             "src": "993:83:22"
           },
@@ -579,7 +579,7 @@ export const MockCollateralizedTermsContract =
             "attributes": {
               "constant": false,
               "name": "expectedRepaymentSchedule",
-              "scope": 10492,
+              "scope": 10489,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(bytes32 => uint256[5] storage ref)",
@@ -597,7 +597,7 @@ export const MockCollateralizedTermsContract =
                       "name": "bytes32",
                       "type": "bytes32"
                     },
-                    "id": 10123,
+                    "id": 10120,
                     "name": "ElementaryTypeName",
                     "src": "1227:7:22"
                   },
@@ -611,7 +611,7 @@ export const MockCollateralizedTermsContract =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 10124,
+                        "id": 10121,
                         "name": "ElementaryTypeName",
                         "src": "1238:4:22"
                       },
@@ -628,22 +628,22 @@ export const MockCollateralizedTermsContract =
                           "type": "int_const 5",
                           "value": "5"
                         },
-                        "id": 10125,
+                        "id": 10122,
                         "name": "Literal",
                         "src": "1243:1:22"
                       }
                     ],
-                    "id": 10126,
+                    "id": 10123,
                     "name": "ArrayTypeName",
                     "src": "1238:7:22"
                   }
                 ],
-                "id": 10127,
+                "id": 10124,
                 "name": "Mapping",
                 "src": "1218:28:22"
               }
             ],
-            "id": 10128,
+            "id": 10125,
             "name": "VariableDeclaration",
             "src": "1218:63:22"
           },
@@ -651,7 +651,7 @@ export const MockCollateralizedTermsContract =
             "attributes": {
               "constant": false,
               "name": "numRepaymentTimestamps",
-              "scope": 10492,
+              "scope": 10489,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(bytes32 => uint256)",
@@ -669,7 +669,7 @@ export const MockCollateralizedTermsContract =
                       "name": "bytes32",
                       "type": "bytes32"
                     },
-                    "id": 10129,
+                    "id": 10126,
                     "name": "ElementaryTypeName",
                     "src": "1395:7:22"
                   },
@@ -678,17 +678,17 @@ export const MockCollateralizedTermsContract =
                       "name": "uint",
                       "type": "uint256"
                     },
-                    "id": 10130,
+                    "id": 10127,
                     "name": "ElementaryTypeName",
                     "src": "1406:4:22"
                   }
                 ],
-                "id": 10131,
+                "id": 10128,
                 "name": "Mapping",
                 "src": "1386:25:22"
               }
             ],
-            "id": 10132,
+            "id": 10129,
             "name": "VariableDeclaration",
             "src": "1386:57:22"
           },
@@ -696,7 +696,7 @@ export const MockCollateralizedTermsContract =
             "attributes": {
               "constant": false,
               "name": "termEndTimestamp",
-              "scope": 10492,
+              "scope": 10489,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(bytes32 => uint256)",
@@ -714,7 +714,7 @@ export const MockCollateralizedTermsContract =
                       "name": "bytes32",
                       "type": "bytes32"
                     },
-                    "id": 10133,
+                    "id": 10130,
                     "name": "ElementaryTypeName",
                     "src": "1522:7:22"
                   },
@@ -723,17 +723,17 @@ export const MockCollateralizedTermsContract =
                       "name": "uint",
                       "type": "uint256"
                     },
-                    "id": 10134,
+                    "id": 10131,
                     "name": "ElementaryTypeName",
                     "src": "1533:4:22"
                   }
                 ],
-                "id": 10135,
+                "id": 10132,
                 "name": "Mapping",
                 "src": "1513:25:22"
               }
             ],
-            "id": 10136,
+            "id": 10133,
             "name": "VariableDeclaration",
             "src": "1513:51:22"
           },
@@ -747,7 +747,7 @@ export const MockCollateralizedTermsContract =
               ],
               "name": "registerRepayment",
               "payable": false,
-              "scope": 10492,
+              "scope": 10489,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -759,7 +759,7 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 10172,
+                      "scope": 10169,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -772,12 +772,12 @@ export const MockCollateralizedTermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 10137,
+                        "id": 10134,
                         "name": "ElementaryTypeName",
                         "src": "1607:7:22"
                       }
                     ],
-                    "id": 10138,
+                    "id": 10135,
                     "name": "VariableDeclaration",
                     "src": "1607:19:22"
                   },
@@ -785,7 +785,7 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "payer",
-                      "scope": 10172,
+                      "scope": 10169,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -798,12 +798,12 @@ export const MockCollateralizedTermsContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 10139,
+                        "id": 10136,
                         "name": "ElementaryTypeName",
                         "src": "1636:7:22"
                       }
                     ],
-                    "id": 10140,
+                    "id": 10137,
                     "name": "VariableDeclaration",
                     "src": "1636:13:22"
                   },
@@ -811,7 +811,7 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "beneficiary",
-                      "scope": 10172,
+                      "scope": 10169,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -824,12 +824,12 @@ export const MockCollateralizedTermsContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 10141,
+                        "id": 10138,
                         "name": "ElementaryTypeName",
                         "src": "1659:7:22"
                       }
                     ],
-                    "id": 10142,
+                    "id": 10139,
                     "name": "VariableDeclaration",
                     "src": "1659:19:22"
                   },
@@ -837,7 +837,7 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "unitsOfRepayment",
-                      "scope": 10172,
+                      "scope": 10169,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -850,12 +850,12 @@ export const MockCollateralizedTermsContract =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 10143,
+                        "id": 10140,
                         "name": "ElementaryTypeName",
                         "src": "1688:4:22"
                       }
                     ],
-                    "id": 10144,
+                    "id": 10141,
                     "name": "VariableDeclaration",
                     "src": "1688:21:22"
                   },
@@ -863,7 +863,7 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "tokenAddress",
-                      "scope": 10172,
+                      "scope": 10169,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -876,17 +876,17 @@ export const MockCollateralizedTermsContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 10145,
+                        "id": 10142,
                         "name": "ElementaryTypeName",
                         "src": "1719:7:22"
                       }
                     ],
-                    "id": 10146,
+                    "id": 10143,
                     "name": "VariableDeclaration",
                     "src": "1719:20:22"
                   }
                 ],
-                "id": 10147,
+                "id": 10144,
                 "name": "ParameterList",
                 "src": "1597:148:22"
               },
@@ -896,7 +896,7 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "_success",
-                      "scope": 10172,
+                      "scope": 10169,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -909,17 +909,17 @@ export const MockCollateralizedTermsContract =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 10148,
+                        "id": 10145,
                         "name": "ElementaryTypeName",
                         "src": "1778:4:22"
                       }
                     ],
-                    "id": 10149,
+                    "id": 10146,
                     "name": "VariableDeclaration",
                     "src": "1778:13:22"
                   }
                 ],
-                "id": 10150,
+                "id": 10147,
                 "name": "ParameterList",
                 "src": "1777:15:22"
               },
@@ -957,11 +957,11 @@ export const MockCollateralizedTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10653,
+                              "referencedDeclaration": 10650,
                               "type": "function (string memory,bytes32)",
                               "value": "functionCalledWithArgs"
                             },
-                            "id": 10151,
+                            "id": 10148,
                             "name": "Identifier",
                             "src": "1807:22:22"
                           },
@@ -978,7 +978,7 @@ export const MockCollateralizedTermsContract =
                               "type": "literal_string \"registerRepayment\"",
                               "value": "registerRepayment"
                             },
-                            "id": 10152,
+                            "id": 10149,
                             "name": "Literal",
                             "src": "1830:19:22"
                           },
@@ -1024,11 +1024,11 @@ export const MockCollateralizedTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15812,
+                                  "referencedDeclaration": 15809,
                                   "type": "function () pure returns (bytes32)",
                                   "value": "keccak256"
                                 },
-                                "id": 10153,
+                                "id": 10150,
                                 "name": "Identifier",
                                 "src": "1851:9:22"
                               },
@@ -1038,11 +1038,11 @@ export const MockCollateralizedTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10138,
+                                  "referencedDeclaration": 10135,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 10154,
+                                "id": 10151,
                                 "name": "Identifier",
                                 "src": "1878:11:22"
                               },
@@ -1052,11 +1052,11 @@ export const MockCollateralizedTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10140,
+                                  "referencedDeclaration": 10137,
                                   "type": "address",
                                   "value": "payer"
                                 },
-                                "id": 10155,
+                                "id": 10152,
                                 "name": "Identifier",
                                 "src": "1907:5:22"
                               },
@@ -1066,11 +1066,11 @@ export const MockCollateralizedTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10142,
+                                  "referencedDeclaration": 10139,
                                   "type": "address",
                                   "value": "beneficiary"
                                 },
-                                "id": 10156,
+                                "id": 10153,
                                 "name": "Identifier",
                                 "src": "1930:11:22"
                               },
@@ -1080,11 +1080,11 @@ export const MockCollateralizedTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10144,
+                                  "referencedDeclaration": 10141,
                                   "type": "uint256",
                                   "value": "unitsOfRepayment"
                                 },
-                                "id": 10157,
+                                "id": 10154,
                                 "name": "Identifier",
                                 "src": "1959:16:22"
                               },
@@ -1094,32 +1094,32 @@ export const MockCollateralizedTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10146,
+                                  "referencedDeclaration": 10143,
                                   "type": "address",
                                   "value": "tokenAddress"
                                 },
-                                "id": 10158,
+                                "id": 10155,
                                 "name": "Identifier",
                                 "src": "1993:12:22"
                               }
                             ],
-                            "id": 10159,
+                            "id": 10156,
                             "name": "FunctionCall",
                             "src": "1851:168:22"
                           }
                         ],
-                        "id": 10160,
+                        "id": 10157,
                         "name": "FunctionCall",
                         "src": "1807:213:22"
                       }
                     ],
-                    "id": 10161,
+                    "id": 10158,
                     "name": "ExpressionStatement",
                     "src": "1807:213:22"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 10150
+                      "functionReturnParameters": 10147
                     },
                     "children": [
                       {
@@ -1167,11 +1167,11 @@ export const MockCollateralizedTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10557,
+                                  "referencedDeclaration": 10554,
                                   "type": "function (string memory,bytes32) view returns (bytes32)",
                                   "value": "getMockReturnValue"
                                 },
-                                "id": 10162,
+                                "id": 10159,
                                 "name": "Identifier",
                                 "src": "2038:18:22"
                               },
@@ -1188,7 +1188,7 @@ export const MockCollateralizedTermsContract =
                                   "type": "literal_string \"registerRepayment\"",
                                   "value": "registerRepayment"
                                 },
-                                "id": 10163,
+                                "id": 10160,
                                 "name": "Literal",
                                 "src": "2057:19:22"
                               },
@@ -1198,16 +1198,16 @@ export const MockCollateralizedTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10499,
+                                  "referencedDeclaration": 10496,
                                   "type": "bytes32",
                                   "value": "DEFAULT_SIGNATURE_ARGS"
                                 },
-                                "id": 10164,
+                                "id": 10161,
                                 "name": "Identifier",
                                 "src": "2078:22:22"
                               }
                             ],
-                            "id": 10165,
+                            "id": 10162,
                             "name": "FunctionCall",
                             "src": "2038:63:22"
                           },
@@ -1241,7 +1241,7 @@ export const MockCollateralizedTermsContract =
                                   "type": "type(bytes32)",
                                   "value": "bytes32"
                                 },
-                                "id": 10166,
+                                "id": 10163,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "2105:7:22"
                               },
@@ -1258,32 +1258,32 @@ export const MockCollateralizedTermsContract =
                                   "type": "int_const 1",
                                   "value": "1"
                                 },
-                                "id": 10167,
+                                "id": 10164,
                                 "name": "Literal",
                                 "src": "2113:1:22"
                               }
                             ],
-                            "id": 10168,
+                            "id": 10165,
                             "name": "FunctionCall",
                             "src": "2105:10:22"
                           }
                         ],
-                        "id": 10169,
+                        "id": 10166,
                         "name": "BinaryOperation",
                         "src": "2038:77:22"
                       }
                     ],
-                    "id": 10170,
+                    "id": 10167,
                     "name": "Return",
                     "src": "2031:84:22"
                   }
                 ],
-                "id": 10171,
+                "id": 10168,
                 "name": "Block",
                 "src": "1797:325:22"
               }
             ],
-            "id": 10172,
+            "id": 10169,
             "name": "FunctionDefinition",
             "src": "1571:551:22"
           },
@@ -1297,7 +1297,7 @@ export const MockCollateralizedTermsContract =
               ],
               "name": "getExpectedRepaymentValue",
               "payable": false,
-              "scope": 10492,
+              "scope": 10489,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -1309,7 +1309,7 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 10224,
+                      "scope": 10221,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -1322,12 +1322,12 @@ export const MockCollateralizedTermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 10173,
+                        "id": 10170,
                         "name": "ElementaryTypeName",
                         "src": "2172:7:22"
                       }
                     ],
-                    "id": 10174,
+                    "id": 10171,
                     "name": "VariableDeclaration",
                     "src": "2172:19:22"
                   },
@@ -1335,7 +1335,40 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "timestamp",
-                      "scope": 10224,
+                      "scope": 10221,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 10172,
+                        "name": "ElementaryTypeName",
+                        "src": "2201:7:22"
+                      }
+                    ],
+                    "id": 10173,
+                    "name": "VariableDeclaration",
+                    "src": "2201:17:22"
+                  }
+                ],
+                "id": 10174,
+                "name": "ParameterList",
+                "src": "2162:62:22"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 10221,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1350,48 +1383,15 @@ export const MockCollateralizedTermsContract =
                         },
                         "id": 10175,
                         "name": "ElementaryTypeName",
-                        "src": "2201:7:22"
+                        "src": "2270:7:22"
                       }
                     ],
                     "id": 10176,
                     "name": "VariableDeclaration",
-                    "src": "2201:17:22"
-                  }
-                ],
-                "id": 10177,
-                "name": "ParameterList",
-                "src": "2162:62:22"
-              },
-              {
-                "children": [
-                  {
-                    "attributes": {
-                      "constant": false,
-                      "name": "",
-                      "scope": 10224,
-                      "stateVariable": false,
-                      "storageLocation": "default",
-                      "type": "uint256",
-                      "value": null,
-                      "visibility": "internal"
-                    },
-                    "children": [
-                      {
-                        "attributes": {
-                          "name": "uint256",
-                          "type": "uint256"
-                        },
-                        "id": 10178,
-                        "name": "ElementaryTypeName",
-                        "src": "2270:7:22"
-                      }
-                    ],
-                    "id": 10179,
-                    "name": "VariableDeclaration",
                     "src": "2270:7:22"
                   }
                 ],
-                "id": 10180,
+                "id": 10177,
                 "name": "ParameterList",
                 "src": "2269:9:22"
               },
@@ -1409,7 +1409,7 @@ export const MockCollateralizedTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "latestDueDateBeforeTimestamp",
-                          "scope": 10224,
+                          "scope": 10221,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -1422,17 +1422,17 @@ export const MockCollateralizedTermsContract =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 10181,
+                            "id": 10178,
                             "name": "ElementaryTypeName",
                             "src": "2293:4:22"
                           }
                         ],
-                        "id": 10182,
+                        "id": 10179,
                         "name": "VariableDeclaration",
                         "src": "2293:33:22"
                       }
                     ],
-                    "id": 10183,
+                    "id": 10180,
                     "name": "VariableDeclarationStatement",
                     "src": "2293:33:22"
                   },
@@ -1441,7 +1441,7 @@ export const MockCollateralizedTermsContract =
                       {
                         "attributes": {
                           "assignments": [
-                            10185
+                            10182
                           ]
                         },
                         "children": [
@@ -1449,7 +1449,7 @@ export const MockCollateralizedTermsContract =
                             "attributes": {
                               "constant": false,
                               "name": "i",
-                              "scope": 10224,
+                              "scope": 10221,
                               "stateVariable": false,
                               "storageLocation": "default",
                               "type": "uint256",
@@ -1462,12 +1462,12 @@ export const MockCollateralizedTermsContract =
                                   "name": "uint",
                                   "type": "uint256"
                                 },
-                                "id": 10184,
+                                "id": 10181,
                                 "name": "ElementaryTypeName",
                                 "src": "2548:4:22"
                               }
                             ],
-                            "id": 10185,
+                            "id": 10182,
                             "name": "VariableDeclaration",
                             "src": "2548:6:22"
                           },
@@ -1484,12 +1484,12 @@ export const MockCollateralizedTermsContract =
                               "type": "int_const 0",
                               "value": "0"
                             },
-                            "id": 10186,
+                            "id": 10183,
                             "name": "Literal",
                             "src": "2557:1:22"
                           }
                         ],
-                        "id": 10187,
+                        "id": 10184,
                         "name": "VariableDeclarationStatement",
                         "src": "2548:10:22"
                       },
@@ -1514,11 +1514,11 @@ export const MockCollateralizedTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10185,
+                              "referencedDeclaration": 10182,
                               "type": "uint256",
                               "value": "i"
                             },
-                            "id": 10188,
+                            "id": 10185,
                             "name": "Identifier",
                             "src": "2560:1:22"
                           },
@@ -1535,12 +1535,12 @@ export const MockCollateralizedTermsContract =
                               "type": "int_const 5",
                               "value": "5"
                             },
-                            "id": 10189,
+                            "id": 10186,
                             "name": "Literal",
                             "src": "2564:1:22"
                           }
                         ],
-                        "id": 10190,
+                        "id": 10187,
                         "name": "BinaryOperation",
                         "src": "2560:5:22"
                       },
@@ -1564,21 +1564,21 @@ export const MockCollateralizedTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10185,
+                                  "referencedDeclaration": 10182,
                                   "type": "uint256",
                                   "value": "i"
                                 },
-                                "id": 10191,
+                                "id": 10188,
                                 "name": "Identifier",
                                 "src": "2567:1:22"
                               }
                             ],
-                            "id": 10192,
+                            "id": 10189,
                             "name": "UnaryOperation",
                             "src": "2567:3:22"
                           }
                         ],
-                        "id": 10193,
+                        "id": 10190,
                         "name": "ExpressionStatement",
                         "src": "2567:3:22"
                       },
@@ -1587,7 +1587,7 @@ export const MockCollateralizedTermsContract =
                           {
                             "attributes": {
                               "assignments": [
-                                10195
+                                10192
                               ]
                             },
                             "children": [
@@ -1595,7 +1595,7 @@ export const MockCollateralizedTermsContract =
                                 "attributes": {
                                   "constant": false,
                                   "name": "dueDateTimestamp",
-                                  "scope": 10224,
+                                  "scope": 10221,
                                   "stateVariable": false,
                                   "storageLocation": "default",
                                   "type": "uint256",
@@ -1608,12 +1608,12 @@ export const MockCollateralizedTermsContract =
                                       "name": "uint",
                                       "type": "uint256"
                                     },
-                                    "id": 10194,
+                                    "id": 10191,
                                     "name": "ElementaryTypeName",
                                     "src": "2586:4:22"
                                   }
                                 ],
-                                "id": 10195,
+                                "id": 10192,
                                 "name": "VariableDeclaration",
                                 "src": "2586:21:22"
                               },
@@ -1643,11 +1643,11 @@ export const MockCollateralizedTermsContract =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 10128,
+                                          "referencedDeclaration": 10125,
                                           "type": "mapping(bytes32 => uint256[5] storage ref)",
                                           "value": "expectedRepaymentSchedule"
                                         },
-                                        "id": 10196,
+                                        "id": 10193,
                                         "name": "Identifier",
                                         "src": "2610:25:22"
                                       },
@@ -1657,16 +1657,16 @@ export const MockCollateralizedTermsContract =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 10174,
+                                          "referencedDeclaration": 10171,
                                           "type": "bytes32",
                                           "value": "agreementId"
                                         },
-                                        "id": 10197,
+                                        "id": 10194,
                                         "name": "Identifier",
                                         "src": "2636:11:22"
                                       }
                                     ],
-                                    "id": 10198,
+                                    "id": 10195,
                                     "name": "IndexAccess",
                                     "src": "2610:38:22"
                                   },
@@ -1676,21 +1676,21 @@ export const MockCollateralizedTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10185,
+                                      "referencedDeclaration": 10182,
                                       "type": "uint256",
                                       "value": "i"
                                     },
-                                    "id": 10199,
+                                    "id": 10196,
                                     "name": "Identifier",
                                     "src": "2649:1:22"
                                   }
                                 ],
-                                "id": 10200,
+                                "id": 10197,
                                 "name": "IndexAccess",
                                 "src": "2610:41:22"
                               }
                             ],
-                            "id": 10201,
+                            "id": 10198,
                             "name": "VariableDeclarationStatement",
                             "src": "2586:65:22"
                           },
@@ -1735,11 +1735,11 @@ export const MockCollateralizedTermsContract =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 10195,
+                                          "referencedDeclaration": 10192,
                                           "type": "uint256",
                                           "value": "dueDateTimestamp"
                                         },
-                                        "id": 10202,
+                                        "id": 10199,
                                         "name": "Identifier",
                                         "src": "2670:16:22"
                                       },
@@ -1749,16 +1749,16 @@ export const MockCollateralizedTermsContract =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 10176,
+                                          "referencedDeclaration": 10173,
                                           "type": "uint256",
                                           "value": "timestamp"
                                         },
-                                        "id": 10203,
+                                        "id": 10200,
                                         "name": "Identifier",
                                         "src": "2690:9:22"
                                       }
                                     ],
-                                    "id": 10204,
+                                    "id": 10201,
                                     "name": "BinaryOperation",
                                     "src": "2670:29:22"
                                   },
@@ -1783,11 +1783,11 @@ export const MockCollateralizedTermsContract =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 10195,
+                                          "referencedDeclaration": 10192,
                                           "type": "uint256",
                                           "value": "dueDateTimestamp"
                                         },
-                                        "id": 10205,
+                                        "id": 10202,
                                         "name": "Identifier",
                                         "src": "2715:16:22"
                                       },
@@ -1797,21 +1797,21 @@ export const MockCollateralizedTermsContract =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 10182,
+                                          "referencedDeclaration": 10179,
                                           "type": "uint256",
                                           "value": "latestDueDateBeforeTimestamp"
                                         },
-                                        "id": 10206,
+                                        "id": 10203,
                                         "name": "Identifier",
                                         "src": "2734:28:22"
                                       }
                                     ],
-                                    "id": 10207,
+                                    "id": 10204,
                                     "name": "BinaryOperation",
                                     "src": "2715:47:22"
                                   }
                                 ],
-                                "id": 10208,
+                                "id": 10205,
                                 "name": "BinaryOperation",
                                 "src": "2670:92:22"
                               },
@@ -1836,11 +1836,11 @@ export const MockCollateralizedTermsContract =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 10182,
+                                              "referencedDeclaration": 10179,
                                               "type": "uint256",
                                               "value": "latestDueDateBeforeTimestamp"
                                             },
-                                            "id": 10209,
+                                            "id": 10206,
                                             "name": "Identifier",
                                             "src": "2782:28:22"
                                           },
@@ -1850,47 +1850,47 @@ export const MockCollateralizedTermsContract =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 10195,
+                                              "referencedDeclaration": 10192,
                                               "type": "uint256",
                                               "value": "dueDateTimestamp"
                                             },
-                                            "id": 10210,
+                                            "id": 10207,
                                             "name": "Identifier",
                                             "src": "2813:16:22"
                                           }
                                         ],
-                                        "id": 10211,
+                                        "id": 10208,
                                         "name": "Assignment",
                                         "src": "2782:47:22"
                                       }
                                     ],
-                                    "id": 10212,
+                                    "id": 10209,
                                     "name": "ExpressionStatement",
                                     "src": "2782:47:22"
                                   }
                                 ],
-                                "id": 10213,
+                                "id": 10210,
                                 "name": "Block",
                                 "src": "2764:80:22"
                               }
                             ],
-                            "id": 10214,
+                            "id": 10211,
                             "name": "IfStatement",
                             "src": "2666:178:22"
                           }
                         ],
-                        "id": 10215,
+                        "id": 10212,
                         "name": "Block",
                         "src": "2572:282:22"
                       }
                     ],
-                    "id": 10216,
+                    "id": 10213,
                     "name": "ForStatement",
                     "src": "2543:311:22"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 10180
+                      "functionReturnParameters": 10177
                     },
                     "children": [
                       {
@@ -1919,11 +1919,11 @@ export const MockCollateralizedTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10122,
+                                  "referencedDeclaration": 10119,
                                   "type": "mapping(bytes32 => mapping(uint256 => uint256))",
                                   "value": "expectedValueRepaidAtTimestamp"
                                 },
-                                "id": 10217,
+                                "id": 10214,
                                 "name": "Identifier",
                                 "src": "2933:30:22"
                               },
@@ -1933,16 +1933,16 @@ export const MockCollateralizedTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10174,
+                                  "referencedDeclaration": 10171,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 10218,
+                                "id": 10215,
                                 "name": "Identifier",
                                 "src": "2964:11:22"
                               }
                             ],
-                            "id": 10219,
+                            "id": 10216,
                             "name": "IndexAccess",
                             "src": "2933:43:22"
                           },
@@ -1952,31 +1952,31 @@ export const MockCollateralizedTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10182,
+                              "referencedDeclaration": 10179,
                               "type": "uint256",
                               "value": "latestDueDateBeforeTimestamp"
                             },
-                            "id": 10220,
+                            "id": 10217,
                             "name": "Identifier",
                             "src": "2977:28:22"
                           }
                         ],
-                        "id": 10221,
+                        "id": 10218,
                         "name": "IndexAccess",
                         "src": "2933:73:22"
                       }
                     ],
-                    "id": 10222,
+                    "id": 10219,
                     "name": "Return",
                     "src": "2926:80:22"
                   }
                 ],
-                "id": 10223,
+                "id": 10220,
                 "name": "Block",
                 "src": "2283:730:22"
               }
             ],
-            "id": 10224,
+            "id": 10221,
             "name": "FunctionDefinition",
             "src": "2128:885:22"
           },
@@ -1990,7 +1990,7 @@ export const MockCollateralizedTermsContract =
               ],
               "name": "getValueRepaidToDate",
               "payable": false,
-              "scope": 10492,
+              "scope": 10489,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -2002,7 +2002,7 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 10236,
+                      "scope": 10233,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -2015,17 +2015,17 @@ export const MockCollateralizedTermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 10225,
+                        "id": 10222,
                         "name": "ElementaryTypeName",
                         "src": "3049:7:22"
                       }
                     ],
-                    "id": 10226,
+                    "id": 10223,
                     "name": "VariableDeclaration",
                     "src": "3049:19:22"
                   }
                 ],
-                "id": 10227,
+                "id": 10224,
                 "name": "ParameterList",
                 "src": "3048:21:22"
               },
@@ -2035,7 +2035,7 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 10236,
+                      "scope": 10233,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2048,17 +2048,17 @@ export const MockCollateralizedTermsContract =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 10228,
+                        "id": 10225,
                         "name": "ElementaryTypeName",
                         "src": "3115:7:22"
                       }
                     ],
-                    "id": 10229,
+                    "id": 10226,
                     "name": "VariableDeclaration",
                     "src": "3115:7:22"
                   }
                 ],
-                "id": 10230,
+                "id": 10227,
                 "name": "ParameterList",
                 "src": "3114:9:22"
               },
@@ -2066,7 +2066,7 @@ export const MockCollateralizedTermsContract =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 10230
+                      "functionReturnParameters": 10227
                     },
                     "children": [
                       {
@@ -2085,11 +2085,11 @@ export const MockCollateralizedTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10116,
+                              "referencedDeclaration": 10113,
                               "type": "mapping(bytes32 => uint256)",
                               "value": "amountRepaid"
                             },
-                            "id": 10231,
+                            "id": 10228,
                             "name": "Identifier",
                             "src": "3145:12:22"
                           },
@@ -2099,31 +2099,31 @@ export const MockCollateralizedTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10226,
+                              "referencedDeclaration": 10223,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 10232,
+                            "id": 10229,
                             "name": "Identifier",
                             "src": "3158:11:22"
                           }
                         ],
-                        "id": 10233,
+                        "id": 10230,
                         "name": "IndexAccess",
                         "src": "3145:25:22"
                       }
                     ],
-                    "id": 10234,
+                    "id": 10231,
                     "name": "Return",
                     "src": "3138:32:22"
                   }
                 ],
-                "id": 10235,
+                "id": 10232,
                 "name": "Block",
                 "src": "3128:49:22"
               }
             ],
-            "id": 10236,
+            "id": 10233,
             "name": "FunctionDefinition",
             "src": "3019:158:22"
           },
@@ -2137,7 +2137,7 @@ export const MockCollateralizedTermsContract =
               ],
               "name": "mockRegisterRepaymentReturnValue",
               "payable": false,
-              "scope": 10492,
+              "scope": 10489,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -2149,7 +2149,7 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "success",
-                      "scope": 10255,
+                      "scope": 10252,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -2162,17 +2162,17 @@ export const MockCollateralizedTermsContract =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 10237,
+                        "id": 10234,
                         "name": "ElementaryTypeName",
                         "src": "3225:4:22"
                       }
                     ],
-                    "id": 10238,
+                    "id": 10235,
                     "name": "VariableDeclaration",
                     "src": "3225:12:22"
                   }
                 ],
-                "id": 10239,
+                "id": 10236,
                 "name": "ParameterList",
                 "src": "3224:14:22"
               },
@@ -2183,7 +2183,7 @@ export const MockCollateralizedTermsContract =
                   ]
                 },
                 "children": [],
-                "id": 10240,
+                "id": 10237,
                 "name": "ParameterList",
                 "src": "3258:0:22"
               },
@@ -2225,11 +2225,11 @@ export const MockCollateralizedTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10541,
+                              "referencedDeclaration": 10538,
                               "type": "function (string memory,bytes32,bytes32)",
                               "value": "mockReturnValue"
                             },
-                            "id": 10241,
+                            "id": 10238,
                             "name": "Identifier",
                             "src": "3268:15:22"
                           },
@@ -2246,7 +2246,7 @@ export const MockCollateralizedTermsContract =
                               "type": "literal_string \"registerRepayment\"",
                               "value": "registerRepayment"
                             },
-                            "id": 10242,
+                            "id": 10239,
                             "name": "Literal",
                             "src": "3284:19:22"
                           },
@@ -2256,11 +2256,11 @@ export const MockCollateralizedTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10499,
+                              "referencedDeclaration": 10496,
                               "type": "bytes32",
                               "value": "DEFAULT_SIGNATURE_ARGS"
                             },
-                            "id": 10243,
+                            "id": 10240,
                             "name": "Identifier",
                             "src": "3305:22:22"
                           },
@@ -2280,11 +2280,11 @@ export const MockCollateralizedTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10238,
+                                  "referencedDeclaration": 10235,
                                   "type": "bool",
                                   "value": "success"
                                 },
-                                "id": 10244,
+                                "id": 10241,
                                 "name": "Identifier",
                                 "src": "3329:7:22"
                               },
@@ -2318,7 +2318,7 @@ export const MockCollateralizedTermsContract =
                                       "type": "type(bytes32)",
                                       "value": "bytes32"
                                     },
-                                    "id": 10245,
+                                    "id": 10242,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "3339:7:22"
                                   },
@@ -2335,12 +2335,12 @@ export const MockCollateralizedTermsContract =
                                       "type": "int_const 1",
                                       "value": "1"
                                     },
-                                    "id": 10246,
+                                    "id": 10243,
                                     "name": "Literal",
                                     "src": "3347:1:22"
                                   }
                                 ],
-                                "id": 10247,
+                                "id": 10244,
                                 "name": "FunctionCall",
                                 "src": "3339:10:22"
                               },
@@ -2374,7 +2374,7 @@ export const MockCollateralizedTermsContract =
                                       "type": "type(bytes32)",
                                       "value": "bytes32"
                                     },
-                                    "id": 10248,
+                                    "id": 10245,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "3352:7:22"
                                   },
@@ -2391,37 +2391,37 @@ export const MockCollateralizedTermsContract =
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 10249,
+                                    "id": 10246,
                                     "name": "Literal",
                                     "src": "3360:1:22"
                                   }
                                 ],
-                                "id": 10250,
+                                "id": 10247,
                                 "name": "FunctionCall",
                                 "src": "3352:10:22"
                               }
                             ],
-                            "id": 10251,
+                            "id": 10248,
                             "name": "Conditional",
                             "src": "3329:33:22"
                           }
                         ],
-                        "id": 10252,
+                        "id": 10249,
                         "name": "FunctionCall",
                         "src": "3268:95:22"
                       }
                     ],
-                    "id": 10253,
+                    "id": 10250,
                     "name": "ExpressionStatement",
                     "src": "3268:95:22"
                   }
                 ],
-                "id": 10254,
+                "id": 10251,
                 "name": "Block",
                 "src": "3258:112:22"
               }
             ],
-            "id": 10255,
+            "id": 10252,
             "name": "FunctionDefinition",
             "src": "3183:187:22"
           },
@@ -2435,7 +2435,7 @@ export const MockCollateralizedTermsContract =
               ],
               "name": "wasRegisterRepaymentCalledWith",
               "payable": false,
-              "scope": 10492,
+              "scope": 10489,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -2447,7 +2447,7 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 10282,
+                      "scope": 10279,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -2460,12 +2460,12 @@ export const MockCollateralizedTermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 10256,
+                        "id": 10253,
                         "name": "ElementaryTypeName",
                         "src": "3425:7:22"
                       }
                     ],
-                    "id": 10257,
+                    "id": 10254,
                     "name": "VariableDeclaration",
                     "src": "3425:19:22"
                   },
@@ -2473,7 +2473,7 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "payer",
-                      "scope": 10282,
+                      "scope": 10279,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2486,12 +2486,12 @@ export const MockCollateralizedTermsContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 10258,
+                        "id": 10255,
                         "name": "ElementaryTypeName",
                         "src": "3454:7:22"
                       }
                     ],
-                    "id": 10259,
+                    "id": 10256,
                     "name": "VariableDeclaration",
                     "src": "3454:13:22"
                   },
@@ -2499,7 +2499,7 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "beneficiary",
-                      "scope": 10282,
+                      "scope": 10279,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2512,12 +2512,12 @@ export const MockCollateralizedTermsContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 10260,
+                        "id": 10257,
                         "name": "ElementaryTypeName",
                         "src": "3477:7:22"
                       }
                     ],
-                    "id": 10261,
+                    "id": 10258,
                     "name": "VariableDeclaration",
                     "src": "3477:19:22"
                   },
@@ -2525,7 +2525,7 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "unitsOfRepayment",
-                      "scope": 10282,
+                      "scope": 10279,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2538,12 +2538,12 @@ export const MockCollateralizedTermsContract =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 10262,
+                        "id": 10259,
                         "name": "ElementaryTypeName",
                         "src": "3506:4:22"
                       }
                     ],
-                    "id": 10263,
+                    "id": 10260,
                     "name": "VariableDeclaration",
                     "src": "3506:21:22"
                   },
@@ -2551,7 +2551,7 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "tokenAddress",
-                      "scope": 10282,
+                      "scope": 10279,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2564,17 +2564,17 @@ export const MockCollateralizedTermsContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 10264,
+                        "id": 10261,
                         "name": "ElementaryTypeName",
                         "src": "3537:7:22"
                       }
                     ],
-                    "id": 10265,
+                    "id": 10262,
                     "name": "VariableDeclaration",
                     "src": "3537:20:22"
                   }
                 ],
-                "id": 10266,
+                "id": 10263,
                 "name": "ParameterList",
                 "src": "3415:148:22"
               },
@@ -2584,7 +2584,7 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "wasCalled",
-                      "scope": 10282,
+                      "scope": 10279,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -2597,17 +2597,17 @@ export const MockCollateralizedTermsContract =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 10267,
+                        "id": 10264,
                         "name": "ElementaryTypeName",
                         "src": "3609:4:22"
                       }
                     ],
-                    "id": 10268,
+                    "id": 10265,
                     "name": "VariableDeclaration",
                     "src": "3609:14:22"
                   }
                 ],
-                "id": 10269,
+                "id": 10266,
                 "name": "ParameterList",
                 "src": "3608:16:22"
               },
@@ -2615,7 +2615,7 @@ export const MockCollateralizedTermsContract =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 10269
+                      "functionReturnParameters": 10266
                     },
                     "children": [
                       {
@@ -2648,11 +2648,11 @@ export const MockCollateralizedTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10669,
+                              "referencedDeclaration": 10666,
                               "type": "function (string memory,bytes32) view returns (bool)",
                               "value": "wasFunctionCalledWithArgs"
                             },
-                            "id": 10270,
+                            "id": 10267,
                             "name": "Identifier",
                             "src": "3646:25:22"
                           },
@@ -2669,7 +2669,7 @@ export const MockCollateralizedTermsContract =
                               "type": "literal_string \"registerRepayment\"",
                               "value": "registerRepayment"
                             },
-                            "id": 10271,
+                            "id": 10268,
                             "name": "Literal",
                             "src": "3672:19:22"
                           },
@@ -2715,11 +2715,11 @@ export const MockCollateralizedTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15812,
+                                  "referencedDeclaration": 15809,
                                   "type": "function () pure returns (bytes32)",
                                   "value": "keccak256"
                                 },
-                                "id": 10272,
+                                "id": 10269,
                                 "name": "Identifier",
                                 "src": "3693:9:22"
                               },
@@ -2729,11 +2729,11 @@ export const MockCollateralizedTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10257,
+                                  "referencedDeclaration": 10254,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 10273,
+                                "id": 10270,
                                 "name": "Identifier",
                                 "src": "3720:11:22"
                               },
@@ -2743,11 +2743,11 @@ export const MockCollateralizedTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10259,
+                                  "referencedDeclaration": 10256,
                                   "type": "address",
                                   "value": "payer"
                                 },
-                                "id": 10274,
+                                "id": 10271,
                                 "name": "Identifier",
                                 "src": "3749:5:22"
                               },
@@ -2757,11 +2757,11 @@ export const MockCollateralizedTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10261,
+                                  "referencedDeclaration": 10258,
                                   "type": "address",
                                   "value": "beneficiary"
                                 },
-                                "id": 10275,
+                                "id": 10272,
                                 "name": "Identifier",
                                 "src": "3772:11:22"
                               },
@@ -2771,11 +2771,11 @@ export const MockCollateralizedTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10263,
+                                  "referencedDeclaration": 10260,
                                   "type": "uint256",
                                   "value": "unitsOfRepayment"
                                 },
-                                "id": 10276,
+                                "id": 10273,
                                 "name": "Identifier",
                                 "src": "3801:16:22"
                               },
@@ -2785,36 +2785,36 @@ export const MockCollateralizedTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10265,
+                                  "referencedDeclaration": 10262,
                                   "type": "address",
                                   "value": "tokenAddress"
                                 },
-                                "id": 10277,
+                                "id": 10274,
                                 "name": "Identifier",
                                 "src": "3835:12:22"
                               }
                             ],
-                            "id": 10278,
+                            "id": 10275,
                             "name": "FunctionCall",
                             "src": "3693:168:22"
                           }
                         ],
-                        "id": 10279,
+                        "id": 10276,
                         "name": "FunctionCall",
                         "src": "3646:216:22"
                       }
                     ],
-                    "id": 10280,
+                    "id": 10277,
                     "name": "Return",
                     "src": "3639:223:22"
                   }
                 ],
-                "id": 10281,
+                "id": 10278,
                 "name": "Block",
                 "src": "3629:240:22"
               }
             ],
-            "id": 10282,
+            "id": 10279,
             "name": "FunctionDefinition",
             "src": "3376:493:22"
           },
@@ -2828,7 +2828,7 @@ export const MockCollateralizedTermsContract =
               ],
               "name": "registerTermStart",
               "payable": false,
-              "scope": 10492,
+              "scope": 10489,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -2840,7 +2840,7 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 10312,
+                      "scope": 10309,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -2853,12 +2853,12 @@ export const MockCollateralizedTermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 10283,
+                        "id": 10280,
                         "name": "ElementaryTypeName",
                         "src": "3911:7:22"
                       }
                     ],
-                    "id": 10284,
+                    "id": 10281,
                     "name": "VariableDeclaration",
                     "src": "3911:19:22"
                   },
@@ -2866,7 +2866,7 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "debtor",
-                      "scope": 10312,
+                      "scope": 10309,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2879,17 +2879,17 @@ export const MockCollateralizedTermsContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 10285,
+                        "id": 10282,
                         "name": "ElementaryTypeName",
                         "src": "3940:7:22"
                       }
                     ],
-                    "id": 10286,
+                    "id": 10283,
                     "name": "VariableDeclaration",
                     "src": "3940:14:22"
                   }
                 ],
-                "id": 10287,
+                "id": 10284,
                 "name": "ParameterList",
                 "src": "3901:59:22"
               },
@@ -2899,7 +2899,7 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "_registered",
-                      "scope": 10312,
+                      "scope": 10309,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -2912,17 +2912,17 @@ export const MockCollateralizedTermsContract =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 10288,
+                        "id": 10285,
                         "name": "ElementaryTypeName",
                         "src": "3993:4:22"
                       }
                     ],
-                    "id": 10289,
+                    "id": 10286,
                     "name": "VariableDeclaration",
                     "src": "3993:16:22"
                   }
                 ],
-                "id": 10290,
+                "id": 10287,
                 "name": "ParameterList",
                 "src": "3992:18:22"
               },
@@ -2960,11 +2960,11 @@ export const MockCollateralizedTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10653,
+                              "referencedDeclaration": 10650,
                               "type": "function (string memory,bytes32)",
                               "value": "functionCalledWithArgs"
                             },
-                            "id": 10291,
+                            "id": 10288,
                             "name": "Identifier",
                             "src": "4025:22:22"
                           },
@@ -2981,7 +2981,7 @@ export const MockCollateralizedTermsContract =
                               "type": "literal_string \"registerTermStart\"",
                               "value": "registerTermStart"
                             },
-                            "id": 10292,
+                            "id": 10289,
                             "name": "Literal",
                             "src": "4048:19:22"
                           },
@@ -3015,11 +3015,11 @@ export const MockCollateralizedTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15812,
+                                  "referencedDeclaration": 15809,
                                   "type": "function () pure returns (bytes32)",
                                   "value": "keccak256"
                                 },
-                                "id": 10293,
+                                "id": 10290,
                                 "name": "Identifier",
                                 "src": "4069:9:22"
                               },
@@ -3029,11 +3029,11 @@ export const MockCollateralizedTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10284,
+                                  "referencedDeclaration": 10281,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 10294,
+                                "id": 10291,
                                 "name": "Identifier",
                                 "src": "4079:11:22"
                               },
@@ -3043,32 +3043,32 @@ export const MockCollateralizedTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10286,
+                                  "referencedDeclaration": 10283,
                                   "type": "address",
                                   "value": "debtor"
                                 },
-                                "id": 10295,
+                                "id": 10292,
                                 "name": "Identifier",
                                 "src": "4092:6:22"
                               }
                             ],
-                            "id": 10296,
+                            "id": 10293,
                             "name": "FunctionCall",
                             "src": "4069:30:22"
                           }
                         ],
-                        "id": 10297,
+                        "id": 10294,
                         "name": "FunctionCall",
                         "src": "4025:75:22"
                       }
                     ],
-                    "id": 10298,
+                    "id": 10295,
                     "name": "ExpressionStatement",
                     "src": "4025:75:22"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 10290
+                      "functionReturnParameters": 10287
                     },
                     "children": [
                       {
@@ -3116,11 +3116,11 @@ export const MockCollateralizedTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10557,
+                                  "referencedDeclaration": 10554,
                                   "type": "function (string memory,bytes32) view returns (bytes32)",
                                   "value": "getMockReturnValue"
                                 },
-                                "id": 10299,
+                                "id": 10296,
                                 "name": "Identifier",
                                 "src": "4118:18:22"
                               },
@@ -3137,7 +3137,7 @@ export const MockCollateralizedTermsContract =
                                   "type": "literal_string \"registerTermStart\"",
                                   "value": "registerTermStart"
                                 },
-                                "id": 10300,
+                                "id": 10297,
                                 "name": "Literal",
                                 "src": "4150:19:22"
                               },
@@ -3171,11 +3171,11 @@ export const MockCollateralizedTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15812,
+                                      "referencedDeclaration": 15809,
                                       "type": "function () pure returns (bytes32)",
                                       "value": "keccak256"
                                     },
-                                    "id": 10301,
+                                    "id": 10298,
                                     "name": "Identifier",
                                     "src": "4183:9:22"
                                   },
@@ -3185,11 +3185,11 @@ export const MockCollateralizedTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10284,
+                                      "referencedDeclaration": 10281,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 10302,
+                                    "id": 10299,
                                     "name": "Identifier",
                                     "src": "4193:11:22"
                                   },
@@ -3199,21 +3199,21 @@ export const MockCollateralizedTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10286,
+                                      "referencedDeclaration": 10283,
                                       "type": "address",
                                       "value": "debtor"
                                     },
-                                    "id": 10303,
+                                    "id": 10300,
                                     "name": "Identifier",
                                     "src": "4206:6:22"
                                   }
                                 ],
-                                "id": 10304,
+                                "id": 10301,
                                 "name": "FunctionCall",
                                 "src": "4183:30:22"
                               }
                             ],
-                            "id": 10305,
+                            "id": 10302,
                             "name": "FunctionCall",
                             "src": "4118:105:22"
                           },
@@ -3247,7 +3247,7 @@ export const MockCollateralizedTermsContract =
                                   "type": "type(bytes32)",
                                   "value": "bytes32"
                                 },
-                                "id": 10306,
+                                "id": 10303,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "4227:7:22"
                               },
@@ -3264,32 +3264,32 @@ export const MockCollateralizedTermsContract =
                                   "type": "int_const 1",
                                   "value": "1"
                                 },
-                                "id": 10307,
+                                "id": 10304,
                                 "name": "Literal",
                                 "src": "4235:1:22"
                               }
                             ],
-                            "id": 10308,
+                            "id": 10305,
                             "name": "FunctionCall",
                             "src": "4227:10:22"
                           }
                         ],
-                        "id": 10309,
+                        "id": 10306,
                         "name": "BinaryOperation",
                         "src": "4118:119:22"
                       }
                     ],
-                    "id": 10310,
+                    "id": 10307,
                     "name": "Return",
                     "src": "4111:126:22"
                   }
                 ],
-                "id": 10311,
+                "id": 10308,
                 "name": "Block",
                 "src": "4015:229:22"
               }
             ],
-            "id": 10312,
+            "id": 10309,
             "name": "FunctionDefinition",
             "src": "3875:369:22"
           },
@@ -3303,7 +3303,7 @@ export const MockCollateralizedTermsContract =
               ],
               "name": "getTermEndTimestamp",
               "payable": false,
-              "scope": 10492,
+              "scope": 10489,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -3315,7 +3315,7 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 10324,
+                      "scope": 10321,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -3328,17 +3328,17 @@ export const MockCollateralizedTermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 10313,
+                        "id": 10310,
                         "name": "ElementaryTypeName",
                         "src": "4279:7:22"
                       }
                     ],
-                    "id": 10314,
+                    "id": 10311,
                     "name": "VariableDeclaration",
                     "src": "4279:19:22"
                   }
                 ],
-                "id": 10315,
+                "id": 10312,
                 "name": "ParameterList",
                 "src": "4278:21:22"
               },
@@ -3348,7 +3348,7 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 10324,
+                      "scope": 10321,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -3361,17 +3361,17 @@ export const MockCollateralizedTermsContract =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 10316,
+                        "id": 10313,
                         "name": "ElementaryTypeName",
                         "src": "4345:7:22"
                       }
                     ],
-                    "id": 10317,
+                    "id": 10314,
                     "name": "VariableDeclaration",
                     "src": "4345:7:22"
                   }
                 ],
-                "id": 10318,
+                "id": 10315,
                 "name": "ParameterList",
                 "src": "4344:9:22"
               },
@@ -3379,7 +3379,7 @@ export const MockCollateralizedTermsContract =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 10318
+                      "functionReturnParameters": 10315
                     },
                     "children": [
                       {
@@ -3398,11 +3398,11 @@ export const MockCollateralizedTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10136,
+                              "referencedDeclaration": 10133,
                               "type": "mapping(bytes32 => uint256)",
                               "value": "termEndTimestamp"
                             },
-                            "id": 10319,
+                            "id": 10316,
                             "name": "Identifier",
                             "src": "4375:16:22"
                           },
@@ -3412,31 +3412,31 @@ export const MockCollateralizedTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10314,
+                              "referencedDeclaration": 10311,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 10320,
+                            "id": 10317,
                             "name": "Identifier",
                             "src": "4392:11:22"
                           }
                         ],
-                        "id": 10321,
+                        "id": 10318,
                         "name": "IndexAccess",
                         "src": "4375:29:22"
                       }
                     ],
-                    "id": 10322,
+                    "id": 10319,
                     "name": "Return",
                     "src": "4368:36:22"
                   }
                 ],
-                "id": 10323,
+                "id": 10320,
                 "name": "Block",
                 "src": "4358:53:22"
               }
             ],
-            "id": 10324,
+            "id": 10321,
             "name": "FunctionDefinition",
             "src": "4250:161:22"
           },
@@ -3450,7 +3450,7 @@ export const MockCollateralizedTermsContract =
               ],
               "name": "wasRegisterTermStartCalledWith",
               "payable": false,
-              "scope": 10492,
+              "scope": 10489,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -3462,7 +3462,7 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 10342,
+                      "scope": 10339,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -3475,12 +3475,12 @@ export const MockCollateralizedTermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 10325,
+                        "id": 10322,
                         "name": "ElementaryTypeName",
                         "src": "4466:7:22"
                       }
                     ],
-                    "id": 10326,
+                    "id": 10323,
                     "name": "VariableDeclaration",
                     "src": "4466:19:22"
                   },
@@ -3488,7 +3488,7 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "debtor",
-                      "scope": 10342,
+                      "scope": 10339,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -3501,17 +3501,17 @@ export const MockCollateralizedTermsContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 10327,
+                        "id": 10324,
                         "name": "ElementaryTypeName",
                         "src": "4495:7:22"
                       }
                     ],
-                    "id": 10328,
+                    "id": 10325,
                     "name": "VariableDeclaration",
                     "src": "4495:14:22"
                   }
                 ],
-                "id": 10329,
+                "id": 10326,
                 "name": "ParameterList",
                 "src": "4456:59:22"
               },
@@ -3521,7 +3521,7 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "_wasCalled",
-                      "scope": 10342,
+                      "scope": 10339,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -3534,17 +3534,17 @@ export const MockCollateralizedTermsContract =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 10330,
+                        "id": 10327,
                         "name": "ElementaryTypeName",
                         "src": "4561:4:22"
                       }
                     ],
-                    "id": 10331,
+                    "id": 10328,
                     "name": "VariableDeclaration",
                     "src": "4561:15:22"
                   }
                 ],
-                "id": 10332,
+                "id": 10329,
                 "name": "ParameterList",
                 "src": "4560:17:22"
               },
@@ -3552,7 +3552,7 @@ export const MockCollateralizedTermsContract =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 10332
+                      "functionReturnParameters": 10329
                     },
                     "children": [
                       {
@@ -3585,11 +3585,11 @@ export const MockCollateralizedTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10669,
+                              "referencedDeclaration": 10666,
                               "type": "function (string memory,bytes32) view returns (bool)",
                               "value": "wasFunctionCalledWithArgs"
                             },
-                            "id": 10333,
+                            "id": 10330,
                             "name": "Identifier",
                             "src": "4599:25:22"
                           },
@@ -3606,7 +3606,7 @@ export const MockCollateralizedTermsContract =
                               "type": "literal_string \"registerTermStart\"",
                               "value": "registerTermStart"
                             },
-                            "id": 10334,
+                            "id": 10331,
                             "name": "Literal",
                             "src": "4625:19:22"
                           },
@@ -3640,11 +3640,11 @@ export const MockCollateralizedTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15812,
+                                  "referencedDeclaration": 15809,
                                   "type": "function () pure returns (bytes32)",
                                   "value": "keccak256"
                                 },
-                                "id": 10335,
+                                "id": 10332,
                                 "name": "Identifier",
                                 "src": "4646:9:22"
                               },
@@ -3654,11 +3654,11 @@ export const MockCollateralizedTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10326,
+                                  "referencedDeclaration": 10323,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 10336,
+                                "id": 10333,
                                 "name": "Identifier",
                                 "src": "4656:11:22"
                               },
@@ -3668,36 +3668,36 @@ export const MockCollateralizedTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10328,
+                                  "referencedDeclaration": 10325,
                                   "type": "address",
                                   "value": "debtor"
                                 },
-                                "id": 10337,
+                                "id": 10334,
                                 "name": "Identifier",
                                 "src": "4669:6:22"
                               }
                             ],
-                            "id": 10338,
+                            "id": 10335,
                             "name": "FunctionCall",
                             "src": "4646:30:22"
                           }
                         ],
-                        "id": 10339,
+                        "id": 10336,
                         "name": "FunctionCall",
                         "src": "4599:78:22"
                       }
                     ],
-                    "id": 10340,
+                    "id": 10337,
                     "name": "Return",
                     "src": "4592:85:22"
                   }
                 ],
-                "id": 10341,
+                "id": 10338,
                 "name": "Block",
                 "src": "4582:102:22"
               }
             ],
-            "id": 10342,
+            "id": 10339,
             "name": "FunctionDefinition",
             "src": "4417:267:22"
           },
@@ -3711,7 +3711,7 @@ export const MockCollateralizedTermsContract =
               ],
               "name": "mockTermEndTimestamp",
               "payable": false,
-              "scope": 10492,
+              "scope": 10489,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -3723,7 +3723,7 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 10356,
+                      "scope": 10353,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -3736,12 +3736,12 @@ export const MockCollateralizedTermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 10343,
+                        "id": 10340,
                         "name": "ElementaryTypeName",
                         "src": "4804:7:22"
                       }
                     ],
-                    "id": 10344,
+                    "id": 10341,
                     "name": "VariableDeclaration",
                     "src": "4804:19:22"
                   },
@@ -3749,7 +3749,7 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "timestamp",
-                      "scope": 10356,
+                      "scope": 10353,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -3762,17 +3762,17 @@ export const MockCollateralizedTermsContract =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 10345,
+                        "id": 10342,
                         "name": "ElementaryTypeName",
                         "src": "4833:4:22"
                       }
                     ],
-                    "id": 10346,
+                    "id": 10343,
                     "name": "VariableDeclaration",
                     "src": "4833:14:22"
                   }
                 ],
-                "id": 10347,
+                "id": 10344,
                 "name": "ParameterList",
                 "src": "4794:59:22"
               },
@@ -3783,7 +3783,7 @@ export const MockCollateralizedTermsContract =
                   ]
                 },
                 "children": [],
-                "id": 10348,
+                "id": 10345,
                 "name": "ParameterList",
                 "src": "4873:0:22"
               },
@@ -3818,11 +3818,11 @@ export const MockCollateralizedTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10136,
+                                  "referencedDeclaration": 10133,
                                   "type": "mapping(bytes32 => uint256)",
                                   "value": "termEndTimestamp"
                                 },
-                                "id": 10349,
+                                "id": 10346,
                                 "name": "Identifier",
                                 "src": "4883:16:22"
                               },
@@ -3832,16 +3832,16 @@ export const MockCollateralizedTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10344,
+                                  "referencedDeclaration": 10341,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 10350,
+                                "id": 10347,
                                 "name": "Identifier",
                                 "src": "4900:11:22"
                               }
                             ],
-                            "id": 10351,
+                            "id": 10348,
                             "name": "IndexAccess",
                             "src": "4883:29:22"
                           },
@@ -3851,31 +3851,31 @@ export const MockCollateralizedTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10346,
+                              "referencedDeclaration": 10343,
                               "type": "uint256",
                               "value": "timestamp"
                             },
-                            "id": 10352,
+                            "id": 10349,
                             "name": "Identifier",
                             "src": "4915:9:22"
                           }
                         ],
-                        "id": 10353,
+                        "id": 10350,
                         "name": "Assignment",
                         "src": "4883:41:22"
                       }
                     ],
-                    "id": 10354,
+                    "id": 10351,
                     "name": "ExpressionStatement",
                     "src": "4883:41:22"
                   }
                 ],
-                "id": 10355,
+                "id": 10352,
                 "name": "Block",
                 "src": "4873:58:22"
               }
             ],
-            "id": 10356,
+            "id": 10353,
             "name": "FunctionDefinition",
             "src": "4765:166:22"
           },
@@ -3889,7 +3889,7 @@ export const MockCollateralizedTermsContract =
               ],
               "name": "mockDummyValueRepaid",
               "payable": false,
-              "scope": 10492,
+              "scope": 10489,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -3901,7 +3901,7 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 10370,
+                      "scope": 10367,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -3914,12 +3914,12 @@ export const MockCollateralizedTermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 10357,
+                        "id": 10354,
                         "name": "ElementaryTypeName",
                         "src": "4976:7:22"
                       }
                     ],
-                    "id": 10358,
+                    "id": 10355,
                     "name": "VariableDeclaration",
                     "src": "4976:19:22"
                   },
@@ -3927,7 +3927,7 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "amount",
-                      "scope": 10370,
+                      "scope": 10367,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -3940,17 +3940,17 @@ export const MockCollateralizedTermsContract =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 10359,
+                        "id": 10356,
                         "name": "ElementaryTypeName",
                         "src": "5005:4:22"
                       }
                     ],
-                    "id": 10360,
+                    "id": 10357,
                     "name": "VariableDeclaration",
                     "src": "5005:11:22"
                   }
                 ],
-                "id": 10361,
+                "id": 10358,
                 "name": "ParameterList",
                 "src": "4966:56:22"
               },
@@ -3961,7 +3961,7 @@ export const MockCollateralizedTermsContract =
                   ]
                 },
                 "children": [],
-                "id": 10362,
+                "id": 10359,
                 "name": "ParameterList",
                 "src": "5042:0:22"
               },
@@ -3996,11 +3996,11 @@ export const MockCollateralizedTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10116,
+                                  "referencedDeclaration": 10113,
                                   "type": "mapping(bytes32 => uint256)",
                                   "value": "amountRepaid"
                                 },
-                                "id": 10363,
+                                "id": 10360,
                                 "name": "Identifier",
                                 "src": "5052:12:22"
                               },
@@ -4010,16 +4010,16 @@ export const MockCollateralizedTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10358,
+                                  "referencedDeclaration": 10355,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 10364,
+                                "id": 10361,
                                 "name": "Identifier",
                                 "src": "5065:11:22"
                               }
                             ],
-                            "id": 10365,
+                            "id": 10362,
                             "name": "IndexAccess",
                             "src": "5052:25:22"
                           },
@@ -4029,31 +4029,31 @@ export const MockCollateralizedTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10360,
+                              "referencedDeclaration": 10357,
                               "type": "uint256",
                               "value": "amount"
                             },
-                            "id": 10366,
+                            "id": 10363,
                             "name": "Identifier",
                             "src": "5080:6:22"
                           }
                         ],
-                        "id": 10367,
+                        "id": 10364,
                         "name": "Assignment",
                         "src": "5052:34:22"
                       }
                     ],
-                    "id": 10368,
+                    "id": 10365,
                     "name": "ExpressionStatement",
                     "src": "5052:34:22"
                   }
                 ],
-                "id": 10369,
+                "id": 10366,
                 "name": "Block",
                 "src": "5042:51:22"
               }
             ],
-            "id": 10370,
+            "id": 10367,
             "name": "FunctionDefinition",
             "src": "4937:156:22"
           },
@@ -4067,7 +4067,7 @@ export const MockCollateralizedTermsContract =
               ],
               "name": "mockExpectedRepaymentValue",
               "payable": false,
-              "scope": 10492,
+              "scope": 10489,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -4079,7 +4079,7 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 10416,
+                      "scope": 10413,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -4092,12 +4092,12 @@ export const MockCollateralizedTermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 10371,
+                        "id": 10368,
                         "name": "ElementaryTypeName",
                         "src": "5144:7:22"
                       }
                     ],
-                    "id": 10372,
+                    "id": 10369,
                     "name": "VariableDeclaration",
                     "src": "5144:19:22"
                   },
@@ -4105,7 +4105,7 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "timestamp",
-                      "scope": 10416,
+                      "scope": 10413,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -4118,12 +4118,12 @@ export const MockCollateralizedTermsContract =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 10373,
+                        "id": 10370,
                         "name": "ElementaryTypeName",
                         "src": "5173:4:22"
                       }
                     ],
-                    "id": 10374,
+                    "id": 10371,
                     "name": "VariableDeclaration",
                     "src": "5173:14:22"
                   },
@@ -4131,7 +4131,7 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "amount",
-                      "scope": 10416,
+                      "scope": 10413,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -4144,17 +4144,17 @@ export const MockCollateralizedTermsContract =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 10375,
+                        "id": 10372,
                         "name": "ElementaryTypeName",
                         "src": "5197:4:22"
                       }
                     ],
-                    "id": 10376,
+                    "id": 10373,
                     "name": "VariableDeclaration",
                     "src": "5197:11:22"
                   }
                 ],
-                "id": 10377,
+                "id": 10374,
                 "name": "ParameterList",
                 "src": "5134:80:22"
               },
@@ -4165,7 +4165,7 @@ export const MockCollateralizedTermsContract =
                   ]
                 },
                 "children": [],
-                "id": 10378,
+                "id": 10375,
                 "name": "ParameterList",
                 "src": "5234:0:22"
               },
@@ -4217,11 +4217,11 @@ export const MockCollateralizedTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10122,
+                                      "referencedDeclaration": 10119,
                                       "type": "mapping(bytes32 => mapping(uint256 => uint256))",
                                       "value": "expectedValueRepaidAtTimestamp"
                                     },
-                                    "id": 10379,
+                                    "id": 10376,
                                     "name": "Identifier",
                                     "src": "5376:30:22"
                                   },
@@ -4231,16 +4231,16 @@ export const MockCollateralizedTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10372,
+                                      "referencedDeclaration": 10369,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 10380,
+                                    "id": 10377,
                                     "name": "Identifier",
                                     "src": "5407:11:22"
                                   }
                                 ],
-                                "id": 10381,
+                                "id": 10378,
                                 "name": "IndexAccess",
                                 "src": "5376:43:22"
                               },
@@ -4250,16 +4250,16 @@ export const MockCollateralizedTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10374,
+                                  "referencedDeclaration": 10371,
                                   "type": "uint256",
                                   "value": "timestamp"
                                 },
-                                "id": 10382,
+                                "id": 10379,
                                 "name": "Identifier",
                                 "src": "5420:9:22"
                               }
                             ],
-                            "id": 10383,
+                            "id": 10380,
                             "name": "IndexAccess",
                             "src": "5376:54:22"
                           },
@@ -4276,12 +4276,12 @@ export const MockCollateralizedTermsContract =
                               "type": "int_const 0",
                               "value": "0"
                             },
-                            "id": 10384,
+                            "id": 10381,
                             "name": "Literal",
                             "src": "5434:1:22"
                           }
                         ],
-                        "id": 10385,
+                        "id": 10382,
                         "name": "BinaryOperation",
                         "src": "5376:59:22"
                       },
@@ -4290,7 +4290,7 @@ export const MockCollateralizedTermsContract =
                           {
                             "attributes": {
                               "assignments": [
-                                10387
+                                10384
                               ]
                             },
                             "children": [
@@ -4298,7 +4298,7 @@ export const MockCollateralizedTermsContract =
                                 "attributes": {
                                   "constant": false,
                                   "name": "numRepaymentTimestampsForAgreement",
-                                  "scope": 10416,
+                                  "scope": 10413,
                                   "stateVariable": false,
                                   "storageLocation": "default",
                                   "type": "uint256",
@@ -4311,12 +4311,12 @@ export const MockCollateralizedTermsContract =
                                       "name": "uint",
                                       "type": "uint256"
                                     },
-                                    "id": 10386,
+                                    "id": 10383,
                                     "name": "ElementaryTypeName",
                                     "src": "5451:4:22"
                                   }
                                 ],
-                                "id": 10387,
+                                "id": 10384,
                                 "name": "VariableDeclaration",
                                 "src": "5451:39:22"
                               },
@@ -4336,11 +4336,11 @@ export const MockCollateralizedTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10132,
+                                      "referencedDeclaration": 10129,
                                       "type": "mapping(bytes32 => uint256)",
                                       "value": "numRepaymentTimestamps"
                                     },
-                                    "id": 10388,
+                                    "id": 10385,
                                     "name": "Identifier",
                                     "src": "5493:22:22"
                                   },
@@ -4350,21 +4350,21 @@ export const MockCollateralizedTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10372,
+                                      "referencedDeclaration": 10369,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 10389,
+                                    "id": 10386,
                                     "name": "Identifier",
                                     "src": "5516:11:22"
                                   }
                                 ],
-                                "id": 10390,
+                                "id": 10387,
                                 "name": "IndexAccess",
                                 "src": "5493:35:22"
                               }
                             ],
-                            "id": 10391,
+                            "id": 10388,
                             "name": "VariableDeclarationStatement",
                             "src": "5451:77:22"
                           },
@@ -4407,11 +4407,11 @@ export const MockCollateralizedTermsContract =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 10128,
+                                              "referencedDeclaration": 10125,
                                               "type": "mapping(bytes32 => uint256[5] storage ref)",
                                               "value": "expectedRepaymentSchedule"
                                             },
-                                            "id": 10392,
+                                            "id": 10389,
                                             "name": "Identifier",
                                             "src": "5542:25:22"
                                           },
@@ -4421,16 +4421,16 @@ export const MockCollateralizedTermsContract =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 10372,
+                                              "referencedDeclaration": 10369,
                                               "type": "bytes32",
                                               "value": "agreementId"
                                             },
-                                            "id": 10393,
+                                            "id": 10390,
                                             "name": "Identifier",
                                             "src": "5568:11:22"
                                           }
                                         ],
-                                        "id": 10395,
+                                        "id": 10392,
                                         "name": "IndexAccess",
                                         "src": "5542:38:22"
                                       },
@@ -4440,16 +4440,16 @@ export const MockCollateralizedTermsContract =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 10387,
+                                          "referencedDeclaration": 10384,
                                           "type": "uint256",
                                           "value": "numRepaymentTimestampsForAgreement"
                                         },
-                                        "id": 10394,
+                                        "id": 10391,
                                         "name": "Identifier",
                                         "src": "5581:34:22"
                                       }
                                     ],
-                                    "id": 10396,
+                                    "id": 10393,
                                     "name": "IndexAccess",
                                     "src": "5542:74:22"
                                   },
@@ -4459,21 +4459,21 @@ export const MockCollateralizedTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10374,
+                                      "referencedDeclaration": 10371,
                                       "type": "uint256",
                                       "value": "timestamp"
                                     },
-                                    "id": 10397,
+                                    "id": 10394,
                                     "name": "Identifier",
                                     "src": "5619:9:22"
                                   }
                                 ],
-                                "id": 10398,
+                                "id": 10395,
                                 "name": "Assignment",
                                 "src": "5542:86:22"
                               }
                             ],
-                            "id": 10399,
+                            "id": 10396,
                             "name": "ExpressionStatement",
                             "src": "5542:86:22"
                           },
@@ -4507,11 +4507,11 @@ export const MockCollateralizedTermsContract =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 10132,
+                                          "referencedDeclaration": 10129,
                                           "type": "mapping(bytes32 => uint256)",
                                           "value": "numRepaymentTimestamps"
                                         },
-                                        "id": 10400,
+                                        "id": 10397,
                                         "name": "Identifier",
                                         "src": "5642:22:22"
                                       },
@@ -4521,36 +4521,36 @@ export const MockCollateralizedTermsContract =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 10372,
+                                          "referencedDeclaration": 10369,
                                           "type": "bytes32",
                                           "value": "agreementId"
                                         },
-                                        "id": 10401,
+                                        "id": 10398,
                                         "name": "Identifier",
                                         "src": "5665:11:22"
                                       }
                                     ],
-                                    "id": 10402,
+                                    "id": 10399,
                                     "name": "IndexAccess",
                                     "src": "5642:35:22"
                                   }
                                 ],
-                                "id": 10403,
+                                "id": 10400,
                                 "name": "UnaryOperation",
                                 "src": "5642:37:22"
                               }
                             ],
-                            "id": 10404,
+                            "id": 10401,
                             "name": "ExpressionStatement",
                             "src": "5642:37:22"
                           }
                         ],
-                        "id": 10405,
+                        "id": 10402,
                         "name": "Block",
                         "src": "5437:253:22"
                       }
                     ],
-                    "id": 10406,
+                    "id": 10403,
                     "name": "IfStatement",
                     "src": "5372:318:22"
                   },
@@ -4593,11 +4593,11 @@ export const MockCollateralizedTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10122,
+                                      "referencedDeclaration": 10119,
                                       "type": "mapping(bytes32 => mapping(uint256 => uint256))",
                                       "value": "expectedValueRepaidAtTimestamp"
                                     },
-                                    "id": 10407,
+                                    "id": 10404,
                                     "name": "Identifier",
                                     "src": "5700:30:22"
                                   },
@@ -4607,16 +4607,16 @@ export const MockCollateralizedTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10372,
+                                      "referencedDeclaration": 10369,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 10408,
+                                    "id": 10405,
                                     "name": "Identifier",
                                     "src": "5731:11:22"
                                   }
                                 ],
-                                "id": 10410,
+                                "id": 10407,
                                 "name": "IndexAccess",
                                 "src": "5700:43:22"
                               },
@@ -4626,16 +4626,16 @@ export const MockCollateralizedTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10374,
+                                  "referencedDeclaration": 10371,
                                   "type": "uint256",
                                   "value": "timestamp"
                                 },
-                                "id": 10409,
+                                "id": 10406,
                                 "name": "Identifier",
                                 "src": "5744:9:22"
                               }
                             ],
-                            "id": 10411,
+                            "id": 10408,
                             "name": "IndexAccess",
                             "src": "5700:54:22"
                           },
@@ -4645,31 +4645,31 @@ export const MockCollateralizedTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10376,
+                              "referencedDeclaration": 10373,
                               "type": "uint256",
                               "value": "amount"
                             },
-                            "id": 10412,
+                            "id": 10409,
                             "name": "Identifier",
                             "src": "5757:6:22"
                           }
                         ],
-                        "id": 10413,
+                        "id": 10410,
                         "name": "Assignment",
                         "src": "5700:63:22"
                       }
                     ],
-                    "id": 10414,
+                    "id": 10411,
                     "name": "ExpressionStatement",
                     "src": "5700:63:22"
                   }
                 ],
-                "id": 10415,
+                "id": 10412,
                 "name": "Block",
                 "src": "5234:536:22"
               }
             ],
-            "id": 10416,
+            "id": 10413,
             "name": "FunctionDefinition",
             "src": "5099:671:22"
           },
@@ -4683,7 +4683,7 @@ export const MockCollateralizedTermsContract =
               ],
               "name": "reset",
               "payable": false,
-              "scope": 10492,
+              "scope": 10489,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -4695,7 +4695,7 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 10448,
+                      "scope": 10445,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -4708,17 +4708,17 @@ export const MockCollateralizedTermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 10417,
+                        "id": 10414,
                         "name": "ElementaryTypeName",
                         "src": "5791:7:22"
                       }
                     ],
-                    "id": 10418,
+                    "id": 10415,
                     "name": "VariableDeclaration",
                     "src": "5791:19:22"
                   }
                 ],
-                "id": 10419,
+                "id": 10416,
                 "name": "ParameterList",
                 "src": "5790:21:22"
               },
@@ -4729,7 +4729,7 @@ export const MockCollateralizedTermsContract =
                   ]
                 },
                 "children": [],
-                "id": 10420,
+                "id": 10417,
                 "name": "ParameterList",
                 "src": "5819:0:22"
               },
@@ -4740,7 +4740,7 @@ export const MockCollateralizedTermsContract =
                       {
                         "attributes": {
                           "assignments": [
-                            10422
+                            10419
                           ]
                         },
                         "children": [
@@ -4748,7 +4748,7 @@ export const MockCollateralizedTermsContract =
                             "attributes": {
                               "constant": false,
                               "name": "i",
-                              "scope": 10448,
+                              "scope": 10445,
                               "stateVariable": false,
                               "storageLocation": "default",
                               "type": "uint256",
@@ -4761,12 +4761,12 @@ export const MockCollateralizedTermsContract =
                                   "name": "uint",
                                   "type": "uint256"
                                 },
-                                "id": 10421,
+                                "id": 10418,
                                 "name": "ElementaryTypeName",
                                 "src": "5834:4:22"
                               }
                             ],
-                            "id": 10422,
+                            "id": 10419,
                             "name": "VariableDeclaration",
                             "src": "5834:6:22"
                           },
@@ -4783,12 +4783,12 @@ export const MockCollateralizedTermsContract =
                               "type": "int_const 0",
                               "value": "0"
                             },
-                            "id": 10423,
+                            "id": 10420,
                             "name": "Literal",
                             "src": "5843:1:22"
                           }
                         ],
-                        "id": 10424,
+                        "id": 10421,
                         "name": "VariableDeclarationStatement",
                         "src": "5834:10:22"
                       },
@@ -4813,11 +4813,11 @@ export const MockCollateralizedTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10422,
+                              "referencedDeclaration": 10419,
                               "type": "uint256",
                               "value": "i"
                             },
-                            "id": 10425,
+                            "id": 10422,
                             "name": "Identifier",
                             "src": "5846:1:22"
                           },
@@ -4834,12 +4834,12 @@ export const MockCollateralizedTermsContract =
                               "type": "int_const 5",
                               "value": "5"
                             },
-                            "id": 10426,
+                            "id": 10423,
                             "name": "Literal",
                             "src": "5850:1:22"
                           }
                         ],
-                        "id": 10427,
+                        "id": 10424,
                         "name": "BinaryOperation",
                         "src": "5846:5:22"
                       },
@@ -4863,21 +4863,21 @@ export const MockCollateralizedTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10422,
+                                  "referencedDeclaration": 10419,
                                   "type": "uint256",
                                   "value": "i"
                                 },
-                                "id": 10428,
+                                "id": 10425,
                                 "name": "Identifier",
                                 "src": "5853:1:22"
                               }
                             ],
-                            "id": 10429,
+                            "id": 10426,
                             "name": "UnaryOperation",
                             "src": "5853:3:22"
                           }
                         ],
-                        "id": 10430,
+                        "id": 10427,
                         "name": "ExpressionStatement",
                         "src": "5853:3:22"
                       },
@@ -4922,11 +4922,11 @@ export const MockCollateralizedTermsContract =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 10128,
+                                              "referencedDeclaration": 10125,
                                               "type": "mapping(bytes32 => uint256[5] storage ref)",
                                               "value": "expectedRepaymentSchedule"
                                             },
-                                            "id": 10431,
+                                            "id": 10428,
                                             "name": "Identifier",
                                             "src": "5872:25:22"
                                           },
@@ -4936,16 +4936,16 @@ export const MockCollateralizedTermsContract =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 10418,
+                                              "referencedDeclaration": 10415,
                                               "type": "bytes32",
                                               "value": "agreementId"
                                             },
-                                            "id": 10432,
+                                            "id": 10429,
                                             "name": "Identifier",
                                             "src": "5898:11:22"
                                           }
                                         ],
-                                        "id": 10434,
+                                        "id": 10431,
                                         "name": "IndexAccess",
                                         "src": "5872:38:22"
                                       },
@@ -4955,16 +4955,16 @@ export const MockCollateralizedTermsContract =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 10422,
+                                          "referencedDeclaration": 10419,
                                           "type": "uint256",
                                           "value": "i"
                                         },
-                                        "id": 10433,
+                                        "id": 10430,
                                         "name": "Identifier",
                                         "src": "5911:1:22"
                                       }
                                     ],
-                                    "id": 10435,
+                                    "id": 10432,
                                     "name": "IndexAccess",
                                     "src": "5872:41:22"
                                   },
@@ -4981,27 +4981,27 @@ export const MockCollateralizedTermsContract =
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 10436,
+                                    "id": 10433,
                                     "name": "Literal",
                                     "src": "5916:1:22"
                                   }
                                 ],
-                                "id": 10437,
+                                "id": 10434,
                                 "name": "Assignment",
                                 "src": "5872:45:22"
                               }
                             ],
-                            "id": 10438,
+                            "id": 10435,
                             "name": "ExpressionStatement",
                             "src": "5872:45:22"
                           }
                         ],
-                        "id": 10439,
+                        "id": 10436,
                         "name": "Block",
                         "src": "5858:70:22"
                       }
                     ],
-                    "id": 10440,
+                    "id": 10437,
                     "name": "ForStatement",
                     "src": "5829:99:22"
                   },
@@ -5034,11 +5034,11 @@ export const MockCollateralizedTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10132,
+                                  "referencedDeclaration": 10129,
                                   "type": "mapping(bytes32 => uint256)",
                                   "value": "numRepaymentTimestamps"
                                 },
-                                "id": 10441,
+                                "id": 10438,
                                 "name": "Identifier",
                                 "src": "5938:22:22"
                               },
@@ -5048,16 +5048,16 @@ export const MockCollateralizedTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10418,
+                                  "referencedDeclaration": 10415,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 10442,
+                                "id": 10439,
                                 "name": "Identifier",
                                 "src": "5961:11:22"
                               }
                             ],
-                            "id": 10443,
+                            "id": 10440,
                             "name": "IndexAccess",
                             "src": "5938:35:22"
                           },
@@ -5074,27 +5074,27 @@ export const MockCollateralizedTermsContract =
                               "type": "int_const 0",
                               "value": "0"
                             },
-                            "id": 10444,
+                            "id": 10441,
                             "name": "Literal",
                             "src": "5976:1:22"
                           }
                         ],
-                        "id": 10445,
+                        "id": 10442,
                         "name": "Assignment",
                         "src": "5938:39:22"
                       }
                     ],
-                    "id": 10446,
+                    "id": 10443,
                     "name": "ExpressionStatement",
                     "src": "5938:39:22"
                   }
                 ],
-                "id": 10447,
+                "id": 10444,
                 "name": "Block",
                 "src": "5819:165:22"
               }
             ],
-            "id": 10448,
+            "id": 10445,
             "name": "FunctionDefinition",
             "src": "5776:208:22"
           },
@@ -5108,7 +5108,7 @@ export const MockCollateralizedTermsContract =
               ],
               "name": "mockCallCollateralize",
               "payable": false,
-              "scope": 10492,
+              "scope": 10489,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -5120,7 +5120,7 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "_collateralizer",
-                      "scope": 10471,
+                      "scope": 10468,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -5133,12 +5133,12 @@ export const MockCollateralizedTermsContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 10449,
+                        "id": 10446,
                         "name": "ElementaryTypeName",
                         "src": "6030:7:22"
                       }
                     ],
-                    "id": 10450,
+                    "id": 10447,
                     "name": "VariableDeclaration",
                     "src": "6030:23:22"
                   },
@@ -5146,7 +5146,7 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "_agreementId",
-                      "scope": 10471,
+                      "scope": 10468,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -5159,12 +5159,12 @@ export const MockCollateralizedTermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 10451,
+                        "id": 10448,
                         "name": "ElementaryTypeName",
                         "src": "6063:7:22"
                       }
                     ],
-                    "id": 10452,
+                    "id": 10449,
                     "name": "VariableDeclaration",
                     "src": "6063:20:22"
                   },
@@ -5172,7 +5172,7 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "_debtor",
-                      "scope": 10471,
+                      "scope": 10468,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -5185,17 +5185,17 @@ export const MockCollateralizedTermsContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 10453,
+                        "id": 10450,
                         "name": "ElementaryTypeName",
                         "src": "6093:7:22"
                       }
                     ],
-                    "id": 10454,
+                    "id": 10451,
                     "name": "VariableDeclaration",
                     "src": "6093:15:22"
                   }
                 ],
-                "id": 10455,
+                "id": 10452,
                 "name": "ParameterList",
                 "src": "6020:94:22"
               },
@@ -5206,7 +5206,7 @@ export const MockCollateralizedTermsContract =
                   ]
                 },
                 "children": [],
-                "id": 10456,
+                "id": 10453,
                 "name": "ParameterList",
                 "src": "6134:0:22"
               },
@@ -5215,7 +5215,7 @@ export const MockCollateralizedTermsContract =
                   {
                     "attributes": {
                       "assignments": [
-                        10458
+                        10455
                       ]
                     },
                     "children": [
@@ -5223,7 +5223,7 @@ export const MockCollateralizedTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "collateralizer",
-                          "scope": 10471,
+                          "scope": 10468,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "contract Collateralizer",
@@ -5238,12 +5238,12 @@ export const MockCollateralizedTermsContract =
                               "referencedDeclaration": 614,
                               "type": "contract Collateralizer"
                             },
-                            "id": 10457,
+                            "id": 10454,
                             "name": "UserDefinedTypeName",
                             "src": "6144:14:22"
                           }
                         ],
-                        "id": 10458,
+                        "id": 10455,
                         "name": "VariableDeclaration",
                         "src": "6144:29:22"
                       },
@@ -5277,7 +5277,7 @@ export const MockCollateralizedTermsContract =
                               "type": "type(contract Collateralizer)",
                               "value": "Collateralizer"
                             },
-                            "id": 10459,
+                            "id": 10456,
                             "name": "Identifier",
                             "src": "6176:14:22"
                           },
@@ -5287,21 +5287,21 @@ export const MockCollateralizedTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10450,
+                              "referencedDeclaration": 10447,
                               "type": "address",
                               "value": "_collateralizer"
                             },
-                            "id": 10460,
+                            "id": 10457,
                             "name": "Identifier",
                             "src": "6191:15:22"
                           }
                         ],
-                        "id": 10461,
+                        "id": 10458,
                         "name": "FunctionCall",
                         "src": "6176:31:22"
                       }
                     ],
-                    "id": 10462,
+                    "id": 10459,
                     "name": "VariableDeclarationStatement",
                     "src": "6144:63:22"
                   },
@@ -5349,16 +5349,16 @@ export const MockCollateralizedTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10458,
+                                  "referencedDeclaration": 10455,
                                   "type": "contract Collateralizer",
                                   "value": "collateralizer"
                                 },
-                                "id": 10463,
+                                "id": 10460,
                                 "name": "Identifier",
                                 "src": "6218:14:22"
                               }
                             ],
-                            "id": 10465,
+                            "id": 10462,
                             "name": "MemberAccess",
                             "src": "6218:28:22"
                           },
@@ -5368,11 +5368,11 @@ export const MockCollateralizedTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10452,
+                              "referencedDeclaration": 10449,
                               "type": "bytes32",
                               "value": "_agreementId"
                             },
-                            "id": 10466,
+                            "id": 10463,
                             "name": "Identifier",
                             "src": "6260:12:22"
                           },
@@ -5382,31 +5382,31 @@ export const MockCollateralizedTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10454,
+                              "referencedDeclaration": 10451,
                               "type": "address",
                               "value": "_debtor"
                             },
-                            "id": 10467,
+                            "id": 10464,
                             "name": "Identifier",
                             "src": "6286:7:22"
                           }
                         ],
-                        "id": 10468,
+                        "id": 10465,
                         "name": "FunctionCall",
                         "src": "6218:85:22"
                       }
                     ],
-                    "id": 10469,
+                    "id": 10466,
                     "name": "ExpressionStatement",
                     "src": "6218:85:22"
                   }
                 ],
-                "id": 10470,
+                "id": 10467,
                 "name": "Block",
                 "src": "6134:176:22"
               }
             ],
-            "id": 10471,
+            "id": 10468,
             "name": "FunctionDefinition",
             "src": "5990:320:22"
           },
@@ -5420,9 +5420,9 @@ export const MockCollateralizedTermsContract =
               ],
               "name": "getFunctionList",
               "payable": false,
-              "scope": 10492,
+              "scope": 10489,
               "stateMutability": "nonpayable",
-              "superFunction": 10676,
+              "superFunction": 10673,
               "visibility": "internal"
             },
             "children": [
@@ -5433,7 +5433,7 @@ export const MockCollateralizedTermsContract =
                   ]
                 },
                 "children": [],
-                "id": 10472,
+                "id": 10469,
                 "name": "ParameterList",
                 "src": "6340:2:22"
               },
@@ -5443,7 +5443,7 @@ export const MockCollateralizedTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "functionNames",
-                      "scope": 10491,
+                      "scope": 10488,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory[10] memory",
@@ -5461,7 +5461,7 @@ export const MockCollateralizedTermsContract =
                               "name": "string",
                               "type": "string storage pointer"
                             },
-                            "id": 10473,
+                            "id": 10470,
                             "name": "ElementaryTypeName",
                             "src": "6377:6:22"
                           },
@@ -5478,22 +5478,22 @@ export const MockCollateralizedTermsContract =
                               "type": "int_const 10",
                               "value": "10"
                             },
-                            "id": 10474,
+                            "id": 10471,
                             "name": "Literal",
                             "src": "6384:2:22"
                           }
                         ],
-                        "id": 10475,
+                        "id": 10472,
                         "name": "ArrayTypeName",
                         "src": "6377:10:22"
                       }
                     ],
-                    "id": 10476,
+                    "id": 10473,
                     "name": "VariableDeclaration",
                     "src": "6377:24:22"
                   }
                 ],
-                "id": 10477,
+                "id": 10474,
                 "name": "ParameterList",
                 "src": "6376:26:22"
               },
@@ -5501,7 +5501,7 @@ export const MockCollateralizedTermsContract =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 10477
+                      "functionReturnParameters": 10474
                     },
                     "children": [
                       {
@@ -5528,7 +5528,7 @@ export const MockCollateralizedTermsContract =
                               "type": "literal_string \"registerRepayment\"",
                               "value": "registerRepayment"
                             },
-                            "id": 10478,
+                            "id": 10475,
                             "name": "Literal",
                             "src": "6425:19:22"
                           },
@@ -5545,7 +5545,7 @@ export const MockCollateralizedTermsContract =
                               "type": "literal_string \"registerTermStart\"",
                               "value": "registerTermStart"
                             },
-                            "id": 10479,
+                            "id": 10476,
                             "name": "Literal",
                             "src": "6446:19:22"
                           },
@@ -5562,7 +5562,7 @@ export const MockCollateralizedTermsContract =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 10480,
+                            "id": 10477,
                             "name": "Literal",
                             "src": "6467:2:22"
                           },
@@ -5579,7 +5579,7 @@ export const MockCollateralizedTermsContract =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 10481,
+                            "id": 10478,
                             "name": "Literal",
                             "src": "6471:2:22"
                           },
@@ -5596,7 +5596,7 @@ export const MockCollateralizedTermsContract =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 10482,
+                            "id": 10479,
                             "name": "Literal",
                             "src": "6475:2:22"
                           },
@@ -5613,7 +5613,7 @@ export const MockCollateralizedTermsContract =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 10483,
+                            "id": 10480,
                             "name": "Literal",
                             "src": "6479:2:22"
                           },
@@ -5630,7 +5630,7 @@ export const MockCollateralizedTermsContract =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 10484,
+                            "id": 10481,
                             "name": "Literal",
                             "src": "6483:2:22"
                           },
@@ -5647,7 +5647,7 @@ export const MockCollateralizedTermsContract =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 10485,
+                            "id": 10482,
                             "name": "Literal",
                             "src": "6487:2:22"
                           },
@@ -5664,7 +5664,7 @@ export const MockCollateralizedTermsContract =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 10486,
+                            "id": 10483,
                             "name": "Literal",
                             "src": "6491:2:22"
                           },
@@ -5681,37 +5681,37 @@ export const MockCollateralizedTermsContract =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 10487,
+                            "id": 10484,
                             "name": "Literal",
                             "src": "6495:2:22"
                           }
                         ],
-                        "id": 10488,
+                        "id": 10485,
                         "name": "TupleExpression",
                         "src": "6424:74:22"
                       }
                     ],
-                    "id": 10489,
+                    "id": 10486,
                     "name": "Return",
                     "src": "6417:81:22"
                   }
                 ],
-                "id": 10490,
+                "id": 10487,
                 "name": "Block",
                 "src": "6407:98:22"
               }
             ],
-            "id": 10491,
+            "id": 10488,
             "name": "FunctionDefinition",
             "src": "6316:189:22"
           }
         ],
-        "id": 10492,
+        "id": 10489,
         "name": "ContractDefinition",
         "src": "675:5832:22"
       }
     ],
-    "id": 10493,
+    "id": 10490,
     "name": "SourceUnit",
     "src": "584:5924:22"
   },
@@ -5728,9 +5728,9 @@ export const MockCollateralizedTermsContract =
     "70": {
       "events": {},
       "links": {},
-      "address": "0xdf4a70002bc1c3732e8913b613fbd190dac1dd36"
+      "address": "0x18013721705014cc3722bdaa6811c9e106f317f4"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-21T17:50:41.098Z"
+  "updatedAt": "2018-09-25T20:05:00.845Z"
 }

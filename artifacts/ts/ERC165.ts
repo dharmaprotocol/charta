@@ -33,7 +33,7 @@ export const ERC165 =
       "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/ERC165.sol",
       "exportedSymbols": {
         "ERC165": [
-          3535
+          3532
         ]
       }
     },
@@ -46,7 +46,7 @@ export const ERC165 =
             ".18"
           ]
         },
-        "id": 3527,
+        "id": 3524,
         "name": "PragmaDirective",
         "src": "584:23:6"
       },
@@ -62,10 +62,10 @@ export const ERC165 =
           "documentation": "ERC165 interface required by ERC721 non-fungible token.\n * https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md\nhttps://github.com/ethereum/EIPs/blob/master/EIPS/eip-165.md",
           "fullyImplemented": false,
           "linearizedBaseContracts": [
-            3535
+            3532
           ],
           "name": "ERC165",
-          "scope": 3536
+          "scope": 3533
         },
         "children": [
           {
@@ -79,7 +79,7 @@ export const ERC165 =
               ],
               "name": "supportsInterface",
               "payable": false,
-              "scope": 3535,
+              "scope": 3532,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "external"
@@ -91,7 +91,7 @@ export const ERC165 =
                     "attributes": {
                       "constant": false,
                       "name": "interfaceID",
-                      "scope": 3534,
+                      "scope": 3531,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes4",
@@ -104,17 +104,17 @@ export const ERC165 =
                           "name": "bytes4",
                           "type": "bytes4"
                         },
-                        "id": 3528,
+                        "id": 3525,
                         "name": "ElementaryTypeName",
                         "src": "1236:6:6"
                       }
                     ],
-                    "id": 3529,
+                    "id": 3526,
                     "name": "VariableDeclaration",
                     "src": "1236:18:6"
                   }
                 ],
-                "id": 3530,
+                "id": 3527,
                 "name": "ParameterList",
                 "src": "1235:20:6"
               },
@@ -124,7 +124,7 @@ export const ERC165 =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 3534,
+                      "scope": 3531,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -137,32 +137,32 @@ export const ERC165 =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 3531,
+                        "id": 3528,
                         "name": "ElementaryTypeName",
                         "src": "1279:4:6"
                       }
                     ],
-                    "id": 3532,
+                    "id": 3529,
                     "name": "VariableDeclaration",
                     "src": "1279:4:6"
                   }
                 ],
-                "id": 3533,
+                "id": 3530,
                 "name": "ParameterList",
                 "src": "1278:6:6"
               }
             ],
-            "id": 3534,
+            "id": 3531,
             "name": "FunctionDefinition",
             "src": "1209:76:6"
           }
         ],
-        "id": 3535,
+        "id": 3532,
         "name": "ContractDefinition",
         "src": "808:479:6"
       }
     ],
-    "id": 3536,
+    "id": 3533,
     "name": "SourceUnit",
     "src": "584:704:6"
   },
@@ -172,5 +172,5 @@ export const ERC165 =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-21T17:50:40.641Z"
+  "updatedAt": "2018-09-25T20:04:48.813Z"
 }

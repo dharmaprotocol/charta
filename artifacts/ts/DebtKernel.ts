@@ -418,7 +418,7 @@ export const DebtKernel =
       "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/DebtKernel.sol",
       "exportedSymbols": {
         "DebtKernel": [
-          2615
+          2612
         ]
       }
     },
@@ -431,16 +431,61 @@ export const DebtKernel =
             ".18"
           ]
         },
-        "id": 1478,
+        "id": 1475,
         "name": "PragmaDirective",
         "src": "584:23:3"
       },
       {
         "attributes": {
-          "SourceUnit": 3526,
+          "SourceUnit": 3523,
           "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/DebtToken.sol",
           "file": "./DebtToken.sol",
-          "scope": 2616,
+          "scope": 2613,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 1476,
+        "name": "ImportDirective",
+        "src": "609:25:3"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 4740,
+          "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/TermsContract.sol",
+          "file": "./TermsContract.sol",
+          "scope": 2613,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 1477,
+        "name": "ImportDirective",
+        "src": "635:29:3"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 5189,
+          "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/TokenTransferProxy.sol",
+          "file": "./TokenTransferProxy.sol",
+          "scope": 2613,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 1478,
+        "name": "ImportDirective",
+        "src": "665:34:3"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 13980,
+          "absolutePath": "zeppelin-solidity/contracts/lifecycle/Pausable.sol",
+          "file": "zeppelin-solidity/contracts/lifecycle/Pausable.sol",
+          "scope": 2613,
           "symbolAliases": [
             null
           ],
@@ -448,14 +493,14 @@ export const DebtKernel =
         },
         "id": 1479,
         "name": "ImportDirective",
-        "src": "609:25:3"
+        "src": "700:60:3"
       },
       {
         "attributes": {
-          "SourceUnit": 4743,
-          "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/TermsContract.sol",
-          "file": "./TermsContract.sol",
-          "scope": 2616,
+          "SourceUnit": 14078,
+          "absolutePath": "zeppelin-solidity/contracts/math/SafeMath.sol",
+          "file": "zeppelin-solidity/contracts/math/SafeMath.sol",
+          "scope": 2613,
           "symbolAliases": [
             null
           ],
@@ -463,14 +508,14 @@ export const DebtKernel =
         },
         "id": 1480,
         "name": "ImportDirective",
-        "src": "635:29:3"
+        "src": "761:55:3"
       },
       {
         "attributes": {
-          "SourceUnit": 5192,
-          "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/TokenTransferProxy.sol",
-          "file": "./TokenTransferProxy.sol",
-          "scope": 2616,
+          "SourceUnit": 14273,
+          "absolutePath": "zeppelin-solidity/contracts/token/ERC20/ERC20.sol",
+          "file": "zeppelin-solidity/contracts/token/ERC20/ERC20.sol",
+          "scope": 2613,
           "symbolAliases": [
             null
           ],
@@ -478,69 +523,24 @@ export const DebtKernel =
         },
         "id": 1481,
         "name": "ImportDirective",
-        "src": "665:34:3"
-      },
-      {
-        "attributes": {
-          "SourceUnit": 13983,
-          "absolutePath": "zeppelin-solidity/contracts/lifecycle/Pausable.sol",
-          "file": "zeppelin-solidity/contracts/lifecycle/Pausable.sol",
-          "scope": 2616,
-          "symbolAliases": [
-            null
-          ],
-          "unitAlias": ""
-        },
-        "id": 1482,
-        "name": "ImportDirective",
-        "src": "700:60:3"
-      },
-      {
-        "attributes": {
-          "SourceUnit": 14081,
-          "absolutePath": "zeppelin-solidity/contracts/math/SafeMath.sol",
-          "file": "zeppelin-solidity/contracts/math/SafeMath.sol",
-          "scope": 2616,
-          "symbolAliases": [
-            null
-          ],
-          "unitAlias": ""
-        },
-        "id": 1483,
-        "name": "ImportDirective",
-        "src": "761:55:3"
-      },
-      {
-        "attributes": {
-          "SourceUnit": 14276,
-          "absolutePath": "zeppelin-solidity/contracts/token/ERC20/ERC20.sol",
-          "file": "zeppelin-solidity/contracts/token/ERC20/ERC20.sol",
-          "scope": 2616,
-          "symbolAliases": [
-            null
-          ],
-          "unitAlias": ""
-        },
-        "id": 1484,
-        "name": "ImportDirective",
         "src": "817:59:3"
       },
       {
         "attributes": {
           "contractDependencies": [
-            13982,
-            14136
+            13979,
+            14133
           ],
           "contractKind": "contract",
           "documentation": "The DebtKernel is the hub of all business logic governing how and when\ndebt orders can be filled and cancelled.  All logic that determines\nwhether a debt order is valid & consensual is contained herein,\nas well as the mechanisms that transfer fees to keepers and\nprincipal payments to debtors.\n * Author: Nadav Hollander -- Github: nadavhollander",
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            2615,
-            13982,
-            14136
+            2612,
+            13979,
+            14133
           ],
           "name": "DebtKernel",
-          "scope": 2616
+          "scope": 2613
         },
         "children": [
           {
@@ -554,15 +554,15 @@ export const DebtKernel =
                 "attributes": {
                   "contractScope": null,
                   "name": "Pausable",
-                  "referencedDeclaration": 13982,
+                  "referencedDeclaration": 13979,
                   "type": "contract Pausable"
                 },
-                "id": 1485,
+                "id": 1482,
                 "name": "UserDefinedTypeName",
                 "src": "1275:8:3"
               }
             ],
-            "id": 1486,
+            "id": 1483,
             "name": "InheritanceSpecifier",
             "src": "1275:8:3"
           },
@@ -572,10 +572,10 @@ export const DebtKernel =
                 "attributes": {
                   "contractScope": null,
                   "name": "SafeMath",
-                  "referencedDeclaration": 14080,
+                  "referencedDeclaration": 14077,
                   "type": "library SafeMath"
                 },
-                "id": 1487,
+                "id": 1484,
                 "name": "UserDefinedTypeName",
                 "src": "1296:8:3"
               },
@@ -584,12 +584,12 @@ export const DebtKernel =
                   "name": "uint",
                   "type": "uint256"
                 },
-                "id": 1488,
+                "id": 1485,
                 "name": "ElementaryTypeName",
                 "src": "1309:4:3"
               }
             ],
-            "id": 1489,
+            "id": 1486,
             "name": "UsingForDirective",
             "src": "1290:24:3"
           },
@@ -603,7 +603,7 @@ export const DebtKernel =
                 "attributes": {
                   "name": "DEBT_ISSUED"
                 },
-                "id": 1490,
+                "id": 1487,
                 "name": "EnumValue",
                 "src": "1387:11:3"
               },
@@ -611,7 +611,7 @@ export const DebtKernel =
                 "attributes": {
                   "name": "ORDER_EXPIRED"
                 },
-                "id": 1491,
+                "id": 1488,
                 "name": "EnumValue",
                 "src": "1445:13:3"
               },
@@ -619,7 +619,7 @@ export const DebtKernel =
                 "attributes": {
                   "name": "ISSUANCE_CANCELLED"
                 },
-                "id": 1492,
+                "id": 1489,
                 "name": "EnumValue",
                 "src": "1534:18:3"
               },
@@ -627,7 +627,7 @@ export const DebtKernel =
                 "attributes": {
                   "name": "ORDER_CANCELLED"
                 },
-                "id": 1493,
+                "id": 1490,
                 "name": "EnumValue",
                 "src": "1598:15:3"
               },
@@ -635,7 +635,7 @@ export const DebtKernel =
                 "attributes": {
                   "name": "ORDER_INVALID_INSUFFICIENT_OR_EXCESSIVE_FEES"
                 },
-                "id": 1494,
+                "id": 1491,
                 "name": "EnumValue",
                 "src": "1770:44:3"
               },
@@ -643,7 +643,7 @@ export const DebtKernel =
                 "attributes": {
                   "name": "ORDER_INVALID_INSUFFICIENT_PRINCIPAL"
                 },
-                "id": 1495,
+                "id": 1492,
                 "name": "EnumValue",
                 "src": "1949:36:3"
               },
@@ -651,7 +651,7 @@ export const DebtKernel =
                 "attributes": {
                   "name": "ORDER_INVALID_UNSPECIFIED_FEE_RECIPIENT"
                 },
-                "id": 1496,
+                "id": 1493,
                 "name": "EnumValue",
                 "src": "2073:39:3"
               },
@@ -659,7 +659,7 @@ export const DebtKernel =
                 "attributes": {
                   "name": "ORDER_INVALID_NON_CONSENSUAL"
                 },
-                "id": 1497,
+                "id": 1494,
                 "name": "EnumValue",
                 "src": "2177:28:3"
               },
@@ -667,12 +667,12 @@ export const DebtKernel =
                 "attributes": {
                   "name": "CREDITOR_BALANCE_OR_ALLOWANCE_INSUFFICIENT"
                 },
-                "id": 1498,
+                "id": 1495,
                 "name": "EnumValue",
                 "src": "2289:42:3"
               }
             ],
-            "id": 1499,
+            "id": 1496,
             "name": "EnumDefinition",
             "src": "1320:1017:3"
           },
@@ -680,7 +680,7 @@ export const DebtKernel =
             "attributes": {
               "constant": false,
               "name": "debtToken",
-              "scope": 2615,
+              "scope": 2612,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "contract DebtToken",
@@ -692,15 +692,15 @@ export const DebtKernel =
                 "attributes": {
                   "contractScope": null,
                   "name": "DebtToken",
-                  "referencedDeclaration": 3525,
+                  "referencedDeclaration": 3522,
                   "type": "contract DebtToken"
                 },
-                "id": 1500,
+                "id": 1497,
                 "name": "UserDefinedTypeName",
                 "src": "2343:9:3"
               }
             ],
-            "id": 1501,
+            "id": 1498,
             "name": "VariableDeclaration",
             "src": "2343:26:3"
           },
@@ -708,7 +708,7 @@ export const DebtKernel =
             "attributes": {
               "constant": false,
               "name": "TOKEN_TRANSFER_PROXY",
-              "scope": 2615,
+              "scope": 2612,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "address",
@@ -721,12 +721,12 @@ export const DebtKernel =
                   "name": "address",
                   "type": "address"
                 },
-                "id": 1502,
+                "id": 1499,
                 "name": "ElementaryTypeName",
                 "src": "2428:7:3"
               }
             ],
-            "id": 1503,
+            "id": 1500,
             "name": "VariableDeclaration",
             "src": "2428:35:3"
           },
@@ -734,7 +734,7 @@ export const DebtKernel =
             "attributes": {
               "constant": true,
               "name": "NULL_ISSUANCE_HASH",
-              "scope": 2615,
+              "scope": 2612,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "bytes32",
@@ -746,7 +746,7 @@ export const DebtKernel =
                   "name": "bytes32",
                   "type": "bytes32"
                 },
-                "id": 1504,
+                "id": 1501,
                 "name": "ElementaryTypeName",
                 "src": "2469:7:3"
               },
@@ -780,7 +780,7 @@ export const DebtKernel =
                       "type": "type(bytes32)",
                       "value": "bytes32"
                     },
-                    "id": 1505,
+                    "id": 1502,
                     "name": "ElementaryTypeNameExpression",
                     "src": "2514:7:3"
                   },
@@ -797,17 +797,17 @@ export const DebtKernel =
                       "type": "int_const 0",
                       "value": "0"
                     },
-                    "id": 1506,
+                    "id": 1503,
                     "name": "Literal",
                     "src": "2522:1:3"
                   }
                 ],
-                "id": 1507,
+                "id": 1504,
                 "name": "FunctionCall",
                 "src": "2514:10:3"
               }
             ],
-            "id": 1508,
+            "id": 1505,
             "name": "VariableDeclaration",
             "src": "2469:55:3"
           },
@@ -815,7 +815,7 @@ export const DebtKernel =
             "attributes": {
               "constant": true,
               "name": "EXTERNAL_QUERY_GAS_LIMIT",
-              "scope": 2615,
+              "scope": 2612,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "uint16",
@@ -827,7 +827,7 @@ export const DebtKernel =
                   "name": "uint16",
                   "type": "uint16"
                 },
-                "id": 1509,
+                "id": 1506,
                 "name": "ElementaryTypeName",
                 "src": "2829:6:3"
               },
@@ -844,12 +844,12 @@ export const DebtKernel =
                   "type": "int_const 8000",
                   "value": "8000"
                 },
-                "id": 1510,
+                "id": 1507,
                 "name": "Literal",
                 "src": "2879:4:3"
               }
             ],
-            "id": 1511,
+            "id": 1508,
             "name": "VariableDeclaration",
             "src": "2829:54:3"
           },
@@ -857,7 +857,7 @@ export const DebtKernel =
             "attributes": {
               "constant": false,
               "name": "issuanceCancelled",
-              "scope": 2615,
+              "scope": 2612,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(bytes32 => bool)",
@@ -875,7 +875,7 @@ export const DebtKernel =
                       "name": "bytes32",
                       "type": "bytes32"
                     },
-                    "id": 1512,
+                    "id": 1509,
                     "name": "ElementaryTypeName",
                     "src": "2899:7:3"
                   },
@@ -884,17 +884,17 @@ export const DebtKernel =
                       "name": "bool",
                       "type": "bool"
                     },
-                    "id": 1513,
+                    "id": 1510,
                     "name": "ElementaryTypeName",
                     "src": "2910:4:3"
                   }
                 ],
-                "id": 1514,
+                "id": 1511,
                 "name": "Mapping",
                 "src": "2890:25:3"
               }
             ],
-            "id": 1515,
+            "id": 1512,
             "name": "VariableDeclaration",
             "src": "2890:50:3"
           },
@@ -902,7 +902,7 @@ export const DebtKernel =
             "attributes": {
               "constant": false,
               "name": "debtOrderCancelled",
-              "scope": 2615,
+              "scope": 2612,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(bytes32 => bool)",
@@ -920,7 +920,7 @@ export const DebtKernel =
                       "name": "bytes32",
                       "type": "bytes32"
                     },
-                    "id": 1516,
+                    "id": 1513,
                     "name": "ElementaryTypeName",
                     "src": "2955:7:3"
                   },
@@ -929,17 +929,17 @@ export const DebtKernel =
                       "name": "bool",
                       "type": "bool"
                     },
-                    "id": 1517,
+                    "id": 1514,
                     "name": "ElementaryTypeName",
                     "src": "2966:4:3"
                   }
                 ],
-                "id": 1518,
+                "id": 1515,
                 "name": "Mapping",
                 "src": "2946:25:3"
               }
             ],
-            "id": 1519,
+            "id": 1516,
             "name": "VariableDeclaration",
             "src": "2946:51:3"
           },
@@ -956,7 +956,7 @@ export const DebtKernel =
                       "constant": false,
                       "indexed": true,
                       "name": "_agreementId",
-                      "scope": 1535,
+                      "scope": 1532,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -969,12 +969,12 @@ export const DebtKernel =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 1520,
+                        "id": 1517,
                         "name": "ElementaryTypeName",
                         "src": "3038:7:3"
                       }
                     ],
-                    "id": 1521,
+                    "id": 1518,
                     "name": "VariableDeclaration",
                     "src": "3038:28:3"
                   },
@@ -983,7 +983,7 @@ export const DebtKernel =
                       "constant": false,
                       "indexed": false,
                       "name": "_principal",
-                      "scope": 1535,
+                      "scope": 1532,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -996,12 +996,12 @@ export const DebtKernel =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 1522,
+                        "id": 1519,
                         "name": "ElementaryTypeName",
                         "src": "3076:4:3"
                       }
                     ],
-                    "id": 1523,
+                    "id": 1520,
                     "name": "VariableDeclaration",
                     "src": "3076:15:3"
                   },
@@ -1010,7 +1010,7 @@ export const DebtKernel =
                       "constant": false,
                       "indexed": false,
                       "name": "_principalToken",
-                      "scope": 1535,
+                      "scope": 1532,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1023,12 +1023,12 @@ export const DebtKernel =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 1524,
+                        "id": 1521,
                         "name": "ElementaryTypeName",
                         "src": "3101:7:3"
                       }
                     ],
-                    "id": 1525,
+                    "id": 1522,
                     "name": "VariableDeclaration",
                     "src": "3101:23:3"
                   },
@@ -1037,7 +1037,7 @@ export const DebtKernel =
                       "constant": false,
                       "indexed": true,
                       "name": "_underwriter",
-                      "scope": 1535,
+                      "scope": 1532,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1050,12 +1050,12 @@ export const DebtKernel =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 1526,
+                        "id": 1523,
                         "name": "ElementaryTypeName",
                         "src": "3134:7:3"
                       }
                     ],
-                    "id": 1527,
+                    "id": 1524,
                     "name": "VariableDeclaration",
                     "src": "3134:28:3"
                   },
@@ -1064,7 +1064,7 @@ export const DebtKernel =
                       "constant": false,
                       "indexed": false,
                       "name": "_underwriterFee",
-                      "scope": 1535,
+                      "scope": 1532,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1077,12 +1077,12 @@ export const DebtKernel =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 1528,
+                        "id": 1525,
                         "name": "ElementaryTypeName",
                         "src": "3172:4:3"
                       }
                     ],
-                    "id": 1529,
+                    "id": 1526,
                     "name": "VariableDeclaration",
                     "src": "3172:20:3"
                   },
@@ -1091,7 +1091,7 @@ export const DebtKernel =
                       "constant": false,
                       "indexed": true,
                       "name": "_relayer",
-                      "scope": 1535,
+                      "scope": 1532,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1104,12 +1104,12 @@ export const DebtKernel =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 1530,
+                        "id": 1527,
                         "name": "ElementaryTypeName",
                         "src": "3202:7:3"
                       }
                     ],
-                    "id": 1531,
+                    "id": 1528,
                     "name": "VariableDeclaration",
                     "src": "3202:24:3"
                   },
@@ -1118,7 +1118,7 @@ export const DebtKernel =
                       "constant": false,
                       "indexed": false,
                       "name": "_relayerFee",
-                      "scope": 1535,
+                      "scope": 1532,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1131,22 +1131,22 @@ export const DebtKernel =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 1532,
+                        "id": 1529,
                         "name": "ElementaryTypeName",
                         "src": "3236:4:3"
                       }
                     ],
-                    "id": 1533,
+                    "id": 1530,
                     "name": "VariableDeclaration",
                     "src": "3236:16:3"
                   }
                 ],
-                "id": 1534,
+                "id": 1531,
                 "name": "ParameterList",
                 "src": "3028:230:3"
               }
             ],
-            "id": 1535,
+            "id": 1532,
             "name": "EventDefinition",
             "src": "3004:255:3"
           },
@@ -1163,7 +1163,7 @@ export const DebtKernel =
                       "constant": false,
                       "indexed": true,
                       "name": "_agreementId",
-                      "scope": 1541,
+                      "scope": 1538,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -1176,12 +1176,12 @@ export const DebtKernel =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 1536,
+                        "id": 1533,
                         "name": "ElementaryTypeName",
                         "src": "3301:7:3"
                       }
                     ],
-                    "id": 1537,
+                    "id": 1534,
                     "name": "VariableDeclaration",
                     "src": "3301:28:3"
                   },
@@ -1190,7 +1190,7 @@ export const DebtKernel =
                       "constant": false,
                       "indexed": true,
                       "name": "_cancelledBy",
-                      "scope": 1541,
+                      "scope": 1538,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1203,22 +1203,22 @@ export const DebtKernel =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 1538,
+                        "id": 1535,
                         "name": "ElementaryTypeName",
                         "src": "3339:7:3"
                       }
                     ],
-                    "id": 1539,
+                    "id": 1536,
                     "name": "VariableDeclaration",
                     "src": "3339:28:3"
                   }
                 ],
-                "id": 1540,
+                "id": 1537,
                 "name": "ParameterList",
                 "src": "3291:82:3"
               }
             ],
-            "id": 1541,
+            "id": 1538,
             "name": "EventDefinition",
             "src": "3265:109:3"
           },
@@ -1235,7 +1235,7 @@ export const DebtKernel =
                       "constant": false,
                       "indexed": true,
                       "name": "_debtOrderHash",
-                      "scope": 1547,
+                      "scope": 1544,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -1248,12 +1248,12 @@ export const DebtKernel =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 1542,
+                        "id": 1539,
                         "name": "ElementaryTypeName",
                         "src": "3417:7:3"
                       }
                     ],
-                    "id": 1543,
+                    "id": 1540,
                     "name": "VariableDeclaration",
                     "src": "3417:30:3"
                   },
@@ -1262,7 +1262,7 @@ export const DebtKernel =
                       "constant": false,
                       "indexed": true,
                       "name": "_cancelledBy",
-                      "scope": 1547,
+                      "scope": 1544,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1275,22 +1275,22 @@ export const DebtKernel =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 1544,
+                        "id": 1541,
                         "name": "ElementaryTypeName",
                         "src": "3457:7:3"
                       }
                     ],
-                    "id": 1545,
+                    "id": 1542,
                     "name": "VariableDeclaration",
                     "src": "3457:28:3"
                   }
                 ],
-                "id": 1546,
+                "id": 1543,
                 "name": "ParameterList",
                 "src": "3407:84:3"
               }
             ],
-            "id": 1547,
+            "id": 1544,
             "name": "EventDefinition",
             "src": "3380:112:3"
           },
@@ -1307,7 +1307,7 @@ export const DebtKernel =
                       "constant": false,
                       "indexed": true,
                       "name": "_errorId",
-                      "scope": 1553,
+                      "scope": 1550,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint8",
@@ -1320,12 +1320,12 @@ export const DebtKernel =
                           "name": "uint8",
                           "type": "uint8"
                         },
-                        "id": 1548,
+                        "id": 1545,
                         "name": "ElementaryTypeName",
                         "src": "3522:5:3"
                       }
                     ],
-                    "id": 1549,
+                    "id": 1546,
                     "name": "VariableDeclaration",
                     "src": "3522:22:3"
                   },
@@ -1334,7 +1334,7 @@ export const DebtKernel =
                       "constant": false,
                       "indexed": true,
                       "name": "_orderHash",
-                      "scope": 1553,
+                      "scope": 1550,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -1347,22 +1347,22 @@ export const DebtKernel =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 1550,
+                        "id": 1547,
                         "name": "ElementaryTypeName",
                         "src": "3554:7:3"
                       }
                     ],
-                    "id": 1551,
+                    "id": 1548,
                     "name": "VariableDeclaration",
                     "src": "3554:26:3"
                   }
                 ],
-                "id": 1552,
+                "id": 1549,
                 "name": "ParameterList",
                 "src": "3512:74:3"
               }
             ],
-            "id": 1553,
+            "id": 1550,
             "name": "EventDefinition",
             "src": "3498:89:3"
           },
@@ -1370,7 +1370,7 @@ export const DebtKernel =
             "attributes": {
               "canonicalName": "DebtKernel.Issuance",
               "name": "Issuance",
-              "scope": 2615,
+              "scope": 2612,
               "visibility": "public"
             },
             "children": [
@@ -1378,7 +1378,7 @@ export const DebtKernel =
                 "attributes": {
                   "constant": false,
                   "name": "version",
-                  "scope": 1570,
+                  "scope": 1567,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "address",
@@ -1391,12 +1391,12 @@ export const DebtKernel =
                       "name": "address",
                       "type": "address"
                     },
-                    "id": 1554,
+                    "id": 1551,
                     "name": "ElementaryTypeName",
                     "src": "3619:7:3"
                   }
                 ],
-                "id": 1555,
+                "id": 1552,
                 "name": "VariableDeclaration",
                 "src": "3619:15:3"
               },
@@ -1404,7 +1404,7 @@ export const DebtKernel =
                 "attributes": {
                   "constant": false,
                   "name": "debtor",
-                  "scope": 1570,
+                  "scope": 1567,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "address",
@@ -1417,12 +1417,12 @@ export const DebtKernel =
                       "name": "address",
                       "type": "address"
                     },
-                    "id": 1556,
+                    "id": 1553,
                     "name": "ElementaryTypeName",
                     "src": "3644:7:3"
                   }
                 ],
-                "id": 1557,
+                "id": 1554,
                 "name": "VariableDeclaration",
                 "src": "3644:14:3"
               },
@@ -1430,7 +1430,7 @@ export const DebtKernel =
                 "attributes": {
                   "constant": false,
                   "name": "underwriter",
-                  "scope": 1570,
+                  "scope": 1567,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "address",
@@ -1443,12 +1443,12 @@ export const DebtKernel =
                       "name": "address",
                       "type": "address"
                     },
-                    "id": 1558,
+                    "id": 1555,
                     "name": "ElementaryTypeName",
                     "src": "3668:7:3"
                   }
                 ],
-                "id": 1559,
+                "id": 1556,
                 "name": "VariableDeclaration",
                 "src": "3668:19:3"
               },
@@ -1456,7 +1456,7 @@ export const DebtKernel =
                 "attributes": {
                   "constant": false,
                   "name": "underwriterRiskRating",
-                  "scope": 1570,
+                  "scope": 1567,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint256",
@@ -1469,12 +1469,12 @@ export const DebtKernel =
                       "name": "uint",
                       "type": "uint256"
                     },
-                    "id": 1560,
+                    "id": 1557,
                     "name": "ElementaryTypeName",
                     "src": "3697:4:3"
                   }
                 ],
-                "id": 1561,
+                "id": 1558,
                 "name": "VariableDeclaration",
                 "src": "3697:26:3"
               },
@@ -1482,7 +1482,7 @@ export const DebtKernel =
                 "attributes": {
                   "constant": false,
                   "name": "termsContract",
-                  "scope": 1570,
+                  "scope": 1567,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "address",
@@ -1495,12 +1495,12 @@ export const DebtKernel =
                       "name": "address",
                       "type": "address"
                     },
-                    "id": 1562,
+                    "id": 1559,
                     "name": "ElementaryTypeName",
                     "src": "3733:7:3"
                   }
                 ],
-                "id": 1563,
+                "id": 1560,
                 "name": "VariableDeclaration",
                 "src": "3733:21:3"
               },
@@ -1508,7 +1508,7 @@ export const DebtKernel =
                 "attributes": {
                   "constant": false,
                   "name": "termsContractParameters",
-                  "scope": 1570,
+                  "scope": 1567,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "bytes32",
@@ -1521,12 +1521,12 @@ export const DebtKernel =
                       "name": "bytes32",
                       "type": "bytes32"
                     },
-                    "id": 1564,
+                    "id": 1561,
                     "name": "ElementaryTypeName",
                     "src": "3764:7:3"
                   }
                 ],
-                "id": 1565,
+                "id": 1562,
                 "name": "VariableDeclaration",
                 "src": "3764:31:3"
               },
@@ -1534,7 +1534,7 @@ export const DebtKernel =
                 "attributes": {
                   "constant": false,
                   "name": "salt",
-                  "scope": 1570,
+                  "scope": 1567,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint256",
@@ -1547,12 +1547,12 @@ export const DebtKernel =
                       "name": "uint",
                       "type": "uint256"
                     },
-                    "id": 1566,
+                    "id": 1563,
                     "name": "ElementaryTypeName",
                     "src": "3805:4:3"
                   }
                 ],
-                "id": 1567,
+                "id": 1564,
                 "name": "VariableDeclaration",
                 "src": "3805:9:3"
               },
@@ -1560,7 +1560,7 @@ export const DebtKernel =
                 "attributes": {
                   "constant": false,
                   "name": "agreementId",
-                  "scope": 1570,
+                  "scope": 1567,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "bytes32",
@@ -1573,17 +1573,17 @@ export const DebtKernel =
                       "name": "bytes32",
                       "type": "bytes32"
                     },
-                    "id": 1568,
+                    "id": 1565,
                     "name": "ElementaryTypeName",
                     "src": "3824:7:3"
                   }
                 ],
-                "id": 1569,
+                "id": 1566,
                 "name": "VariableDeclaration",
                 "src": "3824:19:3"
               }
             ],
-            "id": 1570,
+            "id": 1567,
             "name": "StructDefinition",
             "src": "3593:257:3"
           },
@@ -1591,7 +1591,7 @@ export const DebtKernel =
             "attributes": {
               "canonicalName": "DebtKernel.DebtOrder",
               "name": "DebtOrder",
-              "scope": 2615,
+              "scope": 2612,
               "visibility": "public"
             },
             "children": [
@@ -1599,7 +1599,7 @@ export const DebtKernel =
                 "attributes": {
                   "constant": false,
                   "name": "issuance",
-                  "scope": 1591,
+                  "scope": 1588,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "struct DebtKernel.Issuance storage pointer",
@@ -1611,15 +1611,15 @@ export const DebtKernel =
                     "attributes": {
                       "contractScope": null,
                       "name": "Issuance",
-                      "referencedDeclaration": 1570,
+                      "referencedDeclaration": 1567,
                       "type": "struct DebtKernel.Issuance storage pointer"
                     },
-                    "id": 1571,
+                    "id": 1568,
                     "name": "UserDefinedTypeName",
                     "src": "3883:8:3"
                   }
                 ],
-                "id": 1572,
+                "id": 1569,
                 "name": "VariableDeclaration",
                 "src": "3883:17:3"
               },
@@ -1627,7 +1627,7 @@ export const DebtKernel =
                 "attributes": {
                   "constant": false,
                   "name": "underwriterFee",
-                  "scope": 1591,
+                  "scope": 1588,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint256",
@@ -1640,12 +1640,12 @@ export const DebtKernel =
                       "name": "uint",
                       "type": "uint256"
                     },
-                    "id": 1573,
+                    "id": 1570,
                     "name": "ElementaryTypeName",
                     "src": "3910:4:3"
                   }
                 ],
-                "id": 1574,
+                "id": 1571,
                 "name": "VariableDeclaration",
                 "src": "3910:19:3"
               },
@@ -1653,7 +1653,7 @@ export const DebtKernel =
                 "attributes": {
                   "constant": false,
                   "name": "relayerFee",
-                  "scope": 1591,
+                  "scope": 1588,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint256",
@@ -1666,12 +1666,12 @@ export const DebtKernel =
                       "name": "uint",
                       "type": "uint256"
                     },
-                    "id": 1575,
+                    "id": 1572,
                     "name": "ElementaryTypeName",
                     "src": "3939:4:3"
                   }
                 ],
-                "id": 1576,
+                "id": 1573,
                 "name": "VariableDeclaration",
                 "src": "3939:15:3"
               },
@@ -1679,7 +1679,7 @@ export const DebtKernel =
                 "attributes": {
                   "constant": false,
                   "name": "principalAmount",
-                  "scope": 1591,
+                  "scope": 1588,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint256",
@@ -1692,12 +1692,12 @@ export const DebtKernel =
                       "name": "uint",
                       "type": "uint256"
                     },
-                    "id": 1577,
+                    "id": 1574,
                     "name": "ElementaryTypeName",
                     "src": "3964:4:3"
                   }
                 ],
-                "id": 1578,
+                "id": 1575,
                 "name": "VariableDeclaration",
                 "src": "3964:20:3"
               },
@@ -1705,7 +1705,7 @@ export const DebtKernel =
                 "attributes": {
                   "constant": false,
                   "name": "principalToken",
-                  "scope": 1591,
+                  "scope": 1588,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "address",
@@ -1718,12 +1718,12 @@ export const DebtKernel =
                       "name": "address",
                       "type": "address"
                     },
-                    "id": 1579,
+                    "id": 1576,
                     "name": "ElementaryTypeName",
                     "src": "3994:7:3"
                   }
                 ],
-                "id": 1580,
+                "id": 1577,
                 "name": "VariableDeclaration",
                 "src": "3994:22:3"
               },
@@ -1731,7 +1731,7 @@ export const DebtKernel =
                 "attributes": {
                   "constant": false,
                   "name": "creditorFee",
-                  "scope": 1591,
+                  "scope": 1588,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint256",
@@ -1744,12 +1744,12 @@ export const DebtKernel =
                       "name": "uint",
                       "type": "uint256"
                     },
-                    "id": 1581,
+                    "id": 1578,
                     "name": "ElementaryTypeName",
                     "src": "4026:4:3"
                   }
                 ],
-                "id": 1582,
+                "id": 1579,
                 "name": "VariableDeclaration",
                 "src": "4026:16:3"
               },
@@ -1757,7 +1757,7 @@ export const DebtKernel =
                 "attributes": {
                   "constant": false,
                   "name": "debtorFee",
-                  "scope": 1591,
+                  "scope": 1588,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint256",
@@ -1770,12 +1770,12 @@ export const DebtKernel =
                       "name": "uint",
                       "type": "uint256"
                     },
-                    "id": 1583,
+                    "id": 1580,
                     "name": "ElementaryTypeName",
                     "src": "4052:4:3"
                   }
                 ],
-                "id": 1584,
+                "id": 1581,
                 "name": "VariableDeclaration",
                 "src": "4052:14:3"
               },
@@ -1783,7 +1783,7 @@ export const DebtKernel =
                 "attributes": {
                   "constant": false,
                   "name": "relayer",
-                  "scope": 1591,
+                  "scope": 1588,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "address",
@@ -1796,12 +1796,12 @@ export const DebtKernel =
                       "name": "address",
                       "type": "address"
                     },
-                    "id": 1585,
+                    "id": 1582,
                     "name": "ElementaryTypeName",
                     "src": "4076:7:3"
                   }
                 ],
-                "id": 1586,
+                "id": 1583,
                 "name": "VariableDeclaration",
                 "src": "4076:15:3"
               },
@@ -1809,7 +1809,7 @@ export const DebtKernel =
                 "attributes": {
                   "constant": false,
                   "name": "expirationTimestampInSec",
-                  "scope": 1591,
+                  "scope": 1588,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint256",
@@ -1822,12 +1822,12 @@ export const DebtKernel =
                       "name": "uint",
                       "type": "uint256"
                     },
-                    "id": 1587,
+                    "id": 1584,
                     "name": "ElementaryTypeName",
                     "src": "4101:4:3"
                   }
                 ],
-                "id": 1588,
+                "id": 1585,
                 "name": "VariableDeclaration",
                 "src": "4101:29:3"
               },
@@ -1835,7 +1835,7 @@ export const DebtKernel =
                 "attributes": {
                   "constant": false,
                   "name": "debtOrderHash",
-                  "scope": 1591,
+                  "scope": 1588,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "bytes32",
@@ -1848,17 +1848,17 @@ export const DebtKernel =
                       "name": "bytes32",
                       "type": "bytes32"
                     },
-                    "id": 1589,
+                    "id": 1586,
                     "name": "ElementaryTypeName",
                     "src": "4140:7:3"
                   }
                 ],
-                "id": 1590,
+                "id": 1587,
                 "name": "VariableDeclaration",
                 "src": "4140:21:3"
               }
             ],
-            "id": 1591,
+            "id": 1588,
             "name": "StructDefinition",
             "src": "3856:312:3"
           },
@@ -1872,7 +1872,7 @@ export const DebtKernel =
               ],
               "name": "DebtKernel",
               "payable": false,
-              "scope": 2615,
+              "scope": 2612,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -1884,7 +1884,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "tokenTransferProxyAddress",
-                      "scope": 1601,
+                      "scope": 1598,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1897,17 +1897,17 @@ export const DebtKernel =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 1592,
+                        "id": 1589,
                         "name": "ElementaryTypeName",
                         "src": "4194:7:3"
                       }
                     ],
-                    "id": 1593,
+                    "id": 1590,
                     "name": "VariableDeclaration",
                     "src": "4194:33:3"
                   }
                 ],
-                "id": 1594,
+                "id": 1591,
                 "name": "ParameterList",
                 "src": "4193:35:3"
               },
@@ -1918,7 +1918,7 @@ export const DebtKernel =
                   ]
                 },
                 "children": [],
-                "id": 1595,
+                "id": 1592,
                 "name": "ParameterList",
                 "src": "4248:0:3"
               },
@@ -1943,11 +1943,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1503,
+                              "referencedDeclaration": 1500,
                               "type": "address",
                               "value": "TOKEN_TRANSFER_PROXY"
                             },
-                            "id": 1596,
+                            "id": 1593,
                             "name": "Identifier",
                             "src": "4258:20:3"
                           },
@@ -1957,31 +1957,31 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1593,
+                              "referencedDeclaration": 1590,
                               "type": "address",
                               "value": "tokenTransferProxyAddress"
                             },
-                            "id": 1597,
+                            "id": 1594,
                             "name": "Identifier",
                             "src": "4281:25:3"
                           }
                         ],
-                        "id": 1598,
+                        "id": 1595,
                         "name": "Assignment",
                         "src": "4258:48:3"
                       }
                     ],
-                    "id": 1599,
+                    "id": 1596,
                     "name": "ExpressionStatement",
                     "src": "4258:48:3"
                   }
                 ],
-                "id": 1600,
+                "id": 1597,
                 "name": "Block",
                 "src": "4248:65:3"
               }
             ],
-            "id": 1601,
+            "id": 1598,
             "name": "FunctionDefinition",
             "src": "4174:139:3"
           },
@@ -1992,7 +1992,7 @@ export const DebtKernel =
               "isConstructor": false,
               "name": "setDebtToken",
               "payable": false,
-              "scope": 2615,
+              "scope": 2612,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -2004,7 +2004,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "debtTokenAddress",
-                      "scope": 1615,
+                      "scope": 1612,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2017,17 +2017,17 @@ export const DebtKernel =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 1602,
+                        "id": 1599,
                         "name": "ElementaryTypeName",
                         "src": "4622:7:3"
                       }
                     ],
-                    "id": 1603,
+                    "id": 1600,
                     "name": "VariableDeclaration",
                     "src": "4622:24:3"
                   }
                 ],
-                "id": 1604,
+                "id": 1601,
                 "name": "ParameterList",
                 "src": "4621:26:3"
               },
@@ -2038,7 +2038,7 @@ export const DebtKernel =
                   ]
                 },
                 "children": [],
-                "id": 1607,
+                "id": 1604,
                 "name": "ParameterList",
                 "src": "4685:0:3"
               },
@@ -2055,16 +2055,16 @@ export const DebtKernel =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 14110,
+                      "referencedDeclaration": 14107,
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
-                    "id": 1605,
+                    "id": 1602,
                     "name": "Identifier",
                     "src": "4671:9:3"
                   }
                 ],
-                "id": 1606,
+                "id": 1603,
                 "name": "ModifierInvocation",
                 "src": "4671:9:3"
               },
@@ -2089,11 +2089,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1501,
+                              "referencedDeclaration": 1498,
                               "type": "contract DebtToken",
                               "value": "debtToken"
                             },
-                            "id": 1608,
+                            "id": 1605,
                             "name": "Identifier",
                             "src": "4695:9:3"
                           },
@@ -2123,11 +2123,11 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3525,
+                                  "referencedDeclaration": 3522,
                                   "type": "type(contract DebtToken)",
                                   "value": "DebtToken"
                                 },
-                                "id": 1609,
+                                "id": 1606,
                                 "name": "Identifier",
                                 "src": "4707:9:3"
                               },
@@ -2137,36 +2137,36 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1603,
+                                  "referencedDeclaration": 1600,
                                   "type": "address",
                                   "value": "debtTokenAddress"
                                 },
-                                "id": 1610,
+                                "id": 1607,
                                 "name": "Identifier",
                                 "src": "4717:16:3"
                               }
                             ],
-                            "id": 1611,
+                            "id": 1608,
                             "name": "FunctionCall",
                             "src": "4707:27:3"
                           }
                         ],
-                        "id": 1612,
+                        "id": 1609,
                         "name": "Assignment",
                         "src": "4695:39:3"
                       }
                     ],
-                    "id": 1613,
+                    "id": 1610,
                     "name": "ExpressionStatement",
                     "src": "4695:39:3"
                   }
                 ],
-                "id": 1614,
+                "id": 1611,
                 "name": "Block",
                 "src": "4685:56:3"
               }
             ],
-            "id": 1615,
+            "id": 1612,
             "name": "FunctionDefinition",
             "src": "4600:141:3"
           },
@@ -2177,7 +2177,7 @@ export const DebtKernel =
               "isConstructor": false,
               "name": "fillDebtOrder",
               "payable": false,
-              "scope": 2615,
+              "scope": 2612,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -2189,7 +2189,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "creditor",
-                      "scope": 1794,
+                      "scope": 1791,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2202,12 +2202,12 @@ export const DebtKernel =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 1616,
+                        "id": 1613,
                         "name": "ElementaryTypeName",
                         "src": "4858:7:3"
                       }
                     ],
-                    "id": 1617,
+                    "id": 1614,
                     "name": "VariableDeclaration",
                     "src": "4858:16:3"
                   },
@@ -2215,7 +2215,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "orderAddresses",
-                      "scope": 1794,
+                      "scope": 1791,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address[6] memory",
@@ -2233,7 +2233,7 @@ export const DebtKernel =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 1618,
+                            "id": 1615,
                             "name": "ElementaryTypeName",
                             "src": "4884:7:3"
                           },
@@ -2250,17 +2250,17 @@ export const DebtKernel =
                               "type": "int_const 6",
                               "value": "6"
                             },
-                            "id": 1619,
+                            "id": 1616,
                             "name": "Literal",
                             "src": "4892:1:3"
                           }
                         ],
-                        "id": 1620,
+                        "id": 1617,
                         "name": "ArrayTypeName",
                         "src": "4884:10:3"
                       }
                     ],
-                    "id": 1621,
+                    "id": 1618,
                     "name": "VariableDeclaration",
                     "src": "4884:25:3"
                   },
@@ -2268,7 +2268,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "orderValues",
-                      "scope": 1794,
+                      "scope": 1791,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256[8] memory",
@@ -2286,7 +2286,7 @@ export const DebtKernel =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 1622,
+                            "id": 1619,
                             "name": "ElementaryTypeName",
                             "src": "4919:4:3"
                           },
@@ -2303,17 +2303,17 @@ export const DebtKernel =
                               "type": "int_const 8",
                               "value": "8"
                             },
-                            "id": 1623,
+                            "id": 1620,
                             "name": "Literal",
                             "src": "4924:1:3"
                           }
                         ],
-                        "id": 1624,
+                        "id": 1621,
                         "name": "ArrayTypeName",
                         "src": "4919:7:3"
                       }
                     ],
-                    "id": 1625,
+                    "id": 1622,
                     "name": "VariableDeclaration",
                     "src": "4919:19:3"
                   },
@@ -2321,7 +2321,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "orderBytes32",
-                      "scope": 1794,
+                      "scope": 1791,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32[1] memory",
@@ -2339,7 +2339,7 @@ export const DebtKernel =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 1626,
+                            "id": 1623,
                             "name": "ElementaryTypeName",
                             "src": "4948:7:3"
                           },
@@ -2356,17 +2356,17 @@ export const DebtKernel =
                               "type": "int_const 1",
                               "value": "1"
                             },
-                            "id": 1627,
+                            "id": 1624,
                             "name": "Literal",
                             "src": "4956:1:3"
                           }
                         ],
-                        "id": 1628,
+                        "id": 1625,
                         "name": "ArrayTypeName",
                         "src": "4948:10:3"
                       }
                     ],
-                    "id": 1629,
+                    "id": 1626,
                     "name": "VariableDeclaration",
                     "src": "4948:23:3"
                   },
@@ -2374,7 +2374,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "signaturesV",
-                      "scope": 1794,
+                      "scope": 1791,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint8[3] memory",
@@ -2392,7 +2392,7 @@ export const DebtKernel =
                               "name": "uint8",
                               "type": "uint8"
                             },
-                            "id": 1630,
+                            "id": 1627,
                             "name": "ElementaryTypeName",
                             "src": "4981:5:3"
                           },
@@ -2409,17 +2409,17 @@ export const DebtKernel =
                               "type": "int_const 3",
                               "value": "3"
                             },
-                            "id": 1631,
+                            "id": 1628,
                             "name": "Literal",
                             "src": "4987:1:3"
                           }
                         ],
-                        "id": 1632,
+                        "id": 1629,
                         "name": "ArrayTypeName",
                         "src": "4981:8:3"
                       }
                     ],
-                    "id": 1633,
+                    "id": 1630,
                     "name": "VariableDeclaration",
                     "src": "4981:20:3"
                   },
@@ -2427,7 +2427,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "signaturesR",
-                      "scope": 1794,
+                      "scope": 1791,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32[3] memory",
@@ -2445,7 +2445,7 @@ export const DebtKernel =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 1634,
+                            "id": 1631,
                             "name": "ElementaryTypeName",
                             "src": "5011:7:3"
                           },
@@ -2462,17 +2462,17 @@ export const DebtKernel =
                               "type": "int_const 3",
                               "value": "3"
                             },
-                            "id": 1635,
+                            "id": 1632,
                             "name": "Literal",
                             "src": "5019:1:3"
                           }
                         ],
-                        "id": 1636,
+                        "id": 1633,
                         "name": "ArrayTypeName",
                         "src": "5011:10:3"
                       }
                     ],
-                    "id": 1637,
+                    "id": 1634,
                     "name": "VariableDeclaration",
                     "src": "5011:22:3"
                   },
@@ -2480,7 +2480,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "signaturesS",
-                      "scope": 1794,
+                      "scope": 1791,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32[3] memory",
@@ -2498,7 +2498,7 @@ export const DebtKernel =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 1638,
+                            "id": 1635,
                             "name": "ElementaryTypeName",
                             "src": "5043:7:3"
                           },
@@ -2515,22 +2515,22 @@ export const DebtKernel =
                               "type": "int_const 3",
                               "value": "3"
                             },
-                            "id": 1639,
+                            "id": 1636,
                             "name": "Literal",
                             "src": "5051:1:3"
                           }
                         ],
-                        "id": 1640,
+                        "id": 1637,
                         "name": "ArrayTypeName",
                         "src": "5043:10:3"
                       }
                     ],
-                    "id": 1641,
+                    "id": 1638,
                     "name": "VariableDeclaration",
                     "src": "5043:22:3"
                   }
                 ],
-                "id": 1642,
+                "id": 1639,
                 "name": "ParameterList",
                 "src": "4848:223:3"
               },
@@ -2540,7 +2540,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "_agreementId",
-                      "scope": 1794,
+                      "scope": 1791,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -2553,17 +2553,17 @@ export const DebtKernel =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 1645,
+                        "id": 1642,
                         "name": "ElementaryTypeName",
                         "src": "5126:7:3"
                       }
                     ],
-                    "id": 1646,
+                    "id": 1643,
                     "name": "VariableDeclaration",
                     "src": "5126:20:3"
                   }
                 ],
-                "id": 1647,
+                "id": 1644,
                 "name": "ParameterList",
                 "src": "5125:22:3"
               },
@@ -2580,16 +2580,16 @@ export const DebtKernel =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13943,
+                      "referencedDeclaration": 13940,
                       "type": "modifier ()",
                       "value": "whenNotPaused"
                     },
-                    "id": 1643,
+                    "id": 1640,
                     "name": "Identifier",
                     "src": "5095:13:3"
                   }
                 ],
-                "id": 1644,
+                "id": 1641,
                 "name": "ModifierInvocation",
                 "src": "5095:13:3"
               },
@@ -2598,7 +2598,7 @@ export const DebtKernel =
                   {
                     "attributes": {
                       "assignments": [
-                        1649
+                        1646
                       ]
                     },
                     "children": [
@@ -2606,7 +2606,7 @@ export const DebtKernel =
                         "attributes": {
                           "constant": false,
                           "name": "debtOrder",
-                          "scope": 1794,
+                          "scope": 1791,
                           "stateVariable": false,
                           "storageLocation": "memory",
                           "type": "struct DebtKernel.DebtOrder memory",
@@ -2618,15 +2618,15 @@ export const DebtKernel =
                             "attributes": {
                               "contractScope": null,
                               "name": "DebtOrder",
-                              "referencedDeclaration": 1591,
+                              "referencedDeclaration": 1588,
                               "type": "struct DebtKernel.DebtOrder storage pointer"
                             },
-                            "id": 1648,
+                            "id": 1645,
                             "name": "UserDefinedTypeName",
                             "src": "5162:9:3"
                           }
                         ],
-                        "id": 1649,
+                        "id": 1646,
                         "name": "VariableDeclaration",
                         "src": "5162:26:3"
                       },
@@ -2664,11 +2664,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2457,
+                              "referencedDeclaration": 2454,
                               "type": "function (address[6] memory,uint256[8] memory,bytes32[1] memory) view returns (struct DebtKernel.DebtOrder memory)",
                               "value": "getDebtOrder"
                             },
-                            "id": 1650,
+                            "id": 1647,
                             "name": "Identifier",
                             "src": "5191:12:3"
                           },
@@ -2678,11 +2678,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1621,
+                              "referencedDeclaration": 1618,
                               "type": "address[6] memory",
                               "value": "orderAddresses"
                             },
-                            "id": 1651,
+                            "id": 1648,
                             "name": "Identifier",
                             "src": "5204:14:3"
                           },
@@ -2692,11 +2692,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1625,
+                              "referencedDeclaration": 1622,
                               "type": "uint256[8] memory",
                               "value": "orderValues"
                             },
-                            "id": 1652,
+                            "id": 1649,
                             "name": "Identifier",
                             "src": "5220:11:3"
                           },
@@ -2706,21 +2706,21 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1629,
+                              "referencedDeclaration": 1626,
                               "type": "bytes32[1] memory",
                               "value": "orderBytes32"
                             },
-                            "id": 1653,
+                            "id": 1650,
                             "name": "Identifier",
                             "src": "5233:12:3"
                           }
                         ],
-                        "id": 1654,
+                        "id": 1651,
                         "name": "FunctionCall",
                         "src": "5191:55:3"
                       }
                     ],
-                    "id": 1655,
+                    "id": 1652,
                     "name": "VariableDeclarationStatement",
                     "src": "5162:84:3"
                   },
@@ -2790,18 +2790,18 @@ export const DebtKernel =
                                         "attributes": {
                                           "argumentTypes": [
                                             {
-                                              "typeIdentifier": "t_struct$_DebtOrder_$1591_memory_ptr",
+                                              "typeIdentifier": "t_struct$_DebtOrder_$1588_memory_ptr",
                                               "typeString": "struct DebtKernel.DebtOrder memory"
                                             }
                                           ],
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 2258,
+                                          "referencedDeclaration": 2255,
                                           "type": "function (struct DebtKernel.DebtOrder memory) returns (bool)",
                                           "value": "assertDebtOrderValidityInvariants"
                                         },
-                                        "id": 1656,
+                                        "id": 1653,
                                         "name": "Identifier",
                                         "src": "5313:33:3"
                                       },
@@ -2811,21 +2811,21 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 1649,
+                                          "referencedDeclaration": 1646,
                                           "type": "struct DebtKernel.DebtOrder memory",
                                           "value": "debtOrder"
                                         },
-                                        "id": 1657,
+                                        "id": 1654,
                                         "name": "Identifier",
                                         "src": "5347:9:3"
                                       }
                                     ],
-                                    "id": 1658,
+                                    "id": 1655,
                                     "name": "FunctionCall",
                                     "src": "5313:44:3"
                                   }
                                 ],
-                                "id": 1659,
+                                "id": 1656,
                                 "name": "UnaryOperation",
                                 "src": "5312:45:3"
                               },
@@ -2860,7 +2860,7 @@ export const DebtKernel =
                                         "attributes": {
                                           "argumentTypes": [
                                             {
-                                              "typeIdentifier": "t_struct$_DebtOrder_$1591_memory_ptr",
+                                              "typeIdentifier": "t_struct$_DebtOrder_$1588_memory_ptr",
                                               "typeString": "struct DebtKernel.DebtOrder memory"
                                             },
                                             {
@@ -2883,11 +2883,11 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 2087,
+                                          "referencedDeclaration": 2084,
                                           "type": "function (struct DebtKernel.DebtOrder memory,address,uint8[3] memory,bytes32[3] memory,bytes32[3] memory) returns (bool)",
                                           "value": "assertDebtOrderConsensualityInvariants"
                                         },
-                                        "id": 1660,
+                                        "id": 1657,
                                         "name": "Identifier",
                                         "src": "5374:38:3"
                                       },
@@ -2897,11 +2897,11 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 1649,
+                                          "referencedDeclaration": 1646,
                                           "type": "struct DebtKernel.DebtOrder memory",
                                           "value": "debtOrder"
                                         },
-                                        "id": 1661,
+                                        "id": 1658,
                                         "name": "Identifier",
                                         "src": "5430:9:3"
                                       },
@@ -2911,11 +2911,11 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 1617,
+                                          "referencedDeclaration": 1614,
                                           "type": "address",
                                           "value": "creditor"
                                         },
-                                        "id": 1662,
+                                        "id": 1659,
                                         "name": "Identifier",
                                         "src": "5457:8:3"
                                       },
@@ -2925,11 +2925,11 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 1633,
+                                          "referencedDeclaration": 1630,
                                           "type": "uint8[3] memory",
                                           "value": "signaturesV"
                                         },
-                                        "id": 1663,
+                                        "id": 1660,
                                         "name": "Identifier",
                                         "src": "5483:11:3"
                                       },
@@ -2939,11 +2939,11 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 1637,
+                                          "referencedDeclaration": 1634,
                                           "type": "bytes32[3] memory",
                                           "value": "signaturesR"
                                         },
-                                        "id": 1664,
+                                        "id": 1661,
                                         "name": "Identifier",
                                         "src": "5512:11:3"
                                       },
@@ -2953,26 +2953,26 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 1641,
+                                          "referencedDeclaration": 1638,
                                           "type": "bytes32[3] memory",
                                           "value": "signaturesS"
                                         },
-                                        "id": 1665,
+                                        "id": 1662,
                                         "name": "Identifier",
                                         "src": "5541:11:3"
                                       }
                                     ],
-                                    "id": 1666,
+                                    "id": 1663,
                                     "name": "FunctionCall",
                                     "src": "5374:179:3"
                                   }
                                 ],
-                                "id": 1667,
+                                "id": 1664,
                                 "name": "UnaryOperation",
                                 "src": "5373:180:3"
                               }
                             ],
-                            "id": 1668,
+                            "id": 1665,
                             "name": "BinaryOperation",
                             "src": "5312:241:3"
                           },
@@ -3011,18 +3011,18 @@ export const DebtKernel =
                                           "typeString": "address"
                                         },
                                         {
-                                          "typeIdentifier": "t_struct$_DebtOrder_$1591_memory_ptr",
+                                          "typeIdentifier": "t_struct$_DebtOrder_$1588_memory_ptr",
                                           "typeString": "struct DebtKernel.DebtOrder memory"
                                         }
                                       ],
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2307,
+                                      "referencedDeclaration": 2304,
                                       "type": "function (address,struct DebtKernel.DebtOrder memory) returns (bool)",
                                       "value": "assertExternalBalanceAndAllowanceInvariants"
                                     },
-                                    "id": 1669,
+                                    "id": 1666,
                                     "name": "Identifier",
                                     "src": "5570:43:3"
                                   },
@@ -3032,11 +3032,11 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1617,
+                                      "referencedDeclaration": 1614,
                                       "type": "address",
                                       "value": "creditor"
                                     },
-                                    "id": 1670,
+                                    "id": 1667,
                                     "name": "Identifier",
                                     "src": "5614:8:3"
                                   },
@@ -3046,26 +3046,26 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1649,
+                                      "referencedDeclaration": 1646,
                                       "type": "struct DebtKernel.DebtOrder memory",
                                       "value": "debtOrder"
                                     },
-                                    "id": 1671,
+                                    "id": 1668,
                                     "name": "Identifier",
                                     "src": "5624:9:3"
                                   }
                                 ],
-                                "id": 1672,
+                                "id": 1669,
                                 "name": "FunctionCall",
                                 "src": "5570:64:3"
                               }
                             ],
-                            "id": 1673,
+                            "id": 1670,
                             "name": "UnaryOperation",
                             "src": "5569:65:3"
                           }
                         ],
-                        "id": 1674,
+                        "id": 1671,
                         "name": "BinaryOperation",
                         "src": "5312:322:3"
                       },
@@ -3073,7 +3073,7 @@ export const DebtKernel =
                         "children": [
                           {
                             "attributes": {
-                              "functionReturnParameters": 1647
+                              "functionReturnParameters": 1644
                             },
                             "children": [
                               {
@@ -3082,26 +3082,26 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1508,
+                                  "referencedDeclaration": 1505,
                                   "type": "bytes32",
                                   "value": "NULL_ISSUANCE_HASH"
                                 },
-                                "id": 1675,
+                                "id": 1672,
                                 "name": "Identifier",
                                 "src": "5657:18:3"
                               }
                             ],
-                            "id": 1676,
+                            "id": 1673,
                             "name": "Return",
                             "src": "5650:25:3"
                           }
                         ],
-                        "id": 1677,
+                        "id": 1674,
                         "name": "Block",
                         "src": "5636:50:3"
                       }
                     ],
-                    "id": 1678,
+                    "id": 1675,
                     "name": "IfStatement",
                     "src": "5308:378:3"
                   },
@@ -3130,18 +3130,18 @@ export const DebtKernel =
                                   "typeString": "address"
                                 },
                                 {
-                                  "typeIdentifier": "t_struct$_Issuance_$1570_memory",
+                                  "typeIdentifier": "t_struct$_Issuance_$1567_memory",
                                   "typeString": "struct DebtKernel.Issuance memory"
                                 }
                               ],
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1944,
+                              "referencedDeclaration": 1941,
                               "type": "function (address,struct DebtKernel.Issuance memory) returns (bytes32)",
                               "value": "issueDebtAgreement"
                             },
-                            "id": 1679,
+                            "id": 1676,
                             "name": "Identifier",
                             "src": "5751:18:3"
                           },
@@ -3151,11 +3151,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1617,
+                              "referencedDeclaration": 1614,
                               "type": "address",
                               "value": "creditor"
                             },
-                            "id": 1680,
+                            "id": 1677,
                             "name": "Identifier",
                             "src": "5770:8:3"
                           },
@@ -3167,7 +3167,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "issuance",
-                              "referencedDeclaration": 1572,
+                              "referencedDeclaration": 1569,
                               "type": "struct DebtKernel.Issuance memory"
                             },
                             "children": [
@@ -3177,26 +3177,26 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1649,
+                                  "referencedDeclaration": 1646,
                                   "type": "struct DebtKernel.DebtOrder memory",
                                   "value": "debtOrder"
                                 },
-                                "id": 1681,
+                                "id": 1678,
                                 "name": "Identifier",
                                 "src": "5780:9:3"
                               }
                             ],
-                            "id": 1682,
+                            "id": 1679,
                             "name": "MemberAccess",
                             "src": "5780:18:3"
                           }
                         ],
-                        "id": 1683,
+                        "id": 1680,
                         "name": "FunctionCall",
                         "src": "5751:48:3"
                       }
                     ],
-                    "id": 1684,
+                    "id": 1681,
                     "name": "ExpressionStatement",
                     "src": "5751:48:3"
                   },
@@ -3228,7 +3228,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "termsContract",
-                              "referencedDeclaration": 1563,
+                              "referencedDeclaration": 1560,
                               "type": "address"
                             },
                             "children": [
@@ -3240,7 +3240,7 @@ export const DebtKernel =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "issuance",
-                                  "referencedDeclaration": 1572,
+                                  "referencedDeclaration": 1569,
                                   "type": "struct DebtKernel.Issuance memory"
                                 },
                                 "children": [
@@ -3250,21 +3250,21 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1649,
+                                      "referencedDeclaration": 1646,
                                       "type": "struct DebtKernel.DebtOrder memory",
                                       "value": "debtOrder"
                                     },
-                                    "id": 1685,
+                                    "id": 1682,
                                     "name": "Identifier",
                                     "src": "6106:9:3"
                                   }
                                 ],
-                                "id": 1686,
+                                "id": 1683,
                                 "name": "MemberAccess",
                                 "src": "6106:18:3"
                               }
                             ],
-                            "id": 1687,
+                            "id": 1684,
                             "name": "MemberAccess",
                             "src": "6106:32:3"
                           },
@@ -3298,7 +3298,7 @@ export const DebtKernel =
                                   "type": "type(address)",
                                   "value": "address"
                                 },
-                                "id": 1688,
+                                "id": 1685,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "6142:7:3"
                               },
@@ -3315,17 +3315,17 @@ export const DebtKernel =
                                   "type": "int_const 0",
                                   "value": "0"
                                 },
-                                "id": 1689,
+                                "id": 1686,
                                 "name": "Literal",
                                 "src": "6150:1:3"
                               }
                             ],
-                            "id": 1690,
+                            "id": 1687,
                             "name": "FunctionCall",
                             "src": "6142:10:3"
                           }
                         ],
-                        "id": 1691,
+                        "id": 1688,
                         "name": "BinaryOperation",
                         "src": "6106:46:3"
                       },
@@ -3359,11 +3359,11 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15821,
+                                      "referencedDeclaration": 15818,
                                       "type": "function (bool) pure",
                                       "value": "require"
                                     },
-                                    "id": 1692,
+                                    "id": 1689,
                                     "name": "Identifier",
                                     "src": "6168:7:3"
                                   },
@@ -3399,7 +3399,7 @@ export const DebtKernel =
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "registerTermStart",
-                                          "referencedDeclaration": 4703,
+                                          "referencedDeclaration": 4700,
                                           "type": "function (bytes32,address) external returns (bool)"
                                         },
                                         "children": [
@@ -3429,11 +3429,11 @@ export const DebtKernel =
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 4742,
+                                                  "referencedDeclaration": 4739,
                                                   "type": "type(contract TermsContract)",
                                                   "value": "TermsContract"
                                                 },
-                                                "id": 1693,
+                                                "id": 1690,
                                                 "name": "Identifier",
                                                 "src": "6193:13:3"
                                               },
@@ -3445,7 +3445,7 @@ export const DebtKernel =
                                                   "isPure": false,
                                                   "lValueRequested": false,
                                                   "member_name": "termsContract",
-                                                  "referencedDeclaration": 1563,
+                                                  "referencedDeclaration": 1560,
                                                   "type": "address"
                                                 },
                                                 "children": [
@@ -3457,7 +3457,7 @@ export const DebtKernel =
                                                       "isPure": false,
                                                       "lValueRequested": false,
                                                       "member_name": "issuance",
-                                                      "referencedDeclaration": 1572,
+                                                      "referencedDeclaration": 1569,
                                                       "type": "struct DebtKernel.Issuance memory"
                                                     },
                                                     "children": [
@@ -3467,31 +3467,31 @@ export const DebtKernel =
                                                           "overloadedDeclarations": [
                                                             null
                                                           ],
-                                                          "referencedDeclaration": 1649,
+                                                          "referencedDeclaration": 1646,
                                                           "type": "struct DebtKernel.DebtOrder memory",
                                                           "value": "debtOrder"
                                                         },
-                                                        "id": 1694,
+                                                        "id": 1691,
                                                         "name": "Identifier",
                                                         "src": "6207:9:3"
                                                       }
                                                     ],
-                                                    "id": 1695,
+                                                    "id": 1692,
                                                     "name": "MemberAccess",
                                                     "src": "6207:18:3"
                                                   }
                                                 ],
-                                                "id": 1696,
+                                                "id": 1693,
                                                 "name": "MemberAccess",
                                                 "src": "6207:32:3"
                                               }
                                             ],
-                                            "id": 1697,
+                                            "id": 1694,
                                             "name": "FunctionCall",
                                             "src": "6193:47:3"
                                           }
                                         ],
-                                        "id": 1698,
+                                        "id": 1695,
                                         "name": "MemberAccess",
                                         "src": "6193:86:3"
                                       },
@@ -3503,7 +3503,7 @@ export const DebtKernel =
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "agreementId",
-                                          "referencedDeclaration": 1569,
+                                          "referencedDeclaration": 1566,
                                           "type": "bytes32"
                                         },
                                         "children": [
@@ -3515,7 +3515,7 @@ export const DebtKernel =
                                               "isPure": false,
                                               "lValueRequested": false,
                                               "member_name": "issuance",
-                                              "referencedDeclaration": 1572,
+                                              "referencedDeclaration": 1569,
                                               "type": "struct DebtKernel.Issuance memory"
                                             },
                                             "children": [
@@ -3525,21 +3525,21 @@ export const DebtKernel =
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 1649,
+                                                  "referencedDeclaration": 1646,
                                                   "type": "struct DebtKernel.DebtOrder memory",
                                                   "value": "debtOrder"
                                                 },
-                                                "id": 1699,
+                                                "id": 1696,
                                                 "name": "Identifier",
                                                 "src": "6305:9:3"
                                               }
                                             ],
-                                            "id": 1700,
+                                            "id": 1697,
                                             "name": "MemberAccess",
                                             "src": "6305:18:3"
                                           }
                                         ],
-                                        "id": 1701,
+                                        "id": 1698,
                                         "name": "MemberAccess",
                                         "src": "6305:30:3"
                                       },
@@ -3551,7 +3551,7 @@ export const DebtKernel =
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "debtor",
-                                          "referencedDeclaration": 1557,
+                                          "referencedDeclaration": 1554,
                                           "type": "address"
                                         },
                                         "children": [
@@ -3563,7 +3563,7 @@ export const DebtKernel =
                                               "isPure": false,
                                               "lValueRequested": false,
                                               "member_name": "issuance",
-                                              "referencedDeclaration": 1572,
+                                              "referencedDeclaration": 1569,
                                               "type": "struct DebtKernel.Issuance memory"
                                             },
                                             "children": [
@@ -3573,46 +3573,46 @@ export const DebtKernel =
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 1649,
+                                                  "referencedDeclaration": 1646,
                                                   "type": "struct DebtKernel.DebtOrder memory",
                                                   "value": "debtOrder"
                                                 },
-                                                "id": 1702,
+                                                "id": 1699,
                                                 "name": "Identifier",
                                                 "src": "6361:9:3"
                                               }
                                             ],
-                                            "id": 1703,
+                                            "id": 1700,
                                             "name": "MemberAccess",
                                             "src": "6361:18:3"
                                           }
                                         ],
-                                        "id": 1704,
+                                        "id": 1701,
                                         "name": "MemberAccess",
                                         "src": "6361:25:3"
                                       }
                                     ],
-                                    "id": 1705,
+                                    "id": 1702,
                                     "name": "FunctionCall",
                                     "src": "6193:215:3"
                                   }
                                 ],
-                                "id": 1706,
+                                "id": 1703,
                                 "name": "FunctionCall",
                                 "src": "6168:254:3"
                               }
                             ],
-                            "id": 1707,
+                            "id": 1704,
                             "name": "ExpressionStatement",
                             "src": "6168:254:3"
                           }
                         ],
-                        "id": 1708,
+                        "id": 1705,
                         "name": "Block",
                         "src": "6154:279:3"
                       }
                     ],
-                    "id": 1709,
+                    "id": 1706,
                     "name": "IfStatement",
                     "src": "6102:331:3"
                   },
@@ -3644,7 +3644,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "principalAmount",
-                              "referencedDeclaration": 1578,
+                              "referencedDeclaration": 1575,
                               "type": "uint256"
                             },
                             "children": [
@@ -3654,16 +3654,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1649,
+                                  "referencedDeclaration": 1646,
                                   "type": "struct DebtKernel.DebtOrder memory",
                                   "value": "debtOrder"
                                 },
-                                "id": 1710,
+                                "id": 1707,
                                 "name": "Identifier",
                                 "src": "6487:9:3"
                               }
                             ],
-                            "id": 1711,
+                            "id": 1708,
                             "name": "MemberAccess",
                             "src": "6487:25:3"
                           },
@@ -3680,12 +3680,12 @@ export const DebtKernel =
                               "type": "int_const 0",
                               "value": "0"
                             },
-                            "id": 1712,
+                            "id": 1709,
                             "name": "Literal",
                             "src": "6515:1:3"
                           }
                         ],
-                        "id": 1713,
+                        "id": 1710,
                         "name": "BinaryOperation",
                         "src": "6487:29:3"
                       },
@@ -3719,11 +3719,11 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15821,
+                                      "referencedDeclaration": 15818,
                                       "type": "function (bool) pure",
                                       "value": "require"
                                     },
-                                    "id": 1714,
+                                    "id": 1711,
                                     "name": "Identifier",
                                     "src": "6532:7:3"
                                   },
@@ -3765,11 +3765,11 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 2331,
+                                          "referencedDeclaration": 2328,
                                           "type": "function (address,address,address,uint256) returns (bool)",
                                           "value": "transferTokensFrom"
                                         },
-                                        "id": 1715,
+                                        "id": 1712,
                                         "name": "Identifier",
                                         "src": "6540:18:3"
                                       },
@@ -3781,7 +3781,7 @@ export const DebtKernel =
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "principalToken",
-                                          "referencedDeclaration": 1580,
+                                          "referencedDeclaration": 1577,
                                           "type": "address"
                                         },
                                         "children": [
@@ -3791,16 +3791,16 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1649,
+                                              "referencedDeclaration": 1646,
                                               "type": "struct DebtKernel.DebtOrder memory",
                                               "value": "debtOrder"
                                             },
-                                            "id": 1716,
+                                            "id": 1713,
                                             "name": "Identifier",
                                             "src": "6576:9:3"
                                           }
                                         ],
-                                        "id": 1717,
+                                        "id": 1714,
                                         "name": "MemberAccess",
                                         "src": "6576:24:3"
                                       },
@@ -3810,11 +3810,11 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 1617,
+                                          "referencedDeclaration": 1614,
                                           "type": "address",
                                           "value": "creditor"
                                         },
-                                        "id": 1718,
+                                        "id": 1715,
                                         "name": "Identifier",
                                         "src": "6618:8:3"
                                       },
@@ -3826,7 +3826,7 @@ export const DebtKernel =
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "debtor",
-                                          "referencedDeclaration": 1557,
+                                          "referencedDeclaration": 1554,
                                           "type": "address"
                                         },
                                         "children": [
@@ -3838,7 +3838,7 @@ export const DebtKernel =
                                               "isPure": false,
                                               "lValueRequested": false,
                                               "member_name": "issuance",
-                                              "referencedDeclaration": 1572,
+                                              "referencedDeclaration": 1569,
                                               "type": "struct DebtKernel.Issuance memory"
                                             },
                                             "children": [
@@ -3848,21 +3848,21 @@ export const DebtKernel =
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 1649,
+                                                  "referencedDeclaration": 1646,
                                                   "type": "struct DebtKernel.DebtOrder memory",
                                                   "value": "debtOrder"
                                                 },
-                                                "id": 1719,
+                                                "id": 1716,
                                                 "name": "Identifier",
                                                 "src": "6644:9:3"
                                               }
                                             ],
-                                            "id": 1720,
+                                            "id": 1717,
                                             "name": "MemberAccess",
                                             "src": "6644:18:3"
                                           }
                                         ],
-                                        "id": 1721,
+                                        "id": 1718,
                                         "name": "MemberAccess",
                                         "src": "6644:25:3"
                                       },
@@ -3894,7 +3894,7 @@ export const DebtKernel =
                                               "isPure": false,
                                               "lValueRequested": false,
                                               "member_name": "sub",
-                                              "referencedDeclaration": 14055,
+                                              "referencedDeclaration": 14052,
                                               "type": "function (uint256,uint256) pure returns (uint256)"
                                             },
                                             "children": [
@@ -3906,7 +3906,7 @@ export const DebtKernel =
                                                   "isPure": false,
                                                   "lValueRequested": false,
                                                   "member_name": "principalAmount",
-                                                  "referencedDeclaration": 1578,
+                                                  "referencedDeclaration": 1575,
                                                   "type": "uint256"
                                                 },
                                                 "children": [
@@ -3916,21 +3916,21 @@ export const DebtKernel =
                                                       "overloadedDeclarations": [
                                                         null
                                                       ],
-                                                      "referencedDeclaration": 1649,
+                                                      "referencedDeclaration": 1646,
                                                       "type": "struct DebtKernel.DebtOrder memory",
                                                       "value": "debtOrder"
                                                     },
-                                                    "id": 1722,
+                                                    "id": 1719,
                                                     "name": "Identifier",
                                                     "src": "6687:9:3"
                                                   }
                                                 ],
-                                                "id": 1723,
+                                                "id": 1720,
                                                 "name": "MemberAccess",
                                                 "src": "6687:25:3"
                                               }
                                             ],
-                                            "id": 1724,
+                                            "id": 1721,
                                             "name": "MemberAccess",
                                             "src": "6687:29:3"
                                           },
@@ -3942,7 +3942,7 @@ export const DebtKernel =
                                               "isPure": false,
                                               "lValueRequested": false,
                                               "member_name": "debtorFee",
-                                              "referencedDeclaration": 1584,
+                                              "referencedDeclaration": 1581,
                                               "type": "uint256"
                                             },
                                             "children": [
@@ -3952,46 +3952,46 @@ export const DebtKernel =
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 1649,
+                                                  "referencedDeclaration": 1646,
                                                   "type": "struct DebtKernel.DebtOrder memory",
                                                   "value": "debtOrder"
                                                 },
-                                                "id": 1725,
+                                                "id": 1722,
                                                 "name": "Identifier",
                                                 "src": "6717:9:3"
                                               }
                                             ],
-                                            "id": 1726,
+                                            "id": 1723,
                                             "name": "MemberAccess",
                                             "src": "6717:19:3"
                                           }
                                         ],
-                                        "id": 1727,
+                                        "id": 1724,
                                         "name": "FunctionCall",
                                         "src": "6687:50:3"
                                       }
                                     ],
-                                    "id": 1728,
+                                    "id": 1725,
                                     "name": "FunctionCall",
                                     "src": "6540:211:3"
                                   }
                                 ],
-                                "id": 1729,
+                                "id": 1726,
                                 "name": "FunctionCall",
                                 "src": "6532:220:3"
                               }
                             ],
-                            "id": 1730,
+                            "id": 1727,
                             "name": "ExpressionStatement",
                             "src": "6532:220:3"
                           }
                         ],
-                        "id": 1731,
+                        "id": 1728,
                         "name": "Block",
                         "src": "6518:245:3"
                       }
                     ],
-                    "id": 1732,
+                    "id": 1729,
                     "name": "IfStatement",
                     "src": "6483:280:3"
                   },
@@ -4023,7 +4023,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "underwriterFee",
-                              "referencedDeclaration": 1574,
+                              "referencedDeclaration": 1571,
                               "type": "uint256"
                             },
                             "children": [
@@ -4033,16 +4033,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1649,
+                                  "referencedDeclaration": 1646,
                                   "type": "struct DebtKernel.DebtOrder memory",
                                   "value": "debtOrder"
                                 },
-                                "id": 1733,
+                                "id": 1730,
                                 "name": "Identifier",
                                 "src": "6828:9:3"
                               }
                             ],
-                            "id": 1734,
+                            "id": 1731,
                             "name": "MemberAccess",
                             "src": "6828:24:3"
                           },
@@ -4059,12 +4059,12 @@ export const DebtKernel =
                               "type": "int_const 0",
                               "value": "0"
                             },
-                            "id": 1735,
+                            "id": 1732,
                             "name": "Literal",
                             "src": "6855:1:3"
                           }
                         ],
-                        "id": 1736,
+                        "id": 1733,
                         "name": "BinaryOperation",
                         "src": "6828:28:3"
                       },
@@ -4098,11 +4098,11 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15821,
+                                      "referencedDeclaration": 15818,
                                       "type": "function (bool) pure",
                                       "value": "require"
                                     },
-                                    "id": 1737,
+                                    "id": 1734,
                                     "name": "Identifier",
                                     "src": "6872:7:3"
                                   },
@@ -4144,11 +4144,11 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 2331,
+                                          "referencedDeclaration": 2328,
                                           "type": "function (address,address,address,uint256) returns (bool)",
                                           "value": "transferTokensFrom"
                                         },
-                                        "id": 1738,
+                                        "id": 1735,
                                         "name": "Identifier",
                                         "src": "6880:18:3"
                                       },
@@ -4160,7 +4160,7 @@ export const DebtKernel =
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "principalToken",
-                                          "referencedDeclaration": 1580,
+                                          "referencedDeclaration": 1577,
                                           "type": "address"
                                         },
                                         "children": [
@@ -4170,16 +4170,16 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1649,
+                                              "referencedDeclaration": 1646,
                                               "type": "struct DebtKernel.DebtOrder memory",
                                               "value": "debtOrder"
                                             },
-                                            "id": 1739,
+                                            "id": 1736,
                                             "name": "Identifier",
                                             "src": "6916:9:3"
                                           }
                                         ],
-                                        "id": 1740,
+                                        "id": 1737,
                                         "name": "MemberAccess",
                                         "src": "6916:24:3"
                                       },
@@ -4189,11 +4189,11 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 1617,
+                                          "referencedDeclaration": 1614,
                                           "type": "address",
                                           "value": "creditor"
                                         },
-                                        "id": 1741,
+                                        "id": 1738,
                                         "name": "Identifier",
                                         "src": "6958:8:3"
                                       },
@@ -4205,7 +4205,7 @@ export const DebtKernel =
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "underwriter",
-                                          "referencedDeclaration": 1559,
+                                          "referencedDeclaration": 1556,
                                           "type": "address"
                                         },
                                         "children": [
@@ -4217,7 +4217,7 @@ export const DebtKernel =
                                               "isPure": false,
                                               "lValueRequested": false,
                                               "member_name": "issuance",
-                                              "referencedDeclaration": 1572,
+                                              "referencedDeclaration": 1569,
                                               "type": "struct DebtKernel.Issuance memory"
                                             },
                                             "children": [
@@ -4227,21 +4227,21 @@ export const DebtKernel =
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 1649,
+                                                  "referencedDeclaration": 1646,
                                                   "type": "struct DebtKernel.DebtOrder memory",
                                                   "value": "debtOrder"
                                                 },
-                                                "id": 1742,
+                                                "id": 1739,
                                                 "name": "Identifier",
                                                 "src": "6984:9:3"
                                               }
                                             ],
-                                            "id": 1743,
+                                            "id": 1740,
                                             "name": "MemberAccess",
                                             "src": "6984:18:3"
                                           }
                                         ],
-                                        "id": 1744,
+                                        "id": 1741,
                                         "name": "MemberAccess",
                                         "src": "6984:30:3"
                                       },
@@ -4253,7 +4253,7 @@ export const DebtKernel =
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "underwriterFee",
-                                          "referencedDeclaration": 1574,
+                                          "referencedDeclaration": 1571,
                                           "type": "uint256"
                                         },
                                         "children": [
@@ -4263,41 +4263,41 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1649,
+                                              "referencedDeclaration": 1646,
                                               "type": "struct DebtKernel.DebtOrder memory",
                                               "value": "debtOrder"
                                             },
-                                            "id": 1745,
+                                            "id": 1742,
                                             "name": "Identifier",
                                             "src": "7032:9:3"
                                           }
                                         ],
-                                        "id": 1746,
+                                        "id": 1743,
                                         "name": "MemberAccess",
                                         "src": "7032:24:3"
                                       }
                                     ],
-                                    "id": 1747,
+                                    "id": 1744,
                                     "name": "FunctionCall",
                                     "src": "6880:190:3"
                                   }
                                 ],
-                                "id": 1748,
+                                "id": 1745,
                                 "name": "FunctionCall",
                                 "src": "6872:199:3"
                               }
                             ],
-                            "id": 1749,
+                            "id": 1746,
                             "name": "ExpressionStatement",
                             "src": "6872:199:3"
                           }
                         ],
-                        "id": 1750,
+                        "id": 1747,
                         "name": "Block",
                         "src": "6858:224:3"
                       }
                     ],
-                    "id": 1751,
+                    "id": 1748,
                     "name": "IfStatement",
                     "src": "6824:258:3"
                   },
@@ -4329,7 +4329,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "relayerFee",
-                              "referencedDeclaration": 1576,
+                              "referencedDeclaration": 1573,
                               "type": "uint256"
                             },
                             "children": [
@@ -4339,16 +4339,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1649,
+                                  "referencedDeclaration": 1646,
                                   "type": "struct DebtKernel.DebtOrder memory",
                                   "value": "debtOrder"
                                 },
-                                "id": 1752,
+                                "id": 1749,
                                 "name": "Identifier",
                                 "src": "7139:9:3"
                               }
                             ],
-                            "id": 1753,
+                            "id": 1750,
                             "name": "MemberAccess",
                             "src": "7139:20:3"
                           },
@@ -4365,12 +4365,12 @@ export const DebtKernel =
                               "type": "int_const 0",
                               "value": "0"
                             },
-                            "id": 1754,
+                            "id": 1751,
                             "name": "Literal",
                             "src": "7162:1:3"
                           }
                         ],
-                        "id": 1755,
+                        "id": 1752,
                         "name": "BinaryOperation",
                         "src": "7139:24:3"
                       },
@@ -4404,11 +4404,11 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15821,
+                                      "referencedDeclaration": 15818,
                                       "type": "function (bool) pure",
                                       "value": "require"
                                     },
-                                    "id": 1756,
+                                    "id": 1753,
                                     "name": "Identifier",
                                     "src": "7179:7:3"
                                   },
@@ -4450,11 +4450,11 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 2331,
+                                          "referencedDeclaration": 2328,
                                           "type": "function (address,address,address,uint256) returns (bool)",
                                           "value": "transferTokensFrom"
                                         },
-                                        "id": 1757,
+                                        "id": 1754,
                                         "name": "Identifier",
                                         "src": "7187:18:3"
                                       },
@@ -4466,7 +4466,7 @@ export const DebtKernel =
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "principalToken",
-                                          "referencedDeclaration": 1580,
+                                          "referencedDeclaration": 1577,
                                           "type": "address"
                                         },
                                         "children": [
@@ -4476,16 +4476,16 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1649,
+                                              "referencedDeclaration": 1646,
                                               "type": "struct DebtKernel.DebtOrder memory",
                                               "value": "debtOrder"
                                             },
-                                            "id": 1758,
+                                            "id": 1755,
                                             "name": "Identifier",
                                             "src": "7223:9:3"
                                           }
                                         ],
-                                        "id": 1759,
+                                        "id": 1756,
                                         "name": "MemberAccess",
                                         "src": "7223:24:3"
                                       },
@@ -4495,11 +4495,11 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 1617,
+                                          "referencedDeclaration": 1614,
                                           "type": "address",
                                           "value": "creditor"
                                         },
-                                        "id": 1760,
+                                        "id": 1757,
                                         "name": "Identifier",
                                         "src": "7265:8:3"
                                       },
@@ -4511,7 +4511,7 @@ export const DebtKernel =
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "relayer",
-                                          "referencedDeclaration": 1586,
+                                          "referencedDeclaration": 1583,
                                           "type": "address"
                                         },
                                         "children": [
@@ -4521,16 +4521,16 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1649,
+                                              "referencedDeclaration": 1646,
                                               "type": "struct DebtKernel.DebtOrder memory",
                                               "value": "debtOrder"
                                             },
-                                            "id": 1761,
+                                            "id": 1758,
                                             "name": "Identifier",
                                             "src": "7291:9:3"
                                           }
                                         ],
-                                        "id": 1762,
+                                        "id": 1759,
                                         "name": "MemberAccess",
                                         "src": "7291:17:3"
                                       },
@@ -4542,7 +4542,7 @@ export const DebtKernel =
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "relayerFee",
-                                          "referencedDeclaration": 1576,
+                                          "referencedDeclaration": 1573,
                                           "type": "uint256"
                                         },
                                         "children": [
@@ -4552,41 +4552,41 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1649,
+                                              "referencedDeclaration": 1646,
                                               "type": "struct DebtKernel.DebtOrder memory",
                                               "value": "debtOrder"
                                             },
-                                            "id": 1763,
+                                            "id": 1760,
                                             "name": "Identifier",
                                             "src": "7326:9:3"
                                           }
                                         ],
-                                        "id": 1764,
+                                        "id": 1761,
                                         "name": "MemberAccess",
                                         "src": "7326:20:3"
                                       }
                                     ],
-                                    "id": 1765,
+                                    "id": 1762,
                                     "name": "FunctionCall",
                                     "src": "7187:173:3"
                                   }
                                 ],
-                                "id": 1766,
+                                "id": 1763,
                                 "name": "FunctionCall",
                                 "src": "7179:182:3"
                               }
                             ],
-                            "id": 1767,
+                            "id": 1764,
                             "name": "ExpressionStatement",
                             "src": "7179:182:3"
                           }
                         ],
-                        "id": 1768,
+                        "id": 1765,
                         "name": "Block",
                         "src": "7165:207:3"
                       }
                     ],
-                    "id": 1769,
+                    "id": 1766,
                     "name": "IfStatement",
                     "src": "7135:237:3"
                   },
@@ -4642,11 +4642,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1535,
+                              "referencedDeclaration": 1532,
                               "type": "function (bytes32,uint256,address,address,uint256,address,uint256)",
                               "value": "LogDebtOrderFilled"
                             },
-                            "id": 1770,
+                            "id": 1767,
                             "name": "Identifier",
                             "src": "7382:18:3"
                           },
@@ -4658,7 +4658,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "agreementId",
-                              "referencedDeclaration": 1569,
+                              "referencedDeclaration": 1566,
                               "type": "bytes32"
                             },
                             "children": [
@@ -4670,7 +4670,7 @@ export const DebtKernel =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "issuance",
-                                  "referencedDeclaration": 1572,
+                                  "referencedDeclaration": 1569,
                                   "type": "struct DebtKernel.Issuance memory"
                                 },
                                 "children": [
@@ -4680,21 +4680,21 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1649,
+                                      "referencedDeclaration": 1646,
                                       "type": "struct DebtKernel.DebtOrder memory",
                                       "value": "debtOrder"
                                     },
-                                    "id": 1771,
+                                    "id": 1768,
                                     "name": "Identifier",
                                     "src": "7414:9:3"
                                   }
                                 ],
-                                "id": 1772,
+                                "id": 1769,
                                 "name": "MemberAccess",
                                 "src": "7414:18:3"
                               }
                             ],
-                            "id": 1773,
+                            "id": 1770,
                             "name": "MemberAccess",
                             "src": "7414:30:3"
                           },
@@ -4706,7 +4706,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "principalAmount",
-                              "referencedDeclaration": 1578,
+                              "referencedDeclaration": 1575,
                               "type": "uint256"
                             },
                             "children": [
@@ -4716,16 +4716,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1649,
+                                  "referencedDeclaration": 1646,
                                   "type": "struct DebtKernel.DebtOrder memory",
                                   "value": "debtOrder"
                                 },
-                                "id": 1774,
+                                "id": 1771,
                                 "name": "Identifier",
                                 "src": "7458:9:3"
                               }
                             ],
-                            "id": 1775,
+                            "id": 1772,
                             "name": "MemberAccess",
                             "src": "7458:25:3"
                           },
@@ -4737,7 +4737,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "principalToken",
-                              "referencedDeclaration": 1580,
+                              "referencedDeclaration": 1577,
                               "type": "address"
                             },
                             "children": [
@@ -4747,16 +4747,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1649,
+                                  "referencedDeclaration": 1646,
                                   "type": "struct DebtKernel.DebtOrder memory",
                                   "value": "debtOrder"
                                 },
-                                "id": 1776,
+                                "id": 1773,
                                 "name": "Identifier",
                                 "src": "7497:9:3"
                               }
                             ],
-                            "id": 1777,
+                            "id": 1774,
                             "name": "MemberAccess",
                             "src": "7497:24:3"
                           },
@@ -4768,7 +4768,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "underwriter",
-                              "referencedDeclaration": 1559,
+                              "referencedDeclaration": 1556,
                               "type": "address"
                             },
                             "children": [
@@ -4780,7 +4780,7 @@ export const DebtKernel =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "issuance",
-                                  "referencedDeclaration": 1572,
+                                  "referencedDeclaration": 1569,
                                   "type": "struct DebtKernel.Issuance memory"
                                 },
                                 "children": [
@@ -4790,21 +4790,21 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1649,
+                                      "referencedDeclaration": 1646,
                                       "type": "struct DebtKernel.DebtOrder memory",
                                       "value": "debtOrder"
                                     },
-                                    "id": 1778,
+                                    "id": 1775,
                                     "name": "Identifier",
                                     "src": "7535:9:3"
                                   }
                                 ],
-                                "id": 1779,
+                                "id": 1776,
                                 "name": "MemberAccess",
                                 "src": "7535:18:3"
                               }
                             ],
-                            "id": 1780,
+                            "id": 1777,
                             "name": "MemberAccess",
                             "src": "7535:30:3"
                           },
@@ -4816,7 +4816,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "underwriterFee",
-                              "referencedDeclaration": 1574,
+                              "referencedDeclaration": 1571,
                               "type": "uint256"
                             },
                             "children": [
@@ -4826,16 +4826,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1649,
+                                  "referencedDeclaration": 1646,
                                   "type": "struct DebtKernel.DebtOrder memory",
                                   "value": "debtOrder"
                                 },
-                                "id": 1781,
+                                "id": 1778,
                                 "name": "Identifier",
                                 "src": "7579:9:3"
                               }
                             ],
-                            "id": 1782,
+                            "id": 1779,
                             "name": "MemberAccess",
                             "src": "7579:24:3"
                           },
@@ -4847,7 +4847,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "relayer",
-                              "referencedDeclaration": 1586,
+                              "referencedDeclaration": 1583,
                               "type": "address"
                             },
                             "children": [
@@ -4857,16 +4857,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1649,
+                                  "referencedDeclaration": 1646,
                                   "type": "struct DebtKernel.DebtOrder memory",
                                   "value": "debtOrder"
                                 },
-                                "id": 1783,
+                                "id": 1780,
                                 "name": "Identifier",
                                 "src": "7617:9:3"
                               }
                             ],
-                            "id": 1784,
+                            "id": 1781,
                             "name": "MemberAccess",
                             "src": "7617:17:3"
                           },
@@ -4878,7 +4878,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "relayerFee",
-                              "referencedDeclaration": 1576,
+                              "referencedDeclaration": 1573,
                               "type": "uint256"
                             },
                             "children": [
@@ -4888,32 +4888,32 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1649,
+                                  "referencedDeclaration": 1646,
                                   "type": "struct DebtKernel.DebtOrder memory",
                                   "value": "debtOrder"
                                 },
-                                "id": 1785,
+                                "id": 1782,
                                 "name": "Identifier",
                                 "src": "7648:9:3"
                               }
                             ],
-                            "id": 1786,
+                            "id": 1783,
                             "name": "MemberAccess",
                             "src": "7648:20:3"
                           }
                         ],
-                        "id": 1787,
+                        "id": 1784,
                         "name": "FunctionCall",
                         "src": "7382:296:3"
                       }
                     ],
-                    "id": 1788,
+                    "id": 1785,
                     "name": "ExpressionStatement",
                     "src": "7382:296:3"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 1647
+                      "functionReturnParameters": 1644
                     },
                     "children": [
                       {
@@ -4924,7 +4924,7 @@ export const DebtKernel =
                           "isPure": false,
                           "lValueRequested": false,
                           "member_name": "agreementId",
-                          "referencedDeclaration": 1569,
+                          "referencedDeclaration": 1566,
                           "type": "bytes32"
                         },
                         "children": [
@@ -4936,7 +4936,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "issuance",
-                              "referencedDeclaration": 1572,
+                              "referencedDeclaration": 1569,
                               "type": "struct DebtKernel.Issuance memory"
                             },
                             "children": [
@@ -4946,36 +4946,36 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1649,
+                                  "referencedDeclaration": 1646,
                                   "type": "struct DebtKernel.DebtOrder memory",
                                   "value": "debtOrder"
                                 },
-                                "id": 1789,
+                                "id": 1786,
                                 "name": "Identifier",
                                 "src": "7696:9:3"
                               }
                             ],
-                            "id": 1790,
+                            "id": 1787,
                             "name": "MemberAccess",
                             "src": "7696:18:3"
                           }
                         ],
-                        "id": 1791,
+                        "id": 1788,
                         "name": "MemberAccess",
                         "src": "7696:30:3"
                       }
                     ],
-                    "id": 1792,
+                    "id": 1789,
                     "name": "Return",
                     "src": "7689:37:3"
                   }
                 ],
-                "id": 1793,
+                "id": 1790,
                 "name": "Block",
                 "src": "5152:2581:3"
               }
             ],
-            "id": 1794,
+            "id": 1791,
             "name": "FunctionDefinition",
             "src": "4826:2907:3"
           },
@@ -4986,7 +4986,7 @@ export const DebtKernel =
               "isConstructor": false,
               "name": "cancelIssuance",
               "payable": false,
-              "scope": 2615,
+              "scope": 2612,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -4998,7 +4998,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "version",
-                      "scope": 1852,
+                      "scope": 1849,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -5011,12 +5011,12 @@ export const DebtKernel =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 1795,
+                        "id": 1792,
                         "name": "ElementaryTypeName",
                         "src": "7939:7:3"
                       }
                     ],
-                    "id": 1796,
+                    "id": 1793,
                     "name": "VariableDeclaration",
                     "src": "7939:15:3"
                   },
@@ -5024,7 +5024,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "debtor",
-                      "scope": 1852,
+                      "scope": 1849,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -5037,12 +5037,12 @@ export const DebtKernel =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 1797,
+                        "id": 1794,
                         "name": "ElementaryTypeName",
                         "src": "7964:7:3"
                       }
                     ],
-                    "id": 1798,
+                    "id": 1795,
                     "name": "VariableDeclaration",
                     "src": "7964:14:3"
                   },
@@ -5050,7 +5050,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "termsContract",
-                      "scope": 1852,
+                      "scope": 1849,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -5063,12 +5063,12 @@ export const DebtKernel =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 1799,
+                        "id": 1796,
                         "name": "ElementaryTypeName",
                         "src": "7988:7:3"
                       }
                     ],
-                    "id": 1800,
+                    "id": 1797,
                     "name": "VariableDeclaration",
                     "src": "7988:21:3"
                   },
@@ -5076,7 +5076,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "termsContractParameters",
-                      "scope": 1852,
+                      "scope": 1849,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -5089,12 +5089,12 @@ export const DebtKernel =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 1801,
+                        "id": 1798,
                         "name": "ElementaryTypeName",
                         "src": "8019:7:3"
                       }
                     ],
-                    "id": 1802,
+                    "id": 1799,
                     "name": "VariableDeclaration",
                     "src": "8019:31:3"
                   },
@@ -5102,7 +5102,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "underwriter",
-                      "scope": 1852,
+                      "scope": 1849,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -5115,12 +5115,12 @@ export const DebtKernel =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 1803,
+                        "id": 1800,
                         "name": "ElementaryTypeName",
                         "src": "8060:7:3"
                       }
                     ],
-                    "id": 1804,
+                    "id": 1801,
                     "name": "VariableDeclaration",
                     "src": "8060:19:3"
                   },
@@ -5128,7 +5128,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "underwriterRiskRating",
-                      "scope": 1852,
+                      "scope": 1849,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -5141,12 +5141,12 @@ export const DebtKernel =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 1805,
+                        "id": 1802,
                         "name": "ElementaryTypeName",
                         "src": "8089:4:3"
                       }
                     ],
-                    "id": 1806,
+                    "id": 1803,
                     "name": "VariableDeclaration",
                     "src": "8089:26:3"
                   },
@@ -5154,7 +5154,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "salt",
-                      "scope": 1852,
+                      "scope": 1849,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -5167,17 +5167,17 @@ export const DebtKernel =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 1807,
+                        "id": 1804,
                         "name": "ElementaryTypeName",
                         "src": "8125:4:3"
                       }
                     ],
-                    "id": 1808,
+                    "id": 1805,
                     "name": "VariableDeclaration",
                     "src": "8125:9:3"
                   }
                 ],
-                "id": 1809,
+                "id": 1806,
                 "name": "ParameterList",
                 "src": "7929:211:3"
               },
@@ -5188,7 +5188,7 @@ export const DebtKernel =
                   ]
                 },
                 "children": [],
-                "id": 1812,
+                "id": 1809,
                 "name": "ParameterList",
                 "src": "8182:0:3"
               },
@@ -5205,16 +5205,16 @@ export const DebtKernel =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13943,
+                      "referencedDeclaration": 13940,
                       "type": "modifier ()",
                       "value": "whenNotPaused"
                     },
-                    "id": 1810,
+                    "id": 1807,
                     "name": "Identifier",
                     "src": "8164:13:3"
                   }
                 ],
-                "id": 1811,
+                "id": 1808,
                 "name": "ModifierInvocation",
                 "src": "8164:13:3"
               },
@@ -5248,11 +5248,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15821,
+                              "referencedDeclaration": 15818,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 1813,
+                            "id": 1810,
                             "name": "Identifier",
                             "src": "8192:7:3"
                           },
@@ -5304,16 +5304,16 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 15818,
+                                          "referencedDeclaration": 15815,
                                           "type": "msg",
                                           "value": "msg"
                                         },
-                                        "id": 1814,
+                                        "id": 1811,
                                         "name": "Identifier",
                                         "src": "8200:3:3"
                                       }
                                     ],
-                                    "id": 1815,
+                                    "id": 1812,
                                     "name": "MemberAccess",
                                     "src": "8200:10:3"
                                   },
@@ -5323,16 +5323,16 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1798,
+                                      "referencedDeclaration": 1795,
                                       "type": "address",
                                       "value": "debtor"
                                     },
-                                    "id": 1816,
+                                    "id": 1813,
                                     "name": "Identifier",
                                     "src": "8214:6:3"
                                   }
                                 ],
-                                "id": 1817,
+                                "id": 1814,
                                 "name": "BinaryOperation",
                                 "src": "8200:20:3"
                               },
@@ -5369,16 +5369,16 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 15818,
+                                          "referencedDeclaration": 15815,
                                           "type": "msg",
                                           "value": "msg"
                                         },
-                                        "id": 1818,
+                                        "id": 1815,
                                         "name": "Identifier",
                                         "src": "8224:3:3"
                                       }
                                     ],
-                                    "id": 1819,
+                                    "id": 1816,
                                     "name": "MemberAccess",
                                     "src": "8224:10:3"
                                   },
@@ -5388,38 +5388,38 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1804,
+                                      "referencedDeclaration": 1801,
                                       "type": "address",
                                       "value": "underwriter"
                                     },
-                                    "id": 1820,
+                                    "id": 1817,
                                     "name": "Identifier",
                                     "src": "8238:11:3"
                                   }
                                 ],
-                                "id": 1821,
+                                "id": 1818,
                                 "name": "BinaryOperation",
                                 "src": "8224:25:3"
                               }
                             ],
-                            "id": 1822,
+                            "id": 1819,
                             "name": "BinaryOperation",
                             "src": "8200:49:3"
                           }
                         ],
-                        "id": 1823,
+                        "id": 1820,
                         "name": "FunctionCall",
                         "src": "8192:58:3"
                       }
                     ],
-                    "id": 1824,
+                    "id": 1821,
                     "name": "ExpressionStatement",
                     "src": "8192:58:3"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        1826
+                        1823
                       ]
                     },
                     "children": [
@@ -5427,7 +5427,7 @@ export const DebtKernel =
                         "attributes": {
                           "constant": false,
                           "name": "issuance",
-                          "scope": 1852,
+                          "scope": 1849,
                           "stateVariable": false,
                           "storageLocation": "memory",
                           "type": "struct DebtKernel.Issuance memory",
@@ -5439,15 +5439,15 @@ export const DebtKernel =
                             "attributes": {
                               "contractScope": null,
                               "name": "Issuance",
-                              "referencedDeclaration": 1570,
+                              "referencedDeclaration": 1567,
                               "type": "struct DebtKernel.Issuance storage pointer"
                             },
-                            "id": 1825,
+                            "id": 1822,
                             "name": "UserDefinedTypeName",
                             "src": "8261:8:3"
                           }
                         ],
-                        "id": 1826,
+                        "id": 1823,
                         "name": "VariableDeclaration",
                         "src": "8261:24:3"
                       },
@@ -5501,11 +5501,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2374,
+                              "referencedDeclaration": 2371,
                               "type": "function (address,address,address,address,uint256,uint256,bytes32) pure returns (struct DebtKernel.Issuance memory)",
                               "value": "getIssuance"
                             },
-                            "id": 1827,
+                            "id": 1824,
                             "name": "Identifier",
                             "src": "8288:11:3"
                           },
@@ -5515,11 +5515,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1796,
+                              "referencedDeclaration": 1793,
                               "type": "address",
                               "value": "version"
                             },
-                            "id": 1828,
+                            "id": 1825,
                             "name": "Identifier",
                             "src": "8313:7:3"
                           },
@@ -5529,11 +5529,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1798,
+                              "referencedDeclaration": 1795,
                               "type": "address",
                               "value": "debtor"
                             },
-                            "id": 1829,
+                            "id": 1826,
                             "name": "Identifier",
                             "src": "8334:6:3"
                           },
@@ -5543,11 +5543,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1804,
+                              "referencedDeclaration": 1801,
                               "type": "address",
                               "value": "underwriter"
                             },
-                            "id": 1830,
+                            "id": 1827,
                             "name": "Identifier",
                             "src": "8354:11:3"
                           },
@@ -5557,11 +5557,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1800,
+                              "referencedDeclaration": 1797,
                               "type": "address",
                               "value": "termsContract"
                             },
-                            "id": 1831,
+                            "id": 1828,
                             "name": "Identifier",
                             "src": "8379:13:3"
                           },
@@ -5571,11 +5571,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1806,
+                              "referencedDeclaration": 1803,
                               "type": "uint256",
                               "value": "underwriterRiskRating"
                             },
-                            "id": 1832,
+                            "id": 1829,
                             "name": "Identifier",
                             "src": "8406:21:3"
                           },
@@ -5585,11 +5585,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1808,
+                              "referencedDeclaration": 1805,
                               "type": "uint256",
                               "value": "salt"
                             },
-                            "id": 1833,
+                            "id": 1830,
                             "name": "Identifier",
                             "src": "8441:4:3"
                           },
@@ -5599,21 +5599,21 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1802,
+                              "referencedDeclaration": 1799,
                               "type": "bytes32",
                               "value": "termsContractParameters"
                             },
-                            "id": 1834,
+                            "id": 1831,
                             "name": "Identifier",
                             "src": "8459:23:3"
                           }
                         ],
-                        "id": 1835,
+                        "id": 1832,
                         "name": "FunctionCall",
                         "src": "8288:204:3"
                       }
                     ],
-                    "id": 1836,
+                    "id": 1833,
                     "name": "VariableDeclarationStatement",
                     "src": "8261:231:3"
                   },
@@ -5646,11 +5646,11 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1515,
+                                  "referencedDeclaration": 1512,
                                   "type": "mapping(bytes32 => bool)",
                                   "value": "issuanceCancelled"
                                 },
-                                "id": 1837,
+                                "id": 1834,
                                 "name": "Identifier",
                                 "src": "8503:17:3"
                               },
@@ -5662,7 +5662,7 @@ export const DebtKernel =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "agreementId",
-                                  "referencedDeclaration": 1569,
+                                  "referencedDeclaration": 1566,
                                   "type": "bytes32"
                                 },
                                 "children": [
@@ -5672,21 +5672,21 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1826,
+                                      "referencedDeclaration": 1823,
                                       "type": "struct DebtKernel.Issuance memory",
                                       "value": "issuance"
                                     },
-                                    "id": 1838,
+                                    "id": 1835,
                                     "name": "Identifier",
                                     "src": "8521:8:3"
                                   }
                                 ],
-                                "id": 1839,
+                                "id": 1836,
                                 "name": "MemberAccess",
                                 "src": "8521:20:3"
                               }
                             ],
-                            "id": 1840,
+                            "id": 1837,
                             "name": "IndexAccess",
                             "src": "8503:39:3"
                           },
@@ -5703,17 +5703,17 @@ export const DebtKernel =
                               "type": "bool",
                               "value": "true"
                             },
-                            "id": 1841,
+                            "id": 1838,
                             "name": "Literal",
                             "src": "8545:4:3"
                           }
                         ],
-                        "id": 1842,
+                        "id": 1839,
                         "name": "Assignment",
                         "src": "8503:46:3"
                       }
                     ],
-                    "id": 1843,
+                    "id": 1840,
                     "name": "ExpressionStatement",
                     "src": "8503:46:3"
                   },
@@ -5749,11 +5749,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1541,
+                              "referencedDeclaration": 1538,
                               "type": "function (bytes32,address)",
                               "value": "LogIssuanceCancelled"
                             },
-                            "id": 1844,
+                            "id": 1841,
                             "name": "Identifier",
                             "src": "8560:20:3"
                           },
@@ -5765,7 +5765,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "agreementId",
-                              "referencedDeclaration": 1569,
+                              "referencedDeclaration": 1566,
                               "type": "bytes32"
                             },
                             "children": [
@@ -5775,16 +5775,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1826,
+                                  "referencedDeclaration": 1823,
                                   "type": "struct DebtKernel.Issuance memory",
                                   "value": "issuance"
                                 },
-                                "id": 1845,
+                                "id": 1842,
                                 "name": "Identifier",
                                 "src": "8581:8:3"
                               }
                             ],
-                            "id": 1846,
+                            "id": 1843,
                             "name": "MemberAccess",
                             "src": "8581:20:3"
                           },
@@ -5806,36 +5806,36 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15818,
+                                  "referencedDeclaration": 15815,
                                   "type": "msg",
                                   "value": "msg"
                                 },
-                                "id": 1847,
+                                "id": 1844,
                                 "name": "Identifier",
                                 "src": "8603:3:3"
                               }
                             ],
-                            "id": 1848,
+                            "id": 1845,
                             "name": "MemberAccess",
                             "src": "8603:10:3"
                           }
                         ],
-                        "id": 1849,
+                        "id": 1846,
                         "name": "FunctionCall",
                         "src": "8560:54:3"
                       }
                     ],
-                    "id": 1850,
+                    "id": 1847,
                     "name": "ExpressionStatement",
                     "src": "8560:54:3"
                   }
                 ],
-                "id": 1851,
+                "id": 1848,
                 "name": "Block",
                 "src": "8182:439:3"
               }
             ],
-            "id": 1852,
+            "id": 1849,
             "name": "FunctionDefinition",
             "src": "7906:715:3"
           },
@@ -5846,7 +5846,7 @@ export const DebtKernel =
               "isConstructor": false,
               "name": "cancelDebtOrder",
               "payable": false,
-              "scope": 2615,
+              "scope": 2612,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -5858,7 +5858,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "orderAddresses",
-                      "scope": 1901,
+                      "scope": 1898,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address[6] memory",
@@ -5876,7 +5876,7 @@ export const DebtKernel =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 1853,
+                            "id": 1850,
                             "name": "ElementaryTypeName",
                             "src": "8816:7:3"
                           },
@@ -5893,17 +5893,17 @@ export const DebtKernel =
                               "type": "int_const 6",
                               "value": "6"
                             },
-                            "id": 1854,
+                            "id": 1851,
                             "name": "Literal",
                             "src": "8824:1:3"
                           }
                         ],
-                        "id": 1855,
+                        "id": 1852,
                         "name": "ArrayTypeName",
                         "src": "8816:10:3"
                       }
                     ],
-                    "id": 1856,
+                    "id": 1853,
                     "name": "VariableDeclaration",
                     "src": "8816:25:3"
                   },
@@ -5911,7 +5911,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "orderValues",
-                      "scope": 1901,
+                      "scope": 1898,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256[8] memory",
@@ -5929,7 +5929,7 @@ export const DebtKernel =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 1857,
+                            "id": 1854,
                             "name": "ElementaryTypeName",
                             "src": "8851:4:3"
                           },
@@ -5946,17 +5946,17 @@ export const DebtKernel =
                               "type": "int_const 8",
                               "value": "8"
                             },
-                            "id": 1858,
+                            "id": 1855,
                             "name": "Literal",
                             "src": "8856:1:3"
                           }
                         ],
-                        "id": 1859,
+                        "id": 1856,
                         "name": "ArrayTypeName",
                         "src": "8851:7:3"
                       }
                     ],
-                    "id": 1860,
+                    "id": 1857,
                     "name": "VariableDeclaration",
                     "src": "8851:19:3"
                   },
@@ -5964,7 +5964,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "orderBytes32",
-                      "scope": 1901,
+                      "scope": 1898,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32[1] memory",
@@ -5982,7 +5982,7 @@ export const DebtKernel =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 1861,
+                            "id": 1858,
                             "name": "ElementaryTypeName",
                             "src": "8880:7:3"
                           },
@@ -5999,22 +5999,22 @@ export const DebtKernel =
                               "type": "int_const 1",
                               "value": "1"
                             },
-                            "id": 1862,
+                            "id": 1859,
                             "name": "Literal",
                             "src": "8888:1:3"
                           }
                         ],
-                        "id": 1863,
+                        "id": 1860,
                         "name": "ArrayTypeName",
                         "src": "8880:10:3"
                       }
                     ],
-                    "id": 1864,
+                    "id": 1861,
                     "name": "VariableDeclaration",
                     "src": "8880:23:3"
                   }
                 ],
-                "id": 1865,
+                "id": 1862,
                 "name": "ParameterList",
                 "src": "8806:103:3"
               },
@@ -6025,7 +6025,7 @@ export const DebtKernel =
                   ]
                 },
                 "children": [],
-                "id": 1868,
+                "id": 1865,
                 "name": "ParameterList",
                 "src": "8951:0:3"
               },
@@ -6042,16 +6042,16 @@ export const DebtKernel =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13943,
+                      "referencedDeclaration": 13940,
                       "type": "modifier ()",
                       "value": "whenNotPaused"
                     },
-                    "id": 1866,
+                    "id": 1863,
                     "name": "Identifier",
                     "src": "8933:13:3"
                   }
                 ],
-                "id": 1867,
+                "id": 1864,
                 "name": "ModifierInvocation",
                 "src": "8933:13:3"
               },
@@ -6060,7 +6060,7 @@ export const DebtKernel =
                   {
                     "attributes": {
                       "assignments": [
-                        1870
+                        1867
                       ]
                     },
                     "children": [
@@ -6068,7 +6068,7 @@ export const DebtKernel =
                         "attributes": {
                           "constant": false,
                           "name": "debtOrder",
-                          "scope": 1901,
+                          "scope": 1898,
                           "stateVariable": false,
                           "storageLocation": "memory",
                           "type": "struct DebtKernel.DebtOrder memory",
@@ -6080,15 +6080,15 @@ export const DebtKernel =
                             "attributes": {
                               "contractScope": null,
                               "name": "DebtOrder",
-                              "referencedDeclaration": 1591,
+                              "referencedDeclaration": 1588,
                               "type": "struct DebtKernel.DebtOrder storage pointer"
                             },
-                            "id": 1869,
+                            "id": 1866,
                             "name": "UserDefinedTypeName",
                             "src": "8961:9:3"
                           }
                         ],
-                        "id": 1870,
+                        "id": 1867,
                         "name": "VariableDeclaration",
                         "src": "8961:26:3"
                       },
@@ -6126,11 +6126,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2457,
+                              "referencedDeclaration": 2454,
                               "type": "function (address[6] memory,uint256[8] memory,bytes32[1] memory) view returns (struct DebtKernel.DebtOrder memory)",
                               "value": "getDebtOrder"
                             },
-                            "id": 1871,
+                            "id": 1868,
                             "name": "Identifier",
                             "src": "8990:12:3"
                           },
@@ -6140,11 +6140,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1856,
+                              "referencedDeclaration": 1853,
                               "type": "address[6] memory",
                               "value": "orderAddresses"
                             },
-                            "id": 1872,
+                            "id": 1869,
                             "name": "Identifier",
                             "src": "9003:14:3"
                           },
@@ -6154,11 +6154,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1860,
+                              "referencedDeclaration": 1857,
                               "type": "uint256[8] memory",
                               "value": "orderValues"
                             },
-                            "id": 1873,
+                            "id": 1870,
                             "name": "Identifier",
                             "src": "9019:11:3"
                           },
@@ -6168,21 +6168,21 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1864,
+                              "referencedDeclaration": 1861,
                               "type": "bytes32[1] memory",
                               "value": "orderBytes32"
                             },
-                            "id": 1874,
+                            "id": 1871,
                             "name": "Identifier",
                             "src": "9032:12:3"
                           }
                         ],
-                        "id": 1875,
+                        "id": 1872,
                         "name": "FunctionCall",
                         "src": "8990:55:3"
                       }
                     ],
-                    "id": 1876,
+                    "id": 1873,
                     "name": "VariableDeclarationStatement",
                     "src": "8961:84:3"
                   },
@@ -6214,11 +6214,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15821,
+                              "referencedDeclaration": 15818,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 1877,
+                            "id": 1874,
                             "name": "Identifier",
                             "src": "9056:7:3"
                           },
@@ -6255,16 +6255,16 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15818,
+                                      "referencedDeclaration": 15815,
                                       "type": "msg",
                                       "value": "msg"
                                     },
-                                    "id": 1878,
+                                    "id": 1875,
                                     "name": "Identifier",
                                     "src": "9064:3:3"
                                   }
                                 ],
-                                "id": 1879,
+                                "id": 1876,
                                 "name": "MemberAccess",
                                 "src": "9064:10:3"
                               },
@@ -6276,7 +6276,7 @@ export const DebtKernel =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "debtor",
-                                  "referencedDeclaration": 1557,
+                                  "referencedDeclaration": 1554,
                                   "type": "address"
                                 },
                                 "children": [
@@ -6288,7 +6288,7 @@ export const DebtKernel =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "issuance",
-                                      "referencedDeclaration": 1572,
+                                      "referencedDeclaration": 1569,
                                       "type": "struct DebtKernel.Issuance memory"
                                     },
                                     "children": [
@@ -6298,36 +6298,36 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 1870,
+                                          "referencedDeclaration": 1867,
                                           "type": "struct DebtKernel.DebtOrder memory",
                                           "value": "debtOrder"
                                         },
-                                        "id": 1880,
+                                        "id": 1877,
                                         "name": "Identifier",
                                         "src": "9078:9:3"
                                       }
                                     ],
-                                    "id": 1881,
+                                    "id": 1878,
                                     "name": "MemberAccess",
                                     "src": "9078:18:3"
                                   }
                                 ],
-                                "id": 1882,
+                                "id": 1879,
                                 "name": "MemberAccess",
                                 "src": "9078:25:3"
                               }
                             ],
-                            "id": 1883,
+                            "id": 1880,
                             "name": "BinaryOperation",
                             "src": "9064:39:3"
                           }
                         ],
-                        "id": 1884,
+                        "id": 1881,
                         "name": "FunctionCall",
                         "src": "9056:48:3"
                       }
                     ],
-                    "id": 1885,
+                    "id": 1882,
                     "name": "ExpressionStatement",
                     "src": "9056:48:3"
                   },
@@ -6360,11 +6360,11 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1519,
+                                  "referencedDeclaration": 1516,
                                   "type": "mapping(bytes32 => bool)",
                                   "value": "debtOrderCancelled"
                                 },
-                                "id": 1886,
+                                "id": 1883,
                                 "name": "Identifier",
                                 "src": "9115:18:3"
                               },
@@ -6376,7 +6376,7 @@ export const DebtKernel =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "debtOrderHash",
-                                  "referencedDeclaration": 1590,
+                                  "referencedDeclaration": 1587,
                                   "type": "bytes32"
                                 },
                                 "children": [
@@ -6386,21 +6386,21 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1870,
+                                      "referencedDeclaration": 1867,
                                       "type": "struct DebtKernel.DebtOrder memory",
                                       "value": "debtOrder"
                                     },
-                                    "id": 1887,
+                                    "id": 1884,
                                     "name": "Identifier",
                                     "src": "9134:9:3"
                                   }
                                 ],
-                                "id": 1888,
+                                "id": 1885,
                                 "name": "MemberAccess",
                                 "src": "9134:23:3"
                               }
                             ],
-                            "id": 1889,
+                            "id": 1886,
                             "name": "IndexAccess",
                             "src": "9115:43:3"
                           },
@@ -6417,17 +6417,17 @@ export const DebtKernel =
                               "type": "bool",
                               "value": "true"
                             },
-                            "id": 1890,
+                            "id": 1887,
                             "name": "Literal",
                             "src": "9161:4:3"
                           }
                         ],
-                        "id": 1891,
+                        "id": 1888,
                         "name": "Assignment",
                         "src": "9115:50:3"
                       }
                     ],
-                    "id": 1892,
+                    "id": 1889,
                     "name": "ExpressionStatement",
                     "src": "9115:50:3"
                   },
@@ -6463,11 +6463,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1547,
+                              "referencedDeclaration": 1544,
                               "type": "function (bytes32,address)",
                               "value": "LogDebtOrderCancelled"
                             },
-                            "id": 1893,
+                            "id": 1890,
                             "name": "Identifier",
                             "src": "9176:21:3"
                           },
@@ -6479,7 +6479,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "debtOrderHash",
-                              "referencedDeclaration": 1590,
+                              "referencedDeclaration": 1587,
                               "type": "bytes32"
                             },
                             "children": [
@@ -6489,16 +6489,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1870,
+                                  "referencedDeclaration": 1867,
                                   "type": "struct DebtKernel.DebtOrder memory",
                                   "value": "debtOrder"
                                 },
-                                "id": 1894,
+                                "id": 1891,
                                 "name": "Identifier",
                                 "src": "9198:9:3"
                               }
                             ],
-                            "id": 1895,
+                            "id": 1892,
                             "name": "MemberAccess",
                             "src": "9198:23:3"
                           },
@@ -6520,36 +6520,36 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15818,
+                                  "referencedDeclaration": 15815,
                                   "type": "msg",
                                   "value": "msg"
                                 },
-                                "id": 1896,
+                                "id": 1893,
                                 "name": "Identifier",
                                 "src": "9223:3:3"
                               }
                             ],
-                            "id": 1897,
+                            "id": 1894,
                             "name": "MemberAccess",
                             "src": "9223:10:3"
                           }
                         ],
-                        "id": 1898,
+                        "id": 1895,
                         "name": "FunctionCall",
                         "src": "9176:58:3"
                       }
                     ],
-                    "id": 1899,
+                    "id": 1896,
                     "name": "ExpressionStatement",
                     "src": "9176:58:3"
                   }
                 ],
-                "id": 1900,
+                "id": 1897,
                 "name": "Block",
                 "src": "8951:290:3"
               }
             ],
-            "id": 1901,
+            "id": 1898,
             "name": "FunctionDefinition",
             "src": "8782:459:3"
           },
@@ -6563,7 +6563,7 @@ export const DebtKernel =
               ],
               "name": "issueDebtAgreement",
               "payable": false,
-              "scope": 2615,
+              "scope": 2612,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "internal"
@@ -6575,7 +6575,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "beneficiary",
-                      "scope": 1944,
+                      "scope": 1941,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -6588,12 +6588,12 @@ export const DebtKernel =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 1902,
+                        "id": 1899,
                         "name": "ElementaryTypeName",
                         "src": "9500:7:3"
                       }
                     ],
-                    "id": 1903,
+                    "id": 1900,
                     "name": "VariableDeclaration",
                     "src": "9500:19:3"
                   },
@@ -6601,7 +6601,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "issuance",
-                      "scope": 1944,
+                      "scope": 1941,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "struct DebtKernel.Issuance memory",
@@ -6613,20 +6613,20 @@ export const DebtKernel =
                         "attributes": {
                           "contractScope": null,
                           "name": "Issuance",
-                          "referencedDeclaration": 1570,
+                          "referencedDeclaration": 1567,
                           "type": "struct DebtKernel.Issuance storage pointer"
                         },
-                        "id": 1904,
+                        "id": 1901,
                         "name": "UserDefinedTypeName",
                         "src": "9521:8:3"
                       }
                     ],
-                    "id": 1905,
+                    "id": 1902,
                     "name": "VariableDeclaration",
                     "src": "9521:17:3"
                   }
                 ],
-                "id": 1906,
+                "id": 1903,
                 "name": "ParameterList",
                 "src": "9499:40:3"
               },
@@ -6636,7 +6636,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "_agreementId",
-                      "scope": 1944,
+                      "scope": 1941,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -6649,17 +6649,17 @@ export const DebtKernel =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 1907,
+                        "id": 1904,
                         "name": "ElementaryTypeName",
                         "src": "9574:7:3"
                       }
                     ],
-                    "id": 1908,
+                    "id": 1905,
                     "name": "VariableDeclaration",
                     "src": "9574:20:3"
                   }
                 ],
-                "id": 1909,
+                "id": 1906,
                 "name": "ParameterList",
                 "src": "9573:22:3"
               },
@@ -6668,7 +6668,7 @@ export const DebtKernel =
                   {
                     "attributes": {
                       "assignments": [
-                        1911
+                        1908
                       ]
                     },
                     "children": [
@@ -6676,7 +6676,7 @@ export const DebtKernel =
                         "attributes": {
                           "constant": false,
                           "name": "tokenId",
-                          "scope": 1944,
+                          "scope": 1941,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -6689,12 +6689,12 @@ export const DebtKernel =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 1910,
+                            "id": 1907,
                             "name": "ElementaryTypeName",
                             "src": "9665:4:3"
                           }
                         ],
-                        "id": 1911,
+                        "id": 1908,
                         "name": "VariableDeclaration",
                         "src": "9665:12:3"
                       },
@@ -6754,7 +6754,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "create",
-                              "referencedDeclaration": 3263,
+                              "referencedDeclaration": 3260,
                               "type": "function (address,address,address,address,uint256,address,bytes32,uint256) external returns (uint256)"
                             },
                             "children": [
@@ -6764,16 +6764,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1501,
+                                  "referencedDeclaration": 1498,
                                   "type": "contract DebtToken",
                                   "value": "debtToken"
                                 },
-                                "id": 1912,
+                                "id": 1909,
                                 "name": "Identifier",
                                 "src": "9680:9:3"
                               }
                             ],
-                            "id": 1913,
+                            "id": 1910,
                             "name": "MemberAccess",
                             "src": "9680:16:3"
                           },
@@ -6785,7 +6785,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "version",
-                              "referencedDeclaration": 1555,
+                              "referencedDeclaration": 1552,
                               "type": "address"
                             },
                             "children": [
@@ -6795,16 +6795,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1905,
+                                  "referencedDeclaration": 1902,
                                   "type": "struct DebtKernel.Issuance memory",
                                   "value": "issuance"
                                 },
-                                "id": 1914,
+                                "id": 1911,
                                 "name": "Identifier",
                                 "src": "9710:8:3"
                               }
                             ],
-                            "id": 1915,
+                            "id": 1912,
                             "name": "MemberAccess",
                             "src": "9710:16:3"
                           },
@@ -6814,11 +6814,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1903,
+                              "referencedDeclaration": 1900,
                               "type": "address",
                               "value": "beneficiary"
                             },
-                            "id": 1916,
+                            "id": 1913,
                             "name": "Identifier",
                             "src": "9740:11:3"
                           },
@@ -6830,7 +6830,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "debtor",
-                              "referencedDeclaration": 1557,
+                              "referencedDeclaration": 1554,
                               "type": "address"
                             },
                             "children": [
@@ -6840,16 +6840,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1905,
+                                  "referencedDeclaration": 1902,
                                   "type": "struct DebtKernel.Issuance memory",
                                   "value": "issuance"
                                 },
-                                "id": 1917,
+                                "id": 1914,
                                 "name": "Identifier",
                                 "src": "9765:8:3"
                               }
                             ],
-                            "id": 1918,
+                            "id": 1915,
                             "name": "MemberAccess",
                             "src": "9765:15:3"
                           },
@@ -6861,7 +6861,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "underwriter",
-                              "referencedDeclaration": 1559,
+                              "referencedDeclaration": 1556,
                               "type": "address"
                             },
                             "children": [
@@ -6871,16 +6871,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1905,
+                                  "referencedDeclaration": 1902,
                                   "type": "struct DebtKernel.Issuance memory",
                                   "value": "issuance"
                                 },
-                                "id": 1919,
+                                "id": 1916,
                                 "name": "Identifier",
                                 "src": "9794:8:3"
                               }
                             ],
-                            "id": 1920,
+                            "id": 1917,
                             "name": "MemberAccess",
                             "src": "9794:20:3"
                           },
@@ -6892,7 +6892,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "underwriterRiskRating",
-                              "referencedDeclaration": 1561,
+                              "referencedDeclaration": 1558,
                               "type": "uint256"
                             },
                             "children": [
@@ -6902,16 +6902,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1905,
+                                  "referencedDeclaration": 1902,
                                   "type": "struct DebtKernel.Issuance memory",
                                   "value": "issuance"
                                 },
-                                "id": 1921,
+                                "id": 1918,
                                 "name": "Identifier",
                                 "src": "9828:8:3"
                               }
                             ],
-                            "id": 1922,
+                            "id": 1919,
                             "name": "MemberAccess",
                             "src": "9828:30:3"
                           },
@@ -6923,7 +6923,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "termsContract",
-                              "referencedDeclaration": 1563,
+                              "referencedDeclaration": 1560,
                               "type": "address"
                             },
                             "children": [
@@ -6933,16 +6933,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1905,
+                                  "referencedDeclaration": 1902,
                                   "type": "struct DebtKernel.Issuance memory",
                                   "value": "issuance"
                                 },
-                                "id": 1923,
+                                "id": 1920,
                                 "name": "Identifier",
                                 "src": "9872:8:3"
                               }
                             ],
-                            "id": 1924,
+                            "id": 1921,
                             "name": "MemberAccess",
                             "src": "9872:22:3"
                           },
@@ -6954,7 +6954,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "termsContractParameters",
-                              "referencedDeclaration": 1565,
+                              "referencedDeclaration": 1562,
                               "type": "bytes32"
                             },
                             "children": [
@@ -6964,16 +6964,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1905,
+                                  "referencedDeclaration": 1902,
                                   "type": "struct DebtKernel.Issuance memory",
                                   "value": "issuance"
                                 },
-                                "id": 1925,
+                                "id": 1922,
                                 "name": "Identifier",
                                 "src": "9908:8:3"
                               }
                             ],
-                            "id": 1926,
+                            "id": 1923,
                             "name": "MemberAccess",
                             "src": "9908:32:3"
                           },
@@ -6985,7 +6985,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "salt",
-                              "referencedDeclaration": 1567,
+                              "referencedDeclaration": 1564,
                               "type": "uint256"
                             },
                             "children": [
@@ -6995,26 +6995,26 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1905,
+                                  "referencedDeclaration": 1902,
                                   "type": "struct DebtKernel.Issuance memory",
                                   "value": "issuance"
                                 },
-                                "id": 1927,
+                                "id": 1924,
                                 "name": "Identifier",
                                 "src": "9954:8:3"
                               }
                             ],
-                            "id": 1928,
+                            "id": 1925,
                             "name": "MemberAccess",
                             "src": "9954:13:3"
                           }
                         ],
-                        "id": 1929,
+                        "id": 1926,
                         "name": "FunctionCall",
                         "src": "9680:297:3"
                       }
                     ],
-                    "id": 1930,
+                    "id": 1927,
                     "name": "VariableDeclarationStatement",
                     "src": "9665:312:3"
                   },
@@ -7046,11 +7046,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15809,
+                              "referencedDeclaration": 15806,
                               "type": "function (bool) pure",
                               "value": "assert"
                             },
-                            "id": 1931,
+                            "id": 1928,
                             "name": "Identifier",
                             "src": "9988:6:3"
                           },
@@ -7075,11 +7075,11 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1911,
+                                  "referencedDeclaration": 1908,
                                   "type": "uint256",
                                   "value": "tokenId"
                                 },
-                                "id": 1932,
+                                "id": 1929,
                                 "name": "Identifier",
                                 "src": "9995:7:3"
                               },
@@ -7113,7 +7113,7 @@ export const DebtKernel =
                                       "type": "type(uint256)",
                                       "value": "uint"
                                     },
-                                    "id": 1933,
+                                    "id": 1930,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "10006:4:3"
                                   },
@@ -7125,7 +7125,7 @@ export const DebtKernel =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "agreementId",
-                                      "referencedDeclaration": 1569,
+                                      "referencedDeclaration": 1566,
                                       "type": "bytes32"
                                     },
                                     "children": [
@@ -7135,42 +7135,42 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 1905,
+                                          "referencedDeclaration": 1902,
                                           "type": "struct DebtKernel.Issuance memory",
                                           "value": "issuance"
                                         },
-                                        "id": 1934,
+                                        "id": 1931,
                                         "name": "Identifier",
                                         "src": "10011:8:3"
                                       }
                                     ],
-                                    "id": 1935,
+                                    "id": 1932,
                                     "name": "MemberAccess",
                                     "src": "10011:20:3"
                                   }
                                 ],
-                                "id": 1936,
+                                "id": 1933,
                                 "name": "FunctionCall",
                                 "src": "10006:26:3"
                               }
                             ],
-                            "id": 1937,
+                            "id": 1934,
                             "name": "BinaryOperation",
                             "src": "9995:37:3"
                           }
                         ],
-                        "id": 1938,
+                        "id": 1935,
                         "name": "FunctionCall",
                         "src": "9988:45:3"
                       }
                     ],
-                    "id": 1939,
+                    "id": 1936,
                     "name": "ExpressionStatement",
                     "src": "9988:45:3"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 1909
+                      "functionReturnParameters": 1906
                     },
                     "children": [
                       {
@@ -7181,7 +7181,7 @@ export const DebtKernel =
                           "isPure": false,
                           "lValueRequested": false,
                           "member_name": "agreementId",
-                          "referencedDeclaration": 1569,
+                          "referencedDeclaration": 1566,
                           "type": "bytes32"
                         },
                         "children": [
@@ -7191,31 +7191,31 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1905,
+                              "referencedDeclaration": 1902,
                               "type": "struct DebtKernel.Issuance memory",
                               "value": "issuance"
                             },
-                            "id": 1940,
+                            "id": 1937,
                             "name": "Identifier",
                             "src": "10051:8:3"
                           }
                         ],
-                        "id": 1941,
+                        "id": 1938,
                         "name": "MemberAccess",
                         "src": "10051:20:3"
                       }
                     ],
-                    "id": 1942,
+                    "id": 1939,
                     "name": "Return",
                     "src": "10044:27:3"
                   }
                 ],
-                "id": 1943,
+                "id": 1940,
                 "name": "Block",
                 "src": "9600:478:3"
               }
             ],
-            "id": 1944,
+            "id": 1941,
             "name": "FunctionDefinition",
             "src": "9472:606:3"
           },
@@ -7229,7 +7229,7 @@ export const DebtKernel =
               ],
               "name": "assertDebtOrderConsensualityInvariants",
               "payable": false,
-              "scope": 2615,
+              "scope": 2612,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "internal"
@@ -7241,7 +7241,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "debtOrder",
-                      "scope": 2087,
+                      "scope": 2084,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "struct DebtKernel.DebtOrder memory",
@@ -7253,15 +7253,15 @@ export const DebtKernel =
                         "attributes": {
                           "contractScope": null,
                           "name": "DebtOrder",
-                          "referencedDeclaration": 1591,
+                          "referencedDeclaration": 1588,
                           "type": "struct DebtKernel.DebtOrder storage pointer"
                         },
-                        "id": 1945,
+                        "id": 1942,
                         "name": "UserDefinedTypeName",
                         "src": "10286:9:3"
                       }
                     ],
-                    "id": 1946,
+                    "id": 1943,
                     "name": "VariableDeclaration",
                     "src": "10286:19:3"
                   },
@@ -7269,7 +7269,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "creditor",
-                      "scope": 2087,
+                      "scope": 2084,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -7282,12 +7282,12 @@ export const DebtKernel =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 1947,
+                        "id": 1944,
                         "name": "ElementaryTypeName",
                         "src": "10315:7:3"
                       }
                     ],
-                    "id": 1948,
+                    "id": 1945,
                     "name": "VariableDeclaration",
                     "src": "10315:16:3"
                   },
@@ -7295,7 +7295,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "signaturesV",
-                      "scope": 2087,
+                      "scope": 2084,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint8[3] memory",
@@ -7313,7 +7313,7 @@ export const DebtKernel =
                               "name": "uint8",
                               "type": "uint8"
                             },
-                            "id": 1949,
+                            "id": 1946,
                             "name": "ElementaryTypeName",
                             "src": "10341:5:3"
                           },
@@ -7330,17 +7330,17 @@ export const DebtKernel =
                               "type": "int_const 3",
                               "value": "3"
                             },
-                            "id": 1950,
+                            "id": 1947,
                             "name": "Literal",
                             "src": "10347:1:3"
                           }
                         ],
-                        "id": 1951,
+                        "id": 1948,
                         "name": "ArrayTypeName",
                         "src": "10341:8:3"
                       }
                     ],
-                    "id": 1952,
+                    "id": 1949,
                     "name": "VariableDeclaration",
                     "src": "10341:20:3"
                   },
@@ -7348,7 +7348,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "signaturesR",
-                      "scope": 2087,
+                      "scope": 2084,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32[3] memory",
@@ -7366,7 +7366,7 @@ export const DebtKernel =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 1953,
+                            "id": 1950,
                             "name": "ElementaryTypeName",
                             "src": "10371:7:3"
                           },
@@ -7383,17 +7383,17 @@ export const DebtKernel =
                               "type": "int_const 3",
                               "value": "3"
                             },
-                            "id": 1954,
+                            "id": 1951,
                             "name": "Literal",
                             "src": "10379:1:3"
                           }
                         ],
-                        "id": 1955,
+                        "id": 1952,
                         "name": "ArrayTypeName",
                         "src": "10371:10:3"
                       }
                     ],
-                    "id": 1956,
+                    "id": 1953,
                     "name": "VariableDeclaration",
                     "src": "10371:22:3"
                   },
@@ -7401,7 +7401,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "signaturesS",
-                      "scope": 2087,
+                      "scope": 2084,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32[3] memory",
@@ -7419,7 +7419,7 @@ export const DebtKernel =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 1957,
+                            "id": 1954,
                             "name": "ElementaryTypeName",
                             "src": "10403:7:3"
                           },
@@ -7436,22 +7436,22 @@ export const DebtKernel =
                               "type": "int_const 3",
                               "value": "3"
                             },
-                            "id": 1958,
+                            "id": 1955,
                             "name": "Literal",
                             "src": "10411:1:3"
                           }
                         ],
-                        "id": 1959,
+                        "id": 1956,
                         "name": "ArrayTypeName",
                         "src": "10403:10:3"
                       }
                     ],
-                    "id": 1960,
+                    "id": 1957,
                     "name": "VariableDeclaration",
                     "src": "10403:22:3"
                   }
                 ],
-                "id": 1961,
+                "id": 1958,
                 "name": "ParameterList",
                 "src": "10276:155:3"
               },
@@ -7461,7 +7461,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "_orderIsConsensual",
-                      "scope": 2087,
+                      "scope": 2084,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -7474,17 +7474,17 @@ export const DebtKernel =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 1962,
+                        "id": 1959,
                         "name": "ElementaryTypeName",
                         "src": "10466:4:3"
                       }
                     ],
-                    "id": 1963,
+                    "id": 1960,
                     "name": "VariableDeclaration",
                     "src": "10466:23:3"
                   }
                 ],
-                "id": 1964,
+                "id": 1961,
                 "name": "ParameterList",
                 "src": "10465:25:3"
               },
@@ -7528,16 +7528,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15818,
+                                  "referencedDeclaration": 15815,
                                   "type": "msg",
                                   "value": "msg"
                                 },
-                                "id": 1965,
+                                "id": 1962,
                                 "name": "Identifier",
                                 "src": "10599:3:3"
                               }
                             ],
-                            "id": 1966,
+                            "id": 1963,
                             "name": "MemberAccess",
                             "src": "10599:10:3"
                           },
@@ -7549,7 +7549,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "debtor",
-                              "referencedDeclaration": 1557,
+                              "referencedDeclaration": 1554,
                               "type": "address"
                             },
                             "children": [
@@ -7561,7 +7561,7 @@ export const DebtKernel =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "issuance",
-                                  "referencedDeclaration": 1572,
+                                  "referencedDeclaration": 1569,
                                   "type": "struct DebtKernel.Issuance memory"
                                 },
                                 "children": [
@@ -7571,26 +7571,26 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1946,
+                                      "referencedDeclaration": 1943,
                                       "type": "struct DebtKernel.DebtOrder memory",
                                       "value": "debtOrder"
                                     },
-                                    "id": 1967,
+                                    "id": 1964,
                                     "name": "Identifier",
                                     "src": "10613:9:3"
                                   }
                                 ],
-                                "id": 1968,
+                                "id": 1965,
                                 "name": "MemberAccess",
                                 "src": "10613:18:3"
                               }
                             ],
-                            "id": 1969,
+                            "id": 1966,
                             "name": "MemberAccess",
                             "src": "10613:25:3"
                           }
                         ],
-                        "id": 1970,
+                        "id": 1967,
                         "name": "BinaryOperation",
                         "src": "10599:39:3"
                       },
@@ -7655,11 +7655,11 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 2573,
+                                          "referencedDeclaration": 2570,
                                           "type": "function (address,bytes32,uint8,bytes32,bytes32) pure returns (bool)",
                                           "value": "isValidSignature"
                                         },
-                                        "id": 1971,
+                                        "id": 1968,
                                         "name": "Identifier",
                                         "src": "10659:16:3"
                                       },
@@ -7671,7 +7671,7 @@ export const DebtKernel =
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "debtor",
-                                          "referencedDeclaration": 1557,
+                                          "referencedDeclaration": 1554,
                                           "type": "address"
                                         },
                                         "children": [
@@ -7683,7 +7683,7 @@ export const DebtKernel =
                                               "isPure": false,
                                               "lValueRequested": false,
                                               "member_name": "issuance",
-                                              "referencedDeclaration": 1572,
+                                              "referencedDeclaration": 1569,
                                               "type": "struct DebtKernel.Issuance memory"
                                             },
                                             "children": [
@@ -7693,21 +7693,21 @@ export const DebtKernel =
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 1946,
+                                                  "referencedDeclaration": 1943,
                                                   "type": "struct DebtKernel.DebtOrder memory",
                                                   "value": "debtOrder"
                                                 },
-                                                "id": 1972,
+                                                "id": 1969,
                                                 "name": "Identifier",
                                                 "src": "10693:9:3"
                                               }
                                             ],
-                                            "id": 1973,
+                                            "id": 1970,
                                             "name": "MemberAccess",
                                             "src": "10693:18:3"
                                           }
                                         ],
-                                        "id": 1974,
+                                        "id": 1971,
                                         "name": "MemberAccess",
                                         "src": "10693:25:3"
                                       },
@@ -7719,7 +7719,7 @@ export const DebtKernel =
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "debtOrderHash",
-                                          "referencedDeclaration": 1590,
+                                          "referencedDeclaration": 1587,
                                           "type": "bytes32"
                                         },
                                         "children": [
@@ -7729,16 +7729,16 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1946,
+                                              "referencedDeclaration": 1943,
                                               "type": "struct DebtKernel.DebtOrder memory",
                                               "value": "debtOrder"
                                             },
-                                            "id": 1975,
+                                            "id": 1972,
                                             "name": "Identifier",
                                             "src": "10736:9:3"
                                           }
                                         ],
-                                        "id": 1976,
+                                        "id": 1973,
                                         "name": "MemberAccess",
                                         "src": "10736:23:3"
                                       },
@@ -7758,11 +7758,11 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1952,
+                                              "referencedDeclaration": 1949,
                                               "type": "uint8[3] memory",
                                               "value": "signaturesV"
                                             },
-                                            "id": 1977,
+                                            "id": 1974,
                                             "name": "Identifier",
                                             "src": "10777:11:3"
                                           },
@@ -7779,12 +7779,12 @@ export const DebtKernel =
                                               "type": "int_const 0",
                                               "value": "0"
                                             },
-                                            "id": 1978,
+                                            "id": 1975,
                                             "name": "Literal",
                                             "src": "10789:1:3"
                                           }
                                         ],
-                                        "id": 1979,
+                                        "id": 1976,
                                         "name": "IndexAccess",
                                         "src": "10777:14:3"
                                       },
@@ -7804,11 +7804,11 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1956,
+                                              "referencedDeclaration": 1953,
                                               "type": "bytes32[3] memory",
                                               "value": "signaturesR"
                                             },
-                                            "id": 1980,
+                                            "id": 1977,
                                             "name": "Identifier",
                                             "src": "10809:11:3"
                                           },
@@ -7825,12 +7825,12 @@ export const DebtKernel =
                                               "type": "int_const 0",
                                               "value": "0"
                                             },
-                                            "id": 1981,
+                                            "id": 1978,
                                             "name": "Literal",
                                             "src": "10821:1:3"
                                           }
                                         ],
-                                        "id": 1982,
+                                        "id": 1979,
                                         "name": "IndexAccess",
                                         "src": "10809:14:3"
                                       },
@@ -7850,11 +7850,11 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1960,
+                                              "referencedDeclaration": 1957,
                                               "type": "bytes32[3] memory",
                                               "value": "signaturesS"
                                             },
-                                            "id": 1983,
+                                            "id": 1980,
                                             "name": "Identifier",
                                             "src": "10841:11:3"
                                           },
@@ -7871,22 +7871,22 @@ export const DebtKernel =
                                               "type": "int_const 0",
                                               "value": "0"
                                             },
-                                            "id": 1984,
+                                            "id": 1981,
                                             "name": "Literal",
                                             "src": "10853:1:3"
                                           }
                                         ],
-                                        "id": 1985,
+                                        "id": 1982,
                                         "name": "IndexAccess",
                                         "src": "10841:14:3"
                                       }
                                     ],
-                                    "id": 1986,
+                                    "id": 1983,
                                     "name": "FunctionCall",
                                     "src": "10659:210:3"
                                   }
                                 ],
-                                "id": 1987,
+                                "id": 1984,
                                 "name": "UnaryOperation",
                                 "src": "10658:211:3"
                               },
@@ -7924,11 +7924,11 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1553,
+                                              "referencedDeclaration": 1550,
                                               "type": "function (uint8,bytes32)",
                                               "value": "LogError"
                                             },
-                                            "id": 1988,
+                                            "id": 1985,
                                             "name": "Identifier",
                                             "src": "10889:8:3"
                                           },
@@ -7951,7 +7951,7 @@ export const DebtKernel =
                                                 "attributes": {
                                                   "argumentTypes": [
                                                     {
-                                                      "typeIdentifier": "t_enum$_Errors_$1499",
+                                                      "typeIdentifier": "t_enum$_Errors_$1496",
                                                       "typeString": "enum DebtKernel.Errors"
                                                     }
                                                   ],
@@ -7962,7 +7962,7 @@ export const DebtKernel =
                                                   "type": "type(uint8)",
                                                   "value": "uint8"
                                                 },
-                                                "id": 1989,
+                                                "id": 1986,
                                                 "name": "ElementaryTypeNameExpression",
                                                 "src": "10898:5:3"
                                               },
@@ -7984,21 +7984,21 @@ export const DebtKernel =
                                                       "overloadedDeclarations": [
                                                         null
                                                       ],
-                                                      "referencedDeclaration": 1499,
+                                                      "referencedDeclaration": 1496,
                                                       "type": "type(enum DebtKernel.Errors)",
                                                       "value": "Errors"
                                                     },
-                                                    "id": 1990,
+                                                    "id": 1987,
                                                     "name": "Identifier",
                                                     "src": "10904:6:3"
                                                   }
                                                 ],
-                                                "id": 1991,
+                                                "id": 1988,
                                                 "name": "MemberAccess",
                                                 "src": "10904:35:3"
                                               }
                                             ],
-                                            "id": 1992,
+                                            "id": 1989,
                                             "name": "FunctionCall",
                                             "src": "10898:42:3"
                                           },
@@ -8010,7 +8010,7 @@ export const DebtKernel =
                                               "isPure": false,
                                               "lValueRequested": false,
                                               "member_name": "debtOrderHash",
-                                              "referencedDeclaration": 1590,
+                                              "referencedDeclaration": 1587,
                                               "type": "bytes32"
                                             },
                                             "children": [
@@ -8020,32 +8020,32 @@ export const DebtKernel =
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 1946,
+                                                  "referencedDeclaration": 1943,
                                                   "type": "struct DebtKernel.DebtOrder memory",
                                                   "value": "debtOrder"
                                                 },
-                                                "id": 1993,
+                                                "id": 1990,
                                                 "name": "Identifier",
                                                 "src": "10942:9:3"
                                               }
                                             ],
-                                            "id": 1994,
+                                            "id": 1991,
                                             "name": "MemberAccess",
                                             "src": "10942:23:3"
                                           }
                                         ],
-                                        "id": 1995,
+                                        "id": 1992,
                                         "name": "FunctionCall",
                                         "src": "10889:77:3"
                                       }
                                     ],
-                                    "id": 1996,
+                                    "id": 1993,
                                     "name": "ExpressionStatement",
                                     "src": "10889:77:3"
                                   },
                                   {
                                     "attributes": {
-                                      "functionReturnParameters": 1964
+                                      "functionReturnParameters": 1961
                                     },
                                     "children": [
                                       {
@@ -8061,32 +8061,32 @@ export const DebtKernel =
                                           "type": "bool",
                                           "value": "false"
                                         },
-                                        "id": 1997,
+                                        "id": 1994,
                                         "name": "Literal",
                                         "src": "10991:5:3"
                                       }
                                     ],
-                                    "id": 1998,
+                                    "id": 1995,
                                     "name": "Return",
                                     "src": "10984:12:3"
                                   }
                                 ],
-                                "id": 1999,
+                                "id": 1996,
                                 "name": "Block",
                                 "src": "10871:140:3"
                               }
                             ],
-                            "id": 2000,
+                            "id": 1997,
                             "name": "IfStatement",
                             "src": "10654:357:3"
                           }
                         ],
-                        "id": 2001,
+                        "id": 1998,
                         "name": "Block",
                         "src": "10640:381:3"
                       }
                     ],
-                    "id": 2002,
+                    "id": 1999,
                     "name": "IfStatement",
                     "src": "10595:426:3"
                   },
@@ -8128,16 +8128,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15818,
+                                  "referencedDeclaration": 15815,
                                   "type": "msg",
                                   "value": "msg"
                                 },
-                                "id": 2003,
+                                "id": 2000,
                                 "name": "Identifier",
                                 "src": "11129:3:3"
                               }
                             ],
-                            "id": 2004,
+                            "id": 2001,
                             "name": "MemberAccess",
                             "src": "11129:10:3"
                           },
@@ -8147,16 +8147,16 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1948,
+                              "referencedDeclaration": 1945,
                               "type": "address",
                               "value": "creditor"
                             },
-                            "id": 2005,
+                            "id": 2002,
                             "name": "Identifier",
                             "src": "11143:8:3"
                           }
                         ],
-                        "id": 2006,
+                        "id": 2003,
                         "name": "BinaryOperation",
                         "src": "11129:22:3"
                       },
@@ -8221,11 +8221,11 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 2573,
+                                          "referencedDeclaration": 2570,
                                           "type": "function (address,bytes32,uint8,bytes32,bytes32) pure returns (bool)",
                                           "value": "isValidSignature"
                                         },
-                                        "id": 2007,
+                                        "id": 2004,
                                         "name": "Identifier",
                                         "src": "11172:16:3"
                                       },
@@ -8235,11 +8235,11 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 1948,
+                                          "referencedDeclaration": 1945,
                                           "type": "address",
                                           "value": "creditor"
                                         },
-                                        "id": 2008,
+                                        "id": 2005,
                                         "name": "Identifier",
                                         "src": "11206:8:3"
                                       },
@@ -8251,7 +8251,7 @@ export const DebtKernel =
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "debtOrderHash",
-                                          "referencedDeclaration": 1590,
+                                          "referencedDeclaration": 1587,
                                           "type": "bytes32"
                                         },
                                         "children": [
@@ -8261,16 +8261,16 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1946,
+                                              "referencedDeclaration": 1943,
                                               "type": "struct DebtKernel.DebtOrder memory",
                                               "value": "debtOrder"
                                             },
-                                            "id": 2009,
+                                            "id": 2006,
                                             "name": "Identifier",
                                             "src": "11232:9:3"
                                           }
                                         ],
-                                        "id": 2010,
+                                        "id": 2007,
                                         "name": "MemberAccess",
                                         "src": "11232:23:3"
                                       },
@@ -8290,11 +8290,11 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1952,
+                                              "referencedDeclaration": 1949,
                                               "type": "uint8[3] memory",
                                               "value": "signaturesV"
                                             },
-                                            "id": 2011,
+                                            "id": 2008,
                                             "name": "Identifier",
                                             "src": "11273:11:3"
                                           },
@@ -8311,12 +8311,12 @@ export const DebtKernel =
                                               "type": "int_const 1",
                                               "value": "1"
                                             },
-                                            "id": 2012,
+                                            "id": 2009,
                                             "name": "Literal",
                                             "src": "11285:1:3"
                                           }
                                         ],
-                                        "id": 2013,
+                                        "id": 2010,
                                         "name": "IndexAccess",
                                         "src": "11273:14:3"
                                       },
@@ -8336,11 +8336,11 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1956,
+                                              "referencedDeclaration": 1953,
                                               "type": "bytes32[3] memory",
                                               "value": "signaturesR"
                                             },
-                                            "id": 2014,
+                                            "id": 2011,
                                             "name": "Identifier",
                                             "src": "11305:11:3"
                                           },
@@ -8357,12 +8357,12 @@ export const DebtKernel =
                                               "type": "int_const 1",
                                               "value": "1"
                                             },
-                                            "id": 2015,
+                                            "id": 2012,
                                             "name": "Literal",
                                             "src": "11317:1:3"
                                           }
                                         ],
-                                        "id": 2016,
+                                        "id": 2013,
                                         "name": "IndexAccess",
                                         "src": "11305:14:3"
                                       },
@@ -8382,11 +8382,11 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1960,
+                                              "referencedDeclaration": 1957,
                                               "type": "bytes32[3] memory",
                                               "value": "signaturesS"
                                             },
-                                            "id": 2017,
+                                            "id": 2014,
                                             "name": "Identifier",
                                             "src": "11337:11:3"
                                           },
@@ -8403,22 +8403,22 @@ export const DebtKernel =
                                               "type": "int_const 1",
                                               "value": "1"
                                             },
-                                            "id": 2018,
+                                            "id": 2015,
                                             "name": "Literal",
                                             "src": "11349:1:3"
                                           }
                                         ],
-                                        "id": 2019,
+                                        "id": 2016,
                                         "name": "IndexAccess",
                                         "src": "11337:14:3"
                                       }
                                     ],
-                                    "id": 2020,
+                                    "id": 2017,
                                     "name": "FunctionCall",
                                     "src": "11172:193:3"
                                   }
                                 ],
-                                "id": 2021,
+                                "id": 2018,
                                 "name": "UnaryOperation",
                                 "src": "11171:194:3"
                               },
@@ -8456,11 +8456,11 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1553,
+                                              "referencedDeclaration": 1550,
                                               "type": "function (uint8,bytes32)",
                                               "value": "LogError"
                                             },
-                                            "id": 2022,
+                                            "id": 2019,
                                             "name": "Identifier",
                                             "src": "11385:8:3"
                                           },
@@ -8483,7 +8483,7 @@ export const DebtKernel =
                                                 "attributes": {
                                                   "argumentTypes": [
                                                     {
-                                                      "typeIdentifier": "t_enum$_Errors_$1499",
+                                                      "typeIdentifier": "t_enum$_Errors_$1496",
                                                       "typeString": "enum DebtKernel.Errors"
                                                     }
                                                   ],
@@ -8494,7 +8494,7 @@ export const DebtKernel =
                                                   "type": "type(uint8)",
                                                   "value": "uint8"
                                                 },
-                                                "id": 2023,
+                                                "id": 2020,
                                                 "name": "ElementaryTypeNameExpression",
                                                 "src": "11394:5:3"
                                               },
@@ -8516,21 +8516,21 @@ export const DebtKernel =
                                                       "overloadedDeclarations": [
                                                         null
                                                       ],
-                                                      "referencedDeclaration": 1499,
+                                                      "referencedDeclaration": 1496,
                                                       "type": "type(enum DebtKernel.Errors)",
                                                       "value": "Errors"
                                                     },
-                                                    "id": 2024,
+                                                    "id": 2021,
                                                     "name": "Identifier",
                                                     "src": "11400:6:3"
                                                   }
                                                 ],
-                                                "id": 2025,
+                                                "id": 2022,
                                                 "name": "MemberAccess",
                                                 "src": "11400:35:3"
                                               }
                                             ],
-                                            "id": 2026,
+                                            "id": 2023,
                                             "name": "FunctionCall",
                                             "src": "11394:42:3"
                                           },
@@ -8542,7 +8542,7 @@ export const DebtKernel =
                                               "isPure": false,
                                               "lValueRequested": false,
                                               "member_name": "debtOrderHash",
-                                              "referencedDeclaration": 1590,
+                                              "referencedDeclaration": 1587,
                                               "type": "bytes32"
                                             },
                                             "children": [
@@ -8552,32 +8552,32 @@ export const DebtKernel =
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 1946,
+                                                  "referencedDeclaration": 1943,
                                                   "type": "struct DebtKernel.DebtOrder memory",
                                                   "value": "debtOrder"
                                                 },
-                                                "id": 2027,
+                                                "id": 2024,
                                                 "name": "Identifier",
                                                 "src": "11438:9:3"
                                               }
                                             ],
-                                            "id": 2028,
+                                            "id": 2025,
                                             "name": "MemberAccess",
                                             "src": "11438:23:3"
                                           }
                                         ],
-                                        "id": 2029,
+                                        "id": 2026,
                                         "name": "FunctionCall",
                                         "src": "11385:77:3"
                                       }
                                     ],
-                                    "id": 2030,
+                                    "id": 2027,
                                     "name": "ExpressionStatement",
                                     "src": "11385:77:3"
                                   },
                                   {
                                     "attributes": {
-                                      "functionReturnParameters": 1964
+                                      "functionReturnParameters": 1961
                                     },
                                     "children": [
                                       {
@@ -8593,32 +8593,32 @@ export const DebtKernel =
                                           "type": "bool",
                                           "value": "false"
                                         },
-                                        "id": 2031,
+                                        "id": 2028,
                                         "name": "Literal",
                                         "src": "11487:5:3"
                                       }
                                     ],
-                                    "id": 2032,
+                                    "id": 2029,
                                     "name": "Return",
                                     "src": "11480:12:3"
                                   }
                                 ],
-                                "id": 2033,
+                                "id": 2030,
                                 "name": "Block",
                                 "src": "11367:140:3"
                               }
                             ],
-                            "id": 2034,
+                            "id": 2031,
                             "name": "IfStatement",
                             "src": "11167:340:3"
                           }
                         ],
-                        "id": 2035,
+                        "id": 2032,
                         "name": "Block",
                         "src": "11153:364:3"
                       }
                     ],
-                    "id": 2036,
+                    "id": 2033,
                     "name": "IfStatement",
                     "src": "11125:392:3"
                   },
@@ -8665,7 +8665,7 @@ export const DebtKernel =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "underwriter",
-                                  "referencedDeclaration": 1559,
+                                  "referencedDeclaration": 1556,
                                   "type": "address"
                                 },
                                 "children": [
@@ -8677,7 +8677,7 @@ export const DebtKernel =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "issuance",
-                                      "referencedDeclaration": 1572,
+                                      "referencedDeclaration": 1569,
                                       "type": "struct DebtKernel.Issuance memory"
                                     },
                                     "children": [
@@ -8687,21 +8687,21 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 1946,
+                                          "referencedDeclaration": 1943,
                                           "type": "struct DebtKernel.DebtOrder memory",
                                           "value": "debtOrder"
                                         },
-                                        "id": 2037,
+                                        "id": 2034,
                                         "name": "Identifier",
                                         "src": "11605:9:3"
                                       }
                                     ],
-                                    "id": 2038,
+                                    "id": 2035,
                                     "name": "MemberAccess",
                                     "src": "11605:18:3"
                                   }
                                 ],
-                                "id": 2039,
+                                "id": 2036,
                                 "name": "MemberAccess",
                                 "src": "11605:30:3"
                               },
@@ -8735,7 +8735,7 @@ export const DebtKernel =
                                       "type": "type(address)",
                                       "value": "address"
                                     },
-                                    "id": 2040,
+                                    "id": 2037,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "11639:7:3"
                                   },
@@ -8752,17 +8752,17 @@ export const DebtKernel =
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 2041,
+                                    "id": 2038,
                                     "name": "Literal",
                                     "src": "11647:1:3"
                                   }
                                 ],
-                                "id": 2042,
+                                "id": 2039,
                                 "name": "FunctionCall",
                                 "src": "11639:10:3"
                               }
                             ],
-                            "id": 2043,
+                            "id": 2040,
                             "name": "BinaryOperation",
                             "src": "11605:44:3"
                           },
@@ -8799,16 +8799,16 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15818,
+                                      "referencedDeclaration": 15815,
                                       "type": "msg",
                                       "value": "msg"
                                     },
-                                    "id": 2044,
+                                    "id": 2041,
                                     "name": "Identifier",
                                     "src": "11665:3:3"
                                   }
                                 ],
-                                "id": 2045,
+                                "id": 2042,
                                 "name": "MemberAccess",
                                 "src": "11665:10:3"
                               },
@@ -8820,7 +8820,7 @@ export const DebtKernel =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "underwriter",
-                                  "referencedDeclaration": 1559,
+                                  "referencedDeclaration": 1556,
                                   "type": "address"
                                 },
                                 "children": [
@@ -8832,7 +8832,7 @@ export const DebtKernel =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "issuance",
-                                      "referencedDeclaration": 1572,
+                                      "referencedDeclaration": 1569,
                                       "type": "struct DebtKernel.Issuance memory"
                                     },
                                     "children": [
@@ -8842,31 +8842,31 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 1946,
+                                          "referencedDeclaration": 1943,
                                           "type": "struct DebtKernel.DebtOrder memory",
                                           "value": "debtOrder"
                                         },
-                                        "id": 2046,
+                                        "id": 2043,
                                         "name": "Identifier",
                                         "src": "11679:9:3"
                                       }
                                     ],
-                                    "id": 2047,
+                                    "id": 2044,
                                     "name": "MemberAccess",
                                     "src": "11679:18:3"
                                   }
                                 ],
-                                "id": 2048,
+                                "id": 2045,
                                 "name": "MemberAccess",
                                 "src": "11679:30:3"
                               }
                             ],
-                            "id": 2049,
+                            "id": 2046,
                             "name": "BinaryOperation",
                             "src": "11665:44:3"
                           }
                         ],
-                        "id": 2050,
+                        "id": 2047,
                         "name": "BinaryOperation",
                         "src": "11605:104:3"
                       },
@@ -8931,11 +8931,11 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 2573,
+                                          "referencedDeclaration": 2570,
                                           "type": "function (address,bytes32,uint8,bytes32,bytes32) pure returns (bool)",
                                           "value": "isValidSignature"
                                         },
-                                        "id": 2051,
+                                        "id": 2048,
                                         "name": "Identifier",
                                         "src": "11730:16:3"
                                       },
@@ -8947,7 +8947,7 @@ export const DebtKernel =
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "underwriter",
-                                          "referencedDeclaration": 1559,
+                                          "referencedDeclaration": 1556,
                                           "type": "address"
                                         },
                                         "children": [
@@ -8959,7 +8959,7 @@ export const DebtKernel =
                                               "isPure": false,
                                               "lValueRequested": false,
                                               "member_name": "issuance",
-                                              "referencedDeclaration": 1572,
+                                              "referencedDeclaration": 1569,
                                               "type": "struct DebtKernel.Issuance memory"
                                             },
                                             "children": [
@@ -8969,21 +8969,21 @@ export const DebtKernel =
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 1946,
+                                                  "referencedDeclaration": 1943,
                                                   "type": "struct DebtKernel.DebtOrder memory",
                                                   "value": "debtOrder"
                                                 },
-                                                "id": 2052,
+                                                "id": 2049,
                                                 "name": "Identifier",
                                                 "src": "11764:9:3"
                                               }
                                             ],
-                                            "id": 2053,
+                                            "id": 2050,
                                             "name": "MemberAccess",
                                             "src": "11764:18:3"
                                           }
                                         ],
-                                        "id": 2054,
+                                        "id": 2051,
                                         "name": "MemberAccess",
                                         "src": "11764:30:3"
                                       },
@@ -9006,18 +9006,18 @@ export const DebtKernel =
                                             "attributes": {
                                               "argumentTypes": [
                                                 {
-                                                  "typeIdentifier": "t_struct$_DebtOrder_$1591_memory_ptr",
+                                                  "typeIdentifier": "t_struct$_DebtOrder_$1588_memory_ptr",
                                                   "typeString": "struct DebtKernel.DebtOrder memory"
                                                 }
                                               ],
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 2512,
+                                              "referencedDeclaration": 2509,
                                               "type": "function (struct DebtKernel.DebtOrder memory) view returns (bytes32)",
                                               "value": "getUnderwriterMessageHash"
                                             },
-                                            "id": 2055,
+                                            "id": 2052,
                                             "name": "Identifier",
                                             "src": "11812:25:3"
                                           },
@@ -9027,16 +9027,16 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1946,
+                                              "referencedDeclaration": 1943,
                                               "type": "struct DebtKernel.DebtOrder memory",
                                               "value": "debtOrder"
                                             },
-                                            "id": 2056,
+                                            "id": 2053,
                                             "name": "Identifier",
                                             "src": "11838:9:3"
                                           }
                                         ],
-                                        "id": 2057,
+                                        "id": 2054,
                                         "name": "FunctionCall",
                                         "src": "11812:36:3"
                                       },
@@ -9056,11 +9056,11 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1952,
+                                              "referencedDeclaration": 1949,
                                               "type": "uint8[3] memory",
                                               "value": "signaturesV"
                                             },
-                                            "id": 2058,
+                                            "id": 2055,
                                             "name": "Identifier",
                                             "src": "11866:11:3"
                                           },
@@ -9077,12 +9077,12 @@ export const DebtKernel =
                                               "type": "int_const 2",
                                               "value": "2"
                                             },
-                                            "id": 2059,
+                                            "id": 2056,
                                             "name": "Literal",
                                             "src": "11878:1:3"
                                           }
                                         ],
-                                        "id": 2060,
+                                        "id": 2057,
                                         "name": "IndexAccess",
                                         "src": "11866:14:3"
                                       },
@@ -9102,11 +9102,11 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1956,
+                                              "referencedDeclaration": 1953,
                                               "type": "bytes32[3] memory",
                                               "value": "signaturesR"
                                             },
-                                            "id": 2061,
+                                            "id": 2058,
                                             "name": "Identifier",
                                             "src": "11898:11:3"
                                           },
@@ -9123,12 +9123,12 @@ export const DebtKernel =
                                               "type": "int_const 2",
                                               "value": "2"
                                             },
-                                            "id": 2062,
+                                            "id": 2059,
                                             "name": "Literal",
                                             "src": "11910:1:3"
                                           }
                                         ],
-                                        "id": 2063,
+                                        "id": 2060,
                                         "name": "IndexAccess",
                                         "src": "11898:14:3"
                                       },
@@ -9148,11 +9148,11 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1960,
+                                              "referencedDeclaration": 1957,
                                               "type": "bytes32[3] memory",
                                               "value": "signaturesS"
                                             },
-                                            "id": 2064,
+                                            "id": 2061,
                                             "name": "Identifier",
                                             "src": "11930:11:3"
                                           },
@@ -9169,22 +9169,22 @@ export const DebtKernel =
                                               "type": "int_const 2",
                                               "value": "2"
                                             },
-                                            "id": 2065,
+                                            "id": 2062,
                                             "name": "Literal",
                                             "src": "11942:1:3"
                                           }
                                         ],
-                                        "id": 2066,
+                                        "id": 2063,
                                         "name": "IndexAccess",
                                         "src": "11930:14:3"
                                       }
                                     ],
-                                    "id": 2067,
+                                    "id": 2064,
                                     "name": "FunctionCall",
                                     "src": "11730:228:3"
                                   }
                                 ],
-                                "id": 2068,
+                                "id": 2065,
                                 "name": "UnaryOperation",
                                 "src": "11729:229:3"
                               },
@@ -9222,11 +9222,11 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1553,
+                                              "referencedDeclaration": 1550,
                                               "type": "function (uint8,bytes32)",
                                               "value": "LogError"
                                             },
-                                            "id": 2069,
+                                            "id": 2066,
                                             "name": "Identifier",
                                             "src": "11978:8:3"
                                           },
@@ -9249,7 +9249,7 @@ export const DebtKernel =
                                                 "attributes": {
                                                   "argumentTypes": [
                                                     {
-                                                      "typeIdentifier": "t_enum$_Errors_$1499",
+                                                      "typeIdentifier": "t_enum$_Errors_$1496",
                                                       "typeString": "enum DebtKernel.Errors"
                                                     }
                                                   ],
@@ -9260,7 +9260,7 @@ export const DebtKernel =
                                                   "type": "type(uint8)",
                                                   "value": "uint8"
                                                 },
-                                                "id": 2070,
+                                                "id": 2067,
                                                 "name": "ElementaryTypeNameExpression",
                                                 "src": "11987:5:3"
                                               },
@@ -9282,21 +9282,21 @@ export const DebtKernel =
                                                       "overloadedDeclarations": [
                                                         null
                                                       ],
-                                                      "referencedDeclaration": 1499,
+                                                      "referencedDeclaration": 1496,
                                                       "type": "type(enum DebtKernel.Errors)",
                                                       "value": "Errors"
                                                     },
-                                                    "id": 2071,
+                                                    "id": 2068,
                                                     "name": "Identifier",
                                                     "src": "11993:6:3"
                                                   }
                                                 ],
-                                                "id": 2072,
+                                                "id": 2069,
                                                 "name": "MemberAccess",
                                                 "src": "11993:35:3"
                                               }
                                             ],
-                                            "id": 2073,
+                                            "id": 2070,
                                             "name": "FunctionCall",
                                             "src": "11987:42:3"
                                           },
@@ -9308,7 +9308,7 @@ export const DebtKernel =
                                               "isPure": false,
                                               "lValueRequested": false,
                                               "member_name": "debtOrderHash",
-                                              "referencedDeclaration": 1590,
+                                              "referencedDeclaration": 1587,
                                               "type": "bytes32"
                                             },
                                             "children": [
@@ -9318,32 +9318,32 @@ export const DebtKernel =
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 1946,
+                                                  "referencedDeclaration": 1943,
                                                   "type": "struct DebtKernel.DebtOrder memory",
                                                   "value": "debtOrder"
                                                 },
-                                                "id": 2074,
+                                                "id": 2071,
                                                 "name": "Identifier",
                                                 "src": "12031:9:3"
                                               }
                                             ],
-                                            "id": 2075,
+                                            "id": 2072,
                                             "name": "MemberAccess",
                                             "src": "12031:23:3"
                                           }
                                         ],
-                                        "id": 2076,
+                                        "id": 2073,
                                         "name": "FunctionCall",
                                         "src": "11978:77:3"
                                       }
                                     ],
-                                    "id": 2077,
+                                    "id": 2074,
                                     "name": "ExpressionStatement",
                                     "src": "11978:77:3"
                                   },
                                   {
                                     "attributes": {
-                                      "functionReturnParameters": 1964
+                                      "functionReturnParameters": 1961
                                     },
                                     "children": [
                                       {
@@ -9359,38 +9359,38 @@ export const DebtKernel =
                                           "type": "bool",
                                           "value": "false"
                                         },
-                                        "id": 2078,
+                                        "id": 2075,
                                         "name": "Literal",
                                         "src": "12080:5:3"
                                       }
                                     ],
-                                    "id": 2079,
+                                    "id": 2076,
                                     "name": "Return",
                                     "src": "12073:12:3"
                                   }
                                 ],
-                                "id": 2080,
+                                "id": 2077,
                                 "name": "Block",
                                 "src": "11960:140:3"
                               }
                             ],
-                            "id": 2081,
+                            "id": 2078,
                             "name": "IfStatement",
                             "src": "11725:375:3"
                           }
                         ],
-                        "id": 2082,
+                        "id": 2079,
                         "name": "Block",
                         "src": "11711:399:3"
                       }
                     ],
-                    "id": 2083,
+                    "id": 2080,
                     "name": "IfStatement",
                     "src": "11601:509:3"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 1964
+                      "functionReturnParameters": 1961
                     },
                     "children": [
                       {
@@ -9406,22 +9406,22 @@ export const DebtKernel =
                           "type": "bool",
                           "value": "true"
                         },
-                        "id": 2084,
+                        "id": 2081,
                         "name": "Literal",
                         "src": "12127:4:3"
                       }
                     ],
-                    "id": 2085,
+                    "id": 2082,
                     "name": "Return",
                     "src": "12120:11:3"
                   }
                 ],
-                "id": 2086,
+                "id": 2083,
                 "name": "Block",
                 "src": "10495:1643:3"
               }
             ],
-            "id": 2087,
+            "id": 2084,
             "name": "FunctionDefinition",
             "src": "10229:1909:3"
           },
@@ -9435,7 +9435,7 @@ export const DebtKernel =
               ],
               "name": "assertDebtOrderValidityInvariants",
               "payable": false,
-              "scope": 2615,
+              "scope": 2612,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "internal"
@@ -9447,7 +9447,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "debtOrder",
-                      "scope": 2258,
+                      "scope": 2255,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "struct DebtKernel.DebtOrder memory",
@@ -9459,20 +9459,20 @@ export const DebtKernel =
                         "attributes": {
                           "contractScope": null,
                           "name": "DebtOrder",
-                          "referencedDeclaration": 1591,
+                          "referencedDeclaration": 1588,
                           "type": "struct DebtKernel.DebtOrder storage pointer"
                         },
-                        "id": 2088,
+                        "id": 2085,
                         "name": "UserDefinedTypeName",
                         "src": "12325:9:3"
                       }
                     ],
-                    "id": 2089,
+                    "id": 2086,
                     "name": "VariableDeclaration",
                     "src": "12325:19:3"
                   }
                 ],
-                "id": 2090,
+                "id": 2087,
                 "name": "ParameterList",
                 "src": "12324:21:3"
               },
@@ -9482,7 +9482,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "_orderIsValid",
-                      "scope": 2258,
+                      "scope": 2255,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -9495,17 +9495,17 @@ export const DebtKernel =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 2091,
+                        "id": 2088,
                         "name": "ElementaryTypeName",
                         "src": "12380:4:3"
                       }
                     ],
-                    "id": 2092,
+                    "id": 2089,
                     "name": "VariableDeclaration",
                     "src": "12380:18:3"
                   }
                 ],
-                "id": 2093,
+                "id": 2090,
                 "name": "ParameterList",
                 "src": "12379:20:3"
               },
@@ -9514,7 +9514,7 @@ export const DebtKernel =
                   {
                     "attributes": {
                       "assignments": [
-                        2095
+                        2092
                       ]
                     },
                     "children": [
@@ -9522,7 +9522,7 @@ export const DebtKernel =
                         "attributes": {
                           "constant": false,
                           "name": "totalFees",
-                          "scope": 2258,
+                          "scope": 2255,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -9535,12 +9535,12 @@ export const DebtKernel =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 2094,
+                            "id": 2091,
                             "name": "ElementaryTypeName",
                             "src": "12414:4:3"
                           }
                         ],
-                        "id": 2095,
+                        "id": 2092,
                         "name": "VariableDeclaration",
                         "src": "12414:14:3"
                       },
@@ -9572,7 +9572,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "add",
-                              "referencedDeclaration": 14079,
+                              "referencedDeclaration": 14076,
                               "type": "function (uint256,uint256) pure returns (uint256)"
                             },
                             "children": [
@@ -9584,7 +9584,7 @@ export const DebtKernel =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "creditorFee",
-                                  "referencedDeclaration": 1582,
+                                  "referencedDeclaration": 1579,
                                   "type": "uint256"
                                 },
                                 "children": [
@@ -9594,21 +9594,21 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2089,
+                                      "referencedDeclaration": 2086,
                                       "type": "struct DebtKernel.DebtOrder memory",
                                       "value": "debtOrder"
                                     },
-                                    "id": 2096,
+                                    "id": 2093,
                                     "name": "Identifier",
                                     "src": "12431:9:3"
                                   }
                                 ],
-                                "id": 2097,
+                                "id": 2094,
                                 "name": "MemberAccess",
                                 "src": "12431:21:3"
                               }
                             ],
-                            "id": 2098,
+                            "id": 2095,
                             "name": "MemberAccess",
                             "src": "12431:25:3"
                           },
@@ -9620,7 +9620,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "debtorFee",
-                              "referencedDeclaration": 1584,
+                              "referencedDeclaration": 1581,
                               "type": "uint256"
                             },
                             "children": [
@@ -9630,26 +9630,26 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2089,
+                                  "referencedDeclaration": 2086,
                                   "type": "struct DebtKernel.DebtOrder memory",
                                   "value": "debtOrder"
                                 },
-                                "id": 2099,
+                                "id": 2096,
                                 "name": "Identifier",
                                 "src": "12457:9:3"
                               }
                             ],
-                            "id": 2100,
+                            "id": 2097,
                             "name": "MemberAccess",
                             "src": "12457:19:3"
                           }
                         ],
-                        "id": 2101,
+                        "id": 2098,
                         "name": "FunctionCall",
                         "src": "12431:46:3"
                       }
                     ],
-                    "id": 2102,
+                    "id": 2099,
                     "name": "VariableDeclarationStatement",
                     "src": "12414:63:3"
                   },
@@ -9679,11 +9679,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2095,
+                              "referencedDeclaration": 2092,
                               "type": "uint256",
                               "value": "totalFees"
                             },
-                            "id": 2103,
+                            "id": 2100,
                             "name": "Identifier",
                             "src": "12653:9:3"
                           },
@@ -9715,7 +9715,7 @@ export const DebtKernel =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "add",
-                                  "referencedDeclaration": 14079,
+                                  "referencedDeclaration": 14076,
                                   "type": "function (uint256,uint256) pure returns (uint256)"
                                 },
                                 "children": [
@@ -9727,7 +9727,7 @@ export const DebtKernel =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "relayerFee",
-                                      "referencedDeclaration": 1576,
+                                      "referencedDeclaration": 1573,
                                       "type": "uint256"
                                     },
                                     "children": [
@@ -9737,21 +9737,21 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 2089,
+                                          "referencedDeclaration": 2086,
                                           "type": "struct DebtKernel.DebtOrder memory",
                                           "value": "debtOrder"
                                         },
-                                        "id": 2104,
+                                        "id": 2101,
                                         "name": "Identifier",
                                         "src": "12666:9:3"
                                       }
                                     ],
-                                    "id": 2105,
+                                    "id": 2102,
                                     "name": "MemberAccess",
                                     "src": "12666:20:3"
                                   }
                                 ],
-                                "id": 2106,
+                                "id": 2103,
                                 "name": "MemberAccess",
                                 "src": "12666:24:3"
                               },
@@ -9763,7 +9763,7 @@ export const DebtKernel =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "underwriterFee",
-                                  "referencedDeclaration": 1574,
+                                  "referencedDeclaration": 1571,
                                   "type": "uint256"
                                 },
                                 "children": [
@@ -9773,26 +9773,26 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2089,
+                                      "referencedDeclaration": 2086,
                                       "type": "struct DebtKernel.DebtOrder memory",
                                       "value": "debtOrder"
                                     },
-                                    "id": 2107,
+                                    "id": 2104,
                                     "name": "Identifier",
                                     "src": "12691:9:3"
                                   }
                                 ],
-                                "id": 2108,
+                                "id": 2105,
                                 "name": "MemberAccess",
                                 "src": "12691:24:3"
                               }
                             ],
-                            "id": 2109,
+                            "id": 2106,
                             "name": "FunctionCall",
                             "src": "12666:50:3"
                           }
                         ],
-                        "id": 2110,
+                        "id": 2107,
                         "name": "BinaryOperation",
                         "src": "12653:63:3"
                       },
@@ -9830,11 +9830,11 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1553,
+                                      "referencedDeclaration": 1550,
                                       "type": "function (uint8,bytes32)",
                                       "value": "LogError"
                                     },
-                                    "id": 2111,
+                                    "id": 2108,
                                     "name": "Identifier",
                                     "src": "12732:8:3"
                                   },
@@ -9857,7 +9857,7 @@ export const DebtKernel =
                                         "attributes": {
                                           "argumentTypes": [
                                             {
-                                              "typeIdentifier": "t_enum$_Errors_$1499",
+                                              "typeIdentifier": "t_enum$_Errors_$1496",
                                               "typeString": "enum DebtKernel.Errors"
                                             }
                                           ],
@@ -9868,7 +9868,7 @@ export const DebtKernel =
                                           "type": "type(uint8)",
                                           "value": "uint8"
                                         },
-                                        "id": 2112,
+                                        "id": 2109,
                                         "name": "ElementaryTypeNameExpression",
                                         "src": "12741:5:3"
                                       },
@@ -9890,21 +9890,21 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1499,
+                                              "referencedDeclaration": 1496,
                                               "type": "type(enum DebtKernel.Errors)",
                                               "value": "Errors"
                                             },
-                                            "id": 2113,
+                                            "id": 2110,
                                             "name": "Identifier",
                                             "src": "12747:6:3"
                                           }
                                         ],
-                                        "id": 2114,
+                                        "id": 2111,
                                         "name": "MemberAccess",
                                         "src": "12747:51:3"
                                       }
                                     ],
-                                    "id": 2115,
+                                    "id": 2112,
                                     "name": "FunctionCall",
                                     "src": "12741:58:3"
                                   },
@@ -9916,7 +9916,7 @@ export const DebtKernel =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "debtOrderHash",
-                                      "referencedDeclaration": 1590,
+                                      "referencedDeclaration": 1587,
                                       "type": "bytes32"
                                     },
                                     "children": [
@@ -9926,32 +9926,32 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 2089,
+                                          "referencedDeclaration": 2086,
                                           "type": "struct DebtKernel.DebtOrder memory",
                                           "value": "debtOrder"
                                         },
-                                        "id": 2116,
+                                        "id": 2113,
                                         "name": "Identifier",
                                         "src": "12801:9:3"
                                       }
                                     ],
-                                    "id": 2117,
+                                    "id": 2114,
                                     "name": "MemberAccess",
                                     "src": "12801:23:3"
                                   }
                                 ],
-                                "id": 2118,
+                                "id": 2115,
                                 "name": "FunctionCall",
                                 "src": "12732:93:3"
                               }
                             ],
-                            "id": 2119,
+                            "id": 2116,
                             "name": "ExpressionStatement",
                             "src": "12732:93:3"
                           },
                           {
                             "attributes": {
-                              "functionReturnParameters": 2093
+                              "functionReturnParameters": 2090
                             },
                             "children": [
                               {
@@ -9967,22 +9967,22 @@ export const DebtKernel =
                                   "type": "bool",
                                   "value": "false"
                                 },
-                                "id": 2120,
+                                "id": 2117,
                                 "name": "Literal",
                                 "src": "12846:5:3"
                               }
                             ],
-                            "id": 2121,
+                            "id": 2118,
                             "name": "Return",
                             "src": "12839:12:3"
                           }
                         ],
-                        "id": 2122,
+                        "id": 2119,
                         "name": "Block",
                         "src": "12718:144:3"
                       }
                     ],
-                    "id": 2123,
+                    "id": 2120,
                     "name": "IfStatement",
                     "src": "12649:213:3"
                   },
@@ -10014,7 +10014,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "principalAmount",
-                              "referencedDeclaration": 1578,
+                              "referencedDeclaration": 1575,
                               "type": "uint256"
                             },
                             "children": [
@@ -10024,16 +10024,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2089,
+                                  "referencedDeclaration": 2086,
                                   "type": "struct DebtKernel.DebtOrder memory",
                                   "value": "debtOrder"
                                 },
-                                "id": 2124,
+                                "id": 2121,
                                 "name": "Identifier",
                                 "src": "12960:9:3"
                               }
                             ],
-                            "id": 2125,
+                            "id": 2122,
                             "name": "MemberAccess",
                             "src": "12960:25:3"
                           },
@@ -10045,7 +10045,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "debtorFee",
-                              "referencedDeclaration": 1584,
+                              "referencedDeclaration": 1581,
                               "type": "uint256"
                             },
                             "children": [
@@ -10055,21 +10055,21 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2089,
+                                  "referencedDeclaration": 2086,
                                   "type": "struct DebtKernel.DebtOrder memory",
                                   "value": "debtOrder"
                                 },
-                                "id": 2126,
+                                "id": 2123,
                                 "name": "Identifier",
                                 "src": "12988:9:3"
                               }
                             ],
-                            "id": 2127,
+                            "id": 2124,
                             "name": "MemberAccess",
                             "src": "12988:19:3"
                           }
                         ],
-                        "id": 2128,
+                        "id": 2125,
                         "name": "BinaryOperation",
                         "src": "12960:47:3"
                       },
@@ -10107,11 +10107,11 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1553,
+                                      "referencedDeclaration": 1550,
                                       "type": "function (uint8,bytes32)",
                                       "value": "LogError"
                                     },
-                                    "id": 2129,
+                                    "id": 2126,
                                     "name": "Identifier",
                                     "src": "13023:8:3"
                                   },
@@ -10134,7 +10134,7 @@ export const DebtKernel =
                                         "attributes": {
                                           "argumentTypes": [
                                             {
-                                              "typeIdentifier": "t_enum$_Errors_$1499",
+                                              "typeIdentifier": "t_enum$_Errors_$1496",
                                               "typeString": "enum DebtKernel.Errors"
                                             }
                                           ],
@@ -10145,7 +10145,7 @@ export const DebtKernel =
                                           "type": "type(uint8)",
                                           "value": "uint8"
                                         },
-                                        "id": 2130,
+                                        "id": 2127,
                                         "name": "ElementaryTypeNameExpression",
                                         "src": "13032:5:3"
                                       },
@@ -10167,21 +10167,21 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1499,
+                                              "referencedDeclaration": 1496,
                                               "type": "type(enum DebtKernel.Errors)",
                                               "value": "Errors"
                                             },
-                                            "id": 2131,
+                                            "id": 2128,
                                             "name": "Identifier",
                                             "src": "13038:6:3"
                                           }
                                         ],
-                                        "id": 2132,
+                                        "id": 2129,
                                         "name": "MemberAccess",
                                         "src": "13038:43:3"
                                       }
                                     ],
-                                    "id": 2133,
+                                    "id": 2130,
                                     "name": "FunctionCall",
                                     "src": "13032:50:3"
                                   },
@@ -10193,7 +10193,7 @@ export const DebtKernel =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "debtOrderHash",
-                                      "referencedDeclaration": 1590,
+                                      "referencedDeclaration": 1587,
                                       "type": "bytes32"
                                     },
                                     "children": [
@@ -10203,32 +10203,32 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 2089,
+                                          "referencedDeclaration": 2086,
                                           "type": "struct DebtKernel.DebtOrder memory",
                                           "value": "debtOrder"
                                         },
-                                        "id": 2134,
+                                        "id": 2131,
                                         "name": "Identifier",
                                         "src": "13084:9:3"
                                       }
                                     ],
-                                    "id": 2135,
+                                    "id": 2132,
                                     "name": "MemberAccess",
                                     "src": "13084:23:3"
                                   }
                                 ],
-                                "id": 2136,
+                                "id": 2133,
                                 "name": "FunctionCall",
                                 "src": "13023:85:3"
                               }
                             ],
-                            "id": 2137,
+                            "id": 2134,
                             "name": "ExpressionStatement",
                             "src": "13023:85:3"
                           },
                           {
                             "attributes": {
-                              "functionReturnParameters": 2093
+                              "functionReturnParameters": 2090
                             },
                             "children": [
                               {
@@ -10244,22 +10244,22 @@ export const DebtKernel =
                                   "type": "bool",
                                   "value": "false"
                                 },
-                                "id": 2138,
+                                "id": 2135,
                                 "name": "Literal",
                                 "src": "13129:5:3"
                               }
                             ],
-                            "id": 2139,
+                            "id": 2136,
                             "name": "Return",
                             "src": "13122:12:3"
                           }
                         ],
-                        "id": 2140,
+                        "id": 2137,
                         "name": "Block",
                         "src": "13009:136:3"
                       }
                     ],
-                    "id": 2141,
+                    "id": 2138,
                     "name": "IfStatement",
                     "src": "12956:189:3"
                   },
@@ -10332,7 +10332,7 @@ export const DebtKernel =
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "underwriter",
-                                          "referencedDeclaration": 1559,
+                                          "referencedDeclaration": 1556,
                                           "type": "address"
                                         },
                                         "children": [
@@ -10344,7 +10344,7 @@ export const DebtKernel =
                                               "isPure": false,
                                               "lValueRequested": false,
                                               "member_name": "issuance",
-                                              "referencedDeclaration": 1572,
+                                              "referencedDeclaration": 1569,
                                               "type": "struct DebtKernel.Issuance memory"
                                             },
                                             "children": [
@@ -10354,21 +10354,21 @@ export const DebtKernel =
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 2089,
+                                                  "referencedDeclaration": 2086,
                                                   "type": "struct DebtKernel.DebtOrder memory",
                                                   "value": "debtOrder"
                                                 },
-                                                "id": 2142,
+                                                "id": 2139,
                                                 "name": "Identifier",
                                                 "src": "13450:9:3"
                                               }
                                             ],
-                                            "id": 2143,
+                                            "id": 2140,
                                             "name": "MemberAccess",
                                             "src": "13450:18:3"
                                           }
                                         ],
-                                        "id": 2144,
+                                        "id": 2141,
                                         "name": "MemberAccess",
                                         "src": "13450:30:3"
                                       },
@@ -10402,7 +10402,7 @@ export const DebtKernel =
                                               "type": "type(address)",
                                               "value": "address"
                                             },
-                                            "id": 2145,
+                                            "id": 2142,
                                             "name": "ElementaryTypeNameExpression",
                                             "src": "13484:7:3"
                                           },
@@ -10419,17 +10419,17 @@ export const DebtKernel =
                                               "type": "int_const 0",
                                               "value": "0"
                                             },
-                                            "id": 2146,
+                                            "id": 2143,
                                             "name": "Literal",
                                             "src": "13492:1:3"
                                           }
                                         ],
-                                        "id": 2147,
+                                        "id": 2144,
                                         "name": "FunctionCall",
                                         "src": "13484:10:3"
                                       }
                                     ],
-                                    "id": 2148,
+                                    "id": 2145,
                                     "name": "BinaryOperation",
                                     "src": "13450:44:3"
                                   },
@@ -10456,7 +10456,7 @@ export const DebtKernel =
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "underwriterFee",
-                                          "referencedDeclaration": 1574,
+                                          "referencedDeclaration": 1571,
                                           "type": "uint256"
                                         },
                                         "children": [
@@ -10466,16 +10466,16 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 2089,
+                                              "referencedDeclaration": 2086,
                                               "type": "struct DebtKernel.DebtOrder memory",
                                               "value": "debtOrder"
                                             },
-                                            "id": 2149,
+                                            "id": 2146,
                                             "name": "Identifier",
                                             "src": "13498:9:3"
                                           }
                                         ],
-                                        "id": 2150,
+                                        "id": 2147,
                                         "name": "MemberAccess",
                                         "src": "13498:24:3"
                                       },
@@ -10492,22 +10492,22 @@ export const DebtKernel =
                                           "type": "int_const 0",
                                           "value": "0"
                                         },
-                                        "id": 2151,
+                                        "id": 2148,
                                         "name": "Literal",
                                         "src": "13525:1:3"
                                       }
                                     ],
-                                    "id": 2152,
+                                    "id": 2149,
                                     "name": "BinaryOperation",
                                     "src": "13498:28:3"
                                   }
                                 ],
-                                "id": 2153,
+                                "id": 2150,
                                 "name": "BinaryOperation",
                                 "src": "13450:76:3"
                               }
                             ],
-                            "id": 2154,
+                            "id": 2151,
                             "name": "TupleExpression",
                             "src": "13449:78:3"
                           },
@@ -10560,7 +10560,7 @@ export const DebtKernel =
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "relayer",
-                                          "referencedDeclaration": 1586,
+                                          "referencedDeclaration": 1583,
                                           "type": "address"
                                         },
                                         "children": [
@@ -10570,16 +10570,16 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 2089,
+                                              "referencedDeclaration": 2086,
                                               "type": "struct DebtKernel.DebtOrder memory",
                                               "value": "debtOrder"
                                             },
-                                            "id": 2155,
+                                            "id": 2152,
                                             "name": "Identifier",
                                             "src": "13544:9:3"
                                           }
                                         ],
-                                        "id": 2156,
+                                        "id": 2153,
                                         "name": "MemberAccess",
                                         "src": "13544:17:3"
                                       },
@@ -10613,7 +10613,7 @@ export const DebtKernel =
                                               "type": "type(address)",
                                               "value": "address"
                                             },
-                                            "id": 2157,
+                                            "id": 2154,
                                             "name": "ElementaryTypeNameExpression",
                                             "src": "13565:7:3"
                                           },
@@ -10630,17 +10630,17 @@ export const DebtKernel =
                                               "type": "int_const 0",
                                               "value": "0"
                                             },
-                                            "id": 2158,
+                                            "id": 2155,
                                             "name": "Literal",
                                             "src": "13573:1:3"
                                           }
                                         ],
-                                        "id": 2159,
+                                        "id": 2156,
                                         "name": "FunctionCall",
                                         "src": "13565:10:3"
                                       }
                                     ],
-                                    "id": 2160,
+                                    "id": 2157,
                                     "name": "BinaryOperation",
                                     "src": "13544:31:3"
                                   },
@@ -10665,11 +10665,11 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 2095,
+                                          "referencedDeclaration": 2092,
                                           "type": "uint256",
                                           "value": "totalFees"
                                         },
-                                        "id": 2161,
+                                        "id": 2158,
                                         "name": "Identifier",
                                         "src": "13579:9:3"
                                       },
@@ -10681,7 +10681,7 @@ export const DebtKernel =
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "underwriterFee",
-                                          "referencedDeclaration": 1574,
+                                          "referencedDeclaration": 1571,
                                           "type": "uint256"
                                         },
                                         "children": [
@@ -10691,36 +10691,36 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 2089,
+                                              "referencedDeclaration": 2086,
                                               "type": "struct DebtKernel.DebtOrder memory",
                                               "value": "debtOrder"
                                             },
-                                            "id": 2162,
+                                            "id": 2159,
                                             "name": "Identifier",
                                             "src": "13592:9:3"
                                           }
                                         ],
-                                        "id": 2163,
+                                        "id": 2160,
                                         "name": "MemberAccess",
                                         "src": "13592:24:3"
                                       }
                                     ],
-                                    "id": 2164,
+                                    "id": 2161,
                                     "name": "BinaryOperation",
                                     "src": "13579:37:3"
                                   }
                                 ],
-                                "id": 2165,
+                                "id": 2162,
                                 "name": "BinaryOperation",
                                 "src": "13544:72:3"
                               }
                             ],
-                            "id": 2166,
+                            "id": 2163,
                             "name": "TupleExpression",
                             "src": "13543:74:3"
                           }
                         ],
-                        "id": 2167,
+                        "id": 2164,
                         "name": "BinaryOperation",
                         "src": "13449:168:3"
                       },
@@ -10758,11 +10758,11 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1553,
+                                      "referencedDeclaration": 1550,
                                       "type": "function (uint8,bytes32)",
                                       "value": "LogError"
                                     },
-                                    "id": 2168,
+                                    "id": 2165,
                                     "name": "Identifier",
                                     "src": "13633:8:3"
                                   },
@@ -10785,7 +10785,7 @@ export const DebtKernel =
                                         "attributes": {
                                           "argumentTypes": [
                                             {
-                                              "typeIdentifier": "t_enum$_Errors_$1499",
+                                              "typeIdentifier": "t_enum$_Errors_$1496",
                                               "typeString": "enum DebtKernel.Errors"
                                             }
                                           ],
@@ -10796,7 +10796,7 @@ export const DebtKernel =
                                           "type": "type(uint8)",
                                           "value": "uint8"
                                         },
-                                        "id": 2169,
+                                        "id": 2166,
                                         "name": "ElementaryTypeNameExpression",
                                         "src": "13642:5:3"
                                       },
@@ -10818,21 +10818,21 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1499,
+                                              "referencedDeclaration": 1496,
                                               "type": "type(enum DebtKernel.Errors)",
                                               "value": "Errors"
                                             },
-                                            "id": 2170,
+                                            "id": 2167,
                                             "name": "Identifier",
                                             "src": "13648:6:3"
                                           }
                                         ],
-                                        "id": 2171,
+                                        "id": 2168,
                                         "name": "MemberAccess",
                                         "src": "13648:46:3"
                                       }
                                     ],
-                                    "id": 2172,
+                                    "id": 2169,
                                     "name": "FunctionCall",
                                     "src": "13642:53:3"
                                   },
@@ -10844,7 +10844,7 @@ export const DebtKernel =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "debtOrderHash",
-                                      "referencedDeclaration": 1590,
+                                      "referencedDeclaration": 1587,
                                       "type": "bytes32"
                                     },
                                     "children": [
@@ -10854,32 +10854,32 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 2089,
+                                          "referencedDeclaration": 2086,
                                           "type": "struct DebtKernel.DebtOrder memory",
                                           "value": "debtOrder"
                                         },
-                                        "id": 2173,
+                                        "id": 2170,
                                         "name": "Identifier",
                                         "src": "13697:9:3"
                                       }
                                     ],
-                                    "id": 2174,
+                                    "id": 2171,
                                     "name": "MemberAccess",
                                     "src": "13697:23:3"
                                   }
                                 ],
-                                "id": 2175,
+                                "id": 2172,
                                 "name": "FunctionCall",
                                 "src": "13633:88:3"
                               }
                             ],
-                            "id": 2176,
+                            "id": 2173,
                             "name": "ExpressionStatement",
                             "src": "13633:88:3"
                           },
                           {
                             "attributes": {
-                              "functionReturnParameters": 2093
+                              "functionReturnParameters": 2090
                             },
                             "children": [
                               {
@@ -10895,22 +10895,22 @@ export const DebtKernel =
                                   "type": "bool",
                                   "value": "false"
                                 },
-                                "id": 2177,
+                                "id": 2174,
                                 "name": "Literal",
                                 "src": "13742:5:3"
                               }
                             ],
-                            "id": 2178,
+                            "id": 2175,
                             "name": "Return",
                             "src": "13735:12:3"
                           }
                         ],
-                        "id": 2179,
+                        "id": 2176,
                         "name": "Block",
                         "src": "13619:139:3"
                       }
                     ],
-                    "id": 2180,
+                    "id": 2177,
                     "name": "IfStatement",
                     "src": "13445:313:3"
                   },
@@ -10942,7 +10942,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "expirationTimestampInSec",
-                              "referencedDeclaration": 1588,
+                              "referencedDeclaration": 1585,
                               "type": "uint256"
                             },
                             "children": [
@@ -10952,16 +10952,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2089,
+                                  "referencedDeclaration": 2086,
                                   "type": "struct DebtKernel.DebtOrder memory",
                                   "value": "debtOrder"
                                 },
-                                "id": 2181,
+                                "id": 2178,
                                 "name": "Identifier",
                                 "src": "13879:9:3"
                               }
                             ],
-                            "id": 2182,
+                            "id": 2179,
                             "name": "MemberAccess",
                             "src": "13879:34:3"
                           },
@@ -10983,21 +10983,21 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15810,
+                                  "referencedDeclaration": 15807,
                                   "type": "block",
                                   "value": "block"
                                 },
-                                "id": 2183,
+                                "id": 2180,
                                 "name": "Identifier",
                                 "src": "13916:5:3"
                               }
                             ],
-                            "id": 2184,
+                            "id": 2181,
                             "name": "MemberAccess",
                             "src": "13916:15:3"
                           }
                         ],
-                        "id": 2185,
+                        "id": 2182,
                         "name": "BinaryOperation",
                         "src": "13879:52:3"
                       },
@@ -11035,11 +11035,11 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1553,
+                                      "referencedDeclaration": 1550,
                                       "type": "function (uint8,bytes32)",
                                       "value": "LogError"
                                     },
-                                    "id": 2186,
+                                    "id": 2183,
                                     "name": "Identifier",
                                     "src": "13947:8:3"
                                   },
@@ -11062,7 +11062,7 @@ export const DebtKernel =
                                         "attributes": {
                                           "argumentTypes": [
                                             {
-                                              "typeIdentifier": "t_enum$_Errors_$1499",
+                                              "typeIdentifier": "t_enum$_Errors_$1496",
                                               "typeString": "enum DebtKernel.Errors"
                                             }
                                           ],
@@ -11073,7 +11073,7 @@ export const DebtKernel =
                                           "type": "type(uint8)",
                                           "value": "uint8"
                                         },
-                                        "id": 2187,
+                                        "id": 2184,
                                         "name": "ElementaryTypeNameExpression",
                                         "src": "13956:5:3"
                                       },
@@ -11095,21 +11095,21 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1499,
+                                              "referencedDeclaration": 1496,
                                               "type": "type(enum DebtKernel.Errors)",
                                               "value": "Errors"
                                             },
-                                            "id": 2188,
+                                            "id": 2185,
                                             "name": "Identifier",
                                             "src": "13962:6:3"
                                           }
                                         ],
-                                        "id": 2189,
+                                        "id": 2186,
                                         "name": "MemberAccess",
                                         "src": "13962:20:3"
                                       }
                                     ],
-                                    "id": 2190,
+                                    "id": 2187,
                                     "name": "FunctionCall",
                                     "src": "13956:27:3"
                                   },
@@ -11121,7 +11121,7 @@ export const DebtKernel =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "debtOrderHash",
-                                      "referencedDeclaration": 1590,
+                                      "referencedDeclaration": 1587,
                                       "type": "bytes32"
                                     },
                                     "children": [
@@ -11131,32 +11131,32 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 2089,
+                                          "referencedDeclaration": 2086,
                                           "type": "struct DebtKernel.DebtOrder memory",
                                           "value": "debtOrder"
                                         },
-                                        "id": 2191,
+                                        "id": 2188,
                                         "name": "Identifier",
                                         "src": "13985:9:3"
                                       }
                                     ],
-                                    "id": 2192,
+                                    "id": 2189,
                                     "name": "MemberAccess",
                                     "src": "13985:23:3"
                                   }
                                 ],
-                                "id": 2193,
+                                "id": 2190,
                                 "name": "FunctionCall",
                                 "src": "13947:62:3"
                               }
                             ],
-                            "id": 2194,
+                            "id": 2191,
                             "name": "ExpressionStatement",
                             "src": "13947:62:3"
                           },
                           {
                             "attributes": {
-                              "functionReturnParameters": 2093
+                              "functionReturnParameters": 2090
                             },
                             "children": [
                               {
@@ -11172,22 +11172,22 @@ export const DebtKernel =
                                   "type": "bool",
                                   "value": "false"
                                 },
-                                "id": 2195,
+                                "id": 2192,
                                 "name": "Literal",
                                 "src": "14030:5:3"
                               }
                             ],
-                            "id": 2196,
+                            "id": 2193,
                             "name": "Return",
                             "src": "14023:12:3"
                           }
                         ],
-                        "id": 2197,
+                        "id": 2194,
                         "name": "Block",
                         "src": "13933:113:3"
                       }
                     ],
-                    "id": 2198,
+                    "id": 2195,
                     "name": "IfStatement",
                     "src": "13875:171:3"
                   },
@@ -11224,7 +11224,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "exists",
-                              "referencedDeclaration": 14963,
+                              "referencedDeclaration": 14960,
                               "type": "function (uint256) view external returns (bool)"
                             },
                             "children": [
@@ -11234,16 +11234,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1501,
+                                  "referencedDeclaration": 1498,
                                   "type": "contract DebtToken",
                                   "value": "debtToken"
                                 },
-                                "id": 2199,
+                                "id": 2196,
                                 "name": "Identifier",
                                 "src": "14145:9:3"
                               }
                             ],
-                            "id": 2200,
+                            "id": 2197,
                             "name": "MemberAccess",
                             "src": "14145:16:3"
                           },
@@ -11277,7 +11277,7 @@ export const DebtKernel =
                                   "type": "type(uint256)",
                                   "value": "uint"
                                 },
-                                "id": 2201,
+                                "id": 2198,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "14162:4:3"
                               },
@@ -11289,7 +11289,7 @@ export const DebtKernel =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "agreementId",
-                                  "referencedDeclaration": 1569,
+                                  "referencedDeclaration": 1566,
                                   "type": "bytes32"
                                 },
                                 "children": [
@@ -11301,7 +11301,7 @@ export const DebtKernel =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "issuance",
-                                      "referencedDeclaration": 1572,
+                                      "referencedDeclaration": 1569,
                                       "type": "struct DebtKernel.Issuance memory"
                                     },
                                     "children": [
@@ -11311,31 +11311,31 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 2089,
+                                          "referencedDeclaration": 2086,
                                           "type": "struct DebtKernel.DebtOrder memory",
                                           "value": "debtOrder"
                                         },
-                                        "id": 2202,
+                                        "id": 2199,
                                         "name": "Identifier",
                                         "src": "14167:9:3"
                                       }
                                     ],
-                                    "id": 2203,
+                                    "id": 2200,
                                     "name": "MemberAccess",
                                     "src": "14167:18:3"
                                   }
                                 ],
-                                "id": 2204,
+                                "id": 2201,
                                 "name": "MemberAccess",
                                 "src": "14167:30:3"
                               }
                             ],
-                            "id": 2205,
+                            "id": 2202,
                             "name": "FunctionCall",
                             "src": "14162:36:3"
                           }
                         ],
-                        "id": 2206,
+                        "id": 2203,
                         "name": "FunctionCall",
                         "src": "14145:54:3"
                       },
@@ -11373,11 +11373,11 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1553,
+                                      "referencedDeclaration": 1550,
                                       "type": "function (uint8,bytes32)",
                                       "value": "LogError"
                                     },
-                                    "id": 2207,
+                                    "id": 2204,
                                     "name": "Identifier",
                                     "src": "14215:8:3"
                                   },
@@ -11400,7 +11400,7 @@ export const DebtKernel =
                                         "attributes": {
                                           "argumentTypes": [
                                             {
-                                              "typeIdentifier": "t_enum$_Errors_$1499",
+                                              "typeIdentifier": "t_enum$_Errors_$1496",
                                               "typeString": "enum DebtKernel.Errors"
                                             }
                                           ],
@@ -11411,7 +11411,7 @@ export const DebtKernel =
                                           "type": "type(uint8)",
                                           "value": "uint8"
                                         },
-                                        "id": 2208,
+                                        "id": 2205,
                                         "name": "ElementaryTypeNameExpression",
                                         "src": "14224:5:3"
                                       },
@@ -11433,21 +11433,21 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1499,
+                                              "referencedDeclaration": 1496,
                                               "type": "type(enum DebtKernel.Errors)",
                                               "value": "Errors"
                                             },
-                                            "id": 2209,
+                                            "id": 2206,
                                             "name": "Identifier",
                                             "src": "14230:6:3"
                                           }
                                         ],
-                                        "id": 2210,
+                                        "id": 2207,
                                         "name": "MemberAccess",
                                         "src": "14230:18:3"
                                       }
                                     ],
-                                    "id": 2211,
+                                    "id": 2208,
                                     "name": "FunctionCall",
                                     "src": "14224:25:3"
                                   },
@@ -11459,7 +11459,7 @@ export const DebtKernel =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "debtOrderHash",
-                                      "referencedDeclaration": 1590,
+                                      "referencedDeclaration": 1587,
                                       "type": "bytes32"
                                     },
                                     "children": [
@@ -11469,32 +11469,32 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 2089,
+                                          "referencedDeclaration": 2086,
                                           "type": "struct DebtKernel.DebtOrder memory",
                                           "value": "debtOrder"
                                         },
-                                        "id": 2212,
+                                        "id": 2209,
                                         "name": "Identifier",
                                         "src": "14251:9:3"
                                       }
                                     ],
-                                    "id": 2213,
+                                    "id": 2210,
                                     "name": "MemberAccess",
                                     "src": "14251:23:3"
                                   }
                                 ],
-                                "id": 2214,
+                                "id": 2211,
                                 "name": "FunctionCall",
                                 "src": "14215:60:3"
                               }
                             ],
-                            "id": 2215,
+                            "id": 2212,
                             "name": "ExpressionStatement",
                             "src": "14215:60:3"
                           },
                           {
                             "attributes": {
-                              "functionReturnParameters": 2093
+                              "functionReturnParameters": 2090
                             },
                             "children": [
                               {
@@ -11510,22 +11510,22 @@ export const DebtKernel =
                                   "type": "bool",
                                   "value": "false"
                                 },
-                                "id": 2216,
+                                "id": 2213,
                                 "name": "Literal",
                                 "src": "14296:5:3"
                               }
                             ],
-                            "id": 2217,
+                            "id": 2214,
                             "name": "Return",
                             "src": "14289:12:3"
                           }
                         ],
-                        "id": 2218,
+                        "id": 2215,
                         "name": "Block",
                         "src": "14201:111:3"
                       }
                     ],
-                    "id": 2219,
+                    "id": 2216,
                     "name": "IfStatement",
                     "src": "14141:171:3"
                   },
@@ -11550,11 +11550,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1515,
+                              "referencedDeclaration": 1512,
                               "type": "mapping(bytes32 => bool)",
                               "value": "issuanceCancelled"
                             },
-                            "id": 2220,
+                            "id": 2217,
                             "name": "Identifier",
                             "src": "14399:17:3"
                           },
@@ -11566,7 +11566,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "agreementId",
-                              "referencedDeclaration": 1569,
+                              "referencedDeclaration": 1566,
                               "type": "bytes32"
                             },
                             "children": [
@@ -11578,7 +11578,7 @@ export const DebtKernel =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "issuance",
-                                  "referencedDeclaration": 1572,
+                                  "referencedDeclaration": 1569,
                                   "type": "struct DebtKernel.Issuance memory"
                                 },
                                 "children": [
@@ -11588,26 +11588,26 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2089,
+                                      "referencedDeclaration": 2086,
                                       "type": "struct DebtKernel.DebtOrder memory",
                                       "value": "debtOrder"
                                     },
-                                    "id": 2221,
+                                    "id": 2218,
                                     "name": "Identifier",
                                     "src": "14417:9:3"
                                   }
                                 ],
-                                "id": 2222,
+                                "id": 2219,
                                 "name": "MemberAccess",
                                 "src": "14417:18:3"
                               }
                             ],
-                            "id": 2223,
+                            "id": 2220,
                             "name": "MemberAccess",
                             "src": "14417:30:3"
                           }
                         ],
-                        "id": 2224,
+                        "id": 2221,
                         "name": "IndexAccess",
                         "src": "14399:49:3"
                       },
@@ -11645,11 +11645,11 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1553,
+                                      "referencedDeclaration": 1550,
                                       "type": "function (uint8,bytes32)",
                                       "value": "LogError"
                                     },
-                                    "id": 2225,
+                                    "id": 2222,
                                     "name": "Identifier",
                                     "src": "14464:8:3"
                                   },
@@ -11672,7 +11672,7 @@ export const DebtKernel =
                                         "attributes": {
                                           "argumentTypes": [
                                             {
-                                              "typeIdentifier": "t_enum$_Errors_$1499",
+                                              "typeIdentifier": "t_enum$_Errors_$1496",
                                               "typeString": "enum DebtKernel.Errors"
                                             }
                                           ],
@@ -11683,7 +11683,7 @@ export const DebtKernel =
                                           "type": "type(uint8)",
                                           "value": "uint8"
                                         },
-                                        "id": 2226,
+                                        "id": 2223,
                                         "name": "ElementaryTypeNameExpression",
                                         "src": "14473:5:3"
                                       },
@@ -11705,21 +11705,21 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1499,
+                                              "referencedDeclaration": 1496,
                                               "type": "type(enum DebtKernel.Errors)",
                                               "value": "Errors"
                                             },
-                                            "id": 2227,
+                                            "id": 2224,
                                             "name": "Identifier",
                                             "src": "14479:6:3"
                                           }
                                         ],
-                                        "id": 2228,
+                                        "id": 2225,
                                         "name": "MemberAccess",
                                         "src": "14479:25:3"
                                       }
                                     ],
-                                    "id": 2229,
+                                    "id": 2226,
                                     "name": "FunctionCall",
                                     "src": "14473:32:3"
                                   },
@@ -11731,7 +11731,7 @@ export const DebtKernel =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "debtOrderHash",
-                                      "referencedDeclaration": 1590,
+                                      "referencedDeclaration": 1587,
                                       "type": "bytes32"
                                     },
                                     "children": [
@@ -11741,32 +11741,32 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 2089,
+                                          "referencedDeclaration": 2086,
                                           "type": "struct DebtKernel.DebtOrder memory",
                                           "value": "debtOrder"
                                         },
-                                        "id": 2230,
+                                        "id": 2227,
                                         "name": "Identifier",
                                         "src": "14507:9:3"
                                       }
                                     ],
-                                    "id": 2231,
+                                    "id": 2228,
                                     "name": "MemberAccess",
                                     "src": "14507:23:3"
                                   }
                                 ],
-                                "id": 2232,
+                                "id": 2229,
                                 "name": "FunctionCall",
                                 "src": "14464:67:3"
                               }
                             ],
-                            "id": 2233,
+                            "id": 2230,
                             "name": "ExpressionStatement",
                             "src": "14464:67:3"
                           },
                           {
                             "attributes": {
-                              "functionReturnParameters": 2093
+                              "functionReturnParameters": 2090
                             },
                             "children": [
                               {
@@ -11782,22 +11782,22 @@ export const DebtKernel =
                                   "type": "bool",
                                   "value": "false"
                                 },
-                                "id": 2234,
+                                "id": 2231,
                                 "name": "Literal",
                                 "src": "14552:5:3"
                               }
                             ],
-                            "id": 2235,
+                            "id": 2232,
                             "name": "Return",
                             "src": "14545:12:3"
                           }
                         ],
-                        "id": 2236,
+                        "id": 2233,
                         "name": "Block",
                         "src": "14450:118:3"
                       }
                     ],
-                    "id": 2237,
+                    "id": 2234,
                     "name": "IfStatement",
                     "src": "14395:173:3"
                   },
@@ -11822,11 +11822,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1519,
+                              "referencedDeclaration": 1516,
                               "type": "mapping(bytes32 => bool)",
                               "value": "debtOrderCancelled"
                             },
-                            "id": 2238,
+                            "id": 2235,
                             "name": "Identifier",
                             "src": "14651:18:3"
                           },
@@ -11838,7 +11838,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "debtOrderHash",
-                              "referencedDeclaration": 1590,
+                              "referencedDeclaration": 1587,
                               "type": "bytes32"
                             },
                             "children": [
@@ -11848,21 +11848,21 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2089,
+                                  "referencedDeclaration": 2086,
                                   "type": "struct DebtKernel.DebtOrder memory",
                                   "value": "debtOrder"
                                 },
-                                "id": 2239,
+                                "id": 2236,
                                 "name": "Identifier",
                                 "src": "14670:9:3"
                               }
                             ],
-                            "id": 2240,
+                            "id": 2237,
                             "name": "MemberAccess",
                             "src": "14670:23:3"
                           }
                         ],
-                        "id": 2241,
+                        "id": 2238,
                         "name": "IndexAccess",
                         "src": "14651:43:3"
                       },
@@ -11900,11 +11900,11 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1553,
+                                      "referencedDeclaration": 1550,
                                       "type": "function (uint8,bytes32)",
                                       "value": "LogError"
                                     },
-                                    "id": 2242,
+                                    "id": 2239,
                                     "name": "Identifier",
                                     "src": "14710:8:3"
                                   },
@@ -11927,7 +11927,7 @@ export const DebtKernel =
                                         "attributes": {
                                           "argumentTypes": [
                                             {
-                                              "typeIdentifier": "t_enum$_Errors_$1499",
+                                              "typeIdentifier": "t_enum$_Errors_$1496",
                                               "typeString": "enum DebtKernel.Errors"
                                             }
                                           ],
@@ -11938,7 +11938,7 @@ export const DebtKernel =
                                           "type": "type(uint8)",
                                           "value": "uint8"
                                         },
-                                        "id": 2243,
+                                        "id": 2240,
                                         "name": "ElementaryTypeNameExpression",
                                         "src": "14719:5:3"
                                       },
@@ -11960,21 +11960,21 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1499,
+                                              "referencedDeclaration": 1496,
                                               "type": "type(enum DebtKernel.Errors)",
                                               "value": "Errors"
                                             },
-                                            "id": 2244,
+                                            "id": 2241,
                                             "name": "Identifier",
                                             "src": "14725:6:3"
                                           }
                                         ],
-                                        "id": 2245,
+                                        "id": 2242,
                                         "name": "MemberAccess",
                                         "src": "14725:22:3"
                                       }
                                     ],
-                                    "id": 2246,
+                                    "id": 2243,
                                     "name": "FunctionCall",
                                     "src": "14719:29:3"
                                   },
@@ -11986,7 +11986,7 @@ export const DebtKernel =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "debtOrderHash",
-                                      "referencedDeclaration": 1590,
+                                      "referencedDeclaration": 1587,
                                       "type": "bytes32"
                                     },
                                     "children": [
@@ -11996,32 +11996,32 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 2089,
+                                          "referencedDeclaration": 2086,
                                           "type": "struct DebtKernel.DebtOrder memory",
                                           "value": "debtOrder"
                                         },
-                                        "id": 2247,
+                                        "id": 2244,
                                         "name": "Identifier",
                                         "src": "14750:9:3"
                                       }
                                     ],
-                                    "id": 2248,
+                                    "id": 2245,
                                     "name": "MemberAccess",
                                     "src": "14750:23:3"
                                   }
                                 ],
-                                "id": 2249,
+                                "id": 2246,
                                 "name": "FunctionCall",
                                 "src": "14710:64:3"
                               }
                             ],
-                            "id": 2250,
+                            "id": 2247,
                             "name": "ExpressionStatement",
                             "src": "14710:64:3"
                           },
                           {
                             "attributes": {
-                              "functionReturnParameters": 2093
+                              "functionReturnParameters": 2090
                             },
                             "children": [
                               {
@@ -12037,28 +12037,28 @@ export const DebtKernel =
                                   "type": "bool",
                                   "value": "false"
                                 },
-                                "id": 2251,
+                                "id": 2248,
                                 "name": "Literal",
                                 "src": "14795:5:3"
                               }
                             ],
-                            "id": 2252,
+                            "id": 2249,
                             "name": "Return",
                             "src": "14788:12:3"
                           }
                         ],
-                        "id": 2253,
+                        "id": 2250,
                         "name": "Block",
                         "src": "14696:115:3"
                       }
                     ],
-                    "id": 2254,
+                    "id": 2251,
                     "name": "IfStatement",
                     "src": "14647:164:3"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 2093
+                      "functionReturnParameters": 2090
                     },
                     "children": [
                       {
@@ -12074,22 +12074,22 @@ export const DebtKernel =
                           "type": "bool",
                           "value": "true"
                         },
-                        "id": 2255,
+                        "id": 2252,
                         "name": "Literal",
                         "src": "14828:4:3"
                       }
                     ],
-                    "id": 2256,
+                    "id": 2253,
                     "name": "Return",
                     "src": "14821:11:3"
                   }
                 ],
-                "id": 2257,
+                "id": 2254,
                 "name": "Block",
                 "src": "12404:2435:3"
               }
             ],
-            "id": 2258,
+            "id": 2255,
             "name": "FunctionDefinition",
             "src": "12282:2557:3"
           },
@@ -12103,7 +12103,7 @@ export const DebtKernel =
               ],
               "name": "assertExternalBalanceAndAllowanceInvariants",
               "payable": false,
-              "scope": 2615,
+              "scope": 2612,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "internal"
@@ -12115,7 +12115,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "creditor",
-                      "scope": 2307,
+                      "scope": 2304,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -12128,12 +12128,12 @@ export const DebtKernel =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2259,
+                        "id": 2256,
                         "name": "ElementaryTypeName",
                         "src": "15118:7:3"
                       }
                     ],
-                    "id": 2260,
+                    "id": 2257,
                     "name": "VariableDeclaration",
                     "src": "15118:16:3"
                   },
@@ -12141,7 +12141,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "debtOrder",
-                      "scope": 2307,
+                      "scope": 2304,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "struct DebtKernel.DebtOrder memory",
@@ -12153,20 +12153,20 @@ export const DebtKernel =
                         "attributes": {
                           "contractScope": null,
                           "name": "DebtOrder",
-                          "referencedDeclaration": 1591,
+                          "referencedDeclaration": 1588,
                           "type": "struct DebtKernel.DebtOrder storage pointer"
                         },
-                        "id": 2261,
+                        "id": 2258,
                         "name": "UserDefinedTypeName",
                         "src": "15144:9:3"
                       }
                     ],
-                    "id": 2262,
+                    "id": 2259,
                     "name": "VariableDeclaration",
                     "src": "15144:19:3"
                   }
                 ],
-                "id": 2263,
+                "id": 2260,
                 "name": "ParameterList",
                 "src": "15108:61:3"
               },
@@ -12176,7 +12176,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "_isBalanceAndAllowanceSufficient",
-                      "scope": 2307,
+                      "scope": 2304,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -12189,17 +12189,17 @@ export const DebtKernel =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 2264,
+                        "id": 2261,
                         "name": "ElementaryTypeName",
                         "src": "15204:4:3"
                       }
                     ],
-                    "id": 2265,
+                    "id": 2262,
                     "name": "VariableDeclaration",
                     "src": "15204:37:3"
                   }
                 ],
-                "id": 2266,
+                "id": 2263,
                 "name": "ParameterList",
                 "src": "15203:39:3"
               },
@@ -12208,7 +12208,7 @@ export const DebtKernel =
                   {
                     "attributes": {
                       "assignments": [
-                        2268
+                        2265
                       ]
                     },
                     "children": [
@@ -12216,7 +12216,7 @@ export const DebtKernel =
                         "attributes": {
                           "constant": false,
                           "name": "totalCreditorPayment",
-                          "scope": 2307,
+                          "scope": 2304,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -12229,12 +12229,12 @@ export const DebtKernel =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 2267,
+                            "id": 2264,
                             "name": "ElementaryTypeName",
                             "src": "15257:4:3"
                           }
                         ],
-                        "id": 2268,
+                        "id": 2265,
                         "name": "VariableDeclaration",
                         "src": "15257:25:3"
                       },
@@ -12266,7 +12266,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "add",
-                              "referencedDeclaration": 14079,
+                              "referencedDeclaration": 14076,
                               "type": "function (uint256,uint256) pure returns (uint256)"
                             },
                             "children": [
@@ -12278,7 +12278,7 @@ export const DebtKernel =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "principalAmount",
-                                  "referencedDeclaration": 1578,
+                                  "referencedDeclaration": 1575,
                                   "type": "uint256"
                                 },
                                 "children": [
@@ -12288,21 +12288,21 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2262,
+                                      "referencedDeclaration": 2259,
                                       "type": "struct DebtKernel.DebtOrder memory",
                                       "value": "debtOrder"
                                     },
-                                    "id": 2269,
+                                    "id": 2266,
                                     "name": "Identifier",
                                     "src": "15285:9:3"
                                   }
                                 ],
-                                "id": 2270,
+                                "id": 2267,
                                 "name": "MemberAccess",
                                 "src": "15285:25:3"
                               }
                             ],
-                            "id": 2271,
+                            "id": 2268,
                             "name": "MemberAccess",
                             "src": "15285:29:3"
                           },
@@ -12314,7 +12314,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "creditorFee",
-                              "referencedDeclaration": 1582,
+                              "referencedDeclaration": 1579,
                               "type": "uint256"
                             },
                             "children": [
@@ -12324,26 +12324,26 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2262,
+                                  "referencedDeclaration": 2259,
                                   "type": "struct DebtKernel.DebtOrder memory",
                                   "value": "debtOrder"
                                 },
-                                "id": 2272,
+                                "id": 2269,
                                 "name": "Identifier",
                                 "src": "15315:9:3"
                               }
                             ],
-                            "id": 2273,
+                            "id": 2270,
                             "name": "MemberAccess",
                             "src": "15315:21:3"
                           }
                         ],
-                        "id": 2274,
+                        "id": 2271,
                         "name": "FunctionCall",
                         "src": "15285:52:3"
                       }
                     ],
-                    "id": 2275,
+                    "id": 2272,
                     "name": "VariableDeclarationStatement",
                     "src": "15257:80:3"
                   },
@@ -12412,11 +12412,11 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2593,
+                                      "referencedDeclaration": 2590,
                                       "type": "function (address,address) view returns (uint256)",
                                       "value": "getBalance"
                                     },
-                                    "id": 2276,
+                                    "id": 2273,
                                     "name": "Identifier",
                                     "src": "15352:10:3"
                                   },
@@ -12428,7 +12428,7 @@ export const DebtKernel =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "principalToken",
-                                      "referencedDeclaration": 1580,
+                                      "referencedDeclaration": 1577,
                                       "type": "address"
                                     },
                                     "children": [
@@ -12438,16 +12438,16 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 2262,
+                                          "referencedDeclaration": 2259,
                                           "type": "struct DebtKernel.DebtOrder memory",
                                           "value": "debtOrder"
                                         },
-                                        "id": 2277,
+                                        "id": 2274,
                                         "name": "Identifier",
                                         "src": "15363:9:3"
                                       }
                                     ],
-                                    "id": 2278,
+                                    "id": 2275,
                                     "name": "MemberAccess",
                                     "src": "15363:24:3"
                                   },
@@ -12457,16 +12457,16 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2260,
+                                      "referencedDeclaration": 2257,
                                       "type": "address",
                                       "value": "creditor"
                                     },
-                                    "id": 2279,
+                                    "id": 2276,
                                     "name": "Identifier",
                                     "src": "15389:8:3"
                                   }
                                 ],
-                                "id": 2280,
+                                "id": 2277,
                                 "name": "FunctionCall",
                                 "src": "15352:46:3"
                               },
@@ -12476,16 +12476,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2268,
+                                  "referencedDeclaration": 2265,
                                   "type": "uint256",
                                   "value": "totalCreditorPayment"
                                 },
-                                "id": 2281,
+                                "id": 2278,
                                 "name": "Identifier",
                                 "src": "15401:20:3"
                               }
                             ],
-                            "id": 2282,
+                            "id": 2279,
                             "name": "BinaryOperation",
                             "src": "15352:69:3"
                           },
@@ -12534,11 +12534,11 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2614,
+                                      "referencedDeclaration": 2611,
                                       "type": "function (address,address) view returns (uint256)",
                                       "value": "getAllowance"
                                     },
-                                    "id": 2283,
+                                    "id": 2280,
                                     "name": "Identifier",
                                     "src": "15437:12:3"
                                   },
@@ -12550,7 +12550,7 @@ export const DebtKernel =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "principalToken",
-                                      "referencedDeclaration": 1580,
+                                      "referencedDeclaration": 1577,
                                       "type": "address"
                                     },
                                     "children": [
@@ -12560,16 +12560,16 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 2262,
+                                          "referencedDeclaration": 2259,
                                           "type": "struct DebtKernel.DebtOrder memory",
                                           "value": "debtOrder"
                                         },
-                                        "id": 2284,
+                                        "id": 2281,
                                         "name": "Identifier",
                                         "src": "15450:9:3"
                                       }
                                     ],
-                                    "id": 2285,
+                                    "id": 2282,
                                     "name": "MemberAccess",
                                     "src": "15450:24:3"
                                   },
@@ -12579,16 +12579,16 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2260,
+                                      "referencedDeclaration": 2257,
                                       "type": "address",
                                       "value": "creditor"
                                     },
-                                    "id": 2286,
+                                    "id": 2283,
                                     "name": "Identifier",
                                     "src": "15476:8:3"
                                   }
                                 ],
-                                "id": 2287,
+                                "id": 2284,
                                 "name": "FunctionCall",
                                 "src": "15437:48:3"
                               },
@@ -12598,21 +12598,21 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2268,
+                                  "referencedDeclaration": 2265,
                                   "type": "uint256",
                                   "value": "totalCreditorPayment"
                                 },
-                                "id": 2288,
+                                "id": 2285,
                                 "name": "Identifier",
                                 "src": "15488:20:3"
                               }
                             ],
-                            "id": 2289,
+                            "id": 2286,
                             "name": "BinaryOperation",
                             "src": "15437:71:3"
                           }
                         ],
-                        "id": 2290,
+                        "id": 2287,
                         "name": "BinaryOperation",
                         "src": "15352:156:3"
                       },
@@ -12650,11 +12650,11 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1553,
+                                      "referencedDeclaration": 1550,
                                       "type": "function (uint8,bytes32)",
                                       "value": "LogError"
                                     },
-                                    "id": 2291,
+                                    "id": 2288,
                                     "name": "Identifier",
                                     "src": "15524:8:3"
                                   },
@@ -12677,7 +12677,7 @@ export const DebtKernel =
                                         "attributes": {
                                           "argumentTypes": [
                                             {
-                                              "typeIdentifier": "t_enum$_Errors_$1499",
+                                              "typeIdentifier": "t_enum$_Errors_$1496",
                                               "typeString": "enum DebtKernel.Errors"
                                             }
                                           ],
@@ -12688,7 +12688,7 @@ export const DebtKernel =
                                           "type": "type(uint8)",
                                           "value": "uint8"
                                         },
-                                        "id": 2292,
+                                        "id": 2289,
                                         "name": "ElementaryTypeNameExpression",
                                         "src": "15533:5:3"
                                       },
@@ -12710,21 +12710,21 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1499,
+                                              "referencedDeclaration": 1496,
                                               "type": "type(enum DebtKernel.Errors)",
                                               "value": "Errors"
                                             },
-                                            "id": 2293,
+                                            "id": 2290,
                                             "name": "Identifier",
                                             "src": "15539:6:3"
                                           }
                                         ],
-                                        "id": 2294,
+                                        "id": 2291,
                                         "name": "MemberAccess",
                                         "src": "15539:49:3"
                                       }
                                     ],
-                                    "id": 2295,
+                                    "id": 2292,
                                     "name": "FunctionCall",
                                     "src": "15533:56:3"
                                   },
@@ -12736,7 +12736,7 @@ export const DebtKernel =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "debtOrderHash",
-                                      "referencedDeclaration": 1590,
+                                      "referencedDeclaration": 1587,
                                       "type": "bytes32"
                                     },
                                     "children": [
@@ -12746,32 +12746,32 @@ export const DebtKernel =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 2262,
+                                          "referencedDeclaration": 2259,
                                           "type": "struct DebtKernel.DebtOrder memory",
                                           "value": "debtOrder"
                                         },
-                                        "id": 2296,
+                                        "id": 2293,
                                         "name": "Identifier",
                                         "src": "15591:9:3"
                                       }
                                     ],
-                                    "id": 2297,
+                                    "id": 2294,
                                     "name": "MemberAccess",
                                     "src": "15591:23:3"
                                   }
                                 ],
-                                "id": 2298,
+                                "id": 2295,
                                 "name": "FunctionCall",
                                 "src": "15524:91:3"
                               }
                             ],
-                            "id": 2299,
+                            "id": 2296,
                             "name": "ExpressionStatement",
                             "src": "15524:91:3"
                           },
                           {
                             "attributes": {
-                              "functionReturnParameters": 2266
+                              "functionReturnParameters": 2263
                             },
                             "children": [
                               {
@@ -12787,28 +12787,28 @@ export const DebtKernel =
                                   "type": "bool",
                                   "value": "false"
                                 },
-                                "id": 2300,
+                                "id": 2297,
                                 "name": "Literal",
                                 "src": "15636:5:3"
                               }
                             ],
-                            "id": 2301,
+                            "id": 2298,
                             "name": "Return",
                             "src": "15629:12:3"
                           }
                         ],
-                        "id": 2302,
+                        "id": 2299,
                         "name": "Block",
                         "src": "15510:142:3"
                       }
                     ],
-                    "id": 2303,
+                    "id": 2300,
                     "name": "IfStatement",
                     "src": "15348:304:3"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 2266
+                      "functionReturnParameters": 2263
                     },
                     "children": [
                       {
@@ -12824,22 +12824,22 @@ export const DebtKernel =
                           "type": "bool",
                           "value": "true"
                         },
-                        "id": 2304,
+                        "id": 2301,
                         "name": "Literal",
                         "src": "15669:4:3"
                       }
                     ],
-                    "id": 2305,
+                    "id": 2302,
                     "name": "Return",
                     "src": "15662:11:3"
                   }
                 ],
-                "id": 2306,
+                "id": 2303,
                 "name": "Block",
                 "src": "15247:433:3"
               }
             ],
-            "id": 2307,
+            "id": 2304,
             "name": "FunctionDefinition",
             "src": "15056:624:3"
           },
@@ -12853,7 +12853,7 @@ export const DebtKernel =
               ],
               "name": "transferTokensFrom",
               "payable": false,
-              "scope": 2615,
+              "scope": 2612,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "internal"
@@ -12865,7 +12865,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "token",
-                      "scope": 2331,
+                      "scope": 2328,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -12878,12 +12878,12 @@ export const DebtKernel =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2308,
+                        "id": 2305,
                         "name": "ElementaryTypeName",
                         "src": "15869:7:3"
                       }
                     ],
-                    "id": 2309,
+                    "id": 2306,
                     "name": "VariableDeclaration",
                     "src": "15869:13:3"
                   },
@@ -12891,7 +12891,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "from",
-                      "scope": 2331,
+                      "scope": 2328,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -12904,12 +12904,12 @@ export const DebtKernel =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2310,
+                        "id": 2307,
                         "name": "ElementaryTypeName",
                         "src": "15892:7:3"
                       }
                     ],
-                    "id": 2311,
+                    "id": 2308,
                     "name": "VariableDeclaration",
                     "src": "15892:12:3"
                   },
@@ -12917,7 +12917,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "to",
-                      "scope": 2331,
+                      "scope": 2328,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -12930,12 +12930,12 @@ export const DebtKernel =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2312,
+                        "id": 2309,
                         "name": "ElementaryTypeName",
                         "src": "15914:7:3"
                       }
                     ],
-                    "id": 2313,
+                    "id": 2310,
                     "name": "VariableDeclaration",
                     "src": "15914:10:3"
                   },
@@ -12943,7 +12943,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "amount",
-                      "scope": 2331,
+                      "scope": 2328,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -12956,17 +12956,17 @@ export const DebtKernel =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 2314,
+                        "id": 2311,
                         "name": "ElementaryTypeName",
                         "src": "15934:4:3"
                       }
                     ],
-                    "id": 2315,
+                    "id": 2312,
                     "name": "VariableDeclaration",
                     "src": "15934:11:3"
                   }
                 ],
-                "id": 2316,
+                "id": 2313,
                 "name": "ParameterList",
                 "src": "15859:92:3"
               },
@@ -12976,7 +12976,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "success",
-                      "scope": 2331,
+                      "scope": 2328,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -12989,17 +12989,17 @@ export const DebtKernel =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 2317,
+                        "id": 2314,
                         "name": "ElementaryTypeName",
                         "src": "15986:4:3"
                       }
                     ],
-                    "id": 2318,
+                    "id": 2315,
                     "name": "VariableDeclaration",
                     "src": "15986:12:3"
                   }
                 ],
-                "id": 2319,
+                "id": 2316,
                 "name": "ParameterList",
                 "src": "15985:14:3"
               },
@@ -13007,7 +13007,7 @@ export const DebtKernel =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 2319
+                      "functionReturnParameters": 2316
                     },
                     "children": [
                       {
@@ -13050,7 +13050,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "transferFrom",
-                              "referencedDeclaration": 5190,
+                              "referencedDeclaration": 5187,
                               "type": "function (address,address,address,uint256) external returns (bool)"
                             },
                             "children": [
@@ -13080,11 +13080,11 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5191,
+                                      "referencedDeclaration": 5188,
                                       "type": "type(contract TokenTransferProxy)",
                                       "value": "TokenTransferProxy"
                                     },
-                                    "id": 2320,
+                                    "id": 2317,
                                     "name": "Identifier",
                                     "src": "16021:18:3"
                                   },
@@ -13094,21 +13094,21 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1503,
+                                      "referencedDeclaration": 1500,
                                       "type": "address",
                                       "value": "TOKEN_TRANSFER_PROXY"
                                     },
-                                    "id": 2321,
+                                    "id": 2318,
                                     "name": "Identifier",
                                     "src": "16040:20:3"
                                   }
                                 ],
-                                "id": 2322,
+                                "id": 2319,
                                 "name": "FunctionCall",
                                 "src": "16021:40:3"
                               }
                             ],
-                            "id": 2323,
+                            "id": 2320,
                             "name": "MemberAccess",
                             "src": "16021:53:3"
                           },
@@ -13118,11 +13118,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2309,
+                              "referencedDeclaration": 2306,
                               "type": "address",
                               "value": "token"
                             },
-                            "id": 2324,
+                            "id": 2321,
                             "name": "Identifier",
                             "src": "16088:5:3"
                           },
@@ -13132,11 +13132,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2311,
+                              "referencedDeclaration": 2308,
                               "type": "address",
                               "value": "from"
                             },
-                            "id": 2325,
+                            "id": 2322,
                             "name": "Identifier",
                             "src": "16107:4:3"
                           },
@@ -13146,11 +13146,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2313,
+                              "referencedDeclaration": 2310,
                               "type": "address",
                               "value": "to"
                             },
-                            "id": 2326,
+                            "id": 2323,
                             "name": "Identifier",
                             "src": "16125:2:3"
                           },
@@ -13160,31 +13160,31 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2315,
+                              "referencedDeclaration": 2312,
                               "type": "uint256",
                               "value": "amount"
                             },
-                            "id": 2327,
+                            "id": 2324,
                             "name": "Identifier",
                             "src": "16141:6:3"
                           }
                         ],
-                        "id": 2328,
+                        "id": 2325,
                         "name": "FunctionCall",
                         "src": "16021:136:3"
                       }
                     ],
-                    "id": 2329,
+                    "id": 2326,
                     "name": "Return",
                     "src": "16014:143:3"
                   }
                 ],
-                "id": 2330,
+                "id": 2327,
                 "name": "Block",
                 "src": "16004:160:3"
               }
             ],
-            "id": 2331,
+            "id": 2328,
             "name": "FunctionDefinition",
             "src": "15832:332:3"
           },
@@ -13198,7 +13198,7 @@ export const DebtKernel =
               ],
               "name": "getIssuance",
               "payable": false,
-              "scope": 2615,
+              "scope": 2612,
               "stateMutability": "pure",
               "superFunction": null,
               "visibility": "internal"
@@ -13210,7 +13210,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "version",
-                      "scope": 2374,
+                      "scope": 2371,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -13223,12 +13223,12 @@ export const DebtKernel =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2332,
+                        "id": 2329,
                         "name": "ElementaryTypeName",
                         "src": "16315:7:3"
                       }
                     ],
-                    "id": 2333,
+                    "id": 2330,
                     "name": "VariableDeclaration",
                     "src": "16315:15:3"
                   },
@@ -13236,7 +13236,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "debtor",
-                      "scope": 2374,
+                      "scope": 2371,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -13249,12 +13249,12 @@ export const DebtKernel =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2334,
+                        "id": 2331,
                         "name": "ElementaryTypeName",
                         "src": "16340:7:3"
                       }
                     ],
-                    "id": 2335,
+                    "id": 2332,
                     "name": "VariableDeclaration",
                     "src": "16340:14:3"
                   },
@@ -13262,7 +13262,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "underwriter",
-                      "scope": 2374,
+                      "scope": 2371,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -13275,12 +13275,12 @@ export const DebtKernel =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2336,
+                        "id": 2333,
                         "name": "ElementaryTypeName",
                         "src": "16364:7:3"
                       }
                     ],
-                    "id": 2337,
+                    "id": 2334,
                     "name": "VariableDeclaration",
                     "src": "16364:19:3"
                   },
@@ -13288,7 +13288,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "termsContract",
-                      "scope": 2374,
+                      "scope": 2371,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -13301,12 +13301,12 @@ export const DebtKernel =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2338,
+                        "id": 2335,
                         "name": "ElementaryTypeName",
                         "src": "16393:7:3"
                       }
                     ],
-                    "id": 2339,
+                    "id": 2336,
                     "name": "VariableDeclaration",
                     "src": "16393:21:3"
                   },
@@ -13314,7 +13314,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "underwriterRiskRating",
-                      "scope": 2374,
+                      "scope": 2371,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -13327,12 +13327,12 @@ export const DebtKernel =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 2340,
+                        "id": 2337,
                         "name": "ElementaryTypeName",
                         "src": "16424:4:3"
                       }
                     ],
-                    "id": 2341,
+                    "id": 2338,
                     "name": "VariableDeclaration",
                     "src": "16424:26:3"
                   },
@@ -13340,7 +13340,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "salt",
-                      "scope": 2374,
+                      "scope": 2371,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -13353,12 +13353,12 @@ export const DebtKernel =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 2342,
+                        "id": 2339,
                         "name": "ElementaryTypeName",
                         "src": "16460:4:3"
                       }
                     ],
-                    "id": 2343,
+                    "id": 2340,
                     "name": "VariableDeclaration",
                     "src": "16460:9:3"
                   },
@@ -13366,7 +13366,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "termsContractParameters",
-                      "scope": 2374,
+                      "scope": 2371,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -13379,17 +13379,17 @@ export const DebtKernel =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 2344,
+                        "id": 2341,
                         "name": "ElementaryTypeName",
                         "src": "16479:7:3"
                       }
                     ],
-                    "id": 2345,
+                    "id": 2342,
                     "name": "VariableDeclaration",
                     "src": "16479:31:3"
                   }
                 ],
-                "id": 2346,
+                "id": 2343,
                 "name": "ParameterList",
                 "src": "16305:211:3"
               },
@@ -13399,7 +13399,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "_issuance",
-                      "scope": 2374,
+                      "scope": 2371,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "struct DebtKernel.Issuance memory",
@@ -13411,20 +13411,20 @@ export const DebtKernel =
                         "attributes": {
                           "contractScope": null,
                           "name": "Issuance",
-                          "referencedDeclaration": 1570,
+                          "referencedDeclaration": 1567,
                           "type": "struct DebtKernel.Issuance storage pointer"
                         },
-                        "id": 2347,
+                        "id": 2344,
                         "name": "UserDefinedTypeName",
                         "src": "16564:8:3"
                       }
                     ],
-                    "id": 2348,
+                    "id": 2345,
                     "name": "VariableDeclaration",
                     "src": "16564:18:3"
                   }
                 ],
-                "id": 2349,
+                "id": 2346,
                 "name": "ParameterList",
                 "src": "16563:20:3"
               },
@@ -13433,7 +13433,7 @@ export const DebtKernel =
                   {
                     "attributes": {
                       "assignments": [
-                        2351
+                        2348
                       ]
                     },
                     "children": [
@@ -13441,7 +13441,7 @@ export const DebtKernel =
                         "attributes": {
                           "constant": false,
                           "name": "issuance",
-                          "scope": 2374,
+                          "scope": 2371,
                           "stateVariable": false,
                           "storageLocation": "memory",
                           "type": "struct DebtKernel.Issuance memory",
@@ -13453,15 +13453,15 @@ export const DebtKernel =
                             "attributes": {
                               "contractScope": null,
                               "name": "Issuance",
-                              "referencedDeclaration": 1570,
+                              "referencedDeclaration": 1567,
                               "type": "struct DebtKernel.Issuance storage pointer"
                             },
-                            "id": 2350,
+                            "id": 2347,
                             "name": "UserDefinedTypeName",
                             "src": "16598:8:3"
                           }
                         ],
-                        "id": 2351,
+                        "id": 2348,
                         "name": "VariableDeclaration",
                         "src": "16598:24:3"
                       },
@@ -13493,11 +13493,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1570,
+                              "referencedDeclaration": 1567,
                               "type": "type(struct DebtKernel.Issuance storage pointer)",
                               "value": "Issuance"
                             },
-                            "id": 2352,
+                            "id": 2349,
                             "name": "Identifier",
                             "src": "16625:8:3"
                           },
@@ -13507,11 +13507,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2333,
+                              "referencedDeclaration": 2330,
                               "type": "address",
                               "value": "version"
                             },
-                            "id": 2353,
+                            "id": 2350,
                             "name": "Identifier",
                             "src": "16657:7:3"
                           },
@@ -13521,11 +13521,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2335,
+                              "referencedDeclaration": 2332,
                               "type": "address",
                               "value": "debtor"
                             },
-                            "id": 2354,
+                            "id": 2351,
                             "name": "Identifier",
                             "src": "16686:6:3"
                           },
@@ -13535,11 +13535,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2337,
+                              "referencedDeclaration": 2334,
                               "type": "address",
                               "value": "underwriter"
                             },
-                            "id": 2355,
+                            "id": 2352,
                             "name": "Identifier",
                             "src": "16719:11:3"
                           },
@@ -13549,11 +13549,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2339,
+                              "referencedDeclaration": 2336,
                               "type": "address",
                               "value": "termsContract"
                             },
-                            "id": 2356,
+                            "id": 2353,
                             "name": "Identifier",
                             "src": "16759:13:3"
                           },
@@ -13563,11 +13563,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2341,
+                              "referencedDeclaration": 2338,
                               "type": "uint256",
                               "value": "underwriterRiskRating"
                             },
-                            "id": 2357,
+                            "id": 2354,
                             "name": "Identifier",
                             "src": "16809:21:3"
                           },
@@ -13577,11 +13577,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2343,
+                              "referencedDeclaration": 2340,
                               "type": "uint256",
                               "value": "salt"
                             },
-                            "id": 2358,
+                            "id": 2355,
                             "name": "Identifier",
                             "src": "16850:4:3"
                           },
@@ -13591,11 +13591,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2345,
+                              "referencedDeclaration": 2342,
                               "type": "bytes32",
                               "value": "termsContractParameters"
                             },
-                            "id": 2359,
+                            "id": 2356,
                             "name": "Identifier",
                             "src": "16893:23:3"
                           },
@@ -13649,11 +13649,11 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2487,
+                                  "referencedDeclaration": 2484,
                                   "type": "function (address,address,address,address,uint256,uint256,bytes32) pure returns (bytes32)",
                                   "value": "getAgreementId"
                                 },
-                                "id": 2360,
+                                "id": 2357,
                                 "name": "Identifier",
                                 "src": "16943:14:3"
                               },
@@ -13663,11 +13663,11 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2333,
+                                  "referencedDeclaration": 2330,
                                   "type": "address",
                                   "value": "version"
                                 },
-                                "id": 2361,
+                                "id": 2358,
                                 "name": "Identifier",
                                 "src": "16975:7:3"
                               },
@@ -13677,11 +13677,11 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2335,
+                                  "referencedDeclaration": 2332,
                                   "type": "address",
                                   "value": "debtor"
                                 },
-                                "id": 2362,
+                                "id": 2359,
                                 "name": "Identifier",
                                 "src": "17000:6:3"
                               },
@@ -13691,11 +13691,11 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2337,
+                                  "referencedDeclaration": 2334,
                                   "type": "address",
                                   "value": "underwriter"
                                 },
-                                "id": 2363,
+                                "id": 2360,
                                 "name": "Identifier",
                                 "src": "17024:11:3"
                               },
@@ -13705,11 +13705,11 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2339,
+                                  "referencedDeclaration": 2336,
                                   "type": "address",
                                   "value": "termsContract"
                                 },
-                                "id": 2364,
+                                "id": 2361,
                                 "name": "Identifier",
                                 "src": "17053:13:3"
                               },
@@ -13719,11 +13719,11 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2341,
+                                  "referencedDeclaration": 2338,
                                   "type": "uint256",
                                   "value": "underwriterRiskRating"
                                 },
-                                "id": 2365,
+                                "id": 2362,
                                 "name": "Identifier",
                                 "src": "17084:21:3"
                               },
@@ -13733,11 +13733,11 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2343,
+                                  "referencedDeclaration": 2340,
                                   "type": "uint256",
                                   "value": "salt"
                                 },
-                                "id": 2366,
+                                "id": 2363,
                                 "name": "Identifier",
                                 "src": "17123:4:3"
                               },
@@ -13747,32 +13747,32 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2345,
+                                  "referencedDeclaration": 2342,
                                   "type": "bytes32",
                                   "value": "termsContractParameters"
                                 },
-                                "id": 2367,
+                                "id": 2364,
                                 "name": "Identifier",
                                 "src": "17145:23:3"
                               }
                             ],
-                            "id": 2368,
+                            "id": 2365,
                             "name": "FunctionCall",
                             "src": "16943:239:3"
                           }
                         ],
-                        "id": 2369,
+                        "id": 2366,
                         "name": "FunctionCall",
                         "src": "16625:568:3"
                       }
                     ],
-                    "id": 2370,
+                    "id": 2367,
                     "name": "VariableDeclarationStatement",
                     "src": "16598:595:3"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 2349
+                      "functionReturnParameters": 2346
                     },
                     "children": [
                       {
@@ -13781,26 +13781,26 @@ export const DebtKernel =
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 2351,
+                          "referencedDeclaration": 2348,
                           "type": "struct DebtKernel.Issuance memory",
                           "value": "issuance"
                         },
-                        "id": 2371,
+                        "id": 2368,
                         "name": "Identifier",
                         "src": "17211:8:3"
                       }
                     ],
-                    "id": 2372,
+                    "id": 2369,
                     "name": "Return",
                     "src": "17204:15:3"
                   }
                 ],
-                "id": 2373,
+                "id": 2370,
                 "name": "Block",
                 "src": "16588:638:3"
               }
             ],
-            "id": 2374,
+            "id": 2371,
             "name": "FunctionDefinition",
             "src": "16285:941:3"
           },
@@ -13814,7 +13814,7 @@ export const DebtKernel =
               ],
               "name": "getDebtOrder",
               "payable": false,
-              "scope": 2615,
+              "scope": 2612,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "internal"
@@ -13826,7 +13826,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "orderAddresses",
-                      "scope": 2457,
+                      "scope": 2454,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address[6] memory",
@@ -13844,7 +13844,7 @@ export const DebtKernel =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 2375,
+                            "id": 2372,
                             "name": "ElementaryTypeName",
                             "src": "17385:7:3"
                           },
@@ -13861,17 +13861,17 @@ export const DebtKernel =
                               "type": "int_const 6",
                               "value": "6"
                             },
-                            "id": 2376,
+                            "id": 2373,
                             "name": "Literal",
                             "src": "17393:1:3"
                           }
                         ],
-                        "id": 2377,
+                        "id": 2374,
                         "name": "ArrayTypeName",
                         "src": "17385:10:3"
                       }
                     ],
-                    "id": 2378,
+                    "id": 2375,
                     "name": "VariableDeclaration",
                     "src": "17385:25:3"
                   },
@@ -13879,7 +13879,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "orderValues",
-                      "scope": 2457,
+                      "scope": 2454,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256[8] memory",
@@ -13897,7 +13897,7 @@ export const DebtKernel =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 2379,
+                            "id": 2376,
                             "name": "ElementaryTypeName",
                             "src": "17412:4:3"
                           },
@@ -13914,17 +13914,17 @@ export const DebtKernel =
                               "type": "int_const 8",
                               "value": "8"
                             },
-                            "id": 2380,
+                            "id": 2377,
                             "name": "Literal",
                             "src": "17417:1:3"
                           }
                         ],
-                        "id": 2381,
+                        "id": 2378,
                         "name": "ArrayTypeName",
                         "src": "17412:7:3"
                       }
                     ],
-                    "id": 2382,
+                    "id": 2379,
                     "name": "VariableDeclaration",
                     "src": "17412:19:3"
                   },
@@ -13932,7 +13932,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "orderBytes32",
-                      "scope": 2457,
+                      "scope": 2454,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32[1] memory",
@@ -13950,7 +13950,7 @@ export const DebtKernel =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 2383,
+                            "id": 2380,
                             "name": "ElementaryTypeName",
                             "src": "17433:7:3"
                           },
@@ -13967,22 +13967,22 @@ export const DebtKernel =
                               "type": "int_const 1",
                               "value": "1"
                             },
-                            "id": 2384,
+                            "id": 2381,
                             "name": "Literal",
                             "src": "17441:1:3"
                           }
                         ],
-                        "id": 2385,
+                        "id": 2382,
                         "name": "ArrayTypeName",
                         "src": "17433:10:3"
                       }
                     ],
-                    "id": 2386,
+                    "id": 2383,
                     "name": "VariableDeclaration",
                     "src": "17433:23:3"
                   }
                 ],
-                "id": 2387,
+                "id": 2384,
                 "name": "ParameterList",
                 "src": "17384:73:3"
               },
@@ -13992,7 +13992,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "_debtOrder",
-                      "scope": 2457,
+                      "scope": 2454,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "struct DebtKernel.DebtOrder memory",
@@ -14004,20 +14004,20 @@ export const DebtKernel =
                         "attributes": {
                           "contractScope": null,
                           "name": "DebtOrder",
-                          "referencedDeclaration": 1591,
+                          "referencedDeclaration": 1588,
                           "type": "struct DebtKernel.DebtOrder storage pointer"
                         },
-                        "id": 2388,
+                        "id": 2385,
                         "name": "UserDefinedTypeName",
                         "src": "17505:9:3"
                       }
                     ],
-                    "id": 2389,
+                    "id": 2386,
                     "name": "VariableDeclaration",
                     "src": "17505:20:3"
                   }
                 ],
-                "id": 2390,
+                "id": 2387,
                 "name": "ParameterList",
                 "src": "17504:22:3"
               },
@@ -14026,7 +14026,7 @@ export const DebtKernel =
                   {
                     "attributes": {
                       "assignments": [
-                        2392
+                        2389
                       ]
                     },
                     "children": [
@@ -14034,7 +14034,7 @@ export const DebtKernel =
                         "attributes": {
                           "constant": false,
                           "name": "debtOrder",
-                          "scope": 2457,
+                          "scope": 2454,
                           "stateVariable": false,
                           "storageLocation": "memory",
                           "type": "struct DebtKernel.DebtOrder memory",
@@ -14046,15 +14046,15 @@ export const DebtKernel =
                             "attributes": {
                               "contractScope": null,
                               "name": "DebtOrder",
-                              "referencedDeclaration": 1591,
+                              "referencedDeclaration": 1588,
                               "type": "struct DebtKernel.DebtOrder storage pointer"
                             },
-                            "id": 2391,
+                            "id": 2388,
                             "name": "UserDefinedTypeName",
                             "src": "17541:9:3"
                           }
                         ],
-                        "id": 2392,
+                        "id": 2389,
                         "name": "VariableDeclaration",
                         "src": "17541:26:3"
                       },
@@ -14088,11 +14088,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1591,
+                              "referencedDeclaration": 1588,
                               "type": "type(struct DebtKernel.DebtOrder storage pointer)",
                               "value": "DebtOrder"
                             },
-                            "id": 2393,
+                            "id": 2390,
                             "name": "Identifier",
                             "src": "17570:9:3"
                           },
@@ -14146,11 +14146,11 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2374,
+                                  "referencedDeclaration": 2371,
                                   "type": "function (address,address,address,address,uint256,uint256,bytes32) pure returns (struct DebtKernel.Issuance memory)",
                                   "value": "getIssuance"
                                 },
-                                "id": 2394,
+                                "id": 2391,
                                 "name": "Identifier",
                                 "src": "17604:11:3"
                               },
@@ -14170,11 +14170,11 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2378,
+                                      "referencedDeclaration": 2375,
                                       "type": "address[6] memory",
                                       "value": "orderAddresses"
                                     },
-                                    "id": 2395,
+                                    "id": 2392,
                                     "name": "Identifier",
                                     "src": "17633:14:3"
                                   },
@@ -14191,12 +14191,12 @@ export const DebtKernel =
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 2396,
+                                    "id": 2393,
                                     "name": "Literal",
                                     "src": "17648:1:3"
                                   }
                                 ],
-                                "id": 2397,
+                                "id": 2394,
                                 "name": "IndexAccess",
                                 "src": "17633:17:3"
                               },
@@ -14216,11 +14216,11 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2378,
+                                      "referencedDeclaration": 2375,
                                       "type": "address[6] memory",
                                       "value": "orderAddresses"
                                     },
-                                    "id": 2398,
+                                    "id": 2395,
                                     "name": "Identifier",
                                     "src": "17668:14:3"
                                   },
@@ -14237,12 +14237,12 @@ export const DebtKernel =
                                       "type": "int_const 1",
                                       "value": "1"
                                     },
-                                    "id": 2399,
+                                    "id": 2396,
                                     "name": "Literal",
                                     "src": "17683:1:3"
                                   }
                                 ],
-                                "id": 2400,
+                                "id": 2397,
                                 "name": "IndexAccess",
                                 "src": "17668:17:3"
                               },
@@ -14262,11 +14262,11 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2378,
+                                      "referencedDeclaration": 2375,
                                       "type": "address[6] memory",
                                       "value": "orderAddresses"
                                     },
-                                    "id": 2401,
+                                    "id": 2398,
                                     "name": "Identifier",
                                     "src": "17703:14:3"
                                   },
@@ -14283,12 +14283,12 @@ export const DebtKernel =
                                       "type": "int_const 2",
                                       "value": "2"
                                     },
-                                    "id": 2402,
+                                    "id": 2399,
                                     "name": "Literal",
                                     "src": "17718:1:3"
                                   }
                                 ],
-                                "id": 2403,
+                                "id": 2400,
                                 "name": "IndexAccess",
                                 "src": "17703:17:3"
                               },
@@ -14308,11 +14308,11 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2378,
+                                      "referencedDeclaration": 2375,
                                       "type": "address[6] memory",
                                       "value": "orderAddresses"
                                     },
-                                    "id": 2404,
+                                    "id": 2401,
                                     "name": "Identifier",
                                     "src": "17738:14:3"
                                   },
@@ -14329,12 +14329,12 @@ export const DebtKernel =
                                       "type": "int_const 3",
                                       "value": "3"
                                     },
-                                    "id": 2405,
+                                    "id": 2402,
                                     "name": "Literal",
                                     "src": "17753:1:3"
                                   }
                                 ],
-                                "id": 2406,
+                                "id": 2403,
                                 "name": "IndexAccess",
                                 "src": "17738:17:3"
                               },
@@ -14354,11 +14354,11 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2382,
+                                      "referencedDeclaration": 2379,
                                       "type": "uint256[8] memory",
                                       "value": "orderValues"
                                     },
-                                    "id": 2407,
+                                    "id": 2404,
                                     "name": "Identifier",
                                     "src": "17773:11:3"
                                   },
@@ -14375,12 +14375,12 @@ export const DebtKernel =
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 2408,
+                                    "id": 2405,
                                     "name": "Literal",
                                     "src": "17785:1:3"
                                   }
                                 ],
-                                "id": 2409,
+                                "id": 2406,
                                 "name": "IndexAccess",
                                 "src": "17773:14:3"
                               },
@@ -14400,11 +14400,11 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2382,
+                                      "referencedDeclaration": 2379,
                                       "type": "uint256[8] memory",
                                       "value": "orderValues"
                                     },
-                                    "id": 2410,
+                                    "id": 2407,
                                     "name": "Identifier",
                                     "src": "17805:11:3"
                                   },
@@ -14421,12 +14421,12 @@ export const DebtKernel =
                                       "type": "int_const 1",
                                       "value": "1"
                                     },
-                                    "id": 2411,
+                                    "id": 2408,
                                     "name": "Literal",
                                     "src": "17817:1:3"
                                   }
                                 ],
-                                "id": 2412,
+                                "id": 2409,
                                 "name": "IndexAccess",
                                 "src": "17805:14:3"
                               },
@@ -14446,11 +14446,11 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2386,
+                                      "referencedDeclaration": 2383,
                                       "type": "bytes32[1] memory",
                                       "value": "orderBytes32"
                                     },
-                                    "id": 2413,
+                                    "id": 2410,
                                     "name": "Identifier",
                                     "src": "17837:12:3"
                                   },
@@ -14467,17 +14467,17 @@ export const DebtKernel =
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 2414,
+                                    "id": 2411,
                                     "name": "Literal",
                                     "src": "17850:1:3"
                                   }
                                 ],
-                                "id": 2415,
+                                "id": 2412,
                                 "name": "IndexAccess",
                                 "src": "17837:15:3"
                               }
                             ],
-                            "id": 2416,
+                            "id": 2413,
                             "name": "FunctionCall",
                             "src": "17604:262:3"
                           },
@@ -14497,11 +14497,11 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2378,
+                                  "referencedDeclaration": 2375,
                                   "type": "address[6] memory",
                                   "value": "orderAddresses"
                                 },
-                                "id": 2417,
+                                "id": 2414,
                                 "name": "Identifier",
                                 "src": "17896:14:3"
                               },
@@ -14518,12 +14518,12 @@ export const DebtKernel =
                                   "type": "int_const 4",
                                   "value": "4"
                                 },
-                                "id": 2418,
+                                "id": 2415,
                                 "name": "Literal",
                                 "src": "17911:1:3"
                               }
                             ],
-                            "id": 2419,
+                            "id": 2416,
                             "name": "IndexAccess",
                             "src": "17896:17:3"
                           },
@@ -14543,11 +14543,11 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2378,
+                                  "referencedDeclaration": 2375,
                                   "type": "address[6] memory",
                                   "value": "orderAddresses"
                                 },
-                                "id": 2420,
+                                "id": 2417,
                                 "name": "Identifier",
                                 "src": "17936:14:3"
                               },
@@ -14564,12 +14564,12 @@ export const DebtKernel =
                                   "type": "int_const 5",
                                   "value": "5"
                                 },
-                                "id": 2421,
+                                "id": 2418,
                                 "name": "Literal",
                                 "src": "17951:1:3"
                               }
                             ],
-                            "id": 2422,
+                            "id": 2419,
                             "name": "IndexAccess",
                             "src": "17936:17:3"
                           },
@@ -14589,11 +14589,11 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2382,
+                                  "referencedDeclaration": 2379,
                                   "type": "uint256[8] memory",
                                   "value": "orderValues"
                                 },
-                                "id": 2423,
+                                "id": 2420,
                                 "name": "Identifier",
                                 "src": "17984:11:3"
                               },
@@ -14610,12 +14610,12 @@ export const DebtKernel =
                                   "type": "int_const 2",
                                   "value": "2"
                                 },
-                                "id": 2424,
+                                "id": 2421,
                                 "name": "Literal",
                                 "src": "17996:1:3"
                               }
                             ],
-                            "id": 2425,
+                            "id": 2422,
                             "name": "IndexAccess",
                             "src": "17984:14:3"
                           },
@@ -14635,11 +14635,11 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2382,
+                                  "referencedDeclaration": 2379,
                                   "type": "uint256[8] memory",
                                   "value": "orderValues"
                                 },
-                                "id": 2426,
+                                "id": 2423,
                                 "name": "Identifier",
                                 "src": "18028:11:3"
                               },
@@ -14656,12 +14656,12 @@ export const DebtKernel =
                                   "type": "int_const 3",
                                   "value": "3"
                                 },
-                                "id": 2427,
+                                "id": 2424,
                                 "name": "Literal",
                                 "src": "18040:1:3"
                               }
                             ],
-                            "id": 2428,
+                            "id": 2425,
                             "name": "IndexAccess",
                             "src": "18028:14:3"
                           },
@@ -14681,11 +14681,11 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2382,
+                                  "referencedDeclaration": 2379,
                                   "type": "uint256[8] memory",
                                   "value": "orderValues"
                                 },
-                                "id": 2429,
+                                "id": 2426,
                                 "name": "Identifier",
                                 "src": "18068:11:3"
                               },
@@ -14702,12 +14702,12 @@ export const DebtKernel =
                                   "type": "int_const 4",
                                   "value": "4"
                                 },
-                                "id": 2430,
+                                "id": 2427,
                                 "name": "Literal",
                                 "src": "18080:1:3"
                               }
                             ],
-                            "id": 2431,
+                            "id": 2428,
                             "name": "IndexAccess",
                             "src": "18068:14:3"
                           },
@@ -14727,11 +14727,11 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2382,
+                                  "referencedDeclaration": 2379,
                                   "type": "uint256[8] memory",
                                   "value": "orderValues"
                                 },
-                                "id": 2432,
+                                "id": 2429,
                                 "name": "Identifier",
                                 "src": "18109:11:3"
                               },
@@ -14748,12 +14748,12 @@ export const DebtKernel =
                                   "type": "int_const 5",
                                   "value": "5"
                                 },
-                                "id": 2433,
+                                "id": 2430,
                                 "name": "Literal",
                                 "src": "18121:1:3"
                               }
                             ],
-                            "id": 2434,
+                            "id": 2431,
                             "name": "IndexAccess",
                             "src": "18109:14:3"
                           },
@@ -14773,11 +14773,11 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2382,
+                                  "referencedDeclaration": 2379,
                                   "type": "uint256[8] memory",
                                   "value": "orderValues"
                                 },
-                                "id": 2435,
+                                "id": 2432,
                                 "name": "Identifier",
                                 "src": "18148:11:3"
                               },
@@ -14794,12 +14794,12 @@ export const DebtKernel =
                                   "type": "int_const 6",
                                   "value": "6"
                                 },
-                                "id": 2436,
+                                "id": 2433,
                                 "name": "Literal",
                                 "src": "18160:1:3"
                               }
                             ],
-                            "id": 2437,
+                            "id": 2434,
                             "name": "IndexAccess",
                             "src": "18148:14:3"
                           },
@@ -14819,11 +14819,11 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2382,
+                                  "referencedDeclaration": 2379,
                                   "type": "uint256[8] memory",
                                   "value": "orderValues"
                                 },
-                                "id": 2438,
+                                "id": 2435,
                                 "name": "Identifier",
                                 "src": "18202:11:3"
                               },
@@ -14840,12 +14840,12 @@ export const DebtKernel =
                                   "type": "int_const 7",
                                   "value": "7"
                                 },
-                                "id": 2439,
+                                "id": 2436,
                                 "name": "Literal",
                                 "src": "18214:1:3"
                               }
                             ],
-                            "id": 2440,
+                            "id": 2437,
                             "name": "IndexAccess",
                             "src": "18202:14:3"
                           },
@@ -14879,7 +14879,7 @@ export const DebtKernel =
                                   "type": "type(bytes32)",
                                   "value": "bytes32"
                                 },
-                                "id": 2441,
+                                "id": 2438,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "18245:7:3"
                               },
@@ -14896,22 +14896,22 @@ export const DebtKernel =
                                   "type": "int_const 0",
                                   "value": "0"
                                 },
-                                "id": 2442,
+                                "id": 2439,
                                 "name": "Literal",
                                 "src": "18253:1:3"
                               }
                             ],
-                            "id": 2443,
+                            "id": 2440,
                             "name": "FunctionCall",
                             "src": "18245:10:3"
                           }
                         ],
-                        "id": 2444,
+                        "id": 2441,
                         "name": "FunctionCall",
                         "src": "17570:696:3"
                       }
                     ],
-                    "id": 2445,
+                    "id": 2442,
                     "name": "VariableDeclarationStatement",
                     "src": "17541:725:3"
                   },
@@ -14936,7 +14936,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": true,
                               "member_name": "debtOrderHash",
-                              "referencedDeclaration": 1590,
+                              "referencedDeclaration": 1587,
                               "type": "bytes32"
                             },
                             "children": [
@@ -14946,16 +14946,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2392,
+                                  "referencedDeclaration": 2389,
                                   "type": "struct DebtKernel.DebtOrder memory",
                                   "value": "debtOrder"
                                 },
-                                "id": 2446,
+                                "id": 2443,
                                 "name": "Identifier",
                                 "src": "18277:9:3"
                               }
                             ],
-                            "id": 2448,
+                            "id": 2445,
                             "name": "MemberAccess",
                             "src": "18277:23:3"
                           },
@@ -14978,18 +14978,18 @@ export const DebtKernel =
                                 "attributes": {
                                   "argumentTypes": [
                                     {
-                                      "typeIdentifier": "t_struct$_DebtOrder_$1591_memory_ptr",
+                                      "typeIdentifier": "t_struct$_DebtOrder_$1588_memory_ptr",
                                       "typeString": "struct DebtKernel.DebtOrder memory"
                                     }
                                   ],
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2545,
+                                  "referencedDeclaration": 2542,
                                   "type": "function (struct DebtKernel.DebtOrder memory) view returns (bytes32)",
                                   "value": "getDebtOrderHash"
                                 },
-                                "id": 2449,
+                                "id": 2446,
                                 "name": "Identifier",
                                 "src": "18303:16:3"
                               },
@@ -14999,32 +14999,32 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2392,
+                                  "referencedDeclaration": 2389,
                                   "type": "struct DebtKernel.DebtOrder memory",
                                   "value": "debtOrder"
                                 },
-                                "id": 2450,
+                                "id": 2447,
                                 "name": "Identifier",
                                 "src": "18320:9:3"
                               }
                             ],
-                            "id": 2451,
+                            "id": 2448,
                             "name": "FunctionCall",
                             "src": "18303:27:3"
                           }
                         ],
-                        "id": 2452,
+                        "id": 2449,
                         "name": "Assignment",
                         "src": "18277:53:3"
                       }
                     ],
-                    "id": 2453,
+                    "id": 2450,
                     "name": "ExpressionStatement",
                     "src": "18277:53:3"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 2390
+                      "functionReturnParameters": 2387
                     },
                     "children": [
                       {
@@ -15033,26 +15033,26 @@ export const DebtKernel =
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 2392,
+                          "referencedDeclaration": 2389,
                           "type": "struct DebtKernel.DebtOrder memory",
                           "value": "debtOrder"
                         },
-                        "id": 2454,
+                        "id": 2451,
                         "name": "Identifier",
                         "src": "18348:9:3"
                       }
                     ],
-                    "id": 2455,
+                    "id": 2452,
                     "name": "Return",
                     "src": "18341:16:3"
                   }
                 ],
-                "id": 2456,
+                "id": 2453,
                 "name": "Block",
                 "src": "17531:833:3"
               }
             ],
-            "id": 2457,
+            "id": 2454,
             "name": "FunctionDefinition",
             "src": "17363:1001:3"
           },
@@ -15066,7 +15066,7 @@ export const DebtKernel =
               ],
               "name": "getAgreementId",
               "payable": false,
-              "scope": 2615,
+              "scope": 2612,
               "stateMutability": "pure",
               "superFunction": null,
               "visibility": "internal"
@@ -15078,7 +15078,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "version",
-                      "scope": 2487,
+                      "scope": 2484,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -15091,12 +15091,12 @@ export const DebtKernel =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2458,
+                        "id": 2455,
                         "name": "ElementaryTypeName",
                         "src": "18474:7:3"
                       }
                     ],
-                    "id": 2459,
+                    "id": 2456,
                     "name": "VariableDeclaration",
                     "src": "18474:15:3"
                   },
@@ -15104,7 +15104,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "debtor",
-                      "scope": 2487,
+                      "scope": 2484,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -15117,12 +15117,12 @@ export const DebtKernel =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2460,
+                        "id": 2457,
                         "name": "ElementaryTypeName",
                         "src": "18499:7:3"
                       }
                     ],
-                    "id": 2461,
+                    "id": 2458,
                     "name": "VariableDeclaration",
                     "src": "18499:14:3"
                   },
@@ -15130,7 +15130,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "underwriter",
-                      "scope": 2487,
+                      "scope": 2484,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -15143,12 +15143,12 @@ export const DebtKernel =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2462,
+                        "id": 2459,
                         "name": "ElementaryTypeName",
                         "src": "18523:7:3"
                       }
                     ],
-                    "id": 2463,
+                    "id": 2460,
                     "name": "VariableDeclaration",
                     "src": "18523:19:3"
                   },
@@ -15156,7 +15156,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "termsContract",
-                      "scope": 2487,
+                      "scope": 2484,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -15169,12 +15169,12 @@ export const DebtKernel =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2464,
+                        "id": 2461,
                         "name": "ElementaryTypeName",
                         "src": "18552:7:3"
                       }
                     ],
-                    "id": 2465,
+                    "id": 2462,
                     "name": "VariableDeclaration",
                     "src": "18552:21:3"
                   },
@@ -15182,7 +15182,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "underwriterRiskRating",
-                      "scope": 2487,
+                      "scope": 2484,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -15195,12 +15195,12 @@ export const DebtKernel =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 2466,
+                        "id": 2463,
                         "name": "ElementaryTypeName",
                         "src": "18583:4:3"
                       }
                     ],
-                    "id": 2467,
+                    "id": 2464,
                     "name": "VariableDeclaration",
                     "src": "18583:26:3"
                   },
@@ -15208,7 +15208,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "salt",
-                      "scope": 2487,
+                      "scope": 2484,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -15221,12 +15221,12 @@ export const DebtKernel =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 2468,
+                        "id": 2465,
                         "name": "ElementaryTypeName",
                         "src": "18619:4:3"
                       }
                     ],
-                    "id": 2469,
+                    "id": 2466,
                     "name": "VariableDeclaration",
                     "src": "18619:9:3"
                   },
@@ -15234,7 +15234,40 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "termsContractParameters",
-                      "scope": 2487,
+                      "scope": 2484,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 2467,
+                        "name": "ElementaryTypeName",
+                        "src": "18638:7:3"
+                      }
+                    ],
+                    "id": 2468,
+                    "name": "VariableDeclaration",
+                    "src": "18638:31:3"
+                  }
+                ],
+                "id": 2469,
+                "name": "ParameterList",
+                "src": "18464:211:3"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_agreementId",
+                      "scope": 2484,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -15249,48 +15282,15 @@ export const DebtKernel =
                         },
                         "id": 2470,
                         "name": "ElementaryTypeName",
-                        "src": "18638:7:3"
+                        "src": "18723:7:3"
                       }
                     ],
                     "id": 2471,
                     "name": "VariableDeclaration",
-                    "src": "18638:31:3"
-                  }
-                ],
-                "id": 2472,
-                "name": "ParameterList",
-                "src": "18464:211:3"
-              },
-              {
-                "children": [
-                  {
-                    "attributes": {
-                      "constant": false,
-                      "name": "_agreementId",
-                      "scope": 2487,
-                      "stateVariable": false,
-                      "storageLocation": "default",
-                      "type": "bytes32",
-                      "value": null,
-                      "visibility": "internal"
-                    },
-                    "children": [
-                      {
-                        "attributes": {
-                          "name": "bytes32",
-                          "type": "bytes32"
-                        },
-                        "id": 2473,
-                        "name": "ElementaryTypeName",
-                        "src": "18723:7:3"
-                      }
-                    ],
-                    "id": 2474,
-                    "name": "VariableDeclaration",
                     "src": "18723:20:3"
                   }
                 ],
-                "id": 2475,
+                "id": 2472,
                 "name": "ParameterList",
                 "src": "18722:22:3"
               },
@@ -15298,7 +15298,7 @@ export const DebtKernel =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 2475
+                      "functionReturnParameters": 2472
                     },
                     "children": [
                       {
@@ -15351,11 +15351,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15812,
+                              "referencedDeclaration": 15809,
                               "type": "function () pure returns (bytes32)",
                               "value": "keccak256"
                             },
-                            "id": 2476,
+                            "id": 2473,
                             "name": "Identifier",
                             "src": "18766:9:3"
                           },
@@ -15365,11 +15365,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2459,
+                              "referencedDeclaration": 2456,
                               "type": "address",
                               "value": "version"
                             },
-                            "id": 2477,
+                            "id": 2474,
                             "name": "Identifier",
                             "src": "18789:7:3"
                           },
@@ -15379,11 +15379,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2461,
+                              "referencedDeclaration": 2458,
                               "type": "address",
                               "value": "debtor"
                             },
-                            "id": 2478,
+                            "id": 2475,
                             "name": "Identifier",
                             "src": "18810:6:3"
                           },
@@ -15393,11 +15393,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2463,
+                              "referencedDeclaration": 2460,
                               "type": "address",
                               "value": "underwriter"
                             },
-                            "id": 2479,
+                            "id": 2476,
                             "name": "Identifier",
                             "src": "18830:11:3"
                           },
@@ -15407,11 +15407,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2467,
+                              "referencedDeclaration": 2464,
                               "type": "uint256",
                               "value": "underwriterRiskRating"
                             },
-                            "id": 2480,
+                            "id": 2477,
                             "name": "Identifier",
                             "src": "18855:21:3"
                           },
@@ -15421,11 +15421,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2465,
+                              "referencedDeclaration": 2462,
                               "type": "address",
                               "value": "termsContract"
                             },
-                            "id": 2481,
+                            "id": 2478,
                             "name": "Identifier",
                             "src": "18890:13:3"
                           },
@@ -15435,11 +15435,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2471,
+                              "referencedDeclaration": 2468,
                               "type": "bytes32",
                               "value": "termsContractParameters"
                             },
-                            "id": 2482,
+                            "id": 2479,
                             "name": "Identifier",
                             "src": "18917:23:3"
                           },
@@ -15449,31 +15449,31 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2469,
+                              "referencedDeclaration": 2466,
                               "type": "uint256",
                               "value": "salt"
                             },
-                            "id": 2483,
+                            "id": 2480,
                             "name": "Identifier",
                             "src": "18954:4:3"
                           }
                         ],
-                        "id": 2484,
+                        "id": 2481,
                         "name": "FunctionCall",
                         "src": "18766:202:3"
                       }
                     ],
-                    "id": 2485,
+                    "id": 2482,
                     "name": "Return",
                     "src": "18759:209:3"
                   }
                 ],
-                "id": 2486,
+                "id": 2483,
                 "name": "Block",
                 "src": "18749:226:3"
               }
             ],
-            "id": 2487,
+            "id": 2484,
             "name": "FunctionDefinition",
             "src": "18441:534:3"
           },
@@ -15487,7 +15487,7 @@ export const DebtKernel =
               ],
               "name": "getUnderwriterMessageHash",
               "payable": false,
-              "scope": 2615,
+              "scope": 2612,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "internal"
@@ -15499,7 +15499,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "debtOrder",
-                      "scope": 2512,
+                      "scope": 2509,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "struct DebtKernel.DebtOrder memory",
@@ -15511,20 +15511,20 @@ export const DebtKernel =
                         "attributes": {
                           "contractScope": null,
                           "name": "DebtOrder",
-                          "referencedDeclaration": 1591,
+                          "referencedDeclaration": 1588,
                           "type": "struct DebtKernel.DebtOrder storage pointer"
                         },
-                        "id": 2488,
+                        "id": 2485,
                         "name": "UserDefinedTypeName",
                         "src": "19115:9:3"
                       }
                     ],
-                    "id": 2489,
+                    "id": 2486,
                     "name": "VariableDeclaration",
                     "src": "19115:19:3"
                   }
                 ],
-                "id": 2490,
+                "id": 2487,
                 "name": "ParameterList",
                 "src": "19114:21:3"
               },
@@ -15534,7 +15534,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "_underwriterMessageHash",
-                      "scope": 2512,
+                      "scope": 2509,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -15547,17 +15547,17 @@ export const DebtKernel =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 2491,
+                        "id": 2488,
                         "name": "ElementaryTypeName",
                         "src": "19183:7:3"
                       }
                     ],
-                    "id": 2492,
+                    "id": 2489,
                     "name": "VariableDeclaration",
                     "src": "19183:31:3"
                   }
                 ],
-                "id": 2493,
+                "id": 2490,
                 "name": "ParameterList",
                 "src": "19182:33:3"
               },
@@ -15565,7 +15565,7 @@ export const DebtKernel =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 2493
+                      "functionReturnParameters": 2490
                     },
                     "children": [
                       {
@@ -15614,11 +15614,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15812,
+                              "referencedDeclaration": 15809,
                               "type": "function () pure returns (bytes32)",
                               "value": "keccak256"
                             },
-                            "id": 2494,
+                            "id": 2491,
                             "name": "Identifier",
                             "src": "19237:9:3"
                           },
@@ -15641,7 +15641,7 @@ export const DebtKernel =
                                 "attributes": {
                                   "argumentTypes": [
                                     {
-                                      "typeIdentifier": "t_contract$_DebtKernel_$2615",
+                                      "typeIdentifier": "t_contract$_DebtKernel_$2612",
                                       "typeString": "contract DebtKernel"
                                     }
                                   ],
@@ -15652,7 +15652,7 @@ export const DebtKernel =
                                   "type": "type(address)",
                                   "value": "address"
                                 },
-                                "id": 2495,
+                                "id": 2492,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "19260:7:3"
                               },
@@ -15662,16 +15662,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15875,
+                                  "referencedDeclaration": 15872,
                                   "type": "contract DebtKernel",
                                   "value": "this"
                                 },
-                                "id": 2496,
+                                "id": 2493,
                                 "name": "Identifier",
                                 "src": "19268:4:3"
                               }
                             ],
-                            "id": 2497,
+                            "id": 2494,
                             "name": "FunctionCall",
                             "src": "19260:13:3"
                           },
@@ -15683,7 +15683,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "agreementId",
-                              "referencedDeclaration": 1569,
+                              "referencedDeclaration": 1566,
                               "type": "bytes32"
                             },
                             "children": [
@@ -15695,7 +15695,7 @@ export const DebtKernel =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "issuance",
-                                  "referencedDeclaration": 1572,
+                                  "referencedDeclaration": 1569,
                                   "type": "struct DebtKernel.Issuance memory"
                                 },
                                 "children": [
@@ -15705,21 +15705,21 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2489,
+                                      "referencedDeclaration": 2486,
                                       "type": "struct DebtKernel.DebtOrder memory",
                                       "value": "debtOrder"
                                     },
-                                    "id": 2498,
+                                    "id": 2495,
                                     "name": "Identifier",
                                     "src": "19287:9:3"
                                   }
                                 ],
-                                "id": 2499,
+                                "id": 2496,
                                 "name": "MemberAccess",
                                 "src": "19287:18:3"
                               }
                             ],
-                            "id": 2500,
+                            "id": 2497,
                             "name": "MemberAccess",
                             "src": "19287:30:3"
                           },
@@ -15731,7 +15731,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "underwriterFee",
-                              "referencedDeclaration": 1574,
+                              "referencedDeclaration": 1571,
                               "type": "uint256"
                             },
                             "children": [
@@ -15741,16 +15741,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2489,
+                                  "referencedDeclaration": 2486,
                                   "type": "struct DebtKernel.DebtOrder memory",
                                   "value": "debtOrder"
                                 },
-                                "id": 2501,
+                                "id": 2498,
                                 "name": "Identifier",
                                 "src": "19331:9:3"
                               }
                             ],
-                            "id": 2502,
+                            "id": 2499,
                             "name": "MemberAccess",
                             "src": "19331:24:3"
                           },
@@ -15762,7 +15762,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "principalAmount",
-                              "referencedDeclaration": 1578,
+                              "referencedDeclaration": 1575,
                               "type": "uint256"
                             },
                             "children": [
@@ -15772,16 +15772,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2489,
+                                  "referencedDeclaration": 2486,
                                   "type": "struct DebtKernel.DebtOrder memory",
                                   "value": "debtOrder"
                                 },
-                                "id": 2503,
+                                "id": 2500,
                                 "name": "Identifier",
                                 "src": "19369:9:3"
                               }
                             ],
-                            "id": 2504,
+                            "id": 2501,
                             "name": "MemberAccess",
                             "src": "19369:25:3"
                           },
@@ -15793,7 +15793,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "principalToken",
-                              "referencedDeclaration": 1580,
+                              "referencedDeclaration": 1577,
                               "type": "address"
                             },
                             "children": [
@@ -15803,16 +15803,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2489,
+                                  "referencedDeclaration": 2486,
                                   "type": "struct DebtKernel.DebtOrder memory",
                                   "value": "debtOrder"
                                 },
-                                "id": 2505,
+                                "id": 2502,
                                 "name": "Identifier",
                                 "src": "19408:9:3"
                               }
                             ],
-                            "id": 2506,
+                            "id": 2503,
                             "name": "MemberAccess",
                             "src": "19408:24:3"
                           },
@@ -15824,7 +15824,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "expirationTimestampInSec",
-                              "referencedDeclaration": 1588,
+                              "referencedDeclaration": 1585,
                               "type": "uint256"
                             },
                             "children": [
@@ -15834,36 +15834,36 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2489,
+                                  "referencedDeclaration": 2486,
                                   "type": "struct DebtKernel.DebtOrder memory",
                                   "value": "debtOrder"
                                 },
-                                "id": 2507,
+                                "id": 2504,
                                 "name": "Identifier",
                                 "src": "19446:9:3"
                               }
                             ],
-                            "id": 2508,
+                            "id": 2505,
                             "name": "MemberAccess",
                             "src": "19446:34:3"
                           }
                         ],
-                        "id": 2509,
+                        "id": 2506,
                         "name": "FunctionCall",
                         "src": "19237:253:3"
                       }
                     ],
-                    "id": 2510,
+                    "id": 2507,
                     "name": "Return",
                     "src": "19230:260:3"
                   }
                 ],
-                "id": 2511,
+                "id": 2508,
                 "name": "Block",
                 "src": "19220:277:3"
               }
             ],
-            "id": 2512,
+            "id": 2509,
             "name": "FunctionDefinition",
             "src": "19080:417:3"
           },
@@ -15877,7 +15877,7 @@ export const DebtKernel =
               ],
               "name": "getDebtOrderHash",
               "payable": false,
-              "scope": 2615,
+              "scope": 2612,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "internal"
@@ -15889,7 +15889,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "debtOrder",
-                      "scope": 2545,
+                      "scope": 2542,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "struct DebtKernel.DebtOrder memory",
@@ -15901,20 +15901,20 @@ export const DebtKernel =
                         "attributes": {
                           "contractScope": null,
                           "name": "DebtOrder",
-                          "referencedDeclaration": 1591,
+                          "referencedDeclaration": 1588,
                           "type": "struct DebtKernel.DebtOrder storage pointer"
                         },
-                        "id": 2513,
+                        "id": 2510,
                         "name": "UserDefinedTypeName",
                         "src": "19588:9:3"
                       }
                     ],
-                    "id": 2514,
+                    "id": 2511,
                     "name": "VariableDeclaration",
                     "src": "19588:19:3"
                   }
                 ],
-                "id": 2515,
+                "id": 2512,
                 "name": "ParameterList",
                 "src": "19587:21:3"
               },
@@ -15924,7 +15924,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "_debtorMessageHash",
-                      "scope": 2545,
+                      "scope": 2542,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -15937,17 +15937,17 @@ export const DebtKernel =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 2516,
+                        "id": 2513,
                         "name": "ElementaryTypeName",
                         "src": "19656:7:3"
                       }
                     ],
-                    "id": 2517,
+                    "id": 2514,
                     "name": "VariableDeclaration",
                     "src": "19656:26:3"
                   }
                 ],
-                "id": 2518,
+                "id": 2515,
                 "name": "ParameterList",
                 "src": "19655:28:3"
               },
@@ -15955,7 +15955,7 @@ export const DebtKernel =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 2518
+                      "functionReturnParameters": 2515
                     },
                     "children": [
                       {
@@ -16020,11 +16020,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15812,
+                              "referencedDeclaration": 15809,
                               "type": "function () pure returns (bytes32)",
                               "value": "keccak256"
                             },
-                            "id": 2519,
+                            "id": 2516,
                             "name": "Identifier",
                             "src": "19705:9:3"
                           },
@@ -16047,7 +16047,7 @@ export const DebtKernel =
                                 "attributes": {
                                   "argumentTypes": [
                                     {
-                                      "typeIdentifier": "t_contract$_DebtKernel_$2615",
+                                      "typeIdentifier": "t_contract$_DebtKernel_$2612",
                                       "typeString": "contract DebtKernel"
                                     }
                                   ],
@@ -16058,7 +16058,7 @@ export const DebtKernel =
                                   "type": "type(address)",
                                   "value": "address"
                                 },
-                                "id": 2520,
+                                "id": 2517,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "19728:7:3"
                               },
@@ -16068,16 +16068,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15875,
+                                  "referencedDeclaration": 15872,
                                   "type": "contract DebtKernel",
                                   "value": "this"
                                 },
-                                "id": 2521,
+                                "id": 2518,
                                 "name": "Identifier",
                                 "src": "19736:4:3"
                               }
                             ],
-                            "id": 2522,
+                            "id": 2519,
                             "name": "FunctionCall",
                             "src": "19728:13:3"
                           },
@@ -16089,7 +16089,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "agreementId",
-                              "referencedDeclaration": 1569,
+                              "referencedDeclaration": 1566,
                               "type": "bytes32"
                             },
                             "children": [
@@ -16101,7 +16101,7 @@ export const DebtKernel =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "issuance",
-                                  "referencedDeclaration": 1572,
+                                  "referencedDeclaration": 1569,
                                   "type": "struct DebtKernel.Issuance memory"
                                 },
                                 "children": [
@@ -16111,21 +16111,21 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2514,
+                                      "referencedDeclaration": 2511,
                                       "type": "struct DebtKernel.DebtOrder memory",
                                       "value": "debtOrder"
                                     },
-                                    "id": 2523,
+                                    "id": 2520,
                                     "name": "Identifier",
                                     "src": "19755:9:3"
                                   }
                                 ],
-                                "id": 2524,
+                                "id": 2521,
                                 "name": "MemberAccess",
                                 "src": "19755:18:3"
                               }
                             ],
-                            "id": 2525,
+                            "id": 2522,
                             "name": "MemberAccess",
                             "src": "19755:30:3"
                           },
@@ -16137,7 +16137,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "underwriterFee",
-                              "referencedDeclaration": 1574,
+                              "referencedDeclaration": 1571,
                               "type": "uint256"
                             },
                             "children": [
@@ -16147,16 +16147,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2514,
+                                  "referencedDeclaration": 2511,
                                   "type": "struct DebtKernel.DebtOrder memory",
                                   "value": "debtOrder"
                                 },
-                                "id": 2526,
+                                "id": 2523,
                                 "name": "Identifier",
                                 "src": "19799:9:3"
                               }
                             ],
-                            "id": 2527,
+                            "id": 2524,
                             "name": "MemberAccess",
                             "src": "19799:24:3"
                           },
@@ -16168,7 +16168,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "principalAmount",
-                              "referencedDeclaration": 1578,
+                              "referencedDeclaration": 1575,
                               "type": "uint256"
                             },
                             "children": [
@@ -16178,16 +16178,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2514,
+                                  "referencedDeclaration": 2511,
                                   "type": "struct DebtKernel.DebtOrder memory",
                                   "value": "debtOrder"
                                 },
-                                "id": 2528,
+                                "id": 2525,
                                 "name": "Identifier",
                                 "src": "19837:9:3"
                               }
                             ],
-                            "id": 2529,
+                            "id": 2526,
                             "name": "MemberAccess",
                             "src": "19837:25:3"
                           },
@@ -16199,7 +16199,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "principalToken",
-                              "referencedDeclaration": 1580,
+                              "referencedDeclaration": 1577,
                               "type": "address"
                             },
                             "children": [
@@ -16209,16 +16209,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2514,
+                                  "referencedDeclaration": 2511,
                                   "type": "struct DebtKernel.DebtOrder memory",
                                   "value": "debtOrder"
                                 },
-                                "id": 2530,
+                                "id": 2527,
                                 "name": "Identifier",
                                 "src": "19876:9:3"
                               }
                             ],
-                            "id": 2531,
+                            "id": 2528,
                             "name": "MemberAccess",
                             "src": "19876:24:3"
                           },
@@ -16230,7 +16230,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "debtorFee",
-                              "referencedDeclaration": 1584,
+                              "referencedDeclaration": 1581,
                               "type": "uint256"
                             },
                             "children": [
@@ -16240,16 +16240,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2514,
+                                  "referencedDeclaration": 2511,
                                   "type": "struct DebtKernel.DebtOrder memory",
                                   "value": "debtOrder"
                                 },
-                                "id": 2532,
+                                "id": 2529,
                                 "name": "Identifier",
                                 "src": "19914:9:3"
                               }
                             ],
-                            "id": 2533,
+                            "id": 2530,
                             "name": "MemberAccess",
                             "src": "19914:19:3"
                           },
@@ -16261,7 +16261,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "creditorFee",
-                              "referencedDeclaration": 1582,
+                              "referencedDeclaration": 1579,
                               "type": "uint256"
                             },
                             "children": [
@@ -16271,16 +16271,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2514,
+                                  "referencedDeclaration": 2511,
                                   "type": "struct DebtKernel.DebtOrder memory",
                                   "value": "debtOrder"
                                 },
-                                "id": 2534,
+                                "id": 2531,
                                 "name": "Identifier",
                                 "src": "19947:9:3"
                               }
                             ],
-                            "id": 2535,
+                            "id": 2532,
                             "name": "MemberAccess",
                             "src": "19947:21:3"
                           },
@@ -16292,7 +16292,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "relayer",
-                              "referencedDeclaration": 1586,
+                              "referencedDeclaration": 1583,
                               "type": "address"
                             },
                             "children": [
@@ -16302,16 +16302,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2514,
+                                  "referencedDeclaration": 2511,
                                   "type": "struct DebtKernel.DebtOrder memory",
                                   "value": "debtOrder"
                                 },
-                                "id": 2536,
+                                "id": 2533,
                                 "name": "Identifier",
                                 "src": "19982:9:3"
                               }
                             ],
-                            "id": 2537,
+                            "id": 2534,
                             "name": "MemberAccess",
                             "src": "19982:17:3"
                           },
@@ -16323,7 +16323,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "relayerFee",
-                              "referencedDeclaration": 1576,
+                              "referencedDeclaration": 1573,
                               "type": "uint256"
                             },
                             "children": [
@@ -16333,16 +16333,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2514,
+                                  "referencedDeclaration": 2511,
                                   "type": "struct DebtKernel.DebtOrder memory",
                                   "value": "debtOrder"
                                 },
-                                "id": 2538,
+                                "id": 2535,
                                 "name": "Identifier",
                                 "src": "20013:9:3"
                               }
                             ],
-                            "id": 2539,
+                            "id": 2536,
                             "name": "MemberAccess",
                             "src": "20013:20:3"
                           },
@@ -16354,7 +16354,7 @@ export const DebtKernel =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "expirationTimestampInSec",
-                              "referencedDeclaration": 1588,
+                              "referencedDeclaration": 1585,
                               "type": "uint256"
                             },
                             "children": [
@@ -16364,36 +16364,36 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2514,
+                                  "referencedDeclaration": 2511,
                                   "type": "struct DebtKernel.DebtOrder memory",
                                   "value": "debtOrder"
                                 },
-                                "id": 2540,
+                                "id": 2537,
                                 "name": "Identifier",
                                 "src": "20047:9:3"
                               }
                             ],
-                            "id": 2541,
+                            "id": 2538,
                             "name": "MemberAccess",
                             "src": "20047:34:3"
                           }
                         ],
-                        "id": 2542,
+                        "id": 2539,
                         "name": "FunctionCall",
                         "src": "19705:386:3"
                       }
                     ],
-                    "id": 2543,
+                    "id": 2540,
                     "name": "Return",
                     "src": "19698:393:3"
                   }
                 ],
-                "id": 2544,
+                "id": 2541,
                 "name": "Block",
                 "src": "19688:410:3"
               }
             ],
-            "id": 2545,
+            "id": 2542,
             "name": "FunctionDefinition",
             "src": "19562:536:3"
           },
@@ -16407,7 +16407,7 @@ export const DebtKernel =
               ],
               "name": "isValidSignature",
               "payable": false,
-              "scope": 2615,
+              "scope": 2612,
               "stateMutability": "pure",
               "superFunction": null,
               "visibility": "internal"
@@ -16419,7 +16419,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "signer",
-                      "scope": 2573,
+                      "scope": 2570,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -16432,12 +16432,12 @@ export const DebtKernel =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2546,
+                        "id": 2543,
                         "name": "ElementaryTypeName",
                         "src": "20270:7:3"
                       }
                     ],
-                    "id": 2547,
+                    "id": 2544,
                     "name": "VariableDeclaration",
                     "src": "20270:14:3"
                   },
@@ -16445,7 +16445,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "hash",
-                      "scope": 2573,
+                      "scope": 2570,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -16458,12 +16458,12 @@ export const DebtKernel =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 2548,
+                        "id": 2545,
                         "name": "ElementaryTypeName",
                         "src": "20294:7:3"
                       }
                     ],
-                    "id": 2549,
+                    "id": 2546,
                     "name": "VariableDeclaration",
                     "src": "20294:12:3"
                   },
@@ -16471,7 +16471,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "v",
-                      "scope": 2573,
+                      "scope": 2570,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint8",
@@ -16484,12 +16484,12 @@ export const DebtKernel =
                           "name": "uint8",
                           "type": "uint8"
                         },
-                        "id": 2550,
+                        "id": 2547,
                         "name": "ElementaryTypeName",
                         "src": "20316:5:3"
                       }
                     ],
-                    "id": 2551,
+                    "id": 2548,
                     "name": "VariableDeclaration",
                     "src": "20316:7:3"
                   },
@@ -16497,7 +16497,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "r",
-                      "scope": 2573,
+                      "scope": 2570,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -16510,12 +16510,12 @@ export const DebtKernel =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 2552,
+                        "id": 2549,
                         "name": "ElementaryTypeName",
                         "src": "20333:7:3"
                       }
                     ],
-                    "id": 2553,
+                    "id": 2550,
                     "name": "VariableDeclaration",
                     "src": "20333:9:3"
                   },
@@ -16523,7 +16523,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "s",
-                      "scope": 2573,
+                      "scope": 2570,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -16536,17 +16536,17 @@ export const DebtKernel =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 2554,
+                        "id": 2551,
                         "name": "ElementaryTypeName",
                         "src": "20352:7:3"
                       }
                     ],
-                    "id": 2555,
+                    "id": 2552,
                     "name": "VariableDeclaration",
                     "src": "20352:9:3"
                   }
                 ],
-                "id": 2556,
+                "id": 2553,
                 "name": "ParameterList",
                 "src": "20260:107:3"
               },
@@ -16556,7 +16556,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "_valid",
-                      "scope": 2573,
+                      "scope": 2570,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -16569,17 +16569,17 @@ export const DebtKernel =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 2557,
+                        "id": 2554,
                         "name": "ElementaryTypeName",
                         "src": "20415:4:3"
                       }
                     ],
-                    "id": 2558,
+                    "id": 2555,
                     "name": "VariableDeclaration",
                     "src": "20415:11:3"
                   }
                 ],
-                "id": 2559,
+                "id": 2556,
                 "name": "ParameterList",
                 "src": "20414:13:3"
               },
@@ -16587,7 +16587,7 @@ export const DebtKernel =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 2559
+                      "functionReturnParameters": 2556
                     },
                     "children": [
                       {
@@ -16611,11 +16611,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2547,
+                              "referencedDeclaration": 2544,
                               "type": "address",
                               "value": "signer"
                             },
-                            "id": 2560,
+                            "id": 2557,
                             "name": "Identifier",
                             "src": "20449:6:3"
                           },
@@ -16657,11 +16657,11 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15811,
+                                  "referencedDeclaration": 15808,
                                   "type": "function (bytes32,uint8,bytes32,bytes32) pure returns (address)",
                                   "value": "ecrecover"
                                 },
-                                "id": 2561,
+                                "id": 2558,
                                 "name": "Identifier",
                                 "src": "20459:9:3"
                               },
@@ -16695,11 +16695,11 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15812,
+                                      "referencedDeclaration": 15809,
                                       "type": "function () pure returns (bytes32)",
                                       "value": "keccak256"
                                     },
-                                    "id": 2562,
+                                    "id": 2559,
                                     "name": "Identifier",
                                     "src": "20482:9:3"
                                   },
@@ -16716,7 +16716,7 @@ export const DebtKernel =
                                       "type": "literal_string \"\u0019Ethereum Signed Message:\n32\"",
                                       "value": "\u0019Ethereum Signed Message:\n32"
                                     },
-                                    "id": 2563,
+                                    "id": 2560,
                                     "name": "Literal",
                                     "src": "20492:34:3"
                                   },
@@ -16726,16 +16726,16 @@ export const DebtKernel =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2549,
+                                      "referencedDeclaration": 2546,
                                       "type": "bytes32",
                                       "value": "hash"
                                     },
-                                    "id": 2564,
+                                    "id": 2561,
                                     "name": "Identifier",
                                     "src": "20528:4:3"
                                   }
                                 ],
-                                "id": 2565,
+                                "id": 2562,
                                 "name": "FunctionCall",
                                 "src": "20482:51:3"
                               },
@@ -16745,11 +16745,11 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2551,
+                                  "referencedDeclaration": 2548,
                                   "type": "uint8",
                                   "value": "v"
                                 },
-                                "id": 2566,
+                                "id": 2563,
                                 "name": "Identifier",
                                 "src": "20547:1:3"
                               },
@@ -16759,11 +16759,11 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2553,
+                                  "referencedDeclaration": 2550,
                                   "type": "bytes32",
                                   "value": "r"
                                 },
-                                "id": 2567,
+                                "id": 2564,
                                 "name": "Identifier",
                                 "src": "20562:1:3"
                               },
@@ -16773,36 +16773,36 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2555,
+                                  "referencedDeclaration": 2552,
                                   "type": "bytes32",
                                   "value": "s"
                                 },
-                                "id": 2568,
+                                "id": 2565,
                                 "name": "Identifier",
                                 "src": "20577:1:3"
                               }
                             ],
-                            "id": 2569,
+                            "id": 2566,
                             "name": "FunctionCall",
                             "src": "20459:129:3"
                           }
                         ],
-                        "id": 2570,
+                        "id": 2567,
                         "name": "BinaryOperation",
                         "src": "20449:139:3"
                       }
                     ],
-                    "id": 2571,
+                    "id": 2568,
                     "name": "Return",
                     "src": "20442:146:3"
                   }
                 ],
-                "id": 2572,
+                "id": 2569,
                 "name": "Block",
                 "src": "20432:163:3"
               }
             ],
-            "id": 2573,
+            "id": 2570,
             "name": "FunctionDefinition",
             "src": "20235:360:3"
           },
@@ -16816,7 +16816,7 @@ export const DebtKernel =
               ],
               "name": "getBalance",
               "payable": false,
-              "scope": 2615,
+              "scope": 2612,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "internal"
@@ -16828,7 +16828,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "token",
-                      "scope": 2593,
+                      "scope": 2590,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -16841,12 +16841,12 @@ export const DebtKernel =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2574,
+                        "id": 2571,
                         "name": "ElementaryTypeName",
                         "src": "20720:7:3"
                       }
                     ],
-                    "id": 2575,
+                    "id": 2572,
                     "name": "VariableDeclaration",
                     "src": "20720:13:3"
                   },
@@ -16854,7 +16854,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "owner",
-                      "scope": 2593,
+                      "scope": 2590,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -16867,17 +16867,17 @@ export const DebtKernel =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2576,
+                        "id": 2573,
                         "name": "ElementaryTypeName",
                         "src": "20743:7:3"
                       }
                     ],
-                    "id": 2577,
+                    "id": 2574,
                     "name": "VariableDeclaration",
                     "src": "20743:13:3"
                   }
                 ],
-                "id": 2578,
+                "id": 2575,
                 "name": "ParameterList",
                 "src": "20710:52:3"
               },
@@ -16887,7 +16887,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "_balance",
-                      "scope": 2593,
+                      "scope": 2590,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -16900,17 +16900,17 @@ export const DebtKernel =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 2579,
+                        "id": 2576,
                         "name": "ElementaryTypeName",
                         "src": "20810:4:3"
                       }
                     ],
-                    "id": 2580,
+                    "id": 2577,
                     "name": "VariableDeclaration",
                     "src": "20810:13:3"
                   }
                 ],
-                "id": 2581,
+                "id": 2578,
                 "name": "ParameterList",
                 "src": "20809:15:3"
               },
@@ -16918,7 +16918,7 @@ export const DebtKernel =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 2581
+                      "functionReturnParameters": 2578
                     },
                     "children": [
                       {
@@ -16981,7 +16981,7 @@ export const DebtKernel =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "balanceOf",
-                                      "referencedDeclaration": 14289,
+                                      "referencedDeclaration": 14286,
                                       "type": "function (address) view external returns (uint256)"
                                     },
                                     "children": [
@@ -17011,11 +17011,11 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 14275,
+                                              "referencedDeclaration": 14272,
                                               "type": "type(contract ERC20)",
                                               "value": "ERC20"
                                             },
-                                            "id": 2582,
+                                            "id": 2579,
                                             "name": "Identifier",
                                             "src": "20890:5:3"
                                           },
@@ -17025,26 +17025,26 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 2575,
+                                              "referencedDeclaration": 2572,
                                               "type": "address",
                                               "value": "token"
                                             },
-                                            "id": 2583,
+                                            "id": 2580,
                                             "name": "Identifier",
                                             "src": "20896:5:3"
                                           }
                                         ],
-                                        "id": 2584,
+                                        "id": 2581,
                                         "name": "FunctionCall",
                                         "src": "20890:12:3"
                                       }
                                     ],
-                                    "id": 2585,
+                                    "id": 2582,
                                     "name": "MemberAccess",
                                     "src": "20890:22:3"
                                   }
                                 ],
-                                "id": 2586,
+                                "id": 2583,
                                 "name": "MemberAccess",
                                 "src": "20890:26:3"
                               },
@@ -17054,16 +17054,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1511,
+                                  "referencedDeclaration": 1508,
                                   "type": "uint16",
                                   "value": "EXTERNAL_QUERY_GAS_LIMIT"
                                 },
-                                "id": 2587,
+                                "id": 2584,
                                 "name": "Identifier",
                                 "src": "20917:24:3"
                               }
                             ],
-                            "id": 2588,
+                            "id": 2585,
                             "name": "FunctionCall",
                             "src": "20890:52:3"
                           },
@@ -17073,31 +17073,31 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2577,
+                              "referencedDeclaration": 2574,
                               "type": "address",
                               "value": "owner"
                             },
-                            "id": 2589,
+                            "id": 2586,
                             "name": "Identifier",
                             "src": "20943:5:3"
                           }
                         ],
-                        "id": 2590,
+                        "id": 2587,
                         "name": "FunctionCall",
                         "src": "20890:59:3"
                       }
                     ],
-                    "id": 2591,
+                    "id": 2588,
                     "name": "Return",
                     "src": "20883:66:3"
                   }
                 ],
-                "id": 2592,
+                "id": 2589,
                 "name": "Block",
                 "src": "20829:127:3"
               }
             ],
-            "id": 2593,
+            "id": 2590,
             "name": "FunctionDefinition",
             "src": "20691:265:3"
           },
@@ -17111,7 +17111,7 @@ export const DebtKernel =
               ],
               "name": "getAllowance",
               "payable": false,
-              "scope": 2615,
+              "scope": 2612,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "internal"
@@ -17123,7 +17123,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "token",
-                      "scope": 2614,
+                      "scope": 2611,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -17136,12 +17136,12 @@ export const DebtKernel =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2594,
+                        "id": 2591,
                         "name": "ElementaryTypeName",
                         "src": "21093:7:3"
                       }
                     ],
-                    "id": 2595,
+                    "id": 2592,
                     "name": "VariableDeclaration",
                     "src": "21093:13:3"
                   },
@@ -17149,7 +17149,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "owner",
-                      "scope": 2614,
+                      "scope": 2611,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -17162,17 +17162,17 @@ export const DebtKernel =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2596,
+                        "id": 2593,
                         "name": "ElementaryTypeName",
                         "src": "21116:7:3"
                       }
                     ],
-                    "id": 2597,
+                    "id": 2594,
                     "name": "VariableDeclaration",
                     "src": "21116:13:3"
                   }
                 ],
-                "id": 2598,
+                "id": 2595,
                 "name": "ParameterList",
                 "src": "21083:52:3"
               },
@@ -17182,7 +17182,7 @@ export const DebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "_allowance",
-                      "scope": 2614,
+                      "scope": 2611,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -17195,17 +17195,17 @@ export const DebtKernel =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 2599,
+                        "id": 2596,
                         "name": "ElementaryTypeName",
                         "src": "21183:4:3"
                       }
                     ],
-                    "id": 2600,
+                    "id": 2597,
                     "name": "VariableDeclaration",
                     "src": "21183:15:3"
                   }
                 ],
-                "id": 2601,
+                "id": 2598,
                 "name": "ParameterList",
                 "src": "21182:17:3"
               },
@@ -17213,7 +17213,7 @@ export const DebtKernel =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 2601
+                      "functionReturnParameters": 2598
                     },
                     "children": [
                       {
@@ -17280,7 +17280,7 @@ export const DebtKernel =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "allowance",
-                                      "referencedDeclaration": 14246,
+                                      "referencedDeclaration": 14243,
                                       "type": "function (address,address) view external returns (uint256)"
                                     },
                                     "children": [
@@ -17310,11 +17310,11 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 14275,
+                                              "referencedDeclaration": 14272,
                                               "type": "type(contract ERC20)",
                                               "value": "ERC20"
                                             },
-                                            "id": 2602,
+                                            "id": 2599,
                                             "name": "Identifier",
                                             "src": "21265:5:3"
                                           },
@@ -17324,26 +17324,26 @@ export const DebtKernel =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 2595,
+                                              "referencedDeclaration": 2592,
                                               "type": "address",
                                               "value": "token"
                                             },
-                                            "id": 2603,
+                                            "id": 2600,
                                             "name": "Identifier",
                                             "src": "21271:5:3"
                                           }
                                         ],
-                                        "id": 2604,
+                                        "id": 2601,
                                         "name": "FunctionCall",
                                         "src": "21265:12:3"
                                       }
                                     ],
-                                    "id": 2605,
+                                    "id": 2602,
                                     "name": "MemberAccess",
                                     "src": "21265:22:3"
                                   }
                                 ],
-                                "id": 2606,
+                                "id": 2603,
                                 "name": "MemberAccess",
                                 "src": "21265:26:3"
                               },
@@ -17353,16 +17353,16 @@ export const DebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1511,
+                                  "referencedDeclaration": 1508,
                                   "type": "uint16",
                                   "value": "EXTERNAL_QUERY_GAS_LIMIT"
                                 },
-                                "id": 2607,
+                                "id": 2604,
                                 "name": "Identifier",
                                 "src": "21292:24:3"
                               }
                             ],
-                            "id": 2608,
+                            "id": 2605,
                             "name": "FunctionCall",
                             "src": "21265:52:3"
                           },
@@ -17372,11 +17372,11 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2597,
+                              "referencedDeclaration": 2594,
                               "type": "address",
                               "value": "owner"
                             },
-                            "id": 2609,
+                            "id": 2606,
                             "name": "Identifier",
                             "src": "21318:5:3"
                           },
@@ -17386,41 +17386,41 @@ export const DebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1503,
+                              "referencedDeclaration": 1500,
                               "type": "address",
                               "value": "TOKEN_TRANSFER_PROXY"
                             },
-                            "id": 2610,
+                            "id": 2607,
                             "name": "Identifier",
                             "src": "21325:20:3"
                           }
                         ],
-                        "id": 2611,
+                        "id": 2608,
                         "name": "FunctionCall",
                         "src": "21265:81:3"
                       }
                     ],
-                    "id": 2612,
+                    "id": 2609,
                     "name": "Return",
                     "src": "21258:88:3"
                   }
                 ],
-                "id": 2613,
+                "id": 2610,
                 "name": "Block",
                 "src": "21204:149:3"
               }
             ],
-            "id": 2614,
+            "id": 2611,
             "name": "FunctionDefinition",
             "src": "21062:291:3"
           }
         ],
-        "id": 2615,
+        "id": 2612,
         "name": "ContractDefinition",
         "src": "1252:20103:3"
       }
     ],
-    "id": 2616,
+    "id": 2613,
     "name": "SourceUnit",
     "src": "584:20772:3"
   },
@@ -17811,9 +17811,9 @@ export const DebtKernel =
         }
       },
       "links": {},
-      "address": "0xf21ef0271ebcbd144616c43b90dc578665264a2c"
+      "address": "0xfc34feaadb59fae426481a81c0d20b283a3a7d3d"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-21T17:50:40.647Z"
+  "updatedAt": "2018-09-25T20:05:01.905Z"
 }

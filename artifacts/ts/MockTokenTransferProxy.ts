@@ -130,7 +130,7 @@ export const MockTokenTransferProxy =
       "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/test/mocks/MockTokenTransferProxy.sol",
       "exportedSymbols": {
         "MockTokenTransferProxy": [
-          12502
+          12499
         ]
       }
     },
@@ -143,39 +143,39 @@ export const MockTokenTransferProxy =
             ".18"
           ]
         },
-        "id": 12428,
+        "id": 12425,
         "name": "PragmaDirective",
         "src": "584:23:32"
       },
       {
         "attributes": {
-          "SourceUnit": 10678,
+          "SourceUnit": 10675,
           "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/test/mocks/MockContract.sol",
           "file": "./MockContract.sol",
-          "scope": 12503,
+          "scope": 12500,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 12429,
+        "id": 12426,
         "name": "ImportDirective",
         "src": "609:28:32"
       },
       {
         "attributes": {
           "contractDependencies": [
-            10677
+            10674
           ],
           "contractKind": "contract",
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            12502,
-            10677
+            12499,
+            10674
           ],
           "name": "MockTokenTransferProxy",
-          "scope": 12503
+          "scope": 12500
         },
         "children": [
           {
@@ -189,15 +189,15 @@ export const MockTokenTransferProxy =
                 "attributes": {
                   "contractScope": null,
                   "name": "MockContract",
-                  "referencedDeclaration": 10677,
+                  "referencedDeclaration": 10674,
                   "type": "contract MockContract"
                 },
-                "id": 12430,
+                "id": 12427,
                 "name": "UserDefinedTypeName",
                 "src": "675:12:32"
               }
             ],
-            "id": 12431,
+            "id": 12428,
             "name": "InheritanceSpecifier",
             "src": "675:12:32"
           },
@@ -211,7 +211,7 @@ export const MockTokenTransferProxy =
               ],
               "name": "transferFrom",
               "payable": false,
-              "scope": 12502,
+              "scope": 12499,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -223,7 +223,7 @@ export const MockTokenTransferProxy =
                     "attributes": {
                       "constant": false,
                       "name": "_token",
-                      "scope": 12457,
+                      "scope": 12454,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -236,12 +236,12 @@ export const MockTokenTransferProxy =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 12432,
+                        "id": 12429,
                         "name": "ElementaryTypeName",
                         "src": "725:7:32"
                       }
                     ],
-                    "id": 12433,
+                    "id": 12430,
                     "name": "VariableDeclaration",
                     "src": "725:14:32"
                   },
@@ -249,7 +249,7 @@ export const MockTokenTransferProxy =
                     "attributes": {
                       "constant": false,
                       "name": "_from",
-                      "scope": 12457,
+                      "scope": 12454,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -262,12 +262,12 @@ export const MockTokenTransferProxy =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 12434,
+                        "id": 12431,
                         "name": "ElementaryTypeName",
                         "src": "749:7:32"
                       }
                     ],
-                    "id": 12435,
+                    "id": 12432,
                     "name": "VariableDeclaration",
                     "src": "749:13:32"
                   },
@@ -275,7 +275,7 @@ export const MockTokenTransferProxy =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 12457,
+                      "scope": 12454,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -288,12 +288,12 @@ export const MockTokenTransferProxy =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 12436,
+                        "id": 12433,
                         "name": "ElementaryTypeName",
                         "src": "772:7:32"
                       }
                     ],
-                    "id": 12437,
+                    "id": 12434,
                     "name": "VariableDeclaration",
                     "src": "772:11:32"
                   },
@@ -301,7 +301,7 @@ export const MockTokenTransferProxy =
                     "attributes": {
                       "constant": false,
                       "name": "_amount",
-                      "scope": 12457,
+                      "scope": 12454,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -314,17 +314,17 @@ export const MockTokenTransferProxy =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 12438,
+                        "id": 12435,
                         "name": "ElementaryTypeName",
                         "src": "793:4:32"
                       }
                     ],
-                    "id": 12439,
+                    "id": 12436,
                     "name": "VariableDeclaration",
                     "src": "793:12:32"
                   }
                 ],
-                "id": 12440,
+                "id": 12437,
                 "name": "ParameterList",
                 "src": "715:96:32"
               },
@@ -334,7 +334,7 @@ export const MockTokenTransferProxy =
                     "attributes": {
                       "constant": false,
                       "name": "_success",
-                      "scope": 12457,
+                      "scope": 12454,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -347,17 +347,17 @@ export const MockTokenTransferProxy =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 12441,
+                        "id": 12438,
                         "name": "ElementaryTypeName",
                         "src": "844:4:32"
                       }
                     ],
-                    "id": 12442,
+                    "id": 12439,
                     "name": "VariableDeclaration",
                     "src": "844:13:32"
                   }
                 ],
-                "id": 12443,
+                "id": 12440,
                 "name": "ParameterList",
                 "src": "843:15:32"
               },
@@ -395,11 +395,11 @@ export const MockTokenTransferProxy =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10653,
+                              "referencedDeclaration": 10650,
                               "type": "function (string memory,bytes32)",
                               "value": "functionCalledWithArgs"
                             },
-                            "id": 12444,
+                            "id": 12441,
                             "name": "Identifier",
                             "src": "873:22:32"
                           },
@@ -416,7 +416,7 @@ export const MockTokenTransferProxy =
                               "type": "literal_string \"transferFrom\"",
                               "value": "transferFrom"
                             },
-                            "id": 12445,
+                            "id": 12442,
                             "name": "Literal",
                             "src": "896:14:32"
                           },
@@ -458,11 +458,11 @@ export const MockTokenTransferProxy =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15812,
+                                  "referencedDeclaration": 15809,
                                   "type": "function () pure returns (bytes32)",
                                   "value": "keccak256"
                                 },
-                                "id": 12446,
+                                "id": 12443,
                                 "name": "Identifier",
                                 "src": "912:9:32"
                               },
@@ -472,11 +472,11 @@ export const MockTokenTransferProxy =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12433,
+                                  "referencedDeclaration": 12430,
                                   "type": "address",
                                   "value": "_token"
                                 },
-                                "id": 12447,
+                                "id": 12444,
                                 "name": "Identifier",
                                 "src": "935:6:32"
                               },
@@ -486,11 +486,11 @@ export const MockTokenTransferProxy =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12435,
+                                  "referencedDeclaration": 12432,
                                   "type": "address",
                                   "value": "_from"
                                 },
-                                "id": 12448,
+                                "id": 12445,
                                 "name": "Identifier",
                                 "src": "955:5:32"
                               },
@@ -500,11 +500,11 @@ export const MockTokenTransferProxy =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12437,
+                                  "referencedDeclaration": 12434,
                                   "type": "address",
                                   "value": "_to"
                                 },
-                                "id": 12449,
+                                "id": 12446,
                                 "name": "Identifier",
                                 "src": "974:3:32"
                               },
@@ -514,32 +514,32 @@ export const MockTokenTransferProxy =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12439,
+                                  "referencedDeclaration": 12436,
                                   "type": "uint256",
                                   "value": "_amount"
                                 },
-                                "id": 12450,
+                                "id": 12447,
                                 "name": "Identifier",
                                 "src": "991:7:32"
                               }
                             ],
-                            "id": 12451,
+                            "id": 12448,
                             "name": "FunctionCall",
                             "src": "912:96:32"
                           }
                         ],
-                        "id": 12452,
+                        "id": 12449,
                         "name": "FunctionCall",
                         "src": "873:136:32"
                       }
                     ],
-                    "id": 12453,
+                    "id": 12450,
                     "name": "ExpressionStatement",
                     "src": "873:136:32"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 12443
+                      "functionReturnParameters": 12440
                     },
                     "children": [
                       {
@@ -555,22 +555,22 @@ export const MockTokenTransferProxy =
                           "type": "bool",
                           "value": "true"
                         },
-                        "id": 12454,
+                        "id": 12451,
                         "name": "Literal",
                         "src": "1027:4:32"
                       }
                     ],
-                    "id": 12455,
+                    "id": 12452,
                     "name": "Return",
                     "src": "1020:11:32"
                   }
                 ],
-                "id": 12456,
+                "id": 12453,
                 "name": "Block",
                 "src": "863:175:32"
               }
             ],
-            "id": 12457,
+            "id": 12454,
             "name": "FunctionDefinition",
             "src": "694:344:32"
           },
@@ -584,7 +584,7 @@ export const MockTokenTransferProxy =
               ],
               "name": "wasTransferFromCalledWith",
               "payable": false,
-              "scope": 12502,
+              "scope": 12499,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -596,7 +596,7 @@ export const MockTokenTransferProxy =
                     "attributes": {
                       "constant": false,
                       "name": "_token",
-                      "scope": 12481,
+                      "scope": 12478,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -609,12 +609,12 @@ export const MockTokenTransferProxy =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 12458,
+                        "id": 12455,
                         "name": "ElementaryTypeName",
                         "src": "1088:7:32"
                       }
                     ],
-                    "id": 12459,
+                    "id": 12456,
                     "name": "VariableDeclaration",
                     "src": "1088:14:32"
                   },
@@ -622,7 +622,7 @@ export const MockTokenTransferProxy =
                     "attributes": {
                       "constant": false,
                       "name": "_from",
-                      "scope": 12481,
+                      "scope": 12478,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -635,12 +635,12 @@ export const MockTokenTransferProxy =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 12460,
+                        "id": 12457,
                         "name": "ElementaryTypeName",
                         "src": "1112:7:32"
                       }
                     ],
-                    "id": 12461,
+                    "id": 12458,
                     "name": "VariableDeclaration",
                     "src": "1112:13:32"
                   },
@@ -648,7 +648,7 @@ export const MockTokenTransferProxy =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 12481,
+                      "scope": 12478,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -661,12 +661,12 @@ export const MockTokenTransferProxy =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 12462,
+                        "id": 12459,
                         "name": "ElementaryTypeName",
                         "src": "1135:7:32"
                       }
                     ],
-                    "id": 12463,
+                    "id": 12460,
                     "name": "VariableDeclaration",
                     "src": "1135:11:32"
                   },
@@ -674,7 +674,7 @@ export const MockTokenTransferProxy =
                     "attributes": {
                       "constant": false,
                       "name": "_amount",
-                      "scope": 12481,
+                      "scope": 12478,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -687,17 +687,17 @@ export const MockTokenTransferProxy =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 12464,
+                        "id": 12461,
                         "name": "ElementaryTypeName",
                         "src": "1156:4:32"
                       }
                     ],
-                    "id": 12465,
+                    "id": 12462,
                     "name": "VariableDeclaration",
                     "src": "1156:12:32"
                   }
                 ],
-                "id": 12466,
+                "id": 12463,
                 "name": "ParameterList",
                 "src": "1078:96:32"
               },
@@ -707,7 +707,7 @@ export const MockTokenTransferProxy =
                     "attributes": {
                       "constant": false,
                       "name": "_wasCalled",
-                      "scope": 12481,
+                      "scope": 12478,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -720,17 +720,17 @@ export const MockTokenTransferProxy =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 12467,
+                        "id": 12464,
                         "name": "ElementaryTypeName",
                         "src": "1220:4:32"
                       }
                     ],
-                    "id": 12468,
+                    "id": 12465,
                     "name": "VariableDeclaration",
                     "src": "1220:15:32"
                   }
                 ],
-                "id": 12469,
+                "id": 12466,
                 "name": "ParameterList",
                 "src": "1219:17:32"
               },
@@ -738,7 +738,7 @@ export const MockTokenTransferProxy =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 12469
+                      "functionReturnParameters": 12466
                     },
                     "children": [
                       {
@@ -771,11 +771,11 @@ export const MockTokenTransferProxy =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10669,
+                              "referencedDeclaration": 10666,
                               "type": "function (string memory,bytes32) view returns (bool)",
                               "value": "wasFunctionCalledWithArgs"
                             },
-                            "id": 12470,
+                            "id": 12467,
                             "name": "Identifier",
                             "src": "1258:25:32"
                           },
@@ -792,7 +792,7 @@ export const MockTokenTransferProxy =
                               "type": "literal_string \"transferFrom\"",
                               "value": "transferFrom"
                             },
-                            "id": 12471,
+                            "id": 12468,
                             "name": "Literal",
                             "src": "1284:14:32"
                           },
@@ -834,11 +834,11 @@ export const MockTokenTransferProxy =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15812,
+                                  "referencedDeclaration": 15809,
                                   "type": "function () pure returns (bytes32)",
                                   "value": "keccak256"
                                 },
-                                "id": 12472,
+                                "id": 12469,
                                 "name": "Identifier",
                                 "src": "1300:9:32"
                               },
@@ -848,11 +848,11 @@ export const MockTokenTransferProxy =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12459,
+                                  "referencedDeclaration": 12456,
                                   "type": "address",
                                   "value": "_token"
                                 },
-                                "id": 12473,
+                                "id": 12470,
                                 "name": "Identifier",
                                 "src": "1323:6:32"
                               },
@@ -862,11 +862,11 @@ export const MockTokenTransferProxy =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12461,
+                                  "referencedDeclaration": 12458,
                                   "type": "address",
                                   "value": "_from"
                                 },
-                                "id": 12474,
+                                "id": 12471,
                                 "name": "Identifier",
                                 "src": "1343:5:32"
                               },
@@ -876,11 +876,11 @@ export const MockTokenTransferProxy =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12463,
+                                  "referencedDeclaration": 12460,
                                   "type": "address",
                                   "value": "_to"
                                 },
-                                "id": 12475,
+                                "id": 12472,
                                 "name": "Identifier",
                                 "src": "1362:3:32"
                               },
@@ -890,36 +890,36 @@ export const MockTokenTransferProxy =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12465,
+                                  "referencedDeclaration": 12462,
                                   "type": "uint256",
                                   "value": "_amount"
                                 },
-                                "id": 12476,
+                                "id": 12473,
                                 "name": "Identifier",
                                 "src": "1379:7:32"
                               }
                             ],
-                            "id": 12477,
+                            "id": 12474,
                             "name": "FunctionCall",
                             "src": "1300:96:32"
                           }
                         ],
-                        "id": 12478,
+                        "id": 12475,
                         "name": "FunctionCall",
                         "src": "1258:139:32"
                       }
                     ],
-                    "id": 12479,
+                    "id": 12476,
                     "name": "Return",
                     "src": "1251:146:32"
                   }
                 ],
-                "id": 12480,
+                "id": 12477,
                 "name": "Block",
                 "src": "1241:163:32"
               }
             ],
-            "id": 12481,
+            "id": 12478,
             "name": "FunctionDefinition",
             "src": "1044:360:32"
           },
@@ -933,9 +933,9 @@ export const MockTokenTransferProxy =
               ],
               "name": "getFunctionList",
               "payable": false,
-              "scope": 12502,
+              "scope": 12499,
               "stateMutability": "nonpayable",
-              "superFunction": 10676,
+              "superFunction": 10673,
               "visibility": "internal"
             },
             "children": [
@@ -946,7 +946,7 @@ export const MockTokenTransferProxy =
                   ]
                 },
                 "children": [],
-                "id": 12482,
+                "id": 12479,
                 "name": "ParameterList",
                 "src": "1434:2:32"
               },
@@ -956,7 +956,7 @@ export const MockTokenTransferProxy =
                     "attributes": {
                       "constant": false,
                       "name": "functionNames",
-                      "scope": 12501,
+                      "scope": 12498,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory[10] memory",
@@ -974,7 +974,7 @@ export const MockTokenTransferProxy =
                               "name": "string",
                               "type": "string storage pointer"
                             },
-                            "id": 12483,
+                            "id": 12480,
                             "name": "ElementaryTypeName",
                             "src": "1471:6:32"
                           },
@@ -991,22 +991,22 @@ export const MockTokenTransferProxy =
                               "type": "int_const 10",
                               "value": "10"
                             },
-                            "id": 12484,
+                            "id": 12481,
                             "name": "Literal",
                             "src": "1478:2:32"
                           }
                         ],
-                        "id": 12485,
+                        "id": 12482,
                         "name": "ArrayTypeName",
                         "src": "1471:10:32"
                       }
                     ],
-                    "id": 12486,
+                    "id": 12483,
                     "name": "VariableDeclaration",
                     "src": "1471:24:32"
                   }
                 ],
-                "id": 12487,
+                "id": 12484,
                 "name": "ParameterList",
                 "src": "1470:26:32"
               },
@@ -1014,7 +1014,7 @@ export const MockTokenTransferProxy =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 12487
+                      "functionReturnParameters": 12484
                     },
                     "children": [
                       {
@@ -1041,7 +1041,7 @@ export const MockTokenTransferProxy =
                               "type": "literal_string \"transferFrom\"",
                               "value": "transferFrom"
                             },
-                            "id": 12488,
+                            "id": 12485,
                             "name": "Literal",
                             "src": "1519:14:32"
                           },
@@ -1058,7 +1058,7 @@ export const MockTokenTransferProxy =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 12489,
+                            "id": 12486,
                             "name": "Literal",
                             "src": "1535:2:32"
                           },
@@ -1075,7 +1075,7 @@ export const MockTokenTransferProxy =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 12490,
+                            "id": 12487,
                             "name": "Literal",
                             "src": "1539:2:32"
                           },
@@ -1092,7 +1092,7 @@ export const MockTokenTransferProxy =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 12491,
+                            "id": 12488,
                             "name": "Literal",
                             "src": "1543:2:32"
                           },
@@ -1109,7 +1109,7 @@ export const MockTokenTransferProxy =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 12492,
+                            "id": 12489,
                             "name": "Literal",
                             "src": "1547:2:32"
                           },
@@ -1126,7 +1126,7 @@ export const MockTokenTransferProxy =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 12493,
+                            "id": 12490,
                             "name": "Literal",
                             "src": "1551:2:32"
                           },
@@ -1143,7 +1143,7 @@ export const MockTokenTransferProxy =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 12494,
+                            "id": 12491,
                             "name": "Literal",
                             "src": "1555:2:32"
                           },
@@ -1160,7 +1160,7 @@ export const MockTokenTransferProxy =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 12495,
+                            "id": 12492,
                             "name": "Literal",
                             "src": "1559:2:32"
                           },
@@ -1177,7 +1177,7 @@ export const MockTokenTransferProxy =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 12496,
+                            "id": 12493,
                             "name": "Literal",
                             "src": "1563:2:32"
                           },
@@ -1194,37 +1194,37 @@ export const MockTokenTransferProxy =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 12497,
+                            "id": 12494,
                             "name": "Literal",
                             "src": "1567:2:32"
                           }
                         ],
-                        "id": 12498,
+                        "id": 12495,
                         "name": "TupleExpression",
                         "src": "1518:52:32"
                       }
                     ],
-                    "id": 12499,
+                    "id": 12496,
                     "name": "Return",
                     "src": "1511:59:32"
                   }
                 ],
-                "id": 12500,
+                "id": 12497,
                 "name": "Block",
                 "src": "1501:76:32"
               }
             ],
-            "id": 12501,
+            "id": 12498,
             "name": "FunctionDefinition",
             "src": "1410:167:32"
           }
         ],
-        "id": 12502,
+        "id": 12499,
         "name": "ContractDefinition",
         "src": "640:939:32"
       }
     ],
-    "id": 12503,
+    "id": 12500,
     "name": "SourceUnit",
     "src": "584:996:32"
   },
@@ -1241,9 +1241,9 @@ export const MockTokenTransferProxy =
     "70": {
       "events": {},
       "links": {},
-      "address": "0x84bddc312773b18e83270626ef306d176892d349"
+      "address": "0xdbac2121c4fc42fb2d273fb82aaf9a73e9f011b6"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-21T17:50:41.132Z"
+  "updatedAt": "2018-09-25T20:05:00.838Z"
 }

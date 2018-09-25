@@ -750,7 +750,7 @@ export const DebtToken =
       "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/DebtToken.sol",
       "exportedSymbols": {
         "DebtToken": [
-          3525
+          3522
         ]
       }
     },
@@ -763,139 +763,139 @@ export const DebtToken =
             ".18"
           ]
         },
-        "id": 3145,
+        "id": 3142,
         "name": "PragmaDirective",
         "src": "584:23:5"
       },
       {
         "attributes": {
-          "SourceUnit": 3144,
+          "SourceUnit": 3141,
           "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/DebtRegistry.sol",
           "file": "./DebtRegistry.sol",
-          "scope": 3526,
+          "scope": 3523,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 3146,
+        "id": 3143,
         "name": "ImportDirective",
         "src": "635:28:5"
       },
       {
         "attributes": {
-          "SourceUnit": 3536,
+          "SourceUnit": 3533,
           "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/ERC165.sol",
           "file": "./ERC165.sol",
-          "scope": 3526,
+          "scope": 3523,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 3147,
+        "id": 3144,
         "name": "ImportDirective",
         "src": "664:22:5"
       },
       {
         "attributes": {
-          "SourceUnit": 6257,
+          "SourceUnit": 6254,
           "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/libraries/PermissionsLib.sol",
           "file": "./libraries/PermissionsLib.sol",
-          "scope": 3526,
+          "scope": 3523,
           "symbolAliases": [
             {
-              "foreign": 3148,
+              "foreign": 3145,
               "local": null
             },
             {
-              "foreign": 3149,
+              "foreign": 3146,
               "local": null
             }
           ],
           "unitAlias": ""
         },
-        "id": 3150,
+        "id": 3147,
         "name": "ImportDirective",
         "src": "687:82:5"
       },
       {
         "attributes": {
-          "SourceUnit": 13983,
+          "SourceUnit": 13980,
           "absolutePath": "zeppelin-solidity/contracts/lifecycle/Pausable.sol",
           "file": "zeppelin-solidity/contracts/lifecycle/Pausable.sol",
-          "scope": 3526,
+          "scope": 3523,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 3151,
+        "id": 3148,
         "name": "ImportDirective",
         "src": "797:60:5"
       },
       {
         "attributes": {
-          "SourceUnit": 15807,
+          "SourceUnit": 15804,
           "absolutePath": "zeppelin-solidity/contracts/token/ERC721/ERC721Token.sol",
           "file": "zeppelin-solidity/contracts/token/ERC721/ERC721Token.sol",
-          "scope": 3526,
+          "scope": 3523,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 3152,
+        "id": 3149,
         "name": "ImportDirective",
         "src": "858:66:5"
       },
       {
         "attributes": {
-          "SourceUnit": 14276,
+          "SourceUnit": 14273,
           "absolutePath": "zeppelin-solidity/contracts/token/ERC20/ERC20.sol",
           "file": "zeppelin-solidity/contracts/token/ERC20/ERC20.sol",
-          "scope": 3526,
+          "scope": 3523,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 3153,
+        "id": 3150,
         "name": "ImportDirective",
         "src": "925:59:5"
       },
       {
         "attributes": {
           "contractDependencies": [
-            3535,
-            6052,
-            13982,
-            14136,
-            14701,
-            14721,
-            14728,
-            14835,
-            15418,
-            15806
+            3532,
+            6049,
+            13979,
+            14133,
+            14698,
+            14718,
+            14725,
+            14832,
+            15415,
+            15803
           ],
           "contractKind": "contract",
           "documentation": "The DebtToken contract governs all business logic for making a debt agreement\ntransferable as an ERC721 non-fungible token.  Additionally, the contract\nallows authorized contracts to trigger the minting of a debt agreement token\nand, in turn, the insertion of a debt issuance into the DebtRegsitry.\n * Author: Nadav Hollander -- Github: nadavhollander",
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            3525,
-            6052,
-            13982,
-            14136,
-            3535,
-            15806,
-            15418,
-            14728,
-            14721,
-            14701,
-            14835
+            3522,
+            6049,
+            13979,
+            14133,
+            3532,
+            15803,
+            15415,
+            14725,
+            14718,
+            14698,
+            14832
           ],
           "name": "DebtToken",
-          "scope": 3526
+          "scope": 3523
         },
         "children": [
           {
@@ -909,15 +909,15 @@ export const DebtToken =
                 "attributes": {
                   "contractScope": null,
                   "name": "ERC721Token",
-                  "referencedDeclaration": 15806,
+                  "referencedDeclaration": 15803,
                   "type": "contract ERC721Token"
                 },
-                "id": 3154,
+                "id": 3151,
                 "name": "UserDefinedTypeName",
                 "src": "1384:11:5"
               }
             ],
-            "id": 3155,
+            "id": 3152,
             "name": "InheritanceSpecifier",
             "src": "1384:11:5"
           },
@@ -932,15 +932,15 @@ export const DebtToken =
                 "attributes": {
                   "contractScope": null,
                   "name": "ERC165",
-                  "referencedDeclaration": 3535,
+                  "referencedDeclaration": 3532,
                   "type": "contract ERC165"
                 },
-                "id": 3156,
+                "id": 3153,
                 "name": "UserDefinedTypeName",
                 "src": "1397:6:5"
               }
             ],
-            "id": 3157,
+            "id": 3154,
             "name": "InheritanceSpecifier",
             "src": "1397:6:5"
           },
@@ -955,15 +955,15 @@ export const DebtToken =
                 "attributes": {
                   "contractScope": null,
                   "name": "Pausable",
-                  "referencedDeclaration": 13982,
+                  "referencedDeclaration": 13979,
                   "type": "contract Pausable"
                 },
-                "id": 3158,
+                "id": 3155,
                 "name": "UserDefinedTypeName",
                 "src": "1405:8:5"
               }
             ],
-            "id": 3159,
+            "id": 3156,
             "name": "InheritanceSpecifier",
             "src": "1405:8:5"
           },
@@ -978,15 +978,15 @@ export const DebtToken =
                 "attributes": {
                   "contractScope": null,
                   "name": "PermissionEvents",
-                  "referencedDeclaration": 6052,
+                  "referencedDeclaration": 6049,
                   "type": "contract PermissionEvents"
                 },
-                "id": 3160,
+                "id": 3157,
                 "name": "UserDefinedTypeName",
                 "src": "1415:16:5"
               }
             ],
-            "id": 3161,
+            "id": 3158,
             "name": "InheritanceSpecifier",
             "src": "1415:16:5"
           },
@@ -996,10 +996,10 @@ export const DebtToken =
                 "attributes": {
                   "contractScope": null,
                   "name": "PermissionsLib",
-                  "referencedDeclaration": 6256,
+                  "referencedDeclaration": 6253,
                   "type": "library PermissionsLib"
                 },
-                "id": 3162,
+                "id": 3159,
                 "name": "UserDefinedTypeName",
                 "src": "1444:14:5"
               },
@@ -1007,15 +1007,15 @@ export const DebtToken =
                 "attributes": {
                   "contractScope": null,
                   "name": "PermissionsLib.Permissions",
-                  "referencedDeclaration": 6076,
+                  "referencedDeclaration": 6073,
                   "type": "struct PermissionsLib.Permissions storage pointer"
                 },
-                "id": 3163,
+                "id": 3160,
                 "name": "UserDefinedTypeName",
                 "src": "1463:26:5"
               }
             ],
-            "id": 3164,
+            "id": 3161,
             "name": "UsingForDirective",
             "src": "1438:52:5"
           },
@@ -1023,7 +1023,7 @@ export const DebtToken =
             "attributes": {
               "constant": false,
               "name": "registry",
-              "scope": 3525,
+              "scope": 3522,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "contract DebtRegistry",
@@ -1035,15 +1035,15 @@ export const DebtToken =
                 "attributes": {
                   "contractScope": null,
                   "name": "DebtRegistry",
-                  "referencedDeclaration": 3143,
+                  "referencedDeclaration": 3140,
                   "type": "contract DebtRegistry"
                 },
-                "id": 3165,
+                "id": 3162,
                 "name": "UserDefinedTypeName",
                 "src": "1496:12:5"
               }
             ],
-            "id": 3166,
+            "id": 3163,
             "name": "VariableDeclaration",
             "src": "1496:28:5"
           },
@@ -1051,7 +1051,7 @@ export const DebtToken =
             "attributes": {
               "constant": false,
               "name": "tokenCreationPermissions",
-              "scope": 3525,
+              "scope": 3522,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "struct PermissionsLib.Permissions storage ref",
@@ -1063,15 +1063,15 @@ export const DebtToken =
                 "attributes": {
                   "contractScope": null,
                   "name": "PermissionsLib.Permissions",
-                  "referencedDeclaration": 6076,
+                  "referencedDeclaration": 6073,
                   "type": "struct PermissionsLib.Permissions storage pointer"
                 },
-                "id": 3167,
+                "id": 3164,
                 "name": "UserDefinedTypeName",
                 "src": "1531:26:5"
               }
             ],
-            "id": 3168,
+            "id": 3165,
             "name": "VariableDeclaration",
             "src": "1531:60:5"
           },
@@ -1079,7 +1079,7 @@ export const DebtToken =
             "attributes": {
               "constant": false,
               "name": "tokenURIPermissions",
-              "scope": 3525,
+              "scope": 3522,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "struct PermissionsLib.Permissions storage ref",
@@ -1091,15 +1091,15 @@ export const DebtToken =
                 "attributes": {
                   "contractScope": null,
                   "name": "PermissionsLib.Permissions",
-                  "referencedDeclaration": 6076,
+                  "referencedDeclaration": 6073,
                   "type": "struct PermissionsLib.Permissions storage pointer"
                 },
-                "id": 3169,
+                "id": 3166,
                 "name": "UserDefinedTypeName",
                 "src": "1597:26:5"
               }
             ],
-            "id": 3170,
+            "id": 3167,
             "name": "VariableDeclaration",
             "src": "1597:55:5"
           },
@@ -1107,7 +1107,7 @@ export const DebtToken =
             "attributes": {
               "constant": true,
               "name": "CREATION_CONTEXT",
-              "scope": 3525,
+              "scope": 3522,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "string memory",
@@ -1119,7 +1119,7 @@ export const DebtToken =
                   "name": "string",
                   "type": "string storage pointer"
                 },
-                "id": 3171,
+                "id": 3168,
                 "name": "ElementaryTypeName",
                 "src": "1659:6:5"
               },
@@ -1136,12 +1136,12 @@ export const DebtToken =
                   "type": "literal_string \"debt-token-creation\"",
                   "value": "debt-token-creation"
                 },
-                "id": 3172,
+                "id": 3169,
                 "name": "Literal",
                 "src": "1701:21:5"
               }
             ],
-            "id": 3173,
+            "id": 3170,
             "name": "VariableDeclaration",
             "src": "1659:63:5"
           },
@@ -1149,7 +1149,7 @@ export const DebtToken =
             "attributes": {
               "constant": true,
               "name": "URI_CONTEXT",
-              "scope": 3525,
+              "scope": 3522,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "string memory",
@@ -1161,7 +1161,7 @@ export const DebtToken =
                   "name": "string",
                   "type": "string storage pointer"
                 },
-                "id": 3174,
+                "id": 3171,
                 "name": "ElementaryTypeName",
                 "src": "1728:6:5"
               },
@@ -1178,12 +1178,12 @@ export const DebtToken =
                   "type": "literal_string \"debt-token-uri\"",
                   "value": "debt-token-uri"
                 },
-                "id": 3175,
+                "id": 3172,
                 "name": "Literal",
                 "src": "1765:16:5"
               }
             ],
-            "id": 3176,
+            "id": 3173,
             "name": "VariableDeclaration",
             "src": "1728:53:5"
           },
@@ -1194,7 +1194,7 @@ export const DebtToken =
               "isConstructor": true,
               "name": "DebtToken",
               "payable": false,
-              "scope": 3525,
+              "scope": 3522,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -1206,7 +1206,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_registry",
-                      "scope": 3192,
+                      "scope": 3189,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1219,17 +1219,17 @@ export const DebtToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3177,
+                        "id": 3174,
                         "name": "ElementaryTypeName",
                         "src": "1886:7:5"
                       }
                     ],
-                    "id": 3178,
+                    "id": 3175,
                     "name": "VariableDeclaration",
                     "src": "1886:17:5"
                   }
                 ],
-                "id": 3179,
+                "id": 3176,
                 "name": "ParameterList",
                 "src": "1885:19:5"
               },
@@ -1240,7 +1240,7 @@ export const DebtToken =
                   ]
                 },
                 "children": [],
-                "id": 3184,
+                "id": 3181,
                 "name": "ParameterList",
                 "src": "1964:0:5"
               },
@@ -1252,11 +1252,11 @@ export const DebtToken =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 15806,
+                      "referencedDeclaration": 15803,
                       "type": "type(contract ERC721Token)",
                       "value": "ERC721Token"
                     },
-                    "id": 3180,
+                    "id": 3177,
                     "name": "Identifier",
                     "src": "1928:11:5"
                   },
@@ -1273,7 +1273,7 @@ export const DebtToken =
                       "type": "literal_string \"DebtToken\"",
                       "value": "DebtToken"
                     },
-                    "id": 3181,
+                    "id": 3178,
                     "name": "Literal",
                     "src": "1940:11:5"
                   },
@@ -1290,12 +1290,12 @@ export const DebtToken =
                       "type": "literal_string \"DDT\"",
                       "value": "DDT"
                     },
-                    "id": 3182,
+                    "id": 3179,
                     "name": "Literal",
                     "src": "1953:5:5"
                   }
                 ],
-                "id": 3183,
+                "id": 3180,
                 "name": "ModifierInvocation",
                 "src": "1928:31:5"
               },
@@ -1320,11 +1320,11 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3166,
+                              "referencedDeclaration": 3163,
                               "type": "contract DebtRegistry",
                               "value": "registry"
                             },
-                            "id": 3185,
+                            "id": 3182,
                             "name": "Identifier",
                             "src": "1974:8:5"
                           },
@@ -1354,11 +1354,11 @@ export const DebtToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3143,
+                                  "referencedDeclaration": 3140,
                                   "type": "type(contract DebtRegistry)",
                                   "value": "DebtRegistry"
                                 },
-                                "id": 3186,
+                                "id": 3183,
                                 "name": "Identifier",
                                 "src": "1985:12:5"
                               },
@@ -1368,36 +1368,36 @@ export const DebtToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3178,
+                                  "referencedDeclaration": 3175,
                                   "type": "address",
                                   "value": "_registry"
                                 },
-                                "id": 3187,
+                                "id": 3184,
                                 "name": "Identifier",
                                 "src": "1998:9:5"
                               }
                             ],
-                            "id": 3188,
+                            "id": 3185,
                             "name": "FunctionCall",
                             "src": "1985:23:5"
                           }
                         ],
-                        "id": 3189,
+                        "id": 3186,
                         "name": "Assignment",
                         "src": "1974:34:5"
                       }
                     ],
-                    "id": 3190,
+                    "id": 3187,
                     "name": "ExpressionStatement",
                     "src": "1974:34:5"
                   }
                 ],
-                "id": 3191,
+                "id": 3188,
                 "name": "Block",
                 "src": "1964:51:5"
               }
             ],
-            "id": 3192,
+            "id": 3189,
             "name": "FunctionDefinition",
             "src": "1867:148:5"
           },
@@ -1411,9 +1411,9 @@ export const DebtToken =
               ],
               "name": "supportsInterface",
               "payable": false,
-              "scope": 3525,
+              "scope": 3522,
               "stateMutability": "view",
-              "superFunction": 3534,
+              "superFunction": 3531,
               "visibility": "external"
             },
             "children": [
@@ -1423,7 +1423,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "interfaceID",
-                      "scope": 3204,
+                      "scope": 3201,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes4",
@@ -1436,17 +1436,17 @@ export const DebtToken =
                           "name": "bytes4",
                           "type": "bytes4"
                         },
-                        "id": 3193,
+                        "id": 3190,
                         "name": "ElementaryTypeName",
                         "src": "2137:6:5"
                       }
                     ],
-                    "id": 3194,
+                    "id": 3191,
                     "name": "VariableDeclaration",
                     "src": "2137:18:5"
                   }
                 ],
-                "id": 3195,
+                "id": 3192,
                 "name": "ParameterList",
                 "src": "2136:20:5"
               },
@@ -1456,7 +1456,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_isSupported",
-                      "scope": 3204,
+                      "scope": 3201,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -1469,17 +1469,17 @@ export const DebtToken =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 3196,
+                        "id": 3193,
                         "name": "ElementaryTypeName",
                         "src": "2204:4:5"
                       }
                     ],
-                    "id": 3197,
+                    "id": 3194,
                     "name": "VariableDeclaration",
                     "src": "2204:17:5"
                   }
                 ],
-                "id": 3198,
+                "id": 3195,
                 "name": "ParameterList",
                 "src": "2203:19:5"
               },
@@ -1487,7 +1487,7 @@ export const DebtToken =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 3198
+                      "functionReturnParameters": 3195
                     },
                     "children": [
                       {
@@ -1511,11 +1511,11 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3194,
+                              "referencedDeclaration": 3191,
                               "type": "bytes4",
                               "value": "interfaceID"
                             },
-                            "id": 3199,
+                            "id": 3196,
                             "name": "Identifier",
                             "src": "2244:11:5"
                           },
@@ -1532,27 +1532,27 @@ export const DebtToken =
                               "type": "int_const 2158778573",
                               "value": "0x80ac58cd"
                             },
-                            "id": 3200,
+                            "id": 3197,
                             "name": "Literal",
                             "src": "2259:10:5"
                           }
                         ],
-                        "id": 3201,
+                        "id": 3198,
                         "name": "BinaryOperation",
                         "src": "2244:25:5"
                       }
                     ],
-                    "id": 3202,
+                    "id": 3199,
                     "name": "Return",
                     "src": "2237:32:5"
                   }
                 ],
-                "id": 3203,
+                "id": 3200,
                 "name": "Block",
                 "src": "2227:59:5"
               }
             ],
-            "id": 3204,
+            "id": 3201,
             "name": "FunctionDefinition",
             "src": "2110:176:5"
           },
@@ -1563,7 +1563,7 @@ export const DebtToken =
               "isConstructor": false,
               "name": "create",
               "payable": false,
-              "scope": 3525,
+              "scope": 3522,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -1575,7 +1575,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_version",
-                      "scope": 3263,
+                      "scope": 3260,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1588,12 +1588,12 @@ export const DebtToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3205,
+                        "id": 3202,
                         "name": "ElementaryTypeName",
                         "src": "2480:7:5"
                       }
                     ],
-                    "id": 3206,
+                    "id": 3203,
                     "name": "VariableDeclaration",
                     "src": "2480:16:5"
                   },
@@ -1601,7 +1601,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_beneficiary",
-                      "scope": 3263,
+                      "scope": 3260,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1614,12 +1614,12 @@ export const DebtToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3207,
+                        "id": 3204,
                         "name": "ElementaryTypeName",
                         "src": "2506:7:5"
                       }
                     ],
-                    "id": 3208,
+                    "id": 3205,
                     "name": "VariableDeclaration",
                     "src": "2506:20:5"
                   },
@@ -1627,7 +1627,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_debtor",
-                      "scope": 3263,
+                      "scope": 3260,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1640,12 +1640,12 @@ export const DebtToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3209,
+                        "id": 3206,
                         "name": "ElementaryTypeName",
                         "src": "2536:7:5"
                       }
                     ],
-                    "id": 3210,
+                    "id": 3207,
                     "name": "VariableDeclaration",
                     "src": "2536:15:5"
                   },
@@ -1653,7 +1653,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_underwriter",
-                      "scope": 3263,
+                      "scope": 3260,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1666,12 +1666,12 @@ export const DebtToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3211,
+                        "id": 3208,
                         "name": "ElementaryTypeName",
                         "src": "2561:7:5"
                       }
                     ],
-                    "id": 3212,
+                    "id": 3209,
                     "name": "VariableDeclaration",
                     "src": "2561:20:5"
                   },
@@ -1679,7 +1679,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_underwriterRiskRating",
-                      "scope": 3263,
+                      "scope": 3260,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1692,12 +1692,12 @@ export const DebtToken =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 3213,
+                        "id": 3210,
                         "name": "ElementaryTypeName",
                         "src": "2591:4:5"
                       }
                     ],
-                    "id": 3214,
+                    "id": 3211,
                     "name": "VariableDeclaration",
                     "src": "2591:27:5"
                   },
@@ -1705,7 +1705,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_termsContract",
-                      "scope": 3263,
+                      "scope": 3260,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1718,12 +1718,12 @@ export const DebtToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3215,
+                        "id": 3212,
                         "name": "ElementaryTypeName",
                         "src": "2628:7:5"
                       }
                     ],
-                    "id": 3216,
+                    "id": 3213,
                     "name": "VariableDeclaration",
                     "src": "2628:22:5"
                   },
@@ -1731,7 +1731,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_termsContractParameters",
-                      "scope": 3263,
+                      "scope": 3260,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -1744,12 +1744,12 @@ export const DebtToken =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 3217,
+                        "id": 3214,
                         "name": "ElementaryTypeName",
                         "src": "2660:7:5"
                       }
                     ],
-                    "id": 3218,
+                    "id": 3215,
                     "name": "VariableDeclaration",
                     "src": "2660:32:5"
                   },
@@ -1757,7 +1757,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_salt",
-                      "scope": 3263,
+                      "scope": 3260,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1770,17 +1770,17 @@ export const DebtToken =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 3219,
+                        "id": 3216,
                         "name": "ElementaryTypeName",
                         "src": "2702:4:5"
                       }
                     ],
-                    "id": 3220,
+                    "id": 3217,
                     "name": "VariableDeclaration",
                     "src": "2702:10:5"
                   }
                 ],
-                "id": 3221,
+                "id": 3218,
                 "name": "ParameterList",
                 "src": "2470:248:5"
               },
@@ -1790,7 +1790,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 3263,
+                      "scope": 3260,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1803,17 +1803,17 @@ export const DebtToken =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 3224,
+                        "id": 3221,
                         "name": "ElementaryTypeName",
                         "src": "2773:4:5"
                       }
                     ],
-                    "id": 3225,
+                    "id": 3222,
                     "name": "VariableDeclaration",
                     "src": "2773:13:5"
                   }
                 ],
-                "id": 3226,
+                "id": 3223,
                 "name": "ParameterList",
                 "src": "2772:15:5"
               },
@@ -1830,16 +1830,16 @@ export const DebtToken =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13943,
+                      "referencedDeclaration": 13940,
                       "type": "modifier ()",
                       "value": "whenNotPaused"
                     },
-                    "id": 3222,
+                    "id": 3219,
                     "name": "Identifier",
                     "src": "2742:13:5"
                   }
                 ],
-                "id": 3223,
+                "id": 3220,
                 "name": "ModifierInvocation",
                 "src": "2742:13:5"
               },
@@ -1873,11 +1873,11 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15821,
+                              "referencedDeclaration": 15818,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 3227,
+                            "id": 3224,
                             "name": "Identifier",
                             "src": "2802:7:5"
                           },
@@ -1909,7 +1909,7 @@ export const DebtToken =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "isAuthorized",
-                                  "referencedDeclaration": 6227,
+                                  "referencedDeclaration": 6224,
                                   "type": "function (struct PermissionsLib.Permissions storage pointer,address) view returns (bool)"
                                 },
                                 "children": [
@@ -1919,16 +1919,16 @@ export const DebtToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 3168,
+                                      "referencedDeclaration": 3165,
                                       "type": "struct PermissionsLib.Permissions storage ref",
                                       "value": "tokenCreationPermissions"
                                     },
-                                    "id": 3228,
+                                    "id": 3225,
                                     "name": "Identifier",
                                     "src": "2810:24:5"
                                   }
                                 ],
-                                "id": 3229,
+                                "id": 3226,
                                 "name": "MemberAccess",
                                 "src": "2810:37:5"
                               },
@@ -1950,38 +1950,38 @@ export const DebtToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15818,
+                                      "referencedDeclaration": 15815,
                                       "type": "msg",
                                       "value": "msg"
                                     },
-                                    "id": 3230,
+                                    "id": 3227,
                                     "name": "Identifier",
                                     "src": "2848:3:5"
                                   }
                                 ],
-                                "id": 3231,
+                                "id": 3228,
                                 "name": "MemberAccess",
                                 "src": "2848:10:5"
                               }
                             ],
-                            "id": 3232,
+                            "id": 3229,
                             "name": "FunctionCall",
                             "src": "2810:49:5"
                           }
                         ],
-                        "id": 3233,
+                        "id": 3230,
                         "name": "FunctionCall",
                         "src": "2802:58:5"
                       }
                     ],
-                    "id": 3234,
+                    "id": 3231,
                     "name": "ExpressionStatement",
                     "src": "2802:58:5"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        3236
+                        3233
                       ]
                     },
                     "children": [
@@ -1989,7 +1989,7 @@ export const DebtToken =
                         "attributes": {
                           "constant": false,
                           "name": "entryHash",
-                          "scope": 3263,
+                          "scope": 3260,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bytes32",
@@ -2002,12 +2002,12 @@ export const DebtToken =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 3235,
+                            "id": 3232,
                             "name": "ElementaryTypeName",
                             "src": "2871:7:5"
                           }
                         ],
-                        "id": 3236,
+                        "id": 3233,
                         "name": "VariableDeclaration",
                         "src": "2871:17:5"
                       },
@@ -2067,7 +2067,7 @@ export const DebtToken =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "insert",
-                              "referencedDeclaration": 2845,
+                              "referencedDeclaration": 2842,
                               "type": "function (address,address,address,address,uint256,address,bytes32,uint256) external returns (bytes32)"
                             },
                             "children": [
@@ -2077,16 +2077,16 @@ export const DebtToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3166,
+                                  "referencedDeclaration": 3163,
                                   "type": "contract DebtRegistry",
                                   "value": "registry"
                                 },
-                                "id": 3237,
+                                "id": 3234,
                                 "name": "Identifier",
                                 "src": "2891:8:5"
                               }
                             ],
-                            "id": 3238,
+                            "id": 3235,
                             "name": "MemberAccess",
                             "src": "2891:15:5"
                           },
@@ -2096,11 +2096,11 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3206,
+                              "referencedDeclaration": 3203,
                               "type": "address",
                               "value": "_version"
                             },
-                            "id": 3239,
+                            "id": 3236,
                             "name": "Identifier",
                             "src": "2920:8:5"
                           },
@@ -2110,11 +2110,11 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3208,
+                              "referencedDeclaration": 3205,
                               "type": "address",
                               "value": "_beneficiary"
                             },
-                            "id": 3240,
+                            "id": 3237,
                             "name": "Identifier",
                             "src": "2942:12:5"
                           },
@@ -2124,11 +2124,11 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3210,
+                              "referencedDeclaration": 3207,
                               "type": "address",
                               "value": "_debtor"
                             },
-                            "id": 3241,
+                            "id": 3238,
                             "name": "Identifier",
                             "src": "2968:7:5"
                           },
@@ -2138,11 +2138,11 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3212,
+                              "referencedDeclaration": 3209,
                               "type": "address",
                               "value": "_underwriter"
                             },
-                            "id": 3242,
+                            "id": 3239,
                             "name": "Identifier",
                             "src": "2989:12:5"
                           },
@@ -2152,11 +2152,11 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3214,
+                              "referencedDeclaration": 3211,
                               "type": "uint256",
                               "value": "_underwriterRiskRating"
                             },
-                            "id": 3243,
+                            "id": 3240,
                             "name": "Identifier",
                             "src": "3015:22:5"
                           },
@@ -2166,11 +2166,11 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3216,
+                              "referencedDeclaration": 3213,
                               "type": "address",
                               "value": "_termsContract"
                             },
-                            "id": 3244,
+                            "id": 3241,
                             "name": "Identifier",
                             "src": "3051:14:5"
                           },
@@ -2180,11 +2180,11 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3218,
+                              "referencedDeclaration": 3215,
                               "type": "bytes32",
                               "value": "_termsContractParameters"
                             },
-                            "id": 3245,
+                            "id": 3242,
                             "name": "Identifier",
                             "src": "3079:24:5"
                           },
@@ -2194,21 +2194,21 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3220,
+                              "referencedDeclaration": 3217,
                               "type": "uint256",
                               "value": "_salt"
                             },
-                            "id": 3246,
+                            "id": 3243,
                             "name": "Identifier",
                             "src": "3117:5:5"
                           }
                         ],
-                        "id": 3247,
+                        "id": 3244,
                         "name": "FunctionCall",
                         "src": "2891:241:5"
                       }
                     ],
-                    "id": 3248,
+                    "id": 3245,
                     "name": "VariableDeclarationStatement",
                     "src": "2871:261:5"
                   },
@@ -2246,7 +2246,7 @@ export const DebtToken =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "_mint",
-                              "referencedDeclaration": 15726,
+                              "referencedDeclaration": 15723,
                               "type": "function (address,uint256)"
                             },
                             "children": [
@@ -2256,16 +2256,16 @@ export const DebtToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15874,
+                                  "referencedDeclaration": 15871,
                                   "type": "contract super DebtToken",
                                   "value": "super"
                                 },
-                                "id": 3249,
+                                "id": 3246,
                                 "name": "Identifier",
                                 "src": "3143:5:5"
                               }
                             ],
-                            "id": 3251,
+                            "id": 3248,
                             "name": "MemberAccess",
                             "src": "3143:11:5"
                           },
@@ -2275,11 +2275,11 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3208,
+                              "referencedDeclaration": 3205,
                               "type": "address",
                               "value": "_beneficiary"
                             },
-                            "id": 3252,
+                            "id": 3249,
                             "name": "Identifier",
                             "src": "3155:12:5"
                           },
@@ -2313,7 +2313,7 @@ export const DebtToken =
                                   "type": "type(uint256)",
                                   "value": "uint"
                                 },
-                                "id": 3253,
+                                "id": 3250,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "3169:4:5"
                               },
@@ -2323,32 +2323,32 @@ export const DebtToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3236,
+                                  "referencedDeclaration": 3233,
                                   "type": "bytes32",
                                   "value": "entryHash"
                                 },
-                                "id": 3254,
+                                "id": 3251,
                                 "name": "Identifier",
                                 "src": "3174:9:5"
                               }
                             ],
-                            "id": 3255,
+                            "id": 3252,
                             "name": "FunctionCall",
                             "src": "3169:15:5"
                           }
                         ],
-                        "id": 3256,
+                        "id": 3253,
                         "name": "FunctionCall",
                         "src": "3143:42:5"
                       }
                     ],
-                    "id": 3257,
+                    "id": 3254,
                     "name": "ExpressionStatement",
                     "src": "3143:42:5"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 3226
+                      "functionReturnParameters": 3223
                     },
                     "children": [
                       {
@@ -2381,7 +2381,7 @@ export const DebtToken =
                               "type": "type(uint256)",
                               "value": "uint"
                             },
-                            "id": 3258,
+                            "id": 3255,
                             "name": "ElementaryTypeNameExpression",
                             "src": "3203:4:5"
                           },
@@ -2391,31 +2391,31 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3236,
+                              "referencedDeclaration": 3233,
                               "type": "bytes32",
                               "value": "entryHash"
                             },
-                            "id": 3259,
+                            "id": 3256,
                             "name": "Identifier",
                             "src": "3208:9:5"
                           }
                         ],
-                        "id": 3260,
+                        "id": 3257,
                         "name": "FunctionCall",
                         "src": "3203:15:5"
                       }
                     ],
-                    "id": 3261,
+                    "id": 3258,
                     "name": "Return",
                     "src": "3196:22:5"
                   }
                 ],
-                "id": 3262,
+                "id": 3259,
                 "name": "Block",
                 "src": "2792:433:5"
               }
             ],
-            "id": 3263,
+            "id": 3260,
             "name": "FunctionDefinition",
             "src": "2455:770:5"
           },
@@ -2426,7 +2426,7 @@ export const DebtToken =
               "isConstructor": false,
               "name": "addAuthorizedMintAgent",
               "payable": false,
-              "scope": 3525,
+              "scope": 3522,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -2438,7 +2438,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_agent",
-                      "scope": 3278,
+                      "scope": 3275,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2451,17 +2451,17 @@ export const DebtToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3264,
+                        "id": 3261,
                         "name": "ElementaryTypeName",
                         "src": "3356:7:5"
                       }
                     ],
-                    "id": 3265,
+                    "id": 3262,
                     "name": "VariableDeclaration",
                     "src": "3356:14:5"
                   }
                 ],
-                "id": 3266,
+                "id": 3263,
                 "name": "ParameterList",
                 "src": "3355:16:5"
               },
@@ -2472,7 +2472,7 @@ export const DebtToken =
                   ]
                 },
                 "children": [],
-                "id": 3269,
+                "id": 3266,
                 "name": "ParameterList",
                 "src": "3409:0:5"
               },
@@ -2489,16 +2489,16 @@ export const DebtToken =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 14110,
+                      "referencedDeclaration": 14107,
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
-                    "id": 3267,
+                    "id": 3264,
                     "name": "Identifier",
                     "src": "3395:9:5"
                   }
                 ],
-                "id": 3268,
+                "id": 3265,
                 "name": "ModifierInvocation",
                 "src": "3395:9:5"
               },
@@ -2538,7 +2538,7 @@ export const DebtToken =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "authorize",
-                              "referencedDeclaration": 6126,
+                              "referencedDeclaration": 6123,
                               "type": "function (struct PermissionsLib.Permissions storage pointer,address,string memory)"
                             },
                             "children": [
@@ -2548,16 +2548,16 @@ export const DebtToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3168,
+                                  "referencedDeclaration": 3165,
                                   "type": "struct PermissionsLib.Permissions storage ref",
                                   "value": "tokenCreationPermissions"
                                 },
-                                "id": 3270,
+                                "id": 3267,
                                 "name": "Identifier",
                                 "src": "3419:24:5"
                               }
                             ],
-                            "id": 3272,
+                            "id": 3269,
                             "name": "MemberAccess",
                             "src": "3419:34:5"
                           },
@@ -2567,11 +2567,11 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3265,
+                              "referencedDeclaration": 3262,
                               "type": "address",
                               "value": "_agent"
                             },
-                            "id": 3273,
+                            "id": 3270,
                             "name": "Identifier",
                             "src": "3454:6:5"
                           },
@@ -2581,31 +2581,31 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3173,
+                              "referencedDeclaration": 3170,
                               "type": "string memory",
                               "value": "CREATION_CONTEXT"
                             },
-                            "id": 3274,
+                            "id": 3271,
                             "name": "Identifier",
                             "src": "3462:16:5"
                           }
                         ],
-                        "id": 3275,
+                        "id": 3272,
                         "name": "FunctionCall",
                         "src": "3419:60:5"
                       }
                     ],
-                    "id": 3276,
+                    "id": 3273,
                     "name": "ExpressionStatement",
                     "src": "3419:60:5"
                   }
                 ],
-                "id": 3277,
+                "id": 3274,
                 "name": "Block",
                 "src": "3409:77:5"
               }
             ],
-            "id": 3278,
+            "id": 3275,
             "name": "FunctionDefinition",
             "src": "3324:162:5"
           },
@@ -2616,7 +2616,7 @@ export const DebtToken =
               "isConstructor": false,
               "name": "revokeMintAgentAuthorization",
               "payable": false,
-              "scope": 3525,
+              "scope": 3522,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -2628,7 +2628,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_agent",
-                      "scope": 3293,
+                      "scope": 3290,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2641,17 +2641,17 @@ export const DebtToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3279,
+                        "id": 3276,
                         "name": "ElementaryTypeName",
                         "src": "3627:7:5"
                       }
                     ],
-                    "id": 3280,
+                    "id": 3277,
                     "name": "VariableDeclaration",
                     "src": "3627:14:5"
                   }
                 ],
-                "id": 3281,
+                "id": 3278,
                 "name": "ParameterList",
                 "src": "3626:16:5"
               },
@@ -2662,7 +2662,7 @@ export const DebtToken =
                   ]
                 },
                 "children": [],
-                "id": 3284,
+                "id": 3281,
                 "name": "ParameterList",
                 "src": "3680:0:5"
               },
@@ -2679,16 +2679,16 @@ export const DebtToken =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 14110,
+                      "referencedDeclaration": 14107,
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
-                    "id": 3282,
+                    "id": 3279,
                     "name": "Identifier",
                     "src": "3666:9:5"
                   }
                 ],
-                "id": 3283,
+                "id": 3280,
                 "name": "ModifierInvocation",
                 "src": "3666:9:5"
               },
@@ -2728,7 +2728,7 @@ export const DebtToken =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "revokeAuthorization",
-                              "referencedDeclaration": 6212,
+                              "referencedDeclaration": 6209,
                               "type": "function (struct PermissionsLib.Permissions storage pointer,address,string memory)"
                             },
                             "children": [
@@ -2738,16 +2738,16 @@ export const DebtToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3168,
+                                  "referencedDeclaration": 3165,
                                   "type": "struct PermissionsLib.Permissions storage ref",
                                   "value": "tokenCreationPermissions"
                                 },
-                                "id": 3285,
+                                "id": 3282,
                                 "name": "Identifier",
                                 "src": "3690:24:5"
                               }
                             ],
-                            "id": 3287,
+                            "id": 3284,
                             "name": "MemberAccess",
                             "src": "3690:44:5"
                           },
@@ -2757,11 +2757,11 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3280,
+                              "referencedDeclaration": 3277,
                               "type": "address",
                               "value": "_agent"
                             },
-                            "id": 3288,
+                            "id": 3285,
                             "name": "Identifier",
                             "src": "3735:6:5"
                           },
@@ -2771,31 +2771,31 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3173,
+                              "referencedDeclaration": 3170,
                               "type": "string memory",
                               "value": "CREATION_CONTEXT"
                             },
-                            "id": 3289,
+                            "id": 3286,
                             "name": "Identifier",
                             "src": "3743:16:5"
                           }
                         ],
-                        "id": 3290,
+                        "id": 3287,
                         "name": "FunctionCall",
                         "src": "3690:70:5"
                       }
                     ],
-                    "id": 3291,
+                    "id": 3288,
                     "name": "ExpressionStatement",
                     "src": "3690:70:5"
                   }
                 ],
-                "id": 3292,
+                "id": 3289,
                 "name": "Block",
                 "src": "3680:87:5"
               }
             ],
-            "id": 3293,
+            "id": 3290,
             "name": "FunctionDefinition",
             "src": "3589:178:5"
           },
@@ -2809,7 +2809,7 @@ export const DebtToken =
               ],
               "name": "getAuthorizedMintAgents",
               "payable": false,
-              "scope": 3525,
+              "scope": 3522,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -2822,7 +2822,7 @@ export const DebtToken =
                   ]
                 },
                 "children": [],
-                "id": 3294,
+                "id": 3291,
                 "name": "ParameterList",
                 "src": "3886:2:5"
               },
@@ -2832,7 +2832,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_agents",
-                      "scope": 3304,
+                      "scope": 3301,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address[] memory",
@@ -2851,22 +2851,22 @@ export const DebtToken =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 3295,
+                            "id": 3292,
                             "name": "ElementaryTypeName",
                             "src": "3934:7:5"
                           }
                         ],
-                        "id": 3296,
+                        "id": 3293,
                         "name": "ArrayTypeName",
                         "src": "3934:9:5"
                       }
                     ],
-                    "id": 3297,
+                    "id": 3294,
                     "name": "VariableDeclaration",
                     "src": "3934:17:5"
                   }
                 ],
-                "id": 3298,
+                "id": 3295,
                 "name": "ParameterList",
                 "src": "3933:19:5"
               },
@@ -2874,7 +2874,7 @@ export const DebtToken =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 3298
+                      "functionReturnParameters": 3295
                     },
                     "children": [
                       {
@@ -2905,7 +2905,7 @@ export const DebtToken =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "getAuthorizedAgents",
-                              "referencedDeclaration": 6255,
+                              "referencedDeclaration": 6252,
                               "type": "function (struct PermissionsLib.Permissions storage pointer) view returns (address[] memory)"
                             },
                             "children": [
@@ -2915,36 +2915,36 @@ export const DebtToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3168,
+                                  "referencedDeclaration": 3165,
                                   "type": "struct PermissionsLib.Permissions storage ref",
                                   "value": "tokenCreationPermissions"
                                 },
-                                "id": 3299,
+                                "id": 3296,
                                 "name": "Identifier",
                                 "src": "3974:24:5"
                               }
                             ],
-                            "id": 3300,
+                            "id": 3297,
                             "name": "MemberAccess",
                             "src": "3974:44:5"
                           }
                         ],
-                        "id": 3301,
+                        "id": 3298,
                         "name": "FunctionCall",
                         "src": "3974:46:5"
                       }
                     ],
-                    "id": 3302,
+                    "id": 3299,
                     "name": "Return",
                     "src": "3967:53:5"
                   }
                 ],
-                "id": 3303,
+                "id": 3300,
                 "name": "Block",
                 "src": "3957:70:5"
               }
             ],
-            "id": 3304,
+            "id": 3301,
             "name": "FunctionDefinition",
             "src": "3854:173:5"
           },
@@ -2955,7 +2955,7 @@ export const DebtToken =
               "isConstructor": false,
               "name": "addAuthorizedTokenURIAgent",
               "payable": false,
-              "scope": 3525,
+              "scope": 3522,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -2967,7 +2967,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_agent",
-                      "scope": 3319,
+                      "scope": 3316,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2980,17 +2980,17 @@ export const DebtToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3305,
+                        "id": 3302,
                         "name": "ElementaryTypeName",
                         "src": "4160:7:5"
                       }
                     ],
-                    "id": 3306,
+                    "id": 3303,
                     "name": "VariableDeclaration",
                     "src": "4160:14:5"
                   }
                 ],
-                "id": 3307,
+                "id": 3304,
                 "name": "ParameterList",
                 "src": "4159:16:5"
               },
@@ -3001,7 +3001,7 @@ export const DebtToken =
                   ]
                 },
                 "children": [],
-                "id": 3310,
+                "id": 3307,
                 "name": "ParameterList",
                 "src": "4213:0:5"
               },
@@ -3018,16 +3018,16 @@ export const DebtToken =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 14110,
+                      "referencedDeclaration": 14107,
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
-                    "id": 3308,
+                    "id": 3305,
                     "name": "Identifier",
                     "src": "4199:9:5"
                   }
                 ],
-                "id": 3309,
+                "id": 3306,
                 "name": "ModifierInvocation",
                 "src": "4199:9:5"
               },
@@ -3067,7 +3067,7 @@ export const DebtToken =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "authorize",
-                              "referencedDeclaration": 6126,
+                              "referencedDeclaration": 6123,
                               "type": "function (struct PermissionsLib.Permissions storage pointer,address,string memory)"
                             },
                             "children": [
@@ -3077,16 +3077,16 @@ export const DebtToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3170,
+                                  "referencedDeclaration": 3167,
                                   "type": "struct PermissionsLib.Permissions storage ref",
                                   "value": "tokenURIPermissions"
                                 },
-                                "id": 3311,
+                                "id": 3308,
                                 "name": "Identifier",
                                 "src": "4223:19:5"
                               }
                             ],
-                            "id": 3313,
+                            "id": 3310,
                             "name": "MemberAccess",
                             "src": "4223:29:5"
                           },
@@ -3096,11 +3096,11 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3306,
+                              "referencedDeclaration": 3303,
                               "type": "address",
                               "value": "_agent"
                             },
-                            "id": 3314,
+                            "id": 3311,
                             "name": "Identifier",
                             "src": "4253:6:5"
                           },
@@ -3110,31 +3110,31 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3176,
+                              "referencedDeclaration": 3173,
                               "type": "string memory",
                               "value": "URI_CONTEXT"
                             },
-                            "id": 3315,
+                            "id": 3312,
                             "name": "Identifier",
                             "src": "4261:11:5"
                           }
                         ],
-                        "id": 3316,
+                        "id": 3313,
                         "name": "FunctionCall",
                         "src": "4223:50:5"
                       }
                     ],
-                    "id": 3317,
+                    "id": 3314,
                     "name": "ExpressionStatement",
                     "src": "4223:50:5"
                   }
                 ],
-                "id": 3318,
+                "id": 3315,
                 "name": "Block",
                 "src": "4213:67:5"
               }
             ],
-            "id": 3319,
+            "id": 3316,
             "name": "FunctionDefinition",
             "src": "4124:156:5"
           },
@@ -3148,7 +3148,7 @@ export const DebtToken =
               ],
               "name": "getAuthorizedTokenURIAgents",
               "payable": false,
-              "scope": 3525,
+              "scope": 3522,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -3161,7 +3161,7 @@ export const DebtToken =
                   ]
                 },
                 "children": [],
-                "id": 3320,
+                "id": 3317,
                 "name": "ParameterList",
                 "src": "4402:2:5"
               },
@@ -3171,7 +3171,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_agents",
-                      "scope": 3330,
+                      "scope": 3327,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address[] memory",
@@ -3190,22 +3190,22 @@ export const DebtToken =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 3321,
+                            "id": 3318,
                             "name": "ElementaryTypeName",
                             "src": "4450:7:5"
                           }
                         ],
-                        "id": 3322,
+                        "id": 3319,
                         "name": "ArrayTypeName",
                         "src": "4450:9:5"
                       }
                     ],
-                    "id": 3323,
+                    "id": 3320,
                     "name": "VariableDeclaration",
                     "src": "4450:17:5"
                   }
                 ],
-                "id": 3324,
+                "id": 3321,
                 "name": "ParameterList",
                 "src": "4449:19:5"
               },
@@ -3213,7 +3213,7 @@ export const DebtToken =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 3324
+                      "functionReturnParameters": 3321
                     },
                     "children": [
                       {
@@ -3244,7 +3244,7 @@ export const DebtToken =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "getAuthorizedAgents",
-                              "referencedDeclaration": 6255,
+                              "referencedDeclaration": 6252,
                               "type": "function (struct PermissionsLib.Permissions storage pointer) view returns (address[] memory)"
                             },
                             "children": [
@@ -3254,36 +3254,36 @@ export const DebtToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3170,
+                                  "referencedDeclaration": 3167,
                                   "type": "struct PermissionsLib.Permissions storage ref",
                                   "value": "tokenURIPermissions"
                                 },
-                                "id": 3325,
+                                "id": 3322,
                                 "name": "Identifier",
                                 "src": "4490:19:5"
                               }
                             ],
-                            "id": 3326,
+                            "id": 3323,
                             "name": "MemberAccess",
                             "src": "4490:39:5"
                           }
                         ],
-                        "id": 3327,
+                        "id": 3324,
                         "name": "FunctionCall",
                         "src": "4490:41:5"
                       }
                     ],
-                    "id": 3328,
+                    "id": 3325,
                     "name": "Return",
                     "src": "4483:48:5"
                   }
                 ],
-                "id": 3329,
+                "id": 3326,
                 "name": "Block",
                 "src": "4473:65:5"
               }
             ],
-            "id": 3330,
+            "id": 3327,
             "name": "FunctionDefinition",
             "src": "4366:172:5"
           },
@@ -3294,7 +3294,7 @@ export const DebtToken =
               "isConstructor": false,
               "name": "revokeTokenURIAuthorization",
               "payable": false,
-              "scope": 3525,
+              "scope": 3522,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -3306,7 +3306,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_agent",
-                      "scope": 3345,
+                      "scope": 3342,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -3319,17 +3319,17 @@ export const DebtToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3331,
+                        "id": 3328,
                         "name": "ElementaryTypeName",
                         "src": "4677:7:5"
                       }
                     ],
-                    "id": 3332,
+                    "id": 3329,
                     "name": "VariableDeclaration",
                     "src": "4677:14:5"
                   }
                 ],
-                "id": 3333,
+                "id": 3330,
                 "name": "ParameterList",
                 "src": "4676:16:5"
               },
@@ -3340,7 +3340,7 @@ export const DebtToken =
                   ]
                 },
                 "children": [],
-                "id": 3336,
+                "id": 3333,
                 "name": "ParameterList",
                 "src": "4730:0:5"
               },
@@ -3357,16 +3357,16 @@ export const DebtToken =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 14110,
+                      "referencedDeclaration": 14107,
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
-                    "id": 3334,
+                    "id": 3331,
                     "name": "Identifier",
                     "src": "4716:9:5"
                   }
                 ],
-                "id": 3335,
+                "id": 3332,
                 "name": "ModifierInvocation",
                 "src": "4716:9:5"
               },
@@ -3406,7 +3406,7 @@ export const DebtToken =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "revokeAuthorization",
-                              "referencedDeclaration": 6212,
+                              "referencedDeclaration": 6209,
                               "type": "function (struct PermissionsLib.Permissions storage pointer,address,string memory)"
                             },
                             "children": [
@@ -3416,16 +3416,16 @@ export const DebtToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3170,
+                                  "referencedDeclaration": 3167,
                                   "type": "struct PermissionsLib.Permissions storage ref",
                                   "value": "tokenURIPermissions"
                                 },
-                                "id": 3337,
+                                "id": 3334,
                                 "name": "Identifier",
                                 "src": "4740:19:5"
                               }
                             ],
-                            "id": 3339,
+                            "id": 3336,
                             "name": "MemberAccess",
                             "src": "4740:39:5"
                           },
@@ -3435,11 +3435,11 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3332,
+                              "referencedDeclaration": 3329,
                               "type": "address",
                               "value": "_agent"
                             },
-                            "id": 3340,
+                            "id": 3337,
                             "name": "Identifier",
                             "src": "4780:6:5"
                           },
@@ -3449,31 +3449,31 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3176,
+                              "referencedDeclaration": 3173,
                               "type": "string memory",
                               "value": "URI_CONTEXT"
                             },
-                            "id": 3341,
+                            "id": 3338,
                             "name": "Identifier",
                             "src": "4788:11:5"
                           }
                         ],
-                        "id": 3342,
+                        "id": 3339,
                         "name": "FunctionCall",
                         "src": "4740:60:5"
                       }
                     ],
-                    "id": 3343,
+                    "id": 3340,
                     "name": "ExpressionStatement",
                     "src": "4740:60:5"
                   }
                 ],
-                "id": 3344,
+                "id": 3341,
                 "name": "Block",
                 "src": "4730:77:5"
               }
             ],
-            "id": 3345,
+            "id": 3342,
             "name": "FunctionDefinition",
             "src": "4640:167:5"
           },
@@ -3484,9 +3484,9 @@ export const DebtToken =
               "isConstructor": false,
               "name": "approve",
               "payable": false,
-              "scope": 3525,
+              "scope": 3522,
               "stateMutability": "nonpayable",
-              "superFunction": 15023,
+              "superFunction": 15020,
               "visibility": "public"
             },
             "children": [
@@ -3496,7 +3496,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 3362,
+                      "scope": 3359,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -3509,12 +3509,12 @@ export const DebtToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3346,
+                        "id": 3343,
                         "name": "ElementaryTypeName",
                         "src": "4991:7:5"
                       }
                     ],
-                    "id": 3347,
+                    "id": 3344,
                     "name": "VariableDeclaration",
                     "src": "4991:11:5"
                   },
@@ -3522,7 +3522,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 3362,
+                      "scope": 3359,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -3535,17 +3535,17 @@ export const DebtToken =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 3348,
+                        "id": 3345,
                         "name": "ElementaryTypeName",
                         "src": "5004:4:5"
                       }
                     ],
-                    "id": 3349,
+                    "id": 3346,
                     "name": "VariableDeclaration",
                     "src": "5004:13:5"
                   }
                 ],
-                "id": 3350,
+                "id": 3347,
                 "name": "ParameterList",
                 "src": "4990:28:5"
               },
@@ -3556,7 +3556,7 @@ export const DebtToken =
                   ]
                 },
                 "children": [],
-                "id": 3353,
+                "id": 3350,
                 "name": "ParameterList",
                 "src": "5060:0:5"
               },
@@ -3573,16 +3573,16 @@ export const DebtToken =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13943,
+                      "referencedDeclaration": 13940,
                       "type": "modifier ()",
                       "value": "whenNotPaused"
                     },
-                    "id": 3351,
+                    "id": 3348,
                     "name": "Identifier",
                     "src": "5042:13:5"
                   }
                 ],
-                "id": 3352,
+                "id": 3349,
                 "name": "ModifierInvocation",
                 "src": "5042:13:5"
               },
@@ -3622,7 +3622,7 @@ export const DebtToken =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "approve",
-                              "referencedDeclaration": 15023,
+                              "referencedDeclaration": 15020,
                               "type": "function (address,uint256)"
                             },
                             "children": [
@@ -3632,16 +3632,16 @@ export const DebtToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15874,
+                                  "referencedDeclaration": 15871,
                                   "type": "contract super DebtToken",
                                   "value": "super"
                                 },
-                                "id": 3354,
+                                "id": 3351,
                                 "name": "Identifier",
                                 "src": "5070:5:5"
                               }
                             ],
-                            "id": 3356,
+                            "id": 3353,
                             "name": "MemberAccess",
                             "src": "5070:13:5"
                           },
@@ -3651,11 +3651,11 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3347,
+                              "referencedDeclaration": 3344,
                               "type": "address",
                               "value": "_to"
                             },
-                            "id": 3357,
+                            "id": 3354,
                             "name": "Identifier",
                             "src": "5084:3:5"
                           },
@@ -3665,31 +3665,31 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3349,
+                              "referencedDeclaration": 3346,
                               "type": "uint256",
                               "value": "_tokenId"
                             },
-                            "id": 3358,
+                            "id": 3355,
                             "name": "Identifier",
                             "src": "5089:8:5"
                           }
                         ],
-                        "id": 3359,
+                        "id": 3356,
                         "name": "FunctionCall",
                         "src": "5070:28:5"
                       }
                     ],
-                    "id": 3360,
+                    "id": 3357,
                     "name": "ExpressionStatement",
                     "src": "5070:28:5"
                   }
                 ],
-                "id": 3361,
+                "id": 3358,
                 "name": "Block",
                 "src": "5060:45:5"
               }
             ],
-            "id": 3362,
+            "id": 3359,
             "name": "FunctionDefinition",
             "src": "4974:131:5"
           },
@@ -3700,9 +3700,9 @@ export const DebtToken =
               "isConstructor": false,
               "name": "setApprovalForAll",
               "payable": false,
-              "scope": 3525,
+              "scope": 3522,
               "stateMutability": "nonpayable",
-              "superFunction": 15066,
+              "superFunction": 15063,
               "visibility": "public"
             },
             "children": [
@@ -3712,7 +3712,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 3379,
+                      "scope": 3376,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -3725,12 +3725,12 @@ export const DebtToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3363,
+                        "id": 3360,
                         "name": "ElementaryTypeName",
                         "src": "5308:7:5"
                       }
                     ],
-                    "id": 3364,
+                    "id": 3361,
                     "name": "VariableDeclaration",
                     "src": "5308:11:5"
                   },
@@ -3738,7 +3738,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_approved",
-                      "scope": 3379,
+                      "scope": 3376,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -3751,17 +3751,17 @@ export const DebtToken =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 3365,
+                        "id": 3362,
                         "name": "ElementaryTypeName",
                         "src": "5321:4:5"
                       }
                     ],
-                    "id": 3366,
+                    "id": 3363,
                     "name": "VariableDeclaration",
                     "src": "5321:14:5"
                   }
                 ],
-                "id": 3367,
+                "id": 3364,
                 "name": "ParameterList",
                 "src": "5307:29:5"
               },
@@ -3772,7 +3772,7 @@ export const DebtToken =
                   ]
                 },
                 "children": [],
-                "id": 3370,
+                "id": 3367,
                 "name": "ParameterList",
                 "src": "5378:0:5"
               },
@@ -3789,16 +3789,16 @@ export const DebtToken =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13943,
+                      "referencedDeclaration": 13940,
                       "type": "modifier ()",
                       "value": "whenNotPaused"
                     },
-                    "id": 3368,
+                    "id": 3365,
                     "name": "Identifier",
                     "src": "5360:13:5"
                   }
                 ],
-                "id": 3369,
+                "id": 3366,
                 "name": "ModifierInvocation",
                 "src": "5360:13:5"
               },
@@ -3838,7 +3838,7 @@ export const DebtToken =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "setApprovalForAll",
-                              "referencedDeclaration": 15066,
+                              "referencedDeclaration": 15063,
                               "type": "function (address,bool)"
                             },
                             "children": [
@@ -3848,16 +3848,16 @@ export const DebtToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15874,
+                                  "referencedDeclaration": 15871,
                                   "type": "contract super DebtToken",
                                   "value": "super"
                                 },
-                                "id": 3371,
+                                "id": 3368,
                                 "name": "Identifier",
                                 "src": "5388:5:5"
                               }
                             ],
-                            "id": 3373,
+                            "id": 3370,
                             "name": "MemberAccess",
                             "src": "5388:23:5"
                           },
@@ -3867,11 +3867,11 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3364,
+                              "referencedDeclaration": 3361,
                               "type": "address",
                               "value": "_to"
                             },
-                            "id": 3374,
+                            "id": 3371,
                             "name": "Identifier",
                             "src": "5412:3:5"
                           },
@@ -3881,31 +3881,31 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3366,
+                              "referencedDeclaration": 3363,
                               "type": "bool",
                               "value": "_approved"
                             },
-                            "id": 3375,
+                            "id": 3372,
                             "name": "Identifier",
                             "src": "5417:9:5"
                           }
                         ],
-                        "id": 3376,
+                        "id": 3373,
                         "name": "FunctionCall",
                         "src": "5388:39:5"
                       }
                     ],
-                    "id": 3377,
+                    "id": 3374,
                     "name": "ExpressionStatement",
                     "src": "5388:39:5"
                   }
                 ],
-                "id": 3378,
+                "id": 3375,
                 "name": "Block",
                 "src": "5378:56:5"
               }
             ],
-            "id": 3379,
+            "id": 3376,
             "name": "FunctionDefinition",
             "src": "5281:153:5"
           },
@@ -3919,7 +3919,7 @@ export const DebtToken =
               ],
               "name": "transfer",
               "payable": false,
-              "scope": 3525,
+              "scope": 3522,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -3931,7 +3931,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 3394,
+                      "scope": 3391,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -3944,12 +3944,12 @@ export const DebtToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3380,
+                        "id": 3377,
                         "name": "ElementaryTypeName",
                         "src": "5514:7:5"
                       }
                     ],
-                    "id": 3381,
+                    "id": 3378,
                     "name": "VariableDeclaration",
                     "src": "5514:11:5"
                   },
@@ -3957,7 +3957,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 3394,
+                      "scope": 3391,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -3970,17 +3970,17 @@ export const DebtToken =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 3382,
+                        "id": 3379,
                         "name": "ElementaryTypeName",
                         "src": "5527:4:5"
                       }
                     ],
-                    "id": 3383,
+                    "id": 3380,
                     "name": "VariableDeclaration",
                     "src": "5527:13:5"
                   }
                 ],
-                "id": 3384,
+                "id": 3381,
                 "name": "ParameterList",
                 "src": "5513:28:5"
               },
@@ -3991,7 +3991,7 @@ export const DebtToken =
                   ]
                 },
                 "children": [],
-                "id": 3385,
+                "id": 3382,
                 "name": "ParameterList",
                 "src": "5561:0:5"
               },
@@ -4031,14 +4031,14 @@ export const DebtToken =
                                 }
                               ],
                               "overloadedDeclarations": [
-                                3444,
-                                3472
+                                3441,
+                                3469
                               ],
-                              "referencedDeclaration": 3444,
+                              "referencedDeclaration": 3441,
                               "type": "function (address,address,uint256)",
                               "value": "safeTransferFrom"
                             },
-                            "id": 3386,
+                            "id": 3383,
                             "name": "Identifier",
                             "src": "5571:16:5"
                           },
@@ -4060,16 +4060,16 @@ export const DebtToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15818,
+                                  "referencedDeclaration": 15815,
                                   "type": "msg",
                                   "value": "msg"
                                 },
-                                "id": 3387,
+                                "id": 3384,
                                 "name": "Identifier",
                                 "src": "5588:3:5"
                               }
                             ],
-                            "id": 3388,
+                            "id": 3385,
                             "name": "MemberAccess",
                             "src": "5588:10:5"
                           },
@@ -4079,11 +4079,11 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3381,
+                              "referencedDeclaration": 3378,
                               "type": "address",
                               "value": "_to"
                             },
-                            "id": 3389,
+                            "id": 3386,
                             "name": "Identifier",
                             "src": "5600:3:5"
                           },
@@ -4093,31 +4093,31 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3383,
+                              "referencedDeclaration": 3380,
                               "type": "uint256",
                               "value": "_tokenId"
                             },
-                            "id": 3390,
+                            "id": 3387,
                             "name": "Identifier",
                             "src": "5605:8:5"
                           }
                         ],
-                        "id": 3391,
+                        "id": 3388,
                         "name": "FunctionCall",
                         "src": "5571:43:5"
                       }
                     ],
-                    "id": 3392,
+                    "id": 3389,
                     "name": "ExpressionStatement",
                     "src": "5571:43:5"
                   }
                 ],
-                "id": 3393,
+                "id": 3390,
                 "name": "Block",
                 "src": "5561:60:5"
               }
             ],
-            "id": 3394,
+            "id": 3391,
             "name": "FunctionDefinition",
             "src": "5496:125:5"
           },
@@ -4128,9 +4128,9 @@ export const DebtToken =
               "isConstructor": false,
               "name": "transferFrom",
               "payable": false,
-              "scope": 3525,
+              "scope": 3522,
               "stateMutability": "nonpayable",
-              "superFunction": 15132,
+              "superFunction": 15129,
               "visibility": "public"
             },
             "children": [
@@ -4140,7 +4140,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_from",
-                      "scope": 3419,
+                      "scope": 3416,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -4153,12 +4153,12 @@ export const DebtToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3395,
+                        "id": 3392,
                         "name": "ElementaryTypeName",
                         "src": "5815:7:5"
                       }
                     ],
-                    "id": 3396,
+                    "id": 3393,
                     "name": "VariableDeclaration",
                     "src": "5815:13:5"
                   },
@@ -4166,7 +4166,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 3419,
+                      "scope": 3416,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -4179,12 +4179,12 @@ export const DebtToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3397,
+                        "id": 3394,
                         "name": "ElementaryTypeName",
                         "src": "5830:7:5"
                       }
                     ],
-                    "id": 3398,
+                    "id": 3395,
                     "name": "VariableDeclaration",
                     "src": "5830:11:5"
                   },
@@ -4192,7 +4192,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 3419,
+                      "scope": 3416,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -4205,17 +4205,17 @@ export const DebtToken =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 3399,
+                        "id": 3396,
                         "name": "ElementaryTypeName",
                         "src": "5843:4:5"
                       }
                     ],
-                    "id": 3400,
+                    "id": 3397,
                     "name": "VariableDeclaration",
                     "src": "5843:13:5"
                   }
                 ],
-                "id": 3401,
+                "id": 3398,
                 "name": "ParameterList",
                 "src": "5814:43:5"
               },
@@ -4226,7 +4226,7 @@ export const DebtToken =
                   ]
                 },
                 "children": [],
-                "id": 3404,
+                "id": 3401,
                 "name": "ParameterList",
                 "src": "5899:0:5"
               },
@@ -4243,16 +4243,16 @@ export const DebtToken =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13943,
+                      "referencedDeclaration": 13940,
                       "type": "modifier ()",
                       "value": "whenNotPaused"
                     },
-                    "id": 3402,
+                    "id": 3399,
                     "name": "Identifier",
                     "src": "5881:13:5"
                   }
                 ],
-                "id": 3403,
+                "id": 3400,
                 "name": "ModifierInvocation",
                 "src": "5881:13:5"
               },
@@ -4290,11 +4290,11 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3524,
+                              "referencedDeclaration": 3521,
                               "type": "function (uint256,address)",
                               "value": "_modifyBeneficiary"
                             },
-                            "id": 3405,
+                            "id": 3402,
                             "name": "Identifier",
                             "src": "5909:18:5"
                           },
@@ -4304,11 +4304,11 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3400,
+                              "referencedDeclaration": 3397,
                               "type": "uint256",
                               "value": "_tokenId"
                             },
-                            "id": 3406,
+                            "id": 3403,
                             "name": "Identifier",
                             "src": "5928:8:5"
                           },
@@ -4318,21 +4318,21 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3398,
+                              "referencedDeclaration": 3395,
                               "type": "address",
                               "value": "_to"
                             },
-                            "id": 3407,
+                            "id": 3404,
                             "name": "Identifier",
                             "src": "5938:3:5"
                           }
                         ],
-                        "id": 3408,
+                        "id": 3405,
                         "name": "FunctionCall",
                         "src": "5909:33:5"
                       }
                     ],
-                    "id": 3409,
+                    "id": 3406,
                     "name": "ExpressionStatement",
                     "src": "5909:33:5"
                   },
@@ -4374,7 +4374,7 @@ export const DebtToken =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "transferFrom",
-                              "referencedDeclaration": 15132,
+                              "referencedDeclaration": 15129,
                               "type": "function (address,address,uint256)"
                             },
                             "children": [
@@ -4384,16 +4384,16 @@ export const DebtToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15874,
+                                  "referencedDeclaration": 15871,
                                   "type": "contract super DebtToken",
                                   "value": "super"
                                 },
-                                "id": 3410,
+                                "id": 3407,
                                 "name": "Identifier",
                                 "src": "5952:5:5"
                               }
                             ],
-                            "id": 3412,
+                            "id": 3409,
                             "name": "MemberAccess",
                             "src": "5952:18:5"
                           },
@@ -4403,11 +4403,11 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3396,
+                              "referencedDeclaration": 3393,
                               "type": "address",
                               "value": "_from"
                             },
-                            "id": 3413,
+                            "id": 3410,
                             "name": "Identifier",
                             "src": "5971:5:5"
                           },
@@ -4417,11 +4417,11 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3398,
+                              "referencedDeclaration": 3395,
                               "type": "address",
                               "value": "_to"
                             },
-                            "id": 3414,
+                            "id": 3411,
                             "name": "Identifier",
                             "src": "5978:3:5"
                           },
@@ -4431,31 +4431,31 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3400,
+                              "referencedDeclaration": 3397,
                               "type": "uint256",
                               "value": "_tokenId"
                             },
-                            "id": 3415,
+                            "id": 3412,
                             "name": "Identifier",
                             "src": "5983:8:5"
                           }
                         ],
-                        "id": 3416,
+                        "id": 3413,
                         "name": "FunctionCall",
                         "src": "5952:40:5"
                       }
                     ],
-                    "id": 3417,
+                    "id": 3414,
                     "name": "ExpressionStatement",
                     "src": "5952:40:5"
                   }
                 ],
-                "id": 3418,
+                "id": 3415,
                 "name": "Block",
                 "src": "5899:100:5"
               }
             ],
-            "id": 3419,
+            "id": 3416,
             "name": "FunctionDefinition",
             "src": "5793:206:5"
           },
@@ -4466,9 +4466,9 @@ export const DebtToken =
               "isConstructor": false,
               "name": "safeTransferFrom",
               "payable": false,
-              "scope": 3525,
+              "scope": 3522,
               "stateMutability": "nonpayable",
-              "superFunction": 15152,
+              "superFunction": 15149,
               "visibility": "public"
             },
             "children": [
@@ -4478,7 +4478,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_from",
-                      "scope": 3444,
+                      "scope": 3441,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -4491,12 +4491,12 @@ export const DebtToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3420,
+                        "id": 3417,
                         "name": "ElementaryTypeName",
                         "src": "6201:7:5"
                       }
                     ],
-                    "id": 3421,
+                    "id": 3418,
                     "name": "VariableDeclaration",
                     "src": "6201:13:5"
                   },
@@ -4504,7 +4504,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 3444,
+                      "scope": 3441,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -4517,12 +4517,12 @@ export const DebtToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3422,
+                        "id": 3419,
                         "name": "ElementaryTypeName",
                         "src": "6216:7:5"
                       }
                     ],
-                    "id": 3423,
+                    "id": 3420,
                     "name": "VariableDeclaration",
                     "src": "6216:11:5"
                   },
@@ -4530,7 +4530,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 3444,
+                      "scope": 3441,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -4543,17 +4543,17 @@ export const DebtToken =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 3424,
+                        "id": 3421,
                         "name": "ElementaryTypeName",
                         "src": "6229:4:5"
                       }
                     ],
-                    "id": 3425,
+                    "id": 3422,
                     "name": "VariableDeclaration",
                     "src": "6229:13:5"
                   }
                 ],
-                "id": 3426,
+                "id": 3423,
                 "name": "ParameterList",
                 "src": "6200:43:5"
               },
@@ -4564,7 +4564,7 @@ export const DebtToken =
                   ]
                 },
                 "children": [],
-                "id": 3429,
+                "id": 3426,
                 "name": "ParameterList",
                 "src": "6285:0:5"
               },
@@ -4581,16 +4581,16 @@ export const DebtToken =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13943,
+                      "referencedDeclaration": 13940,
                       "type": "modifier ()",
                       "value": "whenNotPaused"
                     },
-                    "id": 3427,
+                    "id": 3424,
                     "name": "Identifier",
                     "src": "6267:13:5"
                   }
                 ],
-                "id": 3428,
+                "id": 3425,
                 "name": "ModifierInvocation",
                 "src": "6267:13:5"
               },
@@ -4628,11 +4628,11 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3524,
+                              "referencedDeclaration": 3521,
                               "type": "function (uint256,address)",
                               "value": "_modifyBeneficiary"
                             },
-                            "id": 3430,
+                            "id": 3427,
                             "name": "Identifier",
                             "src": "6295:18:5"
                           },
@@ -4642,11 +4642,11 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3425,
+                              "referencedDeclaration": 3422,
                               "type": "uint256",
                               "value": "_tokenId"
                             },
-                            "id": 3431,
+                            "id": 3428,
                             "name": "Identifier",
                             "src": "6314:8:5"
                           },
@@ -4656,21 +4656,21 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3423,
+                              "referencedDeclaration": 3420,
                               "type": "address",
                               "value": "_to"
                             },
-                            "id": 3432,
+                            "id": 3429,
                             "name": "Identifier",
                             "src": "6324:3:5"
                           }
                         ],
-                        "id": 3433,
+                        "id": 3430,
                         "name": "FunctionCall",
                         "src": "6295:33:5"
                       }
                     ],
-                    "id": 3434,
+                    "id": 3431,
                     "name": "ExpressionStatement",
                     "src": "6295:33:5"
                   },
@@ -4712,7 +4712,7 @@ export const DebtToken =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "safeTransferFrom",
-                              "referencedDeclaration": 15152,
+                              "referencedDeclaration": 15149,
                               "type": "function (address,address,uint256)"
                             },
                             "children": [
@@ -4722,16 +4722,16 @@ export const DebtToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15874,
+                                  "referencedDeclaration": 15871,
                                   "type": "contract super DebtToken",
                                   "value": "super"
                                 },
-                                "id": 3435,
+                                "id": 3432,
                                 "name": "Identifier",
                                 "src": "6338:5:5"
                               }
                             ],
-                            "id": 3437,
+                            "id": 3434,
                             "name": "MemberAccess",
                             "src": "6338:22:5"
                           },
@@ -4741,11 +4741,11 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3421,
+                              "referencedDeclaration": 3418,
                               "type": "address",
                               "value": "_from"
                             },
-                            "id": 3438,
+                            "id": 3435,
                             "name": "Identifier",
                             "src": "6361:5:5"
                           },
@@ -4755,11 +4755,11 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3423,
+                              "referencedDeclaration": 3420,
                               "type": "address",
                               "value": "_to"
                             },
-                            "id": 3439,
+                            "id": 3436,
                             "name": "Identifier",
                             "src": "6368:3:5"
                           },
@@ -4769,31 +4769,31 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3425,
+                              "referencedDeclaration": 3422,
                               "type": "uint256",
                               "value": "_tokenId"
                             },
-                            "id": 3440,
+                            "id": 3437,
                             "name": "Identifier",
                             "src": "6373:8:5"
                           }
                         ],
-                        "id": 3441,
+                        "id": 3438,
                         "name": "FunctionCall",
                         "src": "6338:44:5"
                       }
                     ],
-                    "id": 3442,
+                    "id": 3439,
                     "name": "ExpressionStatement",
                     "src": "6338:44:5"
                   }
                 ],
-                "id": 3443,
+                "id": 3440,
                 "name": "Block",
                 "src": "6285:104:5"
               }
             ],
-            "id": 3444,
+            "id": 3441,
             "name": "FunctionDefinition",
             "src": "6175:214:5"
           },
@@ -4804,9 +4804,9 @@ export const DebtToken =
               "isConstructor": false,
               "name": "safeTransferFrom",
               "payable": false,
-              "scope": 3525,
+              "scope": 3522,
               "stateMutability": "nonpayable",
-              "superFunction": 15182,
+              "superFunction": 15179,
               "visibility": "public"
             },
             "children": [
@@ -4816,7 +4816,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_from",
-                      "scope": 3472,
+                      "scope": 3469,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -4829,12 +4829,12 @@ export const DebtToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3445,
+                        "id": 3442,
                         "name": "ElementaryTypeName",
                         "src": "6591:7:5"
                       }
                     ],
-                    "id": 3446,
+                    "id": 3443,
                     "name": "VariableDeclaration",
                     "src": "6591:13:5"
                   },
@@ -4842,7 +4842,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 3472,
+                      "scope": 3469,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -4855,12 +4855,12 @@ export const DebtToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3447,
+                        "id": 3444,
                         "name": "ElementaryTypeName",
                         "src": "6606:7:5"
                       }
                     ],
-                    "id": 3448,
+                    "id": 3445,
                     "name": "VariableDeclaration",
                     "src": "6606:11:5"
                   },
@@ -4868,7 +4868,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 3472,
+                      "scope": 3469,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -4881,12 +4881,12 @@ export const DebtToken =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 3449,
+                        "id": 3446,
                         "name": "ElementaryTypeName",
                         "src": "6619:4:5"
                       }
                     ],
-                    "id": 3450,
+                    "id": 3447,
                     "name": "VariableDeclaration",
                     "src": "6619:13:5"
                   },
@@ -4894,7 +4894,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_data",
-                      "scope": 3472,
+                      "scope": 3469,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes memory",
@@ -4907,17 +4907,17 @@ export const DebtToken =
                           "name": "bytes",
                           "type": "bytes storage pointer"
                         },
-                        "id": 3451,
+                        "id": 3448,
                         "name": "ElementaryTypeName",
                         "src": "6634:5:5"
                       }
                     ],
-                    "id": 3452,
+                    "id": 3449,
                     "name": "VariableDeclaration",
                     "src": "6634:11:5"
                   }
                 ],
-                "id": 3453,
+                "id": 3450,
                 "name": "ParameterList",
                 "src": "6590:56:5"
               },
@@ -4928,7 +4928,7 @@ export const DebtToken =
                   ]
                 },
                 "children": [],
-                "id": 3456,
+                "id": 3453,
                 "name": "ParameterList",
                 "src": "6688:0:5"
               },
@@ -4945,16 +4945,16 @@ export const DebtToken =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13943,
+                      "referencedDeclaration": 13940,
                       "type": "modifier ()",
                       "value": "whenNotPaused"
                     },
-                    "id": 3454,
+                    "id": 3451,
                     "name": "Identifier",
                     "src": "6670:13:5"
                   }
                 ],
-                "id": 3455,
+                "id": 3452,
                 "name": "ModifierInvocation",
                 "src": "6670:13:5"
               },
@@ -4992,11 +4992,11 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3524,
+                              "referencedDeclaration": 3521,
                               "type": "function (uint256,address)",
                               "value": "_modifyBeneficiary"
                             },
-                            "id": 3457,
+                            "id": 3454,
                             "name": "Identifier",
                             "src": "6698:18:5"
                           },
@@ -5006,11 +5006,11 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3450,
+                              "referencedDeclaration": 3447,
                               "type": "uint256",
                               "value": "_tokenId"
                             },
-                            "id": 3458,
+                            "id": 3455,
                             "name": "Identifier",
                             "src": "6717:8:5"
                           },
@@ -5020,21 +5020,21 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3448,
+                              "referencedDeclaration": 3445,
                               "type": "address",
                               "value": "_to"
                             },
-                            "id": 3459,
+                            "id": 3456,
                             "name": "Identifier",
                             "src": "6727:3:5"
                           }
                         ],
-                        "id": 3460,
+                        "id": 3457,
                         "name": "FunctionCall",
                         "src": "6698:33:5"
                       }
                     ],
-                    "id": 3461,
+                    "id": 3458,
                     "name": "ExpressionStatement",
                     "src": "6698:33:5"
                   },
@@ -5080,7 +5080,7 @@ export const DebtToken =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "safeTransferFrom",
-                              "referencedDeclaration": 15182,
+                              "referencedDeclaration": 15179,
                               "type": "function (address,address,uint256,bytes memory)"
                             },
                             "children": [
@@ -5090,16 +5090,16 @@ export const DebtToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15874,
+                                  "referencedDeclaration": 15871,
                                   "type": "contract super DebtToken",
                                   "value": "super"
                                 },
-                                "id": 3462,
+                                "id": 3459,
                                 "name": "Identifier",
                                 "src": "6741:5:5"
                               }
                             ],
-                            "id": 3464,
+                            "id": 3461,
                             "name": "MemberAccess",
                             "src": "6741:22:5"
                           },
@@ -5109,11 +5109,11 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3446,
+                              "referencedDeclaration": 3443,
                               "type": "address",
                               "value": "_from"
                             },
-                            "id": 3465,
+                            "id": 3462,
                             "name": "Identifier",
                             "src": "6764:5:5"
                           },
@@ -5123,11 +5123,11 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3448,
+                              "referencedDeclaration": 3445,
                               "type": "address",
                               "value": "_to"
                             },
-                            "id": 3466,
+                            "id": 3463,
                             "name": "Identifier",
                             "src": "6771:3:5"
                           },
@@ -5137,11 +5137,11 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3450,
+                              "referencedDeclaration": 3447,
                               "type": "uint256",
                               "value": "_tokenId"
                             },
-                            "id": 3467,
+                            "id": 3464,
                             "name": "Identifier",
                             "src": "6776:8:5"
                           },
@@ -5151,31 +5151,31 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3452,
+                              "referencedDeclaration": 3449,
                               "type": "bytes memory",
                               "value": "_data"
                             },
-                            "id": 3468,
+                            "id": 3465,
                             "name": "Identifier",
                             "src": "6786:5:5"
                           }
                         ],
-                        "id": 3469,
+                        "id": 3466,
                         "name": "FunctionCall",
                         "src": "6741:51:5"
                       }
                     ],
-                    "id": 3470,
+                    "id": 3467,
                     "name": "ExpressionStatement",
                     "src": "6741:51:5"
                   }
                 ],
-                "id": 3471,
+                "id": 3468,
                 "name": "Block",
                 "src": "6688:111:5"
               }
             ],
-            "id": 3472,
+            "id": 3469,
             "name": "FunctionDefinition",
             "src": "6565:234:5"
           },
@@ -5186,7 +5186,7 @@ export const DebtToken =
               "isConstructor": false,
               "name": "setTokenURI",
               "payable": false,
-              "scope": 3525,
+              "scope": 3522,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -5198,7 +5198,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 3497,
+                      "scope": 3494,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -5211,12 +5211,12 @@ export const DebtToken =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 3473,
+                        "id": 3470,
                         "name": "ElementaryTypeName",
                         "src": "6934:7:5"
                       }
                     ],
-                    "id": 3474,
+                    "id": 3471,
                     "name": "VariableDeclaration",
                     "src": "6934:16:5"
                   },
@@ -5224,7 +5224,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_uri",
-                      "scope": 3497,
+                      "scope": 3494,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory",
@@ -5237,17 +5237,17 @@ export const DebtToken =
                           "name": "string",
                           "type": "string storage pointer"
                         },
-                        "id": 3475,
+                        "id": 3472,
                         "name": "ElementaryTypeName",
                         "src": "6952:6:5"
                       }
                     ],
-                    "id": 3476,
+                    "id": 3473,
                     "name": "VariableDeclaration",
                     "src": "6952:11:5"
                   }
                 ],
-                "id": 3477,
+                "id": 3474,
                 "name": "ParameterList",
                 "src": "6933:31:5"
               },
@@ -5258,7 +5258,7 @@ export const DebtToken =
                   ]
                 },
                 "children": [],
-                "id": 3480,
+                "id": 3477,
                 "name": "ParameterList",
                 "src": "7006:0:5"
               },
@@ -5275,16 +5275,16 @@ export const DebtToken =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13943,
+                      "referencedDeclaration": 13940,
                       "type": "modifier ()",
                       "value": "whenNotPaused"
                     },
-                    "id": 3478,
+                    "id": 3475,
                     "name": "Identifier",
                     "src": "6988:13:5"
                   }
                 ],
-                "id": 3479,
+                "id": 3476,
                 "name": "ModifierInvocation",
                 "src": "6988:13:5"
               },
@@ -5318,11 +5318,11 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15821,
+                              "referencedDeclaration": 15818,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 3481,
+                            "id": 3478,
                             "name": "Identifier",
                             "src": "7016:7:5"
                           },
@@ -5354,7 +5354,7 @@ export const DebtToken =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "isAuthorized",
-                                  "referencedDeclaration": 6227,
+                                  "referencedDeclaration": 6224,
                                   "type": "function (struct PermissionsLib.Permissions storage pointer,address) view returns (bool)"
                                 },
                                 "children": [
@@ -5364,16 +5364,16 @@ export const DebtToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 3170,
+                                      "referencedDeclaration": 3167,
                                       "type": "struct PermissionsLib.Permissions storage ref",
                                       "value": "tokenURIPermissions"
                                     },
-                                    "id": 3482,
+                                    "id": 3479,
                                     "name": "Identifier",
                                     "src": "7024:19:5"
                                   }
                                 ],
-                                "id": 3483,
+                                "id": 3480,
                                 "name": "MemberAccess",
                                 "src": "7024:32:5"
                               },
@@ -5395,31 +5395,31 @@ export const DebtToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15818,
+                                      "referencedDeclaration": 15815,
                                       "type": "msg",
                                       "value": "msg"
                                     },
-                                    "id": 3484,
+                                    "id": 3481,
                                     "name": "Identifier",
                                     "src": "7057:3:5"
                                   }
                                 ],
-                                "id": 3485,
+                                "id": 3482,
                                 "name": "MemberAccess",
                                 "src": "7057:10:5"
                               }
                             ],
-                            "id": 3486,
+                            "id": 3483,
                             "name": "FunctionCall",
                             "src": "7024:44:5"
                           }
                         ],
-                        "id": 3487,
+                        "id": 3484,
                         "name": "FunctionCall",
                         "src": "7016:53:5"
                       }
                     ],
-                    "id": 3488,
+                    "id": 3485,
                     "name": "ExpressionStatement",
                     "src": "7016:53:5"
                   },
@@ -5457,7 +5457,7 @@ export const DebtToken =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "_setTokenURI",
-                              "referencedDeclaration": 15538,
+                              "referencedDeclaration": 15535,
                               "type": "function (uint256,string memory)"
                             },
                             "children": [
@@ -5467,16 +5467,16 @@ export const DebtToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15874,
+                                  "referencedDeclaration": 15871,
                                   "type": "contract super DebtToken",
                                   "value": "super"
                                 },
-                                "id": 3489,
+                                "id": 3486,
                                 "name": "Identifier",
                                 "src": "7079:5:5"
                               }
                             ],
-                            "id": 3491,
+                            "id": 3488,
                             "name": "MemberAccess",
                             "src": "7079:18:5"
                           },
@@ -5486,11 +5486,11 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3474,
+                              "referencedDeclaration": 3471,
                               "type": "uint256",
                               "value": "_tokenId"
                             },
-                            "id": 3492,
+                            "id": 3489,
                             "name": "Identifier",
                             "src": "7098:8:5"
                           },
@@ -5500,31 +5500,31 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3476,
+                              "referencedDeclaration": 3473,
                               "type": "string memory",
                               "value": "_uri"
                             },
-                            "id": 3493,
+                            "id": 3490,
                             "name": "Identifier",
                             "src": "7108:4:5"
                           }
                         ],
-                        "id": 3494,
+                        "id": 3491,
                         "name": "FunctionCall",
                         "src": "7079:34:5"
                       }
                     ],
-                    "id": 3495,
+                    "id": 3492,
                     "name": "ExpressionStatement",
                     "src": "7079:34:5"
                   }
                 ],
-                "id": 3496,
+                "id": 3493,
                 "name": "Block",
                 "src": "7006:114:5"
               }
             ],
-            "id": 3497,
+            "id": 3494,
             "name": "FunctionDefinition",
             "src": "6913:207:5"
           },
@@ -5538,7 +5538,7 @@ export const DebtToken =
               ],
               "name": "_modifyBeneficiary",
               "payable": false,
-              "scope": 3525,
+              "scope": 3522,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "internal"
@@ -5550,7 +5550,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 3524,
+                      "scope": 3521,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -5563,12 +5563,12 @@ export const DebtToken =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 3498,
+                        "id": 3495,
                         "name": "ElementaryTypeName",
                         "src": "7305:4:5"
                       }
                     ],
-                    "id": 3499,
+                    "id": 3496,
                     "name": "VariableDeclaration",
                     "src": "7305:13:5"
                   },
@@ -5576,7 +5576,7 @@ export const DebtToken =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 3524,
+                      "scope": 3521,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -5589,17 +5589,17 @@ export const DebtToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3500,
+                        "id": 3497,
                         "name": "ElementaryTypeName",
                         "src": "7320:7:5"
                       }
                     ],
-                    "id": 3501,
+                    "id": 3498,
                     "name": "VariableDeclaration",
                     "src": "7320:11:5"
                   }
                 ],
-                "id": 3502,
+                "id": 3499,
                 "name": "ParameterList",
                 "src": "7304:28:5"
               },
@@ -5610,7 +5610,7 @@ export const DebtToken =
                   ]
                 },
                 "children": [],
-                "id": 3503,
+                "id": 3500,
                 "name": "ParameterList",
                 "src": "7354:0:5"
               },
@@ -5664,7 +5664,7 @@ export const DebtToken =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "getBeneficiary",
-                                  "referencedDeclaration": 3009,
+                                  "referencedDeclaration": 3006,
                                   "type": "function (bytes32) view external returns (address)"
                                 },
                                 "children": [
@@ -5674,16 +5674,16 @@ export const DebtToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 3166,
+                                      "referencedDeclaration": 3163,
                                       "type": "contract DebtRegistry",
                                       "value": "registry"
                                     },
-                                    "id": 3504,
+                                    "id": 3501,
                                     "name": "Identifier",
                                     "src": "7368:8:5"
                                   }
                                 ],
-                                "id": 3505,
+                                "id": 3502,
                                 "name": "MemberAccess",
                                 "src": "7368:23:5"
                               },
@@ -5717,7 +5717,7 @@ export const DebtToken =
                                       "type": "type(bytes32)",
                                       "value": "bytes32"
                                     },
-                                    "id": 3506,
+                                    "id": 3503,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "7392:7:5"
                                   },
@@ -5727,21 +5727,21 @@ export const DebtToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 3499,
+                                      "referencedDeclaration": 3496,
                                       "type": "uint256",
                                       "value": "_tokenId"
                                     },
-                                    "id": 3507,
+                                    "id": 3504,
                                     "name": "Identifier",
                                     "src": "7400:8:5"
                                   }
                                 ],
-                                "id": 3508,
+                                "id": 3505,
                                 "name": "FunctionCall",
                                 "src": "7392:17:5"
                               }
                             ],
-                            "id": 3509,
+                            "id": 3506,
                             "name": "FunctionCall",
                             "src": "7368:42:5"
                           },
@@ -5751,16 +5751,16 @@ export const DebtToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3501,
+                              "referencedDeclaration": 3498,
                               "type": "address",
                               "value": "_to"
                             },
-                            "id": 3510,
+                            "id": 3507,
                             "name": "Identifier",
                             "src": "7414:3:5"
                           }
                         ],
-                        "id": 3511,
+                        "id": 3508,
                         "name": "BinaryOperation",
                         "src": "7368:49:5"
                       },
@@ -5800,7 +5800,7 @@ export const DebtToken =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "modifyBeneficiary",
-                                      "referencedDeclaration": 2883,
+                                      "referencedDeclaration": 2880,
                                       "type": "function (bytes32,address) external"
                                     },
                                     "children": [
@@ -5810,16 +5810,16 @@ export const DebtToken =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 3166,
+                                          "referencedDeclaration": 3163,
                                           "type": "contract DebtRegistry",
                                           "value": "registry"
                                         },
-                                        "id": 3512,
+                                        "id": 3509,
                                         "name": "Identifier",
                                         "src": "7433:8:5"
                                       }
                                     ],
-                                    "id": 3514,
+                                    "id": 3511,
                                     "name": "MemberAccess",
                                     "src": "7433:26:5"
                                   },
@@ -5853,7 +5853,7 @@ export const DebtToken =
                                           "type": "type(bytes32)",
                                           "value": "bytes32"
                                         },
-                                        "id": 3515,
+                                        "id": 3512,
                                         "name": "ElementaryTypeNameExpression",
                                         "src": "7460:7:5"
                                       },
@@ -5863,16 +5863,16 @@ export const DebtToken =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 3499,
+                                          "referencedDeclaration": 3496,
                                           "type": "uint256",
                                           "value": "_tokenId"
                                         },
-                                        "id": 3516,
+                                        "id": 3513,
                                         "name": "Identifier",
                                         "src": "7468:8:5"
                                       }
                                     ],
-                                    "id": 3517,
+                                    "id": 3514,
                                     "name": "FunctionCall",
                                     "src": "7460:17:5"
                                   },
@@ -5882,51 +5882,51 @@ export const DebtToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 3501,
+                                      "referencedDeclaration": 3498,
                                       "type": "address",
                                       "value": "_to"
                                     },
-                                    "id": 3518,
+                                    "id": 3515,
                                     "name": "Identifier",
                                     "src": "7479:3:5"
                                   }
                                 ],
-                                "id": 3519,
+                                "id": 3516,
                                 "name": "FunctionCall",
                                 "src": "7433:50:5"
                               }
                             ],
-                            "id": 3520,
+                            "id": 3517,
                             "name": "ExpressionStatement",
                             "src": "7433:50:5"
                           }
                         ],
-                        "id": 3521,
+                        "id": 3518,
                         "name": "Block",
                         "src": "7419:75:5"
                       }
                     ],
-                    "id": 3522,
+                    "id": 3519,
                     "name": "IfStatement",
                     "src": "7364:130:5"
                   }
                 ],
-                "id": 3523,
+                "id": 3520,
                 "name": "Block",
                 "src": "7354:146:5"
               }
             ],
-            "id": 3524,
+            "id": 3521,
             "name": "FunctionDefinition",
             "src": "7277:223:5"
           }
         ],
-        "id": 3525,
+        "id": 3522,
         "name": "ContractDefinition",
         "src": "1362:6140:5"
       }
     ],
-    "id": 3526,
+    "id": 3523,
     "name": "SourceUnit",
     "src": "584:6919:5"
   },
@@ -6338,9 +6338,9 @@ export const DebtToken =
         }
       },
       "links": {},
-      "address": "0x4f652ba5e259a0dca84441120b6494e7ca838588"
+      "address": "0xbde1e9f941cfaec2b0c63e3ac7e482ab8c633a84"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-21T17:50:40.658Z"
+  "updatedAt": "2018-09-25T20:05:02.749Z"
 }

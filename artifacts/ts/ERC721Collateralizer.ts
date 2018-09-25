@@ -468,7 +468,7 @@ export const ERC721Collateralizer =
       "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/ERC721Collateralizer.sol",
       "exportedSymbols": {
         "ERC721Collateralizer": [
-          4151
+          4148
         ]
       }
     },
@@ -481,67 +481,67 @@ export const ERC721Collateralizer =
             ".18"
           ]
         },
-        "id": 3537,
+        "id": 3534,
         "name": "PragmaDirective",
         "src": "584:23:7"
       },
       {
         "attributes": {
-          "SourceUnit": 14081,
+          "SourceUnit": 14078,
           "absolutePath": "zeppelin-solidity/contracts/math/SafeMath.sol",
           "file": "zeppelin-solidity/contracts/math/SafeMath.sol",
-          "scope": 4152,
+          "scope": 4149,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 3535,
+        "name": "ImportDirective",
+        "src": "609:55:7"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 14726,
+          "absolutePath": "zeppelin-solidity/contracts/token/ERC721/ERC721.sol",
+          "file": "zeppelin-solidity/contracts/token/ERC721/ERC721.sol",
+          "scope": 4149,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 3536,
+        "name": "ImportDirective",
+        "src": "665:61:7"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 4740,
+          "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/TermsContract.sol",
+          "file": "./TermsContract.sol",
+          "scope": 4149,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 3537,
+        "name": "ImportDirective",
+        "src": "728:29:7"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 3141,
+          "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/DebtRegistry.sol",
+          "file": "./DebtRegistry.sol",
+          "scope": 4149,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
         "id": 3538,
-        "name": "ImportDirective",
-        "src": "609:55:7"
-      },
-      {
-        "attributes": {
-          "SourceUnit": 14729,
-          "absolutePath": "zeppelin-solidity/contracts/token/ERC721/ERC721.sol",
-          "file": "zeppelin-solidity/contracts/token/ERC721/ERC721.sol",
-          "scope": 4152,
-          "symbolAliases": [
-            null
-          ],
-          "unitAlias": ""
-        },
-        "id": 3539,
-        "name": "ImportDirective",
-        "src": "665:61:7"
-      },
-      {
-        "attributes": {
-          "SourceUnit": 4743,
-          "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/TermsContract.sol",
-          "file": "./TermsContract.sol",
-          "scope": 4152,
-          "symbolAliases": [
-            null
-          ],
-          "unitAlias": ""
-        },
-        "id": 3540,
-        "name": "ImportDirective",
-        "src": "728:29:7"
-      },
-      {
-        "attributes": {
-          "SourceUnit": 3144,
-          "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/DebtRegistry.sol",
-          "file": "./DebtRegistry.sol",
-          "scope": 4152,
-          "symbolAliases": [
-            null
-          ],
-          "unitAlias": ""
-        },
-        "id": 3541,
         "name": "ImportDirective",
         "src": "758:28:7"
       },
@@ -550,71 +550,71 @@ export const ERC721Collateralizer =
           "SourceUnit": 924,
           "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/ContractRegistry.sol",
           "file": "./ContractRegistry.sol",
-          "scope": 4152,
+          "scope": 4149,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 3542,
+        "id": 3539,
         "name": "ImportDirective",
         "src": "787:32:7"
       },
       {
         "attributes": {
-          "SourceUnit": 4443,
+          "SourceUnit": 4440,
           "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/ERC721TokenRegistry.sol",
           "file": "./ERC721TokenRegistry.sol",
-          "scope": 4152,
+          "scope": 4149,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 3543,
+        "id": 3540,
         "name": "ImportDirective",
         "src": "820:35:7"
       },
       {
         "attributes": {
-          "SourceUnit": 6257,
+          "SourceUnit": 6254,
           "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/libraries/PermissionsLib.sol",
           "file": "./libraries/PermissionsLib.sol",
-          "scope": 4152,
+          "scope": 4149,
           "symbolAliases": [
             {
-              "foreign": 3544,
+              "foreign": 3541,
               "local": null
             },
             {
-              "foreign": 3545,
+              "foreign": 3542,
               "local": null
             }
           ],
           "unitAlias": ""
         },
-        "id": 3546,
+        "id": 3543,
         "name": "ImportDirective",
         "src": "857:80:7"
       },
       {
         "attributes": {
           "contractDependencies": [
-            6052,
-            13982,
-            14136
+            6049,
+            13979,
+            14133
           ],
           "contractKind": "contract",
           "documentation": "Contains functionality for collateralizing NFTs, including a `collateralize` method for\ntransferring a debtor's asset to this contract, as well as methods for returning\nor seizing collateral depending on the state of the underlying debt agreement.\n  * NOTE: The `collateralize` method in this contract can only be called by a trusted TermsContract,\nspecified by the contract's owner.",
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            4151,
-            6052,
-            13982,
-            14136
+            4148,
+            6049,
+            13979,
+            14133
           ],
           "name": "ERC721Collateralizer",
-          "scope": 4152
+          "scope": 4149
         },
         "children": [
           {
@@ -628,15 +628,15 @@ export const ERC721Collateralizer =
                 "attributes": {
                   "contractScope": null,
                   "name": "Pausable",
-                  "referencedDeclaration": 13982,
+                  "referencedDeclaration": 13979,
                   "type": "contract Pausable"
                 },
-                "id": 3547,
+                "id": 3544,
                 "name": "UserDefinedTypeName",
                 "src": "1386:8:7"
               }
             ],
-            "id": 3548,
+            "id": 3545,
             "name": "InheritanceSpecifier",
             "src": "1386:8:7"
           },
@@ -651,15 +651,15 @@ export const ERC721Collateralizer =
                 "attributes": {
                   "contractScope": null,
                   "name": "PermissionEvents",
-                  "referencedDeclaration": 6052,
+                  "referencedDeclaration": 6049,
                   "type": "contract PermissionEvents"
                 },
-                "id": 3549,
+                "id": 3546,
                 "name": "UserDefinedTypeName",
                 "src": "1396:16:7"
               }
             ],
-            "id": 3550,
+            "id": 3547,
             "name": "InheritanceSpecifier",
             "src": "1396:16:7"
           },
@@ -669,10 +669,10 @@ export const ERC721Collateralizer =
                 "attributes": {
                   "contractScope": null,
                   "name": "PermissionsLib",
-                  "referencedDeclaration": 6256,
+                  "referencedDeclaration": 6253,
                   "type": "library PermissionsLib"
                 },
-                "id": 3551,
+                "id": 3548,
                 "name": "UserDefinedTypeName",
                 "src": "1425:14:7"
               },
@@ -680,15 +680,15 @@ export const ERC721Collateralizer =
                 "attributes": {
                   "contractScope": null,
                   "name": "PermissionsLib.Permissions",
-                  "referencedDeclaration": 6076,
+                  "referencedDeclaration": 6073,
                   "type": "struct PermissionsLib.Permissions storage pointer"
                 },
-                "id": 3552,
+                "id": 3549,
                 "name": "UserDefinedTypeName",
                 "src": "1444:26:7"
               }
             ],
-            "id": 3553,
+            "id": 3550,
             "name": "UsingForDirective",
             "src": "1419:52:7"
           },
@@ -698,10 +698,10 @@ export const ERC721Collateralizer =
                 "attributes": {
                   "contractScope": null,
                   "name": "SafeMath",
-                  "referencedDeclaration": 14080,
+                  "referencedDeclaration": 14077,
                   "type": "library SafeMath"
                 },
-                "id": 3554,
+                "id": 3551,
                 "name": "UserDefinedTypeName",
                 "src": "1482:8:7"
               },
@@ -710,12 +710,12 @@ export const ERC721Collateralizer =
                   "name": "uint",
                   "type": "uint256"
                 },
-                "id": 3555,
+                "id": 3552,
                 "name": "ElementaryTypeName",
                 "src": "1495:4:7"
               }
             ],
-            "id": 3556,
+            "id": 3553,
             "name": "UsingForDirective",
             "src": "1476:24:7"
           },
@@ -723,7 +723,7 @@ export const ERC721Collateralizer =
             "attributes": {
               "constant": false,
               "name": "debtRegistry",
-              "scope": 4151,
+              "scope": 4148,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "contract DebtRegistry",
@@ -735,15 +735,15 @@ export const ERC721Collateralizer =
                 "attributes": {
                   "contractScope": null,
                   "name": "DebtRegistry",
-                  "referencedDeclaration": 3143,
+                  "referencedDeclaration": 3140,
                   "type": "contract DebtRegistry"
                 },
-                "id": 3557,
+                "id": 3554,
                 "name": "UserDefinedTypeName",
                 "src": "1506:12:7"
               }
             ],
-            "id": 3558,
+            "id": 3555,
             "name": "VariableDeclaration",
             "src": "1506:32:7"
           },
@@ -751,7 +751,7 @@ export const ERC721Collateralizer =
             "attributes": {
               "constant": false,
               "name": "tokenRegistry",
-              "scope": 4151,
+              "scope": 4148,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "contract ERC721TokenRegistry",
@@ -763,15 +763,15 @@ export const ERC721Collateralizer =
                 "attributes": {
                   "contractScope": null,
                   "name": "ERC721TokenRegistry",
-                  "referencedDeclaration": 4442,
+                  "referencedDeclaration": 4439,
                   "type": "contract ERC721TokenRegistry"
                 },
-                "id": 3559,
+                "id": 3556,
                 "name": "UserDefinedTypeName",
                 "src": "1544:19:7"
               }
             ],
-            "id": 3560,
+            "id": 3557,
             "name": "VariableDeclaration",
             "src": "1544:40:7"
           },
@@ -779,7 +779,7 @@ export const ERC721Collateralizer =
             "attributes": {
               "constant": false,
               "name": "cryptoKittiesContract",
-              "scope": 4151,
+              "scope": 4148,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "address",
@@ -792,12 +792,12 @@ export const ERC721Collateralizer =
                   "name": "address",
                   "type": "address"
                 },
-                "id": 3561,
+                "id": 3558,
                 "name": "ElementaryTypeName",
                 "src": "1779:7:7"
               }
             ],
-            "id": 3562,
+            "id": 3559,
             "name": "VariableDeclaration",
             "src": "1779:36:7"
           },
@@ -805,7 +805,7 @@ export const ERC721Collateralizer =
             "attributes": {
               "constant": false,
               "name": "agreementToDebtor",
-              "scope": 4151,
+              "scope": 4148,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(bytes32 => address)",
@@ -823,7 +823,7 @@ export const ERC721Collateralizer =
                       "name": "bytes32",
                       "type": "bytes32"
                     },
-                    "id": 3563,
+                    "id": 3560,
                     "name": "ElementaryTypeName",
                     "src": "1912:7:7"
                   },
@@ -832,17 +832,17 @@ export const ERC721Collateralizer =
                       "name": "address",
                       "type": "address"
                     },
-                    "id": 3564,
+                    "id": 3561,
                     "name": "ElementaryTypeName",
                     "src": "1923:7:7"
                   }
                 ],
-                "id": 3565,
+                "id": 3562,
                 "name": "Mapping",
                 "src": "1904:27:7"
               }
             ],
-            "id": 3566,
+            "id": 3563,
             "name": "VariableDeclaration",
             "src": "1904:52:7"
           },
@@ -850,7 +850,7 @@ export const ERC721Collateralizer =
             "attributes": {
               "constant": false,
               "name": "collateralizationPermissions",
-              "scope": 4151,
+              "scope": 4148,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "struct PermissionsLib.Permissions storage ref",
@@ -862,15 +862,15 @@ export const ERC721Collateralizer =
                 "attributes": {
                   "contractScope": null,
                   "name": "PermissionsLib.Permissions",
-                  "referencedDeclaration": 6076,
+                  "referencedDeclaration": 6073,
                   "type": "struct PermissionsLib.Permissions storage pointer"
                 },
-                "id": 3567,
+                "id": 3564,
                 "name": "UserDefinedTypeName",
                 "src": "1963:26:7"
               }
             ],
-            "id": 3568,
+            "id": 3565,
             "name": "VariableDeclaration",
             "src": "1963:64:7"
           },
@@ -878,7 +878,7 @@ export const ERC721Collateralizer =
             "attributes": {
               "constant": true,
               "name": "SECONDS_IN_DAY",
-              "scope": 4151,
+              "scope": 4148,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "uint256",
@@ -890,7 +890,7 @@ export const ERC721Collateralizer =
                   "name": "uint",
                   "type": "uint256"
                 },
-                "id": 3569,
+                "id": 3566,
                 "name": "ElementaryTypeName",
                 "src": "2034:4:7"
               },
@@ -937,7 +937,7 @@ export const ERC721Collateralizer =
                           "type": "int_const 24",
                           "value": "24"
                         },
-                        "id": 3570,
+                        "id": 3567,
                         "name": "Literal",
                         "src": "2072:2:7"
                       },
@@ -954,12 +954,12 @@ export const ERC721Collateralizer =
                           "type": "int_const 60",
                           "value": "60"
                         },
-                        "id": 3571,
+                        "id": 3568,
                         "name": "Literal",
                         "src": "2077:2:7"
                       }
                     ],
-                    "id": 3572,
+                    "id": 3569,
                     "name": "BinaryOperation",
                     "src": "2072:7:7"
                   },
@@ -976,17 +976,17 @@ export const ERC721Collateralizer =
                       "type": "int_const 60",
                       "value": "60"
                     },
-                    "id": 3573,
+                    "id": 3570,
                     "name": "Literal",
                     "src": "2082:2:7"
                   }
                 ],
-                "id": 3574,
+                "id": 3571,
                 "name": "BinaryOperation",
                 "src": "2072:12:7"
               }
             ],
-            "id": 3575,
+            "id": 3572,
             "name": "VariableDeclaration",
             "src": "2034:50:7"
           },
@@ -994,7 +994,7 @@ export const ERC721Collateralizer =
             "attributes": {
               "constant": true,
               "name": "CONTEXT",
-              "scope": 4151,
+              "scope": 4148,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "string memory",
@@ -1006,7 +1006,7 @@ export const ERC721Collateralizer =
                   "name": "string",
                   "type": "string storage pointer"
                 },
-                "id": 3576,
+                "id": 3573,
                 "name": "ElementaryTypeName",
                 "src": "2091:6:7"
               },
@@ -1023,12 +1023,12 @@ export const ERC721Collateralizer =
                   "type": "literal_string \"ERC721Collateralizer\"",
                   "value": "ERC721Collateralizer"
                 },
-                "id": 3577,
+                "id": 3574,
                 "name": "Literal",
                 "src": "2124:22:7"
               }
             ],
-            "id": 3578,
+            "id": 3575,
             "name": "VariableDeclaration",
             "src": "2091:55:7"
           },
@@ -1045,7 +1045,7 @@ export const ERC721Collateralizer =
                       "constant": false,
                       "indexed": true,
                       "name": "agreementID",
-                      "scope": 3586,
+                      "scope": 3583,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -1058,12 +1058,12 @@ export const ERC721Collateralizer =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 3579,
+                        "id": 3576,
                         "name": "ElementaryTypeName",
                         "src": "2185:7:7"
                       }
                     ],
-                    "id": 3580,
+                    "id": 3577,
                     "name": "VariableDeclaration",
                     "src": "2185:27:7"
                   },
@@ -1072,7 +1072,7 @@ export const ERC721Collateralizer =
                       "constant": false,
                       "indexed": true,
                       "name": "erc721Contract",
-                      "scope": 3586,
+                      "scope": 3583,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1085,12 +1085,12 @@ export const ERC721Collateralizer =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3581,
+                        "id": 3578,
                         "name": "ElementaryTypeName",
                         "src": "2283:7:7"
                       }
                     ],
-                    "id": 3582,
+                    "id": 3579,
                     "name": "VariableDeclaration",
                     "src": "2283:30:7"
                   },
@@ -1099,7 +1099,7 @@ export const ERC721Collateralizer =
                       "constant": false,
                       "indexed": false,
                       "name": "tokenID",
-                      "scope": 3586,
+                      "scope": 3583,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1112,22 +1112,22 @@ export const ERC721Collateralizer =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 3583,
+                        "id": 3580,
                         "name": "ElementaryTypeName",
                         "src": "2391:7:7"
                       }
                     ],
-                    "id": 3584,
+                    "id": 3581,
                     "name": "VariableDeclaration",
                     "src": "2391:15:7"
                   }
                 ],
-                "id": 3585,
+                "id": 3582,
                 "name": "ParameterList",
                 "src": "2175:237:7"
               }
             ],
-            "id": 3586,
+            "id": 3583,
             "name": "EventDefinition",
             "src": "2153:260:7"
           },
@@ -1144,7 +1144,7 @@ export const ERC721Collateralizer =
                       "constant": false,
                       "indexed": true,
                       "name": "agreementID",
-                      "scope": 3596,
+                      "scope": 3593,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -1157,12 +1157,12 @@ export const ERC721Collateralizer =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 3587,
+                        "id": 3584,
                         "name": "ElementaryTypeName",
                         "src": "2453:7:7"
                       }
                     ],
-                    "id": 3588,
+                    "id": 3585,
                     "name": "VariableDeclaration",
                     "src": "2453:27:7"
                   },
@@ -1171,7 +1171,7 @@ export const ERC721Collateralizer =
                       "constant": false,
                       "indexed": true,
                       "name": "debtor",
-                      "scope": 3596,
+                      "scope": 3593,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1184,12 +1184,12 @@ export const ERC721Collateralizer =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3589,
+                        "id": 3586,
                         "name": "ElementaryTypeName",
                         "src": "2490:7:7"
                       }
                     ],
-                    "id": 3590,
+                    "id": 3587,
                     "name": "VariableDeclaration",
                     "src": "2490:22:7"
                   },
@@ -1198,7 +1198,7 @@ export const ERC721Collateralizer =
                       "constant": false,
                       "indexed": false,
                       "name": "erc721Contract",
-                      "scope": 3596,
+                      "scope": 3593,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1211,12 +1211,12 @@ export const ERC721Collateralizer =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3591,
+                        "id": 3588,
                         "name": "ElementaryTypeName",
                         "src": "2522:7:7"
                       }
                     ],
-                    "id": 3592,
+                    "id": 3589,
                     "name": "VariableDeclaration",
                     "src": "2522:22:7"
                   },
@@ -1225,7 +1225,7 @@ export const ERC721Collateralizer =
                       "constant": false,
                       "indexed": false,
                       "name": "tokenID",
-                      "scope": 3596,
+                      "scope": 3593,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1238,22 +1238,22 @@ export const ERC721Collateralizer =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 3593,
+                        "id": 3590,
                         "name": "ElementaryTypeName",
                         "src": "2554:7:7"
                       }
                     ],
-                    "id": 3594,
+                    "id": 3591,
                     "name": "VariableDeclaration",
                     "src": "2554:15:7"
                   }
                 ],
-                "id": 3595,
+                "id": 3592,
                 "name": "ParameterList",
                 "src": "2443:132:7"
               }
             ],
-            "id": 3596,
+            "id": 3593,
             "name": "EventDefinition",
             "src": "2419:157:7"
           },
@@ -1270,7 +1270,7 @@ export const ERC721Collateralizer =
                       "constant": false,
                       "indexed": true,
                       "name": "agreementID",
-                      "scope": 3606,
+                      "scope": 3603,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -1283,12 +1283,12 @@ export const ERC721Collateralizer =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 3597,
+                        "id": 3594,
                         "name": "ElementaryTypeName",
                         "src": "2614:7:7"
                       }
                     ],
-                    "id": 3598,
+                    "id": 3595,
                     "name": "VariableDeclaration",
                     "src": "2614:27:7"
                   },
@@ -1297,7 +1297,7 @@ export const ERC721Collateralizer =
                       "constant": false,
                       "indexed": true,
                       "name": "beneficiary",
-                      "scope": 3606,
+                      "scope": 3603,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1310,12 +1310,12 @@ export const ERC721Collateralizer =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3599,
+                        "id": 3596,
                         "name": "ElementaryTypeName",
                         "src": "2651:7:7"
                       }
                     ],
-                    "id": 3600,
+                    "id": 3597,
                     "name": "VariableDeclaration",
                     "src": "2651:27:7"
                   },
@@ -1324,7 +1324,7 @@ export const ERC721Collateralizer =
                       "constant": false,
                       "indexed": false,
                       "name": "erc721Contract",
-                      "scope": 3606,
+                      "scope": 3603,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1337,12 +1337,12 @@ export const ERC721Collateralizer =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3601,
+                        "id": 3598,
                         "name": "ElementaryTypeName",
                         "src": "2688:7:7"
                       }
                     ],
-                    "id": 3602,
+                    "id": 3599,
                     "name": "VariableDeclaration",
                     "src": "2688:22:7"
                   },
@@ -1351,7 +1351,7 @@ export const ERC721Collateralizer =
                       "constant": false,
                       "indexed": false,
                       "name": "tokenID",
-                      "scope": 3606,
+                      "scope": 3603,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1364,22 +1364,22 @@ export const ERC721Collateralizer =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 3603,
+                        "id": 3600,
                         "name": "ElementaryTypeName",
                         "src": "2720:7:7"
                       }
                     ],
-                    "id": 3604,
+                    "id": 3601,
                     "name": "VariableDeclaration",
                     "src": "2720:15:7"
                   }
                 ],
-                "id": 3605,
+                "id": 3602,
                 "name": "ParameterList",
                 "src": "2604:137:7"
               }
             ],
-            "id": 3606,
+            "id": 3603,
             "name": "EventDefinition",
             "src": "2582:160:7"
           },
@@ -1396,7 +1396,7 @@ export const ERC721Collateralizer =
                   ]
                 },
                 "children": [],
-                "id": 3607,
+                "id": 3604,
                 "name": "ParameterList",
                 "src": "2786:2:7"
               },
@@ -1430,11 +1430,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15821,
+                              "referencedDeclaration": 15818,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 3608,
+                            "id": 3605,
                             "name": "Identifier",
                             "src": "2799:7:7"
                           },
@@ -1466,7 +1466,7 @@ export const ERC721Collateralizer =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "isAuthorized",
-                                  "referencedDeclaration": 6227,
+                                  "referencedDeclaration": 6224,
                                   "type": "function (struct PermissionsLib.Permissions storage pointer,address) view returns (bool)"
                                 },
                                 "children": [
@@ -1476,16 +1476,16 @@ export const ERC721Collateralizer =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 3568,
+                                      "referencedDeclaration": 3565,
                                       "type": "struct PermissionsLib.Permissions storage ref",
                                       "value": "collateralizationPermissions"
                                     },
-                                    "id": 3609,
+                                    "id": 3606,
                                     "name": "Identifier",
                                     "src": "2807:28:7"
                                   }
                                 ],
-                                "id": 3610,
+                                "id": 3607,
                                 "name": "MemberAccess",
                                 "src": "2807:41:7"
                               },
@@ -1507,46 +1507,46 @@ export const ERC721Collateralizer =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15818,
+                                      "referencedDeclaration": 15815,
                                       "type": "msg",
                                       "value": "msg"
                                     },
-                                    "id": 3611,
+                                    "id": 3608,
                                     "name": "Identifier",
                                     "src": "2849:3:7"
                                   }
                                 ],
-                                "id": 3612,
+                                "id": 3609,
                                 "name": "MemberAccess",
                                 "src": "2849:10:7"
                               }
                             ],
-                            "id": 3613,
+                            "id": 3610,
                             "name": "FunctionCall",
                             "src": "2807:53:7"
                           }
                         ],
-                        "id": 3614,
+                        "id": 3611,
                         "name": "FunctionCall",
                         "src": "2799:62:7"
                       }
                     ],
-                    "id": 3615,
+                    "id": 3612,
                     "name": "ExpressionStatement",
                     "src": "2799:62:7"
                   },
                   {
-                    "id": 3616,
+                    "id": 3613,
                     "name": "PlaceholderStatement",
                     "src": "2871:1:7"
                   }
                 ],
-                "id": 3617,
+                "id": 3614,
                 "name": "Block",
                 "src": "2789:90:7"
               }
             ],
-            "id": 3618,
+            "id": 3615,
             "name": "ModifierDefinition",
             "src": "2748:131:7"
           },
@@ -1560,7 +1560,7 @@ export const ERC721Collateralizer =
               ],
               "name": "ERC721Collateralizer",
               "payable": false,
-              "scope": 4151,
+              "scope": 4148,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -1572,7 +1572,7 @@ export const ERC721Collateralizer =
                     "attributes": {
                       "constant": false,
                       "name": "_contractRegistry",
-                      "scope": 3650,
+                      "scope": 3647,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1585,12 +1585,12 @@ export const ERC721Collateralizer =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3619,
+                        "id": 3616,
                         "name": "ElementaryTypeName",
                         "src": "2924:7:7"
                       }
                     ],
-                    "id": 3620,
+                    "id": 3617,
                     "name": "VariableDeclaration",
                     "src": "2924:25:7"
                   },
@@ -1598,7 +1598,7 @@ export const ERC721Collateralizer =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenRegistry",
-                      "scope": 3650,
+                      "scope": 3647,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1611,12 +1611,12 @@ export const ERC721Collateralizer =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3621,
+                        "id": 3618,
                         "name": "ElementaryTypeName",
                         "src": "2959:7:7"
                       }
                     ],
-                    "id": 3622,
+                    "id": 3619,
                     "name": "VariableDeclaration",
                     "src": "2959:22:7"
                   },
@@ -1624,7 +1624,7 @@ export const ERC721Collateralizer =
                     "attributes": {
                       "constant": false,
                       "name": "_cryptoKittiesContract",
-                      "scope": 3650,
+                      "scope": 3647,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1637,17 +1637,17 @@ export const ERC721Collateralizer =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3623,
+                        "id": 3620,
                         "name": "ElementaryTypeName",
                         "src": "2991:7:7"
                       }
                     ],
-                    "id": 3624,
+                    "id": 3621,
                     "name": "VariableDeclaration",
                     "src": "2991:30:7"
                   }
                 ],
-                "id": 3625,
+                "id": 3622,
                 "name": "ParameterList",
                 "src": "2914:113:7"
               },
@@ -1658,7 +1658,7 @@ export const ERC721Collateralizer =
                   ]
                 },
                 "children": [],
-                "id": 3626,
+                "id": 3623,
                 "name": "ParameterList",
                 "src": "3035:0:7"
               },
@@ -1667,7 +1667,7 @@ export const ERC721Collateralizer =
                   {
                     "attributes": {
                       "assignments": [
-                        3628
+                        3625
                       ]
                     },
                     "children": [
@@ -1675,7 +1675,7 @@ export const ERC721Collateralizer =
                         "attributes": {
                           "constant": false,
                           "name": "contractRegistry",
-                          "scope": 3650,
+                          "scope": 3647,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "contract ContractRegistry",
@@ -1690,12 +1690,12 @@ export const ERC721Collateralizer =
                               "referencedDeclaration": 923,
                               "type": "contract ContractRegistry"
                             },
-                            "id": 3627,
+                            "id": 3624,
                             "name": "UserDefinedTypeName",
                             "src": "3045:16:7"
                           }
                         ],
-                        "id": 3628,
+                        "id": 3625,
                         "name": "VariableDeclaration",
                         "src": "3045:33:7"
                       },
@@ -1729,7 +1729,7 @@ export const ERC721Collateralizer =
                               "type": "type(contract ContractRegistry)",
                               "value": "ContractRegistry"
                             },
-                            "id": 3629,
+                            "id": 3626,
                             "name": "Identifier",
                             "src": "3081:16:7"
                           },
@@ -1739,21 +1739,21 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3620,
+                              "referencedDeclaration": 3617,
                               "type": "address",
                               "value": "_contractRegistry"
                             },
-                            "id": 3630,
+                            "id": 3627,
                             "name": "Identifier",
                             "src": "3098:17:7"
                           }
                         ],
-                        "id": 3631,
+                        "id": 3628,
                         "name": "FunctionCall",
                         "src": "3081:35:7"
                       }
                     ],
-                    "id": 3632,
+                    "id": 3629,
                     "name": "VariableDeclarationStatement",
                     "src": "3045:71:7"
                   },
@@ -1776,11 +1776,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3558,
+                              "referencedDeclaration": 3555,
                               "type": "contract DebtRegistry",
                               "value": "debtRegistry"
                             },
-                            "id": 3633,
+                            "id": 3630,
                             "name": "Identifier",
                             "src": "3195:12:7"
                           },
@@ -1822,31 +1822,31 @@ export const ERC721Collateralizer =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 3628,
+                                      "referencedDeclaration": 3625,
                                       "type": "contract ContractRegistry",
                                       "value": "contractRegistry"
                                     },
-                                    "id": 3634,
+                                    "id": 3631,
                                     "name": "Identifier",
                                     "src": "3210:16:7"
                                   }
                                 ],
-                                "id": 3635,
+                                "id": 3632,
                                 "name": "MemberAccess",
                                 "src": "3210:29:7"
                               }
                             ],
-                            "id": 3636,
+                            "id": 3633,
                             "name": "FunctionCall",
                             "src": "3210:31:7"
                           }
                         ],
-                        "id": 3637,
+                        "id": 3634,
                         "name": "Assignment",
                         "src": "3195:46:7"
                       }
                     ],
-                    "id": 3638,
+                    "id": 3635,
                     "name": "ExpressionStatement",
                     "src": "3195:46:7"
                   },
@@ -1869,11 +1869,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3560,
+                              "referencedDeclaration": 3557,
                               "type": "contract ERC721TokenRegistry",
                               "value": "tokenRegistry"
                             },
-                            "id": 3639,
+                            "id": 3636,
                             "name": "Identifier",
                             "src": "3312:13:7"
                           },
@@ -1903,11 +1903,11 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4442,
+                                  "referencedDeclaration": 4439,
                                   "type": "type(contract ERC721TokenRegistry)",
                                   "value": "ERC721TokenRegistry"
                                 },
-                                "id": 3640,
+                                "id": 3637,
                                 "name": "Identifier",
                                 "src": "3328:19:7"
                               },
@@ -1917,26 +1917,26 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3622,
+                                  "referencedDeclaration": 3619,
                                   "type": "address",
                                   "value": "_tokenRegistry"
                                 },
-                                "id": 3641,
+                                "id": 3638,
                                 "name": "Identifier",
                                 "src": "3348:14:7"
                               }
                             ],
-                            "id": 3642,
+                            "id": 3639,
                             "name": "FunctionCall",
                             "src": "3328:35:7"
                           }
                         ],
-                        "id": 3643,
+                        "id": 3640,
                         "name": "Assignment",
                         "src": "3312:51:7"
                       }
                     ],
-                    "id": 3644,
+                    "id": 3641,
                     "name": "ExpressionStatement",
                     "src": "3312:51:7"
                   },
@@ -1959,11 +1959,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3562,
+                              "referencedDeclaration": 3559,
                               "type": "address",
                               "value": "cryptoKittiesContract"
                             },
-                            "id": 3645,
+                            "id": 3642,
                             "name": "Identifier",
                             "src": "3452:21:7"
                           },
@@ -1973,31 +1973,31 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3624,
+                              "referencedDeclaration": 3621,
                               "type": "address",
                               "value": "_cryptoKittiesContract"
                             },
-                            "id": 3646,
+                            "id": 3643,
                             "name": "Identifier",
                             "src": "3476:22:7"
                           }
                         ],
-                        "id": 3647,
+                        "id": 3644,
                         "name": "Assignment",
                         "src": "3452:46:7"
                       }
                     ],
-                    "id": 3648,
+                    "id": 3645,
                     "name": "ExpressionStatement",
                     "src": "3452:46:7"
                   }
                 ],
-                "id": 3649,
+                "id": 3646,
                 "name": "Block",
                 "src": "3035:470:7"
               }
             ],
-            "id": 3650,
+            "id": 3647,
             "name": "FunctionDefinition",
             "src": "2885:620:7"
           },
@@ -2008,7 +2008,7 @@ export const ERC721Collateralizer =
               "isConstructor": false,
               "name": "collateralize",
               "payable": false,
-              "scope": 4151,
+              "scope": 4148,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -2020,7 +2020,7 @@ export const ERC721Collateralizer =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 3750,
+                      "scope": 3747,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -2033,12 +2033,12 @@ export const ERC721Collateralizer =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 3651,
+                        "id": 3648,
                         "name": "ElementaryTypeName",
                         "src": "3780:7:7"
                       }
                     ],
-                    "id": 3652,
+                    "id": 3649,
                     "name": "VariableDeclaration",
                     "src": "3780:19:7"
                   },
@@ -2046,7 +2046,7 @@ export const ERC721Collateralizer =
                     "attributes": {
                       "constant": false,
                       "name": "debtor",
-                      "scope": 3750,
+                      "scope": 3747,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2059,17 +2059,17 @@ export const ERC721Collateralizer =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3653,
+                        "id": 3650,
                         "name": "ElementaryTypeName",
                         "src": "3809:7:7"
                       }
                     ],
-                    "id": 3654,
+                    "id": 3651,
                     "name": "VariableDeclaration",
                     "src": "3809:14:7"
                   }
                 ],
-                "id": 3655,
+                "id": 3652,
                 "name": "ParameterList",
                 "src": "3770:59:7"
               },
@@ -2079,7 +2079,7 @@ export const ERC721Collateralizer =
                     "attributes": {
                       "constant": false,
                       "name": "_success",
-                      "scope": 3750,
+                      "scope": 3747,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -2092,17 +2092,17 @@ export const ERC721Collateralizer =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 3660,
+                        "id": 3657,
                         "name": "ElementaryTypeName",
                         "src": "3922:4:7"
                       }
                     ],
-                    "id": 3661,
+                    "id": 3658,
                     "name": "VariableDeclaration",
                     "src": "3922:13:7"
                   }
                 ],
-                "id": 3662,
+                "id": 3659,
                 "name": "ParameterList",
                 "src": "3921:15:7"
               },
@@ -2119,16 +2119,16 @@ export const ERC721Collateralizer =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 3618,
+                      "referencedDeclaration": 3615,
                       "type": "modifier ()",
                       "value": "onlyAuthorizedToCollateralize"
                     },
-                    "id": 3656,
+                    "id": 3653,
                     "name": "Identifier",
                     "src": "3853:29:7"
                   }
                 ],
-                "id": 3657,
+                "id": 3654,
                 "name": "ModifierInvocation",
                 "src": "3853:29:7"
               },
@@ -2145,16 +2145,16 @@ export const ERC721Collateralizer =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13943,
+                      "referencedDeclaration": 13940,
                       "type": "modifier ()",
                       "value": "whenNotPaused"
                     },
-                    "id": 3658,
+                    "id": 3655,
                     "name": "Identifier",
                     "src": "3891:13:7"
                   }
                 ],
-                "id": 3659,
+                "id": 3656,
                 "name": "ModifierInvocation",
                 "src": "3891:13:7"
               },
@@ -2172,7 +2172,7 @@ export const ERC721Collateralizer =
                         "attributes": {
                           "constant": false,
                           "name": "collateralTokenAddress",
-                          "scope": 3750,
+                          "scope": 3747,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "address",
@@ -2185,17 +2185,17 @@ export const ERC721Collateralizer =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 3663,
+                            "id": 3660,
                             "name": "ElementaryTypeName",
                             "src": "3998:7:7"
                           }
                         ],
-                        "id": 3664,
+                        "id": 3661,
                         "name": "VariableDeclaration",
                         "src": "3998:30:7"
                       }
                     ],
-                    "id": 3665,
+                    "id": 3662,
                     "name": "VariableDeclarationStatement",
                     "src": "3998:30:7"
                   },
@@ -2211,7 +2211,7 @@ export const ERC721Collateralizer =
                         "attributes": {
                           "constant": false,
                           "name": "collateralTokenID",
-                          "scope": 3750,
+                          "scope": 3747,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -2224,17 +2224,17 @@ export const ERC721Collateralizer =
                               "name": "uint256",
                               "type": "uint256"
                             },
-                            "id": 3666,
+                            "id": 3663,
                             "name": "ElementaryTypeName",
                             "src": "4127:7:7"
                           }
                         ],
-                        "id": 3667,
+                        "id": 3664,
                         "name": "VariableDeclaration",
                         "src": "4127:25:7"
                       }
                     ],
-                    "id": 3668,
+                    "id": 3665,
                     "name": "VariableDeclarationStatement",
                     "src": "4127:25:7"
                   },
@@ -2250,7 +2250,7 @@ export const ERC721Collateralizer =
                         "attributes": {
                           "constant": false,
                           "name": "termsContract",
-                          "scope": 3750,
+                          "scope": 3747,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "contract TermsContract",
@@ -2262,20 +2262,20 @@ export const ERC721Collateralizer =
                             "attributes": {
                               "contractScope": null,
                               "name": "TermsContract",
-                              "referencedDeclaration": 4742,
+                              "referencedDeclaration": 4739,
                               "type": "contract TermsContract"
                             },
-                            "id": 3669,
+                            "id": 3666,
                             "name": "UserDefinedTypeName",
                             "src": "4247:13:7"
                           }
                         ],
-                        "id": 3670,
+                        "id": 3667,
                         "name": "VariableDeclaration",
                         "src": "4247:27:7"
                       }
                     ],
-                    "id": 3671,
+                    "id": 3668,
                     "name": "VariableDeclarationStatement",
                     "src": "4247:27:7"
                   },
@@ -2309,11 +2309,11 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3664,
+                                  "referencedDeclaration": 3661,
                                   "type": "address",
                                   "value": "collateralTokenAddress"
                                 },
-                                "id": 3672,
+                                "id": 3669,
                                 "name": "Identifier",
                                 "src": "4358:22:7"
                               },
@@ -2323,11 +2323,11 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3667,
+                                  "referencedDeclaration": 3664,
                                   "type": "uint256",
                                   "value": "collateralTokenID"
                                 },
-                                "id": 3673,
+                                "id": 3670,
                                 "name": "Identifier",
                                 "src": "4394:17:7"
                               },
@@ -2337,16 +2337,16 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3670,
+                                  "referencedDeclaration": 3667,
                                   "type": "contract TermsContract",
                                   "value": "termsContract"
                                 },
-                                "id": 3674,
+                                "id": 3671,
                                 "name": "Identifier",
                                 "src": "4425:13:7"
                               }
                             ],
-                            "id": 3675,
+                            "id": 3672,
                             "name": "TupleExpression",
                             "src": "4344:104:7"
                           },
@@ -2376,11 +2376,11 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4150,
+                                  "referencedDeclaration": 4147,
                                   "type": "function (bytes32) view returns (address,uint256,contract TermsContract)",
                                   "value": "retrieveCollateralParameters"
                                 },
-                                "id": 3676,
+                                "id": 3673,
                                 "name": "Identifier",
                                 "src": "4451:28:7"
                               },
@@ -2390,26 +2390,26 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3652,
+                                  "referencedDeclaration": 3649,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 3677,
+                                "id": 3674,
                                 "name": "Identifier",
                                 "src": "4480:11:7"
                               }
                             ],
-                            "id": 3678,
+                            "id": 3675,
                             "name": "FunctionCall",
                             "src": "4451:41:7"
                           }
                         ],
-                        "id": 3679,
+                        "id": 3676,
                         "name": "Assignment",
                         "src": "4344:148:7"
                       }
                     ],
-                    "id": 3680,
+                    "id": 3677,
                     "name": "ExpressionStatement",
                     "src": "4344:148:7"
                   },
@@ -2441,11 +2441,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15821,
+                              "referencedDeclaration": 15818,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 3681,
+                            "id": 3678,
                             "name": "Identifier",
                             "src": "4503:7:7"
                           },
@@ -2470,11 +2470,11 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3670,
+                                  "referencedDeclaration": 3667,
                                   "type": "contract TermsContract",
                                   "value": "termsContract"
                                 },
-                                "id": 3682,
+                                "id": 3679,
                                 "name": "Identifier",
                                 "src": "4511:13:7"
                               },
@@ -2496,31 +2496,31 @@ export const ERC721Collateralizer =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15818,
+                                      "referencedDeclaration": 15815,
                                       "type": "msg",
                                       "value": "msg"
                                     },
-                                    "id": 3683,
+                                    "id": 3680,
                                     "name": "Identifier",
                                     "src": "4528:3:7"
                                   }
                                 ],
-                                "id": 3684,
+                                "id": 3681,
                                 "name": "MemberAccess",
                                 "src": "4528:10:7"
                               }
                             ],
-                            "id": 3685,
+                            "id": 3682,
                             "name": "BinaryOperation",
                             "src": "4511:27:7"
                           }
                         ],
-                        "id": 3686,
+                        "id": 3683,
                         "name": "FunctionCall",
                         "src": "4503:36:7"
                       }
                     ],
-                    "id": 3687,
+                    "id": 3684,
                     "name": "ExpressionStatement",
                     "src": "4503:36:7"
                   },
@@ -2552,11 +2552,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15821,
+                              "referencedDeclaration": 15818,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 3688,
+                            "id": 3685,
                             "name": "Identifier",
                             "src": "4549:7:7"
                           },
@@ -2581,11 +2581,11 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3664,
+                                  "referencedDeclaration": 3661,
                                   "type": "address",
                                   "value": "collateralTokenAddress"
                                 },
-                                "id": 3689,
+                                "id": 3686,
                                 "name": "Identifier",
                                 "src": "4557:22:7"
                               },
@@ -2619,7 +2619,7 @@ export const ERC721Collateralizer =
                                       "type": "type(address)",
                                       "value": "address"
                                     },
-                                    "id": 3690,
+                                    "id": 3687,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "4583:7:7"
                                   },
@@ -2636,27 +2636,27 @@ export const ERC721Collateralizer =
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 3691,
+                                    "id": 3688,
                                     "name": "Literal",
                                     "src": "4591:1:7"
                                   }
                                 ],
-                                "id": 3692,
+                                "id": 3689,
                                 "name": "FunctionCall",
                                 "src": "4583:10:7"
                               }
                             ],
-                            "id": 3693,
+                            "id": 3690,
                             "name": "BinaryOperation",
                             "src": "4557:36:7"
                           }
                         ],
-                        "id": 3694,
+                        "id": 3691,
                         "name": "FunctionCall",
                         "src": "4549:45:7"
                       }
                     ],
-                    "id": 3695,
+                    "id": 3692,
                     "name": "ExpressionStatement",
                     "src": "4549:45:7"
                   },
@@ -2688,11 +2688,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15821,
+                              "referencedDeclaration": 15818,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 3696,
+                            "id": 3693,
                             "name": "Identifier",
                             "src": "5079:7:7"
                           },
@@ -2727,11 +2727,11 @@ export const ERC721Collateralizer =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 3566,
+                                      "referencedDeclaration": 3563,
                                       "type": "mapping(bytes32 => address)",
                                       "value": "agreementToDebtor"
                                     },
-                                    "id": 3697,
+                                    "id": 3694,
                                     "name": "Identifier",
                                     "src": "5087:17:7"
                                   },
@@ -2741,16 +2741,16 @@ export const ERC721Collateralizer =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 3652,
+                                      "referencedDeclaration": 3649,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 3698,
+                                    "id": 3695,
                                     "name": "Identifier",
                                     "src": "5105:11:7"
                                   }
                                 ],
-                                "id": 3699,
+                                "id": 3696,
                                 "name": "IndexAccess",
                                 "src": "5087:30:7"
                               },
@@ -2784,7 +2784,7 @@ export const ERC721Collateralizer =
                                       "type": "type(address)",
                                       "value": "address"
                                     },
-                                    "id": 3700,
+                                    "id": 3697,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "5121:7:7"
                                   },
@@ -2801,27 +2801,27 @@ export const ERC721Collateralizer =
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 3701,
+                                    "id": 3698,
                                     "name": "Literal",
                                     "src": "5129:1:7"
                                   }
                                 ],
-                                "id": 3702,
+                                "id": 3699,
                                 "name": "FunctionCall",
                                 "src": "5121:10:7"
                               }
                             ],
-                            "id": 3703,
+                            "id": 3700,
                             "name": "BinaryOperation",
                             "src": "5087:44:7"
                           }
                         ],
-                        "id": 3704,
+                        "id": 3701,
                         "name": "FunctionCall",
                         "src": "5079:53:7"
                       }
                     ],
-                    "id": 3705,
+                    "id": 3702,
                     "name": "ExpressionStatement",
                     "src": "5079:53:7"
                   },
@@ -2854,11 +2854,11 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3566,
+                                  "referencedDeclaration": 3563,
                                   "type": "mapping(bytes32 => address)",
                                   "value": "agreementToDebtor"
                                 },
-                                "id": 3706,
+                                "id": 3703,
                                 "name": "Identifier",
                                 "src": "5245:17:7"
                               },
@@ -2868,16 +2868,16 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3652,
+                                  "referencedDeclaration": 3649,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 3707,
+                                "id": 3704,
                                 "name": "Identifier",
                                 "src": "5263:11:7"
                               }
                             ],
-                            "id": 3708,
+                            "id": 3705,
                             "name": "IndexAccess",
                             "src": "5245:30:7"
                           },
@@ -2887,28 +2887,28 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3654,
+                              "referencedDeclaration": 3651,
                               "type": "address",
                               "value": "debtor"
                             },
-                            "id": 3709,
+                            "id": 3706,
                             "name": "Identifier",
                             "src": "5278:6:7"
                           }
                         ],
-                        "id": 3710,
+                        "id": 3707,
                         "name": "Assignment",
                         "src": "5245:39:7"
                       }
                     ],
-                    "id": 3711,
+                    "id": 3708,
                     "name": "ExpressionStatement",
                     "src": "5245:39:7"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        3713
+                        3710
                       ]
                     },
                     "children": [
@@ -2916,7 +2916,7 @@ export const ERC721Collateralizer =
                         "attributes": {
                           "constant": false,
                           "name": "erc721token",
-                          "scope": 3750,
+                          "scope": 3747,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "contract ERC721",
@@ -2928,15 +2928,15 @@ export const ERC721Collateralizer =
                             "attributes": {
                               "contractScope": null,
                               "name": "ERC721",
-                              "referencedDeclaration": 14728,
+                              "referencedDeclaration": 14725,
                               "type": "contract ERC721"
                             },
-                            "id": 3712,
+                            "id": 3709,
                             "name": "UserDefinedTypeName",
                             "src": "5295:6:7"
                           }
                         ],
-                        "id": 3713,
+                        "id": 3710,
                         "name": "VariableDeclaration",
                         "src": "5295:18:7"
                       },
@@ -2966,11 +2966,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 14728,
+                              "referencedDeclaration": 14725,
                               "type": "type(contract ERC721)",
                               "value": "ERC721"
                             },
-                            "id": 3714,
+                            "id": 3711,
                             "name": "Identifier",
                             "src": "5316:6:7"
                           },
@@ -2980,28 +2980,28 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3664,
+                              "referencedDeclaration": 3661,
                               "type": "address",
                               "value": "collateralTokenAddress"
                             },
-                            "id": 3715,
+                            "id": 3712,
                             "name": "Identifier",
                             "src": "5323:22:7"
                           }
                         ],
-                        "id": 3716,
+                        "id": 3713,
                         "name": "FunctionCall",
                         "src": "5316:30:7"
                       }
                     ],
-                    "id": 3717,
+                    "id": 3714,
                     "name": "VariableDeclarationStatement",
                     "src": "5295:51:7"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        3719
+                        3716
                       ]
                     },
                     "children": [
@@ -3009,7 +3009,7 @@ export const ERC721Collateralizer =
                         "attributes": {
                           "constant": false,
                           "name": "custodian",
-                          "scope": 3750,
+                          "scope": 3747,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "address",
@@ -3022,12 +3022,12 @@ export const ERC721Collateralizer =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 3718,
+                            "id": 3715,
                             "name": "ElementaryTypeName",
                             "src": "5356:7:7"
                           }
                         ],
-                        "id": 3719,
+                        "id": 3716,
                         "name": "VariableDeclaration",
                         "src": "5356:17:7"
                       },
@@ -3050,7 +3050,7 @@ export const ERC721Collateralizer =
                             "attributes": {
                               "argumentTypes": [
                                 {
-                                  "typeIdentifier": "t_contract$_ERC721Collateralizer_$4151",
+                                  "typeIdentifier": "t_contract$_ERC721Collateralizer_$4148",
                                   "typeString": "contract ERC721Collateralizer"
                                 }
                               ],
@@ -3061,7 +3061,7 @@ export const ERC721Collateralizer =
                               "type": "type(address)",
                               "value": "address"
                             },
-                            "id": 3720,
+                            "id": 3717,
                             "name": "ElementaryTypeNameExpression",
                             "src": "5376:7:7"
                           },
@@ -3071,21 +3071,21 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15885,
+                              "referencedDeclaration": 15882,
                               "type": "contract ERC721Collateralizer",
                               "value": "this"
                             },
-                            "id": 3721,
+                            "id": 3718,
                             "name": "Identifier",
                             "src": "5384:4:7"
                           }
                         ],
-                        "id": 3722,
+                        "id": 3719,
                         "name": "FunctionCall",
                         "src": "5376:13:7"
                       }
                     ],
-                    "id": 3723,
+                    "id": 3720,
                     "name": "VariableDeclarationStatement",
                     "src": "5356:33:7"
                   },
@@ -3127,7 +3127,7 @@ export const ERC721Collateralizer =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "transferFrom",
-                              "referencedDeclaration": 14814,
+                              "referencedDeclaration": 14811,
                               "type": "function (address,address,uint256) external"
                             },
                             "children": [
@@ -3137,16 +3137,16 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3713,
+                                  "referencedDeclaration": 3710,
                                   "type": "contract ERC721",
                                   "value": "erc721token"
                                 },
-                                "id": 3724,
+                                "id": 3721,
                                 "name": "Identifier",
                                 "src": "5459:11:7"
                               }
                             ],
-                            "id": 3726,
+                            "id": 3723,
                             "name": "MemberAccess",
                             "src": "5459:24:7"
                           },
@@ -3156,11 +3156,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3654,
+                              "referencedDeclaration": 3651,
                               "type": "address",
                               "value": "debtor"
                             },
-                            "id": 3727,
+                            "id": 3724,
                             "name": "Identifier",
                             "src": "5484:6:7"
                           },
@@ -3170,11 +3170,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3719,
+                              "referencedDeclaration": 3716,
                               "type": "address",
                               "value": "custodian"
                             },
-                            "id": 3728,
+                            "id": 3725,
                             "name": "Identifier",
                             "src": "5492:9:7"
                           },
@@ -3184,21 +3184,21 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3667,
+                              "referencedDeclaration": 3664,
                               "type": "uint256",
                               "value": "collateralTokenID"
                             },
-                            "id": 3729,
+                            "id": 3726,
                             "name": "Identifier",
                             "src": "5503:17:7"
                           }
                         ],
-                        "id": 3730,
+                        "id": 3727,
                         "name": "FunctionCall",
                         "src": "5459:62:7"
                       }
                     ],
-                    "id": 3731,
+                    "id": 3728,
                     "name": "ExpressionStatement",
                     "src": "5459:62:7"
                   },
@@ -3230,11 +3230,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15809,
+                              "referencedDeclaration": 15806,
                               "type": "function (bool) pure",
                               "value": "assert"
                             },
-                            "id": 3732,
+                            "id": 3729,
                             "name": "Identifier",
                             "src": "5609:6:7"
                           },
@@ -3281,7 +3281,7 @@ export const ERC721Collateralizer =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "ownerOf",
-                                      "referencedDeclaration": 14768,
+                                      "referencedDeclaration": 14765,
                                       "type": "function (uint256) view external returns (address)"
                                     },
                                     "children": [
@@ -3291,16 +3291,16 @@ export const ERC721Collateralizer =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 3713,
+                                          "referencedDeclaration": 3710,
                                           "type": "contract ERC721",
                                           "value": "erc721token"
                                         },
-                                        "id": 3733,
+                                        "id": 3730,
                                         "name": "Identifier",
                                         "src": "5616:11:7"
                                       }
                                     ],
-                                    "id": 3734,
+                                    "id": 3731,
                                     "name": "MemberAccess",
                                     "src": "5616:19:7"
                                   },
@@ -3310,16 +3310,16 @@ export const ERC721Collateralizer =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 3667,
+                                      "referencedDeclaration": 3664,
                                       "type": "uint256",
                                       "value": "collateralTokenID"
                                     },
-                                    "id": 3735,
+                                    "id": 3732,
                                     "name": "Identifier",
                                     "src": "5636:17:7"
                                   }
                                 ],
-                                "id": 3736,
+                                "id": 3733,
                                 "name": "FunctionCall",
                                 "src": "5616:38:7"
                               },
@@ -3329,26 +3329,26 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3719,
+                                  "referencedDeclaration": 3716,
                                   "type": "address",
                                   "value": "custodian"
                                 },
-                                "id": 3737,
+                                "id": 3734,
                                 "name": "Identifier",
                                 "src": "5658:9:7"
                               }
                             ],
-                            "id": 3738,
+                            "id": 3735,
                             "name": "BinaryOperation",
                             "src": "5616:51:7"
                           }
                         ],
-                        "id": 3739,
+                        "id": 3736,
                         "name": "FunctionCall",
                         "src": "5609:59:7"
                       }
                     ],
-                    "id": 3740,
+                    "id": 3737,
                     "name": "ExpressionStatement",
                     "src": "5609:59:7"
                   },
@@ -3388,11 +3388,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3586,
+                              "referencedDeclaration": 3583,
                               "type": "function (bytes32,address,uint256)",
                               "value": "CollateralLocked"
                             },
-                            "id": 3741,
+                            "id": 3738,
                             "name": "Identifier",
                             "src": "5738:16:7"
                           },
@@ -3402,11 +3402,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3652,
+                              "referencedDeclaration": 3649,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 3742,
+                            "id": 3739,
                             "name": "Identifier",
                             "src": "5755:11:7"
                           },
@@ -3416,11 +3416,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3664,
+                              "referencedDeclaration": 3661,
                               "type": "address",
                               "value": "collateralTokenAddress"
                             },
-                            "id": 3743,
+                            "id": 3740,
                             "name": "Identifier",
                             "src": "5768:22:7"
                           },
@@ -3430,27 +3430,27 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3667,
+                              "referencedDeclaration": 3664,
                               "type": "uint256",
                               "value": "collateralTokenID"
                             },
-                            "id": 3744,
+                            "id": 3741,
                             "name": "Identifier",
                             "src": "5792:17:7"
                           }
                         ],
-                        "id": 3745,
+                        "id": 3742,
                         "name": "FunctionCall",
                         "src": "5738:72:7"
                       }
                     ],
-                    "id": 3746,
+                    "id": 3743,
                     "name": "ExpressionStatement",
                     "src": "5738:72:7"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 3662
+                      "functionReturnParameters": 3659
                     },
                     "children": [
                       {
@@ -3466,22 +3466,22 @@ export const ERC721Collateralizer =
                           "type": "bool",
                           "value": "true"
                         },
-                        "id": 3747,
+                        "id": 3744,
                         "name": "Literal",
                         "src": "5828:4:7"
                       }
                     ],
-                    "id": 3748,
+                    "id": 3745,
                     "name": "Return",
                     "src": "5821:11:7"
                   }
                 ],
-                "id": 3749,
+                "id": 3746,
                 "name": "Block",
                 "src": "3941:1898:7"
               }
             ],
-            "id": 3750,
+            "id": 3747,
             "name": "FunctionDefinition",
             "src": "3748:2091:7"
           },
@@ -3492,7 +3492,7 @@ export const ERC721Collateralizer =
               "isConstructor": false,
               "name": "returnCollateral",
               "payable": false,
-              "scope": 4151,
+              "scope": 4148,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -3504,7 +3504,7 @@ export const ERC721Collateralizer =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 3859,
+                      "scope": 3856,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -3517,17 +3517,17 @@ export const ERC721Collateralizer =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 3751,
+                        "id": 3748,
                         "name": "ElementaryTypeName",
                         "src": "6133:7:7"
                       }
                     ],
-                    "id": 3752,
+                    "id": 3749,
                     "name": "VariableDeclaration",
                     "src": "6133:19:7"
                   }
                 ],
-                "id": 3753,
+                "id": 3750,
                 "name": "ParameterList",
                 "src": "6123:35:7"
               },
@@ -3538,7 +3538,7 @@ export const ERC721Collateralizer =
                   ]
                 },
                 "children": [],
-                "id": 3756,
+                "id": 3753,
                 "name": "ParameterList",
                 "src": "6200:0:7"
               },
@@ -3555,16 +3555,16 @@ export const ERC721Collateralizer =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13943,
+                      "referencedDeclaration": 13940,
                       "type": "modifier ()",
                       "value": "whenNotPaused"
                     },
-                    "id": 3754,
+                    "id": 3751,
                     "name": "Identifier",
                     "src": "6182:13:7"
                   }
                 ],
-                "id": 3755,
+                "id": 3752,
                 "name": "ModifierInvocation",
                 "src": "6182:13:7"
               },
@@ -3582,7 +3582,7 @@ export const ERC721Collateralizer =
                         "attributes": {
                           "constant": false,
                           "name": "collateralTokenAddress",
-                          "scope": 3859,
+                          "scope": 3856,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "address",
@@ -3595,17 +3595,17 @@ export const ERC721Collateralizer =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 3757,
+                            "id": 3754,
                             "name": "ElementaryTypeName",
                             "src": "6257:7:7"
                           }
                         ],
-                        "id": 3758,
+                        "id": 3755,
                         "name": "VariableDeclaration",
                         "src": "6257:30:7"
                       }
                     ],
-                    "id": 3759,
+                    "id": 3756,
                     "name": "VariableDeclarationStatement",
                     "src": "6257:30:7"
                   },
@@ -3621,7 +3621,7 @@ export const ERC721Collateralizer =
                         "attributes": {
                           "constant": false,
                           "name": "collateralTokenID",
-                          "scope": 3859,
+                          "scope": 3856,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -3634,17 +3634,17 @@ export const ERC721Collateralizer =
                               "name": "uint256",
                               "type": "uint256"
                             },
-                            "id": 3760,
+                            "id": 3757,
                             "name": "ElementaryTypeName",
                             "src": "6386:7:7"
                           }
                         ],
-                        "id": 3761,
+                        "id": 3758,
                         "name": "VariableDeclaration",
                         "src": "6386:25:7"
                       }
                     ],
-                    "id": 3762,
+                    "id": 3759,
                     "name": "VariableDeclarationStatement",
                     "src": "6386:25:7"
                   },
@@ -3660,7 +3660,7 @@ export const ERC721Collateralizer =
                         "attributes": {
                           "constant": false,
                           "name": "termsContract",
-                          "scope": 3859,
+                          "scope": 3856,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "contract TermsContract",
@@ -3672,20 +3672,20 @@ export const ERC721Collateralizer =
                             "attributes": {
                               "contractScope": null,
                               "name": "TermsContract",
-                              "referencedDeclaration": 4742,
+                              "referencedDeclaration": 4739,
                               "type": "contract TermsContract"
                             },
-                            "id": 3763,
+                            "id": 3760,
                             "name": "UserDefinedTypeName",
                             "src": "6506:13:7"
                           }
                         ],
-                        "id": 3764,
+                        "id": 3761,
                         "name": "VariableDeclaration",
                         "src": "6506:27:7"
                       }
                     ],
-                    "id": 3765,
+                    "id": 3762,
                     "name": "VariableDeclarationStatement",
                     "src": "6506:27:7"
                   },
@@ -3719,11 +3719,11 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3758,
+                                  "referencedDeclaration": 3755,
                                   "type": "address",
                                   "value": "collateralTokenAddress"
                                 },
-                                "id": 3766,
+                                "id": 3763,
                                 "name": "Identifier",
                                 "src": "6618:22:7"
                               },
@@ -3733,11 +3733,11 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3761,
+                                  "referencedDeclaration": 3758,
                                   "type": "uint256",
                                   "value": "collateralTokenID"
                                 },
-                                "id": 3767,
+                                "id": 3764,
                                 "name": "Identifier",
                                 "src": "6654:17:7"
                               },
@@ -3747,16 +3747,16 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3764,
+                                  "referencedDeclaration": 3761,
                                   "type": "contract TermsContract",
                                   "value": "termsContract"
                                 },
-                                "id": 3768,
+                                "id": 3765,
                                 "name": "Identifier",
                                 "src": "6685:13:7"
                               }
                             ],
-                            "id": 3769,
+                            "id": 3766,
                             "name": "TupleExpression",
                             "src": "6604:104:7"
                           },
@@ -3786,11 +3786,11 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4150,
+                                  "referencedDeclaration": 4147,
                                   "type": "function (bytes32) view returns (address,uint256,contract TermsContract)",
                                   "value": "retrieveCollateralParameters"
                                 },
-                                "id": 3770,
+                                "id": 3767,
                                 "name": "Identifier",
                                 "src": "6711:28:7"
                               },
@@ -3800,26 +3800,26 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3752,
+                                  "referencedDeclaration": 3749,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 3771,
+                                "id": 3768,
                                 "name": "Identifier",
                                 "src": "6740:11:7"
                               }
                             ],
-                            "id": 3772,
+                            "id": 3769,
                             "name": "FunctionCall",
                             "src": "6711:41:7"
                           }
                         ],
-                        "id": 3773,
+                        "id": 3770,
                         "name": "Assignment",
                         "src": "6604:148:7"
                       }
                     ],
-                    "id": 3774,
+                    "id": 3771,
                     "name": "ExpressionStatement",
                     "src": "6604:148:7"
                   },
@@ -3851,11 +3851,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15821,
+                              "referencedDeclaration": 15818,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 3775,
+                            "id": 3772,
                             "name": "Identifier",
                             "src": "6999:7:7"
                           },
@@ -3890,11 +3890,11 @@ export const ERC721Collateralizer =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 3566,
+                                      "referencedDeclaration": 3563,
                                       "type": "mapping(bytes32 => address)",
                                       "value": "agreementToDebtor"
                                     },
-                                    "id": 3776,
+                                    "id": 3773,
                                     "name": "Identifier",
                                     "src": "7007:17:7"
                                   },
@@ -3904,16 +3904,16 @@ export const ERC721Collateralizer =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 3752,
+                                      "referencedDeclaration": 3749,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 3777,
+                                    "id": 3774,
                                     "name": "Identifier",
                                     "src": "7025:11:7"
                                   }
                                 ],
-                                "id": 3778,
+                                "id": 3775,
                                 "name": "IndexAccess",
                                 "src": "7007:30:7"
                               },
@@ -3947,7 +3947,7 @@ export const ERC721Collateralizer =
                                       "type": "type(address)",
                                       "value": "address"
                                     },
-                                    "id": 3779,
+                                    "id": 3776,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "7041:7:7"
                                   },
@@ -3964,34 +3964,34 @@ export const ERC721Collateralizer =
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 3780,
+                                    "id": 3777,
                                     "name": "Literal",
                                     "src": "7049:1:7"
                                   }
                                 ],
-                                "id": 3781,
+                                "id": 3778,
                                 "name": "FunctionCall",
                                 "src": "7041:10:7"
                               }
                             ],
-                            "id": 3782,
+                            "id": 3779,
                             "name": "BinaryOperation",
                             "src": "7007:44:7"
                           }
                         ],
-                        "id": 3783,
+                        "id": 3780,
                         "name": "FunctionCall",
                         "src": "6999:53:7"
                       }
                     ],
-                    "id": 3784,
+                    "id": 3781,
                     "name": "ExpressionStatement",
                     "src": "6999:53:7"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        3786
+                        3783
                       ]
                     },
                     "children": [
@@ -3999,7 +3999,7 @@ export const ERC721Collateralizer =
                         "attributes": {
                           "constant": false,
                           "name": "debtor",
-                          "scope": 3859,
+                          "scope": 3856,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "address",
@@ -4012,12 +4012,12 @@ export const ERC721Collateralizer =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 3785,
+                            "id": 3782,
                             "name": "ElementaryTypeName",
                             "src": "7110:7:7"
                           }
                         ],
-                        "id": 3786,
+                        "id": 3783,
                         "name": "VariableDeclaration",
                         "src": "7110:14:7"
                       },
@@ -4037,11 +4037,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3566,
+                              "referencedDeclaration": 3563,
                               "type": "mapping(bytes32 => address)",
                               "value": "agreementToDebtor"
                             },
-                            "id": 3787,
+                            "id": 3784,
                             "name": "Identifier",
                             "src": "7127:17:7"
                           },
@@ -4051,21 +4051,21 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3752,
+                              "referencedDeclaration": 3749,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 3788,
+                            "id": 3785,
                             "name": "Identifier",
                             "src": "7145:11:7"
                           }
                         ],
-                        "id": 3789,
+                        "id": 3786,
                         "name": "IndexAccess",
                         "src": "7127:30:7"
                       }
                     ],
-                    "id": 3790,
+                    "id": 3787,
                     "name": "VariableDeclarationStatement",
                     "src": "7110:47:7"
                   },
@@ -4099,11 +4099,11 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3566,
+                                  "referencedDeclaration": 3563,
                                   "type": "mapping(bytes32 => address)",
                                   "value": "agreementToDebtor"
                                 },
-                                "id": 3791,
+                                "id": 3788,
                                 "name": "Identifier",
                                 "src": "7269:17:7"
                               },
@@ -4113,26 +4113,26 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3752,
+                                  "referencedDeclaration": 3749,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 3792,
+                                "id": 3789,
                                 "name": "Identifier",
                                 "src": "7287:11:7"
                               }
                             ],
-                            "id": 3793,
+                            "id": 3790,
                             "name": "IndexAccess",
                             "src": "7269:30:7"
                           }
                         ],
-                        "id": 3794,
+                        "id": 3791,
                         "name": "UnaryOperation",
                         "src": "7262:37:7"
                       }
                     ],
-                    "id": 3795,
+                    "id": 3792,
                     "name": "ExpressionStatement",
                     "src": "7262:37:7"
                   },
@@ -4164,11 +4164,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15821,
+                              "referencedDeclaration": 15818,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 3796,
+                            "id": 3793,
                             "name": "Identifier",
                             "src": "7372:7:7"
                           },
@@ -4219,7 +4219,7 @@ export const ERC721Collateralizer =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "getExpectedRepaymentValue",
-                                      "referencedDeclaration": 4727,
+                                      "referencedDeclaration": 4724,
                                       "type": "function (bytes32,uint256) view external returns (uint256)"
                                     },
                                     "children": [
@@ -4229,16 +4229,16 @@ export const ERC721Collateralizer =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 3764,
+                                          "referencedDeclaration": 3761,
                                           "type": "contract TermsContract",
                                           "value": "termsContract"
                                         },
-                                        "id": 3797,
+                                        "id": 3794,
                                         "name": "Identifier",
                                         "src": "7393:13:7"
                                       }
                                     ],
-                                    "id": 3798,
+                                    "id": 3795,
                                     "name": "MemberAccess",
                                     "src": "7393:39:7"
                                   },
@@ -4248,11 +4248,11 @@ export const ERC721Collateralizer =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 3752,
+                                      "referencedDeclaration": 3749,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 3799,
+                                    "id": 3796,
                                     "name": "Identifier",
                                     "src": "7450:11:7"
                                   },
@@ -4284,7 +4284,7 @@ export const ERC721Collateralizer =
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "getTermEndTimestamp",
-                                          "referencedDeclaration": 4741,
+                                          "referencedDeclaration": 4738,
                                           "type": "function (bytes32) view external returns (uint256)"
                                         },
                                         "children": [
@@ -4294,16 +4294,16 @@ export const ERC721Collateralizer =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 3764,
+                                              "referencedDeclaration": 3761,
                                               "type": "contract TermsContract",
                                               "value": "termsContract"
                                             },
-                                            "id": 3800,
+                                            "id": 3797,
                                             "name": "Identifier",
                                             "src": "7479:13:7"
                                           }
                                         ],
-                                        "id": 3801,
+                                        "id": 3798,
                                         "name": "MemberAccess",
                                         "src": "7479:33:7"
                                       },
@@ -4313,21 +4313,21 @@ export const ERC721Collateralizer =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 3752,
+                                          "referencedDeclaration": 3749,
                                           "type": "bytes32",
                                           "value": "agreementId"
                                         },
-                                        "id": 3802,
+                                        "id": 3799,
                                         "name": "Identifier",
                                         "src": "7513:11:7"
                                       }
                                     ],
-                                    "id": 3803,
+                                    "id": 3800,
                                     "name": "FunctionCall",
                                     "src": "7479:46:7"
                                   }
                                 ],
-                                "id": 3804,
+                                "id": 3801,
                                 "name": "FunctionCall",
                                 "src": "7393:146:7"
                               },
@@ -4359,7 +4359,7 @@ export const ERC721Collateralizer =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "getValueRepaidToDate",
-                                      "referencedDeclaration": 4734,
+                                      "referencedDeclaration": 4731,
                                       "type": "function (bytes32) view external returns (uint256)"
                                     },
                                     "children": [
@@ -4369,16 +4369,16 @@ export const ERC721Collateralizer =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 3764,
+                                          "referencedDeclaration": 3761,
                                           "type": "contract TermsContract",
                                           "value": "termsContract"
                                         },
-                                        "id": 3805,
+                                        "id": 3802,
                                         "name": "Identifier",
                                         "src": "7543:13:7"
                                       }
                                     ],
-                                    "id": 3806,
+                                    "id": 3803,
                                     "name": "MemberAccess",
                                     "src": "7543:34:7"
                                   },
@@ -4388,38 +4388,38 @@ export const ERC721Collateralizer =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 3752,
+                                      "referencedDeclaration": 3749,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 3807,
+                                    "id": 3804,
                                     "name": "Identifier",
                                     "src": "7578:11:7"
                                   }
                                 ],
-                                "id": 3808,
+                                "id": 3805,
                                 "name": "FunctionCall",
                                 "src": "7543:47:7"
                               }
                             ],
-                            "id": 3809,
+                            "id": 3806,
                             "name": "BinaryOperation",
                             "src": "7393:197:7"
                           }
                         ],
-                        "id": 3810,
+                        "id": 3807,
                         "name": "FunctionCall",
                         "src": "7372:228:7"
                       }
                     ],
-                    "id": 3811,
+                    "id": 3808,
                     "name": "ExpressionStatement",
                     "src": "7372:228:7"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        3813
+                        3810
                       ]
                     },
                     "children": [
@@ -4427,7 +4427,7 @@ export const ERC721Collateralizer =
                         "attributes": {
                           "constant": false,
                           "name": "erc721token",
-                          "scope": 3859,
+                          "scope": 3856,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "contract ERC721",
@@ -4439,15 +4439,15 @@ export const ERC721Collateralizer =
                             "attributes": {
                               "contractScope": null,
                               "name": "ERC721",
-                              "referencedDeclaration": 14728,
+                              "referencedDeclaration": 14725,
                               "type": "contract ERC721"
                             },
-                            "id": 3812,
+                            "id": 3809,
                             "name": "UserDefinedTypeName",
                             "src": "7693:6:7"
                           }
                         ],
-                        "id": 3813,
+                        "id": 3810,
                         "name": "VariableDeclaration",
                         "src": "7693:18:7"
                       },
@@ -4477,11 +4477,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 14728,
+                              "referencedDeclaration": 14725,
                               "type": "type(contract ERC721)",
                               "value": "ERC721"
                             },
-                            "id": 3814,
+                            "id": 3811,
                             "name": "Identifier",
                             "src": "7714:6:7"
                           },
@@ -4491,21 +4491,21 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3758,
+                              "referencedDeclaration": 3755,
                               "type": "address",
                               "value": "collateralTokenAddress"
                             },
-                            "id": 3815,
+                            "id": 3812,
                             "name": "Identifier",
                             "src": "7721:22:7"
                           }
                         ],
-                        "id": 3816,
+                        "id": 3813,
                         "name": "FunctionCall",
                         "src": "7714:30:7"
                       }
                     ],
-                    "id": 3817,
+                    "id": 3814,
                     "name": "VariableDeclarationStatement",
                     "src": "7693:51:7"
                   },
@@ -4535,11 +4535,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3562,
+                              "referencedDeclaration": 3559,
                               "type": "address",
                               "value": "cryptoKittiesContract"
                             },
-                            "id": 3818,
+                            "id": 3815,
                             "name": "Identifier",
                             "src": "7854:21:7"
                           },
@@ -4549,16 +4549,16 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3758,
+                              "referencedDeclaration": 3755,
                               "type": "address",
                               "value": "collateralTokenAddress"
                             },
-                            "id": 3819,
+                            "id": 3816,
                             "name": "Identifier",
                             "src": "7879:22:7"
                           }
                         ],
-                        "id": 3820,
+                        "id": 3817,
                         "name": "BinaryOperation",
                         "src": "7854:47:7"
                       },
@@ -4598,7 +4598,7 @@ export const ERC721Collateralizer =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "approve",
-                                      "referencedDeclaration": 14782,
+                                      "referencedDeclaration": 14779,
                                       "type": "function (address,uint256) external"
                                     },
                                     "children": [
@@ -4608,16 +4608,16 @@ export const ERC721Collateralizer =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 3813,
+                                          "referencedDeclaration": 3810,
                                           "type": "contract ERC721",
                                           "value": "erc721token"
                                         },
-                                        "id": 3821,
+                                        "id": 3818,
                                         "name": "Identifier",
                                         "src": "7917:11:7"
                                       }
                                     ],
-                                    "id": 3823,
+                                    "id": 3820,
                                     "name": "MemberAccess",
                                     "src": "7917:19:7"
                                   },
@@ -4640,7 +4640,7 @@ export const ERC721Collateralizer =
                                         "attributes": {
                                           "argumentTypes": [
                                             {
-                                              "typeIdentifier": "t_contract$_ERC721Collateralizer_$4151",
+                                              "typeIdentifier": "t_contract$_ERC721Collateralizer_$4148",
                                               "typeString": "contract ERC721Collateralizer"
                                             }
                                           ],
@@ -4651,7 +4651,7 @@ export const ERC721Collateralizer =
                                           "type": "type(address)",
                                           "value": "address"
                                         },
-                                        "id": 3824,
+                                        "id": 3821,
                                         "name": "ElementaryTypeNameExpression",
                                         "src": "7937:7:7"
                                       },
@@ -4661,16 +4661,16 @@ export const ERC721Collateralizer =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 15885,
+                                          "referencedDeclaration": 15882,
                                           "type": "contract ERC721Collateralizer",
                                           "value": "this"
                                         },
-                                        "id": 3825,
+                                        "id": 3822,
                                         "name": "Identifier",
                                         "src": "7945:4:7"
                                       }
                                     ],
-                                    "id": 3826,
+                                    "id": 3823,
                                     "name": "FunctionCall",
                                     "src": "7937:13:7"
                                   },
@@ -4680,31 +4680,31 @@ export const ERC721Collateralizer =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 3761,
+                                      "referencedDeclaration": 3758,
                                       "type": "uint256",
                                       "value": "collateralTokenID"
                                     },
-                                    "id": 3827,
+                                    "id": 3824,
                                     "name": "Identifier",
                                     "src": "7952:17:7"
                                   }
                                 ],
-                                "id": 3828,
+                                "id": 3825,
                                 "name": "FunctionCall",
                                 "src": "7917:53:7"
                               }
                             ],
-                            "id": 3829,
+                            "id": 3826,
                             "name": "ExpressionStatement",
                             "src": "7917:53:7"
                           }
                         ],
-                        "id": 3830,
+                        "id": 3827,
                         "name": "Block",
                         "src": "7903:78:7"
                       }
                     ],
-                    "id": 3831,
+                    "id": 3828,
                     "name": "IfStatement",
                     "src": "7850:131:7"
                   },
@@ -4746,7 +4746,7 @@ export const ERC721Collateralizer =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "transferFrom",
-                              "referencedDeclaration": 14814,
+                              "referencedDeclaration": 14811,
                               "type": "function (address,address,uint256) external"
                             },
                             "children": [
@@ -4756,16 +4756,16 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3813,
+                                  "referencedDeclaration": 3810,
                                   "type": "contract ERC721",
                                   "value": "erc721token"
                                 },
-                                "id": 3832,
+                                "id": 3829,
                                 "name": "Identifier",
                                 "src": "8082:11:7"
                               }
                             ],
-                            "id": 3834,
+                            "id": 3831,
                             "name": "MemberAccess",
                             "src": "8082:24:7"
                           },
@@ -4788,7 +4788,7 @@ export const ERC721Collateralizer =
                                 "attributes": {
                                   "argumentTypes": [
                                     {
-                                      "typeIdentifier": "t_contract$_ERC721Collateralizer_$4151",
+                                      "typeIdentifier": "t_contract$_ERC721Collateralizer_$4148",
                                       "typeString": "contract ERC721Collateralizer"
                                     }
                                   ],
@@ -4799,7 +4799,7 @@ export const ERC721Collateralizer =
                                   "type": "type(address)",
                                   "value": "address"
                                 },
-                                "id": 3835,
+                                "id": 3832,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "8107:7:7"
                               },
@@ -4809,16 +4809,16 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15885,
+                                  "referencedDeclaration": 15882,
                                   "type": "contract ERC721Collateralizer",
                                   "value": "this"
                                 },
-                                "id": 3836,
+                                "id": 3833,
                                 "name": "Identifier",
                                 "src": "8115:4:7"
                               }
                             ],
-                            "id": 3837,
+                            "id": 3834,
                             "name": "FunctionCall",
                             "src": "8107:13:7"
                           },
@@ -4828,11 +4828,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3786,
+                              "referencedDeclaration": 3783,
                               "type": "address",
                               "value": "debtor"
                             },
-                            "id": 3838,
+                            "id": 3835,
                             "name": "Identifier",
                             "src": "8122:6:7"
                           },
@@ -4842,21 +4842,21 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3761,
+                              "referencedDeclaration": 3758,
                               "type": "uint256",
                               "value": "collateralTokenID"
                             },
-                            "id": 3839,
+                            "id": 3836,
                             "name": "Identifier",
                             "src": "8130:17:7"
                           }
                         ],
-                        "id": 3840,
+                        "id": 3837,
                         "name": "FunctionCall",
                         "src": "8082:66:7"
                       }
                     ],
-                    "id": 3841,
+                    "id": 3838,
                     "name": "ExpressionStatement",
                     "src": "8082:66:7"
                   },
@@ -4888,11 +4888,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15809,
+                              "referencedDeclaration": 15806,
                               "type": "function (bool) pure",
                               "value": "assert"
                             },
-                            "id": 3842,
+                            "id": 3839,
                             "name": "Identifier",
                             "src": "8206:6:7"
                           },
@@ -4939,7 +4939,7 @@ export const ERC721Collateralizer =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "ownerOf",
-                                      "referencedDeclaration": 14768,
+                                      "referencedDeclaration": 14765,
                                       "type": "function (uint256) view external returns (address)"
                                     },
                                     "children": [
@@ -4949,16 +4949,16 @@ export const ERC721Collateralizer =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 3813,
+                                          "referencedDeclaration": 3810,
                                           "type": "contract ERC721",
                                           "value": "erc721token"
                                         },
-                                        "id": 3843,
+                                        "id": 3840,
                                         "name": "Identifier",
                                         "src": "8213:11:7"
                                       }
                                     ],
-                                    "id": 3844,
+                                    "id": 3841,
                                     "name": "MemberAccess",
                                     "src": "8213:19:7"
                                   },
@@ -4968,16 +4968,16 @@ export const ERC721Collateralizer =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 3761,
+                                      "referencedDeclaration": 3758,
                                       "type": "uint256",
                                       "value": "collateralTokenID"
                                     },
-                                    "id": 3845,
+                                    "id": 3842,
                                     "name": "Identifier",
                                     "src": "8233:17:7"
                                   }
                                 ],
-                                "id": 3846,
+                                "id": 3843,
                                 "name": "FunctionCall",
                                 "src": "8213:38:7"
                               },
@@ -4987,26 +4987,26 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3786,
+                                  "referencedDeclaration": 3783,
                                   "type": "address",
                                   "value": "debtor"
                                 },
-                                "id": 3847,
+                                "id": 3844,
                                 "name": "Identifier",
                                 "src": "8255:6:7"
                               }
                             ],
-                            "id": 3848,
+                            "id": 3845,
                             "name": "BinaryOperation",
                             "src": "8213:48:7"
                           }
                         ],
-                        "id": 3849,
+                        "id": 3846,
                         "name": "FunctionCall",
                         "src": "8206:56:7"
                       }
                     ],
-                    "id": 3850,
+                    "id": 3847,
                     "name": "ExpressionStatement",
                     "src": "8206:56:7"
                   },
@@ -5050,11 +5050,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3596,
+                              "referencedDeclaration": 3593,
                               "type": "function (bytes32,address,address,uint256)",
                               "value": "CollateralReturned"
                             },
-                            "id": 3851,
+                            "id": 3848,
                             "name": "Identifier",
                             "src": "8306:18:7"
                           },
@@ -5064,11 +5064,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3752,
+                              "referencedDeclaration": 3749,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 3852,
+                            "id": 3849,
                             "name": "Identifier",
                             "src": "8338:11:7"
                           },
@@ -5078,11 +5078,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3786,
+                              "referencedDeclaration": 3783,
                               "type": "address",
                               "value": "debtor"
                             },
-                            "id": 3853,
+                            "id": 3850,
                             "name": "Identifier",
                             "src": "8363:6:7"
                           },
@@ -5092,11 +5092,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3758,
+                              "referencedDeclaration": 3755,
                               "type": "address",
                               "value": "collateralTokenAddress"
                             },
-                            "id": 3854,
+                            "id": 3851,
                             "name": "Identifier",
                             "src": "8383:22:7"
                           },
@@ -5106,31 +5106,31 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3761,
+                              "referencedDeclaration": 3758,
                               "type": "uint256",
                               "value": "collateralTokenID"
                             },
-                            "id": 3855,
+                            "id": 3852,
                             "name": "Identifier",
                             "src": "8419:17:7"
                           }
                         ],
-                        "id": 3856,
+                        "id": 3853,
                         "name": "FunctionCall",
                         "src": "8306:140:7"
                       }
                     ],
-                    "id": 3857,
+                    "id": 3854,
                     "name": "ExpressionStatement",
                     "src": "8306:140:7"
                   }
                 ],
-                "id": 3858,
+                "id": 3855,
                 "name": "Block",
                 "src": "6200:2253:7"
               }
             ],
-            "id": 3859,
+            "id": 3856,
             "name": "FunctionDefinition",
             "src": "6098:2355:7"
           },
@@ -5141,7 +5141,7 @@ export const ERC721Collateralizer =
               "isConstructor": false,
               "name": "seizeCollateral",
               "payable": false,
-              "scope": 4151,
+              "scope": 4148,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -5153,7 +5153,7 @@ export const ERC721Collateralizer =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 3967,
+                      "scope": 3964,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -5166,17 +5166,17 @@ export const ERC721Collateralizer =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 3860,
+                        "id": 3857,
                         "name": "ElementaryTypeName",
                         "src": "8747:7:7"
                       }
                     ],
-                    "id": 3861,
+                    "id": 3858,
                     "name": "VariableDeclaration",
                     "src": "8747:19:7"
                   }
                 ],
-                "id": 3862,
+                "id": 3859,
                 "name": "ParameterList",
                 "src": "8737:35:7"
               },
@@ -5187,7 +5187,7 @@ export const ERC721Collateralizer =
                   ]
                 },
                 "children": [],
-                "id": 3865,
+                "id": 3862,
                 "name": "ParameterList",
                 "src": "8814:0:7"
               },
@@ -5204,16 +5204,16 @@ export const ERC721Collateralizer =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13943,
+                      "referencedDeclaration": 13940,
                       "type": "modifier ()",
                       "value": "whenNotPaused"
                     },
-                    "id": 3863,
+                    "id": 3860,
                     "name": "Identifier",
                     "src": "8796:13:7"
                   }
                 ],
-                "id": 3864,
+                "id": 3861,
                 "name": "ModifierInvocation",
                 "src": "8796:13:7"
               },
@@ -5231,7 +5231,7 @@ export const ERC721Collateralizer =
                         "attributes": {
                           "constant": false,
                           "name": "collateralTokenAddress",
-                          "scope": 3967,
+                          "scope": 3964,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "address",
@@ -5244,17 +5244,17 @@ export const ERC721Collateralizer =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 3866,
+                            "id": 3863,
                             "name": "ElementaryTypeName",
                             "src": "8872:7:7"
                           }
                         ],
-                        "id": 3867,
+                        "id": 3864,
                         "name": "VariableDeclaration",
                         "src": "8872:30:7"
                       }
                     ],
-                    "id": 3868,
+                    "id": 3865,
                     "name": "VariableDeclarationStatement",
                     "src": "8872:30:7"
                   },
@@ -5270,7 +5270,7 @@ export const ERC721Collateralizer =
                         "attributes": {
                           "constant": false,
                           "name": "collateralTokenID",
-                          "scope": 3967,
+                          "scope": 3964,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -5283,17 +5283,17 @@ export const ERC721Collateralizer =
                               "name": "uint256",
                               "type": "uint256"
                             },
-                            "id": 3869,
+                            "id": 3866,
                             "name": "ElementaryTypeName",
                             "src": "9001:7:7"
                           }
                         ],
-                        "id": 3870,
+                        "id": 3867,
                         "name": "VariableDeclaration",
                         "src": "9001:25:7"
                       }
                     ],
-                    "id": 3871,
+                    "id": 3868,
                     "name": "VariableDeclarationStatement",
                     "src": "9001:25:7"
                   },
@@ -5309,7 +5309,7 @@ export const ERC721Collateralizer =
                         "attributes": {
                           "constant": false,
                           "name": "termsContract",
-                          "scope": 3967,
+                          "scope": 3964,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "contract TermsContract",
@@ -5321,20 +5321,20 @@ export const ERC721Collateralizer =
                             "attributes": {
                               "contractScope": null,
                               "name": "TermsContract",
-                              "referencedDeclaration": 4742,
+                              "referencedDeclaration": 4739,
                               "type": "contract TermsContract"
                             },
-                            "id": 3872,
+                            "id": 3869,
                             "name": "UserDefinedTypeName",
                             "src": "9121:13:7"
                           }
                         ],
-                        "id": 3873,
+                        "id": 3870,
                         "name": "VariableDeclaration",
                         "src": "9121:27:7"
                       }
                     ],
-                    "id": 3874,
+                    "id": 3871,
                     "name": "VariableDeclarationStatement",
                     "src": "9121:27:7"
                   },
@@ -5368,11 +5368,11 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3867,
+                                  "referencedDeclaration": 3864,
                                   "type": "address",
                                   "value": "collateralTokenAddress"
                                 },
-                                "id": 3875,
+                                "id": 3872,
                                 "name": "Identifier",
                                 "src": "9233:22:7"
                               },
@@ -5382,11 +5382,11 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3870,
+                                  "referencedDeclaration": 3867,
                                   "type": "uint256",
                                   "value": "collateralTokenID"
                                 },
-                                "id": 3876,
+                                "id": 3873,
                                 "name": "Identifier",
                                 "src": "9269:17:7"
                               },
@@ -5396,16 +5396,16 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3873,
+                                  "referencedDeclaration": 3870,
                                   "type": "contract TermsContract",
                                   "value": "termsContract"
                                 },
-                                "id": 3877,
+                                "id": 3874,
                                 "name": "Identifier",
                                 "src": "9300:13:7"
                               }
                             ],
-                            "id": 3878,
+                            "id": 3875,
                             "name": "TupleExpression",
                             "src": "9219:104:7"
                           },
@@ -5435,11 +5435,11 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4150,
+                                  "referencedDeclaration": 4147,
                                   "type": "function (bytes32) view returns (address,uint256,contract TermsContract)",
                                   "value": "retrieveCollateralParameters"
                                 },
-                                "id": 3879,
+                                "id": 3876,
                                 "name": "Identifier",
                                 "src": "9326:28:7"
                               },
@@ -5449,26 +5449,26 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3861,
+                                  "referencedDeclaration": 3858,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 3880,
+                                "id": 3877,
                                 "name": "Identifier",
                                 "src": "9355:11:7"
                               }
                             ],
-                            "id": 3881,
+                            "id": 3878,
                             "name": "FunctionCall",
                             "src": "9326:41:7"
                           }
                         ],
-                        "id": 3882,
+                        "id": 3879,
                         "name": "Assignment",
                         "src": "9219:148:7"
                       }
                     ],
-                    "id": 3883,
+                    "id": 3880,
                     "name": "ExpressionStatement",
                     "src": "9219:148:7"
                   },
@@ -5500,11 +5500,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15821,
+                              "referencedDeclaration": 15818,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 3884,
+                            "id": 3881,
                             "name": "Identifier",
                             "src": "9611:7:7"
                           },
@@ -5539,11 +5539,11 @@ export const ERC721Collateralizer =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 3566,
+                                      "referencedDeclaration": 3563,
                                       "type": "mapping(bytes32 => address)",
                                       "value": "agreementToDebtor"
                                     },
-                                    "id": 3885,
+                                    "id": 3882,
                                     "name": "Identifier",
                                     "src": "9619:17:7"
                                   },
@@ -5553,16 +5553,16 @@ export const ERC721Collateralizer =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 3861,
+                                      "referencedDeclaration": 3858,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 3886,
+                                    "id": 3883,
                                     "name": "Identifier",
                                     "src": "9637:11:7"
                                   }
                                 ],
-                                "id": 3887,
+                                "id": 3884,
                                 "name": "IndexAccess",
                                 "src": "9619:30:7"
                               },
@@ -5596,7 +5596,7 @@ export const ERC721Collateralizer =
                                       "type": "type(address)",
                                       "value": "address"
                                     },
-                                    "id": 3888,
+                                    "id": 3885,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "9653:7:7"
                                   },
@@ -5613,27 +5613,27 @@ export const ERC721Collateralizer =
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 3889,
+                                    "id": 3886,
                                     "name": "Literal",
                                     "src": "9661:1:7"
                                   }
                                 ],
-                                "id": 3890,
+                                "id": 3887,
                                 "name": "FunctionCall",
                                 "src": "9653:10:7"
                               }
                             ],
-                            "id": 3891,
+                            "id": 3888,
                             "name": "BinaryOperation",
                             "src": "9619:44:7"
                           }
                         ],
-                        "id": 3892,
+                        "id": 3889,
                         "name": "FunctionCall",
                         "src": "9611:53:7"
                       }
                     ],
-                    "id": 3893,
+                    "id": 3890,
                     "name": "ExpressionStatement",
                     "src": "9611:53:7"
                   },
@@ -5667,11 +5667,11 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3566,
+                                  "referencedDeclaration": 3563,
                                   "type": "mapping(bytes32 => address)",
                                   "value": "agreementToDebtor"
                                 },
-                                "id": 3894,
+                                "id": 3891,
                                 "name": "Identifier",
                                 "src": "9776:17:7"
                               },
@@ -5681,26 +5681,26 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3861,
+                                  "referencedDeclaration": 3858,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 3895,
+                                "id": 3892,
                                 "name": "Identifier",
                                 "src": "9794:11:7"
                               }
                             ],
-                            "id": 3896,
+                            "id": 3893,
                             "name": "IndexAccess",
                             "src": "9776:30:7"
                           }
                         ],
-                        "id": 3897,
+                        "id": 3894,
                         "name": "UnaryOperation",
                         "src": "9769:37:7"
                       }
                     ],
-                    "id": 3898,
+                    "id": 3895,
                     "name": "ExpressionStatement",
                     "src": "9769:37:7"
                   },
@@ -5732,11 +5732,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15821,
+                              "referencedDeclaration": 15818,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 3899,
+                            "id": 3896,
                             "name": "Identifier",
                             "src": "9866:7:7"
                           },
@@ -5787,7 +5787,7 @@ export const ERC721Collateralizer =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "getExpectedRepaymentValue",
-                                      "referencedDeclaration": 4727,
+                                      "referencedDeclaration": 4724,
                                       "type": "function (bytes32,uint256) view external returns (uint256)"
                                     },
                                     "children": [
@@ -5797,16 +5797,16 @@ export const ERC721Collateralizer =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 3873,
+                                          "referencedDeclaration": 3870,
                                           "type": "contract TermsContract",
                                           "value": "termsContract"
                                         },
-                                        "id": 3900,
+                                        "id": 3897,
                                         "name": "Identifier",
                                         "src": "9887:13:7"
                                       }
                                     ],
-                                    "id": 3901,
+                                    "id": 3898,
                                     "name": "MemberAccess",
                                     "src": "9887:39:7"
                                   },
@@ -5816,11 +5816,11 @@ export const ERC721Collateralizer =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 3861,
+                                      "referencedDeclaration": 3858,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 3902,
+                                    "id": 3899,
                                     "name": "Identifier",
                                     "src": "9944:11:7"
                                   },
@@ -5842,21 +5842,21 @@ export const ERC721Collateralizer =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 15810,
+                                          "referencedDeclaration": 15807,
                                           "type": "block",
                                           "value": "block"
                                         },
-                                        "id": 3903,
+                                        "id": 3900,
                                         "name": "Identifier",
                                         "src": "9973:5:7"
                                       }
                                     ],
-                                    "id": 3904,
+                                    "id": 3901,
                                     "name": "MemberAccess",
                                     "src": "9973:15:7"
                                   }
                                 ],
-                                "id": 3905,
+                                "id": 3902,
                                 "name": "FunctionCall",
                                 "src": "9887:115:7"
                               },
@@ -5888,7 +5888,7 @@ export const ERC721Collateralizer =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "getValueRepaidToDate",
-                                      "referencedDeclaration": 4734,
+                                      "referencedDeclaration": 4731,
                                       "type": "function (bytes32) view external returns (uint256)"
                                     },
                                     "children": [
@@ -5898,16 +5898,16 @@ export const ERC721Collateralizer =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 3873,
+                                          "referencedDeclaration": 3870,
                                           "type": "contract TermsContract",
                                           "value": "termsContract"
                                         },
-                                        "id": 3906,
+                                        "id": 3903,
                                         "name": "Identifier",
                                         "src": "10005:13:7"
                                       }
                                     ],
-                                    "id": 3907,
+                                    "id": 3904,
                                     "name": "MemberAccess",
                                     "src": "10005:34:7"
                                   },
@@ -5917,38 +5917,38 @@ export const ERC721Collateralizer =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 3861,
+                                      "referencedDeclaration": 3858,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 3908,
+                                    "id": 3905,
                                     "name": "Identifier",
                                     "src": "10040:11:7"
                                   }
                                 ],
-                                "id": 3909,
+                                "id": 3906,
                                 "name": "FunctionCall",
                                 "src": "10005:47:7"
                               }
                             ],
-                            "id": 3910,
+                            "id": 3907,
                             "name": "BinaryOperation",
                             "src": "9887:165:7"
                           }
                         ],
-                        "id": 3911,
+                        "id": 3908,
                         "name": "FunctionCall",
                         "src": "9866:196:7"
                       }
                     ],
-                    "id": 3912,
+                    "id": 3909,
                     "name": "ExpressionStatement",
                     "src": "9866:196:7"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        3914
+                        3911
                       ]
                     },
                     "children": [
@@ -5956,7 +5956,7 @@ export const ERC721Collateralizer =
                         "attributes": {
                           "constant": false,
                           "name": "beneficiary",
-                          "scope": 3967,
+                          "scope": 3964,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "address",
@@ -5969,12 +5969,12 @@ export const ERC721Collateralizer =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 3913,
+                            "id": 3910,
                             "name": "ElementaryTypeName",
                             "src": "10138:7:7"
                           }
                         ],
-                        "id": 3914,
+                        "id": 3911,
                         "name": "VariableDeclaration",
                         "src": "10138:19:7"
                       },
@@ -6006,7 +6006,7 @@ export const ERC721Collateralizer =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "getBeneficiary",
-                              "referencedDeclaration": 3009,
+                              "referencedDeclaration": 3006,
                               "type": "function (bytes32) view external returns (address)"
                             },
                             "children": [
@@ -6016,16 +6016,16 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3558,
+                                  "referencedDeclaration": 3555,
                                   "type": "contract DebtRegistry",
                                   "value": "debtRegistry"
                                 },
-                                "id": 3915,
+                                "id": 3912,
                                 "name": "Identifier",
                                 "src": "10160:12:7"
                               }
                             ],
-                            "id": 3916,
+                            "id": 3913,
                             "name": "MemberAccess",
                             "src": "10160:27:7"
                           },
@@ -6035,28 +6035,28 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3861,
+                              "referencedDeclaration": 3858,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 3917,
+                            "id": 3914,
                             "name": "Identifier",
                             "src": "10188:11:7"
                           }
                         ],
-                        "id": 3918,
+                        "id": 3915,
                         "name": "FunctionCall",
                         "src": "10160:40:7"
                       }
                     ],
-                    "id": 3919,
+                    "id": 3916,
                     "name": "VariableDeclarationStatement",
                     "src": "10138:62:7"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        3921
+                        3918
                       ]
                     },
                     "children": [
@@ -6064,7 +6064,7 @@ export const ERC721Collateralizer =
                         "attributes": {
                           "constant": false,
                           "name": "erc721token",
-                          "scope": 3967,
+                          "scope": 3964,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "contract ERC721",
@@ -6076,15 +6076,15 @@ export const ERC721Collateralizer =
                             "attributes": {
                               "contractScope": null,
                               "name": "ERC721",
-                              "referencedDeclaration": 14728,
+                              "referencedDeclaration": 14725,
                               "type": "contract ERC721"
                             },
-                            "id": 3920,
+                            "id": 3917,
                             "name": "UserDefinedTypeName",
                             "src": "10293:6:7"
                           }
                         ],
-                        "id": 3921,
+                        "id": 3918,
                         "name": "VariableDeclaration",
                         "src": "10293:18:7"
                       },
@@ -6114,11 +6114,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 14728,
+                              "referencedDeclaration": 14725,
                               "type": "type(contract ERC721)",
                               "value": "ERC721"
                             },
-                            "id": 3922,
+                            "id": 3919,
                             "name": "Identifier",
                             "src": "10314:6:7"
                           },
@@ -6128,21 +6128,21 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3867,
+                              "referencedDeclaration": 3864,
                               "type": "address",
                               "value": "collateralTokenAddress"
                             },
-                            "id": 3923,
+                            "id": 3920,
                             "name": "Identifier",
                             "src": "10321:22:7"
                           }
                         ],
-                        "id": 3924,
+                        "id": 3921,
                         "name": "FunctionCall",
                         "src": "10314:30:7"
                       }
                     ],
-                    "id": 3925,
+                    "id": 3922,
                     "name": "VariableDeclarationStatement",
                     "src": "10293:51:7"
                   },
@@ -6172,11 +6172,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3562,
+                              "referencedDeclaration": 3559,
                               "type": "address",
                               "value": "cryptoKittiesContract"
                             },
-                            "id": 3926,
+                            "id": 3923,
                             "name": "Identifier",
                             "src": "10454:21:7"
                           },
@@ -6186,16 +6186,16 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3867,
+                              "referencedDeclaration": 3864,
                               "type": "address",
                               "value": "collateralTokenAddress"
                             },
-                            "id": 3927,
+                            "id": 3924,
                             "name": "Identifier",
                             "src": "10479:22:7"
                           }
                         ],
-                        "id": 3928,
+                        "id": 3925,
                         "name": "BinaryOperation",
                         "src": "10454:47:7"
                       },
@@ -6235,7 +6235,7 @@ export const ERC721Collateralizer =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "approve",
-                                      "referencedDeclaration": 14782,
+                                      "referencedDeclaration": 14779,
                                       "type": "function (address,uint256) external"
                                     },
                                     "children": [
@@ -6245,16 +6245,16 @@ export const ERC721Collateralizer =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 3921,
+                                          "referencedDeclaration": 3918,
                                           "type": "contract ERC721",
                                           "value": "erc721token"
                                         },
-                                        "id": 3929,
+                                        "id": 3926,
                                         "name": "Identifier",
                                         "src": "10517:11:7"
                                       }
                                     ],
-                                    "id": 3931,
+                                    "id": 3928,
                                     "name": "MemberAccess",
                                     "src": "10517:19:7"
                                   },
@@ -6277,7 +6277,7 @@ export const ERC721Collateralizer =
                                         "attributes": {
                                           "argumentTypes": [
                                             {
-                                              "typeIdentifier": "t_contract$_ERC721Collateralizer_$4151",
+                                              "typeIdentifier": "t_contract$_ERC721Collateralizer_$4148",
                                               "typeString": "contract ERC721Collateralizer"
                                             }
                                           ],
@@ -6288,7 +6288,7 @@ export const ERC721Collateralizer =
                                           "type": "type(address)",
                                           "value": "address"
                                         },
-                                        "id": 3932,
+                                        "id": 3929,
                                         "name": "ElementaryTypeNameExpression",
                                         "src": "10537:7:7"
                                       },
@@ -6298,16 +6298,16 @@ export const ERC721Collateralizer =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 15885,
+                                          "referencedDeclaration": 15882,
                                           "type": "contract ERC721Collateralizer",
                                           "value": "this"
                                         },
-                                        "id": 3933,
+                                        "id": 3930,
                                         "name": "Identifier",
                                         "src": "10545:4:7"
                                       }
                                     ],
-                                    "id": 3934,
+                                    "id": 3931,
                                     "name": "FunctionCall",
                                     "src": "10537:13:7"
                                   },
@@ -6317,31 +6317,31 @@ export const ERC721Collateralizer =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 3870,
+                                      "referencedDeclaration": 3867,
                                       "type": "uint256",
                                       "value": "collateralTokenID"
                                     },
-                                    "id": 3935,
+                                    "id": 3932,
                                     "name": "Identifier",
                                     "src": "10552:17:7"
                                   }
                                 ],
-                                "id": 3936,
+                                "id": 3933,
                                 "name": "FunctionCall",
                                 "src": "10517:53:7"
                               }
                             ],
-                            "id": 3937,
+                            "id": 3934,
                             "name": "ExpressionStatement",
                             "src": "10517:53:7"
                           }
                         ],
-                        "id": 3938,
+                        "id": 3935,
                         "name": "Block",
                         "src": "10503:78:7"
                       }
                     ],
-                    "id": 3939,
+                    "id": 3936,
                     "name": "IfStatement",
                     "src": "10450:131:7"
                   },
@@ -6383,7 +6383,7 @@ export const ERC721Collateralizer =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "transferFrom",
-                              "referencedDeclaration": 14814,
+                              "referencedDeclaration": 14811,
                               "type": "function (address,address,uint256) external"
                             },
                             "children": [
@@ -6393,16 +6393,16 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3921,
+                                  "referencedDeclaration": 3918,
                                   "type": "contract ERC721",
                                   "value": "erc721token"
                                 },
-                                "id": 3940,
+                                "id": 3937,
                                 "name": "Identifier",
                                 "src": "10678:11:7"
                               }
                             ],
-                            "id": 3942,
+                            "id": 3939,
                             "name": "MemberAccess",
                             "src": "10678:24:7"
                           },
@@ -6425,7 +6425,7 @@ export const ERC721Collateralizer =
                                 "attributes": {
                                   "argumentTypes": [
                                     {
-                                      "typeIdentifier": "t_contract$_ERC721Collateralizer_$4151",
+                                      "typeIdentifier": "t_contract$_ERC721Collateralizer_$4148",
                                       "typeString": "contract ERC721Collateralizer"
                                     }
                                   ],
@@ -6436,7 +6436,7 @@ export const ERC721Collateralizer =
                                   "type": "type(address)",
                                   "value": "address"
                                 },
-                                "id": 3943,
+                                "id": 3940,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "10703:7:7"
                               },
@@ -6446,16 +6446,16 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15885,
+                                  "referencedDeclaration": 15882,
                                   "type": "contract ERC721Collateralizer",
                                   "value": "this"
                                 },
-                                "id": 3944,
+                                "id": 3941,
                                 "name": "Identifier",
                                 "src": "10711:4:7"
                               }
                             ],
-                            "id": 3945,
+                            "id": 3942,
                             "name": "FunctionCall",
                             "src": "10703:13:7"
                           },
@@ -6465,11 +6465,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3914,
+                              "referencedDeclaration": 3911,
                               "type": "address",
                               "value": "beneficiary"
                             },
-                            "id": 3946,
+                            "id": 3943,
                             "name": "Identifier",
                             "src": "10718:11:7"
                           },
@@ -6479,21 +6479,21 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3870,
+                              "referencedDeclaration": 3867,
                               "type": "uint256",
                               "value": "collateralTokenID"
                             },
-                            "id": 3947,
+                            "id": 3944,
                             "name": "Identifier",
                             "src": "10731:17:7"
                           }
                         ],
-                        "id": 3948,
+                        "id": 3945,
                         "name": "FunctionCall",
                         "src": "10678:71:7"
                       }
                     ],
-                    "id": 3949,
+                    "id": 3946,
                     "name": "ExpressionStatement",
                     "src": "10678:71:7"
                   },
@@ -6525,11 +6525,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15809,
+                              "referencedDeclaration": 15806,
                               "type": "function (bool) pure",
                               "value": "assert"
                             },
-                            "id": 3950,
+                            "id": 3947,
                             "name": "Identifier",
                             "src": "10807:6:7"
                           },
@@ -6576,7 +6576,7 @@ export const ERC721Collateralizer =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "ownerOf",
-                                      "referencedDeclaration": 14768,
+                                      "referencedDeclaration": 14765,
                                       "type": "function (uint256) view external returns (address)"
                                     },
                                     "children": [
@@ -6586,16 +6586,16 @@ export const ERC721Collateralizer =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 3921,
+                                          "referencedDeclaration": 3918,
                                           "type": "contract ERC721",
                                           "value": "erc721token"
                                         },
-                                        "id": 3951,
+                                        "id": 3948,
                                         "name": "Identifier",
                                         "src": "10814:11:7"
                                       }
                                     ],
-                                    "id": 3952,
+                                    "id": 3949,
                                     "name": "MemberAccess",
                                     "src": "10814:19:7"
                                   },
@@ -6605,16 +6605,16 @@ export const ERC721Collateralizer =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 3870,
+                                      "referencedDeclaration": 3867,
                                       "type": "uint256",
                                       "value": "collateralTokenID"
                                     },
-                                    "id": 3953,
+                                    "id": 3950,
                                     "name": "Identifier",
                                     "src": "10834:17:7"
                                   }
                                 ],
-                                "id": 3954,
+                                "id": 3951,
                                 "name": "FunctionCall",
                                 "src": "10814:38:7"
                               },
@@ -6624,26 +6624,26 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3914,
+                                  "referencedDeclaration": 3911,
                                   "type": "address",
                                   "value": "beneficiary"
                                 },
-                                "id": 3955,
+                                "id": 3952,
                                 "name": "Identifier",
                                 "src": "10856:11:7"
                               }
                             ],
-                            "id": 3956,
+                            "id": 3953,
                             "name": "BinaryOperation",
                             "src": "10814:53:7"
                           }
                         ],
-                        "id": 3957,
+                        "id": 3954,
                         "name": "FunctionCall",
                         "src": "10807:61:7"
                       }
                     ],
-                    "id": 3958,
+                    "id": 3955,
                     "name": "ExpressionStatement",
                     "src": "10807:61:7"
                   },
@@ -6687,11 +6687,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3606,
+                              "referencedDeclaration": 3603,
                               "type": "function (bytes32,address,address,uint256)",
                               "value": "CollateralSeized"
                             },
-                            "id": 3959,
+                            "id": 3956,
                             "name": "Identifier",
                             "src": "10913:16:7"
                           },
@@ -6701,11 +6701,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3861,
+                              "referencedDeclaration": 3858,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 3960,
+                            "id": 3957,
                             "name": "Identifier",
                             "src": "10943:11:7"
                           },
@@ -6715,11 +6715,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3914,
+                              "referencedDeclaration": 3911,
                               "type": "address",
                               "value": "beneficiary"
                             },
-                            "id": 3961,
+                            "id": 3958,
                             "name": "Identifier",
                             "src": "10968:11:7"
                           },
@@ -6729,11 +6729,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3867,
+                              "referencedDeclaration": 3864,
                               "type": "address",
                               "value": "collateralTokenAddress"
                             },
-                            "id": 3962,
+                            "id": 3959,
                             "name": "Identifier",
                             "src": "10993:22:7"
                           },
@@ -6743,31 +6743,31 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3870,
+                              "referencedDeclaration": 3867,
                               "type": "uint256",
                               "value": "collateralTokenID"
                             },
-                            "id": 3963,
+                            "id": 3960,
                             "name": "Identifier",
                             "src": "11029:17:7"
                           }
                         ],
-                        "id": 3964,
+                        "id": 3961,
                         "name": "FunctionCall",
                         "src": "10913:143:7"
                       }
                     ],
-                    "id": 3965,
+                    "id": 3962,
                     "name": "ExpressionStatement",
                     "src": "10913:143:7"
                   }
                 ],
-                "id": 3966,
+                "id": 3963,
                 "name": "Block",
                 "src": "8814:2249:7"
               }
             ],
-            "id": 3967,
+            "id": 3964,
             "name": "FunctionDefinition",
             "src": "8713:2350:7"
           },
@@ -6778,7 +6778,7 @@ export const ERC721Collateralizer =
               "isConstructor": false,
               "name": "addAuthorizedCollateralizeAgent",
               "payable": false,
-              "scope": 4151,
+              "scope": 4148,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -6790,7 +6790,7 @@ export const ERC721Collateralizer =
                     "attributes": {
                       "constant": false,
                       "name": "agent",
-                      "scope": 3982,
+                      "scope": 3979,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -6803,17 +6803,17 @@ export const ERC721Collateralizer =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3968,
+                        "id": 3965,
                         "name": "ElementaryTypeName",
                         "src": "11229:7:7"
                       }
                     ],
-                    "id": 3969,
+                    "id": 3966,
                     "name": "VariableDeclaration",
                     "src": "11229:13:7"
                   }
                 ],
-                "id": 3970,
+                "id": 3967,
                 "name": "ParameterList",
                 "src": "11228:15:7"
               },
@@ -6824,7 +6824,7 @@ export const ERC721Collateralizer =
                   ]
                 },
                 "children": [],
-                "id": 3973,
+                "id": 3970,
                 "name": "ParameterList",
                 "src": "11281:0:7"
               },
@@ -6841,16 +6841,16 @@ export const ERC721Collateralizer =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 14110,
+                      "referencedDeclaration": 14107,
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
-                    "id": 3971,
+                    "id": 3968,
                     "name": "Identifier",
                     "src": "11267:9:7"
                   }
                 ],
-                "id": 3972,
+                "id": 3969,
                 "name": "ModifierInvocation",
                 "src": "11267:9:7"
               },
@@ -6890,7 +6890,7 @@ export const ERC721Collateralizer =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "authorize",
-                              "referencedDeclaration": 6126,
+                              "referencedDeclaration": 6123,
                               "type": "function (struct PermissionsLib.Permissions storage pointer,address,string memory)"
                             },
                             "children": [
@@ -6900,16 +6900,16 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3568,
+                                  "referencedDeclaration": 3565,
                                   "type": "struct PermissionsLib.Permissions storage ref",
                                   "value": "collateralizationPermissions"
                                 },
-                                "id": 3974,
+                                "id": 3971,
                                 "name": "Identifier",
                                 "src": "11291:28:7"
                               }
                             ],
-                            "id": 3976,
+                            "id": 3973,
                             "name": "MemberAccess",
                             "src": "11291:38:7"
                           },
@@ -6919,11 +6919,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3969,
+                              "referencedDeclaration": 3966,
                               "type": "address",
                               "value": "agent"
                             },
-                            "id": 3977,
+                            "id": 3974,
                             "name": "Identifier",
                             "src": "11330:5:7"
                           },
@@ -6933,31 +6933,31 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3578,
+                              "referencedDeclaration": 3575,
                               "type": "string memory",
                               "value": "CONTEXT"
                             },
-                            "id": 3978,
+                            "id": 3975,
                             "name": "Identifier",
                             "src": "11337:7:7"
                           }
                         ],
-                        "id": 3979,
+                        "id": 3976,
                         "name": "FunctionCall",
                         "src": "11291:54:7"
                       }
                     ],
-                    "id": 3980,
+                    "id": 3977,
                     "name": "ExpressionStatement",
                     "src": "11291:54:7"
                   }
                 ],
-                "id": 3981,
+                "id": 3978,
                 "name": "Block",
                 "src": "11281:71:7"
               }
             ],
-            "id": 3982,
+            "id": 3979,
             "name": "FunctionDefinition",
             "src": "11188:164:7"
           },
@@ -6968,7 +6968,7 @@ export const ERC721Collateralizer =
               "isConstructor": false,
               "name": "revokeCollateralizeAuthorization",
               "payable": false,
-              "scope": 4151,
+              "scope": 4148,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -6980,7 +6980,7 @@ export const ERC721Collateralizer =
                     "attributes": {
                       "constant": false,
                       "name": "agent",
-                      "scope": 3997,
+                      "scope": 3994,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -6993,17 +6993,17 @@ export const ERC721Collateralizer =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3983,
+                        "id": 3980,
                         "name": "ElementaryTypeName",
                         "src": "11524:7:7"
                       }
                     ],
-                    "id": 3984,
+                    "id": 3981,
                     "name": "VariableDeclaration",
                     "src": "11524:13:7"
                   }
                 ],
-                "id": 3985,
+                "id": 3982,
                 "name": "ParameterList",
                 "src": "11523:15:7"
               },
@@ -7014,7 +7014,7 @@ export const ERC721Collateralizer =
                   ]
                 },
                 "children": [],
-                "id": 3988,
+                "id": 3985,
                 "name": "ParameterList",
                 "src": "11576:0:7"
               },
@@ -7031,16 +7031,16 @@ export const ERC721Collateralizer =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 14110,
+                      "referencedDeclaration": 14107,
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
-                    "id": 3986,
+                    "id": 3983,
                     "name": "Identifier",
                     "src": "11562:9:7"
                   }
                 ],
-                "id": 3987,
+                "id": 3984,
                 "name": "ModifierInvocation",
                 "src": "11562:9:7"
               },
@@ -7080,7 +7080,7 @@ export const ERC721Collateralizer =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "revokeAuthorization",
-                              "referencedDeclaration": 6212,
+                              "referencedDeclaration": 6209,
                               "type": "function (struct PermissionsLib.Permissions storage pointer,address,string memory)"
                             },
                             "children": [
@@ -7090,16 +7090,16 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3568,
+                                  "referencedDeclaration": 3565,
                                   "type": "struct PermissionsLib.Permissions storage ref",
                                   "value": "collateralizationPermissions"
                                 },
-                                "id": 3989,
+                                "id": 3986,
                                 "name": "Identifier",
                                 "src": "11586:28:7"
                               }
                             ],
-                            "id": 3991,
+                            "id": 3988,
                             "name": "MemberAccess",
                             "src": "11586:48:7"
                           },
@@ -7109,11 +7109,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3984,
+                              "referencedDeclaration": 3981,
                               "type": "address",
                               "value": "agent"
                             },
-                            "id": 3992,
+                            "id": 3989,
                             "name": "Identifier",
                             "src": "11635:5:7"
                           },
@@ -7123,31 +7123,31 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3578,
+                              "referencedDeclaration": 3575,
                               "type": "string memory",
                               "value": "CONTEXT"
                             },
-                            "id": 3993,
+                            "id": 3990,
                             "name": "Identifier",
                             "src": "11642:7:7"
                           }
                         ],
-                        "id": 3994,
+                        "id": 3991,
                         "name": "FunctionCall",
                         "src": "11586:64:7"
                       }
                     ],
-                    "id": 3995,
+                    "id": 3992,
                     "name": "ExpressionStatement",
                     "src": "11586:64:7"
                   }
                 ],
-                "id": 3996,
+                "id": 3993,
                 "name": "Block",
                 "src": "11576:81:7"
               }
             ],
-            "id": 3997,
+            "id": 3994,
             "name": "FunctionDefinition",
             "src": "11482:175:7"
           },
@@ -7161,7 +7161,7 @@ export const ERC721Collateralizer =
               ],
               "name": "getAuthorizedCollateralizeAgents",
               "payable": false,
-              "scope": 4151,
+              "scope": 4148,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -7174,7 +7174,7 @@ export const ERC721Collateralizer =
                   ]
                 },
                 "children": [],
-                "id": 3998,
+                "id": 3995,
                 "name": "ParameterList",
                 "src": "11803:2:7"
               },
@@ -7184,7 +7184,7 @@ export const ERC721Collateralizer =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 4008,
+                      "scope": 4005,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address[] memory",
@@ -7203,22 +7203,22 @@ export const ERC721Collateralizer =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 3999,
+                            "id": 3996,
                             "name": "ElementaryTypeName",
                             "src": "11851:7:7"
                           }
                         ],
-                        "id": 4000,
+                        "id": 3997,
                         "name": "ArrayTypeName",
                         "src": "11851:9:7"
                       }
                     ],
-                    "id": 4001,
+                    "id": 3998,
                     "name": "VariableDeclaration",
                     "src": "11851:9:7"
                   }
                 ],
-                "id": 4002,
+                "id": 3999,
                 "name": "ParameterList",
                 "src": "11850:11:7"
               },
@@ -7226,7 +7226,7 @@ export const ERC721Collateralizer =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 4002
+                      "functionReturnParameters": 3999
                     },
                     "children": [
                       {
@@ -7257,7 +7257,7 @@ export const ERC721Collateralizer =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "getAuthorizedAgents",
-                              "referencedDeclaration": 6255,
+                              "referencedDeclaration": 6252,
                               "type": "function (struct PermissionsLib.Permissions storage pointer) view returns (address[] memory)"
                             },
                             "children": [
@@ -7267,36 +7267,36 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3568,
+                                  "referencedDeclaration": 3565,
                                   "type": "struct PermissionsLib.Permissions storage ref",
                                   "value": "collateralizationPermissions"
                                 },
-                                "id": 4003,
+                                "id": 4000,
                                 "name": "Identifier",
                                 "src": "11883:28:7"
                               }
                             ],
-                            "id": 4004,
+                            "id": 4001,
                             "name": "MemberAccess",
                             "src": "11883:48:7"
                           }
                         ],
-                        "id": 4005,
+                        "id": 4002,
                         "name": "FunctionCall",
                         "src": "11883:50:7"
                       }
                     ],
-                    "id": 4006,
+                    "id": 4003,
                     "name": "Return",
                     "src": "11876:57:7"
                   }
                 ],
-                "id": 4007,
+                "id": 4004,
                 "name": "Block",
                 "src": "11866:74:7"
               }
             ],
-            "id": 4008,
+            "id": 4005,
             "name": "FunctionDefinition",
             "src": "11762:178:7"
           },
@@ -7310,7 +7310,7 @@ export const ERC721Collateralizer =
               ],
               "name": "unpackCollateralParametersFromBytes",
               "payable": false,
-              "scope": 4151,
+              "scope": 4148,
               "stateMutability": "pure",
               "superFunction": null,
               "visibility": "public"
@@ -7322,7 +7322,7 @@ export const ERC721Collateralizer =
                     "attributes": {
                       "constant": false,
                       "name": "parameters",
-                      "scope": 4067,
+                      "scope": 4064,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -7335,17 +7335,17 @@ export const ERC721Collateralizer =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 4009,
+                        "id": 4006,
                         "name": "ElementaryTypeName",
                         "src": "12146:7:7"
                       }
                     ],
-                    "id": 4010,
+                    "id": 4007,
                     "name": "VariableDeclaration",
                     "src": "12146:18:7"
                   }
                 ],
-                "id": 4011,
+                "id": 4008,
                 "name": "ParameterList",
                 "src": "12145:20:7"
               },
@@ -7355,7 +7355,7 @@ export const ERC721Collateralizer =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 4067,
+                      "scope": 4064,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -7368,12 +7368,12 @@ export const ERC721Collateralizer =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 4012,
+                        "id": 4009,
                         "name": "ElementaryTypeName",
                         "src": "12211:4:7"
                       }
                     ],
-                    "id": 4013,
+                    "id": 4010,
                     "name": "VariableDeclaration",
                     "src": "12211:4:7"
                   },
@@ -7381,7 +7381,7 @@ export const ERC721Collateralizer =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 4067,
+                      "scope": 4064,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -7394,12 +7394,12 @@ export const ERC721Collateralizer =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 4014,
+                        "id": 4011,
                         "name": "ElementaryTypeName",
                         "src": "12217:4:7"
                       }
                     ],
-                    "id": 4015,
+                    "id": 4012,
                     "name": "VariableDeclaration",
                     "src": "12217:4:7"
                   },
@@ -7407,7 +7407,7 @@ export const ERC721Collateralizer =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 4067,
+                      "scope": 4064,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -7420,17 +7420,17 @@ export const ERC721Collateralizer =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 4016,
+                        "id": 4013,
                         "name": "ElementaryTypeName",
                         "src": "12223:4:7"
                       }
                     ],
-                    "id": 4017,
+                    "id": 4014,
                     "name": "VariableDeclaration",
                     "src": "12223:4:7"
                   }
                 ],
-                "id": 4018,
+                "id": 4015,
                 "name": "ParameterList",
                 "src": "12210:18:7"
               },
@@ -7439,7 +7439,7 @@ export const ERC721Collateralizer =
                   {
                     "attributes": {
                       "assignments": [
-                        4020
+                        4017
                       ]
                     },
                     "children": [
@@ -7447,7 +7447,7 @@ export const ERC721Collateralizer =
                         "attributes": {
                           "constant": false,
                           "name": "isEnumerable",
-                          "scope": 4067,
+                          "scope": 4064,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bytes32",
@@ -7460,12 +7460,12 @@ export const ERC721Collateralizer =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 4019,
+                            "id": 4016,
                             "name": "ElementaryTypeName",
                             "src": "12478:7:7"
                           }
                         ],
-                        "id": 4020,
+                        "id": 4017,
                         "name": "VariableDeclaration",
                         "src": "12478:20:7"
                       },
@@ -7490,11 +7490,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4010,
+                              "referencedDeclaration": 4007,
                               "type": "bytes32",
                               "value": "parameters"
                             },
-                            "id": 4021,
+                            "id": 4018,
                             "name": "Identifier",
                             "src": "12513:10:7"
                           },
@@ -7511,24 +7511,24 @@ export const ERC721Collateralizer =
                               "type": "int_const 1",
                               "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
                             },
-                            "id": 4022,
+                            "id": 4019,
                             "name": "Literal",
                             "src": "12526:66:7"
                           }
                         ],
-                        "id": 4023,
+                        "id": 4020,
                         "name": "BinaryOperation",
                         "src": "12513:79:7"
                       }
                     ],
-                    "id": 4024,
+                    "id": 4021,
                     "name": "VariableDeclarationStatement",
                     "src": "12478:114:7"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        4026
+                        4023
                       ]
                     },
                     "children": [
@@ -7536,7 +7536,7 @@ export const ERC721Collateralizer =
                         "attributes": {
                           "constant": false,
                           "name": "collateralContractIndexShifted",
-                          "scope": 4067,
+                          "scope": 4064,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bytes32",
@@ -7549,12 +7549,12 @@ export const ERC721Collateralizer =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 4025,
+                            "id": 4022,
                             "name": "ElementaryTypeName",
                             "src": "12853:7:7"
                           }
                         ],
-                        "id": 4026,
+                        "id": 4023,
                         "name": "VariableDeclaration",
                         "src": "12853:38:7"
                       },
@@ -7579,11 +7579,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4010,
+                              "referencedDeclaration": 4007,
                               "type": "bytes32",
                               "value": "parameters"
                             },
-                            "id": 4027,
+                            "id": 4024,
                             "name": "Identifier",
                             "src": "12906:10:7"
                           },
@@ -7600,24 +7600,24 @@ export const ERC721Collateralizer =
                               "type": "int_const 324518553658425573861651413729280",
                               "value": "0x0000000000000000000000000000000000000ffffffffffff000000000000000"
                             },
-                            "id": 4028,
+                            "id": 4025,
                             "name": "Literal",
                             "src": "12919:66:7"
                           }
                         ],
-                        "id": 4029,
+                        "id": 4026,
                         "name": "BinaryOperation",
                         "src": "12906:79:7"
                       }
                     ],
-                    "id": 4030,
+                    "id": 4027,
                     "name": "VariableDeclarationStatement",
                     "src": "12853:132:7"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        4032
+                        4029
                       ]
                     },
                     "children": [
@@ -7625,7 +7625,7 @@ export const ERC721Collateralizer =
                         "attributes": {
                           "constant": false,
                           "name": "tokenRefShifted",
-                          "scope": 4067,
+                          "scope": 4064,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bytes32",
@@ -7638,12 +7638,12 @@ export const ERC721Collateralizer =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 4031,
+                            "id": 4028,
                             "name": "ElementaryTypeName",
                             "src": "13307:7:7"
                           }
                         ],
-                        "id": 4032,
+                        "id": 4029,
                         "name": "VariableDeclaration",
                         "src": "13307:23:7"
                       },
@@ -7668,11 +7668,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4010,
+                              "referencedDeclaration": 4007,
                               "type": "bytes32",
                               "value": "parameters"
                             },
-                            "id": 4033,
+                            "id": 4030,
                             "name": "Identifier",
                             "src": "13345:10:7"
                           },
@@ -7689,24 +7689,24 @@ export const ERC721Collateralizer =
                               "type": "int_const 1152921504606846960",
                               "value": "0x0000000000000000000000000000000000000000000000000ffffffffffffff0"
                             },
-                            "id": 4034,
+                            "id": 4031,
                             "name": "Literal",
                             "src": "13358:66:7"
                           }
                         ],
-                        "id": 4035,
+                        "id": 4032,
                         "name": "BinaryOperation",
                         "src": "13345:79:7"
                       }
                     ],
-                    "id": 4036,
+                    "id": 4033,
                     "name": "VariableDeclarationStatement",
                     "src": "13307:117:7"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        4038
+                        4035
                       ]
                     },
                     "children": [
@@ -7714,7 +7714,7 @@ export const ERC721Collateralizer =
                         "attributes": {
                           "constant": false,
                           "name": "collateralContractIndex",
-                          "scope": 4067,
+                          "scope": 4064,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -7727,12 +7727,12 @@ export const ERC721Collateralizer =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 4037,
+                            "id": 4034,
                             "name": "ElementaryTypeName",
                             "src": "13501:4:7"
                           }
                         ],
-                        "id": 4038,
+                        "id": 4035,
                         "name": "VariableDeclaration",
                         "src": "13501:28:7"
                       },
@@ -7781,7 +7781,7 @@ export const ERC721Collateralizer =
                                   "type": "type(uint256)",
                                   "value": "uint"
                                 },
-                                "id": 4039,
+                                "id": 4036,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "13532:4:7"
                               },
@@ -7791,16 +7791,16 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4026,
+                                  "referencedDeclaration": 4023,
                                   "type": "bytes32",
                                   "value": "collateralContractIndexShifted"
                                 },
-                                "id": 4040,
+                                "id": 4037,
                                 "name": "Identifier",
                                 "src": "13537:30:7"
                               }
                             ],
-                            "id": 4041,
+                            "id": 4038,
                             "name": "FunctionCall",
                             "src": "13532:36:7"
                           },
@@ -7832,7 +7832,7 @@ export const ERC721Collateralizer =
                                   "type": "int_const 2",
                                   "value": "2"
                                 },
-                                "id": 4042,
+                                "id": 4039,
                                 "name": "Literal",
                                 "src": "13571:1:7"
                               },
@@ -7849,29 +7849,29 @@ export const ERC721Collateralizer =
                                   "type": "int_const 60",
                                   "value": "60"
                                 },
-                                "id": 4043,
+                                "id": 4040,
                                 "name": "Literal",
                                 "src": "13576:2:7"
                               }
                             ],
-                            "id": 4044,
+                            "id": 4041,
                             "name": "BinaryOperation",
                             "src": "13571:7:7"
                           }
                         ],
-                        "id": 4045,
+                        "id": 4042,
                         "name": "BinaryOperation",
                         "src": "13532:46:7"
                       }
                     ],
-                    "id": 4046,
+                    "id": 4043,
                     "name": "VariableDeclarationStatement",
                     "src": "13501:77:7"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        4048
+                        4045
                       ]
                     },
                     "children": [
@@ -7879,7 +7879,7 @@ export const ERC721Collateralizer =
                         "attributes": {
                           "constant": false,
                           "name": "tokenRef",
-                          "scope": 4067,
+                          "scope": 4064,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -7892,12 +7892,12 @@ export const ERC721Collateralizer =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 4047,
+                            "id": 4044,
                             "name": "ElementaryTypeName",
                             "src": "13641:4:7"
                           }
                         ],
-                        "id": 4048,
+                        "id": 4045,
                         "name": "VariableDeclaration",
                         "src": "13641:13:7"
                       },
@@ -7946,7 +7946,7 @@ export const ERC721Collateralizer =
                                   "type": "type(uint256)",
                                   "value": "uint"
                                 },
-                                "id": 4049,
+                                "id": 4046,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "13657:4:7"
                               },
@@ -7956,16 +7956,16 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4032,
+                                  "referencedDeclaration": 4029,
                                   "type": "bytes32",
                                   "value": "tokenRefShifted"
                                 },
-                                "id": 4050,
+                                "id": 4047,
                                 "name": "Identifier",
                                 "src": "13662:15:7"
                               }
                             ],
-                            "id": 4051,
+                            "id": 4048,
                             "name": "FunctionCall",
                             "src": "13657:21:7"
                           },
@@ -7997,7 +7997,7 @@ export const ERC721Collateralizer =
                                   "type": "int_const 2",
                                   "value": "2"
                                 },
-                                "id": 4052,
+                                "id": 4049,
                                 "name": "Literal",
                                 "src": "13681:1:7"
                               },
@@ -8014,28 +8014,28 @@ export const ERC721Collateralizer =
                                   "type": "int_const 4",
                                   "value": "4"
                                 },
-                                "id": 4053,
+                                "id": 4050,
                                 "name": "Literal",
                                 "src": "13686:1:7"
                               }
                             ],
-                            "id": 4054,
+                            "id": 4051,
                             "name": "BinaryOperation",
                             "src": "13681:6:7"
                           }
                         ],
-                        "id": 4055,
+                        "id": 4052,
                         "name": "BinaryOperation",
                         "src": "13657:30:7"
                       }
                     ],
-                    "id": 4056,
+                    "id": 4053,
                     "name": "VariableDeclarationStatement",
                     "src": "13641:46:7"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 4018
+                      "functionReturnParameters": 4015
                     },
                     "children": [
                       {
@@ -8094,7 +8094,7 @@ export const ERC721Collateralizer =
                                       "type": "type(uint256)",
                                       "value": "uint"
                                     },
-                                    "id": 4057,
+                                    "id": 4054,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "13818:4:7"
                                   },
@@ -8104,16 +8104,16 @@ export const ERC721Collateralizer =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 4020,
+                                      "referencedDeclaration": 4017,
                                       "type": "bytes32",
                                       "value": "isEnumerable"
                                     },
-                                    "id": 4058,
+                                    "id": 4055,
                                     "name": "Identifier",
                                     "src": "13823:12:7"
                                   }
                                 ],
-                                "id": 4059,
+                                "id": 4056,
                                 "name": "FunctionCall",
                                 "src": "13818:18:7"
                               },
@@ -8130,12 +8130,12 @@ export const ERC721Collateralizer =
                                   "type": "int_const 1",
                                   "value": "1"
                                 },
-                                "id": 4060,
+                                "id": 4057,
                                 "name": "Literal",
                                 "src": "13840:1:7"
                               }
                             ],
-                            "id": 4061,
+                            "id": 4058,
                             "name": "BinaryOperation",
                             "src": "13818:23:7"
                           },
@@ -8145,11 +8145,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4038,
+                              "referencedDeclaration": 4035,
                               "type": "uint256",
                               "value": "collateralContractIndex"
                             },
-                            "id": 4062,
+                            "id": 4059,
                             "name": "Identifier",
                             "src": "13855:23:7"
                           },
@@ -8159,31 +8159,31 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4048,
+                              "referencedDeclaration": 4045,
                               "type": "uint256",
                               "value": "tokenRef"
                             },
-                            "id": 4063,
+                            "id": 4060,
                             "name": "Identifier",
                             "src": "13892:8:7"
                           }
                         ],
-                        "id": 4064,
+                        "id": 4061,
                         "name": "TupleExpression",
                         "src": "13705:205:7"
                       }
                     ],
-                    "id": 4065,
+                    "id": 4062,
                     "name": "Return",
                     "src": "13698:212:7"
                   }
                 ],
-                "id": 4066,
+                "id": 4063,
                 "name": "Block",
                 "src": "12233:1684:7"
               }
             ],
-            "id": 4067,
+            "id": 4064,
             "name": "FunctionDefinition",
             "src": "12101:1816:7"
           },
@@ -8197,7 +8197,7 @@ export const ERC721Collateralizer =
               ],
               "name": "retrieveCollateralParameters",
               "payable": false,
-              "scope": 4151,
+              "scope": 4148,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -8209,7 +8209,7 @@ export const ERC721Collateralizer =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 4150,
+                      "scope": 4147,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -8222,17 +8222,17 @@ export const ERC721Collateralizer =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 4068,
+                        "id": 4065,
                         "name": "ElementaryTypeName",
                         "src": "14265:7:7"
                       }
                     ],
-                    "id": 4069,
+                    "id": 4066,
                     "name": "VariableDeclaration",
                     "src": "14265:19:7"
                   }
                 ],
-                "id": 4070,
+                "id": 4067,
                 "name": "ParameterList",
                 "src": "14264:21:7"
               },
@@ -8242,7 +8242,7 @@ export const ERC721Collateralizer =
                     "attributes": {
                       "constant": false,
                       "name": "_collateralTokenAddress",
-                      "scope": 4150,
+                      "scope": 4147,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -8255,12 +8255,12 @@ export const ERC721Collateralizer =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 4071,
+                        "id": 4068,
                         "name": "ElementaryTypeName",
                         "src": "14344:7:7"
                       }
                     ],
-                    "id": 4072,
+                    "id": 4069,
                     "name": "VariableDeclaration",
                     "src": "14344:31:7"
                   },
@@ -8268,7 +8268,7 @@ export const ERC721Collateralizer =
                     "attributes": {
                       "constant": false,
                       "name": "_collateralTokenID",
-                      "scope": 4150,
+                      "scope": 4147,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -8281,12 +8281,12 @@ export const ERC721Collateralizer =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 4073,
+                        "id": 4070,
                         "name": "ElementaryTypeName",
                         "src": "14389:7:7"
                       }
                     ],
-                    "id": 4074,
+                    "id": 4071,
                     "name": "VariableDeclaration",
                     "src": "14389:26:7"
                   },
@@ -8294,7 +8294,7 @@ export const ERC721Collateralizer =
                     "attributes": {
                       "constant": false,
                       "name": "_termsContract",
-                      "scope": 4150,
+                      "scope": 4147,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "contract TermsContract",
@@ -8306,20 +8306,20 @@ export const ERC721Collateralizer =
                         "attributes": {
                           "contractScope": null,
                           "name": "TermsContract",
-                          "referencedDeclaration": 4742,
+                          "referencedDeclaration": 4739,
                           "type": "contract TermsContract"
                         },
-                        "id": 4075,
+                        "id": 4072,
                         "name": "UserDefinedTypeName",
                         "src": "14429:13:7"
                       }
                     ],
-                    "id": 4076,
+                    "id": 4073,
                     "name": "VariableDeclaration",
                     "src": "14429:28:7"
                   }
                 ],
-                "id": 4077,
+                "id": 4074,
                 "name": "ParameterList",
                 "src": "14330:137:7"
               },
@@ -8337,7 +8337,7 @@ export const ERC721Collateralizer =
                         "attributes": {
                           "constant": false,
                           "name": "termsContractAddress",
-                          "scope": 4150,
+                          "scope": 4147,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "address",
@@ -8350,17 +8350,17 @@ export const ERC721Collateralizer =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 4078,
+                            "id": 4075,
                             "name": "ElementaryTypeName",
                             "src": "14482:7:7"
                           }
                         ],
-                        "id": 4079,
+                        "id": 4076,
                         "name": "VariableDeclaration",
                         "src": "14482:28:7"
                       }
                     ],
-                    "id": 4080,
+                    "id": 4077,
                     "name": "VariableDeclarationStatement",
                     "src": "14482:28:7"
                   },
@@ -8376,7 +8376,7 @@ export const ERC721Collateralizer =
                         "attributes": {
                           "constant": false,
                           "name": "termsContractParameters",
-                          "scope": 4150,
+                          "scope": 4147,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bytes32",
@@ -8389,17 +8389,17 @@ export const ERC721Collateralizer =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 4081,
+                            "id": 4078,
                             "name": "ElementaryTypeName",
                             "src": "14520:7:7"
                           }
                         ],
-                        "id": 4082,
+                        "id": 4079,
                         "name": "VariableDeclaration",
                         "src": "14520:31:7"
                       }
                     ],
-                    "id": 4083,
+                    "id": 4080,
                     "name": "VariableDeclarationStatement",
                     "src": "14520:31:7"
                   },
@@ -8433,11 +8433,11 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4079,
+                                  "referencedDeclaration": 4076,
                                   "type": "address",
                                   "value": "termsContractAddress"
                                 },
-                                "id": 4084,
+                                "id": 4081,
                                 "name": "Identifier",
                                 "src": "14643:20:7"
                               },
@@ -8447,16 +8447,16 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4082,
+                                  "referencedDeclaration": 4079,
                                   "type": "bytes32",
                                   "value": "termsContractParameters"
                                 },
-                                "id": 4085,
+                                "id": 4082,
                                 "name": "Identifier",
                                 "src": "14665:23:7"
                               }
                             ],
-                            "id": 4086,
+                            "id": 4083,
                             "name": "TupleExpression",
                             "src": "14642:47:7"
                           },
@@ -8488,7 +8488,7 @@ export const ERC721Collateralizer =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "getTerms",
-                                  "referencedDeclaration": 3064,
+                                  "referencedDeclaration": 3061,
                                   "type": "function (bytes32) view external returns (address,bytes32)"
                                 },
                                 "children": [
@@ -8498,16 +8498,16 @@ export const ERC721Collateralizer =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 3558,
+                                      "referencedDeclaration": 3555,
                                       "type": "contract DebtRegistry",
                                       "value": "debtRegistry"
                                     },
-                                    "id": 4087,
+                                    "id": 4084,
                                     "name": "Identifier",
                                     "src": "14692:12:7"
                                   }
                                 ],
-                                "id": 4088,
+                                "id": 4085,
                                 "name": "MemberAccess",
                                 "src": "14692:21:7"
                               },
@@ -8517,26 +8517,26 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4069,
+                                  "referencedDeclaration": 4066,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 4089,
+                                "id": 4086,
                                 "name": "Identifier",
                                 "src": "14714:11:7"
                               }
                             ],
-                            "id": 4090,
+                            "id": 4087,
                             "name": "FunctionCall",
                             "src": "14692:34:7"
                           }
                         ],
-                        "id": 4091,
+                        "id": 4088,
                         "name": "Assignment",
                         "src": "14642:84:7"
                       }
                     ],
-                    "id": 4092,
+                    "id": 4089,
                     "name": "ExpressionStatement",
                     "src": "14642:84:7"
                   },
@@ -8552,7 +8552,7 @@ export const ERC721Collateralizer =
                         "attributes": {
                           "constant": false,
                           "name": "isEnumerable",
-                          "scope": 4150,
+                          "scope": 4147,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bool",
@@ -8565,17 +8565,17 @@ export const ERC721Collateralizer =
                               "name": "bool",
                               "type": "bool"
                             },
-                            "id": 4093,
+                            "id": 4090,
                             "name": "ElementaryTypeName",
                             "src": "14737:4:7"
                           }
                         ],
-                        "id": 4094,
+                        "id": 4091,
                         "name": "VariableDeclaration",
                         "src": "14737:17:7"
                       }
                     ],
-                    "id": 4095,
+                    "id": 4092,
                     "name": "VariableDeclarationStatement",
                     "src": "14737:17:7"
                   },
@@ -8591,7 +8591,7 @@ export const ERC721Collateralizer =
                         "attributes": {
                           "constant": false,
                           "name": "collateralContractIndex",
-                          "scope": 4150,
+                          "scope": 4147,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -8604,17 +8604,17 @@ export const ERC721Collateralizer =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 4096,
+                            "id": 4093,
                             "name": "ElementaryTypeName",
                             "src": "14764:4:7"
                           }
                         ],
-                        "id": 4097,
+                        "id": 4094,
                         "name": "VariableDeclaration",
                         "src": "14764:28:7"
                       }
                     ],
-                    "id": 4098,
+                    "id": 4095,
                     "name": "VariableDeclarationStatement",
                     "src": "14764:28:7"
                   },
@@ -8630,7 +8630,7 @@ export const ERC721Collateralizer =
                         "attributes": {
                           "constant": false,
                           "name": "collateralTokenRef",
-                          "scope": 4150,
+                          "scope": 4147,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -8643,17 +8643,17 @@ export const ERC721Collateralizer =
                               "name": "uint256",
                               "type": "uint256"
                             },
-                            "id": 4099,
+                            "id": 4096,
                             "name": "ElementaryTypeName",
                             "src": "14802:7:7"
                           }
                         ],
-                        "id": 4100,
+                        "id": 4097,
                         "name": "VariableDeclaration",
                         "src": "14802:26:7"
                       }
                     ],
-                    "id": 4101,
+                    "id": 4098,
                     "name": "VariableDeclarationStatement",
                     "src": "14802:26:7"
                   },
@@ -8669,7 +8669,7 @@ export const ERC721Collateralizer =
                         "attributes": {
                           "constant": false,
                           "name": "collateralTokenID",
-                          "scope": 4150,
+                          "scope": 4147,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -8682,17 +8682,17 @@ export const ERC721Collateralizer =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 4102,
+                            "id": 4099,
                             "name": "ElementaryTypeName",
                             "src": "14838:4:7"
                           }
                         ],
-                        "id": 4103,
+                        "id": 4100,
                         "name": "VariableDeclaration",
                         "src": "14838:22:7"
                       }
                     ],
-                    "id": 4104,
+                    "id": 4101,
                     "name": "VariableDeclarationStatement",
                     "src": "14838:22:7"
                   },
@@ -8726,11 +8726,11 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4094,
+                                  "referencedDeclaration": 4091,
                                   "type": "bool",
                                   "value": "isEnumerable"
                                 },
-                                "id": 4105,
+                                "id": 4102,
                                 "name": "Identifier",
                                 "src": "14980:12:7"
                               },
@@ -8740,11 +8740,11 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4097,
+                                  "referencedDeclaration": 4094,
                                   "type": "uint256",
                                   "value": "collateralContractIndex"
                                 },
-                                "id": 4106,
+                                "id": 4103,
                                 "name": "Identifier",
                                 "src": "15006:23:7"
                               },
@@ -8754,16 +8754,16 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4100,
+                                  "referencedDeclaration": 4097,
                                   "type": "uint256",
                                   "value": "collateralTokenRef"
                                 },
-                                "id": 4107,
+                                "id": 4104,
                                 "name": "Identifier",
                                 "src": "15043:18:7"
                               }
                             ],
-                            "id": 4108,
+                            "id": 4105,
                             "name": "TupleExpression",
                             "src": "14966:106:7"
                           },
@@ -8793,11 +8793,11 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4067,
+                                  "referencedDeclaration": 4064,
                                   "type": "function (bytes32) pure returns (bool,uint256,uint256)",
                                   "value": "unpackCollateralParametersFromBytes"
                                 },
-                                "id": 4109,
+                                "id": 4106,
                                 "name": "Identifier",
                                 "src": "15075:35:7"
                               },
@@ -8807,33 +8807,33 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4082,
+                                  "referencedDeclaration": 4079,
                                   "type": "bytes32",
                                   "value": "termsContractParameters"
                                 },
-                                "id": 4110,
+                                "id": 4107,
                                 "name": "Identifier",
                                 "src": "15111:23:7"
                               }
                             ],
-                            "id": 4111,
+                            "id": 4108,
                             "name": "FunctionCall",
                             "src": "15075:60:7"
                           }
                         ],
-                        "id": 4112,
+                        "id": 4109,
                         "name": "Assignment",
                         "src": "14966:169:7"
                       }
                     ],
-                    "id": 4113,
+                    "id": 4110,
                     "name": "ExpressionStatement",
                     "src": "14966:169:7"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        4115
+                        4112
                       ]
                     },
                     "children": [
@@ -8841,7 +8841,7 @@ export const ERC721Collateralizer =
                         "attributes": {
                           "constant": false,
                           "name": "collateralTokenAddress",
-                          "scope": 4150,
+                          "scope": 4147,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "address",
@@ -8854,12 +8854,12 @@ export const ERC721Collateralizer =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 4114,
+                            "id": 4111,
                             "name": "ElementaryTypeName",
                             "src": "15242:7:7"
                           }
                         ],
-                        "id": 4115,
+                        "id": 4112,
                         "name": "VariableDeclaration",
                         "src": "15242:30:7"
                       },
@@ -8891,7 +8891,7 @@ export const ERC721Collateralizer =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "getTokenAddressByIndex",
-                              "referencedDeclaration": 4292,
+                              "referencedDeclaration": 4289,
                               "type": "function (uint256) view external returns (address)"
                             },
                             "children": [
@@ -8901,16 +8901,16 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3560,
+                                  "referencedDeclaration": 3557,
                                   "type": "contract ERC721TokenRegistry",
                                   "value": "tokenRegistry"
                                 },
-                                "id": 4116,
+                                "id": 4113,
                                 "name": "Identifier",
                                 "src": "15275:13:7"
                               }
                             ],
-                            "id": 4117,
+                            "id": 4114,
                             "name": "MemberAccess",
                             "src": "15275:36:7"
                           },
@@ -8920,28 +8920,28 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4097,
+                              "referencedDeclaration": 4094,
                               "type": "uint256",
                               "value": "collateralContractIndex"
                             },
-                            "id": 4118,
+                            "id": 4115,
                             "name": "Identifier",
                             "src": "15312:23:7"
                           }
                         ],
-                        "id": 4119,
+                        "id": 4116,
                         "name": "FunctionCall",
                         "src": "15275:61:7"
                       }
                     ],
-                    "id": 4120,
+                    "id": 4117,
                     "name": "VariableDeclarationStatement",
                     "src": "15242:94:7"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        4122
+                        4119
                       ]
                     },
                     "children": [
@@ -8949,7 +8949,7 @@ export const ERC721Collateralizer =
                         "attributes": {
                           "constant": false,
                           "name": "erc721token",
-                          "scope": 4150,
+                          "scope": 4147,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "contract ERC721",
@@ -8961,15 +8961,15 @@ export const ERC721Collateralizer =
                             "attributes": {
                               "contractScope": null,
                               "name": "ERC721",
-                              "referencedDeclaration": 14728,
+                              "referencedDeclaration": 14725,
                               "type": "contract ERC721"
                             },
-                            "id": 4121,
+                            "id": 4118,
                             "name": "UserDefinedTypeName",
                             "src": "15346:6:7"
                           }
                         ],
-                        "id": 4122,
+                        "id": 4119,
                         "name": "VariableDeclaration",
                         "src": "15346:18:7"
                       },
@@ -8999,11 +8999,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 14728,
+                              "referencedDeclaration": 14725,
                               "type": "type(contract ERC721)",
                               "value": "ERC721"
                             },
-                            "id": 4123,
+                            "id": 4120,
                             "name": "Identifier",
                             "src": "15367:6:7"
                           },
@@ -9013,21 +9013,21 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4115,
+                              "referencedDeclaration": 4112,
                               "type": "address",
                               "value": "collateralTokenAddress"
                             },
-                            "id": 4124,
+                            "id": 4121,
                             "name": "Identifier",
                             "src": "15374:22:7"
                           }
                         ],
-                        "id": 4125,
+                        "id": 4122,
                         "name": "FunctionCall",
                         "src": "15367:30:7"
                       }
                     ],
-                    "id": 4126,
+                    "id": 4123,
                     "name": "VariableDeclarationStatement",
                     "src": "15346:51:7"
                   },
@@ -9039,11 +9039,11 @@ export const ERC721Collateralizer =
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 4094,
+                          "referencedDeclaration": 4091,
                           "type": "bool",
                           "value": "isEnumerable"
                         },
-                        "id": 4127,
+                        "id": 4124,
                         "name": "Identifier",
                         "src": "15658:12:7"
                       },
@@ -9068,11 +9068,11 @@ export const ERC721Collateralizer =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 4103,
+                                      "referencedDeclaration": 4100,
                                       "type": "uint256",
                                       "value": "collateralTokenID"
                                     },
-                                    "id": 4128,
+                                    "id": 4125,
                                     "name": "Identifier",
                                     "src": "15686:17:7"
                                   },
@@ -9104,7 +9104,7 @@ export const ERC721Collateralizer =
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "tokenByIndex",
-                                          "referencedDeclaration": 14700,
+                                          "referencedDeclaration": 14697,
                                           "type": "function (uint256) view external returns (uint256)"
                                         },
                                         "children": [
@@ -9114,16 +9114,16 @@ export const ERC721Collateralizer =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 4122,
+                                              "referencedDeclaration": 4119,
                                               "type": "contract ERC721",
                                               "value": "erc721token"
                                             },
-                                            "id": 4129,
+                                            "id": 4126,
                                             "name": "Identifier",
                                             "src": "15706:11:7"
                                           }
                                         ],
-                                        "id": 4130,
+                                        "id": 4127,
                                         "name": "MemberAccess",
                                         "src": "15706:24:7"
                                       },
@@ -9133,31 +9133,31 @@ export const ERC721Collateralizer =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 4100,
+                                          "referencedDeclaration": 4097,
                                           "type": "uint256",
                                           "value": "collateralTokenRef"
                                         },
-                                        "id": 4131,
+                                        "id": 4128,
                                         "name": "Identifier",
                                         "src": "15731:18:7"
                                       }
                                     ],
-                                    "id": 4132,
+                                    "id": 4129,
                                     "name": "FunctionCall",
                                     "src": "15706:44:7"
                                   }
                                 ],
-                                "id": 4133,
+                                "id": 4130,
                                 "name": "Assignment",
                                 "src": "15686:64:7"
                               }
                             ],
-                            "id": 4134,
+                            "id": 4131,
                             "name": "ExpressionStatement",
                             "src": "15686:64:7"
                           }
                         ],
-                        "id": 4135,
+                        "id": 4132,
                         "name": "Block",
                         "src": "15672:89:7"
                       },
@@ -9182,11 +9182,11 @@ export const ERC721Collateralizer =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 4103,
+                                      "referencedDeclaration": 4100,
                                       "type": "uint256",
                                       "value": "collateralTokenID"
                                     },
-                                    "id": 4136,
+                                    "id": 4133,
                                     "name": "Identifier",
                                     "src": "15781:17:7"
                                   },
@@ -9196,37 +9196,37 @@ export const ERC721Collateralizer =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 4100,
+                                      "referencedDeclaration": 4097,
                                       "type": "uint256",
                                       "value": "collateralTokenRef"
                                     },
-                                    "id": 4137,
+                                    "id": 4134,
                                     "name": "Identifier",
                                     "src": "15801:18:7"
                                   }
                                 ],
-                                "id": 4138,
+                                "id": 4135,
                                 "name": "Assignment",
                                 "src": "15781:38:7"
                               }
                             ],
-                            "id": 4139,
+                            "id": 4136,
                             "name": "ExpressionStatement",
                             "src": "15781:38:7"
                           }
                         ],
-                        "id": 4140,
+                        "id": 4137,
                         "name": "Block",
                         "src": "15767:63:7"
                       }
                     ],
-                    "id": 4141,
+                    "id": 4138,
                     "name": "IfStatement",
                     "src": "15654:176:7"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 4077
+                      "functionReturnParameters": 4074
                     },
                     "children": [
                       {
@@ -9246,11 +9246,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4115,
+                              "referencedDeclaration": 4112,
                               "type": "address",
                               "value": "collateralTokenAddress"
                             },
-                            "id": 4142,
+                            "id": 4139,
                             "name": "Identifier",
                             "src": "15861:22:7"
                           },
@@ -9260,11 +9260,11 @@ export const ERC721Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4103,
+                              "referencedDeclaration": 4100,
                               "type": "uint256",
                               "value": "collateralTokenID"
                             },
-                            "id": 4143,
+                            "id": 4140,
                             "name": "Identifier",
                             "src": "15897:17:7"
                           },
@@ -9294,11 +9294,11 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4742,
+                                  "referencedDeclaration": 4739,
                                   "type": "type(contract TermsContract)",
                                   "value": "TermsContract"
                                 },
-                                "id": 4144,
+                                "id": 4141,
                                 "name": "Identifier",
                                 "src": "15928:13:7"
                               },
@@ -9308,46 +9308,46 @@ export const ERC721Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4079,
+                                  "referencedDeclaration": 4076,
                                   "type": "address",
                                   "value": "termsContractAddress"
                                 },
-                                "id": 4145,
+                                "id": 4142,
                                 "name": "Identifier",
                                 "src": "15942:20:7"
                               }
                             ],
-                            "id": 4146,
+                            "id": 4143,
                             "name": "FunctionCall",
                             "src": "15928:35:7"
                           }
                         ],
-                        "id": 4147,
+                        "id": 4144,
                         "name": "TupleExpression",
                         "src": "15847:126:7"
                       }
                     ],
-                    "id": 4148,
+                    "id": 4145,
                     "name": "Return",
                     "src": "15840:133:7"
                   }
                 ],
-                "id": 4149,
+                "id": 4146,
                 "name": "Block",
                 "src": "14472:1508:7"
               }
             ],
-            "id": 4150,
+            "id": 4147,
             "name": "FunctionDefinition",
             "src": "14227:1753:7"
           }
         ],
-        "id": 4151,
+        "id": 4148,
         "name": "ContractDefinition",
         "src": "1353:14629:7"
       }
     ],
-    "id": 4152,
+    "id": 4149,
     "name": "SourceUnit",
     "src": "584:15399:7"
   },
@@ -9644,9 +9644,9 @@ export const ERC721Collateralizer =
         }
       },
       "links": {},
-      "address": "0xb96fb1c8750a8ad6e866d0764e8979ad3e77aebd"
+      "address": "0xa9dbf76175244abe6a602ced03889738b055883a"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-21T17:50:40.671Z"
+  "updatedAt": "2018-09-25T20:05:02.741Z"
 }

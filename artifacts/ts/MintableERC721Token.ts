@@ -449,7 +449,7 @@ export const MintableERC721Token =
       "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/test/MintableERC721Token.sol",
       "exportedSymbols": {
         "MintableERC721Token": [
-          9977
+          9974
         ]
       }
     },
@@ -462,66 +462,66 @@ export const MintableERC721Token =
             ".18"
           ]
         },
-        "id": 9922,
+        "id": 9919,
         "name": "PragmaDirective",
         "src": "0:23:20"
       },
       {
         "attributes": {
-          "SourceUnit": 15807,
+          "SourceUnit": 15804,
           "absolutePath": "zeppelin-solidity/contracts/token/ERC721/ERC721Token.sol",
           "file": "zeppelin-solidity/contracts/token/ERC721/ERC721Token.sol",
-          "scope": 9978,
+          "scope": 9975,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 9923,
+        "id": 9920,
         "name": "ImportDirective",
         "src": "25:66:20"
       },
       {
         "attributes": {
-          "SourceUnit": 3536,
+          "SourceUnit": 3533,
           "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/ERC165.sol",
           "file": "../ERC165.sol",
-          "scope": 9978,
+          "scope": 9975,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 9924,
+        "id": 9921,
         "name": "ImportDirective",
         "src": "92:23:20"
       },
       {
         "attributes": {
           "contractDependencies": [
-            3535,
-            14701,
-            14721,
-            14728,
-            14835,
-            15418,
-            15806
+            3532,
+            14698,
+            14718,
+            14725,
+            14832,
+            15415,
+            15803
           ],
           "contractKind": "contract",
           "documentation": "This implementation of the ERC721 standard allows us to deploy a test ERC721 contract and mint\nnon-fungible tokens that we can use in a test environment.",
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            9977,
-            3535,
-            15806,
-            15418,
-            14728,
-            14721,
-            14701,
-            14835
+            9974,
+            3532,
+            15803,
+            15415,
+            14725,
+            14718,
+            14698,
+            14832
           ],
           "name": "MintableERC721Token",
-          "scope": 9978
+          "scope": 9975
         },
         "children": [
           {
@@ -535,15 +535,15 @@ export const MintableERC721Token =
                 "attributes": {
                   "contractScope": null,
                   "name": "ERC721Token",
-                  "referencedDeclaration": 15806,
+                  "referencedDeclaration": 15803,
                   "type": "contract ERC721Token"
                 },
-                "id": 9925,
+                "id": 9922,
                 "name": "UserDefinedTypeName",
                 "src": "317:11:20"
               }
             ],
-            "id": 9926,
+            "id": 9923,
             "name": "InheritanceSpecifier",
             "src": "317:11:20"
           },
@@ -558,15 +558,15 @@ export const MintableERC721Token =
                 "attributes": {
                   "contractScope": null,
                   "name": "ERC165",
-                  "referencedDeclaration": 3535,
+                  "referencedDeclaration": 3532,
                   "type": "contract ERC165"
                 },
-                "id": 9927,
+                "id": 9924,
                 "name": "UserDefinedTypeName",
                 "src": "330:6:20"
               }
             ],
-            "id": 9928,
+            "id": 9925,
             "name": "InheritanceSpecifier",
             "src": "330:6:20"
           },
@@ -577,7 +577,7 @@ export const MintableERC721Token =
               "isConstructor": true,
               "name": "MintableERC721Token",
               "payable": false,
-              "scope": 9977,
+              "scope": 9974,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -590,7 +590,7 @@ export const MintableERC721Token =
                   ]
                 },
                 "children": [],
-                "id": 9929,
+                "id": 9926,
                 "name": "ParameterList",
                 "src": "371:2:20"
               },
@@ -601,7 +601,7 @@ export const MintableERC721Token =
                   ]
                 },
                 "children": [],
-                "id": 9934,
+                "id": 9931,
                 "name": "ParameterList",
                 "src": "423:0:20"
               },
@@ -613,11 +613,11 @@ export const MintableERC721Token =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 15806,
+                      "referencedDeclaration": 15803,
                       "type": "type(contract ERC721Token)",
                       "value": "ERC721Token"
                     },
-                    "id": 9930,
+                    "id": 9927,
                     "name": "Identifier",
                     "src": "381:11:20"
                   },
@@ -634,7 +634,7 @@ export const MintableERC721Token =
                       "type": "literal_string \"MintableERC721Token\"",
                       "value": "MintableERC721Token"
                     },
-                    "id": 9931,
+                    "id": 9928,
                     "name": "Literal",
                     "src": "393:21:20"
                   },
@@ -651,12 +651,12 @@ export const MintableERC721Token =
                       "type": "literal_string \"MET\"",
                       "value": "MET"
                     },
-                    "id": 9932,
+                    "id": 9929,
                     "name": "Literal",
                     "src": "416:5:20"
                   }
                 ],
-                "id": 9933,
+                "id": 9930,
                 "name": "ModifierInvocation",
                 "src": "381:41:20"
               },
@@ -667,12 +667,12 @@ export const MintableERC721Token =
                   ]
                 },
                 "children": [],
-                "id": 9935,
+                "id": 9932,
                 "name": "Block",
                 "src": "423:2:20"
               }
             ],
-            "id": 9936,
+            "id": 9933,
             "name": "FunctionDefinition",
             "src": "343:82:20"
           },
@@ -686,7 +686,7 @@ export const MintableERC721Token =
               ],
               "name": "mint",
               "payable": false,
-              "scope": 9977,
+              "scope": 9974,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -698,7 +698,7 @@ export const MintableERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 9949,
+                      "scope": 9946,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -711,12 +711,12 @@ export const MintableERC721Token =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 9937,
+                        "id": 9934,
                         "name": "ElementaryTypeName",
                         "src": "445:7:20"
                       }
                     ],
-                    "id": 9938,
+                    "id": 9935,
                     "name": "VariableDeclaration",
                     "src": "445:11:20"
                   },
@@ -724,7 +724,7 @@ export const MintableERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 9949,
+                      "scope": 9946,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -737,17 +737,17 @@ export const MintableERC721Token =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 9939,
+                        "id": 9936,
                         "name": "ElementaryTypeName",
                         "src": "458:4:20"
                       }
                     ],
-                    "id": 9940,
+                    "id": 9937,
                     "name": "VariableDeclaration",
                     "src": "458:13:20"
                   }
                 ],
-                "id": 9941,
+                "id": 9938,
                 "name": "ParameterList",
                 "src": "444:28:20"
               },
@@ -758,7 +758,7 @@ export const MintableERC721Token =
                   ]
                 },
                 "children": [],
-                "id": 9942,
+                "id": 9939,
                 "name": "ParameterList",
                 "src": "480:0:20"
               },
@@ -794,13 +794,13 @@ export const MintableERC721Token =
                                 }
                               ],
                               "overloadedDeclarations": [
-                                15726
+                                15723
                               ],
-                              "referencedDeclaration": 15726,
+                              "referencedDeclaration": 15723,
                               "type": "function (address,uint256)",
                               "value": "_mint"
                             },
-                            "id": 9943,
+                            "id": 9940,
                             "name": "Identifier",
                             "src": "490:5:20"
                           },
@@ -810,11 +810,11 @@ export const MintableERC721Token =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9938,
+                              "referencedDeclaration": 9935,
                               "type": "address",
                               "value": "_to"
                             },
-                            "id": 9944,
+                            "id": 9941,
                             "name": "Identifier",
                             "src": "496:3:20"
                           },
@@ -824,31 +824,31 @@ export const MintableERC721Token =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9940,
+                              "referencedDeclaration": 9937,
                               "type": "uint256",
                               "value": "_tokenId"
                             },
-                            "id": 9945,
+                            "id": 9942,
                             "name": "Identifier",
                             "src": "501:8:20"
                           }
                         ],
-                        "id": 9946,
+                        "id": 9943,
                         "name": "FunctionCall",
                         "src": "490:20:20"
                       }
                     ],
-                    "id": 9947,
+                    "id": 9944,
                     "name": "ExpressionStatement",
                     "src": "490:20:20"
                   }
                 ],
-                "id": 9948,
+                "id": 9945,
                 "name": "Block",
                 "src": "480:37:20"
               }
             ],
-            "id": 9949,
+            "id": 9946,
             "name": "FunctionDefinition",
             "src": "431:86:20"
           },
@@ -862,9 +862,9 @@ export const MintableERC721Token =
               ],
               "name": "supportsInterface",
               "payable": false,
-              "scope": 9977,
+              "scope": 9974,
               "stateMutability": "view",
-              "superFunction": 3534,
+              "superFunction": 3531,
               "visibility": "external"
             },
             "children": [
@@ -874,7 +874,7 @@ export const MintableERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "interfaceID",
-                      "scope": 9961,
+                      "scope": 9958,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes4",
@@ -887,17 +887,17 @@ export const MintableERC721Token =
                           "name": "bytes4",
                           "type": "bytes4"
                         },
-                        "id": 9950,
+                        "id": 9947,
                         "name": "ElementaryTypeName",
                         "src": "639:6:20"
                       }
                     ],
-                    "id": 9951,
+                    "id": 9948,
                     "name": "VariableDeclaration",
                     "src": "639:18:20"
                   }
                 ],
-                "id": 9952,
+                "id": 9949,
                 "name": "ParameterList",
                 "src": "638:20:20"
               },
@@ -907,7 +907,7 @@ export const MintableERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "_isSupported",
-                      "scope": 9961,
+                      "scope": 9958,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -920,17 +920,17 @@ export const MintableERC721Token =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 9953,
+                        "id": 9950,
                         "name": "ElementaryTypeName",
                         "src": "706:4:20"
                       }
                     ],
-                    "id": 9954,
+                    "id": 9951,
                     "name": "VariableDeclaration",
                     "src": "706:17:20"
                   }
                 ],
-                "id": 9955,
+                "id": 9952,
                 "name": "ParameterList",
                 "src": "705:19:20"
               },
@@ -938,7 +938,7 @@ export const MintableERC721Token =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 9955
+                      "functionReturnParameters": 9952
                     },
                     "children": [
                       {
@@ -962,11 +962,11 @@ export const MintableERC721Token =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9951,
+                              "referencedDeclaration": 9948,
                               "type": "bytes4",
                               "value": "interfaceID"
                             },
-                            "id": 9956,
+                            "id": 9953,
                             "name": "Identifier",
                             "src": "746:11:20"
                           },
@@ -983,27 +983,27 @@ export const MintableERC721Token =
                               "type": "int_const 2158778573",
                               "value": "0x80ac58cd"
                             },
-                            "id": 9957,
+                            "id": 9954,
                             "name": "Literal",
                             "src": "761:10:20"
                           }
                         ],
-                        "id": 9958,
+                        "id": 9955,
                         "name": "BinaryOperation",
                         "src": "746:25:20"
                       }
                     ],
-                    "id": 9959,
+                    "id": 9956,
                     "name": "Return",
                     "src": "739:32:20"
                   }
                 ],
-                "id": 9960,
+                "id": 9957,
                 "name": "Block",
                 "src": "729:59:20"
               }
             ],
-            "id": 9961,
+            "id": 9958,
             "name": "FunctionDefinition",
             "src": "612:176:20"
           },
@@ -1017,7 +1017,7 @@ export const MintableERC721Token =
               ],
               "name": "transfer",
               "payable": false,
-              "scope": 9977,
+              "scope": 9974,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -1029,7 +1029,7 @@ export const MintableERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 9976,
+                      "scope": 9973,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1042,12 +1042,12 @@ export const MintableERC721Token =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 9962,
+                        "id": 9959,
                         "name": "ElementaryTypeName",
                         "src": "868:7:20"
                       }
                     ],
-                    "id": 9963,
+                    "id": 9960,
                     "name": "VariableDeclaration",
                     "src": "868:11:20"
                   },
@@ -1055,7 +1055,7 @@ export const MintableERC721Token =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 9976,
+                      "scope": 9973,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1068,17 +1068,17 @@ export const MintableERC721Token =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 9964,
+                        "id": 9961,
                         "name": "ElementaryTypeName",
                         "src": "881:4:20"
                       }
                     ],
-                    "id": 9965,
+                    "id": 9962,
                     "name": "VariableDeclaration",
                     "src": "881:13:20"
                   }
                 ],
-                "id": 9966,
+                "id": 9963,
                 "name": "ParameterList",
                 "src": "867:28:20"
               },
@@ -1089,7 +1089,7 @@ export const MintableERC721Token =
                   ]
                 },
                 "children": [],
-                "id": 9967,
+                "id": 9964,
                 "name": "ParameterList",
                 "src": "907:0:20"
               },
@@ -1129,14 +1129,14 @@ export const MintableERC721Token =
                                 }
                               ],
                               "overloadedDeclarations": [
-                                15152,
-                                15182
+                                15149,
+                                15179
                               ],
-                              "referencedDeclaration": 15152,
+                              "referencedDeclaration": 15149,
                               "type": "function (address,address,uint256)",
                               "value": "safeTransferFrom"
                             },
-                            "id": 9968,
+                            "id": 9965,
                             "name": "Identifier",
                             "src": "917:16:20"
                           },
@@ -1158,16 +1158,16 @@ export const MintableERC721Token =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15818,
+                                  "referencedDeclaration": 15815,
                                   "type": "msg",
                                   "value": "msg"
                                 },
-                                "id": 9969,
+                                "id": 9966,
                                 "name": "Identifier",
                                 "src": "934:3:20"
                               }
                             ],
-                            "id": 9970,
+                            "id": 9967,
                             "name": "MemberAccess",
                             "src": "934:10:20"
                           },
@@ -1177,11 +1177,11 @@ export const MintableERC721Token =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9963,
+                              "referencedDeclaration": 9960,
                               "type": "address",
                               "value": "_to"
                             },
-                            "id": 9971,
+                            "id": 9968,
                             "name": "Identifier",
                             "src": "946:3:20"
                           },
@@ -1191,41 +1191,41 @@ export const MintableERC721Token =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9965,
+                              "referencedDeclaration": 9962,
                               "type": "uint256",
                               "value": "_tokenId"
                             },
-                            "id": 9972,
+                            "id": 9969,
                             "name": "Identifier",
                             "src": "951:8:20"
                           }
                         ],
-                        "id": 9973,
+                        "id": 9970,
                         "name": "FunctionCall",
                         "src": "917:43:20"
                       }
                     ],
-                    "id": 9974,
+                    "id": 9971,
                     "name": "ExpressionStatement",
                     "src": "917:43:20"
                   }
                 ],
-                "id": 9975,
+                "id": 9972,
                 "name": "Block",
                 "src": "907:60:20"
               }
             ],
-            "id": 9976,
+            "id": 9973,
             "name": "FunctionDefinition",
             "src": "850:117:20"
           }
         ],
-        "id": 9977,
+        "id": 9974,
         "name": "ContractDefinition",
         "src": "285:684:20"
       }
     ],
-    "id": 9978,
+    "id": 9975,
     "name": "SourceUnit",
     "src": "0:970:20"
   },
@@ -1242,9 +1242,9 @@ export const MintableERC721Token =
     "70": {
       "events": {},
       "links": {},
-      "address": "0x91fb7df8e787c10bfeccb1e3184cc9b5048f0e1c"
+      "address": "0x5e304316aeb8a3a93ed161aa05692a5bb911165d"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-21T17:50:41.099Z"
+  "updatedAt": "2018-09-25T20:05:02.746Z"
 }
