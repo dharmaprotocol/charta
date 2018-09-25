@@ -439,7 +439,7 @@ export const DummyToken =
       "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/test/dummy_tokens/DummyToken.sol",
       "exportedSymbols": {
         "DummyToken": [
-          10100
+          10118
         ]
       }
     },
@@ -452,64 +452,64 @@ export const DummyToken =
             ".18"
           ]
         },
-        "id": 9976,
+        "id": 9994,
         "name": "PragmaDirective",
         "src": "0:23:21"
       },
       {
         "attributes": {
-          "SourceUnit": 14400,
+          "SourceUnit": 14418,
           "absolutePath": "zeppelin-solidity/contracts/token/ERC20/MintableToken.sol",
           "file": "zeppelin-solidity/contracts/token/ERC20/MintableToken.sol",
-          "scope": 10101,
+          "scope": 10119,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 9977,
+        "id": 9995,
         "name": "ImportDirective",
         "src": "25:67:21"
       },
       {
         "attributes": {
-          "SourceUnit": 14078,
+          "SourceUnit": 14096,
           "absolutePath": "zeppelin-solidity/contracts/math/SafeMath.sol",
           "file": "zeppelin-solidity/contracts/math/SafeMath.sol",
-          "scope": 10101,
+          "scope": 10119,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 9978,
+        "id": 9996,
         "name": "ImportDirective",
         "src": "93:55:21"
       },
       {
         "attributes": {
           "contractDependencies": [
-            14133,
-            14229,
-            14272,
-            14304,
-            14399,
-            14645
+            14151,
+            14247,
+            14290,
+            14322,
+            14417,
+            14663
           ],
           "contractKind": "contract",
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            10100,
-            14399,
-            14133,
-            14645,
-            14229,
-            14272,
-            14304
+            10118,
+            14417,
+            14151,
+            14663,
+            14247,
+            14290,
+            14322
           ],
           "name": "DummyToken",
-          "scope": 10101
+          "scope": 10119
         },
         "children": [
           {
@@ -523,15 +523,15 @@ export const DummyToken =
                 "attributes": {
                   "contractScope": null,
                   "name": "MintableToken",
-                  "referencedDeclaration": 14399,
+                  "referencedDeclaration": 14417,
                   "type": "contract MintableToken"
                 },
-                "id": 9979,
+                "id": 9997,
                 "name": "UserDefinedTypeName",
                 "src": "174:13:21"
               }
             ],
-            "id": 9980,
+            "id": 9998,
             "name": "InheritanceSpecifier",
             "src": "174:13:21"
           },
@@ -541,10 +541,10 @@ export const DummyToken =
                 "attributes": {
                   "contractScope": null,
                   "name": "SafeMath",
-                  "referencedDeclaration": 14077,
+                  "referencedDeclaration": 14095,
                   "type": "library SafeMath"
                 },
-                "id": 9981,
+                "id": 9999,
                 "name": "UserDefinedTypeName",
                 "src": "200:8:21"
               },
@@ -553,12 +553,12 @@ export const DummyToken =
                   "name": "uint",
                   "type": "uint256"
                 },
-                "id": 9982,
+                "id": 10000,
                 "name": "ElementaryTypeName",
                 "src": "213:4:21"
               }
             ],
-            "id": 9983,
+            "id": 10001,
             "name": "UsingForDirective",
             "src": "194:24:21"
           },
@@ -566,7 +566,7 @@ export const DummyToken =
             "attributes": {
               "constant": false,
               "name": "name",
-              "scope": 10100,
+              "scope": 10118,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "string storage ref",
@@ -579,12 +579,12 @@ export const DummyToken =
                   "name": "string",
                   "type": "string storage pointer"
                 },
-                "id": 9984,
+                "id": 10002,
                 "name": "ElementaryTypeName",
                 "src": "223:6:21"
               }
             ],
-            "id": 9985,
+            "id": 10003,
             "name": "VariableDeclaration",
             "src": "223:18:21"
           },
@@ -592,7 +592,7 @@ export const DummyToken =
             "attributes": {
               "constant": false,
               "name": "symbol",
-              "scope": 10100,
+              "scope": 10118,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "string storage ref",
@@ -605,12 +605,12 @@ export const DummyToken =
                   "name": "string",
                   "type": "string storage pointer"
                 },
-                "id": 9986,
+                "id": 10004,
                 "name": "ElementaryTypeName",
                 "src": "247:6:21"
               }
             ],
-            "id": 9987,
+            "id": 10005,
             "name": "VariableDeclaration",
             "src": "247:20:21"
           },
@@ -618,7 +618,7 @@ export const DummyToken =
             "attributes": {
               "constant": false,
               "name": "decimals",
-              "scope": 10100,
+              "scope": 10118,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "uint256",
@@ -631,12 +631,12 @@ export const DummyToken =
                   "name": "uint",
                   "type": "uint256"
                 },
-                "id": 9988,
+                "id": 10006,
                 "name": "ElementaryTypeName",
                 "src": "273:4:21"
               }
             ],
-            "id": 9989,
+            "id": 10007,
             "name": "VariableDeclaration",
             "src": "273:20:21"
           },
@@ -650,7 +650,7 @@ export const DummyToken =
               ],
               "name": "DummyToken",
               "payable": false,
-              "scope": 10100,
+              "scope": 10118,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -662,7 +662,7 @@ export const DummyToken =
                     "attributes": {
                       "constant": false,
                       "name": "_name",
-                      "scope": 10051,
+                      "scope": 10069,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory",
@@ -675,12 +675,12 @@ export const DummyToken =
                           "name": "string",
                           "type": "string storage pointer"
                         },
-                        "id": 9990,
+                        "id": 10008,
                         "name": "ElementaryTypeName",
                         "src": "329:6:21"
                       }
                     ],
-                    "id": 9991,
+                    "id": 10009,
                     "name": "VariableDeclaration",
                     "src": "329:12:21"
                   },
@@ -688,7 +688,7 @@ export const DummyToken =
                     "attributes": {
                       "constant": false,
                       "name": "_symbol",
-                      "scope": 10051,
+                      "scope": 10069,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory",
@@ -701,12 +701,12 @@ export const DummyToken =
                           "name": "string",
                           "type": "string storage pointer"
                         },
-                        "id": 9992,
+                        "id": 10010,
                         "name": "ElementaryTypeName",
                         "src": "351:6:21"
                       }
                     ],
-                    "id": 9993,
+                    "id": 10011,
                     "name": "VariableDeclaration",
                     "src": "351:14:21"
                   },
@@ -714,7 +714,7 @@ export const DummyToken =
                     "attributes": {
                       "constant": false,
                       "name": "_decimals",
-                      "scope": 10051,
+                      "scope": 10069,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -727,12 +727,12 @@ export const DummyToken =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 9994,
+                        "id": 10012,
                         "name": "ElementaryTypeName",
                         "src": "375:4:21"
                       }
                     ],
-                    "id": 9995,
+                    "id": 10013,
                     "name": "VariableDeclaration",
                     "src": "375:14:21"
                   },
@@ -740,7 +740,7 @@ export const DummyToken =
                     "attributes": {
                       "constant": false,
                       "name": "_totalSupply",
-                      "scope": 10051,
+                      "scope": 10069,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -753,12 +753,12 @@ export const DummyToken =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 9996,
+                        "id": 10014,
                         "name": "ElementaryTypeName",
                         "src": "399:4:21"
                       }
                     ],
-                    "id": 9997,
+                    "id": 10015,
                     "name": "VariableDeclaration",
                     "src": "399:17:21"
                   },
@@ -766,7 +766,7 @@ export const DummyToken =
                     "attributes": {
                       "constant": false,
                       "name": "_initialBalanceHolders",
-                      "scope": 10051,
+                      "scope": 10069,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address[] memory",
@@ -785,22 +785,22 @@ export const DummyToken =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 9998,
+                            "id": 10016,
                             "name": "ElementaryTypeName",
                             "src": "426:7:21"
                           }
                         ],
-                        "id": 9999,
+                        "id": 10017,
                         "name": "ArrayTypeName",
                         "src": "426:9:21"
                       }
                     ],
-                    "id": 10000,
+                    "id": 10018,
                     "name": "VariableDeclaration",
                     "src": "426:32:21"
                   }
                 ],
-                "id": 10001,
+                "id": 10019,
                 "name": "ParameterList",
                 "src": "319:140:21"
               },
@@ -811,7 +811,7 @@ export const DummyToken =
                   ]
                 },
                 "children": [],
-                "id": 10002,
+                "id": 10020,
                 "name": "ParameterList",
                 "src": "479:0:21"
               },
@@ -836,11 +836,11 @@ export const DummyToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9985,
+                              "referencedDeclaration": 10003,
                               "type": "string storage ref",
                               "value": "name"
                             },
-                            "id": 10003,
+                            "id": 10021,
                             "name": "Identifier",
                             "src": "489:4:21"
                           },
@@ -850,21 +850,21 @@ export const DummyToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9991,
+                              "referencedDeclaration": 10009,
                               "type": "string memory",
                               "value": "_name"
                             },
-                            "id": 10004,
+                            "id": 10022,
                             "name": "Identifier",
                             "src": "496:5:21"
                           }
                         ],
-                        "id": 10005,
+                        "id": 10023,
                         "name": "Assignment",
                         "src": "489:12:21"
                       }
                     ],
-                    "id": 10006,
+                    "id": 10024,
                     "name": "ExpressionStatement",
                     "src": "489:12:21"
                   },
@@ -887,11 +887,11 @@ export const DummyToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9987,
+                              "referencedDeclaration": 10005,
                               "type": "string storage ref",
                               "value": "symbol"
                             },
-                            "id": 10007,
+                            "id": 10025,
                             "name": "Identifier",
                             "src": "511:6:21"
                           },
@@ -901,21 +901,21 @@ export const DummyToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9993,
+                              "referencedDeclaration": 10011,
                               "type": "string memory",
                               "value": "_symbol"
                             },
-                            "id": 10008,
+                            "id": 10026,
                             "name": "Identifier",
                             "src": "520:7:21"
                           }
                         ],
-                        "id": 10009,
+                        "id": 10027,
                         "name": "Assignment",
                         "src": "511:16:21"
                       }
                     ],
-                    "id": 10010,
+                    "id": 10028,
                     "name": "ExpressionStatement",
                     "src": "511:16:21"
                   },
@@ -938,11 +938,11 @@ export const DummyToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9989,
+                              "referencedDeclaration": 10007,
                               "type": "uint256",
                               "value": "decimals"
                             },
-                            "id": 10011,
+                            "id": 10029,
                             "name": "Identifier",
                             "src": "537:8:21"
                           },
@@ -952,21 +952,21 @@ export const DummyToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9995,
+                              "referencedDeclaration": 10013,
                               "type": "uint256",
                               "value": "_decimals"
                             },
-                            "id": 10012,
+                            "id": 10030,
                             "name": "Identifier",
                             "src": "548:9:21"
                           }
                         ],
-                        "id": 10013,
+                        "id": 10031,
                         "name": "Assignment",
                         "src": "537:20:21"
                       }
                     ],
-                    "id": 10014,
+                    "id": 10032,
                     "name": "ExpressionStatement",
                     "src": "537:20:21"
                   },
@@ -989,11 +989,11 @@ export const DummyToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 14148,
+                              "referencedDeclaration": 14166,
                               "type": "uint256",
                               "value": "totalSupply_"
                             },
-                            "id": 10015,
+                            "id": 10033,
                             "name": "Identifier",
                             "src": "567:12:21"
                           },
@@ -1003,28 +1003,28 @@ export const DummyToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9997,
+                              "referencedDeclaration": 10015,
                               "type": "uint256",
                               "value": "_totalSupply"
                             },
-                            "id": 10016,
+                            "id": 10034,
                             "name": "Identifier",
                             "src": "582:12:21"
                           }
                         ],
-                        "id": 10017,
+                        "id": 10035,
                         "name": "Assignment",
                         "src": "567:27:21"
                       }
                     ],
-                    "id": 10018,
+                    "id": 10036,
                     "name": "ExpressionStatement",
                     "src": "567:27:21"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        10020
+                        10038
                       ]
                     },
                     "children": [
@@ -1032,7 +1032,7 @@ export const DummyToken =
                         "attributes": {
                           "constant": false,
                           "name": "numInitialBalanceHolders",
-                          "scope": 10051,
+                          "scope": 10069,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -1045,12 +1045,12 @@ export const DummyToken =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 10019,
+                            "id": 10037,
                             "name": "ElementaryTypeName",
                             "src": "605:4:21"
                           }
                         ],
-                        "id": 10020,
+                        "id": 10038,
                         "name": "VariableDeclaration",
                         "src": "605:29:21"
                       },
@@ -1072,21 +1072,21 @@ export const DummyToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10000,
+                              "referencedDeclaration": 10018,
                               "type": "address[] memory",
                               "value": "_initialBalanceHolders"
                             },
-                            "id": 10021,
+                            "id": 10039,
                             "name": "Identifier",
                             "src": "637:22:21"
                           }
                         ],
-                        "id": 10022,
+                        "id": 10040,
                         "name": "MemberAccess",
                         "src": "637:29:21"
                       }
                     ],
-                    "id": 10023,
+                    "id": 10041,
                     "name": "VariableDeclarationStatement",
                     "src": "605:61:21"
                   },
@@ -1095,7 +1095,7 @@ export const DummyToken =
                       {
                         "attributes": {
                           "assignments": [
-                            10025
+                            10043
                           ]
                         },
                         "children": [
@@ -1103,7 +1103,7 @@ export const DummyToken =
                             "attributes": {
                               "constant": false,
                               "name": "i",
-                              "scope": 10051,
+                              "scope": 10069,
                               "stateVariable": false,
                               "storageLocation": "default",
                               "type": "uint256",
@@ -1116,12 +1116,12 @@ export const DummyToken =
                                   "name": "uint",
                                   "type": "uint256"
                                 },
-                                "id": 10024,
+                                "id": 10042,
                                 "name": "ElementaryTypeName",
                                 "src": "762:4:21"
                               }
                             ],
-                            "id": 10025,
+                            "id": 10043,
                             "name": "VariableDeclaration",
                             "src": "762:6:21"
                           },
@@ -1138,12 +1138,12 @@ export const DummyToken =
                               "type": "int_const 0",
                               "value": "0"
                             },
-                            "id": 10026,
+                            "id": 10044,
                             "name": "Literal",
                             "src": "771:1:21"
                           }
                         ],
-                        "id": 10027,
+                        "id": 10045,
                         "name": "VariableDeclarationStatement",
                         "src": "762:10:21"
                       },
@@ -1168,11 +1168,11 @@ export const DummyToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10025,
+                              "referencedDeclaration": 10043,
                               "type": "uint256",
                               "value": "i"
                             },
-                            "id": 10028,
+                            "id": 10046,
                             "name": "Identifier",
                             "src": "774:1:21"
                           },
@@ -1182,16 +1182,16 @@ export const DummyToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10020,
+                              "referencedDeclaration": 10038,
                               "type": "uint256",
                               "value": "numInitialBalanceHolders"
                             },
-                            "id": 10029,
+                            "id": 10047,
                             "name": "Identifier",
                             "src": "778:24:21"
                           }
                         ],
-                        "id": 10030,
+                        "id": 10048,
                         "name": "BinaryOperation",
                         "src": "774:28:21"
                       },
@@ -1215,21 +1215,21 @@ export const DummyToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10025,
+                                  "referencedDeclaration": 10043,
                                   "type": "uint256",
                                   "value": "i"
                                 },
-                                "id": 10031,
+                                "id": 10049,
                                 "name": "Identifier",
                                 "src": "804:1:21"
                               }
                             ],
-                            "id": 10032,
+                            "id": 10050,
                             "name": "UnaryOperation",
                             "src": "804:3:21"
                           }
                         ],
-                        "id": 10033,
+                        "id": 10051,
                         "name": "ExpressionStatement",
                         "src": "804:3:21"
                       },
@@ -1238,7 +1238,7 @@ export const DummyToken =
                           {
                             "attributes": {
                               "assignments": [
-                                10035
+                                10053
                               ]
                             },
                             "children": [
@@ -1246,7 +1246,7 @@ export const DummyToken =
                                 "attributes": {
                                   "constant": false,
                                   "name": "account",
-                                  "scope": 10051,
+                                  "scope": 10069,
                                   "stateVariable": false,
                                   "storageLocation": "default",
                                   "type": "address",
@@ -1259,12 +1259,12 @@ export const DummyToken =
                                       "name": "address",
                                       "type": "address"
                                     },
-                                    "id": 10034,
+                                    "id": 10052,
                                     "name": "ElementaryTypeName",
                                     "src": "823:7:21"
                                   }
                                 ],
-                                "id": 10035,
+                                "id": 10053,
                                 "name": "VariableDeclaration",
                                 "src": "823:15:21"
                               },
@@ -1284,11 +1284,11 @@ export const DummyToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10000,
+                                      "referencedDeclaration": 10018,
                                       "type": "address[] memory",
                                       "value": "_initialBalanceHolders"
                                     },
-                                    "id": 10036,
+                                    "id": 10054,
                                     "name": "Identifier",
                                     "src": "841:22:21"
                                   },
@@ -1298,21 +1298,21 @@ export const DummyToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10025,
+                                      "referencedDeclaration": 10043,
                                       "type": "uint256",
                                       "value": "i"
                                     },
-                                    "id": 10037,
+                                    "id": 10055,
                                     "name": "Identifier",
                                     "src": "864:1:21"
                                   }
                                 ],
-                                "id": 10038,
+                                "id": 10056,
                                 "name": "IndexAccess",
                                 "src": "841:25:21"
                               }
                             ],
-                            "id": 10039,
+                            "id": 10057,
                             "name": "VariableDeclarationStatement",
                             "src": "823:43:21"
                           },
@@ -1345,11 +1345,11 @@ export const DummyToken =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 14146,
+                                          "referencedDeclaration": 14164,
                                           "type": "mapping(address => uint256)",
                                           "value": "balances"
                                         },
-                                        "id": 10040,
+                                        "id": 10058,
                                         "name": "Identifier",
                                         "src": "880:8:21"
                                       },
@@ -1359,16 +1359,16 @@ export const DummyToken =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 10035,
+                                          "referencedDeclaration": 10053,
                                           "type": "address",
                                           "value": "account"
                                         },
-                                        "id": 10041,
+                                        "id": 10059,
                                         "name": "Identifier",
                                         "src": "889:7:21"
                                       }
                                     ],
-                                    "id": 10042,
+                                    "id": 10060,
                                     "name": "IndexAccess",
                                     "src": "880:17:21"
                                   },
@@ -1393,11 +1393,11 @@ export const DummyToken =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 14148,
+                                          "referencedDeclaration": 14166,
                                           "type": "uint256",
                                           "value": "totalSupply_"
                                         },
-                                        "id": 10043,
+                                        "id": 10061,
                                         "name": "Identifier",
                                         "src": "900:12:21"
                                       },
@@ -1407,46 +1407,46 @@ export const DummyToken =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 10020,
+                                          "referencedDeclaration": 10038,
                                           "type": "uint256",
                                           "value": "numInitialBalanceHolders"
                                         },
-                                        "id": 10044,
+                                        "id": 10062,
                                         "name": "Identifier",
                                         "src": "915:24:21"
                                       }
                                     ],
-                                    "id": 10045,
+                                    "id": 10063,
                                     "name": "BinaryOperation",
                                     "src": "900:39:21"
                                   }
                                 ],
-                                "id": 10046,
+                                "id": 10064,
                                 "name": "Assignment",
                                 "src": "880:59:21"
                               }
                             ],
-                            "id": 10047,
+                            "id": 10065,
                             "name": "ExpressionStatement",
                             "src": "880:59:21"
                           }
                         ],
-                        "id": 10048,
+                        "id": 10066,
                         "name": "Block",
                         "src": "809:141:21"
                       }
                     ],
-                    "id": 10049,
+                    "id": 10067,
                     "name": "ForStatement",
                     "src": "757:193:21"
                   }
                 ],
-                "id": 10050,
+                "id": 10068,
                 "name": "Block",
                 "src": "479:477:21"
               }
             ],
-            "id": 10051,
+            "id": 10069,
             "name": "FunctionDefinition",
             "src": "300:656:21"
           },
@@ -1457,7 +1457,7 @@ export const DummyToken =
               "isConstructor": false,
               "name": "setBalance",
               "payable": false,
-              "scope": 10100,
+              "scope": 10118,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -1469,7 +1469,7 @@ export const DummyToken =
                     "attributes": {
                       "constant": false,
                       "name": "_target",
-                      "scope": 10099,
+                      "scope": 10117,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1482,12 +1482,12 @@ export const DummyToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 10052,
+                        "id": 10070,
                         "name": "ElementaryTypeName",
                         "src": "982:7:21"
                       }
                     ],
-                    "id": 10053,
+                    "id": 10071,
                     "name": "VariableDeclaration",
                     "src": "982:15:21"
                   },
@@ -1495,7 +1495,7 @@ export const DummyToken =
                     "attributes": {
                       "constant": false,
                       "name": "_value",
-                      "scope": 10099,
+                      "scope": 10117,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1508,17 +1508,17 @@ export const DummyToken =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 10054,
+                        "id": 10072,
                         "name": "ElementaryTypeName",
                         "src": "999:4:21"
                       }
                     ],
-                    "id": 10055,
+                    "id": 10073,
                     "name": "VariableDeclaration",
                     "src": "999:11:21"
                   }
                 ],
-                "id": 10056,
+                "id": 10074,
                 "name": "ParameterList",
                 "src": "981:30:21"
               },
@@ -1529,7 +1529,7 @@ export const DummyToken =
                   ]
                 },
                 "children": [],
-                "id": 10059,
+                "id": 10077,
                 "name": "ParameterList",
                 "src": "1029:0:21"
               },
@@ -1546,16 +1546,16 @@ export const DummyToken =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 14107,
+                      "referencedDeclaration": 14125,
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
-                    "id": 10057,
+                    "id": 10075,
                     "name": "Identifier",
                     "src": "1019:9:21"
                   }
                 ],
-                "id": 10058,
+                "id": 10076,
                 "name": "ModifierInvocation",
                 "src": "1019:9:21"
               },
@@ -1564,7 +1564,7 @@ export const DummyToken =
                   {
                     "attributes": {
                       "assignments": [
-                        10061
+                        10079
                       ]
                     },
                     "children": [
@@ -1572,7 +1572,7 @@ export const DummyToken =
                         "attributes": {
                           "constant": false,
                           "name": "currBalance",
-                          "scope": 10099,
+                          "scope": 10117,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -1585,12 +1585,12 @@ export const DummyToken =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 10060,
+                            "id": 10078,
                             "name": "ElementaryTypeName",
                             "src": "1039:4:21"
                           }
                         ],
-                        "id": 10061,
+                        "id": 10079,
                         "name": "VariableDeclaration",
                         "src": "1039:16:21"
                       },
@@ -1618,13 +1618,13 @@ export const DummyToken =
                                 }
                               ],
                               "overloadedDeclarations": [
-                                14228
+                                14246
                               ],
-                              "referencedDeclaration": 14228,
+                              "referencedDeclaration": 14246,
                               "type": "function (address) view returns (uint256)",
                               "value": "balanceOf"
                             },
-                            "id": 10062,
+                            "id": 10080,
                             "name": "Identifier",
                             "src": "1058:9:21"
                           },
@@ -1634,21 +1634,21 @@ export const DummyToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10053,
+                              "referencedDeclaration": 10071,
                               "type": "address",
                               "value": "_target"
                             },
-                            "id": 10063,
+                            "id": 10081,
                             "name": "Identifier",
                             "src": "1068:7:21"
                           }
                         ],
-                        "id": 10064,
+                        "id": 10082,
                         "name": "FunctionCall",
                         "src": "1058:18:21"
                       }
                     ],
-                    "id": 10065,
+                    "id": 10083,
                     "name": "VariableDeclarationStatement",
                     "src": "1039:37:21"
                   },
@@ -1675,11 +1675,11 @@ export const DummyToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10055,
+                              "referencedDeclaration": 10073,
                               "type": "uint256",
                               "value": "_value"
                             },
-                            "id": 10066,
+                            "id": 10084,
                             "name": "Identifier",
                             "src": "1090:6:21"
                           },
@@ -1689,16 +1689,16 @@ export const DummyToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10061,
+                              "referencedDeclaration": 10079,
                               "type": "uint256",
                               "value": "currBalance"
                             },
-                            "id": 10067,
+                            "id": 10085,
                             "name": "Identifier",
                             "src": "1099:11:21"
                           }
                         ],
-                        "id": 10068,
+                        "id": 10086,
                         "name": "BinaryOperation",
                         "src": "1090:20:21"
                       },
@@ -1723,11 +1723,11 @@ export const DummyToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 14148,
+                                      "referencedDeclaration": 14166,
                                       "type": "uint256",
                                       "value": "totalSupply_"
                                     },
-                                    "id": 10069,
+                                    "id": 10087,
                                     "name": "Identifier",
                                     "src": "1126:12:21"
                                   },
@@ -1759,7 +1759,7 @@ export const DummyToken =
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "sub",
-                                          "referencedDeclaration": 14052,
+                                          "referencedDeclaration": 14070,
                                           "type": "function (uint256,uint256) pure returns (uint256)"
                                         },
                                         "children": [
@@ -1769,16 +1769,16 @@ export const DummyToken =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 14148,
+                                              "referencedDeclaration": 14166,
                                               "type": "uint256",
                                               "value": "totalSupply_"
                                             },
-                                            "id": 10070,
+                                            "id": 10088,
                                             "name": "Identifier",
                                             "src": "1141:12:21"
                                           }
                                         ],
-                                        "id": 10071,
+                                        "id": 10089,
                                         "name": "MemberAccess",
                                         "src": "1141:16:21"
                                       },
@@ -1810,7 +1810,7 @@ export const DummyToken =
                                               "isPure": false,
                                               "lValueRequested": false,
                                               "member_name": "sub",
-                                              "referencedDeclaration": 14052,
+                                              "referencedDeclaration": 14070,
                                               "type": "function (uint256,uint256) pure returns (uint256)"
                                             },
                                             "children": [
@@ -1820,16 +1820,16 @@ export const DummyToken =
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 10061,
+                                                  "referencedDeclaration": 10079,
                                                   "type": "uint256",
                                                   "value": "currBalance"
                                                 },
-                                                "id": 10072,
+                                                "id": 10090,
                                                 "name": "Identifier",
                                                 "src": "1158:11:21"
                                               }
                                             ],
-                                            "id": 10073,
+                                            "id": 10091,
                                             "name": "MemberAccess",
                                             "src": "1158:15:21"
                                           },
@@ -1839,36 +1839,36 @@ export const DummyToken =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 10055,
+                                              "referencedDeclaration": 10073,
                                               "type": "uint256",
                                               "value": "_value"
                                             },
-                                            "id": 10074,
+                                            "id": 10092,
                                             "name": "Identifier",
                                             "src": "1174:6:21"
                                           }
                                         ],
-                                        "id": 10075,
+                                        "id": 10093,
                                         "name": "FunctionCall",
                                         "src": "1158:23:21"
                                       }
                                     ],
-                                    "id": 10076,
+                                    "id": 10094,
                                     "name": "FunctionCall",
                                     "src": "1141:41:21"
                                   }
                                 ],
-                                "id": 10077,
+                                "id": 10095,
                                 "name": "Assignment",
                                 "src": "1126:56:21"
                               }
                             ],
-                            "id": 10078,
+                            "id": 10096,
                             "name": "ExpressionStatement",
                             "src": "1126:56:21"
                           }
                         ],
-                        "id": 10079,
+                        "id": 10097,
                         "name": "Block",
                         "src": "1112:81:21"
                       },
@@ -1893,11 +1893,11 @@ export const DummyToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 14148,
+                                      "referencedDeclaration": 14166,
                                       "type": "uint256",
                                       "value": "totalSupply_"
                                     },
-                                    "id": 10080,
+                                    "id": 10098,
                                     "name": "Identifier",
                                     "src": "1213:12:21"
                                   },
@@ -1929,7 +1929,7 @@ export const DummyToken =
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "add",
-                                          "referencedDeclaration": 14076,
+                                          "referencedDeclaration": 14094,
                                           "type": "function (uint256,uint256) pure returns (uint256)"
                                         },
                                         "children": [
@@ -1939,16 +1939,16 @@ export const DummyToken =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 14148,
+                                              "referencedDeclaration": 14166,
                                               "type": "uint256",
                                               "value": "totalSupply_"
                                             },
-                                            "id": 10081,
+                                            "id": 10099,
                                             "name": "Identifier",
                                             "src": "1228:12:21"
                                           }
                                         ],
-                                        "id": 10082,
+                                        "id": 10100,
                                         "name": "MemberAccess",
                                         "src": "1228:16:21"
                                       },
@@ -1980,7 +1980,7 @@ export const DummyToken =
                                               "isPure": false,
                                               "lValueRequested": false,
                                               "member_name": "sub",
-                                              "referencedDeclaration": 14052,
+                                              "referencedDeclaration": 14070,
                                               "type": "function (uint256,uint256) pure returns (uint256)"
                                             },
                                             "children": [
@@ -1990,16 +1990,16 @@ export const DummyToken =
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 10055,
+                                                  "referencedDeclaration": 10073,
                                                   "type": "uint256",
                                                   "value": "_value"
                                                 },
-                                                "id": 10083,
+                                                "id": 10101,
                                                 "name": "Identifier",
                                                 "src": "1245:6:21"
                                               }
                                             ],
-                                            "id": 10084,
+                                            "id": 10102,
                                             "name": "MemberAccess",
                                             "src": "1245:10:21"
                                           },
@@ -2009,41 +2009,41 @@ export const DummyToken =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 10061,
+                                              "referencedDeclaration": 10079,
                                               "type": "uint256",
                                               "value": "currBalance"
                                             },
-                                            "id": 10085,
+                                            "id": 10103,
                                             "name": "Identifier",
                                             "src": "1256:11:21"
                                           }
                                         ],
-                                        "id": 10086,
+                                        "id": 10104,
                                         "name": "FunctionCall",
                                         "src": "1245:23:21"
                                       }
                                     ],
-                                    "id": 10087,
+                                    "id": 10105,
                                     "name": "FunctionCall",
                                     "src": "1228:41:21"
                                   }
                                 ],
-                                "id": 10088,
+                                "id": 10106,
                                 "name": "Assignment",
                                 "src": "1213:56:21"
                               }
                             ],
-                            "id": 10089,
+                            "id": 10107,
                             "name": "ExpressionStatement",
                             "src": "1213:56:21"
                           }
                         ],
-                        "id": 10090,
+                        "id": 10108,
                         "name": "Block",
                         "src": "1199:81:21"
                       }
                     ],
-                    "id": 10091,
+                    "id": 10109,
                     "name": "IfStatement",
                     "src": "1086:194:21"
                   },
@@ -2076,11 +2076,11 @@ export const DummyToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 14146,
+                                  "referencedDeclaration": 14164,
                                   "type": "mapping(address => uint256)",
                                   "value": "balances"
                                 },
-                                "id": 10092,
+                                "id": 10110,
                                 "name": "Identifier",
                                 "src": "1289:8:21"
                               },
@@ -2090,16 +2090,16 @@ export const DummyToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10053,
+                                  "referencedDeclaration": 10071,
                                   "type": "address",
                                   "value": "_target"
                                 },
-                                "id": 10093,
+                                "id": 10111,
                                 "name": "Identifier",
                                 "src": "1298:7:21"
                               }
                             ],
-                            "id": 10094,
+                            "id": 10112,
                             "name": "IndexAccess",
                             "src": "1289:17:21"
                           },
@@ -2109,41 +2109,41 @@ export const DummyToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10055,
+                              "referencedDeclaration": 10073,
                               "type": "uint256",
                               "value": "_value"
                             },
-                            "id": 10095,
+                            "id": 10113,
                             "name": "Identifier",
                             "src": "1309:6:21"
                           }
                         ],
-                        "id": 10096,
+                        "id": 10114,
                         "name": "Assignment",
                         "src": "1289:26:21"
                       }
                     ],
-                    "id": 10097,
+                    "id": 10115,
                     "name": "ExpressionStatement",
                     "src": "1289:26:21"
                   }
                 ],
-                "id": 10098,
+                "id": 10116,
                 "name": "Block",
                 "src": "1029:293:21"
               }
             ],
-            "id": 10099,
+            "id": 10117,
             "name": "FunctionDefinition",
             "src": "962:360:21"
           }
         ],
-        "id": 10100,
+        "id": 10118,
         "name": "ContractDefinition",
         "src": "151:1173:21"
       }
     ],
-    "id": 10101,
+    "id": 10119,
     "name": "SourceUnit",
     "src": "0:1325:21"
   },
@@ -2153,5 +2153,5 @@ export const DummyToken =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-25T20:05:00.151Z"
+  "updatedAt": "2018-09-25T22:27:42.820Z"
 }

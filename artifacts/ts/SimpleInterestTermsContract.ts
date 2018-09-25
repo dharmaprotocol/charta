@@ -393,7 +393,7 @@ export const SimpleInterestTermsContract =
       "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/examples/SimpleInterestTermsContract.sol",
       "exportedSymbols": {
         "SimpleInterestTermsContract": [
-          6034
+          6052
         ]
       }
     },
@@ -406,22 +406,22 @@ export const SimpleInterestTermsContract =
             ".18"
           ]
         },
-        "id": 5332,
+        "id": 5350,
         "name": "PragmaDirective",
         "src": "584:23:16"
       },
       {
         "attributes": {
-          "SourceUnit": 14078,
+          "SourceUnit": 14096,
           "absolutePath": "zeppelin-solidity/contracts/math/SafeMath.sol",
           "file": "zeppelin-solidity/contracts/math/SafeMath.sol",
-          "scope": 6035,
+          "scope": 6053,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 5333,
+        "id": 5351,
         "name": "ImportDirective",
         "src": "609:55:16"
       },
@@ -430,30 +430,30 @@ export const SimpleInterestTermsContract =
           "SourceUnit": 924,
           "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/ContractRegistry.sol",
           "file": "../ContractRegistry.sol",
-          "scope": 6035,
+          "scope": 6053,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 5334,
+        "id": 5352,
         "name": "ImportDirective",
         "src": "666:33:16"
       },
       {
         "attributes": {
           "contractDependencies": [
-            4739
+            4757
           ],
           "contractKind": "contract",
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            6034,
-            4739
+            6052,
+            4757
           ],
           "name": "SimpleInterestTermsContract",
-          "scope": 6035
+          "scope": 6053
         },
         "children": [
           {
@@ -467,15 +467,15 @@ export const SimpleInterestTermsContract =
                 "attributes": {
                   "contractScope": null,
                   "name": "TermsContract",
-                  "referencedDeclaration": 4739,
+                  "referencedDeclaration": 4757,
                   "type": "contract TermsContract"
                 },
-                "id": 5335,
+                "id": 5353,
                 "name": "UserDefinedTypeName",
                 "src": "742:13:16"
               }
             ],
-            "id": 5336,
+            "id": 5354,
             "name": "InheritanceSpecifier",
             "src": "742:13:16"
           },
@@ -485,10 +485,10 @@ export const SimpleInterestTermsContract =
                 "attributes": {
                   "contractScope": null,
                   "name": "SafeMath",
-                  "referencedDeclaration": 14077,
+                  "referencedDeclaration": 14095,
                   "type": "library SafeMath"
                 },
-                "id": 5337,
+                "id": 5355,
                 "name": "UserDefinedTypeName",
                 "src": "768:8:16"
               },
@@ -497,12 +497,12 @@ export const SimpleInterestTermsContract =
                   "name": "uint",
                   "type": "uint256"
                 },
-                "id": 5338,
+                "id": 5356,
                 "name": "ElementaryTypeName",
                 "src": "781:4:16"
               }
             ],
-            "id": 5339,
+            "id": 5357,
             "name": "UsingForDirective",
             "src": "762:24:16"
           },
@@ -516,7 +516,7 @@ export const SimpleInterestTermsContract =
                 "attributes": {
                   "name": "HOURS"
                 },
-                "id": 5340,
+                "id": 5358,
                 "name": "EnumValue",
                 "src": "820:5:16"
               },
@@ -524,7 +524,7 @@ export const SimpleInterestTermsContract =
                 "attributes": {
                   "name": "DAYS"
                 },
-                "id": 5341,
+                "id": 5359,
                 "name": "EnumValue",
                 "src": "827:4:16"
               },
@@ -532,7 +532,7 @@ export const SimpleInterestTermsContract =
                 "attributes": {
                   "name": "WEEKS"
                 },
-                "id": 5342,
+                "id": 5360,
                 "name": "EnumValue",
                 "src": "833:5:16"
               },
@@ -540,7 +540,7 @@ export const SimpleInterestTermsContract =
                 "attributes": {
                   "name": "MONTHS"
                 },
-                "id": 5343,
+                "id": 5361,
                 "name": "EnumValue",
                 "src": "840:6:16"
               },
@@ -548,12 +548,12 @@ export const SimpleInterestTermsContract =
                 "attributes": {
                   "name": "YEARS"
                 },
-                "id": 5344,
+                "id": 5362,
                 "name": "EnumValue",
                 "src": "848:5:16"
               }
             ],
-            "id": 5345,
+            "id": 5363,
             "name": "EnumDefinition",
             "src": "792:63:16"
           },
@@ -561,7 +561,7 @@ export const SimpleInterestTermsContract =
             "attributes": {
               "constant": true,
               "name": "NUM_AMORTIZATION_UNIT_TYPES",
-              "scope": 6034,
+              "scope": 6052,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "uint256",
@@ -573,7 +573,7 @@ export const SimpleInterestTermsContract =
                   "name": "uint",
                   "type": "uint256"
                 },
-                "id": 5346,
+                "id": 5364,
                 "name": "ElementaryTypeName",
                 "src": "860:4:16"
               },
@@ -590,12 +590,12 @@ export const SimpleInterestTermsContract =
                   "type": "int_const 5",
                   "value": "5"
                 },
-                "id": 5347,
+                "id": 5365,
                 "name": "Literal",
                 "src": "911:1:16"
               }
             ],
-            "id": 5348,
+            "id": 5366,
             "name": "VariableDeclaration",
             "src": "860:52:16"
           },
@@ -603,7 +603,7 @@ export const SimpleInterestTermsContract =
             "attributes": {
               "canonicalName": "SimpleInterestTermsContract.SimpleInterestParams",
               "name": "SimpleInterestParams",
-              "scope": 6034,
+              "scope": 6052,
               "visibility": "public"
             },
             "children": [
@@ -611,7 +611,7 @@ export const SimpleInterestTermsContract =
                 "attributes": {
                   "constant": false,
                   "name": "principalTokenAddress",
-                  "scope": 5363,
+                  "scope": 5381,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "address",
@@ -624,12 +624,12 @@ export const SimpleInterestTermsContract =
                       "name": "address",
                       "type": "address"
                     },
-                    "id": 5349,
+                    "id": 5367,
                     "name": "ElementaryTypeName",
                     "src": "957:7:16"
                   }
                 ],
-                "id": 5350,
+                "id": 5368,
                 "name": "VariableDeclaration",
                 "src": "957:29:16"
               },
@@ -637,7 +637,7 @@ export const SimpleInterestTermsContract =
                 "attributes": {
                   "constant": false,
                   "name": "principalAmount",
-                  "scope": 5363,
+                  "scope": 5381,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint256",
@@ -650,12 +650,12 @@ export const SimpleInterestTermsContract =
                       "name": "uint",
                       "type": "uint256"
                     },
-                    "id": 5351,
+                    "id": 5369,
                     "name": "ElementaryTypeName",
                     "src": "996:4:16"
                   }
                 ],
-                "id": 5352,
+                "id": 5370,
                 "name": "VariableDeclaration",
                 "src": "996:20:16"
               },
@@ -663,7 +663,7 @@ export const SimpleInterestTermsContract =
                 "attributes": {
                   "constant": false,
                   "name": "termStartUnixTimestamp",
-                  "scope": 5363,
+                  "scope": 5381,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint256",
@@ -676,12 +676,12 @@ export const SimpleInterestTermsContract =
                       "name": "uint",
                       "type": "uint256"
                     },
-                    "id": 5353,
+                    "id": 5371,
                     "name": "ElementaryTypeName",
                     "src": "1026:4:16"
                   }
                 ],
-                "id": 5354,
+                "id": 5372,
                 "name": "VariableDeclaration",
                 "src": "1026:27:16"
               },
@@ -689,7 +689,7 @@ export const SimpleInterestTermsContract =
                 "attributes": {
                   "constant": false,
                   "name": "termEndUnixTimestamp",
-                  "scope": 5363,
+                  "scope": 5381,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint256",
@@ -702,12 +702,12 @@ export const SimpleInterestTermsContract =
                       "name": "uint",
                       "type": "uint256"
                     },
-                    "id": 5355,
+                    "id": 5373,
                     "name": "ElementaryTypeName",
                     "src": "1063:4:16"
                   }
                 ],
-                "id": 5356,
+                "id": 5374,
                 "name": "VariableDeclaration",
                 "src": "1063:25:16"
               },
@@ -715,7 +715,7 @@ export const SimpleInterestTermsContract =
                 "attributes": {
                   "constant": false,
                   "name": "amortizationUnitType",
-                  "scope": 5363,
+                  "scope": 5381,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "enum SimpleInterestTermsContract.AmortizationUnitType",
@@ -727,15 +727,15 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "contractScope": null,
                       "name": "AmortizationUnitType",
-                      "referencedDeclaration": 5345,
+                      "referencedDeclaration": 5363,
                       "type": "enum SimpleInterestTermsContract.AmortizationUnitType"
                     },
-                    "id": 5357,
+                    "id": 5375,
                     "name": "UserDefinedTypeName",
                     "src": "1098:20:16"
                   }
                 ],
-                "id": 5358,
+                "id": 5376,
                 "name": "VariableDeclaration",
                 "src": "1098:41:16"
               },
@@ -743,7 +743,7 @@ export const SimpleInterestTermsContract =
                 "attributes": {
                   "constant": false,
                   "name": "termLengthInAmortizationUnits",
-                  "scope": 5363,
+                  "scope": 5381,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint256",
@@ -756,12 +756,12 @@ export const SimpleInterestTermsContract =
                       "name": "uint",
                       "type": "uint256"
                     },
-                    "id": 5359,
+                    "id": 5377,
                     "name": "ElementaryTypeName",
                     "src": "1149:4:16"
                   }
                 ],
-                "id": 5360,
+                "id": 5378,
                 "name": "VariableDeclaration",
                 "src": "1149:34:16"
               },
@@ -769,7 +769,7 @@ export const SimpleInterestTermsContract =
                 "attributes": {
                   "constant": false,
                   "name": "interestRate",
-                  "scope": 5363,
+                  "scope": 5381,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint256",
@@ -782,17 +782,17 @@ export const SimpleInterestTermsContract =
                       "name": "uint",
                       "type": "uint256"
                     },
-                    "id": 5361,
+                    "id": 5379,
                     "name": "ElementaryTypeName",
                     "src": "1443:4:16"
                   }
                 ],
-                "id": 5362,
+                "id": 5380,
                 "name": "VariableDeclaration",
                 "src": "1443:17:16"
               }
             ],
-            "id": 5363,
+            "id": 5381,
             "name": "StructDefinition",
             "src": "919:548:16"
           },
@@ -800,7 +800,7 @@ export const SimpleInterestTermsContract =
             "attributes": {
               "constant": true,
               "name": "HOUR_LENGTH_IN_SECONDS",
-              "scope": 6034,
+              "scope": 6052,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "uint256",
@@ -812,7 +812,7 @@ export const SimpleInterestTermsContract =
                   "name": "uint",
                   "type": "uint256"
                 },
-                "id": 5364,
+                "id": 5382,
                 "name": "ElementaryTypeName",
                 "src": "1473:4:16"
               },
@@ -844,7 +844,7 @@ export const SimpleInterestTermsContract =
                       "type": "int_const 60",
                       "value": "60"
                     },
-                    "id": 5365,
+                    "id": 5383,
                     "name": "Literal",
                     "src": "1519:2:16"
                   },
@@ -861,17 +861,17 @@ export const SimpleInterestTermsContract =
                       "type": "int_const 60",
                       "value": "60"
                     },
-                    "id": 5366,
+                    "id": 5384,
                     "name": "Literal",
                     "src": "1524:2:16"
                   }
                 ],
-                "id": 5367,
+                "id": 5385,
                 "name": "BinaryOperation",
                 "src": "1519:7:16"
               }
             ],
-            "id": 5368,
+            "id": 5386,
             "name": "VariableDeclaration",
             "src": "1473:53:16"
           },
@@ -879,7 +879,7 @@ export const SimpleInterestTermsContract =
             "attributes": {
               "constant": true,
               "name": "DAY_LENGTH_IN_SECONDS",
-              "scope": 6034,
+              "scope": 6052,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "uint256",
@@ -891,7 +891,7 @@ export const SimpleInterestTermsContract =
                   "name": "uint",
                   "type": "uint256"
                 },
-                "id": 5369,
+                "id": 5387,
                 "name": "ElementaryTypeName",
                 "src": "1532:4:16"
               },
@@ -916,11 +916,11 @@ export const SimpleInterestTermsContract =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 5368,
+                      "referencedDeclaration": 5386,
                       "type": "uint256",
                       "value": "HOUR_LENGTH_IN_SECONDS"
                     },
-                    "id": 5370,
+                    "id": 5388,
                     "name": "Identifier",
                     "src": "1577:22:16"
                   },
@@ -937,17 +937,17 @@ export const SimpleInterestTermsContract =
                       "type": "int_const 24",
                       "value": "24"
                     },
-                    "id": 5371,
+                    "id": 5389,
                     "name": "Literal",
                     "src": "1602:2:16"
                   }
                 ],
-                "id": 5372,
+                "id": 5390,
                 "name": "BinaryOperation",
                 "src": "1577:27:16"
               }
             ],
-            "id": 5373,
+            "id": 5391,
             "name": "VariableDeclaration",
             "src": "1532:72:16"
           },
@@ -955,7 +955,7 @@ export const SimpleInterestTermsContract =
             "attributes": {
               "constant": true,
               "name": "WEEK_LENGTH_IN_SECONDS",
-              "scope": 6034,
+              "scope": 6052,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "uint256",
@@ -967,7 +967,7 @@ export const SimpleInterestTermsContract =
                   "name": "uint",
                   "type": "uint256"
                 },
-                "id": 5374,
+                "id": 5392,
                 "name": "ElementaryTypeName",
                 "src": "1610:4:16"
               },
@@ -992,11 +992,11 @@ export const SimpleInterestTermsContract =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 5373,
+                      "referencedDeclaration": 5391,
                       "type": "uint256",
                       "value": "DAY_LENGTH_IN_SECONDS"
                     },
-                    "id": 5375,
+                    "id": 5393,
                     "name": "Identifier",
                     "src": "1656:21:16"
                   },
@@ -1013,17 +1013,17 @@ export const SimpleInterestTermsContract =
                       "type": "int_const 7",
                       "value": "7"
                     },
-                    "id": 5376,
+                    "id": 5394,
                     "name": "Literal",
                     "src": "1680:1:16"
                   }
                 ],
-                "id": 5377,
+                "id": 5395,
                 "name": "BinaryOperation",
                 "src": "1656:25:16"
               }
             ],
-            "id": 5378,
+            "id": 5396,
             "name": "VariableDeclaration",
             "src": "1610:71:16"
           },
@@ -1031,7 +1031,7 @@ export const SimpleInterestTermsContract =
             "attributes": {
               "constant": true,
               "name": "MONTH_LENGTH_IN_SECONDS",
-              "scope": 6034,
+              "scope": 6052,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "uint256",
@@ -1043,7 +1043,7 @@ export const SimpleInterestTermsContract =
                   "name": "uint",
                   "type": "uint256"
                 },
-                "id": 5379,
+                "id": 5397,
                 "name": "ElementaryTypeName",
                 "src": "1687:4:16"
               },
@@ -1068,11 +1068,11 @@ export const SimpleInterestTermsContract =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 5373,
+                      "referencedDeclaration": 5391,
                       "type": "uint256",
                       "value": "DAY_LENGTH_IN_SECONDS"
                     },
-                    "id": 5380,
+                    "id": 5398,
                     "name": "Identifier",
                     "src": "1734:21:16"
                   },
@@ -1089,17 +1089,17 @@ export const SimpleInterestTermsContract =
                       "type": "int_const 30",
                       "value": "30"
                     },
-                    "id": 5381,
+                    "id": 5399,
                     "name": "Literal",
                     "src": "1758:2:16"
                   }
                 ],
-                "id": 5382,
+                "id": 5400,
                 "name": "BinaryOperation",
                 "src": "1734:26:16"
               }
             ],
-            "id": 5383,
+            "id": 5401,
             "name": "VariableDeclaration",
             "src": "1687:73:16"
           },
@@ -1107,7 +1107,7 @@ export const SimpleInterestTermsContract =
             "attributes": {
               "constant": true,
               "name": "YEAR_LENGTH_IN_SECONDS",
-              "scope": 6034,
+              "scope": 6052,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "uint256",
@@ -1119,7 +1119,7 @@ export const SimpleInterestTermsContract =
                   "name": "uint",
                   "type": "uint256"
                 },
-                "id": 5384,
+                "id": 5402,
                 "name": "ElementaryTypeName",
                 "src": "1766:4:16"
               },
@@ -1144,11 +1144,11 @@ export const SimpleInterestTermsContract =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 5373,
+                      "referencedDeclaration": 5391,
                       "type": "uint256",
                       "value": "DAY_LENGTH_IN_SECONDS"
                     },
-                    "id": 5385,
+                    "id": 5403,
                     "name": "Identifier",
                     "src": "1812:21:16"
                   },
@@ -1165,17 +1165,17 @@ export const SimpleInterestTermsContract =
                       "type": "int_const 365",
                       "value": "365"
                     },
-                    "id": 5386,
+                    "id": 5404,
                     "name": "Literal",
                     "src": "1836:3:16"
                   }
                 ],
-                "id": 5387,
+                "id": 5405,
                 "name": "BinaryOperation",
                 "src": "1812:27:16"
               }
             ],
-            "id": 5388,
+            "id": 5406,
             "name": "VariableDeclaration",
             "src": "1766:73:16"
           },
@@ -1183,7 +1183,7 @@ export const SimpleInterestTermsContract =
             "attributes": {
               "constant": true,
               "name": "INTEREST_RATE_SCALING_FACTOR_PERCENT",
-              "scope": 6034,
+              "scope": 6052,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "uint256",
@@ -1195,7 +1195,7 @@ export const SimpleInterestTermsContract =
                   "name": "uint",
                   "type": "uint256"
                 },
-                "id": 5389,
+                "id": 5407,
                 "name": "ElementaryTypeName",
                 "src": "2025:4:16"
               },
@@ -1227,7 +1227,7 @@ export const SimpleInterestTermsContract =
                       "type": "int_const 10",
                       "value": "10"
                     },
-                    "id": 5390,
+                    "id": 5408,
                     "name": "Literal",
                     "src": "2085:2:16"
                   },
@@ -1244,17 +1244,17 @@ export const SimpleInterestTermsContract =
                       "type": "int_const 4",
                       "value": "4"
                     },
-                    "id": 5391,
+                    "id": 5409,
                     "name": "Literal",
                     "src": "2091:1:16"
                   }
                 ],
-                "id": 5392,
+                "id": 5410,
                 "name": "BinaryOperation",
                 "src": "2085:7:16"
               }
             ],
-            "id": 5393,
+            "id": 5411,
             "name": "VariableDeclaration",
             "src": "2025:67:16"
           },
@@ -1262,7 +1262,7 @@ export const SimpleInterestTermsContract =
             "attributes": {
               "constant": true,
               "name": "INTEREST_RATE_SCALING_FACTOR_MULTIPLIER",
-              "scope": 6034,
+              "scope": 6052,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "uint256",
@@ -1274,7 +1274,7 @@ export const SimpleInterestTermsContract =
                   "name": "uint",
                   "type": "uint256"
                 },
-                "id": 5394,
+                "id": 5412,
                 "name": "ElementaryTypeName",
                 "src": "2329:4:16"
               },
@@ -1299,11 +1299,11 @@ export const SimpleInterestTermsContract =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 5393,
+                      "referencedDeclaration": 5411,
                       "type": "uint256",
                       "value": "INTEREST_RATE_SCALING_FACTOR_PERCENT"
                     },
-                    "id": 5395,
+                    "id": 5413,
                     "name": "Identifier",
                     "src": "2392:36:16"
                   },
@@ -1320,17 +1320,17 @@ export const SimpleInterestTermsContract =
                       "type": "int_const 100",
                       "value": "100"
                     },
-                    "id": 5396,
+                    "id": 5414,
                     "name": "Literal",
                     "src": "2431:3:16"
                   }
                 ],
-                "id": 5397,
+                "id": 5415,
                 "name": "BinaryOperation",
                 "src": "2392:42:16"
               }
             ],
-            "id": 5398,
+            "id": 5416,
             "name": "VariableDeclaration",
             "src": "2329:105:16"
           },
@@ -1338,7 +1338,7 @@ export const SimpleInterestTermsContract =
             "attributes": {
               "constant": false,
               "name": "valueRepaid",
-              "scope": 6034,
+              "scope": 6052,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(bytes32 => uint256)",
@@ -1356,7 +1356,7 @@ export const SimpleInterestTermsContract =
                       "name": "bytes32",
                       "type": "bytes32"
                     },
-                    "id": 5399,
+                    "id": 5417,
                     "name": "ElementaryTypeName",
                     "src": "2450:7:16"
                   },
@@ -1365,17 +1365,17 @@ export const SimpleInterestTermsContract =
                       "name": "uint",
                       "type": "uint256"
                     },
-                    "id": 5400,
+                    "id": 5418,
                     "name": "ElementaryTypeName",
                     "src": "2461:4:16"
                   }
                 ],
-                "id": 5401,
+                "id": 5419,
                 "name": "Mapping",
                 "src": "2441:25:16"
               }
             ],
-            "id": 5402,
+            "id": 5420,
             "name": "VariableDeclaration",
             "src": "2441:44:16"
           },
@@ -1383,7 +1383,7 @@ export const SimpleInterestTermsContract =
             "attributes": {
               "constant": false,
               "name": "contractRegistry",
-              "scope": 6034,
+              "scope": 6052,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "contract ContractRegistry",
@@ -1398,12 +1398,12 @@ export const SimpleInterestTermsContract =
                   "referencedDeclaration": 923,
                   "type": "contract ContractRegistry"
                 },
-                "id": 5403,
+                "id": 5421,
                 "name": "UserDefinedTypeName",
                 "src": "2492:16:16"
               }
             ],
-            "id": 5404,
+            "id": 5422,
             "name": "VariableDeclaration",
             "src": "2492:40:16"
           },
@@ -1420,7 +1420,7 @@ export const SimpleInterestTermsContract =
                       "constant": false,
                       "indexed": true,
                       "name": "agreementId",
-                      "scope": 5418,
+                      "scope": 5436,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -1433,12 +1433,12 @@ export const SimpleInterestTermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 5405,
+                        "id": 5423,
                         "name": "ElementaryTypeName",
                         "src": "2581:7:16"
                       }
                     ],
-                    "id": 5406,
+                    "id": 5424,
                     "name": "VariableDeclaration",
                     "src": "2581:27:16"
                   },
@@ -1447,7 +1447,7 @@ export const SimpleInterestTermsContract =
                       "constant": false,
                       "indexed": true,
                       "name": "principalToken",
-                      "scope": 5418,
+                      "scope": 5436,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1460,12 +1460,12 @@ export const SimpleInterestTermsContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 5407,
+                        "id": 5425,
                         "name": "ElementaryTypeName",
                         "src": "2618:7:16"
                       }
                     ],
-                    "id": 5408,
+                    "id": 5426,
                     "name": "VariableDeclaration",
                     "src": "2618:30:16"
                   },
@@ -1474,7 +1474,7 @@ export const SimpleInterestTermsContract =
                       "constant": false,
                       "indexed": false,
                       "name": "principalAmount",
-                      "scope": 5418,
+                      "scope": 5436,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1487,12 +1487,12 @@ export const SimpleInterestTermsContract =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 5409,
+                        "id": 5427,
                         "name": "ElementaryTypeName",
                         "src": "2658:4:16"
                       }
                     ],
-                    "id": 5410,
+                    "id": 5428,
                     "name": "VariableDeclaration",
                     "src": "2658:20:16"
                   },
@@ -1501,7 +1501,7 @@ export const SimpleInterestTermsContract =
                       "constant": false,
                       "indexed": false,
                       "name": "interestRate",
-                      "scope": 5418,
+                      "scope": 5436,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1514,12 +1514,12 @@ export const SimpleInterestTermsContract =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 5411,
+                        "id": 5429,
                         "name": "ElementaryTypeName",
                         "src": "2688:4:16"
                       }
                     ],
-                    "id": 5412,
+                    "id": 5430,
                     "name": "VariableDeclaration",
                     "src": "2688:17:16"
                   },
@@ -1528,7 +1528,7 @@ export const SimpleInterestTermsContract =
                       "constant": false,
                       "indexed": true,
                       "name": "amortizationUnitType",
-                      "scope": 5418,
+                      "scope": 5436,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1541,12 +1541,12 @@ export const SimpleInterestTermsContract =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 5413,
+                        "id": 5431,
                         "name": "ElementaryTypeName",
                         "src": "2715:4:16"
                       }
                     ],
-                    "id": 5414,
+                    "id": 5432,
                     "name": "VariableDeclaration",
                     "src": "2715:33:16"
                   },
@@ -1555,7 +1555,7 @@ export const SimpleInterestTermsContract =
                       "constant": false,
                       "indexed": false,
                       "name": "termLengthInAmortizationUnits",
-                      "scope": 5418,
+                      "scope": 5436,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1568,22 +1568,22 @@ export const SimpleInterestTermsContract =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 5415,
+                        "id": 5433,
                         "name": "ElementaryTypeName",
                         "src": "2758:4:16"
                       }
                     ],
-                    "id": 5416,
+                    "id": 5434,
                     "name": "VariableDeclaration",
                     "src": "2758:34:16"
                   }
                 ],
-                "id": 5417,
+                "id": 5435,
                 "name": "ParameterList",
                 "src": "2571:227:16"
               }
             ],
-            "id": 5418,
+            "id": 5436,
             "name": "EventDefinition",
             "src": "2539:260:16"
           },
@@ -1600,7 +1600,7 @@ export const SimpleInterestTermsContract =
                       "constant": false,
                       "indexed": false,
                       "name": "agreementId",
-                      "scope": 5430,
+                      "scope": 5448,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -1613,12 +1613,12 @@ export const SimpleInterestTermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 5419,
+                        "id": 5437,
                         "name": "ElementaryTypeName",
                         "src": "2841:7:16"
                       }
                     ],
-                    "id": 5420,
+                    "id": 5438,
                     "name": "VariableDeclaration",
                     "src": "2841:19:16"
                   },
@@ -1627,7 +1627,7 @@ export const SimpleInterestTermsContract =
                       "constant": false,
                       "indexed": false,
                       "name": "payer",
-                      "scope": 5430,
+                      "scope": 5448,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1640,12 +1640,12 @@ export const SimpleInterestTermsContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 5421,
+                        "id": 5439,
                         "name": "ElementaryTypeName",
                         "src": "2870:7:16"
                       }
                     ],
-                    "id": 5422,
+                    "id": 5440,
                     "name": "VariableDeclaration",
                     "src": "2870:13:16"
                   },
@@ -1654,7 +1654,7 @@ export const SimpleInterestTermsContract =
                       "constant": false,
                       "indexed": false,
                       "name": "beneficiary",
-                      "scope": 5430,
+                      "scope": 5448,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1667,12 +1667,12 @@ export const SimpleInterestTermsContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 5423,
+                        "id": 5441,
                         "name": "ElementaryTypeName",
                         "src": "2893:7:16"
                       }
                     ],
-                    "id": 5424,
+                    "id": 5442,
                     "name": "VariableDeclaration",
                     "src": "2893:19:16"
                   },
@@ -1681,7 +1681,7 @@ export const SimpleInterestTermsContract =
                       "constant": false,
                       "indexed": false,
                       "name": "unitsOfRepayment",
-                      "scope": 5430,
+                      "scope": 5448,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1694,12 +1694,12 @@ export const SimpleInterestTermsContract =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 5425,
+                        "id": 5443,
                         "name": "ElementaryTypeName",
                         "src": "2922:7:16"
                       }
                     ],
-                    "id": 5426,
+                    "id": 5444,
                     "name": "VariableDeclaration",
                     "src": "2922:24:16"
                   },
@@ -1708,7 +1708,7 @@ export const SimpleInterestTermsContract =
                       "constant": false,
                       "indexed": false,
                       "name": "tokenAddress",
-                      "scope": 5430,
+                      "scope": 5448,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1721,22 +1721,22 @@ export const SimpleInterestTermsContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 5427,
+                        "id": 5445,
                         "name": "ElementaryTypeName",
                         "src": "2956:7:16"
                       }
                     ],
-                    "id": 5428,
+                    "id": 5446,
                     "name": "VariableDeclaration",
                     "src": "2956:20:16"
                   }
                 ],
-                "id": 5429,
+                "id": 5447,
                 "name": "ParameterList",
                 "src": "2831:151:16"
               }
             ],
-            "id": 5430,
+            "id": 5448,
             "name": "EventDefinition",
             "src": "2805:178:16"
           },
@@ -1753,7 +1753,7 @@ export const SimpleInterestTermsContract =
                   ]
                 },
                 "children": [],
-                "id": 5431,
+                "id": 5449,
                 "name": "ParameterList",
                 "src": "3008:2:16"
               },
@@ -1787,11 +1787,11 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15818,
+                              "referencedDeclaration": 15836,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 5432,
+                            "id": 5450,
                             "name": "Identifier",
                             "src": "3021:7:16"
                           },
@@ -1828,16 +1828,16 @@ export const SimpleInterestTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15815,
+                                      "referencedDeclaration": 15833,
                                       "type": "msg",
                                       "value": "msg"
                                     },
-                                    "id": 5433,
+                                    "id": 5451,
                                     "name": "Identifier",
                                     "src": "3029:3:16"
                                   }
                                 ],
-                                "id": 5434,
+                                "id": 5452,
                                 "name": "MemberAccess",
                                 "src": "3029:10:16"
                               },
@@ -1860,7 +1860,7 @@ export const SimpleInterestTermsContract =
                                     "attributes": {
                                       "argumentTypes": [
                                         {
-                                          "typeIdentifier": "t_contract$_RepaymentRouter_$4689",
+                                          "typeIdentifier": "t_contract$_RepaymentRouter_$4707",
                                           "typeString": "contract RepaymentRouter"
                                         }
                                       ],
@@ -1871,7 +1871,7 @@ export const SimpleInterestTermsContract =
                                       "type": "type(address)",
                                       "value": "address"
                                     },
-                                    "id": 5435,
+                                    "id": 5453,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "3043:7:16"
                                   },
@@ -1913,56 +1913,56 @@ export const SimpleInterestTermsContract =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 5404,
+                                              "referencedDeclaration": 5422,
                                               "type": "contract ContractRegistry",
                                               "value": "contractRegistry"
                                             },
-                                            "id": 5436,
+                                            "id": 5454,
                                             "name": "Identifier",
                                             "src": "3051:16:16"
                                           }
                                         ],
-                                        "id": 5437,
+                                        "id": 5455,
                                         "name": "MemberAccess",
                                         "src": "3051:32:16"
                                       }
                                     ],
-                                    "id": 5438,
+                                    "id": 5456,
                                     "name": "FunctionCall",
                                     "src": "3051:34:16"
                                   }
                                 ],
-                                "id": 5439,
+                                "id": 5457,
                                 "name": "FunctionCall",
                                 "src": "3043:43:16"
                               }
                             ],
-                            "id": 5440,
+                            "id": 5458,
                             "name": "BinaryOperation",
                             "src": "3029:57:16"
                           }
                         ],
-                        "id": 5441,
+                        "id": 5459,
                         "name": "FunctionCall",
                         "src": "3021:66:16"
                       }
                     ],
-                    "id": 5442,
+                    "id": 5460,
                     "name": "ExpressionStatement",
                     "src": "3021:66:16"
                   },
                   {
-                    "id": 5443,
+                    "id": 5461,
                     "name": "PlaceholderStatement",
                     "src": "3097:1:16"
                   }
                 ],
-                "id": 5444,
+                "id": 5462,
                 "name": "Block",
                 "src": "3011:94:16"
               }
             ],
-            "id": 5445,
+            "id": 5463,
             "name": "ModifierDefinition",
             "src": "2989:116:16"
           },
@@ -1978,7 +1978,7 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 5464,
+                      "scope": 5482,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -1991,17 +1991,17 @@ export const SimpleInterestTermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 5446,
+                        "id": 5464,
                         "name": "ElementaryTypeName",
                         "src": "3145:7:16"
                       }
                     ],
-                    "id": 5447,
+                    "id": 5465,
                     "name": "VariableDeclaration",
                     "src": "3145:19:16"
                   }
                 ],
-                "id": 5448,
+                "id": 5466,
                 "name": "ParameterList",
                 "src": "3144:21:16"
               },
@@ -2035,11 +2035,11 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15818,
+                              "referencedDeclaration": 15836,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 5449,
+                            "id": 5467,
                             "name": "Identifier",
                             "src": "3176:7:16"
                           },
@@ -2077,7 +2077,7 @@ export const SimpleInterestTermsContract =
                                     "attributes": {
                                       "argumentTypes": [
                                         {
-                                          "typeIdentifier": "t_contract$_SimpleInterestTermsContract_$6034",
+                                          "typeIdentifier": "t_contract$_SimpleInterestTermsContract_$6052",
                                           "typeString": "contract SimpleInterestTermsContract"
                                         }
                                       ],
@@ -2088,7 +2088,7 @@ export const SimpleInterestTermsContract =
                                       "type": "type(address)",
                                       "value": "address"
                                     },
-                                    "id": 5450,
+                                    "id": 5468,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "3184:7:16"
                                   },
@@ -2098,16 +2098,16 @@ export const SimpleInterestTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15886,
+                                      "referencedDeclaration": 15904,
                                       "type": "contract SimpleInterestTermsContract",
                                       "value": "this"
                                     },
-                                    "id": 5451,
+                                    "id": 5469,
                                     "name": "Identifier",
                                     "src": "3192:4:16"
                                   }
                                 ],
-                                "id": 5452,
+                                "id": 5470,
                                 "name": "FunctionCall",
                                 "src": "3184:13:16"
                               },
@@ -2139,7 +2139,7 @@ export const SimpleInterestTermsContract =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "getTermsContract",
-                                      "referencedDeclaration": 3022,
+                                      "referencedDeclaration": 3040,
                                       "type": "function (bytes32) view external returns (address)"
                                     },
                                     "children": [
@@ -2181,26 +2181,26 @@ export const SimpleInterestTermsContract =
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 5404,
+                                                  "referencedDeclaration": 5422,
                                                   "type": "contract ContractRegistry",
                                                   "value": "contractRegistry"
                                                 },
-                                                "id": 5453,
+                                                "id": 5471,
                                                 "name": "Identifier",
                                                 "src": "3201:16:16"
                                               }
                                             ],
-                                            "id": 5454,
+                                            "id": 5472,
                                             "name": "MemberAccess",
                                             "src": "3201:29:16"
                                           }
                                         ],
-                                        "id": 5455,
+                                        "id": 5473,
                                         "name": "FunctionCall",
                                         "src": "3201:31:16"
                                       }
                                     ],
-                                    "id": 5456,
+                                    "id": 5474,
                                     "name": "MemberAccess",
                                     "src": "3201:48:16"
                                   },
@@ -2210,46 +2210,46 @@ export const SimpleInterestTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5447,
+                                      "referencedDeclaration": 5465,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 5457,
+                                    "id": 5475,
                                     "name": "Identifier",
                                     "src": "3250:11:16"
                                   }
                                 ],
-                                "id": 5458,
+                                "id": 5476,
                                 "name": "FunctionCall",
                                 "src": "3201:61:16"
                               }
                             ],
-                            "id": 5459,
+                            "id": 5477,
                             "name": "BinaryOperation",
                             "src": "3184:78:16"
                           }
                         ],
-                        "id": 5460,
+                        "id": 5478,
                         "name": "FunctionCall",
                         "src": "3176:87:16"
                       }
                     ],
-                    "id": 5461,
+                    "id": 5479,
                     "name": "ExpressionStatement",
                     "src": "3176:87:16"
                   },
                   {
-                    "id": 5462,
+                    "id": 5480,
                     "name": "PlaceholderStatement",
                     "src": "3273:1:16"
                   }
                 ],
-                "id": 5463,
+                "id": 5481,
                 "name": "Block",
                 "src": "3166:115:16"
               }
             ],
-            "id": 5464,
+            "id": 5482,
             "name": "ModifierDefinition",
             "src": "3111:170:16"
           },
@@ -2266,7 +2266,7 @@ export const SimpleInterestTermsContract =
                   ]
                 },
                 "children": [],
-                "id": 5465,
+                "id": 5483,
                 "name": "ParameterList",
                 "src": "3310:2:16"
               },
@@ -2300,11 +2300,11 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15818,
+                              "referencedDeclaration": 15836,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 5466,
+                            "id": 5484,
                             "name": "Identifier",
                             "src": "3323:7:16"
                           },
@@ -2341,16 +2341,16 @@ export const SimpleInterestTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15815,
+                                      "referencedDeclaration": 15833,
                                       "type": "msg",
                                       "value": "msg"
                                     },
-                                    "id": 5467,
+                                    "id": 5485,
                                     "name": "Identifier",
                                     "src": "3331:3:16"
                                   }
                                 ],
-                                "id": 5468,
+                                "id": 5486,
                                 "name": "MemberAccess",
                                 "src": "3331:10:16"
                               },
@@ -2373,7 +2373,7 @@ export const SimpleInterestTermsContract =
                                     "attributes": {
                                       "argumentTypes": [
                                         {
-                                          "typeIdentifier": "t_contract$_DebtKernel_$2612",
+                                          "typeIdentifier": "t_contract$_DebtKernel_$2630",
                                           "typeString": "contract DebtKernel"
                                         }
                                       ],
@@ -2384,7 +2384,7 @@ export const SimpleInterestTermsContract =
                                       "type": "type(address)",
                                       "value": "address"
                                     },
-                                    "id": 5469,
+                                    "id": 5487,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "3345:7:16"
                                   },
@@ -2426,56 +2426,56 @@ export const SimpleInterestTermsContract =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 5404,
+                                              "referencedDeclaration": 5422,
                                               "type": "contract ContractRegistry",
                                               "value": "contractRegistry"
                                             },
-                                            "id": 5470,
+                                            "id": 5488,
                                             "name": "Identifier",
                                             "src": "3353:16:16"
                                           }
                                         ],
-                                        "id": 5471,
+                                        "id": 5489,
                                         "name": "MemberAccess",
                                         "src": "3353:27:16"
                                       }
                                     ],
-                                    "id": 5472,
+                                    "id": 5490,
                                     "name": "FunctionCall",
                                     "src": "3353:29:16"
                                   }
                                 ],
-                                "id": 5473,
+                                "id": 5491,
                                 "name": "FunctionCall",
                                 "src": "3345:38:16"
                               }
                             ],
-                            "id": 5474,
+                            "id": 5492,
                             "name": "BinaryOperation",
                             "src": "3331:52:16"
                           }
                         ],
-                        "id": 5475,
+                        "id": 5493,
                         "name": "FunctionCall",
                         "src": "3323:61:16"
                       }
                     ],
-                    "id": 5476,
+                    "id": 5494,
                     "name": "ExpressionStatement",
                     "src": "3323:61:16"
                   },
                   {
-                    "id": 5477,
+                    "id": 5495,
                     "name": "PlaceholderStatement",
                     "src": "3394:1:16"
                   }
                 ],
-                "id": 5478,
+                "id": 5496,
                 "name": "Block",
                 "src": "3313:89:16"
               }
             ],
-            "id": 5479,
+            "id": 5497,
             "name": "ModifierDefinition",
             "src": "3287:115:16"
           },
@@ -2489,7 +2489,7 @@ export const SimpleInterestTermsContract =
               ],
               "name": "SimpleInterestTermsContract",
               "payable": false,
-              "scope": 6034,
+              "scope": 6052,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -2501,7 +2501,7 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "_contractRegistry",
-                      "scope": 5491,
+                      "scope": 5509,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2514,17 +2514,17 @@ export const SimpleInterestTermsContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 5480,
+                        "id": 5498,
                         "name": "ElementaryTypeName",
                         "src": "3454:7:16"
                       }
                     ],
-                    "id": 5481,
+                    "id": 5499,
                     "name": "VariableDeclaration",
                     "src": "3454:25:16"
                   }
                 ],
-                "id": 5482,
+                "id": 5500,
                 "name": "ParameterList",
                 "src": "3444:41:16"
               },
@@ -2535,7 +2535,7 @@ export const SimpleInterestTermsContract =
                   ]
                 },
                 "children": [],
-                "id": 5483,
+                "id": 5501,
                 "name": "ParameterList",
                 "src": "3505:0:16"
               },
@@ -2560,11 +2560,11 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5404,
+                              "referencedDeclaration": 5422,
                               "type": "contract ContractRegistry",
                               "value": "contractRegistry"
                             },
-                            "id": 5484,
+                            "id": 5502,
                             "name": "Identifier",
                             "src": "3515:16:16"
                           },
@@ -2598,7 +2598,7 @@ export const SimpleInterestTermsContract =
                                   "type": "type(contract ContractRegistry)",
                                   "value": "ContractRegistry"
                                 },
-                                "id": 5485,
+                                "id": 5503,
                                 "name": "Identifier",
                                 "src": "3534:16:16"
                               },
@@ -2608,36 +2608,36 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5481,
+                                  "referencedDeclaration": 5499,
                                   "type": "address",
                                   "value": "_contractRegistry"
                                 },
-                                "id": 5486,
+                                "id": 5504,
                                 "name": "Identifier",
                                 "src": "3551:17:16"
                               }
                             ],
-                            "id": 5487,
+                            "id": 5505,
                             "name": "FunctionCall",
                             "src": "3534:35:16"
                           }
                         ],
-                        "id": 5488,
+                        "id": 5506,
                         "name": "Assignment",
                         "src": "3515:54:16"
                       }
                     ],
-                    "id": 5489,
+                    "id": 5507,
                     "name": "ExpressionStatement",
                     "src": "3515:54:16"
                   }
                 ],
-                "id": 5490,
+                "id": 5508,
                 "name": "Block",
                 "src": "3505:71:16"
               }
             ],
-            "id": 5491,
+            "id": 5509,
             "name": "FunctionDefinition",
             "src": "3408:168:16"
           },
@@ -2648,9 +2648,9 @@ export const SimpleInterestTermsContract =
               "isConstructor": false,
               "name": "registerTermStart",
               "payable": false,
-              "scope": 6034,
+              "scope": 6052,
               "stateMutability": "nonpayable",
-              "superFunction": 4700,
+              "superFunction": 4718,
               "visibility": "public"
             },
             "children": [
@@ -2660,7 +2660,7 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 5585,
+                      "scope": 5603,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -2673,12 +2673,12 @@ export const SimpleInterestTermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 5492,
+                        "id": 5510,
                         "name": "ElementaryTypeName",
                         "src": "4265:7:16"
                       }
                     ],
-                    "id": 5493,
+                    "id": 5511,
                     "name": "VariableDeclaration",
                     "src": "4265:19:16"
                   },
@@ -2686,7 +2686,7 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "debtor",
-                      "scope": 5585,
+                      "scope": 5603,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2699,17 +2699,17 @@ export const SimpleInterestTermsContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 5494,
+                        "id": 5512,
                         "name": "ElementaryTypeName",
                         "src": "4294:7:16"
                       }
                     ],
-                    "id": 5495,
+                    "id": 5513,
                     "name": "VariableDeclaration",
                     "src": "4294:14:16"
                   }
                 ],
-                "id": 5496,
+                "id": 5514,
                 "name": "ParameterList",
                 "src": "4255:59:16"
               },
@@ -2719,7 +2719,7 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "_success",
-                      "scope": 5585,
+                      "scope": 5603,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -2732,17 +2732,17 @@ export const SimpleInterestTermsContract =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 5499,
+                        "id": 5517,
                         "name": "ElementaryTypeName",
                         "src": "4370:4:16"
                       }
                     ],
-                    "id": 5500,
+                    "id": 5518,
                     "name": "VariableDeclaration",
                     "src": "4370:13:16"
                   }
                 ],
-                "id": 5501,
+                "id": 5519,
                 "name": "ParameterList",
                 "src": "4369:15:16"
               },
@@ -2759,16 +2759,16 @@ export const SimpleInterestTermsContract =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 5479,
+                      "referencedDeclaration": 5497,
                       "type": "modifier ()",
                       "value": "onlyDebtKernel"
                     },
-                    "id": 5497,
+                    "id": 5515,
                     "name": "Identifier",
                     "src": "4338:14:16"
                   }
                 ],
-                "id": 5498,
+                "id": 5516,
                 "name": "ModifierInvocation",
                 "src": "4338:14:16"
               },
@@ -2786,7 +2786,7 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "termsContract",
-                          "scope": 5585,
+                          "scope": 5603,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "address",
@@ -2799,17 +2799,17 @@ export const SimpleInterestTermsContract =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 5502,
+                            "id": 5520,
                             "name": "ElementaryTypeName",
                             "src": "4399:7:16"
                           }
                         ],
-                        "id": 5503,
+                        "id": 5521,
                         "name": "VariableDeclaration",
                         "src": "4399:21:16"
                       }
                     ],
-                    "id": 5504,
+                    "id": 5522,
                     "name": "VariableDeclarationStatement",
                     "src": "4399:21:16"
                   },
@@ -2825,7 +2825,7 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "termsContractParameters",
-                          "scope": 5585,
+                          "scope": 5603,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bytes32",
@@ -2838,17 +2838,17 @@ export const SimpleInterestTermsContract =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 5505,
+                            "id": 5523,
                             "name": "ElementaryTypeName",
                             "src": "4430:7:16"
                           }
                         ],
-                        "id": 5506,
+                        "id": 5524,
                         "name": "VariableDeclaration",
                         "src": "4430:31:16"
                       }
                     ],
-                    "id": 5507,
+                    "id": 5525,
                     "name": "VariableDeclarationStatement",
                     "src": "4430:31:16"
                   },
@@ -2882,11 +2882,11 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5503,
+                                  "referencedDeclaration": 5521,
                                   "type": "address",
                                   "value": "termsContract"
                                 },
-                                "id": 5508,
+                                "id": 5526,
                                 "name": "Identifier",
                                 "src": "4473:13:16"
                               },
@@ -2896,16 +2896,16 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5506,
+                                  "referencedDeclaration": 5524,
                                   "type": "bytes32",
                                   "value": "termsContractParameters"
                                 },
-                                "id": 5509,
+                                "id": 5527,
                                 "name": "Identifier",
                                 "src": "4488:23:16"
                               }
                             ],
-                            "id": 5510,
+                            "id": 5528,
                             "name": "TupleExpression",
                             "src": "4472:40:16"
                           },
@@ -2937,7 +2937,7 @@ export const SimpleInterestTermsContract =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "getTerms",
-                                  "referencedDeclaration": 3061,
+                                  "referencedDeclaration": 3079,
                                   "type": "function (bytes32) view external returns (address,bytes32)"
                                 },
                                 "children": [
@@ -2979,26 +2979,26 @@ export const SimpleInterestTermsContract =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 5404,
+                                              "referencedDeclaration": 5422,
                                               "type": "contract ContractRegistry",
                                               "value": "contractRegistry"
                                             },
-                                            "id": 5511,
+                                            "id": 5529,
                                             "name": "Identifier",
                                             "src": "4515:16:16"
                                           }
                                         ],
-                                        "id": 5512,
+                                        "id": 5530,
                                         "name": "MemberAccess",
                                         "src": "4515:29:16"
                                       }
                                     ],
-                                    "id": 5513,
+                                    "id": 5531,
                                     "name": "FunctionCall",
                                     "src": "4515:31:16"
                                   }
                                 ],
-                                "id": 5514,
+                                "id": 5532,
                                 "name": "MemberAccess",
                                 "src": "4515:40:16"
                               },
@@ -3008,26 +3008,26 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5493,
+                                  "referencedDeclaration": 5511,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 5515,
+                                "id": 5533,
                                 "name": "Identifier",
                                 "src": "4556:11:16"
                               }
                             ],
-                            "id": 5516,
+                            "id": 5534,
                             "name": "FunctionCall",
                             "src": "4515:53:16"
                           }
                         ],
-                        "id": 5517,
+                        "id": 5535,
                         "name": "Assignment",
                         "src": "4472:96:16"
                       }
                     ],
-                    "id": 5518,
+                    "id": 5536,
                     "name": "ExpressionStatement",
                     "src": "4472:96:16"
                   },
@@ -3043,7 +3043,7 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "principalTokenIndex",
-                          "scope": 5585,
+                          "scope": 5603,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -3056,17 +3056,17 @@ export const SimpleInterestTermsContract =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 5519,
+                            "id": 5537,
                             "name": "ElementaryTypeName",
                             "src": "4579:4:16"
                           }
                         ],
-                        "id": 5520,
+                        "id": 5538,
                         "name": "VariableDeclaration",
                         "src": "4579:24:16"
                       }
                     ],
-                    "id": 5521,
+                    "id": 5539,
                     "name": "VariableDeclarationStatement",
                     "src": "4579:24:16"
                   },
@@ -3082,7 +3082,7 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "principalAmount",
-                          "scope": 5585,
+                          "scope": 5603,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -3095,17 +3095,17 @@ export const SimpleInterestTermsContract =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 5522,
+                            "id": 5540,
                             "name": "ElementaryTypeName",
                             "src": "4613:4:16"
                           }
                         ],
-                        "id": 5523,
+                        "id": 5541,
                         "name": "VariableDeclaration",
                         "src": "4613:20:16"
                       }
                     ],
-                    "id": 5524,
+                    "id": 5542,
                     "name": "VariableDeclarationStatement",
                     "src": "4613:20:16"
                   },
@@ -3121,7 +3121,7 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "interestRate",
-                          "scope": 5585,
+                          "scope": 5603,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -3134,17 +3134,17 @@ export const SimpleInterestTermsContract =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 5525,
+                            "id": 5543,
                             "name": "ElementaryTypeName",
                             "src": "4643:4:16"
                           }
                         ],
-                        "id": 5526,
+                        "id": 5544,
                         "name": "VariableDeclaration",
                         "src": "4643:17:16"
                       }
                     ],
-                    "id": 5527,
+                    "id": 5545,
                     "name": "VariableDeclarationStatement",
                     "src": "4643:17:16"
                   },
@@ -3160,7 +3160,7 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "amortizationUnitType",
-                          "scope": 5585,
+                          "scope": 5603,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -3173,17 +3173,17 @@ export const SimpleInterestTermsContract =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 5528,
+                            "id": 5546,
                             "name": "ElementaryTypeName",
                             "src": "4670:4:16"
                           }
                         ],
-                        "id": 5529,
+                        "id": 5547,
                         "name": "VariableDeclaration",
                         "src": "4670:25:16"
                       }
                     ],
-                    "id": 5530,
+                    "id": 5548,
                     "name": "VariableDeclarationStatement",
                     "src": "4670:25:16"
                   },
@@ -3199,7 +3199,7 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "termLengthInAmortizationUnits",
-                          "scope": 5585,
+                          "scope": 5603,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -3212,17 +3212,17 @@ export const SimpleInterestTermsContract =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 5531,
+                            "id": 5549,
                             "name": "ElementaryTypeName",
                             "src": "4705:4:16"
                           }
                         ],
-                        "id": 5532,
+                        "id": 5550,
                         "name": "VariableDeclaration",
                         "src": "4705:34:16"
                       }
                     ],
-                    "id": 5533,
+                    "id": 5551,
                     "name": "VariableDeclarationStatement",
                     "src": "4705:34:16"
                   },
@@ -3256,11 +3256,11 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5520,
+                                  "referencedDeclaration": 5538,
                                   "type": "uint256",
                                   "value": "principalTokenIndex"
                                 },
-                                "id": 5534,
+                                "id": 5552,
                                 "name": "Identifier",
                                 "src": "4751:19:16"
                               },
@@ -3270,11 +3270,11 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5523,
+                                  "referencedDeclaration": 5541,
                                   "type": "uint256",
                                   "value": "principalAmount"
                                 },
-                                "id": 5535,
+                                "id": 5553,
                                 "name": "Identifier",
                                 "src": "4772:15:16"
                               },
@@ -3284,11 +3284,11 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5526,
+                                  "referencedDeclaration": 5544,
                                   "type": "uint256",
                                   "value": "interestRate"
                                 },
-                                "id": 5536,
+                                "id": 5554,
                                 "name": "Identifier",
                                 "src": "4789:12:16"
                               },
@@ -3298,11 +3298,11 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5529,
+                                  "referencedDeclaration": 5547,
                                   "type": "uint256",
                                   "value": "amortizationUnitType"
                                 },
-                                "id": 5537,
+                                "id": 5555,
                                 "name": "Identifier",
                                 "src": "4803:20:16"
                               },
@@ -3312,16 +3312,16 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5532,
+                                  "referencedDeclaration": 5550,
                                   "type": "uint256",
                                   "value": "termLengthInAmortizationUnits"
                                 },
-                                "id": 5538,
+                                "id": 5556,
                                 "name": "Identifier",
                                 "src": "4825:29:16"
                               }
                             ],
-                            "id": 5539,
+                            "id": 5557,
                             "name": "TupleExpression",
                             "src": "4750:105:16"
                           },
@@ -3351,11 +3351,11 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5776,
+                                  "referencedDeclaration": 5794,
                                   "type": "function (bytes32) pure returns (uint256,uint256,uint256,uint256,uint256)",
                                   "value": "unpackParametersFromBytes"
                                 },
-                                "id": 5540,
+                                "id": 5558,
                                 "name": "Identifier",
                                 "src": "4870:25:16"
                               },
@@ -3365,33 +3365,33 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5506,
+                                  "referencedDeclaration": 5524,
                                   "type": "bytes32",
                                   "value": "termsContractParameters"
                                 },
-                                "id": 5541,
+                                "id": 5559,
                                 "name": "Identifier",
                                 "src": "4896:23:16"
                               }
                             ],
-                            "id": 5542,
+                            "id": 5560,
                             "name": "FunctionCall",
                             "src": "4870:50:16"
                           }
                         ],
-                        "id": 5543,
+                        "id": 5561,
                         "name": "Assignment",
                         "src": "4750:170:16"
                       }
                     ],
-                    "id": 5544,
+                    "id": 5562,
                     "name": "ExpressionStatement",
                     "src": "4750:170:16"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        5546
+                        5564
                       ]
                     },
                     "children": [
@@ -3399,7 +3399,7 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "principalTokenAddress",
-                          "scope": 5585,
+                          "scope": 5603,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "address",
@@ -3412,12 +3412,12 @@ export const SimpleInterestTermsContract =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 5545,
+                            "id": 5563,
                             "name": "ElementaryTypeName",
                             "src": "4931:7:16"
                           }
                         ],
-                        "id": 5546,
+                        "id": 5564,
                         "name": "VariableDeclaration",
                         "src": "4931:29:16"
                       },
@@ -3449,7 +3449,7 @@ export const SimpleInterestTermsContract =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "getTokenAddressByIndex",
-                              "referencedDeclaration": 4896,
+                              "referencedDeclaration": 4914,
                               "type": "function (uint256) view external returns (address)"
                             },
                             "children": [
@@ -3491,26 +3491,26 @@ export const SimpleInterestTermsContract =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 5404,
+                                          "referencedDeclaration": 5422,
                                           "type": "contract ContractRegistry",
                                           "value": "contractRegistry"
                                         },
-                                        "id": 5547,
+                                        "id": 5565,
                                         "name": "Identifier",
                                         "src": "4975:16:16"
                                       }
                                     ],
-                                    "id": 5548,
+                                    "id": 5566,
                                     "name": "MemberAccess",
                                     "src": "4975:30:16"
                                   }
                                 ],
-                                "id": 5549,
+                                "id": 5567,
                                 "name": "FunctionCall",
                                 "src": "4975:32:16"
                               }
                             ],
-                            "id": 5550,
+                            "id": 5568,
                             "name": "MemberAccess",
                             "src": "4975:55:16"
                           },
@@ -3520,21 +3520,21 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5520,
+                              "referencedDeclaration": 5538,
                               "type": "uint256",
                               "value": "principalTokenIndex"
                             },
-                            "id": 5551,
+                            "id": 5569,
                             "name": "Identifier",
                             "src": "5031:19:16"
                           }
                         ],
-                        "id": 5552,
+                        "id": 5570,
                         "name": "FunctionCall",
                         "src": "4975:76:16"
                       }
                     ],
-                    "id": 5553,
+                    "id": 5571,
                     "name": "VariableDeclarationStatement",
                     "src": "4931:120:16"
                   },
@@ -3594,11 +3594,11 @@ export const SimpleInterestTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5546,
+                                      "referencedDeclaration": 5564,
                                       "type": "address",
                                       "value": "principalTokenAddress"
                                     },
-                                    "id": 5554,
+                                    "id": 5572,
                                     "name": "Identifier",
                                     "src": "5440:21:16"
                                   },
@@ -3632,7 +3632,7 @@ export const SimpleInterestTermsContract =
                                           "type": "type(address)",
                                           "value": "address"
                                         },
-                                        "id": 5555,
+                                        "id": 5573,
                                         "name": "ElementaryTypeNameExpression",
                                         "src": "5465:7:16"
                                       },
@@ -3649,17 +3649,17 @@ export const SimpleInterestTermsContract =
                                           "type": "int_const 0",
                                           "value": "0"
                                         },
-                                        "id": 5556,
+                                        "id": 5574,
                                         "name": "Literal",
                                         "src": "5473:1:16"
                                       }
                                     ],
-                                    "id": 5557,
+                                    "id": 5575,
                                     "name": "FunctionCall",
                                     "src": "5465:10:16"
                                   }
                                 ],
-                                "id": 5558,
+                                "id": 5576,
                                 "name": "BinaryOperation",
                                 "src": "5440:35:16"
                               },
@@ -3684,11 +3684,11 @@ export const SimpleInterestTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5529,
+                                      "referencedDeclaration": 5547,
                                       "type": "uint256",
                                       "value": "amortizationUnitType"
                                     },
-                                    "id": 5559,
+                                    "id": 5577,
                                     "name": "Identifier",
                                     "src": "5491:20:16"
                                   },
@@ -3698,21 +3698,21 @@ export const SimpleInterestTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5348,
+                                      "referencedDeclaration": 5366,
                                       "type": "uint256",
                                       "value": "NUM_AMORTIZATION_UNIT_TYPES"
                                     },
-                                    "id": 5560,
+                                    "id": 5578,
                                     "name": "Identifier",
                                     "src": "5514:27:16"
                                   }
                                 ],
-                                "id": 5561,
+                                "id": 5579,
                                 "name": "BinaryOperation",
                                 "src": "5491:50:16"
                               }
                             ],
-                            "id": 5562,
+                            "id": 5580,
                             "name": "BinaryOperation",
                             "src": "5440:101:16"
                           },
@@ -3737,11 +3737,11 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5503,
+                                  "referencedDeclaration": 5521,
                                   "type": "address",
                                   "value": "termsContract"
                                 },
-                                "id": 5563,
+                                "id": 5581,
                                 "name": "Identifier",
                                 "src": "5557:13:16"
                               },
@@ -3764,7 +3764,7 @@ export const SimpleInterestTermsContract =
                                     "attributes": {
                                       "argumentTypes": [
                                         {
-                                          "typeIdentifier": "t_contract$_SimpleInterestTermsContract_$6034",
+                                          "typeIdentifier": "t_contract$_SimpleInterestTermsContract_$6052",
                                           "typeString": "contract SimpleInterestTermsContract"
                                         }
                                       ],
@@ -3775,7 +3775,7 @@ export const SimpleInterestTermsContract =
                                       "type": "type(address)",
                                       "value": "address"
                                     },
-                                    "id": 5564,
+                                    "id": 5582,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "5574:7:16"
                                   },
@@ -3785,26 +3785,26 @@ export const SimpleInterestTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15886,
+                                      "referencedDeclaration": 15904,
                                       "type": "contract SimpleInterestTermsContract",
                                       "value": "this"
                                     },
-                                    "id": 5565,
+                                    "id": 5583,
                                     "name": "Identifier",
                                     "src": "5582:4:16"
                                   }
                                 ],
-                                "id": 5566,
+                                "id": 5584,
                                 "name": "FunctionCall",
                                 "src": "5574:13:16"
                               }
                             ],
-                            "id": 5567,
+                            "id": 5585,
                             "name": "BinaryOperation",
                             "src": "5557:30:16"
                           }
                         ],
-                        "id": 5568,
+                        "id": 5586,
                         "name": "BinaryOperation",
                         "src": "5440:147:16"
                       },
@@ -3858,11 +3858,11 @@ export const SimpleInterestTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5418,
+                                      "referencedDeclaration": 5436,
                                       "type": "function (bytes32,address,uint256,uint256,uint256,uint256)",
                                       "value": "LogSimpleInterestTermStart"
                                     },
-                                    "id": 5569,
+                                    "id": 5587,
                                     "name": "Identifier",
                                     "src": "5603:26:16"
                                   },
@@ -3872,11 +3872,11 @@ export const SimpleInterestTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5493,
+                                      "referencedDeclaration": 5511,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 5570,
+                                    "id": 5588,
                                     "name": "Identifier",
                                     "src": "5647:11:16"
                                   },
@@ -3886,11 +3886,11 @@ export const SimpleInterestTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5546,
+                                      "referencedDeclaration": 5564,
                                       "type": "address",
                                       "value": "principalTokenAddress"
                                     },
-                                    "id": 5571,
+                                    "id": 5589,
                                     "name": "Identifier",
                                     "src": "5676:21:16"
                                   },
@@ -3900,11 +3900,11 @@ export const SimpleInterestTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5523,
+                                      "referencedDeclaration": 5541,
                                       "type": "uint256",
                                       "value": "principalAmount"
                                     },
-                                    "id": 5572,
+                                    "id": 5590,
                                     "name": "Identifier",
                                     "src": "5715:15:16"
                                   },
@@ -3914,11 +3914,11 @@ export const SimpleInterestTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5526,
+                                      "referencedDeclaration": 5544,
                                       "type": "uint256",
                                       "value": "interestRate"
                                     },
-                                    "id": 5573,
+                                    "id": 5591,
                                     "name": "Identifier",
                                     "src": "5748:12:16"
                                   },
@@ -3928,11 +3928,11 @@ export const SimpleInterestTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5529,
+                                      "referencedDeclaration": 5547,
                                       "type": "uint256",
                                       "value": "amortizationUnitType"
                                     },
-                                    "id": 5574,
+                                    "id": 5592,
                                     "name": "Identifier",
                                     "src": "5778:20:16"
                                   },
@@ -3942,27 +3942,27 @@ export const SimpleInterestTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5532,
+                                      "referencedDeclaration": 5550,
                                       "type": "uint256",
                                       "value": "termLengthInAmortizationUnits"
                                     },
-                                    "id": 5575,
+                                    "id": 5593,
                                     "name": "Identifier",
                                     "src": "5816:29:16"
                                   }
                                 ],
-                                "id": 5576,
+                                "id": 5594,
                                 "name": "FunctionCall",
                                 "src": "5603:256:16"
                               }
                             ],
-                            "id": 5577,
+                            "id": 5595,
                             "name": "ExpressionStatement",
                             "src": "5603:256:16"
                           },
                           {
                             "attributes": {
-                              "functionReturnParameters": 5501
+                              "functionReturnParameters": 5519
                             },
                             "children": [
                               {
@@ -3978,28 +3978,28 @@ export const SimpleInterestTermsContract =
                                   "type": "bool",
                                   "value": "true"
                                 },
-                                "id": 5578,
+                                "id": 5596,
                                 "name": "Literal",
                                 "src": "5881:4:16"
                               }
                             ],
-                            "id": 5579,
+                            "id": 5597,
                             "name": "Return",
                             "src": "5874:11:16"
                           }
                         ],
-                        "id": 5580,
+                        "id": 5598,
                         "name": "Block",
                         "src": "5589:307:16"
                       }
                     ],
-                    "id": 5581,
+                    "id": 5599,
                     "name": "IfStatement",
                     "src": "5436:460:16"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 5501
+                      "functionReturnParameters": 5519
                     },
                     "children": [
                       {
@@ -4015,22 +4015,22 @@ export const SimpleInterestTermsContract =
                           "type": "bool",
                           "value": "false"
                         },
-                        "id": 5582,
+                        "id": 5600,
                         "name": "Literal",
                         "src": "5913:5:16"
                       }
                     ],
-                    "id": 5583,
+                    "id": 5601,
                     "name": "Return",
                     "src": "5906:12:16"
                   }
                 ],
-                "id": 5584,
+                "id": 5602,
                 "name": "Block",
                 "src": "4389:1536:16"
               }
             ],
-            "id": 5585,
+            "id": 5603,
             "name": "FunctionDefinition",
             "src": "4229:1696:16"
           },
@@ -4041,9 +4041,9 @@ export const SimpleInterestTermsContract =
               "isConstructor": false,
               "name": "registerRepayment",
               "payable": false,
-              "scope": 6034,
+              "scope": 6052,
               "stateMutability": "nonpayable",
-              "superFunction": 4715,
+              "superFunction": 4733,
               "visibility": "public"
             },
             "children": [
@@ -4053,7 +4053,7 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 5638,
+                      "scope": 5656,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -4066,12 +4066,12 @@ export const SimpleInterestTermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 5586,
+                        "id": 5604,
                         "name": "ElementaryTypeName",
                         "src": "6672:7:16"
                       }
                     ],
-                    "id": 5587,
+                    "id": 5605,
                     "name": "VariableDeclaration",
                     "src": "6672:19:16"
                   },
@@ -4079,7 +4079,7 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "payer",
-                      "scope": 5638,
+                      "scope": 5656,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -4092,12 +4092,12 @@ export const SimpleInterestTermsContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 5588,
+                        "id": 5606,
                         "name": "ElementaryTypeName",
                         "src": "6701:7:16"
                       }
                     ],
-                    "id": 5589,
+                    "id": 5607,
                     "name": "VariableDeclaration",
                     "src": "6701:13:16"
                   },
@@ -4105,7 +4105,7 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "beneficiary",
-                      "scope": 5638,
+                      "scope": 5656,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -4118,12 +4118,12 @@ export const SimpleInterestTermsContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 5590,
+                        "id": 5608,
                         "name": "ElementaryTypeName",
                         "src": "6724:7:16"
                       }
                     ],
-                    "id": 5591,
+                    "id": 5609,
                     "name": "VariableDeclaration",
                     "src": "6724:19:16"
                   },
@@ -4131,7 +4131,7 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "unitsOfRepayment",
-                      "scope": 5638,
+                      "scope": 5656,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -4144,12 +4144,12 @@ export const SimpleInterestTermsContract =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 5592,
+                        "id": 5610,
                         "name": "ElementaryTypeName",
                         "src": "6753:7:16"
                       }
                     ],
-                    "id": 5593,
+                    "id": 5611,
                     "name": "VariableDeclaration",
                     "src": "6753:24:16"
                   },
@@ -4157,7 +4157,7 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "tokenAddress",
-                      "scope": 5638,
+                      "scope": 5656,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -4170,17 +4170,17 @@ export const SimpleInterestTermsContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 5594,
+                        "id": 5612,
                         "name": "ElementaryTypeName",
                         "src": "6787:7:16"
                       }
                     ],
-                    "id": 5595,
+                    "id": 5613,
                     "name": "VariableDeclaration",
                     "src": "6787:20:16"
                   }
                 ],
-                "id": 5596,
+                "id": 5614,
                 "name": "ParameterList",
                 "src": "6662:151:16"
               },
@@ -4190,7 +4190,7 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "_success",
-                      "scope": 5638,
+                      "scope": 5656,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -4203,17 +4203,17 @@ export const SimpleInterestTermsContract =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 5599,
+                        "id": 5617,
                         "name": "ElementaryTypeName",
                         "src": "6865:4:16"
                       }
                     ],
-                    "id": 5600,
+                    "id": 5618,
                     "name": "VariableDeclaration",
                     "src": "6865:13:16"
                   }
                 ],
-                "id": 5601,
+                "id": 5619,
                 "name": "ParameterList",
                 "src": "6864:15:16"
               },
@@ -4230,16 +4230,16 @@ export const SimpleInterestTermsContract =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 5445,
+                      "referencedDeclaration": 5463,
                       "type": "modifier ()",
                       "value": "onlyRouter"
                     },
-                    "id": 5597,
+                    "id": 5615,
                     "name": "Identifier",
                     "src": "6837:10:16"
                   }
                 ],
-                "id": 5598,
+                "id": 5616,
                 "name": "ModifierInvocation",
                 "src": "6837:10:16"
               },
@@ -4248,7 +4248,7 @@ export const SimpleInterestTermsContract =
                   {
                     "attributes": {
                       "assignments": [
-                        5603
+                        5621
                       ]
                     },
                     "children": [
@@ -4256,7 +4256,7 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "params",
-                          "scope": 5638,
+                          "scope": 5656,
                           "stateVariable": false,
                           "storageLocation": "memory",
                           "type": "struct SimpleInterestTermsContract.SimpleInterestParams memory",
@@ -4268,15 +4268,15 @@ export const SimpleInterestTermsContract =
                             "attributes": {
                               "contractScope": null,
                               "name": "SimpleInterestParams",
-                              "referencedDeclaration": 5363,
+                              "referencedDeclaration": 5381,
                               "type": "struct SimpleInterestTermsContract.SimpleInterestParams storage pointer"
                             },
-                            "id": 5602,
+                            "id": 5620,
                             "name": "UserDefinedTypeName",
                             "src": "6894:20:16"
                           }
                         ],
-                        "id": 5603,
+                        "id": 5621,
                         "name": "VariableDeclaration",
                         "src": "6894:34:16"
                       },
@@ -4306,11 +4306,11 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5981,
+                              "referencedDeclaration": 5999,
                               "type": "function (bytes32) returns (struct SimpleInterestTermsContract.SimpleInterestParams memory)",
                               "value": "unpackParamsForAgreementID"
                             },
-                            "id": 5604,
+                            "id": 5622,
                             "name": "Identifier",
                             "src": "6931:26:16"
                           },
@@ -4320,21 +4320,21 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5587,
+                              "referencedDeclaration": 5605,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 5605,
+                            "id": 5623,
                             "name": "Identifier",
                             "src": "6958:11:16"
                           }
                         ],
-                        "id": 5606,
+                        "id": 5624,
                         "name": "FunctionCall",
                         "src": "6931:39:16"
                       }
                     ],
-                    "id": 5607,
+                    "id": 5625,
                     "name": "VariableDeclarationStatement",
                     "src": "6894:76:16"
                   },
@@ -4364,11 +4364,11 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5595,
+                              "referencedDeclaration": 5613,
                               "type": "address",
                               "value": "tokenAddress"
                             },
-                            "id": 5608,
+                            "id": 5626,
                             "name": "Identifier",
                             "src": "6985:12:16"
                           },
@@ -4380,7 +4380,7 @@ export const SimpleInterestTermsContract =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "principalTokenAddress",
-                              "referencedDeclaration": 5350,
+                              "referencedDeclaration": 5368,
                               "type": "address"
                             },
                             "children": [
@@ -4390,21 +4390,21 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5603,
+                                  "referencedDeclaration": 5621,
                                   "type": "struct SimpleInterestTermsContract.SimpleInterestParams memory",
                                   "value": "params"
                                 },
-                                "id": 5609,
+                                "id": 5627,
                                 "name": "Identifier",
                                 "src": "7001:6:16"
                               }
                             ],
-                            "id": 5610,
+                            "id": 5628,
                             "name": "MemberAccess",
                             "src": "7001:28:16"
                           }
                         ],
-                        "id": 5611,
+                        "id": 5629,
                         "name": "BinaryOperation",
                         "src": "6985:44:16"
                       },
@@ -4439,11 +4439,11 @@ export const SimpleInterestTermsContract =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 5402,
+                                          "referencedDeclaration": 5420,
                                           "type": "mapping(bytes32 => uint256)",
                                           "value": "valueRepaid"
                                         },
-                                        "id": 5612,
+                                        "id": 5630,
                                         "name": "Identifier",
                                         "src": "7045:11:16"
                                       },
@@ -4453,16 +4453,16 @@ export const SimpleInterestTermsContract =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 5587,
+                                          "referencedDeclaration": 5605,
                                           "type": "bytes32",
                                           "value": "agreementId"
                                         },
-                                        "id": 5613,
+                                        "id": 5631,
                                         "name": "Identifier",
                                         "src": "7057:11:16"
                                       }
                                     ],
-                                    "id": 5614,
+                                    "id": 5632,
                                     "name": "IndexAccess",
                                     "src": "7045:24:16"
                                   },
@@ -4494,7 +4494,7 @@ export const SimpleInterestTermsContract =
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "add",
-                                          "referencedDeclaration": 14076,
+                                          "referencedDeclaration": 14094,
                                           "type": "function (uint256,uint256) pure returns (uint256)"
                                         },
                                         "children": [
@@ -4514,11 +4514,11 @@ export const SimpleInterestTermsContract =
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 5402,
+                                                  "referencedDeclaration": 5420,
                                                   "type": "mapping(bytes32 => uint256)",
                                                   "value": "valueRepaid"
                                                 },
-                                                "id": 5615,
+                                                "id": 5633,
                                                 "name": "Identifier",
                                                 "src": "7072:11:16"
                                               },
@@ -4528,21 +4528,21 @@ export const SimpleInterestTermsContract =
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 5587,
+                                                  "referencedDeclaration": 5605,
                                                   "type": "bytes32",
                                                   "value": "agreementId"
                                                 },
-                                                "id": 5616,
+                                                "id": 5634,
                                                 "name": "Identifier",
                                                 "src": "7084:11:16"
                                               }
                                             ],
-                                            "id": 5617,
+                                            "id": 5635,
                                             "name": "IndexAccess",
                                             "src": "7072:24:16"
                                           }
                                         ],
-                                        "id": 5618,
+                                        "id": 5636,
                                         "name": "MemberAccess",
                                         "src": "7072:28:16"
                                       },
@@ -4552,26 +4552,26 @@ export const SimpleInterestTermsContract =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 5593,
+                                          "referencedDeclaration": 5611,
                                           "type": "uint256",
                                           "value": "unitsOfRepayment"
                                         },
-                                        "id": 5619,
+                                        "id": 5637,
                                         "name": "Identifier",
                                         "src": "7101:16:16"
                                       }
                                     ],
-                                    "id": 5620,
+                                    "id": 5638,
                                     "name": "FunctionCall",
                                     "src": "7072:46:16"
                                   }
                                 ],
-                                "id": 5621,
+                                "id": 5639,
                                 "name": "Assignment",
                                 "src": "7045:73:16"
                               }
                             ],
-                            "id": 5622,
+                            "id": 5640,
                             "name": "ExpressionStatement",
                             "src": "7045:73:16"
                           },
@@ -4619,11 +4619,11 @@ export const SimpleInterestTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5430,
+                                      "referencedDeclaration": 5448,
                                       "type": "function (bytes32,address,address,uint256,address)",
                                       "value": "LogRegisterRepayment"
                                     },
-                                    "id": 5623,
+                                    "id": 5641,
                                     "name": "Identifier",
                                     "src": "7133:20:16"
                                   },
@@ -4633,11 +4633,11 @@ export const SimpleInterestTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5587,
+                                      "referencedDeclaration": 5605,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 5624,
+                                    "id": 5642,
                                     "name": "Identifier",
                                     "src": "7171:11:16"
                                   },
@@ -4647,11 +4647,11 @@ export const SimpleInterestTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5589,
+                                      "referencedDeclaration": 5607,
                                       "type": "address",
                                       "value": "payer"
                                     },
-                                    "id": 5625,
+                                    "id": 5643,
                                     "name": "Identifier",
                                     "src": "7200:5:16"
                                   },
@@ -4661,11 +4661,11 @@ export const SimpleInterestTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5591,
+                                      "referencedDeclaration": 5609,
                                       "type": "address",
                                       "value": "beneficiary"
                                     },
-                                    "id": 5626,
+                                    "id": 5644,
                                     "name": "Identifier",
                                     "src": "7223:11:16"
                                   },
@@ -4675,11 +4675,11 @@ export const SimpleInterestTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5593,
+                                      "referencedDeclaration": 5611,
                                       "type": "uint256",
                                       "value": "unitsOfRepayment"
                                     },
-                                    "id": 5627,
+                                    "id": 5645,
                                     "name": "Identifier",
                                     "src": "7252:16:16"
                                   },
@@ -4689,27 +4689,27 @@ export const SimpleInterestTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5595,
+                                      "referencedDeclaration": 5613,
                                       "type": "address",
                                       "value": "tokenAddress"
                                     },
-                                    "id": 5628,
+                                    "id": 5646,
                                     "name": "Identifier",
                                     "src": "7286:12:16"
                                   }
                                 ],
-                                "id": 5629,
+                                "id": 5647,
                                 "name": "FunctionCall",
                                 "src": "7133:179:16"
                               }
                             ],
-                            "id": 5630,
+                            "id": 5648,
                             "name": "ExpressionStatement",
                             "src": "7133:179:16"
                           },
                           {
                             "attributes": {
-                              "functionReturnParameters": 5601
+                              "functionReturnParameters": 5619
                             },
                             "children": [
                               {
@@ -4725,28 +4725,28 @@ export const SimpleInterestTermsContract =
                                   "type": "bool",
                                   "value": "true"
                                 },
-                                "id": 5631,
+                                "id": 5649,
                                 "name": "Literal",
                                 "src": "7334:4:16"
                               }
                             ],
-                            "id": 5632,
+                            "id": 5650,
                             "name": "Return",
                             "src": "7327:11:16"
                           }
                         ],
-                        "id": 5633,
+                        "id": 5651,
                         "name": "Block",
                         "src": "7031:318:16"
                       }
                     ],
-                    "id": 5634,
+                    "id": 5652,
                     "name": "IfStatement",
                     "src": "6981:368:16"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 5601
+                      "functionReturnParameters": 5619
                     },
                     "children": [
                       {
@@ -4762,22 +4762,22 @@ export const SimpleInterestTermsContract =
                           "type": "bool",
                           "value": "false"
                         },
-                        "id": 5635,
+                        "id": 5653,
                         "name": "Literal",
                         "src": "7366:5:16"
                       }
                     ],
-                    "id": 5636,
+                    "id": 5654,
                     "name": "Return",
                     "src": "7359:12:16"
                   }
                 ],
-                "id": 5637,
+                "id": 5655,
                 "name": "Block",
                 "src": "6884:494:16"
               }
             ],
-            "id": 5638,
+            "id": 5656,
             "name": "FunctionDefinition",
             "src": "6636:742:16"
           },
@@ -4788,9 +4788,9 @@ export const SimpleInterestTermsContract =
               "isConstructor": false,
               "name": "getExpectedRepaymentValue",
               "payable": false,
-              "scope": 6034,
+              "scope": 6052,
               "stateMutability": "view",
-              "superFunction": 4724,
+              "superFunction": 4742,
               "visibility": "public"
             },
             "children": [
@@ -4800,7 +4800,7 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 5696,
+                      "scope": 5714,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -4813,12 +4813,12 @@ export const SimpleInterestTermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 5639,
+                        "id": 5657,
                         "name": "ElementaryTypeName",
                         "src": "8031:7:16"
                       }
                     ],
-                    "id": 5640,
+                    "id": 5658,
                     "name": "VariableDeclaration",
                     "src": "8031:19:16"
                   },
@@ -4826,7 +4826,7 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "timestamp",
-                      "scope": 5696,
+                      "scope": 5714,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -4839,17 +4839,17 @@ export const SimpleInterestTermsContract =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 5641,
+                        "id": 5659,
                         "name": "ElementaryTypeName",
                         "src": "8060:7:16"
                       }
                     ],
-                    "id": 5642,
+                    "id": 5660,
                     "name": "VariableDeclaration",
                     "src": "8060:17:16"
                   }
                 ],
-                "id": 5643,
+                "id": 5661,
                 "name": "ParameterList",
                 "src": "8021:62:16"
               },
@@ -4859,7 +4859,7 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "_expectedRepaymentValue",
-                      "scope": 5696,
+                      "scope": 5714,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -4872,17 +4872,17 @@ export const SimpleInterestTermsContract =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 5647,
+                        "id": 5665,
                         "name": "ElementaryTypeName",
                         "src": "8175:4:16"
                       }
                     ],
-                    "id": 5648,
+                    "id": 5666,
                     "name": "VariableDeclaration",
                     "src": "8175:28:16"
                   }
                 ],
-                "id": 5649,
+                "id": 5667,
                 "name": "ParameterList",
                 "src": "8174:30:16"
               },
@@ -4894,11 +4894,11 @@ export const SimpleInterestTermsContract =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 5464,
+                      "referencedDeclaration": 5482,
                       "type": "modifier (bytes32)",
                       "value": "onlyMappedToThisContract"
                     },
-                    "id": 5644,
+                    "id": 5662,
                     "name": "Identifier",
                     "src": "8120:24:16"
                   },
@@ -4908,16 +4908,16 @@ export const SimpleInterestTermsContract =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 5640,
+                      "referencedDeclaration": 5658,
                       "type": "bytes32",
                       "value": "agreementId"
                     },
-                    "id": 5645,
+                    "id": 5663,
                     "name": "Identifier",
                     "src": "8145:11:16"
                   }
                 ],
-                "id": 5646,
+                "id": 5664,
                 "name": "ModifierInvocation",
                 "src": "8120:37:16"
               },
@@ -4926,7 +4926,7 @@ export const SimpleInterestTermsContract =
                   {
                     "attributes": {
                       "assignments": [
-                        5651
+                        5669
                       ]
                     },
                     "children": [
@@ -4934,7 +4934,7 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "params",
-                          "scope": 5696,
+                          "scope": 5714,
                           "stateVariable": false,
                           "storageLocation": "memory",
                           "type": "struct SimpleInterestTermsContract.SimpleInterestParams memory",
@@ -4946,15 +4946,15 @@ export const SimpleInterestTermsContract =
                             "attributes": {
                               "contractScope": null,
                               "name": "SimpleInterestParams",
-                              "referencedDeclaration": 5363,
+                              "referencedDeclaration": 5381,
                               "type": "struct SimpleInterestTermsContract.SimpleInterestParams storage pointer"
                             },
-                            "id": 5650,
+                            "id": 5668,
                             "name": "UserDefinedTypeName",
                             "src": "8219:20:16"
                           }
                         ],
-                        "id": 5651,
+                        "id": 5669,
                         "name": "VariableDeclaration",
                         "src": "8219:34:16"
                       },
@@ -4984,11 +4984,11 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5981,
+                              "referencedDeclaration": 5999,
                               "type": "function (bytes32) returns (struct SimpleInterestTermsContract.SimpleInterestParams memory)",
                               "value": "unpackParamsForAgreementID"
                             },
-                            "id": 5652,
+                            "id": 5670,
                             "name": "Identifier",
                             "src": "8256:26:16"
                           },
@@ -4998,28 +4998,28 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5640,
+                              "referencedDeclaration": 5658,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 5653,
+                            "id": 5671,
                             "name": "Identifier",
                             "src": "8283:11:16"
                           }
                         ],
-                        "id": 5654,
+                        "id": 5672,
                         "name": "FunctionCall",
                         "src": "8256:39:16"
                       }
                     ],
-                    "id": 5655,
+                    "id": 5673,
                     "name": "VariableDeclarationStatement",
                     "src": "8219:76:16"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        5657
+                        5675
                       ]
                     },
                     "children": [
@@ -5027,7 +5027,7 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "principalPlusInterest",
-                          "scope": 5696,
+                          "scope": 5714,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -5040,12 +5040,12 @@ export const SimpleInterestTermsContract =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 5656,
+                            "id": 5674,
                             "name": "ElementaryTypeName",
                             "src": "8305:4:16"
                           }
                         ],
-                        "id": 5657,
+                        "id": 5675,
                         "name": "VariableDeclaration",
                         "src": "8305:26:16"
                       },
@@ -5068,18 +5068,18 @@ export const SimpleInterestTermsContract =
                             "attributes": {
                               "argumentTypes": [
                                 {
-                                  "typeIdentifier": "t_struct$_SimpleInterestParams_$5363_memory_ptr",
+                                  "typeIdentifier": "t_struct$_SimpleInterestParams_$5381_memory_ptr",
                                   "typeString": "struct SimpleInterestTermsContract.SimpleInterestParams memory"
                                 }
                               ],
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5867,
+                              "referencedDeclaration": 5885,
                               "type": "function (struct SimpleInterestTermsContract.SimpleInterestParams memory) returns (uint256)",
                               "value": "calculateTotalPrincipalPlusInterest"
                             },
-                            "id": 5658,
+                            "id": 5676,
                             "name": "Identifier",
                             "src": "8334:35:16"
                           },
@@ -5089,21 +5089,21 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5651,
+                              "referencedDeclaration": 5669,
                               "type": "struct SimpleInterestTermsContract.SimpleInterestParams memory",
                               "value": "params"
                             },
-                            "id": 5659,
+                            "id": 5677,
                             "name": "Identifier",
                             "src": "8370:6:16"
                           }
                         ],
-                        "id": 5660,
+                        "id": 5678,
                         "name": "FunctionCall",
                         "src": "8334:43:16"
                       }
                     ],
-                    "id": 5661,
+                    "id": 5679,
                     "name": "VariableDeclarationStatement",
                     "src": "8305:72:16"
                   },
@@ -5130,11 +5130,11 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5642,
+                              "referencedDeclaration": 5660,
                               "type": "uint256",
                               "value": "timestamp"
                             },
-                            "id": 5662,
+                            "id": 5680,
                             "name": "Identifier",
                             "src": "8392:9:16"
                           },
@@ -5146,7 +5146,7 @@ export const SimpleInterestTermsContract =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "termStartUnixTimestamp",
-                              "referencedDeclaration": 5354,
+                              "referencedDeclaration": 5372,
                               "type": "uint256"
                             },
                             "children": [
@@ -5156,21 +5156,21 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5651,
+                                  "referencedDeclaration": 5669,
                                   "type": "struct SimpleInterestTermsContract.SimpleInterestParams memory",
                                   "value": "params"
                                 },
-                                "id": 5663,
+                                "id": 5681,
                                 "name": "Identifier",
                                 "src": "8405:6:16"
                               }
                             ],
-                            "id": 5664,
+                            "id": 5682,
                             "name": "MemberAccess",
                             "src": "8405:29:16"
                           }
                         ],
-                        "id": 5665,
+                        "id": 5683,
                         "name": "BinaryOperation",
                         "src": "8392:42:16"
                       },
@@ -5178,7 +5178,7 @@ export const SimpleInterestTermsContract =
                         "children": [
                           {
                             "attributes": {
-                              "functionReturnParameters": 5649
+                              "functionReturnParameters": 5667
                             },
                             "children": [
                               {
@@ -5194,17 +5194,17 @@ export const SimpleInterestTermsContract =
                                   "type": "int_const 0",
                                   "value": "0"
                                 },
-                                "id": 5666,
+                                "id": 5684,
                                 "name": "Literal",
                                 "src": "8587:1:16"
                               }
                             ],
-                            "id": 5667,
+                            "id": 5685,
                             "name": "Return",
                             "src": "8580:8:16"
                           }
                         ],
-                        "id": 5668,
+                        "id": 5686,
                         "name": "Block",
                         "src": "8436:163:16"
                       },
@@ -5231,11 +5231,11 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5642,
+                                  "referencedDeclaration": 5660,
                                   "type": "uint256",
                                   "value": "timestamp"
                                 },
-                                "id": 5669,
+                                "id": 5687,
                                 "name": "Identifier",
                                 "src": "8609:9:16"
                               },
@@ -5247,7 +5247,7 @@ export const SimpleInterestTermsContract =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "termEndUnixTimestamp",
-                                  "referencedDeclaration": 5356,
+                                  "referencedDeclaration": 5374,
                                   "type": "uint256"
                                 },
                                 "children": [
@@ -5257,21 +5257,21 @@ export const SimpleInterestTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5651,
+                                      "referencedDeclaration": 5669,
                                       "type": "struct SimpleInterestTermsContract.SimpleInterestParams memory",
                                       "value": "params"
                                     },
-                                    "id": 5670,
+                                    "id": 5688,
                                     "name": "Identifier",
                                     "src": "8622:6:16"
                                   }
                                 ],
-                                "id": 5671,
+                                "id": 5689,
                                 "name": "MemberAccess",
                                 "src": "8622:27:16"
                               }
                             ],
-                            "id": 5672,
+                            "id": 5690,
                             "name": "BinaryOperation",
                             "src": "8609:40:16"
                           },
@@ -5279,7 +5279,7 @@ export const SimpleInterestTermsContract =
                             "children": [
                               {
                                 "attributes": {
-                                  "functionReturnParameters": 5649
+                                  "functionReturnParameters": 5667
                                 },
                                 "children": [
                                   {
@@ -5288,21 +5288,21 @@ export const SimpleInterestTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5657,
+                                      "referencedDeclaration": 5675,
                                       "type": "uint256",
                                       "value": "principalPlusInterest"
                                     },
-                                    "id": 5673,
+                                    "id": 5691,
                                     "name": "Identifier",
                                     "src": "8819:21:16"
                                   }
                                 ],
-                                "id": 5674,
+                                "id": 5692,
                                 "name": "Return",
                                 "src": "8812:28:16"
                               }
                             ],
-                            "id": 5675,
+                            "id": 5693,
                             "name": "Block",
                             "src": "8651:200:16"
                           },
@@ -5311,7 +5311,7 @@ export const SimpleInterestTermsContract =
                               {
                                 "attributes": {
                                   "assignments": [
-                                    5677
+                                    5695
                                   ]
                                 },
                                 "children": [
@@ -5319,7 +5319,7 @@ export const SimpleInterestTermsContract =
                                     "attributes": {
                                       "constant": false,
                                       "name": "numUnits",
-                                      "scope": 5696,
+                                      "scope": 5714,
                                       "stateVariable": false,
                                       "storageLocation": "default",
                                       "type": "uint256",
@@ -5332,12 +5332,12 @@ export const SimpleInterestTermsContract =
                                           "name": "uint",
                                           "type": "uint256"
                                         },
-                                        "id": 5676,
+                                        "id": 5694,
                                         "name": "ElementaryTypeName",
                                         "src": "8871:4:16"
                                       }
                                     ],
-                                    "id": 5677,
+                                    "id": 5695,
                                     "name": "VariableDeclaration",
                                     "src": "8871:13:16"
                                   },
@@ -5364,18 +5364,18 @@ export const SimpleInterestTermsContract =
                                               "typeString": "uint256"
                                             },
                                             {
-                                              "typeIdentifier": "t_struct$_SimpleInterestParams_$5363_memory_ptr",
+                                              "typeIdentifier": "t_struct$_SimpleInterestParams_$5381_memory_ptr",
                                               "typeString": "struct SimpleInterestTermsContract.SimpleInterestParams memory"
                                             }
                                           ],
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 5841,
+                                          "referencedDeclaration": 5859,
                                           "type": "function (uint256,struct SimpleInterestTermsContract.SimpleInterestParams memory) returns (uint256)",
                                           "value": "numAmortizationUnitsForTimestamp"
                                         },
-                                        "id": 5678,
+                                        "id": 5696,
                                         "name": "Identifier",
                                         "src": "8887:32:16"
                                       },
@@ -5385,11 +5385,11 @@ export const SimpleInterestTermsContract =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 5642,
+                                          "referencedDeclaration": 5660,
                                           "type": "uint256",
                                           "value": "timestamp"
                                         },
-                                        "id": 5679,
+                                        "id": 5697,
                                         "name": "Identifier",
                                         "src": "8920:9:16"
                                       },
@@ -5399,27 +5399,27 @@ export const SimpleInterestTermsContract =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 5651,
+                                          "referencedDeclaration": 5669,
                                           "type": "struct SimpleInterestTermsContract.SimpleInterestParams memory",
                                           "value": "params"
                                         },
-                                        "id": 5680,
+                                        "id": 5698,
                                         "name": "Identifier",
                                         "src": "8931:6:16"
                                       }
                                     ],
-                                    "id": 5681,
+                                    "id": 5699,
                                     "name": "FunctionCall",
                                     "src": "8887:51:16"
                                   }
                                 ],
-                                "id": 5682,
+                                "id": 5700,
                                 "name": "VariableDeclarationStatement",
                                 "src": "8871:67:16"
                               },
                               {
                                 "attributes": {
-                                  "functionReturnParameters": 5649
+                                  "functionReturnParameters": 5667
                                 },
                                 "children": [
                                   {
@@ -5450,7 +5450,7 @@ export const SimpleInterestTermsContract =
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "div",
-                                          "referencedDeclaration": 14032,
+                                          "referencedDeclaration": 14050,
                                           "type": "function (uint256,uint256) pure returns (uint256)"
                                         },
                                         "children": [
@@ -5482,7 +5482,7 @@ export const SimpleInterestTermsContract =
                                                   "isPure": false,
                                                   "lValueRequested": false,
                                                   "member_name": "mul",
-                                                  "referencedDeclaration": 14014,
+                                                  "referencedDeclaration": 14032,
                                                   "type": "function (uint256,uint256) pure returns (uint256)"
                                                 },
                                                 "children": [
@@ -5492,16 +5492,16 @@ export const SimpleInterestTermsContract =
                                                       "overloadedDeclarations": [
                                                         null
                                                       ],
-                                                      "referencedDeclaration": 5657,
+                                                      "referencedDeclaration": 5675,
                                                       "type": "uint256",
                                                       "value": "principalPlusInterest"
                                                     },
-                                                    "id": 5683,
+                                                    "id": 5701,
                                                     "name": "Identifier",
                                                     "src": "8959:21:16"
                                                   }
                                                 ],
-                                                "id": 5684,
+                                                "id": 5702,
                                                 "name": "MemberAccess",
                                                 "src": "8959:25:16"
                                               },
@@ -5511,21 +5511,21 @@ export const SimpleInterestTermsContract =
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 5677,
+                                                  "referencedDeclaration": 5695,
                                                   "type": "uint256",
                                                   "value": "numUnits"
                                                 },
-                                                "id": 5685,
+                                                "id": 5703,
                                                 "name": "Identifier",
                                                 "src": "8985:8:16"
                                               }
                                             ],
-                                            "id": 5686,
+                                            "id": 5704,
                                             "name": "FunctionCall",
                                             "src": "8959:35:16"
                                           }
                                         ],
-                                        "id": 5687,
+                                        "id": 5705,
                                         "name": "MemberAccess",
                                         "src": "8959:39:16"
                                       },
@@ -5537,7 +5537,7 @@ export const SimpleInterestTermsContract =
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "termLengthInAmortizationUnits",
-                                          "referencedDeclaration": 5360,
+                                          "referencedDeclaration": 5378,
                                           "type": "uint256"
                                         },
                                         "children": [
@@ -5547,51 +5547,51 @@ export const SimpleInterestTermsContract =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 5651,
+                                              "referencedDeclaration": 5669,
                                               "type": "struct SimpleInterestTermsContract.SimpleInterestParams memory",
                                               "value": "params"
                                             },
-                                            "id": 5688,
+                                            "id": 5706,
                                             "name": "Identifier",
                                             "src": "8999:6:16"
                                           }
                                         ],
-                                        "id": 5689,
+                                        "id": 5707,
                                         "name": "MemberAccess",
                                         "src": "8999:36:16"
                                       }
                                     ],
-                                    "id": 5690,
+                                    "id": 5708,
                                     "name": "FunctionCall",
                                     "src": "8959:77:16"
                                   }
                                 ],
-                                "id": 5691,
+                                "id": 5709,
                                 "name": "Return",
                                 "src": "8952:84:16"
                               }
                             ],
-                            "id": 5692,
+                            "id": 5710,
                             "name": "Block",
                             "src": "8857:190:16"
                           }
                         ],
-                        "id": 5693,
+                        "id": 5711,
                         "name": "IfStatement",
                         "src": "8605:442:16"
                       }
                     ],
-                    "id": 5694,
+                    "id": 5712,
                     "name": "IfStatement",
                     "src": "8388:659:16"
                   }
                 ],
-                "id": 5695,
+                "id": 5713,
                 "name": "Block",
                 "src": "8209:844:16"
               }
             ],
-            "id": 5696,
+            "id": 5714,
             "name": "FunctionDefinition",
             "src": "7987:1066:16"
           },
@@ -5605,9 +5605,9 @@ export const SimpleInterestTermsContract =
               ],
               "name": "getValueRepaidToDate",
               "payable": false,
-              "scope": 6034,
+              "scope": 6052,
               "stateMutability": "view",
-              "superFunction": 4731,
+              "superFunction": 4749,
               "visibility": "public"
             },
             "children": [
@@ -5617,7 +5617,7 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 5708,
+                      "scope": 5726,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -5630,17 +5630,17 @@ export const SimpleInterestTermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 5697,
+                        "id": 5715,
                         "name": "ElementaryTypeName",
                         "src": "9364:7:16"
                       }
                     ],
-                    "id": 5698,
+                    "id": 5716,
                     "name": "VariableDeclaration",
                     "src": "9364:19:16"
                   }
                 ],
-                "id": 5699,
+                "id": 5717,
                 "name": "ParameterList",
                 "src": "9363:21:16"
               },
@@ -5650,7 +5650,7 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "_valueRepaid",
-                      "scope": 5708,
+                      "scope": 5726,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -5663,17 +5663,17 @@ export const SimpleInterestTermsContract =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 5700,
+                        "id": 5718,
                         "name": "ElementaryTypeName",
                         "src": "9430:4:16"
                       }
                     ],
-                    "id": 5701,
+                    "id": 5719,
                     "name": "VariableDeclaration",
                     "src": "9430:17:16"
                   }
                 ],
-                "id": 5702,
+                "id": 5720,
                 "name": "ParameterList",
                 "src": "9429:19:16"
               },
@@ -5681,7 +5681,7 @@ export const SimpleInterestTermsContract =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 5702
+                      "functionReturnParameters": 5720
                     },
                     "children": [
                       {
@@ -5700,11 +5700,11 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5402,
+                              "referencedDeclaration": 5420,
                               "type": "mapping(bytes32 => uint256)",
                               "value": "valueRepaid"
                             },
-                            "id": 5703,
+                            "id": 5721,
                             "name": "Identifier",
                             "src": "9470:11:16"
                           },
@@ -5714,31 +5714,31 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5698,
+                              "referencedDeclaration": 5716,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 5704,
+                            "id": 5722,
                             "name": "Identifier",
                             "src": "9482:11:16"
                           }
                         ],
-                        "id": 5705,
+                        "id": 5723,
                         "name": "IndexAccess",
                         "src": "9470:24:16"
                       }
                     ],
-                    "id": 5706,
+                    "id": 5724,
                     "name": "Return",
                     "src": "9463:31:16"
                   }
                 ],
-                "id": 5707,
+                "id": 5725,
                 "name": "Block",
                 "src": "9453:48:16"
               }
             ],
-            "id": 5708,
+            "id": 5726,
             "name": "FunctionDefinition",
             "src": "9334:167:16"
           },
@@ -5752,7 +5752,7 @@ export const SimpleInterestTermsContract =
               ],
               "name": "unpackParametersFromBytes",
               "payable": false,
-              "scope": 6034,
+              "scope": 6052,
               "stateMutability": "pure",
               "superFunction": null,
               "visibility": "public"
@@ -5764,7 +5764,7 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "parameters",
-                      "scope": 5776,
+                      "scope": 5794,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -5777,17 +5777,17 @@ export const SimpleInterestTermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 5709,
+                        "id": 5727,
                         "name": "ElementaryTypeName",
                         "src": "9542:7:16"
                       }
                     ],
-                    "id": 5710,
+                    "id": 5728,
                     "name": "VariableDeclaration",
                     "src": "9542:18:16"
                   }
                 ],
-                "id": 5711,
+                "id": 5729,
                 "name": "ParameterList",
                 "src": "9541:20:16"
               },
@@ -5797,7 +5797,7 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "_principalTokenIndex",
-                      "scope": 5776,
+                      "scope": 5794,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -5810,12 +5810,12 @@ export const SimpleInterestTermsContract =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 5712,
+                        "id": 5730,
                         "name": "ElementaryTypeName",
                         "src": "9620:4:16"
                       }
                     ],
-                    "id": 5713,
+                    "id": 5731,
                     "name": "VariableDeclaration",
                     "src": "9620:25:16"
                   },
@@ -5823,7 +5823,7 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "_principalAmount",
-                      "scope": 5776,
+                      "scope": 5794,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -5836,12 +5836,12 @@ export const SimpleInterestTermsContract =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 5714,
+                        "id": 5732,
                         "name": "ElementaryTypeName",
                         "src": "9659:4:16"
                       }
                     ],
-                    "id": 5715,
+                    "id": 5733,
                     "name": "VariableDeclaration",
                     "src": "9659:21:16"
                   },
@@ -5849,7 +5849,7 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "_interestRate",
-                      "scope": 5776,
+                      "scope": 5794,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -5862,12 +5862,12 @@ export const SimpleInterestTermsContract =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 5716,
+                        "id": 5734,
                         "name": "ElementaryTypeName",
                         "src": "9694:4:16"
                       }
                     ],
-                    "id": 5717,
+                    "id": 5735,
                     "name": "VariableDeclaration",
                     "src": "9694:18:16"
                   },
@@ -5875,7 +5875,7 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "_amortizationUnitType",
-                      "scope": 5776,
+                      "scope": 5794,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -5888,12 +5888,12 @@ export const SimpleInterestTermsContract =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 5718,
+                        "id": 5736,
                         "name": "ElementaryTypeName",
                         "src": "9726:4:16"
                       }
                     ],
-                    "id": 5719,
+                    "id": 5737,
                     "name": "VariableDeclaration",
                     "src": "9726:26:16"
                   },
@@ -5901,7 +5901,7 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "_termLengthInAmortizationUnits",
-                      "scope": 5776,
+                      "scope": 5794,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -5914,17 +5914,17 @@ export const SimpleInterestTermsContract =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 5720,
+                        "id": 5738,
                         "name": "ElementaryTypeName",
                         "src": "9766:4:16"
                       }
                     ],
-                    "id": 5721,
+                    "id": 5739,
                     "name": "VariableDeclaration",
                     "src": "9766:35:16"
                   }
                 ],
-                "id": 5722,
+                "id": 5740,
                 "name": "ParameterList",
                 "src": "9606:205:16"
               },
@@ -5933,7 +5933,7 @@ export const SimpleInterestTermsContract =
                   {
                     "attributes": {
                       "assignments": [
-                        5724
+                        5742
                       ]
                     },
                     "children": [
@@ -5941,7 +5941,7 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "principalTokenIndexShifted",
-                          "scope": 5776,
+                          "scope": 5794,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bytes32",
@@ -5954,12 +5954,12 @@ export const SimpleInterestTermsContract =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 5723,
+                            "id": 5741,
                             "name": "ElementaryTypeName",
                             "src": "9940:7:16"
                           }
                         ],
-                        "id": 5724,
+                        "id": 5742,
                         "name": "VariableDeclaration",
                         "src": "9940:34:16"
                       },
@@ -5984,11 +5984,11 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5710,
+                              "referencedDeclaration": 5728,
                               "type": "bytes32",
                               "value": "parameters"
                             },
-                            "id": 5725,
+                            "id": 5743,
                             "name": "Identifier",
                             "src": "9989:10:16"
                           },
@@ -6005,24 +6005,24 @@ export const SimpleInterestTermsContract =
                               "type": "int_const 115339776388732929035197660848497720713218148788040405586178452820382218977280",
                               "value": "0xff00000000000000000000000000000000000000000000000000000000000000"
                             },
-                            "id": 5726,
+                            "id": 5744,
                             "name": "Literal",
                             "src": "10002:66:16"
                           }
                         ],
-                        "id": 5727,
+                        "id": 5745,
                         "name": "BinaryOperation",
                         "src": "9989:79:16"
                       }
                     ],
-                    "id": 5728,
+                    "id": 5746,
                     "name": "VariableDeclarationStatement",
                     "src": "9940:128:16"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        5730
+                        5748
                       ]
                     },
                     "children": [
@@ -6030,7 +6030,7 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "principalAmountShifted",
-                          "scope": 5776,
+                          "scope": 5794,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bytes32",
@@ -6043,12 +6043,12 @@ export const SimpleInterestTermsContract =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 5729,
+                            "id": 5747,
                             "name": "ElementaryTypeName",
                             "src": "10160:7:16"
                           }
                         ],
-                        "id": 5730,
+                        "id": 5748,
                         "name": "VariableDeclaration",
                         "src": "10160:30:16"
                       },
@@ -6073,11 +6073,11 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5710,
+                              "referencedDeclaration": 5728,
                               "type": "bytes32",
                               "value": "parameters"
                             },
-                            "id": 5731,
+                            "id": 5749,
                             "name": "Identifier",
                             "src": "10205:10:16"
                           },
@@ -6094,24 +6094,24 @@ export const SimpleInterestTermsContract =
                               "type": "int_const 452312848583266388373324160184478149281012038075925309401333206985379676160",
                               "value": "0x00ffffffffffffffffffffffff00000000000000000000000000000000000000"
                             },
-                            "id": 5732,
+                            "id": 5750,
                             "name": "Literal",
                             "src": "10218:66:16"
                           }
                         ],
-                        "id": 5733,
+                        "id": 5751,
                         "name": "BinaryOperation",
                         "src": "10205:79:16"
                       }
                     ],
-                    "id": 5734,
+                    "id": 5752,
                     "name": "VariableDeclarationStatement",
                     "src": "10160:124:16"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        5736
+                        5754
                       ]
                     },
                     "children": [
@@ -6119,7 +6119,7 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "interestRateShifted",
-                          "scope": 5776,
+                          "scope": 5794,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bytes32",
@@ -6132,12 +6132,12 @@ export const SimpleInterestTermsContract =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 5735,
+                            "id": 5753,
                             "name": "ElementaryTypeName",
                             "src": "10372:7:16"
                           }
                         ],
-                        "id": 5736,
+                        "id": 5754,
                         "name": "VariableDeclaration",
                         "src": "10372:27:16"
                       },
@@ -6162,11 +6162,11 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5710,
+                              "referencedDeclaration": 5728,
                               "type": "bytes32",
                               "value": "parameters"
                             },
-                            "id": 5737,
+                            "id": 5755,
                             "name": "Identifier",
                             "src": "10414:10:16"
                           },
@@ -6183,24 +6183,24 @@ export const SimpleInterestTermsContract =
                               "type": "int_const 5708990430541472603294680414423373113762775040",
                               "value": "0x00000000000000000000000000ffffff00000000000000000000000000000000"
                             },
-                            "id": 5738,
+                            "id": 5756,
                             "name": "Literal",
                             "src": "10427:66:16"
                           }
                         ],
-                        "id": 5739,
+                        "id": 5757,
                         "name": "BinaryOperation",
                         "src": "10414:79:16"
                       }
                     ],
-                    "id": 5740,
+                    "id": 5758,
                     "name": "VariableDeclarationStatement",
                     "src": "10372:121:16"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        5742
+                        5760
                       ]
                     },
                     "children": [
@@ -6208,7 +6208,7 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "amortizationUnitTypeShifted",
-                          "scope": 5776,
+                          "scope": 5794,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bytes32",
@@ -6221,12 +6221,12 @@ export const SimpleInterestTermsContract =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 5741,
+                            "id": 5759,
                             "name": "ElementaryTypeName",
                             "src": "10588:7:16"
                           }
                         ],
-                        "id": 5742,
+                        "id": 5760,
                         "name": "VariableDeclaration",
                         "src": "10588:35:16"
                       },
@@ -6251,11 +6251,11 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5710,
+                              "referencedDeclaration": 5728,
                               "type": "bytes32",
                               "value": "parameters"
                             },
-                            "id": 5743,
+                            "id": 5761,
                             "name": "Identifier",
                             "src": "10638:10:16"
                           },
@@ -6272,24 +6272,24 @@ export const SimpleInterestTermsContract =
                               "type": "int_const 319014718988379809496913694467282698240",
                               "value": "0x00000000000000000000000000000000f0000000000000000000000000000000"
                             },
-                            "id": 5744,
+                            "id": 5762,
                             "name": "Literal",
                             "src": "10651:66:16"
                           }
                         ],
-                        "id": 5745,
+                        "id": 5763,
                         "name": "BinaryOperation",
                         "src": "10638:79:16"
                       }
                     ],
-                    "id": 5746,
+                    "id": 5764,
                     "name": "VariableDeclarationStatement",
                     "src": "10588:129:16"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        5748
+                        5766
                       ]
                     },
                     "children": [
@@ -6297,7 +6297,7 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "termLengthInAmortizationUnitsShifted",
-                          "scope": 5776,
+                          "scope": 5794,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bytes32",
@@ -6310,12 +6310,12 @@ export const SimpleInterestTermsContract =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 5747,
+                            "id": 5765,
                             "name": "ElementaryTypeName",
                             "src": "10845:7:16"
                           }
                         ],
-                        "id": 5748,
+                        "id": 5766,
                         "name": "VariableDeclaration",
                         "src": "10845:44:16"
                       },
@@ -6340,11 +6340,11 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5710,
+                              "referencedDeclaration": 5728,
                               "type": "bytes32",
                               "value": "parameters"
                             },
-                            "id": 5749,
+                            "id": 5767,
                             "name": "Identifier",
                             "src": "10904:10:16"
                           },
@@ -6361,23 +6361,23 @@ export const SimpleInterestTermsContract =
                               "type": "int_const 21267323414004995539734129808464936960",
                               "value": "0x000000000000000000000000000000000ffff000000000000000000000000000"
                             },
-                            "id": 5750,
+                            "id": 5768,
                             "name": "Literal",
                             "src": "10917:66:16"
                           }
                         ],
-                        "id": 5751,
+                        "id": 5769,
                         "name": "BinaryOperation",
                         "src": "10904:79:16"
                       }
                     ],
-                    "id": 5752,
+                    "id": 5770,
                     "name": "VariableDeclarationStatement",
                     "src": "10845:138:16"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 5722
+                      "functionReturnParameters": 5740
                     },
                     "children": [
                       {
@@ -6421,11 +6421,11 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5811,
+                                  "referencedDeclaration": 5829,
                                   "type": "function (bytes32,uint256) pure returns (uint256)",
                                   "value": "bitShiftRight"
                                 },
-                                "id": 5753,
+                                "id": 5771,
                                 "name": "Identifier",
                                 "src": "11994:13:16"
                               },
@@ -6435,11 +6435,11 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5724,
+                                  "referencedDeclaration": 5742,
                                   "type": "bytes32",
                                   "value": "principalTokenIndexShifted"
                                 },
-                                "id": 5754,
+                                "id": 5772,
                                 "name": "Identifier",
                                 "src": "12008:26:16"
                               },
@@ -6456,12 +6456,12 @@ export const SimpleInterestTermsContract =
                                   "type": "int_const 248",
                                   "value": "248"
                                 },
-                                "id": 5755,
+                                "id": 5773,
                                 "name": "Literal",
                                 "src": "12036:3:16"
                               }
                             ],
-                            "id": 5756,
+                            "id": 5774,
                             "name": "FunctionCall",
                             "src": "11994:46:16"
                           },
@@ -6495,11 +6495,11 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5811,
+                                  "referencedDeclaration": 5829,
                                   "type": "function (bytes32,uint256) pure returns (uint256)",
                                   "value": "bitShiftRight"
                                 },
-                                "id": 5757,
+                                "id": 5775,
                                 "name": "Identifier",
                                 "src": "12054:13:16"
                               },
@@ -6509,11 +6509,11 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5730,
+                                  "referencedDeclaration": 5748,
                                   "type": "bytes32",
                                   "value": "principalAmountShifted"
                                 },
-                                "id": 5758,
+                                "id": 5776,
                                 "name": "Identifier",
                                 "src": "12068:22:16"
                               },
@@ -6530,12 +6530,12 @@ export const SimpleInterestTermsContract =
                                   "type": "int_const 152",
                                   "value": "152"
                                 },
-                                "id": 5759,
+                                "id": 5777,
                                 "name": "Literal",
                                 "src": "12092:3:16"
                               }
                             ],
-                            "id": 5760,
+                            "id": 5778,
                             "name": "FunctionCall",
                             "src": "12054:42:16"
                           },
@@ -6569,11 +6569,11 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5811,
+                                  "referencedDeclaration": 5829,
                                   "type": "function (bytes32,uint256) pure returns (uint256)",
                                   "value": "bitShiftRight"
                                 },
-                                "id": 5761,
+                                "id": 5779,
                                 "name": "Identifier",
                                 "src": "12110:13:16"
                               },
@@ -6583,11 +6583,11 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5736,
+                                  "referencedDeclaration": 5754,
                                   "type": "bytes32",
                                   "value": "interestRateShifted"
                                 },
-                                "id": 5762,
+                                "id": 5780,
                                 "name": "Identifier",
                                 "src": "12124:19:16"
                               },
@@ -6604,12 +6604,12 @@ export const SimpleInterestTermsContract =
                                   "type": "int_const 128",
                                   "value": "128"
                                 },
-                                "id": 5763,
+                                "id": 5781,
                                 "name": "Literal",
                                 "src": "12145:3:16"
                               }
                             ],
-                            "id": 5764,
+                            "id": 5782,
                             "name": "FunctionCall",
                             "src": "12110:39:16"
                           },
@@ -6643,11 +6643,11 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5811,
+                                  "referencedDeclaration": 5829,
                                   "type": "function (bytes32,uint256) pure returns (uint256)",
                                   "value": "bitShiftRight"
                                 },
-                                "id": 5765,
+                                "id": 5783,
                                 "name": "Identifier",
                                 "src": "12163:13:16"
                               },
@@ -6657,11 +6657,11 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5742,
+                                  "referencedDeclaration": 5760,
                                   "type": "bytes32",
                                   "value": "amortizationUnitTypeShifted"
                                 },
-                                "id": 5766,
+                                "id": 5784,
                                 "name": "Identifier",
                                 "src": "12177:27:16"
                               },
@@ -6678,12 +6678,12 @@ export const SimpleInterestTermsContract =
                                   "type": "int_const 124",
                                   "value": "124"
                                 },
-                                "id": 5767,
+                                "id": 5785,
                                 "name": "Literal",
                                 "src": "12206:3:16"
                               }
                             ],
-                            "id": 5768,
+                            "id": 5786,
                             "name": "FunctionCall",
                             "src": "12163:47:16"
                           },
@@ -6717,11 +6717,11 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5811,
+                                  "referencedDeclaration": 5829,
                                   "type": "function (bytes32,uint256) pure returns (uint256)",
                                   "value": "bitShiftRight"
                                 },
-                                "id": 5769,
+                                "id": 5787,
                                 "name": "Identifier",
                                 "src": "12224:13:16"
                               },
@@ -6731,11 +6731,11 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5748,
+                                  "referencedDeclaration": 5766,
                                   "type": "bytes32",
                                   "value": "termLengthInAmortizationUnitsShifted"
                                 },
-                                "id": 5770,
+                                "id": 5788,
                                 "name": "Identifier",
                                 "src": "12238:36:16"
                               },
@@ -6752,32 +6752,32 @@ export const SimpleInterestTermsContract =
                                   "type": "int_const 108",
                                   "value": "108"
                                 },
-                                "id": 5771,
+                                "id": 5789,
                                 "name": "Literal",
                                 "src": "12276:3:16"
                               }
                             ],
-                            "id": 5772,
+                            "id": 5790,
                             "name": "FunctionCall",
                             "src": "12224:56:16"
                           }
                         ],
-                        "id": 5773,
+                        "id": 5791,
                         "name": "TupleExpression",
                         "src": "11980:310:16"
                       }
                     ],
-                    "id": 5774,
+                    "id": 5792,
                     "name": "Return",
                     "src": "11973:317:16"
                   }
                 ],
-                "id": 5775,
+                "id": 5793,
                 "name": "Block",
                 "src": "9816:2481:16"
               }
             ],
-            "id": 5776,
+            "id": 5794,
             "name": "FunctionDefinition",
             "src": "9507:2790:16"
           },
@@ -6791,9 +6791,9 @@ export const SimpleInterestTermsContract =
               ],
               "name": "getTermEndTimestamp",
               "payable": false,
-              "scope": 6034,
+              "scope": 6052,
               "stateMutability": "view",
-              "superFunction": 4738,
+              "superFunction": 4756,
               "visibility": "public"
             },
             "children": [
@@ -6803,7 +6803,7 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "_agreementId",
-                      "scope": 5793,
+                      "scope": 5811,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -6816,17 +6816,17 @@ export const SimpleInterestTermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 5777,
+                        "id": 5795,
                         "name": "ElementaryTypeName",
                         "src": "12341:7:16"
                       }
                     ],
-                    "id": 5778,
+                    "id": 5796,
                     "name": "VariableDeclaration",
                     "src": "12341:20:16"
                   }
                 ],
-                "id": 5779,
+                "id": 5797,
                 "name": "ParameterList",
                 "src": "12331:36:16"
               },
@@ -6836,7 +6836,7 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 5793,
+                      "scope": 5811,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -6849,17 +6849,17 @@ export const SimpleInterestTermsContract =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 5780,
+                        "id": 5798,
                         "name": "ElementaryTypeName",
                         "src": "12389:4:16"
                       }
                     ],
-                    "id": 5781,
+                    "id": 5799,
                     "name": "VariableDeclaration",
                     "src": "12389:4:16"
                   }
                 ],
-                "id": 5782,
+                "id": 5800,
                 "name": "ParameterList",
                 "src": "12388:6:16"
               },
@@ -6868,7 +6868,7 @@ export const SimpleInterestTermsContract =
                   {
                     "attributes": {
                       "assignments": [
-                        5784
+                        5802
                       ]
                     },
                     "children": [
@@ -6876,7 +6876,7 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "params",
-                          "scope": 5793,
+                          "scope": 5811,
                           "stateVariable": false,
                           "storageLocation": "memory",
                           "type": "struct SimpleInterestTermsContract.SimpleInterestParams memory",
@@ -6888,15 +6888,15 @@ export const SimpleInterestTermsContract =
                             "attributes": {
                               "contractScope": null,
                               "name": "SimpleInterestParams",
-                              "referencedDeclaration": 5363,
+                              "referencedDeclaration": 5381,
                               "type": "struct SimpleInterestTermsContract.SimpleInterestParams storage pointer"
                             },
-                            "id": 5783,
+                            "id": 5801,
                             "name": "UserDefinedTypeName",
                             "src": "12409:20:16"
                           }
                         ],
-                        "id": 5784,
+                        "id": 5802,
                         "name": "VariableDeclaration",
                         "src": "12409:34:16"
                       },
@@ -6926,11 +6926,11 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5981,
+                              "referencedDeclaration": 5999,
                               "type": "function (bytes32) returns (struct SimpleInterestTermsContract.SimpleInterestParams memory)",
                               "value": "unpackParamsForAgreementID"
                             },
-                            "id": 5785,
+                            "id": 5803,
                             "name": "Identifier",
                             "src": "12446:26:16"
                           },
@@ -6940,27 +6940,27 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5778,
+                              "referencedDeclaration": 5796,
                               "type": "bytes32",
                               "value": "_agreementId"
                             },
-                            "id": 5786,
+                            "id": 5804,
                             "name": "Identifier",
                             "src": "12473:12:16"
                           }
                         ],
-                        "id": 5787,
+                        "id": 5805,
                         "name": "FunctionCall",
                         "src": "12446:40:16"
                       }
                     ],
-                    "id": 5788,
+                    "id": 5806,
                     "name": "VariableDeclarationStatement",
                     "src": "12409:77:16"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 5782
+                      "functionReturnParameters": 5800
                     },
                     "children": [
                       {
@@ -6971,7 +6971,7 @@ export const SimpleInterestTermsContract =
                           "isPure": false,
                           "lValueRequested": false,
                           "member_name": "termEndUnixTimestamp",
-                          "referencedDeclaration": 5356,
+                          "referencedDeclaration": 5374,
                           "type": "uint256"
                         },
                         "children": [
@@ -6981,31 +6981,31 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5784,
+                              "referencedDeclaration": 5802,
                               "type": "struct SimpleInterestTermsContract.SimpleInterestParams memory",
                               "value": "params"
                             },
-                            "id": 5789,
+                            "id": 5807,
                             "name": "Identifier",
                             "src": "12504:6:16"
                           }
                         ],
-                        "id": 5790,
+                        "id": 5808,
                         "name": "MemberAccess",
                         "src": "12504:27:16"
                       }
                     ],
-                    "id": 5791,
+                    "id": 5809,
                     "name": "Return",
                     "src": "12497:34:16"
                   }
                 ],
-                "id": 5792,
+                "id": 5810,
                 "name": "Block",
                 "src": "12399:139:16"
               }
             ],
-            "id": 5793,
+            "id": 5811,
             "name": "FunctionDefinition",
             "src": "12303:235:16"
           },
@@ -7019,7 +7019,7 @@ export const SimpleInterestTermsContract =
               ],
               "name": "bitShiftRight",
               "payable": false,
-              "scope": 6034,
+              "scope": 6052,
               "stateMutability": "pure",
               "superFunction": null,
               "visibility": "internal"
@@ -7031,7 +7031,7 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "value",
-                      "scope": 5811,
+                      "scope": 5829,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -7044,12 +7044,12 @@ export const SimpleInterestTermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 5794,
+                        "id": 5812,
                         "name": "ElementaryTypeName",
                         "src": "12567:7:16"
                       }
                     ],
-                    "id": 5795,
+                    "id": 5813,
                     "name": "VariableDeclaration",
                     "src": "12567:13:16"
                   },
@@ -7057,7 +7057,7 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "amount",
-                      "scope": 5811,
+                      "scope": 5829,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -7070,17 +7070,17 @@ export const SimpleInterestTermsContract =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 5796,
+                        "id": 5814,
                         "name": "ElementaryTypeName",
                         "src": "12582:4:16"
                       }
                     ],
-                    "id": 5797,
+                    "id": 5815,
                     "name": "VariableDeclaration",
                     "src": "12582:11:16"
                   }
                 ],
-                "id": 5798,
+                "id": 5816,
                 "name": "ParameterList",
                 "src": "12566:28:16"
               },
@@ -7090,7 +7090,7 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 5811,
+                      "scope": 5829,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -7103,17 +7103,17 @@ export const SimpleInterestTermsContract =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 5799,
+                        "id": 5817,
                         "name": "ElementaryTypeName",
                         "src": "12642:4:16"
                       }
                     ],
-                    "id": 5800,
+                    "id": 5818,
                     "name": "VariableDeclaration",
                     "src": "12642:4:16"
                   }
                 ],
-                "id": 5801,
+                "id": 5819,
                 "name": "ParameterList",
                 "src": "12641:6:16"
               },
@@ -7121,7 +7121,7 @@ export const SimpleInterestTermsContract =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 5801
+                      "functionReturnParameters": 5819
                     },
                     "children": [
                       {
@@ -7169,7 +7169,7 @@ export const SimpleInterestTermsContract =
                                   "type": "type(uint256)",
                                   "value": "uint"
                                 },
-                                "id": 5802,
+                                "id": 5820,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "12669:4:16"
                               },
@@ -7179,16 +7179,16 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5795,
+                                  "referencedDeclaration": 5813,
                                   "type": "bytes32",
                                   "value": "value"
                                 },
-                                "id": 5803,
+                                "id": 5821,
                                 "name": "Identifier",
                                 "src": "12674:5:16"
                               }
                             ],
-                            "id": 5804,
+                            "id": 5822,
                             "name": "FunctionCall",
                             "src": "12669:11:16"
                           },
@@ -7220,7 +7220,7 @@ export const SimpleInterestTermsContract =
                                   "type": "int_const 2",
                                   "value": "2"
                                 },
-                                "id": 5805,
+                                "id": 5823,
                                 "name": "Literal",
                                 "src": "12683:1:16"
                               },
@@ -7230,36 +7230,36 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5797,
+                                  "referencedDeclaration": 5815,
                                   "type": "uint256",
                                   "value": "amount"
                                 },
-                                "id": 5806,
+                                "id": 5824,
                                 "name": "Identifier",
                                 "src": "12688:6:16"
                               }
                             ],
-                            "id": 5807,
+                            "id": 5825,
                             "name": "BinaryOperation",
                             "src": "12683:11:16"
                           }
                         ],
-                        "id": 5808,
+                        "id": 5826,
                         "name": "BinaryOperation",
                         "src": "12669:25:16"
                       }
                     ],
-                    "id": 5809,
+                    "id": 5827,
                     "name": "Return",
                     "src": "12662:32:16"
                   }
                 ],
-                "id": 5810,
+                "id": 5828,
                 "name": "Block",
                 "src": "12652:49:16"
               }
             ],
-            "id": 5811,
+            "id": 5829,
             "name": "FunctionDefinition",
             "src": "12544:157:16"
           },
@@ -7273,7 +7273,7 @@ export const SimpleInterestTermsContract =
               ],
               "name": "numAmortizationUnitsForTimestamp",
               "payable": false,
-              "scope": 6034,
+              "scope": 6052,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "internal"
@@ -7285,7 +7285,7 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "timestamp",
-                      "scope": 5841,
+                      "scope": 5859,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -7298,12 +7298,12 @@ export const SimpleInterestTermsContract =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 5812,
+                        "id": 5830,
                         "name": "ElementaryTypeName",
                         "src": "12758:4:16"
                       }
                     ],
-                    "id": 5813,
+                    "id": 5831,
                     "name": "VariableDeclaration",
                     "src": "12758:14:16"
                   },
@@ -7311,7 +7311,7 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "params",
-                      "scope": 5841,
+                      "scope": 5859,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "struct SimpleInterestTermsContract.SimpleInterestParams memory",
@@ -7323,20 +7323,20 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "contractScope": null,
                           "name": "SimpleInterestParams",
-                          "referencedDeclaration": 5363,
+                          "referencedDeclaration": 5381,
                           "type": "struct SimpleInterestTermsContract.SimpleInterestParams storage pointer"
                         },
-                        "id": 5814,
+                        "id": 5832,
                         "name": "UserDefinedTypeName",
                         "src": "12782:20:16"
                       }
                     ],
-                    "id": 5815,
+                    "id": 5833,
                     "name": "VariableDeclaration",
                     "src": "12782:27:16"
                   }
                 ],
-                "id": 5816,
+                "id": 5834,
                 "name": "ParameterList",
                 "src": "12748:67:16"
               },
@@ -7346,7 +7346,7 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "units",
-                      "scope": 5841,
+                      "scope": 5859,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -7359,17 +7359,17 @@ export const SimpleInterestTermsContract =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 5817,
+                        "id": 5835,
                         "name": "ElementaryTypeName",
                         "src": "12850:4:16"
                       }
                     ],
-                    "id": 5818,
+                    "id": 5836,
                     "name": "VariableDeclaration",
                     "src": "12850:10:16"
                   }
                 ],
-                "id": 5819,
+                "id": 5837,
                 "name": "ParameterList",
                 "src": "12849:12:16"
               },
@@ -7378,7 +7378,7 @@ export const SimpleInterestTermsContract =
                   {
                     "attributes": {
                       "assignments": [
-                        5821
+                        5839
                       ]
                     },
                     "children": [
@@ -7386,7 +7386,7 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "delta",
-                          "scope": 5841,
+                          "scope": 5859,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -7399,12 +7399,12 @@ export const SimpleInterestTermsContract =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 5820,
+                            "id": 5838,
                             "name": "ElementaryTypeName",
                             "src": "12876:4:16"
                           }
                         ],
-                        "id": 5821,
+                        "id": 5839,
                         "name": "VariableDeclaration",
                         "src": "12876:10:16"
                       },
@@ -7436,7 +7436,7 @@ export const SimpleInterestTermsContract =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "sub",
-                              "referencedDeclaration": 14052,
+                              "referencedDeclaration": 14070,
                               "type": "function (uint256,uint256) pure returns (uint256)"
                             },
                             "children": [
@@ -7446,16 +7446,16 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5813,
+                                  "referencedDeclaration": 5831,
                                   "type": "uint256",
                                   "value": "timestamp"
                                 },
-                                "id": 5822,
+                                "id": 5840,
                                 "name": "Identifier",
                                 "src": "12889:9:16"
                               }
                             ],
-                            "id": 5823,
+                            "id": 5841,
                             "name": "MemberAccess",
                             "src": "12889:13:16"
                           },
@@ -7467,7 +7467,7 @@ export const SimpleInterestTermsContract =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "termStartUnixTimestamp",
-                              "referencedDeclaration": 5354,
+                              "referencedDeclaration": 5372,
                               "type": "uint256"
                             },
                             "children": [
@@ -7477,33 +7477,33 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5815,
+                                  "referencedDeclaration": 5833,
                                   "type": "struct SimpleInterestTermsContract.SimpleInterestParams memory",
                                   "value": "params"
                                 },
-                                "id": 5824,
+                                "id": 5842,
                                 "name": "Identifier",
                                 "src": "12903:6:16"
                               }
                             ],
-                            "id": 5825,
+                            "id": 5843,
                             "name": "MemberAccess",
                             "src": "12903:29:16"
                           }
                         ],
-                        "id": 5826,
+                        "id": 5844,
                         "name": "FunctionCall",
                         "src": "12889:44:16"
                       }
                     ],
-                    "id": 5827,
+                    "id": 5845,
                     "name": "VariableDeclarationStatement",
                     "src": "12876:57:16"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        5829
+                        5847
                       ]
                     },
                     "children": [
@@ -7511,7 +7511,7 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "amortizationUnitLengthInSeconds",
-                          "scope": 5841,
+                          "scope": 5859,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -7524,12 +7524,12 @@ export const SimpleInterestTermsContract =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 5828,
+                            "id": 5846,
                             "name": "ElementaryTypeName",
                             "src": "12943:4:16"
                           }
                         ],
-                        "id": 5829,
+                        "id": 5847,
                         "name": "VariableDeclaration",
                         "src": "12943:36:16"
                       },
@@ -7552,18 +7552,18 @@ export const SimpleInterestTermsContract =
                             "attributes": {
                               "argumentTypes": [
                                 {
-                                  "typeIdentifier": "t_enum$_AmortizationUnitType_$5345",
+                                  "typeIdentifier": "t_enum$_AmortizationUnitType_$5363",
                                   "typeString": "enum SimpleInterestTermsContract.AmortizationUnitType"
                                 }
                               ],
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 6033,
+                              "referencedDeclaration": 6051,
                               "type": "function (enum SimpleInterestTermsContract.AmortizationUnitType) pure returns (uint256)",
                               "value": "getAmortizationUnitLengthInSeconds"
                             },
-                            "id": 5830,
+                            "id": 5848,
                             "name": "Identifier",
                             "src": "12982:34:16"
                           },
@@ -7575,7 +7575,7 @@ export const SimpleInterestTermsContract =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "amortizationUnitType",
-                              "referencedDeclaration": 5358,
+                              "referencedDeclaration": 5376,
                               "type": "enum SimpleInterestTermsContract.AmortizationUnitType"
                             },
                             "children": [
@@ -7585,32 +7585,32 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5815,
+                                  "referencedDeclaration": 5833,
                                   "type": "struct SimpleInterestTermsContract.SimpleInterestParams memory",
                                   "value": "params"
                                 },
-                                "id": 5831,
+                                "id": 5849,
                                 "name": "Identifier",
                                 "src": "13017:6:16"
                               }
                             ],
-                            "id": 5832,
+                            "id": 5850,
                             "name": "MemberAccess",
                             "src": "13017:27:16"
                           }
                         ],
-                        "id": 5833,
+                        "id": 5851,
                         "name": "FunctionCall",
                         "src": "12982:63:16"
                       }
                     ],
-                    "id": 5834,
+                    "id": 5852,
                     "name": "VariableDeclarationStatement",
                     "src": "12943:102:16"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 5819
+                      "functionReturnParameters": 5837
                     },
                     "children": [
                       {
@@ -7641,7 +7641,7 @@ export const SimpleInterestTermsContract =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "div",
-                              "referencedDeclaration": 14032,
+                              "referencedDeclaration": 14050,
                               "type": "function (uint256,uint256) pure returns (uint256)"
                             },
                             "children": [
@@ -7651,16 +7651,16 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5821,
+                                  "referencedDeclaration": 5839,
                                   "type": "uint256",
                                   "value": "delta"
                                 },
-                                "id": 5835,
+                                "id": 5853,
                                 "name": "Identifier",
                                 "src": "13062:5:16"
                               }
                             ],
-                            "id": 5836,
+                            "id": 5854,
                             "name": "MemberAccess",
                             "src": "13062:9:16"
                           },
@@ -7670,31 +7670,31 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5829,
+                              "referencedDeclaration": 5847,
                               "type": "uint256",
                               "value": "amortizationUnitLengthInSeconds"
                             },
-                            "id": 5837,
+                            "id": 5855,
                             "name": "Identifier",
                             "src": "13072:31:16"
                           }
                         ],
-                        "id": 5838,
+                        "id": 5856,
                         "name": "FunctionCall",
                         "src": "13062:42:16"
                       }
                     ],
-                    "id": 5839,
+                    "id": 5857,
                     "name": "Return",
                     "src": "13055:49:16"
                   }
                 ],
-                "id": 5840,
+                "id": 5858,
                 "name": "Block",
                 "src": "12866:245:16"
               }
             ],
-            "id": 5841,
+            "id": 5859,
             "name": "FunctionDefinition",
             "src": "12707:404:16"
           },
@@ -7708,7 +7708,7 @@ export const SimpleInterestTermsContract =
               ],
               "name": "calculateTotalPrincipalPlusInterest",
               "payable": false,
-              "scope": 6034,
+              "scope": 6052,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "internal"
@@ -7720,7 +7720,7 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "params",
-                      "scope": 5867,
+                      "scope": 5885,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "struct SimpleInterestTermsContract.SimpleInterestParams memory",
@@ -7732,20 +7732,20 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "contractScope": null,
                           "name": "SimpleInterestParams",
-                          "referencedDeclaration": 5363,
+                          "referencedDeclaration": 5381,
                           "type": "struct SimpleInterestTermsContract.SimpleInterestParams storage pointer"
                         },
-                        "id": 5842,
+                        "id": 5860,
                         "name": "UserDefinedTypeName",
                         "src": "13546:20:16"
                       }
                     ],
-                    "id": 5843,
+                    "id": 5861,
                     "name": "VariableDeclaration",
                     "src": "13546:27:16"
                   }
                 ],
-                "id": 5844,
+                "id": 5862,
                 "name": "ParameterList",
                 "src": "13536:43:16"
               },
@@ -7755,7 +7755,7 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "_principalPlusInterest",
-                      "scope": 5867,
+                      "scope": 5885,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -7768,17 +7768,17 @@ export const SimpleInterestTermsContract =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 5845,
+                        "id": 5863,
                         "name": "ElementaryTypeName",
                         "src": "13614:4:16"
                       }
                     ],
-                    "id": 5846,
+                    "id": 5864,
                     "name": "VariableDeclaration",
                     "src": "13614:27:16"
                   }
                 ],
-                "id": 5847,
+                "id": 5865,
                 "name": "ParameterList",
                 "src": "13613:29:16"
               },
@@ -7787,7 +7787,7 @@ export const SimpleInterestTermsContract =
                   {
                     "attributes": {
                       "assignments": [
-                        5849
+                        5867
                       ]
                     },
                     "children": [
@@ -7795,7 +7795,7 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "totalInterest",
-                          "scope": 5867,
+                          "scope": 5885,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -7808,12 +7808,12 @@ export const SimpleInterestTermsContract =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 5848,
+                            "id": 5866,
                             "name": "ElementaryTypeName",
                             "src": "13925:4:16"
                           }
                         ],
-                        "id": 5849,
+                        "id": 5867,
                         "name": "VariableDeclaration",
                         "src": "13925:18:16"
                       },
@@ -7845,7 +7845,7 @@ export const SimpleInterestTermsContract =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "div",
-                              "referencedDeclaration": 14032,
+                              "referencedDeclaration": 14050,
                               "type": "function (uint256,uint256) pure returns (uint256)"
                             },
                             "children": [
@@ -7877,7 +7877,7 @@ export const SimpleInterestTermsContract =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "mul",
-                                      "referencedDeclaration": 14014,
+                                      "referencedDeclaration": 14032,
                                       "type": "function (uint256,uint256) pure returns (uint256)"
                                     },
                                     "children": [
@@ -7889,7 +7889,7 @@ export const SimpleInterestTermsContract =
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "principalAmount",
-                                          "referencedDeclaration": 5352,
+                                          "referencedDeclaration": 5370,
                                           "type": "uint256"
                                         },
                                         "children": [
@@ -7899,21 +7899,21 @@ export const SimpleInterestTermsContract =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 5843,
+                                              "referencedDeclaration": 5861,
                                               "type": "struct SimpleInterestTermsContract.SimpleInterestParams memory",
                                               "value": "params"
                                             },
-                                            "id": 5850,
+                                            "id": 5868,
                                             "name": "Identifier",
                                             "src": "13946:6:16"
                                           }
                                         ],
-                                        "id": 5851,
+                                        "id": 5869,
                                         "name": "MemberAccess",
                                         "src": "13946:22:16"
                                       }
                                     ],
-                                    "id": 5852,
+                                    "id": 5870,
                                     "name": "MemberAccess",
                                     "src": "13946:39:16"
                                   },
@@ -7925,7 +7925,7 @@ export const SimpleInterestTermsContract =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "interestRate",
-                                      "referencedDeclaration": 5362,
+                                      "referencedDeclaration": 5380,
                                       "type": "uint256"
                                     },
                                     "children": [
@@ -7935,26 +7935,26 @@ export const SimpleInterestTermsContract =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 5843,
+                                          "referencedDeclaration": 5861,
                                           "type": "struct SimpleInterestTermsContract.SimpleInterestParams memory",
                                           "value": "params"
                                         },
-                                        "id": 5853,
+                                        "id": 5871,
                                         "name": "Identifier",
                                         "src": "13986:6:16"
                                       }
                                     ],
-                                    "id": 5854,
+                                    "id": 5872,
                                     "name": "MemberAccess",
                                     "src": "13986:19:16"
                                   }
                                 ],
-                                "id": 5855,
+                                "id": 5873,
                                 "name": "FunctionCall",
                                 "src": "13946:60:16"
                               }
                             ],
-                            "id": 5856,
+                            "id": 5874,
                             "name": "MemberAccess",
                             "src": "13946:77:16"
                           },
@@ -7964,27 +7964,27 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5398,
+                              "referencedDeclaration": 5416,
                               "type": "uint256",
                               "value": "INTEREST_RATE_SCALING_FACTOR_MULTIPLIER"
                             },
-                            "id": 5857,
+                            "id": 5875,
                             "name": "Identifier",
                             "src": "14024:39:16"
                           }
                         ],
-                        "id": 5858,
+                        "id": 5876,
                         "name": "FunctionCall",
                         "src": "13946:118:16"
                       }
                     ],
-                    "id": 5859,
+                    "id": 5877,
                     "name": "VariableDeclarationStatement",
                     "src": "13925:139:16"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 5847
+                      "functionReturnParameters": 5865
                     },
                     "children": [
                       {
@@ -8015,7 +8015,7 @@ export const SimpleInterestTermsContract =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "add",
-                              "referencedDeclaration": 14076,
+                              "referencedDeclaration": 14094,
                               "type": "function (uint256,uint256) pure returns (uint256)"
                             },
                             "children": [
@@ -8027,7 +8027,7 @@ export const SimpleInterestTermsContract =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "principalAmount",
-                                  "referencedDeclaration": 5352,
+                                  "referencedDeclaration": 5370,
                                   "type": "uint256"
                                 },
                                 "children": [
@@ -8037,21 +8037,21 @@ export const SimpleInterestTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5843,
+                                      "referencedDeclaration": 5861,
                                       "type": "struct SimpleInterestTermsContract.SimpleInterestParams memory",
                                       "value": "params"
                                     },
-                                    "id": 5860,
+                                    "id": 5878,
                                     "name": "Identifier",
                                     "src": "14082:6:16"
                                   }
                                 ],
-                                "id": 5861,
+                                "id": 5879,
                                 "name": "MemberAccess",
                                 "src": "14082:22:16"
                               }
                             ],
-                            "id": 5862,
+                            "id": 5880,
                             "name": "MemberAccess",
                             "src": "14082:26:16"
                           },
@@ -8061,31 +8061,31 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5849,
+                              "referencedDeclaration": 5867,
                               "type": "uint256",
                               "value": "totalInterest"
                             },
-                            "id": 5863,
+                            "id": 5881,
                             "name": "Identifier",
                             "src": "14109:13:16"
                           }
                         ],
-                        "id": 5864,
+                        "id": 5882,
                         "name": "FunctionCall",
                         "src": "14082:41:16"
                       }
                     ],
-                    "id": 5865,
+                    "id": 5883,
                     "name": "Return",
                     "src": "14075:48:16"
                   }
                 ],
-                "id": 5866,
+                "id": 5884,
                 "name": "Block",
                 "src": "13647:483:16"
               }
             ],
-            "id": 5867,
+            "id": 5885,
             "name": "FunctionDefinition",
             "src": "13492:638:16"
           },
@@ -8099,7 +8099,7 @@ export const SimpleInterestTermsContract =
               ],
               "name": "unpackParamsForAgreementID",
               "payable": false,
-              "scope": 6034,
+              "scope": 6052,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "internal"
@@ -8111,7 +8111,7 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 5981,
+                      "scope": 5999,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -8124,17 +8124,17 @@ export const SimpleInterestTermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 5868,
+                        "id": 5886,
                         "name": "ElementaryTypeName",
                         "src": "14181:7:16"
                       }
                     ],
-                    "id": 5869,
+                    "id": 5887,
                     "name": "VariableDeclaration",
                     "src": "14181:19:16"
                   }
                 ],
-                "id": 5870,
+                "id": 5888,
                 "name": "ParameterList",
                 "src": "14171:35:16"
               },
@@ -8144,7 +8144,7 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "params",
-                      "scope": 5981,
+                      "scope": 5999,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "struct SimpleInterestTermsContract.SimpleInterestParams memory",
@@ -8156,20 +8156,20 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "contractScope": null,
                           "name": "SimpleInterestParams",
-                          "referencedDeclaration": 5363,
+                          "referencedDeclaration": 5381,
                           "type": "struct SimpleInterestTermsContract.SimpleInterestParams storage pointer"
                         },
-                        "id": 5871,
+                        "id": 5889,
                         "name": "UserDefinedTypeName",
                         "src": "14241:20:16"
                       }
                     ],
-                    "id": 5872,
+                    "id": 5890,
                     "name": "VariableDeclaration",
                     "src": "14241:27:16"
                   }
                 ],
-                "id": 5873,
+                "id": 5891,
                 "name": "ParameterList",
                 "src": "14240:29:16"
               },
@@ -8178,7 +8178,7 @@ export const SimpleInterestTermsContract =
                   {
                     "attributes": {
                       "assignments": [
-                        5875
+                        5893
                       ]
                     },
                     "children": [
@@ -8186,7 +8186,7 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "parameters",
-                          "scope": 5981,
+                          "scope": 5999,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bytes32",
@@ -8199,12 +8199,12 @@ export const SimpleInterestTermsContract =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 5874,
+                            "id": 5892,
                             "name": "ElementaryTypeName",
                             "src": "14284:7:16"
                           }
                         ],
-                        "id": 5875,
+                        "id": 5893,
                         "name": "VariableDeclaration",
                         "src": "14284:18:16"
                       },
@@ -8236,7 +8236,7 @@ export const SimpleInterestTermsContract =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "getTermsContractParameters",
-                              "referencedDeclaration": 3038,
+                              "referencedDeclaration": 3056,
                               "type": "function (bytes32) view external returns (bytes32)"
                             },
                             "children": [
@@ -8278,26 +8278,26 @@ export const SimpleInterestTermsContract =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 5404,
+                                          "referencedDeclaration": 5422,
                                           "type": "contract ContractRegistry",
                                           "value": "contractRegistry"
                                         },
-                                        "id": 5876,
+                                        "id": 5894,
                                         "name": "Identifier",
                                         "src": "14305:16:16"
                                       }
                                     ],
-                                    "id": 5877,
+                                    "id": 5895,
                                     "name": "MemberAccess",
                                     "src": "14305:29:16"
                                   }
                                 ],
-                                "id": 5878,
+                                "id": 5896,
                                 "name": "FunctionCall",
                                 "src": "14305:31:16"
                               }
                             ],
-                            "id": 5879,
+                            "id": 5897,
                             "name": "MemberAccess",
                             "src": "14305:58:16"
                           },
@@ -8307,21 +8307,21 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5869,
+                              "referencedDeclaration": 5887,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 5880,
+                            "id": 5898,
                             "name": "Identifier",
                             "src": "14364:11:16"
                           }
                         ],
-                        "id": 5881,
+                        "id": 5899,
                         "name": "FunctionCall",
                         "src": "14305:71:16"
                       }
                     ],
-                    "id": 5882,
+                    "id": 5900,
                     "name": "VariableDeclarationStatement",
                     "src": "14284:92:16"
                   },
@@ -8337,7 +8337,7 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "principalTokenIndex",
-                          "scope": 5981,
+                          "scope": 5999,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -8350,17 +8350,17 @@ export const SimpleInterestTermsContract =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 5883,
+                            "id": 5901,
                             "name": "ElementaryTypeName",
                             "src": "14467:4:16"
                           }
                         ],
-                        "id": 5884,
+                        "id": 5902,
                         "name": "VariableDeclaration",
                         "src": "14467:24:16"
                       }
                     ],
-                    "id": 5885,
+                    "id": 5903,
                     "name": "VariableDeclarationStatement",
                     "src": "14467:24:16"
                   },
@@ -8376,7 +8376,7 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "principalAmount",
-                          "scope": 5981,
+                          "scope": 5999,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -8389,17 +8389,17 @@ export const SimpleInterestTermsContract =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 5886,
+                            "id": 5904,
                             "name": "ElementaryTypeName",
                             "src": "14574:4:16"
                           }
                         ],
-                        "id": 5887,
+                        "id": 5905,
                         "name": "VariableDeclaration",
                         "src": "14574:20:16"
                       }
                     ],
-                    "id": 5888,
+                    "id": 5906,
                     "name": "VariableDeclarationStatement",
                     "src": "14574:20:16"
                   },
@@ -8415,7 +8415,7 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "interestRate",
-                          "scope": 5981,
+                          "scope": 5999,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -8428,17 +8428,17 @@ export const SimpleInterestTermsContract =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 5889,
+                            "id": 5907,
                             "name": "ElementaryTypeName",
                             "src": "14664:4:16"
                           }
                         ],
-                        "id": 5890,
+                        "id": 5908,
                         "name": "VariableDeclaration",
                         "src": "14664:17:16"
                       }
                     ],
-                    "id": 5891,
+                    "id": 5909,
                     "name": "VariableDeclarationStatement",
                     "src": "14664:17:16"
                   },
@@ -8454,7 +8454,7 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "rawAmortizationUnitType",
-                          "scope": 5981,
+                          "scope": 5999,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -8467,17 +8467,17 @@ export const SimpleInterestTermsContract =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 5892,
+                            "id": 5910,
                             "name": "ElementaryTypeName",
                             "src": "14782:4:16"
                           }
                         ],
-                        "id": 5893,
+                        "id": 5911,
                         "name": "VariableDeclaration",
                         "src": "14782:28:16"
                       }
                     ],
-                    "id": 5894,
+                    "id": 5912,
                     "name": "VariableDeclarationStatement",
                     "src": "14782:28:16"
                   },
@@ -8493,7 +8493,7 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "termLengthInAmortizationUnits",
-                          "scope": 5981,
+                          "scope": 5999,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -8506,17 +8506,17 @@ export const SimpleInterestTermsContract =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 5895,
+                            "id": 5913,
                             "name": "ElementaryTypeName",
                             "src": "14917:4:16"
                           }
                         ],
-                        "id": 5896,
+                        "id": 5914,
                         "name": "VariableDeclaration",
                         "src": "14917:34:16"
                       }
                     ],
-                    "id": 5897,
+                    "id": 5915,
                     "name": "VariableDeclarationStatement",
                     "src": "14917:34:16"
                   },
@@ -8550,11 +8550,11 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5884,
+                                  "referencedDeclaration": 5902,
                                   "type": "uint256",
                                   "value": "principalTokenIndex"
                                 },
-                                "id": 5898,
+                                "id": 5916,
                                 "name": "Identifier",
                                 "src": "14963:19:16"
                               },
@@ -8564,11 +8564,11 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5887,
+                                  "referencedDeclaration": 5905,
                                   "type": "uint256",
                                   "value": "principalAmount"
                                 },
-                                "id": 5899,
+                                "id": 5917,
                                 "name": "Identifier",
                                 "src": "14984:15:16"
                               },
@@ -8578,11 +8578,11 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5890,
+                                  "referencedDeclaration": 5908,
                                   "type": "uint256",
                                   "value": "interestRate"
                                 },
-                                "id": 5900,
+                                "id": 5918,
                                 "name": "Identifier",
                                 "src": "15001:12:16"
                               },
@@ -8592,11 +8592,11 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5893,
+                                  "referencedDeclaration": 5911,
                                   "type": "uint256",
                                   "value": "rawAmortizationUnitType"
                                 },
-                                "id": 5901,
+                                "id": 5919,
                                 "name": "Identifier",
                                 "src": "15015:23:16"
                               },
@@ -8606,16 +8606,16 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5896,
+                                  "referencedDeclaration": 5914,
                                   "type": "uint256",
                                   "value": "termLengthInAmortizationUnits"
                                 },
-                                "id": 5902,
+                                "id": 5920,
                                 "name": "Identifier",
                                 "src": "15040:29:16"
                               }
                             ],
-                            "id": 5903,
+                            "id": 5921,
                             "name": "TupleExpression",
                             "src": "14962:108:16"
                           },
@@ -8645,11 +8645,11 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5776,
+                                  "referencedDeclaration": 5794,
                                   "type": "function (bytes32) pure returns (uint256,uint256,uint256,uint256,uint256)",
                                   "value": "unpackParametersFromBytes"
                                 },
-                                "id": 5904,
+                                "id": 5922,
                                 "name": "Identifier",
                                 "src": "15085:25:16"
                               },
@@ -8659,33 +8659,33 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5875,
+                                  "referencedDeclaration": 5893,
                                   "type": "bytes32",
                                   "value": "parameters"
                                 },
-                                "id": 5905,
+                                "id": 5923,
                                 "name": "Identifier",
                                 "src": "15111:10:16"
                               }
                             ],
-                            "id": 5906,
+                            "id": 5924,
                             "name": "FunctionCall",
                             "src": "15085:37:16"
                           }
                         ],
-                        "id": 5907,
+                        "id": 5925,
                         "name": "Assignment",
                         "src": "14962:160:16"
                       }
                     ],
-                    "id": 5908,
+                    "id": 5926,
                     "name": "ExpressionStatement",
                     "src": "14962:160:16"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        5910
+                        5928
                       ]
                     },
                     "children": [
@@ -8693,7 +8693,7 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "principalTokenAddress",
-                          "scope": 5981,
+                          "scope": 5999,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "address",
@@ -8706,12 +8706,12 @@ export const SimpleInterestTermsContract =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 5909,
+                            "id": 5927,
                             "name": "ElementaryTypeName",
                             "src": "15133:7:16"
                           }
                         ],
-                        "id": 5910,
+                        "id": 5928,
                         "name": "VariableDeclaration",
                         "src": "15133:29:16"
                       },
@@ -8743,7 +8743,7 @@ export const SimpleInterestTermsContract =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "getTokenAddressByIndex",
-                              "referencedDeclaration": 4896,
+                              "referencedDeclaration": 4914,
                               "type": "function (uint256) view external returns (address)"
                             },
                             "children": [
@@ -8785,26 +8785,26 @@ export const SimpleInterestTermsContract =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 5404,
+                                          "referencedDeclaration": 5422,
                                           "type": "contract ContractRegistry",
                                           "value": "contractRegistry"
                                         },
-                                        "id": 5911,
+                                        "id": 5929,
                                         "name": "Identifier",
                                         "src": "15177:16:16"
                                       }
                                     ],
-                                    "id": 5912,
+                                    "id": 5930,
                                     "name": "MemberAccess",
                                     "src": "15177:30:16"
                                   }
                                 ],
-                                "id": 5913,
+                                "id": 5931,
                                 "name": "FunctionCall",
                                 "src": "15177:32:16"
                               }
                             ],
-                            "id": 5914,
+                            "id": 5932,
                             "name": "MemberAccess",
                             "src": "15177:55:16"
                           },
@@ -8814,21 +8814,21 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5884,
+                              "referencedDeclaration": 5902,
                               "type": "uint256",
                               "value": "principalTokenIndex"
                             },
-                            "id": 5915,
+                            "id": 5933,
                             "name": "Identifier",
                             "src": "15233:19:16"
                           }
                         ],
-                        "id": 5916,
+                        "id": 5934,
                         "name": "FunctionCall",
                         "src": "15177:76:16"
                       }
                     ],
-                    "id": 5917,
+                    "id": 5935,
                     "name": "VariableDeclarationStatement",
                     "src": "15133:120:16"
                   },
@@ -8860,11 +8860,11 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15818,
+                              "referencedDeclaration": 15836,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 5918,
+                            "id": 5936,
                             "name": "Identifier",
                             "src": "15332:7:16"
                           },
@@ -8889,11 +8889,11 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5910,
+                                  "referencedDeclaration": 5928,
                                   "type": "address",
                                   "value": "principalTokenAddress"
                                 },
-                                "id": 5919,
+                                "id": 5937,
                                 "name": "Identifier",
                                 "src": "15340:21:16"
                               },
@@ -8927,7 +8927,7 @@ export const SimpleInterestTermsContract =
                                       "type": "type(address)",
                                       "value": "address"
                                     },
-                                    "id": 5920,
+                                    "id": 5938,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "15365:7:16"
                                   },
@@ -8944,27 +8944,27 @@ export const SimpleInterestTermsContract =
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 5921,
+                                    "id": 5939,
                                     "name": "Literal",
                                     "src": "15373:1:16"
                                   }
                                 ],
-                                "id": 5922,
+                                "id": 5940,
                                 "name": "FunctionCall",
                                 "src": "15365:10:16"
                               }
                             ],
-                            "id": 5923,
+                            "id": 5941,
                             "name": "BinaryOperation",
                             "src": "15340:35:16"
                           }
                         ],
-                        "id": 5924,
+                        "id": 5942,
                         "name": "FunctionCall",
                         "src": "15332:44:16"
                       }
                     ],
-                    "id": 5925,
+                    "id": 5943,
                     "name": "ExpressionStatement",
                     "src": "15332:44:16"
                   },
@@ -8996,11 +8996,11 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15818,
+                              "referencedDeclaration": 15836,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 5926,
+                            "id": 5944,
                             "name": "Identifier",
                             "src": "15489:7:16"
                           },
@@ -9025,11 +9025,11 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5893,
+                                  "referencedDeclaration": 5911,
                                   "type": "uint256",
                                   "value": "rawAmortizationUnitType"
                                 },
-                                "id": 5927,
+                                "id": 5945,
                                 "name": "Identifier",
                                 "src": "15497:23:16"
                               },
@@ -9052,7 +9052,7 @@ export const SimpleInterestTermsContract =
                                     "attributes": {
                                       "argumentTypes": [
                                         {
-                                          "typeIdentifier": "t_enum$_AmortizationUnitType_$5345",
+                                          "typeIdentifier": "t_enum$_AmortizationUnitType_$5363",
                                           "typeString": "enum SimpleInterestTermsContract.AmortizationUnitType"
                                         }
                                       ],
@@ -9063,7 +9063,7 @@ export const SimpleInterestTermsContract =
                                       "type": "type(uint256)",
                                       "value": "uint"
                                     },
-                                    "id": 5928,
+                                    "id": 5946,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "15524:4:16"
                                   },
@@ -9085,43 +9085,43 @@ export const SimpleInterestTermsContract =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 5345,
+                                          "referencedDeclaration": 5363,
                                           "type": "type(enum SimpleInterestTermsContract.AmortizationUnitType)",
                                           "value": "AmortizationUnitType"
                                         },
-                                        "id": 5929,
+                                        "id": 5947,
                                         "name": "Identifier",
                                         "src": "15529:20:16"
                                       }
                                     ],
-                                    "id": 5930,
+                                    "id": 5948,
                                     "name": "MemberAccess",
                                     "src": "15529:26:16"
                                   }
                                 ],
-                                "id": 5931,
+                                "id": 5949,
                                 "name": "FunctionCall",
                                 "src": "15524:32:16"
                               }
                             ],
-                            "id": 5932,
+                            "id": 5950,
                             "name": "BinaryOperation",
                             "src": "15497:59:16"
                           }
                         ],
-                        "id": 5933,
+                        "id": 5951,
                         "name": "FunctionCall",
                         "src": "15489:68:16"
                       }
                     ],
-                    "id": 5934,
+                    "id": 5952,
                     "name": "ExpressionStatement",
                     "src": "15489:68:16"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        5936
+                        5954
                       ]
                     },
                     "children": [
@@ -9129,7 +9129,7 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "amortizationUnitType",
-                          "scope": 5981,
+                          "scope": 5999,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "enum SimpleInterestTermsContract.AmortizationUnitType",
@@ -9141,15 +9141,15 @@ export const SimpleInterestTermsContract =
                             "attributes": {
                               "contractScope": null,
                               "name": "AmortizationUnitType",
-                              "referencedDeclaration": 5345,
+                              "referencedDeclaration": 5363,
                               "type": "enum SimpleInterestTermsContract.AmortizationUnitType"
                             },
-                            "id": 5935,
+                            "id": 5953,
                             "name": "UserDefinedTypeName",
                             "src": "15568:20:16"
                           }
                         ],
-                        "id": 5936,
+                        "id": 5954,
                         "name": "VariableDeclaration",
                         "src": "15568:41:16"
                       },
@@ -9179,11 +9179,11 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5345,
+                              "referencedDeclaration": 5363,
                               "type": "type(enum SimpleInterestTermsContract.AmortizationUnitType)",
                               "value": "AmortizationUnitType"
                             },
-                            "id": 5937,
+                            "id": 5955,
                             "name": "Identifier",
                             "src": "15612:20:16"
                           },
@@ -9193,28 +9193,28 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5893,
+                              "referencedDeclaration": 5911,
                               "type": "uint256",
                               "value": "rawAmortizationUnitType"
                             },
-                            "id": 5938,
+                            "id": 5956,
                             "name": "Identifier",
                             "src": "15633:23:16"
                           }
                         ],
-                        "id": 5939,
+                        "id": 5957,
                         "name": "FunctionCall",
                         "src": "15612:45:16"
                       }
                     ],
-                    "id": 5940,
+                    "id": 5958,
                     "name": "VariableDeclarationStatement",
                     "src": "15568:89:16"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        5942
+                        5960
                       ]
                     },
                     "children": [
@@ -9222,7 +9222,7 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "amortizationUnitLengthInSeconds",
-                          "scope": 5981,
+                          "scope": 5999,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -9235,12 +9235,12 @@ export const SimpleInterestTermsContract =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 5941,
+                            "id": 5959,
                             "name": "ElementaryTypeName",
                             "src": "15668:4:16"
                           }
                         ],
-                        "id": 5942,
+                        "id": 5960,
                         "name": "VariableDeclaration",
                         "src": "15668:36:16"
                       },
@@ -9263,18 +9263,18 @@ export const SimpleInterestTermsContract =
                             "attributes": {
                               "argumentTypes": [
                                 {
-                                  "typeIdentifier": "t_enum$_AmortizationUnitType_$5345",
+                                  "typeIdentifier": "t_enum$_AmortizationUnitType_$5363",
                                   "typeString": "enum SimpleInterestTermsContract.AmortizationUnitType"
                                 }
                               ],
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 6033,
+                              "referencedDeclaration": 6051,
                               "type": "function (enum SimpleInterestTermsContract.AmortizationUnitType) pure returns (uint256)",
                               "value": "getAmortizationUnitLengthInSeconds"
                             },
-                            "id": 5943,
+                            "id": 5961,
                             "name": "Identifier",
                             "src": "15719:34:16"
                           },
@@ -9284,28 +9284,28 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5936,
+                              "referencedDeclaration": 5954,
                               "type": "enum SimpleInterestTermsContract.AmortizationUnitType",
                               "value": "amortizationUnitType"
                             },
-                            "id": 5944,
+                            "id": 5962,
                             "name": "Identifier",
                             "src": "15754:20:16"
                           }
                         ],
-                        "id": 5945,
+                        "id": 5963,
                         "name": "FunctionCall",
                         "src": "15719:56:16"
                       }
                     ],
-                    "id": 5946,
+                    "id": 5964,
                     "name": "VariableDeclarationStatement",
                     "src": "15668:107:16"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        5948
+                        5966
                       ]
                     },
                     "children": [
@@ -9313,7 +9313,7 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "issuanceBlockTimestamp",
-                          "scope": 5981,
+                          "scope": 5999,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -9326,12 +9326,12 @@ export const SimpleInterestTermsContract =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 5947,
+                            "id": 5965,
                             "name": "ElementaryTypeName",
                             "src": "15785:4:16"
                           }
                         ],
-                        "id": 5948,
+                        "id": 5966,
                         "name": "VariableDeclaration",
                         "src": "15785:27:16"
                       },
@@ -9363,7 +9363,7 @@ export const SimpleInterestTermsContract =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "getIssuanceBlockTimestamp",
-                              "referencedDeclaration": 3077,
+                              "referencedDeclaration": 3095,
                               "type": "function (bytes32) view external returns (uint256)"
                             },
                             "children": [
@@ -9405,26 +9405,26 @@ export const SimpleInterestTermsContract =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 5404,
+                                          "referencedDeclaration": 5422,
                                           "type": "contract ContractRegistry",
                                           "value": "contractRegistry"
                                         },
-                                        "id": 5949,
+                                        "id": 5967,
                                         "name": "Identifier",
                                         "src": "15827:16:16"
                                       }
                                     ],
-                                    "id": 5950,
+                                    "id": 5968,
                                     "name": "MemberAccess",
                                     "src": "15827:29:16"
                                   }
                                 ],
-                                "id": 5951,
+                                "id": 5969,
                                 "name": "FunctionCall",
                                 "src": "15827:31:16"
                               }
                             ],
-                            "id": 5952,
+                            "id": 5970,
                             "name": "MemberAccess",
                             "src": "15827:57:16"
                           },
@@ -9434,28 +9434,28 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5869,
+                              "referencedDeclaration": 5887,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 5953,
+                            "id": 5971,
                             "name": "Identifier",
                             "src": "15885:11:16"
                           }
                         ],
-                        "id": 5954,
+                        "id": 5972,
                         "name": "FunctionCall",
                         "src": "15827:70:16"
                       }
                     ],
-                    "id": 5955,
+                    "id": 5973,
                     "name": "VariableDeclarationStatement",
                     "src": "15785:112:16"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        5957
+                        5975
                       ]
                     },
                     "children": [
@@ -9463,7 +9463,7 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "termLengthInSeconds",
-                          "scope": 5981,
+                          "scope": 5999,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -9476,12 +9476,12 @@ export const SimpleInterestTermsContract =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 5956,
+                            "id": 5974,
                             "name": "ElementaryTypeName",
                             "src": "15907:4:16"
                           }
                         ],
-                        "id": 5957,
+                        "id": 5975,
                         "name": "VariableDeclaration",
                         "src": "15907:24:16"
                       },
@@ -9513,7 +9513,7 @@ export const SimpleInterestTermsContract =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "mul",
-                              "referencedDeclaration": 14014,
+                              "referencedDeclaration": 14032,
                               "type": "function (uint256,uint256) pure returns (uint256)"
                             },
                             "children": [
@@ -9523,16 +9523,16 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5896,
+                                  "referencedDeclaration": 5914,
                                   "type": "uint256",
                                   "value": "termLengthInAmortizationUnits"
                                 },
-                                "id": 5958,
+                                "id": 5976,
                                 "name": "Identifier",
                                 "src": "15946:29:16"
                               }
                             ],
-                            "id": 5959,
+                            "id": 5977,
                             "name": "MemberAccess",
                             "src": "15946:33:16"
                           },
@@ -9542,28 +9542,28 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5942,
+                              "referencedDeclaration": 5960,
                               "type": "uint256",
                               "value": "amortizationUnitLengthInSeconds"
                             },
-                            "id": 5960,
+                            "id": 5978,
                             "name": "Identifier",
                             "src": "15980:31:16"
                           }
                         ],
-                        "id": 5961,
+                        "id": 5979,
                         "name": "FunctionCall",
                         "src": "15946:66:16"
                       }
                     ],
-                    "id": 5962,
+                    "id": 5980,
                     "name": "VariableDeclarationStatement",
                     "src": "15907:105:16"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        5964
+                        5982
                       ]
                     },
                     "children": [
@@ -9571,7 +9571,7 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "termEndUnixTimestamp",
-                          "scope": 5981,
+                          "scope": 5999,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -9584,12 +9584,12 @@ export const SimpleInterestTermsContract =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 5963,
+                            "id": 5981,
                             "name": "ElementaryTypeName",
                             "src": "16022:4:16"
                           }
                         ],
-                        "id": 5964,
+                        "id": 5982,
                         "name": "VariableDeclaration",
                         "src": "16022:25:16"
                       },
@@ -9621,7 +9621,7 @@ export const SimpleInterestTermsContract =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "add",
-                              "referencedDeclaration": 14076,
+                              "referencedDeclaration": 14094,
                               "type": "function (uint256,uint256) pure returns (uint256)"
                             },
                             "children": [
@@ -9631,16 +9631,16 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5957,
+                                  "referencedDeclaration": 5975,
                                   "type": "uint256",
                                   "value": "termLengthInSeconds"
                                 },
-                                "id": 5965,
+                                "id": 5983,
                                 "name": "Identifier",
                                 "src": "16062:19:16"
                               }
                             ],
-                            "id": 5966,
+                            "id": 5984,
                             "name": "MemberAccess",
                             "src": "16062:23:16"
                           },
@@ -9650,27 +9650,27 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5948,
+                              "referencedDeclaration": 5966,
                               "type": "uint256",
                               "value": "issuanceBlockTimestamp"
                             },
-                            "id": 5967,
+                            "id": 5985,
                             "name": "Identifier",
                             "src": "16086:22:16"
                           }
                         ],
-                        "id": 5968,
+                        "id": 5986,
                         "name": "FunctionCall",
                         "src": "16062:47:16"
                       }
                     ],
-                    "id": 5969,
+                    "id": 5987,
                     "name": "VariableDeclarationStatement",
                     "src": "16022:87:16"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 5873
+                      "functionReturnParameters": 5891
                     },
                     "children": [
                       {
@@ -9700,11 +9700,11 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5363,
+                              "referencedDeclaration": 5381,
                               "type": "type(struct SimpleInterestTermsContract.SimpleInterestParams storage pointer)",
                               "value": "SimpleInterestParams"
                             },
-                            "id": 5970,
+                            "id": 5988,
                             "name": "Identifier",
                             "src": "16127:20:16"
                           },
@@ -9714,11 +9714,11 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5910,
+                              "referencedDeclaration": 5928,
                               "type": "address",
                               "value": "principalTokenAddress"
                             },
-                            "id": 5971,
+                            "id": 5989,
                             "name": "Identifier",
                             "src": "16185:21:16"
                           },
@@ -9728,11 +9728,11 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5887,
+                              "referencedDeclaration": 5905,
                               "type": "uint256",
                               "value": "principalAmount"
                             },
-                            "id": 5972,
+                            "id": 5990,
                             "name": "Identifier",
                             "src": "16237:15:16"
                           },
@@ -9742,11 +9742,11 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5890,
+                              "referencedDeclaration": 5908,
                               "type": "uint256",
                               "value": "interestRate"
                             },
-                            "id": 5973,
+                            "id": 5991,
                             "name": "Identifier",
                             "src": "16280:12:16"
                           },
@@ -9756,11 +9756,11 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5948,
+                              "referencedDeclaration": 5966,
                               "type": "uint256",
                               "value": "issuanceBlockTimestamp"
                             },
-                            "id": 5974,
+                            "id": 5992,
                             "name": "Identifier",
                             "src": "16330:22:16"
                           },
@@ -9770,11 +9770,11 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5964,
+                              "referencedDeclaration": 5982,
                               "type": "uint256",
                               "value": "termEndUnixTimestamp"
                             },
-                            "id": 5975,
+                            "id": 5993,
                             "name": "Identifier",
                             "src": "16388:20:16"
                           },
@@ -9784,11 +9784,11 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5936,
+                              "referencedDeclaration": 5954,
                               "type": "enum SimpleInterestTermsContract.AmortizationUnitType",
                               "value": "amortizationUnitType"
                             },
-                            "id": 5976,
+                            "id": 5994,
                             "name": "Identifier",
                             "src": "16444:20:16"
                           },
@@ -9798,31 +9798,31 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5896,
+                              "referencedDeclaration": 5914,
                               "type": "uint256",
                               "value": "termLengthInAmortizationUnits"
                             },
-                            "id": 5977,
+                            "id": 5995,
                             "name": "Identifier",
                             "src": "16509:29:16"
                           }
                         ],
-                        "id": 5978,
+                        "id": 5996,
                         "name": "FunctionCall",
                         "src": "16127:422:16"
                       }
                     ],
-                    "id": 5979,
+                    "id": 5997,
                     "name": "Return",
                     "src": "16120:429:16"
                   }
                 ],
-                "id": 5980,
+                "id": 5998,
                 "name": "Block",
                 "src": "14274:2282:16"
               }
             ],
-            "id": 5981,
+            "id": 5999,
             "name": "FunctionDefinition",
             "src": "14136:2420:16"
           },
@@ -9836,7 +9836,7 @@ export const SimpleInterestTermsContract =
               ],
               "name": "getAmortizationUnitLengthInSeconds",
               "payable": false,
-              "scope": 6034,
+              "scope": 6052,
               "stateMutability": "pure",
               "superFunction": null,
               "visibility": "internal"
@@ -9848,7 +9848,7 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "amortizationUnitType",
-                      "scope": 6033,
+                      "scope": 6051,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "enum SimpleInterestTermsContract.AmortizationUnitType",
@@ -9860,20 +9860,20 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "contractScope": null,
                           "name": "AmortizationUnitType",
-                          "referencedDeclaration": 5345,
+                          "referencedDeclaration": 5363,
                           "type": "enum SimpleInterestTermsContract.AmortizationUnitType"
                         },
-                        "id": 5982,
+                        "id": 6000,
                         "name": "UserDefinedTypeName",
                         "src": "16606:20:16"
                       }
                     ],
-                    "id": 5983,
+                    "id": 6001,
                     "name": "VariableDeclaration",
                     "src": "16606:41:16"
                   }
                 ],
-                "id": 5984,
+                "id": 6002,
                 "name": "ParameterList",
                 "src": "16605:43:16"
               },
@@ -9883,7 +9883,7 @@ export const SimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "_amortizationUnitLengthInSeconds",
-                      "scope": 6033,
+                      "scope": 6051,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -9896,17 +9896,17 @@ export const SimpleInterestTermsContract =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 5985,
+                        "id": 6003,
                         "name": "ElementaryTypeName",
                         "src": "16696:4:16"
                       }
                     ],
-                    "id": 5986,
+                    "id": 6004,
                     "name": "VariableDeclaration",
                     "src": "16696:37:16"
                   }
                 ],
-                "id": 5987,
+                "id": 6005,
                 "name": "ParameterList",
                 "src": "16695:39:16"
               },
@@ -9918,7 +9918,7 @@ export const SimpleInterestTermsContract =
                         "attributes": {
                           "argumentTypes": null,
                           "commonType": {
-                            "typeIdentifier": "t_enum$_AmortizationUnitType_$5345",
+                            "typeIdentifier": "t_enum$_AmortizationUnitType_$5363",
                             "typeString": "enum SimpleInterestTermsContract.AmortizationUnitType"
                           },
                           "isConstant": false,
@@ -9935,11 +9935,11 @@ export const SimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5983,
+                              "referencedDeclaration": 6001,
                               "type": "enum SimpleInterestTermsContract.AmortizationUnitType",
                               "value": "amortizationUnitType"
                             },
-                            "id": 5988,
+                            "id": 6006,
                             "name": "Identifier",
                             "src": "16753:20:16"
                           },
@@ -9961,21 +9961,21 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5345,
+                                  "referencedDeclaration": 5363,
                                   "type": "type(enum SimpleInterestTermsContract.AmortizationUnitType)",
                                   "value": "AmortizationUnitType"
                                 },
-                                "id": 5989,
+                                "id": 6007,
                                 "name": "Identifier",
                                 "src": "16777:20:16"
                               }
                             ],
-                            "id": 5990,
+                            "id": 6008,
                             "name": "MemberAccess",
                             "src": "16777:26:16"
                           }
                         ],
-                        "id": 5991,
+                        "id": 6009,
                         "name": "BinaryOperation",
                         "src": "16753:50:16"
                       },
@@ -9983,7 +9983,7 @@ export const SimpleInterestTermsContract =
                         "children": [
                           {
                             "attributes": {
-                              "functionReturnParameters": 5987
+                              "functionReturnParameters": 6005
                             },
                             "children": [
                               {
@@ -9992,21 +9992,21 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5368,
+                                  "referencedDeclaration": 5386,
                                   "type": "uint256",
                                   "value": "HOUR_LENGTH_IN_SECONDS"
                                 },
-                                "id": 5992,
+                                "id": 6010,
                                 "name": "Identifier",
                                 "src": "16826:22:16"
                               }
                             ],
-                            "id": 5993,
+                            "id": 6011,
                             "name": "Return",
                             "src": "16819:29:16"
                           }
                         ],
-                        "id": 5994,
+                        "id": 6012,
                         "name": "Block",
                         "src": "16805:54:16"
                       },
@@ -10016,7 +10016,7 @@ export const SimpleInterestTermsContract =
                             "attributes": {
                               "argumentTypes": null,
                               "commonType": {
-                                "typeIdentifier": "t_enum$_AmortizationUnitType_$5345",
+                                "typeIdentifier": "t_enum$_AmortizationUnitType_$5363",
                                 "typeString": "enum SimpleInterestTermsContract.AmortizationUnitType"
                               },
                               "isConstant": false,
@@ -10033,11 +10033,11 @@ export const SimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5983,
+                                  "referencedDeclaration": 6001,
                                   "type": "enum SimpleInterestTermsContract.AmortizationUnitType",
                                   "value": "amortizationUnitType"
                                 },
-                                "id": 5995,
+                                "id": 6013,
                                 "name": "Identifier",
                                 "src": "16869:20:16"
                               },
@@ -10059,21 +10059,21 @@ export const SimpleInterestTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5345,
+                                      "referencedDeclaration": 5363,
                                       "type": "type(enum SimpleInterestTermsContract.AmortizationUnitType)",
                                       "value": "AmortizationUnitType"
                                     },
-                                    "id": 5996,
+                                    "id": 6014,
                                     "name": "Identifier",
                                     "src": "16893:20:16"
                                   }
                                 ],
-                                "id": 5997,
+                                "id": 6015,
                                 "name": "MemberAccess",
                                 "src": "16893:25:16"
                               }
                             ],
-                            "id": 5998,
+                            "id": 6016,
                             "name": "BinaryOperation",
                             "src": "16869:49:16"
                           },
@@ -10081,7 +10081,7 @@ export const SimpleInterestTermsContract =
                             "children": [
                               {
                                 "attributes": {
-                                  "functionReturnParameters": 5987
+                                  "functionReturnParameters": 6005
                                 },
                                 "children": [
                                   {
@@ -10090,21 +10090,21 @@ export const SimpleInterestTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5373,
+                                      "referencedDeclaration": 5391,
                                       "type": "uint256",
                                       "value": "DAY_LENGTH_IN_SECONDS"
                                     },
-                                    "id": 5999,
+                                    "id": 6017,
                                     "name": "Identifier",
                                     "src": "16941:21:16"
                                   }
                                 ],
-                                "id": 6000,
+                                "id": 6018,
                                 "name": "Return",
                                 "src": "16934:28:16"
                               }
                             ],
-                            "id": 6001,
+                            "id": 6019,
                             "name": "Block",
                             "src": "16920:53:16"
                           },
@@ -10114,7 +10114,7 @@ export const SimpleInterestTermsContract =
                                 "attributes": {
                                   "argumentTypes": null,
                                   "commonType": {
-                                    "typeIdentifier": "t_enum$_AmortizationUnitType_$5345",
+                                    "typeIdentifier": "t_enum$_AmortizationUnitType_$5363",
                                     "typeString": "enum SimpleInterestTermsContract.AmortizationUnitType"
                                   },
                                   "isConstant": false,
@@ -10131,11 +10131,11 @@ export const SimpleInterestTermsContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5983,
+                                      "referencedDeclaration": 6001,
                                       "type": "enum SimpleInterestTermsContract.AmortizationUnitType",
                                       "value": "amortizationUnitType"
                                     },
-                                    "id": 6002,
+                                    "id": 6020,
                                     "name": "Identifier",
                                     "src": "16983:20:16"
                                   },
@@ -10157,21 +10157,21 @@ export const SimpleInterestTermsContract =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 5345,
+                                          "referencedDeclaration": 5363,
                                           "type": "type(enum SimpleInterestTermsContract.AmortizationUnitType)",
                                           "value": "AmortizationUnitType"
                                         },
-                                        "id": 6003,
+                                        "id": 6021,
                                         "name": "Identifier",
                                         "src": "17007:20:16"
                                       }
                                     ],
-                                    "id": 6004,
+                                    "id": 6022,
                                     "name": "MemberAccess",
                                     "src": "17007:26:16"
                                   }
                                 ],
-                                "id": 6005,
+                                "id": 6023,
                                 "name": "BinaryOperation",
                                 "src": "16983:50:16"
                               },
@@ -10179,7 +10179,7 @@ export const SimpleInterestTermsContract =
                                 "children": [
                                   {
                                     "attributes": {
-                                      "functionReturnParameters": 5987
+                                      "functionReturnParameters": 6005
                                     },
                                     "children": [
                                       {
@@ -10188,21 +10188,21 @@ export const SimpleInterestTermsContract =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 5378,
+                                          "referencedDeclaration": 5396,
                                           "type": "uint256",
                                           "value": "WEEK_LENGTH_IN_SECONDS"
                                         },
-                                        "id": 6006,
+                                        "id": 6024,
                                         "name": "Identifier",
                                         "src": "17056:22:16"
                                       }
                                     ],
-                                    "id": 6007,
+                                    "id": 6025,
                                     "name": "Return",
                                     "src": "17049:29:16"
                                   }
                                 ],
-                                "id": 6008,
+                                "id": 6026,
                                 "name": "Block",
                                 "src": "17035:54:16"
                               },
@@ -10212,7 +10212,7 @@ export const SimpleInterestTermsContract =
                                     "attributes": {
                                       "argumentTypes": null,
                                       "commonType": {
-                                        "typeIdentifier": "t_enum$_AmortizationUnitType_$5345",
+                                        "typeIdentifier": "t_enum$_AmortizationUnitType_$5363",
                                         "typeString": "enum SimpleInterestTermsContract.AmortizationUnitType"
                                       },
                                       "isConstant": false,
@@ -10229,11 +10229,11 @@ export const SimpleInterestTermsContract =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 5983,
+                                          "referencedDeclaration": 6001,
                                           "type": "enum SimpleInterestTermsContract.AmortizationUnitType",
                                           "value": "amortizationUnitType"
                                         },
-                                        "id": 6009,
+                                        "id": 6027,
                                         "name": "Identifier",
                                         "src": "17099:20:16"
                                       },
@@ -10255,21 +10255,21 @@ export const SimpleInterestTermsContract =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 5345,
+                                              "referencedDeclaration": 5363,
                                               "type": "type(enum SimpleInterestTermsContract.AmortizationUnitType)",
                                               "value": "AmortizationUnitType"
                                             },
-                                            "id": 6010,
+                                            "id": 6028,
                                             "name": "Identifier",
                                             "src": "17123:20:16"
                                           }
                                         ],
-                                        "id": 6011,
+                                        "id": 6029,
                                         "name": "MemberAccess",
                                         "src": "17123:27:16"
                                       }
                                     ],
-                                    "id": 6012,
+                                    "id": 6030,
                                     "name": "BinaryOperation",
                                     "src": "17099:51:16"
                                   },
@@ -10277,7 +10277,7 @@ export const SimpleInterestTermsContract =
                                     "children": [
                                       {
                                         "attributes": {
-                                          "functionReturnParameters": 5987
+                                          "functionReturnParameters": 6005
                                         },
                                         "children": [
                                           {
@@ -10286,21 +10286,21 @@ export const SimpleInterestTermsContract =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 5383,
+                                              "referencedDeclaration": 5401,
                                               "type": "uint256",
                                               "value": "MONTH_LENGTH_IN_SECONDS"
                                             },
-                                            "id": 6013,
+                                            "id": 6031,
                                             "name": "Identifier",
                                             "src": "17173:23:16"
                                           }
                                         ],
-                                        "id": 6014,
+                                        "id": 6032,
                                         "name": "Return",
                                         "src": "17166:30:16"
                                       }
                                     ],
-                                    "id": 6015,
+                                    "id": 6033,
                                     "name": "Block",
                                     "src": "17152:55:16"
                                   },
@@ -10310,7 +10310,7 @@ export const SimpleInterestTermsContract =
                                         "attributes": {
                                           "argumentTypes": null,
                                           "commonType": {
-                                            "typeIdentifier": "t_enum$_AmortizationUnitType_$5345",
+                                            "typeIdentifier": "t_enum$_AmortizationUnitType_$5363",
                                             "typeString": "enum SimpleInterestTermsContract.AmortizationUnitType"
                                           },
                                           "isConstant": false,
@@ -10327,11 +10327,11 @@ export const SimpleInterestTermsContract =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 5983,
+                                              "referencedDeclaration": 6001,
                                               "type": "enum SimpleInterestTermsContract.AmortizationUnitType",
                                               "value": "amortizationUnitType"
                                             },
-                                            "id": 6016,
+                                            "id": 6034,
                                             "name": "Identifier",
                                             "src": "17217:20:16"
                                           },
@@ -10353,21 +10353,21 @@ export const SimpleInterestTermsContract =
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 5345,
+                                                  "referencedDeclaration": 5363,
                                                   "type": "type(enum SimpleInterestTermsContract.AmortizationUnitType)",
                                                   "value": "AmortizationUnitType"
                                                 },
-                                                "id": 6017,
+                                                "id": 6035,
                                                 "name": "Identifier",
                                                 "src": "17241:20:16"
                                               }
                                             ],
-                                            "id": 6018,
+                                            "id": 6036,
                                             "name": "MemberAccess",
                                             "src": "17241:26:16"
                                           }
                                         ],
-                                        "id": 6019,
+                                        "id": 6037,
                                         "name": "BinaryOperation",
                                         "src": "17217:50:16"
                                       },
@@ -10375,7 +10375,7 @@ export const SimpleInterestTermsContract =
                                         "children": [
                                           {
                                             "attributes": {
-                                              "functionReturnParameters": 5987
+                                              "functionReturnParameters": 6005
                                             },
                                             "children": [
                                               {
@@ -10384,21 +10384,21 @@ export const SimpleInterestTermsContract =
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 5388,
+                                                  "referencedDeclaration": 5406,
                                                   "type": "uint256",
                                                   "value": "YEAR_LENGTH_IN_SECONDS"
                                                 },
-                                                "id": 6020,
+                                                "id": 6038,
                                                 "name": "Identifier",
                                                 "src": "17290:22:16"
                                               }
                                             ],
-                                            "id": 6021,
+                                            "id": 6039,
                                             "name": "Return",
                                             "src": "17283:29:16"
                                           }
                                         ],
-                                        "id": 6022,
+                                        "id": 6040,
                                         "name": "Block",
                                         "src": "17269:54:16"
                                       },
@@ -10432,71 +10432,71 @@ export const SimpleInterestTermsContract =
                                                       "overloadedDeclarations": [
                                                         null
                                                       ],
-                                                      "referencedDeclaration": 15819,
+                                                      "referencedDeclaration": 15837,
                                                       "type": "function () pure",
                                                       "value": "revert"
                                                     },
-                                                    "id": 6023,
+                                                    "id": 6041,
                                                     "name": "Identifier",
                                                     "src": "17343:6:16"
                                                   }
                                                 ],
-                                                "id": 6024,
+                                                "id": 6042,
                                                 "name": "FunctionCall",
                                                 "src": "17343:8:16"
                                               }
                                             ],
-                                            "id": 6025,
+                                            "id": 6043,
                                             "name": "ExpressionStatement",
                                             "src": "17343:8:16"
                                           }
                                         ],
-                                        "id": 6026,
+                                        "id": 6044,
                                         "name": "Block",
                                         "src": "17329:33:16"
                                       }
                                     ],
-                                    "id": 6027,
+                                    "id": 6045,
                                     "name": "IfStatement",
                                     "src": "17213:149:16"
                                   }
                                 ],
-                                "id": 6028,
+                                "id": 6046,
                                 "name": "IfStatement",
                                 "src": "17095:267:16"
                               }
                             ],
-                            "id": 6029,
+                            "id": 6047,
                             "name": "IfStatement",
                             "src": "16979:383:16"
                           }
                         ],
-                        "id": 6030,
+                        "id": 6048,
                         "name": "IfStatement",
                         "src": "16865:497:16"
                       }
                     ],
-                    "id": 6031,
+                    "id": 6049,
                     "name": "IfStatement",
                     "src": "16749:613:16"
                   }
                 ],
-                "id": 6032,
+                "id": 6050,
                 "name": "Block",
                 "src": "16739:629:16"
               }
             ],
-            "id": 6033,
+            "id": 6051,
             "name": "FunctionDefinition",
             "src": "16562:806:16"
           }
         ],
-        "id": 6034,
+        "id": 6052,
         "name": "ContractDefinition",
         "src": "702:16668:16"
       }
     ],
-    "id": 6035,
+    "id": 6053,
     "name": "SourceUnit",
     "src": "584:16787:16"
   },
@@ -10518,9 +10518,9 @@ export const SimpleInterestTermsContract =
     "70": {
       "events": {},
       "links": {},
-      "address": "0x7e8c046873b745cb33d8121769c0042e5add82f6"
+      "address": "0xf07a5dda538d602d0ba0921c1050e5a9399e8473"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-25T20:05:01.119Z"
+  "updatedAt": "2018-09-25T22:27:43.682Z"
 }

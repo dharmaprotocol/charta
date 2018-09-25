@@ -341,13 +341,13 @@ export const ERC721Enumerable =
       "absolutePath": "zeppelin-solidity/contracts/token/ERC721/ERC721.sol",
       "exportedSymbols": {
         "ERC721": [
-          14725
+          14743
         ],
         "ERC721Enumerable": [
-          14698
+          14716
         ],
         "ERC721Metadata": [
-          14718
+          14736
         ]
       }
     },
@@ -361,39 +361,39 @@ export const ERC721Enumerable =
             ".18"
           ]
         },
-        "id": 14673,
+        "id": 14691,
         "name": "PragmaDirective",
         "src": "0:24:46"
       },
       {
         "attributes": {
-          "SourceUnit": 14833,
+          "SourceUnit": 14851,
           "absolutePath": "zeppelin-solidity/contracts/token/ERC721/ERC721Basic.sol",
           "file": "./ERC721Basic.sol",
-          "scope": 14726,
+          "scope": 14744,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 14674,
+        "id": 14692,
         "name": "ImportDirective",
         "src": "26:27:46"
       },
       {
         "attributes": {
           "contractDependencies": [
-            14832
+            14850
           ],
           "contractKind": "contract",
           "documentation": "@title ERC-721 Non-Fungible Token Standard, optional enumeration extension\n@dev See https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md",
           "fullyImplemented": false,
           "linearizedBaseContracts": [
-            14698,
-            14832
+            14716,
+            14850
           ],
           "name": "ERC721Enumerable",
-          "scope": 14726
+          "scope": 14744
         },
         "children": [
           {
@@ -407,15 +407,15 @@ export const ERC721Enumerable =
                 "attributes": {
                   "contractScope": null,
                   "name": "ERC721Basic",
-                  "referencedDeclaration": 14832,
+                  "referencedDeclaration": 14850,
                   "type": "contract ERC721Basic"
                 },
-                "id": 14675,
+                "id": 14693,
                 "name": "UserDefinedTypeName",
                 "src": "243:11:46"
               }
             ],
-            "id": 14676,
+            "id": 14694,
             "name": "InheritanceSpecifier",
             "src": "243:11:46"
           },
@@ -430,7 +430,7 @@ export const ERC721Enumerable =
               ],
               "name": "totalSupply",
               "payable": false,
-              "scope": 14698,
+              "scope": 14716,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -443,7 +443,7 @@ export const ERC721Enumerable =
                   ]
                 },
                 "children": [],
-                "id": 14677,
+                "id": 14695,
                 "name": "ParameterList",
                 "src": "279:2:46"
               },
@@ -453,7 +453,7 @@ export const ERC721Enumerable =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 14681,
+                      "scope": 14699,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -466,22 +466,22 @@ export const ERC721Enumerable =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 14678,
+                        "id": 14696,
                         "name": "ElementaryTypeName",
                         "src": "303:7:46"
                       }
                     ],
-                    "id": 14679,
+                    "id": 14697,
                     "name": "VariableDeclaration",
                     "src": "303:7:46"
                   }
                 ],
-                "id": 14680,
+                "id": 14698,
                 "name": "ParameterList",
                 "src": "302:9:46"
               }
             ],
-            "id": 14681,
+            "id": 14699,
             "name": "FunctionDefinition",
             "src": "259:53:46"
           },
@@ -496,7 +496,7 @@ export const ERC721Enumerable =
               ],
               "name": "tokenOfOwnerByIndex",
               "payable": false,
-              "scope": 14698,
+              "scope": 14716,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -508,7 +508,7 @@ export const ERC721Enumerable =
                     "attributes": {
                       "constant": false,
                       "name": "_owner",
-                      "scope": 14690,
+                      "scope": 14708,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -521,12 +521,12 @@ export const ERC721Enumerable =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 14682,
+                        "id": 14700,
                         "name": "ElementaryTypeName",
                         "src": "344:7:46"
                       }
                     ],
-                    "id": 14683,
+                    "id": 14701,
                     "name": "VariableDeclaration",
                     "src": "344:14:46"
                   },
@@ -534,7 +534,7 @@ export const ERC721Enumerable =
                     "attributes": {
                       "constant": false,
                       "name": "_index",
-                      "scope": 14690,
+                      "scope": 14708,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -547,17 +547,17 @@ export const ERC721Enumerable =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 14684,
+                        "id": 14702,
                         "name": "ElementaryTypeName",
                         "src": "360:7:46"
                       }
                     ],
-                    "id": 14685,
+                    "id": 14703,
                     "name": "VariableDeclaration",
                     "src": "360:14:46"
                   }
                 ],
-                "id": 14686,
+                "id": 14704,
                 "name": "ParameterList",
                 "src": "343:32:46"
               },
@@ -567,7 +567,7 @@ export const ERC721Enumerable =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 14690,
+                      "scope": 14708,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -580,22 +580,22 @@ export const ERC721Enumerable =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 14687,
+                        "id": 14705,
                         "name": "ElementaryTypeName",
                         "src": "397:7:46"
                       }
                     ],
-                    "id": 14688,
+                    "id": 14706,
                     "name": "VariableDeclaration",
                     "src": "397:16:46"
                   }
                 ],
-                "id": 14689,
+                "id": 14707,
                 "name": "ParameterList",
                 "src": "396:18:46"
               }
             ],
-            "id": 14690,
+            "id": 14708,
             "name": "FunctionDefinition",
             "src": "315:100:46"
           },
@@ -610,7 +610,7 @@ export const ERC721Enumerable =
               ],
               "name": "tokenByIndex",
               "payable": false,
-              "scope": 14698,
+              "scope": 14716,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -622,7 +622,7 @@ export const ERC721Enumerable =
                     "attributes": {
                       "constant": false,
                       "name": "_index",
-                      "scope": 14697,
+                      "scope": 14715,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -635,17 +635,17 @@ export const ERC721Enumerable =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 14691,
+                        "id": 14709,
                         "name": "ElementaryTypeName",
                         "src": "440:7:46"
                       }
                     ],
-                    "id": 14692,
+                    "id": 14710,
                     "name": "VariableDeclaration",
                     "src": "440:14:46"
                   }
                 ],
-                "id": 14693,
+                "id": 14711,
                 "name": "ParameterList",
                 "src": "439:16:46"
               },
@@ -655,7 +655,7 @@ export const ERC721Enumerable =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 14697,
+                      "scope": 14715,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -668,44 +668,44 @@ export const ERC721Enumerable =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 14694,
+                        "id": 14712,
                         "name": "ElementaryTypeName",
                         "src": "477:7:46"
                       }
                     ],
-                    "id": 14695,
+                    "id": 14713,
                     "name": "VariableDeclaration",
                     "src": "477:7:46"
                   }
                 ],
-                "id": 14696,
+                "id": 14714,
                 "name": "ParameterList",
                 "src": "476:9:46"
               }
             ],
-            "id": 14697,
+            "id": 14715,
             "name": "FunctionDefinition",
             "src": "418:68:46"
           }
         ],
-        "id": 14698,
+        "id": 14716,
         "name": "ContractDefinition",
         "src": "214:274:46"
       },
       {
         "attributes": {
           "contractDependencies": [
-            14832
+            14850
           ],
           "contractKind": "contract",
           "documentation": "@title ERC-721 Non-Fungible Token Standard, optional metadata extension\n@dev See https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md",
           "fullyImplemented": false,
           "linearizedBaseContracts": [
-            14718,
-            14832
+            14736,
+            14850
           ],
           "name": "ERC721Metadata",
-          "scope": 14726
+          "scope": 14744
         },
         "children": [
           {
@@ -719,15 +719,15 @@ export const ERC721Enumerable =
                 "attributes": {
                   "contractScope": null,
                   "name": "ERC721Basic",
-                  "referencedDeclaration": 14832,
+                  "referencedDeclaration": 14850,
                   "type": "contract ERC721Basic"
                 },
-                "id": 14699,
+                "id": 14717,
                 "name": "UserDefinedTypeName",
                 "src": "673:11:46"
               }
             ],
-            "id": 14700,
+            "id": 14718,
             "name": "InheritanceSpecifier",
             "src": "673:11:46"
           },
@@ -742,7 +742,7 @@ export const ERC721Enumerable =
               ],
               "name": "name",
               "payable": false,
-              "scope": 14718,
+              "scope": 14736,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -755,7 +755,7 @@ export const ERC721Enumerable =
                   ]
                 },
                 "children": [],
-                "id": 14701,
+                "id": 14719,
                 "name": "ParameterList",
                 "src": "702:2:46"
               },
@@ -765,7 +765,7 @@ export const ERC721Enumerable =
                     "attributes": {
                       "constant": false,
                       "name": "_name",
-                      "scope": 14705,
+                      "scope": 14723,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory",
@@ -778,22 +778,22 @@ export const ERC721Enumerable =
                           "name": "string",
                           "type": "string storage pointer"
                         },
-                        "id": 14702,
+                        "id": 14720,
                         "name": "ElementaryTypeName",
                         "src": "726:6:46"
                       }
                     ],
-                    "id": 14703,
+                    "id": 14721,
                     "name": "VariableDeclaration",
                     "src": "726:12:46"
                   }
                 ],
-                "id": 14704,
+                "id": 14722,
                 "name": "ParameterList",
                 "src": "725:14:46"
               }
             ],
-            "id": 14705,
+            "id": 14723,
             "name": "FunctionDefinition",
             "src": "689:51:46"
           },
@@ -808,7 +808,7 @@ export const ERC721Enumerable =
               ],
               "name": "symbol",
               "payable": false,
-              "scope": 14718,
+              "scope": 14736,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -821,7 +821,7 @@ export const ERC721Enumerable =
                   ]
                 },
                 "children": [],
-                "id": 14706,
+                "id": 14724,
                 "name": "ParameterList",
                 "src": "758:2:46"
               },
@@ -831,7 +831,7 @@ export const ERC721Enumerable =
                     "attributes": {
                       "constant": false,
                       "name": "_symbol",
-                      "scope": 14710,
+                      "scope": 14728,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory",
@@ -844,22 +844,22 @@ export const ERC721Enumerable =
                           "name": "string",
                           "type": "string storage pointer"
                         },
-                        "id": 14707,
+                        "id": 14725,
                         "name": "ElementaryTypeName",
                         "src": "782:6:46"
                       }
                     ],
-                    "id": 14708,
+                    "id": 14726,
                     "name": "VariableDeclaration",
                     "src": "782:14:46"
                   }
                 ],
-                "id": 14709,
+                "id": 14727,
                 "name": "ParameterList",
                 "src": "781:16:46"
               }
             ],
-            "id": 14710,
+            "id": 14728,
             "name": "FunctionDefinition",
             "src": "743:55:46"
           },
@@ -874,7 +874,7 @@ export const ERC721Enumerable =
               ],
               "name": "tokenURI",
               "payable": false,
-              "scope": 14718,
+              "scope": 14736,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -886,7 +886,7 @@ export const ERC721Enumerable =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 14717,
+                      "scope": 14735,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -899,17 +899,17 @@ export const ERC721Enumerable =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 14711,
+                        "id": 14729,
                         "name": "ElementaryTypeName",
                         "src": "819:7:46"
                       }
                     ],
-                    "id": 14712,
+                    "id": 14730,
                     "name": "VariableDeclaration",
                     "src": "819:16:46"
                   }
                 ],
-                "id": 14713,
+                "id": 14731,
                 "name": "ParameterList",
                 "src": "818:18:46"
               },
@@ -919,7 +919,7 @@ export const ERC721Enumerable =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 14717,
+                      "scope": 14735,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory",
@@ -932,51 +932,51 @@ export const ERC721Enumerable =
                           "name": "string",
                           "type": "string storage pointer"
                         },
-                        "id": 14714,
+                        "id": 14732,
                         "name": "ElementaryTypeName",
                         "src": "858:6:46"
                       }
                     ],
-                    "id": 14715,
+                    "id": 14733,
                     "name": "VariableDeclaration",
                     "src": "858:6:46"
                   }
                 ],
-                "id": 14716,
+                "id": 14734,
                 "name": "ParameterList",
                 "src": "857:8:46"
               }
             ],
-            "id": 14717,
+            "id": 14735,
             "name": "FunctionDefinition",
             "src": "801:65:46"
           }
         ],
-        "id": 14718,
+        "id": 14736,
         "name": "ContractDefinition",
         "src": "646:222:46"
       },
       {
         "attributes": {
           "contractDependencies": [
-            14698,
-            14718,
-            14832
+            14716,
+            14736,
+            14850
           ],
           "contractKind": "contract",
           "documentation": "@title ERC-721 Non-Fungible Token Standard, full implementation interface\n@dev See https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md",
           "fullyImplemented": false,
           "linearizedBaseContracts": [
-            14725,
-            14718,
-            14698,
-            14832
+            14743,
+            14736,
+            14716,
+            14850
           ],
           "name": "ERC721",
           "nodes": [
             null
           ],
-          "scope": 14726
+          "scope": 14744
         },
         "children": [
           {
@@ -990,15 +990,15 @@ export const ERC721Enumerable =
                 "attributes": {
                   "contractScope": null,
                   "name": "ERC721Basic",
-                  "referencedDeclaration": 14832,
+                  "referencedDeclaration": 14850,
                   "type": "contract ERC721Basic"
                 },
-                "id": 14719,
+                "id": 14737,
                 "name": "UserDefinedTypeName",
                 "src": "1047:11:46"
               }
             ],
-            "id": 14720,
+            "id": 14738,
             "name": "InheritanceSpecifier",
             "src": "1047:11:46"
           },
@@ -1013,15 +1013,15 @@ export const ERC721Enumerable =
                 "attributes": {
                   "contractScope": null,
                   "name": "ERC721Enumerable",
-                  "referencedDeclaration": 14698,
+                  "referencedDeclaration": 14716,
                   "type": "contract ERC721Enumerable"
                 },
-                "id": 14721,
+                "id": 14739,
                 "name": "UserDefinedTypeName",
                 "src": "1060:16:46"
               }
             ],
-            "id": 14722,
+            "id": 14740,
             "name": "InheritanceSpecifier",
             "src": "1060:16:46"
           },
@@ -1036,25 +1036,25 @@ export const ERC721Enumerable =
                 "attributes": {
                   "contractScope": null,
                   "name": "ERC721Metadata",
-                  "referencedDeclaration": 14718,
+                  "referencedDeclaration": 14736,
                   "type": "contract ERC721Metadata"
                 },
-                "id": 14723,
+                "id": 14741,
                 "name": "UserDefinedTypeName",
                 "src": "1078:14:46"
               }
             ],
-            "id": 14724,
+            "id": 14742,
             "name": "InheritanceSpecifier",
             "src": "1078:14:46"
           }
         ],
-        "id": 14725,
+        "id": 14743,
         "name": "ContractDefinition",
         "src": "1028:68:46"
       }
     ],
-    "id": 14726,
+    "id": 14744,
     "name": "SourceUnit",
     "src": "0:1097:46"
   },
@@ -1064,5 +1064,5 @@ export const ERC721Enumerable =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-25T20:04:49.256Z"
+  "updatedAt": "2018-09-25T22:27:32.237Z"
 }

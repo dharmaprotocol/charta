@@ -168,7 +168,7 @@ export const MockDebtKernel =
       "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/test/mocks/MockDebtKernel.sol",
       "exportedSymbols": {
         "MockDebtKernel": [
-          10817
+          10835
         ]
       }
     },
@@ -181,39 +181,39 @@ export const MockDebtKernel =
             ".18"
           ]
         },
-        "id": 10676,
+        "id": 10694,
         "name": "PragmaDirective",
         "src": "584:23:24"
       },
       {
         "attributes": {
-          "SourceUnit": 10675,
+          "SourceUnit": 10693,
           "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/test/mocks/MockContract.sol",
           "file": "./MockContract.sol",
-          "scope": 10818,
+          "scope": 10836,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 10677,
+        "id": 10695,
         "name": "ImportDirective",
         "src": "609:28:24"
       },
       {
         "attributes": {
           "contractDependencies": [
-            10674
+            10692
           ],
           "contractKind": "contract",
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            10817,
-            10674
+            10835,
+            10692
           ],
           "name": "MockDebtKernel",
-          "scope": 10818
+          "scope": 10836
         },
         "children": [
           {
@@ -227,15 +227,15 @@ export const MockDebtKernel =
                 "attributes": {
                   "contractScope": null,
                   "name": "MockContract",
-                  "referencedDeclaration": 10674,
+                  "referencedDeclaration": 10692,
                   "type": "contract MockContract"
                 },
-                "id": 10678,
+                "id": 10696,
                 "name": "UserDefinedTypeName",
                 "src": "667:12:24"
               }
             ],
-            "id": 10679,
+            "id": 10697,
             "name": "InheritanceSpecifier",
             "src": "667:12:24"
           },
@@ -249,7 +249,7 @@ export const MockDebtKernel =
               ],
               "name": "mockCreateReturnValue",
               "payable": false,
-              "scope": 10817,
+              "scope": 10835,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -261,7 +261,7 @@ export const MockDebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "_agreementId",
-                      "scope": 10693,
+                      "scope": 10711,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -274,17 +274,17 @@ export const MockDebtKernel =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 10680,
+                        "id": 10698,
                         "name": "ElementaryTypeName",
                         "src": "718:7:24"
                       }
                     ],
-                    "id": 10681,
+                    "id": 10699,
                     "name": "VariableDeclaration",
                     "src": "718:20:24"
                   }
                 ],
-                "id": 10682,
+                "id": 10700,
                 "name": "ParameterList",
                 "src": "717:22:24"
               },
@@ -295,7 +295,7 @@ export const MockDebtKernel =
                   ]
                 },
                 "children": [],
-                "id": 10683,
+                "id": 10701,
                 "name": "ParameterList",
                 "src": "759:0:24"
               },
@@ -337,11 +337,11 @@ export const MockDebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10538,
+                              "referencedDeclaration": 10556,
                               "type": "function (string memory,bytes32,bytes32)",
                               "value": "mockReturnValue"
                             },
-                            "id": 10684,
+                            "id": 10702,
                             "name": "Identifier",
                             "src": "769:15:24"
                           },
@@ -358,7 +358,7 @@ export const MockDebtKernel =
                               "type": "literal_string \"fillDebtOrder\"",
                               "value": "fillDebtOrder"
                             },
-                            "id": 10685,
+                            "id": 10703,
                             "name": "Literal",
                             "src": "785:15:24"
                           },
@@ -368,11 +368,11 @@ export const MockDebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10496,
+                              "referencedDeclaration": 10514,
                               "type": "bytes32",
                               "value": "DEFAULT_SIGNATURE_ARGS"
                             },
-                            "id": 10686,
+                            "id": 10704,
                             "name": "Identifier",
                             "src": "802:22:24"
                           },
@@ -406,7 +406,7 @@ export const MockDebtKernel =
                                   "type": "type(bytes32)",
                                   "value": "bytes32"
                                 },
-                                "id": 10687,
+                                "id": 10705,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "826:7:24"
                               },
@@ -416,36 +416,36 @@ export const MockDebtKernel =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10681,
+                                  "referencedDeclaration": 10699,
                                   "type": "bytes32",
                                   "value": "_agreementId"
                                 },
-                                "id": 10688,
+                                "id": 10706,
                                 "name": "Identifier",
                                 "src": "834:12:24"
                               }
                             ],
-                            "id": 10689,
+                            "id": 10707,
                             "name": "FunctionCall",
                             "src": "826:21:24"
                           }
                         ],
-                        "id": 10690,
+                        "id": 10708,
                         "name": "FunctionCall",
                         "src": "769:79:24"
                       }
                     ],
-                    "id": 10691,
+                    "id": 10709,
                     "name": "ExpressionStatement",
                     "src": "769:79:24"
                   }
                 ],
-                "id": 10692,
+                "id": 10710,
                 "name": "Block",
                 "src": "759:96:24"
               }
             ],
-            "id": 10693,
+            "id": 10711,
             "name": "FunctionDefinition",
             "src": "687:168:24"
           },
@@ -459,7 +459,7 @@ export const MockDebtKernel =
               ],
               "name": "fillDebtOrder",
               "payable": false,
-              "scope": 10817,
+              "scope": 10835,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -471,7 +471,7 @@ export const MockDebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "creditor",
-                      "scope": 10747,
+                      "scope": 10765,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -484,12 +484,12 @@ export const MockDebtKernel =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 10694,
+                        "id": 10712,
                         "name": "ElementaryTypeName",
                         "src": "893:7:24"
                       }
                     ],
-                    "id": 10695,
+                    "id": 10713,
                     "name": "VariableDeclaration",
                     "src": "893:16:24"
                   },
@@ -497,7 +497,7 @@ export const MockDebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "orderAddresses",
-                      "scope": 10747,
+                      "scope": 10765,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address[6] memory",
@@ -515,7 +515,7 @@ export const MockDebtKernel =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 10696,
+                            "id": 10714,
                             "name": "ElementaryTypeName",
                             "src": "919:7:24"
                           },
@@ -532,17 +532,17 @@ export const MockDebtKernel =
                               "type": "int_const 6",
                               "value": "6"
                             },
-                            "id": 10697,
+                            "id": 10715,
                             "name": "Literal",
                             "src": "927:1:24"
                           }
                         ],
-                        "id": 10698,
+                        "id": 10716,
                         "name": "ArrayTypeName",
                         "src": "919:10:24"
                       }
                     ],
-                    "id": 10699,
+                    "id": 10717,
                     "name": "VariableDeclaration",
                     "src": "919:25:24"
                   },
@@ -550,7 +550,7 @@ export const MockDebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "orderValues",
-                      "scope": 10747,
+                      "scope": 10765,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256[8] memory",
@@ -568,7 +568,7 @@ export const MockDebtKernel =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 10700,
+                            "id": 10718,
                             "name": "ElementaryTypeName",
                             "src": "954:4:24"
                           },
@@ -585,17 +585,17 @@ export const MockDebtKernel =
                               "type": "int_const 8",
                               "value": "8"
                             },
-                            "id": 10701,
+                            "id": 10719,
                             "name": "Literal",
                             "src": "959:1:24"
                           }
                         ],
-                        "id": 10702,
+                        "id": 10720,
                         "name": "ArrayTypeName",
                         "src": "954:7:24"
                       }
                     ],
-                    "id": 10703,
+                    "id": 10721,
                     "name": "VariableDeclaration",
                     "src": "954:19:24"
                   },
@@ -603,7 +603,7 @@ export const MockDebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "orderBytes32",
-                      "scope": 10747,
+                      "scope": 10765,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32[1] memory",
@@ -621,7 +621,7 @@ export const MockDebtKernel =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 10704,
+                            "id": 10722,
                             "name": "ElementaryTypeName",
                             "src": "983:7:24"
                           },
@@ -638,17 +638,17 @@ export const MockDebtKernel =
                               "type": "int_const 1",
                               "value": "1"
                             },
-                            "id": 10705,
+                            "id": 10723,
                             "name": "Literal",
                             "src": "991:1:24"
                           }
                         ],
-                        "id": 10706,
+                        "id": 10724,
                         "name": "ArrayTypeName",
                         "src": "983:10:24"
                       }
                     ],
-                    "id": 10707,
+                    "id": 10725,
                     "name": "VariableDeclaration",
                     "src": "983:23:24"
                   },
@@ -656,7 +656,7 @@ export const MockDebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "signaturesV",
-                      "scope": 10747,
+                      "scope": 10765,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint8[3] memory",
@@ -674,7 +674,7 @@ export const MockDebtKernel =
                               "name": "uint8",
                               "type": "uint8"
                             },
-                            "id": 10708,
+                            "id": 10726,
                             "name": "ElementaryTypeName",
                             "src": "1016:5:24"
                           },
@@ -691,17 +691,17 @@ export const MockDebtKernel =
                               "type": "int_const 3",
                               "value": "3"
                             },
-                            "id": 10709,
+                            "id": 10727,
                             "name": "Literal",
                             "src": "1022:1:24"
                           }
                         ],
-                        "id": 10710,
+                        "id": 10728,
                         "name": "ArrayTypeName",
                         "src": "1016:8:24"
                       }
                     ],
-                    "id": 10711,
+                    "id": 10729,
                     "name": "VariableDeclaration",
                     "src": "1016:20:24"
                   },
@@ -709,7 +709,7 @@ export const MockDebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "signaturesR",
-                      "scope": 10747,
+                      "scope": 10765,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32[3] memory",
@@ -727,7 +727,7 @@ export const MockDebtKernel =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 10712,
+                            "id": 10730,
                             "name": "ElementaryTypeName",
                             "src": "1046:7:24"
                           },
@@ -744,17 +744,17 @@ export const MockDebtKernel =
                               "type": "int_const 3",
                               "value": "3"
                             },
-                            "id": 10713,
+                            "id": 10731,
                             "name": "Literal",
                             "src": "1054:1:24"
                           }
                         ],
-                        "id": 10714,
+                        "id": 10732,
                         "name": "ArrayTypeName",
                         "src": "1046:10:24"
                       }
                     ],
-                    "id": 10715,
+                    "id": 10733,
                     "name": "VariableDeclaration",
                     "src": "1046:22:24"
                   },
@@ -762,7 +762,7 @@ export const MockDebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "signaturesS",
-                      "scope": 10747,
+                      "scope": 10765,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32[3] memory",
@@ -780,7 +780,7 @@ export const MockDebtKernel =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 10716,
+                            "id": 10734,
                             "name": "ElementaryTypeName",
                             "src": "1078:7:24"
                           },
@@ -797,22 +797,22 @@ export const MockDebtKernel =
                               "type": "int_const 3",
                               "value": "3"
                             },
-                            "id": 10717,
+                            "id": 10735,
                             "name": "Literal",
                             "src": "1086:1:24"
                           }
                         ],
-                        "id": 10718,
+                        "id": 10736,
                         "name": "ArrayTypeName",
                         "src": "1078:10:24"
                       }
                     ],
-                    "id": 10719,
+                    "id": 10737,
                     "name": "VariableDeclaration",
                     "src": "1078:22:24"
                   }
                 ],
-                "id": 10720,
+                "id": 10738,
                 "name": "ParameterList",
                 "src": "883:223:24"
               },
@@ -822,7 +822,7 @@ export const MockDebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "_agreementId",
-                      "scope": 10747,
+                      "scope": 10765,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -835,17 +835,17 @@ export const MockDebtKernel =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 10721,
+                        "id": 10739,
                         "name": "ElementaryTypeName",
                         "src": "1139:7:24"
                       }
                     ],
-                    "id": 10722,
+                    "id": 10740,
                     "name": "VariableDeclaration",
                     "src": "1139:20:24"
                   }
                 ],
-                "id": 10723,
+                "id": 10741,
                 "name": "ParameterList",
                 "src": "1138:22:24"
               },
@@ -854,7 +854,7 @@ export const MockDebtKernel =
                   {
                     "attributes": {
                       "assignments": [
-                        10725
+                        10743
                       ]
                     },
                     "children": [
@@ -862,7 +862,7 @@ export const MockDebtKernel =
                         "attributes": {
                           "constant": false,
                           "name": "argsSignature",
-                          "scope": 10747,
+                          "scope": 10765,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bytes32",
@@ -875,12 +875,12 @@ export const MockDebtKernel =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 10724,
+                            "id": 10742,
                             "name": "ElementaryTypeName",
                             "src": "1175:7:24"
                           }
                         ],
-                        "id": 10725,
+                        "id": 10743,
                         "name": "VariableDeclaration",
                         "src": "1175:21:24"
                       },
@@ -934,11 +934,11 @@ export const MockDebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15809,
+                              "referencedDeclaration": 15827,
                               "type": "function () pure returns (bytes32)",
                               "value": "keccak256"
                             },
-                            "id": 10726,
+                            "id": 10744,
                             "name": "Identifier",
                             "src": "1199:9:24"
                           },
@@ -948,11 +948,11 @@ export const MockDebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10695,
+                              "referencedDeclaration": 10713,
                               "type": "address",
                               "value": "creditor"
                             },
-                            "id": 10727,
+                            "id": 10745,
                             "name": "Identifier",
                             "src": "1222:8:24"
                           },
@@ -962,11 +962,11 @@ export const MockDebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10699,
+                              "referencedDeclaration": 10717,
                               "type": "address[6] memory",
                               "value": "orderAddresses"
                             },
-                            "id": 10728,
+                            "id": 10746,
                             "name": "Identifier",
                             "src": "1244:14:24"
                           },
@@ -976,11 +976,11 @@ export const MockDebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10703,
+                              "referencedDeclaration": 10721,
                               "type": "uint256[8] memory",
                               "value": "orderValues"
                             },
-                            "id": 10729,
+                            "id": 10747,
                             "name": "Identifier",
                             "src": "1272:11:24"
                           },
@@ -990,11 +990,11 @@ export const MockDebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10707,
+                              "referencedDeclaration": 10725,
                               "type": "bytes32[1] memory",
                               "value": "orderBytes32"
                             },
-                            "id": 10730,
+                            "id": 10748,
                             "name": "Identifier",
                             "src": "1297:12:24"
                           },
@@ -1004,11 +1004,11 @@ export const MockDebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10711,
+                              "referencedDeclaration": 10729,
                               "type": "uint8[3] memory",
                               "value": "signaturesV"
                             },
-                            "id": 10731,
+                            "id": 10749,
                             "name": "Identifier",
                             "src": "1323:11:24"
                           },
@@ -1018,11 +1018,11 @@ export const MockDebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10715,
+                              "referencedDeclaration": 10733,
                               "type": "bytes32[3] memory",
                               "value": "signaturesR"
                             },
-                            "id": 10732,
+                            "id": 10750,
                             "name": "Identifier",
                             "src": "1348:11:24"
                           },
@@ -1032,21 +1032,21 @@ export const MockDebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10719,
+                              "referencedDeclaration": 10737,
                               "type": "bytes32[3] memory",
                               "value": "signaturesS"
                             },
-                            "id": 10733,
+                            "id": 10751,
                             "name": "Identifier",
                             "src": "1373:11:24"
                           }
                         ],
-                        "id": 10734,
+                        "id": 10752,
                         "name": "FunctionCall",
                         "src": "1199:195:24"
                       }
                     ],
-                    "id": 10735,
+                    "id": 10753,
                     "name": "VariableDeclarationStatement",
                     "src": "1175:219:24"
                   },
@@ -1082,11 +1082,11 @@ export const MockDebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10650,
+                              "referencedDeclaration": 10668,
                               "type": "function (string memory,bytes32)",
                               "value": "functionCalledWithArgs"
                             },
-                            "id": 10736,
+                            "id": 10754,
                             "name": "Identifier",
                             "src": "1404:22:24"
                           },
@@ -1103,7 +1103,7 @@ export const MockDebtKernel =
                               "type": "literal_string \"fillDebtOrder\"",
                               "value": "fillDebtOrder"
                             },
-                            "id": 10737,
+                            "id": 10755,
                             "name": "Literal",
                             "src": "1427:15:24"
                           },
@@ -1113,27 +1113,27 @@ export const MockDebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10725,
+                              "referencedDeclaration": 10743,
                               "type": "bytes32",
                               "value": "argsSignature"
                             },
-                            "id": 10738,
+                            "id": 10756,
                             "name": "Identifier",
                             "src": "1444:13:24"
                           }
                         ],
-                        "id": 10739,
+                        "id": 10757,
                         "name": "FunctionCall",
                         "src": "1404:54:24"
                       }
                     ],
-                    "id": 10740,
+                    "id": 10758,
                     "name": "ExpressionStatement",
                     "src": "1404:54:24"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 10723
+                      "functionReturnParameters": 10741
                     },
                     "children": [
                       {
@@ -1166,11 +1166,11 @@ export const MockDebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10554,
+                              "referencedDeclaration": 10572,
                               "type": "function (string memory,bytes32) view returns (bytes32)",
                               "value": "getMockReturnValue"
                             },
-                            "id": 10741,
+                            "id": 10759,
                             "name": "Identifier",
                             "src": "1475:18:24"
                           },
@@ -1187,7 +1187,7 @@ export const MockDebtKernel =
                               "type": "literal_string \"fillDebtOrder\"",
                               "value": "fillDebtOrder"
                             },
-                            "id": 10742,
+                            "id": 10760,
                             "name": "Literal",
                             "src": "1494:15:24"
                           },
@@ -1197,31 +1197,31 @@ export const MockDebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10496,
+                              "referencedDeclaration": 10514,
                               "type": "bytes32",
                               "value": "DEFAULT_SIGNATURE_ARGS"
                             },
-                            "id": 10743,
+                            "id": 10761,
                             "name": "Identifier",
                             "src": "1511:22:24"
                           }
                         ],
-                        "id": 10744,
+                        "id": 10762,
                         "name": "FunctionCall",
                         "src": "1475:59:24"
                       }
                     ],
-                    "id": 10745,
+                    "id": 10763,
                     "name": "Return",
                     "src": "1468:66:24"
                   }
                 ],
-                "id": 10746,
+                "id": 10764,
                 "name": "Block",
                 "src": "1165:376:24"
               }
             ],
-            "id": 10747,
+            "id": 10765,
             "name": "FunctionDefinition",
             "src": "861:680:24"
           },
@@ -1235,7 +1235,7 @@ export const MockDebtKernel =
               ],
               "name": "wasFillDebtOrderCalledWith",
               "payable": false,
-              "scope": 10817,
+              "scope": 10835,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -1247,7 +1247,7 @@ export const MockDebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "creditor",
-                      "scope": 10796,
+                      "scope": 10814,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1260,12 +1260,12 @@ export const MockDebtKernel =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 10748,
+                        "id": 10766,
                         "name": "ElementaryTypeName",
                         "src": "1592:7:24"
                       }
                     ],
-                    "id": 10749,
+                    "id": 10767,
                     "name": "VariableDeclaration",
                     "src": "1592:16:24"
                   },
@@ -1273,7 +1273,7 @@ export const MockDebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "orderAddresses",
-                      "scope": 10796,
+                      "scope": 10814,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address[6] memory",
@@ -1291,7 +1291,7 @@ export const MockDebtKernel =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 10750,
+                            "id": 10768,
                             "name": "ElementaryTypeName",
                             "src": "1618:7:24"
                           },
@@ -1308,17 +1308,17 @@ export const MockDebtKernel =
                               "type": "int_const 6",
                               "value": "6"
                             },
-                            "id": 10751,
+                            "id": 10769,
                             "name": "Literal",
                             "src": "1626:1:24"
                           }
                         ],
-                        "id": 10752,
+                        "id": 10770,
                         "name": "ArrayTypeName",
                         "src": "1618:10:24"
                       }
                     ],
-                    "id": 10753,
+                    "id": 10771,
                     "name": "VariableDeclaration",
                     "src": "1618:25:24"
                   },
@@ -1326,7 +1326,7 @@ export const MockDebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "orderValues",
-                      "scope": 10796,
+                      "scope": 10814,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256[8] memory",
@@ -1344,7 +1344,7 @@ export const MockDebtKernel =
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 10754,
+                            "id": 10772,
                             "name": "ElementaryTypeName",
                             "src": "1653:4:24"
                           },
@@ -1361,17 +1361,17 @@ export const MockDebtKernel =
                               "type": "int_const 8",
                               "value": "8"
                             },
-                            "id": 10755,
+                            "id": 10773,
                             "name": "Literal",
                             "src": "1658:1:24"
                           }
                         ],
-                        "id": 10756,
+                        "id": 10774,
                         "name": "ArrayTypeName",
                         "src": "1653:7:24"
                       }
                     ],
-                    "id": 10757,
+                    "id": 10775,
                     "name": "VariableDeclaration",
                     "src": "1653:19:24"
                   },
@@ -1379,7 +1379,7 @@ export const MockDebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "orderBytes32",
-                      "scope": 10796,
+                      "scope": 10814,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32[1] memory",
@@ -1397,7 +1397,7 @@ export const MockDebtKernel =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 10758,
+                            "id": 10776,
                             "name": "ElementaryTypeName",
                             "src": "1682:7:24"
                           },
@@ -1414,17 +1414,17 @@ export const MockDebtKernel =
                               "type": "int_const 1",
                               "value": "1"
                             },
-                            "id": 10759,
+                            "id": 10777,
                             "name": "Literal",
                             "src": "1690:1:24"
                           }
                         ],
-                        "id": 10760,
+                        "id": 10778,
                         "name": "ArrayTypeName",
                         "src": "1682:10:24"
                       }
                     ],
-                    "id": 10761,
+                    "id": 10779,
                     "name": "VariableDeclaration",
                     "src": "1682:23:24"
                   },
@@ -1432,7 +1432,7 @@ export const MockDebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "signaturesV",
-                      "scope": 10796,
+                      "scope": 10814,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint8[3] memory",
@@ -1450,7 +1450,7 @@ export const MockDebtKernel =
                               "name": "uint8",
                               "type": "uint8"
                             },
-                            "id": 10762,
+                            "id": 10780,
                             "name": "ElementaryTypeName",
                             "src": "1715:5:24"
                           },
@@ -1467,17 +1467,17 @@ export const MockDebtKernel =
                               "type": "int_const 3",
                               "value": "3"
                             },
-                            "id": 10763,
+                            "id": 10781,
                             "name": "Literal",
                             "src": "1721:1:24"
                           }
                         ],
-                        "id": 10764,
+                        "id": 10782,
                         "name": "ArrayTypeName",
                         "src": "1715:8:24"
                       }
                     ],
-                    "id": 10765,
+                    "id": 10783,
                     "name": "VariableDeclaration",
                     "src": "1715:20:24"
                   },
@@ -1485,7 +1485,7 @@ export const MockDebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "signaturesR",
-                      "scope": 10796,
+                      "scope": 10814,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32[3] memory",
@@ -1503,7 +1503,7 @@ export const MockDebtKernel =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 10766,
+                            "id": 10784,
                             "name": "ElementaryTypeName",
                             "src": "1745:7:24"
                           },
@@ -1520,17 +1520,17 @@ export const MockDebtKernel =
                               "type": "int_const 3",
                               "value": "3"
                             },
-                            "id": 10767,
+                            "id": 10785,
                             "name": "Literal",
                             "src": "1753:1:24"
                           }
                         ],
-                        "id": 10768,
+                        "id": 10786,
                         "name": "ArrayTypeName",
                         "src": "1745:10:24"
                       }
                     ],
-                    "id": 10769,
+                    "id": 10787,
                     "name": "VariableDeclaration",
                     "src": "1745:22:24"
                   },
@@ -1538,7 +1538,7 @@ export const MockDebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "signaturesS",
-                      "scope": 10796,
+                      "scope": 10814,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32[3] memory",
@@ -1556,7 +1556,7 @@ export const MockDebtKernel =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 10770,
+                            "id": 10788,
                             "name": "ElementaryTypeName",
                             "src": "1777:7:24"
                           },
@@ -1573,22 +1573,22 @@ export const MockDebtKernel =
                               "type": "int_const 3",
                               "value": "3"
                             },
-                            "id": 10771,
+                            "id": 10789,
                             "name": "Literal",
                             "src": "1785:1:24"
                           }
                         ],
-                        "id": 10772,
+                        "id": 10790,
                         "name": "ArrayTypeName",
                         "src": "1777:10:24"
                       }
                     ],
-                    "id": 10773,
+                    "id": 10791,
                     "name": "VariableDeclaration",
                     "src": "1777:22:24"
                   }
                 ],
-                "id": 10774,
+                "id": 10792,
                 "name": "ParameterList",
                 "src": "1582:223:24"
               },
@@ -1598,7 +1598,7 @@ export const MockDebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "wasCalled",
-                      "scope": 10796,
+                      "scope": 10814,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -1611,17 +1611,17 @@ export const MockDebtKernel =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 10775,
+                        "id": 10793,
                         "name": "ElementaryTypeName",
                         "src": "1851:4:24"
                       }
                     ],
-                    "id": 10776,
+                    "id": 10794,
                     "name": "VariableDeclaration",
                     "src": "1851:14:24"
                   }
                 ],
-                "id": 10777,
+                "id": 10795,
                 "name": "ParameterList",
                 "src": "1850:16:24"
               },
@@ -1630,7 +1630,7 @@ export const MockDebtKernel =
                   {
                     "attributes": {
                       "assignments": [
-                        10779
+                        10797
                       ]
                     },
                     "children": [
@@ -1638,7 +1638,7 @@ export const MockDebtKernel =
                         "attributes": {
                           "constant": false,
                           "name": "argsSignature",
-                          "scope": 10796,
+                          "scope": 10814,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bytes32",
@@ -1651,12 +1651,12 @@ export const MockDebtKernel =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 10778,
+                            "id": 10796,
                             "name": "ElementaryTypeName",
                             "src": "1881:7:24"
                           }
                         ],
-                        "id": 10779,
+                        "id": 10797,
                         "name": "VariableDeclaration",
                         "src": "1881:21:24"
                       },
@@ -1710,11 +1710,11 @@ export const MockDebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15809,
+                              "referencedDeclaration": 15827,
                               "type": "function () pure returns (bytes32)",
                               "value": "keccak256"
                             },
-                            "id": 10780,
+                            "id": 10798,
                             "name": "Identifier",
                             "src": "1905:9:24"
                           },
@@ -1724,11 +1724,11 @@ export const MockDebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10749,
+                              "referencedDeclaration": 10767,
                               "type": "address",
                               "value": "creditor"
                             },
-                            "id": 10781,
+                            "id": 10799,
                             "name": "Identifier",
                             "src": "1928:8:24"
                           },
@@ -1738,11 +1738,11 @@ export const MockDebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10753,
+                              "referencedDeclaration": 10771,
                               "type": "address[6] memory",
                               "value": "orderAddresses"
                             },
-                            "id": 10782,
+                            "id": 10800,
                             "name": "Identifier",
                             "src": "1950:14:24"
                           },
@@ -1752,11 +1752,11 @@ export const MockDebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10757,
+                              "referencedDeclaration": 10775,
                               "type": "uint256[8] memory",
                               "value": "orderValues"
                             },
-                            "id": 10783,
+                            "id": 10801,
                             "name": "Identifier",
                             "src": "1978:11:24"
                           },
@@ -1766,11 +1766,11 @@ export const MockDebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10761,
+                              "referencedDeclaration": 10779,
                               "type": "bytes32[1] memory",
                               "value": "orderBytes32"
                             },
-                            "id": 10784,
+                            "id": 10802,
                             "name": "Identifier",
                             "src": "2003:12:24"
                           },
@@ -1780,11 +1780,11 @@ export const MockDebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10765,
+                              "referencedDeclaration": 10783,
                               "type": "uint8[3] memory",
                               "value": "signaturesV"
                             },
-                            "id": 10785,
+                            "id": 10803,
                             "name": "Identifier",
                             "src": "2029:11:24"
                           },
@@ -1794,11 +1794,11 @@ export const MockDebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10769,
+                              "referencedDeclaration": 10787,
                               "type": "bytes32[3] memory",
                               "value": "signaturesR"
                             },
-                            "id": 10786,
+                            "id": 10804,
                             "name": "Identifier",
                             "src": "2054:11:24"
                           },
@@ -1808,27 +1808,27 @@ export const MockDebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10773,
+                              "referencedDeclaration": 10791,
                               "type": "bytes32[3] memory",
                               "value": "signaturesS"
                             },
-                            "id": 10787,
+                            "id": 10805,
                             "name": "Identifier",
                             "src": "2079:11:24"
                           }
                         ],
-                        "id": 10788,
+                        "id": 10806,
                         "name": "FunctionCall",
                         "src": "1905:195:24"
                       }
                     ],
-                    "id": 10789,
+                    "id": 10807,
                     "name": "VariableDeclarationStatement",
                     "src": "1881:219:24"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 10777
+                      "functionReturnParameters": 10795
                     },
                     "children": [
                       {
@@ -1861,11 +1861,11 @@ export const MockDebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10666,
+                              "referencedDeclaration": 10684,
                               "type": "function (string memory,bytes32) view returns (bool)",
                               "value": "wasFunctionCalledWithArgs"
                             },
-                            "id": 10790,
+                            "id": 10808,
                             "name": "Identifier",
                             "src": "2117:25:24"
                           },
@@ -1882,7 +1882,7 @@ export const MockDebtKernel =
                               "type": "literal_string \"fillDebtOrder\"",
                               "value": "fillDebtOrder"
                             },
-                            "id": 10791,
+                            "id": 10809,
                             "name": "Literal",
                             "src": "2143:15:24"
                           },
@@ -1892,31 +1892,31 @@ export const MockDebtKernel =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10779,
+                              "referencedDeclaration": 10797,
                               "type": "bytes32",
                               "value": "argsSignature"
                             },
-                            "id": 10792,
+                            "id": 10810,
                             "name": "Identifier",
                             "src": "2160:13:24"
                           }
                         ],
-                        "id": 10793,
+                        "id": 10811,
                         "name": "FunctionCall",
                         "src": "2117:57:24"
                       }
                     ],
-                    "id": 10794,
+                    "id": 10812,
                     "name": "Return",
                     "src": "2110:64:24"
                   }
                 ],
-                "id": 10795,
+                "id": 10813,
                 "name": "Block",
                 "src": "1871:310:24"
               }
             ],
-            "id": 10796,
+            "id": 10814,
             "name": "FunctionDefinition",
             "src": "1547:634:24"
           },
@@ -1930,9 +1930,9 @@ export const MockDebtKernel =
               ],
               "name": "getFunctionList",
               "payable": false,
-              "scope": 10817,
+              "scope": 10835,
               "stateMutability": "nonpayable",
-              "superFunction": 10673,
+              "superFunction": 10691,
               "visibility": "internal"
             },
             "children": [
@@ -1943,7 +1943,7 @@ export const MockDebtKernel =
                   ]
                 },
                 "children": [],
-                "id": 10797,
+                "id": 10815,
                 "name": "ParameterList",
                 "src": "2211:2:24"
               },
@@ -1953,7 +1953,7 @@ export const MockDebtKernel =
                     "attributes": {
                       "constant": false,
                       "name": "functionNames",
-                      "scope": 10816,
+                      "scope": 10834,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory[10] memory",
@@ -1971,7 +1971,7 @@ export const MockDebtKernel =
                               "name": "string",
                               "type": "string storage pointer"
                             },
-                            "id": 10798,
+                            "id": 10816,
                             "name": "ElementaryTypeName",
                             "src": "2248:6:24"
                           },
@@ -1988,22 +1988,22 @@ export const MockDebtKernel =
                               "type": "int_const 10",
                               "value": "10"
                             },
-                            "id": 10799,
+                            "id": 10817,
                             "name": "Literal",
                             "src": "2255:2:24"
                           }
                         ],
-                        "id": 10800,
+                        "id": 10818,
                         "name": "ArrayTypeName",
                         "src": "2248:10:24"
                       }
                     ],
-                    "id": 10801,
+                    "id": 10819,
                     "name": "VariableDeclaration",
                     "src": "2248:24:24"
                   }
                 ],
-                "id": 10802,
+                "id": 10820,
                 "name": "ParameterList",
                 "src": "2247:26:24"
               },
@@ -2011,7 +2011,7 @@ export const MockDebtKernel =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 10802
+                      "functionReturnParameters": 10820
                     },
                     "children": [
                       {
@@ -2038,7 +2038,7 @@ export const MockDebtKernel =
                               "type": "literal_string \"fillDebtOrder\"",
                               "value": "fillDebtOrder"
                             },
-                            "id": 10803,
+                            "id": 10821,
                             "name": "Literal",
                             "src": "2309:15:24"
                           },
@@ -2055,7 +2055,7 @@ export const MockDebtKernel =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 10804,
+                            "id": 10822,
                             "name": "Literal",
                             "src": "2338:2:24"
                           },
@@ -2072,7 +2072,7 @@ export const MockDebtKernel =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 10805,
+                            "id": 10823,
                             "name": "Literal",
                             "src": "2354:2:24"
                           },
@@ -2089,7 +2089,7 @@ export const MockDebtKernel =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 10806,
+                            "id": 10824,
                             "name": "Literal",
                             "src": "2370:2:24"
                           },
@@ -2106,7 +2106,7 @@ export const MockDebtKernel =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 10807,
+                            "id": 10825,
                             "name": "Literal",
                             "src": "2386:2:24"
                           },
@@ -2123,7 +2123,7 @@ export const MockDebtKernel =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 10808,
+                            "id": 10826,
                             "name": "Literal",
                             "src": "2402:2:24"
                           },
@@ -2140,7 +2140,7 @@ export const MockDebtKernel =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 10809,
+                            "id": 10827,
                             "name": "Literal",
                             "src": "2418:2:24"
                           },
@@ -2157,7 +2157,7 @@ export const MockDebtKernel =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 10810,
+                            "id": 10828,
                             "name": "Literal",
                             "src": "2434:2:24"
                           },
@@ -2174,7 +2174,7 @@ export const MockDebtKernel =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 10811,
+                            "id": 10829,
                             "name": "Literal",
                             "src": "2450:2:24"
                           },
@@ -2191,37 +2191,37 @@ export const MockDebtKernel =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 10812,
+                            "id": 10830,
                             "name": "Literal",
                             "src": "2466:2:24"
                           }
                         ],
-                        "id": 10813,
+                        "id": 10831,
                         "name": "TupleExpression",
                         "src": "2295:183:24"
                       }
                     ],
-                    "id": 10814,
+                    "id": 10832,
                     "name": "Return",
                     "src": "2288:190:24"
                   }
                 ],
-                "id": 10815,
+                "id": 10833,
                 "name": "Block",
                 "src": "2278:207:24"
               }
             ],
-            "id": 10816,
+            "id": 10834,
             "name": "FunctionDefinition",
             "src": "2187:298:24"
           }
         ],
-        "id": 10817,
+        "id": 10835,
         "name": "ContractDefinition",
         "src": "640:1847:24"
       }
     ],
-    "id": 10818,
+    "id": 10836,
     "name": "SourceUnit",
     "src": "584:1904:24"
   },
@@ -2231,5 +2231,5 @@ export const MockDebtKernel =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-25T20:04:49.228Z"
+  "updatedAt": "2018-09-25T22:27:32.187Z"
 }

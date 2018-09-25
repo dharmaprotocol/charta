@@ -224,7 +224,7 @@ export const TokenTransferProxy =
       "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/TokenTransferProxy.sol",
       "exportedSymbols": {
         "TokenTransferProxy": [
-          5188
+          5206
         ]
       }
     },
@@ -237,95 +237,95 @@ export const TokenTransferProxy =
             ".18"
           ]
         },
-        "id": 5097,
+        "id": 5115,
         "name": "PragmaDirective",
         "src": "584:23:13"
       },
       {
         "attributes": {
-          "SourceUnit": 3141,
+          "SourceUnit": 3159,
           "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/DebtRegistry.sol",
           "file": "./DebtRegistry.sol",
-          "scope": 5189,
+          "scope": 5207,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 5098,
+        "id": 5116,
         "name": "ImportDirective",
         "src": "609:28:13"
       },
       {
         "attributes": {
-          "SourceUnit": 6254,
+          "SourceUnit": 6272,
           "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/libraries/PermissionsLib.sol",
           "file": "./libraries/PermissionsLib.sol",
-          "scope": 5189,
+          "scope": 5207,
           "symbolAliases": [
             {
-              "foreign": 5099,
+              "foreign": 5117,
               "local": null
             },
             {
-              "foreign": 5100,
+              "foreign": 5118,
               "local": null
             }
           ],
           "unitAlias": ""
         },
-        "id": 5101,
+        "id": 5119,
         "name": "ImportDirective",
         "src": "638:82:13"
       },
       {
         "attributes": {
-          "SourceUnit": 13980,
+          "SourceUnit": 13998,
           "absolutePath": "zeppelin-solidity/contracts/lifecycle/Pausable.sol",
           "file": "zeppelin-solidity/contracts/lifecycle/Pausable.sol",
-          "scope": 5189,
+          "scope": 5207,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 5102,
+        "id": 5120,
         "name": "ImportDirective",
         "src": "721:60:13"
       },
       {
         "attributes": {
-          "SourceUnit": 14273,
+          "SourceUnit": 14291,
           "absolutePath": "zeppelin-solidity/contracts/token/ERC20/ERC20.sol",
           "file": "zeppelin-solidity/contracts/token/ERC20/ERC20.sol",
-          "scope": 5189,
+          "scope": 5207,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 5103,
+        "id": 5121,
         "name": "ImportDirective",
         "src": "782:59:13"
       },
       {
         "attributes": {
           "contractDependencies": [
-            6049,
-            13979,
-            14133
+            6067,
+            13997,
+            14151
           ],
           "contractKind": "contract",
           "documentation": "The TokenTransferProxy is a proxy contract for transfering principal\nand fee payments and repayments between agents and keepers in the Dharma\necosystem.  It is decoupled from the DebtKernel in order to make upgrades to the\nprotocol contracts smoother -- if the DebtKernel or RepyamentRouter is upgraded to a new contract,\ncreditors will not have to grant new transfer approvals to a new contract's address.\n * Author: Nadav Hollander -- Github: nadavhollander",
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            5188,
-            6049,
-            13979,
-            14133
+            5206,
+            6067,
+            13997,
+            14151
           ],
           "name": "TokenTransferProxy",
-          "scope": 5189
+          "scope": 5207
         },
         "children": [
           {
@@ -339,15 +339,15 @@ export const TokenTransferProxy =
                 "attributes": {
                   "contractScope": null,
                   "name": "Pausable",
-                  "referencedDeclaration": 13979,
+                  "referencedDeclaration": 13997,
                   "type": "contract Pausable"
                 },
-                "id": 5104,
+                "id": 5122,
                 "name": "UserDefinedTypeName",
                 "src": "1361:8:13"
               }
             ],
-            "id": 5105,
+            "id": 5123,
             "name": "InheritanceSpecifier",
             "src": "1361:8:13"
           },
@@ -362,15 +362,15 @@ export const TokenTransferProxy =
                 "attributes": {
                   "contractScope": null,
                   "name": "PermissionEvents",
-                  "referencedDeclaration": 6049,
+                  "referencedDeclaration": 6067,
                   "type": "contract PermissionEvents"
                 },
-                "id": 5106,
+                "id": 5124,
                 "name": "UserDefinedTypeName",
                 "src": "1371:16:13"
               }
             ],
-            "id": 5107,
+            "id": 5125,
             "name": "InheritanceSpecifier",
             "src": "1371:16:13"
           },
@@ -380,10 +380,10 @@ export const TokenTransferProxy =
                 "attributes": {
                   "contractScope": null,
                   "name": "PermissionsLib",
-                  "referencedDeclaration": 6253,
+                  "referencedDeclaration": 6271,
                   "type": "library PermissionsLib"
                 },
-                "id": 5108,
+                "id": 5126,
                 "name": "UserDefinedTypeName",
                 "src": "1400:14:13"
               },
@@ -391,15 +391,15 @@ export const TokenTransferProxy =
                 "attributes": {
                   "contractScope": null,
                   "name": "PermissionsLib.Permissions",
-                  "referencedDeclaration": 6073,
+                  "referencedDeclaration": 6091,
                   "type": "struct PermissionsLib.Permissions storage pointer"
                 },
-                "id": 5109,
+                "id": 5127,
                 "name": "UserDefinedTypeName",
                 "src": "1419:26:13"
               }
             ],
-            "id": 5110,
+            "id": 5128,
             "name": "UsingForDirective",
             "src": "1394:52:13"
           },
@@ -407,7 +407,7 @@ export const TokenTransferProxy =
             "attributes": {
               "constant": false,
               "name": "tokenTransferPermissions",
-              "scope": 5188,
+              "scope": 5206,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "struct PermissionsLib.Permissions storage ref",
@@ -419,15 +419,15 @@ export const TokenTransferProxy =
                 "attributes": {
                   "contractScope": null,
                   "name": "PermissionsLib.Permissions",
-                  "referencedDeclaration": 6073,
+                  "referencedDeclaration": 6091,
                   "type": "struct PermissionsLib.Permissions storage pointer"
                 },
-                "id": 5111,
+                "id": 5129,
                 "name": "UserDefinedTypeName",
                 "src": "1452:26:13"
               }
             ],
-            "id": 5112,
+            "id": 5130,
             "name": "VariableDeclaration",
             "src": "1452:60:13"
           },
@@ -435,7 +435,7 @@ export const TokenTransferProxy =
             "attributes": {
               "constant": true,
               "name": "CONTEXT",
-              "scope": 5188,
+              "scope": 5206,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "string memory",
@@ -447,7 +447,7 @@ export const TokenTransferProxy =
                   "name": "string",
                   "type": "string storage pointer"
                 },
-                "id": 5113,
+                "id": 5131,
                 "name": "ElementaryTypeName",
                 "src": "1519:6:13"
               },
@@ -464,12 +464,12 @@ export const TokenTransferProxy =
                   "type": "literal_string \"token-transfer-proxy\"",
                   "value": "token-transfer-proxy"
                 },
-                "id": 5114,
+                "id": 5132,
                 "name": "Literal",
                 "src": "1552:22:13"
               }
             ],
-            "id": 5115,
+            "id": 5133,
             "name": "VariableDeclaration",
             "src": "1519:55:13"
           },
@@ -480,7 +480,7 @@ export const TokenTransferProxy =
               "isConstructor": false,
               "name": "addAuthorizedTransferAgent",
               "payable": false,
-              "scope": 5188,
+              "scope": 5206,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -492,7 +492,7 @@ export const TokenTransferProxy =
                     "attributes": {
                       "constant": false,
                       "name": "_agent",
-                      "scope": 5130,
+                      "scope": 5148,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -505,17 +505,17 @@ export const TokenTransferProxy =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 5116,
+                        "id": 5134,
                         "name": "ElementaryTypeName",
                         "src": "1714:7:13"
                       }
                     ],
-                    "id": 5117,
+                    "id": 5135,
                     "name": "VariableDeclaration",
                     "src": "1714:14:13"
                   }
                 ],
-                "id": 5118,
+                "id": 5136,
                 "name": "ParameterList",
                 "src": "1713:16:13"
               },
@@ -526,7 +526,7 @@ export const TokenTransferProxy =
                   ]
                 },
                 "children": [],
-                "id": 5121,
+                "id": 5139,
                 "name": "ParameterList",
                 "src": "1767:0:13"
               },
@@ -543,16 +543,16 @@ export const TokenTransferProxy =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 14107,
+                      "referencedDeclaration": 14125,
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
-                    "id": 5119,
+                    "id": 5137,
                     "name": "Identifier",
                     "src": "1753:9:13"
                   }
                 ],
-                "id": 5120,
+                "id": 5138,
                 "name": "ModifierInvocation",
                 "src": "1753:9:13"
               },
@@ -592,7 +592,7 @@ export const TokenTransferProxy =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "authorize",
-                              "referencedDeclaration": 6123,
+                              "referencedDeclaration": 6141,
                               "type": "function (struct PermissionsLib.Permissions storage pointer,address,string memory)"
                             },
                             "children": [
@@ -602,16 +602,16 @@ export const TokenTransferProxy =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5112,
+                                  "referencedDeclaration": 5130,
                                   "type": "struct PermissionsLib.Permissions storage ref",
                                   "value": "tokenTransferPermissions"
                                 },
-                                "id": 5122,
+                                "id": 5140,
                                 "name": "Identifier",
                                 "src": "1777:24:13"
                               }
                             ],
-                            "id": 5124,
+                            "id": 5142,
                             "name": "MemberAccess",
                             "src": "1777:34:13"
                           },
@@ -621,11 +621,11 @@ export const TokenTransferProxy =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5117,
+                              "referencedDeclaration": 5135,
                               "type": "address",
                               "value": "_agent"
                             },
-                            "id": 5125,
+                            "id": 5143,
                             "name": "Identifier",
                             "src": "1812:6:13"
                           },
@@ -635,31 +635,31 @@ export const TokenTransferProxy =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5115,
+                              "referencedDeclaration": 5133,
                               "type": "string memory",
                               "value": "CONTEXT"
                             },
-                            "id": 5126,
+                            "id": 5144,
                             "name": "Identifier",
                             "src": "1820:7:13"
                           }
                         ],
-                        "id": 5127,
+                        "id": 5145,
                         "name": "FunctionCall",
                         "src": "1777:51:13"
                       }
                     ],
-                    "id": 5128,
+                    "id": 5146,
                     "name": "ExpressionStatement",
                     "src": "1777:51:13"
                   }
                 ],
-                "id": 5129,
+                "id": 5147,
                 "name": "Block",
                 "src": "1767:68:13"
               }
             ],
-            "id": 5130,
+            "id": 5148,
             "name": "FunctionDefinition",
             "src": "1678:157:13"
           },
@@ -670,7 +670,7 @@ export const TokenTransferProxy =
               "isConstructor": false,
               "name": "revokeTransferAgentAuthorization",
               "payable": false,
-              "scope": 5188,
+              "scope": 5206,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -682,7 +682,7 @@ export const TokenTransferProxy =
                     "attributes": {
                       "constant": false,
                       "name": "_agent",
-                      "scope": 5145,
+                      "scope": 5163,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -695,17 +695,17 @@ export const TokenTransferProxy =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 5131,
+                        "id": 5149,
                         "name": "ElementaryTypeName",
                         "src": "1985:7:13"
                       }
                     ],
-                    "id": 5132,
+                    "id": 5150,
                     "name": "VariableDeclaration",
                     "src": "1985:14:13"
                   }
                 ],
-                "id": 5133,
+                "id": 5151,
                 "name": "ParameterList",
                 "src": "1984:16:13"
               },
@@ -716,7 +716,7 @@ export const TokenTransferProxy =
                   ]
                 },
                 "children": [],
-                "id": 5136,
+                "id": 5154,
                 "name": "ParameterList",
                 "src": "2038:0:13"
               },
@@ -733,16 +733,16 @@ export const TokenTransferProxy =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 14107,
+                      "referencedDeclaration": 14125,
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
-                    "id": 5134,
+                    "id": 5152,
                     "name": "Identifier",
                     "src": "2024:9:13"
                   }
                 ],
-                "id": 5135,
+                "id": 5153,
                 "name": "ModifierInvocation",
                 "src": "2024:9:13"
               },
@@ -782,7 +782,7 @@ export const TokenTransferProxy =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "revokeAuthorization",
-                              "referencedDeclaration": 6209,
+                              "referencedDeclaration": 6227,
                               "type": "function (struct PermissionsLib.Permissions storage pointer,address,string memory)"
                             },
                             "children": [
@@ -792,16 +792,16 @@ export const TokenTransferProxy =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5112,
+                                  "referencedDeclaration": 5130,
                                   "type": "struct PermissionsLib.Permissions storage ref",
                                   "value": "tokenTransferPermissions"
                                 },
-                                "id": 5137,
+                                "id": 5155,
                                 "name": "Identifier",
                                 "src": "2048:24:13"
                               }
                             ],
-                            "id": 5139,
+                            "id": 5157,
                             "name": "MemberAccess",
                             "src": "2048:44:13"
                           },
@@ -811,11 +811,11 @@ export const TokenTransferProxy =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5132,
+                              "referencedDeclaration": 5150,
                               "type": "address",
                               "value": "_agent"
                             },
-                            "id": 5140,
+                            "id": 5158,
                             "name": "Identifier",
                             "src": "2093:6:13"
                           },
@@ -825,31 +825,31 @@ export const TokenTransferProxy =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5115,
+                              "referencedDeclaration": 5133,
                               "type": "string memory",
                               "value": "CONTEXT"
                             },
-                            "id": 5141,
+                            "id": 5159,
                             "name": "Identifier",
                             "src": "2101:7:13"
                           }
                         ],
-                        "id": 5142,
+                        "id": 5160,
                         "name": "FunctionCall",
                         "src": "2048:61:13"
                       }
                     ],
-                    "id": 5143,
+                    "id": 5161,
                     "name": "ExpressionStatement",
                     "src": "2048:61:13"
                   }
                 ],
-                "id": 5144,
+                "id": 5162,
                 "name": "Block",
                 "src": "2038:78:13"
               }
             ],
-            "id": 5145,
+            "id": 5163,
             "name": "FunctionDefinition",
             "src": "1943:173:13"
           },
@@ -863,7 +863,7 @@ export const TokenTransferProxy =
               ],
               "name": "getAuthorizedTransferAgents",
               "payable": false,
-              "scope": 5188,
+              "scope": 5206,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -876,7 +876,7 @@ export const TokenTransferProxy =
                   ]
                 },
                 "children": [],
-                "id": 5146,
+                "id": 5164,
                 "name": "ParameterList",
                 "src": "2247:2:13"
               },
@@ -886,7 +886,7 @@ export const TokenTransferProxy =
                     "attributes": {
                       "constant": false,
                       "name": "authorizedAgents",
-                      "scope": 5156,
+                      "scope": 5174,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address[] memory",
@@ -905,22 +905,22 @@ export const TokenTransferProxy =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 5147,
+                            "id": 5165,
                             "name": "ElementaryTypeName",
                             "src": "2295:7:13"
                           }
                         ],
-                        "id": 5148,
+                        "id": 5166,
                         "name": "ArrayTypeName",
                         "src": "2295:9:13"
                       }
                     ],
-                    "id": 5149,
+                    "id": 5167,
                     "name": "VariableDeclaration",
                     "src": "2295:26:13"
                   }
                 ],
-                "id": 5150,
+                "id": 5168,
                 "name": "ParameterList",
                 "src": "2294:28:13"
               },
@@ -928,7 +928,7 @@ export const TokenTransferProxy =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 5150
+                      "functionReturnParameters": 5168
                     },
                     "children": [
                       {
@@ -959,7 +959,7 @@ export const TokenTransferProxy =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "getAuthorizedAgents",
-                              "referencedDeclaration": 6252,
+                              "referencedDeclaration": 6270,
                               "type": "function (struct PermissionsLib.Permissions storage pointer) view returns (address[] memory)"
                             },
                             "children": [
@@ -969,36 +969,36 @@ export const TokenTransferProxy =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5112,
+                                  "referencedDeclaration": 5130,
                                   "type": "struct PermissionsLib.Permissions storage ref",
                                   "value": "tokenTransferPermissions"
                                 },
-                                "id": 5151,
+                                "id": 5169,
                                 "name": "Identifier",
                                 "src": "2344:24:13"
                               }
                             ],
-                            "id": 5152,
+                            "id": 5170,
                             "name": "MemberAccess",
                             "src": "2344:44:13"
                           }
                         ],
-                        "id": 5153,
+                        "id": 5171,
                         "name": "FunctionCall",
                         "src": "2344:46:13"
                       }
                     ],
-                    "id": 5154,
+                    "id": 5172,
                     "name": "Return",
                     "src": "2337:53:13"
                   }
                 ],
-                "id": 5155,
+                "id": 5173,
                 "name": "Block",
                 "src": "2327:70:13"
               }
             ],
-            "id": 5156,
+            "id": 5174,
             "name": "FunctionDefinition",
             "src": "2211:186:13"
           },
@@ -1012,7 +1012,7 @@ export const TokenTransferProxy =
               ],
               "name": "transferFrom",
               "payable": false,
-              "scope": 5188,
+              "scope": 5206,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -1024,7 +1024,7 @@ export const TokenTransferProxy =
                     "attributes": {
                       "constant": false,
                       "name": "_token",
-                      "scope": 5187,
+                      "scope": 5205,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1037,12 +1037,12 @@ export const TokenTransferProxy =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 5157,
+                        "id": 5175,
                         "name": "ElementaryTypeName",
                         "src": "2537:7:13"
                       }
                     ],
-                    "id": 5158,
+                    "id": 5176,
                     "name": "VariableDeclaration",
                     "src": "2537:14:13"
                   },
@@ -1050,7 +1050,7 @@ export const TokenTransferProxy =
                     "attributes": {
                       "constant": false,
                       "name": "_from",
-                      "scope": 5187,
+                      "scope": 5205,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1063,12 +1063,12 @@ export const TokenTransferProxy =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 5159,
+                        "id": 5177,
                         "name": "ElementaryTypeName",
                         "src": "2561:7:13"
                       }
                     ],
-                    "id": 5160,
+                    "id": 5178,
                     "name": "VariableDeclaration",
                     "src": "2561:13:13"
                   },
@@ -1076,7 +1076,7 @@ export const TokenTransferProxy =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 5187,
+                      "scope": 5205,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1089,12 +1089,12 @@ export const TokenTransferProxy =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 5161,
+                        "id": 5179,
                         "name": "ElementaryTypeName",
                         "src": "2584:7:13"
                       }
                     ],
-                    "id": 5162,
+                    "id": 5180,
                     "name": "VariableDeclaration",
                     "src": "2584:11:13"
                   },
@@ -1102,7 +1102,7 @@ export const TokenTransferProxy =
                     "attributes": {
                       "constant": false,
                       "name": "_amount",
-                      "scope": 5187,
+                      "scope": 5205,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1115,17 +1115,17 @@ export const TokenTransferProxy =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 5163,
+                        "id": 5181,
                         "name": "ElementaryTypeName",
                         "src": "2605:4:13"
                       }
                     ],
-                    "id": 5164,
+                    "id": 5182,
                     "name": "VariableDeclaration",
                     "src": "2605:12:13"
                   }
                 ],
-                "id": 5165,
+                "id": 5183,
                 "name": "ParameterList",
                 "src": "2527:96:13"
               },
@@ -1135,7 +1135,7 @@ export const TokenTransferProxy =
                     "attributes": {
                       "constant": false,
                       "name": "_success",
-                      "scope": 5187,
+                      "scope": 5205,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -1148,17 +1148,17 @@ export const TokenTransferProxy =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 5166,
+                        "id": 5184,
                         "name": "ElementaryTypeName",
                         "src": "2656:4:13"
                       }
                     ],
-                    "id": 5167,
+                    "id": 5185,
                     "name": "VariableDeclaration",
                     "src": "2656:13:13"
                   }
                 ],
-                "id": 5168,
+                "id": 5186,
                 "name": "ParameterList",
                 "src": "2655:15:13"
               },
@@ -1192,11 +1192,11 @@ export const TokenTransferProxy =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15818,
+                              "referencedDeclaration": 15836,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 5169,
+                            "id": 5187,
                             "name": "Identifier",
                             "src": "2685:7:13"
                           },
@@ -1228,7 +1228,7 @@ export const TokenTransferProxy =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "isAuthorized",
-                                  "referencedDeclaration": 6224,
+                                  "referencedDeclaration": 6242,
                                   "type": "function (struct PermissionsLib.Permissions storage pointer,address) view returns (bool)"
                                 },
                                 "children": [
@@ -1238,16 +1238,16 @@ export const TokenTransferProxy =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5112,
+                                      "referencedDeclaration": 5130,
                                       "type": "struct PermissionsLib.Permissions storage ref",
                                       "value": "tokenTransferPermissions"
                                     },
-                                    "id": 5170,
+                                    "id": 5188,
                                     "name": "Identifier",
                                     "src": "2693:24:13"
                                   }
                                 ],
-                                "id": 5171,
+                                "id": 5189,
                                 "name": "MemberAccess",
                                 "src": "2693:37:13"
                               },
@@ -1269,37 +1269,37 @@ export const TokenTransferProxy =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15815,
+                                      "referencedDeclaration": 15833,
                                       "type": "msg",
                                       "value": "msg"
                                     },
-                                    "id": 5172,
+                                    "id": 5190,
                                     "name": "Identifier",
                                     "src": "2731:3:13"
                                   }
                                 ],
-                                "id": 5173,
+                                "id": 5191,
                                 "name": "MemberAccess",
                                 "src": "2731:10:13"
                               }
                             ],
-                            "id": 5174,
+                            "id": 5192,
                             "name": "FunctionCall",
                             "src": "2693:49:13"
                           }
                         ],
-                        "id": 5175,
+                        "id": 5193,
                         "name": "FunctionCall",
                         "src": "2685:58:13"
                       }
                     ],
-                    "id": 5176,
+                    "id": 5194,
                     "name": "ExpressionStatement",
                     "src": "2685:58:13"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 5168
+                      "functionReturnParameters": 5186
                     },
                     "children": [
                       {
@@ -1338,7 +1338,7 @@ export const TokenTransferProxy =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "transferFrom",
-                              "referencedDeclaration": 14254,
+                              "referencedDeclaration": 14272,
                               "type": "function (address,address,uint256) external returns (bool)"
                             },
                             "children": [
@@ -1368,11 +1368,11 @@ export const TokenTransferProxy =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 14272,
+                                      "referencedDeclaration": 14290,
                                       "type": "type(contract ERC20)",
                                       "value": "ERC20"
                                     },
-                                    "id": 5177,
+                                    "id": 5195,
                                     "name": "Identifier",
                                     "src": "2761:5:13"
                                   },
@@ -1382,21 +1382,21 @@ export const TokenTransferProxy =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5158,
+                                      "referencedDeclaration": 5176,
                                       "type": "address",
                                       "value": "_token"
                                     },
-                                    "id": 5178,
+                                    "id": 5196,
                                     "name": "Identifier",
                                     "src": "2767:6:13"
                                   }
                                 ],
-                                "id": 5179,
+                                "id": 5197,
                                 "name": "FunctionCall",
                                 "src": "2761:13:13"
                               }
                             ],
-                            "id": 5180,
+                            "id": 5198,
                             "name": "MemberAccess",
                             "src": "2761:26:13"
                           },
@@ -1406,11 +1406,11 @@ export const TokenTransferProxy =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5160,
+                              "referencedDeclaration": 5178,
                               "type": "address",
                               "value": "_from"
                             },
-                            "id": 5181,
+                            "id": 5199,
                             "name": "Identifier",
                             "src": "2788:5:13"
                           },
@@ -1420,11 +1420,11 @@ export const TokenTransferProxy =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5162,
+                              "referencedDeclaration": 5180,
                               "type": "address",
                               "value": "_to"
                             },
-                            "id": 5182,
+                            "id": 5200,
                             "name": "Identifier",
                             "src": "2795:3:13"
                           },
@@ -1434,41 +1434,41 @@ export const TokenTransferProxy =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5164,
+                              "referencedDeclaration": 5182,
                               "type": "uint256",
                               "value": "_amount"
                             },
-                            "id": 5183,
+                            "id": 5201,
                             "name": "Identifier",
                             "src": "2800:7:13"
                           }
                         ],
-                        "id": 5184,
+                        "id": 5202,
                         "name": "FunctionCall",
                         "src": "2761:47:13"
                       }
                     ],
-                    "id": 5185,
+                    "id": 5203,
                     "name": "Return",
                     "src": "2754:54:13"
                   }
                 ],
-                "id": 5186,
+                "id": 5204,
                 "name": "Block",
                 "src": "2675:140:13"
               }
             ],
-            "id": 5187,
+            "id": 5205,
             "name": "FunctionDefinition",
             "src": "2506:309:13"
           }
         ],
-        "id": 5188,
+        "id": 5206,
         "name": "ContractDefinition",
         "src": "1330:1487:13"
       }
     ],
-    "id": 5189,
+    "id": 5207,
     "name": "SourceUnit",
     "src": "584:2234:13"
   },
@@ -1682,9 +1682,9 @@ export const TokenTransferProxy =
         }
       },
       "links": {},
-      "address": "0xc3308c262831f6013ef1bc6e824ea62e047986bc"
+      "address": "0x67824af530eb7c331b4903b1356c310136ca2187"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-25T20:05:01.877Z"
+  "updatedAt": "2018-09-25T22:27:44.577Z"
 }

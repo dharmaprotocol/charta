@@ -639,7 +639,7 @@ export const DharmaMultiSigWallet =
       "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/wallet/DharmaMultiSigWallet.sol",
       "exportedSymbols": {
         "DharmaMultiSigWallet": [
-          12910
+          12928
         ]
       }
     },
@@ -652,39 +652,39 @@ export const DharmaMultiSigWallet =
             ".18"
           ]
         },
-        "id": 12569,
+        "id": 12587,
         "name": "PragmaDirective",
         "src": "584:23:34"
       },
       {
         "attributes": {
-          "SourceUnit": 13901,
+          "SourceUnit": 13919,
           "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/wallet/MultiSigWallet.sol",
           "file": "./MultiSigWallet.sol",
-          "scope": 12911,
+          "scope": 12929,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 12570,
+        "id": 12588,
         "name": "ImportDirective",
         "src": "609:30:34"
       },
       {
         "attributes": {
           "contractDependencies": [
-            13900
+            13918
           ],
           "contractKind": "contract",
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            12910,
-            13900
+            12928,
+            13918
           ],
           "name": "DharmaMultiSigWallet",
-          "scope": 12911
+          "scope": 12929
         },
         "children": [
           {
@@ -698,15 +698,15 @@ export const DharmaMultiSigWallet =
                 "attributes": {
                   "contractScope": null,
                   "name": "MultiSigWallet",
-                  "referencedDeclaration": 13900,
+                  "referencedDeclaration": 13918,
                   "type": "contract MultiSigWallet"
                 },
-                "id": 12571,
+                "id": 12589,
                 "name": "UserDefinedTypeName",
                 "src": "675:14:34"
               }
             ],
-            "id": 12572,
+            "id": 12590,
             "name": "InheritanceSpecifier",
             "src": "675:14:34"
           },
@@ -723,7 +723,7 @@ export const DharmaMultiSigWallet =
                       "constant": false,
                       "indexed": true,
                       "name": "transactionId",
-                      "scope": 12578,
+                      "scope": 12596,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -736,12 +736,12 @@ export const DharmaMultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 12573,
+                        "id": 12591,
                         "name": "ElementaryTypeName",
                         "src": "723:4:34"
                       }
                     ],
-                    "id": 12574,
+                    "id": 12592,
                     "name": "VariableDeclaration",
                     "src": "723:26:34"
                   },
@@ -750,7 +750,7 @@ export const DharmaMultiSigWallet =
                       "constant": false,
                       "indexed": false,
                       "name": "confirmationTime",
-                      "scope": 12578,
+                      "scope": 12596,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -763,22 +763,22 @@ export const DharmaMultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 12575,
+                        "id": 12593,
                         "name": "ElementaryTypeName",
                         "src": "751:4:34"
                       }
                     ],
-                    "id": 12576,
+                    "id": 12594,
                     "name": "VariableDeclaration",
                     "src": "751:21:34"
                   }
                 ],
-                "id": 12577,
+                "id": 12595,
                 "name": "ParameterList",
                 "src": "722:51:34"
               }
             ],
-            "id": 12578,
+            "id": 12596,
             "name": "EventDefinition",
             "src": "697:77:34"
           },
@@ -795,7 +795,7 @@ export const DharmaMultiSigWallet =
                       "constant": false,
                       "indexed": false,
                       "name": "timelockInSeconds",
-                      "scope": 12582,
+                      "scope": 12600,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -808,22 +808,22 @@ export const DharmaMultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 12579,
+                        "id": 12597,
                         "name": "ElementaryTypeName",
                         "src": "800:4:34"
                       }
                     ],
-                    "id": 12580,
+                    "id": 12598,
                     "name": "VariableDeclaration",
                     "src": "800:22:34"
                   }
                 ],
-                "id": 12581,
+                "id": 12599,
                 "name": "ParameterList",
                 "src": "799:24:34"
               }
             ],
-            "id": 12582,
+            "id": 12600,
             "name": "EventDefinition",
             "src": "779:45:34"
           },
@@ -831,7 +831,7 @@ export const DharmaMultiSigWallet =
             "attributes": {
               "constant": false,
               "name": "timelockInSeconds",
-              "scope": 12910,
+              "scope": 12928,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "uint256",
@@ -844,12 +844,12 @@ export const DharmaMultiSigWallet =
                   "name": "uint",
                   "type": "uint256"
                 },
-                "id": 12583,
+                "id": 12601,
                 "name": "ElementaryTypeName",
                 "src": "830:4:34"
               }
             ],
-            "id": 12584,
+            "id": 12602,
             "name": "VariableDeclaration",
             "src": "830:29:34"
           },
@@ -857,7 +857,7 @@ export const DharmaMultiSigWallet =
             "attributes": {
               "constant": false,
               "name": "transactionConfirmedBlockTimestamp",
-              "scope": 12910,
+              "scope": 12928,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(uint256 => uint256)",
@@ -875,7 +875,7 @@ export const DharmaMultiSigWallet =
                       "name": "uint",
                       "type": "uint256"
                     },
-                    "id": 12585,
+                    "id": 12603,
                     "name": "ElementaryTypeName",
                     "src": "875:4:34"
                   },
@@ -884,17 +884,17 @@ export const DharmaMultiSigWallet =
                       "name": "uint",
                       "type": "uint256"
                     },
-                    "id": 12586,
+                    "id": 12604,
                     "name": "ElementaryTypeName",
                     "src": "883:4:34"
                   }
                 ],
-                "id": 12587,
+                "id": 12605,
                 "name": "Mapping",
                 "src": "866:22:34"
               }
             ],
-            "id": 12588,
+            "id": 12606,
             "name": "VariableDeclaration",
             "src": "866:64:34"
           },
@@ -910,7 +910,7 @@ export const DharmaMultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "transactionId",
-                      "scope": 12600,
+                      "scope": 12618,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -923,17 +923,17 @@ export const DharmaMultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 12589,
+                        "id": 12607,
                         "name": "ElementaryTypeName",
                         "src": "968:4:34"
                       }
                     ],
-                    "id": 12590,
+                    "id": 12608,
                     "name": "VariableDeclaration",
                     "src": "968:18:34"
                   }
                 ],
-                "id": 12591,
+                "id": 12609,
                 "name": "ParameterList",
                 "src": "967:20:34"
               },
@@ -967,11 +967,11 @@ export const DharmaMultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15818,
+                              "referencedDeclaration": 15836,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 12592,
+                            "id": 12610,
                             "name": "Identifier",
                             "src": "998:7:34"
                           },
@@ -1001,11 +1001,11 @@ export const DharmaMultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13587,
+                                  "referencedDeclaration": 13605,
                                   "type": "function (uint256) view returns (bool)",
                                   "value": "isConfirmed"
                                 },
-                                "id": 12593,
+                                "id": 12611,
                                 "name": "Identifier",
                                 "src": "1006:11:34"
                               },
@@ -1015,41 +1015,41 @@ export const DharmaMultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12590,
+                                  "referencedDeclaration": 12608,
                                   "type": "uint256",
                                   "value": "transactionId"
                                 },
-                                "id": 12594,
+                                "id": 12612,
                                 "name": "Identifier",
                                 "src": "1018:13:34"
                               }
                             ],
-                            "id": 12595,
+                            "id": 12613,
                             "name": "FunctionCall",
                             "src": "1006:26:34"
                           }
                         ],
-                        "id": 12596,
+                        "id": 12614,
                         "name": "FunctionCall",
                         "src": "998:35:34"
                       }
                     ],
-                    "id": 12597,
+                    "id": 12615,
                     "name": "ExpressionStatement",
                     "src": "998:35:34"
                   },
                   {
-                    "id": 12598,
+                    "id": 12616,
                     "name": "PlaceholderStatement",
                     "src": "1043:1:34"
                   }
                 ],
-                "id": 12599,
+                "id": 12617,
                 "name": "Block",
                 "src": "988:63:34"
               }
             ],
-            "id": 12600,
+            "id": 12618,
             "name": "ModifierDefinition",
             "src": "937:114:34"
           },
@@ -1065,7 +1065,7 @@ export const DharmaMultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "transactionId",
-                      "scope": 12613,
+                      "scope": 12631,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1078,17 +1078,17 @@ export const DharmaMultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 12601,
+                        "id": 12619,
                         "name": "ElementaryTypeName",
                         "src": "1090:4:34"
                       }
                     ],
-                    "id": 12602,
+                    "id": 12620,
                     "name": "VariableDeclaration",
                     "src": "1090:18:34"
                   }
                 ],
-                "id": 12603,
+                "id": 12621,
                 "name": "ParameterList",
                 "src": "1089:20:34"
               },
@@ -1122,11 +1122,11 @@ export const DharmaMultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15818,
+                              "referencedDeclaration": 15836,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 12604,
+                            "id": 12622,
                             "name": "Identifier",
                             "src": "1120:7:34"
                           },
@@ -1168,11 +1168,11 @@ export const DharmaMultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 13587,
+                                      "referencedDeclaration": 13605,
                                       "type": "function (uint256) view returns (bool)",
                                       "value": "isConfirmed"
                                     },
-                                    "id": 12605,
+                                    "id": 12623,
                                     "name": "Identifier",
                                     "src": "1129:11:34"
                                   },
@@ -1182,46 +1182,46 @@ export const DharmaMultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 12602,
+                                      "referencedDeclaration": 12620,
                                       "type": "uint256",
                                       "value": "transactionId"
                                     },
-                                    "id": 12606,
+                                    "id": 12624,
                                     "name": "Identifier",
                                     "src": "1141:13:34"
                                   }
                                 ],
-                                "id": 12607,
+                                "id": 12625,
                                 "name": "FunctionCall",
                                 "src": "1129:26:34"
                               }
                             ],
-                            "id": 12608,
+                            "id": 12626,
                             "name": "UnaryOperation",
                             "src": "1128:27:34"
                           }
                         ],
-                        "id": 12609,
+                        "id": 12627,
                         "name": "FunctionCall",
                         "src": "1120:36:34"
                       }
                     ],
-                    "id": 12610,
+                    "id": 12628,
                     "name": "ExpressionStatement",
                     "src": "1120:36:34"
                   },
                   {
-                    "id": 12611,
+                    "id": 12629,
                     "name": "PlaceholderStatement",
                     "src": "1166:1:34"
                   }
                 ],
-                "id": 12612,
+                "id": 12630,
                 "name": "Block",
                 "src": "1110:64:34"
               }
             ],
-            "id": 12613,
+            "id": 12631,
             "name": "ModifierDefinition",
             "src": "1057:117:34"
           },
@@ -1237,7 +1237,7 @@ export const DharmaMultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "transactionId",
-                      "scope": 12630,
+                      "scope": 12648,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1250,17 +1250,17 @@ export const DharmaMultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 12614,
+                        "id": 12632,
                         "name": "ElementaryTypeName",
                         "src": "1202:4:34"
                       }
                     ],
-                    "id": 12615,
+                    "id": 12633,
                     "name": "VariableDeclaration",
                     "src": "1202:18:34"
                   }
                 ],
-                "id": 12616,
+                "id": 12634,
                 "name": "ParameterList",
                 "src": "1201:20:34"
               },
@@ -1294,11 +1294,11 @@ export const DharmaMultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15818,
+                              "referencedDeclaration": 15836,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 12617,
+                            "id": 12635,
                             "name": "Identifier",
                             "src": "1232:7:34"
                           },
@@ -1335,16 +1335,16 @@ export const DharmaMultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15807,
+                                      "referencedDeclaration": 15825,
                                       "type": "block",
                                       "value": "block"
                                     },
-                                    "id": 12618,
+                                    "id": 12636,
                                     "name": "Identifier",
                                     "src": "1240:5:34"
                                   }
                                 ],
-                                "id": 12619,
+                                "id": 12637,
                                 "name": "MemberAccess",
                                 "src": "1240:15:34"
                               },
@@ -1379,11 +1379,11 @@ export const DharmaMultiSigWallet =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 12588,
+                                          "referencedDeclaration": 12606,
                                           "type": "mapping(uint256 => uint256)",
                                           "value": "transactionConfirmedBlockTimestamp"
                                         },
-                                        "id": 12620,
+                                        "id": 12638,
                                         "name": "Identifier",
                                         "src": "1259:34:34"
                                       },
@@ -1393,16 +1393,16 @@ export const DharmaMultiSigWallet =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 12615,
+                                          "referencedDeclaration": 12633,
                                           "type": "uint256",
                                           "value": "transactionId"
                                         },
-                                        "id": 12621,
+                                        "id": 12639,
                                         "name": "Identifier",
                                         "src": "1294:13:34"
                                       }
                                     ],
-                                    "id": 12622,
+                                    "id": 12640,
                                     "name": "IndexAccess",
                                     "src": "1259:49:34"
                                   },
@@ -1412,46 +1412,46 @@ export const DharmaMultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 12584,
+                                      "referencedDeclaration": 12602,
                                       "type": "uint256",
                                       "value": "timelockInSeconds"
                                     },
-                                    "id": 12623,
+                                    "id": 12641,
                                     "name": "Identifier",
                                     "src": "1311:17:34"
                                   }
                                 ],
-                                "id": 12624,
+                                "id": 12642,
                                 "name": "BinaryOperation",
                                 "src": "1259:69:34"
                               }
                             ],
-                            "id": 12625,
+                            "id": 12643,
                             "name": "BinaryOperation",
                             "src": "1240:88:34"
                           }
                         ],
-                        "id": 12626,
+                        "id": 12644,
                         "name": "FunctionCall",
                         "src": "1232:97:34"
                       }
                     ],
-                    "id": 12627,
+                    "id": 12645,
                     "name": "ExpressionStatement",
                     "src": "1232:97:34"
                   },
                   {
-                    "id": 12628,
+                    "id": 12646,
                     "name": "PlaceholderStatement",
                     "src": "1339:1:34"
                   }
                 ],
-                "id": 12629,
+                "id": 12647,
                 "name": "Block",
                 "src": "1222:125:34"
               }
             ],
-            "id": 12630,
+            "id": 12648,
             "name": "ModifierDefinition",
             "src": "1180:167:34"
           },
@@ -1467,7 +1467,7 @@ export const DharmaMultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "transactionId",
-                      "scope": 12649,
+                      "scope": 12667,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1480,17 +1480,17 @@ export const DharmaMultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 12631,
+                        "id": 12649,
                         "name": "ElementaryTypeName",
                         "src": "1384:4:34"
                       }
                     ],
-                    "id": 12632,
+                    "id": 12650,
                     "name": "VariableDeclaration",
                     "src": "1384:18:34"
                   }
                 ],
-                "id": 12633,
+                "id": 12651,
                 "name": "ParameterList",
                 "src": "1383:20:34"
               },
@@ -1499,7 +1499,7 @@ export const DharmaMultiSigWallet =
                   {
                     "attributes": {
                       "assignments": [
-                        12635
+                        12653
                       ]
                     },
                     "children": [
@@ -1507,7 +1507,7 @@ export const DharmaMultiSigWallet =
                         "attributes": {
                           "constant": false,
                           "name": "txn",
-                          "scope": 12649,
+                          "scope": 12667,
                           "stateVariable": false,
                           "storageLocation": "storage",
                           "type": "struct MultiSigWallet.Transaction storage pointer",
@@ -1519,15 +1519,15 @@ export const DharmaMultiSigWallet =
                             "attributes": {
                               "contractScope": null,
                               "name": "Transaction",
-                              "referencedDeclaration": 12987,
+                              "referencedDeclaration": 13005,
                               "type": "struct MultiSigWallet.Transaction storage pointer"
                             },
-                            "id": 12634,
+                            "id": 12652,
                             "name": "UserDefinedTypeName",
                             "src": "1414:11:34"
                           }
                         ],
-                        "id": 12635,
+                        "id": 12653,
                         "name": "VariableDeclaration",
                         "src": "1414:23:34"
                       },
@@ -1547,11 +1547,11 @@ export const DharmaMultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12961,
+                              "referencedDeclaration": 12979,
                               "type": "mapping(uint256 => struct MultiSigWallet.Transaction storage ref)",
                               "value": "transactions"
                             },
-                            "id": 12636,
+                            "id": 12654,
                             "name": "Identifier",
                             "src": "1440:12:34"
                           },
@@ -1561,21 +1561,21 @@ export const DharmaMultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12632,
+                              "referencedDeclaration": 12650,
                               "type": "uint256",
                               "value": "transactionId"
                             },
-                            "id": 12637,
+                            "id": 12655,
                             "name": "Identifier",
                             "src": "1453:13:34"
                           }
                         ],
-                        "id": 12638,
+                        "id": 12656,
                         "name": "IndexAccess",
                         "src": "1440:27:34"
                       }
                     ],
-                    "id": 12639,
+                    "id": 12657,
                     "name": "VariableDeclarationStatement",
                     "src": "1414:53:34"
                   },
@@ -1607,11 +1607,11 @@ export const DharmaMultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15818,
+                              "referencedDeclaration": 15836,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 12640,
+                            "id": 12658,
                             "name": "Identifier",
                             "src": "1478:7:34"
                           },
@@ -1641,11 +1641,11 @@ export const DharmaMultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12909,
+                                  "referencedDeclaration": 12927,
                                   "type": "function (bytes memory) view returns (bool)",
                                   "value": "_isPauseFunctionTransaction"
                                 },
-                                "id": 12641,
+                                "id": 12659,
                                 "name": "Identifier",
                                 "src": "1486:27:34"
                               },
@@ -1657,7 +1657,7 @@ export const DharmaMultiSigWallet =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "data",
-                                  "referencedDeclaration": 12984,
+                                  "referencedDeclaration": 13002,
                                   "type": "bytes storage ref"
                                 },
                                 "children": [
@@ -1667,46 +1667,46 @@ export const DharmaMultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 12635,
+                                      "referencedDeclaration": 12653,
                                       "type": "struct MultiSigWallet.Transaction storage pointer",
                                       "value": "txn"
                                     },
-                                    "id": 12642,
+                                    "id": 12660,
                                     "name": "Identifier",
                                     "src": "1514:3:34"
                                   }
                                 ],
-                                "id": 12643,
+                                "id": 12661,
                                 "name": "MemberAccess",
                                 "src": "1514:8:34"
                               }
                             ],
-                            "id": 12644,
+                            "id": 12662,
                             "name": "FunctionCall",
                             "src": "1486:37:34"
                           }
                         ],
-                        "id": 12645,
+                        "id": 12663,
                         "name": "FunctionCall",
                         "src": "1478:46:34"
                       }
                     ],
-                    "id": 12646,
+                    "id": 12664,
                     "name": "ExpressionStatement",
                     "src": "1478:46:34"
                   },
                   {
-                    "id": 12647,
+                    "id": 12665,
                     "name": "PlaceholderStatement",
                     "src": "1534:1:34"
                   }
                 ],
-                "id": 12648,
+                "id": 12666,
                 "name": "Block",
                 "src": "1404:138:34"
               }
             ],
-            "id": 12649,
+            "id": 12667,
             "name": "ModifierDefinition",
             "src": "1353:189:34"
           },
@@ -1717,7 +1717,7 @@ export const DharmaMultiSigWallet =
               "isConstructor": true,
               "name": "DharmaMultiSigWallet",
               "payable": false,
-              "scope": 12910,
+              "scope": 12928,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -1729,7 +1729,7 @@ export const DharmaMultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "_owners",
-                      "scope": 12668,
+                      "scope": 12686,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address[] memory",
@@ -1748,17 +1748,17 @@ export const DharmaMultiSigWallet =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 12650,
+                            "id": 12668,
                             "name": "ElementaryTypeName",
                             "src": "1587:7:34"
                           }
                         ],
-                        "id": 12651,
+                        "id": 12669,
                         "name": "ArrayTypeName",
                         "src": "1587:9:34"
                       }
                     ],
-                    "id": 12652,
+                    "id": 12670,
                     "name": "VariableDeclaration",
                     "src": "1587:17:34"
                   },
@@ -1766,7 +1766,7 @@ export const DharmaMultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "_required",
-                      "scope": 12668,
+                      "scope": 12686,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1779,12 +1779,12 @@ export const DharmaMultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 12653,
+                        "id": 12671,
                         "name": "ElementaryTypeName",
                         "src": "1614:4:34"
                       }
                     ],
-                    "id": 12654,
+                    "id": 12672,
                     "name": "VariableDeclaration",
                     "src": "1614:14:34"
                   },
@@ -1792,7 +1792,7 @@ export const DharmaMultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "_timelockInSeconds",
-                      "scope": 12668,
+                      "scope": 12686,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1805,17 +1805,17 @@ export const DharmaMultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 12655,
+                        "id": 12673,
                         "name": "ElementaryTypeName",
                         "src": "1638:4:34"
                       }
                     ],
-                    "id": 12656,
+                    "id": 12674,
                     "name": "VariableDeclaration",
                     "src": "1638:23:34"
                   }
                 ],
-                "id": 12657,
+                "id": 12675,
                 "name": "ParameterList",
                 "src": "1577:90:34"
               },
@@ -1826,7 +1826,7 @@ export const DharmaMultiSigWallet =
                   ]
                 },
                 "children": [],
-                "id": 12662,
+                "id": 12680,
                 "name": "ParameterList",
                 "src": "1730:0:34"
               },
@@ -1838,11 +1838,11 @@ export const DharmaMultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13900,
+                      "referencedDeclaration": 13918,
                       "type": "type(contract MultiSigWallet)",
                       "value": "MultiSigWallet"
                     },
-                    "id": 12658,
+                    "id": 12676,
                     "name": "Identifier",
                     "src": "1691:14:34"
                   },
@@ -1852,11 +1852,11 @@ export const DharmaMultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 12652,
+                      "referencedDeclaration": 12670,
                       "type": "address[] memory",
                       "value": "_owners"
                     },
-                    "id": 12659,
+                    "id": 12677,
                     "name": "Identifier",
                     "src": "1706:7:34"
                   },
@@ -1866,16 +1866,16 @@ export const DharmaMultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 12654,
+                      "referencedDeclaration": 12672,
                       "type": "uint256",
                       "value": "_required"
                     },
-                    "id": 12660,
+                    "id": 12678,
                     "name": "Identifier",
                     "src": "1715:9:34"
                   }
                 ],
-                "id": 12661,
+                "id": 12679,
                 "name": "ModifierInvocation",
                 "src": "1691:34:34"
               },
@@ -1900,11 +1900,11 @@ export const DharmaMultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12584,
+                              "referencedDeclaration": 12602,
                               "type": "uint256",
                               "value": "timelockInSeconds"
                             },
-                            "id": 12663,
+                            "id": 12681,
                             "name": "Identifier",
                             "src": "1740:17:34"
                           },
@@ -1914,31 +1914,31 @@ export const DharmaMultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12656,
+                              "referencedDeclaration": 12674,
                               "type": "uint256",
                               "value": "_timelockInSeconds"
                             },
-                            "id": 12664,
+                            "id": 12682,
                             "name": "Identifier",
                             "src": "1760:18:34"
                           }
                         ],
-                        "id": 12665,
+                        "id": 12683,
                         "name": "Assignment",
                         "src": "1740:38:34"
                       }
                     ],
-                    "id": 12666,
+                    "id": 12684,
                     "name": "ExpressionStatement",
                     "src": "1740:38:34"
                   }
                 ],
-                "id": 12667,
+                "id": 12685,
                 "name": "Block",
                 "src": "1730:55:34"
               }
             ],
-            "id": 12668,
+            "id": 12686,
             "name": "FunctionDefinition",
             "src": "1548:237:34"
           },
@@ -1949,7 +1949,7 @@ export const DharmaMultiSigWallet =
               "isConstructor": false,
               "name": "changeTimeLock",
               "payable": false,
-              "scope": 12910,
+              "scope": 12928,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -1961,7 +1961,7 @@ export const DharmaMultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "_timelockInSeconds",
-                      "scope": 12684,
+                      "scope": 12702,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1974,17 +1974,17 @@ export const DharmaMultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 12669,
+                        "id": 12687,
                         "name": "ElementaryTypeName",
                         "src": "2017:4:34"
                       }
                     ],
-                    "id": 12670,
+                    "id": 12688,
                     "name": "VariableDeclaration",
                     "src": "2017:23:34"
                   }
                 ],
-                "id": 12671,
+                "id": 12689,
                 "name": "ParameterList",
                 "src": "2016:25:34"
               },
@@ -1995,7 +1995,7 @@ export const DharmaMultiSigWallet =
                   ]
                 },
                 "children": [],
-                "id": 12674,
+                "id": 12692,
                 "name": "ParameterList",
                 "src": "2080:0:34"
               },
@@ -2012,16 +2012,16 @@ export const DharmaMultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13000,
+                      "referencedDeclaration": 13018,
                       "type": "modifier ()",
                       "value": "onlyWallet"
                     },
-                    "id": 12672,
+                    "id": 12690,
                     "name": "Identifier",
                     "src": "2065:10:34"
                   }
                 ],
-                "id": 12673,
+                "id": 12691,
                 "name": "ModifierInvocation",
                 "src": "2065:10:34"
               },
@@ -2046,11 +2046,11 @@ export const DharmaMultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12584,
+                              "referencedDeclaration": 12602,
                               "type": "uint256",
                               "value": "timelockInSeconds"
                             },
-                            "id": 12675,
+                            "id": 12693,
                             "name": "Identifier",
                             "src": "2090:17:34"
                           },
@@ -2060,21 +2060,21 @@ export const DharmaMultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12670,
+                              "referencedDeclaration": 12688,
                               "type": "uint256",
                               "value": "_timelockInSeconds"
                             },
-                            "id": 12676,
+                            "id": 12694,
                             "name": "Identifier",
                             "src": "2110:18:34"
                           }
                         ],
-                        "id": 12677,
+                        "id": 12695,
                         "name": "Assignment",
                         "src": "2090:38:34"
                       }
                     ],
-                    "id": 12678,
+                    "id": 12696,
                     "name": "ExpressionStatement",
                     "src": "2090:38:34"
                   },
@@ -2106,11 +2106,11 @@ export const DharmaMultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12582,
+                              "referencedDeclaration": 12600,
                               "type": "function (uint256)",
                               "value": "TimeLockChange"
                             },
-                            "id": 12679,
+                            "id": 12697,
                             "name": "Identifier",
                             "src": "2138:14:34"
                           },
@@ -2120,31 +2120,31 @@ export const DharmaMultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12670,
+                              "referencedDeclaration": 12688,
                               "type": "uint256",
                               "value": "_timelockInSeconds"
                             },
-                            "id": 12680,
+                            "id": 12698,
                             "name": "Identifier",
                             "src": "2153:18:34"
                           }
                         ],
-                        "id": 12681,
+                        "id": 12699,
                         "name": "FunctionCall",
                         "src": "2138:34:34"
                       }
                     ],
-                    "id": 12682,
+                    "id": 12700,
                     "name": "ExpressionStatement",
                     "src": "2138:34:34"
                   }
                 ],
-                "id": 12683,
+                "id": 12701,
                 "name": "Block",
                 "src": "2080:99:34"
               }
             ],
-            "id": 12684,
+            "id": 12702,
             "name": "FunctionDefinition",
             "src": "1993:186:34"
           },
@@ -2155,9 +2155,9 @@ export const DharmaMultiSigWallet =
               "isConstructor": false,
               "name": "confirmTransaction",
               "payable": false,
-              "scope": 12910,
+              "scope": 12928,
               "stateMutability": "nonpayable",
-              "superFunction": 13450,
+              "superFunction": 13468,
               "visibility": "public"
             },
             "children": [
@@ -2167,7 +2167,7 @@ export const DharmaMultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "transactionId",
-                      "scope": 12731,
+                      "scope": 12749,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2180,17 +2180,17 @@ export const DharmaMultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 12685,
+                        "id": 12703,
                         "name": "ElementaryTypeName",
                         "src": "2365:4:34"
                       }
                     ],
-                    "id": 12686,
+                    "id": 12704,
                     "name": "VariableDeclaration",
                     "src": "2365:18:34"
                   }
                 ],
-                "id": 12687,
+                "id": 12705,
                 "name": "ParameterList",
                 "src": "2364:20:34"
               },
@@ -2201,7 +2201,7 @@ export const DharmaMultiSigWallet =
                   ]
                 },
                 "children": [],
-                "id": 12703,
+                "id": 12721,
                 "name": "ParameterList",
                 "src": "2572:0:34"
               },
@@ -2213,11 +2213,11 @@ export const DharmaMultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13025,
+                      "referencedDeclaration": 13043,
                       "type": "modifier (address)",
                       "value": "ownerExists"
                     },
-                    "id": 12688,
+                    "id": 12706,
                     "name": "Identifier",
                     "src": "2408:11:34"
                   },
@@ -2239,21 +2239,21 @@ export const DharmaMultiSigWallet =
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 15815,
+                          "referencedDeclaration": 15833,
                           "type": "msg",
                           "value": "msg"
                         },
-                        "id": 12689,
+                        "id": 12707,
                         "name": "Identifier",
                         "src": "2420:3:34"
                       }
                     ],
-                    "id": 12690,
+                    "id": 12708,
                     "name": "MemberAccess",
                     "src": "2420:10:34"
                   }
                 ],
-                "id": 12691,
+                "id": 12709,
                 "name": "ModifierInvocation",
                 "src": "2408:23:34"
               },
@@ -2265,11 +2265,11 @@ export const DharmaMultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13040,
+                      "referencedDeclaration": 13058,
                       "type": "modifier (uint256)",
                       "value": "transactionExists"
                     },
-                    "id": 12692,
+                    "id": 12710,
                     "name": "Identifier",
                     "src": "2440:17:34"
                   },
@@ -2279,16 +2279,16 @@ export const DharmaMultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 12686,
+                      "referencedDeclaration": 12704,
                       "type": "uint256",
                       "value": "transactionId"
                     },
-                    "id": 12693,
+                    "id": 12711,
                     "name": "Identifier",
                     "src": "2458:13:34"
                   }
                 ],
-                "id": 12694,
+                "id": 12712,
                 "name": "ModifierInvocation",
                 "src": "2440:32:34"
               },
@@ -2300,11 +2300,11 @@ export const DharmaMultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13073,
+                      "referencedDeclaration": 13091,
                       "type": "modifier (uint256,address)",
                       "value": "notConfirmed"
                     },
-                    "id": 12695,
+                    "id": 12713,
                     "name": "Identifier",
                     "src": "2481:12:34"
                   },
@@ -2314,11 +2314,11 @@ export const DharmaMultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 12686,
+                      "referencedDeclaration": 12704,
                       "type": "uint256",
                       "value": "transactionId"
                     },
-                    "id": 12696,
+                    "id": 12714,
                     "name": "Identifier",
                     "src": "2494:13:34"
                   },
@@ -2340,21 +2340,21 @@ export const DharmaMultiSigWallet =
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 15815,
+                          "referencedDeclaration": 15833,
                           "type": "msg",
                           "value": "msg"
                         },
-                        "id": 12697,
+                        "id": 12715,
                         "name": "Identifier",
                         "src": "2509:3:34"
                       }
                     ],
-                    "id": 12698,
+                    "id": 12716,
                     "name": "MemberAccess",
                     "src": "2509:10:34"
                   }
                 ],
-                "id": 12699,
+                "id": 12717,
                 "name": "ModifierInvocation",
                 "src": "2481:39:34"
               },
@@ -2366,11 +2366,11 @@ export const DharmaMultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 12613,
+                      "referencedDeclaration": 12631,
                       "type": "modifier (uint256)",
                       "value": "insufficientlyConfirmed"
                     },
-                    "id": 12700,
+                    "id": 12718,
                     "name": "Identifier",
                     "src": "2529:23:34"
                   },
@@ -2380,16 +2380,16 @@ export const DharmaMultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 12686,
+                      "referencedDeclaration": 12704,
                       "type": "uint256",
                       "value": "transactionId"
                     },
-                    "id": 12701,
+                    "id": 12719,
                     "name": "Identifier",
                     "src": "2553:13:34"
                   }
                 ],
-                "id": 12702,
+                "id": 12720,
                 "name": "ModifierInvocation",
                 "src": "2529:38:34"
               },
@@ -2434,11 +2434,11 @@ export const DharmaMultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 12967,
+                                      "referencedDeclaration": 12985,
                                       "type": "mapping(uint256 => mapping(address => bool))",
                                       "value": "confirmations"
                                     },
-                                    "id": 12704,
+                                    "id": 12722,
                                     "name": "Identifier",
                                     "src": "2582:13:34"
                                   },
@@ -2448,16 +2448,16 @@ export const DharmaMultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 12686,
+                                      "referencedDeclaration": 12704,
                                       "type": "uint256",
                                       "value": "transactionId"
                                     },
-                                    "id": 12705,
+                                    "id": 12723,
                                     "name": "Identifier",
                                     "src": "2596:13:34"
                                   }
                                 ],
-                                "id": 12708,
+                                "id": 12726,
                                 "name": "IndexAccess",
                                 "src": "2582:28:34"
                               },
@@ -2479,21 +2479,21 @@ export const DharmaMultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15815,
+                                      "referencedDeclaration": 15833,
                                       "type": "msg",
                                       "value": "msg"
                                     },
-                                    "id": 12706,
+                                    "id": 12724,
                                     "name": "Identifier",
                                     "src": "2611:3:34"
                                   }
                                 ],
-                                "id": 12707,
+                                "id": 12725,
                                 "name": "MemberAccess",
                                 "src": "2611:10:34"
                               }
                             ],
-                            "id": 12709,
+                            "id": 12727,
                             "name": "IndexAccess",
                             "src": "2582:40:34"
                           },
@@ -2510,17 +2510,17 @@ export const DharmaMultiSigWallet =
                               "type": "bool",
                               "value": "true"
                             },
-                            "id": 12710,
+                            "id": 12728,
                             "name": "Literal",
                             "src": "2625:4:34"
                           }
                         ],
-                        "id": 12711,
+                        "id": 12729,
                         "name": "Assignment",
                         "src": "2582:47:34"
                       }
                     ],
-                    "id": 12712,
+                    "id": 12730,
                     "name": "ExpressionStatement",
                     "src": "2582:47:34"
                   },
@@ -2556,11 +2556,11 @@ export const DharmaMultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12918,
+                              "referencedDeclaration": 12936,
                               "type": "function (address,uint256)",
                               "value": "Confirmation"
                             },
-                            "id": 12713,
+                            "id": 12731,
                             "name": "Identifier",
                             "src": "2639:12:34"
                           },
@@ -2582,16 +2582,16 @@ export const DharmaMultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15815,
+                                  "referencedDeclaration": 15833,
                                   "type": "msg",
                                   "value": "msg"
                                 },
-                                "id": 12714,
+                                "id": 12732,
                                 "name": "Identifier",
                                 "src": "2652:3:34"
                               }
                             ],
-                            "id": 12715,
+                            "id": 12733,
                             "name": "MemberAccess",
                             "src": "2652:10:34"
                           },
@@ -2601,21 +2601,21 @@ export const DharmaMultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12686,
+                              "referencedDeclaration": 12704,
                               "type": "uint256",
                               "value": "transactionId"
                             },
-                            "id": 12716,
+                            "id": 12734,
                             "name": "Identifier",
                             "src": "2664:13:34"
                           }
                         ],
-                        "id": 12717,
+                        "id": 12735,
                         "name": "FunctionCall",
                         "src": "2639:39:34"
                       }
                     ],
-                    "id": 12718,
+                    "id": 12736,
                     "name": "ExpressionStatement",
                     "src": "2639:39:34"
                   },
@@ -2650,11 +2650,11 @@ export const DharmaMultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 13587,
+                              "referencedDeclaration": 13605,
                               "type": "function (uint256) view returns (bool)",
                               "value": "isConfirmed"
                             },
-                            "id": 12719,
+                            "id": 12737,
                             "name": "Identifier",
                             "src": "2830:11:34"
                           },
@@ -2664,16 +2664,16 @@ export const DharmaMultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12686,
+                              "referencedDeclaration": 12704,
                               "type": "uint256",
                               "value": "transactionId"
                             },
-                            "id": 12720,
+                            "id": 12738,
                             "name": "Identifier",
                             "src": "2842:13:34"
                           }
                         ],
-                        "id": 12721,
+                        "id": 12739,
                         "name": "FunctionCall",
                         "src": "2830:26:34"
                       },
@@ -2711,11 +2711,11 @@ export const DharmaMultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 12868,
+                                      "referencedDeclaration": 12886,
                                       "type": "function (uint256,uint256)",
                                       "value": "_setConfirmationTime"
                                     },
-                                    "id": 12722,
+                                    "id": 12740,
                                     "name": "Identifier",
                                     "src": "2872:20:34"
                                   },
@@ -2725,11 +2725,11 @@ export const DharmaMultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 12686,
+                                      "referencedDeclaration": 12704,
                                       "type": "uint256",
                                       "value": "transactionId"
                                     },
-                                    "id": 12723,
+                                    "id": 12741,
                                     "name": "Identifier",
                                     "src": "2893:13:34"
                                   },
@@ -2751,46 +2751,46 @@ export const DharmaMultiSigWallet =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 15807,
+                                          "referencedDeclaration": 15825,
                                           "type": "block",
                                           "value": "block"
                                         },
-                                        "id": 12724,
+                                        "id": 12742,
                                         "name": "Identifier",
                                         "src": "2908:5:34"
                                       }
                                     ],
-                                    "id": 12725,
+                                    "id": 12743,
                                     "name": "MemberAccess",
                                     "src": "2908:15:34"
                                   }
                                 ],
-                                "id": 12726,
+                                "id": 12744,
                                 "name": "FunctionCall",
                                 "src": "2872:52:34"
                               }
                             ],
-                            "id": 12727,
+                            "id": 12745,
                             "name": "ExpressionStatement",
                             "src": "2872:52:34"
                           }
                         ],
-                        "id": 12728,
+                        "id": 12746,
                         "name": "Block",
                         "src": "2858:77:34"
                       }
                     ],
-                    "id": 12729,
+                    "id": 12747,
                     "name": "IfStatement",
                     "src": "2826:109:34"
                   }
                 ],
-                "id": 12730,
+                "id": 12748,
                 "name": "Block",
                 "src": "2572:369:34"
               }
             ],
-            "id": 12731,
+            "id": 12749,
             "name": "FunctionDefinition",
             "src": "2337:604:34"
           },
@@ -2801,9 +2801,9 @@ export const DharmaMultiSigWallet =
               "isConstructor": false,
               "name": "revokeConfirmation",
               "payable": false,
-              "scope": 12910,
+              "scope": 12928,
               "stateMutability": "nonpayable",
-              "superFunction": 13483,
+              "superFunction": 13501,
               "visibility": "public"
             },
             "children": [
@@ -2813,7 +2813,7 @@ export const DharmaMultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "transactionId",
-                      "scope": 12767,
+                      "scope": 12785,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2826,17 +2826,17 @@ export const DharmaMultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 12732,
+                        "id": 12750,
                         "name": "ElementaryTypeName",
                         "src": "3207:4:34"
                       }
                     ],
-                    "id": 12733,
+                    "id": 12751,
                     "name": "VariableDeclaration",
                     "src": "3207:18:34"
                   }
                 ],
-                "id": 12734,
+                "id": 12752,
                 "name": "ParameterList",
                 "src": "3206:20:34"
               },
@@ -2847,7 +2847,7 @@ export const DharmaMultiSigWallet =
                   ]
                 },
                 "children": [],
-                "id": 12750,
+                "id": 12768,
                 "name": "ParameterList",
                 "src": "3405:0:34"
               },
@@ -2859,11 +2859,11 @@ export const DharmaMultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13025,
+                      "referencedDeclaration": 13043,
                       "type": "modifier (address)",
                       "value": "ownerExists"
                     },
-                    "id": 12735,
+                    "id": 12753,
                     "name": "Identifier",
                     "src": "3250:11:34"
                   },
@@ -2885,21 +2885,21 @@ export const DharmaMultiSigWallet =
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 15815,
+                          "referencedDeclaration": 15833,
                           "type": "msg",
                           "value": "msg"
                         },
-                        "id": 12736,
+                        "id": 12754,
                         "name": "Identifier",
                         "src": "3262:3:34"
                       }
                     ],
-                    "id": 12737,
+                    "id": 12755,
                     "name": "MemberAccess",
                     "src": "3262:10:34"
                   }
                 ],
-                "id": 12738,
+                "id": 12756,
                 "name": "ModifierInvocation",
                 "src": "3250:23:34"
               },
@@ -2911,11 +2911,11 @@ export const DharmaMultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13056,
+                      "referencedDeclaration": 13074,
                       "type": "modifier (uint256,address)",
                       "value": "confirmed"
                     },
-                    "id": 12739,
+                    "id": 12757,
                     "name": "Identifier",
                     "src": "3282:9:34"
                   },
@@ -2925,11 +2925,11 @@ export const DharmaMultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 12733,
+                      "referencedDeclaration": 12751,
                       "type": "uint256",
                       "value": "transactionId"
                     },
-                    "id": 12740,
+                    "id": 12758,
                     "name": "Identifier",
                     "src": "3292:13:34"
                   },
@@ -2951,21 +2951,21 @@ export const DharmaMultiSigWallet =
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 15815,
+                          "referencedDeclaration": 15833,
                           "type": "msg",
                           "value": "msg"
                         },
-                        "id": 12741,
+                        "id": 12759,
                         "name": "Identifier",
                         "src": "3307:3:34"
                       }
                     ],
-                    "id": 12742,
+                    "id": 12760,
                     "name": "MemberAccess",
                     "src": "3307:10:34"
                   }
                 ],
-                "id": 12743,
+                "id": 12761,
                 "name": "ModifierInvocation",
                 "src": "3282:36:34"
               },
@@ -2977,11 +2977,11 @@ export const DharmaMultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13087,
+                      "referencedDeclaration": 13105,
                       "type": "modifier (uint256)",
                       "value": "notExecuted"
                     },
-                    "id": 12744,
+                    "id": 12762,
                     "name": "Identifier",
                     "src": "3327:11:34"
                   },
@@ -2991,16 +2991,16 @@ export const DharmaMultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 12733,
+                      "referencedDeclaration": 12751,
                       "type": "uint256",
                       "value": "transactionId"
                     },
-                    "id": 12745,
+                    "id": 12763,
                     "name": "Identifier",
                     "src": "3339:13:34"
                   }
                 ],
-                "id": 12746,
+                "id": 12764,
                 "name": "ModifierInvocation",
                 "src": "3327:26:34"
               },
@@ -3012,11 +3012,11 @@ export const DharmaMultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 12613,
+                      "referencedDeclaration": 12631,
                       "type": "modifier (uint256)",
                       "value": "insufficientlyConfirmed"
                     },
-                    "id": 12747,
+                    "id": 12765,
                     "name": "Identifier",
                     "src": "3362:23:34"
                   },
@@ -3026,16 +3026,16 @@ export const DharmaMultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 12733,
+                      "referencedDeclaration": 12751,
                       "type": "uint256",
                       "value": "transactionId"
                     },
-                    "id": 12748,
+                    "id": 12766,
                     "name": "Identifier",
                     "src": "3386:13:34"
                   }
                 ],
-                "id": 12749,
+                "id": 12767,
                 "name": "ModifierInvocation",
                 "src": "3362:38:34"
               },
@@ -3080,11 +3080,11 @@ export const DharmaMultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 12967,
+                                      "referencedDeclaration": 12985,
                                       "type": "mapping(uint256 => mapping(address => bool))",
                                       "value": "confirmations"
                                     },
-                                    "id": 12751,
+                                    "id": 12769,
                                     "name": "Identifier",
                                     "src": "3415:13:34"
                                   },
@@ -3094,16 +3094,16 @@ export const DharmaMultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 12733,
+                                      "referencedDeclaration": 12751,
                                       "type": "uint256",
                                       "value": "transactionId"
                                     },
-                                    "id": 12752,
+                                    "id": 12770,
                                     "name": "Identifier",
                                     "src": "3429:13:34"
                                   }
                                 ],
-                                "id": 12755,
+                                "id": 12773,
                                 "name": "IndexAccess",
                                 "src": "3415:28:34"
                               },
@@ -3125,21 +3125,21 @@ export const DharmaMultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15815,
+                                      "referencedDeclaration": 15833,
                                       "type": "msg",
                                       "value": "msg"
                                     },
-                                    "id": 12753,
+                                    "id": 12771,
                                     "name": "Identifier",
                                     "src": "3444:3:34"
                                   }
                                 ],
-                                "id": 12754,
+                                "id": 12772,
                                 "name": "MemberAccess",
                                 "src": "3444:10:34"
                               }
                             ],
-                            "id": 12756,
+                            "id": 12774,
                             "name": "IndexAccess",
                             "src": "3415:40:34"
                           },
@@ -3156,17 +3156,17 @@ export const DharmaMultiSigWallet =
                               "type": "bool",
                               "value": "false"
                             },
-                            "id": 12757,
+                            "id": 12775,
                             "name": "Literal",
                             "src": "3458:5:34"
                           }
                         ],
-                        "id": 12758,
+                        "id": 12776,
                         "name": "Assignment",
                         "src": "3415:48:34"
                       }
                     ],
-                    "id": 12759,
+                    "id": 12777,
                     "name": "ExpressionStatement",
                     "src": "3415:48:34"
                   },
@@ -3202,11 +3202,11 @@ export const DharmaMultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12924,
+                              "referencedDeclaration": 12942,
                               "type": "function (address,uint256)",
                               "value": "Revocation"
                             },
-                            "id": 12760,
+                            "id": 12778,
                             "name": "Identifier",
                             "src": "3473:10:34"
                           },
@@ -3228,16 +3228,16 @@ export const DharmaMultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15815,
+                                  "referencedDeclaration": 15833,
                                   "type": "msg",
                                   "value": "msg"
                                 },
-                                "id": 12761,
+                                "id": 12779,
                                 "name": "Identifier",
                                 "src": "3484:3:34"
                               }
                             ],
-                            "id": 12762,
+                            "id": 12780,
                             "name": "MemberAccess",
                             "src": "3484:10:34"
                           },
@@ -3247,31 +3247,31 @@ export const DharmaMultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12733,
+                              "referencedDeclaration": 12751,
                               "type": "uint256",
                               "value": "transactionId"
                             },
-                            "id": 12763,
+                            "id": 12781,
                             "name": "Identifier",
                             "src": "3496:13:34"
                           }
                         ],
-                        "id": 12764,
+                        "id": 12782,
                         "name": "FunctionCall",
                         "src": "3473:37:34"
                       }
                     ],
-                    "id": 12765,
+                    "id": 12783,
                     "name": "ExpressionStatement",
                     "src": "3473:37:34"
                   }
                 ],
-                "id": 12766,
+                "id": 12784,
                 "name": "Block",
                 "src": "3405:112:34"
               }
             ],
-            "id": 12767,
+            "id": 12785,
             "name": "FunctionDefinition",
             "src": "3179:338:34"
           },
@@ -3282,9 +3282,9 @@ export const DharmaMultiSigWallet =
               "isConstructor": false,
               "name": "executeTransaction",
               "payable": false,
-              "scope": 12910,
+              "scope": 12928,
               "stateMutability": "nonpayable",
-              "superFunction": 13544,
+              "superFunction": 13562,
               "visibility": "public"
             },
             "children": [
@@ -3294,7 +3294,7 @@ export const DharmaMultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "transactionId",
-                      "scope": 12786,
+                      "scope": 12804,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -3307,17 +3307,17 @@ export const DharmaMultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 12768,
+                        "id": 12786,
                         "name": "ElementaryTypeName",
                         "src": "3674:4:34"
                       }
                     ],
-                    "id": 12769,
+                    "id": 12787,
                     "name": "VariableDeclaration",
                     "src": "3674:18:34"
                   }
                 ],
-                "id": 12770,
+                "id": 12788,
                 "name": "ParameterList",
                 "src": "3673:20:34"
               },
@@ -3328,7 +3328,7 @@ export const DharmaMultiSigWallet =
                   ]
                 },
                 "children": [],
-                "id": 12780,
+                "id": 12798,
                 "name": "ParameterList",
                 "src": "3829:0:34"
               },
@@ -3340,11 +3340,11 @@ export const DharmaMultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13087,
+                      "referencedDeclaration": 13105,
                       "type": "modifier (uint256)",
                       "value": "notExecuted"
                     },
-                    "id": 12771,
+                    "id": 12789,
                     "name": "Identifier",
                     "src": "3717:11:34"
                   },
@@ -3354,16 +3354,16 @@ export const DharmaMultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 12769,
+                      "referencedDeclaration": 12787,
                       "type": "uint256",
                       "value": "transactionId"
                     },
-                    "id": 12772,
+                    "id": 12790,
                     "name": "Identifier",
                     "src": "3729:13:34"
                   }
                 ],
-                "id": 12773,
+                "id": 12791,
                 "name": "ModifierInvocation",
                 "src": "3717:26:34"
               },
@@ -3375,11 +3375,11 @@ export const DharmaMultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 12600,
+                      "referencedDeclaration": 12618,
                       "type": "modifier (uint256)",
                       "value": "sufficientlyConfirmed"
                     },
-                    "id": 12774,
+                    "id": 12792,
                     "name": "Identifier",
                     "src": "3752:21:34"
                   },
@@ -3389,16 +3389,16 @@ export const DharmaMultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 12769,
+                      "referencedDeclaration": 12787,
                       "type": "uint256",
                       "value": "transactionId"
                     },
-                    "id": 12775,
+                    "id": 12793,
                     "name": "Identifier",
                     "src": "3774:13:34"
                   }
                 ],
-                "id": 12776,
+                "id": 12794,
                 "name": "ModifierInvocation",
                 "src": "3752:36:34"
               },
@@ -3410,11 +3410,11 @@ export const DharmaMultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 12630,
+                      "referencedDeclaration": 12648,
                       "type": "modifier (uint256)",
                       "value": "pastTimeLock"
                     },
-                    "id": 12777,
+                    "id": 12795,
                     "name": "Identifier",
                     "src": "3797:12:34"
                   },
@@ -3424,16 +3424,16 @@ export const DharmaMultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 12769,
+                      "referencedDeclaration": 12787,
                       "type": "uint256",
                       "value": "transactionId"
                     },
-                    "id": 12778,
+                    "id": 12796,
                     "name": "Identifier",
                     "src": "3810:13:34"
                   }
                 ],
-                "id": 12779,
+                "id": 12797,
                 "name": "ModifierInvocation",
                 "src": "3797:27:34"
               },
@@ -3467,11 +3467,11 @@ export const DharmaMultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12849,
+                              "referencedDeclaration": 12867,
                               "type": "function (uint256)",
                               "value": "_executeTransaction"
                             },
-                            "id": 12781,
+                            "id": 12799,
                             "name": "Identifier",
                             "src": "3839:19:34"
                           },
@@ -3481,31 +3481,31 @@ export const DharmaMultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12769,
+                              "referencedDeclaration": 12787,
                               "type": "uint256",
                               "value": "transactionId"
                             },
-                            "id": 12782,
+                            "id": 12800,
                             "name": "Identifier",
                             "src": "3859:13:34"
                           }
                         ],
-                        "id": 12783,
+                        "id": 12801,
                         "name": "FunctionCall",
                         "src": "3839:34:34"
                       }
                     ],
-                    "id": 12784,
+                    "id": 12802,
                     "name": "ExpressionStatement",
                     "src": "3839:34:34"
                   }
                 ],
-                "id": 12785,
+                "id": 12803,
                 "name": "Block",
                 "src": "3829:51:34"
               }
             ],
-            "id": 12786,
+            "id": 12804,
             "name": "FunctionDefinition",
             "src": "3646:234:34"
           },
@@ -3516,7 +3516,7 @@ export const DharmaMultiSigWallet =
               "isConstructor": false,
               "name": "executePauseTransactionImmediately",
               "payable": false,
-              "scope": 12910,
+              "scope": 12928,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -3528,7 +3528,7 @@ export const DharmaMultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "transactionId",
-                      "scope": 12805,
+                      "scope": 12823,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -3541,17 +3541,17 @@ export const DharmaMultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 12787,
+                        "id": 12805,
                         "name": "ElementaryTypeName",
                         "src": "4141:4:34"
                       }
                     ],
-                    "id": 12788,
+                    "id": 12806,
                     "name": "VariableDeclaration",
                     "src": "4141:18:34"
                   }
                 ],
-                "id": 12789,
+                "id": 12807,
                 "name": "ParameterList",
                 "src": "4140:20:34"
               },
@@ -3562,7 +3562,7 @@ export const DharmaMultiSigWallet =
                   ]
                 },
                 "children": [],
-                "id": 12799,
+                "id": 12817,
                 "name": "ParameterList",
                 "src": "4305:0:34"
               },
@@ -3574,11 +3574,11 @@ export const DharmaMultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13087,
+                      "referencedDeclaration": 13105,
                       "type": "modifier (uint256)",
                       "value": "notExecuted"
                     },
-                    "id": 12790,
+                    "id": 12808,
                     "name": "Identifier",
                     "src": "4184:11:34"
                   },
@@ -3588,16 +3588,16 @@ export const DharmaMultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 12788,
+                      "referencedDeclaration": 12806,
                       "type": "uint256",
                       "value": "transactionId"
                     },
-                    "id": 12791,
+                    "id": 12809,
                     "name": "Identifier",
                     "src": "4196:13:34"
                   }
                 ],
-                "id": 12792,
+                "id": 12810,
                 "name": "ModifierInvocation",
                 "src": "4184:26:34"
               },
@@ -3609,11 +3609,11 @@ export const DharmaMultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 12600,
+                      "referencedDeclaration": 12618,
                       "type": "modifier (uint256)",
                       "value": "sufficientlyConfirmed"
                     },
-                    "id": 12793,
+                    "id": 12811,
                     "name": "Identifier",
                     "src": "4219:21:34"
                   },
@@ -3623,16 +3623,16 @@ export const DharmaMultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 12788,
+                      "referencedDeclaration": 12806,
                       "type": "uint256",
                       "value": "transactionId"
                     },
-                    "id": 12794,
+                    "id": 12812,
                     "name": "Identifier",
                     "src": "4241:13:34"
                   }
                 ],
-                "id": 12795,
+                "id": 12813,
                 "name": "ModifierInvocation",
                 "src": "4219:36:34"
               },
@@ -3644,11 +3644,11 @@ export const DharmaMultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 12649,
+                      "referencedDeclaration": 12667,
                       "type": "modifier (uint256)",
                       "value": "validPauseTransaction"
                     },
-                    "id": 12796,
+                    "id": 12814,
                     "name": "Identifier",
                     "src": "4264:21:34"
                   },
@@ -3658,16 +3658,16 @@ export const DharmaMultiSigWallet =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 12788,
+                      "referencedDeclaration": 12806,
                       "type": "uint256",
                       "value": "transactionId"
                     },
-                    "id": 12797,
+                    "id": 12815,
                     "name": "Identifier",
                     "src": "4286:13:34"
                   }
                 ],
-                "id": 12798,
+                "id": 12816,
                 "name": "ModifierInvocation",
                 "src": "4264:36:34"
               },
@@ -3701,11 +3701,11 @@ export const DharmaMultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12849,
+                              "referencedDeclaration": 12867,
                               "type": "function (uint256)",
                               "value": "_executeTransaction"
                             },
-                            "id": 12800,
+                            "id": 12818,
                             "name": "Identifier",
                             "src": "4315:19:34"
                           },
@@ -3715,31 +3715,31 @@ export const DharmaMultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12788,
+                              "referencedDeclaration": 12806,
                               "type": "uint256",
                               "value": "transactionId"
                             },
-                            "id": 12801,
+                            "id": 12819,
                             "name": "Identifier",
                             "src": "4335:13:34"
                           }
                         ],
-                        "id": 12802,
+                        "id": 12820,
                         "name": "FunctionCall",
                         "src": "4315:34:34"
                       }
                     ],
-                    "id": 12803,
+                    "id": 12821,
                     "name": "ExpressionStatement",
                     "src": "4315:34:34"
                   }
                 ],
-                "id": 12804,
+                "id": 12822,
                 "name": "Block",
                 "src": "4305:51:34"
               }
             ],
-            "id": 12805,
+            "id": 12823,
             "name": "FunctionDefinition",
             "src": "4097:259:34"
           },
@@ -3753,7 +3753,7 @@ export const DharmaMultiSigWallet =
               ],
               "name": "_executeTransaction",
               "payable": false,
-              "scope": 12910,
+              "scope": 12928,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "internal"
@@ -3765,7 +3765,7 @@ export const DharmaMultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "transactionId",
-                      "scope": 12849,
+                      "scope": 12867,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -3778,17 +3778,17 @@ export const DharmaMultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 12806,
+                        "id": 12824,
                         "name": "ElementaryTypeName",
                         "src": "4577:4:34"
                       }
                     ],
-                    "id": 12807,
+                    "id": 12825,
                     "name": "VariableDeclaration",
                     "src": "4577:18:34"
                   }
                 ],
-                "id": 12808,
+                "id": 12826,
                 "name": "ParameterList",
                 "src": "4576:20:34"
               },
@@ -3799,7 +3799,7 @@ export const DharmaMultiSigWallet =
                   ]
                 },
                 "children": [],
-                "id": 12809,
+                "id": 12827,
                 "name": "ParameterList",
                 "src": "4618:0:34"
               },
@@ -3808,7 +3808,7 @@ export const DharmaMultiSigWallet =
                   {
                     "attributes": {
                       "assignments": [
-                        12811
+                        12829
                       ]
                     },
                     "children": [
@@ -3816,7 +3816,7 @@ export const DharmaMultiSigWallet =
                         "attributes": {
                           "constant": false,
                           "name": "txn",
-                          "scope": 12849,
+                          "scope": 12867,
                           "stateVariable": false,
                           "storageLocation": "storage",
                           "type": "struct MultiSigWallet.Transaction storage pointer",
@@ -3828,15 +3828,15 @@ export const DharmaMultiSigWallet =
                             "attributes": {
                               "contractScope": null,
                               "name": "Transaction",
-                              "referencedDeclaration": 12987,
+                              "referencedDeclaration": 13005,
                               "type": "struct MultiSigWallet.Transaction storage pointer"
                             },
-                            "id": 12810,
+                            "id": 12828,
                             "name": "UserDefinedTypeName",
                             "src": "4628:11:34"
                           }
                         ],
-                        "id": 12811,
+                        "id": 12829,
                         "name": "VariableDeclaration",
                         "src": "4628:23:34"
                       },
@@ -3856,11 +3856,11 @@ export const DharmaMultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12961,
+                              "referencedDeclaration": 12979,
                               "type": "mapping(uint256 => struct MultiSigWallet.Transaction storage ref)",
                               "value": "transactions"
                             },
-                            "id": 12812,
+                            "id": 12830,
                             "name": "Identifier",
                             "src": "4654:12:34"
                           },
@@ -3870,21 +3870,21 @@ export const DharmaMultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12807,
+                              "referencedDeclaration": 12825,
                               "type": "uint256",
                               "value": "transactionId"
                             },
-                            "id": 12813,
+                            "id": 12831,
                             "name": "Identifier",
                             "src": "4667:13:34"
                           }
                         ],
-                        "id": 12814,
+                        "id": 12832,
                         "name": "IndexAccess",
                         "src": "4654:27:34"
                       }
                     ],
-                    "id": 12815,
+                    "id": 12833,
                     "name": "VariableDeclarationStatement",
                     "src": "4628:53:34"
                   },
@@ -3909,7 +3909,7 @@ export const DharmaMultiSigWallet =
                               "isPure": false,
                               "lValueRequested": true,
                               "member_name": "executed",
-                              "referencedDeclaration": 12986,
+                              "referencedDeclaration": 13004,
                               "type": "bool"
                             },
                             "children": [
@@ -3919,16 +3919,16 @@ export const DharmaMultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12811,
+                                  "referencedDeclaration": 12829,
                                   "type": "struct MultiSigWallet.Transaction storage pointer",
                                   "value": "txn"
                                 },
-                                "id": 12816,
+                                "id": 12834,
                                 "name": "Identifier",
                                 "src": "4691:3:34"
                               }
                             ],
-                            "id": 12818,
+                            "id": 12836,
                             "name": "MemberAccess",
                             "src": "4691:12:34"
                           },
@@ -3945,17 +3945,17 @@ export const DharmaMultiSigWallet =
                               "type": "bool",
                               "value": "true"
                             },
-                            "id": 12819,
+                            "id": 12837,
                             "name": "Literal",
                             "src": "4706:4:34"
                           }
                         ],
-                        "id": 12820,
+                        "id": 12838,
                         "name": "Assignment",
                         "src": "4691:19:34"
                       }
                     ],
-                    "id": 12821,
+                    "id": 12839,
                     "name": "ExpressionStatement",
                     "src": "4691:19:34"
                   },
@@ -4033,7 +4033,7 @@ export const DharmaMultiSigWallet =
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "destination",
-                                          "referencedDeclaration": 12980,
+                                          "referencedDeclaration": 12998,
                                           "type": "address"
                                         },
                                         "children": [
@@ -4043,26 +4043,26 @@ export const DharmaMultiSigWallet =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 12811,
+                                              "referencedDeclaration": 12829,
                                               "type": "struct MultiSigWallet.Transaction storage pointer",
                                               "value": "txn"
                                             },
-                                            "id": 12822,
+                                            "id": 12840,
                                             "name": "Identifier",
                                             "src": "4724:3:34"
                                           }
                                         ],
-                                        "id": 12823,
+                                        "id": 12841,
                                         "name": "MemberAccess",
                                         "src": "4724:15:34"
                                       }
                                     ],
-                                    "id": 12824,
+                                    "id": 12842,
                                     "name": "MemberAccess",
                                     "src": "4724:20:34"
                                   }
                                 ],
-                                "id": 12825,
+                                "id": 12843,
                                 "name": "MemberAccess",
                                 "src": "4724:26:34"
                               },
@@ -4074,7 +4074,7 @@ export const DharmaMultiSigWallet =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "value",
-                                  "referencedDeclaration": 12982,
+                                  "referencedDeclaration": 13000,
                                   "type": "uint256"
                                 },
                                 "children": [
@@ -4084,21 +4084,21 @@ export const DharmaMultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 12811,
+                                      "referencedDeclaration": 12829,
                                       "type": "struct MultiSigWallet.Transaction storage pointer",
                                       "value": "txn"
                                     },
-                                    "id": 12826,
+                                    "id": 12844,
                                     "name": "Identifier",
                                     "src": "4751:3:34"
                                   }
                                 ],
-                                "id": 12827,
+                                "id": 12845,
                                 "name": "MemberAccess",
                                 "src": "4751:9:34"
                               }
                             ],
-                            "id": 12828,
+                            "id": 12846,
                             "name": "FunctionCall",
                             "src": "4724:37:34"
                           },
@@ -4110,7 +4110,7 @@ export const DharmaMultiSigWallet =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "data",
-                              "referencedDeclaration": 12984,
+                              "referencedDeclaration": 13002,
                               "type": "bytes storage ref"
                             },
                             "children": [
@@ -4120,21 +4120,21 @@ export const DharmaMultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12811,
+                                  "referencedDeclaration": 12829,
                                   "type": "struct MultiSigWallet.Transaction storage pointer",
                                   "value": "txn"
                                 },
-                                "id": 12829,
+                                "id": 12847,
                                 "name": "Identifier",
                                 "src": "4762:3:34"
                               }
                             ],
-                            "id": 12830,
+                            "id": 12848,
                             "name": "MemberAccess",
                             "src": "4762:8:34"
                           }
                         ],
-                        "id": 12831,
+                        "id": 12849,
                         "name": "FunctionCall",
                         "src": "4724:47:34"
                       },
@@ -4166,11 +4166,11 @@ export const DharmaMultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12932,
+                                  "referencedDeclaration": 12950,
                                   "type": "function (uint256)",
                                   "value": "Execution"
                                 },
-                                "id": 12832,
+                                "id": 12850,
                                 "name": "Identifier",
                                 "src": "4785:9:34"
                               },
@@ -4180,21 +4180,21 @@ export const DharmaMultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12807,
+                                  "referencedDeclaration": 12825,
                                   "type": "uint256",
                                   "value": "transactionId"
                                 },
-                                "id": 12833,
+                                "id": 12851,
                                 "name": "Identifier",
                                 "src": "4795:13:34"
                               }
                             ],
-                            "id": 12834,
+                            "id": 12852,
                             "name": "FunctionCall",
                             "src": "4785:24:34"
                           }
                         ],
-                        "id": 12835,
+                        "id": 12853,
                         "name": "ExpressionStatement",
                         "src": "4785:24:34"
                       },
@@ -4228,11 +4228,11 @@ export const DharmaMultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 12936,
+                                      "referencedDeclaration": 12954,
                                       "type": "function (uint256)",
                                       "value": "ExecutionFailure"
                                     },
-                                    "id": 12836,
+                                    "id": 12854,
                                     "name": "Identifier",
                                     "src": "4838:16:34"
                                   },
@@ -4242,21 +4242,21 @@ export const DharmaMultiSigWallet =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 12807,
+                                      "referencedDeclaration": 12825,
                                       "type": "uint256",
                                       "value": "transactionId"
                                     },
-                                    "id": 12837,
+                                    "id": 12855,
                                     "name": "Identifier",
                                     "src": "4855:13:34"
                                   }
                                 ],
-                                "id": 12838,
+                                "id": 12856,
                                 "name": "FunctionCall",
                                 "src": "4838:31:34"
                               }
                             ],
-                            "id": 12839,
+                            "id": 12857,
                             "name": "ExpressionStatement",
                             "src": "4838:31:34"
                           },
@@ -4281,7 +4281,7 @@ export const DharmaMultiSigWallet =
                                       "isPure": false,
                                       "lValueRequested": true,
                                       "member_name": "executed",
-                                      "referencedDeclaration": 12986,
+                                      "referencedDeclaration": 13004,
                                       "type": "bool"
                                     },
                                     "children": [
@@ -4291,16 +4291,16 @@ export const DharmaMultiSigWallet =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 12811,
+                                          "referencedDeclaration": 12829,
                                           "type": "struct MultiSigWallet.Transaction storage pointer",
                                           "value": "txn"
                                         },
-                                        "id": 12840,
+                                        "id": 12858,
                                         "name": "Identifier",
                                         "src": "4883:3:34"
                                       }
                                     ],
-                                    "id": 12842,
+                                    "id": 12860,
                                     "name": "MemberAccess",
                                     "src": "4883:12:34"
                                   },
@@ -4317,37 +4317,37 @@ export const DharmaMultiSigWallet =
                                       "type": "bool",
                                       "value": "false"
                                     },
-                                    "id": 12843,
+                                    "id": 12861,
                                     "name": "Literal",
                                     "src": "4898:5:34"
                                   }
                                 ],
-                                "id": 12844,
+                                "id": 12862,
                                 "name": "Assignment",
                                 "src": "4883:20:34"
                               }
                             ],
-                            "id": 12845,
+                            "id": 12863,
                             "name": "ExpressionStatement",
                             "src": "4883:20:34"
                           }
                         ],
-                        "id": 12846,
+                        "id": 12864,
                         "name": "Block",
                         "src": "4824:90:34"
                       }
                     ],
-                    "id": 12847,
+                    "id": 12865,
                     "name": "IfStatement",
                     "src": "4720:194:34"
                   }
                 ],
-                "id": 12848,
+                "id": 12866,
                 "name": "Block",
                 "src": "4618:302:34"
               }
             ],
-            "id": 12849,
+            "id": 12867,
             "name": "FunctionDefinition",
             "src": "4548:372:34"
           },
@@ -4361,7 +4361,7 @@ export const DharmaMultiSigWallet =
               ],
               "name": "_setConfirmationTime",
               "payable": false,
-              "scope": 12910,
+              "scope": 12928,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "internal"
@@ -4373,7 +4373,7 @@ export const DharmaMultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "transactionId",
-                      "scope": 12868,
+                      "scope": 12886,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -4386,12 +4386,12 @@ export const DharmaMultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 12850,
+                        "id": 12868,
                         "name": "ElementaryTypeName",
                         "src": "5104:4:34"
                       }
                     ],
-                    "id": 12851,
+                    "id": 12869,
                     "name": "VariableDeclaration",
                     "src": "5104:18:34"
                   },
@@ -4399,7 +4399,7 @@ export const DharmaMultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "confirmationTime",
-                      "scope": 12868,
+                      "scope": 12886,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -4412,17 +4412,17 @@ export const DharmaMultiSigWallet =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 12852,
+                        "id": 12870,
                         "name": "ElementaryTypeName",
                         "src": "5124:4:34"
                       }
                     ],
-                    "id": 12853,
+                    "id": 12871,
                     "name": "VariableDeclaration",
                     "src": "5124:21:34"
                   }
                 ],
-                "id": 12854,
+                "id": 12872,
                 "name": "ParameterList",
                 "src": "5103:43:34"
               },
@@ -4433,7 +4433,7 @@ export const DharmaMultiSigWallet =
                   ]
                 },
                 "children": [],
-                "id": 12855,
+                "id": 12873,
                 "name": "ParameterList",
                 "src": "5168:0:34"
               },
@@ -4468,11 +4468,11 @@ export const DharmaMultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12588,
+                                  "referencedDeclaration": 12606,
                                   "type": "mapping(uint256 => uint256)",
                                   "value": "transactionConfirmedBlockTimestamp"
                                 },
-                                "id": 12856,
+                                "id": 12874,
                                 "name": "Identifier",
                                 "src": "5178:34:34"
                               },
@@ -4482,16 +4482,16 @@ export const DharmaMultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12851,
+                                  "referencedDeclaration": 12869,
                                   "type": "uint256",
                                   "value": "transactionId"
                                 },
-                                "id": 12857,
+                                "id": 12875,
                                 "name": "Identifier",
                                 "src": "5213:13:34"
                               }
                             ],
-                            "id": 12858,
+                            "id": 12876,
                             "name": "IndexAccess",
                             "src": "5178:49:34"
                           },
@@ -4501,21 +4501,21 @@ export const DharmaMultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12853,
+                              "referencedDeclaration": 12871,
                               "type": "uint256",
                               "value": "confirmationTime"
                             },
-                            "id": 12859,
+                            "id": 12877,
                             "name": "Identifier",
                             "src": "5230:16:34"
                           }
                         ],
-                        "id": 12860,
+                        "id": 12878,
                         "name": "Assignment",
                         "src": "5178:68:34"
                       }
                     ],
-                    "id": 12861,
+                    "id": 12879,
                     "name": "ExpressionStatement",
                     "src": "5178:68:34"
                   },
@@ -4551,11 +4551,11 @@ export const DharmaMultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12578,
+                              "referencedDeclaration": 12596,
                               "type": "function (uint256,uint256)",
                               "value": "ConfirmationTimeSet"
                             },
-                            "id": 12862,
+                            "id": 12880,
                             "name": "Identifier",
                             "src": "5256:19:34"
                           },
@@ -4565,11 +4565,11 @@ export const DharmaMultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12851,
+                              "referencedDeclaration": 12869,
                               "type": "uint256",
                               "value": "transactionId"
                             },
-                            "id": 12863,
+                            "id": 12881,
                             "name": "Identifier",
                             "src": "5276:13:34"
                           },
@@ -4579,31 +4579,31 @@ export const DharmaMultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12853,
+                              "referencedDeclaration": 12871,
                               "type": "uint256",
                               "value": "confirmationTime"
                             },
-                            "id": 12864,
+                            "id": 12882,
                             "name": "Identifier",
                             "src": "5291:16:34"
                           }
                         ],
-                        "id": 12865,
+                        "id": 12883,
                         "name": "FunctionCall",
                         "src": "5256:52:34"
                       }
                     ],
-                    "id": 12866,
+                    "id": 12884,
                     "name": "ExpressionStatement",
                     "src": "5256:52:34"
                   }
                 ],
-                "id": 12867,
+                "id": 12885,
                 "name": "Block",
                 "src": "5168:147:34"
               }
             ],
-            "id": 12868,
+            "id": 12886,
             "name": "FunctionDefinition",
             "src": "5074:241:34"
           },
@@ -4617,7 +4617,7 @@ export const DharmaMultiSigWallet =
               ],
               "name": "_isPauseFunctionTransaction",
               "payable": false,
-              "scope": 12910,
+              "scope": 12928,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "internal"
@@ -4629,7 +4629,7 @@ export const DharmaMultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "data",
-                      "scope": 12909,
+                      "scope": 12927,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes memory",
@@ -4642,17 +4642,17 @@ export const DharmaMultiSigWallet =
                           "name": "bytes",
                           "type": "bytes storage pointer"
                         },
-                        "id": 12869,
+                        "id": 12887,
                         "name": "ElementaryTypeName",
                         "src": "5657:5:34"
                       }
                     ],
-                    "id": 12870,
+                    "id": 12888,
                     "name": "VariableDeclaration",
                     "src": "5657:10:34"
                   }
                 ],
-                "id": 12871,
+                "id": 12889,
                 "name": "ParameterList",
                 "src": "5656:12:34"
               },
@@ -4662,7 +4662,7 @@ export const DharmaMultiSigWallet =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 12909,
+                      "scope": 12927,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -4675,17 +4675,17 @@ export const DharmaMultiSigWallet =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 12872,
+                        "id": 12890,
                         "name": "ElementaryTypeName",
                         "src": "5716:4:34"
                       }
                     ],
-                    "id": 12873,
+                    "id": 12891,
                     "name": "VariableDeclaration",
                     "src": "5716:4:34"
                   }
                 ],
-                "id": 12874,
+                "id": 12892,
                 "name": "ParameterList",
                 "src": "5715:6:34"
               },
@@ -4694,7 +4694,7 @@ export const DharmaMultiSigWallet =
                   {
                     "attributes": {
                       "assignments": [
-                        12876
+                        12894
                       ]
                     },
                     "children": [
@@ -4702,7 +4702,7 @@ export const DharmaMultiSigWallet =
                         "attributes": {
                           "constant": false,
                           "name": "pauseFunctionSignature",
-                          "scope": 12909,
+                          "scope": 12927,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bytes4",
@@ -4715,12 +4715,12 @@ export const DharmaMultiSigWallet =
                               "name": "bytes4",
                               "type": "bytes4"
                             },
-                            "id": 12875,
+                            "id": 12893,
                             "name": "ElementaryTypeName",
                             "src": "5736:6:34"
                           }
                         ],
-                        "id": 12876,
+                        "id": 12894,
                         "name": "VariableDeclaration",
                         "src": "5736:29:34"
                       },
@@ -4754,7 +4754,7 @@ export const DharmaMultiSigWallet =
                               "type": "type(bytes4)",
                               "value": "bytes4"
                             },
-                            "id": 12877,
+                            "id": 12895,
                             "name": "ElementaryTypeNameExpression",
                             "src": "5768:6:34"
                           },
@@ -4784,11 +4784,11 @@ export const DharmaMultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15809,
+                                  "referencedDeclaration": 15827,
                                   "type": "function () pure returns (bytes32)",
                                   "value": "keccak256"
                                 },
-                                "id": 12878,
+                                "id": 12896,
                                 "name": "Identifier",
                                 "src": "5775:9:34"
                               },
@@ -4805,22 +4805,22 @@ export const DharmaMultiSigWallet =
                                   "type": "literal_string \"pause()\"",
                                   "value": "pause()"
                                 },
-                                "id": 12879,
+                                "id": 12897,
                                 "name": "Literal",
                                 "src": "5785:9:34"
                               }
                             ],
-                            "id": 12880,
+                            "id": 12898,
                             "name": "FunctionCall",
                             "src": "5775:20:34"
                           }
                         ],
-                        "id": 12881,
+                        "id": 12899,
                         "name": "FunctionCall",
                         "src": "5768:28:34"
                       }
                     ],
-                    "id": 12882,
+                    "id": 12900,
                     "name": "VariableDeclarationStatement",
                     "src": "5736:60:34"
                   },
@@ -4829,7 +4829,7 @@ export const DharmaMultiSigWallet =
                       {
                         "attributes": {
                           "assignments": [
-                            12884
+                            12902
                           ]
                         },
                         "children": [
@@ -4837,7 +4837,7 @@ export const DharmaMultiSigWallet =
                             "attributes": {
                               "constant": false,
                               "name": "i",
-                              "scope": 12909,
+                              "scope": 12927,
                               "stateVariable": false,
                               "storageLocation": "default",
                               "type": "uint256",
@@ -4850,12 +4850,12 @@ export const DharmaMultiSigWallet =
                                   "name": "uint",
                                   "type": "uint256"
                                 },
-                                "id": 12883,
+                                "id": 12901,
                                 "name": "ElementaryTypeName",
                                 "src": "5811:4:34"
                               }
                             ],
-                            "id": 12884,
+                            "id": 12902,
                             "name": "VariableDeclaration",
                             "src": "5811:6:34"
                           },
@@ -4872,12 +4872,12 @@ export const DharmaMultiSigWallet =
                               "type": "int_const 0",
                               "value": "0"
                             },
-                            "id": 12885,
+                            "id": 12903,
                             "name": "Literal",
                             "src": "5820:1:34"
                           }
                         ],
-                        "id": 12886,
+                        "id": 12904,
                         "name": "VariableDeclarationStatement",
                         "src": "5811:10:34"
                       },
@@ -4902,11 +4902,11 @@ export const DharmaMultiSigWallet =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 12884,
+                              "referencedDeclaration": 12902,
                               "type": "uint256",
                               "value": "i"
                             },
-                            "id": 12887,
+                            "id": 12905,
                             "name": "Identifier",
                             "src": "5823:1:34"
                           },
@@ -4923,12 +4923,12 @@ export const DharmaMultiSigWallet =
                               "type": "int_const 4",
                               "value": "4"
                             },
-                            "id": 12888,
+                            "id": 12906,
                             "name": "Literal",
                             "src": "5827:1:34"
                           }
                         ],
-                        "id": 12889,
+                        "id": 12907,
                         "name": "BinaryOperation",
                         "src": "5823:5:34"
                       },
@@ -4952,21 +4952,21 @@ export const DharmaMultiSigWallet =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 12884,
+                                  "referencedDeclaration": 12902,
                                   "type": "uint256",
                                   "value": "i"
                                 },
-                                "id": 12890,
+                                "id": 12908,
                                 "name": "Identifier",
                                 "src": "5830:1:34"
                               }
                             ],
-                            "id": 12891,
+                            "id": 12909,
                             "name": "UnaryOperation",
                             "src": "5830:3:34"
                           }
                         ],
-                        "id": 12892,
+                        "id": 12910,
                         "name": "ExpressionStatement",
                         "src": "5830:3:34"
                       },
@@ -5008,11 +5008,11 @@ export const DharmaMultiSigWallet =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 12870,
+                                          "referencedDeclaration": 12888,
                                           "type": "bytes memory",
                                           "value": "data"
                                         },
-                                        "id": 12893,
+                                        "id": 12911,
                                         "name": "Identifier",
                                         "src": "5853:4:34"
                                       },
@@ -5022,16 +5022,16 @@ export const DharmaMultiSigWallet =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 12884,
+                                          "referencedDeclaration": 12902,
                                           "type": "uint256",
                                           "value": "i"
                                         },
-                                        "id": 12894,
+                                        "id": 12912,
                                         "name": "Identifier",
                                         "src": "5858:1:34"
                                       }
                                     ],
-                                    "id": 12895,
+                                    "id": 12913,
                                     "name": "IndexAccess",
                                     "src": "5853:7:34"
                                   },
@@ -5051,11 +5051,11 @@ export const DharmaMultiSigWallet =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 12876,
+                                          "referencedDeclaration": 12894,
                                           "type": "bytes4",
                                           "value": "pauseFunctionSignature"
                                         },
-                                        "id": 12896,
+                                        "id": 12914,
                                         "name": "Identifier",
                                         "src": "5864:22:34"
                                       },
@@ -5065,21 +5065,21 @@ export const DharmaMultiSigWallet =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 12884,
+                                          "referencedDeclaration": 12902,
                                           "type": "uint256",
                                           "value": "i"
                                         },
-                                        "id": 12897,
+                                        "id": 12915,
                                         "name": "Identifier",
                                         "src": "5887:1:34"
                                       }
                                     ],
-                                    "id": 12898,
+                                    "id": 12916,
                                     "name": "IndexAccess",
                                     "src": "5864:25:34"
                                   }
                                 ],
-                                "id": 12899,
+                                "id": 12917,
                                 "name": "BinaryOperation",
                                 "src": "5853:36:34"
                               },
@@ -5087,7 +5087,7 @@ export const DharmaMultiSigWallet =
                                 "children": [
                                   {
                                     "attributes": {
-                                      "functionReturnParameters": 12874
+                                      "functionReturnParameters": 12892
                                     },
                                     "children": [
                                       {
@@ -5103,38 +5103,38 @@ export const DharmaMultiSigWallet =
                                           "type": "bool",
                                           "value": "false"
                                         },
-                                        "id": 12900,
+                                        "id": 12918,
                                         "name": "Literal",
                                         "src": "5916:5:34"
                                       }
                                     ],
-                                    "id": 12901,
+                                    "id": 12919,
                                     "name": "Return",
                                     "src": "5909:12:34"
                                   }
                                 ],
-                                "id": 12902,
+                                "id": 12920,
                                 "name": "Block",
                                 "src": "5891:45:34"
                               }
                             ],
-                            "id": 12903,
+                            "id": 12921,
                             "name": "IfStatement",
                             "src": "5849:87:34"
                           }
                         ],
-                        "id": 12904,
+                        "id": 12922,
                         "name": "Block",
                         "src": "5835:111:34"
                       }
                     ],
-                    "id": 12905,
+                    "id": 12923,
                     "name": "ForStatement",
                     "src": "5806:140:34"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 12874
+                      "functionReturnParameters": 12892
                     },
                     "children": [
                       {
@@ -5150,32 +5150,32 @@ export const DharmaMultiSigWallet =
                           "type": "bool",
                           "value": "true"
                         },
-                        "id": 12906,
+                        "id": 12924,
                         "name": "Literal",
                         "src": "5963:4:34"
                       }
                     ],
-                    "id": 12907,
+                    "id": 12925,
                     "name": "Return",
                     "src": "5956:11:34"
                   }
                 ],
-                "id": 12908,
+                "id": 12926,
                 "name": "Block",
                 "src": "5726:248:34"
               }
             ],
-            "id": 12909,
+            "id": 12927,
             "name": "FunctionDefinition",
             "src": "5620:354:34"
           }
         ],
-        "id": 12910,
+        "id": 12928,
         "name": "ContractDefinition",
         "src": "642:5334:34"
       }
     ],
-    "id": 12911,
+    "id": 12929,
     "name": "SourceUnit",
     "src": "584:5393:34"
   },
@@ -5197,9 +5197,9 @@ export const DharmaMultiSigWallet =
     "70": {
       "events": {},
       "links": {},
-      "address": "0x739a4a303a4f67b611f5cc2ef1a0c871eb541b6c"
+      "address": "0xa31a3392862a63a805b7139cb0ae1a3c86217749"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-25T20:05:03.007Z"
+  "updatedAt": "2018-09-25T22:27:45.641Z"
 }
