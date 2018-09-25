@@ -230,11 +230,20 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
                 },
             );
 
+            await token.approve.sendTransactionAsync(
+                creditorProxy.address,
+                debtorBalanceAndAllowance,
+                {
+                    from: debtor,
+                },
+            );
+
             await token.setBalance.sendTransactionAsync(creditor, creditorBalanceAndAllowance, {
                 from: CONTRACT_OWNER,
             });
+
             await token.approve.sendTransactionAsync(
-                tokenTransferProxy.address,
+                creditorProxy.address,
                 creditorBalanceAndAllowance,
                 { from: creditor },
             );
@@ -608,7 +617,7 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
         });
 
         describe("User fills invalid debt order", () => {
-            describe("...when creditor has not granted the transfer proxy sufficient allowance", () => {
+            describe("...when creditor has not granted the creditor proxy contract sufficient allowance", () => {
                 before(async () => {
                     debtOffer = await offerFactory.generateDebtOffer();
                     await setupBalancesAndAllowances();
@@ -618,8 +627,9 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
                         web3,
                         TX_DEFAULTS,
                     );
+
                     await token.approve.sendTransactionAsync(
-                        tokenTransferProxy.address,
+                        creditorProxy.address,
                         debtOffer.getPrincipalAmount().plus(debtOffer.getCreditorFee().minus(1)),
                         { from: debtOffer.getCreditor() },
                     );

@@ -4,7 +4,6 @@ import * as ABIDecoder from "abi-decoder";
 import * as chai from "chai";
 import * as _ from "lodash";
 import * as moment from "moment";
-import * as Web3 from "web3";
 import * as Units from "../test_utils/units";
 
 import { LogDebtOfferCancelled, LogDebtOfferFilled, LogError } from "../logs/creditor_proxy";
@@ -18,7 +17,7 @@ import { RepaymentRouterContract } from "../../../types/generated/repayment_rout
 import { ContractRegistryContract } from "../../../types/generated/contract_registry";
 
 import { CreditorProxyErrorCodes } from "../../../types/errors";
-import { DebtOffer, SignedDebtOffer } from "../../../types/proxy/debt_offer";
+import { SignedDebtOffer } from "../../../types/proxy/debt_offer";
 
 import { BigNumberSetup } from "../test_utils/bignumber_setup";
 import ChaiSetup from "../test_utils/chai_setup";
@@ -281,7 +280,7 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
             );
             await mockPrincipalToken.mockAllowanceFor.sendTransactionAsync(
                 debtOffer.getCreditor(),
-                mockTokenTransferProxy.address,
+                creditorProxy.address,
                 creditorPayment,
             );
 
@@ -328,14 +327,14 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
 
                 it("should transfer principal + creditor fees to creditorProxy", async () => {
                     if (debtOffer.getPrincipalAmount().greaterThan(0)) {
-                        await expect(
-                            mockTokenTransferProxy.wasTransferFromCalledWith.callAsync(
-                                mockPrincipalToken.address,
-                                debtOffer.getCreditor(),
-                                creditorProxy.address,
-                                debtOffer.getPrincipalAmount().plus(debtOffer.getCreditorFee()),
-                            ),
-                        ).to.eventually.be.true;
+                        const creditorProxyBalance = await mockPrincipalToken.balanceOf.callAsync(
+                            creditorProxy.address,
+                        );
+                        const expectedBalance = await debtOffer
+                            .getPrincipalAmount()
+                            .plus(debtOffer.getCreditorFee());
+
+                        expect(creditorProxyBalance.toString()).to.eq(expectedBalance.toString());
                     }
                 });
 
@@ -444,7 +443,7 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
                     await setupMocks();
                     await mockPrincipalToken.mockAllowanceFor.sendTransactionAsync(
                         debtOffer.getCreditor(),
-                        mockTokenTransferProxy.address,
+                        creditorProxy.address,
                         debtOffer
                             .getPrincipalAmount()
                             .plus(debtOffer.getCreditorFee())

@@ -28,7 +28,8 @@ import "zeppelin-solidity/contracts/token/ERC20/ERC20.sol";
  * The CreditorProxy is a thin wrapper around the DebtKernel
  * It implements creditor-driven loans as specified by DIP-1
  *
- * Authors: Bo Henderson <bohendo> & Shivani Gupta <shivgupt>
+ * Authors: Bo Henderson <bohendo> & Shivani Gupta <shivgupt> & Dharma Team
+ * DIP: https://github.com/dharmaprotocol/DIPs/issues/1
  */
 contract CreditorProxy is Pausable {
     using SafeMath for uint;
@@ -147,15 +148,20 @@ contract CreditorProxy is Pausable {
             return NULL_ISSUANCE_HASH;
         }
 
-        // Transfer principal from creditor to creditorProxy
+        // Transfer principal from creditor to CreditorProxy
         if (totalCreditorPayment > 0) {
-            require(transferTokensFrom(
-                orderAddresses[4],
-                creditor,
-                address(this),
-                totalCreditorPayment
-            ));
+            require(
+                transferTokensFrom(
+                    orderAddresses[4],
+                    creditor,
+                    address(this),
+                    totalCreditorPayment
+                )
+            );
         }
+
+        // Grant allowance to the TokenTransferProxy for this contract.
+
 
         // Fill debt order with this contract playing the role of creditor
         bytes32 agreementId = contractRegistry.debtKernel().fillDebtOrder(
@@ -248,6 +254,7 @@ contract CreditorProxy is Pausable {
             getAllowance(principalToken, creditor) < totalCreditorPayment) {
             return false;
         }
+
         // ensure the token transfer proxy can transfer tokens from the creditor proxy
         if (getAllowance(principalToken, address(this)) < totalCreditorPayment) {
             require(setAllowance(principalToken, totalCreditorPayment));
@@ -294,7 +301,7 @@ contract CreditorProxy is Pausable {
     }
 
     /**
-     * Helper function for querying an address' allowance to Dharma's token transfer proxy.
+     * Helper function for querying this contract's allowance for transferring the given token.
      */
     function getAllowance(
         address token,
@@ -307,7 +314,7 @@ contract CreditorProxy is Pausable {
         // Limit gas to prevent reentrancy.
         return ERC20(token).allowance.gas(EXTERNAL_QUERY_GAS_LIMIT)(
             owner,
-            address(contractRegistry.tokenTransferProxy())
+            address(this)
         );
     }
 
@@ -327,24 +334,19 @@ contract CreditorProxy is Pausable {
         );
     }
 
+
     /**
-     * Helper function for transfering a specified amount of tokens between two parties
-     * using the token transfer proxy contract.
+     * Helper function for transferring a specified amount of tokens between two parties.
      */
     function transferTokensFrom(
-        address token,
-        address from,
-        address to,
-        uint amount
+        address _token,
+        address _from,
+        address _to,
+        uint _amount
     )
         internal
         returns (bool _success)
     {
-        return contractRegistry.tokenTransferProxy().transferFrom(
-            token,
-            from,
-            to,
-            amount
-        );
+        return ERC20(_token).transferFrom(_from, _to, _amount);
     }
 }
