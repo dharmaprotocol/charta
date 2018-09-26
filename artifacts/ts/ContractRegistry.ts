@@ -4780,5 +4780,5 @@ export const ContractRegistry =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-26T00:04:34.409Z"
+  "updatedAt": "2018-09-26T17:53:01.122Z"
 }

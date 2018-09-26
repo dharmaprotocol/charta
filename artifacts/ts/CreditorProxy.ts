@@ -8685,6 +8685,102 @@ export const CreditorProxy =
     "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
   },
   "networks": {
+    "42": {
+      "events": {
+        "0x07d3242876ac355520b94ab74873262d83b5b81dbd5da781118f78cee0bbe747": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "_creditor",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "_creditorCommitmentHash",
+              "type": "bytes32"
+            }
+          ],
+          "name": "LogDebtOfferCancelled",
+          "type": "event"
+        },
+        "0x44bca8cc6f9375e3d800b6361e71fdde37e4fc86bdc3a72c4f8f69bbd19a01f3": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "_creditor",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "_creditorCommitmentHash",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "name": "_agreementId",
+              "type": "bytes32"
+            }
+          ],
+          "name": "LogDebtOfferFilled",
+          "type": "event"
+        },
+        "0x2ced8b4371717a8c6ce644dc517a7eaf4c7c0b52e5ab304c4c7472b15588b102": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "_errorId",
+              "type": "uint8"
+            },
+            {
+              "indexed": true,
+              "name": "_creditor",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "_creditorCommitmentHash",
+              "type": "bytes32"
+            }
+          ],
+          "name": "LogError",
+          "type": "event"
+        },
+        "0x6985a02210a168e66602d3235cb6db0e70f92b3ba4d376a33c0f3d9434bff625": {
+          "anonymous": false,
+          "inputs": [],
+          "name": "Pause",
+          "type": "event"
+        },
+        "0x7805862f689e2f13df9f062ff482ad3ad112aca9e0847911ed832e158c525b33": {
+          "anonymous": false,
+          "inputs": [],
+          "name": "Unpause",
+          "type": "event"
+        },
+        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x993ab8a4d7fbf96bae7463bc416b7954c5889f32"
+    },
     "70": {
       "events": {
         "0x07d3242876ac355520b94ab74873262d83b5b81dbd5da781118f78cee0bbe747": {
@@ -8783,5 +8879,5 @@ export const CreditorProxy =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-26T00:04:34.416Z"
+  "updatedAt": "2018-09-26T17:53:01.116Z"
 }
