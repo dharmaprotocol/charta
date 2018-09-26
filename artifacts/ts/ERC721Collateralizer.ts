@@ -9644,9 +9644,9 @@ export const ERC721Collateralizer =
         }
       },
       "links": {},
-      "address": "0xd8136cbf23acd747470262e124749294cd6f6a3c"
+      "address": "0xb96fb1c8750a8ad6e866d0764e8979ad3e77aebd"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-25T22:27:45.419Z"
+  "updatedAt": "2018-09-26T00:04:34.092Z"
 }

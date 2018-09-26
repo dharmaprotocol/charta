@@ -1665,5 +1665,5 @@ export const MintableToken =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-25T22:27:32.235Z"
+  "updatedAt": "2018-09-26T00:04:13.380Z"
 }

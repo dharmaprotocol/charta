@@ -52752,9 +52752,9 @@ export const KittyCore =
     "70": {
       "events": {},
       "links": {},
-      "address": "0x59fb399e49acc666581b765f4b2c3aeabd0ffce5"
+      "address": "0x39ca484d86959d136e6c411920b8bd83c2c593bf"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-25T22:27:45.438Z"
+  "updatedAt": "2018-09-26T00:04:34.114Z"
 }

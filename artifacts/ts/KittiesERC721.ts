@@ -51816,5 +51816,5 @@ export const KittiesERC721 =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-25T22:27:31.891Z"
+  "updatedAt": "2018-09-26T00:04:12.965Z"
 }

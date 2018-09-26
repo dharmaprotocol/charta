@@ -6338,9 +6338,9 @@ export const DebtToken =
         }
       },
       "links": {},
-      "address": "0x0041ddb615724713d3081053288fef471712d2b5"
+      "address": "0x4f652ba5e259a0dca84441120b6494e7ca838588"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-25T22:27:45.414Z"
+  "updatedAt": "2018-09-26T00:04:34.088Z"
 }

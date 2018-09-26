@@ -51957,5 +51957,5 @@ export const KittyBase =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-25T22:27:32.020Z"
+  "updatedAt": "2018-09-26T00:04:13.112Z"
 }

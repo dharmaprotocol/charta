@@ -8779,9 +8779,9 @@ export const CreditorProxy =
         }
       },
       "links": {},
-      "address": "0xed21acfe18e737c90153c062625d080b0d68cad7"
+      "address": "0x956f8d1509586da308edd222ba7972de2d917b41"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-25T22:27:45.635Z"
+  "updatedAt": "2018-09-26T00:04:34.416Z"
 }
