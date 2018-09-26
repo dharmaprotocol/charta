@@ -251,7 +251,7 @@ export const ContractRegistry =
       },
       {
         "attributes": {
-          "SourceUnit": 14134,
+          "SourceUnit": 14152,
           "absolutePath": "zeppelin-solidity/contracts/ownership/Ownable.sol",
           "file": "zeppelin-solidity/contracts/ownership/Ownable.sol",
           "scope": 924,
@@ -281,7 +281,7 @@ export const ContractRegistry =
       },
       {
         "attributes": {
-          "SourceUnit": 2613,
+          "SourceUnit": 2631,
           "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/DebtKernel.sol",
           "file": "./DebtKernel.sol",
           "scope": 924,
@@ -296,7 +296,7 @@ export const ContractRegistry =
       },
       {
         "attributes": {
-          "SourceUnit": 3141,
+          "SourceUnit": 3159,
           "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/DebtRegistry.sol",
           "file": "./DebtRegistry.sol",
           "scope": 924,
@@ -311,7 +311,7 @@ export const ContractRegistry =
       },
       {
         "attributes": {
-          "SourceUnit": 3523,
+          "SourceUnit": 3541,
           "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/DebtToken.sol",
           "file": "./DebtToken.sol",
           "scope": 924,
@@ -326,7 +326,7 @@ export const ContractRegistry =
       },
       {
         "attributes": {
-          "SourceUnit": 4690,
+          "SourceUnit": 4708,
           "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/RepaymentRouter.sol",
           "file": "./RepaymentRouter.sol",
           "scope": 924,
@@ -341,7 +341,7 @@ export const ContractRegistry =
       },
       {
         "attributes": {
-          "SourceUnit": 5096,
+          "SourceUnit": 5114,
           "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/TokenRegistry.sol",
           "file": "./TokenRegistry.sol",
           "scope": 924,
@@ -356,7 +356,7 @@ export const ContractRegistry =
       },
       {
         "attributes": {
-          "SourceUnit": 5189,
+          "SourceUnit": 5207,
           "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/TokenTransferProxy.sol",
           "file": "./TokenTransferProxy.sol",
           "scope": 924,
@@ -372,14 +372,14 @@ export const ContractRegistry =
       {
         "attributes": {
           "contractDependencies": [
-            14133
+            14151
           ],
           "contractKind": "contract",
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
             923,
-            14133
+            14151
           ],
           "name": "ContractRegistry",
           "scope": 924
@@ -396,7 +396,7 @@ export const ContractRegistry =
                 "attributes": {
                   "contractScope": null,
                   "name": "Ownable",
-                  "referencedDeclaration": 14133,
+                  "referencedDeclaration": 14151,
                   "type": "contract Ownable"
                 },
                 "id": 625,
@@ -620,7 +620,7 @@ export const ContractRegistry =
                 "attributes": {
                   "contractScope": null,
                   "name": "DebtKernel",
-                  "referencedDeclaration": 2612,
+                  "referencedDeclaration": 2630,
                   "type": "contract DebtKernel"
                 },
                 "id": 645,
@@ -648,7 +648,7 @@ export const ContractRegistry =
                 "attributes": {
                   "contractScope": null,
                   "name": "DebtRegistry",
-                  "referencedDeclaration": 3140,
+                  "referencedDeclaration": 3158,
                   "type": "contract DebtRegistry"
                 },
                 "id": 647,
@@ -676,7 +676,7 @@ export const ContractRegistry =
                 "attributes": {
                   "contractScope": null,
                   "name": "DebtToken",
-                  "referencedDeclaration": 3522,
+                  "referencedDeclaration": 3540,
                   "type": "contract DebtToken"
                 },
                 "id": 649,
@@ -704,7 +704,7 @@ export const ContractRegistry =
                 "attributes": {
                   "contractScope": null,
                   "name": "RepaymentRouter",
-                  "referencedDeclaration": 4689,
+                  "referencedDeclaration": 4707,
                   "type": "contract RepaymentRouter"
                 },
                 "id": 651,
@@ -732,7 +732,7 @@ export const ContractRegistry =
                 "attributes": {
                   "contractScope": null,
                   "name": "TokenRegistry",
-                  "referencedDeclaration": 5095,
+                  "referencedDeclaration": 5113,
                   "type": "contract TokenRegistry"
                 },
                 "id": 653,
@@ -760,7 +760,7 @@ export const ContractRegistry =
                 "attributes": {
                   "contractScope": null,
                   "name": "TokenTransferProxy",
-                  "referencedDeclaration": 5188,
+                  "referencedDeclaration": 5206,
                   "type": "contract TokenTransferProxy"
                 },
                 "id": 655,
@@ -1133,7 +1133,7 @@ export const ContractRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2612,
+                                  "referencedDeclaration": 2630,
                                   "type": "type(contract DebtKernel)",
                                   "value": "DebtKernel"
                                 },
@@ -1223,7 +1223,7 @@ export const ContractRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3140,
+                                  "referencedDeclaration": 3158,
                                   "type": "type(contract DebtRegistry)",
                                   "value": "DebtRegistry"
                                 },
@@ -1313,7 +1313,7 @@ export const ContractRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3522,
+                                  "referencedDeclaration": 3540,
                                   "type": "type(contract DebtToken)",
                                   "value": "DebtToken"
                                 },
@@ -1403,7 +1403,7 @@ export const ContractRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4689,
+                                  "referencedDeclaration": 4707,
                                   "type": "type(contract RepaymentRouter)",
                                   "value": "RepaymentRouter"
                                 },
@@ -1493,7 +1493,7 @@ export const ContractRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5095,
+                                  "referencedDeclaration": 5113,
                                   "type": "type(contract TokenRegistry)",
                                   "value": "TokenRegistry"
                                 },
@@ -1583,7 +1583,7 @@ export const ContractRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5188,
+                                  "referencedDeclaration": 5206,
                                   "type": "type(contract TokenTransferProxy)",
                                   "value": "TokenTransferProxy"
                                 },
@@ -1728,7 +1728,7 @@ export const ContractRegistry =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 14107,
+                      "referencedDeclaration": 14125,
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
@@ -2229,7 +2229,7 @@ export const ContractRegistry =
                                             "attributes": {
                                               "argumentTypes": [
                                                 {
-                                                  "typeIdentifier": "t_contract$_DebtKernel_$2612",
+                                                  "typeIdentifier": "t_contract$_DebtKernel_$2630",
                                                   "typeString": "contract DebtKernel"
                                                 }
                                               ],
@@ -2404,7 +2404,7 @@ export const ContractRegistry =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 2612,
+                                              "referencedDeclaration": 2630,
                                               "type": "type(contract DebtKernel)",
                                               "value": "DebtKernel"
                                             },
@@ -2561,7 +2561,7 @@ export const ContractRegistry =
                                                 "attributes": {
                                                   "argumentTypes": [
                                                     {
-                                                      "typeIdentifier": "t_contract$_DebtRegistry_$3140",
+                                                      "typeIdentifier": "t_contract$_DebtRegistry_$3158",
                                                       "typeString": "contract DebtRegistry"
                                                     }
                                                   ],
@@ -2736,7 +2736,7 @@ export const ContractRegistry =
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 3140,
+                                                  "referencedDeclaration": 3158,
                                                   "type": "type(contract DebtRegistry)",
                                                   "value": "DebtRegistry"
                                                 },
@@ -2893,7 +2893,7 @@ export const ContractRegistry =
                                                     "attributes": {
                                                       "argumentTypes": [
                                                         {
-                                                          "typeIdentifier": "t_contract$_DebtToken_$3522",
+                                                          "typeIdentifier": "t_contract$_DebtToken_$3540",
                                                           "typeString": "contract DebtToken"
                                                         }
                                                       ],
@@ -3068,7 +3068,7 @@ export const ContractRegistry =
                                                       "overloadedDeclarations": [
                                                         null
                                                       ],
-                                                      "referencedDeclaration": 3522,
+                                                      "referencedDeclaration": 3540,
                                                       "type": "type(contract DebtToken)",
                                                       "value": "DebtToken"
                                                     },
@@ -3225,7 +3225,7 @@ export const ContractRegistry =
                                                         "attributes": {
                                                           "argumentTypes": [
                                                             {
-                                                              "typeIdentifier": "t_contract$_RepaymentRouter_$4689",
+                                                              "typeIdentifier": "t_contract$_RepaymentRouter_$4707",
                                                               "typeString": "contract RepaymentRouter"
                                                             }
                                                           ],
@@ -3400,7 +3400,7 @@ export const ContractRegistry =
                                                           "overloadedDeclarations": [
                                                             null
                                                           ],
-                                                          "referencedDeclaration": 4689,
+                                                          "referencedDeclaration": 4707,
                                                           "type": "type(contract RepaymentRouter)",
                                                           "value": "RepaymentRouter"
                                                         },
@@ -3557,7 +3557,7 @@ export const ContractRegistry =
                                                             "attributes": {
                                                               "argumentTypes": [
                                                                 {
-                                                                  "typeIdentifier": "t_contract$_TokenRegistry_$5095",
+                                                                  "typeIdentifier": "t_contract$_TokenRegistry_$5113",
                                                                   "typeString": "contract TokenRegistry"
                                                                 }
                                                               ],
@@ -3732,7 +3732,7 @@ export const ContractRegistry =
                                                               "overloadedDeclarations": [
                                                                 null
                                                               ],
-                                                              "referencedDeclaration": 5095,
+                                                              "referencedDeclaration": 5113,
                                                               "type": "type(contract TokenRegistry)",
                                                               "value": "TokenRegistry"
                                                             },
@@ -3889,7 +3889,7 @@ export const ContractRegistry =
                                                                 "attributes": {
                                                                   "argumentTypes": [
                                                                     {
-                                                                      "typeIdentifier": "t_contract$_TokenTransferProxy_$5188",
+                                                                      "typeIdentifier": "t_contract$_TokenTransferProxy_$5206",
                                                                       "typeString": "contract TokenTransferProxy"
                                                                     }
                                                                   ],
@@ -4064,7 +4064,7 @@ export const ContractRegistry =
                                                                   "overloadedDeclarations": [
                                                                     null
                                                                   ],
-                                                                  "referencedDeclaration": 5188,
+                                                                  "referencedDeclaration": 5206,
                                                                   "type": "type(contract TokenTransferProxy)",
                                                                   "value": "TokenTransferProxy"
                                                                 },
@@ -4136,7 +4136,7 @@ export const ContractRegistry =
                                                               "overloadedDeclarations": [
                                                                 null
                                                               ],
-                                                              "referencedDeclaration": 15819,
+                                                              "referencedDeclaration": 15837,
                                                               "type": "function () pure",
                                                               "value": "revert"
                                                             },
@@ -4416,7 +4416,7 @@ export const ContractRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15818,
+                              "referencedDeclaration": 15836,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -4552,7 +4552,7 @@ export const ContractRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15818,
+                              "referencedDeclaration": 15836,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -4776,9 +4776,9 @@ export const ContractRegistry =
         }
       },
       "links": {},
-      "address": "0xcdd434cfc52305e7b7c5e6787b8b1f24dda3a240"
+      "address": "0x495587e1f23fde205208e5390854b8db11720f16"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-25T20:05:03.003Z"
+  "updatedAt": "2018-09-25T22:27:45.638Z"
 }

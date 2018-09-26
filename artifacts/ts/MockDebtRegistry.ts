@@ -447,7 +447,7 @@ export const MockDebtRegistry =
       "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/test/mocks/MockDebtRegistry.sol",
       "exportedSymbols": {
         "MockDebtRegistry": [
-          11195
+          11213
         ]
       }
     },
@@ -460,39 +460,39 @@ export const MockDebtRegistry =
             ".18"
           ]
         },
-        "id": 10819,
+        "id": 10837,
         "name": "PragmaDirective",
         "src": "584:23:25"
       },
       {
         "attributes": {
-          "SourceUnit": 10675,
+          "SourceUnit": 10693,
           "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/test/mocks/MockContract.sol",
           "file": "./MockContract.sol",
-          "scope": 11196,
+          "scope": 11214,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 10820,
+        "id": 10838,
         "name": "ImportDirective",
         "src": "609:28:25"
       },
       {
         "attributes": {
           "contractDependencies": [
-            10674
+            10692
           ],
           "contractKind": "contract",
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            11195,
-            10674
+            11213,
+            10692
           ],
           "name": "MockDebtRegistry",
-          "scope": 11196
+          "scope": 11214
         },
         "children": [
           {
@@ -506,15 +506,15 @@ export const MockDebtRegistry =
                 "attributes": {
                   "contractScope": null,
                   "name": "MockContract",
-                  "referencedDeclaration": 10674,
+                  "referencedDeclaration": 10692,
                   "type": "contract MockContract"
                 },
-                "id": 10821,
+                "id": 10839,
                 "name": "UserDefinedTypeName",
                 "src": "669:12:25"
               }
             ],
-            "id": 10822,
+            "id": 10840,
             "name": "InheritanceSpecifier",
             "src": "669:12:25"
           },
@@ -528,7 +528,7 @@ export const MockDebtRegistry =
               ],
               "name": "insert",
               "payable": false,
-              "scope": 11195,
+              "scope": 11213,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -540,7 +540,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_version",
-                      "scope": 10876,
+                      "scope": 10894,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -553,12 +553,12 @@ export const MockDebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 10823,
+                        "id": 10841,
                         "name": "ElementaryTypeName",
                         "src": "713:7:25"
                       }
                     ],
-                    "id": 10824,
+                    "id": 10842,
                     "name": "VariableDeclaration",
                     "src": "713:16:25"
                   },
@@ -566,7 +566,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_beneficiary",
-                      "scope": 10876,
+                      "scope": 10894,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -579,12 +579,12 @@ export const MockDebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 10825,
+                        "id": 10843,
                         "name": "ElementaryTypeName",
                         "src": "739:7:25"
                       }
                     ],
-                    "id": 10826,
+                    "id": 10844,
                     "name": "VariableDeclaration",
                     "src": "739:20:25"
                   },
@@ -592,7 +592,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_debtor",
-                      "scope": 10876,
+                      "scope": 10894,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -605,12 +605,12 @@ export const MockDebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 10827,
+                        "id": 10845,
                         "name": "ElementaryTypeName",
                         "src": "769:7:25"
                       }
                     ],
-                    "id": 10828,
+                    "id": 10846,
                     "name": "VariableDeclaration",
                     "src": "769:15:25"
                   },
@@ -618,7 +618,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_underwriter",
-                      "scope": 10876,
+                      "scope": 10894,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -631,12 +631,12 @@ export const MockDebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 10829,
+                        "id": 10847,
                         "name": "ElementaryTypeName",
                         "src": "794:7:25"
                       }
                     ],
-                    "id": 10830,
+                    "id": 10848,
                     "name": "VariableDeclaration",
                     "src": "794:20:25"
                   },
@@ -644,7 +644,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_underwriterRiskRating",
-                      "scope": 10876,
+                      "scope": 10894,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -657,12 +657,12 @@ export const MockDebtRegistry =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 10831,
+                        "id": 10849,
                         "name": "ElementaryTypeName",
                         "src": "824:4:25"
                       }
                     ],
-                    "id": 10832,
+                    "id": 10850,
                     "name": "VariableDeclaration",
                     "src": "824:27:25"
                   },
@@ -670,7 +670,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_termsContract",
-                      "scope": 10876,
+                      "scope": 10894,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -683,12 +683,12 @@ export const MockDebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 10833,
+                        "id": 10851,
                         "name": "ElementaryTypeName",
                         "src": "861:7:25"
                       }
                     ],
-                    "id": 10834,
+                    "id": 10852,
                     "name": "VariableDeclaration",
                     "src": "861:22:25"
                   },
@@ -696,7 +696,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_termsContractParameters",
-                      "scope": 10876,
+                      "scope": 10894,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -709,12 +709,12 @@ export const MockDebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 10835,
+                        "id": 10853,
                         "name": "ElementaryTypeName",
                         "src": "893:7:25"
                       }
                     ],
-                    "id": 10836,
+                    "id": 10854,
                     "name": "VariableDeclaration",
                     "src": "893:32:25"
                   },
@@ -722,7 +722,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_salt",
-                      "scope": 10876,
+                      "scope": 10894,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -735,17 +735,17 @@ export const MockDebtRegistry =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 10837,
+                        "id": 10855,
                         "name": "ElementaryTypeName",
                         "src": "935:4:25"
                       }
                     ],
-                    "id": 10838,
+                    "id": 10856,
                     "name": "VariableDeclaration",
                     "src": "935:10:25"
                   }
                 ],
-                "id": 10839,
+                "id": 10857,
                 "name": "ParameterList",
                 "src": "703:248:25"
               },
@@ -755,7 +755,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_agreementId",
-                      "scope": 10876,
+                      "scope": 10894,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -768,17 +768,17 @@ export const MockDebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 10840,
+                        "id": 10858,
                         "name": "ElementaryTypeName",
                         "src": "984:7:25"
                       }
                     ],
-                    "id": 10841,
+                    "id": 10859,
                     "name": "VariableDeclaration",
                     "src": "984:20:25"
                   }
                 ],
-                "id": 10842,
+                "id": 10860,
                 "name": "ParameterList",
                 "src": "983:22:25"
               },
@@ -787,7 +787,7 @@ export const MockDebtRegistry =
                   {
                     "attributes": {
                       "assignments": [
-                        10844
+                        10862
                       ]
                     },
                     "children": [
@@ -795,7 +795,7 @@ export const MockDebtRegistry =
                         "attributes": {
                           "constant": false,
                           "name": "argsSignature",
-                          "scope": 10876,
+                          "scope": 10894,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bytes32",
@@ -808,12 +808,12 @@ export const MockDebtRegistry =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 10843,
+                            "id": 10861,
                             "name": "ElementaryTypeName",
                             "src": "1020:7:25"
                           }
                         ],
-                        "id": 10844,
+                        "id": 10862,
                         "name": "VariableDeclaration",
                         "src": "1020:21:25"
                       },
@@ -871,11 +871,11 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15809,
+                              "referencedDeclaration": 15827,
                               "type": "function () pure returns (bytes32)",
                               "value": "keccak256"
                             },
-                            "id": 10845,
+                            "id": 10863,
                             "name": "Identifier",
                             "src": "1044:9:25"
                           },
@@ -885,11 +885,11 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10824,
+                              "referencedDeclaration": 10842,
                               "type": "address",
                               "value": "_version"
                             },
-                            "id": 10846,
+                            "id": 10864,
                             "name": "Identifier",
                             "src": "1067:8:25"
                           },
@@ -899,11 +899,11 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10826,
+                              "referencedDeclaration": 10844,
                               "type": "address",
                               "value": "_beneficiary"
                             },
-                            "id": 10847,
+                            "id": 10865,
                             "name": "Identifier",
                             "src": "1089:12:25"
                           },
@@ -913,11 +913,11 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10828,
+                              "referencedDeclaration": 10846,
                               "type": "address",
                               "value": "_debtor"
                             },
-                            "id": 10848,
+                            "id": 10866,
                             "name": "Identifier",
                             "src": "1115:7:25"
                           },
@@ -927,11 +927,11 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10830,
+                              "referencedDeclaration": 10848,
                               "type": "address",
                               "value": "_underwriter"
                             },
-                            "id": 10849,
+                            "id": 10867,
                             "name": "Identifier",
                             "src": "1136:12:25"
                           },
@@ -941,11 +941,11 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10832,
+                              "referencedDeclaration": 10850,
                               "type": "uint256",
                               "value": "_underwriterRiskRating"
                             },
-                            "id": 10850,
+                            "id": 10868,
                             "name": "Identifier",
                             "src": "1162:22:25"
                           },
@@ -955,11 +955,11 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10834,
+                              "referencedDeclaration": 10852,
                               "type": "address",
                               "value": "_termsContract"
                             },
-                            "id": 10851,
+                            "id": 10869,
                             "name": "Identifier",
                             "src": "1198:14:25"
                           },
@@ -969,11 +969,11 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10836,
+                              "referencedDeclaration": 10854,
                               "type": "bytes32",
                               "value": "_termsContractParameters"
                             },
-                            "id": 10852,
+                            "id": 10870,
                             "name": "Identifier",
                             "src": "1226:24:25"
                           },
@@ -983,21 +983,21 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10838,
+                              "referencedDeclaration": 10856,
                               "type": "uint256",
                               "value": "_salt"
                             },
-                            "id": 10853,
+                            "id": 10871,
                             "name": "Identifier",
                             "src": "1264:5:25"
                           }
                         ],
-                        "id": 10854,
+                        "id": 10872,
                         "name": "FunctionCall",
                         "src": "1044:235:25"
                       }
                     ],
-                    "id": 10855,
+                    "id": 10873,
                     "name": "VariableDeclarationStatement",
                     "src": "1020:259:25"
                   },
@@ -1033,11 +1033,11 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10650,
+                              "referencedDeclaration": 10668,
                               "type": "function (string memory,bytes32)",
                               "value": "functionCalledWithArgs"
                             },
-                            "id": 10856,
+                            "id": 10874,
                             "name": "Identifier",
                             "src": "1290:22:25"
                           },
@@ -1054,7 +1054,7 @@ export const MockDebtRegistry =
                               "type": "literal_string \"insert\"",
                               "value": "insert"
                             },
-                            "id": 10857,
+                            "id": 10875,
                             "name": "Literal",
                             "src": "1313:8:25"
                           },
@@ -1064,28 +1064,28 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10844,
+                              "referencedDeclaration": 10862,
                               "type": "bytes32",
                               "value": "argsSignature"
                             },
-                            "id": 10858,
+                            "id": 10876,
                             "name": "Identifier",
                             "src": "1323:13:25"
                           }
                         ],
-                        "id": 10859,
+                        "id": 10877,
                         "name": "FunctionCall",
                         "src": "1290:47:25"
                       }
                     ],
-                    "id": 10860,
+                    "id": 10878,
                     "name": "ExpressionStatement",
                     "src": "1290:47:25"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        10862
+                        10880
                       ]
                     },
                     "children": [
@@ -1093,7 +1093,7 @@ export const MockDebtRegistry =
                         "attributes": {
                           "constant": false,
                           "name": "agreementId",
-                          "scope": 10876,
+                          "scope": 10894,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bytes32",
@@ -1106,12 +1106,12 @@ export const MockDebtRegistry =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 10861,
+                            "id": 10879,
                             "name": "ElementaryTypeName",
                             "src": "1348:7:25"
                           }
                         ],
-                        "id": 10862,
+                        "id": 10880,
                         "name": "VariableDeclaration",
                         "src": "1348:19:25"
                       },
@@ -1145,11 +1145,11 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10554,
+                              "referencedDeclaration": 10572,
                               "type": "function (string memory,bytes32) view returns (bytes32)",
                               "value": "getMockReturnValue"
                             },
-                            "id": 10863,
+                            "id": 10881,
                             "name": "Identifier",
                             "src": "1370:18:25"
                           },
@@ -1166,7 +1166,7 @@ export const MockDebtRegistry =
                               "type": "literal_string \"insert\"",
                               "value": "insert"
                             },
-                            "id": 10864,
+                            "id": 10882,
                             "name": "Literal",
                             "src": "1389:8:25"
                           },
@@ -1176,21 +1176,21 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10496,
+                              "referencedDeclaration": 10514,
                               "type": "bytes32",
                               "value": "DEFAULT_SIGNATURE_ARGS"
                             },
-                            "id": 10865,
+                            "id": 10883,
                             "name": "Identifier",
                             "src": "1399:22:25"
                           }
                         ],
-                        "id": 10866,
+                        "id": 10884,
                         "name": "FunctionCall",
                         "src": "1370:52:25"
                       }
                     ],
-                    "id": 10867,
+                    "id": 10885,
                     "name": "VariableDeclarationStatement",
                     "src": "1348:74:25"
                   },
@@ -1226,11 +1226,11 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10985,
+                              "referencedDeclaration": 11003,
                               "type": "function (bytes32,address)",
                               "value": "mockGetBeneficiaryReturnValueFor"
                             },
-                            "id": 10868,
+                            "id": 10886,
                             "name": "Identifier",
                             "src": "1433:32:25"
                           },
@@ -1240,11 +1240,11 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10862,
+                              "referencedDeclaration": 10880,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 10869,
+                            "id": 10887,
                             "name": "Identifier",
                             "src": "1466:11:25"
                           },
@@ -1254,27 +1254,27 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10826,
+                              "referencedDeclaration": 10844,
                               "type": "address",
                               "value": "_beneficiary"
                             },
-                            "id": 10870,
+                            "id": 10888,
                             "name": "Identifier",
                             "src": "1479:12:25"
                           }
                         ],
-                        "id": 10871,
+                        "id": 10889,
                         "name": "FunctionCall",
                         "src": "1433:59:25"
                       }
                     ],
-                    "id": 10872,
+                    "id": 10890,
                     "name": "ExpressionStatement",
                     "src": "1433:59:25"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 10842
+                      "functionReturnParameters": 10860
                     },
                     "children": [
                       {
@@ -1283,26 +1283,26 @@ export const MockDebtRegistry =
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 10862,
+                          "referencedDeclaration": 10880,
                           "type": "bytes32",
                           "value": "agreementId"
                         },
-                        "id": 10873,
+                        "id": 10891,
                         "name": "Identifier",
                         "src": "1510:11:25"
                       }
                     ],
-                    "id": 10874,
+                    "id": 10892,
                     "name": "Return",
                     "src": "1503:18:25"
                   }
                 ],
-                "id": 10875,
+                "id": 10893,
                 "name": "Block",
                 "src": "1010:518:25"
               }
             ],
-            "id": 10876,
+            "id": 10894,
             "name": "FunctionDefinition",
             "src": "688:840:25"
           },
@@ -1316,7 +1316,7 @@ export const MockDebtRegistry =
               ],
               "name": "modifyBeneficiary",
               "payable": false,
-              "scope": 11195,
+              "scope": 11213,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -1328,7 +1328,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 10897,
+                      "scope": 10915,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -1341,12 +1341,12 @@ export const MockDebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 10877,
+                        "id": 10895,
                         "name": "ElementaryTypeName",
                         "src": "1561:7:25"
                       }
                     ],
-                    "id": 10878,
+                    "id": 10896,
                     "name": "VariableDeclaration",
                     "src": "1561:19:25"
                   },
@@ -1354,7 +1354,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "newBeneficiary",
-                      "scope": 10897,
+                      "scope": 10915,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1367,17 +1367,17 @@ export const MockDebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 10879,
+                        "id": 10897,
                         "name": "ElementaryTypeName",
                         "src": "1582:7:25"
                       }
                     ],
-                    "id": 10880,
+                    "id": 10898,
                     "name": "VariableDeclaration",
                     "src": "1582:22:25"
                   }
                 ],
-                "id": 10881,
+                "id": 10899,
                 "name": "ParameterList",
                 "src": "1560:45:25"
               },
@@ -1388,7 +1388,7 @@ export const MockDebtRegistry =
                   ]
                 },
                 "children": [],
-                "id": 10882,
+                "id": 10900,
                 "name": "ParameterList",
                 "src": "1625:0:25"
               },
@@ -1426,11 +1426,11 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10650,
+                              "referencedDeclaration": 10668,
                               "type": "function (string memory,bytes32)",
                               "value": "functionCalledWithArgs"
                             },
-                            "id": 10883,
+                            "id": 10901,
                             "name": "Identifier",
                             "src": "1635:22:25"
                           },
@@ -1447,7 +1447,7 @@ export const MockDebtRegistry =
                               "type": "literal_string \"modifyBeneficiary\"",
                               "value": "modifyBeneficiary"
                             },
-                            "id": 10884,
+                            "id": 10902,
                             "name": "Literal",
                             "src": "1658:19:25"
                           },
@@ -1481,11 +1481,11 @@ export const MockDebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15809,
+                                  "referencedDeclaration": 15827,
                                   "type": "function () pure returns (bytes32)",
                                   "value": "keccak256"
                                 },
-                                "id": 10885,
+                                "id": 10903,
                                 "name": "Identifier",
                                 "src": "1691:9:25"
                               },
@@ -1495,11 +1495,11 @@ export const MockDebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10878,
+                                  "referencedDeclaration": 10896,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 10886,
+                                "id": 10904,
                                 "name": "Identifier",
                                 "src": "1701:11:25"
                               },
@@ -1509,26 +1509,26 @@ export const MockDebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10880,
+                                  "referencedDeclaration": 10898,
                                   "type": "address",
                                   "value": "newBeneficiary"
                                 },
-                                "id": 10887,
+                                "id": 10905,
                                 "name": "Identifier",
                                 "src": "1714:14:25"
                               }
                             ],
-                            "id": 10888,
+                            "id": 10906,
                             "name": "FunctionCall",
                             "src": "1691:38:25"
                           }
                         ],
-                        "id": 10889,
+                        "id": 10907,
                         "name": "FunctionCall",
                         "src": "1635:95:25"
                       }
                     ],
-                    "id": 10890,
+                    "id": 10908,
                     "name": "ExpressionStatement",
                     "src": "1635:95:25"
                   },
@@ -1564,11 +1564,11 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10985,
+                              "referencedDeclaration": 11003,
                               "type": "function (bytes32,address)",
                               "value": "mockGetBeneficiaryReturnValueFor"
                             },
-                            "id": 10891,
+                            "id": 10909,
                             "name": "Identifier",
                             "src": "1741:32:25"
                           },
@@ -1578,11 +1578,11 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10878,
+                              "referencedDeclaration": 10896,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 10892,
+                            "id": 10910,
                             "name": "Identifier",
                             "src": "1774:11:25"
                           },
@@ -1592,31 +1592,31 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10880,
+                              "referencedDeclaration": 10898,
                               "type": "address",
                               "value": "newBeneficiary"
                             },
-                            "id": 10893,
+                            "id": 10911,
                             "name": "Identifier",
                             "src": "1787:14:25"
                           }
                         ],
-                        "id": 10894,
+                        "id": 10912,
                         "name": "FunctionCall",
                         "src": "1741:61:25"
                       }
                     ],
-                    "id": 10895,
+                    "id": 10913,
                     "name": "ExpressionStatement",
                     "src": "1741:61:25"
                   }
                 ],
-                "id": 10896,
+                "id": 10914,
                 "name": "Block",
                 "src": "1625:184:25"
               }
             ],
-            "id": 10897,
+            "id": 10915,
             "name": "FunctionDefinition",
             "src": "1534:275:25"
           },
@@ -1630,7 +1630,7 @@ export const MockDebtRegistry =
               ],
               "name": "getBeneficiary",
               "payable": false,
-              "scope": 11195,
+              "scope": 11213,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -1642,7 +1642,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 10912,
+                      "scope": 10930,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -1655,17 +1655,17 @@ export const MockDebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 10898,
+                        "id": 10916,
                         "name": "ElementaryTypeName",
                         "src": "1839:7:25"
                       }
                     ],
-                    "id": 10899,
+                    "id": 10917,
                     "name": "VariableDeclaration",
                     "src": "1839:19:25"
                   }
                 ],
-                "id": 10900,
+                "id": 10918,
                 "name": "ParameterList",
                 "src": "1838:21:25"
               },
@@ -1675,7 +1675,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_mockBeneficiary",
-                      "scope": 10912,
+                      "scope": 10930,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1688,17 +1688,17 @@ export const MockDebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 10901,
+                        "id": 10919,
                         "name": "ElementaryTypeName",
                         "src": "1905:7:25"
                       }
                     ],
-                    "id": 10902,
+                    "id": 10920,
                     "name": "VariableDeclaration",
                     "src": "1905:24:25"
                   }
                 ],
-                "id": 10903,
+                "id": 10921,
                 "name": "ParameterList",
                 "src": "1904:26:25"
               },
@@ -1706,7 +1706,7 @@ export const MockDebtRegistry =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 10903
+                      "functionReturnParameters": 10921
                     },
                     "children": [
                       {
@@ -1739,7 +1739,7 @@ export const MockDebtRegistry =
                               "type": "type(address)",
                               "value": "address"
                             },
-                            "id": 10904,
+                            "id": 10922,
                             "name": "ElementaryTypeNameExpression",
                             "src": "1952:7:25"
                           },
@@ -1773,11 +1773,11 @@ export const MockDebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10554,
+                                  "referencedDeclaration": 10572,
                                   "type": "function (string memory,bytes32) view returns (bytes32)",
                                   "value": "getMockReturnValue"
                                 },
-                                "id": 10905,
+                                "id": 10923,
                                 "name": "Identifier",
                                 "src": "1960:18:25"
                               },
@@ -1794,7 +1794,7 @@ export const MockDebtRegistry =
                                   "type": "literal_string \"getBeneficiary\"",
                                   "value": "getBeneficiary"
                                 },
-                                "id": 10906,
+                                "id": 10924,
                                 "name": "Literal",
                                 "src": "1979:16:25"
                               },
@@ -1804,36 +1804,36 @@ export const MockDebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10899,
+                                  "referencedDeclaration": 10917,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 10907,
+                                "id": 10925,
                                 "name": "Identifier",
                                 "src": "1997:11:25"
                               }
                             ],
-                            "id": 10908,
+                            "id": 10926,
                             "name": "FunctionCall",
                             "src": "1960:49:25"
                           }
                         ],
-                        "id": 10909,
+                        "id": 10927,
                         "name": "FunctionCall",
                         "src": "1952:58:25"
                       }
                     ],
-                    "id": 10910,
+                    "id": 10928,
                     "name": "Return",
                     "src": "1945:65:25"
                   }
                 ],
-                "id": 10911,
+                "id": 10929,
                 "name": "Block",
                 "src": "1935:82:25"
               }
             ],
-            "id": 10912,
+            "id": 10930,
             "name": "FunctionDefinition",
             "src": "1815:202:25"
           },
@@ -1847,7 +1847,7 @@ export const MockDebtRegistry =
               ],
               "name": "doesEntryExist",
               "payable": false,
-              "scope": 11195,
+              "scope": 11213,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -1859,7 +1859,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 10936,
+                      "scope": 10954,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -1872,17 +1872,17 @@ export const MockDebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 10913,
+                        "id": 10931,
                         "name": "ElementaryTypeName",
                         "src": "2047:7:25"
                       }
                     ],
-                    "id": 10914,
+                    "id": 10932,
                     "name": "VariableDeclaration",
                     "src": "2047:19:25"
                   }
                 ],
-                "id": 10915,
+                "id": 10933,
                 "name": "ParameterList",
                 "src": "2046:21:25"
               },
@@ -1892,7 +1892,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 10936,
+                      "scope": 10954,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -1905,17 +1905,17 @@ export const MockDebtRegistry =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 10916,
+                        "id": 10934,
                         "name": "ElementaryTypeName",
                         "src": "2084:4:25"
                       }
                     ],
-                    "id": 10917,
+                    "id": 10935,
                     "name": "VariableDeclaration",
                     "src": "2084:4:25"
                   }
                 ],
-                "id": 10918,
+                "id": 10936,
                 "name": "ParameterList",
                 "src": "2083:6:25"
               },
@@ -1924,7 +1924,7 @@ export const MockDebtRegistry =
                   {
                     "attributes": {
                       "assignments": [
-                        10920
+                        10938
                       ]
                     },
                     "children": [
@@ -1932,7 +1932,7 @@ export const MockDebtRegistry =
                         "attributes": {
                           "constant": false,
                           "name": "mockReturnValue",
-                          "scope": 10936,
+                          "scope": 10954,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bytes32",
@@ -1945,12 +1945,12 @@ export const MockDebtRegistry =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 10919,
+                            "id": 10937,
                             "name": "ElementaryTypeName",
                             "src": "2100:7:25"
                           }
                         ],
-                        "id": 10920,
+                        "id": 10938,
                         "name": "VariableDeclaration",
                         "src": "2100:23:25"
                       },
@@ -1984,11 +1984,11 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10554,
+                              "referencedDeclaration": 10572,
                               "type": "function (string memory,bytes32) view returns (bytes32)",
                               "value": "getMockReturnValue"
                             },
-                            "id": 10921,
+                            "id": 10939,
                             "name": "Identifier",
                             "src": "2126:18:25"
                           },
@@ -2005,7 +2005,7 @@ export const MockDebtRegistry =
                               "type": "literal_string \"doesEntryExist\"",
                               "value": "doesEntryExist"
                             },
-                            "id": 10922,
+                            "id": 10940,
                             "name": "Literal",
                             "src": "2145:16:25"
                           },
@@ -2015,27 +2015,27 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10914,
+                              "referencedDeclaration": 10932,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 10923,
+                            "id": 10941,
                             "name": "Identifier",
                             "src": "2163:11:25"
                           }
                         ],
-                        "id": 10924,
+                        "id": 10942,
                         "name": "FunctionCall",
                         "src": "2126:49:25"
                       }
                     ],
-                    "id": 10925,
+                    "id": 10943,
                     "name": "VariableDeclarationStatement",
                     "src": "2100:75:25"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 10918
+                      "functionReturnParameters": 10936
                     },
                     "children": [
                       {
@@ -2069,11 +2069,11 @@ export const MockDebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10920,
+                                  "referencedDeclaration": 10938,
                                   "type": "bytes32",
                                   "value": "mockReturnValue"
                                 },
-                                "id": 10926,
+                                "id": 10944,
                                 "name": "Identifier",
                                 "src": "2192:15:25"
                               },
@@ -2107,7 +2107,7 @@ export const MockDebtRegistry =
                                       "type": "type(bytes32)",
                                       "value": "bytes32"
                                     },
-                                    "id": 10927,
+                                    "id": 10945,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "2211:7:25"
                                   },
@@ -2124,17 +2124,17 @@ export const MockDebtRegistry =
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 10928,
+                                    "id": 10946,
                                     "name": "Literal",
                                     "src": "2219:1:25"
                                   }
                                 ],
-                                "id": 10929,
+                                "id": 10947,
                                 "name": "FunctionCall",
                                 "src": "2211:10:25"
                               }
                             ],
-                            "id": 10930,
+                            "id": 10948,
                             "name": "BinaryOperation",
                             "src": "2192:29:25"
                           },
@@ -2151,7 +2151,7 @@ export const MockDebtRegistry =
                               "type": "bool",
                               "value": "false"
                             },
-                            "id": 10931,
+                            "id": 10949,
                             "name": "Literal",
                             "src": "2224:5:25"
                           },
@@ -2168,27 +2168,27 @@ export const MockDebtRegistry =
                               "type": "bool",
                               "value": "true"
                             },
-                            "id": 10932,
+                            "id": 10950,
                             "name": "Literal",
                             "src": "2232:4:25"
                           }
                         ],
-                        "id": 10933,
+                        "id": 10951,
                         "name": "Conditional",
                         "src": "2192:44:25"
                       }
                     ],
-                    "id": 10934,
+                    "id": 10952,
                     "name": "Return",
                     "src": "2185:51:25"
                   }
                 ],
-                "id": 10935,
+                "id": 10953,
                 "name": "Block",
                 "src": "2090:153:25"
               }
             ],
-            "id": 10936,
+            "id": 10954,
             "name": "FunctionDefinition",
             "src": "2023:220:25"
           },
@@ -2202,7 +2202,7 @@ export const MockDebtRegistry =
               ],
               "name": "mockDoesEntryExist",
               "payable": false,
-              "scope": 11195,
+              "scope": 11213,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -2214,7 +2214,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 10957,
+                      "scope": 10975,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -2227,12 +2227,12 @@ export const MockDebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 10937,
+                        "id": 10955,
                         "name": "ElementaryTypeName",
                         "src": "2277:7:25"
                       }
                     ],
-                    "id": 10938,
+                    "id": 10956,
                     "name": "VariableDeclaration",
                     "src": "2277:19:25"
                   },
@@ -2240,7 +2240,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "exists",
-                      "scope": 10957,
+                      "scope": 10975,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -2253,17 +2253,17 @@ export const MockDebtRegistry =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 10939,
+                        "id": 10957,
                         "name": "ElementaryTypeName",
                         "src": "2298:4:25"
                       }
                     ],
-                    "id": 10940,
+                    "id": 10958,
                     "name": "VariableDeclaration",
                     "src": "2298:11:25"
                   }
                 ],
-                "id": 10941,
+                "id": 10959,
                 "name": "ParameterList",
                 "src": "2276:34:25"
               },
@@ -2274,7 +2274,7 @@ export const MockDebtRegistry =
                   ]
                 },
                 "children": [],
-                "id": 10942,
+                "id": 10960,
                 "name": "ParameterList",
                 "src": "2318:0:25"
               },
@@ -2316,11 +2316,11 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10538,
+                              "referencedDeclaration": 10556,
                               "type": "function (string memory,bytes32,bytes32)",
                               "value": "mockReturnValue"
                             },
-                            "id": 10943,
+                            "id": 10961,
                             "name": "Identifier",
                             "src": "2328:15:25"
                           },
@@ -2337,7 +2337,7 @@ export const MockDebtRegistry =
                               "type": "literal_string \"doesEntryExist\"",
                               "value": "doesEntryExist"
                             },
-                            "id": 10944,
+                            "id": 10962,
                             "name": "Literal",
                             "src": "2344:16:25"
                           },
@@ -2347,11 +2347,11 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10938,
+                              "referencedDeclaration": 10956,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 10945,
+                            "id": 10963,
                             "name": "Identifier",
                             "src": "2362:11:25"
                           },
@@ -2371,11 +2371,11 @@ export const MockDebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10940,
+                                  "referencedDeclaration": 10958,
                                   "type": "bool",
                                   "value": "exists"
                                 },
-                                "id": 10946,
+                                "id": 10964,
                                 "name": "Identifier",
                                 "src": "2375:6:25"
                               },
@@ -2409,7 +2409,7 @@ export const MockDebtRegistry =
                                       "type": "type(bytes32)",
                                       "value": "bytes32"
                                     },
-                                    "id": 10947,
+                                    "id": 10965,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "2384:7:25"
                                   },
@@ -2426,12 +2426,12 @@ export const MockDebtRegistry =
                                       "type": "int_const 1",
                                       "value": "1"
                                     },
-                                    "id": 10948,
+                                    "id": 10966,
                                     "name": "Literal",
                                     "src": "2392:1:25"
                                   }
                                 ],
-                                "id": 10949,
+                                "id": 10967,
                                 "name": "FunctionCall",
                                 "src": "2384:10:25"
                               },
@@ -2465,7 +2465,7 @@ export const MockDebtRegistry =
                                       "type": "type(bytes32)",
                                       "value": "bytes32"
                                     },
-                                    "id": 10950,
+                                    "id": 10968,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "2397:7:25"
                                   },
@@ -2482,37 +2482,37 @@ export const MockDebtRegistry =
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 10951,
+                                    "id": 10969,
                                     "name": "Literal",
                                     "src": "2405:1:25"
                                   }
                                 ],
-                                "id": 10952,
+                                "id": 10970,
                                 "name": "FunctionCall",
                                 "src": "2397:10:25"
                               }
                             ],
-                            "id": 10953,
+                            "id": 10971,
                             "name": "Conditional",
                             "src": "2375:32:25"
                           }
                         ],
-                        "id": 10954,
+                        "id": 10972,
                         "name": "FunctionCall",
                         "src": "2328:80:25"
                       }
                     ],
-                    "id": 10955,
+                    "id": 10973,
                     "name": "ExpressionStatement",
                     "src": "2328:80:25"
                   }
                 ],
-                "id": 10956,
+                "id": 10974,
                 "name": "Block",
                 "src": "2318:97:25"
               }
             ],
-            "id": 10957,
+            "id": 10975,
             "name": "FunctionDefinition",
             "src": "2249:166:25"
           },
@@ -2526,7 +2526,7 @@ export const MockDebtRegistry =
               ],
               "name": "mockInsertReturnValue",
               "payable": false,
-              "scope": 11195,
+              "scope": 11213,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -2538,7 +2538,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 10969,
+                      "scope": 10987,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -2551,17 +2551,17 @@ export const MockDebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 10958,
+                        "id": 10976,
                         "name": "ElementaryTypeName",
                         "src": "2452:7:25"
                       }
                     ],
-                    "id": 10959,
+                    "id": 10977,
                     "name": "VariableDeclaration",
                     "src": "2452:19:25"
                   }
                 ],
-                "id": 10960,
+                "id": 10978,
                 "name": "ParameterList",
                 "src": "2451:21:25"
               },
@@ -2572,7 +2572,7 @@ export const MockDebtRegistry =
                   ]
                 },
                 "children": [],
-                "id": 10961,
+                "id": 10979,
                 "name": "ParameterList",
                 "src": "2480:0:25"
               },
@@ -2614,11 +2614,11 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10538,
+                              "referencedDeclaration": 10556,
                               "type": "function (string memory,bytes32,bytes32)",
                               "value": "mockReturnValue"
                             },
-                            "id": 10962,
+                            "id": 10980,
                             "name": "Identifier",
                             "src": "2490:15:25"
                           },
@@ -2635,7 +2635,7 @@ export const MockDebtRegistry =
                               "type": "literal_string \"insert\"",
                               "value": "insert"
                             },
-                            "id": 10963,
+                            "id": 10981,
                             "name": "Literal",
                             "src": "2506:8:25"
                           },
@@ -2645,11 +2645,11 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10496,
+                              "referencedDeclaration": 10514,
                               "type": "bytes32",
                               "value": "DEFAULT_SIGNATURE_ARGS"
                             },
-                            "id": 10964,
+                            "id": 10982,
                             "name": "Identifier",
                             "src": "2516:22:25"
                           },
@@ -2659,31 +2659,31 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10959,
+                              "referencedDeclaration": 10977,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 10965,
+                            "id": 10983,
                             "name": "Identifier",
                             "src": "2540:11:25"
                           }
                         ],
-                        "id": 10966,
+                        "id": 10984,
                         "name": "FunctionCall",
                         "src": "2490:62:25"
                       }
                     ],
-                    "id": 10967,
+                    "id": 10985,
                     "name": "ExpressionStatement",
                     "src": "2490:62:25"
                   }
                 ],
-                "id": 10968,
+                "id": 10986,
                 "name": "Block",
                 "src": "2480:79:25"
               }
             ],
-            "id": 10969,
+            "id": 10987,
             "name": "FunctionDefinition",
             "src": "2421:138:25"
           },
@@ -2697,7 +2697,7 @@ export const MockDebtRegistry =
               ],
               "name": "mockGetBeneficiaryReturnValueFor",
               "payable": false,
-              "scope": 11195,
+              "scope": 11213,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -2709,7 +2709,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 10985,
+                      "scope": 11003,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -2722,12 +2722,12 @@ export const MockDebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 10970,
+                        "id": 10988,
                         "name": "ElementaryTypeName",
                         "src": "2607:7:25"
                       }
                     ],
-                    "id": 10971,
+                    "id": 10989,
                     "name": "VariableDeclaration",
                     "src": "2607:19:25"
                   },
@@ -2735,7 +2735,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "beneficiary",
-                      "scope": 10985,
+                      "scope": 11003,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2748,17 +2748,17 @@ export const MockDebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 10972,
+                        "id": 10990,
                         "name": "ElementaryTypeName",
                         "src": "2628:7:25"
                       }
                     ],
-                    "id": 10973,
+                    "id": 10991,
                     "name": "VariableDeclaration",
                     "src": "2628:19:25"
                   }
                 ],
-                "id": 10974,
+                "id": 10992,
                 "name": "ParameterList",
                 "src": "2606:42:25"
               },
@@ -2769,7 +2769,7 @@ export const MockDebtRegistry =
                   ]
                 },
                 "children": [],
-                "id": 10975,
+                "id": 10993,
                 "name": "ParameterList",
                 "src": "2668:0:25"
               },
@@ -2811,11 +2811,11 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10538,
+                              "referencedDeclaration": 10556,
                               "type": "function (string memory,bytes32,bytes32)",
                               "value": "mockReturnValue"
                             },
-                            "id": 10976,
+                            "id": 10994,
                             "name": "Identifier",
                             "src": "2678:15:25"
                           },
@@ -2832,7 +2832,7 @@ export const MockDebtRegistry =
                               "type": "literal_string \"getBeneficiary\"",
                               "value": "getBeneficiary"
                             },
-                            "id": 10977,
+                            "id": 10995,
                             "name": "Literal",
                             "src": "2694:16:25"
                           },
@@ -2842,11 +2842,11 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10971,
+                              "referencedDeclaration": 10989,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 10978,
+                            "id": 10996,
                             "name": "Identifier",
                             "src": "2712:11:25"
                           },
@@ -2880,7 +2880,7 @@ export const MockDebtRegistry =
                                   "type": "type(bytes32)",
                                   "value": "bytes32"
                                 },
-                                "id": 10979,
+                                "id": 10997,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "2725:7:25"
                               },
@@ -2890,36 +2890,36 @@ export const MockDebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10973,
+                                  "referencedDeclaration": 10991,
                                   "type": "address",
                                   "value": "beneficiary"
                                 },
-                                "id": 10980,
+                                "id": 10998,
                                 "name": "Identifier",
                                 "src": "2733:11:25"
                               }
                             ],
-                            "id": 10981,
+                            "id": 10999,
                             "name": "FunctionCall",
                             "src": "2725:20:25"
                           }
                         ],
-                        "id": 10982,
+                        "id": 11000,
                         "name": "FunctionCall",
                         "src": "2678:68:25"
                       }
                     ],
-                    "id": 10983,
+                    "id": 11001,
                     "name": "ExpressionStatement",
                     "src": "2678:68:25"
                   }
                 ],
-                "id": 10984,
+                "id": 11002,
                 "name": "Block",
                 "src": "2668:85:25"
               }
             ],
-            "id": 10985,
+            "id": 11003,
             "name": "FunctionDefinition",
             "src": "2565:188:25"
           },
@@ -2933,7 +2933,7 @@ export const MockDebtRegistry =
               ],
               "name": "getTerms",
               "payable": false,
-              "scope": 11195,
+              "scope": 11213,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -2945,7 +2945,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 11007,
+                      "scope": 11025,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -2958,17 +2958,17 @@ export const MockDebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 10986,
+                        "id": 11004,
                         "name": "ElementaryTypeName",
                         "src": "2777:7:25"
                       }
                     ],
-                    "id": 10987,
+                    "id": 11005,
                     "name": "VariableDeclaration",
                     "src": "2777:19:25"
                   }
                 ],
-                "id": 10988,
+                "id": 11006,
                 "name": "ParameterList",
                 "src": "2776:21:25"
               },
@@ -2978,7 +2978,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_termsContract",
-                      "scope": 11007,
+                      "scope": 11025,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2991,12 +2991,12 @@ export const MockDebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 10989,
+                        "id": 11007,
                         "name": "ElementaryTypeName",
                         "src": "2843:7:25"
                       }
                     ],
-                    "id": 10990,
+                    "id": 11008,
                     "name": "VariableDeclaration",
                     "src": "2843:22:25"
                   },
@@ -3004,7 +3004,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_termsContractParameters",
-                      "scope": 11007,
+                      "scope": 11025,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -3017,17 +3017,17 @@ export const MockDebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 10991,
+                        "id": 11009,
                         "name": "ElementaryTypeName",
                         "src": "2867:7:25"
                       }
                     ],
-                    "id": 10992,
+                    "id": 11010,
                     "name": "VariableDeclaration",
                     "src": "2867:32:25"
                   }
                 ],
-                "id": 10993,
+                "id": 11011,
                 "name": "ParameterList",
                 "src": "2842:58:25"
               },
@@ -3035,7 +3035,7 @@ export const MockDebtRegistry =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 10993
+                      "functionReturnParameters": 11011
                     },
                     "children": [
                       {
@@ -3079,7 +3079,7 @@ export const MockDebtRegistry =
                                   "type": "type(address)",
                                   "value": "address"
                                 },
-                                "id": 10994,
+                                "id": 11012,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "2936:7:25"
                               },
@@ -3113,11 +3113,11 @@ export const MockDebtRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10554,
+                                      "referencedDeclaration": 10572,
                                       "type": "function (string memory,bytes32) view returns (bytes32)",
                                       "value": "getMockReturnValue"
                                     },
-                                    "id": 10995,
+                                    "id": 11013,
                                     "name": "Identifier",
                                     "src": "2944:18:25"
                                   },
@@ -3134,7 +3134,7 @@ export const MockDebtRegistry =
                                       "type": "literal_string \"getTerms_termsContract\"",
                                       "value": "getTerms_termsContract"
                                     },
-                                    "id": 10996,
+                                    "id": 11014,
                                     "name": "Literal",
                                     "src": "2963:24:25"
                                   },
@@ -3144,21 +3144,21 @@ export const MockDebtRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10987,
+                                      "referencedDeclaration": 11005,
                                       "type": "bytes32",
                                       "value": "agreementId"
                                     },
-                                    "id": 10997,
+                                    "id": 11015,
                                     "name": "Identifier",
                                     "src": "2989:11:25"
                                   }
                                 ],
-                                "id": 10998,
+                                "id": 11016,
                                 "name": "FunctionCall",
                                 "src": "2944:57:25"
                               }
                             ],
-                            "id": 10999,
+                            "id": 11017,
                             "name": "FunctionCall",
                             "src": "2936:66:25"
                           },
@@ -3192,11 +3192,11 @@ export const MockDebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10554,
+                                  "referencedDeclaration": 10572,
                                   "type": "function (string memory,bytes32) view returns (bytes32)",
                                   "value": "getMockReturnValue"
                                 },
-                                "id": 11000,
+                                "id": 11018,
                                 "name": "Identifier",
                                 "src": "3016:18:25"
                               },
@@ -3213,7 +3213,7 @@ export const MockDebtRegistry =
                                   "type": "literal_string \"getTerms_termsContractParameters\"",
                                   "value": "getTerms_termsContractParameters"
                                 },
-                                "id": 11001,
+                                "id": 11019,
                                 "name": "Literal",
                                 "src": "3035:34:25"
                               },
@@ -3223,36 +3223,36 @@ export const MockDebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10987,
+                                  "referencedDeclaration": 11005,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 11002,
+                                "id": 11020,
                                 "name": "Identifier",
                                 "src": "3071:11:25"
                               }
                             ],
-                            "id": 11003,
+                            "id": 11021,
                             "name": "FunctionCall",
                             "src": "3016:67:25"
                           }
                         ],
-                        "id": 11004,
+                        "id": 11022,
                         "name": "TupleExpression",
                         "src": "2922:171:25"
                       }
                     ],
-                    "id": 11005,
+                    "id": 11023,
                     "name": "Return",
                     "src": "2915:178:25"
                   }
                 ],
-                "id": 11006,
+                "id": 11024,
                 "name": "Block",
                 "src": "2905:195:25"
               }
             ],
-            "id": 11007,
+            "id": 11025,
             "name": "FunctionDefinition",
             "src": "2759:341:25"
           },
@@ -3266,7 +3266,7 @@ export const MockDebtRegistry =
               ],
               "name": "mockGetTermsReturnValueFor",
               "payable": false,
-              "scope": 11195,
+              "scope": 11213,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -3278,7 +3278,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 11031,
+                      "scope": 11049,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -3291,12 +3291,12 @@ export const MockDebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 11008,
+                        "id": 11026,
                         "name": "ElementaryTypeName",
                         "src": "3151:7:25"
                       }
                     ],
-                    "id": 11009,
+                    "id": 11027,
                     "name": "VariableDeclaration",
                     "src": "3151:19:25"
                   },
@@ -3304,7 +3304,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "termsContract",
-                      "scope": 11031,
+                      "scope": 11049,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -3317,12 +3317,12 @@ export const MockDebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 11010,
+                        "id": 11028,
                         "name": "ElementaryTypeName",
                         "src": "3180:7:25"
                       }
                     ],
-                    "id": 11011,
+                    "id": 11029,
                     "name": "VariableDeclaration",
                     "src": "3180:21:25"
                   },
@@ -3330,7 +3330,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "termsContractParameters",
-                      "scope": 11031,
+                      "scope": 11049,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -3343,17 +3343,17 @@ export const MockDebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 11012,
+                        "id": 11030,
                         "name": "ElementaryTypeName",
                         "src": "3211:7:25"
                       }
                     ],
-                    "id": 11013,
+                    "id": 11031,
                     "name": "VariableDeclaration",
                     "src": "3211:31:25"
                   }
                 ],
-                "id": 11014,
+                "id": 11032,
                 "name": "ParameterList",
                 "src": "3141:107:25"
               },
@@ -3364,7 +3364,7 @@ export const MockDebtRegistry =
                   ]
                 },
                 "children": [],
-                "id": 11015,
+                "id": 11033,
                 "name": "ParameterList",
                 "src": "3268:0:25"
               },
@@ -3406,11 +3406,11 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10538,
+                              "referencedDeclaration": 10556,
                               "type": "function (string memory,bytes32,bytes32)",
                               "value": "mockReturnValue"
                             },
-                            "id": 11016,
+                            "id": 11034,
                             "name": "Identifier",
                             "src": "3278:15:25"
                           },
@@ -3427,7 +3427,7 @@ export const MockDebtRegistry =
                               "type": "literal_string \"getTerms_termsContract\"",
                               "value": "getTerms_termsContract"
                             },
-                            "id": 11017,
+                            "id": 11035,
                             "name": "Literal",
                             "src": "3294:24:25"
                           },
@@ -3437,11 +3437,11 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 11009,
+                              "referencedDeclaration": 11027,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 11018,
+                            "id": 11036,
                             "name": "Identifier",
                             "src": "3320:11:25"
                           },
@@ -3475,7 +3475,7 @@ export const MockDebtRegistry =
                                   "type": "type(bytes32)",
                                   "value": "bytes32"
                                 },
-                                "id": 11019,
+                                "id": 11037,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "3333:7:25"
                               },
@@ -3485,26 +3485,26 @@ export const MockDebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 11011,
+                                  "referencedDeclaration": 11029,
                                   "type": "address",
                                   "value": "termsContract"
                                 },
-                                "id": 11020,
+                                "id": 11038,
                                 "name": "Identifier",
                                 "src": "3341:13:25"
                               }
                             ],
-                            "id": 11021,
+                            "id": 11039,
                             "name": "FunctionCall",
                             "src": "3333:22:25"
                           }
                         ],
-                        "id": 11022,
+                        "id": 11040,
                         "name": "FunctionCall",
                         "src": "3278:78:25"
                       }
                     ],
-                    "id": 11023,
+                    "id": 11041,
                     "name": "ExpressionStatement",
                     "src": "3278:78:25"
                   },
@@ -3544,11 +3544,11 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10538,
+                              "referencedDeclaration": 10556,
                               "type": "function (string memory,bytes32,bytes32)",
                               "value": "mockReturnValue"
                             },
-                            "id": 11024,
+                            "id": 11042,
                             "name": "Identifier",
                             "src": "3366:15:25"
                           },
@@ -3565,7 +3565,7 @@ export const MockDebtRegistry =
                               "type": "literal_string \"getTerms_termsContractParameters\"",
                               "value": "getTerms_termsContractParameters"
                             },
-                            "id": 11025,
+                            "id": 11043,
                             "name": "Literal",
                             "src": "3382:34:25"
                           },
@@ -3575,11 +3575,11 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 11009,
+                              "referencedDeclaration": 11027,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 11026,
+                            "id": 11044,
                             "name": "Identifier",
                             "src": "3418:11:25"
                           },
@@ -3589,31 +3589,31 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 11013,
+                              "referencedDeclaration": 11031,
                               "type": "bytes32",
                               "value": "termsContractParameters"
                             },
-                            "id": 11027,
+                            "id": 11045,
                             "name": "Identifier",
                             "src": "3431:23:25"
                           }
                         ],
-                        "id": 11028,
+                        "id": 11046,
                         "name": "FunctionCall",
                         "src": "3366:89:25"
                       }
                     ],
-                    "id": 11029,
+                    "id": 11047,
                     "name": "ExpressionStatement",
                     "src": "3366:89:25"
                   }
                 ],
-                "id": 11030,
+                "id": 11048,
                 "name": "Block",
                 "src": "3268:194:25"
               }
             ],
-            "id": 11031,
+            "id": 11049,
             "name": "FunctionDefinition",
             "src": "3106:356:25"
           },
@@ -3627,7 +3627,7 @@ export const MockDebtRegistry =
               ],
               "name": "getTermsContract",
               "payable": false,
-              "scope": 11195,
+              "scope": 11213,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -3639,7 +3639,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 11046,
+                      "scope": 11064,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -3652,17 +3652,17 @@ export const MockDebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 11032,
+                        "id": 11050,
                         "name": "ElementaryTypeName",
                         "src": "3494:7:25"
                       }
                     ],
-                    "id": 11033,
+                    "id": 11051,
                     "name": "VariableDeclaration",
                     "src": "3494:19:25"
                   }
                 ],
-                "id": 11034,
+                "id": 11052,
                 "name": "ParameterList",
                 "src": "3493:21:25"
               },
@@ -3672,7 +3672,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_termsContract",
-                      "scope": 11046,
+                      "scope": 11064,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -3685,17 +3685,17 @@ export const MockDebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 11035,
+                        "id": 11053,
                         "name": "ElementaryTypeName",
                         "src": "3560:7:25"
                       }
                     ],
-                    "id": 11036,
+                    "id": 11054,
                     "name": "VariableDeclaration",
                     "src": "3560:22:25"
                   }
                 ],
-                "id": 11037,
+                "id": 11055,
                 "name": "ParameterList",
                 "src": "3559:24:25"
               },
@@ -3703,7 +3703,7 @@ export const MockDebtRegistry =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 11037
+                      "functionReturnParameters": 11055
                     },
                     "children": [
                       {
@@ -3736,7 +3736,7 @@ export const MockDebtRegistry =
                               "type": "type(address)",
                               "value": "address"
                             },
-                            "id": 11038,
+                            "id": 11056,
                             "name": "ElementaryTypeNameExpression",
                             "src": "3605:7:25"
                           },
@@ -3770,11 +3770,11 @@ export const MockDebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10554,
+                                  "referencedDeclaration": 10572,
                                   "type": "function (string memory,bytes32) view returns (bytes32)",
                                   "value": "getMockReturnValue"
                                 },
-                                "id": 11039,
+                                "id": 11057,
                                 "name": "Identifier",
                                 "src": "3613:18:25"
                               },
@@ -3791,7 +3791,7 @@ export const MockDebtRegistry =
                                   "type": "literal_string \"getTermsContract\"",
                                   "value": "getTermsContract"
                                 },
-                                "id": 11040,
+                                "id": 11058,
                                 "name": "Literal",
                                 "src": "3632:18:25"
                               },
@@ -3801,36 +3801,36 @@ export const MockDebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 11033,
+                                  "referencedDeclaration": 11051,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 11041,
+                                "id": 11059,
                                 "name": "Identifier",
                                 "src": "3652:11:25"
                               }
                             ],
-                            "id": 11042,
+                            "id": 11060,
                             "name": "FunctionCall",
                             "src": "3613:51:25"
                           }
                         ],
-                        "id": 11043,
+                        "id": 11061,
                         "name": "FunctionCall",
                         "src": "3605:60:25"
                       }
                     ],
-                    "id": 11044,
+                    "id": 11062,
                     "name": "Return",
                     "src": "3598:67:25"
                   }
                 ],
-                "id": 11045,
+                "id": 11063,
                 "name": "Block",
                 "src": "3588:84:25"
               }
             ],
-            "id": 11046,
+            "id": 11064,
             "name": "FunctionDefinition",
             "src": "3468:204:25"
           },
@@ -3844,7 +3844,7 @@ export const MockDebtRegistry =
               ],
               "name": "getIssuanceBlockTimestamp",
               "payable": false,
-              "scope": 11195,
+              "scope": 11213,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -3856,7 +3856,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 11061,
+                      "scope": 11079,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -3869,17 +3869,17 @@ export const MockDebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 11047,
+                        "id": 11065,
                         "name": "ElementaryTypeName",
                         "src": "3713:7:25"
                       }
                     ],
-                    "id": 11048,
+                    "id": 11066,
                     "name": "VariableDeclaration",
                     "src": "3713:19:25"
                   }
                 ],
-                "id": 11049,
+                "id": 11067,
                 "name": "ParameterList",
                 "src": "3712:21:25"
               },
@@ -3889,7 +3889,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "timestamp",
-                      "scope": 11061,
+                      "scope": 11079,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -3902,17 +3902,17 @@ export const MockDebtRegistry =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 11050,
+                        "id": 11068,
                         "name": "ElementaryTypeName",
                         "src": "3779:4:25"
                       }
                     ],
-                    "id": 11051,
+                    "id": 11069,
                     "name": "VariableDeclaration",
                     "src": "3779:14:25"
                   }
                 ],
-                "id": 11052,
+                "id": 11070,
                 "name": "ParameterList",
                 "src": "3778:16:25"
               },
@@ -3920,7 +3920,7 @@ export const MockDebtRegistry =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 11052
+                      "functionReturnParameters": 11070
                     },
                     "children": [
                       {
@@ -3953,7 +3953,7 @@ export const MockDebtRegistry =
                               "type": "type(uint256)",
                               "value": "uint"
                             },
-                            "id": 11053,
+                            "id": 11071,
                             "name": "ElementaryTypeNameExpression",
                             "src": "3816:4:25"
                           },
@@ -3987,11 +3987,11 @@ export const MockDebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10554,
+                                  "referencedDeclaration": 10572,
                                   "type": "function (string memory,bytes32) view returns (bytes32)",
                                   "value": "getMockReturnValue"
                                 },
-                                "id": 11054,
+                                "id": 11072,
                                 "name": "Identifier",
                                 "src": "3821:18:25"
                               },
@@ -4008,7 +4008,7 @@ export const MockDebtRegistry =
                                   "type": "literal_string \"getIssuanceBlockTimestamp\"",
                                   "value": "getIssuanceBlockTimestamp"
                                 },
-                                "id": 11055,
+                                "id": 11073,
                                 "name": "Literal",
                                 "src": "3840:27:25"
                               },
@@ -4018,36 +4018,36 @@ export const MockDebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 11048,
+                                  "referencedDeclaration": 11066,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 11056,
+                                "id": 11074,
                                 "name": "Identifier",
                                 "src": "3869:11:25"
                               }
                             ],
-                            "id": 11057,
+                            "id": 11075,
                             "name": "FunctionCall",
                             "src": "3821:60:25"
                           }
                         ],
-                        "id": 11058,
+                        "id": 11076,
                         "name": "FunctionCall",
                         "src": "3816:66:25"
                       }
                     ],
-                    "id": 11059,
+                    "id": 11077,
                     "name": "Return",
                     "src": "3809:73:25"
                   }
                 ],
-                "id": 11060,
+                "id": 11078,
                 "name": "Block",
                 "src": "3799:90:25"
               }
             ],
-            "id": 11061,
+            "id": 11079,
             "name": "FunctionDefinition",
             "src": "3678:211:25"
           },
@@ -4061,7 +4061,7 @@ export const MockDebtRegistry =
               ],
               "name": "mockGetIssuanceBlockTimestamp",
               "payable": false,
-              "scope": 11195,
+              "scope": 11213,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -4073,7 +4073,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 11077,
+                      "scope": 11095,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -4086,12 +4086,12 @@ export const MockDebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 11062,
+                        "id": 11080,
                         "name": "ElementaryTypeName",
                         "src": "3943:7:25"
                       }
                     ],
-                    "id": 11063,
+                    "id": 11081,
                     "name": "VariableDeclaration",
                     "src": "3943:19:25"
                   },
@@ -4099,7 +4099,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "timestamp",
-                      "scope": 11077,
+                      "scope": 11095,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -4112,17 +4112,17 @@ export const MockDebtRegistry =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 11064,
+                        "id": 11082,
                         "name": "ElementaryTypeName",
                         "src": "3972:4:25"
                       }
                     ],
-                    "id": 11065,
+                    "id": 11083,
                     "name": "VariableDeclaration",
                     "src": "3972:14:25"
                   }
                 ],
-                "id": 11066,
+                "id": 11084,
                 "name": "ParameterList",
                 "src": "3933:59:25"
               },
@@ -4133,7 +4133,7 @@ export const MockDebtRegistry =
                   ]
                 },
                 "children": [],
-                "id": 11067,
+                "id": 11085,
                 "name": "ParameterList",
                 "src": "4012:0:25"
               },
@@ -4175,11 +4175,11 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10538,
+                              "referencedDeclaration": 10556,
                               "type": "function (string memory,bytes32,bytes32)",
                               "value": "mockReturnValue"
                             },
-                            "id": 11068,
+                            "id": 11086,
                             "name": "Identifier",
                             "src": "4022:15:25"
                           },
@@ -4196,7 +4196,7 @@ export const MockDebtRegistry =
                               "type": "literal_string \"getIssuanceBlockTimestamp\"",
                               "value": "getIssuanceBlockTimestamp"
                             },
-                            "id": 11069,
+                            "id": 11087,
                             "name": "Literal",
                             "src": "4038:27:25"
                           },
@@ -4206,11 +4206,11 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 11063,
+                              "referencedDeclaration": 11081,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 11070,
+                            "id": 11088,
                             "name": "Identifier",
                             "src": "4067:11:25"
                           },
@@ -4244,7 +4244,7 @@ export const MockDebtRegistry =
                                   "type": "type(bytes32)",
                                   "value": "bytes32"
                                 },
-                                "id": 11071,
+                                "id": 11089,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "4080:7:25"
                               },
@@ -4254,36 +4254,36 @@ export const MockDebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 11065,
+                                  "referencedDeclaration": 11083,
                                   "type": "uint256",
                                   "value": "timestamp"
                                 },
-                                "id": 11072,
+                                "id": 11090,
                                 "name": "Identifier",
                                 "src": "4088:9:25"
                               }
                             ],
-                            "id": 11073,
+                            "id": 11091,
                             "name": "FunctionCall",
                             "src": "4080:18:25"
                           }
                         ],
-                        "id": 11074,
+                        "id": 11092,
                         "name": "FunctionCall",
                         "src": "4022:77:25"
                       }
                     ],
-                    "id": 11075,
+                    "id": 11093,
                     "name": "ExpressionStatement",
                     "src": "4022:77:25"
                   }
                 ],
-                "id": 11076,
+                "id": 11094,
                 "name": "Block",
                 "src": "4012:94:25"
               }
             ],
-            "id": 11077,
+            "id": 11095,
             "name": "FunctionDefinition",
             "src": "3895:211:25"
           },
@@ -4297,7 +4297,7 @@ export const MockDebtRegistry =
               ],
               "name": "getTermsContractParameters",
               "payable": false,
-              "scope": 11195,
+              "scope": 11213,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -4309,7 +4309,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 11090,
+                      "scope": 11108,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -4322,17 +4322,17 @@ export const MockDebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 11078,
+                        "id": 11096,
                         "name": "ElementaryTypeName",
                         "src": "4148:7:25"
                       }
                     ],
-                    "id": 11079,
+                    "id": 11097,
                     "name": "VariableDeclaration",
                     "src": "4148:19:25"
                   }
                 ],
-                "id": 11080,
+                "id": 11098,
                 "name": "ParameterList",
                 "src": "4147:21:25"
               },
@@ -4342,7 +4342,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 11090,
+                      "scope": 11108,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -4355,17 +4355,17 @@ export const MockDebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 11081,
+                        "id": 11099,
                         "name": "ElementaryTypeName",
                         "src": "4214:7:25"
                       }
                     ],
-                    "id": 11082,
+                    "id": 11100,
                     "name": "VariableDeclaration",
                     "src": "4214:7:25"
                   }
                 ],
-                "id": 11083,
+                "id": 11101,
                 "name": "ParameterList",
                 "src": "4213:9:25"
               },
@@ -4373,7 +4373,7 @@ export const MockDebtRegistry =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 11083
+                      "functionReturnParameters": 11101
                     },
                     "children": [
                       {
@@ -4406,11 +4406,11 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10554,
+                              "referencedDeclaration": 10572,
                               "type": "function (string memory,bytes32) view returns (bytes32)",
                               "value": "getMockReturnValue"
                             },
-                            "id": 11084,
+                            "id": 11102,
                             "name": "Identifier",
                             "src": "4244:18:25"
                           },
@@ -4427,7 +4427,7 @@ export const MockDebtRegistry =
                               "type": "literal_string \"getTermsContractParameters\"",
                               "value": "getTermsContractParameters"
                             },
-                            "id": 11085,
+                            "id": 11103,
                             "name": "Literal",
                             "src": "4263:28:25"
                           },
@@ -4437,31 +4437,31 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 11079,
+                              "referencedDeclaration": 11097,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 11086,
+                            "id": 11104,
                             "name": "Identifier",
                             "src": "4293:11:25"
                           }
                         ],
-                        "id": 11087,
+                        "id": 11105,
                         "name": "FunctionCall",
                         "src": "4244:61:25"
                       }
                     ],
-                    "id": 11088,
+                    "id": 11106,
                     "name": "Return",
                     "src": "4237:68:25"
                   }
                 ],
-                "id": 11089,
+                "id": 11107,
                 "name": "Block",
                 "src": "4227:85:25"
               }
             ],
-            "id": 11090,
+            "id": 11108,
             "name": "FunctionDefinition",
             "src": "4112:200:25"
           },
@@ -4475,7 +4475,7 @@ export const MockDebtRegistry =
               ],
               "name": "mockGetTermsContractParameters",
               "payable": false,
-              "scope": 11195,
+              "scope": 11213,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -4487,7 +4487,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 11104,
+                      "scope": 11122,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -4500,12 +4500,12 @@ export const MockDebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 11091,
+                        "id": 11109,
                         "name": "ElementaryTypeName",
                         "src": "4367:7:25"
                       }
                     ],
-                    "id": 11092,
+                    "id": 11110,
                     "name": "VariableDeclaration",
                     "src": "4367:19:25"
                   },
@@ -4513,7 +4513,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "params",
-                      "scope": 11104,
+                      "scope": 11122,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -4526,17 +4526,17 @@ export const MockDebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 11093,
+                        "id": 11111,
                         "name": "ElementaryTypeName",
                         "src": "4396:7:25"
                       }
                     ],
-                    "id": 11094,
+                    "id": 11112,
                     "name": "VariableDeclaration",
                     "src": "4396:14:25"
                   }
                 ],
-                "id": 11095,
+                "id": 11113,
                 "name": "ParameterList",
                 "src": "4357:59:25"
               },
@@ -4547,7 +4547,7 @@ export const MockDebtRegistry =
                   ]
                 },
                 "children": [],
-                "id": 11096,
+                "id": 11114,
                 "name": "ParameterList",
                 "src": "4436:0:25"
               },
@@ -4589,11 +4589,11 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10538,
+                              "referencedDeclaration": 10556,
                               "type": "function (string memory,bytes32,bytes32)",
                               "value": "mockReturnValue"
                             },
-                            "id": 11097,
+                            "id": 11115,
                             "name": "Identifier",
                             "src": "4446:15:25"
                           },
@@ -4610,7 +4610,7 @@ export const MockDebtRegistry =
                               "type": "literal_string \"getTermsContractParameters\"",
                               "value": "getTermsContractParameters"
                             },
-                            "id": 11098,
+                            "id": 11116,
                             "name": "Literal",
                             "src": "4462:28:25"
                           },
@@ -4620,11 +4620,11 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 11092,
+                              "referencedDeclaration": 11110,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 11099,
+                            "id": 11117,
                             "name": "Identifier",
                             "src": "4492:11:25"
                           },
@@ -4634,31 +4634,31 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 11094,
+                              "referencedDeclaration": 11112,
                               "type": "bytes32",
                               "value": "params"
                             },
-                            "id": 11100,
+                            "id": 11118,
                             "name": "Identifier",
                             "src": "4505:6:25"
                           }
                         ],
-                        "id": 11101,
+                        "id": 11119,
                         "name": "FunctionCall",
                         "src": "4446:66:25"
                       }
                     ],
-                    "id": 11102,
+                    "id": 11120,
                     "name": "ExpressionStatement",
                     "src": "4446:66:25"
                   }
                 ],
-                "id": 11103,
+                "id": 11121,
                 "name": "Block",
                 "src": "4436:83:25"
               }
             ],
-            "id": 11104,
+            "id": 11122,
             "name": "FunctionDefinition",
             "src": "4318:201:25"
           },
@@ -4672,7 +4672,7 @@ export const MockDebtRegistry =
               ],
               "name": "mockGetTermsContractReturnValueFor",
               "payable": false,
-              "scope": 11195,
+              "scope": 11213,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -4684,7 +4684,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 11120,
+                      "scope": 11138,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -4697,12 +4697,12 @@ export const MockDebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 11105,
+                        "id": 11123,
                         "name": "ElementaryTypeName",
                         "src": "4578:7:25"
                       }
                     ],
-                    "id": 11106,
+                    "id": 11124,
                     "name": "VariableDeclaration",
                     "src": "4578:19:25"
                   },
@@ -4710,7 +4710,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "termsContract",
-                      "scope": 11120,
+                      "scope": 11138,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -4723,17 +4723,17 @@ export const MockDebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 11107,
+                        "id": 11125,
                         "name": "ElementaryTypeName",
                         "src": "4607:7:25"
                       }
                     ],
-                    "id": 11108,
+                    "id": 11126,
                     "name": "VariableDeclaration",
                     "src": "4607:21:25"
                   }
                 ],
-                "id": 11109,
+                "id": 11127,
                 "name": "ParameterList",
                 "src": "4568:66:25"
               },
@@ -4744,7 +4744,7 @@ export const MockDebtRegistry =
                   ]
                 },
                 "children": [],
-                "id": 11110,
+                "id": 11128,
                 "name": "ParameterList",
                 "src": "4654:0:25"
               },
@@ -4786,11 +4786,11 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10538,
+                              "referencedDeclaration": 10556,
                               "type": "function (string memory,bytes32,bytes32)",
                               "value": "mockReturnValue"
                             },
-                            "id": 11111,
+                            "id": 11129,
                             "name": "Identifier",
                             "src": "4664:15:25"
                           },
@@ -4807,7 +4807,7 @@ export const MockDebtRegistry =
                               "type": "literal_string \"getTermsContract\"",
                               "value": "getTermsContract"
                             },
-                            "id": 11112,
+                            "id": 11130,
                             "name": "Literal",
                             "src": "4680:18:25"
                           },
@@ -4817,11 +4817,11 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 11106,
+                              "referencedDeclaration": 11124,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 11113,
+                            "id": 11131,
                             "name": "Identifier",
                             "src": "4700:11:25"
                           },
@@ -4855,7 +4855,7 @@ export const MockDebtRegistry =
                                   "type": "type(bytes32)",
                                   "value": "bytes32"
                                 },
-                                "id": 11114,
+                                "id": 11132,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "4713:7:25"
                               },
@@ -4865,36 +4865,36 @@ export const MockDebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 11108,
+                                  "referencedDeclaration": 11126,
                                   "type": "address",
                                   "value": "termsContract"
                                 },
-                                "id": 11115,
+                                "id": 11133,
                                 "name": "Identifier",
                                 "src": "4721:13:25"
                               }
                             ],
-                            "id": 11116,
+                            "id": 11134,
                             "name": "FunctionCall",
                             "src": "4713:22:25"
                           }
                         ],
-                        "id": 11117,
+                        "id": 11135,
                         "name": "FunctionCall",
                         "src": "4664:72:25"
                       }
                     ],
-                    "id": 11118,
+                    "id": 11136,
                     "name": "ExpressionStatement",
                     "src": "4664:72:25"
                   }
                 ],
-                "id": 11119,
+                "id": 11137,
                 "name": "Block",
                 "src": "4654:89:25"
               }
             ],
-            "id": 11120,
+            "id": 11138,
             "name": "FunctionDefinition",
             "src": "4525:218:25"
           },
@@ -4908,7 +4908,7 @@ export const MockDebtRegistry =
               ],
               "name": "wasInsertCalledWith",
               "payable": false,
-              "scope": 11195,
+              "scope": 11213,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -4920,7 +4920,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_version",
-                      "scope": 11156,
+                      "scope": 11174,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -4933,12 +4933,12 @@ export const MockDebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 11121,
+                        "id": 11139,
                         "name": "ElementaryTypeName",
                         "src": "4787:7:25"
                       }
                     ],
-                    "id": 11122,
+                    "id": 11140,
                     "name": "VariableDeclaration",
                     "src": "4787:16:25"
                   },
@@ -4946,7 +4946,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_beneficiary",
-                      "scope": 11156,
+                      "scope": 11174,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -4959,12 +4959,12 @@ export const MockDebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 11123,
+                        "id": 11141,
                         "name": "ElementaryTypeName",
                         "src": "4813:7:25"
                       }
                     ],
-                    "id": 11124,
+                    "id": 11142,
                     "name": "VariableDeclaration",
                     "src": "4813:20:25"
                   },
@@ -4972,7 +4972,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_debtor",
-                      "scope": 11156,
+                      "scope": 11174,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -4985,12 +4985,12 @@ export const MockDebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 11125,
+                        "id": 11143,
                         "name": "ElementaryTypeName",
                         "src": "4843:7:25"
                       }
                     ],
-                    "id": 11126,
+                    "id": 11144,
                     "name": "VariableDeclaration",
                     "src": "4843:15:25"
                   },
@@ -4998,7 +4998,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_underwriter",
-                      "scope": 11156,
+                      "scope": 11174,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -5011,12 +5011,12 @@ export const MockDebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 11127,
+                        "id": 11145,
                         "name": "ElementaryTypeName",
                         "src": "4868:7:25"
                       }
                     ],
-                    "id": 11128,
+                    "id": 11146,
                     "name": "VariableDeclaration",
                     "src": "4868:20:25"
                   },
@@ -5024,7 +5024,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_underwriterRiskRating",
-                      "scope": 11156,
+                      "scope": 11174,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -5037,12 +5037,12 @@ export const MockDebtRegistry =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 11129,
+                        "id": 11147,
                         "name": "ElementaryTypeName",
                         "src": "4898:4:25"
                       }
                     ],
-                    "id": 11130,
+                    "id": 11148,
                     "name": "VariableDeclaration",
                     "src": "4898:27:25"
                   },
@@ -5050,7 +5050,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_termsContract",
-                      "scope": 11156,
+                      "scope": 11174,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -5063,12 +5063,12 @@ export const MockDebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 11131,
+                        "id": 11149,
                         "name": "ElementaryTypeName",
                         "src": "4935:7:25"
                       }
                     ],
-                    "id": 11132,
+                    "id": 11150,
                     "name": "VariableDeclaration",
                     "src": "4935:22:25"
                   },
@@ -5076,7 +5076,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_termsContractParameters",
-                      "scope": 11156,
+                      "scope": 11174,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -5089,12 +5089,12 @@ export const MockDebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 11133,
+                        "id": 11151,
                         "name": "ElementaryTypeName",
                         "src": "4967:7:25"
                       }
                     ],
-                    "id": 11134,
+                    "id": 11152,
                     "name": "VariableDeclaration",
                     "src": "4967:32:25"
                   },
@@ -5102,7 +5102,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_salt",
-                      "scope": 11156,
+                      "scope": 11174,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -5115,17 +5115,17 @@ export const MockDebtRegistry =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 11135,
+                        "id": 11153,
                         "name": "ElementaryTypeName",
                         "src": "5009:4:25"
                       }
                     ],
-                    "id": 11136,
+                    "id": 11154,
                     "name": "VariableDeclaration",
                     "src": "5009:10:25"
                   }
                 ],
-                "id": 11137,
+                "id": 11155,
                 "name": "ParameterList",
                 "src": "4777:248:25"
               },
@@ -5135,7 +5135,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_wasCalled",
-                      "scope": 11156,
+                      "scope": 11174,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -5148,17 +5148,17 @@ export const MockDebtRegistry =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 11138,
+                        "id": 11156,
                         "name": "ElementaryTypeName",
                         "src": "5071:4:25"
                       }
                     ],
-                    "id": 11139,
+                    "id": 11157,
                     "name": "VariableDeclaration",
                     "src": "5071:15:25"
                   }
                 ],
-                "id": 11140,
+                "id": 11158,
                 "name": "ParameterList",
                 "src": "5070:17:25"
               },
@@ -5166,7 +5166,7 @@ export const MockDebtRegistry =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 11140
+                      "functionReturnParameters": 11158
                     },
                     "children": [
                       {
@@ -5199,11 +5199,11 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10666,
+                              "referencedDeclaration": 10684,
                               "type": "function (string memory,bytes32) view returns (bool)",
                               "value": "wasFunctionCalledWithArgs"
                             },
-                            "id": 11141,
+                            "id": 11159,
                             "name": "Identifier",
                             "src": "5109:25:25"
                           },
@@ -5220,7 +5220,7 @@ export const MockDebtRegistry =
                               "type": "literal_string \"insert\"",
                               "value": "insert"
                             },
-                            "id": 11142,
+                            "id": 11160,
                             "name": "Literal",
                             "src": "5135:8:25"
                           },
@@ -5278,11 +5278,11 @@ export const MockDebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15809,
+                                  "referencedDeclaration": 15827,
                                   "type": "function () pure returns (bytes32)",
                                   "value": "keccak256"
                                 },
-                                "id": 11143,
+                                "id": 11161,
                                 "name": "Identifier",
                                 "src": "5145:9:25"
                               },
@@ -5292,11 +5292,11 @@ export const MockDebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 11122,
+                                  "referencedDeclaration": 11140,
                                   "type": "address",
                                   "value": "_version"
                                 },
-                                "id": 11144,
+                                "id": 11162,
                                 "name": "Identifier",
                                 "src": "5168:8:25"
                               },
@@ -5306,11 +5306,11 @@ export const MockDebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 11124,
+                                  "referencedDeclaration": 11142,
                                   "type": "address",
                                   "value": "_beneficiary"
                                 },
-                                "id": 11145,
+                                "id": 11163,
                                 "name": "Identifier",
                                 "src": "5190:12:25"
                               },
@@ -5320,11 +5320,11 @@ export const MockDebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 11126,
+                                  "referencedDeclaration": 11144,
                                   "type": "address",
                                   "value": "_debtor"
                                 },
-                                "id": 11146,
+                                "id": 11164,
                                 "name": "Identifier",
                                 "src": "5216:7:25"
                               },
@@ -5334,11 +5334,11 @@ export const MockDebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 11128,
+                                  "referencedDeclaration": 11146,
                                   "type": "address",
                                   "value": "_underwriter"
                                 },
-                                "id": 11147,
+                                "id": 11165,
                                 "name": "Identifier",
                                 "src": "5237:12:25"
                               },
@@ -5348,11 +5348,11 @@ export const MockDebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 11130,
+                                  "referencedDeclaration": 11148,
                                   "type": "uint256",
                                   "value": "_underwriterRiskRating"
                                 },
-                                "id": 11148,
+                                "id": 11166,
                                 "name": "Identifier",
                                 "src": "5263:22:25"
                               },
@@ -5362,11 +5362,11 @@ export const MockDebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 11132,
+                                  "referencedDeclaration": 11150,
                                   "type": "address",
                                   "value": "_termsContract"
                                 },
-                                "id": 11149,
+                                "id": 11167,
                                 "name": "Identifier",
                                 "src": "5299:14:25"
                               },
@@ -5376,11 +5376,11 @@ export const MockDebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 11134,
+                                  "referencedDeclaration": 11152,
                                   "type": "bytes32",
                                   "value": "_termsContractParameters"
                                 },
-                                "id": 11150,
+                                "id": 11168,
                                 "name": "Identifier",
                                 "src": "5327:24:25"
                               },
@@ -5390,36 +5390,36 @@ export const MockDebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 11136,
+                                  "referencedDeclaration": 11154,
                                   "type": "uint256",
                                   "value": "_salt"
                                 },
-                                "id": 11151,
+                                "id": 11169,
                                 "name": "Identifier",
                                 "src": "5365:5:25"
                               }
                             ],
-                            "id": 11152,
+                            "id": 11170,
                             "name": "FunctionCall",
                             "src": "5145:235:25"
                           }
                         ],
-                        "id": 11153,
+                        "id": 11171,
                         "name": "FunctionCall",
                         "src": "5109:272:25"
                       }
                     ],
-                    "id": 11154,
+                    "id": 11172,
                     "name": "Return",
                     "src": "5102:279:25"
                   }
                 ],
-                "id": 11155,
+                "id": 11173,
                 "name": "Block",
                 "src": "5092:296:25"
               }
             ],
-            "id": 11156,
+            "id": 11174,
             "name": "FunctionDefinition",
             "src": "4749:639:25"
           },
@@ -5433,7 +5433,7 @@ export const MockDebtRegistry =
               ],
               "name": "wasModifyBeneficiaryCalledWith",
               "payable": false,
-              "scope": 11195,
+              "scope": 11213,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -5445,7 +5445,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 11174,
+                      "scope": 11192,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -5458,12 +5458,12 @@ export const MockDebtRegistry =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 11157,
+                        "id": 11175,
                         "name": "ElementaryTypeName",
                         "src": "5434:7:25"
                       }
                     ],
-                    "id": 11158,
+                    "id": 11176,
                     "name": "VariableDeclaration",
                     "src": "5434:19:25"
                   },
@@ -5471,7 +5471,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "newBeneficiary",
-                      "scope": 11174,
+                      "scope": 11192,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -5484,17 +5484,17 @@ export const MockDebtRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 11159,
+                        "id": 11177,
                         "name": "ElementaryTypeName",
                         "src": "5455:7:25"
                       }
                     ],
-                    "id": 11160,
+                    "id": 11178,
                     "name": "VariableDeclaration",
                     "src": "5455:22:25"
                   }
                 ],
-                "id": 11161,
+                "id": 11179,
                 "name": "ParameterList",
                 "src": "5433:45:25"
               },
@@ -5504,7 +5504,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_wasCalled",
-                      "scope": 11174,
+                      "scope": 11192,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -5517,17 +5517,17 @@ export const MockDebtRegistry =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 11162,
+                        "id": 11180,
                         "name": "ElementaryTypeName",
                         "src": "5524:4:25"
                       }
                     ],
-                    "id": 11163,
+                    "id": 11181,
                     "name": "VariableDeclaration",
                     "src": "5524:15:25"
                   }
                 ],
-                "id": 11164,
+                "id": 11182,
                 "name": "ParameterList",
                 "src": "5523:17:25"
               },
@@ -5535,7 +5535,7 @@ export const MockDebtRegistry =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 11164
+                      "functionReturnParameters": 11182
                     },
                     "children": [
                       {
@@ -5568,11 +5568,11 @@ export const MockDebtRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10666,
+                              "referencedDeclaration": 10684,
                               "type": "function (string memory,bytes32) view returns (bool)",
                               "value": "wasFunctionCalledWithArgs"
                             },
-                            "id": 11165,
+                            "id": 11183,
                             "name": "Identifier",
                             "src": "5562:25:25"
                           },
@@ -5589,7 +5589,7 @@ export const MockDebtRegistry =
                               "type": "literal_string \"modifyBeneficiary\"",
                               "value": "modifyBeneficiary"
                             },
-                            "id": 11166,
+                            "id": 11184,
                             "name": "Literal",
                             "src": "5588:19:25"
                           },
@@ -5623,11 +5623,11 @@ export const MockDebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15809,
+                                  "referencedDeclaration": 15827,
                                   "type": "function () pure returns (bytes32)",
                                   "value": "keccak256"
                                 },
-                                "id": 11167,
+                                "id": 11185,
                                 "name": "Identifier",
                                 "src": "5621:9:25"
                               },
@@ -5637,11 +5637,11 @@ export const MockDebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 11158,
+                                  "referencedDeclaration": 11176,
                                   "type": "bytes32",
                                   "value": "agreementId"
                                 },
-                                "id": 11168,
+                                "id": 11186,
                                 "name": "Identifier",
                                 "src": "5631:11:25"
                               },
@@ -5651,36 +5651,36 @@ export const MockDebtRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 11160,
+                                  "referencedDeclaration": 11178,
                                   "type": "address",
                                   "value": "newBeneficiary"
                                 },
-                                "id": 11169,
+                                "id": 11187,
                                 "name": "Identifier",
                                 "src": "5644:14:25"
                               }
                             ],
-                            "id": 11170,
+                            "id": 11188,
                             "name": "FunctionCall",
                             "src": "5621:38:25"
                           }
                         ],
-                        "id": 11171,
+                        "id": 11189,
                         "name": "FunctionCall",
                         "src": "5562:98:25"
                       }
                     ],
-                    "id": 11172,
+                    "id": 11190,
                     "name": "Return",
                     "src": "5555:105:25"
                   }
                 ],
-                "id": 11173,
+                "id": 11191,
                 "name": "Block",
                 "src": "5545:122:25"
               }
             ],
-            "id": 11174,
+            "id": 11192,
             "name": "FunctionDefinition",
             "src": "5394:273:25"
           },
@@ -5694,9 +5694,9 @@ export const MockDebtRegistry =
               ],
               "name": "getFunctionList",
               "payable": false,
-              "scope": 11195,
+              "scope": 11213,
               "stateMutability": "nonpayable",
-              "superFunction": 10673,
+              "superFunction": 10691,
               "visibility": "internal"
             },
             "children": [
@@ -5707,7 +5707,7 @@ export const MockDebtRegistry =
                   ]
                 },
                 "children": [],
-                "id": 11175,
+                "id": 11193,
                 "name": "ParameterList",
                 "src": "5697:2:25"
               },
@@ -5717,7 +5717,7 @@ export const MockDebtRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "functionNames",
-                      "scope": 11194,
+                      "scope": 11212,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory[10] memory",
@@ -5735,7 +5735,7 @@ export const MockDebtRegistry =
                               "name": "string",
                               "type": "string storage pointer"
                             },
-                            "id": 11176,
+                            "id": 11194,
                             "name": "ElementaryTypeName",
                             "src": "5734:6:25"
                           },
@@ -5752,22 +5752,22 @@ export const MockDebtRegistry =
                               "type": "int_const 10",
                               "value": "10"
                             },
-                            "id": 11177,
+                            "id": 11195,
                             "name": "Literal",
                             "src": "5741:2:25"
                           }
                         ],
-                        "id": 11178,
+                        "id": 11196,
                         "name": "ArrayTypeName",
                         "src": "5734:10:25"
                       }
                     ],
-                    "id": 11179,
+                    "id": 11197,
                     "name": "VariableDeclaration",
                     "src": "5734:24:25"
                   }
                 ],
-                "id": 11180,
+                "id": 11198,
                 "name": "ParameterList",
                 "src": "5733:26:25"
               },
@@ -5775,7 +5775,7 @@ export const MockDebtRegistry =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 11180
+                      "functionReturnParameters": 11198
                     },
                     "children": [
                       {
@@ -5802,7 +5802,7 @@ export const MockDebtRegistry =
                               "type": "literal_string \"insert\"",
                               "value": "insert"
                             },
-                            "id": 11181,
+                            "id": 11199,
                             "name": "Literal",
                             "src": "5795:8:25"
                           },
@@ -5819,7 +5819,7 @@ export const MockDebtRegistry =
                               "type": "literal_string \"modifyBeneficiary\"",
                               "value": "modifyBeneficiary"
                             },
-                            "id": 11182,
+                            "id": 11200,
                             "name": "Literal",
                             "src": "5817:19:25"
                           },
@@ -5836,7 +5836,7 @@ export const MockDebtRegistry =
                               "type": "literal_string \"getBeneficiary\"",
                               "value": "getBeneficiary"
                             },
-                            "id": 11183,
+                            "id": 11201,
                             "name": "Literal",
                             "src": "5850:16:25"
                           },
@@ -5853,7 +5853,7 @@ export const MockDebtRegistry =
                               "type": "literal_string \"getTerms_termsContract\"",
                               "value": "getTerms_termsContract"
                             },
-                            "id": 11184,
+                            "id": 11202,
                             "name": "Literal",
                             "src": "5880:24:25"
                           },
@@ -5870,7 +5870,7 @@ export const MockDebtRegistry =
                               "type": "literal_string \"getTerms_termsContractParameters\"",
                               "value": "getTerms_termsContractParameters"
                             },
-                            "id": 11185,
+                            "id": 11203,
                             "name": "Literal",
                             "src": "5918:34:25"
                           },
@@ -5887,7 +5887,7 @@ export const MockDebtRegistry =
                               "type": "literal_string \"getTermsContract\"",
                               "value": "getTermsContract"
                             },
-                            "id": 11186,
+                            "id": 11204,
                             "name": "Literal",
                             "src": "5966:18:25"
                           },
@@ -5904,7 +5904,7 @@ export const MockDebtRegistry =
                               "type": "literal_string \"getTermsContractParameters\"",
                               "value": "getTermsContractParameters"
                             },
-                            "id": 11187,
+                            "id": 11205,
                             "name": "Literal",
                             "src": "5998:28:25"
                           },
@@ -5921,7 +5921,7 @@ export const MockDebtRegistry =
                               "type": "literal_string \"getIssuanceBlockTimestamp\"",
                               "value": "getIssuanceBlockTimestamp"
                             },
-                            "id": 11188,
+                            "id": 11206,
                             "name": "Literal",
                             "src": "6040:27:25"
                           },
@@ -5938,7 +5938,7 @@ export const MockDebtRegistry =
                               "type": "literal_string \"doesEntryExist\"",
                               "value": "doesEntryExist"
                             },
-                            "id": 11189,
+                            "id": 11207,
                             "name": "Literal",
                             "src": "6081:16:25"
                           },
@@ -5955,37 +5955,37 @@ export const MockDebtRegistry =
                               "type": "literal_string \"\"",
                               "value": ""
                             },
-                            "id": 11190,
+                            "id": 11208,
                             "name": "Literal",
                             "src": "6111:2:25"
                           }
                         ],
-                        "id": 11191,
+                        "id": 11209,
                         "name": "TupleExpression",
                         "src": "5781:342:25"
                       }
                     ],
-                    "id": 11192,
+                    "id": 11210,
                     "name": "Return",
                     "src": "5774:349:25"
                   }
                 ],
-                "id": 11193,
+                "id": 11211,
                 "name": "Block",
                 "src": "5764:366:25"
               }
             ],
-            "id": 11194,
+            "id": 11212,
             "name": "FunctionDefinition",
             "src": "5673:457:25"
           }
         ],
-        "id": 11195,
+        "id": 11213,
         "name": "ContractDefinition",
         "src": "640:5492:25"
       }
     ],
-    "id": 11196,
+    "id": 11214,
     "name": "SourceUnit",
     "src": "584:5549:25"
   },
@@ -6002,9 +6002,9 @@ export const MockDebtRegistry =
     "70": {
       "events": {},
       "links": {},
-      "address": "0x9d88fc44dc34d55d2ef8b0ea2d9b182fb4c05bde"
+      "address": "0x9726f74bfc93081cfe9a42f763848203e06c8413"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-25T20:05:00.832Z"
+  "updatedAt": "2018-09-25T22:27:43.457Z"
 }

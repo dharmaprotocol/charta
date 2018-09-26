@@ -411,7 +411,7 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
       "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/examples/ERC721CollateralizedSimpleInterestTermsContract.sol",
       "exportedSymbols": {
         "ERC721CollateralizedSimpleInterestTermsContract": [
-          5330
+          5348
         ]
       }
     },
@@ -424,56 +424,56 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
             ".18"
           ]
         },
-        "id": 5257,
+        "id": 5275,
         "name": "PragmaDirective",
         "src": "584:23:15"
       },
       {
         "attributes": {
-          "SourceUnit": 6035,
+          "SourceUnit": 6053,
           "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/examples/SimpleInterestTermsContract.sol",
           "file": "./SimpleInterestTermsContract.sol",
-          "scope": 5331,
+          "scope": 5349,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 5258,
+        "id": 5276,
         "name": "ImportDirective",
         "src": "609:43:15"
       },
       {
         "attributes": {
-          "SourceUnit": 4149,
+          "SourceUnit": 4167,
           "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/ERC721Collateralizer.sol",
           "file": "../ERC721Collateralizer.sol",
-          "scope": 5331,
+          "scope": 5349,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 5259,
+        "id": 5277,
         "name": "ImportDirective",
         "src": "653:37:15"
       },
       {
         "attributes": {
           "contractDependencies": [
-            4739,
-            6034
+            4757,
+            6052
           ],
           "contractKind": "contract",
           "documentation": "A Terms Contract that can be used for debt agreements where the collateral token is a\nnon-fungible ERC721 token. It contains functionality for simple interest loans.",
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            5330,
-            6034,
-            4739
+            5348,
+            6052,
+            4757
           ],
           "name": "ERC721CollateralizedSimpleInterestTermsContract",
-          "scope": 5331
+          "scope": 5349
         },
         "children": [
           {
@@ -487,15 +487,15 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                 "attributes": {
                   "contractScope": null,
                   "name": "SimpleInterestTermsContract",
-                  "referencedDeclaration": 6034,
+                  "referencedDeclaration": 6052,
                   "type": "contract SimpleInterestTermsContract"
                 },
-                "id": 5260,
+                "id": 5278,
                 "name": "UserDefinedTypeName",
                 "src": "933:27:15"
               }
             ],
-            "id": 5261,
+            "id": 5279,
             "name": "InheritanceSpecifier",
             "src": "933:27:15"
           },
@@ -503,7 +503,7 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
             "attributes": {
               "constant": false,
               "name": "erc721Collateralizer",
-              "scope": 5330,
+              "scope": 5348,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "contract ERC721Collateralizer",
@@ -515,15 +515,15 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                 "attributes": {
                   "contractScope": null,
                   "name": "ERC721Collateralizer",
-                  "referencedDeclaration": 4148,
+                  "referencedDeclaration": 4166,
                   "type": "contract ERC721Collateralizer"
                 },
-                "id": 5262,
+                "id": 5280,
                 "name": "UserDefinedTypeName",
                 "src": "967:20:15"
               }
             ],
-            "id": 5263,
+            "id": 5281,
             "name": "VariableDeclaration",
             "src": "967:48:15"
           },
@@ -534,7 +534,7 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
               "isConstructor": true,
               "name": "ERC721CollateralizedSimpleInterestTermsContract",
               "payable": false,
-              "scope": 5330,
+              "scope": 5348,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -546,7 +546,7 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "_contractRegistry",
-                      "scope": 5280,
+                      "scope": 5298,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -559,12 +559,12 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 5264,
+                        "id": 5282,
                         "name": "ElementaryTypeName",
                         "src": "1088:7:15"
                       }
                     ],
-                    "id": 5265,
+                    "id": 5283,
                     "name": "VariableDeclaration",
                     "src": "1088:25:15"
                   },
@@ -572,7 +572,7 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "_erc721Collateralizer",
-                      "scope": 5280,
+                      "scope": 5298,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -585,17 +585,17 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 5266,
+                        "id": 5284,
                         "name": "ElementaryTypeName",
                         "src": "1123:7:15"
                       }
                     ],
-                    "id": 5267,
+                    "id": 5285,
                     "name": "VariableDeclaration",
                     "src": "1123:29:15"
                   }
                 ],
-                "id": 5268,
+                "id": 5286,
                 "name": "ParameterList",
                 "src": "1078:80:15"
               },
@@ -606,7 +606,7 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                   ]
                 },
                 "children": [],
-                "id": 5272,
+                "id": 5290,
                 "name": "ParameterList",
                 "src": "1213:0:15"
               },
@@ -618,11 +618,11 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 6034,
+                      "referencedDeclaration": 6052,
                       "type": "type(contract SimpleInterestTermsContract)",
                       "value": "SimpleInterestTermsContract"
                     },
-                    "id": 5269,
+                    "id": 5287,
                     "name": "Identifier",
                     "src": "1166:27:15"
                   },
@@ -632,16 +632,16 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 5265,
+                      "referencedDeclaration": 5283,
                       "type": "address",
                       "value": "_contractRegistry"
                     },
-                    "id": 5270,
+                    "id": 5288,
                     "name": "Identifier",
                     "src": "1194:17:15"
                   }
                 ],
-                "id": 5271,
+                "id": 5289,
                 "name": "ModifierInvocation",
                 "src": "1166:46:15"
               },
@@ -666,11 +666,11 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5263,
+                              "referencedDeclaration": 5281,
                               "type": "contract ERC721Collateralizer",
                               "value": "erc721Collateralizer"
                             },
-                            "id": 5273,
+                            "id": 5291,
                             "name": "Identifier",
                             "src": "1223:20:15"
                           },
@@ -700,11 +700,11 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4148,
+                                  "referencedDeclaration": 4166,
                                   "type": "type(contract ERC721Collateralizer)",
                                   "value": "ERC721Collateralizer"
                                 },
-                                "id": 5274,
+                                "id": 5292,
                                 "name": "Identifier",
                                 "src": "1246:20:15"
                               },
@@ -714,36 +714,36 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5267,
+                                  "referencedDeclaration": 5285,
                                   "type": "address",
                                   "value": "_erc721Collateralizer"
                                 },
-                                "id": 5275,
+                                "id": 5293,
                                 "name": "Identifier",
                                 "src": "1267:21:15"
                               }
                             ],
-                            "id": 5276,
+                            "id": 5294,
                             "name": "FunctionCall",
                             "src": "1246:43:15"
                           }
                         ],
-                        "id": 5277,
+                        "id": 5295,
                         "name": "Assignment",
                         "src": "1223:66:15"
                       }
                     ],
-                    "id": 5278,
+                    "id": 5296,
                     "name": "ExpressionStatement",
                     "src": "1223:66:15"
                   }
                 ],
-                "id": 5279,
+                "id": 5297,
                 "name": "Block",
                 "src": "1213:83:15"
               }
             ],
-            "id": 5280,
+            "id": 5298,
             "name": "FunctionDefinition",
             "src": "1022:274:15"
           },
@@ -754,9 +754,9 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
               "isConstructor": false,
               "name": "registerTermStart",
               "payable": false,
-              "scope": 5330,
+              "scope": 5348,
               "stateMutability": "nonpayable",
-              "superFunction": 5585,
+              "superFunction": 5603,
               "visibility": "public"
             },
             "children": [
@@ -766,7 +766,7 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "agreementId",
-                      "scope": 5312,
+                      "scope": 5330,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -779,12 +779,12 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 5281,
+                        "id": 5299,
                         "name": "ElementaryTypeName",
                         "src": "1619:7:15"
                       }
                     ],
-                    "id": 5282,
+                    "id": 5300,
                     "name": "VariableDeclaration",
                     "src": "1619:19:15"
                   },
@@ -792,7 +792,7 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "debtor",
-                      "scope": 5312,
+                      "scope": 5330,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -805,17 +805,17 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 5283,
+                        "id": 5301,
                         "name": "ElementaryTypeName",
                         "src": "1648:7:15"
                       }
                     ],
-                    "id": 5284,
+                    "id": 5302,
                     "name": "VariableDeclaration",
                     "src": "1648:14:15"
                   }
                 ],
-                "id": 5285,
+                "id": 5303,
                 "name": "ParameterList",
                 "src": "1609:59:15"
               },
@@ -825,7 +825,7 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "_success",
-                      "scope": 5312,
+                      "scope": 5330,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -838,17 +838,17 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 5288,
+                        "id": 5306,
                         "name": "ElementaryTypeName",
                         "src": "1724:4:15"
                       }
                     ],
-                    "id": 5289,
+                    "id": 5307,
                     "name": "VariableDeclaration",
                     "src": "1724:13:15"
                   }
                 ],
-                "id": 5290,
+                "id": 5308,
                 "name": "ParameterList",
                 "src": "1723:15:15"
               },
@@ -865,16 +865,16 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 5479,
+                      "referencedDeclaration": 5497,
                       "type": "modifier ()",
                       "value": "onlyDebtKernel"
                     },
-                    "id": 5286,
+                    "id": 5304,
                     "name": "Identifier",
                     "src": "1692:14:15"
                   }
                 ],
-                "id": 5287,
+                "id": 5305,
                 "name": "ModifierInvocation",
                 "src": "1692:14:15"
               },
@@ -883,7 +883,7 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                   {
                     "attributes": {
                       "assignments": [
-                        5292
+                        5310
                       ]
                     },
                     "children": [
@@ -891,7 +891,7 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "registered",
-                          "scope": 5312,
+                          "scope": 5330,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bool",
@@ -904,12 +904,12 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                               "name": "bool",
                               "type": "bool"
                             },
-                            "id": 5291,
+                            "id": 5309,
                             "name": "ElementaryTypeName",
                             "src": "1753:4:15"
                           }
                         ],
-                        "id": 5292,
+                        "id": 5310,
                         "name": "VariableDeclaration",
                         "src": "1753:15:15"
                       },
@@ -945,7 +945,7 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "registerTermStart",
-                              "referencedDeclaration": 5585,
+                              "referencedDeclaration": 5603,
                               "type": "function (bytes32,address) returns (bool)"
                             },
                             "children": [
@@ -955,16 +955,16 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15891,
+                                  "referencedDeclaration": 15909,
                                   "type": "contract super ERC721CollateralizedSimpleInterestTermsContract",
                                   "value": "super"
                                 },
-                                "id": 5293,
+                                "id": 5311,
                                 "name": "Identifier",
                                 "src": "1771:5:15"
                               }
                             ],
-                            "id": 5294,
+                            "id": 5312,
                             "name": "MemberAccess",
                             "src": "1771:23:15"
                           },
@@ -974,11 +974,11 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5282,
+                              "referencedDeclaration": 5300,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 5295,
+                            "id": 5313,
                             "name": "Identifier",
                             "src": "1795:11:15"
                           },
@@ -988,28 +988,28 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5284,
+                              "referencedDeclaration": 5302,
                               "type": "address",
                               "value": "debtor"
                             },
-                            "id": 5296,
+                            "id": 5314,
                             "name": "Identifier",
                             "src": "1808:6:15"
                           }
                         ],
-                        "id": 5297,
+                        "id": 5315,
                         "name": "FunctionCall",
                         "src": "1771:44:15"
                       }
                     ],
-                    "id": 5298,
+                    "id": 5316,
                     "name": "VariableDeclarationStatement",
                     "src": "1753:62:15"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        5300
+                        5318
                       ]
                     },
                     "children": [
@@ -1017,7 +1017,7 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "collateralized",
-                          "scope": 5312,
+                          "scope": 5330,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bool",
@@ -1030,12 +1030,12 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                               "name": "bool",
                               "type": "bool"
                             },
-                            "id": 5299,
+                            "id": 5317,
                             "name": "ElementaryTypeName",
                             "src": "1825:4:15"
                           }
                         ],
-                        "id": 5300,
+                        "id": 5318,
                         "name": "VariableDeclaration",
                         "src": "1825:19:15"
                       },
@@ -1071,7 +1071,7 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "collateralize",
-                              "referencedDeclaration": 3747,
+                              "referencedDeclaration": 3765,
                               "type": "function (bytes32,address) external returns (bool)"
                             },
                             "children": [
@@ -1081,16 +1081,16 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5263,
+                                  "referencedDeclaration": 5281,
                                   "type": "contract ERC721Collateralizer",
                                   "value": "erc721Collateralizer"
                                 },
-                                "id": 5301,
+                                "id": 5319,
                                 "name": "Identifier",
                                 "src": "1847:20:15"
                               }
                             ],
-                            "id": 5302,
+                            "id": 5320,
                             "name": "MemberAccess",
                             "src": "1847:34:15"
                           },
@@ -1100,11 +1100,11 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5282,
+                              "referencedDeclaration": 5300,
                               "type": "bytes32",
                               "value": "agreementId"
                             },
-                            "id": 5303,
+                            "id": 5321,
                             "name": "Identifier",
                             "src": "1882:11:15"
                           },
@@ -1114,27 +1114,27 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5284,
+                              "referencedDeclaration": 5302,
                               "type": "address",
                               "value": "debtor"
                             },
-                            "id": 5304,
+                            "id": 5322,
                             "name": "Identifier",
                             "src": "1895:6:15"
                           }
                         ],
-                        "id": 5305,
+                        "id": 5323,
                         "name": "FunctionCall",
                         "src": "1847:55:15"
                       }
                     ],
-                    "id": 5306,
+                    "id": 5324,
                     "name": "VariableDeclarationStatement",
                     "src": "1825:77:15"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 5290
+                      "functionReturnParameters": 5308
                     },
                     "children": [
                       {
@@ -1158,11 +1158,11 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5292,
+                              "referencedDeclaration": 5310,
                               "type": "bool",
                               "value": "registered"
                             },
-                            "id": 5307,
+                            "id": 5325,
                             "name": "Identifier",
                             "src": "1920:10:15"
                           },
@@ -1172,31 +1172,31 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5300,
+                              "referencedDeclaration": 5318,
                               "type": "bool",
                               "value": "collateralized"
                             },
-                            "id": 5308,
+                            "id": 5326,
                             "name": "Identifier",
                             "src": "1934:14:15"
                           }
                         ],
-                        "id": 5309,
+                        "id": 5327,
                         "name": "BinaryOperation",
                         "src": "1920:28:15"
                       }
                     ],
-                    "id": 5310,
+                    "id": 5328,
                     "name": "Return",
                     "src": "1913:35:15"
                   }
                 ],
-                "id": 5311,
+                "id": 5329,
                 "name": "Block",
                 "src": "1743:212:15"
               }
             ],
-            "id": 5312,
+            "id": 5330,
             "name": "FunctionDefinition",
             "src": "1583:372:15"
           },
@@ -1210,9 +1210,9 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
               ],
               "name": "getTermEndTimestamp",
               "payable": false,
-              "scope": 5330,
+              "scope": 5348,
               "stateMutability": "view",
-              "superFunction": 5793,
+              "superFunction": 5811,
               "visibility": "public"
             },
             "children": [
@@ -1222,7 +1222,7 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "_agreementId",
-                      "scope": 5329,
+                      "scope": 5347,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -1235,17 +1235,17 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 5313,
+                        "id": 5331,
                         "name": "ElementaryTypeName",
                         "src": "2129:7:15"
                       }
                     ],
-                    "id": 5314,
+                    "id": 5332,
                     "name": "VariableDeclaration",
                     "src": "2129:20:15"
                   }
                 ],
-                "id": 5315,
+                "id": 5333,
                 "name": "ParameterList",
                 "src": "2119:36:15"
               },
@@ -1255,7 +1255,7 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 5329,
+                      "scope": 5347,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1268,17 +1268,17 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 5316,
+                        "id": 5334,
                         "name": "ElementaryTypeName",
                         "src": "2201:4:15"
                       }
                     ],
-                    "id": 5317,
+                    "id": 5335,
                     "name": "VariableDeclaration",
                     "src": "2201:4:15"
                   }
                 ],
-                "id": 5318,
+                "id": 5336,
                 "name": "ParameterList",
                 "src": "2200:6:15"
               },
@@ -1287,7 +1287,7 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                   {
                     "attributes": {
                       "assignments": [
-                        5320
+                        5338
                       ]
                     },
                     "children": [
@@ -1295,7 +1295,7 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                         "attributes": {
                           "constant": false,
                           "name": "params",
-                          "scope": 5329,
+                          "scope": 5347,
                           "stateVariable": false,
                           "storageLocation": "memory",
                           "type": "struct SimpleInterestTermsContract.SimpleInterestParams memory",
@@ -1307,15 +1307,15 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                             "attributes": {
                               "contractScope": null,
                               "name": "SimpleInterestParams",
-                              "referencedDeclaration": 5363,
+                              "referencedDeclaration": 5381,
                               "type": "struct SimpleInterestTermsContract.SimpleInterestParams storage pointer"
                             },
-                            "id": 5319,
+                            "id": 5337,
                             "name": "UserDefinedTypeName",
                             "src": "2221:20:15"
                           }
                         ],
-                        "id": 5320,
+                        "id": 5338,
                         "name": "VariableDeclaration",
                         "src": "2221:34:15"
                       },
@@ -1345,11 +1345,11 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5981,
+                              "referencedDeclaration": 5999,
                               "type": "function (bytes32) returns (struct SimpleInterestTermsContract.SimpleInterestParams memory)",
                               "value": "unpackParamsForAgreementID"
                             },
-                            "id": 5321,
+                            "id": 5339,
                             "name": "Identifier",
                             "src": "2258:26:15"
                           },
@@ -1359,27 +1359,27 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5314,
+                              "referencedDeclaration": 5332,
                               "type": "bytes32",
                               "value": "_agreementId"
                             },
-                            "id": 5322,
+                            "id": 5340,
                             "name": "Identifier",
                             "src": "2285:12:15"
                           }
                         ],
-                        "id": 5323,
+                        "id": 5341,
                         "name": "FunctionCall",
                         "src": "2258:40:15"
                       }
                     ],
-                    "id": 5324,
+                    "id": 5342,
                     "name": "VariableDeclarationStatement",
                     "src": "2221:77:15"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 5318
+                      "functionReturnParameters": 5336
                     },
                     "children": [
                       {
@@ -1390,7 +1390,7 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                           "isPure": false,
                           "lValueRequested": false,
                           "member_name": "termEndUnixTimestamp",
-                          "referencedDeclaration": 5356,
+                          "referencedDeclaration": 5374,
                           "type": "uint256"
                         },
                         "children": [
@@ -1400,41 +1400,41 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5320,
+                              "referencedDeclaration": 5338,
                               "type": "struct SimpleInterestTermsContract.SimpleInterestParams memory",
                               "value": "params"
                             },
-                            "id": 5325,
+                            "id": 5343,
                             "name": "Identifier",
                             "src": "2316:6:15"
                           }
                         ],
-                        "id": 5326,
+                        "id": 5344,
                         "name": "MemberAccess",
                         "src": "2316:27:15"
                       }
                     ],
-                    "id": 5327,
+                    "id": 5345,
                     "name": "Return",
                     "src": "2309:34:15"
                   }
                 ],
-                "id": 5328,
+                "id": 5346,
                 "name": "Block",
                 "src": "2211:139:15"
               }
             ],
-            "id": 5329,
+            "id": 5347,
             "name": "FunctionDefinition",
             "src": "2091:259:15"
           }
         ],
-        "id": 5330,
+        "id": 5348,
         "name": "ContractDefinition",
         "src": "873:1479:15"
       }
     ],
-    "id": 5331,
+    "id": 5349,
     "name": "SourceUnit",
     "src": "584:1769:15"
   },
@@ -1451,9 +1451,9 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
     "70": {
       "events": {},
       "links": {},
-      "address": "0x16bc0e1d9b3d61220b1a535467ff535eb4c5dfbb"
+      "address": "0x46b15103279d5bf8f18b38d69b73ef9d27f2d3eb"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-25T20:05:02.745Z"
+  "updatedAt": "2018-09-25T22:27:45.411Z"
 }

@@ -363,7 +363,7 @@ export const TokenRegistry =
       "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/TokenRegistry.sol",
       "exportedSymbols": {
         "TokenRegistry": [
-          5095
+          5113
         ]
       }
     },
@@ -376,39 +376,39 @@ export const TokenRegistry =
             ".18"
           ]
         },
-        "id": 4741,
+        "id": 4759,
         "name": "PragmaDirective",
         "src": "0:23:12"
       },
       {
         "attributes": {
-          "SourceUnit": 14134,
+          "SourceUnit": 14152,
           "absolutePath": "zeppelin-solidity/contracts/ownership/Ownable.sol",
           "file": "zeppelin-solidity/contracts/ownership/Ownable.sol",
-          "scope": 5096,
+          "scope": 5114,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 4742,
+        "id": 4760,
         "name": "ImportDirective",
         "src": "25:59:12"
       },
       {
         "attributes": {
           "contractDependencies": [
-            14133
+            14151
           ],
           "contractKind": "contract",
           "documentation": "The TokenRegistry is a basic registry mapping token symbols\nto their known, deployed addresses on the current blockchain.\n * Note that the TokenRegistry does *not* mediate any of the\ncore protocol's business logic, but, rather, is a helpful\nutility for Terms Contracts to use in encoding, decoding, and\nresolving the addresses of currently deployed tokens.\n * At this point in time, administration of the Token Registry is\nunder Dharma Labs' control.  With more sophisticated decentralized\ngovernance mechanisms, we intend to shift ownership of this utility\ncontract to the Dharma community.",
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            5095,
-            14133
+            5113,
+            14151
           ],
           "name": "TokenRegistry",
-          "scope": 5096
+          "scope": 5114
         },
         "children": [
           {
@@ -422,15 +422,15 @@ export const TokenRegistry =
                 "attributes": {
                   "contractScope": null,
                   "name": "Ownable",
-                  "referencedDeclaration": 14133,
+                  "referencedDeclaration": 14151,
                   "type": "contract Ownable"
                 },
-                "id": 4743,
+                "id": 4761,
                 "name": "UserDefinedTypeName",
                 "src": "743:7:12"
               }
             ],
-            "id": 4744,
+            "id": 4762,
             "name": "InheritanceSpecifier",
             "src": "743:7:12"
           },
@@ -438,7 +438,7 @@ export const TokenRegistry =
             "attributes": {
               "constant": false,
               "name": "symbolHashToTokenAttributes",
-              "scope": 5095,
+              "scope": 5113,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(bytes32 => struct TokenRegistry.TokenAttributes storage ref)",
@@ -456,7 +456,7 @@ export const TokenRegistry =
                       "name": "bytes32",
                       "type": "bytes32"
                     },
-                    "id": 4745,
+                    "id": 4763,
                     "name": "ElementaryTypeName",
                     "src": "766:7:12"
                   },
@@ -464,20 +464,20 @@ export const TokenRegistry =
                     "attributes": {
                       "contractScope": null,
                       "name": "TokenAttributes",
-                      "referencedDeclaration": 4763,
+                      "referencedDeclaration": 4781,
                       "type": "struct TokenRegistry.TokenAttributes storage pointer"
                     },
-                    "id": 4746,
+                    "id": 4764,
                     "name": "UserDefinedTypeName",
                     "src": "777:15:12"
                   }
                 ],
-                "id": 4747,
+                "id": 4765,
                 "name": "Mapping",
                 "src": "757:36:12"
               }
             ],
-            "id": 4748,
+            "id": 4766,
             "name": "VariableDeclaration",
             "src": "757:71:12"
           },
@@ -485,7 +485,7 @@ export const TokenRegistry =
             "attributes": {
               "constant": false,
               "name": "tokenSymbolList",
-              "scope": 5095,
+              "scope": 5113,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "string storage ref[256] storage ref",
@@ -503,7 +503,7 @@ export const TokenRegistry =
                       "name": "string",
                       "type": "string storage pointer"
                     },
-                    "id": 4749,
+                    "id": 4767,
                     "name": "ElementaryTypeName",
                     "src": "834:6:12"
                   },
@@ -520,17 +520,17 @@ export const TokenRegistry =
                       "type": "int_const 256",
                       "value": "256"
                     },
-                    "id": 4750,
+                    "id": 4768,
                     "name": "Literal",
                     "src": "841:3:12"
                   }
                 ],
-                "id": 4751,
+                "id": 4769,
                 "name": "ArrayTypeName",
                 "src": "834:11:12"
               }
             ],
-            "id": 4752,
+            "id": 4770,
             "name": "VariableDeclaration",
             "src": "834:34:12"
           },
@@ -538,7 +538,7 @@ export const TokenRegistry =
             "attributes": {
               "constant": false,
               "name": "tokenSymbolListLength",
-              "scope": 5095,
+              "scope": 5113,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "uint8",
@@ -551,12 +551,12 @@ export const TokenRegistry =
                   "name": "uint8",
                   "type": "uint8"
                 },
-                "id": 4753,
+                "id": 4771,
                 "name": "ElementaryTypeName",
                 "src": "874:5:12"
               }
             ],
-            "id": 4754,
+            "id": 4772,
             "name": "VariableDeclaration",
             "src": "874:34:12"
           },
@@ -564,7 +564,7 @@ export const TokenRegistry =
             "attributes": {
               "canonicalName": "TokenRegistry.TokenAttributes",
               "name": "TokenAttributes",
-              "scope": 5095,
+              "scope": 5113,
               "visibility": "public"
             },
             "children": [
@@ -572,7 +572,7 @@ export const TokenRegistry =
                 "attributes": {
                   "constant": false,
                   "name": "tokenAddress",
-                  "scope": 4763,
+                  "scope": 4781,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "address",
@@ -585,12 +585,12 @@ export const TokenRegistry =
                       "name": "address",
                       "type": "address"
                     },
-                    "id": 4755,
+                    "id": 4773,
                     "name": "ElementaryTypeName",
                     "src": "987:7:12"
                   }
                 ],
-                "id": 4756,
+                "id": 4774,
                 "name": "VariableDeclaration",
                 "src": "987:20:12"
               },
@@ -598,7 +598,7 @@ export const TokenRegistry =
                 "attributes": {
                   "constant": false,
                   "name": "tokenIndex",
-                  "scope": 4763,
+                  "scope": 4781,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint256",
@@ -611,12 +611,12 @@ export const TokenRegistry =
                       "name": "uint",
                       "type": "uint256"
                     },
-                    "id": 4757,
+                    "id": 4775,
                     "name": "ElementaryTypeName",
                     "src": "1098:4:12"
                   }
                 ],
-                "id": 4758,
+                "id": 4776,
                 "name": "VariableDeclaration",
                 "src": "1098:15:12"
               },
@@ -624,7 +624,7 @@ export const TokenRegistry =
                 "attributes": {
                   "constant": false,
                   "name": "name",
-                  "scope": 4763,
+                  "scope": 4781,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "string storage pointer",
@@ -637,12 +637,12 @@ export const TokenRegistry =
                       "name": "string",
                       "type": "string storage pointer"
                     },
-                    "id": 4759,
+                    "id": 4777,
                     "name": "ElementaryTypeName",
                     "src": "1194:6:12"
                   }
                 ],
-                "id": 4760,
+                "id": 4778,
                 "name": "VariableDeclaration",
                 "src": "1194:11:12"
               },
@@ -650,7 +650,7 @@ export const TokenRegistry =
                 "attributes": {
                   "constant": false,
                   "name": "numDecimals",
-                  "scope": 4763,
+                  "scope": 4781,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint8",
@@ -663,17 +663,17 @@ export const TokenRegistry =
                       "name": "uint8",
                       "type": "uint8"
                     },
-                    "id": 4761,
+                    "id": 4779,
                     "name": "ElementaryTypeName",
                     "src": "1310:5:12"
                   }
                 ],
-                "id": 4762,
+                "id": 4780,
                 "name": "VariableDeclaration",
                 "src": "1310:17:12"
               }
             ],
-            "id": 4763,
+            "id": 4781,
             "name": "StructDefinition",
             "src": "915:419:12"
           },
@@ -684,7 +684,7 @@ export const TokenRegistry =
               "isConstructor": false,
               "name": "setTokenAttributes",
               "payable": false,
-              "scope": 5095,
+              "scope": 5113,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -696,7 +696,7 @@ export const TokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_symbol",
-                      "scope": 4855,
+                      "scope": 4873,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory",
@@ -709,12 +709,12 @@ export const TokenRegistry =
                           "name": "string",
                           "type": "string storage pointer"
                         },
-                        "id": 4764,
+                        "id": 4782,
                         "name": "ElementaryTypeName",
                         "src": "1453:6:12"
                       }
                     ],
-                    "id": 4765,
+                    "id": 4783,
                     "name": "VariableDeclaration",
                     "src": "1453:14:12"
                   },
@@ -722,7 +722,7 @@ export const TokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenAddress",
-                      "scope": 4855,
+                      "scope": 4873,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -735,12 +735,12 @@ export const TokenRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 4766,
+                        "id": 4784,
                         "name": "ElementaryTypeName",
                         "src": "1477:7:12"
                       }
                     ],
-                    "id": 4767,
+                    "id": 4785,
                     "name": "VariableDeclaration",
                     "src": "1477:21:12"
                   },
@@ -748,7 +748,7 @@ export const TokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_tokenName",
-                      "scope": 4855,
+                      "scope": 4873,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory",
@@ -761,12 +761,12 @@ export const TokenRegistry =
                           "name": "string",
                           "type": "string storage pointer"
                         },
-                        "id": 4768,
+                        "id": 4786,
                         "name": "ElementaryTypeName",
                         "src": "1508:6:12"
                       }
                     ],
-                    "id": 4769,
+                    "id": 4787,
                     "name": "VariableDeclaration",
                     "src": "1508:17:12"
                   },
@@ -774,7 +774,7 @@ export const TokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_numDecimals",
-                      "scope": 4855,
+                      "scope": 4873,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint8",
@@ -787,17 +787,17 @@ export const TokenRegistry =
                           "name": "uint8",
                           "type": "uint8"
                         },
-                        "id": 4770,
+                        "id": 4788,
                         "name": "ElementaryTypeName",
                         "src": "1535:5:12"
                       }
                     ],
-                    "id": 4771,
+                    "id": 4789,
                     "name": "VariableDeclaration",
                     "src": "1535:18:12"
                   }
                 ],
-                "id": 4772,
+                "id": 4790,
                 "name": "ParameterList",
                 "src": "1443:116:12"
               },
@@ -808,7 +808,7 @@ export const TokenRegistry =
                   ]
                 },
                 "children": [],
-                "id": 4775,
+                "id": 4793,
                 "name": "ParameterList",
                 "src": "1589:0:12"
               },
@@ -825,16 +825,16 @@ export const TokenRegistry =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 14107,
+                      "referencedDeclaration": 14125,
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
-                    "id": 4773,
+                    "id": 4791,
                     "name": "Identifier",
                     "src": "1575:9:12"
                   }
                 ],
-                "id": 4774,
+                "id": 4792,
                 "name": "ModifierInvocation",
                 "src": "1575:9:12"
               },
@@ -843,7 +843,7 @@ export const TokenRegistry =
                   {
                     "attributes": {
                       "assignments": [
-                        4777
+                        4795
                       ]
                     },
                     "children": [
@@ -851,7 +851,7 @@ export const TokenRegistry =
                         "attributes": {
                           "constant": false,
                           "name": "symbolHash",
-                          "scope": 4855,
+                          "scope": 4873,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bytes32",
@@ -864,12 +864,12 @@ export const TokenRegistry =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 4776,
+                            "id": 4794,
                             "name": "ElementaryTypeName",
                             "src": "1599:7:12"
                           }
                         ],
-                        "id": 4777,
+                        "id": 4795,
                         "name": "VariableDeclaration",
                         "src": "1599:18:12"
                       },
@@ -899,11 +899,11 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15809,
+                              "referencedDeclaration": 15827,
                               "type": "function () pure returns (bytes32)",
                               "value": "keccak256"
                             },
-                            "id": 4778,
+                            "id": 4796,
                             "name": "Identifier",
                             "src": "1620:9:12"
                           },
@@ -913,28 +913,28 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4765,
+                              "referencedDeclaration": 4783,
                               "type": "string memory",
                               "value": "_symbol"
                             },
-                            "id": 4779,
+                            "id": 4797,
                             "name": "Identifier",
                             "src": "1630:7:12"
                           }
                         ],
-                        "id": 4780,
+                        "id": 4798,
                         "name": "FunctionCall",
                         "src": "1620:18:12"
                       }
                     ],
-                    "id": 4781,
+                    "id": 4799,
                     "name": "VariableDeclarationStatement",
                     "src": "1599:39:12"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        4783
+                        4801
                       ]
                     },
                     "children": [
@@ -942,7 +942,7 @@ export const TokenRegistry =
                         "attributes": {
                           "constant": false,
                           "name": "attributes",
-                          "scope": 4855,
+                          "scope": 4873,
                           "stateVariable": false,
                           "storageLocation": "memory",
                           "type": "struct TokenRegistry.TokenAttributes memory",
@@ -954,15 +954,15 @@ export const TokenRegistry =
                             "attributes": {
                               "contractScope": null,
                               "name": "TokenAttributes",
-                              "referencedDeclaration": 4763,
+                              "referencedDeclaration": 4781,
                               "type": "struct TokenRegistry.TokenAttributes storage pointer"
                             },
-                            "id": 4782,
+                            "id": 4800,
                             "name": "UserDefinedTypeName",
                             "src": "1722:15:12"
                           }
                         ],
-                        "id": 4783,
+                        "id": 4801,
                         "name": "VariableDeclaration",
                         "src": "1722:33:12"
                       },
@@ -982,11 +982,11 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4748,
+                              "referencedDeclaration": 4766,
                               "type": "mapping(bytes32 => struct TokenRegistry.TokenAttributes storage ref)",
                               "value": "symbolHashToTokenAttributes"
                             },
-                            "id": 4784,
+                            "id": 4802,
                             "name": "Identifier",
                             "src": "1758:27:12"
                           },
@@ -996,21 +996,21 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4777,
+                              "referencedDeclaration": 4795,
                               "type": "bytes32",
                               "value": "symbolHash"
                             },
-                            "id": 4785,
+                            "id": 4803,
                             "name": "Identifier",
                             "src": "1786:10:12"
                           }
                         ],
-                        "id": 4786,
+                        "id": 4804,
                         "name": "IndexAccess",
                         "src": "1758:39:12"
                       }
                     ],
-                    "id": 4787,
+                    "id": 4805,
                     "name": "VariableDeclarationStatement",
                     "src": "1722:75:12"
                   },
@@ -1039,7 +1039,7 @@ export const TokenRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "tokenAddress",
-                              "referencedDeclaration": 4756,
+                              "referencedDeclaration": 4774,
                               "type": "address"
                             },
                             "children": [
@@ -1049,16 +1049,16 @@ export const TokenRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4783,
+                                  "referencedDeclaration": 4801,
                                   "type": "struct TokenRegistry.TokenAttributes memory",
                                   "value": "attributes"
                                 },
-                                "id": 4788,
+                                "id": 4806,
                                 "name": "Identifier",
                                 "src": "1812:10:12"
                               }
                             ],
-                            "id": 4789,
+                            "id": 4807,
                             "name": "MemberAccess",
                             "src": "1812:23:12"
                           },
@@ -1092,7 +1092,7 @@ export const TokenRegistry =
                                   "type": "type(address)",
                                   "value": "address"
                                 },
-                                "id": 4790,
+                                "id": 4808,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "1839:7:12"
                               },
@@ -1109,17 +1109,17 @@ export const TokenRegistry =
                                   "type": "int_const 0",
                                   "value": "0"
                                 },
-                                "id": 4791,
+                                "id": 4809,
                                 "name": "Literal",
                                 "src": "1847:1:12"
                               }
                             ],
-                            "id": 4792,
+                            "id": 4810,
                             "name": "FunctionCall",
                             "src": "1839:10:12"
                           }
                         ],
-                        "id": 4793,
+                        "id": 4811,
                         "name": "BinaryOperation",
                         "src": "1812:37:12"
                       },
@@ -1146,7 +1146,7 @@ export const TokenRegistry =
                                       "isPure": false,
                                       "lValueRequested": true,
                                       "member_name": "tokenAddress",
-                                      "referencedDeclaration": 4756,
+                                      "referencedDeclaration": 4774,
                                       "type": "address"
                                     },
                                     "children": [
@@ -1156,16 +1156,16 @@ export const TokenRegistry =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 4783,
+                                          "referencedDeclaration": 4801,
                                           "type": "struct TokenRegistry.TokenAttributes memory",
                                           "value": "attributes"
                                         },
-                                        "id": 4794,
+                                        "id": 4812,
                                         "name": "Identifier",
                                         "src": "1930:10:12"
                                       }
                                     ],
-                                    "id": 4796,
+                                    "id": 4814,
                                     "name": "MemberAccess",
                                     "src": "1930:23:12"
                                   },
@@ -1175,21 +1175,21 @@ export const TokenRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 4767,
+                                      "referencedDeclaration": 4785,
                                       "type": "address",
                                       "value": "_tokenAddress"
                                     },
-                                    "id": 4797,
+                                    "id": 4815,
                                     "name": "Identifier",
                                     "src": "1956:13:12"
                                   }
                                 ],
-                                "id": 4798,
+                                "id": 4816,
                                 "name": "Assignment",
                                 "src": "1930:39:12"
                               }
                             ],
-                            "id": 4799,
+                            "id": 4817,
                             "name": "ExpressionStatement",
                             "src": "1930:39:12"
                           },
@@ -1214,7 +1214,7 @@ export const TokenRegistry =
                                       "isPure": false,
                                       "lValueRequested": true,
                                       "member_name": "numDecimals",
-                                      "referencedDeclaration": 4762,
+                                      "referencedDeclaration": 4780,
                                       "type": "uint8"
                                     },
                                     "children": [
@@ -1224,16 +1224,16 @@ export const TokenRegistry =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 4783,
+                                          "referencedDeclaration": 4801,
                                           "type": "struct TokenRegistry.TokenAttributes memory",
                                           "value": "attributes"
                                         },
-                                        "id": 4800,
+                                        "id": 4818,
                                         "name": "Identifier",
                                         "src": "1983:10:12"
                                       }
                                     ],
-                                    "id": 4802,
+                                    "id": 4820,
                                     "name": "MemberAccess",
                                     "src": "1983:22:12"
                                   },
@@ -1243,21 +1243,21 @@ export const TokenRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 4771,
+                                      "referencedDeclaration": 4789,
                                       "type": "uint8",
                                       "value": "_numDecimals"
                                     },
-                                    "id": 4803,
+                                    "id": 4821,
                                     "name": "Identifier",
                                     "src": "2008:12:12"
                                   }
                                 ],
-                                "id": 4804,
+                                "id": 4822,
                                 "name": "Assignment",
                                 "src": "1983:37:12"
                               }
                             ],
-                            "id": 4805,
+                            "id": 4823,
                             "name": "ExpressionStatement",
                             "src": "1983:37:12"
                           },
@@ -1282,7 +1282,7 @@ export const TokenRegistry =
                                       "isPure": false,
                                       "lValueRequested": true,
                                       "member_name": "name",
-                                      "referencedDeclaration": 4760,
+                                      "referencedDeclaration": 4778,
                                       "type": "string memory"
                                     },
                                     "children": [
@@ -1292,16 +1292,16 @@ export const TokenRegistry =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 4783,
+                                          "referencedDeclaration": 4801,
                                           "type": "struct TokenRegistry.TokenAttributes memory",
                                           "value": "attributes"
                                         },
-                                        "id": 4806,
+                                        "id": 4824,
                                         "name": "Identifier",
                                         "src": "2034:10:12"
                                       }
                                     ],
-                                    "id": 4808,
+                                    "id": 4826,
                                     "name": "MemberAccess",
                                     "src": "2034:15:12"
                                   },
@@ -1311,21 +1311,21 @@ export const TokenRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 4769,
+                                      "referencedDeclaration": 4787,
                                       "type": "string memory",
                                       "value": "_tokenName"
                                     },
-                                    "id": 4809,
+                                    "id": 4827,
                                     "name": "Identifier",
                                     "src": "2052:10:12"
                                   }
                                 ],
-                                "id": 4810,
+                                "id": 4828,
                                 "name": "Assignment",
                                 "src": "2034:28:12"
                               }
                             ],
-                            "id": 4811,
+                            "id": 4829,
                             "name": "ExpressionStatement",
                             "src": "2034:28:12"
                           },
@@ -1350,7 +1350,7 @@ export const TokenRegistry =
                                       "isPure": false,
                                       "lValueRequested": true,
                                       "member_name": "tokenIndex",
-                                      "referencedDeclaration": 4758,
+                                      "referencedDeclaration": 4776,
                                       "type": "uint256"
                                     },
                                     "children": [
@@ -1360,16 +1360,16 @@ export const TokenRegistry =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 4783,
+                                          "referencedDeclaration": 4801,
                                           "type": "struct TokenRegistry.TokenAttributes memory",
                                           "value": "attributes"
                                         },
-                                        "id": 4812,
+                                        "id": 4830,
                                         "name": "Identifier",
                                         "src": "2076:10:12"
                                       }
                                     ],
-                                    "id": 4814,
+                                    "id": 4832,
                                     "name": "MemberAccess",
                                     "src": "2076:21:12"
                                   },
@@ -1379,21 +1379,21 @@ export const TokenRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 4754,
+                                      "referencedDeclaration": 4772,
                                       "type": "uint8",
                                       "value": "tokenSymbolListLength"
                                     },
-                                    "id": 4815,
+                                    "id": 4833,
                                     "name": "Identifier",
                                     "src": "2100:21:12"
                                   }
                                 ],
-                                "id": 4816,
+                                "id": 4834,
                                 "name": "Assignment",
                                 "src": "2076:45:12"
                               }
                             ],
-                            "id": 4817,
+                            "id": 4835,
                             "name": "ExpressionStatement",
                             "src": "2076:45:12"
                           },
@@ -1426,11 +1426,11 @@ export const TokenRegistry =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 4752,
+                                          "referencedDeclaration": 4770,
                                           "type": "string storage ref[256] storage ref",
                                           "value": "tokenSymbolList"
                                         },
-                                        "id": 4818,
+                                        "id": 4836,
                                         "name": "Identifier",
                                         "src": "2136:15:12"
                                       },
@@ -1440,16 +1440,16 @@ export const TokenRegistry =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 4754,
+                                          "referencedDeclaration": 4772,
                                           "type": "uint8",
                                           "value": "tokenSymbolListLength"
                                         },
-                                        "id": 4819,
+                                        "id": 4837,
                                         "name": "Identifier",
                                         "src": "2152:21:12"
                                       }
                                     ],
-                                    "id": 4820,
+                                    "id": 4838,
                                     "name": "IndexAccess",
                                     "src": "2136:38:12"
                                   },
@@ -1459,21 +1459,21 @@ export const TokenRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 4765,
+                                      "referencedDeclaration": 4783,
                                       "type": "string memory",
                                       "value": "_symbol"
                                     },
-                                    "id": 4821,
+                                    "id": 4839,
                                     "name": "Identifier",
                                     "src": "2177:7:12"
                                   }
                                 ],
-                                "id": 4822,
+                                "id": 4840,
                                 "name": "Assignment",
                                 "src": "2136:48:12"
                               }
                             ],
-                            "id": 4823,
+                            "id": 4841,
                             "name": "ExpressionStatement",
                             "src": "2136:48:12"
                           },
@@ -1497,26 +1497,26 @@ export const TokenRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 4754,
+                                      "referencedDeclaration": 4772,
                                       "type": "uint8",
                                       "value": "tokenSymbolListLength"
                                     },
-                                    "id": 4824,
+                                    "id": 4842,
                                     "name": "Identifier",
                                     "src": "2198:21:12"
                                   }
                                 ],
-                                "id": 4825,
+                                "id": 4843,
                                 "name": "UnaryOperation",
                                 "src": "2198:23:12"
                               }
                             ],
-                            "id": 4826,
+                            "id": 4844,
                             "name": "ExpressionStatement",
                             "src": "2198:23:12"
                           }
                         ],
-                        "id": 4827,
+                        "id": 4845,
                         "name": "Block",
                         "src": "1851:381:12"
                       },
@@ -1543,7 +1543,7 @@ export const TokenRegistry =
                                       "isPure": false,
                                       "lValueRequested": true,
                                       "member_name": "tokenAddress",
-                                      "referencedDeclaration": 4756,
+                                      "referencedDeclaration": 4774,
                                       "type": "address"
                                     },
                                     "children": [
@@ -1553,16 +1553,16 @@ export const TokenRegistry =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 4783,
+                                          "referencedDeclaration": 4801,
                                           "type": "struct TokenRegistry.TokenAttributes memory",
                                           "value": "attributes"
                                         },
-                                        "id": 4828,
+                                        "id": 4846,
                                         "name": "Identifier",
                                         "src": "2336:10:12"
                                       }
                                     ],
-                                    "id": 4830,
+                                    "id": 4848,
                                     "name": "MemberAccess",
                                     "src": "2336:23:12"
                                   },
@@ -1572,21 +1572,21 @@ export const TokenRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 4767,
+                                      "referencedDeclaration": 4785,
                                       "type": "address",
                                       "value": "_tokenAddress"
                                     },
-                                    "id": 4831,
+                                    "id": 4849,
                                     "name": "Identifier",
                                     "src": "2362:13:12"
                                   }
                                 ],
-                                "id": 4832,
+                                "id": 4850,
                                 "name": "Assignment",
                                 "src": "2336:39:12"
                               }
                             ],
-                            "id": 4833,
+                            "id": 4851,
                             "name": "ExpressionStatement",
                             "src": "2336:39:12"
                           },
@@ -1611,7 +1611,7 @@ export const TokenRegistry =
                                       "isPure": false,
                                       "lValueRequested": true,
                                       "member_name": "numDecimals",
-                                      "referencedDeclaration": 4762,
+                                      "referencedDeclaration": 4780,
                                       "type": "uint8"
                                     },
                                     "children": [
@@ -1621,16 +1621,16 @@ export const TokenRegistry =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 4783,
+                                          "referencedDeclaration": 4801,
                                           "type": "struct TokenRegistry.TokenAttributes memory",
                                           "value": "attributes"
                                         },
-                                        "id": 4834,
+                                        "id": 4852,
                                         "name": "Identifier",
                                         "src": "2389:10:12"
                                       }
                                     ],
-                                    "id": 4836,
+                                    "id": 4854,
                                     "name": "MemberAccess",
                                     "src": "2389:22:12"
                                   },
@@ -1640,21 +1640,21 @@ export const TokenRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 4771,
+                                      "referencedDeclaration": 4789,
                                       "type": "uint8",
                                       "value": "_numDecimals"
                                     },
-                                    "id": 4837,
+                                    "id": 4855,
                                     "name": "Identifier",
                                     "src": "2414:12:12"
                                   }
                                 ],
-                                "id": 4838,
+                                "id": 4856,
                                 "name": "Assignment",
                                 "src": "2389:37:12"
                               }
                             ],
-                            "id": 4839,
+                            "id": 4857,
                             "name": "ExpressionStatement",
                             "src": "2389:37:12"
                           },
@@ -1679,7 +1679,7 @@ export const TokenRegistry =
                                       "isPure": false,
                                       "lValueRequested": true,
                                       "member_name": "name",
-                                      "referencedDeclaration": 4760,
+                                      "referencedDeclaration": 4778,
                                       "type": "string memory"
                                     },
                                     "children": [
@@ -1689,16 +1689,16 @@ export const TokenRegistry =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 4783,
+                                          "referencedDeclaration": 4801,
                                           "type": "struct TokenRegistry.TokenAttributes memory",
                                           "value": "attributes"
                                         },
-                                        "id": 4840,
+                                        "id": 4858,
                                         "name": "Identifier",
                                         "src": "2440:10:12"
                                       }
                                     ],
-                                    "id": 4842,
+                                    "id": 4860,
                                     "name": "MemberAccess",
                                     "src": "2440:15:12"
                                   },
@@ -1708,31 +1708,31 @@ export const TokenRegistry =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 4769,
+                                      "referencedDeclaration": 4787,
                                       "type": "string memory",
                                       "value": "_tokenName"
                                     },
-                                    "id": 4843,
+                                    "id": 4861,
                                     "name": "Identifier",
                                     "src": "2458:10:12"
                                   }
                                 ],
-                                "id": 4844,
+                                "id": 4862,
                                 "name": "Assignment",
                                 "src": "2440:28:12"
                               }
                             ],
-                            "id": 4845,
+                            "id": 4863,
                             "name": "ExpressionStatement",
                             "src": "2440:28:12"
                           }
                         ],
-                        "id": 4846,
+                        "id": 4864,
                         "name": "Block",
                         "src": "2238:241:12"
                       }
                     ],
-                    "id": 4847,
+                    "id": 4865,
                     "name": "IfStatement",
                     "src": "1808:671:12"
                   },
@@ -1765,11 +1765,11 @@ export const TokenRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4748,
+                                  "referencedDeclaration": 4766,
                                   "type": "mapping(bytes32 => struct TokenRegistry.TokenAttributes storage ref)",
                                   "value": "symbolHashToTokenAttributes"
                                 },
-                                "id": 4848,
+                                "id": 4866,
                                 "name": "Identifier",
                                 "src": "2532:27:12"
                               },
@@ -1779,16 +1779,16 @@ export const TokenRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4777,
+                                  "referencedDeclaration": 4795,
                                   "type": "bytes32",
                                   "value": "symbolHash"
                                 },
-                                "id": 4849,
+                                "id": 4867,
                                 "name": "Identifier",
                                 "src": "2560:10:12"
                               }
                             ],
-                            "id": 4850,
+                            "id": 4868,
                             "name": "IndexAccess",
                             "src": "2532:39:12"
                           },
@@ -1798,31 +1798,31 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4783,
+                              "referencedDeclaration": 4801,
                               "type": "struct TokenRegistry.TokenAttributes memory",
                               "value": "attributes"
                             },
-                            "id": 4851,
+                            "id": 4869,
                             "name": "Identifier",
                             "src": "2574:10:12"
                           }
                         ],
-                        "id": 4852,
+                        "id": 4870,
                         "name": "Assignment",
                         "src": "2532:52:12"
                       }
                     ],
-                    "id": 4853,
+                    "id": 4871,
                     "name": "ExpressionStatement",
                     "src": "2532:52:12"
                   }
                 ],
-                "id": 4854,
+                "id": 4872,
                 "name": "Block",
                 "src": "1589:1002:12"
               }
             ],
-            "id": 4855,
+            "id": 4873,
             "name": "FunctionDefinition",
             "src": "1416:1175:12"
           },
@@ -1836,7 +1836,7 @@ export const TokenRegistry =
               ],
               "name": "getTokenAddressBySymbol",
               "payable": false,
-              "scope": 5095,
+              "scope": 5113,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -1848,7 +1848,7 @@ export const TokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_symbol",
-                      "scope": 4878,
+                      "scope": 4896,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory",
@@ -1861,17 +1861,17 @@ export const TokenRegistry =
                           "name": "string",
                           "type": "string storage pointer"
                         },
-                        "id": 4856,
+                        "id": 4874,
                         "name": "ElementaryTypeName",
                         "src": "2736:6:12"
                       }
                     ],
-                    "id": 4857,
+                    "id": 4875,
                     "name": "VariableDeclaration",
                     "src": "2736:14:12"
                   }
                 ],
-                "id": 4858,
+                "id": 4876,
                 "name": "ParameterList",
                 "src": "2735:16:12"
               },
@@ -1881,7 +1881,7 @@ export const TokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 4878,
+                      "scope": 4896,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1894,17 +1894,17 @@ export const TokenRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 4859,
+                        "id": 4877,
                         "name": "ElementaryTypeName",
                         "src": "2773:7:12"
                       }
                     ],
-                    "id": 4860,
+                    "id": 4878,
                     "name": "VariableDeclaration",
                     "src": "2773:7:12"
                   }
                 ],
-                "id": 4861,
+                "id": 4879,
                 "name": "ParameterList",
                 "src": "2772:9:12"
               },
@@ -1913,7 +1913,7 @@ export const TokenRegistry =
                   {
                     "attributes": {
                       "assignments": [
-                        4863
+                        4881
                       ]
                     },
                     "children": [
@@ -1921,7 +1921,7 @@ export const TokenRegistry =
                         "attributes": {
                           "constant": false,
                           "name": "symbolHash",
-                          "scope": 4878,
+                          "scope": 4896,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bytes32",
@@ -1934,12 +1934,12 @@ export const TokenRegistry =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 4862,
+                            "id": 4880,
                             "name": "ElementaryTypeName",
                             "src": "2792:7:12"
                           }
                         ],
-                        "id": 4863,
+                        "id": 4881,
                         "name": "VariableDeclaration",
                         "src": "2792:18:12"
                       },
@@ -1969,11 +1969,11 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15809,
+                              "referencedDeclaration": 15827,
                               "type": "function () pure returns (bytes32)",
                               "value": "keccak256"
                             },
-                            "id": 4864,
+                            "id": 4882,
                             "name": "Identifier",
                             "src": "2813:9:12"
                           },
@@ -1983,28 +1983,28 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4857,
+                              "referencedDeclaration": 4875,
                               "type": "string memory",
                               "value": "_symbol"
                             },
-                            "id": 4865,
+                            "id": 4883,
                             "name": "Identifier",
                             "src": "2823:7:12"
                           }
                         ],
-                        "id": 4866,
+                        "id": 4884,
                         "name": "FunctionCall",
                         "src": "2813:18:12"
                       }
                     ],
-                    "id": 4867,
+                    "id": 4885,
                     "name": "VariableDeclarationStatement",
                     "src": "2792:39:12"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        4869
+                        4887
                       ]
                     },
                     "children": [
@@ -2012,7 +2012,7 @@ export const TokenRegistry =
                         "attributes": {
                           "constant": false,
                           "name": "attributes",
-                          "scope": 4878,
+                          "scope": 4896,
                           "stateVariable": false,
                           "storageLocation": "storage",
                           "type": "struct TokenRegistry.TokenAttributes storage pointer",
@@ -2024,15 +2024,15 @@ export const TokenRegistry =
                             "attributes": {
                               "contractScope": null,
                               "name": "TokenAttributes",
-                              "referencedDeclaration": 4763,
+                              "referencedDeclaration": 4781,
                               "type": "struct TokenRegistry.TokenAttributes storage pointer"
                             },
-                            "id": 4868,
+                            "id": 4886,
                             "name": "UserDefinedTypeName",
                             "src": "2842:15:12"
                           }
                         ],
-                        "id": 4869,
+                        "id": 4887,
                         "name": "VariableDeclaration",
                         "src": "2842:34:12"
                       },
@@ -2052,11 +2052,11 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4748,
+                              "referencedDeclaration": 4766,
                               "type": "mapping(bytes32 => struct TokenRegistry.TokenAttributes storage ref)",
                               "value": "symbolHashToTokenAttributes"
                             },
-                            "id": 4870,
+                            "id": 4888,
                             "name": "Identifier",
                             "src": "2879:27:12"
                           },
@@ -2066,27 +2066,27 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4863,
+                              "referencedDeclaration": 4881,
                               "type": "bytes32",
                               "value": "symbolHash"
                             },
-                            "id": 4871,
+                            "id": 4889,
                             "name": "Identifier",
                             "src": "2907:10:12"
                           }
                         ],
-                        "id": 4872,
+                        "id": 4890,
                         "name": "IndexAccess",
                         "src": "2879:39:12"
                       }
                     ],
-                    "id": 4873,
+                    "id": 4891,
                     "name": "VariableDeclarationStatement",
                     "src": "2842:76:12"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 4861
+                      "functionReturnParameters": 4879
                     },
                     "children": [
                       {
@@ -2097,7 +2097,7 @@ export const TokenRegistry =
                           "isPure": false,
                           "lValueRequested": false,
                           "member_name": "tokenAddress",
-                          "referencedDeclaration": 4756,
+                          "referencedDeclaration": 4774,
                           "type": "address"
                         },
                         "children": [
@@ -2107,31 +2107,31 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4869,
+                              "referencedDeclaration": 4887,
                               "type": "struct TokenRegistry.TokenAttributes storage pointer",
                               "value": "attributes"
                             },
-                            "id": 4874,
+                            "id": 4892,
                             "name": "Identifier",
                             "src": "2936:10:12"
                           }
                         ],
-                        "id": 4875,
+                        "id": 4893,
                         "name": "MemberAccess",
                         "src": "2936:23:12"
                       }
                     ],
-                    "id": 4876,
+                    "id": 4894,
                     "name": "Return",
                     "src": "2929:30:12"
                   }
                 ],
-                "id": 4877,
+                "id": 4895,
                 "name": "Block",
                 "src": "2782:184:12"
               }
             ],
-            "id": 4878,
+            "id": 4896,
             "name": "FunctionDefinition",
             "src": "2703:263:12"
           },
@@ -2145,7 +2145,7 @@ export const TokenRegistry =
               ],
               "name": "getTokenAddressByIndex",
               "payable": false,
-              "scope": 5095,
+              "scope": 5113,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -2157,7 +2157,7 @@ export const TokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_index",
-                      "scope": 4896,
+                      "scope": 4914,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2170,17 +2170,17 @@ export const TokenRegistry =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 4879,
+                        "id": 4897,
                         "name": "ElementaryTypeName",
                         "src": "3439:4:12"
                       }
                     ],
-                    "id": 4880,
+                    "id": 4898,
                     "name": "VariableDeclaration",
                     "src": "3439:11:12"
                   }
                 ],
-                "id": 4881,
+                "id": 4899,
                 "name": "ParameterList",
                 "src": "3438:13:12"
               },
@@ -2190,7 +2190,7 @@ export const TokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 4896,
+                      "scope": 4914,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2203,17 +2203,17 @@ export const TokenRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 4882,
+                        "id": 4900,
                         "name": "ElementaryTypeName",
                         "src": "3473:7:12"
                       }
                     ],
-                    "id": 4883,
+                    "id": 4901,
                     "name": "VariableDeclaration",
                     "src": "3473:7:12"
                   }
                 ],
-                "id": 4884,
+                "id": 4902,
                 "name": "ParameterList",
                 "src": "3472:9:12"
               },
@@ -2222,7 +2222,7 @@ export const TokenRegistry =
                   {
                     "attributes": {
                       "assignments": [
-                        4886
+                        4904
                       ]
                     },
                     "children": [
@@ -2230,7 +2230,7 @@ export const TokenRegistry =
                         "attributes": {
                           "constant": false,
                           "name": "symbol",
-                          "scope": 4896,
+                          "scope": 4914,
                           "stateVariable": false,
                           "storageLocation": "storage",
                           "type": "string storage pointer",
@@ -2243,12 +2243,12 @@ export const TokenRegistry =
                               "name": "string",
                               "type": "string storage pointer"
                             },
-                            "id": 4885,
+                            "id": 4903,
                             "name": "ElementaryTypeName",
                             "src": "3492:6:12"
                           }
                         ],
-                        "id": 4886,
+                        "id": 4904,
                         "name": "VariableDeclaration",
                         "src": "3492:21:12"
                       },
@@ -2268,11 +2268,11 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4752,
+                              "referencedDeclaration": 4770,
                               "type": "string storage ref[256] storage ref",
                               "value": "tokenSymbolList"
                             },
-                            "id": 4887,
+                            "id": 4905,
                             "name": "Identifier",
                             "src": "3516:15:12"
                           },
@@ -2282,27 +2282,27 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4880,
+                              "referencedDeclaration": 4898,
                               "type": "uint256",
                               "value": "_index"
                             },
-                            "id": 4888,
+                            "id": 4906,
                             "name": "Identifier",
                             "src": "3532:6:12"
                           }
                         ],
-                        "id": 4889,
+                        "id": 4907,
                         "name": "IndexAccess",
                         "src": "3516:23:12"
                       }
                     ],
-                    "id": 4890,
+                    "id": 4908,
                     "name": "VariableDeclarationStatement",
                     "src": "3492:47:12"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 4884
+                      "functionReturnParameters": 4902
                     },
                     "children": [
                       {
@@ -2331,11 +2331,11 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4878,
+                              "referencedDeclaration": 4896,
                               "type": "function (string memory) view returns (address)",
                               "value": "getTokenAddressBySymbol"
                             },
-                            "id": 4891,
+                            "id": 4909,
                             "name": "Identifier",
                             "src": "3557:23:12"
                           },
@@ -2345,31 +2345,31 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4886,
+                              "referencedDeclaration": 4904,
                               "type": "string storage pointer",
                               "value": "symbol"
                             },
-                            "id": 4892,
+                            "id": 4910,
                             "name": "Identifier",
                             "src": "3581:6:12"
                           }
                         ],
-                        "id": 4893,
+                        "id": 4911,
                         "name": "FunctionCall",
                         "src": "3557:31:12"
                       }
                     ],
-                    "id": 4894,
+                    "id": 4912,
                     "name": "Return",
                     "src": "3550:38:12"
                   }
                 ],
-                "id": 4895,
+                "id": 4913,
                 "name": "Block",
                 "src": "3482:113:12"
               }
             ],
-            "id": 4896,
+            "id": 4914,
             "name": "FunctionDefinition",
             "src": "3407:188:12"
           },
@@ -2383,7 +2383,7 @@ export const TokenRegistry =
               ],
               "name": "getTokenIndexBySymbol",
               "payable": false,
-              "scope": 5095,
+              "scope": 5113,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -2395,7 +2395,7 @@ export const TokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_symbol",
-                      "scope": 4919,
+                      "scope": 4937,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory",
@@ -2408,17 +2408,17 @@ export const TokenRegistry =
                           "name": "string",
                           "type": "string storage pointer"
                         },
-                        "id": 4897,
+                        "id": 4915,
                         "name": "ElementaryTypeName",
                         "src": "3769:6:12"
                       }
                     ],
-                    "id": 4898,
+                    "id": 4916,
                     "name": "VariableDeclaration",
                     "src": "3769:14:12"
                   }
                 ],
-                "id": 4899,
+                "id": 4917,
                 "name": "ParameterList",
                 "src": "3768:16:12"
               },
@@ -2428,7 +2428,7 @@ export const TokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 4919,
+                      "scope": 4937,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2441,17 +2441,17 @@ export const TokenRegistry =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 4900,
+                        "id": 4918,
                         "name": "ElementaryTypeName",
                         "src": "3806:4:12"
                       }
                     ],
-                    "id": 4901,
+                    "id": 4919,
                     "name": "VariableDeclaration",
                     "src": "3806:4:12"
                   }
                 ],
-                "id": 4902,
+                "id": 4920,
                 "name": "ParameterList",
                 "src": "3805:6:12"
               },
@@ -2460,7 +2460,7 @@ export const TokenRegistry =
                   {
                     "attributes": {
                       "assignments": [
-                        4904
+                        4922
                       ]
                     },
                     "children": [
@@ -2468,7 +2468,7 @@ export const TokenRegistry =
                         "attributes": {
                           "constant": false,
                           "name": "symbolHash",
-                          "scope": 4919,
+                          "scope": 4937,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bytes32",
@@ -2481,12 +2481,12 @@ export const TokenRegistry =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 4903,
+                            "id": 4921,
                             "name": "ElementaryTypeName",
                             "src": "3822:7:12"
                           }
                         ],
-                        "id": 4904,
+                        "id": 4922,
                         "name": "VariableDeclaration",
                         "src": "3822:18:12"
                       },
@@ -2516,11 +2516,11 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15809,
+                              "referencedDeclaration": 15827,
                               "type": "function () pure returns (bytes32)",
                               "value": "keccak256"
                             },
-                            "id": 4905,
+                            "id": 4923,
                             "name": "Identifier",
                             "src": "3843:9:12"
                           },
@@ -2530,28 +2530,28 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4898,
+                              "referencedDeclaration": 4916,
                               "type": "string memory",
                               "value": "_symbol"
                             },
-                            "id": 4906,
+                            "id": 4924,
                             "name": "Identifier",
                             "src": "3853:7:12"
                           }
                         ],
-                        "id": 4907,
+                        "id": 4925,
                         "name": "FunctionCall",
                         "src": "3843:18:12"
                       }
                     ],
-                    "id": 4908,
+                    "id": 4926,
                     "name": "VariableDeclarationStatement",
                     "src": "3822:39:12"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        4910
+                        4928
                       ]
                     },
                     "children": [
@@ -2559,7 +2559,7 @@ export const TokenRegistry =
                         "attributes": {
                           "constant": false,
                           "name": "attributes",
-                          "scope": 4919,
+                          "scope": 4937,
                           "stateVariable": false,
                           "storageLocation": "storage",
                           "type": "struct TokenRegistry.TokenAttributes storage pointer",
@@ -2571,15 +2571,15 @@ export const TokenRegistry =
                             "attributes": {
                               "contractScope": null,
                               "name": "TokenAttributes",
-                              "referencedDeclaration": 4763,
+                              "referencedDeclaration": 4781,
                               "type": "struct TokenRegistry.TokenAttributes storage pointer"
                             },
-                            "id": 4909,
+                            "id": 4927,
                             "name": "UserDefinedTypeName",
                             "src": "3872:15:12"
                           }
                         ],
-                        "id": 4910,
+                        "id": 4928,
                         "name": "VariableDeclaration",
                         "src": "3872:34:12"
                       },
@@ -2599,11 +2599,11 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4748,
+                              "referencedDeclaration": 4766,
                               "type": "mapping(bytes32 => struct TokenRegistry.TokenAttributes storage ref)",
                               "value": "symbolHashToTokenAttributes"
                             },
-                            "id": 4911,
+                            "id": 4929,
                             "name": "Identifier",
                             "src": "3909:27:12"
                           },
@@ -2613,27 +2613,27 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4904,
+                              "referencedDeclaration": 4922,
                               "type": "bytes32",
                               "value": "symbolHash"
                             },
-                            "id": 4912,
+                            "id": 4930,
                             "name": "Identifier",
                             "src": "3937:10:12"
                           }
                         ],
-                        "id": 4913,
+                        "id": 4931,
                         "name": "IndexAccess",
                         "src": "3909:39:12"
                       }
                     ],
-                    "id": 4914,
+                    "id": 4932,
                     "name": "VariableDeclarationStatement",
                     "src": "3872:76:12"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 4902
+                      "functionReturnParameters": 4920
                     },
                     "children": [
                       {
@@ -2644,7 +2644,7 @@ export const TokenRegistry =
                           "isPure": false,
                           "lValueRequested": false,
                           "member_name": "tokenIndex",
-                          "referencedDeclaration": 4758,
+                          "referencedDeclaration": 4776,
                           "type": "uint256"
                         },
                         "children": [
@@ -2654,31 +2654,31 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4910,
+                              "referencedDeclaration": 4928,
                               "type": "struct TokenRegistry.TokenAttributes storage pointer",
                               "value": "attributes"
                             },
-                            "id": 4915,
+                            "id": 4933,
                             "name": "Identifier",
                             "src": "3966:10:12"
                           }
                         ],
-                        "id": 4916,
+                        "id": 4934,
                         "name": "MemberAccess",
                         "src": "3966:21:12"
                       }
                     ],
-                    "id": 4917,
+                    "id": 4935,
                     "name": "Return",
                     "src": "3959:28:12"
                   }
                 ],
-                "id": 4918,
+                "id": 4936,
                 "name": "Block",
                 "src": "3812:182:12"
               }
             ],
-            "id": 4919,
+            "id": 4937,
             "name": "FunctionDefinition",
             "src": "3738:256:12"
           },
@@ -2692,7 +2692,7 @@ export const TokenRegistry =
               ],
               "name": "getTokenSymbolByIndex",
               "payable": false,
-              "scope": 5095,
+              "scope": 5113,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -2704,7 +2704,7 @@ export const TokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_index",
-                      "scope": 4931,
+                      "scope": 4949,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2717,17 +2717,17 @@ export const TokenRegistry =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 4920,
+                        "id": 4938,
                         "name": "ElementaryTypeName",
                         "src": "4161:4:12"
                       }
                     ],
-                    "id": 4921,
+                    "id": 4939,
                     "name": "VariableDeclaration",
                     "src": "4161:11:12"
                   }
                 ],
-                "id": 4922,
+                "id": 4940,
                 "name": "ParameterList",
                 "src": "4160:13:12"
               },
@@ -2737,7 +2737,7 @@ export const TokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 4931,
+                      "scope": 4949,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory",
@@ -2750,17 +2750,17 @@ export const TokenRegistry =
                           "name": "string",
                           "type": "string storage pointer"
                         },
-                        "id": 4923,
+                        "id": 4941,
                         "name": "ElementaryTypeName",
                         "src": "4195:6:12"
                       }
                     ],
-                    "id": 4924,
+                    "id": 4942,
                     "name": "VariableDeclaration",
                     "src": "4195:6:12"
                   }
                 ],
-                "id": 4925,
+                "id": 4943,
                 "name": "ParameterList",
                 "src": "4194:8:12"
               },
@@ -2768,7 +2768,7 @@ export const TokenRegistry =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 4925
+                      "functionReturnParameters": 4943
                     },
                     "children": [
                       {
@@ -2787,11 +2787,11 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4752,
+                              "referencedDeclaration": 4770,
                               "type": "string storage ref[256] storage ref",
                               "value": "tokenSymbolList"
                             },
-                            "id": 4926,
+                            "id": 4944,
                             "name": "Identifier",
                             "src": "4220:15:12"
                           },
@@ -2801,31 +2801,31 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4921,
+                              "referencedDeclaration": 4939,
                               "type": "uint256",
                               "value": "_index"
                             },
-                            "id": 4927,
+                            "id": 4945,
                             "name": "Identifier",
                             "src": "4236:6:12"
                           }
                         ],
-                        "id": 4928,
+                        "id": 4946,
                         "name": "IndexAccess",
                         "src": "4220:23:12"
                       }
                     ],
-                    "id": 4929,
+                    "id": 4947,
                     "name": "Return",
                     "src": "4213:30:12"
                   }
                 ],
-                "id": 4930,
+                "id": 4948,
                 "name": "Block",
                 "src": "4203:47:12"
               }
             ],
-            "id": 4931,
+            "id": 4949,
             "name": "FunctionDefinition",
             "src": "4130:120:12"
           },
@@ -2839,7 +2839,7 @@ export const TokenRegistry =
               ],
               "name": "getTokenNameBySymbol",
               "payable": false,
-              "scope": 5095,
+              "scope": 5113,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -2851,7 +2851,7 @@ export const TokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_symbol",
-                      "scope": 4954,
+                      "scope": 4972,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory",
@@ -2864,17 +2864,17 @@ export const TokenRegistry =
                           "name": "string",
                           "type": "string storage pointer"
                         },
-                        "id": 4932,
+                        "id": 4950,
                         "name": "ElementaryTypeName",
                         "src": "4421:6:12"
                       }
                     ],
-                    "id": 4933,
+                    "id": 4951,
                     "name": "VariableDeclaration",
                     "src": "4421:14:12"
                   }
                 ],
-                "id": 4934,
+                "id": 4952,
                 "name": "ParameterList",
                 "src": "4420:16:12"
               },
@@ -2884,7 +2884,7 @@ export const TokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 4954,
+                      "scope": 4972,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory",
@@ -2897,17 +2897,17 @@ export const TokenRegistry =
                           "name": "string",
                           "type": "string storage pointer"
                         },
-                        "id": 4935,
+                        "id": 4953,
                         "name": "ElementaryTypeName",
                         "src": "4458:6:12"
                       }
                     ],
-                    "id": 4936,
+                    "id": 4954,
                     "name": "VariableDeclaration",
                     "src": "4458:6:12"
                   }
                 ],
-                "id": 4937,
+                "id": 4955,
                 "name": "ParameterList",
                 "src": "4457:8:12"
               },
@@ -2916,7 +2916,7 @@ export const TokenRegistry =
                   {
                     "attributes": {
                       "assignments": [
-                        4939
+                        4957
                       ]
                     },
                     "children": [
@@ -2924,7 +2924,7 @@ export const TokenRegistry =
                         "attributes": {
                           "constant": false,
                           "name": "symbolHash",
-                          "scope": 4954,
+                          "scope": 4972,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bytes32",
@@ -2937,12 +2937,12 @@ export const TokenRegistry =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 4938,
+                            "id": 4956,
                             "name": "ElementaryTypeName",
                             "src": "4476:7:12"
                           }
                         ],
-                        "id": 4939,
+                        "id": 4957,
                         "name": "VariableDeclaration",
                         "src": "4476:18:12"
                       },
@@ -2972,11 +2972,11 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15809,
+                              "referencedDeclaration": 15827,
                               "type": "function () pure returns (bytes32)",
                               "value": "keccak256"
                             },
-                            "id": 4940,
+                            "id": 4958,
                             "name": "Identifier",
                             "src": "4497:9:12"
                           },
@@ -2986,28 +2986,28 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4933,
+                              "referencedDeclaration": 4951,
                               "type": "string memory",
                               "value": "_symbol"
                             },
-                            "id": 4941,
+                            "id": 4959,
                             "name": "Identifier",
                             "src": "4507:7:12"
                           }
                         ],
-                        "id": 4942,
+                        "id": 4960,
                         "name": "FunctionCall",
                         "src": "4497:18:12"
                       }
                     ],
-                    "id": 4943,
+                    "id": 4961,
                     "name": "VariableDeclarationStatement",
                     "src": "4476:39:12"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        4945
+                        4963
                       ]
                     },
                     "children": [
@@ -3015,7 +3015,7 @@ export const TokenRegistry =
                         "attributes": {
                           "constant": false,
                           "name": "attributes",
-                          "scope": 4954,
+                          "scope": 4972,
                           "stateVariable": false,
                           "storageLocation": "storage",
                           "type": "struct TokenRegistry.TokenAttributes storage pointer",
@@ -3027,15 +3027,15 @@ export const TokenRegistry =
                             "attributes": {
                               "contractScope": null,
                               "name": "TokenAttributes",
-                              "referencedDeclaration": 4763,
+                              "referencedDeclaration": 4781,
                               "type": "struct TokenRegistry.TokenAttributes storage pointer"
                             },
-                            "id": 4944,
+                            "id": 4962,
                             "name": "UserDefinedTypeName",
                             "src": "4526:15:12"
                           }
                         ],
-                        "id": 4945,
+                        "id": 4963,
                         "name": "VariableDeclaration",
                         "src": "4526:34:12"
                       },
@@ -3055,11 +3055,11 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4748,
+                              "referencedDeclaration": 4766,
                               "type": "mapping(bytes32 => struct TokenRegistry.TokenAttributes storage ref)",
                               "value": "symbolHashToTokenAttributes"
                             },
-                            "id": 4946,
+                            "id": 4964,
                             "name": "Identifier",
                             "src": "4563:27:12"
                           },
@@ -3069,27 +3069,27 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4939,
+                              "referencedDeclaration": 4957,
                               "type": "bytes32",
                               "value": "symbolHash"
                             },
-                            "id": 4947,
+                            "id": 4965,
                             "name": "Identifier",
                             "src": "4591:10:12"
                           }
                         ],
-                        "id": 4948,
+                        "id": 4966,
                         "name": "IndexAccess",
                         "src": "4563:39:12"
                       }
                     ],
-                    "id": 4949,
+                    "id": 4967,
                     "name": "VariableDeclarationStatement",
                     "src": "4526:76:12"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 4937
+                      "functionReturnParameters": 4955
                     },
                     "children": [
                       {
@@ -3100,7 +3100,7 @@ export const TokenRegistry =
                           "isPure": false,
                           "lValueRequested": false,
                           "member_name": "name",
-                          "referencedDeclaration": 4760,
+                          "referencedDeclaration": 4778,
                           "type": "string storage ref"
                         },
                         "children": [
@@ -3110,31 +3110,31 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4945,
+                              "referencedDeclaration": 4963,
                               "type": "struct TokenRegistry.TokenAttributes storage pointer",
                               "value": "attributes"
                             },
-                            "id": 4950,
+                            "id": 4968,
                             "name": "Identifier",
                             "src": "4620:10:12"
                           }
                         ],
-                        "id": 4951,
+                        "id": 4969,
                         "name": "MemberAccess",
                         "src": "4620:15:12"
                       }
                     ],
-                    "id": 4952,
+                    "id": 4970,
                     "name": "Return",
                     "src": "4613:22:12"
                   }
                 ],
-                "id": 4953,
+                "id": 4971,
                 "name": "Block",
                 "src": "4466:176:12"
               }
             ],
-            "id": 4954,
+            "id": 4972,
             "name": "FunctionDefinition",
             "src": "4391:251:12"
           },
@@ -3148,7 +3148,7 @@ export const TokenRegistry =
               ],
               "name": "getNumDecimalsFromSymbol",
               "payable": false,
-              "scope": 5095,
+              "scope": 5113,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -3160,7 +3160,7 @@ export const TokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_symbol",
-                      "scope": 4977,
+                      "scope": 4995,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory",
@@ -3173,17 +3173,17 @@ export const TokenRegistry =
                           "name": "string",
                           "type": "string storage pointer"
                         },
-                        "id": 4955,
+                        "id": 4973,
                         "name": "ElementaryTypeName",
                         "src": "4907:6:12"
                       }
                     ],
-                    "id": 4956,
+                    "id": 4974,
                     "name": "VariableDeclaration",
                     "src": "4907:14:12"
                   }
                 ],
-                "id": 4957,
+                "id": 4975,
                 "name": "ParameterList",
                 "src": "4906:16:12"
               },
@@ -3193,7 +3193,7 @@ export const TokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 4977,
+                      "scope": 4995,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint8",
@@ -3206,17 +3206,17 @@ export const TokenRegistry =
                           "name": "uint8",
                           "type": "uint8"
                         },
-                        "id": 4958,
+                        "id": 4976,
                         "name": "ElementaryTypeName",
                         "src": "4944:5:12"
                       }
                     ],
-                    "id": 4959,
+                    "id": 4977,
                     "name": "VariableDeclaration",
                     "src": "4944:5:12"
                   }
                 ],
-                "id": 4960,
+                "id": 4978,
                 "name": "ParameterList",
                 "src": "4943:7:12"
               },
@@ -3225,7 +3225,7 @@ export const TokenRegistry =
                   {
                     "attributes": {
                       "assignments": [
-                        4962
+                        4980
                       ]
                     },
                     "children": [
@@ -3233,7 +3233,7 @@ export const TokenRegistry =
                         "attributes": {
                           "constant": false,
                           "name": "symbolHash",
-                          "scope": 4977,
+                          "scope": 4995,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bytes32",
@@ -3246,12 +3246,12 @@ export const TokenRegistry =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 4961,
+                            "id": 4979,
                             "name": "ElementaryTypeName",
                             "src": "4961:7:12"
                           }
                         ],
-                        "id": 4962,
+                        "id": 4980,
                         "name": "VariableDeclaration",
                         "src": "4961:18:12"
                       },
@@ -3281,11 +3281,11 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15809,
+                              "referencedDeclaration": 15827,
                               "type": "function () pure returns (bytes32)",
                               "value": "keccak256"
                             },
-                            "id": 4963,
+                            "id": 4981,
                             "name": "Identifier",
                             "src": "4982:9:12"
                           },
@@ -3295,28 +3295,28 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4956,
+                              "referencedDeclaration": 4974,
                               "type": "string memory",
                               "value": "_symbol"
                             },
-                            "id": 4964,
+                            "id": 4982,
                             "name": "Identifier",
                             "src": "4992:7:12"
                           }
                         ],
-                        "id": 4965,
+                        "id": 4983,
                         "name": "FunctionCall",
                         "src": "4982:18:12"
                       }
                     ],
-                    "id": 4966,
+                    "id": 4984,
                     "name": "VariableDeclarationStatement",
                     "src": "4961:39:12"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        4968
+                        4986
                       ]
                     },
                     "children": [
@@ -3324,7 +3324,7 @@ export const TokenRegistry =
                         "attributes": {
                           "constant": false,
                           "name": "attributes",
-                          "scope": 4977,
+                          "scope": 4995,
                           "stateVariable": false,
                           "storageLocation": "storage",
                           "type": "struct TokenRegistry.TokenAttributes storage pointer",
@@ -3336,15 +3336,15 @@ export const TokenRegistry =
                             "attributes": {
                               "contractScope": null,
                               "name": "TokenAttributes",
-                              "referencedDeclaration": 4763,
+                              "referencedDeclaration": 4781,
                               "type": "struct TokenRegistry.TokenAttributes storage pointer"
                             },
-                            "id": 4967,
+                            "id": 4985,
                             "name": "UserDefinedTypeName",
                             "src": "5011:15:12"
                           }
                         ],
-                        "id": 4968,
+                        "id": 4986,
                         "name": "VariableDeclaration",
                         "src": "5011:34:12"
                       },
@@ -3364,11 +3364,11 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4748,
+                              "referencedDeclaration": 4766,
                               "type": "mapping(bytes32 => struct TokenRegistry.TokenAttributes storage ref)",
                               "value": "symbolHashToTokenAttributes"
                             },
-                            "id": 4969,
+                            "id": 4987,
                             "name": "Identifier",
                             "src": "5048:27:12"
                           },
@@ -3378,27 +3378,27 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4962,
+                              "referencedDeclaration": 4980,
                               "type": "bytes32",
                               "value": "symbolHash"
                             },
-                            "id": 4970,
+                            "id": 4988,
                             "name": "Identifier",
                             "src": "5076:10:12"
                           }
                         ],
-                        "id": 4971,
+                        "id": 4989,
                         "name": "IndexAccess",
                         "src": "5048:39:12"
                       }
                     ],
-                    "id": 4972,
+                    "id": 4990,
                     "name": "VariableDeclarationStatement",
                     "src": "5011:76:12"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 4960
+                      "functionReturnParameters": 4978
                     },
                     "children": [
                       {
@@ -3409,7 +3409,7 @@ export const TokenRegistry =
                           "isPure": false,
                           "lValueRequested": false,
                           "member_name": "numDecimals",
-                          "referencedDeclaration": 4762,
+                          "referencedDeclaration": 4780,
                           "type": "uint8"
                         },
                         "children": [
@@ -3419,31 +3419,31 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4968,
+                              "referencedDeclaration": 4986,
                               "type": "struct TokenRegistry.TokenAttributes storage pointer",
                               "value": "attributes"
                             },
-                            "id": 4973,
+                            "id": 4991,
                             "name": "Identifier",
                             "src": "5105:10:12"
                           }
                         ],
-                        "id": 4974,
+                        "id": 4992,
                         "name": "MemberAccess",
                         "src": "5105:22:12"
                       }
                     ],
-                    "id": 4975,
+                    "id": 4993,
                     "name": "Return",
                     "src": "5098:29:12"
                   }
                 ],
-                "id": 4976,
+                "id": 4994,
                 "name": "Block",
                 "src": "4951:183:12"
               }
             ],
-            "id": 4977,
+            "id": 4995,
             "name": "FunctionDefinition",
             "src": "4873:261:12"
           },
@@ -3457,7 +3457,7 @@ export const TokenRegistry =
               ],
               "name": "getNumDecimalsByIndex",
               "payable": false,
-              "scope": 5095,
+              "scope": 5113,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -3469,7 +3469,7 @@ export const TokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_index",
-                      "scope": 4995,
+                      "scope": 5013,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -3482,17 +3482,17 @@ export const TokenRegistry =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 4978,
+                        "id": 4996,
                         "name": "ElementaryTypeName",
                         "src": "5404:4:12"
                       }
                     ],
-                    "id": 4979,
+                    "id": 4997,
                     "name": "VariableDeclaration",
                     "src": "5404:11:12"
                   }
                 ],
-                "id": 4980,
+                "id": 4998,
                 "name": "ParameterList",
                 "src": "5403:13:12"
               },
@@ -3502,7 +3502,7 @@ export const TokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 4995,
+                      "scope": 5013,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint8",
@@ -3515,17 +3515,17 @@ export const TokenRegistry =
                           "name": "uint8",
                           "type": "uint8"
                         },
-                        "id": 4981,
+                        "id": 4999,
                         "name": "ElementaryTypeName",
                         "src": "5438:5:12"
                       }
                     ],
-                    "id": 4982,
+                    "id": 5000,
                     "name": "VariableDeclaration",
                     "src": "5438:5:12"
                   }
                 ],
-                "id": 4983,
+                "id": 5001,
                 "name": "ParameterList",
                 "src": "5437:7:12"
               },
@@ -3534,7 +3534,7 @@ export const TokenRegistry =
                   {
                     "attributes": {
                       "assignments": [
-                        4985
+                        5003
                       ]
                     },
                     "children": [
@@ -3542,7 +3542,7 @@ export const TokenRegistry =
                         "attributes": {
                           "constant": false,
                           "name": "symbol",
-                          "scope": 4995,
+                          "scope": 5013,
                           "stateVariable": false,
                           "storageLocation": "memory",
                           "type": "string memory",
@@ -3555,12 +3555,12 @@ export const TokenRegistry =
                               "name": "string",
                               "type": "string storage pointer"
                             },
-                            "id": 4984,
+                            "id": 5002,
                             "name": "ElementaryTypeName",
                             "src": "5455:6:12"
                           }
                         ],
-                        "id": 4985,
+                        "id": 5003,
                         "name": "VariableDeclaration",
                         "src": "5455:20:12"
                       },
@@ -3590,11 +3590,11 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4931,
+                              "referencedDeclaration": 4949,
                               "type": "function (uint256) view returns (string memory)",
                               "value": "getTokenSymbolByIndex"
                             },
-                            "id": 4986,
+                            "id": 5004,
                             "name": "Identifier",
                             "src": "5478:21:12"
                           },
@@ -3604,27 +3604,27 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4979,
+                              "referencedDeclaration": 4997,
                               "type": "uint256",
                               "value": "_index"
                             },
-                            "id": 4987,
+                            "id": 5005,
                             "name": "Identifier",
                             "src": "5500:6:12"
                           }
                         ],
-                        "id": 4988,
+                        "id": 5006,
                         "name": "FunctionCall",
                         "src": "5478:29:12"
                       }
                     ],
-                    "id": 4989,
+                    "id": 5007,
                     "name": "VariableDeclarationStatement",
                     "src": "5455:52:12"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 4983
+                      "functionReturnParameters": 5001
                     },
                     "children": [
                       {
@@ -3653,11 +3653,11 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4977,
+                              "referencedDeclaration": 4995,
                               "type": "function (string memory) view returns (uint8)",
                               "value": "getNumDecimalsFromSymbol"
                             },
-                            "id": 4990,
+                            "id": 5008,
                             "name": "Identifier",
                             "src": "5525:24:12"
                           },
@@ -3667,31 +3667,31 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4985,
+                              "referencedDeclaration": 5003,
                               "type": "string memory",
                               "value": "symbol"
                             },
-                            "id": 4991,
+                            "id": 5009,
                             "name": "Identifier",
                             "src": "5550:6:12"
                           }
                         ],
-                        "id": 4992,
+                        "id": 5010,
                         "name": "FunctionCall",
                         "src": "5525:32:12"
                       }
                     ],
-                    "id": 4993,
+                    "id": 5011,
                     "name": "Return",
                     "src": "5518:39:12"
                   }
                 ],
-                "id": 4994,
+                "id": 5012,
                 "name": "Block",
                 "src": "5445:119:12"
               }
             ],
-            "id": 4995,
+            "id": 5013,
             "name": "FunctionDefinition",
             "src": "5373:191:12"
           },
@@ -3705,7 +3705,7 @@ export const TokenRegistry =
               ],
               "name": "getTokenNameByIndex",
               "payable": false,
-              "scope": 5095,
+              "scope": 5113,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -3717,7 +3717,7 @@ export const TokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_index",
-                      "scope": 5017,
+                      "scope": 5035,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -3730,17 +3730,17 @@ export const TokenRegistry =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 4996,
+                        "id": 5014,
                         "name": "ElementaryTypeName",
                         "src": "5852:4:12"
                       }
                     ],
-                    "id": 4997,
+                    "id": 5015,
                     "name": "VariableDeclaration",
                     "src": "5852:11:12"
                   }
                 ],
-                "id": 4998,
+                "id": 5016,
                 "name": "ParameterList",
                 "src": "5851:13:12"
               },
@@ -3750,7 +3750,7 @@ export const TokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 5017,
+                      "scope": 5035,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory",
@@ -3763,17 +3763,17 @@ export const TokenRegistry =
                           "name": "string",
                           "type": "string storage pointer"
                         },
-                        "id": 4999,
+                        "id": 5017,
                         "name": "ElementaryTypeName",
                         "src": "5886:6:12"
                       }
                     ],
-                    "id": 5000,
+                    "id": 5018,
                     "name": "VariableDeclaration",
                     "src": "5886:6:12"
                   }
                 ],
-                "id": 5001,
+                "id": 5019,
                 "name": "ParameterList",
                 "src": "5885:8:12"
               },
@@ -3782,7 +3782,7 @@ export const TokenRegistry =
                   {
                     "attributes": {
                       "assignments": [
-                        5003
+                        5021
                       ]
                     },
                     "children": [
@@ -3790,7 +3790,7 @@ export const TokenRegistry =
                         "attributes": {
                           "constant": false,
                           "name": "symbol",
-                          "scope": 5017,
+                          "scope": 5035,
                           "stateVariable": false,
                           "storageLocation": "memory",
                           "type": "string memory",
@@ -3803,12 +3803,12 @@ export const TokenRegistry =
                               "name": "string",
                               "type": "string storage pointer"
                             },
-                            "id": 5002,
+                            "id": 5020,
                             "name": "ElementaryTypeName",
                             "src": "5904:6:12"
                           }
                         ],
-                        "id": 5003,
+                        "id": 5021,
                         "name": "VariableDeclaration",
                         "src": "5904:20:12"
                       },
@@ -3838,11 +3838,11 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4931,
+                              "referencedDeclaration": 4949,
                               "type": "function (uint256) view returns (string memory)",
                               "value": "getTokenSymbolByIndex"
                             },
-                            "id": 5004,
+                            "id": 5022,
                             "name": "Identifier",
                             "src": "5927:21:12"
                           },
@@ -3852,28 +3852,28 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4997,
+                              "referencedDeclaration": 5015,
                               "type": "uint256",
                               "value": "_index"
                             },
-                            "id": 5005,
+                            "id": 5023,
                             "name": "Identifier",
                             "src": "5949:6:12"
                           }
                         ],
-                        "id": 5006,
+                        "id": 5024,
                         "name": "FunctionCall",
                         "src": "5927:29:12"
                       }
                     ],
-                    "id": 5007,
+                    "id": 5025,
                     "name": "VariableDeclarationStatement",
                     "src": "5904:52:12"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        5009
+                        5027
                       ]
                     },
                     "children": [
@@ -3881,7 +3881,7 @@ export const TokenRegistry =
                         "attributes": {
                           "constant": false,
                           "name": "tokenName",
-                          "scope": 5017,
+                          "scope": 5035,
                           "stateVariable": false,
                           "storageLocation": "memory",
                           "type": "string memory",
@@ -3894,12 +3894,12 @@ export const TokenRegistry =
                               "name": "string",
                               "type": "string storage pointer"
                             },
-                            "id": 5008,
+                            "id": 5026,
                             "name": "ElementaryTypeName",
                             "src": "5967:6:12"
                           }
                         ],
-                        "id": 5009,
+                        "id": 5027,
                         "name": "VariableDeclaration",
                         "src": "5967:23:12"
                       },
@@ -3929,11 +3929,11 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4954,
+                              "referencedDeclaration": 4972,
                               "type": "function (string memory) view returns (string memory)",
                               "value": "getTokenNameBySymbol"
                             },
-                            "id": 5010,
+                            "id": 5028,
                             "name": "Identifier",
                             "src": "5993:20:12"
                           },
@@ -3943,27 +3943,27 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5003,
+                              "referencedDeclaration": 5021,
                               "type": "string memory",
                               "value": "symbol"
                             },
-                            "id": 5011,
+                            "id": 5029,
                             "name": "Identifier",
                             "src": "6014:6:12"
                           }
                         ],
-                        "id": 5012,
+                        "id": 5030,
                         "name": "FunctionCall",
                         "src": "5993:28:12"
                       }
                     ],
-                    "id": 5013,
+                    "id": 5031,
                     "name": "VariableDeclarationStatement",
                     "src": "5967:54:12"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 5001
+                      "functionReturnParameters": 5019
                     },
                     "children": [
                       {
@@ -3972,26 +3972,26 @@ export const TokenRegistry =
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 5009,
+                          "referencedDeclaration": 5027,
                           "type": "string memory",
                           "value": "tokenName"
                         },
-                        "id": 5014,
+                        "id": 5032,
                         "name": "Identifier",
                         "src": "6039:9:12"
                       }
                     ],
-                    "id": 5015,
+                    "id": 5033,
                     "name": "Return",
                     "src": "6032:16:12"
                   }
                 ],
-                "id": 5016,
+                "id": 5034,
                 "name": "Block",
                 "src": "5894:161:12"
               }
             ],
-            "id": 5017,
+            "id": 5035,
             "name": "FunctionDefinition",
             "src": "5823:232:12"
           },
@@ -4005,7 +4005,7 @@ export const TokenRegistry =
               ],
               "name": "getTokenAttributesBySymbol",
               "payable": false,
-              "scope": 5095,
+              "scope": 5113,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -4017,7 +4017,7 @@ export const TokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_symbol",
-                      "scope": 5053,
+                      "scope": 5071,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory",
@@ -4030,17 +4030,17 @@ export const TokenRegistry =
                           "name": "string",
                           "type": "string storage pointer"
                         },
-                        "id": 5018,
+                        "id": 5036,
                         "name": "ElementaryTypeName",
                         "src": "6463:6:12"
                       }
                     ],
-                    "id": 5019,
+                    "id": 5037,
                     "name": "VariableDeclaration",
                     "src": "6463:14:12"
                   }
                 ],
-                "id": 5020,
+                "id": 5038,
                 "name": "ParameterList",
                 "src": "6462:16:12"
               },
@@ -4050,7 +4050,7 @@ export const TokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 5053,
+                      "scope": 5071,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -4063,12 +4063,12 @@ export const TokenRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 5021,
+                        "id": 5039,
                         "name": "ElementaryTypeName",
                         "src": "6537:7:12"
                       }
                     ],
-                    "id": 5022,
+                    "id": 5040,
                     "name": "VariableDeclaration",
                     "src": "6537:7:12"
                   },
@@ -4076,7 +4076,7 @@ export const TokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 5053,
+                      "scope": 5071,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -4089,12 +4089,12 @@ export const TokenRegistry =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 5023,
+                        "id": 5041,
                         "name": "ElementaryTypeName",
                         "src": "6558:4:12"
                       }
                     ],
-                    "id": 5024,
+                    "id": 5042,
                     "name": "VariableDeclaration",
                     "src": "6558:4:12"
                   },
@@ -4102,7 +4102,7 @@ export const TokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 5053,
+                      "scope": 5071,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory",
@@ -4115,12 +4115,12 @@ export const TokenRegistry =
                           "name": "string",
                           "type": "string storage pointer"
                         },
-                        "id": 5025,
+                        "id": 5043,
                         "name": "ElementaryTypeName",
                         "src": "6576:6:12"
                       }
                     ],
-                    "id": 5026,
+                    "id": 5044,
                     "name": "VariableDeclaration",
                     "src": "6576:6:12"
                   },
@@ -4128,7 +4128,7 @@ export const TokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 5053,
+                      "scope": 5071,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -4141,17 +4141,17 @@ export const TokenRegistry =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 5027,
+                        "id": 5045,
                         "name": "ElementaryTypeName",
                         "src": "6596:4:12"
                       }
                     ],
-                    "id": 5028,
+                    "id": 5046,
                     "name": "VariableDeclaration",
                     "src": "6596:4:12"
                   }
                 ],
-                "id": 5029,
+                "id": 5047,
                 "name": "ParameterList",
                 "src": "6523:87:12"
               },
@@ -4160,7 +4160,7 @@ export const TokenRegistry =
                   {
                     "attributes": {
                       "assignments": [
-                        5031
+                        5049
                       ]
                     },
                     "children": [
@@ -4168,7 +4168,7 @@ export const TokenRegistry =
                         "attributes": {
                           "constant": false,
                           "name": "symbolHash",
-                          "scope": 5053,
+                          "scope": 5071,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bytes32",
@@ -4181,12 +4181,12 @@ export const TokenRegistry =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 5030,
+                            "id": 5048,
                             "name": "ElementaryTypeName",
                             "src": "6625:7:12"
                           }
                         ],
-                        "id": 5031,
+                        "id": 5049,
                         "name": "VariableDeclaration",
                         "src": "6625:18:12"
                       },
@@ -4216,11 +4216,11 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15809,
+                              "referencedDeclaration": 15827,
                               "type": "function () pure returns (bytes32)",
                               "value": "keccak256"
                             },
-                            "id": 5032,
+                            "id": 5050,
                             "name": "Identifier",
                             "src": "6646:9:12"
                           },
@@ -4230,28 +4230,28 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5019,
+                              "referencedDeclaration": 5037,
                               "type": "string memory",
                               "value": "_symbol"
                             },
-                            "id": 5033,
+                            "id": 5051,
                             "name": "Identifier",
                             "src": "6656:7:12"
                           }
                         ],
-                        "id": 5034,
+                        "id": 5052,
                         "name": "FunctionCall",
                         "src": "6646:18:12"
                       }
                     ],
-                    "id": 5035,
+                    "id": 5053,
                     "name": "VariableDeclarationStatement",
                     "src": "6625:39:12"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        5037
+                        5055
                       ]
                     },
                     "children": [
@@ -4259,7 +4259,7 @@ export const TokenRegistry =
                         "attributes": {
                           "constant": false,
                           "name": "attributes",
-                          "scope": 5053,
+                          "scope": 5071,
                           "stateVariable": false,
                           "storageLocation": "storage",
                           "type": "struct TokenRegistry.TokenAttributes storage pointer",
@@ -4271,15 +4271,15 @@ export const TokenRegistry =
                             "attributes": {
                               "contractScope": null,
                               "name": "TokenAttributes",
-                              "referencedDeclaration": 4763,
+                              "referencedDeclaration": 4781,
                               "type": "struct TokenRegistry.TokenAttributes storage pointer"
                             },
-                            "id": 5036,
+                            "id": 5054,
                             "name": "UserDefinedTypeName",
                             "src": "6675:15:12"
                           }
                         ],
-                        "id": 5037,
+                        "id": 5055,
                         "name": "VariableDeclaration",
                         "src": "6675:34:12"
                       },
@@ -4299,11 +4299,11 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4748,
+                              "referencedDeclaration": 4766,
                               "type": "mapping(bytes32 => struct TokenRegistry.TokenAttributes storage ref)",
                               "value": "symbolHashToTokenAttributes"
                             },
-                            "id": 5038,
+                            "id": 5056,
                             "name": "Identifier",
                             "src": "6712:27:12"
                           },
@@ -4313,27 +4313,27 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5031,
+                              "referencedDeclaration": 5049,
                               "type": "bytes32",
                               "value": "symbolHash"
                             },
-                            "id": 5039,
+                            "id": 5057,
                             "name": "Identifier",
                             "src": "6740:10:12"
                           }
                         ],
-                        "id": 5040,
+                        "id": 5058,
                         "name": "IndexAccess",
                         "src": "6712:39:12"
                       }
                     ],
-                    "id": 5041,
+                    "id": 5059,
                     "name": "VariableDeclarationStatement",
                     "src": "6675:76:12"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 5029
+                      "functionReturnParameters": 5047
                     },
                     "children": [
                       {
@@ -4355,7 +4355,7 @@ export const TokenRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "tokenAddress",
-                              "referencedDeclaration": 4756,
+                              "referencedDeclaration": 4774,
                               "type": "address"
                             },
                             "children": [
@@ -4365,16 +4365,16 @@ export const TokenRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5037,
+                                  "referencedDeclaration": 5055,
                                   "type": "struct TokenRegistry.TokenAttributes storage pointer",
                                   "value": "attributes"
                                 },
-                                "id": 5042,
+                                "id": 5060,
                                 "name": "Identifier",
                                 "src": "6783:10:12"
                               }
                             ],
-                            "id": 5043,
+                            "id": 5061,
                             "name": "MemberAccess",
                             "src": "6783:23:12"
                           },
@@ -4386,7 +4386,7 @@ export const TokenRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "tokenIndex",
-                              "referencedDeclaration": 4758,
+                              "referencedDeclaration": 4776,
                               "type": "uint256"
                             },
                             "children": [
@@ -4396,16 +4396,16 @@ export const TokenRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5037,
+                                  "referencedDeclaration": 5055,
                                   "type": "struct TokenRegistry.TokenAttributes storage pointer",
                                   "value": "attributes"
                                 },
-                                "id": 5044,
+                                "id": 5062,
                                 "name": "Identifier",
                                 "src": "6820:10:12"
                               }
                             ],
-                            "id": 5045,
+                            "id": 5063,
                             "name": "MemberAccess",
                             "src": "6820:21:12"
                           },
@@ -4417,7 +4417,7 @@ export const TokenRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "name",
-                              "referencedDeclaration": 4760,
+                              "referencedDeclaration": 4778,
                               "type": "string storage ref"
                             },
                             "children": [
@@ -4427,16 +4427,16 @@ export const TokenRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5037,
+                                  "referencedDeclaration": 5055,
                                   "type": "struct TokenRegistry.TokenAttributes storage pointer",
                                   "value": "attributes"
                                 },
-                                "id": 5046,
+                                "id": 5064,
                                 "name": "Identifier",
                                 "src": "6855:10:12"
                               }
                             ],
-                            "id": 5047,
+                            "id": 5065,
                             "name": "MemberAccess",
                             "src": "6855:15:12"
                           },
@@ -4448,7 +4448,7 @@ export const TokenRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "numDecimals",
-                              "referencedDeclaration": 4762,
+                              "referencedDeclaration": 4780,
                               "type": "uint8"
                             },
                             "children": [
@@ -4458,36 +4458,36 @@ export const TokenRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5037,
+                                  "referencedDeclaration": 5055,
                                   "type": "struct TokenRegistry.TokenAttributes storage pointer",
                                   "value": "attributes"
                                 },
-                                "id": 5048,
+                                "id": 5066,
                                 "name": "Identifier",
                                 "src": "6884:10:12"
                               }
                             ],
-                            "id": 5049,
+                            "id": 5067,
                             "name": "MemberAccess",
                             "src": "6884:22:12"
                           }
                         ],
-                        "id": 5050,
+                        "id": 5068,
                         "name": "TupleExpression",
                         "src": "6769:147:12"
                       }
                     ],
-                    "id": 5051,
+                    "id": 5069,
                     "name": "Return",
                     "src": "6762:154:12"
                   }
                 ],
-                "id": 5052,
+                "id": 5070,
                 "name": "Block",
                 "src": "6615:308:12"
               }
             ],
-            "id": 5053,
+            "id": 5071,
             "name": "FunctionDefinition",
             "src": "6427:496:12"
           },
@@ -4501,7 +4501,7 @@ export const TokenRegistry =
               ],
               "name": "getTokenAttributesByIndex",
               "payable": false,
-              "scope": 5095,
+              "scope": 5113,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -4513,7 +4513,7 @@ export const TokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "_index",
-                      "scope": 5094,
+                      "scope": 5112,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -4526,17 +4526,17 @@ export const TokenRegistry =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 5054,
+                        "id": 5072,
                         "name": "ElementaryTypeName",
                         "src": "7313:4:12"
                       }
                     ],
-                    "id": 5055,
+                    "id": 5073,
                     "name": "VariableDeclaration",
                     "src": "7313:11:12"
                   }
                 ],
-                "id": 5056,
+                "id": 5074,
                 "name": "ParameterList",
                 "src": "7312:13:12"
               },
@@ -4546,7 +4546,7 @@ export const TokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 5094,
+                      "scope": 5112,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -4559,12 +4559,12 @@ export const TokenRegistry =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 5057,
+                        "id": 5075,
                         "name": "ElementaryTypeName",
                         "src": "7384:7:12"
                       }
                     ],
-                    "id": 5058,
+                    "id": 5076,
                     "name": "VariableDeclaration",
                     "src": "7384:7:12"
                   },
@@ -4572,7 +4572,7 @@ export const TokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 5094,
+                      "scope": 5112,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory",
@@ -4585,12 +4585,12 @@ export const TokenRegistry =
                           "name": "string",
                           "type": "string storage pointer"
                         },
-                        "id": 5059,
+                        "id": 5077,
                         "name": "ElementaryTypeName",
                         "src": "7405:6:12"
                       }
                     ],
-                    "id": 5060,
+                    "id": 5078,
                     "name": "VariableDeclaration",
                     "src": "7405:6:12"
                   },
@@ -4598,7 +4598,7 @@ export const TokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 5094,
+                      "scope": 5112,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory",
@@ -4611,12 +4611,12 @@ export const TokenRegistry =
                           "name": "string",
                           "type": "string storage pointer"
                         },
-                        "id": 5061,
+                        "id": 5079,
                         "name": "ElementaryTypeName",
                         "src": "7425:6:12"
                       }
                     ],
-                    "id": 5062,
+                    "id": 5080,
                     "name": "VariableDeclaration",
                     "src": "7425:6:12"
                   },
@@ -4624,7 +4624,7 @@ export const TokenRegistry =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 5094,
+                      "scope": 5112,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint8",
@@ -4637,17 +4637,17 @@ export const TokenRegistry =
                           "name": "uint8",
                           "type": "uint8"
                         },
-                        "id": 5063,
+                        "id": 5081,
                         "name": "ElementaryTypeName",
                         "src": "7445:5:12"
                       }
                     ],
-                    "id": 5064,
+                    "id": 5082,
                     "name": "VariableDeclaration",
                     "src": "7445:5:12"
                   }
                 ],
-                "id": 5065,
+                "id": 5083,
                 "name": "ParameterList",
                 "src": "7370:90:12"
               },
@@ -4656,7 +4656,7 @@ export const TokenRegistry =
                   {
                     "attributes": {
                       "assignments": [
-                        5067
+                        5085
                       ]
                     },
                     "children": [
@@ -4664,7 +4664,7 @@ export const TokenRegistry =
                         "attributes": {
                           "constant": false,
                           "name": "symbol",
-                          "scope": 5094,
+                          "scope": 5112,
                           "stateVariable": false,
                           "storageLocation": "memory",
                           "type": "string memory",
@@ -4677,12 +4677,12 @@ export const TokenRegistry =
                               "name": "string",
                               "type": "string storage pointer"
                             },
-                            "id": 5066,
+                            "id": 5084,
                             "name": "ElementaryTypeName",
                             "src": "7475:6:12"
                           }
                         ],
-                        "id": 5067,
+                        "id": 5085,
                         "name": "VariableDeclaration",
                         "src": "7475:20:12"
                       },
@@ -4712,11 +4712,11 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4931,
+                              "referencedDeclaration": 4949,
                               "type": "function (uint256) view returns (string memory)",
                               "value": "getTokenSymbolByIndex"
                             },
-                            "id": 5068,
+                            "id": 5086,
                             "name": "Identifier",
                             "src": "7498:21:12"
                           },
@@ -4726,28 +4726,28 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5055,
+                              "referencedDeclaration": 5073,
                               "type": "uint256",
                               "value": "_index"
                             },
-                            "id": 5069,
+                            "id": 5087,
                             "name": "Identifier",
                             "src": "7520:6:12"
                           }
                         ],
-                        "id": 5070,
+                        "id": 5088,
                         "name": "FunctionCall",
                         "src": "7498:29:12"
                       }
                     ],
-                    "id": 5071,
+                    "id": 5089,
                     "name": "VariableDeclarationStatement",
                     "src": "7475:52:12"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        5073
+                        5091
                       ]
                     },
                     "children": [
@@ -4755,7 +4755,7 @@ export const TokenRegistry =
                         "attributes": {
                           "constant": false,
                           "name": "symbolHash",
-                          "scope": 5094,
+                          "scope": 5112,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bytes32",
@@ -4768,12 +4768,12 @@ export const TokenRegistry =
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 5072,
+                            "id": 5090,
                             "name": "ElementaryTypeName",
                             "src": "7538:7:12"
                           }
                         ],
-                        "id": 5073,
+                        "id": 5091,
                         "name": "VariableDeclaration",
                         "src": "7538:18:12"
                       },
@@ -4803,11 +4803,11 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15809,
+                              "referencedDeclaration": 15827,
                               "type": "function () pure returns (bytes32)",
                               "value": "keccak256"
                             },
-                            "id": 5074,
+                            "id": 5092,
                             "name": "Identifier",
                             "src": "7559:9:12"
                           },
@@ -4817,28 +4817,28 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5067,
+                              "referencedDeclaration": 5085,
                               "type": "string memory",
                               "value": "symbol"
                             },
-                            "id": 5075,
+                            "id": 5093,
                             "name": "Identifier",
                             "src": "7569:6:12"
                           }
                         ],
-                        "id": 5076,
+                        "id": 5094,
                         "name": "FunctionCall",
                         "src": "7559:17:12"
                       }
                     ],
-                    "id": 5077,
+                    "id": 5095,
                     "name": "VariableDeclarationStatement",
                     "src": "7538:38:12"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        5079
+                        5097
                       ]
                     },
                     "children": [
@@ -4846,7 +4846,7 @@ export const TokenRegistry =
                         "attributes": {
                           "constant": false,
                           "name": "attributes",
-                          "scope": 5094,
+                          "scope": 5112,
                           "stateVariable": false,
                           "storageLocation": "storage",
                           "type": "struct TokenRegistry.TokenAttributes storage pointer",
@@ -4858,15 +4858,15 @@ export const TokenRegistry =
                             "attributes": {
                               "contractScope": null,
                               "name": "TokenAttributes",
-                              "referencedDeclaration": 4763,
+                              "referencedDeclaration": 4781,
                               "type": "struct TokenRegistry.TokenAttributes storage pointer"
                             },
-                            "id": 5078,
+                            "id": 5096,
                             "name": "UserDefinedTypeName",
                             "src": "7587:15:12"
                           }
                         ],
-                        "id": 5079,
+                        "id": 5097,
                         "name": "VariableDeclaration",
                         "src": "7587:34:12"
                       },
@@ -4886,11 +4886,11 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4748,
+                              "referencedDeclaration": 4766,
                               "type": "mapping(bytes32 => struct TokenRegistry.TokenAttributes storage ref)",
                               "value": "symbolHashToTokenAttributes"
                             },
-                            "id": 5080,
+                            "id": 5098,
                             "name": "Identifier",
                             "src": "7624:27:12"
                           },
@@ -4900,27 +4900,27 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5073,
+                              "referencedDeclaration": 5091,
                               "type": "bytes32",
                               "value": "symbolHash"
                             },
-                            "id": 5081,
+                            "id": 5099,
                             "name": "Identifier",
                             "src": "7652:10:12"
                           }
                         ],
-                        "id": 5082,
+                        "id": 5100,
                         "name": "IndexAccess",
                         "src": "7624:39:12"
                       }
                     ],
-                    "id": 5083,
+                    "id": 5101,
                     "name": "VariableDeclarationStatement",
                     "src": "7587:76:12"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 5065
+                      "functionReturnParameters": 5083
                     },
                     "children": [
                       {
@@ -4942,7 +4942,7 @@ export const TokenRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "tokenAddress",
-                              "referencedDeclaration": 4756,
+                              "referencedDeclaration": 4774,
                               "type": "address"
                             },
                             "children": [
@@ -4952,16 +4952,16 @@ export const TokenRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5079,
+                                  "referencedDeclaration": 5097,
                                   "type": "struct TokenRegistry.TokenAttributes storage pointer",
                                   "value": "attributes"
                                 },
-                                "id": 5084,
+                                "id": 5102,
                                 "name": "Identifier",
                                 "src": "7695:10:12"
                               }
                             ],
-                            "id": 5085,
+                            "id": 5103,
                             "name": "MemberAccess",
                             "src": "7695:23:12"
                           },
@@ -4971,11 +4971,11 @@ export const TokenRegistry =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5067,
+                              "referencedDeclaration": 5085,
                               "type": "string memory",
                               "value": "symbol"
                             },
-                            "id": 5086,
+                            "id": 5104,
                             "name": "Identifier",
                             "src": "7732:6:12"
                           },
@@ -4987,7 +4987,7 @@ export const TokenRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "name",
-                              "referencedDeclaration": 4760,
+                              "referencedDeclaration": 4778,
                               "type": "string storage ref"
                             },
                             "children": [
@@ -4997,16 +4997,16 @@ export const TokenRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5079,
+                                  "referencedDeclaration": 5097,
                                   "type": "struct TokenRegistry.TokenAttributes storage pointer",
                                   "value": "attributes"
                                 },
-                                "id": 5087,
+                                "id": 5105,
                                 "name": "Identifier",
                                 "src": "7752:10:12"
                               }
                             ],
-                            "id": 5088,
+                            "id": 5106,
                             "name": "MemberAccess",
                             "src": "7752:15:12"
                           },
@@ -5018,7 +5018,7 @@ export const TokenRegistry =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "numDecimals",
-                              "referencedDeclaration": 4762,
+                              "referencedDeclaration": 4780,
                               "type": "uint8"
                             },
                             "children": [
@@ -5028,46 +5028,46 @@ export const TokenRegistry =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5079,
+                                  "referencedDeclaration": 5097,
                                   "type": "struct TokenRegistry.TokenAttributes storage pointer",
                                   "value": "attributes"
                                 },
-                                "id": 5089,
+                                "id": 5107,
                                 "name": "Identifier",
                                 "src": "7781:10:12"
                               }
                             ],
-                            "id": 5090,
+                            "id": 5108,
                             "name": "MemberAccess",
                             "src": "7781:22:12"
                           }
                         ],
-                        "id": 5091,
+                        "id": 5109,
                         "name": "TupleExpression",
                         "src": "7681:132:12"
                       }
                     ],
-                    "id": 5092,
+                    "id": 5110,
                     "name": "Return",
                     "src": "7674:139:12"
                   }
                 ],
-                "id": 5093,
+                "id": 5111,
                 "name": "Block",
                 "src": "7465:355:12"
               }
             ],
-            "id": 5094,
+            "id": 5112,
             "name": "FunctionDefinition",
             "src": "7278:542:12"
           }
         ],
-        "id": 5095,
+        "id": 5113,
         "name": "ContractDefinition",
         "src": "717:7105:12"
       }
     ],
-    "id": 5096,
+    "id": 5114,
     "name": "SourceUnit",
     "src": "0:7823:12"
   },
@@ -5143,9 +5143,9 @@ export const TokenRegistry =
         }
       },
       "links": {},
-      "address": "0x996648785adf493509ee0766425348897ccf3b78"
+      "address": "0x1a0a6e5c2aa5448ad4a9eed9e0c5fadba336b493"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-25T20:05:01.889Z"
+  "updatedAt": "2018-09-25T22:27:44.590Z"
 }

@@ -198,7 +198,7 @@ export const DummyContract =
       "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/test/DummyContract.sol",
       "exportedSymbols": {
         "DummyContract": [
-          9917
+          9935
         ]
       }
     },
@@ -211,39 +211,39 @@ export const DummyContract =
             ".18"
           ]
         },
-        "id": 9800,
+        "id": 9818,
         "name": "PragmaDirective",
         "src": "584:23:19"
       },
       {
         "attributes": {
-          "SourceUnit": 6254,
+          "SourceUnit": 6272,
           "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/libraries/PermissionsLib.sol",
           "file": "../libraries/PermissionsLib.sol",
-          "scope": 9918,
+          "scope": 9936,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 9801,
+        "id": 9819,
         "name": "ImportDirective",
         "src": "609:41:19"
       },
       {
         "attributes": {
           "contractDependencies": [
-            6049
+            6067
           ],
           "contractKind": "contract",
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            9917,
-            6049
+            9935,
+            6067
           ],
           "name": "DummyContract",
-          "scope": 9918
+          "scope": 9936
         },
         "children": [
           {
@@ -257,15 +257,15 @@ export const DummyContract =
                 "attributes": {
                   "contractScope": null,
                   "name": "PermissionEvents",
-                  "referencedDeclaration": 6049,
+                  "referencedDeclaration": 6067,
                   "type": "contract PermissionEvents"
                 },
-                "id": 9802,
+                "id": 9820,
                 "name": "UserDefinedTypeName",
                 "src": "679:16:19"
               }
             ],
-            "id": 9803,
+            "id": 9821,
             "name": "InheritanceSpecifier",
             "src": "679:16:19"
           },
@@ -275,10 +275,10 @@ export const DummyContract =
                 "attributes": {
                   "contractScope": null,
                   "name": "PermissionsLib",
-                  "referencedDeclaration": 6253,
+                  "referencedDeclaration": 6271,
                   "type": "library PermissionsLib"
                 },
-                "id": 9804,
+                "id": 9822,
                 "name": "UserDefinedTypeName",
                 "src": "708:14:19"
               },
@@ -286,15 +286,15 @@ export const DummyContract =
                 "attributes": {
                   "contractScope": null,
                   "name": "PermissionsLib.Permissions",
-                  "referencedDeclaration": 6073,
+                  "referencedDeclaration": 6091,
                   "type": "struct PermissionsLib.Permissions storage pointer"
                 },
-                "id": 9805,
+                "id": 9823,
                 "name": "UserDefinedTypeName",
                 "src": "727:26:19"
               }
             ],
-            "id": 9806,
+            "id": 9824,
             "name": "UsingForDirective",
             "src": "702:52:19"
           },
@@ -302,7 +302,7 @@ export const DummyContract =
             "attributes": {
               "constant": false,
               "name": "firstPermissionSet",
-              "scope": 9917,
+              "scope": 9935,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "struct PermissionsLib.Permissions storage ref",
@@ -314,15 +314,15 @@ export const DummyContract =
                 "attributes": {
                   "contractScope": null,
                   "name": "PermissionsLib.Permissions",
-                  "referencedDeclaration": 6073,
+                  "referencedDeclaration": 6091,
                   "type": "struct PermissionsLib.Permissions storage pointer"
                 },
-                "id": 9807,
+                "id": 9825,
                 "name": "UserDefinedTypeName",
                 "src": "760:26:19"
               }
             ],
-            "id": 9808,
+            "id": 9826,
             "name": "VariableDeclaration",
             "src": "760:53:19"
           },
@@ -330,7 +330,7 @@ export const DummyContract =
             "attributes": {
               "constant": false,
               "name": "secondPermissionSet",
-              "scope": 9917,
+              "scope": 9935,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "struct PermissionsLib.Permissions storage ref",
@@ -342,15 +342,15 @@ export const DummyContract =
                 "attributes": {
                   "contractScope": null,
                   "name": "PermissionsLib.Permissions",
-                  "referencedDeclaration": 6073,
+                  "referencedDeclaration": 6091,
                   "type": "struct PermissionsLib.Permissions storage pointer"
                 },
-                "id": 9809,
+                "id": 9827,
                 "name": "UserDefinedTypeName",
                 "src": "819:26:19"
               }
             ],
-            "id": 9810,
+            "id": 9828,
             "name": "VariableDeclaration",
             "src": "819:54:19"
           },
@@ -358,7 +358,7 @@ export const DummyContract =
             "attributes": {
               "constant": true,
               "name": "FIRST_SET",
-              "scope": 9917,
+              "scope": 9935,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "string memory",
@@ -370,7 +370,7 @@ export const DummyContract =
                   "name": "string",
                   "type": "string storage pointer"
                 },
-                "id": 9811,
+                "id": 9829,
                 "name": "ElementaryTypeName",
                 "src": "880:6:19"
               },
@@ -387,12 +387,12 @@ export const DummyContract =
                   "type": "literal_string \"dummy-contract-first-set\"",
                   "value": "dummy-contract-first-set"
                 },
-                "id": 9812,
+                "id": 9830,
                 "name": "Literal",
                 "src": "915:26:19"
               }
             ],
-            "id": 9813,
+            "id": 9831,
             "name": "VariableDeclaration",
             "src": "880:61:19"
           },
@@ -400,7 +400,7 @@ export const DummyContract =
             "attributes": {
               "constant": true,
               "name": "SECOND_SET",
-              "scope": 9917,
+              "scope": 9935,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "string memory",
@@ -412,7 +412,7 @@ export const DummyContract =
                   "name": "string",
                   "type": "string storage pointer"
                 },
-                "id": 9814,
+                "id": 9832,
                 "name": "ElementaryTypeName",
                 "src": "947:6:19"
               },
@@ -429,12 +429,12 @@ export const DummyContract =
                   "type": "literal_string \"dummy-contract-second-set\"",
                   "value": "dummy-contract-second-set"
                 },
-                "id": 9815,
+                "id": 9833,
                 "name": "Literal",
                 "src": "983:27:19"
               }
             ],
-            "id": 9816,
+            "id": 9834,
             "name": "VariableDeclaration",
             "src": "947:63:19"
           },
@@ -448,7 +448,7 @@ export const DummyContract =
               ],
               "name": "authorizeInFirstSet",
               "payable": false,
-              "scope": 9917,
+              "scope": 9935,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -460,7 +460,7 @@ export const DummyContract =
                     "attributes": {
                       "constant": false,
                       "name": "agent",
-                      "scope": 9829,
+                      "scope": 9847,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -473,17 +473,17 @@ export const DummyContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 9817,
+                        "id": 9835,
                         "name": "ElementaryTypeName",
                         "src": "1046:7:19"
                       }
                     ],
-                    "id": 9818,
+                    "id": 9836,
                     "name": "VariableDeclaration",
                     "src": "1046:13:19"
                   }
                 ],
-                "id": 9819,
+                "id": 9837,
                 "name": "ParameterList",
                 "src": "1045:15:19"
               },
@@ -494,7 +494,7 @@ export const DummyContract =
                   ]
                 },
                 "children": [],
-                "id": 9820,
+                "id": 9838,
                 "name": "ParameterList",
                 "src": "1068:0:19"
               },
@@ -534,7 +534,7 @@ export const DummyContract =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "authorize",
-                              "referencedDeclaration": 6123,
+                              "referencedDeclaration": 6141,
                               "type": "function (struct PermissionsLib.Permissions storage pointer,address,string memory)"
                             },
                             "children": [
@@ -544,16 +544,16 @@ export const DummyContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9808,
+                                  "referencedDeclaration": 9826,
                                   "type": "struct PermissionsLib.Permissions storage ref",
                                   "value": "firstPermissionSet"
                                 },
-                                "id": 9821,
+                                "id": 9839,
                                 "name": "Identifier",
                                 "src": "1078:18:19"
                               }
                             ],
-                            "id": 9823,
+                            "id": 9841,
                             "name": "MemberAccess",
                             "src": "1078:28:19"
                           },
@@ -563,11 +563,11 @@ export const DummyContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9818,
+                              "referencedDeclaration": 9836,
                               "type": "address",
                               "value": "agent"
                             },
-                            "id": 9824,
+                            "id": 9842,
                             "name": "Identifier",
                             "src": "1107:5:19"
                           },
@@ -577,31 +577,31 @@ export const DummyContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9813,
+                              "referencedDeclaration": 9831,
                               "type": "string memory",
                               "value": "FIRST_SET"
                             },
-                            "id": 9825,
+                            "id": 9843,
                             "name": "Identifier",
                             "src": "1114:9:19"
                           }
                         ],
-                        "id": 9826,
+                        "id": 9844,
                         "name": "FunctionCall",
                         "src": "1078:46:19"
                       }
                     ],
-                    "id": 9827,
+                    "id": 9845,
                     "name": "ExpressionStatement",
                     "src": "1078:46:19"
                   }
                 ],
-                "id": 9828,
+                "id": 9846,
                 "name": "Block",
                 "src": "1068:63:19"
               }
             ],
-            "id": 9829,
+            "id": 9847,
             "name": "FunctionDefinition",
             "src": "1017:114:19"
           },
@@ -615,7 +615,7 @@ export const DummyContract =
               ],
               "name": "authorizeInSecondSet",
               "payable": false,
-              "scope": 9917,
+              "scope": 9935,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -627,7 +627,7 @@ export const DummyContract =
                     "attributes": {
                       "constant": false,
                       "name": "agent",
-                      "scope": 9842,
+                      "scope": 9860,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -640,17 +640,17 @@ export const DummyContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 9830,
+                        "id": 9848,
                         "name": "ElementaryTypeName",
                         "src": "1167:7:19"
                       }
                     ],
-                    "id": 9831,
+                    "id": 9849,
                     "name": "VariableDeclaration",
                     "src": "1167:13:19"
                   }
                 ],
-                "id": 9832,
+                "id": 9850,
                 "name": "ParameterList",
                 "src": "1166:15:19"
               },
@@ -661,7 +661,7 @@ export const DummyContract =
                   ]
                 },
                 "children": [],
-                "id": 9833,
+                "id": 9851,
                 "name": "ParameterList",
                 "src": "1189:0:19"
               },
@@ -701,7 +701,7 @@ export const DummyContract =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "authorize",
-                              "referencedDeclaration": 6123,
+                              "referencedDeclaration": 6141,
                               "type": "function (struct PermissionsLib.Permissions storage pointer,address,string memory)"
                             },
                             "children": [
@@ -711,16 +711,16 @@ export const DummyContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9810,
+                                  "referencedDeclaration": 9828,
                                   "type": "struct PermissionsLib.Permissions storage ref",
                                   "value": "secondPermissionSet"
                                 },
-                                "id": 9834,
+                                "id": 9852,
                                 "name": "Identifier",
                                 "src": "1199:19:19"
                               }
                             ],
-                            "id": 9836,
+                            "id": 9854,
                             "name": "MemberAccess",
                             "src": "1199:29:19"
                           },
@@ -730,11 +730,11 @@ export const DummyContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9831,
+                              "referencedDeclaration": 9849,
                               "type": "address",
                               "value": "agent"
                             },
-                            "id": 9837,
+                            "id": 9855,
                             "name": "Identifier",
                             "src": "1229:5:19"
                           },
@@ -744,31 +744,31 @@ export const DummyContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9816,
+                              "referencedDeclaration": 9834,
                               "type": "string memory",
                               "value": "SECOND_SET"
                             },
-                            "id": 9838,
+                            "id": 9856,
                             "name": "Identifier",
                             "src": "1236:10:19"
                           }
                         ],
-                        "id": 9839,
+                        "id": 9857,
                         "name": "FunctionCall",
                         "src": "1199:48:19"
                       }
                     ],
-                    "id": 9840,
+                    "id": 9858,
                     "name": "ExpressionStatement",
                     "src": "1199:48:19"
                   }
                 ],
-                "id": 9841,
+                "id": 9859,
                 "name": "Block",
                 "src": "1189:65:19"
               }
             ],
-            "id": 9842,
+            "id": 9860,
             "name": "FunctionDefinition",
             "src": "1137:117:19"
           },
@@ -782,7 +782,7 @@ export const DummyContract =
               ],
               "name": "revokeInFirstSet",
               "payable": false,
-              "scope": 9917,
+              "scope": 9935,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -794,7 +794,7 @@ export const DummyContract =
                     "attributes": {
                       "constant": false,
                       "name": "agent",
-                      "scope": 9855,
+                      "scope": 9873,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -807,17 +807,17 @@ export const DummyContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 9843,
+                        "id": 9861,
                         "name": "ElementaryTypeName",
                         "src": "1286:7:19"
                       }
                     ],
-                    "id": 9844,
+                    "id": 9862,
                     "name": "VariableDeclaration",
                     "src": "1286:13:19"
                   }
                 ],
-                "id": 9845,
+                "id": 9863,
                 "name": "ParameterList",
                 "src": "1285:15:19"
               },
@@ -828,7 +828,7 @@ export const DummyContract =
                   ]
                 },
                 "children": [],
-                "id": 9846,
+                "id": 9864,
                 "name": "ParameterList",
                 "src": "1308:0:19"
               },
@@ -868,7 +868,7 @@ export const DummyContract =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "revokeAuthorization",
-                              "referencedDeclaration": 6209,
+                              "referencedDeclaration": 6227,
                               "type": "function (struct PermissionsLib.Permissions storage pointer,address,string memory)"
                             },
                             "children": [
@@ -878,16 +878,16 @@ export const DummyContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9808,
+                                  "referencedDeclaration": 9826,
                                   "type": "struct PermissionsLib.Permissions storage ref",
                                   "value": "firstPermissionSet"
                                 },
-                                "id": 9847,
+                                "id": 9865,
                                 "name": "Identifier",
                                 "src": "1318:18:19"
                               }
                             ],
-                            "id": 9849,
+                            "id": 9867,
                             "name": "MemberAccess",
                             "src": "1318:38:19"
                           },
@@ -897,11 +897,11 @@ export const DummyContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9844,
+                              "referencedDeclaration": 9862,
                               "type": "address",
                               "value": "agent"
                             },
-                            "id": 9850,
+                            "id": 9868,
                             "name": "Identifier",
                             "src": "1357:5:19"
                           },
@@ -911,31 +911,31 @@ export const DummyContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9813,
+                              "referencedDeclaration": 9831,
                               "type": "string memory",
                               "value": "FIRST_SET"
                             },
-                            "id": 9851,
+                            "id": 9869,
                             "name": "Identifier",
                             "src": "1364:9:19"
                           }
                         ],
-                        "id": 9852,
+                        "id": 9870,
                         "name": "FunctionCall",
                         "src": "1318:56:19"
                       }
                     ],
-                    "id": 9853,
+                    "id": 9871,
                     "name": "ExpressionStatement",
                     "src": "1318:56:19"
                   }
                 ],
-                "id": 9854,
+                "id": 9872,
                 "name": "Block",
                 "src": "1308:73:19"
               }
             ],
-            "id": 9855,
+            "id": 9873,
             "name": "FunctionDefinition",
             "src": "1260:121:19"
           },
@@ -949,7 +949,7 @@ export const DummyContract =
               ],
               "name": "revokeInSecondSet",
               "payable": false,
-              "scope": 9917,
+              "scope": 9935,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -961,7 +961,7 @@ export const DummyContract =
                     "attributes": {
                       "constant": false,
                       "name": "agent",
-                      "scope": 9868,
+                      "scope": 9886,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -974,17 +974,17 @@ export const DummyContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 9856,
+                        "id": 9874,
                         "name": "ElementaryTypeName",
                         "src": "1414:7:19"
                       }
                     ],
-                    "id": 9857,
+                    "id": 9875,
                     "name": "VariableDeclaration",
                     "src": "1414:13:19"
                   }
                 ],
-                "id": 9858,
+                "id": 9876,
                 "name": "ParameterList",
                 "src": "1413:15:19"
               },
@@ -995,7 +995,7 @@ export const DummyContract =
                   ]
                 },
                 "children": [],
-                "id": 9859,
+                "id": 9877,
                 "name": "ParameterList",
                 "src": "1436:0:19"
               },
@@ -1035,7 +1035,7 @@ export const DummyContract =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "revokeAuthorization",
-                              "referencedDeclaration": 6209,
+                              "referencedDeclaration": 6227,
                               "type": "function (struct PermissionsLib.Permissions storage pointer,address,string memory)"
                             },
                             "children": [
@@ -1045,16 +1045,16 @@ export const DummyContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9810,
+                                  "referencedDeclaration": 9828,
                                   "type": "struct PermissionsLib.Permissions storage ref",
                                   "value": "secondPermissionSet"
                                 },
-                                "id": 9860,
+                                "id": 9878,
                                 "name": "Identifier",
                                 "src": "1446:19:19"
                               }
                             ],
-                            "id": 9862,
+                            "id": 9880,
                             "name": "MemberAccess",
                             "src": "1446:39:19"
                           },
@@ -1064,11 +1064,11 @@ export const DummyContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9857,
+                              "referencedDeclaration": 9875,
                               "type": "address",
                               "value": "agent"
                             },
-                            "id": 9863,
+                            "id": 9881,
                             "name": "Identifier",
                             "src": "1486:5:19"
                           },
@@ -1078,31 +1078,31 @@ export const DummyContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9816,
+                              "referencedDeclaration": 9834,
                               "type": "string memory",
                               "value": "SECOND_SET"
                             },
-                            "id": 9864,
+                            "id": 9882,
                             "name": "Identifier",
                             "src": "1493:10:19"
                           }
                         ],
-                        "id": 9865,
+                        "id": 9883,
                         "name": "FunctionCall",
                         "src": "1446:58:19"
                       }
                     ],
-                    "id": 9866,
+                    "id": 9884,
                     "name": "ExpressionStatement",
                     "src": "1446:58:19"
                   }
                 ],
-                "id": 9867,
+                "id": 9885,
                 "name": "Block",
                 "src": "1436:75:19"
               }
             ],
-            "id": 9868,
+            "id": 9886,
             "name": "FunctionDefinition",
             "src": "1387:124:19"
           },
@@ -1116,7 +1116,7 @@ export const DummyContract =
               ],
               "name": "isAuthorizedInFirstSet",
               "payable": false,
-              "scope": 9917,
+              "scope": 9935,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -1128,7 +1128,7 @@ export const DummyContract =
                     "attributes": {
                       "constant": false,
                       "name": "agent",
-                      "scope": 9881,
+                      "scope": 9899,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1141,17 +1141,17 @@ export const DummyContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 9869,
+                        "id": 9887,
                         "name": "ElementaryTypeName",
                         "src": "1549:7:19"
                       }
                     ],
-                    "id": 9870,
+                    "id": 9888,
                     "name": "VariableDeclaration",
                     "src": "1549:13:19"
                   }
                 ],
-                "id": 9871,
+                "id": 9889,
                 "name": "ParameterList",
                 "src": "1548:15:19"
               },
@@ -1161,7 +1161,7 @@ export const DummyContract =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 9881,
+                      "scope": 9899,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -1174,17 +1174,17 @@ export const DummyContract =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 9872,
+                        "id": 9890,
                         "name": "ElementaryTypeName",
                         "src": "1589:4:19"
                       }
                     ],
-                    "id": 9873,
+                    "id": 9891,
                     "name": "VariableDeclaration",
                     "src": "1589:4:19"
                   }
                 ],
-                "id": 9874,
+                "id": 9892,
                 "name": "ParameterList",
                 "src": "1588:6:19"
               },
@@ -1192,7 +1192,7 @@ export const DummyContract =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 9874
+                      "functionReturnParameters": 9892
                     },
                     "children": [
                       {
@@ -1223,7 +1223,7 @@ export const DummyContract =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "isAuthorized",
-                              "referencedDeclaration": 6224,
+                              "referencedDeclaration": 6242,
                               "type": "function (struct PermissionsLib.Permissions storage pointer,address) view returns (bool)"
                             },
                             "children": [
@@ -1233,16 +1233,16 @@ export const DummyContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9808,
+                                  "referencedDeclaration": 9826,
                                   "type": "struct PermissionsLib.Permissions storage ref",
                                   "value": "firstPermissionSet"
                                 },
-                                "id": 9875,
+                                "id": 9893,
                                 "name": "Identifier",
                                 "src": "1612:18:19"
                               }
                             ],
-                            "id": 9876,
+                            "id": 9894,
                             "name": "MemberAccess",
                             "src": "1612:31:19"
                           },
@@ -1252,31 +1252,31 @@ export const DummyContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9870,
+                              "referencedDeclaration": 9888,
                               "type": "address",
                               "value": "agent"
                             },
-                            "id": 9877,
+                            "id": 9895,
                             "name": "Identifier",
                             "src": "1644:5:19"
                           }
                         ],
-                        "id": 9878,
+                        "id": 9896,
                         "name": "FunctionCall",
                         "src": "1612:38:19"
                       }
                     ],
-                    "id": 9879,
+                    "id": 9897,
                     "name": "Return",
                     "src": "1605:45:19"
                   }
                 ],
-                "id": 9880,
+                "id": 9898,
                 "name": "Block",
                 "src": "1595:62:19"
               }
             ],
-            "id": 9881,
+            "id": 9899,
             "name": "FunctionDefinition",
             "src": "1517:140:19"
           },
@@ -1290,7 +1290,7 @@ export const DummyContract =
               ],
               "name": "isAuthorizedInSecondSet",
               "payable": false,
-              "scope": 9917,
+              "scope": 9935,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -1302,7 +1302,7 @@ export const DummyContract =
                     "attributes": {
                       "constant": false,
                       "name": "agent",
-                      "scope": 9894,
+                      "scope": 9912,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1315,17 +1315,17 @@ export const DummyContract =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 9882,
+                        "id": 9900,
                         "name": "ElementaryTypeName",
                         "src": "1696:7:19"
                       }
                     ],
-                    "id": 9883,
+                    "id": 9901,
                     "name": "VariableDeclaration",
                     "src": "1696:13:19"
                   }
                 ],
-                "id": 9884,
+                "id": 9902,
                 "name": "ParameterList",
                 "src": "1695:15:19"
               },
@@ -1335,7 +1335,7 @@ export const DummyContract =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 9894,
+                      "scope": 9912,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -1348,17 +1348,17 @@ export const DummyContract =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 9885,
+                        "id": 9903,
                         "name": "ElementaryTypeName",
                         "src": "1736:4:19"
                       }
                     ],
-                    "id": 9886,
+                    "id": 9904,
                     "name": "VariableDeclaration",
                     "src": "1736:4:19"
                   }
                 ],
-                "id": 9887,
+                "id": 9905,
                 "name": "ParameterList",
                 "src": "1735:6:19"
               },
@@ -1366,7 +1366,7 @@ export const DummyContract =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 9887
+                      "functionReturnParameters": 9905
                     },
                     "children": [
                       {
@@ -1397,7 +1397,7 @@ export const DummyContract =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "isAuthorized",
-                              "referencedDeclaration": 6224,
+                              "referencedDeclaration": 6242,
                               "type": "function (struct PermissionsLib.Permissions storage pointer,address) view returns (bool)"
                             },
                             "children": [
@@ -1407,16 +1407,16 @@ export const DummyContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9810,
+                                  "referencedDeclaration": 9828,
                                   "type": "struct PermissionsLib.Permissions storage ref",
                                   "value": "secondPermissionSet"
                                 },
-                                "id": 9888,
+                                "id": 9906,
                                 "name": "Identifier",
                                 "src": "1759:19:19"
                               }
                             ],
-                            "id": 9889,
+                            "id": 9907,
                             "name": "MemberAccess",
                             "src": "1759:32:19"
                           },
@@ -1426,31 +1426,31 @@ export const DummyContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9883,
+                              "referencedDeclaration": 9901,
                               "type": "address",
                               "value": "agent"
                             },
-                            "id": 9890,
+                            "id": 9908,
                             "name": "Identifier",
                             "src": "1792:5:19"
                           }
                         ],
-                        "id": 9891,
+                        "id": 9909,
                         "name": "FunctionCall",
                         "src": "1759:39:19"
                       }
                     ],
-                    "id": 9892,
+                    "id": 9910,
                     "name": "Return",
                     "src": "1752:46:19"
                   }
                 ],
-                "id": 9893,
+                "id": 9911,
                 "name": "Block",
                 "src": "1742:63:19"
               }
             ],
-            "id": 9894,
+            "id": 9912,
             "name": "FunctionDefinition",
             "src": "1663:142:19"
           },
@@ -1464,7 +1464,7 @@ export const DummyContract =
               ],
               "name": "getFirstSetAuthorizedAgents",
               "payable": false,
-              "scope": 9917,
+              "scope": 9935,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -1477,7 +1477,7 @@ export const DummyContract =
                   ]
                 },
                 "children": [],
-                "id": 9895,
+                "id": 9913,
                 "name": "ParameterList",
                 "src": "1847:2:19"
               },
@@ -1487,7 +1487,7 @@ export const DummyContract =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 9905,
+                      "scope": 9923,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address[] memory",
@@ -1506,22 +1506,22 @@ export const DummyContract =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 9896,
+                            "id": 9914,
                             "name": "ElementaryTypeName",
                             "src": "1871:7:19"
                           }
                         ],
-                        "id": 9897,
+                        "id": 9915,
                         "name": "ArrayTypeName",
                         "src": "1871:9:19"
                       }
                     ],
-                    "id": 9898,
+                    "id": 9916,
                     "name": "VariableDeclaration",
                     "src": "1871:9:19"
                   }
                 ],
-                "id": 9899,
+                "id": 9917,
                 "name": "ParameterList",
                 "src": "1870:11:19"
               },
@@ -1529,7 +1529,7 @@ export const DummyContract =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 9899
+                      "functionReturnParameters": 9917
                     },
                     "children": [
                       {
@@ -1560,7 +1560,7 @@ export const DummyContract =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "getAuthorizedAgents",
-                              "referencedDeclaration": 6252,
+                              "referencedDeclaration": 6270,
                               "type": "function (struct PermissionsLib.Permissions storage pointer) view returns (address[] memory)"
                             },
                             "children": [
@@ -1570,36 +1570,36 @@ export const DummyContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9808,
+                                  "referencedDeclaration": 9826,
                                   "type": "struct PermissionsLib.Permissions storage ref",
                                   "value": "firstPermissionSet"
                                 },
-                                "id": 9900,
+                                "id": 9918,
                                 "name": "Identifier",
                                 "src": "1899:18:19"
                               }
                             ],
-                            "id": 9901,
+                            "id": 9919,
                             "name": "MemberAccess",
                             "src": "1899:38:19"
                           }
                         ],
-                        "id": 9902,
+                        "id": 9920,
                         "name": "FunctionCall",
                         "src": "1899:40:19"
                       }
                     ],
-                    "id": 9903,
+                    "id": 9921,
                     "name": "Return",
                     "src": "1892:47:19"
                   }
                 ],
-                "id": 9904,
+                "id": 9922,
                 "name": "Block",
                 "src": "1882:64:19"
               }
             ],
-            "id": 9905,
+            "id": 9923,
             "name": "FunctionDefinition",
             "src": "1811:135:19"
           },
@@ -1613,7 +1613,7 @@ export const DummyContract =
               ],
               "name": "getSecondSetAuthorizedAgents",
               "payable": false,
-              "scope": 9917,
+              "scope": 9935,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -1626,7 +1626,7 @@ export const DummyContract =
                   ]
                 },
                 "children": [],
-                "id": 9906,
+                "id": 9924,
                 "name": "ParameterList",
                 "src": "1989:2:19"
               },
@@ -1636,7 +1636,7 @@ export const DummyContract =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 9916,
+                      "scope": 9934,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address[] memory",
@@ -1655,22 +1655,22 @@ export const DummyContract =
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 9907,
+                            "id": 9925,
                             "name": "ElementaryTypeName",
                             "src": "2013:7:19"
                           }
                         ],
-                        "id": 9908,
+                        "id": 9926,
                         "name": "ArrayTypeName",
                         "src": "2013:9:19"
                       }
                     ],
-                    "id": 9909,
+                    "id": 9927,
                     "name": "VariableDeclaration",
                     "src": "2013:9:19"
                   }
                 ],
-                "id": 9910,
+                "id": 9928,
                 "name": "ParameterList",
                 "src": "2012:11:19"
               },
@@ -1678,7 +1678,7 @@ export const DummyContract =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 9910
+                      "functionReturnParameters": 9928
                     },
                     "children": [
                       {
@@ -1709,7 +1709,7 @@ export const DummyContract =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "getAuthorizedAgents",
-                              "referencedDeclaration": 6252,
+                              "referencedDeclaration": 6270,
                               "type": "function (struct PermissionsLib.Permissions storage pointer) view returns (address[] memory)"
                             },
                             "children": [
@@ -1719,46 +1719,46 @@ export const DummyContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9810,
+                                  "referencedDeclaration": 9828,
                                   "type": "struct PermissionsLib.Permissions storage ref",
                                   "value": "secondPermissionSet"
                                 },
-                                "id": 9911,
+                                "id": 9929,
                                 "name": "Identifier",
                                 "src": "2041:19:19"
                               }
                             ],
-                            "id": 9912,
+                            "id": 9930,
                             "name": "MemberAccess",
                             "src": "2041:39:19"
                           }
                         ],
-                        "id": 9913,
+                        "id": 9931,
                         "name": "FunctionCall",
                         "src": "2041:41:19"
                       }
                     ],
-                    "id": 9914,
+                    "id": 9932,
                     "name": "Return",
                     "src": "2034:48:19"
                   }
                 ],
-                "id": 9915,
+                "id": 9933,
                 "name": "Block",
                 "src": "2024:65:19"
               }
             ],
-            "id": 9916,
+            "id": 9934,
             "name": "FunctionDefinition",
             "src": "1952:137:19"
           }
         ],
-        "id": 9917,
+        "id": 9935,
         "name": "ContractDefinition",
         "src": "653:1438:19"
       }
     ],
-    "id": 9918,
+    "id": 9936,
     "name": "SourceUnit",
     "src": "584:1508:19"
   },
@@ -1775,9 +1775,9 @@ export const DummyContract =
     "70": {
       "events": {},
       "links": {},
-      "address": "0xa48e0b04d117844ec6f636bc095f5a3d449a1c44"
+      "address": "0x31fca7e9d6e9c323648183f9384280cf61f63b32"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-25T20:05:00.823Z"
+  "updatedAt": "2018-09-25T22:27:43.446Z"
 }

@@ -497,7 +497,7 @@ export const Collateralizer =
       },
       {
         "attributes": {
-          "SourceUnit": 14078,
+          "SourceUnit": 14096,
           "absolutePath": "zeppelin-solidity/contracts/math/SafeMath.sol",
           "file": "zeppelin-solidity/contracts/math/SafeMath.sol",
           "scope": 615,
@@ -512,7 +512,7 @@ export const Collateralizer =
       },
       {
         "attributes": {
-          "SourceUnit": 14273,
+          "SourceUnit": 14291,
           "absolutePath": "zeppelin-solidity/contracts/token/ERC20/ERC20.sol",
           "file": "zeppelin-solidity/contracts/token/ERC20/ERC20.sol",
           "scope": 615,
@@ -527,7 +527,7 @@ export const Collateralizer =
       },
       {
         "attributes": {
-          "SourceUnit": 4740,
+          "SourceUnit": 4758,
           "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/TermsContract.sol",
           "file": "./TermsContract.sol",
           "scope": 615,
@@ -542,7 +542,7 @@ export const Collateralizer =
       },
       {
         "attributes": {
-          "SourceUnit": 3141,
+          "SourceUnit": 3159,
           "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/DebtRegistry.sol",
           "file": "./DebtRegistry.sol",
           "scope": 615,
@@ -557,7 +557,7 @@ export const Collateralizer =
       },
       {
         "attributes": {
-          "SourceUnit": 5096,
+          "SourceUnit": 5114,
           "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/TokenRegistry.sol",
           "file": "./TokenRegistry.sol",
           "scope": 615,
@@ -572,7 +572,7 @@ export const Collateralizer =
       },
       {
         "attributes": {
-          "SourceUnit": 5189,
+          "SourceUnit": 5207,
           "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/TokenTransferProxy.sol",
           "file": "./TokenTransferProxy.sol",
           "scope": 615,
@@ -587,7 +587,7 @@ export const Collateralizer =
       },
       {
         "attributes": {
-          "SourceUnit": 6254,
+          "SourceUnit": 6272,
           "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/libraries/PermissionsLib.sol",
           "file": "./libraries/PermissionsLib.sol",
           "scope": 615,
@@ -610,18 +610,18 @@ export const Collateralizer =
       {
         "attributes": {
           "contractDependencies": [
-            6049,
-            13979,
-            14133
+            6067,
+            13997,
+            14151
           ],
           "contractKind": "contract",
           "documentation": "Contains functionality for collateralizing assets, by transferring them from\na debtor address to this contract as a custodian.\n  * Authors (in no particular order): nadavhollander, saturnial, jdkanani, graemecode",
           "fullyImplemented": true,
           "linearizedBaseContracts": [
             614,
-            6049,
-            13979,
-            14133
+            6067,
+            13997,
+            14151
           ],
           "name": "Collateralizer",
           "scope": 615
@@ -638,7 +638,7 @@ export const Collateralizer =
                 "attributes": {
                   "contractScope": null,
                   "name": "Pausable",
-                  "referencedDeclaration": 13979,
+                  "referencedDeclaration": 13997,
                   "type": "contract Pausable"
                 },
                 "id": 11,
@@ -661,7 +661,7 @@ export const Collateralizer =
                 "attributes": {
                   "contractScope": null,
                   "name": "PermissionEvents",
-                  "referencedDeclaration": 6049,
+                  "referencedDeclaration": 6067,
                   "type": "contract PermissionEvents"
                 },
                 "id": 13,
@@ -679,7 +679,7 @@ export const Collateralizer =
                 "attributes": {
                   "contractScope": null,
                   "name": "PermissionsLib",
-                  "referencedDeclaration": 6253,
+                  "referencedDeclaration": 6271,
                   "type": "library PermissionsLib"
                 },
                 "id": 15,
@@ -690,7 +690,7 @@ export const Collateralizer =
                 "attributes": {
                   "contractScope": null,
                   "name": "PermissionsLib.Permissions",
-                  "referencedDeclaration": 6073,
+                  "referencedDeclaration": 6091,
                   "type": "struct PermissionsLib.Permissions storage pointer"
                 },
                 "id": 16,
@@ -708,7 +708,7 @@ export const Collateralizer =
                 "attributes": {
                   "contractScope": null,
                   "name": "SafeMath",
-                  "referencedDeclaration": 14077,
+                  "referencedDeclaration": 14095,
                   "type": "library SafeMath"
                 },
                 "id": 18,
@@ -771,7 +771,7 @@ export const Collateralizer =
                 "attributes": {
                   "contractScope": null,
                   "name": "DebtRegistry",
-                  "referencedDeclaration": 3140,
+                  "referencedDeclaration": 3158,
                   "type": "contract DebtRegistry"
                 },
                 "id": 23,
@@ -799,7 +799,7 @@ export const Collateralizer =
                 "attributes": {
                   "contractScope": null,
                   "name": "TokenRegistry",
-                  "referencedDeclaration": 5095,
+                  "referencedDeclaration": 5113,
                   "type": "contract TokenRegistry"
                 },
                 "id": 25,
@@ -827,7 +827,7 @@ export const Collateralizer =
                 "attributes": {
                   "contractScope": null,
                   "name": "TokenTransferProxy",
-                  "referencedDeclaration": 5188,
+                  "referencedDeclaration": 5206,
                   "type": "contract TokenTransferProxy"
                 },
                 "id": 27,
@@ -900,7 +900,7 @@ export const Collateralizer =
                 "attributes": {
                   "contractScope": null,
                   "name": "PermissionsLib.Permissions",
-                  "referencedDeclaration": 6073,
+                  "referencedDeclaration": 6091,
                   "type": "struct PermissionsLib.Permissions storage pointer"
                 },
                 "id": 33,
@@ -1468,7 +1468,7 @@ export const Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15818,
+                              "referencedDeclaration": 15836,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -1504,7 +1504,7 @@ export const Collateralizer =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "isAuthorized",
-                                  "referencedDeclaration": 6224,
+                                  "referencedDeclaration": 6242,
                                   "type": "function (struct PermissionsLib.Permissions storage pointer,address) view returns (bool)"
                                 },
                                 "children": [
@@ -1545,7 +1545,7 @@ export const Collateralizer =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15815,
+                                      "referencedDeclaration": 15833,
                                       "type": "msg",
                                       "value": "msg"
                                     },
@@ -1832,7 +1832,7 @@ export const Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3140,
+                                  "referencedDeclaration": 3158,
                                   "type": "type(contract DebtRegistry)",
                                   "value": "DebtRegistry"
                                 },
@@ -1922,7 +1922,7 @@ export const Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5095,
+                                  "referencedDeclaration": 5113,
                                   "type": "type(contract TokenRegistry)",
                                   "value": "TokenRegistry"
                                 },
@@ -2012,7 +2012,7 @@ export const Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5188,
+                                  "referencedDeclaration": 5206,
                                   "type": "type(contract TokenTransferProxy)",
                                   "value": "TokenTransferProxy"
                                 },
@@ -2203,7 +2203,7 @@ export const Collateralizer =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13940,
+                      "referencedDeclaration": 13958,
                       "type": "modifier ()",
                       "value": "whenNotPaused"
                     },
@@ -2359,7 +2359,7 @@ export const Collateralizer =
                             "attributes": {
                               "contractScope": null,
                               "name": "TermsContract",
-                              "referencedDeclaration": 4739,
+                              "referencedDeclaration": 4757,
                               "type": "contract TermsContract"
                             },
                             "id": 140,
@@ -2552,7 +2552,7 @@ export const Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15818,
+                              "referencedDeclaration": 15836,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -2607,7 +2607,7 @@ export const Collateralizer =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15815,
+                                      "referencedDeclaration": 15833,
                                       "type": "msg",
                                       "value": "msg"
                                     },
@@ -2663,7 +2663,7 @@ export const Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15818,
+                              "referencedDeclaration": 15836,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -2760,7 +2760,7 @@ export const Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15818,
+                              "referencedDeclaration": 15836,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -2896,7 +2896,7 @@ export const Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15818,
+                              "referencedDeclaration": 15836,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -3056,7 +3056,7 @@ export const Collateralizer =
                             "attributes": {
                               "contractScope": null,
                               "name": "ERC20",
-                              "referencedDeclaration": 14272,
+                              "referencedDeclaration": 14290,
                               "type": "contract ERC20"
                             },
                             "id": 184,
@@ -3094,7 +3094,7 @@ export const Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 14272,
+                              "referencedDeclaration": 14290,
                               "type": "type(contract ERC20)",
                               "value": "ERC20"
                             },
@@ -3199,7 +3199,7 @@ export const Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15848,
+                              "referencedDeclaration": 15866,
                               "type": "contract Collateralizer",
                               "value": "this"
                             },
@@ -3245,7 +3245,7 @@ export const Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15818,
+                              "referencedDeclaration": 15836,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -3296,7 +3296,7 @@ export const Collateralizer =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "balanceOf",
-                                      "referencedDeclaration": 14286,
+                                      "referencedDeclaration": 14304,
                                       "type": "function (address) view external returns (uint256)"
                                     },
                                     "children": [
@@ -3395,7 +3395,7 @@ export const Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15818,
+                              "referencedDeclaration": 15836,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -3441,7 +3441,7 @@ export const Collateralizer =
                                           "typeString": "address"
                                         },
                                         {
-                                          "typeIdentifier": "t_contract$_TokenTransferProxy_$5188",
+                                          "typeIdentifier": "t_contract$_TokenTransferProxy_$5206",
                                           "typeString": "contract TokenTransferProxy"
                                         }
                                       ],
@@ -3450,7 +3450,7 @@ export const Collateralizer =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "allowance",
-                                      "referencedDeclaration": 14243,
+                                      "referencedDeclaration": 14261,
                                       "type": "function (address,address) view external returns (uint256)"
                                     },
                                     "children": [
@@ -3643,7 +3643,7 @@ export const Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15818,
+                              "referencedDeclaration": 15836,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -3670,7 +3670,7 @@ export const Collateralizer =
                                 "attributes": {
                                   "argumentTypes": [
                                     {
-                                      "typeIdentifier": "t_contract$_ERC20_$14272",
+                                      "typeIdentifier": "t_contract$_ERC20_$14290",
                                       "typeString": "contract ERC20"
                                     },
                                     {
@@ -3691,7 +3691,7 @@ export const Collateralizer =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "transferFrom",
-                                  "referencedDeclaration": 5187,
+                                  "referencedDeclaration": 5205,
                                   "type": "function (address,address,address,uint256) external returns (bool)"
                                 },
                                 "children": [
@@ -3988,7 +3988,7 @@ export const Collateralizer =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13940,
+                      "referencedDeclaration": 13958,
                       "type": "modifier ()",
                       "value": "whenNotPaused"
                     },
@@ -4144,7 +4144,7 @@ export const Collateralizer =
                             "attributes": {
                               "contractScope": null,
                               "name": "TermsContract",
-                              "referencedDeclaration": 4739,
+                              "referencedDeclaration": 4757,
                               "type": "contract TermsContract"
                             },
                             "id": 256,
@@ -4337,7 +4337,7 @@ export const Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15818,
+                              "referencedDeclaration": 15836,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -4434,7 +4434,7 @@ export const Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15818,
+                              "referencedDeclaration": 15836,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -4570,7 +4570,7 @@ export const Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15818,
+                              "referencedDeclaration": 15836,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -4735,7 +4735,7 @@ export const Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15818,
+                              "referencedDeclaration": 15836,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -4790,7 +4790,7 @@ export const Collateralizer =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "getExpectedRepaymentValue",
-                                      "referencedDeclaration": 4724,
+                                      "referencedDeclaration": 4742,
                                       "type": "function (bytes32,uint256) view external returns (uint256)"
                                     },
                                     "children": [
@@ -4855,7 +4855,7 @@ export const Collateralizer =
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "getTermEndTimestamp",
-                                          "referencedDeclaration": 4738,
+                                          "referencedDeclaration": 4756,
                                           "type": "function (bytes32) view external returns (uint256)"
                                         },
                                         "children": [
@@ -4930,7 +4930,7 @@ export const Collateralizer =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "getValueRepaidToDate",
-                                      "referencedDeclaration": 4731,
+                                      "referencedDeclaration": 4749,
                                       "type": "function (bytes32) view external returns (uint256)"
                                     },
                                     "children": [
@@ -5163,7 +5163,7 @@ export const Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15818,
+                              "referencedDeclaration": 15836,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -5203,7 +5203,7 @@ export const Collateralizer =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "transfer",
-                                  "referencedDeclaration": 14295,
+                                  "referencedDeclaration": 14313,
                                   "type": "function (address,uint256) external returns (bool)"
                                 },
                                 "children": [
@@ -5233,7 +5233,7 @@ export const Collateralizer =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 14272,
+                                          "referencedDeclaration": 14290,
                                           "type": "type(contract ERC20)",
                                           "value": "ERC20"
                                         },
@@ -5502,7 +5502,7 @@ export const Collateralizer =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13940,
+                      "referencedDeclaration": 13958,
                       "type": "modifier ()",
                       "value": "whenNotPaused"
                     },
@@ -5658,7 +5658,7 @@ export const Collateralizer =
                             "attributes": {
                               "contractScope": null,
                               "name": "TermsContract",
-                              "referencedDeclaration": 4739,
+                              "referencedDeclaration": 4757,
                               "type": "contract TermsContract"
                             },
                             "id": 354,
@@ -5851,7 +5851,7 @@ export const Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15818,
+                              "referencedDeclaration": 15836,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -5948,7 +5948,7 @@ export const Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15818,
+                              "referencedDeclaration": 15836,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -6084,7 +6084,7 @@ export const Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15818,
+                              "referencedDeclaration": 15836,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -6249,7 +6249,7 @@ export const Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15818,
+                              "referencedDeclaration": 15836,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -6304,7 +6304,7 @@ export const Collateralizer =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "getExpectedRepaymentValue",
-                                      "referencedDeclaration": 4724,
+                                      "referencedDeclaration": 4742,
                                       "type": "function (bytes32,uint256) view external returns (uint256)"
                                     },
                                     "children": [
@@ -6427,7 +6427,7 @@ export const Collateralizer =
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "getValueRepaidToDate",
-                                      "referencedDeclaration": 4731,
+                                      "referencedDeclaration": 4749,
                                       "type": "function (bytes32) view external returns (uint256)"
                                     },
                                     "children": [
@@ -6612,7 +6612,7 @@ export const Collateralizer =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "getBeneficiary",
-                              "referencedDeclaration": 3006,
+                              "referencedDeclaration": 3024,
                               "type": "function (bytes32) view external returns (address)"
                             },
                             "children": [
@@ -6687,7 +6687,7 @@ export const Collateralizer =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15818,
+                              "referencedDeclaration": 15836,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -6727,7 +6727,7 @@ export const Collateralizer =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "transfer",
-                                  "referencedDeclaration": 14295,
+                                  "referencedDeclaration": 14313,
                                   "type": "function (address,uint256) external returns (bool)"
                                 },
                                 "children": [
@@ -6757,7 +6757,7 @@ export const Collateralizer =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 14272,
+                                          "referencedDeclaration": 14290,
                                           "type": "type(contract ERC20)",
                                           "value": "ERC20"
                                         },
@@ -7026,7 +7026,7 @@ export const Collateralizer =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 14107,
+                      "referencedDeclaration": 14125,
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
@@ -7075,7 +7075,7 @@ export const Collateralizer =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "authorize",
-                              "referencedDeclaration": 6123,
+                              "referencedDeclaration": 6141,
                               "type": "function (struct PermissionsLib.Permissions storage pointer,address,string memory)"
                             },
                             "children": [
@@ -7216,7 +7216,7 @@ export const Collateralizer =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 14107,
+                      "referencedDeclaration": 14125,
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
@@ -7265,7 +7265,7 @@ export const Collateralizer =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "revokeAuthorization",
-                              "referencedDeclaration": 6209,
+                              "referencedDeclaration": 6227,
                               "type": "function (struct PermissionsLib.Permissions storage pointer,address,string memory)"
                             },
                             "children": [
@@ -7442,7 +7442,7 @@ export const Collateralizer =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "getAuthorizedAgents",
-                              "referencedDeclaration": 6252,
+                              "referencedDeclaration": 6270,
                               "type": "function (struct PermissionsLib.Permissions storage pointer) view returns (address[] memory)"
                             },
                             "children": [
@@ -8452,7 +8452,7 @@ export const Collateralizer =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "sub",
-                              "referencedDeclaration": 14052,
+                              "referencedDeclaration": 14070,
                               "type": "function (uint256,uint256) pure returns (uint256)"
                             },
                             "children": [
@@ -8474,7 +8474,7 @@ export const Collateralizer =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15807,
+                                      "referencedDeclaration": 15825,
                                       "type": "block",
                                       "value": "block"
                                     },
@@ -8520,7 +8520,7 @@ export const Collateralizer =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "mul",
-                                  "referencedDeclaration": 14014,
+                                  "referencedDeclaration": 14032,
                                   "type": "function (uint256,uint256) pure returns (uint256)"
                                 },
                                 "children": [
@@ -8727,7 +8727,7 @@ export const Collateralizer =
                         "attributes": {
                           "contractScope": null,
                           "name": "TermsContract",
-                          "referencedDeclaration": 4739,
+                          "referencedDeclaration": 4757,
                           "type": "contract TermsContract"
                         },
                         "id": 561,
@@ -8909,7 +8909,7 @@ export const Collateralizer =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "getTerms",
-                                  "referencedDeclaration": 3061,
+                                  "referencedDeclaration": 3079,
                                   "type": "function (bytes32) view external returns (address,bytes32)"
                                 },
                                 "children": [
@@ -9273,7 +9273,7 @@ export const Collateralizer =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "getTokenAddressByIndex",
-                              "referencedDeclaration": 4896,
+                              "referencedDeclaration": 4914,
                               "type": "function (uint256) view external returns (address)"
                             },
                             "children": [
@@ -9404,7 +9404,7 @@ export const Collateralizer =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4739,
+                                  "referencedDeclaration": 4757,
                                   "type": "type(contract TermsContract)",
                                   "value": "TermsContract"
                                 },
@@ -9947,9 +9947,9 @@ export const Collateralizer =
         }
       },
       "links": {},
-      "address": "0x0eba639f888f4a2054093fb26c7135f0026d63ff"
+      "address": "0xe86607c2ee33af171f7d6e88cf04f4980f575ea7"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-25T20:05:01.897Z"
+  "updatedAt": "2018-09-25T22:27:44.595Z"
 }

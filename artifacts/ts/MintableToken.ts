@@ -352,7 +352,7 @@ export const MintableToken =
       "absolutePath": "zeppelin-solidity/contracts/token/ERC20/MintableToken.sol",
       "exportedSymbols": {
         "MintableToken": [
-          14399
+          14417
         ]
       }
     },
@@ -366,62 +366,62 @@ export const MintableToken =
             ".18"
           ]
         },
-        "id": 14306,
+        "id": 14324,
         "name": "PragmaDirective",
         "src": "0:24:43"
       },
       {
         "attributes": {
-          "SourceUnit": 14646,
+          "SourceUnit": 14664,
           "absolutePath": "zeppelin-solidity/contracts/token/ERC20/StandardToken.sol",
           "file": "./StandardToken.sol",
-          "scope": 14400,
+          "scope": 14418,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 14307,
+        "id": 14325,
         "name": "ImportDirective",
         "src": "26:29:43"
       },
       {
         "attributes": {
-          "SourceUnit": 14134,
+          "SourceUnit": 14152,
           "absolutePath": "zeppelin-solidity/contracts/ownership/Ownable.sol",
           "file": "../../ownership/Ownable.sol",
-          "scope": 14400,
+          "scope": 14418,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 14308,
+        "id": 14326,
         "name": "ImportDirective",
         "src": "56:37:43"
       },
       {
         "attributes": {
           "contractDependencies": [
-            14133,
-            14229,
-            14272,
-            14304,
-            14645
+            14151,
+            14247,
+            14290,
+            14322,
+            14663
           ],
           "contractKind": "contract",
           "documentation": "@title Mintable token\n@dev Simple ERC20 Token example, with mintable token creation\n@dev Issue: * https://github.com/OpenZeppelin/zeppelin-solidity/issues/120\nBased on code by TokenMarketNet: https://github.com/TokenMarketNet/ico/blob/master/contracts/MintableToken.sol",
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            14399,
-            14133,
-            14645,
-            14229,
-            14272,
-            14304
+            14417,
+            14151,
+            14663,
+            14247,
+            14290,
+            14322
           ],
           "name": "MintableToken",
-          "scope": 14400
+          "scope": 14418
         },
         "children": [
           {
@@ -435,15 +435,15 @@ export const MintableToken =
                 "attributes": {
                   "contractScope": null,
                   "name": "StandardToken",
-                  "referencedDeclaration": 14645,
+                  "referencedDeclaration": 14663,
                   "type": "contract StandardToken"
                 },
-                "id": 14309,
+                "id": 14327,
                 "name": "UserDefinedTypeName",
                 "src": "412:13:43"
               }
             ],
-            "id": 14310,
+            "id": 14328,
             "name": "InheritanceSpecifier",
             "src": "412:13:43"
           },
@@ -458,15 +458,15 @@ export const MintableToken =
                 "attributes": {
                   "contractScope": null,
                   "name": "Ownable",
-                  "referencedDeclaration": 14133,
+                  "referencedDeclaration": 14151,
                   "type": "contract Ownable"
                 },
-                "id": 14311,
+                "id": 14329,
                 "name": "UserDefinedTypeName",
                 "src": "427:7:43"
               }
             ],
-            "id": 14312,
+            "id": 14330,
             "name": "InheritanceSpecifier",
             "src": "427:7:43"
           },
@@ -483,7 +483,7 @@ export const MintableToken =
                       "constant": false,
                       "indexed": true,
                       "name": "to",
-                      "scope": 14318,
+                      "scope": 14336,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -496,12 +496,12 @@ export const MintableToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 14313,
+                        "id": 14331,
                         "name": "ElementaryTypeName",
                         "src": "450:7:43"
                       }
                     ],
-                    "id": 14314,
+                    "id": 14332,
                     "name": "VariableDeclaration",
                     "src": "450:18:43"
                   },
@@ -510,7 +510,7 @@ export const MintableToken =
                       "constant": false,
                       "indexed": false,
                       "name": "amount",
-                      "scope": 14318,
+                      "scope": 14336,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -523,22 +523,22 @@ export const MintableToken =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 14315,
+                        "id": 14333,
                         "name": "ElementaryTypeName",
                         "src": "470:7:43"
                       }
                     ],
-                    "id": 14316,
+                    "id": 14334,
                     "name": "VariableDeclaration",
                     "src": "470:14:43"
                   }
                 ],
-                "id": 14317,
+                "id": 14335,
                 "name": "ParameterList",
                 "src": "449:36:43"
               }
             ],
-            "id": 14318,
+            "id": 14336,
             "name": "EventDefinition",
             "src": "439:47:43"
           },
@@ -555,12 +555,12 @@ export const MintableToken =
                   ]
                 },
                 "children": [],
-                "id": 14319,
+                "id": 14337,
                 "name": "ParameterList",
                 "src": "507:2:43"
               }
             ],
-            "id": 14320,
+            "id": 14338,
             "name": "EventDefinition",
             "src": "489:21:43"
           },
@@ -568,7 +568,7 @@ export const MintableToken =
             "attributes": {
               "constant": false,
               "name": "mintingFinished",
-              "scope": 14399,
+              "scope": 14417,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "bool",
@@ -580,7 +580,7 @@ export const MintableToken =
                   "name": "bool",
                   "type": "bool"
                 },
-                "id": 14321,
+                "id": 14339,
                 "name": "ElementaryTypeName",
                 "src": "514:4:43"
               },
@@ -597,12 +597,12 @@ export const MintableToken =
                   "type": "bool",
                   "value": "false"
                 },
-                "id": 14322,
+                "id": 14340,
                 "name": "Literal",
                 "src": "544:5:43"
               }
             ],
-            "id": 14323,
+            "id": 14341,
             "name": "VariableDeclaration",
             "src": "514:35:43"
           },
@@ -619,7 +619,7 @@ export const MintableToken =
                   ]
                 },
                 "children": [],
-                "id": 14324,
+                "id": 14342,
                 "name": "ParameterList",
                 "src": "571:2:43"
               },
@@ -653,11 +653,11 @@ export const MintableToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15818,
+                              "referencedDeclaration": 15836,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 14325,
+                            "id": 14343,
                             "name": "Identifier",
                             "src": "580:7:43"
                           },
@@ -679,41 +679,41 @@ export const MintableToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 14323,
+                                  "referencedDeclaration": 14341,
                                   "type": "bool",
                                   "value": "mintingFinished"
                                 },
-                                "id": 14326,
+                                "id": 14344,
                                 "name": "Identifier",
                                 "src": "589:15:43"
                               }
                             ],
-                            "id": 14327,
+                            "id": 14345,
                             "name": "UnaryOperation",
                             "src": "588:16:43"
                           }
                         ],
-                        "id": 14328,
+                        "id": 14346,
                         "name": "FunctionCall",
                         "src": "580:25:43"
                       }
                     ],
-                    "id": 14329,
+                    "id": 14347,
                     "name": "ExpressionStatement",
                     "src": "580:25:43"
                   },
                   {
-                    "id": 14330,
+                    "id": 14348,
                     "name": "PlaceholderStatement",
                     "src": "611:1:43"
                   }
                 ],
-                "id": 14331,
+                "id": 14349,
                 "name": "Block",
                 "src": "574:43:43"
               }
             ],
-            "id": 14332,
+            "id": 14350,
             "name": "ModifierDefinition",
             "src": "555:62:43"
           },
@@ -724,7 +724,7 @@ export const MintableToken =
               "isConstructor": false,
               "name": "mint",
               "payable": false,
-              "scope": 14399,
+              "scope": 14417,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -736,7 +736,7 @@ export const MintableToken =
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 14379,
+                      "scope": 14397,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -749,12 +749,12 @@ export const MintableToken =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 14333,
+                        "id": 14351,
                         "name": "ElementaryTypeName",
                         "src": "867:7:43"
                       }
                     ],
-                    "id": 14334,
+                    "id": 14352,
                     "name": "VariableDeclaration",
                     "src": "867:11:43"
                   },
@@ -762,7 +762,7 @@ export const MintableToken =
                     "attributes": {
                       "constant": false,
                       "name": "_amount",
-                      "scope": 14379,
+                      "scope": 14397,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -775,17 +775,17 @@ export const MintableToken =
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 14335,
+                        "id": 14353,
                         "name": "ElementaryTypeName",
                         "src": "880:7:43"
                       }
                     ],
-                    "id": 14336,
+                    "id": 14354,
                     "name": "VariableDeclaration",
                     "src": "880:15:43"
                   }
                 ],
-                "id": 14337,
+                "id": 14355,
                 "name": "ParameterList",
                 "src": "866:30:43"
               },
@@ -795,7 +795,7 @@ export const MintableToken =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 14379,
+                      "scope": 14397,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -808,17 +808,17 @@ export const MintableToken =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 14342,
+                        "id": 14360,
                         "name": "ElementaryTypeName",
                         "src": "931:4:43"
                       }
                     ],
-                    "id": 14343,
+                    "id": 14361,
                     "name": "VariableDeclaration",
                     "src": "931:4:43"
                   }
                 ],
-                "id": 14344,
+                "id": 14362,
                 "name": "ParameterList",
                 "src": "930:6:43"
               },
@@ -835,16 +835,16 @@ export const MintableToken =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 14107,
+                      "referencedDeclaration": 14125,
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
-                    "id": 14338,
+                    "id": 14356,
                     "name": "Identifier",
                     "src": "897:9:43"
                   }
                 ],
-                "id": 14339,
+                "id": 14357,
                 "name": "ModifierInvocation",
                 "src": "897:9:43"
               },
@@ -861,16 +861,16 @@ export const MintableToken =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 14332,
+                      "referencedDeclaration": 14350,
                       "type": "modifier ()",
                       "value": "canMint"
                     },
-                    "id": 14340,
+                    "id": 14358,
                     "name": "Identifier",
                     "src": "907:7:43"
                   }
                 ],
-                "id": 14341,
+                "id": 14359,
                 "name": "ModifierInvocation",
                 "src": "907:7:43"
               },
@@ -895,11 +895,11 @@ export const MintableToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 14148,
+                              "referencedDeclaration": 14166,
                               "type": "uint256",
                               "value": "totalSupply_"
                             },
-                            "id": 14345,
+                            "id": 14363,
                             "name": "Identifier",
                             "src": "943:12:43"
                           },
@@ -931,7 +931,7 @@ export const MintableToken =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "add",
-                                  "referencedDeclaration": 14076,
+                                  "referencedDeclaration": 14094,
                                   "type": "function (uint256,uint256) pure returns (uint256)"
                                 },
                                 "children": [
@@ -941,16 +941,16 @@ export const MintableToken =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 14148,
+                                      "referencedDeclaration": 14166,
                                       "type": "uint256",
                                       "value": "totalSupply_"
                                     },
-                                    "id": 14346,
+                                    "id": 14364,
                                     "name": "Identifier",
                                     "src": "958:12:43"
                                   }
                                 ],
-                                "id": 14347,
+                                "id": 14365,
                                 "name": "MemberAccess",
                                 "src": "958:16:43"
                               },
@@ -960,26 +960,26 @@ export const MintableToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 14336,
+                                  "referencedDeclaration": 14354,
                                   "type": "uint256",
                                   "value": "_amount"
                                 },
-                                "id": 14348,
+                                "id": 14366,
                                 "name": "Identifier",
                                 "src": "975:7:43"
                               }
                             ],
-                            "id": 14349,
+                            "id": 14367,
                             "name": "FunctionCall",
                             "src": "958:25:43"
                           }
                         ],
-                        "id": 14350,
+                        "id": 14368,
                         "name": "Assignment",
                         "src": "943:40:43"
                       }
                     ],
-                    "id": 14351,
+                    "id": 14369,
                     "name": "ExpressionStatement",
                     "src": "943:40:43"
                   },
@@ -1012,11 +1012,11 @@ export const MintableToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 14146,
+                                  "referencedDeclaration": 14164,
                                   "type": "mapping(address => uint256)",
                                   "value": "balances"
                                 },
-                                "id": 14352,
+                                "id": 14370,
                                 "name": "Identifier",
                                 "src": "989:8:43"
                               },
@@ -1026,16 +1026,16 @@ export const MintableToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 14334,
+                                  "referencedDeclaration": 14352,
                                   "type": "address",
                                   "value": "_to"
                                 },
-                                "id": 14353,
+                                "id": 14371,
                                 "name": "Identifier",
                                 "src": "998:3:43"
                               }
                             ],
-                            "id": 14354,
+                            "id": 14372,
                             "name": "IndexAccess",
                             "src": "989:13:43"
                           },
@@ -1067,7 +1067,7 @@ export const MintableToken =
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "add",
-                                  "referencedDeclaration": 14076,
+                                  "referencedDeclaration": 14094,
                                   "type": "function (uint256,uint256) pure returns (uint256)"
                                 },
                                 "children": [
@@ -1087,11 +1087,11 @@ export const MintableToken =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 14146,
+                                          "referencedDeclaration": 14164,
                                           "type": "mapping(address => uint256)",
                                           "value": "balances"
                                         },
-                                        "id": 14355,
+                                        "id": 14373,
                                         "name": "Identifier",
                                         "src": "1005:8:43"
                                       },
@@ -1101,21 +1101,21 @@ export const MintableToken =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 14334,
+                                          "referencedDeclaration": 14352,
                                           "type": "address",
                                           "value": "_to"
                                         },
-                                        "id": 14356,
+                                        "id": 14374,
                                         "name": "Identifier",
                                         "src": "1014:3:43"
                                       }
                                     ],
-                                    "id": 14357,
+                                    "id": 14375,
                                     "name": "IndexAccess",
                                     "src": "1005:13:43"
                                   }
                                 ],
-                                "id": 14358,
+                                "id": 14376,
                                 "name": "MemberAccess",
                                 "src": "1005:17:43"
                               },
@@ -1125,26 +1125,26 @@ export const MintableToken =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 14336,
+                                  "referencedDeclaration": 14354,
                                   "type": "uint256",
                                   "value": "_amount"
                                 },
-                                "id": 14359,
+                                "id": 14377,
                                 "name": "Identifier",
                                 "src": "1023:7:43"
                               }
                             ],
-                            "id": 14360,
+                            "id": 14378,
                             "name": "FunctionCall",
                             "src": "1005:26:43"
                           }
                         ],
-                        "id": 14361,
+                        "id": 14379,
                         "name": "Assignment",
                         "src": "989:42:43"
                       }
                     ],
-                    "id": 14362,
+                    "id": 14380,
                     "name": "ExpressionStatement",
                     "src": "989:42:43"
                   },
@@ -1180,11 +1180,11 @@ export const MintableToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 14318,
+                              "referencedDeclaration": 14336,
                               "type": "function (address,uint256)",
                               "value": "Mint"
                             },
-                            "id": 14363,
+                            "id": 14381,
                             "name": "Identifier",
                             "src": "1037:4:43"
                           },
@@ -1194,11 +1194,11 @@ export const MintableToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 14334,
+                              "referencedDeclaration": 14352,
                               "type": "address",
                               "value": "_to"
                             },
-                            "id": 14364,
+                            "id": 14382,
                             "name": "Identifier",
                             "src": "1042:3:43"
                           },
@@ -1208,21 +1208,21 @@ export const MintableToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 14336,
+                              "referencedDeclaration": 14354,
                               "type": "uint256",
                               "value": "_amount"
                             },
-                            "id": 14365,
+                            "id": 14383,
                             "name": "Identifier",
                             "src": "1047:7:43"
                           }
                         ],
-                        "id": 14366,
+                        "id": 14384,
                         "name": "FunctionCall",
                         "src": "1037:18:43"
                       }
                     ],
-                    "id": 14367,
+                    "id": 14385,
                     "name": "ExpressionStatement",
                     "src": "1037:18:43"
                   },
@@ -1262,11 +1262,11 @@ export const MintableToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 14303,
+                              "referencedDeclaration": 14321,
                               "type": "function (address,address,uint256)",
                               "value": "Transfer"
                             },
-                            "id": 14368,
+                            "id": 14386,
                             "name": "Identifier",
                             "src": "1061:8:43"
                           },
@@ -1300,7 +1300,7 @@ export const MintableToken =
                                   "type": "type(address)",
                                   "value": "address"
                                 },
-                                "id": 14369,
+                                "id": 14387,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "1070:7:43"
                               },
@@ -1317,12 +1317,12 @@ export const MintableToken =
                                   "type": "int_const 0",
                                   "value": "0"
                                 },
-                                "id": 14370,
+                                "id": 14388,
                                 "name": "Literal",
                                 "src": "1078:1:43"
                               }
                             ],
-                            "id": 14371,
+                            "id": 14389,
                             "name": "FunctionCall",
                             "src": "1070:10:43"
                           },
@@ -1332,11 +1332,11 @@ export const MintableToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 14334,
+                              "referencedDeclaration": 14352,
                               "type": "address",
                               "value": "_to"
                             },
-                            "id": 14372,
+                            "id": 14390,
                             "name": "Identifier",
                             "src": "1082:3:43"
                           },
@@ -1346,27 +1346,27 @@ export const MintableToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 14336,
+                              "referencedDeclaration": 14354,
                               "type": "uint256",
                               "value": "_amount"
                             },
-                            "id": 14373,
+                            "id": 14391,
                             "name": "Identifier",
                             "src": "1087:7:43"
                           }
                         ],
-                        "id": 14374,
+                        "id": 14392,
                         "name": "FunctionCall",
                         "src": "1061:34:43"
                       }
                     ],
-                    "id": 14375,
+                    "id": 14393,
                     "name": "ExpressionStatement",
                     "src": "1061:34:43"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 14344
+                      "functionReturnParameters": 14362
                     },
                     "children": [
                       {
@@ -1382,22 +1382,22 @@ export const MintableToken =
                           "type": "bool",
                           "value": "true"
                         },
-                        "id": 14376,
+                        "id": 14394,
                         "name": "Literal",
                         "src": "1108:4:43"
                       }
                     ],
-                    "id": 14377,
+                    "id": 14395,
                     "name": "Return",
                     "src": "1101:11:43"
                   }
                 ],
-                "id": 14378,
+                "id": 14396,
                 "name": "Block",
                 "src": "937:180:43"
               }
             ],
-            "id": 14379,
+            "id": 14397,
             "name": "FunctionDefinition",
             "src": "853:264:43"
           },
@@ -1408,7 +1408,7 @@ export const MintableToken =
               "isConstructor": false,
               "name": "finishMinting",
               "payable": false,
-              "scope": 14399,
+              "scope": 14417,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -1421,7 +1421,7 @@ export const MintableToken =
                   ]
                 },
                 "children": [],
-                "id": 14380,
+                "id": 14398,
                 "name": "ParameterList",
                 "src": "1253:2:43"
               },
@@ -1431,7 +1431,7 @@ export const MintableToken =
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 14398,
+                      "scope": 14416,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -1444,17 +1444,17 @@ export const MintableToken =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 14385,
+                        "id": 14403,
                         "name": "ElementaryTypeName",
                         "src": "1290:4:43"
                       }
                     ],
-                    "id": 14386,
+                    "id": 14404,
                     "name": "VariableDeclaration",
                     "src": "1290:4:43"
                   }
                 ],
-                "id": 14387,
+                "id": 14405,
                 "name": "ParameterList",
                 "src": "1289:6:43"
               },
@@ -1471,16 +1471,16 @@ export const MintableToken =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 14107,
+                      "referencedDeclaration": 14125,
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
-                    "id": 14381,
+                    "id": 14399,
                     "name": "Identifier",
                     "src": "1256:9:43"
                   }
                 ],
-                "id": 14382,
+                "id": 14400,
                 "name": "ModifierInvocation",
                 "src": "1256:9:43"
               },
@@ -1497,16 +1497,16 @@ export const MintableToken =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 14332,
+                      "referencedDeclaration": 14350,
                       "type": "modifier ()",
                       "value": "canMint"
                     },
-                    "id": 14383,
+                    "id": 14401,
                     "name": "Identifier",
                     "src": "1266:7:43"
                   }
                 ],
-                "id": 14384,
+                "id": 14402,
                 "name": "ModifierInvocation",
                 "src": "1266:7:43"
               },
@@ -1531,11 +1531,11 @@ export const MintableToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 14323,
+                              "referencedDeclaration": 14341,
                               "type": "bool",
                               "value": "mintingFinished"
                             },
-                            "id": 14388,
+                            "id": 14406,
                             "name": "Identifier",
                             "src": "1302:15:43"
                           },
@@ -1552,17 +1552,17 @@ export const MintableToken =
                               "type": "bool",
                               "value": "true"
                             },
-                            "id": 14389,
+                            "id": 14407,
                             "name": "Literal",
                             "src": "1320:4:43"
                           }
                         ],
-                        "id": 14390,
+                        "id": 14408,
                         "name": "Assignment",
                         "src": "1302:22:43"
                       }
                     ],
-                    "id": 14391,
+                    "id": 14409,
                     "name": "ExpressionStatement",
                     "src": "1302:22:43"
                   },
@@ -1594,27 +1594,27 @@ export const MintableToken =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 14320,
+                              "referencedDeclaration": 14338,
                               "type": "function ()",
                               "value": "MintFinished"
                             },
-                            "id": 14392,
+                            "id": 14410,
                             "name": "Identifier",
                             "src": "1330:12:43"
                           }
                         ],
-                        "id": 14393,
+                        "id": 14411,
                         "name": "FunctionCall",
                         "src": "1330:14:43"
                       }
                     ],
-                    "id": 14394,
+                    "id": 14412,
                     "name": "ExpressionStatement",
                     "src": "1330:14:43"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 14387
+                      "functionReturnParameters": 14405
                     },
                     "children": [
                       {
@@ -1630,32 +1630,32 @@ export const MintableToken =
                           "type": "bool",
                           "value": "true"
                         },
-                        "id": 14395,
+                        "id": 14413,
                         "name": "Literal",
                         "src": "1357:4:43"
                       }
                     ],
-                    "id": 14396,
+                    "id": 14414,
                     "name": "Return",
                     "src": "1350:11:43"
                   }
                 ],
-                "id": 14397,
+                "id": 14415,
                 "name": "Block",
                 "src": "1296:70:43"
               }
             ],
-            "id": 14398,
+            "id": 14416,
             "name": "FunctionDefinition",
             "src": "1231:135:43"
           }
         ],
-        "id": 14399,
+        "id": 14417,
         "name": "ContractDefinition",
         "src": "386:982:43"
       }
     ],
-    "id": 14400,
+    "id": 14418,
     "name": "SourceUnit",
     "src": "0:1369:43"
   },
@@ -1665,5 +1665,5 @@ export const MintableToken =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-25T20:04:49.256Z"
+  "updatedAt": "2018-09-25T22:27:32.235Z"
 }
