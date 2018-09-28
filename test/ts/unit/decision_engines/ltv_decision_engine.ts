@@ -53,7 +53,7 @@ contract("LTV Decision Engine (unit)", async (ACCOUNTS) => {
     describe("#computeLTV", () => {
         describe("when given a principal price of 13 and collateral price of 15", () => {
             describe("when given an principal amount of 1 and a collateral price of 1", () => {
-                it("returns 86", async () => {
+                it("returns 8666", async () => {
                     const args = {
                         principalTokenPrice: new BigNumber(13),
                         collateralTokenPrice: new BigNumber(15),
@@ -68,7 +68,7 @@ contract("LTV Decision Engine (unit)", async (ACCOUNTS) => {
                         args.collateralAmount,
                     );
 
-                    expect(result.toString()).to.eq("86");
+                    expect(result.toString()).to.eq("8666");
                 });
             });
         });

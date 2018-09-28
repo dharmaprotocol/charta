@@ -10,6 +10,8 @@ import "zeppelin-solidity/contracts/math/SafeMath.sol";
 contract LTVDecisionEngine {
     using SafeMath for uint;
 
+    uint public constant PRECISION = 4;
+
     enum Errors {
         INVALID_CREDITOR_SIGNATURE,
         INVALID_PRINCIPAL_PRICE_SIGNATURE,
@@ -66,16 +68,18 @@ contract LTVDecisionEngine {
         // Get the creditor address.
         // Check that the creditor signed the hash of relevant parameters (outlined above.)
 
-        // CHECK EXPIRATIONAl
+        // CHECK EXPIRATION
 
-        uint givenLTV = computeLTV(
+        uint computedLTV = computeLTV(
             principalTokenPrice,
             collateralTokenPrice,
             principalAmount,
             collateralAmount
         );
 
-        if (givenLTV > maxLTV) {
+        uint maxLTVWithPrecision = maxLTV.mul(10 ** (PRECISION.sub(2)));
+
+        if (computedLTV > maxLTVWithPrecision) {
             LogError(uint8(Errors.LTV_EXCEEDS_MAX));
 
             return false;
@@ -89,8 +93,11 @@ contract LTVDecisionEngine {
         uint collateralTokenPrice,
         uint principalAmount,
         uint collateralAmount
-    ) public view returns (uint) {
-        uint principalValue = principalTokenPrice.mul(principalAmount).mul(100);
+    )
+        public
+        constant
+        returns (uint) {
+        uint principalValue = principalTokenPrice.mul(principalAmount).mul(10 ** PRECISION);
         uint collateralValue = collateralTokenPrice.mul(collateralAmount);
 
         return principalValue.div(collateralValue);
