@@ -1,3 +1,5 @@
+pragma solidity 0.4.18;
+
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
 
 /**
@@ -17,14 +19,12 @@ contract LTVDecisionEngine {
     }
 
     event LogError(
-    // Corresponds to the Errors enum listed above.
+        // Corresponds to the Errors enum listed above.
         uint8 errorIndex
     );
 
-    function LTVDecisionEngine)
-    public
-    {
-    }
+    function LTVDecisionEngine()
+        public {}
 
     // Required params:
     // Creditor address
@@ -57,6 +57,7 @@ contract LTVDecisionEngine {
         uint expirationTimestamp
     )
         public
+        view
         returns (bool) {
         // CHECK SIGNATURES
         // Get the address of the price feed operator.
@@ -76,6 +77,7 @@ contract LTVDecisionEngine {
 
         if (givenLTV > maxLTV) {
             LogError(uint8(Errors.LTV_EXCEEDS_MAX));
+
             return false;
         }
 
@@ -87,7 +89,10 @@ contract LTVDecisionEngine {
         uint collateralTokenPrice,
         uint principalAmount,
         uint collateralAmount
-    ) returns (uint) {
-        return collateralTokenPrice * collateralAmount / principalTokenPrice * principalAmount
+    ) public view returns (uint) {
+        uint principalValue = principalTokenPrice.mul(principalAmount).mul(100);
+        uint collateralValue = collateralTokenPrice.mul(collateralAmount);
+
+        return principalValue.div(collateralValue);
     }
 }
