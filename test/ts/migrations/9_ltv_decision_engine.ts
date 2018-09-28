@@ -20,7 +20,6 @@ BigNumberSetup.configure();
 // Dharma Contracts
 import { LTVDecisionEngineContract } from "../../../types/generated/l_t_v_decision_engine";
 
-
 contract("Migration #8: Deploy Creditor Proxy", async (ACCOUNTS) => {
     const CONTRACT_OWNER = ACCOUNTS[0];
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };

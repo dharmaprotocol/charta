@@ -21,8 +21,9 @@ contract LTVDecisionEngine {
     }
 
     event LogError(
-        // Corresponds to the Errors enum listed above.
-        uint8 errorIndex
+        uint8 indexed _errorId,
+        address indexed _creditor,
+        bytes32 indexed _creditorCommitmentHash
     );
 
     function LTVDecisionEngine()
@@ -49,18 +50,38 @@ contract LTVDecisionEngine {
     // NOTE: Decision engine address is used in the CreditorProxy, but signature is validated here.
     function evaluate(
         address priceFeedOperator,
-        address creditor,
         uint principalTokenPrice,
         uint collateralTokenPrice,
         uint principalAmount,
         uint collateralAmount,
         uint maxLTV,
-        bytes32 creditorSignature,
-        uint expirationTimestamp
+        uint expirationTimestamp,
+        address creditor,
+        bytes32 creditorCommitmentHash,
+        uint8 v,
+        bytes32 r,
+        bytes32 s
     )
         public
         view
         returns (bool) {
+
+        // Ensure creditor signature is valid.
+        if (!isValidSignature(
+            creditor,
+            creditorCommitmentHash,
+            v,
+            r,
+            s)) {
+            LogError(
+                uint8(Errors.INVALID_CREDITOR_SIGNATURE),
+                creditor,
+                creditorCommitmentHash
+            );
+
+            return false;
+        }
+
         // CHECK SIGNATURES
         // Get the address of the price feed operator.
         // Check that the price feed operator has signed the principal token price, recently enough.
@@ -80,7 +101,7 @@ contract LTVDecisionEngine {
         uint maxLTVWithPrecision = maxLTV.mul(10 ** (PRECISION.sub(2)));
 
         if (computedLTV > maxLTVWithPrecision) {
-            LogError(uint8(Errors.LTV_EXCEEDS_MAX));
+            LogError(uint8(Errors.LTV_EXCEEDS_MAX), creditor, creditorCommitmentHash);
 
             return false;
         }
@@ -102,4 +123,25 @@ contract LTVDecisionEngine {
 
         return principalValue.div(collateralValue);
     }
+
+    /**
+     * Given a hashed message, a signer's address, and a signature,
+     * returns whether the signature is valid.
+     */
+    function isValidSignature(
+        address signer,
+        bytes32 hash,
+        uint8 v,
+        bytes32 r,
+        bytes32 s
+    )
+        internal
+        constant
+        returns (bool valid)
+    {
+        bytes memory prefix = "\x19Ethereum Signed Message:\n32";
+        bytes32 prefixedHash = keccak256(prefix, hash);
+        return ecrecover(prefixedHash, v, r, s) == signer;
+    }
+
 }

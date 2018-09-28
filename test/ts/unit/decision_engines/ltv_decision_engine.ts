@@ -147,13 +147,23 @@ contract("LTV Decision Engine (unit)", async (ACCOUNTS) => {
             });
         });
 
+        describe("when given a creditor signature that is invalid", () => {
+            it("returns false", () => {
+                // STUB.
+            });
+
+            it("logs an error that the creditor signature is invalid", () => {
+                // STUB
+            });
+        });
+
         describe("when given a collateral price that is not signed by the price feed operator", () => {
             it("reverts", () => {
                 // STUB.
             });
 
             it("logs and error that the price was not signed", () => {
-
+                // STUB.
             });
         });
 
