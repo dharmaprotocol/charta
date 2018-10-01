@@ -29,13 +29,13 @@ const expect = chai.expect;
 // Set up utils
 const web3Utils = new Web3Utils(web3);
 
-async function generateTimestamp() {
+async function generateTimestamp(daysInFuture = 30) {
     const latestBlockTime = await web3Utils.getLatestBlockTime();
 
     return new BigNumber(
         moment
             .unix(latestBlockTime)
-            .add(30, "days")
+            .add(daysInFuture, "days")
             .unix(),
     );
 }
@@ -143,22 +143,26 @@ contract("LTV Decision Engine (unit)", async (ACCOUNTS) => {
 
     describe("#evaluate", () => {
         let evaluateScenario: LTVScenario;
-        let commitmentParams: LTVCreditorCommitmentParams;
+        let defaultCommitmentParams: LTVCreditorCommitmentParams;
+
+        before(async () => {
+            const timestamp = await generateTimestamp();
+
+            defaultCommitmentParams = {
+                priceFeedOperator: PRICE_FEED_OPERATOR,
+                collateralToken: COLLATERAL_TOKEN,
+                principalToken: PRINCIPAL_TOKEN,
+                principalAmount: new BigNumber(1),
+                maxLTV: new BigNumber(88),
+                decisionEngine: decisionEngine.address,
+                expirationTimestamp: timestamp,
+            };
+        });
 
         describe("when given a ratio that is lower than the specified LTV", () => {
             before(async () => {
-                commitmentParams = {
-                    priceFeedOperator: PRICE_FEED_OPERATOR,
-                    collateralToken: COLLATERAL_TOKEN,
-                    principalToken: PRINCIPAL_TOKEN,
-                    principalAmount: new BigNumber(1),
-                    maxLTV: new BigNumber(88),
-                    decisionEngine: decisionEngine.address,
-                    expirationTimestamp: new BigNumber(123),
-                };
-
                 const hash = SignableCreditorCommitment.getHashForParams(
-                    commitmentParams,
+                    defaultCommitmentParams,
                 );
 
                 const commitment = new SignableCreditorCommitment(hash);
@@ -166,13 +170,12 @@ contract("LTV Decision Engine (unit)", async (ACCOUNTS) => {
                 const signature = await commitment.getSignature(web3, CREDITOR);
 
                 evaluateScenario = {
-                    ...commitmentParams,
+                    ...defaultCommitmentParams,
                     creditor: CREDITOR,
                     principalTokenPrice: new BigNumber(13),
                     collateralTokenPrice: new BigNumber(15),
                     principalAmount: new BigNumber(1),
                     collateralAmount: new BigNumber(1),
-                    expirationTimestamp: await generateTimestamp(),
                     creditorCommitmentHash: hash,
                     creditorSignature: signature,
                     txData: TX_DEFAULTS,
@@ -200,19 +203,32 @@ contract("LTV Decision Engine (unit)", async (ACCOUNTS) => {
         });
 
         describe("when given a ratio that is higher than the specified LTV", () => {
-            before(() => {
+            before(async () => {
+                const timestamp = await generateTimestamp();
+
+                const commitmentParams = {
+                    ...defaultCommitmentParams,
+                    maxLTV: new BigNumber(86),
+                };
+
+                const hash = SignableCreditorCommitment.getHashForParams(
+                    commitmentParams,
+                );
+
+                const commitment = new SignableCreditorCommitment(hash);
+
+                const signature = await commitment.getSignature(web3, CREDITOR);
+
                 evaluateScenario = {
-                    priceFeedOperator: PRICE_FEED_OPERATOR,
+                    ...commitmentParams,
                     creditor: CREDITOR,
-                    // Specify an LTV of 87%
                     principalTokenPrice: new BigNumber(13),
                     collateralTokenPrice: new BigNumber(15),
                     principalAmount: new BigNumber(1),
                     collateralAmount: new BigNumber(1),
-                    // Define the max LTV as 86%
-                    maxLTV: new BigNumber(86),
-                    creditorSignature: "x0x0",
-                    expirationTimestamp: new BigNumber(123),
+                    expirationTimestamp: timestamp,
+                    creditorCommitmentHash: hash,
+                    creditorSignature: signature,
                     txData: TX_DEFAULTS,
                 };
             });
@@ -220,14 +236,17 @@ contract("LTV Decision Engine (unit)", async (ACCOUNTS) => {
             it("returns false", async () => {
                 const result = await decisionEngine.evaluate.callAsync(
                     evaluateScenario.priceFeedOperator,
-                    evaluateScenario.creditor,
                     evaluateScenario.principalTokenPrice,
                     evaluateScenario.collateralTokenPrice,
                     evaluateScenario.principalAmount,
                     evaluateScenario.collateralAmount,
                     evaluateScenario.maxLTV,
-                    evaluateScenario.creditorSignature,
                     evaluateScenario.expirationTimestamp,
+                    evaluateScenario.creditor,
+                    evaluateScenario.creditorCommitmentHash,
+                    evaluateScenario.creditorSignature.v,
+                    evaluateScenario.creditorSignature.r,
+                    evaluateScenario.creditorSignature.s,
                 );
 
                 expect(result).to.eq(false);
