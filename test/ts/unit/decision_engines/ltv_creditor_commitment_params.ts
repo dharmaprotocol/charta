@@ -13,3 +13,13 @@ export interface LTVCreditorCommitmentParams {
     principalAmount: BigNumber;
     expirationTimestamp: BigNumber;
 }
+
+export interface LTVScenario extends LTVCreditorCommitmentParams {
+    creditor: string;
+    principalTokenPrice: BigNumber;
+    collateralTokenPrice: BigNumber;
+    collateralAmount: BigNumber;
+    creditorSignature: ECDSASignature;
+    txData: TxData;
+    creditorCommitmentHash: Bytes32;
+}
