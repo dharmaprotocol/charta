@@ -1,6 +1,7 @@
 // External Libraries
 import * as chai from "chai";
 import * as moment from "moment";
+import * as _ from "lodash";
 // Test Utils
 import ChaiSetup from "../../test_utils/chai_setup";
 import { BigNumberSetup } from "../../test_utils/bignumber_setup";
@@ -49,24 +50,28 @@ contract("LTV Decision Engine (unit)", async (ACCOUNTS) => {
     });
 
     describe("#isValidSignature", () => {
-        describe("when given a valid signature", () => {
-            it.only("returns true", async () => {
-                const params: LTVCreditorCommitmentParams = {
-                    maxLTV: new BigNumber(88),
-                    priceFeedOperator: PRICE_FEED_OPERATOR,
-                    decisionEngine: decisionEngine.address,
-                    collateralToken: COLLATERAL_TOKEN,
-                    principalToken: PRINCIPAL_TOKEN,
-                    principalAmount: new BigNumber(1),
-                    expirationTimestamp: new BigNumber(
-                        moment
-                            .unix(latestBlockTime)
-                            .add(30, "days")
-                            .unix(),
-                    ),
-                };
+        let validParams: LTVCreditorCommitmentParams;
 
-                const hash = SignableCreditorCommitment.getHashForParams(params);
+        before(() => {
+            validParams = {
+                maxLTV: new BigNumber(88),
+                priceFeedOperator: PRICE_FEED_OPERATOR,
+                decisionEngine: decisionEngine.address,
+                collateralToken: COLLATERAL_TOKEN,
+                principalToken: PRINCIPAL_TOKEN,
+                principalAmount: new BigNumber(1),
+                expirationTimestamp: new BigNumber(
+                    moment
+                        .unix(latestBlockTime)
+                        .add(30, "days")
+                        .unix(),
+                ),
+            };
+        });
+
+        describe("when given a valid signature", () => {
+            it("returns true", async () => {
+                const hash = SignableCreditorCommitment.getHashForParams(validParams);
 
                 const commitment = new SignableCreditorCommitment(hash);
 
@@ -81,6 +86,30 @@ contract("LTV Decision Engine (unit)", async (ACCOUNTS) => {
                 );
 
                 expect(isValid).to.eq(true);
+            });
+        });
+
+        describe("when given an invalid signature", () => {
+            it("returns false", async () => {
+                // We will sign these parameters, and pass the signature to #isValidSignature.
+                const hashForSignedParams = SignableCreditorCommitment.getHashForParams(validParams);
+                // We will pass this hash to #isValidSignature.
+                const unsignedParams = _.extend(validParams, { maxLTV: 87 });
+                const hashForUnsignedParams = SignableCreditorCommitment.getHashForParams(unsignedParams);
+
+                const commitmentForSignedParams = new SignableCreditorCommitment(hashForSignedParams);
+                const signature = await commitmentForSignedParams.getSignature(web3, CREDITOR);
+
+                // The incorrect signature is used
+                const isValid = await decisionEngine.isValidSignature.callAsync(
+                    CREDITOR,
+                    hashForUnsignedParams,
+                    signature.v,
+                    signature.r,
+                    signature.s,
+                );
+
+                expect(isValid).to.eq(false);
             });
         });
     });
