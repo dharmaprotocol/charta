@@ -1,12 +1,17 @@
 // External Libraries
 import * as chai from "chai";
+import * as moment from "moment";
 // Test Utils
 import ChaiSetup from "../../test_utils/chai_setup";
 import { BigNumberSetup } from "../../test_utils/bignumber_setup";
 import { Web3Utils } from "../../../../utils/web3_utils";
 import { LTVDecisionEngineContract } from "../../../../types/generated/l_t_v_decision_engine";
-import { TxData } from "../../../../types/common";
 import { BigNumber } from "bignumber.js";
+
+import { SignableCreditorCommitment } from "./signable_creditor_commitment";
+
+import { LTVCreditorCommitmentParams } from "./ltv_creditor_commitment_params";
+
 // Types
 // Logs
 // Factories
@@ -23,31 +28,61 @@ const expect = chai.expect;
 // Set up utils
 const web3Utils = new Web3Utils(web3);
 
-interface EvaluateParams {
-    priceFeedOperator: string;
-    creditor: string;
-    principalTokenPrice: BigNumber;
-    collateralTokenPrice: BigNumber;
-    principalAmount: BigNumber;
-    collateralAmount: BigNumber;
-    maxLTV: BigNumber;
-    creditorSignature: string;
-    expirationTimestamp: BigNumber;
-    txData: TxData;
-}
-
 contract("LTV Decision Engine (unit)", async (ACCOUNTS) => {
     const CONTRACT_OWNER = ACCOUNTS[0];
     const PRICE_FEED_OPERATOR = ACCOUNTS[1];
     const DEBTOR = ACCOUNTS[2];
     const CREDITOR = ACCOUNTS[3];
 
+    const PRINCIPAL_TOKEN = ACCOUNTS[4];
+    const COLLATERAL_TOKEN = ACCOUNTS[5];
+
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
 
     let decisionEngine: LTVDecisionEngineContract;
 
+    let latestBlockTime: number;
+
     before(async () => {
         decisionEngine = await LTVDecisionEngineContract.deployed(web3, TX_DEFAULTS);
+        latestBlockTime = await web3Utils.getLatestBlockTime();
+    });
+
+    describe("#isValidSignature", () => {
+        describe("when given a valid signature", () => {
+            it.only("returns true", async () => {
+                const params: LTVCreditorCommitmentParams = {
+                    maxLTV: new BigNumber(88),
+                    priceFeedOperator: PRICE_FEED_OPERATOR,
+                    decisionEngine: decisionEngine.address,
+                    collateralToken: COLLATERAL_TOKEN,
+                    principalToken: PRINCIPAL_TOKEN,
+                    principalAmount: new BigNumber(1),
+                    expirationTimestamp: new BigNumber(
+                        moment
+                            .unix(latestBlockTime)
+                            .add(30, "days")
+                            .unix(),
+                    ),
+                };
+
+                const hash = SignableCreditorCommitment.getHashForParams(params);
+
+                const commitment = new SignableCreditorCommitment(hash);
+
+                const signature = await commitment.getSignature(web3, CREDITOR);
+
+                const isValid = await decisionEngine.isValidSignature.callAsync(
+                    CREDITOR,
+                    hash,
+                    signature.v,
+                    signature.r,
+                    signature.s,
+                );
+
+                expect(isValid).to.eq(true);
+            });
+        });
     });
 
     describe("#computeLTV", () => {
