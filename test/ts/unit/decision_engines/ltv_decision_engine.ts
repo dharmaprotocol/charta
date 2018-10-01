@@ -1,6 +1,7 @@
 // External Libraries
 import * as chai from "chai";
 import * as moment from "moment";
+import * as _ from "lodash";
 // Test Utils
 import ChaiSetup from "../../test_utils/chai_setup";
 import { BigNumberSetup } from "../../test_utils/bignumber_setup";
@@ -10,7 +11,7 @@ import { BigNumber } from "bignumber.js";
 
 import { SignableCreditorCommitment } from "./signable_creditor_commitment";
 
-import { LTVCreditorCommitmentParams } from "./ltv_creditor_commitment_params";
+import { LTVCreditorCommitmentParams, LTVScenario } from "./ltv_creditor_commitment_params";
 
 // Types
 // Logs
@@ -28,6 +29,17 @@ const expect = chai.expect;
 // Set up utils
 const web3Utils = new Web3Utils(web3);
 
+async function generateTimestamp() {
+    const latestBlockTime = await web3Utils.getLatestBlockTime();
+
+    return new BigNumber(
+        moment
+            .unix(latestBlockTime)
+            .add(30, "days")
+            .unix(),
+    );
+}
+
 contract("LTV Decision Engine (unit)", async (ACCOUNTS) => {
     const CONTRACT_OWNER = ACCOUNTS[0];
     const PRICE_FEED_OPERATOR = ACCOUNTS[1];
@@ -41,32 +53,28 @@ contract("LTV Decision Engine (unit)", async (ACCOUNTS) => {
 
     let decisionEngine: LTVDecisionEngineContract;
 
-    let latestBlockTime: number;
-
     before(async () => {
         decisionEngine = await LTVDecisionEngineContract.deployed(web3, TX_DEFAULTS);
-        latestBlockTime = await web3Utils.getLatestBlockTime();
     });
 
     describe("#isValidSignature", () => {
-        describe("when given a valid signature", () => {
-            it.only("returns true", async () => {
-                const params: LTVCreditorCommitmentParams = {
-                    maxLTV: new BigNumber(88),
-                    priceFeedOperator: PRICE_FEED_OPERATOR,
-                    decisionEngine: decisionEngine.address,
-                    collateralToken: COLLATERAL_TOKEN,
-                    principalToken: PRINCIPAL_TOKEN,
-                    principalAmount: new BigNumber(1),
-                    expirationTimestamp: new BigNumber(
-                        moment
-                            .unix(latestBlockTime)
-                            .add(30, "days")
-                            .unix(),
-                    ),
-                };
+        let validParams: LTVCreditorCommitmentParams;
 
-                const hash = SignableCreditorCommitment.getHashForParams(params);
+        before(async () => {
+            validParams = {
+                maxLTV: new BigNumber(88),
+                priceFeedOperator: PRICE_FEED_OPERATOR,
+                decisionEngine: decisionEngine.address,
+                collateralToken: COLLATERAL_TOKEN,
+                principalToken: PRINCIPAL_TOKEN,
+                principalAmount: new BigNumber(1),
+                expirationTimestamp: await generateTimestamp(),
+            };
+        });
+
+        describe("when given a valid signature", () => {
+            it("returns true", async () => {
+                const hash = SignableCreditorCommitment.getHashForParams(validParams);
 
                 const commitment = new SignableCreditorCommitment(hash);
 
@@ -81,6 +89,30 @@ contract("LTV Decision Engine (unit)", async (ACCOUNTS) => {
                 );
 
                 expect(isValid).to.eq(true);
+            });
+        });
+
+        describe("when given an invalid signature", () => {
+            it("returns false", async () => {
+                // We will sign these parameters, and pass the signature to #isValidSignature.
+                const hashForSignedParams = SignableCreditorCommitment.getHashForParams(validParams);
+                // We will pass this hash to #isValidSignature.
+                const unsignedParams = _.extend(validParams, { maxLTV: 87 });
+                const hashForUnsignedParams = SignableCreditorCommitment.getHashForParams(unsignedParams);
+
+                const commitmentForSignedParams = new SignableCreditorCommitment(hashForSignedParams);
+                const signature = await commitmentForSignedParams.getSignature(web3, CREDITOR);
+
+                // The incorrect signature is used
+                const isValid = await decisionEngine.isValidSignature.callAsync(
+                    CREDITOR,
+                    hashForUnsignedParams,
+                    signature.v,
+                    signature.r,
+                    signature.s,
+                );
+
+                expect(isValid).to.eq(false);
             });
         });
     });
@@ -110,37 +142,57 @@ contract("LTV Decision Engine (unit)", async (ACCOUNTS) => {
     });
 
     describe("#evaluate", () => {
-        let evaluateArgs: EvaluateParams;
+        let evaluateScenario: LTVScenario;
+        let commitmentParams: LTVCreditorCommitmentParams;
 
         describe("when given a ratio that is lower than the specified LTV", () => {
-            before(() => {
-                evaluateArgs = {
+            before(async () => {
+                commitmentParams = {
                     priceFeedOperator: PRICE_FEED_OPERATOR,
+                    collateralToken: COLLATERAL_TOKEN,
+                    principalToken: PRINCIPAL_TOKEN,
+                    principalAmount: new BigNumber(1),
+                    maxLTV: new BigNumber(88),
+                    decisionEngine: decisionEngine.address,
+                    expirationTimestamp: new BigNumber(123),
+                };
+
+                const hash = SignableCreditorCommitment.getHashForParams(
+                    commitmentParams,
+                );
+
+                const commitment = new SignableCreditorCommitment(hash);
+
+                const signature = await commitment.getSignature(web3, CREDITOR);
+
+                evaluateScenario = {
+                    ...commitmentParams,
                     creditor: CREDITOR,
-                    // Specify an LTV of 87%
                     principalTokenPrice: new BigNumber(13),
                     collateralTokenPrice: new BigNumber(15),
                     principalAmount: new BigNumber(1),
                     collateralAmount: new BigNumber(1),
-                    // Define the max LTV as 88%
-                    maxLTV: new BigNumber(88),
-                    creditorSignature: "x0x0",
-                    expirationTimestamp: new BigNumber(123),
+                    expirationTimestamp: await generateTimestamp(),
+                    creditorCommitmentHash: hash,
+                    creditorSignature: signature,
                     txData: TX_DEFAULTS,
                 };
             });
 
             it("returns true", async () => {
                 const result = await decisionEngine.evaluate.callAsync(
-                    evaluateArgs.priceFeedOperator,
-                    evaluateArgs.creditor,
-                    evaluateArgs.principalTokenPrice,
-                    evaluateArgs.collateralTokenPrice,
-                    evaluateArgs.principalAmount,
-                    evaluateArgs.collateralAmount,
-                    evaluateArgs.maxLTV,
-                    evaluateArgs.creditorSignature,
-                    evaluateArgs.expirationTimestamp,
+                    evaluateScenario.priceFeedOperator,
+                    evaluateScenario.principalTokenPrice,
+                    evaluateScenario.collateralTokenPrice,
+                    evaluateScenario.principalAmount,
+                    evaluateScenario.collateralAmount,
+                    evaluateScenario.maxLTV,
+                    evaluateScenario.expirationTimestamp,
+                    evaluateScenario.creditor,
+                    evaluateScenario.creditorCommitmentHash,
+                    evaluateScenario.creditorSignature.v,
+                    evaluateScenario.creditorSignature.r,
+                    evaluateScenario.creditorSignature.s,
                 );
 
                 expect(result).to.eq(true);
@@ -149,7 +201,7 @@ contract("LTV Decision Engine (unit)", async (ACCOUNTS) => {
 
         describe("when given a ratio that is higher than the specified LTV", () => {
             before(() => {
-                evaluateArgs = {
+                evaluateScenario = {
                     priceFeedOperator: PRICE_FEED_OPERATOR,
                     creditor: CREDITOR,
                     // Specify an LTV of 87%
@@ -167,15 +219,15 @@ contract("LTV Decision Engine (unit)", async (ACCOUNTS) => {
 
             it("returns false", async () => {
                 const result = await decisionEngine.evaluate.callAsync(
-                    evaluateArgs.priceFeedOperator,
-                    evaluateArgs.creditor,
-                    evaluateArgs.principalTokenPrice,
-                    evaluateArgs.collateralTokenPrice,
-                    evaluateArgs.principalAmount,
-                    evaluateArgs.collateralAmount,
-                    evaluateArgs.maxLTV,
-                    evaluateArgs.creditorSignature,
-                    evaluateArgs.expirationTimestamp,
+                    evaluateScenario.priceFeedOperator,
+                    evaluateScenario.creditor,
+                    evaluateScenario.principalTokenPrice,
+                    evaluateScenario.collateralTokenPrice,
+                    evaluateScenario.principalAmount,
+                    evaluateScenario.collateralAmount,
+                    evaluateScenario.maxLTV,
+                    evaluateScenario.creditorSignature,
+                    evaluateScenario.expirationTimestamp,
                 );
 
                 expect(result).to.eq(false);
@@ -212,5 +264,4 @@ contract("LTV Decision Engine (unit)", async (ACCOUNTS) => {
             });
         });
     });
-})
-;
+});
