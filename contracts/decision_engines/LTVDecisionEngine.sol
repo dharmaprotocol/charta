@@ -114,7 +114,7 @@ contract LTVDecisionEngine {
         return true;
     }
 
-    function isExpired(uint expirationTimestampInSec) public pure returns (bool expired) {
+    function isExpired(uint expirationTimestampInSec) public view returns (bool expired) {
         return expirationTimestampInSec < block.timestamp;
     }
 
