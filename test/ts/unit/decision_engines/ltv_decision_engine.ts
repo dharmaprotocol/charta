@@ -29,13 +29,13 @@ const expect = chai.expect;
 // Set up utils
 const web3Utils = new Web3Utils(web3);
 
-async function generateTimestamp() {
+async function generateTimestamp(daysInFuture = 30) {
     const latestBlockTime = await web3Utils.getLatestBlockTime();
 
     return new BigNumber(
         moment
             .unix(latestBlockTime)
-            .add(30, "days")
+            .add(daysInFuture, "days")
             .unix(),
     );
 }
@@ -143,7 +143,6 @@ contract("LTV Decision Engine (unit)", async (ACCOUNTS) => {
 
     describe("#evaluate", () => {
         let evaluateScenario: LTVScenario;
-        let commitmentParams: LTVCreditorCommitmentParams;
         let defaultCommitmentParams: LTVCreditorCommitmentParams;
 
         before(async () => {
@@ -207,7 +206,7 @@ contract("LTV Decision Engine (unit)", async (ACCOUNTS) => {
             before(async () => {
                 const timestamp = await generateTimestamp();
 
-                commitmentParams = {
+                const commitmentParams = {
                     ...defaultCommitmentParams,
                     maxLTV: new BigNumber(86),
                 };
