@@ -135,8 +135,8 @@ contract LTVDecisionEngine {
         bytes32 r,
         bytes32 s
     )
-        internal
-        constant
+        public
+        pure
         returns (bool valid)
     {
         bytes memory prefix = "\x19Ethereum Signed Message:\n32";
