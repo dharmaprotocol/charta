@@ -55,7 +55,7 @@ contract LTVDecisionEngine {
         uint principalAmount,
         uint collateralAmount,
         uint maxLTV,
-        uint expirationTimestamp,
+        uint expirationTimestampInSec,
         address creditor,
         bytes32 creditorCommitmentHash,
         uint8 v,
@@ -90,6 +90,11 @@ contract LTVDecisionEngine {
         // Check that the creditor signed the hash of relevant parameters (outlined above.)
 
         // CHECK EXPIRATION
+        if (isExpired(expirationTimestampInSec)) {
+            LogError(uint8(Errors.AGREEMENT_EXPIRED), creditor, creditorCommitmentHash);
+
+            return false;
+        }
 
         uint computedLTV = computeLTV(
             principalTokenPrice,
@@ -107,6 +112,10 @@ contract LTVDecisionEngine {
         }
 
         return true;
+    }
+
+    function isExpired(uint expirationTimestampInSec) public pure returns (bool expired) {
+        return expirationTimestampInSec < block.timestamp;
     }
 
     function computeLTV(
