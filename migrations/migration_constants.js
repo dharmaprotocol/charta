@@ -2,9 +2,11 @@ const fs = require("fs");
 
 // The location of data files related to token contract addresses.
 const tokenDataDir = `${projectRoot()}/token_registry_data`;
-
 const ERC20_TOKEN_LIST = readJsonSync(`${tokenDataDir}/erc20_tokens.json`);
+// Contains contracts such as the mainnet Cryptokitties and DDT contracts.
 const ERC721_CONTRACT_DATA = readJsonSync(`${tokenDataDir}/erc721_contracts.json`);
+// Contains contracts such as the Centrifuge ERC721 kovan contract.
+const ERC721_KOVAN_CONTRACT_DATA = readJsonSync(`${tokenDataDir}/erc721_kovan_contracts.json`);
 
 const OWNER_ONE = "0x5d497982326f641e0b374585ff7c1c1be9878560";
 const OWNER_TWO = "0x8f8c5ebde485dfcb64d8e6d1dea833b2d43fb9de";
@@ -115,6 +117,7 @@ module.exports = {
     ERC721_CONTRACT_DATA,
     CRYPTOKITTIES_CONTRACT: CRYPTOKITTIES_CONTRACT_ADDRESS,
     MULTISIG_PARAMS,
+    ERC721_KOVAN_CONTRACT_DATA,
 };
 
 /**

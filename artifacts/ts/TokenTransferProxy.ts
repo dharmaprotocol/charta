@@ -1613,7 +1613,7 @@ export const TokenTransferProxy =
         }
       },
       "links": {},
-      "address": "0x668beab2e4dfec1d8c0a70fb5e52987cb22c2f1a"
+      "address": "0xf302f9e270458b4242e7d0cba2f0816ed2193240"
     },
     "70": {
       "events": {
@@ -1686,5 +1686,5 @@ export const TokenTransferProxy =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-08T22:52:31.828Z"
+  "updatedAt": "2018-10-02T22:15:01.329Z"
 }
