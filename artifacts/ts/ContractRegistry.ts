@@ -4731,7 +4731,7 @@ export const ContractRegistry =
         }
       },
       "links": {},
-      "address": "0x506acb19a451cc6e2a5c76e65f6b65840406e5f9"
+      "address": "0x98090fb23948d09772840b7440e7cdd4c28c2c8d"
     },
     "70": {
       "events": {
@@ -4780,5 +4780,5 @@ export const ContractRegistry =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-08T22:53:01.148Z"
+  "updatedAt": "2018-10-02T22:16:36.727Z"
 }

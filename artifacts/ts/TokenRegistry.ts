@@ -5120,7 +5120,7 @@ export const TokenRegistry =
         }
       },
       "links": {},
-      "address": "0x6949948d93f3dbe50ec2fe54815fa33bfa284d35"
+      "address": "0xa6d8c45bbd164f0b1aacbd24cb18f8b19de9648a"
     },
     "70": {
       "events": {
@@ -5147,5 +5147,5 @@ export const TokenRegistry =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-08T22:52:31.973Z"
+  "updatedAt": "2018-10-02T22:15:01.336Z"
 }

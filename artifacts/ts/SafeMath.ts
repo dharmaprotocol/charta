@@ -1344,5 +1344,5 @@ export const SafeMath =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-08T22:52:31.820Z"
+  "updatedAt": "2018-10-02T22:02:48.038Z"
 }

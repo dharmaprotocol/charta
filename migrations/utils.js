@@ -96,6 +96,7 @@ function generateParamsForDharmaMultiSigWallet(network, accounts) {
             params = CONSTANTS.MULTISIG_PARAMS.live;
             break;
         case CONSTANTS.KOVAN_NETWORK_ID:
+            signatories = CONSTANTS.SIGNATORIES;
             params = CONSTANTS.MULTISIG_PARAMS.kovan;
             break;
         default:
