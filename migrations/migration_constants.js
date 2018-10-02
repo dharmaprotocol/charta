@@ -12,9 +12,42 @@ const OWNER_THREE = "0xb41411e8cfae259a6494ecdc81833b627f051be4";
 const OWNER_FOUR = "0xfefdde6a490cd4095de204b6fe31ba1607b19e3f";
 const OWNER_FIVE = "0xa32d732ab0096dbf837f3e5d358ac5b597dcbf73";
 
+/**
+ * The amount of time that the multi-signature wallet should wait before executing a transaction.
+ * Currently set to 7 days, expressed in seconds.
+ *
+ * @type {number}
+ */
+const TIMELOCK_IN_SECONDS = 60 * 60 * 24 * 7;
+
+/**
+ * The ratio of signatories that need to commit to a transaction before the multi-signature
+ * wallet executes that transaction.
+ *
+ * @type {number}
+ */
+const THRESHOLD = 1 / 2;
+
+/**
+ * The options by which the multi-signature wallet will be configured, defined per network
+ * we deploy to.
+ */
+const MULTISIG_PARAMS = {
+  "live": {
+      threshold: THRESHOLD,
+      timelockInSeconds: TIMELOCK_IN_SECONDS,
+  },
+  "kovan": {
+      // For the kovan network, we only require 1 signatory to execute a transaction.
+      threshold: 1 / 6,
+      // Only 1 minute is required before a transaction is executed.
+      timelockInSeconds: 60,
+  },
+};
+
 const SIGNATORIES = [OWNER_ONE, OWNER_TWO, OWNER_THREE, OWNER_FOUR, OWNER_FIVE];
-const THRESHOLD = 1 / 2; // 50%
-const TIMELOCK_IN_SECONDS = 60 * 60 * 24 * 7; // 7 Days
+
+
 const LIVE_NETWORK_ID = "live";
 const KOVAN_NETWORK_ID = "kovan";
 const DUMMY_TOKEN_SUPPLY = 1000 * 10 ** 18;
@@ -81,6 +114,7 @@ module.exports = {
     TOKEN_LIST: ERC20_TOKEN_LIST,
     ERC721_CONTRACT_DATA,
     CRYPTOKITTIES_CONTRACT: CRYPTOKITTIES_CONTRACT_ADDRESS,
+    MULTISIG_PARAMS,
 };
 
 /**

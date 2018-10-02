@@ -89,12 +89,18 @@ async function configureTokenRegistry(network, accounts, TokenRegistry, DummyTok
 function generateParamsForDharmaMultiSigWallet(network, accounts) {
     // We switch on the network to ensure we're configuring our MultiSigWallet accordingly.
     let signatories;
+    let params;
     switch (network) {
         case CONSTANTS.LIVE_NETWORK_ID:
             signatories = CONSTANTS.SIGNATORIES;
+            params = CONSTANTS.MULTISIG_PARAMS.live;
+            break;
+        case CONSTANTS.KOVAN_NETWORK_ID:
+            params = CONSTANTS.MULTISIG_PARAMS.kovan;
             break;
         default:
             signatories = accounts.slice(0, CONSTANTS.SIGNATORIES.length);
+            params = CONSTANTS.MULTISIG_PARAMS.live;
     }
 
     /**
@@ -104,12 +110,12 @@ function generateParamsForDharmaMultiSigWallet(network, accounts) {
      *
      * @type {number}
      */
-    const numAuthorizationsRequired = Math.ceil(signatories.length * CONSTANTS.THRESHOLD);
+    const numAuthorizationsRequired = Math.ceil(signatories.length * params.threshold);
 
     return {
         signatories,
         numAuthorizationsRequired,
-        timelock: CONSTANTS.TIMELOCK_IN_SECONDS,
+        timelock: params.timelockInSeconds,
     };
 }
 
