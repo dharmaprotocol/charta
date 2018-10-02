@@ -57,6 +57,28 @@ contract("LTV Decision Engine (unit)", async (ACCOUNTS) => {
         decisionEngine = await LTVDecisionEngineContract.deployed(web3, TX_DEFAULTS);
     });
 
+    describe("#isExpired", () => {
+        describe("when given a date in the future", () => {
+            it("returns false", async () => {
+                const result = await decisionEngine.isExpired.callAsync(
+                    await generateTimestamp(),
+                );
+
+                expect(result).to.eq(false);
+            });
+        });
+
+        describe("when given a date in the past", () => {
+            it("returns true", async () => {
+                const result = await decisionEngine.isExpired.callAsync(
+                    await generateTimestamp(-10),
+                );
+
+                expect(result).to.eq(true);
+            });
+        });
+    });
+
     describe("#isValidSignature", () => {
         let validParams: LTVCreditorCommitmentParams;
 
