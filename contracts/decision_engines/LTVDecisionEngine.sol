@@ -29,6 +29,84 @@ contract LTVDecisionEngine {
     function LTVDecisionEngine()
         public {}
 
+    /**
+     *  Verifies that the correct signatures and data have been passed in.
+     *
+     * @param  {[type]} address [description]
+     * @param  {[type]} bytes32 [description]
+     * @param  {[type]} uint8   [description]
+     * @param  {[type]} bytes32 [description]
+     * @param  {[type]} bytes32 [description]
+     * @return {[type]}         [description]
+     */
+    function verify(
+        // Creditor commitment.
+        address creditor,
+        bytes32 creditorCommitmentHash,
+        // Price feed operator data.
+        address priceFeedOperator,
+        bytes32 principalTokenPriceDataHash,
+        bytes32 collateralTokenPriceDataHash,
+        // Signatures
+        uint8[3] signaturesV,
+        bytes32[3] signaturesR,
+        bytes32[3] signaturesS
+    )
+        public
+        view
+        returns (bool)
+    {
+        // Ensure creditor signature is valid.
+        if (!isValidSignature(
+            creditor,
+            creditorCommitmentHash,
+            signaturesV[0],
+            signaturesR[0],
+            signaturesS[0])) {
+            LogError(
+                uint8(Errors.INVALID_CREDITOR_SIGNATURE),
+                creditor,
+                creditorCommitmentHash
+            );
+
+            return false;
+        }
+
+        // Ensure price feed operator has signed off on the principal token's price.
+        if (!isValidSignature(
+            priceFeedOperator,
+            principalTokenPriceDataHash,
+            signaturesV[1],
+            signaturesR[1],
+            signaturesS[1])) {
+            LogError(
+                uint8(Errors.INVALID_PRINCIPAL_PRICE_SIGNATURE),
+                creditor,
+                creditorCommitmentHash
+            );
+
+            return false;
+        }
+
+        // Ensure price feed operator has signed off on the collateral token's price.
+        if (!isValidSignature(
+            priceFeedOperator,
+            collateralTokenPriceDataHash,
+            signaturesV[2],
+            signaturesR[2],
+            signaturesS[2])) {
+            LogError(
+                uint8(Errors.INVALID_COLLATERAL_PRICE_SIGNATURE),
+                creditor,
+                creditorCommitmentHash
+            );
+
+            return false;
+        }
+
+        return true;
+    }
+
     // Required params:
     // Creditor address
     // LTV ratio
@@ -49,47 +127,17 @@ contract LTVDecisionEngine {
         // Decision engine address
     // NOTE: Decision engine address is used in the CreditorProxy, but signature is validated here.
     function evaluate(
-        address priceFeedOperator,
         uint principalTokenPrice,
         uint collateralTokenPrice,
         uint principalAmount,
         uint collateralAmount,
         uint maxLTV,
-        uint expirationTimestampInSec,
-        address creditor,
-        bytes32 creditorCommitmentHash,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
+        uint expirationTimestampInSec
     )
         public
         view
         returns (bool) {
-
-        // Ensure creditor signature is valid.
-        if (!isValidSignature(
-            creditor,
-            creditorCommitmentHash,
-            v,
-            r,
-            s)) {
-            LogError(
-                uint8(Errors.INVALID_CREDITOR_SIGNATURE),
-                creditor,
-                creditorCommitmentHash
-            );
-
-            return false;
-        }
-
-        // CHECK SIGNATURES
-        // Get the address of the price feed operator.
-        // Check that the price feed operator has signed the principal token price, recently enough.
-        // Check that the price feed operator has signed the collateral token price, recently enough.
-        // Get the creditor address.
-        // Check that the creditor signed the hash of relevant parameters (outlined above.)
-
-        // CHECK EXPIRATION
+        // Ensure agreement has not expired.
         if (isExpired(expirationTimestampInSec)) {
             LogError(uint8(Errors.AGREEMENT_EXPIRED), creditor, creditorCommitmentHash);
 
