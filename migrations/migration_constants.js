@@ -21,7 +21,7 @@ const OWNER_FIVE = "0xa32d732ab0096dbf837f3e5d358ac5b597dcbf73";
 const TIMELOCK_IN_SECONDS = 60 * 60 * 24 * 7;
 
 /**
- * The number of signatories that need to commit to a transaction before the multi-signature
+ * The ratio of signatories that need to commit to a transaction before the multi-signature
  * wallet executes that transaction.
  *
  * @type {number}
