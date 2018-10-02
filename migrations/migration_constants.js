@@ -12,6 +12,20 @@ const OWNER_THREE = "0xb41411e8cfae259a6494ecdc81833b627f051be4";
 const OWNER_FOUR = "0xfefdde6a490cd4095de204b6fe31ba1607b19e3f";
 const OWNER_FIVE = "0xa32d732ab0096dbf837f3e5d358ac5b597dcbf73";
 
+const MULTISIG_PARAMS = {
+  "live": {
+      // 50%
+      threshold: 1 / 2,
+      // 7 Days
+      timelockInSeconds: 60 * 60 * 24 * 7,
+  },
+  "kovan": {
+      threshold: 1 / 6,
+      // 1 hour
+      timelockInSeconds: 3600,
+  },
+};
+
 const SIGNATORIES = [OWNER_ONE, OWNER_TWO, OWNER_THREE, OWNER_FOUR, OWNER_FIVE];
 const THRESHOLD = 1 / 2; // 50%
 const TIMELOCK_IN_SECONDS = 60 * 60 * 24 * 7; // 7 Days
@@ -81,6 +95,7 @@ module.exports = {
     TOKEN_LIST: ERC20_TOKEN_LIST,
     ERC721_CONTRACT_DATA,
     CRYPTOKITTIES_CONTRACT: CRYPTOKITTIES_CONTRACT_ADDRESS,
+    MULTISIG_PARAMS,
 };
 
 /**
