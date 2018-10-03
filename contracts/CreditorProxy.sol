@@ -23,6 +23,8 @@ import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
 import "zeppelin-solidity/contracts/token/ERC20/ERC20.sol";
 
+import "./decision_engines/LTVDecisionEngine.sol";
+
 
 /**
  * The CreditorProxy is a thin wrapper around the DebtKernel
@@ -72,40 +74,58 @@ contract CreditorProxy is Pausable {
         contractRegistry = ContractRegistry(_contractRegistry);
     }
 
+    function verifyDecisionEngineParams(
+        bytes32[] decisionEngineParams,
+        uint8[] signaturesV,
+        bytes32[] signaturesS,
+        bytes32[] signaturesR
+    ) public view returns (bytes32) {
+        address creditor = address(decisionEngineParams[0]);
+        address decisionEngineAddress = address(decisionEngineParams[1]);
+
+        LTVDecisionEngine decisionEngine = LTVDecisionEngine(decisionEngineAddress);
+
+        return decisionEngine.genericVerify(
+            creditor,
+            decisionEngineParams,
+            signaturesR,
+            signaturesS,
+            signaturesV
+        );
+    }
+
     /*
      * Submit debt order to DebtKernel if it is consensual with creditor's request
      * Creditor signature in arguments is only used internally,
      * It will not be verified by the Debt Kernel
      */
     function fillDebtOffer(
-        address creditor,
+        bytes32[] decisionEngineParams,
         address[6] orderAddresses, // repayment-router, debtor, uw, tc, p-token, relayer
         uint[8] orderValues, // rr, salt, pa, uwFee, rFee, cFee, dFee, expTime
         bytes32[1] orderBytes32, // tcParams
-        uint8[3] signaturesV, // debtV, credV, uwV
-        bytes32[3] signaturesR,
-        bytes32[3] signaturesS
+        uint8[] memory signaturesV, // debtV, credV, uwV
+        bytes32[] memory signaturesR,
+        bytes32[] memory signaturesS
     )
         public
         whenNotPaused
         returns (bytes32 _agreementId)
     {
+        address creditor = address(decisionEngineParams[0]);
 
-        bytes32 creditorCommitmentHash = getCreditorCommitmentHash(
-            [
-                creditor,
-                orderAddresses[0], // repayment router version
-                orderAddresses[2], // underwriter
-                orderAddresses[3] // termsContract
-            ],
-            [
-                orderValues[5], // creditor fee
-                orderValues[0], // underwriterRiskRating
-                orderValues[7], // commitmentExpirationTimestampInSec
-                orderValues[1] // salt
-            ],
-            orderBytes32 // termsContractParameters
+        // The following step includes verifying the creditor commitment hash itself.
+        bytes32 creditorCommitmentHash = verifyDecisionEngineParams(
+            decisionEngineParams,
+            signaturesV,
+            signaturesS,
+            signaturesR
         );
+
+        if (creditorCommitmentHash == NULL_ISSUANCE_HASH) {
+            // The creditor commitment has was not correctly signed.
+            return NULL_ISSUANCE_HASH;
+        }
 
         if (debtOfferFilled[creditorCommitmentHash]) {
             LogError(uint8(Errors.DEBT_OFFER_ALREADY_FILLED), creditor, creditorCommitmentHash);
@@ -115,21 +135,6 @@ contract CreditorProxy is Pausable {
         if (debtOfferCancelled[creditorCommitmentHash]) {
             LogError(uint8(Errors.DEBT_OFFER_CANCELLED), creditor, creditorCommitmentHash);
             return NULL_ISSUANCE_HASH; 
-        }
-
-        if (!isValidSignature(
-            creditor,
-            creditorCommitmentHash,
-            signaturesV[1],
-            signaturesR[1],
-            signaturesS[1]
-        )) {
-            LogError(
-                uint8(Errors.DEBT_OFFER_NON_CONSENSUAL),
-                creditor,
-                creditorCommitmentHash
-            );
-            return NULL_ISSUANCE_HASH;
         }
 
         // principal amount + creditor fee
@@ -160,18 +165,13 @@ contract CreditorProxy is Pausable {
             );
         }
 
-        // Grant allowance to the TokenTransferProxy for this contract.
-
-
-        // Fill debt order with this contract playing the role of creditor
-        bytes32 agreementId = contractRegistry.debtKernel().fillDebtOrder(
-            address(this),
+        bytes32 agreementId = fillDebtOrder(
             orderAddresses,
             orderValues,
             orderBytes32,
             signaturesV,
-            signaturesR,
-            signaturesS
+            signaturesS,
+            signaturesR
         );
 
         require(agreementId != NULL_ISSUANCE_HASH);
@@ -186,6 +186,41 @@ contract CreditorProxy is Pausable {
         return agreementId;
     }
 
+    function fillDebtOrder(
+        address[6] orderAddresses, // repayment-router, debtor, uw, tc, p-token, relayer
+        uint[8] orderValues, // rr, salt, pa, uwFee, rFee, cFee, dFee, expTime
+        bytes32[1] orderBytes32, // tcParams
+        uint8[] signaturesV,
+        bytes32[] signaturesS,
+        bytes32[] signaturesR
+    ) public view returns (bytes32 agreementId) {
+        uint8[3] memory signaturesVStatic;
+        signaturesVStatic[0] = signaturesV[0];
+        signaturesVStatic[1] = signaturesV[1];
+        signaturesVStatic[2] = signaturesV[2];
+
+        bytes32[3] memory signaturesRStatic;
+        signaturesRStatic[0] = signaturesR[0];
+        signaturesRStatic[1] = signaturesR[1];
+        signaturesRStatic[2] = signaturesR[2];
+
+        bytes32[3] memory signaturesSStatic;
+        signaturesSStatic[0] = signaturesS[0];
+        signaturesSStatic[1] = signaturesS[1];
+        signaturesSStatic[2] = signaturesS[2];
+
+        // Fill debt order with this contract playing the role of creditor
+        return contractRegistry.debtKernel().fillDebtOrder(
+            address(this),
+            orderAddresses,
+            orderValues,
+            orderBytes32,
+            signaturesVStatic,
+            signaturesRStatic,
+            signaturesSStatic
+        );
+    }
+
     /**
      * Allows creditor to prevent a debt offer from being used in the future
      */
@@ -198,44 +233,22 @@ contract CreditorProxy is Pausable {
         whenNotPaused
     {
         // sender must be the creditor
-        require(msg.sender == commitmentAddresses[0]);
-        bytes32 creditorCommitmentHash = getCreditorCommitmentHash(
-            commitmentAddresses,
-            commitmentValues,
-            termsContractParameters
-        );
-        debtOfferCancelled[creditorCommitmentHash] = true;
-        LogDebtOfferCancelled(commitmentAddresses[0], creditorCommitmentHash);
+        // STUB.
+
+        // TODO: Something like:
+        //        require(msg.sender == commitmentAddresses[0]);
+        //        bytes32 creditorCommitmentHash = getCreditorCommitmentHash(
+        //            commitmentAddresses,
+        //            commitmentValues,
+        //            termsContractParameters
+        //        );
+        //        debtOfferCancelled[creditorCommitmentHash] = true;
+        //  LogDebtOfferCancelled(commitmentAddresses[0], creditorCommitmentHash);
     }
 
     ////////////////////////
     // INTERNAL FUNCTIONS //
     ////////////////////////
-
-    /**
-     * Returns the messaged signed by the creditor to indicate their commitment
-     */
-    function getCreditorCommitmentHash(
-        address[4] commitmentAddresses,
-        uint[4] commitmentValues,
-        bytes32[1] termsContractParameters
-    )
-        internal
-        pure
-        returns (bytes32 _creditorCommitmentHash)
-    {
-        return keccak256(
-            commitmentAddresses[0], // creditor
-            commitmentAddresses[1], // repayment router version
-            commitmentValues[0], // creditor fee
-            commitmentAddresses[2], // underwriter
-            commitmentValues[1], // underwriterRiskRating
-            commitmentAddresses[3], // termsContract
-            termsContractParameters[0],
-            commitmentValues[2], // commitmentExpirationTimestampInSec
-            commitmentValues[3] // salt
-        );
-    }
 
 
     /**

@@ -12,6 +12,8 @@ contract LTVDecisionEngine {
 
     uint public constant PRECISION = 4;
 
+    bytes32 constant public NULL_ISSUANCE_HASH = bytes32(0);
+
     enum Errors {
         INVALID_CREDITOR_SIGNATURE,
         INVALID_PRINCIPAL_PRICE_SIGNATURE,
@@ -36,7 +38,7 @@ contract LTVDecisionEngine {
         bytes32 signatureR,
         bytes32 signatureS,
         uint8 signatureV
-    ) public view returns(bool) {
+    ) public view returns(bytes32 creditorCommitmentHash) {
         bytes32 maxLTV = decisionEngineParams[0];
         address priceFeedOperator = address(decisionEngineParams[1]);
         address principalToken = address(decisionEngineParams[2]);
@@ -44,7 +46,7 @@ contract LTVDecisionEngine {
         bytes32 expirationTimestamp = decisionEngineParams[4];
         address decisionEngine = address(decisionEngineParams[5]);
 
-        bytes32 creditorCommitmentHash = keccak256(
+        creditorCommitmentHash = keccak256(
             maxLTV,
             priceFeedOperator,
             principalToken,
@@ -65,10 +67,10 @@ contract LTVDecisionEngine {
                 creditorCommitmentHash
             );
 
-            return false;
+            return NULL_ISSUANCE_HASH;
         }
 
-        return true;
+        return creditorCommitmentHash;
     }
 
     function verifyPriceFeedData(
@@ -109,88 +111,91 @@ contract LTVDecisionEngine {
         bytes32[] signaturesS,
         uint8[] signaturesV
     )
-        public view returns (bool)
+        public view returns (bytes32 creditorCommitmentHash)
     {
-        //  bytes32 maxLTV = decisionEngineParams[0];
-        //  address priceFeedOperator = address(decisionEngineParams[1]);
-        //  address principalToken = orderData.principalToken;
-        // STUB.
-        return verifyCreditorCommitment(
+        creditorCommitmentHash = verifyCreditorCommitment(
             creditor,
             decisionEngineParams,
             signaturesR[0],
             signaturesS[0],
             signaturesV[0]
-        ) && verifyPriceFeedData(decisionEngineParams);
+        );
+
+        if (verifyPriceFeedData(decisionEngineParams)) {
+            // Return null or a valid commitment hash.
+            return creditorCommitmentHash;
+        }
+
+        return NULL_ISSUANCE_HASH;
     }
 
-    function verify(
-        // Creditor commitment.
-        address creditor,
-        bytes32 creditorCommitmentHash,
-        // Price feed operator data.
-        address priceFeedOperator,
-        bytes32 principalTokenPriceDataHash,
-        bytes32 collateralTokenPriceDataHash,
-        // Signatures
-        uint8[3] signaturesV,
-        bytes32[3] signaturesR,
-        bytes32[3] signaturesS
-    )
-        public
-        view
-        returns (bool)
-    {
-        // Ensure creditor signature is valid.
-        if (!isValidSignature(
-            creditor,
-            creditorCommitmentHash,
-            signaturesV[0],
-            signaturesR[0],
-            signaturesS[0])) {
-            LogError(
-                uint8(Errors.INVALID_CREDITOR_SIGNATURE),
-                creditor,
-                creditorCommitmentHash
-            );
-
-            return false;
-        }
-
-        // Ensure price feed operator has signed off on the principal token's price.
-        if (!isValidSignature(
-            priceFeedOperator,
-            principalTokenPriceDataHash,
-            signaturesV[1],
-            signaturesR[1],
-            signaturesS[1])) {
-            LogError(
-                uint8(Errors.INVALID_PRINCIPAL_PRICE_SIGNATURE),
-                creditor,
-                creditorCommitmentHash
-            );
-
-            return false;
-        }
-
-        // Ensure price feed operator has signed off on the collateral token's price.
-        if (!isValidSignature(
-            priceFeedOperator,
-            collateralTokenPriceDataHash,
-            signaturesV[2],
-            signaturesR[2],
-            signaturesS[2])) {
-            LogError(
-                uint8(Errors.INVALID_COLLATERAL_PRICE_SIGNATURE),
-                creditor,
-                creditorCommitmentHash
-            );
-
-            return false;
-        }
-
-        return true;
-    }
+//    function verify(
+//        // Creditor commitment.
+//        address creditor,
+//        bytes32 creditorCommitmentHash,
+//        // Price feed operator data.
+//        address priceFeedOperator,
+//        bytes32 principalTokenPriceDataHash,
+//        bytes32 collateralTokenPriceDataHash,
+//        // Signatures
+//        uint8[3] signaturesV,
+//        bytes32[3] signaturesR,
+//        bytes32[3] signaturesS
+//    )
+//        public
+//        view
+//        returns (bool)
+//    {
+//        // Ensure creditor signature is valid.
+//        if (!isValidSignature(
+//            creditor,
+//            creditorCommitmentHash,
+//            signaturesV[0],
+//            signaturesR[0],
+//            signaturesS[0])) {
+//            LogError(
+//                uint8(Errors.INVALID_CREDITOR_SIGNATURE),
+//                creditor,
+//                creditorCommitmentHash
+//            );
+//
+//            return false;
+//        }
+//
+//        // Ensure price feed operator has signed off on the principal token's price.
+//        if (!isValidSignature(
+//            priceFeedOperator,
+//            principalTokenPriceDataHash,
+//            signaturesV[1],
+//            signaturesR[1],
+//            signaturesS[1])) {
+//            LogError(
+//                uint8(Errors.INVALID_PRINCIPAL_PRICE_SIGNATURE),
+//                creditor,
+//                creditorCommitmentHash
+//            );
+//
+//            return false;
+//        }
+//
+//        // Ensure price feed operator has signed off on the collateral token's price.
+//        if (!isValidSignature(
+//            priceFeedOperator,
+//            collateralTokenPriceDataHash,
+//            signaturesV[2],
+//            signaturesR[2],
+//            signaturesS[2])) {
+//            LogError(
+//                uint8(Errors.INVALID_COLLATERAL_PRICE_SIGNATURE),
+//                creditor,
+//                creditorCommitmentHash
+//            );
+//
+//            return false;
+//        }
+//
+//        return true;
+//    }
 
     // Required params:
     // Creditor address
