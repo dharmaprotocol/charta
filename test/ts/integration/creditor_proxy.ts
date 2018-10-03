@@ -61,6 +61,64 @@ const creditorProxyArtifacts = artifacts.require("CreditorProxy");
 const debtTokenArtifacts = artifacts.require("DebtToken");
 const debtKernelArtifacts = artifacts.require("DebtKernel");
 
+interface VerificationParameters {
+    creditorAddress: string;
+    decisionEngineAddress: string;
+    repaymentRouterAddress: string;
+    underwriterAddress: string;
+    termsContractAddress: string;
+    creditorFee: BigNumber;
+    underwriterRiskRating: BigNumber;
+    commitmentExpirationTimestampInSec: BigNumber;
+    salt: BigNumber;
+    termsContractParameters: string;
+}
+
+function addressToBytes32(address: string): string {
+    return "0x" + address.substr(2, address.length - 2).padStart(64, "0");
+}
+
+function bigNumberToBytes32(value: BigNumber): string {
+    const valueString = value.toString();
+    return "0x" + valueString.substr(2, valueString.length - 2).padStart(64, "0");
+}
+
+function packVerificationParams(params: VerificationParameters): string[] {
+    // The following items need to be converted to bytes32:
+    const {
+        // Addresses
+        creditorAddress,
+        decisionEngineAddress,
+        repaymentRouterAddress,
+        underwriterAddress,
+        termsContractAddress,
+        // uint
+        creditorFee,
+        underwriterRiskRating,
+        commitmentExpirationTimestampInSec,
+        salt,
+        // bytes32
+        termsContractParameters,
+    } = params;
+
+    // Return a list conformable to type bytes32.
+    return [
+        // Addresses
+        addressToBytes32(creditorAddress),
+        addressToBytes32(decisionEngineAddress),
+        addressToBytes32(repaymentRouterAddress),
+        addressToBytes32(underwriterAddress),
+        addressToBytes32(termsContractAddress),
+        // uint
+        bigNumberToBytes32(creditorFee),
+        bigNumberToBytes32(underwriterRiskRating),
+        bigNumberToBytes32(commitmentExpirationTimestampInSec),
+        bigNumberToBytes32(salt),
+        // Bytes32
+        termsContractParameters,
+    ];
+}
+
 contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
     let creditorProxy: CreditorProxyContract;
     let contractRegistry: ContractRegistryContract;
@@ -306,6 +364,12 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
                         creditorProxyBalanceBefore,
                     ] = await getAgentBalances(principalToken);
 
+                    const verificationParams: VerificationParameters = {
+                        // STUB.
+                    };
+
+                    const packedVerificationParams = packVerificationParams(verificationParams);
+
                     const txHash = await creditorProxy.fillDebtOffer.sendTransactionAsync(
                         debtOffer.getCreditor(),
                         debtOffer.getOrderAddresses(),
@@ -519,7 +583,7 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
 
         before(reset);
 
-        describe("User fills valid, consentual debt offer", () => {
+        describe("User fills valid, consensual debt offer", () => {
             describe("...and creditor proxy is paused by owner via multi-sig", async () => {
                 before(async () => {
                     debtOffer = await offerFactory.generateDebtOffer();
