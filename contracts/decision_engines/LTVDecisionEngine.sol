@@ -29,13 +29,6 @@ contract LTVDecisionEngine {
 
     /**
      *  Verifies that the correct signatures and data have been passed in.
-     *
-     * @param  {[type]} address [description]
-     * @param  {[type]} bytes32 [description]
-     * @param  {[type]} uint8   [description]
-     * @param  {[type]} bytes32 [description]
-     * @param  {[type]} bytes32 [description]
-     * @return {[type]}         [description]
      */
     function verify(
         // Creditor commitment.
@@ -93,25 +86,6 @@ contract LTVDecisionEngine {
         return true;
     }
 
-    // Required params:
-    // Creditor address
-    // LTV ratio
-    // Price feed operator address
-    // Price of principal token
-    // price of collateral token
-    // Signature and date for principal token price
-    // Signature and date for collateral token price
-    // Expiration date
-    // Decision engine address
-    // Signature for creditor on:
-        // LTV ratio
-        // Price feed operator
-        // Principal token
-        // Collateral token
-        // Principal amount
-        // Expiration date
-        // Decision engine address
-    // NOTE: Decision engine address is used in the CreditorProxy, but signature is validated here.
     function evaluate(
         uint principalTokenPrice,
         uint collateralTokenPrice,
