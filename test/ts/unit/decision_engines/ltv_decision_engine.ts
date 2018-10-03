@@ -11,6 +11,8 @@ import { BigNumber } from "bignumber.js";
 
 import { SignableCreditorCommitment } from "./signable_creditor_commitment";
 
+import { PriceScenario, SignablePrice, TimestampedPrice } from "./signable_price";
+
 import { LTVCreditorCommitmentParams, LTVScenario } from "./ltv_creditor_commitment_params";
 
 // Types
@@ -139,6 +141,75 @@ contract("LTV Decision Engine (unit)", async (ACCOUNTS) => {
         });
     });
 
+    describe("#verify", () => {
+        let scenario: PriceScenario;
+
+        const principalPrice: TimestampedPrice = {
+            timestamp:  new BigNumber(
+                moment().unix(),
+            ),
+            price: new BigNumber(9.15),
+        };
+
+        const collateralPrice: TimestampedPrice = {
+            timestamp:  new BigNumber(
+                moment().unix(),
+            ),
+            price: new BigNumber(11.29),
+        };
+
+        const signablePrincipalPrice = new SignablePrice(principalPrice);
+        const signableCollateralPrice = new SignablePrice(collateralPrice);
+
+        before(async () => {
+            const validParams: LTVCreditorCommitmentParams = {
+                maxLTV: new BigNumber(88),
+                priceFeedOperator: PRICE_FEED_OPERATOR,
+                decisionEngine: decisionEngine.address,
+                collateralToken: COLLATERAL_TOKEN,
+                principalToken: PRINCIPAL_TOKEN,
+                principalAmount: new BigNumber(1),
+                expirationTimestamp: await generateTimestamp(),
+            };
+
+            const creditorCommitmentHash = SignableCreditorCommitment.getHashForParams(validParams);
+
+            const commitment = new SignableCreditorCommitment(creditorCommitmentHash);
+
+            const creditorSignature = await commitment.getSignature(web3, CREDITOR);
+            const principalSignature = await signablePrincipalPrice.getSignature(web3, PRICE_FEED_OPERATOR);
+            const collateralSignature = await signableCollateralPrice.getSignature(web3, PRICE_FEED_OPERATOR);
+
+            scenario = {
+                creditor: CREDITOR,
+                creditorCommitmentHash,
+                priceFeedOperator: PRICE_FEED_OPERATOR,
+                principalTokenPriceDataHash: signablePrincipalPrice.getHash(),
+                collateralTokenPriceDataHash: signableCollateralPrice.getHash(),
+                signaturesV: [creditorSignature.v, principalSignature.v, collateralSignature.v],
+                signaturesR: [creditorSignature.r, principalSignature.r, collateralSignature.r],
+                signaturesS: [creditorSignature.s, principalSignature.s, collateralSignature.s],
+            };
+        });
+
+        describe("when given valid signatures", () => {
+            it("returns true", async () => {
+                const isVerified = await decisionEngine.verify.callAsync(
+                    scenario.creditor,
+                    scenario.creditorCommitmentHash,
+                    scenario.priceFeedOperator,
+                    scenario.principalTokenPriceDataHash,
+                    scenario.collateralTokenPriceDataHash,
+                    scenario.signaturesV,
+                    scenario.signaturesR,
+                    scenario.signaturesS,
+                );
+
+                expect(isVerified).to.eq(true);
+            });
+        });
+    });
+
     describe("#computeLTV", () => {
         describe("when given a principal price of 13 and collateral price of 15", () => {
             describe("when given an principal amount of 1 and a collateral price of 1", () => {
@@ -206,18 +277,12 @@ contract("LTV Decision Engine (unit)", async (ACCOUNTS) => {
 
             it("returns true", async () => {
                 const result = await decisionEngine.evaluate.callAsync(
-                    evaluateScenario.priceFeedOperator,
                     evaluateScenario.principalTokenPrice,
                     evaluateScenario.collateralTokenPrice,
                     evaluateScenario.principalAmount,
                     evaluateScenario.collateralAmount,
                     evaluateScenario.maxLTV,
                     evaluateScenario.expirationTimestamp,
-                    evaluateScenario.creditor,
-                    evaluateScenario.creditorCommitmentHash,
-                    evaluateScenario.creditorSignature.v,
-                    evaluateScenario.creditorSignature.r,
-                    evaluateScenario.creditorSignature.s,
                 );
 
                 expect(result).to.eq(true);
@@ -257,18 +322,12 @@ contract("LTV Decision Engine (unit)", async (ACCOUNTS) => {
 
             it("returns false", async () => {
                 const result = await decisionEngine.evaluate.callAsync(
-                    evaluateScenario.priceFeedOperator,
                     evaluateScenario.principalTokenPrice,
                     evaluateScenario.collateralTokenPrice,
                     evaluateScenario.principalAmount,
                     evaluateScenario.collateralAmount,
                     evaluateScenario.maxLTV,
                     evaluateScenario.expirationTimestamp,
-                    evaluateScenario.creditor,
-                    evaluateScenario.creditorCommitmentHash,
-                    evaluateScenario.creditorSignature.v,
-                    evaluateScenario.creditorSignature.r,
-                    evaluateScenario.creditorSignature.s,
                 );
 
                 expect(result).to.eq(false);
