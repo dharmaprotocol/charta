@@ -42,17 +42,17 @@ contract LTVDecisionEngine {
         bytes32 creditorCommitmentHash = getCreditorCommitmentHash(
             [
                 creditor,
-                address(decisionEngineParams[1]),  // repaymentRouter
-                address(decisionEngineParams[2]),  // underwriter
-                address(decisionEngineParams[3])   // termsContract
+                address(decisionEngineParams[2]),  // repaymentRouter
+                address(decisionEngineParams[3]),  // underwriter
+                address(decisionEngineParams[4])   // termsContract
             ],
             [
-                uint(decisionEngineParams[4]),  // creditor fee
-                uint(decisionEngineParams[5]),  // underwriterRiskRating
-                uint(decisionEngineParams[6]),  // commitmentExpirationTimestampInSec
-                uint(decisionEngineParams[7])   // salt
+                uint(decisionEngineParams[5]),  // creditor fee
+                uint(decisionEngineParams[6]),  // underwriterRiskRating
+                uint(decisionEngineParams[7]),  // commitmentExpirationTimestampInSec
+                uint(decisionEngineParams[8])   // salt
             ],
-            [decisionEngineParams[8]] // termsContractParameters
+            [decisionEngineParams[9]] // termsContractParameters
         );
 
         if (!isValidSignature(
