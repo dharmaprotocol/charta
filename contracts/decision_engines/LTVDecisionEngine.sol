@@ -1,4 +1,4 @@
-pragma solidity 0.4.18;
+pragma solidity ^0.4.18;
 
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
 
@@ -29,16 +29,101 @@ contract LTVDecisionEngine {
     function LTVDecisionEngine()
         public {}
 
+    // Verifies that the creditor has signed all of the given parameters.
+    function verifyCreditorCommitment(
+        address creditor,
+        bytes32[] memory decisionEngineParams,
+        bytes32 signatureR,
+        bytes32 signatureS,
+        uint8 signatureV
+    ) public view returns(bool) {
+        bytes32 maxLTV = decisionEngineParams[0];
+        address priceFeedOperator = address(decisionEngineParams[1]);
+        address principalToken = address(decisionEngineParams[2]);
+        bytes32 principalAmount = decisionEngineParams[3];
+        bytes32 expirationTimestamp = decisionEngineParams[4];
+        address decisionEngine = address(decisionEngineParams[5]);
+
+        bytes32 creditorCommitmentHash = keccak256(
+            maxLTV,
+            priceFeedOperator,
+            principalToken,
+            principalAmount,
+            expirationTimestamp,
+            decisionEngine
+        );
+
+        if (!isValidSignature(
+            creditor,
+            creditorCommitmentHash,
+            signatureV,
+            signatureR,
+            signatureS)) {
+            LogError(
+                uint8(Errors.INVALID_CREDITOR_SIGNATURE),
+                creditor,
+                creditorCommitmentHash
+            );
+
+            return false;
+        }
+
+        return true;
+    }
+
+    function verifyPriceFeedData(
+        bytes32[] memory decisionEngineParams
+    ) public view returns(bool) {
+        // STUB.
+        return true;
+    }
+
     /**
-     *  Verifies that the correct signatures and data have been passed in.
-     *
-     * @param  {[type]} address [description]
-     * @param  {[type]} bytes32 [description]
-     * @param  {[type]} uint8   [description]
-     * @param  {[type]} bytes32 [description]
-     * @param  {[type]} bytes32 [description]
-     * @return {[type]}         [description]
-     */
+     * Takes in debt order data, and packed params.
+     * Debt Order includes:
+     * - Creditor address
+     * - Principal amount
+     * - Expiration timestamp
+     * Packed params includes:
+     * - Price of principal
+     * - Price of collateral
+     * - Retrieval time of principal price
+     * - Retrieval time of collateral price
+     * - Price feed operator
+     * - Signature for principal price
+     * - Signature for collateral price
+     * - Signature for creditor commitment
+     *  And so, we verify by the following step:
+     * 1. Generate a creditor commitment hash
+     * 2. Test the creditor commitment hash using creditor address and signature
+     * 3. Generate a principal price hash
+     * 4. Test the principal price hash
+     * 5. Generate a collateral price hash
+     * 6. Test the collateral price hash
+     **/
+    function genericVerify(
+        // Like Terms Contract Parameters, but for Decision Engines(tm) ;)
+        address creditor,
+        bytes32[] memory decisionEngineParams,
+        bytes32[] signaturesR,
+        bytes32[] signaturesS,
+        uint8[] signaturesV
+    )
+        public view returns (bool)
+    {
+        //  bytes32 maxLTV = decisionEngineParams[0];
+        //  address priceFeedOperator = address(decisionEngineParams[1]);
+        //  address principalToken = orderData.principalToken;
+        // STUB.
+        return verifyCreditorCommitment(
+            creditor,
+            decisionEngineParams,
+            signaturesR[0],
+            signaturesS[0],
+            signaturesV[0]
+        ) && verifyPriceFeedData(decisionEngineParams);
+    }
+
     function verify(
         // Creditor commitment.
         address creditor,
@@ -139,7 +224,7 @@ contract LTVDecisionEngine {
         returns (bool) {
         // Ensure agreement has not expired.
         if (isExpired(expirationTimestampInSec)) {
-            LogError(uint8(Errors.AGREEMENT_EXPIRED), creditor, creditorCommitmentHash);
+//            LogError(uint8(Errors.AGREEMENT_EXPIRED), creditor, creditorCommitmentHash);
 
             return false;
         }
@@ -154,7 +239,7 @@ contract LTVDecisionEngine {
         uint maxLTVWithPrecision = maxLTV.mul(10 ** (PRECISION.sub(2)));
 
         if (computedLTV > maxLTVWithPrecision) {
-            LogError(uint8(Errors.LTV_EXCEEDS_MAX), creditor, creditorCommitmentHash);
+//            LogError(uint8(Errors.LTV_EXCEEDS_MAX), creditor, creditorCommitmentHash);
 
             return false;
         }
@@ -201,4 +286,76 @@ contract LTVDecisionEngine {
         return ecrecover(prefixedHash, v, r, s) == signer;
     }
 
+//        // Creditor commitment.
+//        address creditor,
+//        bytes32 creditorCommitmentHash,
+//        // Price feed operator data.
+//        address priceFeedOperator,
+//        bytes32 principalTokenPriceDataHash,
+//        bytes32 collateralTokenPriceDataHash,
+//        // Signatures
+//        uint8[3] signaturesV,
+//        bytes32[3] signaturesR,
+//        bytes32[3] signaturesS
+
+//    function unpackVerificationParams(bytes32[] parameters)
+//        public
+//        pure
+//        returns (
+//            bytes32 creditorCommitmentHash,
+//            address addresses,
+//            bytes32[2] memory priceDataHashes,
+//            bytes32[3] memory signaturesR,
+//            bytes32[3] memory signaturesS,
+//            uint8[3] memory signaturesV
+//        )
+//    {
+//        return (
+//            // Creditor commitment hashes.
+//            parameters[1],
+//            // Creditor and price feed addresses.
+//            [
+//                address(parameters[0]),
+//                address(parameters[2])
+//            ],
+//            // Price feed data.
+//            [
+//                parameters[2],
+//                parameters[3]
+//            ],
+//            // Signatures R
+//            [parameters[4], parameters[5], parameters[6]],
+//            // Signatures S
+//            [parameters[7], parameters[8], parameters[9]],
+//            [
+//                uint8(parameters[10] & 0x000000000000000000000000000000000000000000000000000000000000ffff),
+//                uint8(parameters[10] & 0x00000000000000000000000000000000000000000000000000000000ffff0000),
+//                uint8(parameters[10] & 0x0000000000000000000000000000000000000000000000000000ffff00000000)
+//            ]
+//        );
+//
+//
+////        (
+////            creditor,
+////            creditorCommitmentHash,
+////            priceFeedOperator,
+////            principalTokenPriceDataHash,
+////            collateralTokenPriceDataHash
+////            signaturesR[0],
+////            signaturesR[1],
+////            signaturesR[2],
+////            signaturesS[0],
+////            signaturesS[1],
+////            signaturesS[2],
+////            signaturesV,
+////        ) = parameters;
+//
+//
+//            // Each of these is uint8
+////        [
+////        signaturesV[0].toString(),
+////        signaturesV[0],
+////        signaturesV[0],
+////        ].join(""),
+//    }
 }

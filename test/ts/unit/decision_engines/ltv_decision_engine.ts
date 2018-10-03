@@ -29,6 +29,19 @@ const expect = chai.expect;
 // Set up utils
 const web3Utils = new Web3Utils(web3);
 
+interface VerificationParameters {
+    // Creditor commitment.
+    creditor: string;
+    creditorCommitmentHash: string;
+    priceFeedOperator: string;
+    principalTokenPriceDataHash: string;
+    collateralTokenPriceDataHash: string;
+    // Signatures
+    signaturesV: number[];
+    signaturesR: string[];
+    signaturesS: string[];
+}
+
 async function generateTimestamp(daysInFuture = 30) {
     const latestBlockTime = await web3Utils.getLatestBlockTime();
 
@@ -38,6 +51,38 @@ async function generateTimestamp(daysInFuture = 30) {
             .add(daysInFuture, "days")
             .unix(),
     );
+}
+
+function packVerificationParams(params: VerificationParameters): string[] {
+    // The following items need to be converted to bytes32:
+    const { creditor, priceFeedOperator, signaturesV } = params;
+
+    // The "v" value of the signatures array are of type uint8. We join them and convert to bytes32.
+    const signaturesVString = [
+        signaturesV[0].toString(),
+        signaturesV[0].toString(),
+        signaturesV[0].toString(),
+    ].join("");
+
+    // Return a list conformable to type bytes32.
+    return [
+        // Convert the creditor address into bytes32.
+        "0x" + creditor.substr(2, creditor.length - 2).padStart(64, "0"),
+        params.creditorCommitmentHash,
+        // Convert the price feed operator address into bytes32.
+        "0x" + priceFeedOperator.substr(2, priceFeedOperator.length - 2).padStart(64, "0"),
+        params.principalTokenPriceDataHash,
+        params.collateralTokenPriceDataHash,
+        // Signatures are all bytes32.
+        params.signaturesR[0],
+        params.signaturesR[1],
+        params.signaturesR[2],
+        params.signaturesS[0],
+        params.signaturesS[1],
+        params.signaturesS[2],
+        // Each of these is uint8
+        signaturesVString,
+    ];
 }
 
 contract("LTV Decision Engine (unit)", async (ACCOUNTS) => {
@@ -55,6 +100,93 @@ contract("LTV Decision Engine (unit)", async (ACCOUNTS) => {
 
     before(async () => {
         decisionEngine = await LTVDecisionEngineContract.deployed(web3, TX_DEFAULTS);
+    });
+
+    describe("#unpackVerificationParameters", () => {
+        let evaluateScenario: LTVScenario;
+        let defaultCommitmentParams: LTVCreditorCommitmentParams;
+
+        before(async () => {
+            const timestamp = await generateTimestamp();
+
+            defaultCommitmentParams = {
+                priceFeedOperator: PRICE_FEED_OPERATOR,
+                collateralToken: COLLATERAL_TOKEN,
+                principalToken: PRINCIPAL_TOKEN,
+                principalAmount: new BigNumber(1),
+                maxLTV: new BigNumber(88),
+                decisionEngine: decisionEngine.address,
+                expirationTimestamp: timestamp,
+            };
+        });
+
+        describe("when given the validation parameters as an array of strings", () => {
+            before(async () => {
+                const hash = SignableCreditorCommitment.getHashForParams(
+                    defaultCommitmentParams,
+                );
+
+                const commitment = new SignableCreditorCommitment(hash);
+
+                const signature = await commitment.getSignature(web3, CREDITOR);
+
+                evaluateScenario = {
+                    ...defaultCommitmentParams,
+                    creditor: CREDITOR,
+                    principalTokenPrice: new BigNumber(13),
+                    collateralTokenPrice: new BigNumber(15),
+                    principalAmount: new BigNumber(1),
+                    collateralAmount: new BigNumber(1),
+                    creditorCommitmentHash: hash,
+                    creditorSignature: signature,
+                    txData: TX_DEFAULTS,
+                };
+            });
+
+            it("it returns the verification parameters", async () => {
+                const verificationParams: VerificationParameters = {
+                    creditor: evaluateScenario.creditor,
+                    creditorCommitmentHash: evaluateScenario.creditorCommitmentHash,
+                    priceFeedOperator: evaluateScenario.priceFeedOperator,
+                    // TODO: Use actual data hash.
+                    principalTokenPriceDataHash: evaluateScenario.creditorCommitmentHash,
+                    // TODO: Use actual data hash.
+                    collateralTokenPriceDataHash: evaluateScenario.creditorCommitmentHash,
+                    signaturesV: [
+                        // TODO: Update to other signatures.
+                        evaluateScenario.creditorSignature.v,
+                        evaluateScenario.creditorSignature.v,
+                        evaluateScenario.creditorSignature.v,
+                    ],
+                    signaturesR: [
+                        // TODO: Update to other signatures.
+                        evaluateScenario.creditorSignature.r,
+                        evaluateScenario.creditorSignature.r,
+                        evaluateScenario.creditorSignature.r,
+                    ],
+                    signaturesS: [
+                        // TODO: Update to other signatures.
+                        evaluateScenario.creditorSignature.s,
+                        evaluateScenario.creditorSignature.s,
+                        evaluateScenario.creditorSignature.s,
+                    ],
+                };
+
+                const packedParams = packVerificationParams(verificationParams);
+
+                const result = await decisionEngine.unpackVerificationParams.callAsync(packedParams);
+
+                expect(JSON.stringify(result)).to.eq(JSON.stringify([
+                    verificationParams.creditor,
+                    verificationParams.creditorCommitmentHash,
+                    verificationParams.priceFeedOperator,
+                    verificationParams.principalTokenPriceDataHash,
+                    verificationParams.collateralTokenPriceDataHash,
+                    verificationParams.signaturesR,
+                    verificationParams.signaturesS,
+                ]));
+            });
+        });
     });
 
     describe("#isExpired", () => {
