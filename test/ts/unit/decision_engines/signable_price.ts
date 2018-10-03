@@ -13,6 +13,17 @@ export interface TimestampedPrice {
     price: BigNumber;
 }
 
+export interface PriceScenario {
+    creditor: string;
+    creditorCommitmentHash: Bytes32;
+    priceFeedOperator: string;
+    principalTokenPriceDataHash: Bytes32;
+    collateralTokenPriceDataHash: Bytes32;
+    signaturesV: number[];
+    signaturesR: Bytes32[];
+    signaturesS: Bytes32[];
+}
+
 export class SignablePrice extends SignableMessage {
 
     private readonly hash: Bytes32;
