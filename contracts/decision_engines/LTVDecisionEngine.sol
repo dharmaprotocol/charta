@@ -21,9 +21,7 @@ contract LTVDecisionEngine {
     }
 
     event LogError(
-        uint8 indexed _errorId,
-        address indexed _creditor,
-        bytes32 indexed _creditorCommitmentHash
+        uint8 indexed _errorId
     );
 
     function LTVDecisionEngine()
@@ -63,11 +61,7 @@ contract LTVDecisionEngine {
             signaturesV[0],
             signaturesR[0],
             signaturesS[0])) {
-            LogError(
-                uint8(Errors.INVALID_CREDITOR_SIGNATURE),
-                creditor,
-                creditorCommitmentHash
-            );
+            LogError(uint8(Errors.INVALID_CREDITOR_SIGNATURE));
 
             return false;
         }
@@ -79,11 +73,7 @@ contract LTVDecisionEngine {
             signaturesV[1],
             signaturesR[1],
             signaturesS[1])) {
-            LogError(
-                uint8(Errors.INVALID_PRINCIPAL_PRICE_SIGNATURE),
-                creditor,
-                creditorCommitmentHash
-            );
+            LogError(uint8(Errors.INVALID_PRINCIPAL_PRICE_SIGNATURE));
 
             return false;
         }
@@ -95,11 +85,7 @@ contract LTVDecisionEngine {
             signaturesV[2],
             signaturesR[2],
             signaturesS[2])) {
-            LogError(
-                uint8(Errors.INVALID_COLLATERAL_PRICE_SIGNATURE),
-                creditor,
-                creditorCommitmentHash
-            );
+            LogError(uint8(Errors.INVALID_COLLATERAL_PRICE_SIGNATURE));
 
             return false;
         }
@@ -139,7 +125,7 @@ contract LTVDecisionEngine {
         returns (bool) {
         // Ensure agreement has not expired.
         if (isExpired(expirationTimestampInSec)) {
-            LogError(uint8(Errors.AGREEMENT_EXPIRED), creditor, creditorCommitmentHash);
+            LogError(uint8(Errors.AGREEMENT_EXPIRED));
 
             return false;
         }
@@ -154,7 +140,7 @@ contract LTVDecisionEngine {
         uint maxLTVWithPrecision = maxLTV.mul(10 ** (PRECISION.sub(2)));
 
         if (computedLTV > maxLTVWithPrecision) {
-            LogError(uint8(Errors.LTV_EXCEEDS_MAX), creditor, creditorCommitmentHash);
+            LogError(uint8(Errors.LTV_EXCEEDS_MAX));
 
             return false;
         }
