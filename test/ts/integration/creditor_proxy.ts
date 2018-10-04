@@ -46,7 +46,7 @@ import { DharmaMultiSigWalletContract } from "../../../types/generated/dharma_mu
 import { CreditorProxyDecisionEngineContract } from "../../../types/generated/creditor_proxy_decision_engine";
 
 // Constants
-import { REVERT_ERROR } from "../test_utils/constants";
+import { NULL_ISSUANCE_HASH, REVERT_ERROR } from "../test_utils/constants";
 
 // Configure BigNumber exponentiation
 BigNumberSetup.configure();
@@ -181,7 +181,7 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
     describe("#unpackParameters", () => {
         let debtOffer: SignedDebtOffer;
 
-        it.only("should return the expected parameters", async () => {
+        it("should return the expected parameters", async () => {
             debtOffer = await offerFactory.generateDebtOffer();
 
             const packedDecisionEngineParams = debtOffer.getPackedDecisionEngineParams(
@@ -219,14 +219,14 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
     describe("#verifyDecisionEngineParams", () => {
         let debtOffer: SignedDebtOffer;
 
-        it.only("should verify the debt offer is approved by the creditor", async () => {
+        it("should verify the debt offer is approved by the creditor", async () => {
             debtOffer = await offerFactory.generateDebtOffer();
 
             const packedDecisionEngineParams = debtOffer.getPackedDecisionEngineParams(
                 creditorProxyDecisionEngine.address,
             );
 
-            const isVerified = await creditorProxyDecisionEngine.verifyCreditorCommitment.callAsync(
+            const creditorCommitmentHash = await creditorProxyDecisionEngine.verifyCreditorCommitment.callAsync(
                 debtOffer.getCreditor(),
                 packedDecisionEngineParams,
                 debtOffer.getSignaturesR()[1],
@@ -234,7 +234,7 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
                 debtOffer.getSignaturesV()[1],
             );
 
-            expect(isVerified).to.equal(true);
+            expect(creditorCommitmentHash).to.not.equal(NULL_ISSUANCE_HASH);
         });
     });
 
@@ -248,8 +248,12 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
             signaturesR?: string[],
             signaturesS?: string[],
         ) => {
+            const packedDecisionEngineParams = debtOffer.getPackedDecisionEngineParams(
+                creditorProxyDecisionEngine.address,
+            );
+
             const txHash = await creditorProxy.fillDebtOffer.sendTransactionAsync(
-                offer.getCreditor(),
+                packedDecisionEngineParams,
                 offer.getOrderAddresses(),
                 offer.getOrderValues(),
                 offer.getOrderBytes32(),
@@ -373,14 +377,12 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
                         creditorProxyBalanceBefore,
                     ] = await getAgentBalances(principalToken);
 
-                    const verificationParams: VerificationParameters = {
-                        // STUB.
-                    };
-
-                    const packedVerificationParams = packVerificationParams(verificationParams);
+                    const packedDecisionEngineParams = debtOffer.getPackedDecisionEngineParams(
+                        creditorProxyDecisionEngine.address,
+                    );
 
                     const txHash = await creditorProxy.fillDebtOffer.sendTransactionAsync(
-                        debtOffer.getCreditor(),
+                        packedDecisionEngineParams,
                         debtOffer.getOrderAddresses(),
                         debtOffer.getOrderValues(),
                         debtOffer.getOrderBytes32(),
@@ -614,9 +616,13 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
                     );
                 });
                 it("should throw", async () => {
+                    const packedDecisionEngineParams = debtOffer.getPackedDecisionEngineParams(
+                        creditorProxyDecisionEngine.address,
+                    );
+
                     await expect(
                         creditorProxy.fillDebtOffer.sendTransactionAsync(
-                            debtOffer.getCreditor(),
+                            packedDecisionEngineParams,
                             debtOffer.getOrderAddresses(),
                             debtOffer.getOrderValues(),
                             debtOffer.getOrderBytes32(),
@@ -745,8 +751,12 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
                     debtOffer = await offerFactory.generateDebtOffer();
                     await setupBalancesAndAllowances();
 
+                    const packedDecisionEngineParams = debtOffer.getPackedDecisionEngineParams(
+                        creditorProxyDecisionEngine.address,
+                    );
+
                     await creditorProxy.fillDebtOffer.sendTransactionAsync(
-                        debtOffer.getCreditor(),
+                        packedDecisionEngineParams,
                         debtOffer.getOrderAddresses(),
                         debtOffer.getOrderValues(),
                         debtOffer.getOrderBytes32(),
@@ -792,9 +802,13 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
                 });
 
                 it("should throw", async () => {
+                    const packedDecisionEngineParams = debtOffer.getPackedDecisionEngineParams(
+                        creditorProxyDecisionEngine.address,
+                    );
+
                     await expect(
                         creditorProxy.fillDebtOffer.sendTransactionAsync(
-                            debtOffer.getCreditor(),
+                            packedDecisionEngineParams,
                             debtOffer.getOrderAddresses(),
                             debtOffer.getOrderValues(),
                             debtOffer.getOrderBytes32(),
