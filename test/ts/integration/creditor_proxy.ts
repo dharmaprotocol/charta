@@ -5,7 +5,6 @@ import * as _ from "lodash";
 import * as chai from "chai";
 import * as moment from "moment";
 import { BigNumber } from "bignumber.js";
-
 // Test Utils
 import * as Units from "../test_utils/units";
 import {
@@ -15,24 +14,23 @@ import {
 import ChaiSetup from "../test_utils/chai_setup";
 import { BigNumberSetup } from "../test_utils/bignumber_setup";
 import { Web3Utils } from "../../../utils/web3_utils";
-
 // Types
-import { DecisionEngineParameters, SignedDebtOffer } from "../../../types/proxy/debt_offer";
-
+import { SignedDebtOffer } from "../../../types/proxy/debt_offer";
 // Logs
 import { LogApproval, LogTransfer } from "../logs/debt_token";
 import { LogInsertEntry, LogModifyEntryBeneficiary } from "../logs/debt_registry";
 import { LogDebtOrderFilled } from "../logs/debt_kernel";
 import { LogDebtOfferFilled, LogError } from "../logs/creditor_proxy";
-
 // Factories
 import { SimpleInterestParameters } from "../factories/terms_contract_parameters";
 import { DebtOfferFactory } from "../factories/debt_offer_factory";
-
 // Wrappers
 import { CreditorProxyContract } from "../../../types/generated/creditor_proxy";
 import { ContractRegistryContract } from "../../../types/generated/contract_registry";
-import { CreditorProxyErrorCodes } from "../../../types/errors";
+import {
+    CreditorProxyDecisionEngineErrorCodes,
+    CreditorProxyErrorCodes
+} from "../../../types/errors";
 import { DebtKernelContract } from "../../../types/generated/debt_kernel";
 import { DebtRegistryContract } from "../../../types/generated/debt_registry";
 import { DebtRegistryEntry } from "../../../types/registry/entry";
@@ -44,7 +42,6 @@ import { TokenRegistryContract } from "../../../types/generated/token_registry";
 import { TokenTransferProxyContract } from "../../../types/generated/token_transfer_proxy";
 import { DharmaMultiSigWalletContract } from "../../../types/generated/dharma_multi_sig_wallet";
 import { CreditorProxyDecisionEngineContract } from "../../../types/generated/creditor_proxy_decision_engine";
-
 // Constants
 import { NULL_ISSUANCE_HASH, REVERT_ERROR } from "../test_utils/constants";
 
@@ -247,8 +244,9 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
             signaturesV?: number[],
             signaturesR?: string[],
             signaturesS?: string[],
+            errorEmitterAddress = creditorProxy.address,
         ) => {
-            const packedDecisionEngineParams = debtOffer.getPackedDecisionEngineParams(
+            const packedDecisionEngineParams = offer.getPackedDecisionEngineParams(
                 creditorProxyDecisionEngine.address,
             );
 
@@ -267,7 +265,7 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
 
             expect(errorLog).to.deep.equal(
                 LogError(
-                    creditorProxy.address,
+                    errorEmitterAddress,
                     errorCode,
                     offer.getCreditor(),
                     offer.getCreditorCommitmentHash(),
@@ -836,10 +834,30 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
                         await setupBalancesAndAllowances();
                     });
 
-                    it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {
+                    describe("#getCreditorCommitmentHash", () => {
+                        it("returns the expected creditor hash", async () => {
+                            const packedParams = debtOffer.getPackedDecisionEngineParams(
+                                creditorProxyDecisionEngine.address,
+                            );
+
+                            const params = await creditorProxyDecisionEngine.unpackParameters.callAsync(
+                                packedParams,
+                            );
+
+                            const result = await creditorProxyDecisionEngine.getCreditorCommitmentHash.callAsync(
+                                params[0], params[1], params[2],
+                            );
+
+                            expect(debtOffer.getCreditorCommitmentHash()).to.eq(result);
+                        });
+                    });
+
+                    it("should return INVALID_CREDITOR_SIGNATURE error", async () => {
+                        const errorEmitterAddress = creditorProxyDecisionEngine.address;
+
                         await testShouldReturnError(
                             mismatchedOffer,
-                            CreditorProxyErrorCodes.DEBT_OFFER_NON_CONSENSUAL,
+                            CreditorProxyDecisionEngineErrorCodes.INVALID_CREDITOR_SIGNATURE,
                             [
                                 mismatchedOffer.getSignaturesV()[0],
                                 null,
@@ -855,6 +873,7 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
                                 null,
                                 mismatchedOffer.getSignaturesS()[2],
                             ],
+                            errorEmitterAddress,
                         );
                     });
                 });
