@@ -82,7 +82,6 @@ contract CreditorProxyDecisionEngine {
     }
 
     function evaluate(
-        address creditor,
         bytes32[] memory decisionEngineParams,
         bytes32[] signaturesR,
         bytes32[] signaturesS,
@@ -90,6 +89,8 @@ contract CreditorProxyDecisionEngine {
     )
     public view returns (bool _paramsVerified, bytes32 _creditorCommitmentHash)
     {
+        address creditor = address(decisionEngineParams[0]);
+
         return verifyCreditorCommitment(
             creditor,
             decisionEngineParams,

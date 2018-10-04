@@ -23,7 +23,7 @@ import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
 import "zeppelin-solidity/contracts/token/ERC20/ERC20.sol";
 
-import "./decision_engines/CreditorProxyDecisionEngine.sol";
+import "./decision_engines/DecisionEngine.sol";
 
 
 /**
@@ -80,13 +80,11 @@ contract CreditorProxy is Pausable {
         bytes32[] signaturesS,
         bytes32[] signaturesR
     ) public view returns (bool, bytes32) {
-        address creditor = address(decisionEngineParams[0]);
         address decisionEngineAddress = address(decisionEngineParams[1]);
 
-        CreditorProxyDecisionEngine decisionEngine = CreditorProxyDecisionEngine(decisionEngineAddress);
+        DecisionEngine decisionEngine = DecisionEngine(decisionEngineAddress);
 
         return decisionEngine.evaluate(
-            creditor,
             decisionEngineParams,
             signaturesR,
             signaturesS,
@@ -238,7 +236,7 @@ contract CreditorProxy is Pausable {
 
         require(msg.sender == creditor);
 
-        CreditorProxyDecisionEngine decisionEngine = CreditorProxyDecisionEngine(decisionEngineAddress);
+        DecisionEngine decisionEngine = DecisionEngine(decisionEngineAddress);
 
         bytes32 creditorCommitmentHash = decisionEngine.getIdentifier(
             decisionEngineParams
