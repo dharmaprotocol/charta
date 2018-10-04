@@ -178,6 +178,19 @@ export class DebtOffer extends SignableMessage {
     }
 }
 
+export interface VerificationParameters {
+    creditorAddress: string;
+    decisionEngineAddress: string;
+    repaymentRouterAddress: string;
+    underwriterAddress: string;
+    termsContractAddress: string;
+    creditorFee: BigNumber;
+    underwriterRiskRating: BigNumber;
+    commitmentExpirationTimestampInSec: BigNumber;
+    salt: BigNumber;
+    termsContractParameters: string;
+}
+
 export class SignedDebtOffer extends DebtOffer {
     private creditorSignature: ECDSASignature;
     private debtorSignature: ECDSASignature;
@@ -193,6 +206,57 @@ export class SignedDebtOffer extends DebtOffer {
         this.creditorSignature = creditorSignature;
         this.debtorSignature = debtorSignature;
         this.underwriterSignature = underwriterSignature;
+    }
+
+    public getDecisionEngineParams(decisionEngineAddress: string): VerificationParameters {
+        return {
+            creditorAddress: this.getCreditor(),
+            decisionEngineAddress,
+            repaymentRouterAddress: this.getRepaymentRouterVersion(),
+            underwriterAddress: this.getUnderwriter(),
+            termsContractAddress: this.getTermsContract(),
+            creditorFee: this.getCreditorFee(),
+            underwriterRiskRating: this.getUnderwriterRiskRating(),
+            commitmentExpirationTimestampInSec: this.getExpiration(),
+            salt: this.getSalt(),
+            termsContractParameters: this.getTermsContractParameters(),
+        };
+    }
+
+    public getPackedDecisionEngineParams(decisionEngineAddress: string) {
+        const decisionEngineParams = this.getDecisionEngineParams(decisionEngineAddress);
+
+        const {
+            // Addresses
+            creditorAddress,
+            repaymentRouterAddress,
+            underwriterAddress,
+            termsContractAddress,
+            // uint
+            creditorFee,
+            underwriterRiskRating,
+            commitmentExpirationTimestampInSec,
+            salt,
+            // bytes32
+            termsContractParameters,
+        } = decisionEngineParams;
+
+        // Return a list conformable to type bytes32.
+        return [
+            // Addresses
+            this.addressToBytes32(creditorAddress),
+            this.addressToBytes32(decisionEngineAddress),
+            this.addressToBytes32(repaymentRouterAddress),
+            this.addressToBytes32(underwriterAddress),
+            this.addressToBytes32(termsContractAddress),
+            // uint
+            this.bigNumberToBytes32(creditorFee),
+            this.bigNumberToBytes32(underwriterRiskRating),
+            this.bigNumberToBytes32(commitmentExpirationTimestampInSec),
+            this.bigNumberToBytes32(salt),
+            // Bytes32
+            termsContractParameters,
+        ];
     }
 
     public getCreditorSignature(): ECDSASignature {
@@ -267,5 +331,15 @@ export class SignedDebtOffer extends DebtOffer {
 
     public getSignaturesV(): number[] {
         return [this.debtorSignature.v, this.creditorSignature.v, this.underwriterSignature.v];
+    }
+
+    public addressToBytes32(address: string): string {
+        return "0x" + address.substr(2, address.length - 2).padStart(64, "0");
+    }
+
+    public bigNumberToBytes32(value: BigNumber): string {
+        const valueNumber = value.toNumber();
+        const valueHex = web3.toHex(valueNumber);
+        return "0x" + valueHex.substr(2, valueHex.length - 2).padStart(64, "0");
     }
 }
