@@ -85,7 +85,7 @@ contract CreditorProxyDecisionEngine {
         return (true, creditorCommitmentHash);
     }
 
-    function genericVerify(
+    function evaluate(
         address creditor,
         bytes32[] memory decisionEngineParams,
         bytes32[] signaturesR,
@@ -101,14 +101,6 @@ contract CreditorProxyDecisionEngine {
             signaturesS[1],
             signaturesV[1]
         );
-    }
-
-    function evaluate()
-        public
-        view
-        returns (bool) {
-        // STUB.
-        return true;
     }
 
     function isExpired(uint expirationTimestampInSec) public view returns (bool expired) {

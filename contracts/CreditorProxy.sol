@@ -85,7 +85,7 @@ contract CreditorProxy is Pausable {
 
         CreditorProxyDecisionEngine decisionEngine = CreditorProxyDecisionEngine(decisionEngineAddress);
 
-        return decisionEngine.genericVerify(
+        return decisionEngine.evaluate(
             creditor,
             decisionEngineParams,
             signaturesR,
