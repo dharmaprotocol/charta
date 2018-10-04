@@ -838,7 +838,7 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
                                 creditorProxyDecisionEngine.address,
                             );
 
-                            const result = await creditorProxyDecisionEngine.getCreditorCommitmentHash.callAsync(
+                            const result = await creditorProxyDecisionEngine.getIdentifier.callAsync(
                                 packedParams,
                             );
 

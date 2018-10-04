@@ -240,7 +240,7 @@ contract CreditorProxy is Pausable {
 
         CreditorProxyDecisionEngine decisionEngine = CreditorProxyDecisionEngine(decisionEngineAddress);
 
-        bytes32 creditorCommitmentHash = decisionEngine.getCreditorCommitmentHash(
+        bytes32 creditorCommitmentHash = decisionEngine.getIdentifier(
             decisionEngineParams
         );
 

@@ -60,7 +60,7 @@ contract CreditorProxyDecisionEngine {
         uint[4] memory uintParams;
         bytes32[1] memory bytesParams;
 
-        creditorCommitmentHash = getCreditorCommitmentHash(decisionEngineParams);
+        creditorCommitmentHash = getIdentifier(decisionEngineParams);
 
         if (!isValidSignature(
             creditor,
@@ -88,7 +88,7 @@ contract CreditorProxyDecisionEngine {
         bytes32[] signaturesS,
         uint8[] signaturesV
     )
-    public view returns (bool, bytes32)
+    public view returns (bool _paramsVerified, bytes32 _creditorCommitmentHash)
     {
         return verifyCreditorCommitment(
             creditor,
@@ -126,7 +126,7 @@ contract CreditorProxyDecisionEngine {
     /**
      * Returns the messaged signed by the creditor to indicate their commitment
      */
-    function getCreditorCommitmentHash(
+    function getIdentifier(
         bytes32[] memory decisionEngineParams
     )
         public
