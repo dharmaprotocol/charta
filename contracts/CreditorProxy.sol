@@ -134,7 +134,7 @@ contract CreditorProxy is Pausable {
 
         if (debtOfferCancelled[creditorCommitmentHash]) {
             LogError(uint8(Errors.DEBT_OFFER_CANCELLED), creditor, creditorCommitmentHash);
-            return NULL_ISSUANCE_HASH; 
+            return NULL_ISSUANCE_HASH;
         }
 
         // principal amount + creditor fee

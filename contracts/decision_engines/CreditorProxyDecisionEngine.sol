@@ -55,7 +55,7 @@ contract CreditorProxyDecisionEngine {
         bytes32 signatureR,
         bytes32 signatureS,
         uint8 signatureV
-    ) public view returns(bool) {
+    ) public view returns(bytes32) {
         address[4] memory addressParams;
         uint[4] memory uintParams;
         bytes32[1] memory bytesParams;
@@ -71,17 +71,18 @@ contract CreditorProxyDecisionEngine {
             creditorCommitmentHash,
             signatureV,
             signatureR,
-            signatureS)) {
+            signatureS)
+        ) {
             LogError(
                 uint8(Errors.INVALID_CREDITOR_SIGNATURE),
                 creditor,
                 creditorCommitmentHash
             );
 
-            return false;
+            return NULL_ISSUANCE_HASH;
         }
 
-        return true;
+        return creditorCommitmentHash;
     }
 
     function genericVerify(
@@ -91,14 +92,14 @@ contract CreditorProxyDecisionEngine {
         bytes32[] signaturesS,
         uint8[] signaturesV
     )
-    public view returns (bool)
+    public view returns (bytes32)
     {
         return verifyCreditorCommitment(
             creditor,
             decisionEngineParams,
-            signaturesR[0],
-            signaturesS[0],
-            signaturesV[0]
+            signaturesR[1],
+            signaturesS[1],
+            signaturesV[1]
         );
     }
 
