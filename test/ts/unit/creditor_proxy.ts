@@ -17,7 +17,10 @@ import { RepaymentRouterContract } from "../../../types/generated/repayment_rout
 import { ContractRegistryContract } from "../../../types/generated/contract_registry";
 import { CreditorProxyDecisionEngineContract } from "../../../types/generated/creditor_proxy_decision_engine";
 
-import { CreditorProxyErrorCodes } from "../../../types/errors";
+import {
+    CreditorProxyDecisionEngineErrorCodes,
+    CreditorProxyErrorCodes,
+} from "../../../types/errors";
 import { SignedDebtOffer } from "../../../types/proxy/debt_offer";
 
 import { BigNumberSetup } from "../test_utils/bignumber_setup";
@@ -182,9 +185,10 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
             it("should throw", async () => {
                 await expect(
                     creditorProxy.cancelDebtOffer.sendTransactionAsync(
-                        debtOffer.getCommitmentAddresses(),
-                        debtOffer.getCommitmentValues(),
-                        debtOffer.getCommitmentBytes32(),
+                        creditorProxyDecisionEngine.address,
+                        debtOffer.getPackedDecisionEngineParams(
+                            creditorProxyDecisionEngine.address,
+                        ),
                         { from: ATTACKER },
                     ),
                 ).to.eventually.be.rejectedWith(REVERT_ERROR);
@@ -198,9 +202,8 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
                 debtOffer = await offerFactory.generateDebtOffer();
 
                 const txHash = await creditorProxy.cancelDebtOffer.sendTransactionAsync(
-                    debtOffer.getCommitmentAddresses(),
-                    debtOffer.getCommitmentValues(),
-                    debtOffer.getCommitmentBytes32(),
+                    creditorProxyDecisionEngine.address,
+                    debtOffer.getPackedDecisionEngineParams(creditorProxyDecisionEngine.address),
                     { from: debtOffer.getCreditor() },
                 );
 
@@ -237,6 +240,7 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
             signaturesV?: number[],
             signaturesR?: string[],
             signaturesS?: string[],
+            errorEmitterAddress = creditorProxy.address,
         ) => {
             const txHash = await creditorProxy.fillDebtOffer.sendTransactionAsync(
                 offer.getPackedDecisionEngineParams(creditorProxyDecisionEngine.address),
@@ -253,7 +257,7 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
 
             expect(errorLog).to.deep.equal(
                 LogError(
-                    creditorProxy.address,
+                    errorEmitterAddress,
                     errorCode,
                     offer.getCreditor(),
                     offer.getCreditorCommitmentHash(),
@@ -516,9 +520,10 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
                     debtOffer = await offerFactory.generateDebtOffer();
                     await setupMocks();
                     await creditorProxy.cancelDebtOffer.sendTransactionAsync(
-                        debtOffer.getCommitmentAddresses(),
-                        debtOffer.getCommitmentValues(),
-                        debtOffer.getCommitmentBytes32(),
+                        creditorProxyDecisionEngine.address,
+                        debtOffer.getPackedDecisionEngineParams(
+                            creditorProxyDecisionEngine.address,
+                        ),
                         { from: debtOffer.getCreditor() },
                     );
                 });
@@ -566,13 +571,14 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
             });
 
             describe("...when submitted by creditor *without* creditor signature attached", async () => {
-                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {
+                it("should return INVALID_CREDITOR_SIGNATURE error", async () => {
                     await testShouldReturnError(
                         debtOffer,
-                        CreditorProxyErrorCodes.DEBT_OFFER_NON_CONSENSUAL,
+                        CreditorProxyDecisionEngineErrorCodes.INVALID_CREDITOR_SIGNATURE,
                         [debtOffer.getSignaturesV()[0], null, debtOffer.getSignaturesV()[2]],
                         [debtOffer.getSignaturesR()[0], null, debtOffer.getSignaturesR()[2]],
                         [debtOffer.getSignaturesS()[0], null, debtOffer.getSignaturesS()[2]],
+                        creditorProxyDecisionEngine.address,
                     );
                 });
             });
@@ -583,13 +589,14 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
                         creditor: CREDITOR_2,
                     });
                 });
-                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {
+                it("should return INVALID_CREDITOR_SIGNATURE error", async () => {
                     await testShouldReturnError(
                         mismatchedDebtOffer,
-                        CreditorProxyErrorCodes.DEBT_OFFER_NON_CONSENSUAL,
+                        CreditorProxyDecisionEngineErrorCodes.INVALID_CREDITOR_SIGNATURE,
                         debtOffer.getSignaturesV(),
                         debtOffer.getSignaturesR(),
                         debtOffer.getSignaturesS(),
+                        creditorProxyDecisionEngine.address,
                     );
                 });
             });
@@ -600,13 +607,14 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
                         repaymentRouterVersion: ATTACKER,
                     });
                 });
-                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {
+                it("should return INVALID_CREDITOR_SIGNATURE error", async () => {
                     await testShouldReturnError(
                         mismatchedDebtOffer,
-                        CreditorProxyErrorCodes.DEBT_OFFER_NON_CONSENSUAL,
+                        CreditorProxyDecisionEngineErrorCodes.INVALID_CREDITOR_SIGNATURE,
                         debtOffer.getSignaturesV(),
                         debtOffer.getSignaturesR(),
                         debtOffer.getSignaturesS(),
+                        creditorProxyDecisionEngine.address,
                     );
                 });
             });
@@ -617,13 +625,14 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
                         creditorFee: new BigNumber(0),
                     });
                 });
-                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {
+                it("should return INVALID_CREDITOR_SIGNATURE error", async () => {
                     await testShouldReturnError(
                         mismatchedDebtOffer,
-                        CreditorProxyErrorCodes.DEBT_OFFER_NON_CONSENSUAL,
+                        CreditorProxyDecisionEngineErrorCodes.INVALID_CREDITOR_SIGNATURE,
                         debtOffer.getSignaturesV(),
                         debtOffer.getSignaturesR(),
                         debtOffer.getSignaturesS(),
+                        creditorProxyDecisionEngine.address,
                     );
                 });
             });
@@ -634,13 +643,14 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
                         underwriter: ATTACKER,
                     });
                 });
-                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {
+                it("should return INVALID_CREDITOR_SIGNATURE error", async () => {
                     await testShouldReturnError(
                         mismatchedDebtOffer,
-                        CreditorProxyErrorCodes.DEBT_OFFER_NON_CONSENSUAL,
+                        CreditorProxyDecisionEngineErrorCodes.INVALID_CREDITOR_SIGNATURE,
                         debtOffer.getSignaturesV(),
                         debtOffer.getSignaturesR(),
                         debtOffer.getSignaturesS(),
+                        creditorProxyDecisionEngine.address,
                     );
                 });
             });
@@ -651,13 +661,14 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
                         underwriterRiskRating: new BigNumber(0),
                     });
                 });
-                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {
+                it("should return INVALID_CREDITOR_SIGNATURE error", async () => {
                     await testShouldReturnError(
                         mismatchedDebtOffer,
-                        CreditorProxyErrorCodes.DEBT_OFFER_NON_CONSENSUAL,
+                        CreditorProxyDecisionEngineErrorCodes.INVALID_CREDITOR_SIGNATURE,
                         debtOffer.getSignaturesV(),
                         debtOffer.getSignaturesR(),
                         debtOffer.getSignaturesS(),
+                        creditorProxyDecisionEngine.address,
                     );
                 });
             });
@@ -668,13 +679,14 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
                         termsContract: ATTACKER,
                     });
                 });
-                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {
+                it("should return INVALID_CREDITOR_SIGNATURE error", async () => {
                     await testShouldReturnError(
                         mismatchedDebtOffer,
-                        CreditorProxyErrorCodes.DEBT_OFFER_NON_CONSENSUAL,
+                        CreditorProxyDecisionEngineErrorCodes.INVALID_CREDITOR_SIGNATURE,
                         debtOffer.getSignaturesV(),
                         debtOffer.getSignaturesR(),
                         debtOffer.getSignaturesS(),
+                        creditorProxyDecisionEngine.address,
                     );
                 });
             });
@@ -685,13 +697,14 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
                         termsContractParameters: web3.sha3("mismatched terms contract parameters"),
                     });
                 });
-                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {
+                it("should return INVALID_CREDITOR_SIGNATURE error", async () => {
                     await testShouldReturnError(
                         mismatchedDebtOffer,
-                        CreditorProxyErrorCodes.DEBT_OFFER_NON_CONSENSUAL,
+                        CreditorProxyDecisionEngineErrorCodes.INVALID_CREDITOR_SIGNATURE,
                         debtOffer.getSignaturesV(),
                         debtOffer.getSignaturesR(),
                         debtOffer.getSignaturesS(),
+                        creditorProxyDecisionEngine.address,
                     );
                 });
             });
@@ -702,13 +715,14 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
                         expirationTimestampInSec: new BigNumber(0),
                     });
                 });
-                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {
+                it("should return INVALID_CREDITOR_SIGNATURE error", async () => {
                     await testShouldReturnError(
                         mismatchedDebtOffer,
-                        CreditorProxyErrorCodes.DEBT_OFFER_NON_CONSENSUAL,
+                        CreditorProxyDecisionEngineErrorCodes.INVALID_CREDITOR_SIGNATURE,
                         debtOffer.getSignaturesV(),
                         debtOffer.getSignaturesR(),
                         debtOffer.getSignaturesS(),
+                        creditorProxyDecisionEngine.address,
                     );
                 });
             });
@@ -719,13 +733,14 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
                         salt: new BigNumber(0),
                     });
                 });
-                it("should return DEBT_OFFER_NON_CONSENSUAL error", async () => {
+                it("should return INVALID_CREDITOR_SIGNATURE error", async () => {
                     await testShouldReturnError(
                         mismatchedDebtOffer,
-                        CreditorProxyErrorCodes.DEBT_OFFER_NON_CONSENSUAL,
+                        CreditorProxyDecisionEngineErrorCodes.INVALID_CREDITOR_SIGNATURE,
                         debtOffer.getSignaturesV(),
                         debtOffer.getSignaturesR(),
                         debtOffer.getSignaturesS(),
+                        creditorProxyDecisionEngine.address,
                     );
                 });
             });
