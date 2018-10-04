@@ -29,7 +29,7 @@ import { CreditorProxyContract } from "../../../types/generated/creditor_proxy";
 import { ContractRegistryContract } from "../../../types/generated/contract_registry";
 import {
     CreditorProxyDecisionEngineErrorCodes,
-    CreditorProxyErrorCodes
+    CreditorProxyErrorCodes,
 } from "../../../types/errors";
 import { DebtKernelContract } from "../../../types/generated/debt_kernel";
 import { DebtRegistryContract } from "../../../types/generated/debt_registry";
@@ -845,7 +845,9 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
                             );
 
                             const result = await creditorProxyDecisionEngine.getCreditorCommitmentHash.callAsync(
-                                params[0], params[1], params[2],
+                                params[0],
+                                params[1],
+                                params[2],
                             );
 
                             expect(debtOffer.getCreditorCommitmentHash()).to.eq(result);
