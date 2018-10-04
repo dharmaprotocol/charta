@@ -777,9 +777,9 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
 
                     await creditorProxy.cancelDebtOffer.sendTransactionAsync(
                         creditorProxyDecisionEngine.address,
-                        debtOffer.getCommitmentAddresses(),
-                        debtOffer.getCommitmentValues(),
-                        debtOffer.getCommitmentBytes32(),
+                        debtOffer.getPackedDecisionEngineParams(
+                            creditorProxyDecisionEngine.address,
+                        ),
                         { from: debtOffer.getCreditor() },
                     );
                 });
@@ -838,14 +838,8 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
                                 creditorProxyDecisionEngine.address,
                             );
 
-                            const params = await creditorProxyDecisionEngine.unpackParameters.callAsync(
-                                packedParams,
-                            );
-
                             const result = await creditorProxyDecisionEngine.getCreditorCommitmentHash.callAsync(
-                                params[0],
-                                params[1],
-                                params[2],
+                                packedParams,
                             );
 
                             expect(debtOffer.getCreditorCommitmentHash()).to.eq(result);
