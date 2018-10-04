@@ -7,7 +7,7 @@ import "zeppelin-solidity/contracts/math/SafeMath.sol";
  * should fill a loan, depending on the loan-to-value ratio of the principal and collateral amounts.
  * These amounts are defined by prices that are signed by the relayer.
  */
-contract LTVDecisionEngine {
+contract CreditorProxyDecisionEngine {
     using SafeMath for uint;
 
     uint public constant PRECISION = 4;
@@ -28,8 +28,25 @@ contract LTVDecisionEngine {
         bytes32 indexed _creditorCommitmentHash
     );
 
-    function LTVDecisionEngine()
-    public {}
+    function unpackParameters(
+        bytes32[] memory decisionEngineParams
+    ) public view returns(address[4], uint[4], bytes32[1]) {
+        return ([
+            address(decisionEngineParams[0]),  // creditor
+            address(decisionEngineParams[2]),  // repaymentRouter
+            address(decisionEngineParams[3]),  // underwriter
+            address(decisionEngineParams[4])   // termsContract
+        ],
+        [
+            // TODO: ensure the following 4 values do not take up more than 32 bytes when passed in
+            uint(decisionEngineParams[5]),  // creditor fee
+            uint(decisionEngineParams[6]),  // underwriterRiskRating
+            uint(decisionEngineParams[7]),  // commitmentExpirationTimestampInSec
+            uint(decisionEngineParams[8])   // salt
+        ],
+        [decisionEngineParams[9]] // termsContractParameters
+        );
+    }
 
     // Verifies that the creditor has signed all of the given parameters.
     function verifyCreditorCommitment(
@@ -39,20 +56,14 @@ contract LTVDecisionEngine {
         bytes32 signatureS,
         uint8 signatureV
     ) public view returns(bool) {
+        address[4] memory addressParams;
+        uint[4] memory uintParams;
+        bytes32[1] memory bytesParams;
+
+        (addressParams, uintParams, bytesParams) = unpackParameters(decisionEngineParams);
+
         bytes32 creditorCommitmentHash = getCreditorCommitmentHash(
-            [
-                creditor,
-                address(decisionEngineParams[2]),  // repaymentRouter
-                address(decisionEngineParams[3]),  // underwriter
-                address(decisionEngineParams[4])   // termsContract
-            ],
-            [
-                uint(decisionEngineParams[5]),  // creditor fee
-                uint(decisionEngineParams[6]),  // underwriterRiskRating
-                uint(decisionEngineParams[7]),  // commitmentExpirationTimestampInSec
-                uint(decisionEngineParams[8])   // salt
-            ],
-            [decisionEngineParams[9]] // termsContractParameters
+            addressParams, uintParams, bytesParams
         );
 
         if (!isValidSignature(
