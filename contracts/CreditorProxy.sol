@@ -79,7 +79,7 @@ contract CreditorProxy is Pausable {
         uint8[] signaturesV,
         bytes32[] signaturesS,
         bytes32[] signaturesR
-    ) public view returns (bytes32) {
+    ) public view returns (bool, bytes32) {
         address creditor = address(decisionEngineParams[0]);
         address decisionEngineAddress = address(decisionEngineParams[1]);
 
@@ -114,15 +114,18 @@ contract CreditorProxy is Pausable {
     {
         address creditor = address(decisionEngineParams[0]);
 
+        bool paramsVerified;
+        bytes32 creditorCommitmentHash;
+
         // The following step includes verifying the creditor commitment hash itself.
-        bytes32 creditorCommitmentHash = verifyDecisionEngineParams(
+        (paramsVerified, creditorCommitmentHash) = verifyDecisionEngineParams(
             decisionEngineParams,
             signaturesV,
             signaturesS,
             signaturesR
         );
 
-        if (creditorCommitmentHash == NULL_ISSUANCE_HASH) {
+        if (!paramsVerified) {
             LogError(uint8(Errors.DEBT_OFFER_NON_CONSENSUAL), creditor, creditorCommitmentHash);
             return NULL_ISSUANCE_HASH;
         }
