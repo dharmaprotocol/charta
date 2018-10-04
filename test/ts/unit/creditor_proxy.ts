@@ -15,6 +15,7 @@ import { MockERC20TokenContract } from "../../../types/generated/mock_e_r_c20_to
 import { MockTokenTransferProxyContract } from "../../../types/generated/mock_token_transfer_proxy";
 import { RepaymentRouterContract } from "../../../types/generated/repayment_router";
 import { ContractRegistryContract } from "../../../types/generated/contract_registry";
+import { CreditorProxyDecisionEngineContract } from "../../../types/generated/creditor_proxy_decision_engine";
 
 import { CreditorProxyErrorCodes } from "../../../types/errors";
 import { SignedDebtOffer } from "../../../types/proxy/debt_offer";
@@ -49,6 +50,7 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
     let mockPrincipalToken: MockERC20TokenContract;
     let mockTokenTransferProxy: MockTokenTransferProxyContract;
     let repaymentRouter: RepaymentRouterContract;
+    let creditorProxyDecisionEngine: CreditorProxyDecisionEngineContract;
 
     let offerFactory: DebtOfferFactory;
     let defaultOfferParams: { [key: string]: any };
@@ -83,6 +85,10 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
         mockTokenTransferProxy = await MockTokenTransferProxyContract.deployed(web3, TX_DEFAULTS);
         repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
         mockDebtToken = await MockDebtTokenContract.deployed(web3, TX_DEFAULTS);
+        creditorProxyDecisionEngine = await CreditorProxyDecisionEngineContract.deployed(
+            web3,
+            TX_DEFAULTS,
+        );
 
         // Step 1: Instantiate a truffle instance of the contract.
         const mockDebtKernelArtifactInstance = await mockDebtKernelArtifact.new(
@@ -233,7 +239,7 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
             signaturesS?: string[],
         ) => {
             const txHash = await creditorProxy.fillDebtOffer.sendTransactionAsync(
-                offer.getCreditor(),
+                offer.getPackedDecisionEngineParams(creditorProxyDecisionEngine.address),
                 offer.getOrderAddresses(),
                 offer.getOrderValues(),
                 offer.getOrderBytes32(),
@@ -300,7 +306,9 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
                     await setupMocks();
 
                     const txHash = await creditorProxy.fillDebtOffer.sendTransactionAsync(
-                        debtOffer.getCreditor(),
+                        debtOffer.getPackedDecisionEngineParams(
+                            creditorProxyDecisionEngine.address,
+                        ),
                         debtOffer.getOrderAddresses(),
                         debtOffer.getOrderValues(),
                         debtOffer.getOrderBytes32(),
@@ -483,7 +491,9 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
                     debtOffer = await offerFactory.generateDebtOffer();
                     await setupMocks();
                     await creditorProxy.fillDebtOffer.sendTransactionAsync(
-                        debtOffer.getCreditor(),
+                        debtOffer.getPackedDecisionEngineParams(
+                            creditorProxyDecisionEngine.address,
+                        ),
                         debtOffer.getOrderAddresses(),
                         debtOffer.getOrderValues(),
                         debtOffer.getOrderBytes32(),
@@ -532,7 +542,9 @@ contract("Creditor Proxy (Unit Tests)", async (ACCOUNTS) => {
                 it("should throw", async () => {
                     expect(
                         creditorProxy.fillDebtOffer.sendTransactionAsync(
-                            debtOffer.getCreditor(),
+                            debtOffer.getPackedDecisionEngineParams(
+                                creditorProxyDecisionEngine.address,
+                            ),
                             debtOffer.getOrderAddresses(),
                             debtOffer.getOrderValues(),
                             debtOffer.getOrderBytes32(),
