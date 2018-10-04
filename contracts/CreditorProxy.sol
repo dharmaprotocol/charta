@@ -229,24 +229,24 @@ contract CreditorProxy is Pausable {
      */
     function cancelDebtOffer(
         address decisionEngineAddress,
-        address[4] commitmentAddresses,
-        uint[4] commitmentValues,
-        bytes32[1] termsContractParameters
+        bytes32[] decisionEngineParams
     )
         public
         whenNotPaused
     {
-        require(msg.sender == commitmentAddresses[0]);
+        address creditor = address(decisionEngineParams[0]);
+
+        require(msg.sender == creditor);
 
         CreditorProxyDecisionEngine decisionEngine = CreditorProxyDecisionEngine(decisionEngineAddress);
 
         bytes32 creditorCommitmentHash = decisionEngine.getCreditorCommitmentHash(
-            commitmentAddresses,
-            commitmentValues,
-            termsContractParameters
+            decisionEngineParams
         );
+
         debtOfferCancelled[creditorCommitmentHash] = true;
-        LogDebtOfferCancelled(commitmentAddresses[0], creditorCommitmentHash);
+
+        LogDebtOfferCancelled(creditor, creditorCommitmentHash);
     }
 
     ////////////////////////

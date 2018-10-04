@@ -30,7 +30,7 @@ contract CreditorProxyDecisionEngine {
 
     function unpackParameters(
         bytes32[] memory decisionEngineParams
-    ) public view returns(address[4], uint[4], bytes32[1]) {
+    ) public pure returns(address[4], uint[4], bytes32[1]) {
         return ([
             address(decisionEngineParams[0]),  // creditor
             address(decisionEngineParams[2]),  // repaymentRouter
@@ -60,11 +60,7 @@ contract CreditorProxyDecisionEngine {
         uint[4] memory uintParams;
         bytes32[1] memory bytesParams;
 
-        (addressParams, uintParams, bytesParams) = unpackParameters(decisionEngineParams);
-
-        creditorCommitmentHash = getCreditorCommitmentHash(
-            addressParams, uintParams, bytesParams
-        );
+        creditorCommitmentHash = getCreditorCommitmentHash(decisionEngineParams);
 
         if (!isValidSignature(
             creditor,
@@ -131,14 +127,18 @@ contract CreditorProxyDecisionEngine {
      * Returns the messaged signed by the creditor to indicate their commitment
      */
     function getCreditorCommitmentHash(
-        address[4] commitmentAddresses,
-        uint[4] commitmentValues,
-        bytes32[1] termsContractParameters
+        bytes32[] memory decisionEngineParams
     )
         public
         pure
         returns (bytes32 _creditorCommitmentHash)
     {
+        address[4] memory commitmentAddresses;
+        uint[4] memory commitmentValues;
+        bytes32[1] memory termsContractParameters;
+
+        (commitmentAddresses, commitmentValues, termsContractParameters) = unpackParameters(decisionEngineParams);
+
         return keccak256(
             commitmentAddresses[0], // creditor
             commitmentAddresses[1], // repayment router version
