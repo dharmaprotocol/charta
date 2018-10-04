@@ -225,6 +225,7 @@ contract CreditorProxy is Pausable {
      * Allows creditor to prevent a debt offer from being used in the future
      */
     function cancelDebtOffer(
+        address decisionEngineAddress,
         address[4] commitmentAddresses,
         uint[4] commitmentValues,
         bytes32[1] termsContractParameters
@@ -232,18 +233,17 @@ contract CreditorProxy is Pausable {
         public
         whenNotPaused
     {
-        // sender must be the creditor
-        // STUB.
+        require(msg.sender == commitmentAddresses[0]);
 
-        // TODO: Something like:
-        //        require(msg.sender == commitmentAddresses[0]);
-        //        bytes32 creditorCommitmentHash = getCreditorCommitmentHash(
-        //            commitmentAddresses,
-        //            commitmentValues,
-        //            termsContractParameters
-        //        );
-        //        debtOfferCancelled[creditorCommitmentHash] = true;
-        //  LogDebtOfferCancelled(commitmentAddresses[0], creditorCommitmentHash);
+        CreditorProxyDecisionEngine decisionEngine = CreditorProxyDecisionEngine(decisionEngineAddress);
+
+        bytes32 creditorCommitmentHash = decisionEngine.getCreditorCommitmentHash(
+            commitmentAddresses,
+            commitmentValues,
+            termsContractParameters
+        );
+        debtOfferCancelled[creditorCommitmentHash] = true;
+        LogDebtOfferCancelled(commitmentAddresses[0], creditorCommitmentHash);
     }
 
     ////////////////////////
