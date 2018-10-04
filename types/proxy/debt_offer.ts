@@ -178,7 +178,7 @@ export class DebtOffer extends SignableMessage {
     }
 }
 
-export interface VerificationParameters {
+export interface DecisionEngineParameters {
     creditorAddress: string;
     decisionEngineAddress: string;
     repaymentRouterAddress: string;
@@ -208,7 +208,7 @@ export class SignedDebtOffer extends DebtOffer {
         this.underwriterSignature = underwriterSignature;
     }
 
-    public getDecisionEngineParams(decisionEngineAddress: string): VerificationParameters {
+    public getDecisionEngineParams(decisionEngineAddress: string): DecisionEngineParameters {
         return {
             creditorAddress: this.getCreditor(),
             decisionEngineAddress,

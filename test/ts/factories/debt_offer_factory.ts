@@ -18,7 +18,7 @@ export class DebtOfferFactory {
             params.salt = new BigNumber(
                 Math.random()
                     .toString()
-                    .substring(2),
+                    .substring(2, 6),
             );
         }
 

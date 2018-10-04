@@ -17,7 +17,7 @@ import { BigNumberSetup } from "../test_utils/bignumber_setup";
 import { Web3Utils } from "../../../utils/web3_utils";
 
 // Types
-import { SignedDebtOffer } from "../../../types/proxy/debt_offer";
+import { DecisionEngineParameters, SignedDebtOffer } from "../../../types/proxy/debt_offer";
 
 // Logs
 import { LogApproval, LogTransfer } from "../logs/debt_token";
@@ -43,6 +43,7 @@ import { SimpleInterestTermsContractContract } from "../../../types/generated/si
 import { TokenRegistryContract } from "../../../types/generated/token_registry";
 import { TokenTransferProxyContract } from "../../../types/generated/token_transfer_proxy";
 import { DharmaMultiSigWalletContract } from "../../../types/generated/dharma_multi_sig_wallet";
+import { CreditorProxyDecisionEngineContract } from "../../../types/generated/creditor_proxy_decision_engine";
 
 // Constants
 import { REVERT_ERROR } from "../test_utils/constants";
@@ -61,64 +62,6 @@ const creditorProxyArtifacts = artifacts.require("CreditorProxy");
 const debtTokenArtifacts = artifacts.require("DebtToken");
 const debtKernelArtifacts = artifacts.require("DebtKernel");
 
-interface VerificationParameters {
-    creditorAddress: string;
-    decisionEngineAddress: string;
-    repaymentRouterAddress: string;
-    underwriterAddress: string;
-    termsContractAddress: string;
-    creditorFee: BigNumber;
-    underwriterRiskRating: BigNumber;
-    commitmentExpirationTimestampInSec: BigNumber;
-    salt: BigNumber;
-    termsContractParameters: string;
-}
-
-function addressToBytes32(address: string): string {
-    return "0x" + address.substr(2, address.length - 2).padStart(64, "0");
-}
-
-function bigNumberToBytes32(value: BigNumber): string {
-    const valueString = value.toString();
-    return "0x" + valueString.substr(2, valueString.length - 2).padStart(64, "0");
-}
-
-function packVerificationParams(params: VerificationParameters): string[] {
-    // The following items need to be converted to bytes32:
-    const {
-        // Addresses
-        creditorAddress,
-        decisionEngineAddress,
-        repaymentRouterAddress,
-        underwriterAddress,
-        termsContractAddress,
-        // uint
-        creditorFee,
-        underwriterRiskRating,
-        commitmentExpirationTimestampInSec,
-        salt,
-        // bytes32
-        termsContractParameters,
-    } = params;
-
-    // Return a list conformable to type bytes32.
-    return [
-        // Addresses
-        addressToBytes32(creditorAddress),
-        addressToBytes32(decisionEngineAddress),
-        addressToBytes32(repaymentRouterAddress),
-        addressToBytes32(underwriterAddress),
-        addressToBytes32(termsContractAddress),
-        // uint
-        bigNumberToBytes32(creditorFee),
-        bigNumberToBytes32(underwriterRiskRating),
-        bigNumberToBytes32(commitmentExpirationTimestampInSec),
-        bigNumberToBytes32(salt),
-        // Bytes32
-        termsContractParameters,
-    ];
-}
-
 contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
     let creditorProxy: CreditorProxyContract;
     let contractRegistry: ContractRegistryContract;
@@ -128,6 +71,7 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
     let tokenTransferProxy: TokenTransferProxyContract;
     let debtTokenContract: DebtTokenContract;
     let debtRegistryContract: DebtRegistryContract;
+    let creditorProxyDecisionEngine: CreditorProxyDecisionEngineContract;
 
     let dummyREPToken: DummyTokenContract;
 
@@ -166,6 +110,11 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
         multiSig = await DharmaMultiSigWalletContract.deployed(web3, TX_DEFAULTS);
         repaymentRouter = await RepaymentRouterContract.deployed(web3, TX_DEFAULTS);
         simpleInterestTermsContract = await SimpleInterestTermsContractContract.deployed(
+            web3,
+            TX_DEFAULTS,
+        );
+
+        creditorProxyDecisionEngine = await CreditorProxyDecisionEngineContract.deployed(
             web3,
             TX_DEFAULTS,
         );
@@ -226,6 +175,66 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
             expect(creditorProxy.contractRegistry.callAsync()).to.eventually.equal(
                 contractRegistry.address,
             );
+        });
+    });
+
+    describe("#unpackParameters", () => {
+        let debtOffer: SignedDebtOffer;
+
+        it.only("should return the expected parameters", async () => {
+            debtOffer = await offerFactory.generateDebtOffer();
+
+            const packedDecisionEngineParams = debtOffer.getPackedDecisionEngineParams(
+                creditorProxyDecisionEngine.address,
+            );
+
+            const unpackedParameters = await creditorProxyDecisionEngine.unpackParameters.callAsync(
+                packedDecisionEngineParams,
+            );
+
+            expect(JSON.stringify(unpackedParameters[0])).to.equal(
+                JSON.stringify([
+                    debtOffer.getCreditor(),
+                    debtOffer.getRepaymentRouterVersion(),
+                    debtOffer.getUnderwriter(),
+                    debtOffer.getTermsContract(),
+                ]),
+            );
+
+            expect(JSON.stringify(unpackedParameters[1])).to.equal(
+                JSON.stringify([
+                    debtOffer.getCreditorFee(),
+                    debtOffer.getUnderwriterRiskRating(),
+                    debtOffer.getExpiration(),
+                    debtOffer.getSalt(),
+                ]),
+            );
+
+            expect(JSON.stringify(unpackedParameters[2])).to.equal(
+                JSON.stringify([debtOffer.getTermsContractParameters()]),
+            );
+        });
+    });
+
+    describe("#verifyDecisionEngineParams", () => {
+        let debtOffer: SignedDebtOffer;
+
+        it.only("should verify the debt offer is approved by the creditor", async () => {
+            debtOffer = await offerFactory.generateDebtOffer();
+
+            const packedDecisionEngineParams = debtOffer.getPackedDecisionEngineParams(
+                creditorProxyDecisionEngine.address,
+            );
+
+            const isVerified = await creditorProxyDecisionEngine.verifyCreditorCommitment.callAsync(
+                debtOffer.getCreditor(),
+                packedDecisionEngineParams,
+                debtOffer.getSignaturesR()[1],
+                debtOffer.getSignaturesS()[1],
+                debtOffer.getSignaturesV()[1],
+            );
+
+            expect(isVerified).to.equal(true);
         });
     });
 
