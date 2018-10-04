@@ -55,14 +55,14 @@ contract CreditorProxyDecisionEngine {
         bytes32 signatureR,
         bytes32 signatureS,
         uint8 signatureV
-    ) public view returns(bytes32) {
+    ) public view returns(bool success, bytes32 creditorCommitmentHash) {
         address[4] memory addressParams;
         uint[4] memory uintParams;
         bytes32[1] memory bytesParams;
 
         (addressParams, uintParams, bytesParams) = unpackParameters(decisionEngineParams);
 
-        bytes32 creditorCommitmentHash = getCreditorCommitmentHash(
+        creditorCommitmentHash = getCreditorCommitmentHash(
             addressParams, uintParams, bytesParams
         );
 
@@ -79,10 +79,10 @@ contract CreditorProxyDecisionEngine {
                 creditorCommitmentHash
             );
 
-            return NULL_ISSUANCE_HASH;
+            return (false, creditorCommitmentHash);
         }
 
-        return creditorCommitmentHash;
+        return (true, creditorCommitmentHash);
     }
 
     function genericVerify(
@@ -92,7 +92,7 @@ contract CreditorProxyDecisionEngine {
         bytes32[] signaturesS,
         uint8[] signaturesV
     )
-    public view returns (bytes32)
+    public view returns (bool, bytes32)
     {
         return verifyCreditorCommitment(
             creditor,
