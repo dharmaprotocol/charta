@@ -23,7 +23,7 @@ import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
 import "zeppelin-solidity/contracts/token/ERC20/ERC20.sol";
 
-import "./decision_engines/LTVDecisionEngine.sol";
+import "./decision_engines/CreditorProxyDecisionEngine.sol";
 
 
 /**
@@ -83,7 +83,7 @@ contract CreditorProxy is Pausable {
         address creditor = address(decisionEngineParams[0]);
         address decisionEngineAddress = address(decisionEngineParams[1]);
 
-        LTVDecisionEngine decisionEngine = LTVDecisionEngine(decisionEngineAddress);
+        CreditorProxyDecisionEngine decisionEngine = CreditorProxyDecisionEngine(decisionEngineAddress);
 
         return decisionEngine.genericVerify(
             creditor,
@@ -123,7 +123,7 @@ contract CreditorProxy is Pausable {
         );
 
         if (creditorCommitmentHash == NULL_ISSUANCE_HASH) {
-            // The creditor commitment has was not correctly signed.
+            LogError(uint8(Errors.DEBT_OFFER_NON_CONSENSUAL), creditor, creditorCommitmentHash);
             return NULL_ISSUANCE_HASH;
         }
 

@@ -780,6 +780,7 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
                     await setupBalancesAndAllowances();
 
                     await creditorProxy.cancelDebtOffer.sendTransactionAsync(
+                        creditorProxyDecisionEngine.address,
                         debtOffer.getCommitmentAddresses(),
                         debtOffer.getCommitmentValues(),
                         debtOffer.getCommitmentBytes32(),

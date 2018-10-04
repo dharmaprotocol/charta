@@ -143,7 +143,7 @@ contract CreditorProxyDecisionEngine {
         uint[4] commitmentValues,
         bytes32[1] termsContractParameters
     )
-        internal
+        public
         pure
         returns (bytes32 _creditorCommitmentHash)
     {
