@@ -82,6 +82,15 @@ contract CreditorProxyDecisionEngine is DecisionEngine {
         return (true, creditorCommitmentHash);
     }
 
+    function evaluateDecision(
+        bytes32[] decisionEngineParams,
+        address[6] orderAddresses,
+        uint[8] orderValues,
+        bytes32[1] orderBytes32
+    ) public view returns (bool) {
+        return true;
+    }
+
     function evaluateConsensuality(
         bytes32[] memory decisionEngineParams,
         bytes32[] signaturesR,

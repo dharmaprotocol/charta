@@ -27,6 +27,13 @@ interface DecisionEngine {
         uint8[] signaturesV
     ) public view returns (bool _success, bytes32 _id);
 
+    function evaluateDecision(
+        bytes32[] memory decisionEngineParams,
+        address[6] orderAddresses, // repayment-router, debtor, uw, tc, p-token, relayer
+        uint[8] orderValues, // rr, salt, pa, uwFee, rFee, cFee, dFee, expTime
+        bytes32[1] orderBytes32 // tcParams
+    ) public view returns (bool _success);
+
     function getIdentifier(
         bytes32[] memory decisionEngineParams
     ) public pure returns (bytes32 _id);

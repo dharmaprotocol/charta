@@ -74,22 +74,40 @@ contract CreditorProxy is Pausable {
         contractRegistry = ContractRegistry(_contractRegistry);
     }
 
-    function verifyDecisionEngineParams(
+    function decide(
         bytes32[] decisionEngineParams,
-        uint8[] signaturesV,
-        bytes32[] signaturesS,
-        bytes32[] signaturesR
-    ) public view returns (bool, bytes32) {
+        address[6] orderAddresses,
+        uint[8] orderValues,
+        bytes32[1] orderBytes32,
+        uint8[] memory signaturesV,
+        bytes32[] memory signaturesR,
+        bytes32[] memory signaturesS
+    ) public view returns (bool, bytes32 creditorCommitmentHash) {
+        bool paramsVerified;
+
         address decisionEngineAddress = address(decisionEngineParams[1]);
 
         DecisionEngine decisionEngine = DecisionEngine(decisionEngineAddress);
 
-        return decisionEngine.evaluateConsensuality(
+        (paramsVerified, creditorCommitmentHash) = decisionEngine.evaluateConsensuality(
             decisionEngineParams,
             signaturesR,
             signaturesS,
             signaturesV
         );
+
+        if (!paramsVerified) {
+            return (paramsVerified, creditorCommitmentHash);
+        }
+
+        bool evaluation = decisionEngine.evaluateDecision(
+            decisionEngineParams,
+            orderAddresses,
+            orderValues,
+            orderBytes32
+        );
+
+        return (evaluation, creditorCommitmentHash);
     }
 
     /*
@@ -115,12 +133,14 @@ contract CreditorProxy is Pausable {
         bool paramsVerified;
         bytes32 creditorCommitmentHash;
 
-        // The following step includes verifying the creditor commitment hash itself.
-        (paramsVerified, creditorCommitmentHash) = verifyDecisionEngineParams(
+        (paramsVerified, creditorCommitmentHash) = decide(
             decisionEngineParams,
+            orderAddresses,
+            orderValues,
+            orderBytes32,
             signaturesV,
-            signaturesS,
-            signaturesR
+            signaturesR,
+            signaturesS
         );
 
         if (!paramsVerified) {
