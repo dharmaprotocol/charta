@@ -84,7 +84,7 @@ contract CreditorProxy is Pausable {
 
         DecisionEngine decisionEngine = DecisionEngine(decisionEngineAddress);
 
-        return decisionEngine.evaluate(
+        return decisionEngine.evaluateConsensuality(
             decisionEngineParams,
             signaturesR,
             signaturesS,

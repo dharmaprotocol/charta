@@ -20,12 +20,12 @@ pragma solidity 0.4.18;
 
 
 interface DecisionEngine {
-    function evaluate(
+    function evaluateConsensuality(
         bytes32[] memory decisionEngineParams,
         bytes32[] signaturesR,
         bytes32[] signaturesS,
         uint8[] signaturesV
-    ) public view returns (bool _success, bytes32);
+    ) public view returns (bool _success, bytes32 _id);
 
     function getIdentifier(
         bytes32[] memory decisionEngineParams
