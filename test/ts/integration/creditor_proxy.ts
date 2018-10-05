@@ -243,6 +243,7 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
             signaturesR?: string[],
             signaturesS?: string[],
             errorEmitterAddress = creditorProxy.address,
+            offerForParams = offer,
         ) => {
             const packedDecisionEngineParams = offer.getPackedDecisionEngineParams(
                 creditorProxyDecisionEngine.address,
@@ -250,9 +251,9 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
 
             const txHash = await creditorProxy.fillDebtOffer.sendTransactionAsync(
                 packedDecisionEngineParams,
-                offer.getOrderAddresses(),
-                offer.getOrderValues(),
-                offer.getOrderBytes32(),
+                offerForParams.getOrderAddresses(),
+                offerForParams.getOrderValues(),
+                offerForParams.getOrderBytes32(),
                 signaturesV || offer.getSignaturesV(),
                 signaturesR || offer.getSignaturesR(),
                 signaturesS || offer.getSignaturesS(),
@@ -284,6 +285,7 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
             const debtorBalanceAndAllowance = new BigNumber(0);
             const creditorBalanceAndAllowance = debtOffer
                 .getPrincipalAmount()
+                .times(2)
                 .plus(debtOffer.getCreditorFee());
 
             await token.setBalance.sendTransactionAsync(debtor, debtorBalanceAndAllowance, {
@@ -1050,6 +1052,35 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
                             debtOffer.getSignaturesR(),
                             debtOffer.getSignaturesS(),
                             creditorProxyDecisionEngine.address,
+                        );
+                    });
+                });
+
+                describe("principal amount is above the value signed off by the creditor", async () => {
+                    before(async () => {
+                        mismatchedOffer = await offerFactory.generateDebtOffer({
+                            principalAmount: debtOffer.getPrincipalAmount().plus(10000),
+                        });
+                        await setupBalancesAndAllowances();
+                    });
+
+                    it("should not fill", async () => {
+                        const signaturesV = mismatchedOffer.getSignaturesV();
+                        const signaturesR = mismatchedOffer.getSignaturesR();
+                        const signaturesS = mismatchedOffer.getSignaturesS();
+
+                        signaturesV[1] = debtOffer.getSignaturesV()[1];
+                        signaturesR[1] = debtOffer.getSignaturesR()[1];
+                        signaturesS[1] = debtOffer.getSignaturesS()[1];
+
+                        await testShouldReturnError(
+                            debtOffer,
+                            CreditorProxyDecisionEngineErrorCodes.INVALID_CREDITOR_SIGNATURE,
+                            signaturesV,
+                            signaturesR,
+                            signaturesS,
+                            creditorProxyDecisionEngine.address,
+                            mismatchedOffer,
                         );
                     });
                 });
