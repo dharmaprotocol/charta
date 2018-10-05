@@ -1,13 +1,14 @@
 pragma solidity ^0.4.18;
 
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
+import "./DecisionEngine.sol";
 
 /**
  * A decision engine for creditor-driven loans, that can evaluate whether or not a creditor
  * should fill a loan, depending on the loan-to-value ratio of the principal and collateral amounts.
  * These amounts are defined by prices that are signed by the relayer.
  */
-contract CreditorProxyDecisionEngine {
+contract CreditorProxyDecisionEngine is DecisionEngine {
     using SafeMath for uint;
 
     uint public constant PRECISION = 4;
