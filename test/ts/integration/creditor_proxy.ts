@@ -71,6 +71,7 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
     let creditorProxyDecisionEngine: CreditorProxyDecisionEngineContract;
 
     let dummyREPToken: DummyTokenContract;
+    let dummyZRXToken: DummyTokenContract;
 
     let defaultOfferParams: { [key: string]: any };
     let offerFactory: DebtOfferFactory;
@@ -95,6 +96,11 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
             "REP",
         );
         dummyREPToken = await DummyTokenContract.at(dummyREPTokenAddress, web3, TX_DEFAULTS);
+
+        const dummyZRXTokenAddress = await dummyTokenRegistryContract.getTokenAddressBySymbol.callAsync(
+            "ZRX",
+        );
+        dummyZRXToken = await DummyTokenContract.at(dummyZRXTokenAddress, web3, TX_DEFAULTS);
 
         debtTokenContract = await DebtTokenContract.deployed(web3, TX_DEFAULTS);
         debtRegistryContract = await DebtRegistryContract.deployed(web3, TX_DEFAULTS);
@@ -1081,6 +1087,52 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
                             signaturesS,
                             creditorProxyDecisionEngine.address,
                             mismatchedOffer,
+                        );
+                    });
+                });
+
+                describe("principal token is not the token signed off by the creditor", async () => {
+                    before(async () => {
+                        debtOffer.params.principalToken = dummyZRXToken.address;
+                        await setupBalancesAndAllowances();
+                    });
+
+                    it("should not fill", async () => {
+                        const signaturesV = debtOffer.getSignaturesV();
+                        const signaturesR = debtOffer.getSignaturesR();
+                        const signaturesS = debtOffer.getSignaturesS();
+
+                        await testShouldReturnError(
+                            debtOffer,
+                            CreditorProxyErrorCodes.DEBT_OFFER_NON_CONSENSUAL,
+                            signaturesV,
+                            signaturesR,
+                            signaturesS,
+                            creditorProxy.address,
+                            debtOffer,
+                        );
+                    });
+                });
+
+                describe("repayment router is not the router signed off by the creditor", async () => {
+                    before(async () => {
+                        debtOffer.params.repaymentRouterVersion = dummyZRXToken.address;
+                        await setupBalancesAndAllowances();
+                    });
+
+                    it("should not fill", async () => {
+                        const signaturesV = debtOffer.getSignaturesV();
+                        const signaturesR = debtOffer.getSignaturesR();
+                        const signaturesS = debtOffer.getSignaturesS();
+
+                        await testShouldReturnError(
+                            debtOffer,
+                            CreditorProxyErrorCodes.DEBT_OFFER_NON_CONSENSUAL,
+                            signaturesV,
+                            signaturesR,
+                            signaturesS,
+                            creditorProxy.address,
+                            debtOffer,
                         );
                     });
                 });
