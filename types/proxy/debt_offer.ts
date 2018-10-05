@@ -223,7 +223,7 @@ export class SignedDebtOffer extends DebtOffer {
         };
     }
 
-    public getPackedDecisionEngineParams(decisionEngineAddress: string) {
+    public getPackedDecisionEngineParams(decisionEngineAddress: string): string[] {
         const decisionEngineParams = this.getDecisionEngineParams(decisionEngineAddress);
 
         const {
