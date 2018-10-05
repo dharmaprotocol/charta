@@ -29,7 +29,7 @@
     "migrate": "truffle migrate --reset -f 8 -to- 9",
     "prettify": "prettier --write test/ts/**/*.ts types/**/*.ts types/*.ts artifacts/*.ts",
     "prepublishOnly": "npm run dist",
-    "test": "npm run compile; npm run generate-typings; npm run transpile; npm run migrate; truffle test transpiled/test/ts/unit/creditor_proxy.js",
+    "test": "npm run compile; npm run generate-typings; npm run transpile; npm run migrate; truffle test transpiled/test/ts/integration/creditor_proxy.js",
     "chain": "ganache-cli --networkId 70 --accounts 20",
     "validate": "npm ls"
   },
