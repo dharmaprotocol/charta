@@ -84,11 +84,25 @@ contract CreditorProxyDecisionEngine is DecisionEngine {
 
     function evaluateDecision(
         bytes32[] decisionEngineParams,
-        address[6] orderAddresses,
+        address[6] orderAddresses, // repayment-router, debtor, uw, tc, p-token, relayer
         uint[8] orderValues,
         bytes32[1] orderBytes32
     ) public view returns (bool) {
-        return true;
+
+        address[4] memory commitmentAddresses;
+        uint[4] memory commitmentValues;
+        bytes32[1] memory termsContractParameters;
+
+        (commitmentAddresses, commitmentValues, termsContractParameters) = unpackParameters(decisionEngineParams);
+
+        address creditor = commitmentAddresses[0]; // creditor
+        address router = commitmentAddresses[1]; // repayment router version
+        address underwriter = commitmentAddresses[2]; // underwriter
+        address termsContract = commitmentAddresses[3]; // termsContract
+
+        require(commitmentAddresses[1] == orderAddresses[0]); // repayment router
+        require(commitmentAddresses[2] == orderAddresses[2]); // underwriter
+        require(commitmentAddresses[3] == orderAddresses[3]); // termsContract
     }
 
     function evaluateConsensuality(
@@ -159,7 +173,7 @@ contract CreditorProxyDecisionEngine is DecisionEngine {
             commitmentAddresses[2], // underwriter
             commitmentValues[1], // underwriterRiskRating
             commitmentAddresses[3], // termsContract
-            termsContractParameters[0],
+            termsContractParameters[0], // termsContractParams
             commitmentValues[2], // commitmentExpirationTimestampInSec
             commitmentValues[3] // salt
         );
