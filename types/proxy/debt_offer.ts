@@ -95,14 +95,15 @@ export class DebtOffer extends SignableMessage {
     public getCreditorCommitmentHash(): Bytes32 {
         const hash = solidity.SHA3([
             this.getCreditor(),
+            this.getKernelVersion(),
             this.getRepaymentRouterVersion(),
-            this.getCreditorFee(),
-            this.getUnderwriter(),
-            this.getUnderwriterRiskRating(),
             this.getTermsContract(),
-            this.getTermsContractParameters(),
-            this.getExpiration(),
+            this.getPrincipalToken(),
             this.getSalt(),
+            this.getPrincipalAmount(),
+            this.getCreditorFee(),
+            this.getExpiration(),
+            this.getTermsContractParameters(),
         ]);
         const hashHex = ethUtil.bufferToHex(hash);
         return hashHex;
@@ -238,18 +239,19 @@ export class SignedDebtOffer extends DebtOffer {
     public getCommitmentAddresses(): Address[] {
         return [
             this.getCreditor(),
+            this.getKernelVersion(),
             this.getRepaymentRouterVersion(),
-            this.getUnderwriter(),
             this.getTermsContract(),
+            this.getPrincipalToken(),
         ];
     }
 
     public getCommitmentValues(): BigNumber[] {
         return [
-            this.getCreditorFee(),
-            this.getUnderwriterRiskRating(),
-            this.getExpiration(),
             this.getSalt(),
+            this.getPrincipalAmount(),
+            this.getCreditorFee(),
+            this.getExpiration(),
         ];
     }
 
