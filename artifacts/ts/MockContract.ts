@@ -62,13 +62,13 @@ export const MockContract =
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "/*\n\n  Copyright 2017 Dharma Labs Inc.\n\n  Licensed under the Apache License, Version 2.0 (the \"License\");\n  you may not use this file except in compliance with the License.\n  You may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\n  Unless required by applicable law or agreed to in writing, software\n  distributed under the License is distributed on an \"AS IS\" BASIS,\n  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n  See the License for the specific language governing permissions and\n  limitations under the License.\n\n*/\n\npragma solidity 0.4.18;\n\n\ncontract MockContract {\n    bytes32 internal constant DEFAULT_SIGNATURE_ARGS = bytes32(0);\n\n    // We use bytes32 as our generic base type from and to which we cast all other types\n    mapping (string => bytes32[]) internal functionCallSignatures;\n    mapping (string => mapping (bytes32 => bytes32)) internal mockedReturnValue;\n    mapping (string => mapping (bytes32 => bool)) internal functionCalls;\n\n    function mockReturnValue(\n        string functionName,\n        bytes32 argsSignature,\n        bytes32 returnValue\n    ) public {\n        functionCallSignatures[functionName].push(argsSignature);\n        mockedReturnValue[functionName][argsSignature] = returnValue;\n    }\n\n    function getMockReturnValue(string functionName, bytes32 argsSignature)\n        public\n        view\n        returns (bytes32 _mockReturnValue)\n    {\n        return mockedReturnValue[functionName][argsSignature];\n    }\n\n    function reset() public {\n        for (uint i = 0; i < 10; i++) {\n            string memory functionName = getFunctionList()[i];\n\n            if (bytes(functionName).length != 0) {\n                for (uint j = 0; j < functionCallSignatures[functionName].length; j++) {\n                    bytes32 callSignature = functionCallSignatures[functionName][j];\n                    delete functionCalls[functionName][callSignature];\n                    delete mockedReturnValue[functionName][callSignature];\n                }\n\n                delete functionCallSignatures[functionName];\n            }\n        }\n    }\n\n    function functionCalledWithArgs(string functionName, bytes32 args)\n        internal\n    {\n        functionCalls[functionName][args] = true;\n        functionCallSignatures[functionName].push(args);\n    }\n\n    function wasFunctionCalledWithArgs(string functionName, bytes32 args)\n        internal\n        view\n        returns (bool wasCalled)\n    {\n        return functionCalls[functionName][args];\n    }\n\n    function getFunctionList() internal returns (string[10] functionNames);\n}\n",
-  "sourcePath": "/Users/graemeboy/Dharma/charta/contracts/test/mocks/MockContract.sol",
+  "sourcePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/test/mocks/MockContract.sol",
   "ast": {
     "attributes": {
-      "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/test/mocks/MockContract.sol",
+      "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/test/mocks/MockContract.sol",
       "exportedSymbols": {
         "MockContract": [
-          10692
+          10700
         ]
       }
     },
@@ -81,7 +81,7 @@ export const MockContract =
             ".18"
           ]
         },
-        "id": 10509,
+        "id": 10517,
         "name": "PragmaDirective",
         "src": "584:23:23"
       },
@@ -97,17 +97,17 @@ export const MockContract =
           "documentation": null,
           "fullyImplemented": false,
           "linearizedBaseContracts": [
-            10692
+            10700
           ],
           "name": "MockContract",
-          "scope": 10693
+          "scope": 10701
         },
         "children": [
           {
             "attributes": {
               "constant": true,
               "name": "DEFAULT_SIGNATURE_ARGS",
-              "scope": 10692,
+              "scope": 10700,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "bytes32",
@@ -119,7 +119,7 @@ export const MockContract =
                   "name": "bytes32",
                   "type": "bytes32"
                 },
-                "id": 10510,
+                "id": 10518,
                 "name": "ElementaryTypeName",
                 "src": "638:7:23"
               },
@@ -153,7 +153,7 @@ export const MockContract =
                       "type": "type(bytes32)",
                       "value": "bytes32"
                     },
-                    "id": 10511,
+                    "id": 10519,
                     "name": "ElementaryTypeNameExpression",
                     "src": "689:7:23"
                   },
@@ -170,17 +170,17 @@ export const MockContract =
                       "type": "int_const 0",
                       "value": "0"
                     },
-                    "id": 10512,
+                    "id": 10520,
                     "name": "Literal",
                     "src": "697:1:23"
                   }
                 ],
-                "id": 10513,
+                "id": 10521,
                 "name": "FunctionCall",
                 "src": "689:10:23"
               }
             ],
-            "id": 10514,
+            "id": 10522,
             "name": "VariableDeclaration",
             "src": "638:61:23"
           },
@@ -188,7 +188,7 @@ export const MockContract =
             "attributes": {
               "constant": false,
               "name": "functionCallSignatures",
-              "scope": 10692,
+              "scope": 10700,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(string memory => bytes32[] storage ref)",
@@ -206,7 +206,7 @@ export const MockContract =
                       "name": "string",
                       "type": "string storage pointer"
                     },
-                    "id": 10515,
+                    "id": 10523,
                     "name": "ElementaryTypeName",
                     "src": "804:6:23"
                   },
@@ -221,22 +221,22 @@ export const MockContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 10516,
+                        "id": 10524,
                         "name": "ElementaryTypeName",
                         "src": "814:7:23"
                       }
                     ],
-                    "id": 10517,
+                    "id": 10525,
                     "name": "ArrayTypeName",
                     "src": "814:9:23"
                   }
                 ],
-                "id": 10518,
+                "id": 10526,
                 "name": "Mapping",
                 "src": "795:29:23"
               }
             ],
-            "id": 10519,
+            "id": 10527,
             "name": "VariableDeclaration",
             "src": "795:61:23"
           },
@@ -244,7 +244,7 @@ export const MockContract =
             "attributes": {
               "constant": false,
               "name": "mockedReturnValue",
-              "scope": 10692,
+              "scope": 10700,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(string memory => mapping(bytes32 => bytes32))",
@@ -262,7 +262,7 @@ export const MockContract =
                       "name": "string",
                       "type": "string storage pointer"
                     },
-                    "id": 10520,
+                    "id": 10528,
                     "name": "ElementaryTypeName",
                     "src": "871:6:23"
                   },
@@ -276,7 +276,7 @@ export const MockContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 10521,
+                        "id": 10529,
                         "name": "ElementaryTypeName",
                         "src": "890:7:23"
                       },
@@ -285,22 +285,22 @@ export const MockContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 10522,
+                        "id": 10530,
                         "name": "ElementaryTypeName",
                         "src": "901:7:23"
                       }
                     ],
-                    "id": 10523,
+                    "id": 10531,
                     "name": "Mapping",
                     "src": "881:28:23"
                   }
                 ],
-                "id": 10524,
+                "id": 10532,
                 "name": "Mapping",
                 "src": "862:48:23"
               }
             ],
-            "id": 10525,
+            "id": 10533,
             "name": "VariableDeclaration",
             "src": "862:75:23"
           },
@@ -308,7 +308,7 @@ export const MockContract =
             "attributes": {
               "constant": false,
               "name": "functionCalls",
-              "scope": 10692,
+              "scope": 10700,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(string memory => mapping(bytes32 => bool))",
@@ -326,7 +326,7 @@ export const MockContract =
                       "name": "string",
                       "type": "string storage pointer"
                     },
-                    "id": 10526,
+                    "id": 10534,
                     "name": "ElementaryTypeName",
                     "src": "952:6:23"
                   },
@@ -340,7 +340,7 @@ export const MockContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 10527,
+                        "id": 10535,
                         "name": "ElementaryTypeName",
                         "src": "971:7:23"
                       },
@@ -349,22 +349,22 @@ export const MockContract =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 10528,
+                        "id": 10536,
                         "name": "ElementaryTypeName",
                         "src": "982:4:23"
                       }
                     ],
-                    "id": 10529,
+                    "id": 10537,
                     "name": "Mapping",
                     "src": "962:25:23"
                   }
                 ],
-                "id": 10530,
+                "id": 10538,
                 "name": "Mapping",
                 "src": "943:45:23"
               }
             ],
-            "id": 10531,
+            "id": 10539,
             "name": "VariableDeclaration",
             "src": "943:68:23"
           },
@@ -378,7 +378,7 @@ export const MockContract =
               ],
               "name": "mockReturnValue",
               "payable": false,
-              "scope": 10692,
+              "scope": 10700,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -390,7 +390,7 @@ export const MockContract =
                     "attributes": {
                       "constant": false,
                       "name": "functionName",
-                      "scope": 10556,
+                      "scope": 10564,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory",
@@ -403,12 +403,12 @@ export const MockContract =
                           "name": "string",
                           "type": "string storage pointer"
                         },
-                        "id": 10532,
+                        "id": 10540,
                         "name": "ElementaryTypeName",
                         "src": "1052:6:23"
                       }
                     ],
-                    "id": 10533,
+                    "id": 10541,
                     "name": "VariableDeclaration",
                     "src": "1052:19:23"
                   },
@@ -416,7 +416,7 @@ export const MockContract =
                     "attributes": {
                       "constant": false,
                       "name": "argsSignature",
-                      "scope": 10556,
+                      "scope": 10564,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -429,12 +429,12 @@ export const MockContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 10534,
+                        "id": 10542,
                         "name": "ElementaryTypeName",
                         "src": "1081:7:23"
                       }
                     ],
-                    "id": 10535,
+                    "id": 10543,
                     "name": "VariableDeclaration",
                     "src": "1081:21:23"
                   },
@@ -442,7 +442,7 @@ export const MockContract =
                     "attributes": {
                       "constant": false,
                       "name": "returnValue",
-                      "scope": 10556,
+                      "scope": 10564,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -455,17 +455,17 @@ export const MockContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 10536,
+                        "id": 10544,
                         "name": "ElementaryTypeName",
                         "src": "1112:7:23"
                       }
                     ],
-                    "id": 10537,
+                    "id": 10545,
                     "name": "VariableDeclaration",
                     "src": "1112:19:23"
                   }
                 ],
-                "id": 10538,
+                "id": 10546,
                 "name": "ParameterList",
                 "src": "1042:95:23"
               },
@@ -476,7 +476,7 @@ export const MockContract =
                   ]
                 },
                 "children": [],
-                "id": 10539,
+                "id": 10547,
                 "name": "ParameterList",
                 "src": "1145:0:23"
               },
@@ -532,11 +532,11 @@ export const MockContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10519,
+                                      "referencedDeclaration": 10527,
                                       "type": "mapping(string memory => bytes32[] storage ref)",
                                       "value": "functionCallSignatures"
                                     },
-                                    "id": 10540,
+                                    "id": 10548,
                                     "name": "Identifier",
                                     "src": "1155:22:23"
                                   },
@@ -546,21 +546,21 @@ export const MockContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10533,
+                                      "referencedDeclaration": 10541,
                                       "type": "string memory",
                                       "value": "functionName"
                                     },
-                                    "id": 10541,
+                                    "id": 10549,
                                     "name": "Identifier",
                                     "src": "1178:12:23"
                                   }
                                 ],
-                                "id": 10542,
+                                "id": 10550,
                                 "name": "IndexAccess",
                                 "src": "1155:36:23"
                               }
                             ],
-                            "id": 10543,
+                            "id": 10551,
                             "name": "MemberAccess",
                             "src": "1155:41:23"
                           },
@@ -570,21 +570,21 @@ export const MockContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10535,
+                              "referencedDeclaration": 10543,
                               "type": "bytes32",
                               "value": "argsSignature"
                             },
-                            "id": 10544,
+                            "id": 10552,
                             "name": "Identifier",
                             "src": "1197:13:23"
                           }
                         ],
-                        "id": 10545,
+                        "id": 10553,
                         "name": "FunctionCall",
                         "src": "1155:56:23"
                       }
                     ],
-                    "id": 10546,
+                    "id": 10554,
                     "name": "ExpressionStatement",
                     "src": "1155:56:23"
                   },
@@ -627,11 +627,11 @@ export const MockContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10525,
+                                      "referencedDeclaration": 10533,
                                       "type": "mapping(string memory => mapping(bytes32 => bytes32))",
                                       "value": "mockedReturnValue"
                                     },
-                                    "id": 10547,
+                                    "id": 10555,
                                     "name": "Identifier",
                                     "src": "1221:17:23"
                                   },
@@ -641,16 +641,16 @@ export const MockContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10533,
+                                      "referencedDeclaration": 10541,
                                       "type": "string memory",
                                       "value": "functionName"
                                     },
-                                    "id": 10548,
+                                    "id": 10556,
                                     "name": "Identifier",
                                     "src": "1239:12:23"
                                   }
                                 ],
-                                "id": 10550,
+                                "id": 10558,
                                 "name": "IndexAccess",
                                 "src": "1221:31:23"
                               },
@@ -660,16 +660,16 @@ export const MockContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10535,
+                                  "referencedDeclaration": 10543,
                                   "type": "bytes32",
                                   "value": "argsSignature"
                                 },
-                                "id": 10549,
+                                "id": 10557,
                                 "name": "Identifier",
                                 "src": "1253:13:23"
                               }
                             ],
-                            "id": 10551,
+                            "id": 10559,
                             "name": "IndexAccess",
                             "src": "1221:46:23"
                           },
@@ -679,31 +679,31 @@ export const MockContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10537,
+                              "referencedDeclaration": 10545,
                               "type": "bytes32",
                               "value": "returnValue"
                             },
-                            "id": 10552,
+                            "id": 10560,
                             "name": "Identifier",
                             "src": "1270:11:23"
                           }
                         ],
-                        "id": 10553,
+                        "id": 10561,
                         "name": "Assignment",
                         "src": "1221:60:23"
                       }
                     ],
-                    "id": 10554,
+                    "id": 10562,
                     "name": "ExpressionStatement",
                     "src": "1221:60:23"
                   }
                 ],
-                "id": 10555,
+                "id": 10563,
                 "name": "Block",
                 "src": "1145:143:23"
               }
             ],
-            "id": 10556,
+            "id": 10564,
             "name": "FunctionDefinition",
             "src": "1018:270:23"
           },
@@ -717,7 +717,7 @@ export const MockContract =
               ],
               "name": "getMockReturnValue",
               "payable": false,
-              "scope": 10692,
+              "scope": 10700,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -729,7 +729,7 @@ export const MockContract =
                     "attributes": {
                       "constant": false,
                       "name": "functionName",
-                      "scope": 10572,
+                      "scope": 10580,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory",
@@ -742,12 +742,12 @@ export const MockContract =
                           "name": "string",
                           "type": "string storage pointer"
                         },
-                        "id": 10557,
+                        "id": 10565,
                         "name": "ElementaryTypeName",
                         "src": "1322:6:23"
                       }
                     ],
-                    "id": 10558,
+                    "id": 10566,
                     "name": "VariableDeclaration",
                     "src": "1322:19:23"
                   },
@@ -755,7 +755,7 @@ export const MockContract =
                     "attributes": {
                       "constant": false,
                       "name": "argsSignature",
-                      "scope": 10572,
+                      "scope": 10580,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -768,17 +768,17 @@ export const MockContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 10559,
+                        "id": 10567,
                         "name": "ElementaryTypeName",
                         "src": "1343:7:23"
                       }
                     ],
-                    "id": 10560,
+                    "id": 10568,
                     "name": "VariableDeclaration",
                     "src": "1343:21:23"
                   }
                 ],
-                "id": 10561,
+                "id": 10569,
                 "name": "ParameterList",
                 "src": "1321:44:23"
               },
@@ -788,7 +788,7 @@ export const MockContract =
                     "attributes": {
                       "constant": false,
                       "name": "_mockReturnValue",
-                      "scope": 10572,
+                      "scope": 10580,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -801,17 +801,17 @@ export const MockContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 10562,
+                        "id": 10570,
                         "name": "ElementaryTypeName",
                         "src": "1411:7:23"
                       }
                     ],
-                    "id": 10563,
+                    "id": 10571,
                     "name": "VariableDeclaration",
                     "src": "1411:24:23"
                   }
                 ],
-                "id": 10564,
+                "id": 10572,
                 "name": "ParameterList",
                 "src": "1410:26:23"
               },
@@ -819,7 +819,7 @@ export const MockContract =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 10564
+                      "functionReturnParameters": 10572
                     },
                     "children": [
                       {
@@ -848,11 +848,11 @@ export const MockContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10525,
+                                  "referencedDeclaration": 10533,
                                   "type": "mapping(string memory => mapping(bytes32 => bytes32))",
                                   "value": "mockedReturnValue"
                                 },
-                                "id": 10565,
+                                "id": 10573,
                                 "name": "Identifier",
                                 "src": "1458:17:23"
                               },
@@ -862,16 +862,16 @@ export const MockContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10558,
+                                  "referencedDeclaration": 10566,
                                   "type": "string memory",
                                   "value": "functionName"
                                 },
-                                "id": 10566,
+                                "id": 10574,
                                 "name": "Identifier",
                                 "src": "1476:12:23"
                               }
                             ],
-                            "id": 10567,
+                            "id": 10575,
                             "name": "IndexAccess",
                             "src": "1458:31:23"
                           },
@@ -881,31 +881,31 @@ export const MockContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10560,
+                              "referencedDeclaration": 10568,
                               "type": "bytes32",
                               "value": "argsSignature"
                             },
-                            "id": 10568,
+                            "id": 10576,
                             "name": "Identifier",
                             "src": "1490:13:23"
                           }
                         ],
-                        "id": 10569,
+                        "id": 10577,
                         "name": "IndexAccess",
                         "src": "1458:46:23"
                       }
                     ],
-                    "id": 10570,
+                    "id": 10578,
                     "name": "Return",
                     "src": "1451:53:23"
                   }
                 ],
-                "id": 10571,
+                "id": 10579,
                 "name": "Block",
                 "src": "1441:70:23"
               }
             ],
-            "id": 10572,
+            "id": 10580,
             "name": "FunctionDefinition",
             "src": "1294:217:23"
           },
@@ -919,7 +919,7 @@ export const MockContract =
               ],
               "name": "reset",
               "payable": false,
-              "scope": 10692,
+              "scope": 10700,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -932,7 +932,7 @@ export const MockContract =
                   ]
                 },
                 "children": [],
-                "id": 10573,
+                "id": 10581,
                 "name": "ParameterList",
                 "src": "1531:2:23"
               },
@@ -943,7 +943,7 @@ export const MockContract =
                   ]
                 },
                 "children": [],
-                "id": 10574,
+                "id": 10582,
                 "name": "ParameterList",
                 "src": "1541:0:23"
               },
@@ -954,7 +954,7 @@ export const MockContract =
                       {
                         "attributes": {
                           "assignments": [
-                            10576
+                            10584
                           ]
                         },
                         "children": [
@@ -962,7 +962,7 @@ export const MockContract =
                             "attributes": {
                               "constant": false,
                               "name": "i",
-                              "scope": 10645,
+                              "scope": 10653,
                               "stateVariable": false,
                               "storageLocation": "default",
                               "type": "uint256",
@@ -975,12 +975,12 @@ export const MockContract =
                                   "name": "uint",
                                   "type": "uint256"
                                 },
-                                "id": 10575,
+                                "id": 10583,
                                 "name": "ElementaryTypeName",
                                 "src": "1556:4:23"
                               }
                             ],
-                            "id": 10576,
+                            "id": 10584,
                             "name": "VariableDeclaration",
                             "src": "1556:6:23"
                           },
@@ -997,12 +997,12 @@ export const MockContract =
                               "type": "int_const 0",
                               "value": "0"
                             },
-                            "id": 10577,
+                            "id": 10585,
                             "name": "Literal",
                             "src": "1565:1:23"
                           }
                         ],
-                        "id": 10578,
+                        "id": 10586,
                         "name": "VariableDeclarationStatement",
                         "src": "1556:10:23"
                       },
@@ -1027,11 +1027,11 @@ export const MockContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10576,
+                              "referencedDeclaration": 10584,
                               "type": "uint256",
                               "value": "i"
                             },
-                            "id": 10579,
+                            "id": 10587,
                             "name": "Identifier",
                             "src": "1568:1:23"
                           },
@@ -1048,12 +1048,12 @@ export const MockContract =
                               "type": "int_const 10",
                               "value": "10"
                             },
-                            "id": 10580,
+                            "id": 10588,
                             "name": "Literal",
                             "src": "1572:2:23"
                           }
                         ],
-                        "id": 10581,
+                        "id": 10589,
                         "name": "BinaryOperation",
                         "src": "1568:6:23"
                       },
@@ -1077,21 +1077,21 @@ export const MockContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10576,
+                                  "referencedDeclaration": 10584,
                                   "type": "uint256",
                                   "value": "i"
                                 },
-                                "id": 10582,
+                                "id": 10590,
                                 "name": "Identifier",
                                 "src": "1576:1:23"
                               }
                             ],
-                            "id": 10583,
+                            "id": 10591,
                             "name": "UnaryOperation",
                             "src": "1576:3:23"
                           }
                         ],
-                        "id": 10584,
+                        "id": 10592,
                         "name": "ExpressionStatement",
                         "src": "1576:3:23"
                       },
@@ -1100,7 +1100,7 @@ export const MockContract =
                           {
                             "attributes": {
                               "assignments": [
-                                10586
+                                10594
                               ]
                             },
                             "children": [
@@ -1108,7 +1108,7 @@ export const MockContract =
                                 "attributes": {
                                   "constant": false,
                                   "name": "functionName",
-                                  "scope": 10645,
+                                  "scope": 10653,
                                   "stateVariable": false,
                                   "storageLocation": "memory",
                                   "type": "string memory",
@@ -1121,12 +1121,12 @@ export const MockContract =
                                       "name": "string",
                                       "type": "string storage pointer"
                                     },
-                                    "id": 10585,
+                                    "id": 10593,
                                     "name": "ElementaryTypeName",
                                     "src": "1595:6:23"
                                   }
                                 ],
-                                "id": 10586,
+                                "id": 10594,
                                 "name": "VariableDeclaration",
                                 "src": "1595:26:23"
                               },
@@ -1166,16 +1166,16 @@ export const MockContract =
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 10691,
+                                          "referencedDeclaration": 10699,
                                           "type": "function () returns (string memory[10] memory)",
                                           "value": "getFunctionList"
                                         },
-                                        "id": 10587,
+                                        "id": 10595,
                                         "name": "Identifier",
                                         "src": "1624:15:23"
                                       }
                                     ],
-                                    "id": 10588,
+                                    "id": 10596,
                                     "name": "FunctionCall",
                                     "src": "1624:17:23"
                                   },
@@ -1185,21 +1185,21 @@ export const MockContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10576,
+                                      "referencedDeclaration": 10584,
                                       "type": "uint256",
                                       "value": "i"
                                     },
-                                    "id": 10589,
+                                    "id": 10597,
                                     "name": "Identifier",
                                     "src": "1642:1:23"
                                   }
                                 ],
-                                "id": 10590,
+                                "id": 10598,
                                 "name": "IndexAccess",
                                 "src": "1624:20:23"
                               }
                             ],
-                            "id": 10591,
+                            "id": 10599,
                             "name": "VariableDeclarationStatement",
                             "src": "1595:49:23"
                           },
@@ -1265,7 +1265,7 @@ export const MockContract =
                                               "type": "type(bytes storage pointer)",
                                               "value": "bytes"
                                             },
-                                            "id": 10592,
+                                            "id": 10600,
                                             "name": "ElementaryTypeNameExpression",
                                             "src": "1663:5:23"
                                           },
@@ -1275,21 +1275,21 @@ export const MockContract =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 10586,
+                                              "referencedDeclaration": 10594,
                                               "type": "string memory",
                                               "value": "functionName"
                                             },
-                                            "id": 10593,
+                                            "id": 10601,
                                             "name": "Identifier",
                                             "src": "1669:12:23"
                                           }
                                         ],
-                                        "id": 10594,
+                                        "id": 10602,
                                         "name": "FunctionCall",
                                         "src": "1663:19:23"
                                       }
                                     ],
-                                    "id": 10595,
+                                    "id": 10603,
                                     "name": "MemberAccess",
                                     "src": "1663:26:23"
                                   },
@@ -1306,12 +1306,12 @@ export const MockContract =
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 10596,
+                                    "id": 10604,
                                     "name": "Literal",
                                     "src": "1693:1:23"
                                   }
                                 ],
-                                "id": 10597,
+                                "id": 10605,
                                 "name": "BinaryOperation",
                                 "src": "1663:31:23"
                               },
@@ -1322,7 +1322,7 @@ export const MockContract =
                                       {
                                         "attributes": {
                                           "assignments": [
-                                            10599
+                                            10607
                                           ]
                                         },
                                         "children": [
@@ -1330,7 +1330,7 @@ export const MockContract =
                                             "attributes": {
                                               "constant": false,
                                               "name": "j",
-                                              "scope": 10645,
+                                              "scope": 10653,
                                               "stateVariable": false,
                                               "storageLocation": "default",
                                               "type": "uint256",
@@ -1343,12 +1343,12 @@ export const MockContract =
                                                   "name": "uint",
                                                   "type": "uint256"
                                                 },
-                                                "id": 10598,
+                                                "id": 10606,
                                                 "name": "ElementaryTypeName",
                                                 "src": "1719:4:23"
                                               }
                                             ],
-                                            "id": 10599,
+                                            "id": 10607,
                                             "name": "VariableDeclaration",
                                             "src": "1719:6:23"
                                           },
@@ -1365,12 +1365,12 @@ export const MockContract =
                                               "type": "int_const 0",
                                               "value": "0"
                                             },
-                                            "id": 10600,
+                                            "id": 10608,
                                             "name": "Literal",
                                             "src": "1728:1:23"
                                           }
                                         ],
-                                        "id": 10601,
+                                        "id": 10609,
                                         "name": "VariableDeclarationStatement",
                                         "src": "1719:10:23"
                                       },
@@ -1395,11 +1395,11 @@ export const MockContract =
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 10599,
+                                              "referencedDeclaration": 10607,
                                               "type": "uint256",
                                               "value": "j"
                                             },
-                                            "id": 10602,
+                                            "id": 10610,
                                             "name": "Identifier",
                                             "src": "1731:1:23"
                                           },
@@ -1431,11 +1431,11 @@ export const MockContract =
                                                       "overloadedDeclarations": [
                                                         null
                                                       ],
-                                                      "referencedDeclaration": 10519,
+                                                      "referencedDeclaration": 10527,
                                                       "type": "mapping(string memory => bytes32[] storage ref)",
                                                       "value": "functionCallSignatures"
                                                     },
-                                                    "id": 10603,
+                                                    "id": 10611,
                                                     "name": "Identifier",
                                                     "src": "1735:22:23"
                                                   },
@@ -1445,26 +1445,26 @@ export const MockContract =
                                                       "overloadedDeclarations": [
                                                         null
                                                       ],
-                                                      "referencedDeclaration": 10586,
+                                                      "referencedDeclaration": 10594,
                                                       "type": "string memory",
                                                       "value": "functionName"
                                                     },
-                                                    "id": 10604,
+                                                    "id": 10612,
                                                     "name": "Identifier",
                                                     "src": "1758:12:23"
                                                   }
                                                 ],
-                                                "id": 10605,
+                                                "id": 10613,
                                                 "name": "IndexAccess",
                                                 "src": "1735:36:23"
                                               }
                                             ],
-                                            "id": 10606,
+                                            "id": 10614,
                                             "name": "MemberAccess",
                                             "src": "1735:43:23"
                                           }
                                         ],
-                                        "id": 10607,
+                                        "id": 10615,
                                         "name": "BinaryOperation",
                                         "src": "1731:47:23"
                                       },
@@ -1488,21 +1488,21 @@ export const MockContract =
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 10599,
+                                                  "referencedDeclaration": 10607,
                                                   "type": "uint256",
                                                   "value": "j"
                                                 },
-                                                "id": 10608,
+                                                "id": 10616,
                                                 "name": "Identifier",
                                                 "src": "1780:1:23"
                                               }
                                             ],
-                                            "id": 10609,
+                                            "id": 10617,
                                             "name": "UnaryOperation",
                                             "src": "1780:3:23"
                                           }
                                         ],
-                                        "id": 10610,
+                                        "id": 10618,
                                         "name": "ExpressionStatement",
                                         "src": "1780:3:23"
                                       },
@@ -1511,7 +1511,7 @@ export const MockContract =
                                           {
                                             "attributes": {
                                               "assignments": [
-                                                10612
+                                                10620
                                               ]
                                             },
                                             "children": [
@@ -1519,7 +1519,7 @@ export const MockContract =
                                                 "attributes": {
                                                   "constant": false,
                                                   "name": "callSignature",
-                                                  "scope": 10645,
+                                                  "scope": 10653,
                                                   "stateVariable": false,
                                                   "storageLocation": "default",
                                                   "type": "bytes32",
@@ -1532,12 +1532,12 @@ export const MockContract =
                                                       "name": "bytes32",
                                                       "type": "bytes32"
                                                     },
-                                                    "id": 10611,
+                                                    "id": 10619,
                                                     "name": "ElementaryTypeName",
                                                     "src": "1807:7:23"
                                                   }
                                                 ],
-                                                "id": 10612,
+                                                "id": 10620,
                                                 "name": "VariableDeclaration",
                                                 "src": "1807:21:23"
                                               },
@@ -1567,11 +1567,11 @@ export const MockContract =
                                                           "overloadedDeclarations": [
                                                             null
                                                           ],
-                                                          "referencedDeclaration": 10519,
+                                                          "referencedDeclaration": 10527,
                                                           "type": "mapping(string memory => bytes32[] storage ref)",
                                                           "value": "functionCallSignatures"
                                                         },
-                                                        "id": 10613,
+                                                        "id": 10621,
                                                         "name": "Identifier",
                                                         "src": "1831:22:23"
                                                       },
@@ -1581,16 +1581,16 @@ export const MockContract =
                                                           "overloadedDeclarations": [
                                                             null
                                                           ],
-                                                          "referencedDeclaration": 10586,
+                                                          "referencedDeclaration": 10594,
                                                           "type": "string memory",
                                                           "value": "functionName"
                                                         },
-                                                        "id": 10614,
+                                                        "id": 10622,
                                                         "name": "Identifier",
                                                         "src": "1854:12:23"
                                                       }
                                                     ],
-                                                    "id": 10615,
+                                                    "id": 10623,
                                                     "name": "IndexAccess",
                                                     "src": "1831:36:23"
                                                   },
@@ -1600,21 +1600,21 @@ export const MockContract =
                                                       "overloadedDeclarations": [
                                                         null
                                                       ],
-                                                      "referencedDeclaration": 10599,
+                                                      "referencedDeclaration": 10607,
                                                       "type": "uint256",
                                                       "value": "j"
                                                     },
-                                                    "id": 10616,
+                                                    "id": 10624,
                                                     "name": "Identifier",
                                                     "src": "1868:1:23"
                                                   }
                                                 ],
-                                                "id": 10617,
+                                                "id": 10625,
                                                 "name": "IndexAccess",
                                                 "src": "1831:39:23"
                                               }
                                             ],
-                                            "id": 10618,
+                                            "id": 10626,
                                             "name": "VariableDeclarationStatement",
                                             "src": "1807:63:23"
                                           },
@@ -1658,11 +1658,11 @@ export const MockContract =
                                                               "overloadedDeclarations": [
                                                                 null
                                                               ],
-                                                              "referencedDeclaration": 10531,
+                                                              "referencedDeclaration": 10539,
                                                               "type": "mapping(string memory => mapping(bytes32 => bool))",
                                                               "value": "functionCalls"
                                                             },
-                                                            "id": 10619,
+                                                            "id": 10627,
                                                             "name": "Identifier",
                                                             "src": "1899:13:23"
                                                           },
@@ -1672,16 +1672,16 @@ export const MockContract =
                                                               "overloadedDeclarations": [
                                                                 null
                                                               ],
-                                                              "referencedDeclaration": 10586,
+                                                              "referencedDeclaration": 10594,
                                                               "type": "string memory",
                                                               "value": "functionName"
                                                             },
-                                                            "id": 10620,
+                                                            "id": 10628,
                                                             "name": "Identifier",
                                                             "src": "1913:12:23"
                                                           }
                                                         ],
-                                                        "id": 10621,
+                                                        "id": 10629,
                                                         "name": "IndexAccess",
                                                         "src": "1899:27:23"
                                                       },
@@ -1691,26 +1691,26 @@ export const MockContract =
                                                           "overloadedDeclarations": [
                                                             null
                                                           ],
-                                                          "referencedDeclaration": 10612,
+                                                          "referencedDeclaration": 10620,
                                                           "type": "bytes32",
                                                           "value": "callSignature"
                                                         },
-                                                        "id": 10622,
+                                                        "id": 10630,
                                                         "name": "Identifier",
                                                         "src": "1927:13:23"
                                                       }
                                                     ],
-                                                    "id": 10623,
+                                                    "id": 10631,
                                                     "name": "IndexAccess",
                                                     "src": "1899:42:23"
                                                   }
                                                 ],
-                                                "id": 10624,
+                                                "id": 10632,
                                                 "name": "UnaryOperation",
                                                 "src": "1892:49:23"
                                               }
                                             ],
-                                            "id": 10625,
+                                            "id": 10633,
                                             "name": "ExpressionStatement",
                                             "src": "1892:49:23"
                                           },
@@ -1754,11 +1754,11 @@ export const MockContract =
                                                               "overloadedDeclarations": [
                                                                 null
                                                               ],
-                                                              "referencedDeclaration": 10525,
+                                                              "referencedDeclaration": 10533,
                                                               "type": "mapping(string memory => mapping(bytes32 => bytes32))",
                                                               "value": "mockedReturnValue"
                                                             },
-                                                            "id": 10626,
+                                                            "id": 10634,
                                                             "name": "Identifier",
                                                             "src": "1970:17:23"
                                                           },
@@ -1768,16 +1768,16 @@ export const MockContract =
                                                               "overloadedDeclarations": [
                                                                 null
                                                               ],
-                                                              "referencedDeclaration": 10586,
+                                                              "referencedDeclaration": 10594,
                                                               "type": "string memory",
                                                               "value": "functionName"
                                                             },
-                                                            "id": 10627,
+                                                            "id": 10635,
                                                             "name": "Identifier",
                                                             "src": "1988:12:23"
                                                           }
                                                         ],
-                                                        "id": 10628,
+                                                        "id": 10636,
                                                         "name": "IndexAccess",
                                                         "src": "1970:31:23"
                                                       },
@@ -1787,36 +1787,36 @@ export const MockContract =
                                                           "overloadedDeclarations": [
                                                             null
                                                           ],
-                                                          "referencedDeclaration": 10612,
+                                                          "referencedDeclaration": 10620,
                                                           "type": "bytes32",
                                                           "value": "callSignature"
                                                         },
-                                                        "id": 10629,
+                                                        "id": 10637,
                                                         "name": "Identifier",
                                                         "src": "2002:13:23"
                                                       }
                                                     ],
-                                                    "id": 10630,
+                                                    "id": 10638,
                                                     "name": "IndexAccess",
                                                     "src": "1970:46:23"
                                                   }
                                                 ],
-                                                "id": 10631,
+                                                "id": 10639,
                                                 "name": "UnaryOperation",
                                                 "src": "1963:53:23"
                                               }
                                             ],
-                                            "id": 10632,
+                                            "id": 10640,
                                             "name": "ExpressionStatement",
                                             "src": "1963:53:23"
                                           }
                                         ],
-                                        "id": 10633,
+                                        "id": 10641,
                                         "name": "Block",
                                         "src": "1785:250:23"
                                       }
                                     ],
-                                    "id": 10634,
+                                    "id": 10642,
                                     "name": "ForStatement",
                                     "src": "1714:321:23"
                                   },
@@ -1850,11 +1850,11 @@ export const MockContract =
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 10519,
+                                                  "referencedDeclaration": 10527,
                                                   "type": "mapping(string memory => bytes32[] storage ref)",
                                                   "value": "functionCallSignatures"
                                                 },
-                                                "id": 10635,
+                                                "id": 10643,
                                                 "name": "Identifier",
                                                 "src": "2060:22:23"
                                               },
@@ -1864,56 +1864,56 @@ export const MockContract =
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 10586,
+                                                  "referencedDeclaration": 10594,
                                                   "type": "string memory",
                                                   "value": "functionName"
                                                 },
-                                                "id": 10636,
+                                                "id": 10644,
                                                 "name": "Identifier",
                                                 "src": "2083:12:23"
                                               }
                                             ],
-                                            "id": 10637,
+                                            "id": 10645,
                                             "name": "IndexAccess",
                                             "src": "2060:36:23"
                                           }
                                         ],
-                                        "id": 10638,
+                                        "id": 10646,
                                         "name": "UnaryOperation",
                                         "src": "2053:43:23"
                                       }
                                     ],
-                                    "id": 10639,
+                                    "id": 10647,
                                     "name": "ExpressionStatement",
                                     "src": "2053:43:23"
                                   }
                                 ],
-                                "id": 10640,
+                                "id": 10648,
                                 "name": "Block",
                                 "src": "1696:415:23"
                               }
                             ],
-                            "id": 10641,
+                            "id": 10649,
                             "name": "IfStatement",
                             "src": "1659:452:23"
                           }
                         ],
-                        "id": 10642,
+                        "id": 10650,
                         "name": "Block",
                         "src": "1581:540:23"
                       }
                     ],
-                    "id": 10643,
+                    "id": 10651,
                     "name": "ForStatement",
                     "src": "1551:570:23"
                   }
                 ],
-                "id": 10644,
+                "id": 10652,
                 "name": "Block",
                 "src": "1541:586:23"
               }
             ],
-            "id": 10645,
+            "id": 10653,
             "name": "FunctionDefinition",
             "src": "1517:610:23"
           },
@@ -1927,7 +1927,7 @@ export const MockContract =
               ],
               "name": "functionCalledWithArgs",
               "payable": false,
-              "scope": 10692,
+              "scope": 10700,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "internal"
@@ -1939,7 +1939,7 @@ export const MockContract =
                     "attributes": {
                       "constant": false,
                       "name": "functionName",
-                      "scope": 10668,
+                      "scope": 10676,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory",
@@ -1952,12 +1952,12 @@ export const MockContract =
                           "name": "string",
                           "type": "string storage pointer"
                         },
-                        "id": 10646,
+                        "id": 10654,
                         "name": "ElementaryTypeName",
                         "src": "2165:6:23"
                       }
                     ],
-                    "id": 10647,
+                    "id": 10655,
                     "name": "VariableDeclaration",
                     "src": "2165:19:23"
                   },
@@ -1965,7 +1965,7 @@ export const MockContract =
                     "attributes": {
                       "constant": false,
                       "name": "args",
-                      "scope": 10668,
+                      "scope": 10676,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -1978,17 +1978,17 @@ export const MockContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 10648,
+                        "id": 10656,
                         "name": "ElementaryTypeName",
                         "src": "2186:7:23"
                       }
                     ],
-                    "id": 10649,
+                    "id": 10657,
                     "name": "VariableDeclaration",
                     "src": "2186:12:23"
                   }
                 ],
-                "id": 10650,
+                "id": 10658,
                 "name": "ParameterList",
                 "src": "2164:35:23"
               },
@@ -1999,7 +1999,7 @@ export const MockContract =
                   ]
                 },
                 "children": [],
-                "id": 10651,
+                "id": 10659,
                 "name": "ParameterList",
                 "src": "2221:0:23"
               },
@@ -2044,11 +2044,11 @@ export const MockContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10531,
+                                      "referencedDeclaration": 10539,
                                       "type": "mapping(string memory => mapping(bytes32 => bool))",
                                       "value": "functionCalls"
                                     },
-                                    "id": 10652,
+                                    "id": 10660,
                                     "name": "Identifier",
                                     "src": "2231:13:23"
                                   },
@@ -2058,16 +2058,16 @@ export const MockContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10647,
+                                      "referencedDeclaration": 10655,
                                       "type": "string memory",
                                       "value": "functionName"
                                     },
-                                    "id": 10653,
+                                    "id": 10661,
                                     "name": "Identifier",
                                     "src": "2245:12:23"
                                   }
                                 ],
-                                "id": 10655,
+                                "id": 10663,
                                 "name": "IndexAccess",
                                 "src": "2231:27:23"
                               },
@@ -2077,16 +2077,16 @@ export const MockContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10649,
+                                  "referencedDeclaration": 10657,
                                   "type": "bytes32",
                                   "value": "args"
                                 },
-                                "id": 10654,
+                                "id": 10662,
                                 "name": "Identifier",
                                 "src": "2259:4:23"
                               }
                             ],
-                            "id": 10656,
+                            "id": 10664,
                             "name": "IndexAccess",
                             "src": "2231:33:23"
                           },
@@ -2103,17 +2103,17 @@ export const MockContract =
                               "type": "bool",
                               "value": "true"
                             },
-                            "id": 10657,
+                            "id": 10665,
                             "name": "Literal",
                             "src": "2267:4:23"
                           }
                         ],
-                        "id": 10658,
+                        "id": 10666,
                         "name": "Assignment",
                         "src": "2231:40:23"
                       }
                     ],
-                    "id": 10659,
+                    "id": 10667,
                     "name": "ExpressionStatement",
                     "src": "2231:40:23"
                   },
@@ -2167,11 +2167,11 @@ export const MockContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10519,
+                                      "referencedDeclaration": 10527,
                                       "type": "mapping(string memory => bytes32[] storage ref)",
                                       "value": "functionCallSignatures"
                                     },
-                                    "id": 10660,
+                                    "id": 10668,
                                     "name": "Identifier",
                                     "src": "2281:22:23"
                                   },
@@ -2181,21 +2181,21 @@ export const MockContract =
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10647,
+                                      "referencedDeclaration": 10655,
                                       "type": "string memory",
                                       "value": "functionName"
                                     },
-                                    "id": 10661,
+                                    "id": 10669,
                                     "name": "Identifier",
                                     "src": "2304:12:23"
                                   }
                                 ],
-                                "id": 10662,
+                                "id": 10670,
                                 "name": "IndexAccess",
                                 "src": "2281:36:23"
                               }
                             ],
-                            "id": 10663,
+                            "id": 10671,
                             "name": "MemberAccess",
                             "src": "2281:41:23"
                           },
@@ -2205,31 +2205,31 @@ export const MockContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10649,
+                              "referencedDeclaration": 10657,
                               "type": "bytes32",
                               "value": "args"
                             },
-                            "id": 10664,
+                            "id": 10672,
                             "name": "Identifier",
                             "src": "2323:4:23"
                           }
                         ],
-                        "id": 10665,
+                        "id": 10673,
                         "name": "FunctionCall",
                         "src": "2281:47:23"
                       }
                     ],
-                    "id": 10666,
+                    "id": 10674,
                     "name": "ExpressionStatement",
                     "src": "2281:47:23"
                   }
                 ],
-                "id": 10667,
+                "id": 10675,
                 "name": "Block",
                 "src": "2221:114:23"
               }
             ],
-            "id": 10668,
+            "id": 10676,
             "name": "FunctionDefinition",
             "src": "2133:202:23"
           },
@@ -2243,7 +2243,7 @@ export const MockContract =
               ],
               "name": "wasFunctionCalledWithArgs",
               "payable": false,
-              "scope": 10692,
+              "scope": 10700,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "internal"
@@ -2255,7 +2255,7 @@ export const MockContract =
                     "attributes": {
                       "constant": false,
                       "name": "functionName",
-                      "scope": 10684,
+                      "scope": 10692,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory",
@@ -2268,12 +2268,12 @@ export const MockContract =
                           "name": "string",
                           "type": "string storage pointer"
                         },
-                        "id": 10669,
+                        "id": 10677,
                         "name": "ElementaryTypeName",
                         "src": "2376:6:23"
                       }
                     ],
-                    "id": 10670,
+                    "id": 10678,
                     "name": "VariableDeclaration",
                     "src": "2376:19:23"
                   },
@@ -2281,7 +2281,7 @@ export const MockContract =
                     "attributes": {
                       "constant": false,
                       "name": "args",
-                      "scope": 10684,
+                      "scope": 10692,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -2294,17 +2294,17 @@ export const MockContract =
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 10671,
+                        "id": 10679,
                         "name": "ElementaryTypeName",
                         "src": "2397:7:23"
                       }
                     ],
-                    "id": 10672,
+                    "id": 10680,
                     "name": "VariableDeclaration",
                     "src": "2397:12:23"
                   }
                 ],
-                "id": 10673,
+                "id": 10681,
                 "name": "ParameterList",
                 "src": "2375:35:23"
               },
@@ -2314,7 +2314,7 @@ export const MockContract =
                     "attributes": {
                       "constant": false,
                       "name": "wasCalled",
-                      "scope": 10684,
+                      "scope": 10692,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -2327,17 +2327,17 @@ export const MockContract =
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 10674,
+                        "id": 10682,
                         "name": "ElementaryTypeName",
                         "src": "2458:4:23"
                       }
                     ],
-                    "id": 10675,
+                    "id": 10683,
                     "name": "VariableDeclaration",
                     "src": "2458:14:23"
                   }
                 ],
-                "id": 10676,
+                "id": 10684,
                 "name": "ParameterList",
                 "src": "2457:16:23"
               },
@@ -2345,7 +2345,7 @@ export const MockContract =
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 10676
+                      "functionReturnParameters": 10684
                     },
                     "children": [
                       {
@@ -2374,11 +2374,11 @@ export const MockContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10531,
+                                  "referencedDeclaration": 10539,
                                   "type": "mapping(string memory => mapping(bytes32 => bool))",
                                   "value": "functionCalls"
                                 },
-                                "id": 10677,
+                                "id": 10685,
                                 "name": "Identifier",
                                 "src": "2495:13:23"
                               },
@@ -2388,16 +2388,16 @@ export const MockContract =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 10670,
+                                  "referencedDeclaration": 10678,
                                   "type": "string memory",
                                   "value": "functionName"
                                 },
-                                "id": 10678,
+                                "id": 10686,
                                 "name": "Identifier",
                                 "src": "2509:12:23"
                               }
                             ],
-                            "id": 10679,
+                            "id": 10687,
                             "name": "IndexAccess",
                             "src": "2495:27:23"
                           },
@@ -2407,31 +2407,31 @@ export const MockContract =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 10672,
+                              "referencedDeclaration": 10680,
                               "type": "bytes32",
                               "value": "args"
                             },
-                            "id": 10680,
+                            "id": 10688,
                             "name": "Identifier",
                             "src": "2523:4:23"
                           }
                         ],
-                        "id": 10681,
+                        "id": 10689,
                         "name": "IndexAccess",
                         "src": "2495:33:23"
                       }
                     ],
-                    "id": 10682,
+                    "id": 10690,
                     "name": "Return",
                     "src": "2488:40:23"
                   }
                 ],
-                "id": 10683,
+                "id": 10691,
                 "name": "Block",
                 "src": "2478:57:23"
               }
             ],
-            "id": 10684,
+            "id": 10692,
             "name": "FunctionDefinition",
             "src": "2341:194:23"
           },
@@ -2446,7 +2446,7 @@ export const MockContract =
               ],
               "name": "getFunctionList",
               "payable": false,
-              "scope": 10692,
+              "scope": 10700,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "internal"
@@ -2459,7 +2459,7 @@ export const MockContract =
                   ]
                 },
                 "children": [],
-                "id": 10685,
+                "id": 10693,
                 "name": "ParameterList",
                 "src": "2565:2:23"
               },
@@ -2469,7 +2469,7 @@ export const MockContract =
                     "attributes": {
                       "constant": false,
                       "name": "functionNames",
-                      "scope": 10691,
+                      "scope": 10699,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory[10] memory",
@@ -2487,7 +2487,7 @@ export const MockContract =
                               "name": "string",
                               "type": "string storage pointer"
                             },
-                            "id": 10686,
+                            "id": 10694,
                             "name": "ElementaryTypeName",
                             "src": "2586:6:23"
                           },
@@ -2504,37 +2504,37 @@ export const MockContract =
                               "type": "int_const 10",
                               "value": "10"
                             },
-                            "id": 10687,
+                            "id": 10695,
                             "name": "Literal",
                             "src": "2593:2:23"
                           }
                         ],
-                        "id": 10688,
+                        "id": 10696,
                         "name": "ArrayTypeName",
                         "src": "2586:10:23"
                       }
                     ],
-                    "id": 10689,
+                    "id": 10697,
                     "name": "VariableDeclaration",
                     "src": "2586:24:23"
                   }
                 ],
-                "id": 10690,
+                "id": 10698,
                 "name": "ParameterList",
                 "src": "2585:26:23"
               }
             ],
-            "id": 10691,
+            "id": 10699,
             "name": "FunctionDefinition",
             "src": "2541:71:23"
           }
         ],
-        "id": 10692,
+        "id": 10700,
         "name": "ContractDefinition",
         "src": "610:2004:23"
       }
     ],
-    "id": 10693,
+    "id": 10701,
     "name": "SourceUnit",
     "src": "584:2031:23"
   },
@@ -2544,5 +2544,5 @@ export const MockContract =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-26T17:52:34.334Z"
+  "updatedAt": "2018-10-08T22:52:31.858Z"
 }
