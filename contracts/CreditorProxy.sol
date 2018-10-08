@@ -94,15 +94,17 @@ contract CreditorProxy is Pausable {
         bytes32 creditorCommitmentHash = getCreditorCommitmentHash(
             [
                 creditor,
+                address(contractRegistry.debtKernel()), // debt kernel version
                 orderAddresses[0], // repayment router version
-                orderAddresses[2], // underwriter
-                orderAddresses[3] // termsContract
+                orderAddresses[3], // terms contract address
+                orderAddresses[4] // principal token adddress
+
             ],
             [
+                orderValues[1], // salt
+                orderValues[2], // principal amount
                 orderValues[5], // creditor fee
-                orderValues[0], // underwriterRiskRating
-                orderValues[7], // commitmentExpirationTimestampInSec
-                orderValues[1] // salt
+                orderValues[7] // commitmentExpirationTimestampInSec
             ],
             orderBytes32 // termsContractParameters
         );
@@ -114,7 +116,7 @@ contract CreditorProxy is Pausable {
 
         if (debtOfferCancelled[creditorCommitmentHash]) {
             LogError(uint8(Errors.DEBT_OFFER_CANCELLED), creditor, creditorCommitmentHash);
-            return NULL_ISSUANCE_HASH; 
+            return NULL_ISSUANCE_HASH;
         }
 
         if (!isValidSignature(
@@ -190,7 +192,7 @@ contract CreditorProxy is Pausable {
      * Allows creditor to prevent a debt offer from being used in the future
      */
     function cancelDebtOffer(
-        address[4] commitmentAddresses,
+        address[5] commitmentAddresses,
         uint[4] commitmentValues,
         bytes32[1] termsContractParameters
     )
@@ -216,7 +218,7 @@ contract CreditorProxy is Pausable {
      * Returns the messaged signed by the creditor to indicate their commitment
      */
     function getCreditorCommitmentHash(
-        address[4] commitmentAddresses,
+        address[5] commitmentAddresses,
         uint[4] commitmentValues,
         bytes32[1] termsContractParameters
     )
@@ -226,14 +228,15 @@ contract CreditorProxy is Pausable {
     {
         return keccak256(
             commitmentAddresses[0], // creditor
-            commitmentAddresses[1], // repayment router version
-            commitmentValues[0], // creditor fee
-            commitmentAddresses[2], // underwriter
-            commitmentValues[1], // underwriterRiskRating
-            commitmentAddresses[3], // termsContract
-            termsContractParameters[0],
-            commitmentValues[2], // commitmentExpirationTimestampInSec
-            commitmentValues[3] // salt
+            commitmentAddresses[1], // debt kernel version
+            commitmentAddresses[2], // repayment router version
+            commitmentAddresses[3], // terms contract address
+            commitmentAddresses[4], // principal token address
+            commitmentValues[0], // salt
+            commitmentValues[1], // principal amount
+            commitmentValues[2], // creditor fee
+            commitmentValues[3], // commitmentExpirationTimestampInSec
+            termsContractParameters[0] // terms contract parameters
         );
     }
 
