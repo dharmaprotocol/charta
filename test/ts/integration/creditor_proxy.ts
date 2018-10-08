@@ -207,7 +207,7 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
                     errorEmitterAddress,
                     errorCode,
                     offer.getCreditor(),
-                    offer.getCreditorCommitmentHash(),
+                    offerForParams.getCreditorCommitmentHash(),
                 ),
             );
         };
@@ -984,9 +984,7 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
 
                 describe("principal token is not the token signed off by the creditor", async () => {
                     before(async () => {
-                        debtOffer = await offerFactory.generateDebtOffer({
-                            principalToken: dummyZRXToken.address,
-                        });
+                        debtOffer = await offerFactory.generateDebtOffer({});
                         await setupBalancesAndAllowances();
                     });
 
@@ -994,6 +992,8 @@ contract("Creditor Proxy (Integration Tests)", async (ACCOUNTS) => {
                         const signaturesV = debtOffer.getSignaturesV();
                         const signaturesR = debtOffer.getSignaturesR();
                         const signaturesS = debtOffer.getSignaturesS();
+
+                        debtOffer.params.principalToken = dummyZRXToken.address;
 
                         await testShouldReturnError(
                             debtOffer,
