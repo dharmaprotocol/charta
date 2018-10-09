@@ -152,7 +152,7 @@ export const IncompatibleTermsContract =
       },
       {
         "attributes": {
-          "SourceUnit": 4758,
+          "SourceUnit": 4766,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/TermsContract.sol",
           "file": "../../TermsContract.sol",
           "scope": 12594,
@@ -988,7 +988,7 @@ export const IncompatibleTermsContract =
     "42": {
       "events": {},
       "links": {},
-      "address": "0xc8d55fd3717f8c3f8d31456504ab84b11b80520e"
+      "address": "0x0c5fdac9b1fd226bc853375a2f8c68fcdde5d194"
     },
     "70": {
       "events": {},
@@ -997,5 +997,5 @@ export const IncompatibleTermsContract =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-09T17:50:25.365Z"
+  "updatedAt": "2018-10-09T23:20:25.126Z"
 }

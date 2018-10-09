@@ -51771,5 +51771,5 @@ export const KittyAccessControl =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-09T17:45:35.953Z"
+  "updatedAt": "2018-10-09T23:15:06.235Z"
 }

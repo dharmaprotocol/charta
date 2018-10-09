@@ -571,7 +571,7 @@
       },
       {
         "attributes": {
-          "SourceUnit": 6272,
+          "SourceUnit": 6280,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/libraries/PermissionsLib.sol",
           "file": "./libraries/PermissionsLib.sol",
           "scope": 3167,
@@ -7984,7 +7984,7 @@
         }
       },
       "links": {},
-      "address": "0x0db51854d2b302e35d8f0f7a4fabb2415f9e42a5"
+      "address": "0x3940a1aa50eac96c2b0f47befb1443f5636649ab"
     },
     "70": {
       "events": {
@@ -8164,5 +8164,5 @@
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-09T17:51:53.167Z"
+  "updatedAt": "2018-10-09T23:22:13.473Z"
 }

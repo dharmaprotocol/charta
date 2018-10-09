@@ -437,7 +437,7 @@ export const DebtKernel =
       },
       {
         "attributes": {
-          "SourceUnit": 3541,
+          "SourceUnit": 3549,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/DebtToken.sol",
           "file": "./DebtToken.sol",
           "scope": 2639,
@@ -452,7 +452,7 @@ export const DebtKernel =
       },
       {
         "attributes": {
-          "SourceUnit": 4758,
+          "SourceUnit": 4766,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/TermsContract.sol",
           "file": "./TermsContract.sol",
           "scope": 2639,
@@ -467,7 +467,7 @@ export const DebtKernel =
       },
       {
         "attributes": {
-          "SourceUnit": 5207,
+          "SourceUnit": 5215,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/TokenTransferProxy.sol",
           "file": "./TokenTransferProxy.sol",
           "scope": 2639,
@@ -17683,7 +17683,7 @@ export const DebtKernel =
         }
       },
       "links": {},
-      "address": "0x4a42fbdae13791341361f9d2dd69873d83e4b816"
+      "address": "0x24db52da9748fbb889a5bcc4468b32fbc9172348"
     },
     "70": {
       "events": {
@@ -17815,5 +17815,5 @@ export const DebtKernel =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-09T17:51:53.185Z"
+  "updatedAt": "2018-10-09T23:22:13.505Z"
 }

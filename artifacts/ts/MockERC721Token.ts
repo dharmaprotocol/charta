@@ -312,7 +312,7 @@ export const MockERC721Token =
       },
       {
         "attributes": {
-          "SourceUnit": 10693,
+          "SourceUnit": 10701,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/test/mocks/MockContract.sol",
           "file": "./MockContract.sol",
           "scope": 12142,
@@ -3995,7 +3995,7 @@ export const MockERC721Token =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x5ff98c9ca70a7d2fdd1107c1a80d20c5fc8a3e40"
+      "address": "0x54115cd6562cb183cdd21a6e1fa5c6833f493dc2"
     },
     "70": {
       "events": {},
@@ -4004,5 +4004,5 @@ export const MockERC721Token =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-09T17:50:01.278Z"
+  "updatedAt": "2018-10-09T23:19:45.810Z"
 }

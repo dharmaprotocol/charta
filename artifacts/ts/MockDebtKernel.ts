@@ -187,7 +187,7 @@ export const MockDebtKernel =
       },
       {
         "attributes": {
-          "SourceUnit": 10693,
+          "SourceUnit": 10701,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/test/mocks/MockContract.sol",
           "file": "./MockContract.sol",
           "scope": 10844,
@@ -2231,5 +2231,5 @@ export const MockDebtKernel =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-09T17:45:35.497Z"
+  "updatedAt": "2018-10-09T23:15:05.523Z"
 }

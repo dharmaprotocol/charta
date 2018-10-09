@@ -149,7 +149,7 @@ export const MockTokenTransferProxy =
       },
       {
         "attributes": {
-          "SourceUnit": 10693,
+          "SourceUnit": 10701,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/test/mocks/MockContract.sol",
           "file": "./MockContract.sol",
           "scope": 12526,
@@ -1236,7 +1236,7 @@ export const MockTokenTransferProxy =
     "42": {
       "events": {},
       "links": {},
-      "address": "0xe73f46c08eb3a1d218af468c6dbefbc5967bb6bd"
+      "address": "0xc8ac0952c5752a371adbb8fff4a7ea90a69333ce"
     },
     "70": {
       "events": {},
@@ -1245,5 +1245,5 @@ export const MockTokenTransferProxy =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-09T17:50:01.252Z"
+  "updatedAt": "2018-10-09T23:19:45.785Z"
 }

@@ -5400,7 +5400,7 @@ export const ERC721Token =
     "42": {
       "events": {},
       "links": {},
-      "address": "0xebc1a917d464d779ad5eba480de9935bf4ce9760"
+      "address": "0x3e9171ebba163b92a271144b2fe907b10c9a5131"
     },
     "70": {
       "events": {},
@@ -5409,5 +5409,5 @@ export const ERC721Token =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-09T17:50:01.301Z"
+  "updatedAt": "2018-10-09T23:19:45.827Z"
 }

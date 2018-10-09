@@ -217,7 +217,7 @@ export const DummyContract =
       },
       {
         "attributes": {
-          "SourceUnit": 6272,
+          "SourceUnit": 6280,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/libraries/PermissionsLib.sol",
           "file": "../libraries/PermissionsLib.sol",
           "scope": 9944,
@@ -1770,7 +1770,7 @@ export const DummyContract =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x64481c13201a7baabd3a440eeba57170336f0e70"
+      "address": "0x6fc77e8aa556b15ac07e61ebc0a56a4ff636eee9"
     },
     "70": {
       "events": {},
@@ -1779,5 +1779,5 @@ export const DummyContract =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-09T17:50:01.258Z"
+  "updatedAt": "2018-10-09T23:19:45.788Z"
 }

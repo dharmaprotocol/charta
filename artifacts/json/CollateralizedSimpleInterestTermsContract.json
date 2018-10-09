@@ -411,7 +411,7 @@
       },
       {
         "attributes": {
-          "SourceUnit": 6053,
+          "SourceUnit": 6061,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/examples/SimpleInterestTermsContract.sol",
           "file": "./SimpleInterestTermsContract.sol",
           "scope": 5282,
@@ -1334,7 +1334,7 @@
     "42": {
       "events": {},
       "links": {},
-      "address": "0x7b7be94999219352b02c70b62b7cc09f7179b3b0"
+      "address": "0xf4ffba3867d4c9d388069a02fa36d3bfc234c979"
     },
     "70": {
       "events": {},
@@ -1343,5 +1343,5 @@
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-09T17:51:37.279Z"
+  "updatedAt": "2018-10-09T23:22:00.524Z"
 }

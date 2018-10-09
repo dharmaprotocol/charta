@@ -280,7 +280,7 @@
       },
       {
         "attributes": {
-          "SourceUnit": 2631,
+          "SourceUnit": 2639,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/DebtKernel.sol",
           "file": "./DebtKernel.sol",
           "scope": 924,
@@ -295,7 +295,7 @@
       },
       {
         "attributes": {
-          "SourceUnit": 3159,
+          "SourceUnit": 3167,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/DebtRegistry.sol",
           "file": "./DebtRegistry.sol",
           "scope": 924,
@@ -310,7 +310,7 @@
       },
       {
         "attributes": {
-          "SourceUnit": 3541,
+          "SourceUnit": 3549,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/DebtToken.sol",
           "file": "./DebtToken.sol",
           "scope": 924,
@@ -325,7 +325,7 @@
       },
       {
         "attributes": {
-          "SourceUnit": 4708,
+          "SourceUnit": 4716,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/RepaymentRouter.sol",
           "file": "./RepaymentRouter.sol",
           "scope": 924,
@@ -340,7 +340,7 @@
       },
       {
         "attributes": {
-          "SourceUnit": 5114,
+          "SourceUnit": 5122,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/TokenRegistry.sol",
           "file": "./TokenRegistry.sol",
           "scope": 924,
@@ -355,7 +355,7 @@
       },
       {
         "attributes": {
-          "SourceUnit": 5207,
+          "SourceUnit": 5215,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/TokenTransferProxy.sol",
           "file": "./TokenTransferProxy.sol",
           "scope": 924,
@@ -4730,7 +4730,7 @@
         }
       },
       "links": {},
-      "address": "0x342e4778937a0fa5879aa594d0f57370f1a0e5d9"
+      "address": "0x8a2e03a964c21731d451a66fa618ea9a14dded78"
     },
     "70": {
       "events": {
@@ -4779,5 +4779,5 @@
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-09T17:53:24.840Z"
+  "updatedAt": "2018-10-09T23:24:24.851Z"
 }

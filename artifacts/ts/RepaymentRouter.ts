@@ -241,7 +241,7 @@ export const RepaymentRouter =
       },
       {
         "attributes": {
-          "SourceUnit": 3159,
+          "SourceUnit": 3167,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/DebtRegistry.sol",
           "file": "./DebtRegistry.sol",
           "scope": 4716,
@@ -256,7 +256,7 @@ export const RepaymentRouter =
       },
       {
         "attributes": {
-          "SourceUnit": 4758,
+          "SourceUnit": 4766,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/TermsContract.sol",
           "file": "./TermsContract.sol",
           "scope": 4716,
@@ -271,7 +271,7 @@ export const RepaymentRouter =
       },
       {
         "attributes": {
-          "SourceUnit": 5207,
+          "SourceUnit": 5215,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/TokenTransferProxy.sol",
           "file": "./TokenTransferProxy.sol",
           "scope": 4716,
@@ -3302,7 +3302,7 @@ export const RepaymentRouter =
         }
       },
       "links": {},
-      "address": "0x03ff589c02e794dbb55394ba86c62ba68e399688"
+      "address": "0x68133aab29535c46b44cf0d31e0161905c57bc01"
     },
     "70": {
       "events": {
@@ -3390,5 +3390,5 @@ export const RepaymentRouter =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-09T17:51:53.137Z"
+  "updatedAt": "2018-10-09T23:22:13.417Z"
 }
