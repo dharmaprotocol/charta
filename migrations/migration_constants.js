@@ -14,6 +14,8 @@ const OWNER_THREE = "0xb41411e8cfae259a6494ecdc81833b627f051be4";
 const OWNER_FOUR = "0xfefdde6a490cd4095de204b6fe31ba1607b19e3f";
 const OWNER_FIVE = "0xa32d732ab0096dbf837f3e5d358ac5b597dcbf73";
 
+const TEST_NET_OWNER = "0x14978f69aAAf6252ce62d6d50ED36130BD18aC43";
+
 /**
  * The amount of time that the multi-signature wallet should wait before executing a transaction.
  * Currently set to 7 days, expressed in seconds.
@@ -35,20 +37,20 @@ const THRESHOLD = 1 / 2;
  * we deploy to.
  */
 const MULTISIG_PARAMS = {
-  "live": {
-      threshold: THRESHOLD,
-      timelockInSeconds: TIMELOCK_IN_SECONDS,
-  },
-  "kovan": {
-      // For the kovan network, we only require 1 signatory to execute a transaction.
-      threshold: 1 / 6,
-      // Only 1 minute is required before a transaction is executed.
-      timelockInSeconds: 60,
-  },
+    live: {
+        threshold: THRESHOLD,
+        timelockInSeconds: TIMELOCK_IN_SECONDS,
+    },
+    kovan: {
+        // For the kovan network, we only require 1 signatory to execute a transaction.
+        threshold: 1 / 6,
+        // Only 1 minute is required before a transaction is executed.
+        timelockInSeconds: 60,
+    },
 };
 
 const SIGNATORIES = [OWNER_ONE, OWNER_TWO, OWNER_THREE, OWNER_FOUR, OWNER_FIVE];
-
+const TEST_NET_SIGNATORIES = [OWNER_ONE, OWNER_TWO, OWNER_THREE, OWNER_FOUR, TEST_NET_OWNER];
 
 const LIVE_NETWORK_ID = "live";
 const KOVAN_NETWORK_ID = "kovan";
@@ -103,6 +105,7 @@ const KOVAN_WETH_ADDRESS = "0xd0a1e359811322d97991e03f863a0c30c2cf029c";
 
 module.exports = {
     SIGNATORIES,
+    TEST_NET_SIGNATORIES,
     THRESHOLD,
     TIMELOCK_IN_SECONDS,
     LIVE_NETWORK_ID,
@@ -127,9 +130,7 @@ module.exports = {
  * @returns {any}
  */
 function readJsonSync(path) {
-    return JSON.parse(
-        fs.readFileSync(path, "utf8"),
-    );
+    return JSON.parse(fs.readFileSync(path, "utf8"));
 }
 
 /**
