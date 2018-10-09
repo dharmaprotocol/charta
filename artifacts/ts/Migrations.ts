@@ -65,18 +65,18 @@ export const Migrations =
       "type": "constructor"
     }
   ],
-  "bytecode": "0x6060604052341561000f57600080fd5b336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506102db8061005e6000396000f300606060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680630900f01014610067578063445df0ac146100a05780638da5cb5b146100c9578063fdacd5761461011e575b600080fd5b341561007257600080fd5b61009e600480803573ffffffffffffffffffffffffffffffffffffffff16906020019091905050610141565b005b34156100ab57600080fd5b6100b3610224565b6040518082815260200191505060405180910390f35b34156100d457600080fd5b6100dc61022a565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561012957600080fd5b61013f600480803590602001909190505061024f565b005b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415610220578190508073ffffffffffffffffffffffffffffffffffffffff1663fdacd5766001546040518263ffffffff167c010000000000000000000000000000000000000000000000000000000002815260040180828152602001915050600060405180830381600087803b151561020b57600080fd5b6102c65a03f1151561021c57600080fd5b5050505b5050565b60015481565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614156102ac57806001819055505b505600a165627a7a72305820c7e7b6c42b77e11556d6c62893608c94e6061da7086e349e40976d7895e94deb0029",
-  "deployedBytecode": "0x606060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680630900f01014610067578063445df0ac146100a05780638da5cb5b146100c9578063fdacd5761461011e575b600080fd5b341561007257600080fd5b61009e600480803573ffffffffffffffffffffffffffffffffffffffff16906020019091905050610141565b005b34156100ab57600080fd5b6100b3610224565b6040518082815260200191505060405180910390f35b34156100d457600080fd5b6100dc61022a565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561012957600080fd5b61013f600480803590602001909190505061024f565b005b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415610220578190508073ffffffffffffffffffffffffffffffffffffffff1663fdacd5766001546040518263ffffffff167c010000000000000000000000000000000000000000000000000000000002815260040180828152602001915050600060405180830381600087803b151561020b57600080fd5b6102c65a03f1151561021c57600080fd5b5050505b5050565b60015481565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614156102ac57806001819055505b505600a165627a7a72305820c7e7b6c42b77e11556d6c62893608c94e6061da7086e349e40976d7895e94deb0029",
+  "bytecode": "0x6060604052341561000f57600080fd5b336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506102db8061005e6000396000f300606060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680630900f01014610067578063445df0ac146100a05780638da5cb5b146100c9578063fdacd5761461011e575b600080fd5b341561007257600080fd5b61009e600480803573ffffffffffffffffffffffffffffffffffffffff16906020019091905050610141565b005b34156100ab57600080fd5b6100b3610224565b6040518082815260200191505060405180910390f35b34156100d457600080fd5b6100dc61022a565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561012957600080fd5b61013f600480803590602001909190505061024f565b005b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415610220578190508073ffffffffffffffffffffffffffffffffffffffff1663fdacd5766001546040518263ffffffff167c010000000000000000000000000000000000000000000000000000000002815260040180828152602001915050600060405180830381600087803b151561020b57600080fd5b6102c65a03f1151561021c57600080fd5b5050505b5050565b60015481565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614156102ac57806001819055505b505600a165627a7a72305820ea9eb696e985730f91dd444a372e2e3d7d38ebd8744bc8533d4c5515c99910520029",
+  "deployedBytecode": "0x606060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680630900f01014610067578063445df0ac146100a05780638da5cb5b146100c9578063fdacd5761461011e575b600080fd5b341561007257600080fd5b61009e600480803573ffffffffffffffffffffffffffffffffffffffff16906020019091905050610141565b005b34156100ab57600080fd5b6100b3610224565b6040518082815260200191505060405180910390f35b34156100d457600080fd5b6100dc61022a565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561012957600080fd5b61013f600480803590602001909190505061024f565b005b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415610220578190508073ffffffffffffffffffffffffffffffffffffffff1663fdacd5766001546040518263ffffffff167c010000000000000000000000000000000000000000000000000000000002815260040180828152602001915050600060405180830381600087803b151561020b57600080fd5b6102c65a03f1151561021c57600080fd5b5050505b5050565b60015481565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614156102ac57806001819055505b505600a165627a7a72305820ea9eb696e985730f91dd444a372e2e3d7d38ebd8744bc8533d4c5515c99910520029",
   "sourceMap": "26:579:9:-;;;245:64;;;;;;;;292:10;284:5;;:18;;;;;;;;;;;;;;;;;;26:579;;;;;;",
   "deployedSourceMap": "26:579:9:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;430:173;;;;;;;;;;;;;;;;;;;;;;;;;;;;131:36;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;52:20;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;315:109;;;;;;;;;;;;;;;;;;;;;;;;;;430:173;495:19;224:5;;;;;;;;;;;210:19;;:10;:19;;;206:26;;;528:10;495:44;;549:8;:21;;;571:24;;549:47;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;206:26;430:173;;:::o;131:36::-;;;;:::o;52:20::-;;;;;;;;;;;;;:::o;315:109::-;224:5;;;;;;;;;;;210:19;;:10;:19;;;206:26;;;408:9;381:24;:36;;;;206:26;315:109;:::o",
   "source": "pragma solidity 0.4.18;\n\n\ncontract Migrations {\n    address public owner;\n\n    // solhint-disable-next-line var-name-mixedcase\n    uint public last_completed_migration;\n\n    modifier restricted() {\n        if (msg.sender == owner) _;\n    }\n\n    function Migrations() public {\n        owner = msg.sender;\n    }\n\n    function setCompleted(uint completed) public restricted {\n        last_completed_migration = completed;\n    }\n\n    function upgrade(address newAddress) public restricted {\n        Migrations upgraded = Migrations(newAddress);\n        upgraded.setCompleted(last_completed_migration);\n    }\n}\n",
-  "sourcePath": "/Users/graemeboy/Dharma/charta/contracts/Migrations.sol",
+  "sourcePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/Migrations.sol",
   "ast": {
     "attributes": {
-      "absolutePath": "/Users/graemeboy/Dharma/charta/contracts/Migrations.sol",
+      "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/Migrations.sol",
       "exportedSymbols": {
         "Migrations": [
-          4514
+          4522
         ]
       }
     },
@@ -89,7 +89,7 @@ export const Migrations =
             ".18"
           ]
         },
-        "id": 4459,
+        "id": 4467,
         "name": "PragmaDirective",
         "src": "0:23:9"
       },
@@ -105,17 +105,17 @@ export const Migrations =
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            4514
+            4522
           ],
           "name": "Migrations",
-          "scope": 4515
+          "scope": 4523
         },
         "children": [
           {
             "attributes": {
               "constant": false,
               "name": "owner",
-              "scope": 4514,
+              "scope": 4522,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "address",
@@ -128,12 +128,12 @@ export const Migrations =
                   "name": "address",
                   "type": "address"
                 },
-                "id": 4460,
+                "id": 4468,
                 "name": "ElementaryTypeName",
                 "src": "52:7:9"
               }
             ],
-            "id": 4461,
+            "id": 4469,
             "name": "VariableDeclaration",
             "src": "52:20:9"
           },
@@ -141,7 +141,7 @@ export const Migrations =
             "attributes": {
               "constant": false,
               "name": "last_completed_migration",
-              "scope": 4514,
+              "scope": 4522,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "uint256",
@@ -154,12 +154,12 @@ export const Migrations =
                   "name": "uint",
                   "type": "uint256"
                 },
-                "id": 4462,
+                "id": 4470,
                 "name": "ElementaryTypeName",
                 "src": "131:4:9"
               }
             ],
-            "id": 4463,
+            "id": 4471,
             "name": "VariableDeclaration",
             "src": "131:36:9"
           },
@@ -176,7 +176,7 @@ export const Migrations =
                   ]
                 },
                 "children": [],
-                "id": 4464,
+                "id": 4472,
                 "name": "ParameterList",
                 "src": "193:2:9"
               },
@@ -220,16 +220,16 @@ export const Migrations =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15833,
+                                  "referencedDeclaration": 15841,
                                   "type": "msg",
                                   "value": "msg"
                                 },
-                                "id": 4465,
+                                "id": 4473,
                                 "name": "Identifier",
                                 "src": "210:3:9"
                               }
                             ],
-                            "id": 4466,
+                            "id": 4474,
                             "name": "MemberAccess",
                             "src": "210:10:9"
                           },
@@ -239,36 +239,36 @@ export const Migrations =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4461,
+                              "referencedDeclaration": 4469,
                               "type": "address",
                               "value": "owner"
                             },
-                            "id": 4467,
+                            "id": 4475,
                             "name": "Identifier",
                             "src": "224:5:9"
                           }
                         ],
-                        "id": 4468,
+                        "id": 4476,
                         "name": "BinaryOperation",
                         "src": "210:19:9"
                       },
                       {
-                        "id": 4469,
+                        "id": 4477,
                         "name": "PlaceholderStatement",
                         "src": "231:1:9"
                       }
                     ],
-                    "id": 4470,
+                    "id": 4478,
                     "name": "IfStatement",
                     "src": "206:26:9"
                   }
                 ],
-                "id": 4471,
+                "id": 4479,
                 "name": "Block",
                 "src": "196:43:9"
               }
             ],
-            "id": 4472,
+            "id": 4480,
             "name": "ModifierDefinition",
             "src": "174:65:9"
           },
@@ -282,7 +282,7 @@ export const Migrations =
               ],
               "name": "Migrations",
               "payable": false,
-              "scope": 4514,
+              "scope": 4522,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -295,7 +295,7 @@ export const Migrations =
                   ]
                 },
                 "children": [],
-                "id": 4473,
+                "id": 4481,
                 "name": "ParameterList",
                 "src": "264:2:9"
               },
@@ -306,7 +306,7 @@ export const Migrations =
                   ]
                 },
                 "children": [],
-                "id": 4474,
+                "id": 4482,
                 "name": "ParameterList",
                 "src": "274:0:9"
               },
@@ -331,11 +331,11 @@ export const Migrations =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4461,
+                              "referencedDeclaration": 4469,
                               "type": "address",
                               "value": "owner"
                             },
-                            "id": 4475,
+                            "id": 4483,
                             "name": "Identifier",
                             "src": "284:5:9"
                           },
@@ -357,36 +357,36 @@ export const Migrations =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15833,
+                                  "referencedDeclaration": 15841,
                                   "type": "msg",
                                   "value": "msg"
                                 },
-                                "id": 4476,
+                                "id": 4484,
                                 "name": "Identifier",
                                 "src": "292:3:9"
                               }
                             ],
-                            "id": 4477,
+                            "id": 4485,
                             "name": "MemberAccess",
                             "src": "292:10:9"
                           }
                         ],
-                        "id": 4478,
+                        "id": 4486,
                         "name": "Assignment",
                         "src": "284:18:9"
                       }
                     ],
-                    "id": 4479,
+                    "id": 4487,
                     "name": "ExpressionStatement",
                     "src": "284:18:9"
                   }
                 ],
-                "id": 4480,
+                "id": 4488,
                 "name": "Block",
                 "src": "274:35:9"
               }
             ],
-            "id": 4481,
+            "id": 4489,
             "name": "FunctionDefinition",
             "src": "245:64:9"
           },
@@ -397,7 +397,7 @@ export const Migrations =
               "isConstructor": false,
               "name": "setCompleted",
               "payable": false,
-              "scope": 4514,
+              "scope": 4522,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -409,7 +409,7 @@ export const Migrations =
                     "attributes": {
                       "constant": false,
                       "name": "completed",
-                      "scope": 4493,
+                      "scope": 4501,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -422,17 +422,17 @@ export const Migrations =
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 4482,
+                        "id": 4490,
                         "name": "ElementaryTypeName",
                         "src": "337:4:9"
                       }
                     ],
-                    "id": 4483,
+                    "id": 4491,
                     "name": "VariableDeclaration",
                     "src": "337:14:9"
                   }
                 ],
-                "id": 4484,
+                "id": 4492,
                 "name": "ParameterList",
                 "src": "336:16:9"
               },
@@ -443,7 +443,7 @@ export const Migrations =
                   ]
                 },
                 "children": [],
-                "id": 4487,
+                "id": 4495,
                 "name": "ParameterList",
                 "src": "371:0:9"
               },
@@ -460,16 +460,16 @@ export const Migrations =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 4472,
+                      "referencedDeclaration": 4480,
                       "type": "modifier ()",
                       "value": "restricted"
                     },
-                    "id": 4485,
+                    "id": 4493,
                     "name": "Identifier",
                     "src": "360:10:9"
                   }
                 ],
-                "id": 4486,
+                "id": 4494,
                 "name": "ModifierInvocation",
                 "src": "360:10:9"
               },
@@ -494,11 +494,11 @@ export const Migrations =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4463,
+                              "referencedDeclaration": 4471,
                               "type": "uint256",
                               "value": "last_completed_migration"
                             },
-                            "id": 4488,
+                            "id": 4496,
                             "name": "Identifier",
                             "src": "381:24:9"
                           },
@@ -508,31 +508,31 @@ export const Migrations =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4483,
+                              "referencedDeclaration": 4491,
                               "type": "uint256",
                               "value": "completed"
                             },
-                            "id": 4489,
+                            "id": 4497,
                             "name": "Identifier",
                             "src": "408:9:9"
                           }
                         ],
-                        "id": 4490,
+                        "id": 4498,
                         "name": "Assignment",
                         "src": "381:36:9"
                       }
                     ],
-                    "id": 4491,
+                    "id": 4499,
                     "name": "ExpressionStatement",
                     "src": "381:36:9"
                   }
                 ],
-                "id": 4492,
+                "id": 4500,
                 "name": "Block",
                 "src": "371:53:9"
               }
             ],
-            "id": 4493,
+            "id": 4501,
             "name": "FunctionDefinition",
             "src": "315:109:9"
           },
@@ -543,7 +543,7 @@ export const Migrations =
               "isConstructor": false,
               "name": "upgrade",
               "payable": false,
-              "scope": 4514,
+              "scope": 4522,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -555,7 +555,7 @@ export const Migrations =
                     "attributes": {
                       "constant": false,
                       "name": "newAddress",
-                      "scope": 4513,
+                      "scope": 4521,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -568,17 +568,17 @@ export const Migrations =
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 4494,
+                        "id": 4502,
                         "name": "ElementaryTypeName",
                         "src": "447:7:9"
                       }
                     ],
-                    "id": 4495,
+                    "id": 4503,
                     "name": "VariableDeclaration",
                     "src": "447:18:9"
                   }
                 ],
-                "id": 4496,
+                "id": 4504,
                 "name": "ParameterList",
                 "src": "446:20:9"
               },
@@ -589,7 +589,7 @@ export const Migrations =
                   ]
                 },
                 "children": [],
-                "id": 4499,
+                "id": 4507,
                 "name": "ParameterList",
                 "src": "485:0:9"
               },
@@ -606,16 +606,16 @@ export const Migrations =
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 4472,
+                      "referencedDeclaration": 4480,
                       "type": "modifier ()",
                       "value": "restricted"
                     },
-                    "id": 4497,
+                    "id": 4505,
                     "name": "Identifier",
                     "src": "474:10:9"
                   }
                 ],
-                "id": 4498,
+                "id": 4506,
                 "name": "ModifierInvocation",
                 "src": "474:10:9"
               },
@@ -624,7 +624,7 @@ export const Migrations =
                   {
                     "attributes": {
                       "assignments": [
-                        4501
+                        4509
                       ]
                     },
                     "children": [
@@ -632,7 +632,7 @@ export const Migrations =
                         "attributes": {
                           "constant": false,
                           "name": "upgraded",
-                          "scope": 4513,
+                          "scope": 4521,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "contract Migrations",
@@ -644,15 +644,15 @@ export const Migrations =
                             "attributes": {
                               "contractScope": null,
                               "name": "Migrations",
-                              "referencedDeclaration": 4514,
+                              "referencedDeclaration": 4522,
                               "type": "contract Migrations"
                             },
-                            "id": 4500,
+                            "id": 4508,
                             "name": "UserDefinedTypeName",
                             "src": "495:10:9"
                           }
                         ],
-                        "id": 4501,
+                        "id": 4509,
                         "name": "VariableDeclaration",
                         "src": "495:19:9"
                       },
@@ -682,11 +682,11 @@ export const Migrations =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4514,
+                              "referencedDeclaration": 4522,
                               "type": "type(contract Migrations)",
                               "value": "Migrations"
                             },
-                            "id": 4502,
+                            "id": 4510,
                             "name": "Identifier",
                             "src": "517:10:9"
                           },
@@ -696,21 +696,21 @@ export const Migrations =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4495,
+                              "referencedDeclaration": 4503,
                               "type": "address",
                               "value": "newAddress"
                             },
-                            "id": 4503,
+                            "id": 4511,
                             "name": "Identifier",
                             "src": "528:10:9"
                           }
                         ],
-                        "id": 4504,
+                        "id": 4512,
                         "name": "FunctionCall",
                         "src": "517:22:9"
                       }
                     ],
-                    "id": 4505,
+                    "id": 4513,
                     "name": "VariableDeclarationStatement",
                     "src": "495:44:9"
                   },
@@ -744,7 +744,7 @@ export const Migrations =
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "setCompleted",
-                              "referencedDeclaration": 4493,
+                              "referencedDeclaration": 4501,
                               "type": "function (uint256) external"
                             },
                             "children": [
@@ -754,16 +754,16 @@ export const Migrations =
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4501,
+                                  "referencedDeclaration": 4509,
                                   "type": "contract Migrations",
                                   "value": "upgraded"
                                 },
-                                "id": 4506,
+                                "id": 4514,
                                 "name": "Identifier",
                                 "src": "549:8:9"
                               }
                             ],
-                            "id": 4508,
+                            "id": 4516,
                             "name": "MemberAccess",
                             "src": "549:21:9"
                           },
@@ -773,41 +773,41 @@ export const Migrations =
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 4463,
+                              "referencedDeclaration": 4471,
                               "type": "uint256",
                               "value": "last_completed_migration"
                             },
-                            "id": 4509,
+                            "id": 4517,
                             "name": "Identifier",
                             "src": "571:24:9"
                           }
                         ],
-                        "id": 4510,
+                        "id": 4518,
                         "name": "FunctionCall",
                         "src": "549:47:9"
                       }
                     ],
-                    "id": 4511,
+                    "id": 4519,
                     "name": "ExpressionStatement",
                     "src": "549:47:9"
                   }
                 ],
-                "id": 4512,
+                "id": 4520,
                 "name": "Block",
                 "src": "485:118:9"
               }
             ],
-            "id": 4513,
+            "id": 4521,
             "name": "FunctionDefinition",
             "src": "430:173:9"
           }
         ],
-        "id": 4514,
+        "id": 4522,
         "name": "ContractDefinition",
         "src": "26:579:9"
       }
     ],
-    "id": 4515,
+    "id": 4523,
     "name": "SourceUnit",
     "src": "0:606:9"
   },
@@ -828,5 +828,5 @@ export const Migrations =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-09-26T17:53:01.106Z"
+  "updatedAt": "2018-10-08T22:53:01.138Z"
 }
