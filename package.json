@@ -20,16 +20,16 @@
     "deploy:kovan": "bash scripts/deploy_kovan.sh",
     "deploy:mainnet": "bash scripts/deploy_mainnet.sh",
     "dist": "bash scripts/prepare_dist.sh",
-    "generate-typings": "abi-gen --abis './build/contracts/*.json' --out './types/generated' --template './types/contract_templates/contract.mustache' --partials './types/contract_templates/partials/*.mustache'",
+    "generate-typings": "abi-gen --abis './build/contracts/LTVDecisionEngine.json' --out './types/generated' --template './types/contract_templates/contract.mustache' --partials './types/contract_templates/partials/*.mustache'",
     "transpile": "rm -rf ./transpiled; copyfiles ./build/**/* ./transpiled; tsc",
     "lint-ts": "tslint migrations/*.ts test/**/*.ts",
     "lint-sol": "solhint contracts/*.sol contracts/libraries/*.sol contracts/examples/*.sol contracts/test/**/.sol",
     "lint": "npm run lint-ts; npm run lint-sol",
-    "compile": "truffle compile --all",
-    "migrate": "truffle migrate --reset",
+    "compile": "truffle compile",
+    "migrate": "truffle migrate --reset -f 9 -to- 9",
     "prettify": "prettier --write test/ts/**/*.ts types/**/*.ts types/*.ts artifacts/*.ts",
     "prepublishOnly": "npm run dist",
-    "test": "npm run compile; npm run generate-typings; npm run transpile; npm run migrate; truffle test",
+    "test": "npm run compile; npm run generate-typings; npm run transpile; npm run migrate; truffle test transpiled/test/ts/unit/decision_engines/ltv_decision_engine.js",
     "chain": "ganache-cli --networkId 70 --accounts 20",
     "validate": "npm ls"
   },
@@ -41,6 +41,7 @@
     "lint"
   ],
   "dependencies": {
+    "solc": "^0.4.18",
     "zeppelin-solidity": "1.8.0"
   },
   "devDependencies": {

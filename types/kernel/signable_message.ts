@@ -12,7 +12,7 @@ export interface ECDSASignature {
 export abstract class SignableMessage {
     public abstract getHash(): Bytes32;
 
-    protected async getSignature(
+    public async getSignature(
         web3: Web3,
         signer: Address,
         hash?: Bytes32,
