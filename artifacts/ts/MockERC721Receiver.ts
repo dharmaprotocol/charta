@@ -169,7 +169,7 @@ export const MockERC721Receiver =
       },
       {
         "attributes": {
-          "SourceUnit": 10701,
+          "SourceUnit": 10693,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/test/mocks/MockContract.sol",
           "file": "./MockContract.sol",
           "scope": 11888,
@@ -1845,7 +1845,7 @@ export const MockERC721Receiver =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x00714756c11727a071c47479c0d466f937331b8e"
+      "address": "0xeadebe1479a642dc27a2874233e5e2b6703a0442"
     },
     "70": {
       "events": {},
@@ -1854,5 +1854,5 @@ export const MockERC721Receiver =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-02T22:13:01.020Z"
+  "updatedAt": "2018-10-09T17:50:01.261Z"
 }

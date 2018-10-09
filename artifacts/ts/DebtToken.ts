@@ -769,7 +769,7 @@ export const DebtToken =
       },
       {
         "attributes": {
-          "SourceUnit": 3167,
+          "SourceUnit": 3159,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/DebtRegistry.sol",
           "file": "./DebtRegistry.sol",
           "scope": 3549,
@@ -784,7 +784,7 @@ export const DebtToken =
       },
       {
         "attributes": {
-          "SourceUnit": 3559,
+          "SourceUnit": 3551,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/ERC165.sol",
           "file": "./ERC165.sol",
           "scope": 3549,
@@ -799,7 +799,7 @@ export const DebtToken =
       },
       {
         "attributes": {
-          "SourceUnit": 6280,
+          "SourceUnit": 6272,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/libraries/PermissionsLib.sol",
           "file": "./libraries/PermissionsLib.sol",
           "scope": 3549,
@@ -6203,7 +6203,7 @@ export const DebtToken =
         }
       },
       "links": {},
-      "address": "0x3fd02c9e51dbf27b3f66e71ce1e5ce89ca1492d3"
+      "address": "0xa99e0834ce4ac707371cbd6d938773b660552b91"
     },
     "70": {
       "events": {
@@ -6342,5 +6342,5 @@ export const DebtToken =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-02T22:16:13.726Z"
+  "updatedAt": "2018-10-09T17:53:04.888Z"
 }

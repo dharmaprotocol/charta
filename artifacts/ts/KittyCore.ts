@@ -52747,7 +52747,7 @@ export const KittyCore =
     "42": {
       "events": {},
       "links": {},
-      "address": "0xb5da2e05709786b89c6124c7a202dd13de2b8cd8"
+      "address": "0x116a62dad694e694f17cbccc917739c3f0c51666"
     },
     "70": {
       "events": {},
@@ -52756,5 +52756,5 @@ export const KittyCore =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-02T22:16:13.792Z"
+  "updatedAt": "2018-10-09T17:53:04.937Z"
 }

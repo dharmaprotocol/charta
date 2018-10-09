@@ -315,7 +315,7 @@ export const MockERC20Token =
       },
       {
         "attributes": {
-          "SourceUnit": 10701,
+          "SourceUnit": 10693,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/test/mocks/MockContract.sol",
           "file": "./MockContract.sol",
           "scope": 11767,
@@ -4017,7 +4017,7 @@ export const MockERC20Token =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x7ac01104b3ddaf1d5ad092817b31a8442c140158"
+      "address": "0x80bd8dc16d0b1bee8ce941ce2fb9108177a7dc85"
     },
     "70": {
       "events": {},
@@ -4026,5 +4026,5 @@ export const MockERC20Token =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-02T22:13:01.027Z"
+  "updatedAt": "2018-10-09T17:50:01.281Z"
 }
