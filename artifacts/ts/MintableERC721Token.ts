@@ -483,7 +483,7 @@ export const MintableERC721Token =
       },
       {
         "attributes": {
-          "SourceUnit": 3559,
+          "SourceUnit": 3551,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/ERC165.sol",
           "file": "../ERC165.sol",
           "scope": 10001,
@@ -1237,7 +1237,7 @@ export const MintableERC721Token =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x1db2f4774e0b0c84047a97e6c129abe7f9ed0d18"
+      "address": "0x67b0b219faf38b7a862c480213b2860e645c264f"
     },
     "70": {
       "events": {},
@@ -1246,5 +1246,5 @@ export const MintableERC721Token =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-02T22:16:13.730Z"
+  "updatedAt": "2018-10-09T17:53:04.860Z"
 }

@@ -517,7 +517,7 @@ export const ERC721Collateralizer =
       },
       {
         "attributes": {
-          "SourceUnit": 4766,
+          "SourceUnit": 4758,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/TermsContract.sol",
           "file": "./TermsContract.sol",
           "scope": 4175,
@@ -532,7 +532,7 @@ export const ERC721Collateralizer =
       },
       {
         "attributes": {
-          "SourceUnit": 3167,
+          "SourceUnit": 3159,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/DebtRegistry.sol",
           "file": "./DebtRegistry.sol",
           "scope": 4175,
@@ -562,7 +562,7 @@ export const ERC721Collateralizer =
       },
       {
         "attributes": {
-          "SourceUnit": 4466,
+          "SourceUnit": 4458,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/ERC721TokenRegistry.sol",
           "file": "./ERC721TokenRegistry.sol",
           "scope": 4175,
@@ -577,7 +577,7 @@ export const ERC721Collateralizer =
       },
       {
         "attributes": {
-          "SourceUnit": 6280,
+          "SourceUnit": 6272,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/libraries/PermissionsLib.sol",
           "file": "./libraries/PermissionsLib.sol",
           "scope": 4175,
@@ -9499,7 +9499,7 @@ export const ERC721Collateralizer =
         }
       },
       "links": {},
-      "address": "0xc241691f9c1663b4452c3d867de6cb72ce4ccb4b"
+      "address": "0xf3abfc01a071e8bbf3f820c2629510b9bc5e3229"
     },
     "70": {
       "events": {
@@ -9648,5 +9648,5 @@ export const ERC721Collateralizer =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-02T22:16:13.736Z"
+  "updatedAt": "2018-10-09T17:53:04.896Z"
 }

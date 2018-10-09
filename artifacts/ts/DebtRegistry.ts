@@ -572,7 +572,7 @@ export const DebtRegistry =
       },
       {
         "attributes": {
-          "SourceUnit": 6280,
+          "SourceUnit": 6272,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/libraries/PermissionsLib.sol",
           "file": "./libraries/PermissionsLib.sol",
           "scope": 3167,
@@ -7985,7 +7985,7 @@ export const DebtRegistry =
         }
       },
       "links": {},
-      "address": "0x2bfd08581121530eba6b86eda5b2932bea8117d9"
+      "address": "0x0db51854d2b302e35d8f0f7a4fabb2415f9e42a5"
     },
     "70": {
       "events": {
@@ -8165,5 +8165,5 @@ export const DebtRegistry =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-02T22:15:01.319Z"
+  "updatedAt": "2018-10-09T17:51:53.167Z"
 }

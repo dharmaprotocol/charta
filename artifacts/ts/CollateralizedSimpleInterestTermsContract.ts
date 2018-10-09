@@ -412,7 +412,7 @@ export const CollateralizedSimpleInterestTermsContract =
       },
       {
         "attributes": {
-          "SourceUnit": 6061,
+          "SourceUnit": 6053,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/examples/SimpleInterestTermsContract.sol",
           "file": "./SimpleInterestTermsContract.sol",
           "scope": 5282,
@@ -1335,7 +1335,7 @@ export const CollateralizedSimpleInterestTermsContract =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x670315b61825f2691084fb9387996675cf2c0225"
+      "address": "0x7b7be94999219352b02c70b62b7cc09f7179b3b0"
     },
     "70": {
       "events": {},
@@ -1344,5 +1344,5 @@ export const CollateralizedSimpleInterestTermsContract =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-02T22:14:48.932Z"
+  "updatedAt": "2018-10-09T17:51:37.279Z"
 }

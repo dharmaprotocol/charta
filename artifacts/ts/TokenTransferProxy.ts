@@ -243,7 +243,7 @@ export const TokenTransferProxy =
       },
       {
         "attributes": {
-          "SourceUnit": 3167,
+          "SourceUnit": 3159,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/DebtRegistry.sol",
           "file": "./DebtRegistry.sol",
           "scope": 5215,
@@ -258,7 +258,7 @@ export const TokenTransferProxy =
       },
       {
         "attributes": {
-          "SourceUnit": 6280,
+          "SourceUnit": 6272,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/libraries/PermissionsLib.sol",
           "file": "./libraries/PermissionsLib.sol",
           "scope": 5215,
@@ -1613,7 +1613,7 @@ export const TokenTransferProxy =
         }
       },
       "links": {},
-      "address": "0xf302f9e270458b4242e7d0cba2f0816ed2193240"
+      "address": "0xf8181406f844d5c947481ec67c835b1384013c7e"
     },
     "70": {
       "events": {
@@ -1686,5 +1686,5 @@ export const TokenTransferProxy =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-02T22:15:01.329Z"
+  "updatedAt": "2018-10-09T17:51:53.131Z"
 }

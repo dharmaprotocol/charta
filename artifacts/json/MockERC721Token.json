@@ -311,7 +311,7 @@
       },
       {
         "attributes": {
-          "SourceUnit": 10701,
+          "SourceUnit": 10693,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/test/mocks/MockContract.sol",
           "file": "./MockContract.sol",
           "scope": 12142,
@@ -3994,7 +3994,7 @@
     "42": {
       "events": {},
       "links": {},
-      "address": "0xa57d132d946d0ba4f7febd543763f18b3627dd10"
+      "address": "0x5ff98c9ca70a7d2fdd1107c1a80d20c5fc8a3e40"
     },
     "70": {
       "events": {},
@@ -4003,5 +4003,5 @@
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-02T22:13:01.014Z"
+  "updatedAt": "2018-10-09T17:50:01.278Z"
 }

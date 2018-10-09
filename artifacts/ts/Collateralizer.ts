@@ -527,7 +527,7 @@ export const Collateralizer =
       },
       {
         "attributes": {
-          "SourceUnit": 4766,
+          "SourceUnit": 4758,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/TermsContract.sol",
           "file": "./TermsContract.sol",
           "scope": 615,
@@ -542,7 +542,7 @@ export const Collateralizer =
       },
       {
         "attributes": {
-          "SourceUnit": 3167,
+          "SourceUnit": 3159,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/DebtRegistry.sol",
           "file": "./DebtRegistry.sol",
           "scope": 615,
@@ -557,7 +557,7 @@ export const Collateralizer =
       },
       {
         "attributes": {
-          "SourceUnit": 5122,
+          "SourceUnit": 5114,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/TokenRegistry.sol",
           "file": "./TokenRegistry.sol",
           "scope": 615,
@@ -572,7 +572,7 @@ export const Collateralizer =
       },
       {
         "attributes": {
-          "SourceUnit": 5215,
+          "SourceUnit": 5207,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/TokenTransferProxy.sol",
           "file": "./TokenTransferProxy.sol",
           "scope": 615,
@@ -587,7 +587,7 @@ export const Collateralizer =
       },
       {
         "attributes": {
-          "SourceUnit": 6280,
+          "SourceUnit": 6272,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/libraries/PermissionsLib.sol",
           "file": "./libraries/PermissionsLib.sol",
           "scope": 615,
@@ -9802,7 +9802,7 @@ export const Collateralizer =
         }
       },
       "links": {},
-      "address": "0xf5ff656bfeada48090daf7341a2d4e160d699d27"
+      "address": "0x39ab84786d3696677cb62181f56286c9496b490b"
     },
     "70": {
       "events": {
@@ -9951,5 +9951,5 @@ export const Collateralizer =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-02T22:15:01.357Z"
+  "updatedAt": "2018-10-09T17:51:53.173Z"
 }

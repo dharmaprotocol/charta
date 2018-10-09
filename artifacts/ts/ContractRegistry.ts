@@ -281,7 +281,7 @@ export const ContractRegistry =
       },
       {
         "attributes": {
-          "SourceUnit": 2639,
+          "SourceUnit": 2631,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/DebtKernel.sol",
           "file": "./DebtKernel.sol",
           "scope": 924,
@@ -296,7 +296,7 @@ export const ContractRegistry =
       },
       {
         "attributes": {
-          "SourceUnit": 3167,
+          "SourceUnit": 3159,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/DebtRegistry.sol",
           "file": "./DebtRegistry.sol",
           "scope": 924,
@@ -311,7 +311,7 @@ export const ContractRegistry =
       },
       {
         "attributes": {
-          "SourceUnit": 3549,
+          "SourceUnit": 3541,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/DebtToken.sol",
           "file": "./DebtToken.sol",
           "scope": 924,
@@ -326,7 +326,7 @@ export const ContractRegistry =
       },
       {
         "attributes": {
-          "SourceUnit": 4716,
+          "SourceUnit": 4708,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/RepaymentRouter.sol",
           "file": "./RepaymentRouter.sol",
           "scope": 924,
@@ -341,7 +341,7 @@ export const ContractRegistry =
       },
       {
         "attributes": {
-          "SourceUnit": 5122,
+          "SourceUnit": 5114,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/TokenRegistry.sol",
           "file": "./TokenRegistry.sol",
           "scope": 924,
@@ -356,7 +356,7 @@ export const ContractRegistry =
       },
       {
         "attributes": {
-          "SourceUnit": 5215,
+          "SourceUnit": 5207,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/TokenTransferProxy.sol",
           "file": "./TokenTransferProxy.sol",
           "scope": 924,
@@ -4731,7 +4731,7 @@ export const ContractRegistry =
         }
       },
       "links": {},
-      "address": "0x98090fb23948d09772840b7440e7cdd4c28c2c8d"
+      "address": "0x342e4778937a0fa5879aa594d0f57370f1a0e5d9"
     },
     "70": {
       "events": {
@@ -4780,5 +4780,5 @@ export const ContractRegistry =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-02T22:16:36.727Z"
+  "updatedAt": "2018-10-09T17:53:24.840Z"
 }
