@@ -17564,7 +17564,7 @@ export const DebtKernel =
           "inputs": [
             {
               "indexed": true,
-              "name": "_issuanceHash",
+              "name": "_agreementId",
               "type": "bytes32"
             },
             {
@@ -17606,7 +17606,7 @@ export const DebtKernel =
           "inputs": [
             {
               "indexed": true,
-              "name": "_issuanceHash",
+              "name": "_agreementId",
               "type": "bytes32"
             },
             {
@@ -17683,7 +17683,7 @@ export const DebtKernel =
         }
       },
       "links": {},
-      "address": "0x755e131019e5ab3e213dc269a4020e3e82e06e20"
+      "address": "0x24db52da9748fbb889a5bcc4468b32fbc9172348"
     },
     "70": {
       "events": {
@@ -17815,5 +17815,5 @@ export const DebtKernel =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-08T22:52:32.298Z"
+  "updatedAt": "2018-10-09T23:22:13.505Z"
 }

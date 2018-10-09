@@ -10513,7 +10513,7 @@ export const SimpleInterestTermsContract =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x4cad7ad79464628c07227928c851d3bc5ef3da0c"
+      "address": "0x77bdb2014e6048419706e50c2b7e53c662fe0fde"
     },
     "70": {
       "events": {},
@@ -10522,5 +10522,5 @@ export const SimpleInterestTermsContract =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-08T22:52:32.216Z"
+  "updatedAt": "2018-10-09T23:20:25.143Z"
 }

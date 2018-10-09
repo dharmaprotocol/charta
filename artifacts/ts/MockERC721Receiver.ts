@@ -1845,7 +1845,7 @@ export const MockERC721Receiver =
     "42": {
       "events": {},
       "links": {},
-      "address": "0xb20ba587b34c71d886a4fd5cb1c6f09da611b578"
+      "address": "0x0ac01be77bebfd73d570fe3430eeaf731cc0f276"
     },
     "70": {
       "events": {},
@@ -1854,5 +1854,5 @@ export const MockERC721Receiver =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-08T22:52:31.842Z"
+  "updatedAt": "2018-10-09T23:19:45.792Z"
 }

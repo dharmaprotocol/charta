@@ -1588,7 +1588,7 @@ export const MockTokenRegistry =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x1d3ca86a5d20201bce4f37369a523d5b7ce310c9"
+      "address": "0x173369a9a8fd5063849034932c1463562589e68c"
     },
     "70": {
       "events": {},
@@ -1597,5 +1597,5 @@ export const MockTokenRegistry =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-08T22:52:31.838Z"
+  "updatedAt": "2018-10-09T23:19:45.790Z"
 }

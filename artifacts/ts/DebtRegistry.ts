@@ -7818,7 +7818,7 @@ export const DebtRegistry =
           "inputs": [
             {
               "indexed": true,
-              "name": "issuanceHash",
+              "name": "agreementId",
               "type": "bytes32"
             },
             {
@@ -7855,7 +7855,7 @@ export const DebtRegistry =
           "inputs": [
             {
               "indexed": true,
-              "name": "issuanceHash",
+              "name": "agreementId",
               "type": "bytes32"
             },
             {
@@ -7985,7 +7985,7 @@ export const DebtRegistry =
         }
       },
       "links": {},
-      "address": "0x9662d6cae0e6914a388cb96c1c161cc4d12c3d7a"
+      "address": "0x3940a1aa50eac96c2b0f47befb1443f5636649ab"
     },
     "70": {
       "events": {
@@ -8165,5 +8165,5 @@ export const DebtRegistry =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-08T22:52:32.130Z"
+  "updatedAt": "2018-10-09T23:22:13.473Z"
 }

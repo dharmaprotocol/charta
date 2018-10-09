@@ -1770,7 +1770,7 @@ export const DummyContract =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x698966663bd661f008a4a3f2f8118e1d86a442e8"
+      "address": "0x6fc77e8aa556b15ac07e61ebc0a56a4ff636eee9"
     },
     "70": {
       "events": {},
@@ -1779,5 +1779,5 @@ export const DummyContract =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-08T22:52:31.833Z"
+  "updatedAt": "2018-10-09T23:19:45.788Z"
 }

@@ -52419,5 +52419,5 @@ export const KittyBreeding =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-08T22:52:33.020Z"
+  "updatedAt": "2018-10-09T23:15:06.903Z"
 }

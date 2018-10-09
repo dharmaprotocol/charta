@@ -6203,7 +6203,7 @@ export const DebtToken =
         }
       },
       "links": {},
-      "address": "0x12c8615fd55bf6e1f5a298cebdc72e50f838df74"
+      "address": "0xf0b37b0f7e0715b5a7d19ffb2259bb9a8caa0720"
     },
     "70": {
       "events": {
@@ -6342,5 +6342,5 @@ export const DebtToken =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-08T22:52:32.110Z"
+  "updatedAt": "2018-10-09T23:23:58.036Z"
 }

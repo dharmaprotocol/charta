@@ -9802,7 +9802,7 @@ export const Collateralizer =
         }
       },
       "links": {},
-      "address": "0x4b86bbe375577262cb0b3b7893e3de0d11751dd6"
+      "address": "0x9075c9d39c3603d00629d8c1822da2d2f61605fb"
     },
     "70": {
       "events": {
@@ -9951,5 +9951,5 @@ export const Collateralizer =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-08T22:52:32.192Z"
+  "updatedAt": "2018-10-09T23:22:13.489Z"
 }

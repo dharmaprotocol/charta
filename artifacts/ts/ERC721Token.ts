@@ -5397,6 +5397,11 @@ export const ERC721Token =
     "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
   },
   "networks": {
+    "42": {
+      "events": {},
+      "links": {},
+      "address": "0x3e9171ebba163b92a271144b2fe907b10c9a5131"
+    },
     "70": {
       "events": {},
       "links": {},
@@ -5404,5 +5409,5 @@ export const ERC721Token =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-08T22:52:31.998Z"
+  "updatedAt": "2018-10-09T23:19:45.827Z"
 }

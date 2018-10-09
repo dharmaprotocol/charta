@@ -1436,5 +1436,5 @@ export const BasicToken =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-08T22:52:31.823Z"
+  "updatedAt": "2018-10-09T23:15:05.503Z"
 }

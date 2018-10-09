@@ -1,4 +1,10 @@
-const { CRYPTOKITTIES_CONTRACT, ERC721_CONTRACT_DATA, LIVE_NETWORK_ID } = require("./migration_constants");
+const {
+    CRYPTOKITTIES_CONTRACT,
+    ERC721_CONTRACT_DATA,
+    ERC721_KOVAN_CONTRACT_DATA,
+    LIVE_NETWORK_ID,
+    KOVAN_NETWORK_ID,
+} = require("./migration_constants");
 
 module.exports = (deployer, network, accounts) => {
     // Constants
@@ -83,9 +89,20 @@ module.exports = (deployer, network, accounts) => {
          *  Initial Registry Contents   *
          ********************************/
 
+        if (network === KOVAN_NETWORK_ID) {
+            // Add the Kovan contracts to the registry.
+            ERC721_KOVAN_CONTRACT_DATA.map(async (contractData) => {
+                await tokenRegistry.setTokenAttributes(
+                    contractData.symbol,
+                    contractData.address,
+                    contractData.name,
+                    { from: CONTRACT_OWNER }
+                );
+            });
+        }
+
         if (network !== LIVE_NETWORK_ID) {
             // Get and register ERC721s for test purposes.
-
             const mintableToken = await MintableERC721Token.deployed();
             const cryptoKittiesToken = await KittyCore.deployed();
             const debtToken = await DebtToken.deployed();
