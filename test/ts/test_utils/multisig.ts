@@ -31,6 +31,7 @@ export async function submitMultiSigTransaction(
     methodName: string,
     args: any[],
     txData: TxData,
+    web3Instance = web3,
 ): Promise<BigNumber> {
     ABIDecoder.addABI(multiSig.abi);
 
@@ -48,7 +49,7 @@ export async function submitMultiSigTransaction(
     );
 
     // Get the transaction ID from the logs.
-    const receipt = await web3.eth.getTransactionReceipt(txHash);
+    const receipt = await web3Instance.eth.getTransactionReceipt(txHash);
 
     const submission = ABIDecoder.decodeLogs(receipt.logs)[0] as DecodedLog<
         MultiSigSubmissionEventArgs
@@ -80,6 +81,7 @@ async function submitAndConfirmMultiSigTransaction(
     accounts: Address[],
     args: any[] = [],
     txData?: TxData,
+    web3Instance = web3,
 ): Promise<BigNumber> {
     const transactionData = {
         from: accounts[0],
@@ -95,6 +97,7 @@ async function submitAndConfirmMultiSigTransaction(
         methodName,
         args,
         transactionData,
+        web3Instance,
     );
 
     await submitRequisiteMultiSigConfirmations(multiSig, transactionId, accounts);
@@ -134,11 +137,12 @@ export async function multiSigExecuteAfterTimelock(
         accounts,
         args,
         txData,
+        web3,
     );
 
     await web3Utils.increaseTime(timelock);
 
-    const txHash = await multiSig.executeTransaction.sendTransactionAsync(transactionId);
+    const txHash = await multiSig.executeTransaction.sendTransactionAsync(transactionId, txData);
 
     const transaction = await multiSig.transactions.callAsync(transactionId);
 
@@ -184,6 +188,7 @@ export async function multiSigExecutePauseImmediately(
         accounts,
         args,
         txData,
+        web3,
     );
 
     const txHash = await multiSig.executePauseTransactionImmediately.sendTransactionAsync(
