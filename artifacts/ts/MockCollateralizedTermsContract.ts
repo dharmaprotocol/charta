@@ -372,7 +372,7 @@ export const MockCollateralizedTermsContract =
       },
       {
         "attributes": {
-          "SourceUnit": 10693,
+          "SourceUnit": 10701,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/test/mocks/MockContract.sol",
           "file": "./MockContract.sol",
           "scope": 10516,
@@ -5723,7 +5723,7 @@ export const MockCollateralizedTermsContract =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x67d4984f33adaa13b879dc532a49bc7a46140353"
+      "address": "0x6a04fa78edde2183000ad0fd154c5e81f7b144aa"
     },
     "70": {
       "events": {},
@@ -5732,5 +5732,5 @@ export const MockCollateralizedTermsContract =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-09T17:50:01.318Z"
+  "updatedAt": "2018-10-11T19:20:01.393Z"
 }

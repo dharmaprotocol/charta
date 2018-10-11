@@ -658,7 +658,7 @@ export const DharmaMultiSigWallet =
       },
       {
         "attributes": {
-          "SourceUnit": 13919,
+          "SourceUnit": 13927,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/wallet/MultiSigWallet.sol",
           "file": "./MultiSigWallet.sol",
           "scope": 12937,
@@ -5192,7 +5192,7 @@ export const DharmaMultiSigWallet =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x73b8e624c2e0e55e7eaf5ff669a7c63f95781bb4"
+      "address": "0xd1f641abdf0dfadfd8271490dd7dfecaef39084f"
     },
     "70": {
       "events": {},
@@ -5201,5 +5201,5 @@ export const DharmaMultiSigWallet =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-09T17:53:24.844Z"
+  "updatedAt": "2018-10-11T19:24:14.257Z"
 }

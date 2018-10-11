@@ -4184,7 +4184,7 @@ export const ERC721TokenRegistry =
         }
       },
       "links": {},
-      "address": "0xd1ec79ec665dddf7a65024c44dd75f625e88271f"
+      "address": "0xbb0926b66366d0a5adf63baae18890dfa645cebd"
     },
     "70": {
       "events": {
@@ -4211,5 +4211,5 @@ export const ERC721TokenRegistry =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-09T17:53:04.870Z"
+  "updatedAt": "2018-10-11T19:23:49.008Z"
 }
