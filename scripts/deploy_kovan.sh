@@ -25,7 +25,7 @@ SSH_PID=$(ps aux | grep "ssh" | grep -v 'grep' | awk '{print $2}')
 truffle compile --all
 
 # Deploy contracts onto Kovan network
-truffle migrate --network kovan
+truffle migrate --network kovan --reset
 
 # Replace production artifacts with newly generated json artifacts
 rm artifacts/json/*
