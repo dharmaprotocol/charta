@@ -1,5 +1,7 @@
 const fs = require("fs");
 
+const truffleParams = require("../truffle.js");
+
 // The location of data files related to token contract addresses.
 const tokenDataDir = `${projectRoot()}/token_registry_data`;
 const ERC20_TOKEN_LIST = readJsonSync(`${tokenDataDir}/erc20_tokens.json`);
@@ -14,8 +16,7 @@ const OWNER_THREE = "0xb41411e8cfae259a6494ecdc81833b627f051be4";
 const OWNER_FOUR = "0xfefdde6a490cd4095de204b6fe31ba1607b19e3f";
 const OWNER_FIVE = "0xa32d732ab0096dbf837f3e5d358ac5b597dcbf73";
 
-const TEST_NET_OWNER = "0x14978f69aAAf6252ce62d6d50ED36130BD18aC43";
-
+const KOVAN_ACCOUNT = truffleParams.networks.kovan.from;
 /**
  * The amount of time that the multi-signature wallet should wait before executing a transaction.
  * Currently set to 7 days, expressed in seconds.
@@ -50,7 +51,7 @@ const MULTISIG_PARAMS = {
 };
 
 const SIGNATORIES = [OWNER_ONE, OWNER_TWO, OWNER_THREE, OWNER_FOUR, OWNER_FIVE];
-const TEST_NET_SIGNATORIES = [OWNER_ONE, OWNER_TWO, OWNER_THREE, OWNER_FOUR, TEST_NET_OWNER];
+const TEST_NET_SIGNATORIES = [OWNER_ONE, OWNER_TWO, OWNER_THREE, OWNER_FOUR, KOVAN_ACCOUNT];
 
 const LIVE_NETWORK_ID = "live";
 const KOVAN_NETWORK_ID = "kovan";
