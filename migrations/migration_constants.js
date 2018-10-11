@@ -44,8 +44,8 @@ const MULTISIG_PARAMS = {
     kovan: {
         // For the kovan network, we only require 1 signatory to execute a transaction.
         threshold: 1 / 6,
-        // Only 1 minute is required before a transaction is executed.
-        timelockInSeconds: 60,
+        // Only 1 second is required before a transaction is executed.
+        timelockInSeconds: 1,
     },
 };
 
