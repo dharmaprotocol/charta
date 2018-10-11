@@ -466,7 +466,7 @@ export const MockDebtRegistry =
       },
       {
         "attributes": {
-          "SourceUnit": 10693,
+          "SourceUnit": 10701,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/test/mocks/MockContract.sol",
           "file": "./MockContract.sol",
           "scope": 11222,
@@ -5997,7 +5997,7 @@ export const MockDebtRegistry =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x7593f653e23985ac6371a1e2d0a681f6e5534007"
+      "address": "0x7b53048a029895e61a8b4132180dfff509943bd7"
     },
     "70": {
       "events": {},
@@ -6006,5 +6006,5 @@ export const MockDebtRegistry =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-09T17:50:01.328Z"
+  "updatedAt": "2018-10-11T19:20:01.399Z"
 }

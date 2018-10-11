@@ -276,7 +276,7 @@ export const MockTermsContract =
       },
       {
         "attributes": {
-          "SourceUnit": 10693,
+          "SourceUnit": 10701,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/test/mocks/MockContract.sol",
           "file": "./MockContract.sol",
           "scope": 12354,
@@ -3395,7 +3395,7 @@ export const MockTermsContract =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x76dcdc1df7af00e87bb5dd8f600e5637053fc0e1"
+      "address": "0xb26b717b988f091963b48154f66148245fd1837c"
     },
     "70": {
       "events": {},
@@ -3404,5 +3404,5 @@ export const MockTermsContract =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-09T17:50:01.274Z"
+  "updatedAt": "2018-10-11T19:20:01.363Z"
 }

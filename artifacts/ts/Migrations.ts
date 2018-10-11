@@ -819,7 +819,7 @@ export const Migrations =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x4c4bd0258c47645a61a55c66c40168e61dcb19b2"
+      "address": "0x95fde0e37d774c086a8efe92fc6e154caec28677"
     },
     "70": {
       "events": {},
@@ -828,5 +828,5 @@ export const Migrations =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-09T17:53:24.835Z"
+  "updatedAt": "2018-10-11T19:24:14.245Z"
 }

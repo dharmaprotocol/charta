@@ -430,7 +430,7 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
       },
       {
         "attributes": {
-          "SourceUnit": 6053,
+          "SourceUnit": 6061,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/examples/SimpleInterestTermsContract.sol",
           "file": "./SimpleInterestTermsContract.sol",
           "scope": 5357,
@@ -445,7 +445,7 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
       },
       {
         "attributes": {
-          "SourceUnit": 4167,
+          "SourceUnit": 4175,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/ERC721Collateralizer.sol",
           "file": "../ERC721Collateralizer.sol",
           "scope": 5357,
@@ -1446,7 +1446,7 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
     "42": {
       "events": {},
       "links": {},
-      "address": "0xe44c8dbcb6dab51c4d5291788ec3fb82d2fbad12"
+      "address": "0xb23cb932fc3384e54fe406c1c820208a83e2ad2d"
     },
     "70": {
       "events": {},
@@ -1455,5 +1455,5 @@ export const ERC721CollateralizedSimpleInterestTermsContract =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-09T17:53:04.862Z"
+  "updatedAt": "2018-10-11T19:23:48.997Z"
 }

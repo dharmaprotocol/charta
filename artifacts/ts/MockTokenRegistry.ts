@@ -161,7 +161,7 @@ export const MockTokenRegistry =
       },
       {
         "attributes": {
-          "SourceUnit": 10693,
+          "SourceUnit": 10701,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/test/mocks/MockContract.sol",
           "file": "./MockContract.sol",
           "scope": 12450,
@@ -1588,7 +1588,7 @@ export const MockTokenRegistry =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x8d60b63345a4394a627672aca9f0f2541057d0ba"
+      "address": "0x7c2c2bef46f5a9a99fef17fb07b55b3ca528bf4b"
     },
     "70": {
       "events": {},
@@ -1597,5 +1597,5 @@ export const MockTokenRegistry =
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-09T17:50:01.268Z"
+  "updatedAt": "2018-10-11T19:20:01.351Z"
 }

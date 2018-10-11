@@ -3733,5 +3733,5 @@ export const StandardToken =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-09T17:45:35.529Z"
+  "updatedAt": "2018-10-11T19:15:29.166Z"
 }

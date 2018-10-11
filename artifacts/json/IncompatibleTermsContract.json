@@ -151,7 +151,7 @@
       },
       {
         "attributes": {
-          "SourceUnit": 4758,
+          "SourceUnit": 4766,
           "absolutePath": "/Users/chrismin/Documents/dev/dharma/charta/contracts/TermsContract.sol",
           "file": "../../TermsContract.sol",
           "scope": 12594,
@@ -987,7 +987,7 @@
     "42": {
       "events": {},
       "links": {},
-      "address": "0xc8d55fd3717f8c3f8d31456504ab84b11b80520e"
+      "address": "0x2f81ca2667d63054e2235397c72ff1c55f5b0379"
     },
     "70": {
       "events": {},
@@ -996,5 +996,5 @@
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-09T17:50:25.365Z"
+  "updatedAt": "2018-10-11T19:20:37.438Z"
 }
