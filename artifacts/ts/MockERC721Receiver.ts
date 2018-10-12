@@ -1845,14 +1845,14 @@ export const MockERC721Receiver =
     "42": {
       "events": {},
       "links": {},
-      "address": "0xb20ba587b34c71d886a4fd5cb1c6f09da611b578"
+      "address": "0x444f81b49a1b000c61062f610aa7109e84baf974"
     },
     "70": {
       "events": {},
       "links": {},
-      "address": "0x7692386b12b3d661515e4a58b98262507778fba5"
+      "address": "0xaed4c3050223305993ec34ea40cb773004d1a723"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-08T22:52:31.842Z"
+  "updatedAt": "2018-10-12T17:14:27.376Z"
 }

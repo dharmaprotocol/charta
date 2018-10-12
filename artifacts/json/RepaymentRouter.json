@@ -3301,7 +3301,7 @@
         }
       },
       "links": {},
-      "address": "0x0688659d5e36896da7e5d44ebe3e10aa9d2c9968"
+      "address": "0xfc370048e942f0150a39784f515bceca9ee24124"
     },
     "70": {
       "events": {
@@ -3385,9 +3385,9 @@
         }
       },
       "links": {},
-      "address": "0x384cdafd4dddd1b7f9210534a16931e60809b658"
+      "address": "0xec836f3c10cceebc3dc173a7ed114dd8bce062c0"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-08T22:52:31.875Z"
+  "updatedAt": "2018-10-12T17:14:28.532Z"
 }

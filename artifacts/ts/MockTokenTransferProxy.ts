@@ -1236,14 +1236,14 @@ export const MockTokenTransferProxy =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x4a45acd21a64d0de37750a8513f73e23cdea47c1"
+      "address": "0xdf7dd7bf7e2b75fcbc177c30426e619acd3ef8be"
     },
     "70": {
       "events": {},
       "links": {},
-      "address": "0x84bddc312773b18e83270626ef306d176892d349"
+      "address": "0x1f4dcdd4172e6876f4ae64f34698244671b3bcb6"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-08T22:52:31.826Z"
+  "updatedAt": "2018-10-12T17:14:27.372Z"
 }

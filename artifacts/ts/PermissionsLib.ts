@@ -2977,14 +2977,14 @@ export const PermissionsLib =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x0e7e2aace2ed2565777b420fd181b556971a8cb1"
+      "address": "0xbb46fc6f6ff975fa3398837e8c8141b3c66f6f30"
     },
     "70": {
       "events": {},
       "links": {},
-      "address": "0x1d02b56e6c96f7794151f9113f5329cdb79d10ff"
+      "address": "0x4cc7db448dde639453f03389e227782ec9693364"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-08T22:52:31.864Z"
+  "updatedAt": "2018-10-12T17:14:29.495Z"
 }

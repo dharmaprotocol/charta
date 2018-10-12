@@ -1237,14 +1237,14 @@ export const MintableERC721Token =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x91ab1498428910eab1021a95c5a478af9814fb4b"
+      "address": "0xa740623b2c689b17689ee59cea75c3df95adcbc9"
     },
     "70": {
       "events": {},
       "links": {},
-      "address": "0x91fb7df8e787c10bfeccb1e3184cc9b5048f0e1c"
+      "address": "0xc4983cf5cac6fc4e32de59e5be1dfd1ba4ebaa85"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-08T22:52:31.832Z"
+  "updatedAt": "2018-10-12T17:14:29.492Z"
 }

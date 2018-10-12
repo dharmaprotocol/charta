@@ -9802,7 +9802,7 @@ export const Collateralizer =
         }
       },
       "links": {},
-      "address": "0x4b86bbe375577262cb0b3b7893e3de0d11751dd6"
+      "address": "0xd5ca3dec1f3155e2c182299afa2413ac1a9f3530"
     },
     "70": {
       "events": {
@@ -9947,9 +9947,9 @@ export const Collateralizer =
         }
       },
       "links": {},
-      "address": "0x19cb6c7981564a4fdaab74d0d552bf837b9782a6"
+      "address": "0xe8fa4e82df071453a27b97ee5685b1067fa35c76"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-08T22:52:32.192Z"
+  "updatedAt": "2018-10-12T17:14:28.606Z"
 }

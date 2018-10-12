@@ -4599,14 +4599,14 @@ export const MockDebtToken =
     "42": {
       "events": {},
       "links": {},
-      "address": "0xc5cb874d3aed510599e12bfa81800313d4a32dad"
+      "address": "0xe225eb1f168ef06cc9a328a76daecdc3cf8d8ea9"
     },
     "70": {
       "events": {},
       "links": {},
-      "address": "0x54e3965cebb013068738ce587c63b4184508ba35"
+      "address": "0xfe48688a694486ed9e54b810ff68de0731187975"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-08T22:52:31.925Z"
+  "updatedAt": "2018-10-12T17:14:27.392Z"
 }

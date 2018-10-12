@@ -8924,7 +8924,7 @@ export const CreditorProxy =
         }
       },
       "links": {},
-      "address": "0xfb9bf42c0ee81813155709ea1f9fe8dda8eeb57f"
+      "address": "0x7c1826a75e9dc0765e4dfcb66acc7415bd9c84d3"
     },
     "70": {
       "events": {
@@ -9020,9 +9020,9 @@ export const CreditorProxy =
         }
       },
       "links": {},
-      "address": "0x956f8d1509586da308edd222ba7972de2d917b41"
+      "address": "0xa207d19ba6ba22ef82e851d5e4e98d59037c9564"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-08T22:53:01.160Z"
+  "updatedAt": "2018-10-12T17:14:29.750Z"
 }

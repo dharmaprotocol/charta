@@ -819,14 +819,14 @@ export const Migrations =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x7ad092e0b8e9363189d86ddb7d8a0d47a7f66cd8"
+      "address": "0x95fde0e37d774c086a8efe92fc6e154caec28677"
     },
     "70": {
       "events": {},
       "links": {},
-      "address": "0xd2cfa9e63cfd9db9de8b553d047722645caf9f27"
+      "address": "0x80c79da457ce712b42afcf459b5508a57f09a57f"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-08T22:53:01.138Z"
+  "updatedAt": "2018-10-12T17:14:29.738Z"
 }

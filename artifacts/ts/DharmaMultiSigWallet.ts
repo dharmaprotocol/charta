@@ -5192,14 +5192,14 @@ export const DharmaMultiSigWallet =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x5e6d80063af17bf22b6828a7a61693ec37881563"
+      "address": "0xd1f641abdf0dfadfd8271490dd7dfecaef39084f"
     },
     "70": {
       "events": {},
       "links": {},
-      "address": "0xa5da3efc97eefc0fa4d27dce42b2d0a6a528a3f5"
+      "address": "0x24534863bcab2e55a28c7fcbb6f6862887bb14ec"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-08T22:53:01.143Z"
+  "updatedAt": "2018-10-12T17:14:29.744Z"
 }

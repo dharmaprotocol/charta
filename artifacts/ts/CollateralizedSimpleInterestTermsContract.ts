@@ -1335,14 +1335,14 @@ export const CollateralizedSimpleInterestTermsContract =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x13763cf3eb3b6813fa800d4935725a0504c8eb8f"
+      "address": "0x49d35dd866ed2ea011e2797fcce0bf321d086cf1"
     },
     "70": {
       "events": {},
       "links": {},
-      "address": "0xcdc99b9c5f3048b307315a9eacb8cbd57449dae4"
+      "address": "0x50cd9021f742f3252cce46deadb0fafdbb72fb7d"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-08T22:52:31.830Z"
+  "updatedAt": "2018-10-12T17:14:28.081Z"
 }

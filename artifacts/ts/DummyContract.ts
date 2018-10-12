@@ -1770,14 +1770,14 @@ export const DummyContract =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x698966663bd661f008a4a3f2f8118e1d86a442e8"
+      "address": "0x3a8e81eb30bcdb687fa46f20a53c5e239fbb9521"
     },
     "70": {
       "events": {},
       "links": {},
-      "address": "0x82c263025321506fb8775b54dc3acfc6b957a948"
+      "address": "0x74f8cb54fb77e120c860112c95bd9bfa09aba98a"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-08T22:52:31.833Z"
+  "updatedAt": "2018-10-12T17:14:27.373Z"
 }

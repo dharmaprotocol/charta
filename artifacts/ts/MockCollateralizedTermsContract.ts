@@ -5723,14 +5723,14 @@ export const MockCollateralizedTermsContract =
     "42": {
       "events": {},
       "links": {},
-      "address": "0x7498f52b02bc0e695ebe8d8a82b43c60ece45cf8"
+      "address": "0x6a04fa78edde2183000ad0fd154c5e81f7b144aa"
     },
     "70": {
       "events": {},
       "links": {},
-      "address": "0xdf4a70002bc1c3732e8913b613fbd190dac1dd36"
+      "address": "0x5cbcf3325fb6e35d58209453782d154e40d7d1ee"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-08T22:52:32.009Z"
+  "updatedAt": "2018-10-12T17:14:27.398Z"
 }

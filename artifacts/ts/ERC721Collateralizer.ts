@@ -9499,7 +9499,7 @@ export const ERC721Collateralizer =
         }
       },
       "links": {},
-      "address": "0x6114e5c837b6bc774399190a5368019ed332c54b"
+      "address": "0x463eab5f1c8a9ff1eab1b80b08ba35ca592d6d26"
     },
     "70": {
       "events": {
@@ -9644,9 +9644,9 @@ export const ERC721Collateralizer =
         }
       },
       "links": {},
-      "address": "0xb96fb1c8750a8ad6e866d0764e8979ad3e77aebd"
+      "address": "0xd0df67bd67369e87f5ce4d10e9b12a4bf93d4203"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-08T22:52:32.181Z"
+  "updatedAt": "2018-10-12T17:14:29.522Z"
 }

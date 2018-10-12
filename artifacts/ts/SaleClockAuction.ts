@@ -52025,5 +52025,5 @@ export const SaleClockAuction =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-08T22:52:32.939Z"
+  "updatedAt": "2018-10-12T17:14:13.032Z"
 }

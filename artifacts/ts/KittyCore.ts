@@ -52747,14 +52747,14 @@ export const KittyCore =
     "42": {
       "events": {},
       "links": {},
-      "address": "0xea57c693d9a923cf4398eba61ccfea43574471a3"
+      "address": "0x2bd9e4e3f8e922a52f6bcad74334f8babfaa175d"
     },
     "70": {
       "events": {},
       "links": {},
-      "address": "0x39ca484d86959d136e6c411920b8bd83c2c593bf"
+      "address": "0xd0956276271518a0f1411d61e1e59f68f9bd7bb6"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-08T22:52:33.212Z"
+  "updatedAt": "2018-10-12T17:14:29.544Z"
 }

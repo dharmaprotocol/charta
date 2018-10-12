@@ -3395,14 +3395,14 @@ export const MockTermsContract =
     "42": {
       "events": {},
       "links": {},
-      "address": "0xfa94fb78b36fa2e194811fbffff450216f393c6d"
+      "address": "0xb26b717b988f091963b48154f66148245fd1837c"
     },
     "70": {
       "events": {},
       "links": {},
-      "address": "0x744378d47f41af64096618da56a11e60b44882a0"
+      "address": "0x90e8fea2b0fa1466e739efee5c4e0213e7791c2d"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-08T22:52:31.880Z"
+  "updatedAt": "2018-10-12T17:14:27.385Z"
 }

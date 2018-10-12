@@ -51732,5 +51732,5 @@ export const ClockAuctionBase =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-08T22:52:32.437Z"
+  "updatedAt": "2018-10-12T17:14:12.070Z"
 }
