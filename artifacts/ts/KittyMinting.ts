@@ -52642,5 +52642,5 @@ export const KittyMinting =
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-11T19:15:30.097Z"
+  "updatedAt": "2018-10-12T17:14:13.121Z"
 }

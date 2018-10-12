@@ -9947,9 +9947,9 @@ export const Collateralizer =
         }
       },
       "links": {},
-      "address": "0x19cb6c7981564a4fdaab74d0d552bf837b9782a6"
+      "address": "0xe8fa4e82df071453a27b97ee5685b1067fa35c76"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-11T19:22:25.182Z"
+  "updatedAt": "2018-10-12T17:14:28.606Z"
 }

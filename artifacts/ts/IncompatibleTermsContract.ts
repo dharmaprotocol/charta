@@ -993,9 +993,9 @@ export const IncompatibleTermsContract =
     "70": {
       "events": {},
       "links": {},
-      "address": "0xd68dd75a98691a540c016ebaf068ba1159cc823c"
+      "address": "0xfd5e06544a1c2147044bb7a44264b94b5b2aaff9"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-11T19:20:37.438Z"
+  "updatedAt": "2018-10-12T17:14:27.606Z"
 }

@@ -4207,9 +4207,9 @@ export const ERC721TokenRegistry =
         }
       },
       "links": {},
-      "address": "0x1c827537d019aad123fff254ffe2612afbc14f0e"
+      "address": "0x5a35e19be1f2e44997102693b5fb44bbf7544700"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-11T19:23:49.008Z"
+  "updatedAt": "2018-10-12T17:14:29.498Z"
 }

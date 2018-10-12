@@ -9020,9 +9020,9 @@ export const CreditorProxy =
         }
       },
       "links": {},
-      "address": "0x956f8d1509586da308edd222ba7972de2d917b41"
+      "address": "0xa207d19ba6ba22ef82e851d5e4e98d59037c9564"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-10-11T19:24:14.268Z"
+  "updatedAt": "2018-10-12T17:14:29.750Z"
 }
