@@ -65,7 +65,7 @@ fs.readdir(artifactDirectory, (err, files) => {
     // Now sync with s3.
     s3.putObject({
         Bucket: "dharma-contract-config",
-        Key: `address_book/${packageVersion}.json`,
+        Key: `charta/address_book/${packageVersion}.json`,
         Body: JSON.stringify(addressBook),
         ACL: "public-read",
     }, (err, data) => {
