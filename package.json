@@ -41,6 +41,7 @@
     "lint"
   ],
   "dependencies": {
+    "aws-sdk": "^2.334.0",
     "zeppelin-solidity": "1.8.0"
   },
   "devDependencies": {
