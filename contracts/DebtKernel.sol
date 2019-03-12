@@ -345,7 +345,8 @@ contract DebtKernel is Pausable {
         internal
         returns (bool _orderIsConsensual)
     {
-        // Invariant: debtor's signature must be valid, unless debtor is submitting order
+        // Invariant: unless debtor is submitting order, signature must be valid and from the debtor or,
+        // if the debtor has delegated consent, the debtor's delegated consenter.
         if (msg.sender != debtOrder.issuance.debtor) {
             address delegatedDebtor = debtOrder.issuance.debtor;
 
