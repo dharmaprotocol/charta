@@ -19,6 +19,7 @@
     "deploy:development": "bash scripts/deploy_development.sh",
     "deploy:kovan": "bash scripts/deploy_kovan.sh",
     "deploy:mainnet": "bash scripts/deploy_mainnet.sh",
+    "deploy-infura:mainnet": "truffle migrate --reset --network mainnet && rm artifacts/json/* && cp build/contracts/* artifacts/json/",
     "dist": "bash scripts/prepare_dist.sh",
     "generate-typings": "abi-gen --abis './build/contracts/*.json' --out './types/generated' --template './types/contract_templates/contract.mustache' --partials './types/contract_templates/partials/*.mustache'",
     "transpile": "rm -rf ./transpiled; copyfiles ./build/**/* ./transpiled; tsc",
@@ -42,6 +43,9 @@
   ],
   "dependencies": {
     "aws-sdk": "^2.334.0",
+    "dotenv": "^6.2.0",
+    "truffle-hdwallet-provider-privkey": "^0.3.0",
+    "web3-provider-engine": "^14.1.0",
     "zeppelin-solidity": "1.8.0"
   },
   "devDependencies": {
