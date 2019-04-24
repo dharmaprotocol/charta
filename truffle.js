@@ -1,3 +1,8 @@
+require("dotenv").config();
+
+const HDWalletProvider = require("truffle-hdwallet-provider-privkey");
+const NonceTrackerSubprovider = require("web3-provider-engine/subproviders/nonce-tracker");
+
 module.exports = {
     networks: {
         development: {
@@ -16,12 +21,22 @@ module.exports = {
             gasPrice: 4000000000, // 4 GWei
         },
         live: {
-            host: "localhost",
-            port: 8547,
+            provider: function() {
+                const wallet = new HDWalletProvider(
+                    [process.env.MAINNET_MNEMONIC],
+                    `https://mainnet.infura.io/v3/${process.env.MAINNET_INFURA_ID}`,
+                );
+
+                // Hack for making HDWalletProvider accurately reflect Infura nonces
+                const nonceTracker = new NonceTrackerSubprovider();
+                wallet.engine._providers.unshift(nonceTracker);
+                nonceTracker.setEngine(wallet.engine);
+
+                return wallet;
+            },
             network_id: "1",
-            from: "0xd4915e172a195f5f3e343a4196e8bda3fc94aee8",
-            gas: 4000000,
-            gasPrice: 22000000000, // 15 GWei, as per https://ethgasstation.info/
+            gas: 4500000,
+            gasPrice: 22000000000,
         },
     },
     test_directory: "transpiled/test",

@@ -76,6 +76,8 @@ contract DebtKernel is Pausable {
     mapping (bytes32 => bool) public issuanceCancelled;
     mapping (bytes32 => bool) public debtOrderCancelled;
 
+    mapping (address => address) public debtorConsentDelegation;
+
     event LogDebtOrderFilled(
         bytes32 indexed _agreementId,
         uint _principal,
@@ -292,6 +294,14 @@ contract DebtKernel is Pausable {
         LogDebtOrderCancelled(debtOrder.debtOrderHash, msg.sender);
     }
 
+    function delegateDebtorConsent(
+        address delegate
+    )
+        public
+    {
+        debtorConsentDelegation[msg.sender] = delegate;
+    }
+
     ////////////////////////
     // INTERNAL FUNCTIONS //
     ////////////////////////
@@ -335,10 +345,17 @@ contract DebtKernel is Pausable {
         internal
         returns (bool _orderIsConsensual)
     {
-        // Invariant: debtor's signature must be valid, unless debtor is submitting order
+        // Invariant: unless debtor is submitting order, signature must be valid and from the debtor or,
+        // if the debtor has delegated consent, the debtor's delegated consenter.
         if (msg.sender != debtOrder.issuance.debtor) {
+            address delegatedDebtor = debtOrder.issuance.debtor;
+
+            if (debtorConsentDelegation[debtOrder.issuance.debtor] != address(0)) {
+                delegatedDebtor = debtorConsentDelegation[debtOrder.issuance.debtor];
+            }
+
             if (!isValidSignature(
-                debtOrder.issuance.debtor,
+                delegatedDebtor,
                 debtOrder.debtOrderHash,
                 signaturesV[0],
                 signaturesR[0],
